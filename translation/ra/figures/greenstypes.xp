@@ -123,11 +123,10 @@ int main()
 	  line(P(x1,y),P(x2,y));
   }
 
-  label(P(0.5,-0.2), P(0,0), "type I", b);
-  label(P(2,-0.2), P(0,0), "type II", b);
-  label(P(3.5,-0.2), P(0,0), "type III", b);
+  label(P(0.5,-0.2), P(0,0), "tipe I", b);
+  label(P(2,-0.2), P(0,0), "tipe II", b);
+  label(P(3.5,-0.2), P(0,0), "tipe III", b);
 
   tikz_format();
   end();
 }
-

@@ -14,7 +14,7 @@ edisi turunan ini secara tegas memilih cabang CC BY-SA 4.0.
 Perubahan terhadap sumber meliputi penerjemahan ke Bahasa Indonesia,
 penataan pembaca, metadata aksesibilitas, koreksi yang dinyatakan secara
 terpisah, indeks mesin, dan integrasi backend modular. Pekerjaan tersebut
-dilakukan oleh OpenAI Codex atas permintaan Floris. Ini adalah edisi independen
+dilakukan oleh OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna. Ini adalah edisi independen
 dan tidak menyiratkan dukungan Jiří Lebl, penerbit, atau institusi mana pun.
 
 Sesuai CC BY-SA 4.0, pemakaian ulang harus mempertahankan atribusi, menautkan

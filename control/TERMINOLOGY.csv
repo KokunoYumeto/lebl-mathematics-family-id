@@ -3,9 +3,9 @@ LEBL-TERM-0001,concept.math.analysis,R006,analysis,analisis,,,formal,R006 ch-vol
 LEBL-TERM-0002,concept.math.real-analysis,R006,real analysis,analisis real,,,formal,R006 realanal.tex and ch-vol1-intro.tex,admitted,
 LEBL-TERM-0003,concept.math.proof,R006,proof,pembuktian,bukti,,formal,R006 ch-vol1-intro.tex,admitted,Use pembuktian for the process and bukti for the resulting argument where context requires.
 LEBL-TERM-0004,concept.set-theory.set,R006,set,himpunan,,,formal,R006 ch-vol1-intro.tex,admitted,
-LEBL-TERM-0005,concept.set-theory.element,R006,element,elemen,anggota,,formal,R006 ch-vol1-intro.tex,admitted,
+LEBL-TERM-0005,concept.set-theory.element,R006,element,elemen,anggota,,formal,R006 ch-vol1-intro.tex; Universitas Terbuka MATA4217 Edisi 2 Modul 1 p. 2,admitted,
 LEBL-TERM-0006,concept.set-theory.subset,R006,subset,himpunan bagian,,,formal,R006 ch-vol1-intro.tex,admitted,
-LEBL-TERM-0007,concept.set-theory.empty-set,R006,empty set,himpunan kosong,,,formal,R006 ch-vol1-intro.tex,admitted,
+LEBL-TERM-0007,concept.set-theory.empty-set,R006,empty set,himpunan kosong,,,formal,R006 ch-vol1-intro.tex; Universitas Terbuka MATA4217 Edisi 2 Modul 1 p. 2,admitted,
 LEBL-TERM-0008,concept.set-theory.union,R006,union,gabungan,,,formal,R006 ch-vol1-intro.tex,admitted,
 LEBL-TERM-0009,concept.set-theory.intersection,R006,intersection,irisan,,,formal,R006 ch-vol1-intro.tex,admitted,
 LEBL-TERM-0010,concept.set-theory.set-difference,R006,set difference,selisih himpunan,,,formal,R006 ch-vol1-intro.tex,admitted,
@@ -30,34 +30,34 @@ LEBL-TERM-0028,concept.result.corollary,R006,corollary,akibat,korolari,,formal,R
 LEBL-TERM-0029,concept.function.function,R006,function,fungsi,,,formal,R006 ch-vol1-intro.tex,admitted,
 LEBL-TERM-0030,concept.function.set-theoretic-function,R006,set-theoretic function,fungsi dalam teori himpunan,,,formal,R006 ch-vol1-intro.tex,admitted,
 LEBL-TERM-0031,concept.function.mapping,R006,mapping,pemetaan,peta,,formal,R006 ch-vol1-intro.tex,admitted,Use pemetaan for the object/process and peta where the shorter noun is idiomatic.
-LEBL-TERM-0032,concept.set-theory.cartesian-product,R006,Cartesian product,produk Kartesius,,,formal,R006 ch-vol1-intro.tex,admitted,
+LEBL-TERM-0032,concept.set-theory.cartesian-product,R006,Cartesian product,hasil kali Kartesius,produk Kartesius,hasil kali silang,formal,R006 ch-vol1-intro.tex; Universitas Terbuka MATA4217 Edisi 2 Modul 1 p. 6; Indonesian university mathematics publications,admitted,Field usage favors hasil kali Kartesius; hasil kali silang is attested but rejected here because it collides with vector cross product.
 LEBL-TERM-0033,concept.function.graph,R006,graph,grafik,,,formal,R006 ch-vol1-intro.tex,admitted,
-LEBL-TERM-0034,concept.function.domain,R006,domain,domain,,,formal,R006 ch-vol1-intro.tex,admitted,
-LEBL-TERM-0035,concept.function.range,R006,range,daerah hasil,jangkauan,,formal,R006 ch-vol1-intro.tex,admitted,Distinguish from codomain.
-LEBL-TERM-0036,concept.function.codomain,R006,codomain,kodomain,,,formal,R006 ch-vol1-intro.tex,admitted,
+LEBL-TERM-0034,concept.function.domain,R006,domain,domain,daerah asal; daerah definisi,,formal,R006 ch-vol1-intro.tex; Universitas Terbuka MATA4217 Edisi 2 Modul 1 p. 10,admitted,Retain the concise established loanword; record both attested explanatory variants.
+LEBL-TERM-0035,concept.function.range,R006,range,daerah hasil,jangkauan,,formal,R006 ch-vol1-intro.tex; Universitas Terbuka MATA4217 Edisi 2 Modul 1 p. 10,admitted,Distinguish from codomain.
+LEBL-TERM-0036,concept.function.codomain,R006,codomain,kodomain,daerah kawan,,formal,R006 ch-vol1-intro.tex; Universitas Terbuka MATA4217 Edisi 2 Modul 1 p. 10,admitted,Retain the concise established loanword; daerah kawan is an attested explanatory variant.
 LEBL-TERM-0037,concept.function.image,R006,image,citra,,,formal,R006 ch-vol1-intro.tex,admitted,
 LEBL-TERM-0038,concept.function.direct-image,R006,direct image,citra langsung,,,formal,R006 ch-vol1-intro.tex,admitted,
 LEBL-TERM-0039,concept.function.inverse-image,R006,inverse image,prapeta,citra invers,,formal,R006 ch-vol1-intro.tex,admitted,Do not confuse the inverse image set with an inverse-function value.
-LEBL-TERM-0040,concept.function.injective,R006,injective,injektif,satu-ke-satu,,formal,R006 ch-vol1-intro.tex,admitted,
+LEBL-TERM-0040,concept.function.injective,R006,injective,injektif,satu-ke-satu,,formal,R006 ch-vol1-intro.tex; Universitas Terbuka MATA4217 Edisi 2 Modul 1 pp. 10-11,admitted,
 LEBL-TERM-0041,concept.function.injection,R006,injection,injeksi,,,formal,R006 ch-vol1-intro.tex,admitted,
-LEBL-TERM-0042,concept.function.surjective,R006,surjective,surjektif,memetakan pada,,formal,R006 ch-vol1-intro.tex,admitted,
+LEBL-TERM-0042,concept.function.surjective,R006,surjective,surjektif,memetakan pada,,formal,R006 ch-vol1-intro.tex; Universitas Terbuka MATA4217 Edisi 2 Modul 1 p. 11,admitted,
 LEBL-TERM-0043,concept.function.surjection,R006,surjection,surjeksi,,,formal,R006 ch-vol1-intro.tex,admitted,
-LEBL-TERM-0044,concept.function.bijective,R006,bijective,bijektif,,,formal,R006 ch-vol1-intro.tex,admitted,
+LEBL-TERM-0044,concept.function.bijective,R006,bijective,bijektif,,,formal,R006 ch-vol1-intro.tex; Universitas Terbuka MATA4217 Edisi 2 Modul 1 p. 11,admitted,
 LEBL-TERM-0045,concept.function.bijection,R006,bijection,bijeksi,,,formal,R006 ch-vol1-intro.tex,admitted,
-LEBL-TERM-0046,concept.function.inverse-function,R006,inverse function,fungsi invers,,,formal,R006 ch-vol1-intro.tex,admitted,
-LEBL-TERM-0047,concept.function.composition,R006,composition of functions,komposisi fungsi,,,formal,R006 ch-vol1-intro.tex,admitted,
+LEBL-TERM-0046,concept.function.inverse-function,R006,inverse function,fungsi invers,,,formal,R006 ch-vol1-intro.tex; Universitas Terbuka MATA4217 Edisi 2 Modul 1 pp. 1 and 11-13,admitted,
+LEBL-TERM-0047,concept.function.composition,R006,composition of functions,komposisi fungsi,fungsi komposisi,,formal,R006 ch-vol1-intro.tex; Universitas Terbuka MATA4217 Edisi 2 Modul 1 p. 1,admitted,Retain the established lane preference; fungsi komposisi is an attested variant.
 LEBL-TERM-0048,concept.relation.binary-relation,R006,binary relation,relasi biner,,,formal,R006 ch-vol1-intro.tex,admitted,
 LEBL-TERM-0049,concept.relation.reflexive,R006,reflexive,refleksif,,,formal,R006 ch-vol1-intro.tex,admitted,
 LEBL-TERM-0050,concept.relation.symmetric,R006,symmetric,simetris,,,formal,R006 ch-vol1-intro.tex,admitted,
 LEBL-TERM-0051,concept.relation.transitive,R006,transitive,transitif,,,formal,R006 ch-vol1-intro.tex,admitted,
 LEBL-TERM-0052,concept.relation.equivalence-relation,R006,equivalence relation,relasi ekuivalensi,,,formal,R006 ch-vol1-intro.tex,admitted,
 LEBL-TERM-0053,concept.relation.equivalence-class,R006,equivalence class,kelas ekuivalensi,,,formal,R006 ch-vol1-intro.tex,admitted,
-LEBL-TERM-0054,concept.set-theory.cardinality,R006,cardinality,kardinalitas,,,formal,R006 ch-vol1-intro.tex,admitted,
+LEBL-TERM-0054,concept.set-theory.cardinality,R006,cardinality,kardinalitas,kardinal,,formal,R006 ch-vol1-intro.tex; Universitas Terbuka MATA4217 Edisi 2 Modul 1 p. 1; Universitas Andalas mathematics notes,admitted,Use kardinalitas for the property and kardinal when context denotes the cardinal number itself.
 LEBL-TERM-0055,concept.set-theory.finite,R006,finite,berhingga,,,formal,R006 ch-vol1-intro.tex,admitted,
 LEBL-TERM-0056,concept.set-theory.infinite,R006,infinite,tak berhingga,,,formal,R006 ch-vol1-intro.tex,admitted,
-LEBL-TERM-0057,concept.set-theory.countably-infinite,R006,countably infinite,tak berhingga terhitung,,tak hingga tercacah,formal,R006 ch-vol1-intro.tex and Indonesian university analysis sources,admitted,Canonicalized by LEBL-ID-DEC-0016.
-LEBL-TERM-0058,concept.set-theory.countable,R006,countable,terhitung,,tercacah,formal,R006 ch-vol1-intro.tex and Indonesian university analysis sources,admitted,Canonicalized by LEBL-ID-DEC-0016.
-LEBL-TERM-0059,concept.set-theory.uncountable,R006,uncountable,tak terhitung,,tak tercacah,formal,R006 ch-vol1-intro.tex and Indonesian university analysis sources,admitted,Canonicalized by LEBL-ID-DEC-0016.
+LEBL-TERM-0057,concept.set-theory.countably-infinite,R006,countably infinite,terhitung tak hingga,denumerabel; tak berhingga terhitung,tak hingga tercacah,formal,R006 ch-vol1-intro.tex; Universitas Terbuka MATA4217 Edisi 2 Modul 1 Definisi 1.10.1(i) printed p. 1.42 / PDF p. 42,admitted,Direct bilingual definition supersedes the earlier word order; canonicalized by LEBL-ID-DEC-0028.
+LEBL-TERM-0058,concept.set-theory.countable,R006,countable,terhitung,,tercacah,formal,R006 ch-vol1-intro.tex; Universitas Terbuka MATA4217 Edisi 2 Modul 1 p. 1 and Definisi 1.10.1(ii) printed p. 1.42 / PDF p. 42; Indonesian university analysis sources,admitted,Canonicalized by LEBL-ID-DEC-0016 and reconfirmed by the 2026-08-22 field-usage QA.
+LEBL-TERM-0059,concept.set-theory.uncountable,R006,uncountable,tak terhitung,,tak tercacah,formal,R006 ch-vol1-intro.tex; Universitas Terbuka MATA4217 Edisi 2 Modul 1 p. 1; Indonesian university analysis sources,admitted,Canonicalized by LEBL-ID-DEC-0016 and reconfirmed by the 2026-08-22 field-usage QA.
 LEBL-TERM-0060,concept.set-theory.power-set,R006,power set,himpunan kuasa,,,formal,R006 ch-vol1-intro.tex,admitted,
 LEBL-TERM-0061,concept.set-theory.singleton,R006,singleton,himpunan beranggota tunggal,himpunan satu elemen,,formal,R006 ch-vol1-intro.tex,admitted,
 LEBL-TERM-0062,concept.number.real,R006,real number,bilangan real,,,formal,R006 ch-real-nums.tex,admitted,
@@ -96,7 +96,7 @@ LEBL-TERM-0094,concept.interval.closed,R006,closed interval,interval tertutup,,,
 LEBL-TERM-0095,concept.interval.half-open,R006,half-open interval,interval setengah terbuka,,,formal,R006 ch-real-nums.tex,admitted,
 LEBL-TERM-0096,concept.interval.bounded,R006,bounded interval,interval terbatas,,,formal,R006 ch-real-nums.tex,admitted,
 LEBL-TERM-0097,concept.interval.unbounded,R006,unbounded interval,interval tak terbatas,,,formal,R006 ch-real-nums.tex,admitted,
-LEBL-TERM-0098,concept.set-theory.proper-subset,R006,proper subset,himpunan bagian sejati,subhimpunan sejati,,formal,R006 ch-vol1-intro.tex and ch-real-nums.tex,admitted,
+LEBL-TERM-0098,concept.set-theory.proper-subset,R006,proper subset,himpunan bagian sejati,subhimpunan sejati,,formal,R006 ch-vol1-intro.tex and ch-real-nums.tex; Universitas Terbuka MATA4217 Edisi 2 Modul 1 pp. 49 and 51,admitted,
 LEBL-TERM-0099,concept.function.bijective-mapping,R006,bijective mapping,pemetaan bijektif,,,formal,R006 ch-real-nums.tex,admitted,
 LEBL-TERM-0100,concept.proof.constructive,R006,constructive proof,bukti konstruktif,,,formal,R006 ch-real-nums.tex,admitted,
 LEBL-TERM-0101,concept.set-theory.countable-intersection,R006,countable intersection,irisan terhitung,,,formal,R006 ch-real-nums.tex,admitted,
@@ -596,7 +596,7 @@ LEBL-TERM-0594,concept.function.identically-one,R006,identically one,identik sat
 LEBL-TERM-0595,concept.integration.riemann-on-set,R006,Riemann integrable on S,terintegralkan secara Riemann pada $S$,,,formal,R006 ch-multivar-int.tex,admitted,
 LEBL-TERM-0596,concept.measure.almost-every-point,R006,for almost every,untuk hampir setiap,,,formal,R006 ch-multivar-int.tex,admitted,
 LEBL-TERM-0597,concept.function.zero-extension,R006,zero extension,perluasan nol,,,formal,R006 ch-multivar-int.tex,admitted,
-LEBL-TERM-0598,concept.sequence.enumeration,R006,enumeration,enumerasi,,,formal,R006 ch-multivar-int.tex,admitted,
+LEBL-TERM-0598,concept.sequence.enumeration,R006,enumeration,enumerasi,,,formal,R006 ch-multivar-int.tex; Universitas Terbuka MATA4217 Edisi 2 Modul 1 Definisi 1.10.1(i) printed p. 1.42 / PDF p. 42,admitted,Direct formal definitional attestation.
 LEBL-TERM-0599,concept.theorem.stokes.generalized,R006,generalized Stokes' theorem,teorema Stokes umum,,,formal,R006 ch-multivar-int.tex,admitted,
 LEBL-TERM-0600,concept.theorem.green,R006,Green's theorem,teorema Green,,,formal,R006 ch-multivar-int.tex,admitted,
 LEBL-TERM-0601,concept.domain.bounded-piecewise-smooth-boundary,R006,bounded domain with piecewise smooth boundary,domain terbatas dengan batas mulus sepotong-sepotong,,,formal,R006 ch-multivar-int.tex,admitted,
@@ -604,3 +604,9 @@ LEBL-TERM-0602,concept.boundary.piecewise-smooth,R006,piecewise smooth boundary,
 LEBL-TERM-0603,concept.orientation.positive,R006,positively oriented,berorientasi positif,,,formal,R006 ch-multivar-int.tex,admitted,
 LEBL-TERM-0604,concept.orientation.negative,R006,negatively oriented,berorientasi negatif,,,formal,R006 ch-multivar-int.tex,admitted,
 LEBL-TERM-0605,concept.geometry.orientation.clockwise,R006,clockwise,searah jarum jam,,,formal,R006 ch-multivar-int.tex,admitted,
+LEBL-TERM-0606,concept.domain.type-i,R006,type I domain,domain tipe I,,,formal,R006 ch-multivar-int.tex,admitted,
+LEBL-TERM-0607,concept.domain.type-ii,R006,type II domain,domain tipe II,,,formal,R006 ch-multivar-int.tex,admitted,
+LEBL-TERM-0608,concept.domain.type-iii,R006,type III domain,domain tipe III,,,formal,R006 ch-multivar-int.tex,admitted,
+LEBL-TERM-0609,concept.interval.connected,R006,connected interval,interval terhubung,,,formal,R006 ch-multivar-int.tex,admitted,
+LEBL-TERM-0610,concept.geometry.vertical-line,R006,vertical line,garis vertikal,,,formal,R006 ch-multivar-int.tex,admitted,
+LEBL-TERM-0611,concept.geometry.disc,R006,disc,cakram,,,formal,R006 ch-multivar-int.tex,admitted,

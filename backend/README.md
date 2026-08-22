@@ -3,8 +3,8 @@
 Status: implementasi eksperimental untuk lane Lebl; belum menjadi backend
 kanonik lintas-korpus. Angka v0.1 menamai envelope/skema arsitektur. Direktori
 `production/v0.3/` adalah checkpoint data produksi terbeku terbaru dalam rilis
-U214 dan memuat 167 unit yang telah divalidasi. Manifes terjemahan hidup telah
-maju ke 214 unit; selisih 47 unit itu belum diklaim sebagai checkpoint v0.4.
+U216 dan memuat 167 unit yang telah divalidasi. Manifes terjemahan hidup telah
+maju ke 216 unit; selisih 49 unit itu belum diklaim sebagai checkpoint v0.4.
 
 This directory implements the shared interoperability envelope for only the
 R006/R007/R008 Lebl family. It keeps `ra`, `diffyqs`, and `ca` as distinct
@@ -40,6 +40,12 @@ validasinya adalah [`production/v0.3/VALIDATION.json`](production/v0.3/VALIDATIO
 2.193 record, 167 unit manifes, validasi skema dan referensi lulus, 15 proyeksi
 CSV pulang-pergi tanpa kehilangan, dan dua replay byte-identik. `dataset.json`
 serta `records.jsonl` mengikat setiap stream dengan jumlah byte dan SHA-256.
+
+Paket publik ringkas tidak menyertakan seluruh riwayat seed v0.1/v0.2. Oleh
+karena itu, v0.3 harus diperlakukan sebagai snapshot tervalidasi dan terikat
+hash, bukan sebagai klaim bahwa generator dapat dijalankan ulang hanya dari
+berkas paket ini. `build_production_v03.py` dipertahankan sebagai referensi
+implementasi dan memerlukan seed v0.2 yang berada di luar paket ringkas.
 
 Alat/proyektor untuk checkpoint backend berikutnya harus dinaikkan versinya
 bersama skema dan diuji ulang; jangan hanya mengganti konstanta versi pada alat
