@@ -1,0 +1,2152 @@
+\chapter{Barisan Fungsi} \label{fs:chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Konvergensi titik demi titik dan seragam}
+\label{sec:puconv}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1--1.5 kuliah}
+
+Hingga saat ini, ketika membahas limit barisan, kita membahas
+barisan bilangan.
+Konsep yang sangat berguna dalam analisis adalah barisan fungsi.
+Sebagai contoh, solusi suatu persamaan diferensial
+mungkin ditemukan dengan terlebih dahulu mencari solusi-solusi hampiran.
+Solusi sebenarnya kemudian merupakan semacam limit dari solusi-solusi hampiran tersebut.
+
+Ketika membahas barisan fungsi,
+bagian yang rumit adalah adanya beberapa pengertian limit.
+Mari kita uraikan dua pengertian umum
+mengenai limit barisan fungsi.
+
+\subsection{Konvergensi titik demi titik}
+
+\begin{defn}
+\index{konvergensi titik demi titik}
+Untuk setiap $n \in \N$,
+misalkan $f_n \colon S \to \R$ merupakan fungsi.  Barisan
+$\{ f_n \}_{n=1}^\infty$
+\emph{\myindex{konvergen titik demi titik}}\footnote{Kecuali dinyatakan lain,
+\emph{konvergen} pada umumnya berarti \emph{konvergen titik demi titik}.}
+ke $f \colon S \to \R$ jika untuk setiap $x
+\in S$ berlaku
+\begin{equation*}
+f(x) =
+\lim_{n\to\infty} f_n(x) .
+\end{equation*}
+\end{defn}
+
+Limit barisan bilangan bersifat tunggal, sehingga jika barisan
+$\{ f_n \}_{n=1}^\infty$
+konvergen titik demi titik, fungsi limit $f$ bersifat tunggal.
+Lazim dikatakan bahwa $f_n \colon S \to \R$
+\emph{konvergen titik demi titik ke $f$ pada $T \subset S$}
+untuk suatu $f \colon T \to \R$.  Dalam hal ini, yang dimaksud ialah
+$f(x) = \lim_{n\to\infty} f_n(x)$ untuk setiap $x \in T$.  Dengan kata lain,
+pembatasan $f_n$ pada $T$ konvergen titik demi titik ke $f$.
+
+
+\begin{example}
+Pada $[-1,1]$, barisan fungsi yang didefinisikan oleh $f_n(x) \coloneqq x^{2n}$
+konvergen titik demi titik ke $f \colon [-1,1] \to \R$, dengan
+\begin{equation*}
+f(x) =
+\begin{cases}
+1 & \text{jika } x=-1 \text{ atau } x=1, \\
+0 & \text{selain itu.}
+\end{cases}
+\avoidbreak
+\end{equation*}
+Lihat \figureref{x2nfig}.
+
+\begin{myfigureht}
+\myincludegraphics{x2nfig}{%
+Grafik fungsi x kuadrat, x pangkat empat, x pangkat enam, dan
+x pangkat enam belas.  Grafik-grafik tersebut berada pada daerah dari minus 1 hingga 1,
+semuanya berawal di titik yang sama di sebelah kiri dan berakhir
+di titik yang sama di sebelah kanan (karena semua fungsi bernilai 1
+di titik-titik ujung).  Di bagian dalam interval, pangkat yang lebih tinggi membuat grafik
+lebih datar dan lebih dekat ke sumbu x di tengah, tetapi kemudian grafik harus naik lebih
+curam kembali ke 1 ketika mendekati ujung-ujung interval.}
+\caption{Grafik $f_1$, $f_2$, $f_3$, dan $f_8$ untuk $f_n(x) \coloneqq
+x^{2n}$.\label{x2nfig}}
+\end{myfigureht}
+
+Untuk melihat bahwa hal ini benar, pertama ambil $x \in (-1,1)$.  Maka
+$0 \leq x^2 < 1$.
+Kita telah melihat sebelumnya bahwa
+\begin{equation*}
+\sabs{x^{2n} - 0} = {(x^2)}^n \to 0 \quad \text{ketika} \quad n \to \infty .
+\end{equation*}
+Oleh karena itu, $\lim_{n\to\infty}f_n(x) = 0$.
+Ketika $x = 1$ atau $x=-1$, berlaku $x^{2n} = 1$ untuk semua $n$, sehingga
+$\lim_{n\to\infty}f_n(x) = 1$.
+
+Perhatikan bahwa untuk $x$ yang tidak berada dalam $[-1,1]$, barisan
+$\{ x^{2n} \}_{n=1}^\infty$ tidak konvergen.
+Jadi, jika kita mendefinisikan $f_n$ pada himpunan yang lebih besar daripada $[-1,1]$,
+maka $\{ f_n \}_{n=1}^\infty$
+hanya akan konvergen titik demi titik pada $[-1,1]$.
+\end{example}
+
+Sering kali, fungsi diberikan sebagai deret.  Dalam hal ini, kita menggunakan
+pengertian konvergensi titik demi titik untuk menentukan nilai-nilai fungsi tersebut.
+
+\begin{example} \label{example:geomsumptconv}
+Kita menulis
+\begin{equation*}
+\sum_{k=0}^\infty x^k
+\end{equation*}
+untuk menyatakan limit fungsi-fungsi
+\begin{equation*}
+f_n(x) \coloneqq \sum_{k=0}^n x^k .
+\end{equation*}
+Ketika mempelajari deret,
+kita melihat bahwa pada $(-1,1)$, fungsi-fungsi $f_n$ konvergen titik demi titik ke
+\begin{equation*}
+\frac{1}{1-x} .
+\end{equation*}
+
+Hal yang perlu diperhatikan adalah bahwa walaupun
+$\frac{1}{1-x}$ terdefinisi untuk semua $x \neq 1$ dan $f_n$
+terdefinisi untuk semua $x$ (bahkan di $x=1$), konvergensi hanya terjadi pada $(-1,1)$.
+Oleh karena itu, ketika kita menulis
+\begin{equation*}
+f(x) \coloneqq \sum_{k=0}^\infty x^k ,
+\end{equation*}
+yang dimaksud adalah bahwa $f$ terdefinisi pada $(-1,1)$ dan merupakan limit titik demi titik
+dari jumlah-jumlah parsial tersebut.
+\end{example}
+
+\begin{example}
+Misalkan $f_n(x) \coloneqq \sin(nx)$.  Maka $f_n$ tidak konvergen titik demi titik
+ke fungsi mana pun pada interval mana pun.  Barisan tersebut mungkin konvergen di titik-titik tertentu, misalnya
+ketika $x=0$ atau $x=\pi$.  Sebagai latihan, tunjukkan bahwa dalam setiap interval
+$[a,b]$, terdapat $x$ sedemikian sehingga $\sin(xn)$ tidak memiliki limit
+ketika $n$ menuju tak hingga.  Lihat \figureref{fig:nonconvsinxn}.
+\begin{myfigureht}
+\myincludegraphics{nonconvsinxn}{%
+Grafik sejumlah gelombang sinus, dengan frekuensi yang lebih tinggi digambar dalam warna abu-abu
+yang lebih muda.  Gambar tersebut tampak seolah-olah kita mencoba mengisi
+suatu pita horizontal dengan menggambar garis-garis bergelombang.
+Semua kurva berawal di titik yang sama pada
+sumbu x di sebelah kiri sambil bergerak naik,
+dan semuanya melalui titik yang sama pada sumbu x di
+sebelah kanan sambil bergerak naik.
+Semua kurva melalui pusat pada sumbu x, tetapi sebagian bergerak naik
+dan sebagian bergerak turun.
+Pola serupa berulang di titik-titik lain, tetapi hanya sebagian
+garis berfrekuensi lebih tinggi yang melalui titik-titik tersebut.}
+\caption{Grafik $\sin(nx)$ untuk
+$n=1,2,\ldots,10$, dengan $n$ yang lebih besar digambar dalam warna abu-abu yang lebih muda.%
+\label{fig:nonconvsinxn}}
+\end{myfigureht}
+\end{example}
+
+Sebelum beralih ke konvergensi seragam, mari kita nyatakan kembali konvergensi
+titik demi titik dengan cara lain.
+Pembuktiannya diserahkan kepada pembaca---ini merupakan penerapan sederhana dari
+definisi konvergensi barisan bilangan real.
+
+\begin{prop} \label{ptwsconv:prop}
+Misalkan $f_n \colon S \to \R$ dan $f \colon S \to \R$ merupakan fungsi.
+Maka $\{ f_n \}_{n=1}^\infty$ konvergen titik demi titik ke $f$ jika dan hanya jika
+untuk setiap $x \in S$ dan setiap $\epsilon > 0$, terdapat
+$N \in \N$ sedemikian sehingga
+\begin{equation*}
+\babs{f_n(x)-f(x)} < \epsilon \quad \text{untuk semua } n \geq N .
+\end{equation*}
+\end{prop}
+
+Hal yang penting adalah bahwa $N$ dapat bergantung pada $x$, bukan hanya pada
+$\epsilon$.  Untuk setiap $x$, kita dapat memilih $N$ yang berbeda.
+Jika kita dapat memilih satu $N$ untuk semua $x$, kita akan memperoleh apa yang disebut
+konvergensi seragam.
+
+\subsection{Konvergensi seragam}
+
+\begin{defn}
+\index{konvergensi seragam}
+Misalkan $f_n \colon S \to \R$
+dan $f \colon S \to \R$
+merupakan fungsi.  Barisan $\{ f_n \}_{n=1}^\infty$
+\emph{\myindex{konvergen seragam}} ke $f$ jika untuk
+setiap $\epsilon > 0$, terdapat $N \in \N$ sedemikian sehingga
+untuk semua $n \geq N$,
+\begin{equation*}
+\babs{f_n(x) - f(x)} < \epsilon \qquad \text{untuk semua } x \in S.
+\end{equation*}
+\end{defn}
+\begin{myfigureht}
+\myincludegraphics{uniformconv}{%
+Grafik suatu fungsi yang diberi label f, dengan pita di sekeliling fungsi
+yang batas-batasnya diberi label f dikurangi epsilon dan f ditambah epsilon.  Fungsi
+yang diberi label f subskrip n ditampilkan sebagai garis bergelombang yang seluruhnya berada
+di dalam pita tersebut.}
+\caption{Dalam konvergensi seragam,
+untuk $n \geq N$,
+fungsi-fungsi $f_n$ berada di dalam pita $\pm\epsilon$ di sekitar $f$.%
+\label{fig:uniformconv}}
+\end{myfigureht}
+
+Dalam konvergensi seragam, $N$ tidak boleh bergantung pada $x$.  Diberikan $\epsilon > 0$,
+kita harus menemukan $N$ yang berlaku untuk semua $x \in S$.  Lihat
+\figureref{fig:uniformconv} untuk ilustrasinya.
+Konvergensi seragam
+menyiratkan konvergensi titik demi titik, dan pembuktiannya mengikuti
+\propref{ptwsconv:prop}:
+
+\begin{prop}
+Misalkan $\{ f_n \}_{n=1}^\infty$ merupakan barisan fungsi $f_n \colon S \to \R$.
+Jika $\{ f_n \}_{n=1}^\infty$ konvergen
+seragam ke $f \colon S \to \R$, maka $\{ f_n \}_{n=1}^\infty$ konvergen titik demi titik ke $f$.
+\end{prop}
+
+Pernyataan sebaliknya tidak berlaku.
+
+\begin{example}
+Fungsi-fungsi $f_n(x) \coloneqq x^{2n}$ tidak konvergen seragam pada $[-1,1]$,
+meskipun konvergen titik demi titik.  Untuk melihatnya, andaikan demi kontradiksi
+bahwa konvergensinya seragam.  Untuk $\epsilon \coloneqq \nicefrac{1}{2}$, harus
+terdapat $N$ sedemikian sehingga $x^{2N} = \sabs{x^{2N} - 0} < \nicefrac{1}{2}$ untuk semua $x \in
+(-1,1)$ (karena $f_n(x)$ konvergen ke 0 pada $(-1,1)$).  Namun, itu berarti bahwa
+untuk setiap barisan $\{ x_k \}_{k=1}^\infty$ dalam $(-1,1)$ sedemikian sehingga $\lim_{k\to\infty} x_k = 1$,
+berlaku $x_k^{2N} < \nicefrac{1}{2}$ untuk semua $k$.  Di sisi lain,
+$x^{2N}$ merupakan fungsi kontinu terhadap $x$ (fungsi tersebut adalah polinom).  Oleh karena itu,
+kita memperoleh kontradiksi
+\begin{equation*}
+1 = 1^{2N}  = \lim_{k\to\infty} x_k^{2N} \leq \nicefrac{1}{2} .
+\end{equation*}
+
+Namun, jika kita membatasi domain pada $[-a,a]$ dengan $0 < a < 1$, maka
+$\{ f_n \}_{n=1}^\infty$ konvergen seragam ke 0 pada $[-a,a]$.  Perhatikan bahwa
+$a^{2n} \to 0$ ketika $n \to \infty$.  Diberikan $\epsilon > 0$,
+pilih $N \in \N$ sedemikian sehingga
+$a^{2n} < \epsilon$ untuk semua $n \geq N$.
+Jika $x \in [-a,a]$, maka
+$\sabs{x} \leq a$.  Jadi,
+untuk semua $n \geq N$ dan semua $x \in [-a,a]$,
+\begin{equation*}
+\sabs{x^{2n}} = \sabs{x}^{2n} \leq a^{2n} < \epsilon .
+\end{equation*}
+\end{example}
+
+\subsection{Konvergensi dalam norma seragam}
+
+Untuk fungsi terbatas, ada cara lain yang lebih abstrak untuk
+memahami konvergensi seragam.  Kepada setiap fungsi terbatas, kita kaitkan
+suatu bilangan tak negatif yang
+mengukur \myquote{jarak} fungsi tersebut dari fungsi konstan
+$0$.
+Bilangan ini memungkinkan kita untuk
+\myquote{mengukur}
+seberapa jauh dua fungsi satu sama lain.  Kemudian kita menerjemahkan
+pernyataan tentang konvergensi seragam menjadi pernyataan tentang suatu
+barisan bilangan real yang konvergen ke nol.
+
+\begin{defn} \label{def:unifnorm}
+Misalkan $f \colon S \to \R$ merupakan fungsi terbatas.  Definisikan
+\glsadd{not:uniformnorm}
+\begin{equation*}
+\snorm{f}_S \coloneqq
+\sup \Bigl\{ \babs{f(x)} : x \in S \Bigr\} .
+\avoidbreak
+\end{equation*}
+Kita menyebut $\snorm{\cdot}_S$ sebagai \emph{\myindex{norma seragam}}.
+Terkadang digunakan notasi lain\footnote{Notasi dan terminologinya
+belum sepenuhnya baku.  Norma ini juga disebut
+\emph{\myindex{norma supremum}} atau
+\emph{\myindex{norma tak hingga}}; selain
+$\snorm{f}_u$ dan $\snorm{f}_S$, norma ini terkadang ditulis
+sebagai $\snorm{f}_{\infty}$ atau $\snorm{f}_{\infty,S}$.},
+misalnya $\snorm{f}_u$.
+\end{defn}
+
+Subskripnya adalah himpunan tempat supremum diambil.
+Jadi, jika $K \subset S$, maka
+\begin{equation*}
+\snorm{f}_K =
+\sup \Bigl\{ \babs{f(x)} : x \in K \Bigr\} .
+\end{equation*}
+
+\begin{prop}
+Barisan fungsi terbatas $f_n \colon S \to \R$ konvergen
+seragam ke $f \colon S \to \R$ jika dan hanya jika
+\begin{equation*}
+\lim_{n\to\infty} \snorm{f_n - f}_S = 0 .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Pertama, andaikan
+$\lim_{n\to\infty} \snorm{f_n - f}_S = 0$.  Misalkan diberikan
+$\epsilon > 0$.  Terdapat $N$ sedemikian sehingga
+untuk $n \geq N$, berlaku $\snorm{f_n - f}_S < \epsilon$.  Karena $\snorm{f_n-f}_S$
+merupakan supremum dari $\babs{f_n(x)-f(x)}$, kita melihat bahwa untuk semua $x \in S$,
+berlaku $\babs{f_n(x)-f(x)} \leq \snorm{f_n - f}_S < \epsilon$.
+
+Di sisi lain, andaikan $\{ f_n \}_{n=1}^\infty$ konvergen seragam ke $f$.
+Misalkan diberikan $\epsilon > 0$.  Pilih $N$ sedemikian sehingga
+untuk semua $n \geq N$, berlaku
+$\babs{f_n(x)-f(x)} < \epsilon$ untuk semua $x \in S$.
+Dengan mengambil supremum atas $x \in S$, kita melihat bahwa
+$\snorm{f_n - f}_S \leq \epsilon$.  Jadi, $\lim_{n\to\infty} \snorm{f_n-f}_S = 0$.
+\end{proof}
+
+Terkadang dikatakan bahwa
+\emph{$\{ f_n \}_{n=1}^\infty$ konvergen ke $f$ dalam norma seragam}%
+\index{konvergen dalam norma seragam}\index{konvergensi norma seragam}
+alih-alih \emph{konvergen seragam} jika $\snorm{f_n-f}_S \to 0$.  Proposisi tersebut
+menyatakan bahwa kedua pengertian itu sama untuk fungsi terbatas.
+
+\begin{example}
+Misalkan $f_n \colon [0,1] \to \R$ didefinisikan oleh $f_n(x) \coloneqq \frac{nx+ \sin(nx^2)}{n}$.
+Kita menyatakan bahwa $\{ f_n \}_{n=1}^\infty$ konvergen seragam ke $f(x) \coloneqq x$.  Mari kita hitung:
+\begin{equation*}
+\begin{split}
+\snorm{f_n-f}_{[0,1]}
+& =
+\sup \left\{ \abs{\frac{nx+ \sin(nx^2)}{n} - x} : x \in [0,1] \right\}
+\\
+& =
+\sup \left\{ \frac{\babs{\sin(nx^2)}}{n} : x \in [0,1] \right\}
+\\
+& \leq
+\sup \bigl\{ \nicefrac{1}{n} : x \in [0,1] \bigr\}
+\\
+& = \nicefrac{1}{n}.
+\end{split}
+\end{equation*}
+\end{example}
+
+Dengan menggunakan norma seragam, kita mendefinisikan barisan Cauchy secara serupa dengan
+cara kita mendefinisikan barisan Cauchy bilangan real.
+
+\begin{defn}
+Misalkan $f_n \colon S \to \R$ merupakan fungsi terbatas.
+Barisan tersebut \emph{\myindex{Cauchy dalam norma seragam}}
+atau \emph{\myindex{Cauchy seragam}}
+jika untuk setiap $\epsilon > 0$, terdapat $N \in \N$ sedemikian
+sehingga untuk semua $m,k \geq N$,
+\begin{equation*}
+\snorm{f_m-f_k}_S < \epsilon .
+\end{equation*}
+\end{defn}
+
+\begin{prop} \label{prop:uniformcauchy}
+Misalkan $f_n \colon S \to \R$ merupakan fungsi terbatas.
+Maka $\{ f_n \}_{n=1}^\infty$ bersifat Cauchy dalam norma seragam jika dan hanya jika
+terdapat $f \colon S \to \R$ dan $\{ f_n \}_{n=1}^\infty$ konvergen
+seragam ke $f$.
+\end{prop}
+
+\begin{proof}
+Pertama, andaikan $\{ f_n \}_{n=1}^\infty$ bersifat Cauchy dalam norma seragam.
+Mari kita definisikan $f$.  Tetapkan $x$.
+Barisan $\bigl\{ f_n(x) \bigr\}_{n=1}^\infty$ bersifat Cauchy karena
+\begin{equation*}
+\babs{f_m(x)-f_k(x)}
+\leq
+\snorm{f_m-f_k}_S .
+\end{equation*}
+Dengan demikian, $\bigl\{ f_n(x) \bigr\}_{n=1}^\infty$ konvergen ke suatu bilangan real.  Definisikan $f \colon S
+\to \R$ dengan
+\begin{equation*}
+f(x) \coloneqq \lim_{n \to \infty} f_n(x) .
+\end{equation*}
+Barisan
+$\{ f_n \}_{n=1}^\infty$ konvergen titik demi titik ke $f$.  Untuk menunjukkan bahwa konvergensinya
+seragam, misalkan diberikan $\epsilon > 0$.  Pilih $N$ sedemikian sehingga
+untuk semua $m, k \geq N$, berlaku
+$\snorm{f_m-f_k}_S < \nicefrac{\epsilon}{2}$.  Dengan kata lain, untuk
+semua $x$, berlaku
+$\babs{f_m(x)-f_k(x)} < \nicefrac{\epsilon}{2}$.  Untuk sebarang $x$ yang tetap, ambil limit
+ketika $k$ menuju tak hingga.  Maka $\babs{f_m(x)-f_k(x)}$
+menuju $\babs{f_m(x)-f(x)}$.
+Akibatnya, untuk semua $x$,
+\begin{equation*}
+\babs{f_m(x)-f(x)} \leq \nicefrac{\epsilon}{2} < \epsilon .
+\end{equation*}
+Jadi, $\{ f_n \}_{n=1}^\infty$ konvergen seragam.
+
+Selanjutnya, kita buktikan arah sebaliknya.
+Andaikan $\{ f_n \}_{n=1}^\infty$ konvergen seragam ke
+$f$.  Diberikan $\epsilon > 0$, pilih $N$ sedemikian sehingga untuk semua $n \geq N$,
+berlaku $\babs{f_n(x)-f(x)} < \nicefrac{\epsilon}{4}$ untuk semua $x \in S$.
+Oleh karena itu, untuk semua $m, k \geq N$ dan semua $x$,
+\begin{multline*}
+\babs{f_m(x)-f_k(x)} = 
+\babs{f_m(x)-f(x)+f(x)-f_k(x)}
+\\
+\leq
+\babs{f_m(x)-f(x)}+\babs{f(x)-f_k(x)} < \nicefrac{\epsilon}{4} +
+\nicefrac{\epsilon}{4} = \nicefrac{\epsilon}{2} .
+\end{multline*}
+Ambil supremum atas semua $x$ untuk memperoleh
+\begin{equation*}
+\snorm{f_m-f_k}_S \leq \nicefrac{\epsilon}{2} < \epsilon .  \qedhere
+\end{equation*}
+\end{proof}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Misalkan $f$ dan $g$ merupakan fungsi terbatas pada $[a,b]$.  Buktikan bahwa
+\begin{equation*}
+\snorm{f+g}_{[a,b]} \leq \snorm{f}_{[a,b]} + \snorm{g}_{[a,b]} .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Tentukan limit titik demi titik dari
+$\left\{ \dfrac{e^{x/n}}{n} \right\}_{n=1}^\infty$ untuk $x \in \R$.
+\item
+Apakah limitnya seragam pada $\R$?
+\item
+Apakah limitnya seragam pada $[0,1]$?
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f_n \colon S \to \R$ merupakan fungsi yang konvergen seragam
+ke $f \colon S \to \R$.  Andaikan $A \subset S$.  Tunjukkan bahwa
+barisan pembatasan $\{ f_n|_A \}_{n=1}^\infty$ konvergen seragam ke $f|_A$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $\{ f_n \}_{n=1}^\infty$ dan $\{ g_n \}_{n=1}^\infty$ yang terdefinisi pada suatu himpunan $A$ masing-masing konvergen
+titik demi titik ke $f$ dan $g$.  Tunjukkan bahwa $\{ f_n+g_n \}_{n=1}^\infty$ konvergen
+titik demi titik ke $f+g$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $\{ f_n \}_{n=1}^\infty$ dan $\{ g_n \}_{n=1}^\infty$ yang terdefinisi pada suatu himpunan $A$ masing-masing konvergen
+seragam ke $f$ dan $g$ pada $A$.
+Tunjukkan bahwa $\{ f_n+g_n \}_{n=1}^\infty$
+konvergen seragam ke $f+g$ pada $A$.
+\end{exercise}
+
+\begin{exercise}
+Temukan contoh barisan fungsi $\{ f_n \}_{n=1}^\infty$ dan
+$\{ g_n \}_{n=1}^\infty$
+yang masing-masing konvergen seragam ke $f$ dan $g$ pada suatu himpunan $A$, tetapi
+$\{ f_ng_n \}_{n=1}^\infty$ (hasil kalinya) tidak konvergen seragam ke $fg$ pada $A$.
+Petunjuk: Tetapkan $A \coloneqq \R$ dan $f(x)\coloneqq g(x) \coloneqq x$.  Anda bahkan dapat memilih $f_n = g_n$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan terdapat barisan fungsi $\{ g_n \}_{n=1}^\infty$ yang konvergen
+seragam ke $0$ pada $A$.  Sekarang andaikan terdapat barisan fungsi
+$\{ f_n \}_{n=1}^\infty$ dan fungsi $f$ pada $A$ sedemikian sehingga
+\begin{equation*}
+\babs{f_n(x) - f(x)} \leq g_n(x) 
+\end{equation*}
+untuk semua $x \in A$.  Tunjukkan bahwa $\{ f_n \}_{n=1}^\infty$ konvergen seragam ke $f$ pada $A$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{ f_n \}_{n=1}^\infty$, $\{ g_n \}_{n=1}^\infty$, dan
+$\{ h_n \}_{n=1}^\infty$ merupakan barisan fungsi pada
+$[a,b]$.  Andaikan $\{ f_n \}_{n=1}^\infty$ dan $\{ h_n \}_{n=1}^\infty$ konvergen seragam ke suatu fungsi
+$f \colon [a,b] \to \R$, serta andaikan $f_n(x) \leq g_n(x) \leq h_n(x)$
+untuk semua $x \in [a,b]$.  Tunjukkan bahwa $\{ g_n \}_{n=1}^\infty$ konvergen seragam ke $f$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f_n \colon [0,1] \to \R$ merupakan barisan fungsi naik (artinya,
+$f_n(x) \geq f_n(y)$ setiap kali $x \geq y$).  Andaikan $f_n(0) = 0$
+dan $\lim\limits_{n \to \infty} f_n(1) = 0$.  Tunjukkan bahwa
+$\{ f_n \}_{n=1}^\infty$
+konvergen seragam ke $0$.
+\end{exercise}
+
+\begin{exercise}
+Perhatikan suatu barisan fungsi $f_n \colon [0,1] \to \R$ sedemikian sehingga
+terdapat barisan bilangan-bilangan yang saling berbeda $x_n \in [0,1]$ yang memenuhi,
+untuk semua $n$,
+\begin{equation*}
+f_n(x_n) = 1.
+\end{equation*}
+Buktikan atau sangkal pernyataan-pernyataan berikut:
+\begin{enumerate}[a)]
+\item
+Benar atau salah: Terdapat $\{ f_n \}_{n=1}^\infty$ seperti di atas yang
+konvergen titik demi titik ke $0$.
+\item
+Benar atau salah: Terdapat $\{ f_n \}_{n=1}^\infty$ seperti di atas yang
+konvergen seragam ke $0$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Tetapkan fungsi kontinu $h \colon [a,b] \to \R$.
+Tetapkan $f(x) \coloneqq h(x)$ untuk $x \in [a,b]$,
+$f(x) \coloneqq h(a)$ untuk $x < a$, dan $f(x) \coloneqq h(b)$ untuk semua $x > b$.  Pertama, tunjukkan
+bahwa $f \colon \R \to \R$ kontinu.
+Sekarang misalkan $f_n$ adalah
+fungsi $g$ dari \exerciseref{exercise:smoothingout} dengan
+$\epsilon = \nicefrac{1}{n}$, yang didefinisikan pada interval $[a,b]$.  Artinya,
+\begin{equation*}
+f_n(x) \coloneqq \frac{n}{2} \int_{x-1/n}^{x+1/n} f .
+\end{equation*}
+Tunjukkan bahwa $\{ f_n \}_{n=1}^\infty$ konvergen seragam ke $h$ pada $[a,b]$.
+\end{exercise}
+
+
+\begin{exercise}
+Buktikan bahwa
+jika barisan fungsi $f_n \colon S \to \R$
+konvergen seragam ke fungsi terbatas $f \colon S \to \R$,
+maka terdapat $N$ sedemikian sehingga untuk semua $n \geq N$, fungsi $f_n$
+terbatas.
+\end{exercise}
+
+\begin{exercise}
+Andaikan terdapat satu konstanta $B$ dan
+barisan fungsi
+$f_n \colon S \to \R$ yang dibatasi oleh $B$,
+yaitu $\babs{f_n(x)} \leq B$ untuk semua $x \in S$.
+Andaikan $\{ f_n \}_{n=1}^\infty$ konvergen titik demi titik
+ke $f \colon S \to \R$.
+Buktikan bahwa $f$ terbatas.
+\end{exercise}
+
+\begin{exercise}[memerlukan \sectionref{sec:moreonseries}]
+Dalam \exampleref{example:geomsumptconv}, kita melihat bahwa
+$\sum_{k=0}^\infty x^k$ konvergen titik demi titik ke $\frac{1}{1-x}$ pada
+$(-1,1)$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa untuk setiap $c$ dengan $0 \leq c < 1$, deret
+$\sum_{k=0}^\infty x^k$ konvergen seragam pada $[-c,c]$.
+\item
+Tunjukkan bahwa deret $\sum_{k=0}^\infty x^k$ tidak konvergen seragam
+pada $(-1,1)$.
+\end{enumerate}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Pertukaran limit}
+\label{sec:liminter}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1--2.5 kuliah;
+subbagian tentang turunan dan deret pangkat (yang
+memerlukan \sectionref{sec:moreonseries}) bersifat opsional.}
+
+Sebagian besar analisis modern terutama membahas persoalan
+pertukaran dua operasi limit.  Ketika
+kita memiliki rangkaian dua limit, kita tidak selalu dapat langsung menukar keduanya.
+Sebagai contoh,
+\begin{equation*}
+0 = 
+\lim_{n\to\infty}
+\left(
+\lim_{k\to\infty}
+\frac{n}{n + k}
+\right)
+\neq
+\lim_{k\to\infty}
+\left(
+\lim_{n\to\infty}
+\frac{n}{n + k}
+\right)
+= 1 .
+\end{equation*}
+
+Ketika membahas barisan fungsi, pertukaran limit cukup sering muncul.
+Kita akan melihat beberapa kasus: kekontinuan limit,
+integral limit, turunan limit, dan konvergensi
+deret pangkat.
+
+\subsection{Kekontinuan limit}
+
+Jika kita memiliki barisan $\{ f_n \}_{n=1}^\infty$ yang terdiri atas fungsi kontinu, apakah limitnya kontinu?
+Andaikan $f$ merupakan limit (titik demi titik) dari $\{ f_n \}_{n=1}^\infty$.
+Jika $\lim_{k\to\infty} x_k = x$,
+kita tertarik pada
+pertukaran limit berikut, dengan kesamaan yang hendak dibuktikan
+ditandai oleh tanda tanya.  Kesamaan tersebut tidak selalu benar.
+Bahkan, limit-limit di sebelah kiri
+tanda tanya mungkin tidak ada.
+\begin{equation*}
+\lim_{k \to \infty} 
+f(x_k)
+=
+\lim_{k \to \infty} 
+\Bigl(
+\lim_{n \to \infty} f_n(x_k)
+\Bigr)
+\overset{?}{=}
+\lim_{n \to \infty}
+\Bigl(
+\lim_{k \to \infty} 
+f_n(x_k)
+\Bigr)
+=
+\lim_{n \to \infty}
+f_n(x)
+=
+f(x) .
+\end{equation*}
+Kita ingin menemukan syarat pada barisan $\{ f_n \}_{n=1}^\infty$
+agar persamaan di atas berlaku.
+Jika kita hanya mensyaratkan konvergensi titik demi titik, maka limit
+suatu barisan fungsi belum tentu kontinu dan persamaan di atas
+belum tentu berlaku.
+
+\begin{example}
+Definisikan $f_n \colon [0,1] \to \R$ dengan
+\begin{equation*}
+f_n(x) \coloneqq
+\begin{cases}
+1-nx &  \text{jika } x < \nicefrac{1}{n},\\
+0 &  \text{jika } x \geq \nicefrac{1}{n}.
+\end{cases}
+\end{equation*}
+Lihat \figureref{contconvcntr:fig}.
+
+\begin{myfigureht}
+\myincludegraphics{contconvcntr}{%
+Grafik suatu fungsi pada interval
+dari 0 hingga 1; fungsi tersebut bernilai 1 di titik ujung kiri, kemudian
+grafiknya berupa garis lurus yang turun ke 0 pada sumbu x di titik x sama dengan satu per n.
+Setelah itu, fungsi bernilai nol hingga titik ujung kanan.}
+\caption{Grafik $f_n(x)$.%
+\label{contconvcntr:fig}}
+\end{myfigureht}
+
+Setiap fungsi $f_n$ kontinu.
+Tetapkan $x \in (0,1]$.  Jika $n \geq \nicefrac{1}{x}$,
+maka $x \geq \nicefrac{1}{n}$.  Oleh karena itu, untuk $n \geq \nicefrac{1}{x}$,
+berlaku $f_n(x) = 0$, sehingga
+\begin{equation*}
+\lim_{n \to \infty} f_n(x) = 0.
+\end{equation*}
+Di sisi lain, jika $x=0$, maka
+\begin{equation*}
+\lim_{n \to \infty} f_n(0) = 
+\lim_{n \to \infty} 1 = 1.
+\end{equation*}
+Dengan demikian, limit titik demi titik dari $f_n$ adalah fungsi
+$f \colon [0,1] \to \R$ yang didefinisikan oleh
+\begin{equation*}
+f(x) \coloneqq
+\begin{cases}
+1 &  \text{jika } x = 0,\\
+0 &  \text{jika } x > 0.
+\end{cases}
+\end{equation*}
+Fungsi $f$ tidak kontinu di 0.
+\end{example}
+
+Namun, jika kita mensyaratkan konvergensinya seragam, limit-limit tersebut dapat
+dipertukarkan.
+
+\begin{thm}
+Andaikan $S \subset \R$.
+Misalkan $\{ f_n \}_{n=1}^\infty$ merupakan
+barisan fungsi kontinu $f_n \colon S \to \R$ yang konvergen
+seragam ke $f \colon S \to \R$.  Maka $f$ kontinu.
+\end{thm}
+
+\begin{proof}
+Tetapkan $x \in S$.  Misalkan $\{ x_n \}_{n=1}^\infty$ merupakan barisan dalam $S$
+yang konvergen ke $x$.
+
+Misalkan diberikan $\epsilon > 0$.
+Karena $\{ f_k \}_{k=1}^\infty$ konvergen seragam ke $f$, kita memperoleh $k \in \N$ sedemikian sehingga
+\begin{equation*}
+\babs{f_k(y)-f(y)} < \nicefrac{\epsilon}{3}
+\end{equation*}
+untuk semua $y \in S$.  Karena $f_k$ kontinu di $x$,
+kita memperoleh $N \in \N$ sedemikian sehingga untuk semua $m \geq N$,
+\begin{equation*}
+\babs{f_k(x_m)-f_k(x)} < \nicefrac{\epsilon}{3} .
+\end{equation*}
+Dengan demikian, untuk semua
+$m \geq N$,
+\begin{equation*}
+\begin{split}
+\babs{f(x_m)-f(x)}
+& =
+\babs{f(x_m)-f_k(x_m)+f_k(x_m)-f_k(x)+f_k(x)-f(x)}
+\\
+& \leq
+\babs{f(x_m)-f_k(x_m)}+
+\babs{f_k(x_m)-f_k(x)}+
+\babs{f_k(x)-f(x)}
+\\
+& <
+\nicefrac{\epsilon}{3} +
+\nicefrac{\epsilon}{3} +
+\nicefrac{\epsilon}{3} = \epsilon .
+\end{split}
+\end{equation*}
+Oleh karena itu, $\bigl\{ f(x_m) \bigr\}_{m=1}^\infty$ konvergen ke $f(x)$,
+dan akibatnya $f$ kontinu di $x$.
+Karena $x$ sebarang, $f$ kontinu di setiap titik.
+\end{proof}
+
+\subsection{Integral limit}
+
+Sekali lagi, jika kita hanya mensyaratkan konvergensi titik demi titik, maka integral
+limit suatu barisan fungsi belum tentu sama dengan limit
+integral-integralnya.
+
+\begin{example}
+Definisikan $f_n \colon [0,1] \to \R$ dengan
+\begin{equation*}
+f_n(x) \coloneqq
+\begin{cases}
+0 &  \text{jika } x = 0,\\
+n-n^2x &  \text{jika } 0 < x < \nicefrac{1}{n},\\
+0 &  \text{jika } x \geq \nicefrac{1}{n}.
+\end{cases}
+\avoidbreak
+\end{equation*}
+Lihat \figureref{intconvcntr:fig}.
+
+\begin{myfigureht}
+\myincludegraphics{intconvcntr}{%
+Grafik suatu fungsi pada interval 0 hingga 1 yang bernilai 0 di titik ujung kiri,
+tetapi kemudian memiliki diskontinuitas loncat dan dinyatakan oleh
+garis menurun dari titik (0,n) ke sumbu x
+di titik x sama dengan satu per n.  Setelah itu, fungsi bernilai 0 pada sisa interval.}
+\caption{Grafik $f_n(x)$.%
+\label{intconvcntr:fig}}
+\end{myfigureht}
+
+Setiap $f_n$ terintegralkan secara Riemann (fungsi tersebut kontinu pada $(0,1]$ dan terbatas),
+dan teorema dasar kalkulus menyatakan bahwa
+\begin{equation*}
+\int_0^1 f_n =
+\int_0^{\nicefrac{1}{n}} (n-n^2x)\,dx = \nicefrac{1}{2} .
+\end{equation*}
+Mari kita hitung limit titik demi titik dari $\{ f_n \}_{n=1}^\infty$.
+Tetapkan $x \in (0,1]$.  Untuk $n \geq \nicefrac{1}{x}$,
+berlaku $x \geq \nicefrac{1}{n}$ dan karena itu $f_n(x) = 0$.  Jadi,
+\begin{equation*}
+\lim_{n \to \infty} f_n(x) = 0.
+\end{equation*}
+Kita juga memiliki $f_n(0) = 0$ untuk semua $n$.  Jadi, limit titik demi titik
+dari $\{ f_n \}_{n=1}^\infty$ adalah fungsi nol.
+Ringkasnya,
+\begin{equation*}
+\nicefrac{1}{2} =
+\lim_{n\to\infty}
+\int_0^1 f_n (x)\,dx
+\neq
+\int_0^1
+\left(
+\lim_{n\to\infty}
+f_n(x)\right)\,dx
+=
+\int_0^1 0\,dx = 0 .
+\end{equation*}
+\end{example}
+
+Namun, jika kita mensyaratkan konvergensinya seragam, limit-limit tersebut dapat
+dipertukarkan.\footnote{Syarat yang lebih lemah
+sudah cukup untuk teorema semacam ini, tetapi pembuktian generalisasi tersebut memerlukan
+perangkat yang lebih canggih daripada yang dibahas di sini: integral Lebesgue.
+Khususnya, teorema ini berlaku dengan konvergensi titik demi titik
+asalkan $f$ terintegralkan dan terdapat $M$ sedemikian sehingga
+$\snorm{f_n}_{[a,b]} \leq M$ untuk semua $n$.}
+
+\begin{thm} \label{integralinterchange:thm}
+Misalkan $\{ f_n \}_{n=1}^\infty$ merupakan barisan fungsi yang terintegralkan secara Riemann,
+$f_n \colon [a,b] \to \R$
+yang konvergen seragam ke $f \colon [a,b]
+\to \R$.  Maka $f$ terintegralkan secara Riemann dan
+\begin{equation*}
+\int_a^b f = \lim_{n\to\infty} \int_a^b f_n .
+\end{equation*}
+\end{thm}
+
+\begin{proof}
+Misalkan diberikan $\epsilon > 0$.
+Karena $f_n$ menuju $f$ secara seragam, kita memperoleh $M \in \N$ sedemikian sehingga
+untuk semua $n \geq M$, berlaku
+$\babs{f_n(x)-f(x)} < \frac{\epsilon}{2(b-a)}$ untuk semua $x \in [a,b]$.
+Khususnya, berdasarkan pertidaksamaan segitiga terbalik,
+$\babs{f(x)} < \frac{\epsilon}{2(b-a)} + \babs{f_n(x)}$ untuk semua $x$.
+Jadi, $f$ terbatas,
+karena $f_n$ terbatas.
+Perhatikan bahwa $f_n$ terintegralkan, lalu hitung
+\begin{equation*}
+\begin{split}
+\overline{\int_a^b} f
+-
+\underline{\int_a^b} f
+& =
+\overline{\int_a^b} \bigl( f(x) - f_n(x) + f_n(x) \bigr)\,dx
+-
+\underline{\int_a^b} \bigl( f(x) - f_n(x) + f_n(x) \bigr)\,dx
+\\
+& \leq
+\overline{\int_a^b} \bigl( f(x) - f_n(x) \bigr)\,dx +  \overline{\int_a^b} f_n(x) \,dx
+-
+\underline{\int_a^b} \bigl( f(x) - f_n(x) \bigr)\,dx -  \underline{\int_a^b} f_n(x) \,dx
+\\
+& =
+\overline{\int_a^b} \bigl( f(x) - f_n(x) \bigr)\,dx +  \int_a^b f_n(x) \,dx
+-
+\underline{\int_a^b} \bigl( f(x) - f_n(x) \bigr)\,dx -  \int_a^b f_n(x) \,dx
+\\
+& =
+\overline{\int_a^b} \bigl( f(x) - f_n(x) \bigr)\,dx
+-
+\underline{\int_a^b} \bigl( f(x) - f_n(x) \bigr)\,dx
+\\
+& \leq
+\frac{\epsilon}{2(b-a)} (b-a) + 
+\frac{\epsilon}{2(b-a)} (b-a) = \epsilon .
+\end{split}
+\end{equation*}
+Pertidaksamaan pertama mengikuti dari \propref{prop:upperlowerlinineq}.
+Pertidaksamaan kedua mengikuti \propref{intulbound:prop} dan
+fakta bahwa untuk semua $x \in [a,b]$, berlaku
+$\frac{-\epsilon}{2(b-a)} < f(x)-f_n(x) < \frac{\epsilon}{2(b-a)}$.
+Karena $\epsilon > 0$ sebarang, $f$ terintegralkan secara Riemann.
+
+Terakhir, kita menghitung $\int_a^b f$.  Kita menerapkan \propref{intbound:prop}
+dalam perhitungan.  Sekali lagi, untuk semua $n \geq M$ (dengan $M$ sama seperti di atas),
+\begin{equation*}
+\begin{split}
+\abs{\int_a^b f - \int_a^b f_n} & = 
+\abs{ \int_a^b \bigl(f(x) - f_n(x)\bigr)\,dx}
+\\
+& \leq
+\frac{\epsilon}{2(b-a)} (b-a) = \frac{\epsilon}{2} < \epsilon .
+\end{split}
+\end{equation*}
+Oleh karena itu, $\bigl\{ \int_a^b f_n \bigr\}_{n=1}^\infty$ konvergen ke $\int_a^b f$.
+\end{proof}
+
+\begin{example}
+Andaikan kita ingin menghitung
+\begin{equation*}
+\lim_{n\to\infty} \int_0^1 \frac{nx+ \sin(nx^2)}{n} \,dx .
+\end{equation*}
+Integral untuk suatu $n$ tertentu mustahil dihitung dengan
+kalkulus karena $\sin(nx^2)$ tidak memiliki antiturunan dalam bentuk tertutup.  Namun,
+kita dapat menghitung limitnya.
+Kita telah menunjukkan sebelumnya bahwa $\frac{nx+ \sin(nx^2)}{n}$ konvergen seragam
+pada $[0,1]$ ke $x$.
+Berdasarkan \thmref{integralinterchange:thm}, limit tersebut ada dan
+\begin{equation*}
+\lim_{n\to\infty} \int_0^1 \frac{nx+ \sin(nx^2)}{n} \,dx
+=
+\int_0^1
+x \,dx = \nicefrac{1}{2} .
+\end{equation*}
+\end{example}
+
+\begin{example}
+Jika konvergensinya hanya titik demi titik, limitnya bahkan belum tentu terintegralkan secara
+Riemann.  Pada $[0,1]$, definisikan
+\begin{equation*}
+f_n(x) \coloneqq
+\begin{cases}
+1 & \text{jika } x = \nicefrac{p}{q} \text{ dalam bentuk paling sederhana dan } q \leq n, \\
+0 & \text{selain itu.}
+\end{cases}
+\end{equation*}
+Setiap fungsi $f_n$ berbeda dari fungsi nol hanya pada berhingga banyak titik;
+hanya ada berhingga banyak pecahan dalam $[0,1]$ dengan penyebut kurang dari
+atau sama dengan $n$.   Jadi, $f_n$ terintegralkan dan $\int_0^1 f_n = \int_0^1 0 =
+0$.  Sebagai latihan sederhana, tunjukkan bahwa $\{ f_n \}_{n=1}^\infty$ konvergen titik demi titik ke
+\myindex{fungsi Dirichlet}
+\begin{equation*}
+f(x) \coloneqq
+\begin{cases}
+1 & \text{jika } x \in \Q, \\
+0 & \text{selain itu,}
+\end{cases}
+\end{equation*}
+yang tidak terintegralkan secara Riemann.
+\end{example}
+
+\begin{example}
+Bahkan, jika konvergensinya hanya titik demi titik, limit fungsi-fungsi
+terbatas belum tentu terbatas.
+Definisikan $f_n \colon [0,1] \to \R$ dengan
+\begin{equation*}
+f_n(x) \coloneqq
+\begin{cases}
+0 & \text{jika } x < \nicefrac{1}{n},\\
+\nicefrac{1}{x} & \text{selain itu.}
+\end{cases}
+\end{equation*}
+Untuk setiap $n$, berlaku $\babs{f_n(x)} \leq n$ untuk semua $x \in [0,1]$, sehingga
+fungsi-fungsi tersebut terbatas.  Namun, $\{ f_n \}_{n=1}^\infty$ konvergen titik demi titik ke
+fungsi tak terbatas
+\begin{equation*}
+f(x) \coloneqq
+\begin{cases}
+0 & \text{jika } x = 0,\\
+\nicefrac{1}{x} & \text{selain itu.}
+\end{cases}
+\end{equation*}
+\end{example}
+
+\subsection{Turunan limit}
+
+Walaupun konvergensi seragam cukup untuk menukar limit dengan integral, konvergensi tersebut tidak
+cukup untuk menukar limit dengan turunan, kecuali jika turunan-turunannya sendiri juga
+konvergen seragam.
+
+\begin{example}
+Misalkan $f_n(x) \coloneqq \frac{\sin(nx)}{n}$.  Maka $f_n$ konvergen seragam ke
+0.  Lihat \figureref{fig:conv1nsinxn}.
+Turunan limitnya adalah 0.  Namun, $f_n'(x) = \cos(nx)$, yang
+bahkan tidak konvergen titik demi titik.
+Sebagai contoh, $f_n'(\pi) = {(-1)}^n$.
+Selain itu, $f_n'(0) = 1$ untuk semua $n$, yang memang konvergen, tetapi tidak ke $0$.
+\begin{myfigureht}
+\myincludegraphics{conv1nsinxn}{%
+Gelombang sinus untuk 10 frekuensi berbeda, tetapi kini amplitudonya juga diperkecil
+untuk frekuensi yang lebih tinggi.  Fungsi berfrekuensi lebih tinggi
+lebih dekat ke sumbu x, sehingga semua grafik itu bersama-sama tidak lagi memenuhi seluruh pita.}
+\caption{Grafik $\frac{\sin(nx)}{n}$ untuk
+$n=1,2,\ldots,10$, dengan $n$ yang lebih besar digambar dalam warna abu-abu yang lebih muda.%
+\label{fig:conv1nsinxn}}
+\end{myfigureht}
+\end{example}
+
+\begin{example} \label{exercise:badconvergenceder}
+Misalkan $f_n(x) \coloneqq \frac{1}{1+nx^2}$.
+Jika $x \neq 0$, maka $\lim_{n \to \infty} f_n(x) = 0$,
+tetapi $\lim_{n \to \infty} f_n(0) = 1$.
+Oleh karena itu, $\{ f_n \}_{n=1}^\infty$ konvergen titik demi titik menuju fungsi yang tidak kontinu
+di $0$.
+Kita hitung
+\begin{equation*}
+f_n'(x) %= \frac{d}{dx} \frac{1}{1+n x^2}
+= \frac{-2 n x}{(1+ n x^2)^2} .
+\end{equation*}
+Untuk setiap $x$, $\lim_{n\to\infty} f_n'(x) = 0$, sehingga turunan-turunannya
+konvergen titik demi titik ke 0,
+tetapi pembaca dapat memeriksa bahwa konvergensinya tidak seragam pada interval mana pun
+yang memuat $0$.
+Limit $f_n$ tidak terdiferensialkan di $0$---bahkan tidak
+kontinu di $0$.  Lihat \figureref{fig:convder1over1pnxsq}.
+\begin{myfigureht}
+\myincludegraphics{convder1over1pnxsq}{%
+Dua plot, masing-masing memperlihatkan beberapa fungsi
+dalam berbagai corak abu-abu.
+Di sebelah kiri terdapat plot kurva berbentuk lonceng, dengan puncak yang semakin sempit
+(tetapi tetap sama tinggi) untuk corak abu-abu yang lebih muda.
+Di sebelah kanan terdapat turunannya; grafik bernilai positif dengan puncak sebelum
+titik asal, lalu melewati titik asal dan mencapai minimum setelah
+titik asal sebelum kembali naik menuju sumbu x.  Semakin muda
+warnanya, puncak dan minimumnya semakin sempit dan semakin jauh
+dari sumbu x.}
+\caption{Grafik $\frac{1}{1+nx^2}$ dan turunannya
+untuk $n=1,2,\ldots,10$, dengan $n$ yang lebih besar digambar dalam warna abu-abu yang lebih muda.%
+\label{fig:convder1over1pnxsq}}
+\end{myfigureht}
+\end{example}
+
+Lihat latihan untuk contoh-contoh lainnya.  Dengan menggunakan
+teorema dasar kalkulus, kita memperoleh jawaban untuk fungsi-fungsi yang
+terdiferensialkan secara kontinu.  Teorema berikut tetap benar sekalipun
+kita tidak mengandaikan bahwa turunan-turunannya kontinu, tetapi pembuktiannya lebih
+sulit.
+
+\begin{thm} \label{thm:dersconverge}
+Misalkan $I$ adalah interval terbatas dan
+$f_n \colon I \to \R$ merupakan fungsi-fungsi yang terdiferensialkan secara kontinu.
+Andaikan $\{ f_n' \}_{n=1}^\infty$ konvergen seragam ke $g \colon I \to \R$,
+dan andaikan $\bigl\{ f_n(c) \bigr\}_{n=1}^\infty$ merupakan
+barisan konvergen untuk suatu $c \in I$.  Maka $\{ f_n \}_{n=1}^\infty$ konvergen seragam menuju
+fungsi $f \colon I \to \R$ yang terdiferensialkan secara kontinu, dan $f' = g$.
+\end{thm}
+
+\begin{proof}
+Definisikan $f(c) \coloneqq \lim_{n\to \infty} f_n(c)$.
+Karena $f_n'$ kontinu dan karenanya terintegralkan Riemann,
+dengan teorema dasar kalkulus kita peroleh, untuk $x \in I$,
+\begin{equation*}
+f_n(x) = f_n(c) + \int_c^x f_n' .
+\end{equation*}
+Karena $\{ f_n' \}_{n=1}^\infty$ konvergen seragam pada $I$, barisan tersebut konvergen seragam
+pada $[c,x]$ (atau $[x,c]$ jika $x < c$).
+Dengan demikian, limit ketika $n \to \infty$ pada ruas kanan ada.
+Definisikan $f$ pada titik-titik lainnya (dengan $x\neq c$) melalui limit ini:
+\begin{equation*}
+f(x) \coloneqq
+\lim_{n\to\infty} f_n(c) + \lim_{n\to\infty} \int_c^x f_n'
+=
+f(c) + \int_c^x g .
+\end{equation*}
+Fungsi $g$ kontinu karena merupakan limit seragam dari fungsi-fungsi
+kontinu.  Oleh karena itu, $f$ terdiferensialkan dan $f'(x) = g(x)$ untuk semua $x \in I$
+berdasarkan bentuk kedua teorema dasar kalkulus.
+
+Tinggal membuktikan
+konvergensi seragam.
+Andaikan $I$ memiliki batas bawah $a$ dan batas atas $b$.
+Ambil sebarang $\epsilon > 0$.  Pilih $M$
+sedemikian sehingga untuk semua $n \geq M$ berlaku
+$\babs{f(c)-f_n(c)} < \nicefrac{\epsilon}{2}$
+dan
+$\babs{g(x)-f_n'(x)} < \frac{\epsilon}{2(b-a)}$
+untuk semua $x \in I$.  Maka
+\begin{equation*}
+\begin{split}
+\babs{f(x) - f_n(x)} & =
+\abs{\left(f(c) + \int_c^x g\right) - \left( f_n(c) + \int_c^x f_n' \right)}
+\\
+& \leq
+\babs{f(c) - f_n(c)} + \abs{\int_c^x g - \int_c^x f_n'}
+\\
+& =
+\babs{f(c) - f_n(c)} + \abs{\int_c^x \bigl(g(s) - f_n'(s)\bigr) \, ds}
+\\
+& <
+\frac{\epsilon}{2}
++
+\frac{\epsilon}{2(b-a)}
+(b-a)
+=\epsilon. \qedhere
+\end{split}
+\end{equation*}
+\end{proof}
+
+Pembuktian tersebut tetap berlaku tanpa asumsi bahwa $I$ terbatas, kecuali untuk
+konvergensi seragam $f_n$ ke $f$.  Sebagai contoh, andaikan $I = \R$ dan definisikan
+$f_n(x) \coloneqq \nicefrac{x}{n}$.  Maka $f_n'(x)=\nicefrac{1}{n}$, yang
+konvergen seragam ke $0$.  Namun, $\{f_n\}_{n=1}^\infty$ hanya konvergen titik demi titik ke 0.
+
+\subsection{Konvergensi deret pangkat}
+
+Dalam \sectionref{sec:moreonseries} kita melihat bahwa deret pangkat konvergen
+mutlak di dalam jari-jari konvergensinya, sehingga deret tersebut konvergen titik demi titik.
+Mari kita tunjukkan bahwa deret itu (beserta semua turunannya) juga konvergen seragam
+pada setiap interval tertutup yang termuat di dalam interval konvergensinya.
+Fakta ini memungkinkan kita
+menukar beberapa jenis limit.  Limitnya bukan hanya kontinu,
+tetapi kita juga dapat melakukan integrasi dan bahkan diferensiasi suku demi suku
+terhadap deret pangkat yang konvergen.
+
+\begin{prop}
+Misalkan $\sum_{n=0}^\infty c_n {(x-a)}^n$ merupakan deret pangkat konvergen dengan
+jari-jari konvergensi $\rho$, dengan $0 < \rho \leq \infty$.
+Maka deret tersebut konvergen seragam
+pada $[a-r,a+r]$ setiap kali $0 < r < \rho$.
+
+Secara khusus, deret tersebut konvergen (titik demi titik) menuju fungsi kontinu
+pada $(a-\rho,a+\rho)$ jika $\rho < \infty$, atau pada $\R$ jika $\rho = \infty$.
+\end{prop}
+
+\begin{proof}
+Misalkan $I \coloneqq (a-\rho,a+\rho)$ jika $\rho < \infty$,
+atau $I \coloneqq \R$ jika $\rho= \infty$.
+Ambil $0 < r < \rho$.
+Deret tersebut konvergen mutlak untuk setiap $x \in I$,
+khususnya untuk $x = a+r$.
+Jadi, $\sum_{n=0}^\infty \sabs{c_n} r^n$ konvergen.
+Untuk sebarang $\epsilon >0$, pilih $M$ sedemikian sehingga untuk semua $k \geq M$,
+\begin{equation*}
+\sum_{n=k+1}^\infty \sabs{c_n} {r}^n < \epsilon .
+\end{equation*}
+Untuk semua $x \in [a-r,a+r]$ dan semua $m > k$,
+\begin{multline*}
+\abs{\sum_{n=0}^m c_n {(x-a)}^n - 
+\sum_{n=0}^k c_n {(x-a)}^n}
+=
+\abs{\sum_{n=k+1}^m c_n {(x-a)}^n}
+\\
+\leq
+\sum_{n=k+1}^m \sabs{c_n} {\sabs{x-a}}^n
+\leq
+\sum_{n=k+1}^m \sabs{c_n} {r}^n
+\leq
+\sum_{n=k+1}^\infty \sabs{c_n} {r}^n
+<\epsilon.
+\end{multline*}
+Oleh karena itu, jumlah-jumlah parsialnya bersifat Cauchy seragam pada $[a-r,a+r]$ dan
+karenanya konvergen seragam pada himpunan tersebut.
+
+Selain itu, jumlah-jumlah parsialnya merupakan polinom, yang
+kontinu, sehingga limit seragamnya pada $[a-r,a+r]$
+merupakan fungsi kontinu.
+Karena $r < \rho$ dipilih sebarang, fungsi limitnya
+kontinu pada seluruh $I$.
+\end{proof}
+
+Seperti telah disebutkan, kita akan menunjukkan bahwa
+deret pangkat dapat didiferensialkan dan diintegralkan
+suku demi suku.  Deret hasil
+diferensiasi atau integrasi itu kembali merupakan deret pangkat,
+dan kita akan menunjukkan bahwa jari-jari konvergensinya tetap sama.
+Oleh karena itu,
+setiap deret pangkat mendefinisikan fungsi yang diferensiabel tak berhingga kali.
+
+Pertama-tama kita buktikan bahwa kita dapat mencari antiturunannya, karena integrasi hanya memerlukan
+limit seragam.
+
+\begin{cor}
+Misalkan $\sum_{n=0}^\infty c_n {(x-a)}^n$ merupakan deret pangkat konvergen dengan
+jari-jari konvergensi $0 < \rho \leq \infty$.
+Misalkan $I \coloneqq (a-\rho,a+\rho)$ jika $\rho < \infty$
+atau $I \coloneqq \R$ jika $\rho= \infty$.  Misalkan $f \colon I \to \R$ merupakan limitnya.
+Maka
+\begin{equation*}
+\int_a^x f = \sum_{n=1}^\infty \frac{c_{n-1}}{n} {(x-a)}^{n} ,
+\end{equation*}
+dengan jari-jari konvergensi deret ini sekurang-kurangnya $\rho$.
+\end{cor}
+
+\begin{proof}
+Ambil $0 < r < \rho$.
+Jumlah-jumlah parsial $\sum_{n=0}^k c_n {(x-a)}^n$ konvergen seragam pada $[a-r,a+r]$.
+Untuk setiap $x \in [a-r,a+r]$ yang tetap, konvergensinya juga seragam
+pada $[a,x]$ (atau $[x,a]$ jika $x < a$).
+Oleh karena itu,
+\begin{equation*}
+\int_a^x f =
+\int_a^x \lim_{k\to\infty} \sum_{n=0}^k c_n {(s-a)}^n \, ds
+=
+\lim_{k\to\infty}
+\int_a^x \sum_{n=0}^k c_n {(s-a)}^n \, ds
+=
+\lim_{k\to\infty}
+\sum_{n=1}^{k+1} \frac{c_{n-1}}{n} {(x-a)}^{n} . \qedhere
+\end{equation*}
+\end{proof}
+
+
+\begin{cor} \label{cor:differentiatepowerser}
+Misalkan $\sum_{n=0}^\infty c_n {(x-a)}^n$ merupakan deret pangkat konvergen dengan
+jari-jari konvergensi $0 < \rho \leq \infty$.
+Misalkan $I \coloneqq (a-\rho,a+\rho)$ jika $\rho < \infty$
+atau $I \coloneqq \R$ jika $\rho= \infty$.  Misalkan $f \colon I \to \R$ merupakan limitnya.
+Maka $f$ merupakan fungsi diferensiabel, dan
+\begin{equation*}
+f'(x) = \sum_{n=0}^\infty (n+1) c_{n+1} {(x-a)}^{n} ,
+\end{equation*}
+dan jari-jari konvergensi deret ini adalah $\rho$.
+\end{cor}
+
+\begin{proof}
+Ambil $0 < r < \rho$.
+Deret tersebut konvergen seragam pada
+$[a-r,a+r]$,
+tetapi kita perlu menunjukkan bahwa deret turunannya konvergen seragam.
+Misalkan
+\begin{equation*}
+R \coloneqq \limsup_{n \to \infty} \sabs{c_n}^{1/n} .
+\end{equation*}
+Karena deret tersebut konvergen, $R < \infty$.
+Jari-jari konvergensi $\rho$ adalah $\nicefrac{1}{R}$ (atau $\rho = \infty$ jika $R=0$).
+
+Ambil sebarang $\epsilon > 0$.  Dalam \exampleref{example:nto1overn},
+kita melihat bahwa $\lim_{n\to\infty} n^{1/n} = 1$.
+Oleh karena itu, terdapat $N$ sedemikian sehingga untuk semua $n \geq N$ berlaku
+$n^{1/n} < 1+\epsilon$.
+Jadi,
+\begin{equation*}
+R = 
+\limsup_{n \to \infty}
+\sabs{c_n}^{1/n}
+\leq
+\limsup_{n \to \infty}
+\sabs{n c_n}^{1/n}
+\leq
+(1+\epsilon)
+\limsup_{n \to \infty}
+\sabs{c_n}^{1/n}
+=
+(1+\epsilon)R .
+\end{equation*}
+Karena $\epsilon$ dipilih sebarang, $\limsup_{n \to \infty} \sabs{n c_n}^{1/n} = R$.
+Oleh karena itu, $\sum_{n=1}^\infty n c_{n} {(x-a)}^{n}$ memiliki jari-jari
+konvergensi $\rho$.  Dengan membagi deret tersebut dengan $(x-a)$, kita peroleh bahwa
+$\sum_{n=0}^\infty (n+1) c_{n+1} {(x-a)}^{n}$ juga memiliki jari-jari konvergensi
+$\rho$.
+
+Akibatnya, jumlah-jumlah parsial
+$\sum_{n=0}^k (n+1) c_{n+1} {(x-a)}^{n}$,
+yang merupakan turunan dari jumlah-jumlah parsial
+$\sum_{n=0}^{k+1} c_{n} {(x-a)}^{n}$,
+konvergen seragam pada $[a-r,a+r]$.  Selain itu,
+deret tersebut jelas konvergen di $x=a$.
+Dengan demikian, kita dapat menerapkan \thmref{thm:dersconverge}, dan
+pembuktiannya selesai karena $r < \rho$ dipilih sebarang.
+\end{proof}
+
+\begin{example} \label{example:exponentialbypowerseries}
+Kita dapat saja menggunakan hasil ini untuk mendefinisikan fungsi eksponensial.  Yakni,
+deret pangkat
+\begin{equation*}
+f(x) \coloneqq \sum_{n=0}^\infty \frac{x^n}{n!}
+\end{equation*}
+memiliki jari-jari konvergensi $\rho=\infty$.  Selain itu,
+$f(0) = 1$.
+Dengan mendiferensialkannya
+suku demi suku, kita peroleh bahwa $f'(x) = f(x)$.
+\end{example}
+
+\begin{example}
+Deret
+\begin{equation*}
+\sum_{n=1}^\infty n x^n
+\end{equation*}
+konvergen ke $\frac{x}{{(1-x)}^2}$ pada $(-1,1)$.
+
+Bukti:
+Pada $(-1,1)$, $\sum_{n=0}^\infty x^n$ konvergen ke
+$\frac{1}{1-x}$.  Turunannya, $\sum_{n=1}^\infty n x^{n-1}$, kemudian konvergen
+pada interval yang sama ke $\frac{1}{{(1-x)}^2}$.  Dengan mengalikannya dengan $x$,
+kita memperoleh hasil tersebut.
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+%While uniform convergence preserves continuity, it does not preserve
+%differentiability.
+Tentukan contoh eksplisit suatu barisan
+fungsi diferensiabel pada $[-1,1]$ yang konvergen seragam menuju
+suatu fungsi $f$ sedemikian sehingga $f$ tidak diferensiabel.
+Petunjuk:
+Ada banyak kemungkinan.
+Yang paling sederhana mungkin adalah menggabungkan $\sabs{x}$ dan $\frac{n}{2}x^2 +
+\frac{1}{2n}$.
+Kemungkinan lainnya adalah
+mempertimbangkan $\sqrt{x^2+{(\nicefrac{1}{n})}^2}$.  Tunjukkan bahwa fungsi-fungsi ini diferensiabel,
+konvergen seragam, lalu tunjukkan bahwa limitnya tidak diferensiabel.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f_n(x) \coloneqq \frac{x^n}{n}$.  Tunjukkan bahwa $\{ f_n \}_{n=1}^\infty$ konvergen seragam menuju
+fungsi diferensiabel $f$ pada $[0,1]$ (tentukan $f$).  Namun, tunjukkan bahwa
+$f'(1) \neq \lim\limits_{n\to\infty} f_n'(1)$.
+\end{exercise}
+
+%\begin{exnote}
+%Note: The previous two exercises show that
+%we cannot simply swap limits with derivatives, even if the convergence is
+%uniform.  See also \exerciseref{c1uniflim:exercise} below.
+%\end{exnote}
+%
+\begin{exercise}
+Misalkan $f \colon [0,1] \to \R$ terintegralkan Riemann (dan karenanya terbatas).
+Tentukan $\displaystyle \lim_{n\to\infty} \int_0^1 \frac{f(x)}{n} \,dx$.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa
+$\displaystyle \lim_{n\to\infty} \int_1^2 e^{-nx^2} \,dx = 0$.  Anda boleh
+menggunakan fakta-fakta kalkulus tentang fungsi eksponensial.
+%what you know about the exponential function from calculus.
+\end{exercise}
+
+\begin{exercise}
+Tentukan contoh suatu barisan fungsi kontinu pada $(0,1)$ yang konvergen
+titik demi titik menuju fungsi kontinu pada $(0,1)$, tetapi konvergensinya tidak
+seragam.
+\end{exercise}
+
+\begin{exnote}
+Catatan: Dalam latihan sebelumnya, $(0,1)$ dipilih demi kesederhanaan.  Untuk latihan yang
+lebih menantang, gantilah $(0,1)$ dengan $[0,1]$.
+\end{exnote}
+
+\begin{exercise}
+Benar/Salah; buktikan atau berikan contoh penyangkal untuk pernyataan berikut:
+Jika $\{ f_n \}_{n=1}^\infty$ merupakan barisan fungsi yang diskontinu di setiap titik pada $[0,1]$
+dan konvergen seragam menuju fungsi $f$, maka $f$ diskontinu di setiap
+titik.
+\end{exercise}
+
+\begin{exercise} \label{c1uniflim:exercise}
+Untuk fungsi $f \colon [a,b] \to \R$ yang diferensiabel secara kontinu, definisikan
+\begin{equation*}
+\snorm{f}_{C^1} \coloneqq \snorm{f}_{[a,b]} + \snorm{f'}_{[a,b]} .
+\end{equation*}
+Andaikan $\{ f_n \}_{n=1}^\infty$ merupakan barisan fungsi yang diferensiabel secara
+kontinu sedemikian sehingga untuk setiap $\epsilon >0$, terdapat $M$
+sedemikian sehingga untuk semua $n,k \geq M$ berlaku
+\begin{equation*}
+\snorm{f_n-f_k}_{C^1} < \epsilon .
+\end{equation*}
+Tunjukkan bahwa $\{ f_n \}_{n=1}^\infty$ konvergen seragam menuju suatu fungsi
+$f \colon [a,b] \to \R$ yang diferensiabel secara kontinu.
+\end{exercise}
+
+\begin{exnote}
+Andaikan
+$f \colon [0,1] \to \R$ terintegralkan Riemann.
+Untuk dua latihan berikutnya, definisikan
+bilangan
+\begin{equation*}
+\snorm{f}_{L^1} \coloneqq 
+\int_0^1 \babs{f(x)}\,dx .
+\end{equation*}
+Jika $f$ terintegralkan, maka $\sabs{f}$ juga terintegralkan; lihat
+\exerciseref{exercise:hardabsint}.
+Bilangan tersebut disebut \emph{norma $L^1$}\index{L1-norm@norma $L^1$} dan
+mendefinisikan jenis konvergensi lain yang sangat umum,
+yang disebut
+\emph{konvergensi $L^1$}\index{L1-convergence@konvergensi $L^1$}.
+Namun, konsep ini sedikit lebih rumit.
+\end{exnote}
+
+\begin{exercise}
+Andaikan $\{ f_n \}_{n=1}^\infty$ merupakan barisan fungsi yang terintegralkan Riemann pada $[0,1]$
+dan konvergen seragam
+ke $0$.  Tunjukkan bahwa
+\begin{equation*}
+\lim_{n\to\infty} \snorm{f_n}_{L^1} = 0 .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Tentukan barisan $\{ f_n \}_{n=1}^\infty$ dari fungsi-fungsi terintegralkan Riemann
+pada $[0,1]$ yang konvergen titik demi titik ke~$0$, tetapi sedemikian sehingga
+\begin{equation*}
+\lim_{n\to\infty} \snorm{f_n}_{L^1} \text{ tidak ada (bernilai } \infty\text{)}.
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}[Sulit] \label{exercise:dinisthm}
+Buktikan \emph{\myindex{teorema Dini}}:
+Misalkan $f_n \colon [a,b] \to \R$ merupakan barisan fungsi kontinu sedemikian sehingga
+\begin{equation*}
+0 \leq f_{n+1}(x) \leq f_n(x) \leq \cdots \leq f_1(x) 
+\qquad \text{untuk semua } n \in \N \text{ dan } x \in [a,b].
+\end{equation*}
+Andaikan $\{ f_n \}_{n=1}^\infty$ konvergen titik demi titik ke $0$.
+Tunjukkan bahwa $\{ f_n \}_{n=1}^\infty$ konvergen seragam ke nol.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f_n \colon [a,b] \to \R$ merupakan barisan fungsi
+kontinu yang
+konvergen titik demi titik
+menuju fungsi kontinu $f \colon [a,b] \to \R$.  Andaikan bahwa
+untuk setiap $x \in [a,b]$,
+barisan $\bigl\{ \babs{f_n(x)-f(x)} \bigr\}_{n=1}^\infty$ monoton.
+Tunjukkan bahwa barisan $\{f_n\}_{n=1}^\infty$ konvergen seragam.
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[3]
+Tentukan barisan fungsi terintegralkan Riemann $f_n \colon [0,1] \to \R$ sedemikian
+sehingga $\{ f_n \}_{n=1}^\infty$ konvergen titik demi titik ke nol, dan sedemikian sehingga
+\begin{enumerate}[a)]
+\item
+$\bigl\{ \int_0^1 f_n \bigr\}_{n=1}^\infty$ meningkat tanpa batas,
+\item
+$\bigl\{ \int_0^1 f_n \bigr\}_{n=1}^\infty$ merupakan barisan $-1,1,-1,1,-1,1, \ldots$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exnote}
+Kita dapat mendefinisikan
+\emph{\myindex{limit bersama}} dari barisan ganda
+$\{ x_{n,m} \}_{n,m=1}^\infty$ yang terdiri atas bilangan
+real (yakni suatu fungsi dari $\N \times \N$ ke $\R$).
+Kita katakan bahwa $L$ merupakan limit bersama dari $\{ x_{n,m} \}_{n,m=1}^\infty$ dan menulis
+\begin{equation*}
+\lim_{\substack{n\to\infty\\m\to\infty}}
+x_{n,m} = L ,
+\qquad
+\text{atau}
+\qquad
+\lim_{(n,m) \to \infty}
+x_{n,m} = L ,
+\end{equation*}
+apabila untuk setiap $\epsilon > 0$, terdapat
+$M$ sedemikian sehingga jika $n \geq M$ dan $m \geq M$, maka
+$\sabs{x_{n,m} - L} < \epsilon$.
+\end{exnote}
+
+\begin{exercise}
+Andaikan limit bersama (lihat di atas) dari $\{ x_{n,m} \}_{n,m=1}^\infty$ adalah $L$, dan andaikan
+bahwa untuk semua $n$, $\lim\limits_{m \to \infty} x_{n,m}$ ada,
+serta untuk semua $m$, $\lim\limits_{n \to \infty} x_{n,m}$ ada.  Tunjukkan bahwa
+$\lim\limits_{n\to\infty}\lim\limits_{m \to \infty} x_{n,m}
+=
+\lim\limits_{m\to\infty}\lim\limits_{n \to \infty} x_{n,m} = L$.
+\end{exercise}
+
+\begin{exercise}
+Adanya limit bersama (lihat di atas) tidak berarti bahwa limit berulang ada.
+Pertimbangkan $x_{n,m} \coloneqq \frac{{(-1)}^{n+m}}{\min \{n,m \}}$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa untuk setiap $n$,
+$\lim\limits_{m \to \infty} x_{n,m}$ tidak ada, dan untuk setiap $m$,
+$\lim\limits_{n \to \infty} x_{n,m}$ juga tidak ada.  Jadi, baik
+$\lim\limits_{n\to\infty}\lim\limits_{m \to \infty} x_{n,m}$ maupun
+$\lim\limits_{m\to\infty}\lim\limits_{n \to \infty} x_{n,m}$ sama sekali tidak
+bermakna.
+\item
+Tunjukkan bahwa limit bersama dari $\{ x_{n,m} \}_{n,m=1}^\infty$ ada dan sama dengan 0.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Kita katakan bahwa barisan fungsi $f_n \colon \R \to \R$
+\emph{\myindex{konvergen seragam pada himpunan bagian kompak}}
+\index{konvergensi seragam pada himpunan bagian kompak}
+apabila untuk setiap $k \in \N$,
+barisan $\{ f_n \}_{n=1}^\infty$ konvergen seragam pada $[-k,k]$.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa jika $f_n \colon \R \to \R$ merupakan barisan
+fungsi kontinu yang konvergen seragam pada himpunan bagian kompak, maka
+limitnya kontinu.
+\item 
+Buktikan bahwa jika $f_n \colon \R \to \R$ merupakan barisan
+fungsi yang terintegralkan Riemann pada setiap interval tertutup dan terbatas $[a,b]$,
+dan konvergen seragam pada himpunan bagian kompak menuju $f \colon \R \to \R$,
+maka untuk setiap interval $[a,b]$ berlaku $f \in \sR\bigl([a,b]\bigr)$, dan
+$\int_a^b f = \lim\limits_{n\to\infty} \int_a^b f_n$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Tentukan barisan fungsi kontinu $f_n \colon [0,1] \to \R$ yang
+konvergen menuju fungsi popcorn $f \colon [0,1] \to \R$, yakni
+fungsi sedemikian sehingga $f(\nicefrac{p}{q}) \coloneqq \nicefrac{1}{q}$ (jika $\nicefrac{p}{q}$
+dalam bentuk paling sederhana) dan $f(x) \coloneqq 0$ jika $x$ irasional (perhatikan
+bahwa $f(0) = f(1) = 1$);
+lihat \exampleref{popcornfunction:example}.
+Jadi, limit titik demi titik dari fungsi-fungsi kontinu dapat memiliki himpunan
+diskontinuitas yang rapat.  Lihat juga latihan berikutnya.
+\end{exercise}
+
+\begin{exercise}[Menantang]
+\myindex{Fungsi Dirichlet}
+$f \colon [0,1] \to \R$, yakni
+fungsi sedemikian sehingga $f(x) \coloneqq 1$ jika $x \in \Q$
+dan $f(x) \coloneqq 0$ jika $x \notin \Q$,
+bukan merupakan limit titik demi titik dari
+fungsi-fungsi kontinu, walaupun hal ini sulit dibuktikan.
+Namun, buktikan bahwa $f$ merupakan limit titik demi titik dari fungsi-fungsi yang masing-masing
+merupakan limit titik demi titik dari
+fungsi-fungsi kontinu.
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Tentukan barisan fungsi kontinu Lipschitz pada $[0,1]$
+yang limit seragamnya adalah $\sqrt{x}$, yang bukan fungsi Lipschitz.
+\item
+Sebaliknya, tunjukkan bahwa jika $f_n \colon S \to \R$ merupakan fungsi Lipschitz
+dengan konstanta seragam $K$ (artinya semuanya memenuhi definisi
+dengan konstanta yang sama) dan $\{ f_n \}_{n=1}^\infty$ konvergen titik demi titik
+menuju $f \colon S \to \R$,
+maka limitnya, $f$, merupakan fungsi kontinu Lipschitz
+dengan konstanta Lipschitz $K$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[memerlukan \sectionref{sec:moreonseries}]
+Jika $\sum_{n=0}^\infty c_n {(x-a)}^n$ memiliki jari-jari konvergensi $\rho$,
+tunjukkan bahwa integral suku demi sukunya,
+$\sum_{n=1}^\infty \frac{c_{n-1}}{n} {(x-a)}^n$, memiliki jari-jari konvergensi
+$\rho$.  Perhatikan bahwa di atas kita hanya membuktikan bahwa jari-jari konvergensinya
+sekurang-kurangnya~$\rho$.
+\end{exercise}
+
+\begin{exercise}[memerlukan \sectionref{sec:moreonseries} dan \sectionref{sec:taylor}]
+\pagebreak[3]
+Andaikan $f(x) \coloneqq \sum_{n=0}^\infty c_n {(x-a)}^n$ konvergen pada $(a-\rho,a+\rho)$.
+\begin{enumerate}[a)]
+\item
+Andaikan bahwa $f^{(k)}(a) = 0$ untuk semua $k=0,1,2,3,\ldots$.  Buktikan bahwa
+$c_n = 0$ untuk semua $n$, atau dengan kata lain,
+$f(x) = 0$ untuk semua $x \in (a-\rho,a+\rho)$.
+\item
+Dengan menggunakan bagian a), buktikan suatu versi dari apa yang disebut
+\myquote{teorema identitas untuk fungsi analitik}: Jika terdapat $\epsilon > 0$
+sedemikian sehingga $f(x) = 0$ untuk semua $x \in (a-\epsilon, a+\epsilon)$, maka
+$f(x) = 0$ untuk semua $x \in (a-\rho,a+\rho)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f_n(x) \coloneqq \frac{x}{1+{(nx)}^2}$.  Perhatikan bahwa $f_n$ merupakan
+fungsi-fungsi diferensiabel.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $\{ f_n \}_{n=1}^\infty$ konvergen seragam ke 0.
+\item
+Tunjukkan bahwa $\sabs{f_n'(x)} \leq 1$ untuk semua $x$ dan semua $n$.
+\item
+Tunjukkan bahwa $\{ f_n' \}_{n=1}^\infty$ konvergen titik demi titik menuju fungsi yang diskontinu di
+titik asal.
+\item
+Misalkan $\{ a_n \}_{n=1}^\infty$ merupakan enumerasi bilangan rasional.
+Definisikan
+\begin{equation*}
+g_n(x) \coloneqq \sum_{k=1}^n 2^{-k} f_n(x-a_k) .
+\end{equation*}
+Tunjukkan bahwa $\{ g_n \}_{n=1}^\infty$ konvergen seragam ke 0.
+\item
+Tunjukkan bahwa $\{ g_n' \}_{n=1}^\infty$ konvergen titik demi titik menuju fungsi $\psi$ yang
+diskontinu di setiap bilangan rasional dan kontinu di setiap
+bilangan irasional.  Secara khusus, $\lim\limits_{n\to\infty} g_n'(x) \neq 0$ untuk
+setiap bilangan rasional~$x$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[memerlukan \sectionref{sec:impropriemann}]
+Tunjukkan bahwa konvergensi seragam tidak cukup untuk mempertukarkan limit dengan
+integral tak wajar pada interval tak terbatas.
+Yakni, tentukan barisan fungsi $f_n \colon \R \to
+\R$ yang terintegralkan Riemann pada setiap interval terbatas,
+konvergen seragam ke nol, dan sedemikian sehingga
+$\int_{-\infty}^\infty f_n = 1$ untuk setiap $n$.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Teorema Picard}
+\label{sec:picard}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1--2 pertemuan kuliah (dapat dilewati tanpa masalah)}
+
+Mata kuliah analisis semester pertama semestinya memiliki
+teorema sekelas \emph{pi\`ece de r\'esistance}.
+Kita memilih teorema yang pembuktiannya memadukan semua yang telah kita
+pelajari.  Teorema ini lebih canggih daripada teorema dasar kalkulus,
+teorema unggulan pertama dalam mata kuliah ini.  Teorema
+yang kita maksud adalah teorema
+Picard%
+\footnote{Dinamai menurut matematikawan Prancis
+\href{https://en.wikipedia.org/wiki/\%C3\%89mile_Picard}{Charles \'Emile Picard}
+(1856--1941).}
+tentang keberadaan dan ketunggalan solusi suatu persamaan diferensial biasa.
+Pernyataan maupun pembuktiannya merupakan contoh indah dari apa yang dapat dilakukan
+dengan materi yang sejauh ini telah kita kuasai.  Teorema ini juga merupakan contoh baik tentang penerapan analisis,
+karena persamaan diferensial sangat diperlukan dalam berbagai cabang
+sains.
+
+\subsection{Persamaan diferensial biasa orde pertama}
+
+Sains modern dijelaskan dalam bahasa
+\emph{persamaan diferensial}\index{persamaan diferensial}.
+Yakni, persamaan yang tidak hanya melibatkan fungsi yang belum diketahui, tetapi juga
+turunannya.  Bentuk taktrivial paling sederhana dari persamaan diferensial adalah
+\emph{\myindex{persamaan diferensial biasa orde pertama}}
+\index{persamaan diferensial biasa}
+\begin{equation*}
+y' = F(x,y) .
+\end{equation*}
+Secara umum, kita juga menetapkan \emph{\myindex{syarat awal}}
+$y(x_0)=y_0$.  Solusi
+persamaan tersebut adalah fungsi $y(x)$ sedemikian sehingga
+$y(x_0)=y_0$ dan $y'(x) = F\bigl(x,y(x)\bigr)$.
+\figureref{fig:sampleslopes} menampilkan
+\emph{\myindex{medan kemiringan}}, yaitu representasi grafis persamaan ini.
+\begin{myfigureht}
+\myincludegraphics{sampleslopes}{%
+Sebagian bidang xy di sekitar titik asal dengan
+kisi persegi panjang yang menunjukkan arah kemiringan.  Pada separuh kiri gambar,
+kemiringannya mengarah ke bawah, tetapi semakin mendatar ketika bergerak ke atas.
+Pada separuh kanan gambar, kemiringannya mengarah ke atas dan
+kembali semakin mendatar ketika bergerak ke atas.
+Sebuah titik (x subskrip nol, y subskrip nol) diberikan di kuadran pertama.
+Grafik suatu solusi digambar mulai dari atas
+sumbu x, turun, kemudian naik kembali dan melewati
+titik yang diberikan.}
+\caption{Sebuah \emph{medan kemiringan} yang memberikan kemiringan $F(x,y)$ di setiap titik;
+dalam kasus ini $F(x,y)=x(1-y)$.  Sebuah solusi digambar melewati titik
+$(x_0,y_0)=(1,0.3)$; perhatikan bagaimana grafik itu mengikuti arah-arah kemiringan tersebut.\label{fig:sampleslopes}}
+\end{myfigureht}
+
+Ketika $F$ hanya melibatkan variabel $x$, solusinya diberikan oleh
+teorema dasar kalkulus.  Sebaliknya, ketika $F$ bergantung
+pada $x$ maupun $y$, kita memerlukan perangkat yang jauh lebih kuat.  Solusi
+tidak selalu ada, dan kalaupun ada, belum tentu merupakan satu-satunya solusi.
+Teorema Picard memberikan syarat cukup tertentu bagi keberadaan
+dan ketunggalan.
+
+\subsection{Teorema tersebut}
+
+Kita memerlukan definisi kekontinuan dalam dua variabel.  Suatu titik pada
+bidang $\R^2 = \R \times \R$ dinyatakan dengan pasangan terurut $(x,y)$.
+Demi kesederhanaan,
+kita berikan definisi sekuensial kekontinuan berikut.
+
+\begin{defn}
+Misalkan $U \subset \R^2$ merupakan himpunan, $F \colon U \to \R$ suatu fungsi,
+dan $(x,y) \in U$ suatu titik.  Fungsi $F$ disebut
+\emph{kontinu di $(x,y)$}\index{fungsi kontinu dua variabel}
+apabila untuk setiap barisan
+$\bigl\{ (x_n,y_n) \bigr\}_{n=1}^\infty$ dari titik-titik di $U$ sedemikian sehingga
+$\lim_{n\to\infty} x_n = x$ dan
+$\lim_{n\to\infty} y_n = y$, berlaku
+\begin{equation*}
+\lim_{n \to \infty} F(x_n,y_n) = 
+F(x,y) .
+\end{equation*}
+Kita katakan bahwa $F$ \emph{kontinu} apabila kontinu di semua titik dalam $U$.
+\end{defn}
+
+\begin{thm}[Teorema Picard tentang keberadaan dan ketunggalan]%
+\index{teorema keberadaan dan ketunggalan}\index{teorema Picard}%
+\label{thm:fs:picard}
+Misalkan $I, J \subset \R$ merupakan interval tertutup dan terbatas,
+misalkan $I^\circ$ dan $J^\circ$ merupakan interiornya%
+\footnote{Yang dimaksud dengan interior $[a,b]$ adalah $(a,b)$.},
+dan
+misalkan $(x_0,y_0) \in I^\circ \times J^\circ$.
+Andaikan $F \colon I \times J \to \R$ kontinu
+dan Lipschitz dalam variabel kedua, yakni terdapat
+$L \in \R$ sedemikian sehingga
+\begin{equation*}
+\babs{F(x,y) - F(x,z)} \leq L \sabs{y-z}
+\qquad \text{untuk semua } y,z \in J, x \in I .
+\end{equation*}
+Maka terdapat $h > 0$ sedemikian sehingga $[x_0-h,x_0+h] \subset I$ dan terdapat tepat satu fungsi
+diferensiabel $f \colon [x_0 - h, x_0 + h] \to J \subset \R$ sedemikian sehingga
+\begin{equation} \label{picard:diffeq}
+f'(x) = F\bigl(x,f(x)\bigr) \qquad \text{dan} \qquad f(x_0) = y_0.
+\end{equation}
+\end{thm}
+
+\begin{proof}
+\pagebreak[2]
+Andaikan kita dapat menemukan solusi $f$.  Dengan menggunakan teorema dasar
+kalkulus, kita mengintegralkan persamaan
+$f'(x) = F\bigl(x,f(x)\bigr)$, $f(x_0) = y_0$, dan menuliskan \eqref{picard:diffeq}
+sebagai persamaan integral
+\begin{equation} \label{picard:inteq}
+f(x) = y_0 + \int_{x_0}^x F\bigl(t,f(t)\bigr)\,dt .
+\end{equation}
+Gagasan pembuktian kita adalah memasukkan hampiran-hampiran suatu
+solusi ke ruas kanan \eqref{picard:inteq} untuk memperoleh hampiran yang lebih baik pada
+ruas kiri \eqref{picard:inteq}.  Kita berharap bahwa pada akhirnya barisan tersebut
+konvergen dan limitnya memenuhi
+\eqref{picard:inteq}, dan karenanya juga \eqref{picard:diffeq}.
+Teknik berikut disebut \emph{\myindex{iterasi Picard}},
+dan masing-masing fungsi $f_k$ disebut
+\emph{iterat Picard}\index{iterat Picard}.
+
+Tanpa mengurangi keumuman, andaikan $x_0 = 0$ (lihat latihan di bawah).
+Latihan lainnya
+menyatakan bahwa $F$ terbatas karena kontinu.
+Oleh karena itu, pilih $M > 0$ sedemikian sehingga
+$\babs{F(x,y)} \leq M$ untuk semua $(x,y) \in I\times J$.
+Pilih $\alpha > 0$ sedemikian sehingga
+$[-\alpha,\alpha] \subset I$ dan $[y_0-\alpha, y_0 + \alpha] \subset J$.
+Definisikan
+\begin{equation*}
+h \coloneqq \min \left\{ \alpha, \frac{\alpha}{M+L\alpha} \right\} .
+\end{equation*}
+Perhatikan bahwa
+$[-h,h] \subset I$.
+
+Tetapkan $f_0(x) \coloneqq y_0$.
+Kita definisikan $f_k$ secara induktif.
+Dengan mengandaikan $f_{k-1}([-h,h]) \subset [y_0-\alpha,y_0+\alpha]$,
+kita melihat bahwa
+$F\bigl(t,f_{k-1}(t)\bigr)$
+terdefinisi dengan baik sebagai fungsi terhadap $t$ untuk $t \in [-h,h]$.
+Jika $f_{k-1}$ kontinu
+pada $[-h,h]$, maka
+$F\bigl(t,f_{k-1}(t)\bigr)$
+kontinu sebagai
+fungsi terhadap $t$ pada $[-h,h]$ (diserahkan sebagai latihan).
+Definisikan
+\begin{equation*}
+f_k(x) \coloneqq y_0+ \int_{0}^x F\bigl(t,f_{k-1}(t)\bigr)\,dt ,
+\end{equation*}
+dan $f_k$ kontinu pada $[-h,h]$ berdasarkan teorema dasar kalkulus.
+Untuk melihat bahwa $f_k$ memetakan $[-h,h]$ ke $[y_0-\alpha,y_0+\alpha]$, kita hitung, untuk
+$x \in [-h,h]$,
+\begin{equation*}
+\sabs{f_k(x) - y_0} = 
+\abs{\int_{0}^x F\bigl(t,f_{k-1}(t)\bigr)\,dt }
+\leq
+M\sabs{x}
+\leq
+Mh
+\leq
+M
+\frac{\alpha}{M+L\alpha}
+\leq \alpha .
+\end{equation*}
+Selanjutnya kita definisikan $f_{k+1}$ menggunakan $f_k$, dan demikian seterusnya.
+Dengan demikian, secara induktif kita telah mendefinisikan barisan $\{ f_k \}_{k=1}^\infty$
+dari fungsi-fungsi kontinu.
+Kita perlu menunjukkan bahwa barisan tersebut konvergen menuju fungsi $f$ yang memenuhi
+persamaan~\eqref{picard:inteq}, dan karenanya~\eqref{picard:diffeq}.
+
+Kita ingin menunjukkan bahwa barisan $\{ f_k \}_{k=1}^\infty$ konvergen seragam
+menuju suatu fungsi pada $[-h,h]$.  Pertama-tama, untuk $t \in [-h,h]$,
+kita memiliki batas berguna
+berikut
+\begin{equation*}
+\Babs{F\bigl(t,f_{n}(t)\bigr) - 
+F\bigl(t,f_{k}(t)\bigr)}
+\leq
+L \babs{f_n(t)-f_k(t)}
+\leq
+L \snorm{f_n-f_k}_{[-h,h]} ,
+\end{equation*}
+di mana $\snorm{f_n-f_k}_{[-h,h]}$ adalah norma seragam,
+yakni supremum dari $\babs{f_n(t)-f_k(t)}$ untuk $t \in [-h,h]$.
+Sekarang perhatikan bahwa $\sabs{x} \leq h \leq \frac{\alpha}{M+L\alpha}$.
+Oleh karena itu,
+\begin{equation*}
+\begin{split}
+\babs{f_n(x) - f_k(x)}
+& =
+\abs{\int_{0}^x F\bigl(t,f_{n-1}(t)\bigr)\,dt 
+-
+\int_{0}^x F\bigl(t,f_{k-1}(t)\bigr)\,dt}
+\\
+& =
+\abs{\int_{0}^x
+\Bigl(
+F\bigl(t,f_{n-1}(t)\bigr)-
+F\bigl(t,f_{k-1}(t)\bigr)
+\Bigr)
+\,dt}
+\\
+& \leq
+L
+\,
+\snorm{f_{n-1}-f_{k-1}}_{[-h,h]}
+\,
+\sabs{x}
+\\
+& \leq
+\frac{L\alpha}{M+L\alpha}
+\snorm{f_{n-1}-f_{k-1}}_{[-h,h]} .
+\end{split}
+\end{equation*}
+Misalkan $C \coloneqq \frac{L\alpha}{M+L\alpha}$ dan perhatikan bahwa $C < 1$.
+Dengan mengambil supremum pada ruas kiri, kita peroleh
+\begin{equation*}
+\snorm{f_n-f_k}_{[-h,h]} \leq C \snorm{f_{n-1}-f_{k-1}}_{[-h,h]} .
+\end{equation*}
+Tanpa mengurangi keumuman,
+andaikan $n \geq k$.  Dengan \hyperref[induction:thm]{induksi}, kita dapat menunjukkan bahwa
+\begin{equation*}
+\snorm{f_n-f_k}_{[-h,h]} \leq C^{k} \snorm{f_{n-k}-f_{0}}_{[-h,h]} .
+\end{equation*}
+Untuk $x \in [-h,h]$, berlaku
+\begin{equation*}
+\babs{f_{n-k}(x)-f_{0}(x)}
+=
+\babs{f_{n-k}(x)-y_0}
+\leq \alpha .
+\end{equation*}
+Oleh karena itu,
+\begin{equation*}
+\snorm{f_n-f_k}_{[-h,h]} \leq C^{k} \snorm{f_{n-k}-f_{0}}_{[-h,h]} \leq C^{k} \alpha .
+\end{equation*}
+Karena $C < 1$, $\{f_n\}_{n=1}^\infty$ bersifat Cauchy seragam.
+Berdasarkan \propref{prop:uniformcauchy}, $\{ f_n \}_{n=1}^\infty$
+konvergen seragam pada $[-h,h]$ menuju suatu fungsi $f \colon [-h,h] \to \R$.
+Fungsi $f$ merupakan limit seragam dari fungsi-fungsi kontinu, dan karenanya
+kontinu.  Selain itu, karena $f_n\bigl([-h,h]\bigr) \subset
+[y_0-\alpha,y_0+\alpha]$ untuk semua $n$,
+maka $f\bigl([-h,h]\bigr) \subset [y_0-\alpha,y_0+\alpha]$
+(mengapa?).
+
+
+Sekarang kita perlu menunjukkan bahwa $f$ memenuhi \eqref{picard:inteq}.
+Pertama-tama, seperti sebelumnya, kita perhatikan
+\begin{equation*}
+\Babs{F\bigl(t,f_{n}(t)\bigr) - 
+F\bigl(t,f(t)\bigr)}
+\leq
+L \babs{f_n(t)-f(t)}
+\leq
+L \snorm{f_n-f}_{[-h,h]} .
+\end{equation*}
+Karena $\snorm{f_n-f}_{[-h,h]}$ konvergen ke nol,
+$F\bigl(t,f_n(t)\bigr)$ konvergen seragam ke $F\bigl(t,f(t)\bigr)$
+untuk $t \in [-h,h]$.  Oleh karena itu, untuk $x \in [-h,h]$,
+konvergensinya seragam %(mengapa?)
+untuk $t \in [0,x]$ (atau $[x,0]$ jika $x < 0$).  Dengan demikian,
+\begin{align*}
+y_0
++
+\int_0^{x}
+F\bigl(t,f(t)\bigr)\,dt
+& =
+y_0
++
+\int_0^{x}
+F\bigl(t,\lim_{n\to\infty} f_n(t)\bigr)\,dt
+& &
+\\
+& =
+y_0
++
+\int_0^{x}
+\lim_{n\to\infty} F\bigl(t,f_n(t)\bigr)\,dt
+& & \text{(berdasarkan kekontinuan } F\text{)}
+\\
+& =
+\lim_{n\to\infty} 
+\left(
+y_0
++
+\int_0^{x}
+F\bigl(t,f_n(t)\bigr)\,dt
+\right)
+& & \text{(berdasarkan konvergensi seragam)}
+\\
+& =
+\lim_{n\to\infty} 
+f_{n+1}(x)
+=
+f(x) .
+& &
+\end{align*}
+Kita menerapkan teorema dasar kalkulus (\thmref{thm:FTCv2}) untuk menunjukkan bahwa
+$f$ diferensiabel dan turunannya adalah $F\bigl(x,f(x)\bigr)$.  Jelas bahwa
+$f(0) = y_0$.
+
+Terakhir, kita tinggal menunjukkan ketunggalan.  Andaikan $g \colon [-h,h]
+\to J \subset \R$ merupakan solusi lain.
+Seperti sebelumnya, kita gunakan fakta bahwa
+$\babs{F\bigl(t,f(t)\bigr) - F\bigl(t,g(t)\bigr)} \leq L \snorm{f-g}_{[-h,h]}$.
+Maka
+\begin{equation*}
+\begin{split}
+\babs{f(x)-g(x)}
+& =
+\abs{
+y_0
++
+\int_0^{x}
+F\bigl(t,f(t)\bigr)\,dt
+-
+\left(
+y_0
++
+\int_0^{x}
+F\bigl(t,g(t)\bigr)\,dt
+\right)
+}
+\\
+& =
+\abs{
+\int_0^{x}
+\Bigl(
+F\bigl(t,f(t)\bigr)
+-
+F\bigl(t,g(t)\bigr)
+\Bigr)
+\,dt
+}
+\\
+& \leq
+L\snorm{f-g}_{[-h,h]}\sabs{x}
+\leq
+Lh\snorm{f-g}_{[-h,h]}
+\leq
+\frac{L\alpha}{M+L\alpha}\snorm{f-g}_{[-h,h]} .
+\end{split}
+\end{equation*}
+Seperti
+sebelumnya, $C = \frac{L\alpha}{M+L\alpha} < 1$.  Dengan mengambil supremum terhadap $x \in
+[-h,h]$ pada
+ruas kiri, kita peroleh
+\begin{equation*}
+\snorm{f-g}_{[-h,h]} \leq C \snorm{f-g}_{[-h,h]} .
+\end{equation*}
+Hal ini hanya mungkin jika $\snorm{f-g}_{[-h,h]} = 0$.  Oleh karena itu, $f=g$, dan
+solusinya tunggal.
+\end{proof}
+
+\subsection{Contoh}
+
+Mari kita lihat beberapa contoh.  Pembuktian teorema tersebut
+memberikan cara eksplisit untuk menemukan $h$ yang sesuai.  Namun, pembuktian itu tidak
+memberikan $h$ terbaik.  Sering kali kita dapat menemukan $h$ yang jauh lebih besar
+dan tetap memenuhi kesimpulan teorema.
+
+Pembuktian tersebut juga memberikan iterat-iterat Picard sebagai hampiran terhadap
+solusi.  Jadi, pembuktian itu sesungguhnya memberi tahu kita cara memperoleh
+solusi, bukan sekadar bahwa solusinya ada.
+
+\begin{example} \label{example:picardexponential}
+Pertimbangkan
+\begin{equation*}
+f'(x) = f(x), \qquad f(0) = 1 .
+\end{equation*}
+Yakni, kita andaikan $F(x,y) = y$, dan kita mencari fungsi
+$f$ sedemikian sehingga $f'(x) = f(x)$.
+Untuk sementara, lupakan bahwa kita telah menyelesaikan persamaan ini dalam
+\sectionref{sec:logandexp}.  Lihat juga \figureref{fig:exp} untuk plot yang sekaligus memperlihatkan
+persamaan tersebut, dengan
+kemiringan $F(x,y)=y$ di setiap titik, dan solusinya,
+yaitu fungsi eksponensial yang memenuhi $f(0)=1$.
+
+Kita pilih sebarang $I$ yang memuat 0
+di interiornya.
+Kita pilih sebarang $J$ yang memuat 1 di interiornya.  Kita dapat
+menggunakan $L = 1$.
+Teorema tersebut menjamin adanya $h > 0$ sedemikian sehingga
+terdapat solusi tunggal $f \colon [-h,h] \to \R$.  Solusi ini
+biasanya dinotasikan dengan
+\begin{equation*}
+e^x \coloneqq f(x) .
+\end{equation*}
+Kami serahkan kepada pembaca untuk memeriksa bahwa dengan memilih $I$ dan $J$
+cukup besar, pembuktian teorema menjamin bahwa
+kita dapat memilih $\alpha$ sehingga memperoleh sebarang
+$h$ yang kita inginkan asalkan $h < \nicefrac{1}{2}$.  Perhitungannya kita hilangkan.
+Tentu saja, kita tahu %(though we have not proved)
+bahwa fungsi ini ada
+untuk semua $x$, sehingga sebarang $h$ semestinya dapat digunakan, tetapi
+pembuktian teorema hanya memberikan $h < \nicefrac{1}{2}$.
+
+Dengan penalaran yang sama seperti di atas,
+apa pun nilai $x_0$ dan $y_0$,
+pembuktian tersebut menjamin sebarang $h$ asalkan $h < \nicefrac{1}{2}$.
+Tetapkan $h$ semacam itu.
+Kita memperoleh fungsi tunggal yang terdefinisi pada $[x_0-h,x_0+h]$.  Setelah mendefinisikan
+fungsi pada $[-h,h]$, kita menemukan solusi pada interval $[0,2h]$
+dan memperhatikan bahwa kedua fungsi harus berimpit pada $[0,h]$ karena ketunggalan.
+Dengan demikian, secara iteratif kita membangun fungsi eksponensial untuk semua $x \in \R$.
+Oleh karena itu, teorema Picard dapat digunakan untuk membuktikan keberadaan dan ketunggalan
+fungsi eksponensial.
+
+Mari kita hitung iterat-iterat Picard.
+Kita mulai dengan fungsi konstan $f_0(x) \coloneqq 1$.  Maka
+\begin{align*}
+f_1(x) & = 1 + \int_0^x f_0(s)\,ds =
+1+x, \\
+f_2(x) & = 1 + \int_0^x f_1(s)\,ds =
+1 + \int_0^x (1+s)\,ds = 1 + x + \frac{x^2}{2}, \\
+f_3(x) & = 1 + \int_0^x f_2(s)\,ds =
+1 + \int_0^x \left(1+ s + \frac{s^2}{2} \right)\,ds =
+1 + x + \frac{x^2}{2} + \frac{x^3}{6} .
+\end{align*}
+Kita mengenali bagian awal deret Taylor untuk fungsi eksponensial.
+Lihat \figureref{fig:exppicard}.
+\begin{myfigureht}
+\myincludegraphics{exppicardfig}{%
+Grafik fungsi eksponensial berupa
+kurva penuh pada
+daerah dengan x di antara sedikit kurang dari minus 1 dan
+sedikit lebih dari 1.
+Beberapa kurva putus-putus memberikan hampiran.
+Semuanya melewati titik (0,1).
+Pertama, sebuah garis horizontal.  Lalu sebuah garis
+dengan kemiringan yang sama seperti fungsi eksponensial di (0,1).
+Kemudian dua hampiran melengkung lainnya yang semakin mendekati
+fungsi eksponensial, terutama di dekat x sama dengan 0.}
+\caption{Fungsi eksponensial (garis penuh) bersama dengan $f_0$, $f_1$, $f_2$,
+$f_3$ (putus-putus).\label{fig:exppicard}}
+\end{myfigureht}
+\end{example}
+
+\begin{example}
+Pertimbangkan persamaan
+\begin{equation*}
+f'(x) = {\bigl(f(x)\bigr)}^2 \qquad \text{dan} \qquad f(0)=1.
+\end{equation*}
+Melalui persamaan diferensial elementer kita mengetahui bahwa
+\begin{equation*}
+f(x) = \frac{1}{1-x}
+\end{equation*}
+merupakan solusinya.
+Solusi tersebut hanya terdefinisi pada $(-\infty,1)$.  Artinya,
+kita dapat menggunakan $h < 1$, tetapi tidak pernah $h$ yang lebih besar.
+Fungsi yang memetakan $y$ ke $y^2$
+bukan merupakan fungsi Lipschitz pada seluruh $\R$.
+Ketika kita mendekati $x=1$ dari kiri, nilai solusinya semakin
+besar.  Turunan solusi bertambah sebagai $y^2$, sehingga
+$L$ yang diperlukan harus semakin besar ketika $y_0$ membesar.
+Jika kita menerapkan
+teorema tersebut dengan $x_0$ dekat 1 dan $y_0 = \frac{1}{1-x_0}$, kita mendapati
+bahwa $h$ yang dijamin oleh pembuktian semakin kecil ketika $x_0$
+mendekati~1.
+
+Nilai $h$ dari pembuktian bukanlah nilai $h$ terbaik.
+Dengan memilih $\alpha$ secara tepat, pembuktian teorema menjamin
+$h=1-\nicefrac{\sqrt{3}}{2} \approx 0.134$ (perhitungannya kita
+hilangkan) untuk $x_0=0$ dan $y_0=1$, walaupun
+di atas kita melihat bahwa sebarang $h < 1$ semestinya dapat digunakan.
+\end{example}
+
+\begin{example}
+Pertimbangkan persamaan
+\begin{equation*}
+f'(x) = 2 \sqrt{\babs{f(x)}}, \qquad f(0) = 0 .
+\end{equation*}
+Fungsi $F(x,y) = 2 \sqrt{\sabs{y}}$ kontinu,
+tetapi tidak Lipschitz dalam $y$ (mengapa?).
+Persamaan tersebut tidak memenuhi hipotesis teorema.
+Fungsi
+\begin{equation*}
+f(x) =
+\begin{cases}
+x^2 & \text{jika } x \geq 0,\\
+-x^2 & \text{jika } x < 0,
+\end{cases}
+\end{equation*}
+merupakan solusi, tetapi $f(x) = 0$ juga merupakan solusi.
+Jadi, solusi ada, tetapi tidak tunggal.
+\end{example}
+
+\begin{example}
+Pertimbangkan $y' = \varphi(x)$ dengan $\varphi(x) \coloneqq 0$ jika $x \in \Q$ dan
+$\varphi(x)\coloneqq 1$ jika $x
+\notin \Q$.  Dengan kata lain, $F(x,y) = \varphi(x)$ diskontinu.
+Persamaan tersebut tidak memiliki solusi, apa pun syarat
+awalnya.
+Seandainya ada, solusi itu akan memiliki
+turunan $\varphi$, tetapi $\varphi$ tidak memiliki sifat nilai antara
+di titik mana pun (mengapa?).  Berdasarkan
+\hyperref[thm:darboux]{teorema Darboux}, tidak ada solusi.
+\end{example}
+
+Contoh-contoh tersebut menunjukkan bahwa tanpa syarat Lipschitz, solusi mungkin
+ada tetapi tidak tunggal, dan tanpa kekontinuan $F$, solusi mungkin
+sama sekali tidak ada.
+Sesungguhnya terdapat suatu teorema, yaitu teorema keberadaan Peano, yang menyatakan bahwa jika $F$
+kontinu, maka solusi ada (tetapi mungkin tidak tunggal).
+
+\begin{remark}
+Kita dapat memperlemah apa yang dimaksud dengan \myquote{solusi dari $y' = F(x,y)$}
+dengan berfokus pada persamaan integral
+$f(x) = y_0 + \int_{x_0}^x F\bigl(t,f(t)\bigr) \, dt$.  Sebagai contoh,
+misalkan $H$ merupakan
+fungsi Heaviside%
+\footnote{Dinamai menurut
+insinyur, matematikawan, dan fisikawan Inggris
+\href{https://en.wikipedia.org/wiki/Oliver_Heaviside}{Oliver Heaviside}
+(1850--1925).},
+yakni $H(x) \coloneqq 0$ untuk $x < 0$ dan $H(x) \coloneqq 1$ untuk $x \geq 0$.
+Maka
+$y' = H(x)$, $y(0) = 0$,
+merupakan persamaan yang umum.
+\myquote{Solusinya}
+adalah fungsi ramp $f(x) \coloneqq 0$ jika $x < 0$ dan $f(x) \coloneqq x$ jika $x \geq 0$,
+karena fungsi ini memenuhi
+$f(x) = \int_0^x H(t)\, dt$.  Namun, perhatikan bahwa $f'(0)$ tidak ada,
+sehingga $f$ hanya merupakan apa yang disebut \emph{\myindex{solusi lemah}} dari
+persamaan diferensial tersebut.
+\end{remark}
+
+
+\subsection{Latihan}
+
+\begin{exercise}
+Misalkan $I, J \subset \R$ merupakan interval.
+Misalkan $F \colon I \times J \to \R$ merupakan fungsi kontinu
+dua variabel,
+dan andaikan $f \colon I \to J$ merupakan fungsi kontinu.
+Tunjukkan bahwa $F\bigl(x,f(x)\bigr)$ merupakan fungsi kontinu pada $I$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $I, J \subset \R$ merupakan interval tertutup dan terbatas.
+Tunjukkan bahwa jika $F \colon I \times J \to \R$ kontinu,
+maka $F$ terbatas.
+\end{exercise}
+
+\begin{exercise}
+Kita membuktikan teorema Picard dengan mengandaikan bahwa $x_0 = 0$.
+Buktikan pernyataan lengkap teorema Picard untuk sebarang $x_0$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan persamaan kita adalah $f'(x)=x f(x)$.  Mulailah dengan syarat awal
+$f(0)=2$ dan tentukan iterat-iterat Picard $f_0,f_1,f_2,f_3,f_4$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $F \colon I \times J \to \R$
+merupakan fungsi yang kontinu dalam variabel pertama,
+yakni, untuk setiap $y$ yang tetap, fungsi yang memetakan $x$ ke $F(x,y)$
+kontinu.  Selain itu, andaikan $F$ Lipschitz dalam variabel kedua,
+yakni terdapat bilangan $L$ sedemikian sehingga
+\begin{equation*}
+\babs{F(x,y) - F(x,z)} \leq L \sabs{y-z}
+\qquad \text{untuk semua } y,z \in J, x \in I .
+\end{equation*}
+Tunjukkan bahwa $F$ kontinu sebagai fungsi dua variabel.  Oleh karena itu,
+hipotesis dalam teorema dapat dibuat lebih lemah lagi.
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Jenis persamaan yang umum adalah
+\emph{\myindex{persamaan diferensial linear orde pertama}}, yakni
+persamaan berbentuk
+\begin{equation*}
+y' + p(x) y = q(x) , \qquad y(x_0) = y_0 .
+\end{equation*}
+Buktikan teorema Picard untuk persamaan linear.  Andaikan $I$ merupakan
+interval, $x_0 \in I$, serta $p \colon I \to \R$ dan $q \colon I \to \R$
+kontinu.
+Tunjukkan bahwa terdapat tepat satu fungsi diferensiabel $f \colon I \to \R$
+sedemikian sehingga $y = f(x)$
+memenuhi persamaan dan syarat awal tersebut.
+Petunjuk: Andaikan fungsi eksponensial ada dan gunakan rumus faktor
+integrasi untuk membuktikan keberadaan $f$ (buktikan bahwa rumusnya bekerja, lalu buktikan ketunggalannya):
+\begin{equation*}
+f(x) \coloneqq e^{-\int_{x_0}^x p(s)\, ds} \left( \int_{x_0}^x e^{\int_{x_0}^t p(s)\, ds}
+q(t) \,dt + y_0 \right).
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Pertimbangkan persamaan $f'(x) = f(x)$
+dari \exampleref{example:picardexponential}.  Tunjukkan bahwa untuk sebarang $x_0$,
+sebarang $y_0$, dan sebarang bilangan positif $h < \nicefrac{1}{2}$, kita dapat memilih $\alpha >
+0$ yang cukup besar sehingga pembuktian teorema Picard menjamin adanya solusi
+dengan syarat awal $f(x_0) = y_0$ pada interval
+$[x_0-h,x_0+h]$.
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[3]
+Pertimbangkan persamaan $y' = y^{1/3}x$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa untuk syarat awal $y(1)=1$, teorema Picard berlaku.
+Tentukan $\alpha > 0$, $M$, $L$, dan $h$ yang dapat digunakan dalam pembuktian.
+\item
+Tunjukkan bahwa untuk syarat awal $y(1) = 0$, teorema Picard
+tidak berlaku.
+\item
+Meskipun demikian, tentukan solusi untuk $y(1) = 0$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Pertimbangkan persamaan $x y' = 2y$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $y = Cx^2$ merupakan solusi untuk setiap konstanta $C$.
+\item
+Tunjukkan bahwa untuk setiap $x_0 \neq 0$ dan setiap $y_0$, teorema
+Picard berlaku bagi syarat awal $y(x_0) = y_0$.
+\item
+Tunjukkan bahwa $y(0) = y_0$ dapat diselesaikan jika dan hanya jika $y_0 = 0$.
+\end{enumerate}
+\end{exercise}

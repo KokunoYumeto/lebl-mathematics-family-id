@@ -1,0 +1,1503 @@
+\chapter*{Pendahuluan}
+\addcontentsline{toc}{chapter}{Pendahuluan}
+\markboth{PENDAHULUAN}{PENDAHULUAN}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Tentang buku ini}
+
+%mbxSTARTIGNORE
+\VolOneIntroExtrahead
+%mbxENDIGNORE
+% pretext (mbx) is always the two volume set
+%mbxlatex
+%mbxlatex \subsection{Tentang Jilid I}
+%mbxlatex 
+
+Jilid pertama ini memuat materi analisis dasar untuk satu semester.
+Bersama jilid kedua, buku ini memuat materi untuk satu tahun.
+Buku ini bermula dari catatan kuliah saya ketika mengajar Math 444 di
+University of Illinois at Urbana-Champaign (UIUC) pada semester musim gugur
+2009. Saya menambahkan bab ruang metrik untuk Math 521 di University of
+Wisconsin--Madison (UW)\@.
+Jilid II ditambahkan untuk mengajar Math 4143/4153 di Oklahoma State University
+(OSU)\@.
+Prasyarat untuk mata kuliah tersebut biasanya adalah mata kuliah dasar tentang
+pembuktian, misalnya dengan menggunakan \cite{Hammack}, \cite{GIAM},
+atau~\cite{DW}.
+
+Buku ini dapat digunakan baik untuk mata kuliah dasar bagi mahasiswa yang tidak
+selalu berniat melanjutkan ke pendidikan pascasarjana (seperti UIUC 444),
+maupun untuk mata kuliah satu semester yang lebih lanjut dan juga membahas
+topik seperti ruang metrik (seperti UW 521).
+Berikut beberapa saran untuk mata kuliah satu semester.
+Mata kuliah dengan laju lebih lambat seperti UIUC 444:
+\begin{center}
+\S0.3, \S1.1--\S1.4, \S2.1--\S2.5, \S3.1--\S3.4, \S4.1--\S4.2,
+\S5.1--\S5.3, \S6.1--\S6.3
+\end{center}
+Mata kuliah yang lebih ketat, mencakup ruang metrik, dan berjalan jauh lebih
+cepat (misalnya UW 521):
+\begin{center}
+\S0.3, \S1.1--\S1.4, \S2.1--\S2.5, \S3.1--\S3.4, \S4.1--\S4.2,
+\S5.1--\S5.3, \S6.1--\S6.2, \S7.1--\S7.6
+\end{center}
+Mata kuliah yang lebih cepat tanpa ruang metrik juga dapat diselenggarakan
+dengan mencakup semua bagian dalam Bab 0 sampai Bab 6. Perkiraan jumlah
+pertemuan yang diberikan dalam catatan bagian sampai Bab 6 hanyalah perkiraan
+yang sangat kasar dan dirancang untuk mata kuliah dengan laju lebih lambat.
+Beberapa bab pertama buku ini dapat digunakan dalam mata kuliah pengantar
+pembuktian, seperti yang dilakukan, misalnya, dalam Math 201 di Iowa State
+University, tempat buku ini digunakan bersama \emph{Book of Proof} karya
+Hammack~\cite{Hammack}.
+
+Bersama Jilid II\@, buku ini dapat digunakan untuk mata kuliah satu tahun yang
+mencakup topik multivariabel. Dalam skenario ini, sebagian besar jilid pertama
+dapat dibahas pada semester pertama, sedangkan ruang metrik disisakan untuk
+awal semester kedua.
+
+Struktur bagian awal Jilid I kurang lebih mengikuti silabus standar UIUC Math
+444 dan karena itu memiliki beberapa kemiripan dengan buku Bartle dan Sherbert,
+\emph{Introduction to Real Analysis} \cite{BS}, yang merupakan buku standar di
+UIUC\@.
+Perbedaan utamanya adalah bahwa kita mendefinisikan integral Riemann dengan
+jumlah Darboux, bukan partisi bertanda. Pendekatan Darboux jauh lebih sesuai
+untuk mata kuliah pada tingkat ini.
+
+Pendekatan kita memungkinkan mata kuliah seperti UIUC 444 diselesaikan dalam
+satu semester, sambil tetap menyediakan waktu untuk membahas pertukaran limit
+dan mengakhirinya dengan teorema Picard tentang keberadaan dan ketunggalan
+solusi persamaan diferensial biasa.
+Teorema ini merupakan contoh yang indah karena menggunakan banyak hasil yang
+dibuktikan dalam buku ini. Bagi mahasiswa yang lebih lanjut, materi dapat
+dibahas lebih cepat sehingga kita sampai pada ruang metrik dan, seperti
+biasanya, membuktikan teorema Picard dengan teorema titik tetap.
+
+Ada pula buku-buku bagus lainnya. Favorit saya adalah buku Rudin yang sangat
+baik, \emph{Principles of Mathematical Analysis}~\cite{Rudin:baby}, atau yang
+dengan akrab biasa disebut \emph{baby Rudin} (untuk membedakannya dari buku
+analisis hebatnya yang lain, \emph{big Rudin}). Saya mendapat banyak inspirasi
+dan gagasan dari Rudin. Namun, buku Rudin sedikit lebih lanjut dan lebih
+ambisius daripada mata kuliah ini.
+Bagi mereka yang ingin melanjutkan studi matematika, buku Rudin merupakan
+investasi yang bagus.
+Alternatif yang lebih murah dan agak lebih sederhana adalah
+\emph{Introduction to Analysis} karya Rosenlicht~\cite{Rosenlicht}.
+Ada pula \emph{Introduction to Real Analysis} karya William
+Trench~\cite{Trench}, yang dapat diunduh secara gratis.
+
+\medskip
+
+Catatan mengenai gaya beberapa pembuktian: Banyak pembuktian yang secara
+tradisional dilakukan dengan kontradiksi lebih suka saya lakukan secara
+langsung atau melalui kontraposisi. Meskipun buku ini memuat pembuktian dengan
+kontradiksi, saya hanya menggunakannya ketika pernyataan kontraposisinya terasa
+terlalu canggung atau ketika kontradiksi diperoleh dengan cukup cepat.
+Kontradiksi lebih mudah menimbulkan kesulitan bagi mahasiswa pemula karena kita
+berbicara tentang objek yang tidak ada.
+
+Saya berusaha menghindari formalisme yang tidak perlu ketika formalisme itu
+tidak membantu. Selain itu, pembuktian dan bahasanya sedikit demi sedikit
+menjadi kurang formal seiring kemajuan kita dalam buku ini karena makin banyak
+rincian yang tidak dituliskan agar uraian tidak berjejal.
+
+Sebagai aturan umum, saya menggunakan $\coloneqq$, bukan $=$, untuk
+mendefinisikan suatu objek, alih-alih sekadar menunjukkan kesamaan. Untuk
+memberi penekanan, saya menggunakan simbol ini lebih bebas daripada kebiasaan
+umum. Saya bahkan menggunakannya ketika konteksnya \myquote{lokal,} yakni saya
+dapat saja mendefinisikan fungsi $f(x) \coloneqq x^2$ hanya untuk satu latihan
+atau contoh.
+
+\medskip
+
+Terakhir, saya ingin menyampaikan terima kasih kepada Jana Ma\v{r}\'ikov\'a,
+Glen Pugh, Paul Vojta, Frank Beatrous, S\"{o}nmez \c{S}ahuto\u{g}lu,
+Jim Brandt, Kenji Kozai, Arthur Busch,  Anton Petrunin,
+Mark Meilstrup, Harold P.\ Boas, Atilla Y{\i}lmaz,
+Thomas Mahoney, Scott Armstrong, dan Paul Sacks,
+Matthias Weber, Manuele Santoprete,
+Robert Niemeyer,
+dan Amanullah Nabavi,
+yang telah mengajar dengan buku ini dan memberi saya banyak masukan yang
+bermanfaat.
+Frank Beatrous menulis perluasan untuk versi University of Pittsburgh, yang
+menjadi inspirasi bagi banyak penambahan.
+Saya juga ingin berterima kasih kepada
+Dan Stoneham, Jeremy Sutter, Eliya Gwetta, Daniel Pimentel-Alarc\'on,
+Steve Hoerning, Yi Zhang, Nicole Caviris,
+Kristopher Lee, Baoyue Bi, Hannah Lund,
+Trevor Mannella, Mitchel Meyer, Gregory Beauregard,
+Chase Meadors, Andreas Giannopoulos, Nick Nelsen,
+Ru Wang, Trevor Fancher, Brandon Tague, Wang KP\@,
+Wai Yan Pong, Sam Merat, Judah Nouriyelian,
+Arnold Cross, Jesse Wallace,
+Adnan Hashem Mohamed,
+Nikita Borisov, Bob Strain,
+Salven V.\ DeMartino,
+Xuechi Wang,
+Hugo Santarem de Araujo,
+Geoffrey Sired,
+Karabo Mathope (0x03B4 di GitHub),
+satu atau dua pembaca anonim, dan secara umum semua mahasiswa dalam kelas saya,
+atas saran mereka serta karena telah menemukan kesalahan dan salah ketik.
+%mbxlatex       Selama penulisan buku ini, penulis mendapat sebagian dukungan
+%mbxlatex       dari hibah NSF DMS-0900885 dan DMS-1362337.
+
+% if in the two volume set then this will expand to the intro for vol II
+%mbxSTARTIGNORE
+\VolTwoIntro
+%mbxENDIGNORE
+% pretext (mbx) is always the two volume set
+%mbxlatex
+%mbxlatex \subsection{Tentang Jilid II}
+%mbxlatex 
+%mbxlatex \input{frag-vol2-intro.tex}
+%mbxlatex 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Tentang analisis} \label{sec:aboutra}
+
+Analisis adalah cabang matematika yang membahas pertidaksamaan dan limit. Mata
+kuliah ini membahas konsep-konsep paling dasar dalam analisis. Tujuannya adalah
+memperkenalkan kepada pembaca pembuktian yang ketat dalam analisis sekaligus
+meletakkan landasan yang kokoh bagi kalkulus satu variabel (dan beberapa
+variabel jika Jilid II juga dipelajari).
+
+Kalkulus telah mempersiapkan Anda, para mahasiswa, untuk menggunakan matematika
+tanpa menjelaskan mengapa hal-hal yang Anda pelajari itu benar. Agar dapat
+menggunakan atau mengajarkan matematika secara efektif, Anda tidak cukup hanya
+mengetahui \emph{apa} yang benar; Anda harus mengetahui \emph{mengapa} hal itu
+benar. Mata kuliah ini menunjukkan kepada Anda \emph{mengapa} kalkulus benar.
+Tujuannya adalah memberi Anda pemahaman yang baik tentang konsep limit,
+turunan, dan integral.
+
+Mari kita gunakan sebuah analogi.
+Seorang montir mobil yang telah belajar mengganti oli, memperbaiki lampu depan
+yang rusak, dan mengisi aki, tetapi tidak memahami cara kerja mesin, hanya akan
+mampu melakukan tugas-tugas sederhana tersebut. Ia tidak akan mampu bekerja
+secara mandiri untuk mendiagnosis dan memperbaiki masalah. Seorang guru sekolah
+menengah yang tidak memahami definisi integral Riemann atau turunan mungkin
+tidak dapat menjawab semua pertanyaan muridnya dengan tepat. Sampai sekarang
+saya masih mengingat beberapa pernyataan tidak masuk akal dari guru kalkulus
+saya di sekolah menengah. Ia sama sekali tidak memahami konsep limit, meskipun
+ia dapat \myquote{mengerjakan} soal-soal dalam buku teks.
+
+\medskip
+
+Kita mulai dengan membahas sistem bilangan real, terutama sifat
+kelengkapannya, yang menjadi dasar bagi seluruh pembahasan selanjutnya.
+Kemudian kita membahas bentuk limit yang paling sederhana, yaitu limit suatu
+barisan. Setelah itu, kita mempelajari fungsi satu variabel, kekontinuan, dan
+turunan. Selanjutnya, kita mendefinisikan integral Riemann dan membuktikan
+teorema dasar kalkulus. Kita membahas barisan fungsi dan pertukaran limit.
+Terakhir, kita memberikan pengantar ruang metrik.
+
+\medskip
+
+Mari kita lihat perbedaan terpenting antara analisis dan aljabar. Dalam
+aljabar, kita membuktikan kesamaan secara langsung; kita membuktikan bahwa suatu
+objek, mungkin sebuah bilangan, sama dengan objek lain. Dalam analisis, kita
+biasanya membuktikan pertidaksamaan, dan kita membuktikannya dengan membuat
+taksiran. Sebagai ilustrasi, perhatikan pernyataan berikut.
+
+\medskip
+
+\emph{Misalkan $x$ adalah bilangan real. Jika $x < \epsilon$ berlaku untuk
+setiap bilangan real $\epsilon > 0$, maka $x \leq 0$.}
+
+\medskip
+
+Pernyataan ini menggambarkan gagasan umum tentang apa yang kita lakukan dalam
+analisis. Misalkan kita benar-benar ingin membuktikan kesamaan $x = 0$. Dalam
+analisis, kita membuktikan dua pertidaksamaan: $x \leq 0$ dan $x \geq 0$.
+Untuk membuktikan pertidaksamaan $x \leq 0$, kita membuktikan
+$x < \epsilon$ untuk setiap $\epsilon$ positif. Untuk membuktikan
+pertidaksamaan $x \geq 0$, kita membuktikan $x > -\epsilon$ untuk setiap
+$\epsilon$ positif.
+
+\medskip
+
+Istilah \emph{analisis real} sebenarnya agak kurang tepat. Saya lebih suka
+menggunakan istilah \emph{analisis} saja. Jenis analisis lainnya, yaitu
+\emph{analisis kompleks}, sesungguhnya dibangun di atas materi yang sedang kita
+pelajari, bukan terpisah darinya. Selain itu, mata kuliah analisis real yang
+lebih lanjut akan sering membahas bilangan kompleks. Saya menduga penamaan ini
+hanyalah warisan sejarah.
+
+\medskip
+
+Mari kita mulai\ldots
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Teori himpunan dasar} \label{sec:basicset}
+\index{teori himpunan}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1--3 pertemuan (sebagian materi dapat dilewati, dibahas sekilas,
+atau ditugaskan sebagai bacaan)}
+
+Sebelum mulai membahas analisis, kita perlu menyepakati beberapa istilah.
+Analisis modern\footnote{Istilah \myquote{modern} merujuk pada akhir abad ke-19
+hingga sekarang.}
+menggunakan bahasa himpunan; karena itu, kita mulai dari sana.
+Kita membahas himpunan secara cukup informal dengan menggunakan apa yang
+biasanya disebut \myquote{\myindex{teori himpunan naif}.}  Jangan khawatir,
+inilah yang digunakan oleh mayoritas matematikawan, dan dengan pendekatan ini
+jarang menimbulkan masalah.
+Pembaca diharapkan telah mempelajari dasar-dasar teori himpunan dan penulisan
+pembuktian; bagian ini seharusnya menjadi penyegaran singkat.
+
+\subsection{Himpunan}
+
+\begin{defn}
+Suatu \emph{\myindex{himpunan}} adalah kumpulan objek yang disebut
+\emph{elemen}\index{elemen} atau \emph{anggota}\index{anggota}.  Himpunan tanpa
+objek disebut \emph{\myindex{himpunan kosong}} dan dilambangkan dengan
+$\emptyset$\glsadd{not:emptyset} (atau kadang-kadang dengan $\{ \}$).
+\end{defn}
+
+Bayangkan himpunan sebagai sebuah klub dengan keanggotaan tertentu.  Sebagai
+contoh, para mahasiswa yang bermain catur adalah anggota klub catur.
+Mahasiswa yang sama dapat menjadi anggota banyak klub yang berbeda.
+Akan tetapi,
+jangan membawa analogi ini terlalu jauh.  Sebuah himpunan hanya ditentukan oleh
+anggota-anggota yang membentuknya; dua himpunan dengan anggota yang sama adalah
+himpunan yang sama.
+
+Sebagian besar waktu, kita akan meninjau himpunan
+bilangan.  Sebagai contoh, himpunan
+\glsadd{not:set}
+\begin{equation*}
+S \coloneqq \{ 0, 1, 2 \}
+\end{equation*}
+adalah himpunan yang memuat
+ketiga elemen 0, 1, dan 2.
+Dengan \myquote{$\coloneqq$},\glsadd{not:def} yang kita maksud adalah bahwa kita
+sedang mendefinisikan $S$, bukan sekadar menunjukkan kesamaan.
+Kita menulis\glsadd{not:eltof}
+\begin{equation*}
+1 \in S
+\end{equation*}
+untuk menyatakan bahwa bilangan 1 termasuk dalam himpunan $S$.  Dengan kata
+lain, 1 adalah anggota $S$.
+Kadang-kadang kita ingin mengatakan bahwa dua elemen berada dalam suatu
+himpunan $S$, sehingga kita menulis \myquote{$1,2 \in S$} sebagai bentuk singkat
+dari \myquote{$1 \in S$ dan $2 \in S$.}
+
+Demikian pula, kita menulis\glsadd{not:noteltof}
+\begin{equation*}
+7 \notin S
+\end{equation*}
+untuk menyatakan bahwa bilangan 7 tidak berada dalam $S$.  Dengan kata lain, 7
+bukan anggota $S$.
+
+Elemen-elemen dari semua himpunan yang sedang dibahas berasal dari suatu
+himpunan yang kita sebut \emph{\myindex{semesta}}.  Untuk menyederhanakan,
+kita sering menganggap semesta sebagai himpunan yang hanya memuat elemen-elemen
+yang kita minati.
+Semesta umumnya dipahami dari konteks
+dan tidak disebutkan secara eksplisit.  Dalam mata kuliah ini, semesta kita
+sering kali adalah himpunan bilangan real.
+
+Walaupun elemen suatu himpunan sering berupa bilangan,
+objek lain, seperti himpunan lain, juga dapat menjadi elemen suatu himpunan.
+Suatu himpunan juga dapat memuat beberapa elemen yang sama dengan himpunan
+lain.  Sebagai contoh,
+\begin{equation*}
+T \coloneqq \{ 0, 2 \}
+\end{equation*}
+memuat bilangan 0 dan 2.  Dalam hal ini, semua elemen $T$ juga
+termasuk dalam $S$.  Kita menulis $T \subset S$.\glsadd{not:subset}
+Lihat \figureref{fig:sets} untuk diagramnya.
+%More formally we make the
+%following definition.
+
+\begin{myfigureht}
+\myincludepdft{sets}{%
+Diagram himpunan contoh S dan T.  Himpunan S memuat 0, 1, dan 2,
+sedangkan himpunan T memuat 0 dan 2.  Terdapat elemen 7 yang tidak
+termasuk dalam kedua himpunan tersebut.}
+\caption{Diagram himpunan contoh $S$ dan himpunan bagiannya $T$.\label{fig:sets}}
+\end{myfigureht}
+
+\begin{defn}
+%FIXMEevillayouthack
+\pagebreak[2]
+\leavevmode
+\begin{enumerate}[(i)]
+\item
+Suatu himpunan $A$ adalah \emph{\myindex{himpunan bagian}}
+dari himpunan $B$ jika $x \in A$ mengakibatkan $x \in B$, dan kita menulis
+$A \subset B$.
+Dengan kata lain, semua anggota $A$ juga merupakan anggota $B$.  Kadang-kadang
+kita menulis $B \supset A$ untuk menyatakan hal yang sama.
+\item
+Dua himpunan $A$ dan $B$ \emph{\myindex{sama}}\glsadd{not:equal} jika
+$A \subset B$ dan $B \subset A$.  Kita menulis $A = B$.
+Dengan kata lain, $A$ dan $B$ memuat tepat elemen-elemen yang sama.
+Jika $A$ dan $B$ tidak sama, maka
+kita menulis $A \neq B$.
+\item
+Suatu himpunan $A$ adalah \emph{\myindex{himpunan bagian sejati}} dari $B$ jika
+$A \subset B$ dan $A \neq B$.  Kita menulis
+$A \subsetneq B$.\glsadd{not:subsetneq}
+\end{enumerate}
+\end{defn}
+
+Untuk contoh $S$ dan $T$ yang didefinisikan di atas, $T \subset S$, tetapi
+$T \neq S$.  Jadi, $T$ adalah himpunan bagian sejati dari $S$.
+Jika $A = B$, maka $A$ dan $B$ hanyalah dua nama untuk
+himpunan yang persis sama.
+
+Untuk mendefinisikan himpunan baru, kita sering menggunakan
+\emph{\myindex{notasi pembentuk himpunan}},\glsadd{not:setbuilder}
+\begin{equation*}
+\bigl\{ x \in A : P(x) \bigr\} .
+\end{equation*}
+Notasi ini merujuk pada himpunan bagian dari $A$ yang memuat semua elemen
+$A$ yang memenuhi sifat $P(x)$.
+Dengan menggunakan $S = \{ 0, 1, 2 \}$ seperti di atas,
+$\{ x \in S : x \neq 2 \}$ adalah himpunan $\{ 0, 1 \}$.
+Notasi tersebut kadang-kadang
+disingkat menjadi $\bigl\{ x : P(x) \bigr\}$; artinya, $A$ tidak disebutkan
+jika sudah dipahami dari konteks.
+Selain itu, $x \in A$ kadang-kadang diganti dengan sebuah rumus agar notasi
+lebih mudah dibaca.
+
+\begin{example}
+Berikut adalah beberapa himpunan beserta notasi bakunya.
+\begin{enumerate}[(i)]
+\item Himpunan \emph{\myindex{bilangan asli}},
+\glsadd{not:natnums}
+$\N \coloneqq \{ 1, 2, 3, \ldots
+\}$.
+\item Himpunan \emph{\myindex{bilangan bulat}},
+\glsadd{not:ints} 
+$\Z \coloneqq \{ 0, -1, 1, -2, 2, \ldots
+\}$.
+\item Himpunan \emph{\myindex{bilangan rasional}},
+\glsadd{not:rationals} 
+$\Q \coloneqq \bigl\{ \frac{m}{n} :  m, n \in \Z \text{ dan } n \neq 0 \bigr\}$.
+\item Himpunan bilangan asli genap, $\{  2m : m \in \N \}$.
+\item Himpunan bilangan real,
+\glsadd{not:reals} 
+$\R$.
+\end{enumerate}
+
+Perhatikan bahwa $\N \subset \Z \subset \Q \subset \R$.
+\end{example}
+
+Kita membentuk himpunan baru dari himpunan lama dengan menerapkan beberapa
+operasi alami.
+
+\begin{defn}
+\pagebreak[2]
+\leavevmode
+\begin{enumerate}[(i)]
+\item
+Suatu \emph{\myindex{gabungan}} dari dua himpunan $A$ dan $B$ didefinisikan
+sebagai
+\glsadd{not:union}
+\begin{equation*}
+A \cup B \coloneqq \{ x : x \in A \text{ atau } x \in B \} .
+\end{equation*}
+\item
+Suatu \emph{\myindex{irisan}} dari dua himpunan $A$ dan $B$ didefinisikan
+sebagai
+\glsadd{not:intersection}
+\begin{equation*}
+A \cap B \coloneqq \{ x : x \in A \text{ dan } x \in B \} .
+\end{equation*}
+\item
+\emph{Komplemen $B$ relatif terhadap $A$\index{komplemen relatif terhadap}}
+(atau \emph{\myindex{selisih himpunan}} dari $A$ dan $B$) didefinisikan sebagai
+\glsadd{not:setminus}
+\begin{equation*}
+A \setminus B \coloneqq \{ x : x \in A \text{ dan } x \notin B \} .
+\end{equation*}
+\item
+Kita menyebutnya
+\emph{\myindex{komplemen}} dari $B$ dan menulis $B^c$
+\glsadd{not:complement} sebagai ganti $A \setminus B$ jika
+himpunan $A$ adalah seluruh semesta atau merupakan himpunan yang sudah jelas
+memuat $B$ dan dipahami dari konteks.
+\item
+Kita mengatakan bahwa himpunan $A$ dan $B$ \emph{\myindex{saling lepas}} jika
+$A \cap B = \emptyset$.
+\end{enumerate}
+\end{defn}
+
+Pada tahap ini, notasi $B^c$ mungkin sedikit ambigu.  Jika
+himpunan $B$ adalah himpunan bagian dari bilangan real $\R$, maka $B^c$
+berarti $\R \setminus B$.  Jika $B$ secara alami merupakan himpunan bagian dari
+bilangan asli, maka $B^c$ adalah $\N \setminus B$.
+Jika ada kemungkinan timbul ambiguitas, kita menggunakan notasi selisih himpunan
+$A \setminus B$.
+
+\begin{myfigureht}
+\myincludepdft{figsetop}{%
+Diagram Venn untuk operasi himpunan: Pertama, diagram gabungan A dan B
+dengan bagian dalam A atau B diarsir.
+Kemudian diagram irisan A dan B, dengan hanya irisan
+A dan B yang diarsir.  Berikutnya diagram A dikurangi B, dengan
+semua bagian dalam A tetapi tidak dalam B diarsir.  Terakhir, diagram
+komplemen B, dengan semua bagian yang tidak dalam B diarsir.}
+\caption{Diagram Venn untuk operasi himpunan; hasil operasinya
+diarsir.\label{figsetop}}
+\end{myfigureht}
+Kita menggambarkan operasi-operasi tersebut pada
+\emph{diagram Venn}\index{diagram Venn} dalam \figureref{figsetop}.
+Sekarang mari kita buktikan salah satu teorema paling dasar tentang himpunan
+dan logika.
+
+\begin{thm}[DeMorgan]\index{teorema De Morgan}
+Misalkan $A, B, C$ adalah himpunan.  Maka
+\begin{equation*}
+{(B \cup C)}^c = B^c \cap C^c , \qquad
+{(B \cap C)}^c = B^c \cup C^c ,
+\end{equation*}
+atau, secara lebih umum,
+\begin{equation*}
+A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C) , 
+\qquad
+A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C) .
+\end{equation*}
+\end{thm}
+
+\begin{proof}
+Pernyataan pertama mengikuti dari pernyataan kedua jika kita
+menganggap himpunan $A$ sebagai \myquote{semesta} kita.
+
+Mari kita buktikan
+$A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)$.
+Ingat definisi kesamaan himpunan.  Pertama, kita harus menunjukkan bahwa
+jika $x \in A \setminus (B \cup C)$, maka
+$x \in (A \setminus B) \cap (A \setminus C)$.  Kedua, kita juga harus
+menunjukkan bahwa jika $x \in (A \setminus B) \cap (A \setminus C)$, maka
+$x \in A \setminus (B \cup C)$.
+Jadi, andaikan $x \in A \setminus (B \cup C)$.  Maka $x$ berada dalam
+$A$, tetapi tidak dalam $B$ maupun $C$.  Karena itu, $x$ berada dalam $A$ dan
+tidak dalam $B$, yaitu $x \in A \setminus B$.  Demikian pula,
+$x \in A \setminus C$.  Jadi,
+$x \in (A \setminus B) \cap (A \setminus C)$.
+Sebaliknya, andaikan
+$x \in (A \setminus B) \cap (A \setminus C)$.  Secara khusus,
+$x \in (A \setminus B)$, sehingga
+$x \in A$ dan $x \notin B$.  Selain itu, karena
+$x \in (A \setminus C)$, maka $x \notin C$.
+Oleh karena itu, $x \in A \setminus (B \cup C)$.
+
+Pembuktian kesamaan yang lain diserahkan sebagai latihan.
+\end{proof}
+
+Kita menyebut hasil di atas sebagai suatu \emph{Teorema}, sedangkan sebagian besar
+hasil kita sebut \emph{Proposisi}, dan beberapa hasil lain kita sebut
+\emph{Lema} (hasil yang mengarah ke hasil lain) atau
+\emph{Akibat} (konsekuensi langsung dari hasil sebelumnya).
+Jangan menafsirkan terlalu jauh
+penamaan tersebut.  Sebagian merupakan tradisi, dan sebagian lagi merupakan
+pilihan gaya.
+Tidak selalu benar bahwa sebuah \emph{Teorema}
+\myquote{lebih penting} daripada sebuah
+\emph{Proposisi} atau \emph{Lema}.
+
+\medskip
+
+Kita juga perlu mengambil irisan atau gabungan beberapa himpunan sekaligus.
+Jika jumlahnya hanya berhingga, kita cukup menerapkan operasi gabungan atau
+irisan beberapa kali.  Namun, andaikan kita memiliki suatu koleksi tak hingga
+berupa himpunan-himpunan (suatu himpunan yang elemen-elemennya adalah himpunan)
+$\{ A_1, A_2, A_3, \ldots \}$.  Kita mendefinisikan
+\glsadd{not:infunion}
+\glsadd{not:infintersection}
+\begin{align*}
+& \bigcup_{n=1}^\infty A_n \coloneqq \{ x : x \in A_n \text{ untuk suatu } n \in \N
+\} , \\
+& \bigcap_{n=1}^\infty A_n \coloneqq \{ x : x \in A_n \text{ untuk semua } n \in \N
+\} .
+\end{align*}
+
+Kita juga dapat memiliki himpunan yang diindeks oleh dua bilangan asli.
+Sebagai contoh, kita dapat memiliki himpunan yang elemen-elemennya adalah
+himpunan,
+$\{ A_{1,1}, A_{1,2}, A_{2,1}, A_{1,3}, A_{2,2}, A_{3,1}, \ldots \}$.  Maka
+kita menulis
+\begin{equation*}
+\bigcup_{n=1}^\infty \bigcup_{m=1}^\infty A_{n,m}
+=
+\bigcup_{n=1}^\infty \left( \bigcup_{m=1}^\infty A_{n,m} \right) .
+\end{equation*}
+Dan demikian pula untuk irisan.
+
+Tidak sulit untuk melihat bahwa kita dapat mengambil gabungan dalam urutan apa
+pun.  Namun, menukar urutan gabungan dan irisan secara umum tidak diperbolehkan
+tanpa pembuktian.  Sebagai contoh,
+\begin{equation*}
+\bigcup_{n=1}^\infty
+\bigcap_{m=1}^\infty
+\{ k \in \N : mk < n \}
+=
+\bigcup_{n=1}^\infty \emptyset = \emptyset .
+\end{equation*}
+Namun,
+\begin{equation*}
+\bigcap_{m=1}^\infty
+\bigcup_{n=1}^\infty
+\{ k \in \N : mk < n \}
+=
+\bigcap_{m=1}^\infty
+\N
+=
+\N.
+\end{equation*}
+
+Kadang-kadang, himpunan indeks bukanlah himpunan bilangan asli.  Dalam hal ini,
+kita memerlukan notasi yang lebih umum.  Andaikan $I$ adalah suatu himpunan dan
+untuk setiap $\lambda \in I$, terdapat suatu himpunan $A_\lambda$.  Maka kita
+mendefinisikan
+\glsadd{not:arbitunion}
+\glsadd{not:arbitintersection}
+\begin{equation*}
+\bigcup_{\lambda \in I} A_\lambda \coloneqq \{ x : x \in A_\lambda \text{ untuk suatu }
+\lambda \in I
+\} ,
+\qquad
+\bigcap_{\lambda \in I} A_\lambda \coloneqq \{ x : x \in A_\lambda \text{ untuk semua }
+\lambda \in I
+\} .
+\end{equation*}
+
+\subsection{Induksi}
+
+Ketika suatu pernyataan memuat sembarang bilangan asli,
+metode pembuktian yang umum adalah prinsip induksi.
+Kita mulai dengan himpunan bilangan asli $\N = \{ 1,2,3,\ldots \}$, lalu kita
+memberinya urutan alami,
+yaitu $1 < 2 < 3 < 4 < \cdots$.
+Dengan mengatakan bahwa $S \subset \N$ memiliki
+\emph{\myindex{elemen terkecil}}, yang kita maksud adalah terdapat suatu
+$x \in S$ sedemikian sehingga untuk setiap
+$y \in S$, berlaku $x \leq y$.
+
+Himpunan bilangan asli $\N$, dengan urutan alaminya,
+memiliki \emph{\myindex{sifat urutan baik}}.
+Kita menerima sifat ini
+sebagai suatu \myindex{aksioma}; kita cukup menganggapnya benar.
+
+%mbxSTARTIGNORE
+\theoremstyle{plain}
+\newtheorem*{wellordprop}{Sifat urutan baik pada $\N$}
+\hypertarget{wop:link}{}%
+\begin{wellordprop}
+Setiap himpunan bagian tak kosong dari $\N$ memiliki elemen terkecil (minimum).
+\end{wellordprop}
+%mbxENDIGNORE
+%mbx <axiom xml:id="wop_link" number="">
+%mbx   <title>Sifat urutan baik pada <m>\N</m></title>
+%mbx   <statement><p>
+%mbx   Setiap himpunan bagian tak kosong dari <m>\N</m> memiliki elemen terkecil (minimum)
+%mbx   </p></statement>
+%mbx </axiom>
+
+\emph{Prinsip \myindex{induksi}}\index{prinsip induksi} adalah
+teorema berikut, yang dalam arti tertentu\footnote{Agar benar-benar
+ketat, kesetaraan ini hanya berlaku jika kita
+juga mengasumsikan sebagai aksioma bahwa $n-1$ ada untuk semua bilangan asli
+yang lebih besar dari $1$; asumsi ini kita ambil.  Dalam buku ini, kita
+mengasumsikan bahwa seluruh aritmetika yang lazim berlaku.}
+setara dengan sifat urutan baik bilangan asli.
+
+\begin{thm}[Prinsip induksi] \label{induction:thm}
+Misalkan $P(n)$ adalah suatu pernyataan yang bergantung pada bilangan
+asli~$n$.  Andaikan bahwa
+\begin{enumerate}[(i)]
+\item \emph{(\myindex{pernyataan dasar})} $P(1)$ benar.
+\item \emph{(\myindex{langkah induksi})} Jika $P(n)$ benar, maka $P(n+1)$ benar.
+\end{enumerate}
+Maka $P(n)$ benar untuk semua $n \in \N$.
+\end{thm}
+
+\begin{proof}
+Misalkan $S$ adalah himpunan bilangan asli $n$ yang membuat $P(n)$
+tidak benar.  Andaikan, untuk memperoleh kontradiksi, bahwa
+$S$ tak kosong.  Menurut sifat urutan baik, $S$ memiliki elemen terkecil.
+Sebut $m \in S$ sebagai elemen terkecil $S$.  Berdasarkan hipotesis, kita tahu
+bahwa $1 \notin S$.  Jadi, $m > 1$, dan $m-1$ juga merupakan bilangan asli.
+Karena $m$ adalah elemen terkecil $S$, kita tahu bahwa $P(m-1)$ benar.
+Namun, langkah induksi menyatakan bahwa $P(m-1+1) = P(m)$ benar,
+bertentangan dengan pernyataan bahwa $m \in S$.  Oleh karena itu, $S$ kosong
+dan $P(n)$ benar untuk semua $n \in \N$.
+\end{proof}
+
+Asumsi bahwa
+$P(n)$ benar dalam \myquote{jika $P(n)$ benar,
+maka $P(n+1)$ benar}
+biasanya disebut \emph{\myindex{hipotesis induksi}}.
+Kadang-kadang lebih mudah untuk memulai induksi
+pada bilangan selain 1;
+yang berubah hanyalah pelabelannya.
+Sebagai contoh,
+jika kita mulai dari $n=0$, maka $P(0)$ adalah pernyataan dasar,
+dan langkah induksi harus dibuktikan untuk semua
+$n \in \N \cup \{ 0 \}$.
+Kesimpulannya adalah bahwa $P(n)$ benar untuk semua
+$n \in \N \cup \{ 0 \}$.
+
+\begin{example}
+Mari kita buktikan bahwa untuk semua $n \in \N$,
+\begin{equation*}
+2^{n-1} \leq n! \qquad \text{(ingat bahwa } n! = 1 \cdot 2 \cdot 3 \cdots n\text{)}.
+\end{equation*}
+Misalkan $P(n)$ adalah pernyataan bahwa
+$2^{n-1} \leq n!$ benar.
+Substitusikan $n=1$ untuk melihat bahwa $P(1)$ benar.
+
+Andaikan $P(n)$ benar.  Artinya, andaikan
+$2^{n-1} \leq n!$ berlaku.  Kalikan kedua ruas dengan 2 untuk memperoleh
+\begin{equation*}
+2^n \leq 2(n!) .
+\end{equation*}
+Karena $2 \leq (n+1)$ ketika $n \in \N$, kita memperoleh
+$2(n!) \leq (n+1)(n!) = (n+1)!$.  Dengan kata lain,
+\begin{equation*}
+2^n \leq 2(n!) \leq  (n+1)!,
+\end{equation*}
+sehingga $P(n+1)$ benar.  Berdasarkan prinsip induksi,
+$P(n)$ benar untuk semua $n \in \N$.  Dengan kata lain,
+$2^{n-1} \leq n!$ benar untuk semua $n \in \N$.
+\end{example}
+
+\begin{example} \label{example:geometricsum}
+Kita menyatakan bahwa untuk semua $c \neq 1$
+dan semua $n \in \N \cup \{ 0 \}$,
+\begin{equation*}
+1 + c + c^2 + \cdots + c^n = \frac{1-c^{n+1}}{1-c} .
+\end{equation*}
+
+Pembuktian: Tetapkan suatu $c \neq 1$.
+Mudah diperiksa bahwa persamaan tersebut berlaku untuk $n=0$.
+Andaikan persamaan itu berlaku untuk suatu $n$ (mungkin termasuk $n=0$).
+Maka
+\begin{equation*}
+\begin{split}
+1 + c + c^2 + \cdots + c^n + c^{n+1} & =
+( 1 + c + c^2 + \cdots + c^n ) + c^{n+1} \\
+& = \frac{1-c^{n+1}}{1-c}  + c^{n+1} \\
+& = \frac{1-c^{n+1}  + (1-c)c^{n+1}}{1-c} \\
+& = \frac{1-c^{n+2}}{1-c} .
+\end{split}
+\end{equation*}
+Berdasarkan prinsip induksi, persamaan tersebut berlaku untuk semua
+$n \in \N \cup \{ 0 \}$.
+\end{example}
+
+Kadang-kadang, dalam langkah induksi lebih mudah menggunakan fakta
+bahwa $P(k)$ benar untuk semua $k = 1,2,\ldots,n$, bukan hanya untuk $k=n$.
+Prinsip ini disebut \emph{\myindex{induksi kuat}} dan setara
+dengan induksi biasa di atas.  Pembuktian kesetaraan tersebut
+diserahkan sebagai latihan.
+
+\begin{thm}[Prinsip induksi kuat]
+\index{prinsip induksi kuat}\index{induksi kuat}
+Misalkan $P(n)$ adalah suatu pernyataan yang bergantung pada bilangan asli
+$n$.  Andaikan bahwa
+\begin{enumerate}[(i)]
+\item \emph{(\myindex{pernyataan dasar})} $P(1)$ benar.
+\item \emph{(\myindex{langkah induksi})} Jika $P(k)$ benar untuk semua
+$k = 1,2,\ldots,n$, maka $P(n+1)$ benar.
+\end{enumerate}
+Maka $P(n)$ benar untuk semua $n \in \N$.
+\end{thm}
+
+\subsection{Fungsi}
+
+Secara informal,
+suatu \emph{\myindex{fungsi dalam teori himpunan}}\index{fungsi}
+$f$ yang membawa suatu himpunan $A$ ke suatu himpunan $B$
+adalah pemetaan yang memasangkan setiap $x \in A$ dengan tepat satu $y \in B$.  Kita tulis
+$f \colon A \to B$.\glsadd{not:func}
+Suatu fungsi $f
+\colon A \to B$ dapat dipandang sebagai
+kotak hitam tempat kita memasukkan suatu elemen $A$,
+lalu fungsi tersebut
+mengeluarkan suatu elemen $B$.
+Kadang-kadang $f$ disebut suatu \emph{\myindex{pemetaan}} atau
+\emph{\myindex{peta}},
+dan kita mengatakan bahwa $f$ \emph{memetakan $A$ ke $B$}.
+
+Sebagai contoh, fungsi
+$f \colon S \to T$ dari $S \coloneqq \{ 0, 1, 2 \}$ ke $T \coloneqq \{ 0, 2 \}$
+dapat didefinisikan
+dengan menetapkan $f(0) \coloneqq 2$, $f(1) \coloneqq 2$, dan $f(2) \coloneqq 0$.
+%
+Fungsi sering didefinisikan dengan suatu
+rumus; tetapi, sebaiknya Anda memandang fungsi hanya sebagai tabel nilai yang sangat
+besar.
+Persoalan yang perlu diperhatikan di sini ialah bahwa satu fungsi dapat memiliki beberapa
+rumus yang semuanya memberikan fungsi yang sama.
+Banyak fungsi tidak memiliki
+rumus yang menyatakan nilai-nilainya.
+Untuk mendefinisikan pengertian fungsi secara ketat,
+pertama-tama kita harus mendefinisikan produk Kartesius.
+
+\begin{defn}
+Misalkan $A$ dan $B$ adalah himpunan.  \emph{\myindex{Produk Kartesius}}
+adalah himpunan tupel yang didefinisikan sebagai
+\glsadd{not:cartprod}
+\begin{equation*}
+A \times B \coloneqq
+\bigl\{ (x,y) : x \in A, y \in B \bigr\} .
+\end{equation*}
+\end{defn}
+
+Sebagai contoh, $\{ a,b \} \times \{ c , d\} =
+\bigl\{
+(a,c), (a,d), (b,c), (b,d)
+\bigr\}$.
+Contoh yang lebih rumit adalah himpunan $[0,1] \times [0,1]$: suatu himpunan bagian
+bidang yang dibatasi oleh persegi dengan titik sudut $(0,0)$, $(0,1)$, $(1,0)$, dan $(1,1)$.
+Ketika $A$ dan $B$ adalah himpunan yang sama, kita sering menggunakan pangkat 2 untuk menyatakan
+produk semacam itu.  Sebagai contoh, $[0,1]^2 = 
+[0,1] \times [0,1]$ atau $\R^2 = \R \times \R$ (bidang Kartesius).
+
+\begin{defn}
+Suatu \emph{fungsi} $f \colon A \to B$ adalah himpunan bagian $f$ dari $A \times B$
+sedemikian sehingga untuk setiap $x \in A$, terdapat tepat satu $y \in B$ yang memenuhi $(x,y) \in f$.
+Kita tulis $f(x) = y$.
+Jika kita memandang $f$ semata-mata sebagai himpunan bagian dari $A \times B$,
+maka himpunan ini kita sebut
+\emph{\myindex{grafik}} fungsi tersebut.
+
+Himpunan $A$ disebut \emph{\myindex{domain}} dari $f$ (dan
+terkadang, secara membingungkan, dinotasikan dengan $D(f)$).  Himpunan
+\begin{equation*}
+R(f) \coloneqq \{ y \in B : \text{terdapat suatu } x \in A \text{ sedemikian sehingga }
+f(x)=y \}
+\end{equation*}
+disebut \emph{\myindex{daerah hasil}} dari $f$.
+Himpunan $B$ disebut \emph{\myindex{kodomain}} dari $f$.
+\end{defn}
+
+Daerah hasil $R(f)$ mungkin merupakan himpunan bagian sejati dari kodomain $B$,
+sedangkan domain $f$ selalu sama dengan $A$.  Pada umumnya, kita
+mengasumsikan bahwa domain $f$ tak kosong.
+
+\begin{example}
+Dari kalkulus, fungsi yang paling akrab bagi Anda adalah fungsi dari bilangan real ke
+bilangan real.  Namun, Anda juga telah menjumpai beberapa jenis fungsi lainnya.
+Turunan merupakan fungsi yang memetakan himpunan
+fungsi yang dapat didiferensialkan ke himpunan semua fungsi.
+Contoh lain adalah transformasi Laplace, yang juga
+memetakan fungsi ke fungsi.  Contoh lainnya lagi adalah fungsi yang menerima
+suatu fungsi kontinu $g$ yang didefinisikan pada interval $[0,1]$ dan menghasilkan
+bilangan $\int_0^1 g(x) \,dx$.
+\end{example}
+
+\begin{defn}
+Perhatikan suatu fungsi $f \colon A \to B$.  Definisikan
+\emph{\myindex{citra}} (atau \emph{\myindex{citra langsung}}) dari suatu himpunan bagian
+$C \subset A$ sebagai
+\glsadd{not:dirimage}
+\begin{equation*}
+f(C) \coloneqq \bigl\{ f(x) \in B : x \in C \bigr\} .
+\end{equation*}
+Definisikan \emph{\myindex{prapeta}} dari suatu himpunan bagian $D
+\subset B$ sebagai
+\glsadd{not:invimage}
+\begin{equation*}
+f^{-1}(D) \coloneqq \bigl\{ x \in A : f(x) \in D \bigr\} .
+\end{equation*}
+\end{defn}
+
+Khususnya, $R(f) = f(A)$; daerah hasil adalah citra langsung dari
+domain $A$.
+
+\begin{myfigureht}
+\myincludepdft{funcimags_full}{%
+Dua himpunan titik masing-masing diberi label 1, 2, 3, 4 dan a, b, c, d.
+Terdapat panah dari 1 ke b, dari 2 ke d, dari 3 ke c,
+dan dari 4 ke b.  Di sebelah kanan terdapat daftar contoh citra:
+f yang diterapkan pada himpunan yang memuat 1,2,3,4 menghasilkan himpunan yang memuat b, c, d.
+f yang diterapkan pada himpunan yang memuat 1,2,4 menghasilkan himpunan yang memuat b, d.
+f yang diterapkan pada himpunan yang memuat 1 menghasilkan himpunan yang memuat b.
+Prapeta himpunan yang memuat a,b,c di bawah f adalah himpunan yang memuat 1,3,4.
+Prapeta himpunan yang memuat a di bawah f adalah himpunan kosong.
+Prapeta himpunan yang memuat b di bawah f adalah himpunan yang memuat 1,4.}
+\caption{Contoh citra langsung dan prapeta untuk fungsi
+$f \colon \{ 1,2,3,4 \} \to \{ a,b,c,d \}$ yang didefinisikan oleh
+$f(1) \coloneqq b$,
+$f(2) \coloneqq d$,
+$f(3) \coloneqq c$,
+$f(4) \coloneqq b$.\label{figfuncimags}}
+\end{myfigureht}
+
+\begin{example}
+Definisikan fungsi $f \colon \R \to \R$ dengan
+$f(x) \coloneqq \sin(\pi x)$.  Maka $f\bigl([0,\nicefrac{1}{2}]\bigr) = [0,1]$, 
+$f^{-1}\bigl(\{0\}\bigr) = \Z$, dan seterusnya.
+\end{example}
+
+\begin{prop} \label{st:propinv}
+Perhatikan $f \colon A \to B$.  Misalkan $C, D$ adalah himpunan bagian dari $B$.  Maka
+\begin{align*}
+& f^{-1}( C \cup D) = f^{-1} (C) \cup f^{-1} (D) , \\
+& f^{-1}( C \cap D) = f^{-1} (C) \cap f^{-1} (D) , \\
+& f^{-1}( C^c) = {\bigl( f^{-1} (C) \bigr)}^c .
+\end{align*}
+\end{prop}
+
+Bacalah baris terakhir proposisi tersebut sebagai
+$f^{-1}( B \setminus C) = A \setminus f^{-1} (C)$.
+
+\begin{proof}
+Kita mulai dengan gabungan.  Jika $x \in 
+f^{-1}( C \cup D)$, maka
+$x$ dipetakan ke $C$ atau $D$, yaitu, $f(x) \in C$ atau $f(x) \in D$.  Jadi,
+$f^{-1}( C \cup D) \subset f^{-1} (C) \cup f^{-1} (D)$.  Sebaliknya,
+jika $x \in f^{-1}(C)$, maka $x \in f^{-1}(C \cup D)$.  Hal yang sama berlaku untuk
+$x \in f^{-1}(D)$.  Oleh karena itu,
+$f^{-1}( C \cup D) \supset f^{-1} (C) \cup f^{-1} (D)$, sehingga kita memperoleh
+kesamaan.
+
+Sisa pembuktian diserahkan sebagai latihan.
+\end{proof}
+
+Untuk citra langsung, pernyataan terbaik yang dapat kita peroleh adalah
+pernyataan lebih lemah berikut ini.
+
+\begin{prop} \label{st:propfor}
+Perhatikan $f \colon A \to B$.  Misalkan $C, D$ adalah himpunan bagian dari $A$.  Maka
+\begin{align*}
+& f( C \cup D) = f (C) \cup f (D) , \\
+& f( C \cap D) \subset f (C) \cap f (D) .
+\end{align*}
+\end{prop}
+
+Pembuktiannya diserahkan sebagai latihan.
+
+\begin{defn}
+Misalkan $f \colon A \to B$ adalah suatu fungsi.
+Fungsi $f$ dikatakan
+\emph{\myindex{injektif}} atau
+\emph{\myindex{satu-ke-satu}} jika $f(x_1) = f(x_2)$ mengakibatkan $x_1 = x_2$.  Dengan
+kata lain,
+$f$ injektif jika
+untuk setiap $y \in B$, himpunan
+$f^{-1}(\{y\})$ kosong atau terdiri atas satu elemen saja.
+Fungsi $f$ semacam itu kita sebut suatu \emph{\myindex{injeksi}}.
+
+Jika $f(A) = B$, maka kita mengatakan bahwa $f$
+\emph{\myindex{surjektif}} atau
+\emph{\myindex{memetakan pada}}.
+Dengan kata lain, $f$ surjektif jika daerah hasil dan kodomain $f$ sama.
+Fungsi $f$ semacam itu kita sebut suatu \emph{\myindex{surjeksi}}.
+
+Jika $f$ sekaligus surjektif dan injektif, maka
+kita mengatakan bahwa $f$ \emph{\myindex{bijektif}} atau bahwa $f$ adalah suatu
+\emph{\myindex{bijeksi}}.
+\end{defn}
+
+Ketika $f \colon A \to B$ adalah suatu bijeksi, prapeta dari himpunan satu
+elemen, $f^{-1}(\{y\})$, selalu merupakan himpunan beranggota tunggal yang memuat
+tepat satu elemen $A$.  Selanjutnya, elemen unik ini menentukan $f^{-1}$ sebagai fungsi
+\glsadd{not:invfunction}
+$f^{-1} \colon B \to A$ dan cukup menulis $f^{-1}(y)$.
+Dalam hal ini, kita menyebut $f^{-1}$ sebagai \emph{\myindex{fungsi invers}} dari $f$.
+Sebagai contoh, untuk bijeksi $f \colon \R \to \R$ yang didefinisikan oleh
+$f(x) \coloneqq x^3$, kita memperoleh
+$f^{-1}(x) = \sqrt[3]{x}$.
+
+%A final piece of notation for functions that
+%we need is the \emph{\myindex{composition of functions}}.
+
+\begin{defn}
+Perhatikan $f \colon A \to B$ dan $g \colon B \to C$.  \emph{Komposisi}\index{komposisi fungsi}
+dari fungsi $f$ dan $g$ adalah fungsi
+$g \circ f \colon A \to C$ yang didefinisikan sebagai
+\glsadd{not:composition}
+\begin{equation*}
+(g \circ f)(x) \coloneqq g\bigl(f(x)\bigr) .
+\end{equation*}
+\end{defn}
+
+Sebagai contoh, jika $f \colon \R \to \R$ adalah $f(x)\coloneqq x^3$ dan $g \colon \R \to \R$
+adalah $g(y) = \sin(y)$, maka $(g \circ f)(x) = \sin(x^3)$.
+Sebagai latihan mudah, pembaca diminta menunjukkan
+bahwa komposisi dua pemetaan satu-ke-satu juga satu-ke-satu,
+dan komposisi dua pemetaan surjektif juga surjektif.
+Oleh karena itu, komposisi bijeksi adalah suatu bijeksi.
+
+\subsection{Relasi dan kelas ekuivalensi}
+
+Kita sering membandingkan dua objek dengan suatu cara.  Misalnya, kita
+mengatakan $1 < 2$ untuk bilangan asli,
+$\nicefrac{1}{2} = \nicefrac{2}{4}$ untuk bilangan rasional, atau
+$\{ a,c \} \subset \{ a,b,c \}$ untuk himpunan.  Simbol `$<$', `$=$', dan
+`$\subset$' merupakan contoh
+relasi.
+
+\begin{defn}
+Diberikan suatu himpunan $A$, sebuah \emph{\myindex{relasi biner}}\index{relasi}
+pada $A$ adalah himpunan bagian $\sR \subset A \times A$
+yang terdiri atas pasangan-pasangan yang memenuhi relasi tersebut.
+Sebagai ganti $(a,b) \in \sR$, kita tulis
+$a \, \sR \, b$.
+\end{defn}
+
+\begin{example}
+Ambil $A \coloneqq \{ 1,2,3 \}$.
+
+Tinjau relasi `$<$'.  Himpunan pasangan yang bersesuaian adalah
+$\bigl\{ (1,2), (1,3), (2,3) \bigr\}$.  Jadi, $1 < 2$ berlaku karena $(1,2)$
+termasuk dalam himpunan pasangan tersebut, tetapi $3 < 1$ tidak berlaku karena
+$(3,1)$ tidak termasuk dalam himpunan itu.
+
+Demikian pula, relasi `$=$'
+didefinisikan oleh himpunan pasangan $\bigl\{ (1,1), (2,2), (3,3) \big\}$.
+
+Setiap himpunan bagian dari $A \times A$ merupakan relasi.  Jika kita
+mendefinisikan relasi $\dagger$ melalui
+$\bigl\{ (1,2), (2,1), (2,3), (3,1) \bigr\}$, maka $1 \dagger 2$ dan
+$3 \dagger 1$ benar, tetapi $1 \dagger 3$ tidak benar.
+\end{example}
+
+\begin{defn}
+%FIXMEevillayouthack
+\pagebreak[2]
+Suatu relasi
+$\sR$ pada himpunan $A$ dikatakan
+\begin{enumerate}[(i)]
+\item
+\emph{Refleksif}\index{relasi refleksif} jika $a\, \sR \, a$ untuk
+setiap $a \in A$.
+\item
+\emph{Simetris}\index{relasi simetris} jika $a\, \sR \, b$ mengakibatkan
+$b \, \sR \, a$.
+\item
+\emph{Transitif}\index{relasi transitif} jika $a\, \sR \, b$ dan
+$b \, \sR \, c$ mengakibatkan $a\, \sR \, c$.
+\end{enumerate}
+Jika $\sR$ refleksif, simetris, dan transitif, maka relasi tersebut disebut
+\emph{\myindex{relasi ekuivalensi}}.
+\end{defn}
+
+\begin{example}
+Misalkan $A \coloneqq \{ 1,2,3 \}$.
+Relasi `$<$' bersifat transitif, tetapi tidak refleksif maupun simetris.  Relasi
+`$\leq$' yang didefinisikan oleh
+$\bigl\{ (1,1), (1,2), (1,3), (2,2), (2,3), (3,3) \bigr\}$
+bersifat refleksif dan transitif, tetapi tidak simetris.
+Terakhir, relasi `$\star$' yang didefinisikan oleh
+$\bigl\{ (1,1), (1,2), \allowbreak (2,1), \allowbreak (2,2), \allowbreak (3,3) \bigr\}$
+merupakan relasi ekuivalensi.
+\end{example}
+
+Relasi ekuivalensi berguna karena membagi suatu himpunan menjadi
+himpunan-himpunan yang berisi elemen-elemen \myquote{ekuivalen}.
+
+\begin{defn}
+Misalkan $A$ adalah suatu himpunan dan $\sR$ suatu relasi ekuivalensi.
+Suatu \emph{\myindex{kelas ekuivalensi}} dari $a \in A$, yang sering dilambangkan
+dengan $[a]$,\glsadd{not:equivclass} adalah himpunan $\{ x \in A : a\, \sR \, x \}$.
+\end{defn}
+
+Sebagai contoh, untuk relasi `$\star$' di atas, terdapat dua kelas ekuivalensi,
+yaitu $[1] = [2] = \{ 1,2 \}$ dan $[3] = \{ 3 \}$.
+
+Sifat refleksif menjamin bahwa $a \in [a]$.  Sifat simetris menjamin
+bahwa jika $b \in [a]$, maka $a \in [b]$.  Terakhir, sifat transitif menjamin
+bahwa jika $b \in [a]$ dan $c \in [b]$, maka $c \in [a]$.
+Secara khusus, kita memperoleh proposisi berikut, yang pembuktiannya menjadi
+latihan.
+
+\begin{prop} \label{prop:equivclasses}
+Jika $\sR$ merupakan relasi ekuivalensi pada suatu himpunan $A$,
+maka setiap $a \in A$ berada dalam tepat satu
+kelas ekuivalensi.  Selain itu, $a\, \sR \, b$ jika dan hanya jika $[a] = [b]$.
+\end{prop}
+
+\begin{example} \label{example:ratnums}
+Himpunan bilangan rasional dapat didefinisikan sebagai kelas-kelas ekuivalensi
+dari pasangan yang terdiri atas sebuah bilangan bulat dan sebuah bilangan asli,
+yaitu elemen-elemen dari $\Z \times \N$.  Relasinya didefinisikan oleh
+$(a,b) \sim (c,d)$ jika $ad = bc$.
+Pembuktian bahwa `$\sim$' merupakan relasi ekuivalensi diserahkan sebagai latihan.
+Kelas ekuivalensi $\bigl[(a,b)\bigr]$ biasanya ditulis sebagai $\nicefrac{a}{b}$.
+\end{example}
+
+\subsection{Kardinalitas}
+
+Salah satu persoalan yang halus tetapi mendasar dalam teori himpunan,
+dan yang menimbulkan cukup banyak kebingungan di kalangan mahasiswa pemula,
+adalah persoalan kardinalitas, atau \myquote{ukuran} himpunan.
+%The concept of cardinality is fundamental in modern mathematics in general and
+%in analysis in particular.
+Dalam bagian ini, kita akan menjumpai teorema pertama yang sungguh
+tak terduga.
+
+\begin{defn}
+Misalkan $A$ dan $B$ adalah himpunan.  Kita katakan bahwa $A$ dan $B$ memiliki
+\emph{\myindex{kardinalitas}} yang sama
+jika terdapat suatu bijeksi $f \colon A \to B$.  Dengan
+$\sabs{A}$ \glsadd{not:cardinality} kita lambangkan kelas ekuivalensi semua himpunan yang berkardinalitas sama dengan
+$A$, dan $\sabs{A}$ kita sebut saja kardinalitas $A$.
+\end{defn}
+
+Sebagai contoh, $\{ 1,2,3 \}$ memiliki kardinalitas yang sama dengan $\{ a,b,c \}$ jika
+kita mendefinisikan bijeksi $f(1) \coloneqq a$, $f(2) \coloneqq b$, $f(3) \coloneqq c$.
+Jelas bahwa bijeksi tersebut tidak tunggal.
+
+Keberadaan suatu bijeksi memang mendefinisikan relasi ekuivalensi.
+Fungsi identitas, $f(x) \coloneqq x$, adalah bijeksi yang menunjukkan sifat refleksif.
+Jika $f$ adalah bijeksi, maka $f^{-1}$ juga merupakan bijeksi, sehingga menunjukkan sifat simetris.
+Jika $f \colon A \to B$ dan $g \colon B \to C$ adalah bijeksi, maka
+$g \circ f$ merupakan bijeksi antara $A$ dan $C$, sehingga menunjukkan sifat transitif.
+Suatu himpunan $A$ memiliki kardinalitas yang sama dengan himpunan kosong jika dan hanya
+jika $A$ sendiri merupakan himpunan kosong: Jika $B$ tak kosong, maka
+tidak mungkin ada fungsi $f \colon B \to \emptyset$.
+Secara khusus, tidak ada bijeksi antara $B$ dan $\emptyset$.
+
+\begin{defn}
+Jika $A$ memiliki kardinalitas yang sama dengan $\{ 1,2,3,\ldots,n \}$
+untuk suatu $n \in \N$,
+kita tulis $\sabs{A} \coloneqq n$.  Jika $A$ kosong, kita tulis
+$\sabs{A} \coloneqq 0$.
+Dalam kedua kasus tersebut, kita katakan bahwa $A$
+\emph{\myindex{berhingga}}.
+Kita katakan bahwa $A$ \emph{\myindex{tak berhingga}} atau \myquote{berkardinalitas tak berhingga}
+jika $A$ bukan himpunan berhingga.
+\end{defn}
+
+Pembenaran notasi $\sabs{A} = n$ kita serahkan sebagai latihan.  Artinya,
+untuk setiap himpunan berhingga tak kosong $A$, terdapat tepat satu bilangan asli
+$n$ sedemikian sehingga terdapat bijeksi dari $A$ ke $\{ 1,2,3,\ldots,n \}$.
+
+Kita dapat mengurutkan himpunan menurut ukurannya (kardinalitasnya).
+
+\begin{defn} \label{def:comparecards}
+Kita tulis
+\begin{equation*}
+\sabs{A} \leq \sabs{B}
+\end{equation*}
+jika terdapat suatu injeksi dari $A$ ke $B$.  Kita tulis $\sabs{A} = \sabs{B}$
+jika $A$ dan $B$ memiliki kardinalitas yang sama.  Kita tulis $\sabs{A} < \sabs{B}$
+jika $\sabs{A} \leq \sabs{B}$, tetapi $A$ dan $B$ tidak memiliki kardinalitas yang sama.
+\end{defn}
+
+Tanpa pembuktian, kita nyatakan bahwa
+$A$ dan $B$ memiliki kardinalitas yang sama jika dan hanya jika
+$\sabs{A} \leq \sabs{B}$ dan
+$\sabs{B} \leq \sabs{A}$.  Hasil ini disebut teorema
+\myindex{Cantor--Bernstein--Schr\"oder}.
+Selain itu, jika $A$ dan $B$ adalah sembarang dua himpunan,
+kita selalu dapat menulis $\sabs{A} \leq \sabs{B}$ atau
+$\sabs{B} \leq \sabs{A}$.  Persoalan yang melingkupi
+pernyataan terakhir ini sangatlah halus.  Karena kita tidak memerlukan salah satu pun
+dari kedua pernyataan tersebut, pembuktiannya kita abaikan.
+
+Kasus kardinalitas yang benar-benar menarik adalah himpunan tak berhingga.
+Kita akan membedakan dua jenis kardinalitas tak berhingga.
+
+\begin{defn}
+Jika $\sabs{A} = \sabs{\N}$, kita katakan bahwa $A$
+\emph{\myindex{tak berhingga terhitung}}.
+Jika $A$ berhingga atau tak berhingga terhitung, kita katakan bahwa $A$
+\emph{\myindex{terhitung}}.
+Jika $A$ tidak terhitung, maka
+$A$ disebut \emph{\myindex{tak terhitung}}.
+\end{defn}
+
+Kardinalitas $\N$ biasanya dilambangkan dengan
+$\aleph_0$ (dibaca alef-nol)\footnote{Bagi penggemar acara televisi
+\emph{Futurama}, dalam salah satu episodenya terdapat sebuah bioskop
+yang disebut $\aleph_0$-plex.}.
+
+\begin{example}
+Himpunan bilangan asli genap memiliki kardinalitas yang sama dengan $\N$.  Bukti:
+Misalkan $E \subset \N$ adalah himpunan bilangan asli genap.
+Untuk $k \in E$, tulis $k=2n$ bagi suatu $n \in \N$.
+Maka $f(n) \coloneqq 2n$ mendefinisikan bijeksi $f \colon \N \to E$.
+\end{example}
+
+Sebagai tambahan, tanpa pembuktian kita sebutkan karakterisasi berikut
+bagi himpunan tak berhingga: \emph{Suatu himpunan tak berhingga jika dan hanya jika himpunan tersebut memiliki
+korespondensi satu-satu dengan suatu himpunan bagian sejati dari dirinya sendiri}.
+
+\begin{example}
+$\N \times \N$ adalah himpunan tak berhingga terhitung.  Bukti: Susun
+elemen-elemen $\N \times \N$ sebagai berikut:
+$(1,1)$, $(1,2)$, $(2,1)$, $(1,3)$, $(2,2)$, $(3,1)$, \ldots.  Artinya,
+tuliskan terlebih dahulu semua elemen yang jumlah dua komponennya sama dengan $k$,
+lalu tuliskan semua elemen yang jumlah komponennya sama dengan $k+1$, dan seterusnya.
+Definisikan suatu bijeksi antara himpunan ini dan $\N$ dengan memetakan 1 ke $(1,1)$,
+2 ke $(1,2)$, dan seterusnya.  Lihat \figureref{fig:NcrossNcard}.
+\begin{myfigureht}
+\myincludepdft{NcrossNcard}{%
+Sebuah kisi pasangan (baris,kolom) ditampilkan dengan panah
+yang bergerak dari (1,1) ke (1,2), lalu ke
+(2,1) secara diagonal ke bawah dan ke kiri, kemudian ke (1,3), lalu secara diagonal
+ke bawah dan ke kiri menuju (2,2) dan kemudian (3,1), lalu
+sebuah panah menuju (1,4), kemudian secara diagonal ke bawah dan ke kiri menuju (2,3),
+lalu (3,2), kemudian (4,1).  Titik-titik menunjukkan bahwa diagram ini tak berhingga.}
+\caption{Menunjukkan bahwa $\N \times \N$ terhitung.\label{fig:NcrossNcard}}
+\end{myfigureht}
+\end{example}
+
+\begin{example}
+Himpunan bilangan rasional terhitung.  Bukti: (informal)
+Untuk bilangan rasional positif, ikuti prosedur yang sama
+seperti pada contoh sebelumnya dengan menuliskan
+$\nicefrac{1}{1}$, $\nicefrac{1}{2}$, $\nicefrac{2}{1}$, dan seterusnya.  Namun,
+lewati pecahan (seperti $\nicefrac{2}{2}$)
+yang sudah muncul.  Daftar tersebut dilanjutkan dengan:
+$\nicefrac{1}{3}$, $\nicefrac{3}{1}$, $\nicefrac{1}{4}$,
+$\nicefrac{2}{3}$, dan seterusnya.
+Untuk mencakup semua bilangan rasional, sertakan $0$ dan bilangan-bilangan negatif:
+$0$,
+$\nicefrac{1}{1}$,
+$\nicefrac{-1}{1}$,
+$\nicefrac{1}{2}$,
+$\nicefrac{-1}{2}$, dan seterusnya.
+\end{example}
+
+Demi kelengkapan, kita sebutkan pernyataan-pernyataan berikut
+dari bagian latihan.
+\emph{Jika $A \subset
+B$ dan $B$ terhitung, maka $A$ terhitung.}  Kontraposisi dari
+pernyataan tersebut adalah bahwa jika $A$
+tak terhitung, maka $B$ juga tak terhitung.
+Akibatnya, jika $\sabs{A} < \sabs{\N}$, maka $A$
+berhingga.
+Demikian pula, jika $B$ berhingga dan $A \subset B$, maka $A$ berhingga.
+
+%FIXMEevillayouthack
+\pagebreak[2]
+Berikut ini kita berikan hasil pertama yang sungguh mencengangkan tentang kardinalitas.
+Untuk itu, kita memerlukan notasi bagi
+himpunan semua himpunan bagian dari suatu himpunan.
+
+\begin{defn}
+\emph{\myindex{himpunan kuasa}} dari suatu himpunan $A$, yang dilambangkan dengan $\sP(A)$,
+\glsadd{not:powerset} adalah himpunan semua himpunan bagian dari $A$.
+\end{defn}
+
+Sebagai contoh, jika $A \coloneqq \{ 1,2\}$,
+maka $\sP(A) = \bigl\{ \emptyset, \{ 1 \}, \{ 2 \}, \{ 1, 2 \} \bigr\}$.
+Secara khusus, $\sabs{A} = 2$ dan $\babs{\sP(A)} = 4 = 2^2$.
+Secara umum,
+untuk suatu himpunan berhingga $A$ dengan kardinalitas $n$,
+kardinalitas $\sP(A)$ adalah $2^n$.
+Fakta ini diserahkan sebagai latihan.  
+Oleh karena itu, bagi suatu himpunan berhingga $A$,
+kardinalitas $\sP(A)$ benar-benar
+lebih besar daripada
+kardinalitas $A$.  Fakta yang tak terduga dan
+mencengangkan adalah bahwa pernyataan ini juga benar bagi himpunan tak berhingga.
+
+\begin{thm}[Cantor%
+\footnote{Dinamai menurut matematikawan Jerman
+\href{https://en.wikipedia.org/wiki/Georg_Cantor}{Georg Ferdinand Ludwig
+Philipp Cantor} (1845--1918).}]
+\index{teorema Cantor}
+\label{cantorspowersetthm}
+Misalkan $A$ suatu himpunan.  Maka
+$\sabs{A} < \babs{\sP(A)}$.
+Secara khusus, tidak ada surjeksi dari
+$A$ ke $\sP(A)$.
+\end{thm}
+
+\begin{proof}
+Terdapat suatu injeksi $f \colon A \to \sP(A)$:
+Untuk $x \in A$, tetapkan $f(x) \coloneqq \{ x \}$.  Jadi,
+$\sabs{A} \leq \babs{\sP(A)}$.
+
+Untuk menyelesaikan pembuktian, kita harus menunjukkan bahwa
+tidak ada fungsi $g \colon A \to \sP(A)$ yang merupakan surjeksi.
+Misalkan 
+$g \colon A \to \sP(A)$ adalah suatu fungsi.  Jadi, untuk $x \in A$,
+$g(x)$ merupakan himpunan bagian dari $A$.  Definisikan himpunan
+\begin{equation*}
+B \coloneqq \bigl\{ x \in A : x \notin g(x) \bigr\} .
+\end{equation*}
+Kita klaim bahwa $B$ tidak termasuk dalam daerah hasil $g$, sehingga $g$ bukan
+surjeksi.  Andaikan, untuk memperoleh kontradiksi, terdapat $x_0$ sedemikian sehingga $g(x_0) = B$.
+Entah $x_0 \in B$ atau $x_0 \notin B$.  Jika $x_0 \in B$, maka $x_0 \notin
+g(x_0) = B$, suatu kontradiksi.  Jika $x_0 \notin B$, maka $x_0 \in
+g(x_0) = B$, yang kembali merupakan kontradiksi.  Jadi, $x_0$ semacam itu tidak
+ada.  Oleh karena itu, $B$ tidak termasuk dalam daerah hasil $g$, dan $g$ bukan
+surjeksi.  Karena $g$ dipilih secara sebarang, tidak ada surjeksi semacam itu.
+\end{proof}
+
+Salah satu akibat khusus dari 
+teorema ini adalah bahwa himpunan tak terhitung memang ada,
+sebab $\sP(\N)$ pasti tak terhitung.
+Fakta yang berkaitan adalah bahwa
+himpunan bilangan real (yang akan kita pelajari pada bab berikutnya) tidak terhitung.
+Keberadaan himpunan tak terhitung mungkin terasa tidak intuitif, dan teorema ini
+menimbulkan cukup banyak kontroversi ketika
+diumumkan.  Teorema tersebut bukan hanya menyatakan bahwa himpunan tak terhitung ada,
+melainkan juga bahwa sesungguhnya terdapat himpunan-himpunan tak berhingga dengan kardinalitas
+yang semakin besar: $\N$, $\sP(\N)$,
+$\sP(\sP(\N))$, $\sP(\sP(\sP(\N)))$, dan seterusnya.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Tunjukkan bahwa
+$A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa prinsip induksi kuat setara dengan prinsip induksi
+biasa.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan pembuktian \propref{st:propinv}.
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Buktikan \propref{st:propfor}.
+\item
+Temukan contoh yang membuat kesamaan himpunan
+dalam
+$f( C \cap D) \subset f (C) \cap f (D)$
+gagal berlaku.  Artinya, temukan $f$, $A$, $B$, $C$, dan $D$ sedemikian sehingga
+$f( C \cap D)$ merupakan himpunan bagian sejati dari $f(C) \cap f(D)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Rumit]
+Buktikan bahwa jika $A$ tak kosong dan berhingga, maka terdapat tepat satu
+$n \in \N$ sedemikian
+sehingga terdapat bijeksi antara $A$ dan $\{ 1, 2, 3, \ldots, n \}$.
+Dengan kata lain, notasi $\sabs{A} \coloneqq n$ memang beralasan.
+Petunjuk: Tunjukkan bahwa jika $n > m$, maka tidak ada injeksi dari
+$\{ 1, 2, 3, \ldots, n \}$ ke
+$\{ 1, 2, 3, \ldots, m \}$.
+\end{exercise}
+
+
+\begin{exercise}
+Buktikan:
+\begin{enumerate}[a)]
+\item $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$.
+\item $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Misalkan $A \Delta B$ menyatakan
+\emph{\myindex{selisih simetris}}, yaitu himpunan semua elemen yang
+termasuk dalam $A$ atau $B$, tetapi tidak dalam $A$ dan $B$ sekaligus.
+\begin{enumerate}[a)]
+\item
+Gambarkan diagram Venn untuk
+$A \Delta B$.
+\item
+Tunjukkan bahwa $A \Delta B = (A \setminus B) \cup (B \setminus A)$.
+\item
+Tunjukkan bahwa $A \Delta B = (A \cup B) \setminus ( A \cap B)$.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Untuk setiap $n \in \N$, definisikan $A_n \coloneqq \{ (n+1)k : k \in \N \}$.
+\begin{enumerate}[a)]
+\item Tentukan $A_1 \cap A_2$.
+\item Tentukan $\bigcup_{n=1}^\infty A_n$.
+\item Tentukan $\bigcap_{n=1}^\infty A_n$.
+\end{enumerate}
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Tentukan $\sP(S)$ (himpunan kuasa) untuk masing-masing kasus berikut:
+\begin{enumerate}[a)]
+\item $S = \emptyset$,
+\item $S = \{1\}$,
+\item $S = \{1,2\}$,
+\item $S = \{1,2,3,4\}$.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+
+\begin{exercise}
+Misalkan $f \colon A \to B$ dan $g \colon B \to C$ adalah fungsi.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa jika $g \circ f$ injektif, maka $f$ injektif.
+\item
+Buktikan bahwa jika $g \circ f$ surjektif, maka $g$ surjektif.
+\item
+Temukan contoh eksplisit ketika $g \circ f$ bijektif, tetapi baik $f$
+maupun $g$ tidak bijektif.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Buktikan dengan induksi bahwa $n < 2^n$ untuk semua $n \in \N$.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa untuk himpunan berhingga $A$ yang berkardinalitas $n$,
+kardinalitas $\sP(A)$ adalah $2^n$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa $\frac{1}{1\cdot 2} + 
+\frac{1}{2\cdot 3} + \cdots + \frac{1}{n(n+1)} = \frac{n}{n+1}$
+untuk semua $n \in \N$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa $1^3 + 2^3 + \cdots + n^3 = {\left( \frac{n(n+1)}{2} \right)}^2$
+untuk semua $n \in \N$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa $n^3 + 5n$ habis dibagi $6$ untuk semua $n \in \N$.
+\end{exercise}
+
+\begin{exercise}
+Tentukan $n \in \N$ terkecil sedemikian sehingga $2{(n+5)}^2 < n^3$ dan sebutlah bilangan itu $n_0$.
+Tunjukkan bahwa $2{(n+5)}^2 < n^3$ untuk semua $n \geq n_0$.
+\end{exercise}
+
+\begin{exercise}
+Tentukan semua $n \in \N$ sedemikian sehingga $n^2 < 2^n$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan 
+\hyperlink{wop:link}{sifat urutan baik} pada $\N$ menggunakan
+\hyperref[induction:thm]{prinsip induksi}.
+\end{exercise}
+
+
+\begin{exercise}
+Berikan contoh koleksi tak hingga terhitung yang terdiri atas himpunan-himpunan berhingga $A_1, A_2, \ldots$,
+yang gabungannya bukan himpunan berhingga.
+\end{exercise}
+
+\begin{exercise}
+Berikan contoh koleksi tak hingga terhitung yang terdiri atas himpunan-himpunan tak berhingga $A_1, A_2, \ldots$,
+dengan $A_j \cap A_k$ tak berhingga untuk semua $j$ dan $k$, sedemikian sehingga
+$\bigcap_{j=1}^\infty A_j$
+tak kosong dan berhingga.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $A \subset B$ dan $B$ berhingga. Buktikan bahwa $A$ berhingga.
+Artinya, jika $A$ tak kosong, konstruksikan bijeksi dari $A$ ke $\{ 1,2,\ldots,n \}$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{prop:equivclasses}.  Artinya, buktikan bahwa jika $\sR$ merupakan
+relasi ekuivalensi pada suatu himpunan $A$, maka setiap $a \in A$ berada dalam tepat satu
+kelas ekuivalensi.  Kemudian buktikan bahwa $a \, \sR \, b$ jika dan hanya jika $[a] =
+[b]$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa relasi `$\sim$'
+dalam \exampleref{example:ratnums} merupakan relasi
+ekuivalensi.
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Andaikan $A \subset B$ dan $B$ tak berhingga terhitung.  Dengan mengonstruksi suatu
+bijeksi, tunjukkan bahwa $A$
+terhitung (artinya, $A$ kosong, berhingga, atau tak berhingga terhitung).
+\item 
+Gunakan bagian a) untuk menunjukkan bahwa jika $\sabs{A} < \sabs{\N}$, maka $A$ berhingga.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Menantang] \label{exercise:countsubsetbij}
+Andaikan $\sabs{\N} \leq \sabs{S}$, atau dengan kata lain, $S$
+memuat suatu himpunan bagian tak berhingga terhitung.
+Tunjukkan bahwa terdapat himpunan bagian tak berhingga terhitung $A \subset S$
+sedemikian sehingga terdapat
+bijeksi antara $S \setminus A$ dan $S$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan versi tak berhingga dari hukum De Morgan.
+Andaikan $A$ suatu himpunan dan $B_\lambda$ suatu koleksi himpunan untuk $\lambda
+\in I$.  Buktikan
+\begin{equation*}
+A \setminus \biggl(
+\bigcup_{\lambda \in I} B_\lambda
+\biggr)
+=
+\bigcap_{\lambda \in I}
+(
+A \setminus
+B_\lambda
+) ,
+\qquad
+A \setminus \biggl(
+\bigcap_{\lambda \in I} B_\lambda
+\biggr)
+=
+\bigcup_{\lambda \in I}
+(
+A \setminus
+B_\lambda
+) .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon A \to B$ suatu fungsi dan untuk $\lambda \in I$, kita memiliki
+koleksi himpunan bagian $C_\lambda \subset A$ dan
+$D_\lambda \subset B$.  Buktikan
+\begin{equation*}
+f^{-1} \biggl(
+\bigcup_{\lambda \in I} D_\lambda
+\biggr)
+=
+\bigcup_{\lambda \in I}
+f^{-1}(D_\lambda) ,
+\quad
+f^{-1} \biggl(
+\bigcap_{\lambda \in I} D_\lambda
+\biggr)
+=
+\bigcap_{\lambda \in I}
+f^{-1}(D_\lambda) ,
+\end{equation*}
+dan
+\begin{equation*}
+f \biggl(
+\bigcup_{\lambda \in I} C_\lambda
+\biggr)
+=
+\bigcup_{\lambda \in I}
+f(C_\lambda) ,
+\quad
+f \biggl(
+\bigcap_{\lambda \in I} C_\lambda
+\biggr)
+\subset
+\bigcap_{\lambda \in I}
+f(C_\lambda) .
+\end{equation*}
+\end{exercise}

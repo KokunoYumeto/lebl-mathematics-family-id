@@ -1,0 +1,3708 @@
+\chapter{Integral Riemann} \label{int:chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Integral Riemann}
+\label{sec:rint}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1,5 kuliah}
+
+Integral merupakan cara untuk \myquote{menjumlahkan} nilai-nilai suatu fungsi.
+Mahasiswa kalkulus terkadang mencampuradukkan
+\emph{integral} dan \emph{antiturunan}.
+Secara informal, integral tidak lain adalah luas di bawah kurva.
+Bahwa kita dapat menghitung antiturunan menggunakan integral merupakan hasil
+tak sepele yang harus kita buktikan.
+Kita akan mendefinisikan \emph{integral Riemann}%
+\footnote{Dinamai menurut matematikawan Jerman
+\href{https://en.wikipedia.org/wiki/Riemann}{Georg Friedrich Bernhard Riemann}
+(1826--1866).}
+menggunakan integral Darboux%
+\footnote{Dinamai menurut matematikawan Prancis
+\href{https://en.wikipedia.org/wiki/Darboux}{Jean-Gaston Darboux} (1842--1917).},
+suatu definisi yang ekuivalen tetapi secara teknis lebih sederhana.
+
+\subsection{Partisi serta integral bawah dan atas}
+
+Kita ingin mengintegralkan suatu fungsi terbatas yang didefinisikan pada interval $[a,b]$.
+Terlebih dahulu kita mendefinisikan dua integral bantu yang terdefinisi untuk semua
+fungsi terbatas.  Barulah setelah itu kita dapat membicarakan integral Riemann dan
+fungsi-fungsi yang dapat diintegralkan secara Riemann.
+
+\begin{defn}
+Suatu \emph{\myindex{partisi}} $P$ dari $[a,b]$ adalah
+himpunan berhingga yang terdiri atas bilangan-bilangan $\{ x_0,x_1,x_2,\ldots,x_n \}$ sedemikian sehingga
+\begin{equation*}
+a = x_0 < x_1 < x_2 < \cdots < x_{n-1} < x_n = b .
+\end{equation*}
+Kita tulis
+\begin{equation*}
+\Delta x_i \coloneqq x_i - x_{i-1} .
+\end{equation*}
+Misalkan $f \colon [a,b] \to \R$ merupakan fungsi terbatas dan $P$ merupakan partisi dari
+$[a,b]$.
+Definisikan
+\begin{align*}
+& m_i \coloneqq \inf \, \bigl\{ f(x) : x_{i-1} \leq x \leq x_i \bigr\} , &
+& M_i \coloneqq \sup \, \bigl\{ f(x) : x_{i-1} \leq x \leq x_i \bigr\} , \\
+& L(P,f) \coloneqq
+\sum_{i=1}^n m_i \Delta x_i , &
+& U(P,f) \coloneqq
+\sum_{i=1}^n M_i \Delta x_i .
+\avoidbreak
+\end{align*}
+Kita menyebut $L(P,f)$ sebagai \emph{\myindex{jumlah Darboux bawah}} dan
+$U(P,f)$ sebagai \emph{\myindex{jumlah Darboux atas}}\index{jumlah Darboux}.
+\glsadd{not:lowerdarbouxsum}
+\glsadd{not:upperdarbouxsum}
+\end{defn}
+
+Gagasan geometris jumlah Darboux diilustrasikan dalam
+\figureref{darbouxfig}.  Jumlah bawah merupakan luas persegi panjang
+berarsir, sedangkan jumlah atas merupakan luas keseluruhan persegi panjang,
+yakni bagian berarsir dan tidak berarsir.  Lebar persegi panjang ke-$i$ adalah $\Delta x_i$,
+tinggi persegi panjang berarsir adalah $m_i$, dan tinggi
+keseluruhan persegi panjang adalah $M_i$.
+
+\begin{myfigureht}
+\myincludegraphics{darbouxfig}{%
+Diagram grafik suatu fungsi dengan garis hitam tebal, seluruhnya berada di atas
+sumbu x.
+Domain dibagi menjadi 8 interval dan
+titik-titik ujungnya ditandai, dari kiri ke kanan, x subskrip 0 hingga x subskrip 8.
+Interval antara x subskrip 4 dan x subskrip 5 ditandai memiliki lebar
+Delta x subskrip 5.
+Di atas setiap interval terdapat dua persegi panjang.  Sebagai contoh,
+terdapat persegi panjang berarsir dengan lebar Delta x subskrip 5
+yang sisi bawahnya tepat berupa interval dari
+x subskrip 4 hingga x subskrip 5 dan tingginya m subskrip 5, yaitu nilai minimum
+fungsi pada interval tersebut.  Persegi panjang itu diperpanjang ke atas tanpa arsiran hingga
+M subskrip 5, yaitu nilai maksimum fungsi pada interval tersebut.}
+\caption{Contoh jumlah Darboux.\label{darbouxfig}}
+\end{myfigureht}
+
+\begin{prop} \label{sumulbound:prop}
+Misalkan $f \colon [a,b] \to \R$ merupakan fungsi terbatas.  Misalkan $m, M \in \R$ 
+sedemikian sehingga untuk semua $x \in [a,b]$ berlaku $m \leq f(x) \leq M$.  Maka, untuk setiap partisi $P$
+dari $[a,b]$,
+\begin{equation}
+\label{sumulbound:eq}
+m(b-a) \leq
+L(P,f) \leq U(P,f)
+\leq M(b-a) .
+\end{equation}
+\end{prop}
+
+\begin{proof}
+Misalkan $P$ merupakan partisi dari $[a,b]$.  Perhatikan bahwa untuk semua $i$,
+berlaku $m \leq m_i \leq M_i \leq M$.  Kita juga memiliki
+$\sum_{i=1}^n \Delta x_i = (b-a)$.  Oleh karena itu,
+\begin{multline*}
+m(b-a) =
+m \left( \sum_{i=1}^n \Delta x_i \right)
+=
+\sum_{i=1}^n m \Delta x_i
+\leq
+\sum_{i=1}^n m_i \Delta x_i 
+\\
+\leq
+\sum_{i=1}^n M_i \Delta x_i
+\leq
+\sum_{i=1}^n M \Delta x_i 
+=
+M \left( \sum_{i=1}^n \Delta x_i \right)
+=
+M(b-a) .
+\end{multline*}
+Jadi, kita memperoleh \eqref{sumulbound:eq}.  Secara khusus, himpunan semua jumlah
+bawah dan himpunan semua jumlah atas bersifat terbatas.
+\end{proof}
+
+\begin{defn}
+Karena himpunan semua jumlah Darboux bawah maupun atas terbatas, kita definisikan
+\begin{align*}
+& \underline{\int_a^b} f(x)\,dx \coloneqq
+\sup \, \bigl\{ L(P,f) : P \text{ partisi dari } [a,b] \bigr\} , \\
+& \overline{\int_a^b} f(x)\,dx \coloneqq
+\inf \, \bigl\{ U(P,f) : P \text{ partisi dari } [a,b] \bigr\} .
+\end{align*}
+Kita menyebut $\underline{\int}$\glsadd{not:lowerdarboux}
+sebagai \emph{\myindex{integral Darboux bawah}} dan
+$\overline{\int}$\glsadd{not:upperdarboux} sebagai
+\emph{\myindex{integral Darboux atas}}\index{integral Darboux}.
+Agar tidak perlu mempermasalahkan variabel integrasi, 
+kita sering kali cukup menulis
+\begin{equation*}
+\underline{\int_a^b} f \coloneqq
+\underline{\int_a^b} f(x)\,dx 
+\qquad \text{dan} \qquad
+\overline{\int_a^b} f \coloneqq
+\overline{\int_a^b} f(x)\,dx  .
+\end{equation*}
+\end{defn}
+
+Agar pengintegralan masuk akal, integral Darboux bawah dan atas
+seharusnya merupakan bilangan yang sama karena kita menginginkan satu bilangan untuk disebut
+\emph{integral}.  Namun, kedua integral ini mungkin berbeda untuk
+fungsi-fungsi tertentu.
+
+\begin{example} \label{example:dirichletfunc}
+Pertimbangkan \myindex{fungsi Dirichlet}
+$f \colon [0,1] \to \R$, dengan $f(x) \coloneqq 1$ jika
+$x \in \Q$ dan $f(x) \coloneqq 0$ jika $x \notin \Q$.  Maka
+\begin{equation*}
+\underline{\int_0^1} f = 0 \qquad \text{dan} \qquad
+\overline{\int_0^1} f = 1 .
+\end{equation*}
+Alasannya, untuk setiap partisi $P$ dan setiap $i$ berlaku 
+$m_i = \inf \bigl\{ f(x) : x \in [x_{i-1},x_i] \bigr\} = 0$  dan
+$M_i = \sup \bigl\{ f(x) : x \in [x_{i-1},x_i] \bigr\} = 1$.  Dengan demikian,
+\begin{equation*}
+L(P,f) = \sum_{i=1}^n 0 \cdot \Delta x_i = 0 , \quad \text{dan} \quad
+U(P,f) = \sum_{i=1}^n 1 \cdot \Delta x_i = \sum_{i=1}^n \Delta x_i = 1  .
+\end{equation*}
+\end{example}
+
+\begin{remark}
+Definisi yang sama untuk $\underline{\int_a^b} f$ dan
+$\overline{\int_a^b} f$
+digunakan ketika $f$ didefinisikan pada himpunan lebih besar $S$ sedemikian sehingga
+$[a,b] \subset S$.  Dalam hal ini, kita menggunakan pembatasan $f$ pada $[a,b]$
+dan harus memastikan bahwa pembatasan tersebut terbatas pada $[a,b]$.
+\end{remark}
+
+Untuk menghitung integral, kita sering mengambil partisi $P$ lalu memperhalusnya.
+Artinya, kita membagi interval-interval dalam partisi menjadi bagian-bagian yang lebih kecil lagi.
+
+\begin{defn}
+Misalkan $P = \{ x_0, x_1, \ldots, x_n \}$ dan
+$\widetilde{P} = \{ \widetilde{x}_0, \widetilde{x}_1, \ldots,
+\widetilde{x}_{\ell} \}$ merupakan
+partisi dari $[a,b]$.  Kita mengatakan bahwa $\widetilde{P}$ adalah
+\emph{penghalusan}\index{penghalusan partisi} dari $P$
+jika, sebagai himpunan, $P \subset \widetilde{P}$.
+\end{defn}
+
+Artinya, $\widetilde{P}$ merupakan penghalusan suatu partisi jika memuat semua
+bilangan dalam $P$ dan mungkin beberapa bilangan lain di antaranya.  Sebagai contoh,
+$\{ 0, 0.5, 1, 2 \}$ merupakan partisi dari $[0,2]$ dan
+$\{ 0, 0.2, 0.5, 1, 1.5, 1.75, 2 \}$ merupakan penghalusannya.
+Alasan utama memperkenalkan penghalusan adalah proposisi berikut.
+
+\begin{prop} \label{prop:refinement}
+Misalkan $f \colon [a,b] \to \R$ merupakan fungsi terbatas dan $P$
+merupakan partisi dari $[a,b]$.  Misalkan $\widetilde{P}$ merupakan penghalusan $P$.
+Maka
+\begin{equation*}
+L(P,f) \leq L(\widetilde{P},f) 
+\qquad \text{dan} \qquad
+U(\widetilde{P},f) \leq U(P,f) .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Bagian pelik dari pembuktian ini adalah menuliskan notasinya dengan benar.
+Misalkan $\widetilde{P} = \{ \widetilde{x}_0, \widetilde{x}_1, \ldots,
+\widetilde{x}_{\ell} \}$ merupakan
+penghalusan dari 
+$P = \{ x_0, x_1, \ldots, x_n \}$.  Maka
+$x_0 = \widetilde{x}_0$ dan 
+$x_n = \widetilde{x}_{\ell}$.  Bahkan, terdapat bilangan bulat
+$k_0 < k_1 < \cdots < k_n$ sedemikian sehingga $x_i = \widetilde{x}_{k_i}$ untuk
+$i=0,1,2,\ldots,n$.
+
+Misalkan $\Delta \widetilde{x}_q \coloneqq \widetilde{x}_q - \widetilde{x}_{q-1}$ untuk
+$q=1,2,\ldots,\ell$.
+Lihat \figureref{fig:refinement}.
+Kita memperoleh 
+\begin{equation*}
+\Delta x_i
+=
+x_i - x_{i-1} =
+\widetilde{x}_{k_i} - \widetilde{x}_{k_{i-1}} =
+\sum_{q=k_{i-1}+1}^{k_i} 
+\bigl(\widetilde{x}_{q} - \widetilde{x}_{q-1}\bigr)
+=
+\sum_{q=k_{i-1}+1}^{k_i} \Delta \widetilde{x}_q .
+\end{equation*}
+\begin{myfigureht}
+\myincludepdft{figrefinement}{%
+Diagram sebuah interval antara x subskrip i minus 1 dan x subskrip i dengan
+lebar Delta x subskrip i.
+Interval tersebut dibagi menjadi tiga interval yang lebih kecil.
+Titik ujung kiri x subskrip i minus 1
+juga ditandai sebagai x tilde subskrip q minus 3
+dan x tilde subskrip k subskrip i minus 1.
+Demikian pula, titik ujung kanan x subskrip i
+juga ditandai sebagai x tilde subskrip q dan x tilde subskrip k subskrip i.
+Kedua titik di bagian dalam ditandai sebagai
+x tilde subskrip q minus 2 dan
+x tilde subskrip q minus 1.
+Ketiga interval tersebut memiliki panjang
+Delta x tilde subskrip q minus 2,
+Delta x tilde subskrip q minus 1,
+dan
+Delta x tilde subskrip q.}
+\caption{Penghalusan suatu subinterval.  Perhatikan bahwa $\Delta x_i =
+\Delta \widetilde{x}_{q-2} +
+\Delta \widetilde{x}_{q-1} +
+\Delta \widetilde{x}_{q}$,
+dan juga
+$k_{i-1}+1 = q-2$ dan
+$k_{i} = q$.\label{fig:refinement}}
+\end{myfigureht}
+
+Seperti sebelumnya, misalkan $m_i$ bersesuaian dengan partisi $P$.
+Misalkan $\widetilde{m}_q \coloneqq \inf \bigl\{ f(x) : \widetilde{x}_{q-1} \leq x \leq
+\widetilde{x}_q \bigr\}$.
+Selanjutnya, $m_i \leq \widetilde{m}_q$ untuk $k_{i-1} < q \leq k_i$.  Oleh karena itu,
+\begin{equation*}
+m_i \Delta x_i
+=
+m_i \sum_{q=k_{i-1}+1}^{k_i} \Delta \widetilde{x}_q
+=
+\sum_{q=k_{i-1}+1}^{k_i} m_i \Delta \widetilde{x}_q
+\leq
+\sum_{q=k_{i-1}+1}^{k_i} \widetilde{m}_q \Delta \widetilde{x}_q .
+\end{equation*}
+Dengan demikian,
+\begin{equation*}
+L(P,f) =
+\sum_{i=1}^n m_i \Delta x_i
+\leq
+\sum_{i=1}^n \,
+\sum_{q=k_{i-1}+1}^{k_i} \widetilde{m}_q \Delta \widetilde{x}_q
+=
+\sum_{q=1}^{\ell}
+\widetilde{m}_q \Delta \widetilde{x}_q = L(\widetilde{P},f).
+\end{equation*}
+
+Pembuktian $U(\widetilde{P},f) \leq U(P,f)$ diserahkan sebagai latihan.
+\end{proof}
+
+Berbekal penghalusan, kita membuktikan hasil berikut.
+Pokok penting dari proposisi berikutnya adalah bahwa
+integral Darboux bawah kurang dari atau sama dengan integral Darboux
+atas.
+
+\begin{prop} \label{intulbound:prop}
+Misalkan $f \colon [a,b] \to \R$ merupakan fungsi terbatas.  Misalkan $m, M \in \R$ 
+sedemikian sehingga untuk semua $x \in [a,b]$ berlaku $m \leq f(x) \leq M$.  Maka
+\begin{equation}
+\label{intulbound:eq}
+m(b-a) \leq
+\underline{\int_a^b} f \leq \overline{\int_a^b} f
+\leq M(b-a) .
+\end{equation}
+\end{prop}
+
+\begin{proof}
+Berdasarkan \propref{sumulbound:prop}, untuk setiap partisi $P$,
+\begin{equation*}
+m(b-a) \leq L(P,f) \leq U(P,f) \leq M(b-a).
+\end{equation*}
+Ketaksamaan
+$m(b-a) \leq L(P,f)$ menyiratkan $m(b-a) \leq \underline{\int_a^b} f$.
+Ketaksamaan
+$U(P,f) \leq M(b-a)$ menyiratkan $\overline{\int_a^b} f \leq M(b-a)$.
+
+Ketaksamaan tengah dalam
+\eqref{intulbound:eq} merupakan pokok utama proposisi ini.
+Misalkan $P_1, P_2$ merupakan partisi dari $[a,b]$.  Definisikan 
+$\widetilde{P} \coloneqq P_1 \cup P_2$.
+Himpunan $\widetilde{P}$ merupakan partisi dari $[a,b]$ yang
+merupakan penghalusan dari $P_1$ sekaligus penghalusan dari $P_2$.
+Berdasarkan \propref{prop:refinement},
+$L(P_1,f) \leq L(\widetilde{P},f)$ dan
+$U(\widetilde{P},f) \leq U(P_2,f)$.  Jadi,
+\begin{equation*}
+L(P_1,f) \leq L(\widetilde{P},f) \leq U(\widetilde{P},f) \leq U(P_2,f) .
+\end{equation*}
+Dengan kata lain, untuk sebarang dua partisi $P_1$ dan $P_2$, berlaku
+$L(P_1,f) \leq U(P_2,f)$.  
+Ingat kembali \propref{infsupineq:prop}, lalu ambil supremum dan
+infimum terhadap semua partisi:
+\begin{multline*}
+\underline{\int_a^b} f = 
+\sup \, \bigl\{ L(P,f) : P \text{ partisi dari } [a,b] \bigr\}
+\\
+\leq
+\inf \, \bigl\{ U(P,f) : P \text{ partisi dari } [a,b] \bigr\}
+=
+\overline{\int_a^b} f . \qedhere
+\end{multline*}
+\end{proof}
+
+\subsection{Integral Riemann}
+
+Akhirnya kita dapat mendefinisikan integral Riemann.  Namun, integral Riemann
+hanya didefinisikan pada kelas fungsi tertentu, yang anggotanya disebut
+fungsi yang terintegralkan secara Riemann.
+
+\begin{defn}
+Misalkan $f \colon [a,b] \to \R$ suatu fungsi terbatas sedemikian sehingga
+\begin{equation*}
+\underline{\int_a^b} f(x)\,dx = \overline{\int_a^b} f(x)\,dx .
+\end{equation*}
+Maka $f$ dikatakan \emph{\myindex{terintegralkan secara Riemann}}.
+Himpunan fungsi yang terintegralkan secara Riemann pada $[a,b]$ dilambangkan
+dengan $\sR\bigl([a,b]\bigr)$.\glsadd{not:integrablefunc}
+Ketika $f \in \sR\bigl([a,b]\bigr)$, kita definisikan\glsadd{not:riemannint}
+\begin{equation*}
+\int_a^b f(x)\,dx \coloneqq 
+\underline{\int_a^b} f(x)\,dx = \overline{\int_a^b} f(x)\,dx .
+\end{equation*}
+Seperti sebelumnya, kita sering menulis
+\begin{equation*}
+\int_a^b f \coloneqq \int_a^b f(x)\,dx.
+\end{equation*}
+Bilangan $\int_a^b f$ disebut \emph{\myindex{integral Riemann}}
+dari $f$, atau kadang-kadang cukup \emph{integral} dari $f$.
+\end{defn}
+
+Berdasarkan definisi, fungsi yang terintegralkan secara Riemann adalah fungsi terbatas.
+Dengan menerapkan \propref{intulbound:prop}, kita langsung memperoleh
+proposisi berikut.  Lihat juga \figureref{fig:integralminmax}.
+
+\begin{prop} \label{intbound:prop}
+Misalkan $f \colon [a,b] \to \R$ suatu fungsi yang terintegralkan secara Riemann.
+Misalkan $m, M \in \R$ 
+sedemikian sehingga $m \leq f(x) \leq M$ untuk semua $x \in [a,b]$.  Maka
+\begin{equation*}
+m(b-a) \leq
+\int_a^b f
+\leq M(b-a) .
+\end{equation*}
+\end{prop}
+\begin{myfigureht}
+\myincludegraphics{integralminmax}{%
+Diagram sebuah persegi panjang di bidang
+yang secara horizontal berada di antara a dan b, dan secara vertikal berada di antara sumbu x
+dan M kapital.  Persegi panjang tersebut terbagi menjadi bagian atas
+yang berwarna putih dan memuat grafik suatu fungsi, serta bagian bawah
+yang diarsir.  Garis horizontal pembatasnya diberi label
+m kecil.}
+\caption{Luas di bawah kurva dibatasi dari atas oleh
+luas seluruh persegi panjang, $M(b-a)$, dan dari bawah oleh
+luas bagian yang diarsir, $m(b-a)$.\label{fig:integralminmax}}
+\end{myfigureht}
+
+Bentuk yang lebih lemah dari proposisi ini sering kali berguna:
+Jika $\babs{f(x)} \leq M$ untuk semua $x \in [a,b]$, maka
+\begin{equation*}
+\abs{\int_a^b f} \leq M(b-a) .
+\end{equation*}
+
+\begin{example}
+Kita mengintegralkan fungsi konstan menggunakan
+\propref{intulbound:prop}.
+Jika $f(x) \coloneqq c$ untuk suatu konstanta $c$, kita ambil $m = M = c$.
+Dalam pertidaksamaan \eqref{intulbound:eq},
+semua pertidaksamaan tersebut harus berupa kesamaan.
+Jadi $f$ terintegralkan pada $[a,b]$ dan $\int_a^b f = c(b-a)$.
+\end{example}
+
+\begin{example}
+Misalkan $f \colon [0,2] \to \R$ didefinisikan oleh
+\begin{equation*}
+f(x) \coloneqq
+\begin{cases}
+1               & \text{jika } x < 1,\\
+\nicefrac{1}{2} & \text{jika } x = 1,\\
+0               & \text{jika } x > 1.
+\end{cases}
+\end{equation*}
+Kita akan menunjukkan bahwa $f$ terintegralkan secara Riemann dan $\int_0^2 f = 1$.
+
+Bukti: Misalkan $0 < \epsilon < 1$ sebarang.
+Misalkan $P \coloneqq \{0, 1-\epsilon, 1+\epsilon, 2\}$ suatu partisi.  Kita menggunakan notasi dari
+definisi jumlah Darboux.  Maka
+\begin{align*}
+m_1 &= \inf  \bigl\{ f(x) : x \in [0,1-\epsilon] \bigr\} = 1 , & 
+M_1 &= \sup  \bigl\{ f(x) : x \in [0,1-\epsilon] \bigr\} = 1 , \\
+m_2 &= \inf  \bigl\{ f(x) : x \in [1-\epsilon,1+\epsilon] \bigr\} = 0 , & 
+M_2 &= \sup  \bigl\{ f(x) : x \in [1-\epsilon,1+\epsilon] \bigr\} = 1 , \\
+m_3 &= \inf  \bigl\{ f(x) : x \in [1+\epsilon,2] \bigr\} = 0 , & 
+M_3 &= \sup  \bigl\{ f(x) : x \in [1+\epsilon,2] \bigr\} = 0 .
+\end{align*}
+Selain itu, $\Delta x_1 = 1-\epsilon$, $\Delta x_2 = 2\epsilon$, dan
+$\Delta x_3 = 1-\epsilon$.
+Lihat \figureref{darbouxfigstep}.
+\begin{myfigureht}
+\myincludegraphics{darbouxfigstep}{%
+Diagram grafik suatu fungsi yang bernilai 1 dari 0 sampai 1,
+pada 1 nilainya setengah, dan dari 1 sampai 2 fungsi tersebut bernilai 0.
+Sumbu horizontal dibagi menjadi tiga interval,
+dari 0 sampai 1 dikurangi epsilon, lalu sampai 1 ditambah epsilon, lalu sampai 2.
+Panjangnya masing-masing adalah Delta x subskrip 1 sama dengan 1 dikurangi epsilon,
+Delta x subskrip 2 sama dengan 2 epsilon, dan 
+Delta x subskrip 3 sama dengan 1 dikurangi epsilon.
+Terdapat sebuah persegi panjang berarsir setinggi 1 untuk x antara 0 dan
+1 dikurangi epsilon.  Terdapat sebuah persegi panjang putih setinggi 1
+untuk x antara 1 dikurangi epsilon dan 1 ditambah epsilon.
+Pada sumbu vertikal,
+titik bawah ditandai sebagai M subskrip 3 sama dengan m subskrip 2
+sama dengan m subskrip 3 sama dengan 0.
+Titik atas ditandai sebagai M subskrip 1 sama dengan M subskrip 2
+sama dengan m subskrip 1 sama dengan 1.}
+\caption{Jumlah Darboux untuk fungsi tangga.  $L(P,f)$ adalah luas persegi panjang
+yang diarsir, $U(P,f)$ adalah luas gabungan kedua persegi panjang, dan
+$U(P,f)-L(P,f)$ adalah luas persegi panjang yang tidak diarsir.\label{darbouxfigstep}}
+\end{myfigureht}
+
+Kita hitung
+\begin{align*}
+& L(P,f) = \sum_{i=1}^3 m_i \Delta x_i =
+1 \cdot (1-\epsilon) + 0 \cdot 2\epsilon + 0 \cdot (1-\epsilon)
+= 1-\epsilon , \\
+& U(P,f) = \sum_{i=1}^3 M_i \Delta x_i =
+1 \cdot (1-\epsilon) + 1 \cdot 2\epsilon + 0 \cdot (1-\epsilon)
+= 1+\epsilon .
+\end{align*}
+Dengan demikian,
+\begin{equation*}
+\overline{\int_0^2} f - 
+\underline{\int_0^2} f
+\leq
+U(P,f) - L(P,f)
+=
+(1+\epsilon)
+- (1-\epsilon) = 2 \epsilon .
+\end{equation*}
+Menurut \propref{intulbound:prop}, $\underline{\int_0^2} f \leq \overline{\int_0^2} f$.
+Karena $\epsilon$ sebarang,
+$\overline{\int_0^2} f = \underline{\int_0^2} f$.  Jadi $f$ terintegralkan secara
+Riemann.  Terakhir,
+\begin{equation*}
+1-\epsilon = L(P,f) \leq \int_0^2 f \leq U(P,f) =
+1+\epsilon.
+\end{equation*}
+Oleh karena itu, $\bigl\lvert \int_0^2 f - 1 \bigr\rvert \leq \epsilon$.  Karena $\epsilon$ sebarang,
+kita simpulkan $\int_0^2 f = 1$.
+\end{example}
+
+Ada baiknya sebagian teknik dalam contoh tersebut kita sarikan menjadi sebuah
+proposisi.  Perhatikan bahwa $U(P,f)-L(P,f)$ tepat sama dengan luas total bagian-bagian
+persegi panjang yang tidak diarsir pada \figureref{darbouxfig}.
+
+\begin{prop}
+Misalkan $f \colon [a,b] \to \R$ suatu fungsi terbatas.  Maka $f$ terintegralkan secara
+Riemann jika untuk setiap $\epsilon > 0$, terdapat suatu partisi $P$ dari
+$[a,b]$ sedemikian sehingga
+\begin{equation*}
+U(P,f) - L(P,f) < \epsilon .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Jika untuk setiap $\epsilon > 0$ terdapat $P$ seperti itu, maka
+\begin{equation*}
+0 \leq
+\overline{\int_a^b} f - 
+\underline{\int_a^b} f
+\leq
+U(P,f) - L(P,f) < \epsilon .
+\end{equation*}
+Oleh karena itu, 
+$\overline{\int_a^b} f = \underline{\int_a^b} f$, dan $f$ terintegralkan.
+\end{proof}
+
+\begin{example}
+Mari kita tunjukkan bahwa $\frac{1}{1+x}$ terintegralkan pada $[0,b]$ untuk setiap $b > 0$.
+Kelak kita akan melihat bahwa fungsi kontinu terintegralkan, tetapi di sini kita
+membuktikannya secara langsung.
+
+Diberikan $\epsilon > 0$.  Ambil $n \in \N$ dan
+tetapkan $x_i \coloneqq \nicefrac{ib}{n}$ untuk membentuk 
+partisi $P \coloneqq \{ x_0,x_1,\ldots,x_n \}$ dari $[0,b]$.
+Maka $\Delta x_i = \nicefrac{b}{n}$ untuk setiap $i$.  
+Karena $f$ menurun, untuk setiap subinterval $[x_{i-1},x_i]$,
+\begin{equation*}
+%mbxlatex \begin{aligned}
+m_i
+%mbxlatex &
+=
+\inf \left\{ \frac{1}{1+x} : x \in [x_{i-1},x_i] \right\} = \frac{1}{1+x_i} ,
+%mbxSTARTIGNORE
+\quad
+%mbxENDIGNORE
+%mbxlatex \\
+M_i
+=
+%mbxlatex &
+\sup \left\{ \frac{1}{1+x} : x \in [x_{i-1},x_i] \right\} =
+\frac{1}{1+x_{i-1}} .
+%mbxlatex \end{aligned}
+\end{equation*}
+Maka
+\begin{multline*}
+U(P,f)-L(P,f)
+=
+\sum_{i=1}^n
+\Delta x_i
+(M_i-m_i)
+=
+\frac{b}{n}
+\sum_{i=1}^n 
+\left( \frac{1}{1+\nicefrac{(i-1)b}{n}} - \frac{1}{1+\nicefrac{ib}{n}} \right) 
+% Tanda sama dengan redundan pada sumber dihilangkan.
+\\
+=
+\frac{b}{n}
+\left( \frac{1}{1+\nicefrac{0b}{n}} - \frac{1}{1+\nicefrac{nb}{n}} \right) 
+=
+\frac{b^2}{n(b+1)} .
+\end{multline*}
+Jumlah tersebut bersifat teleskopik---suku-sukunya saling menghapus secara berturut-turut,
+sesuatu yang telah kita jumpai sebelumnya.
+Dengan memilih $n$ sedemikian sehingga
+$\frac{b^2}{n(b+1)} < \epsilon$, syarat dalam proposisi terpenuhi, dan fungsi
+tersebut terintegralkan.
+\end{example}
+
+\begin{remark}
+Salah satu cara memahami integral adalah bahwa integral menjumlahkan (mengintegralkan) banyak
+informasi lokal---integral menjumlahkan $f(x)\,dx$ untuk semua $x$.
+Leibniz memilih tanda integral berupa huruf S yang dipanjangkan untuk menyatakan penjumlahan.
+Berbeda dengan turunan, yang bersifat \myquote{lokal,} 
+integral muncul dalam penerapan ketika
+kita menginginkan jawaban \myquote{global}: jarak total yang ditempuh, suhu
+rata-rata, muatan total, dan sebagainya.
+\end{remark}
+
+\subsection{Notasi lebih lanjut}
+
+Jika $f \colon S \to \R$ didefinisikan pada himpunan yang lebih besar $S$ dan
+$[a,b] \subset S$,
+kita mengatakan bahwa $f$ terintegralkan Riemann pada $[a,b]$ jika pembatasan $f$
+ke $[a,b]$ terintegralkan Riemann.
+Dalam hal ini,
+kita mengatakan $f \in \sR\bigl([a,b]\bigr)$,
+dan
+kita menuliskan $\int_a^b f$ untuk menyatakan integral Riemann
+dari pembatasan $f$ ke $[a,b]$.
+
+Berguna untuk mendefinisikan integral $\int_a^b f$ bahkan jika
+$a \nless b$.  Andaikan $b < a$ dan $f \in \sR\bigl([b,a]\bigr)$.
+Definisikan
+\begin{equation*}
+\int_a^b f \coloneqq - \int_b^a f .
+\end{equation*}
+Untuk sebarang fungsi $f$, definisikan
+\begin{equation*}
+\int_a^a f \coloneqq 0 .
+\end{equation*}
+
+Terkadang, variabel $x$ mungkin sudah memiliki arti lain.  Ketika
+kita perlu menuliskan variabel integrasi, kita dapat
+menggunakan huruf lain.  Sebagai contoh,
+\begin{equation*}
+\int_a^b f(s)\,ds \coloneqq \int_a^b f(x)\,dx .
+\end{equation*}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Definisikan $f \colon [0,1] \to \R$ dengan $f(x) \coloneqq x^3$
+dan ambil $P \coloneqq \{ 0, 0.1, 0.4, 1 \}$.  Hitung $L(P,f)$ dan $U(P,f)$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon [0,1] \to \R$ didefinisikan dengan $f(x) \coloneqq x$.
+Tunjukkan bahwa $f \in \sR\bigl([0,1]\bigr)$ dan
+hitung $\int_0^1 f$ menggunakan definisi integral
+(tetapi
+Anda boleh menggunakan proposisi-proposisi dalam bagian ini).%\propref{intulbound:prop}).
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon [a,b] \to \R$ adalah fungsi terbatas.
+Andaikan terdapat barisan partisi $\{ P_k \}_{k=1}^\infty$ dari $[a,b]$
+sedemikian sehingga
+\begin{equation*}
+\lim_{k \to \infty} \bigl( U(P_k,f) - L(P_k,f) \bigr) = 0 .
+\end{equation*}
+Tunjukkan bahwa $f$ terintegralkan Riemann dan bahwa
+\begin{equation*}
+\int_a^b f = 
+\lim_{k \to \infty} U(P_k,f)
+=
+\lim_{k \to \infty} L(P_k,f) .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Selesaikan pembuktian \propref{prop:refinement}.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon [-1,1] \to \R$ didefinisikan sebagai
+\begin{equation*}
+f(x) \coloneqq
+\begin{cases}
+1 & \text{jika } x > 0, \\
+0 & \text{jika } x \leq 0.
+\end{cases}
+\end{equation*}
+Buktikan bahwa $f \in \sR\bigl([-1,1]\bigr)$ dan
+hitung $\int_{-1}^1 f$ menggunakan definisi integral
+(tetapi
+Anda boleh menggunakan proposisi-proposisi dalam bagian ini).
+%(feel free to use \propref{intulbound:prop}).
+\end{exercise}
+
+\begin{exercise}
+Misalkan $c \in (a,b)$ dan $d \in \R$.
+Definisikan $f \colon [a,b] \to \R$ sebagai
+\begin{equation*}
+f(x) \coloneqq
+\begin{cases}
+d & \text{jika } x = c, \\
+0 & \text{jika } x \neq c.
+\end{cases}
+\end{equation*}
+Buktikan bahwa $f \in \sR\bigl([a,b]\bigr)$ dan
+hitung
+$\int_a^b f$ menggunakan definisi integral
+%(feel free to use \propref{intulbound:prop}).
+(tetapi
+Anda boleh menggunakan proposisi-proposisi dalam bagian ini).
+\end{exercise}
+
+\begin{exercise} \label{exercise:taggedpartition}
+Andaikan $f \colon [a,b] \to \R$ terintegralkan Riemann.  Diberikan $\epsilon
+> 0$.  Tunjukkan bahwa terdapat partisi $P = \{ x_0, x_1,
+\ldots, x_n \}$
+sedemikian sehingga untuk setiap
+himpunan bilangan $\{ c_1, c_2, \ldots, c_n \}$ dengan
+$c_k \in [x_{k-1},x_k]$ untuk setiap $k$, berlaku
+\begin{equation*}
+\abs{\int_a^b f - \sum_{k=1}^n f(c_k) \Delta x_k} < \epsilon .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon [a,b] \to \R$ adalah fungsi yang terintegralkan Riemann.
+Misalkan $\alpha > 0$ dan $\beta \in \R$.
+Definisikan $g(x) \coloneqq f(\alpha x + \beta)$ pada interval
+$I = [\frac{a-\beta}{\alpha}, \frac{b-\beta}{\alpha}]$.  Tunjukkan
+bahwa $g$ terintegralkan Riemann pada $I$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon [0,1] \to \R$ dan $g \colon [0,1] \to \R$
+sedemikian sehingga untuk setiap $x \in (0,1]$,
+berlaku $f(x) = g(x)$.  Andaikan $f$ terintegralkan Riemann. 
+Buktikan bahwa $g$ terintegralkan Riemann dan $\int_{0}^1 f = \int_{0}^1 g$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon [0,1] \to \R$ adalah fungsi terbatas.
+Misalkan $P_n = \{ x_0,x_1,\ldots,x_n \}$ adalah partisi seragam dari $[0,1]$,
+yaitu $x_i = \nicefrac{i}{n}$.  Apakah $\bigl\{ L(P_n,f) \bigr\}_{n=1}^\infty$
+selalu monoton?  Ya/Tidak: Buktikan atau temukan contoh penyangkal.
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Untuk fungsi terbatas $f \colon [0,1] \to \R$, misalkan
+$R_n \coloneqq (\nicefrac{1}{n})\sum_{i=1}^n f(\nicefrac{i}{n})$ (aturan
+titik ujung kanan seragam).
+\begin{enumerate}[a)]
+\item
+Jika $f$ terintegralkan Riemann, tunjukkan bahwa $\int_0^1 f = \lim\limits_{n\to\infty} R_n$.
+\item
+Temukan $f$ yang tidak terintegralkan Riemann, tetapi $\lim\limits_{n\to\infty} R_n$ ada.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Menantang] \label{exercise:riemannintdarboux}
+Generalisasikan latihan sebelumnya.
+Tunjukkan bahwa $f \in \sR\bigl([a,b]\bigr)$ jika dan hanya jika terdapat $I \in \R$,
+sedemikian sehingga untuk setiap $\epsilon > 0$ terdapat
+$\delta > 0$ sedemikian sehingga jika $P$ adalah partisi dengan $\Delta x_i < \delta$
+untuk setiap $i$, maka
+$\babs{L(P,f) - I} < \epsilon$ dan
+$\babs{U(P,f) - I} < \epsilon$.  Jika $f \in \sR\bigl([a,b]\bigr)$, maka $I = \int_a^b f$.
+\end{exercise}
+
+\begin{exercise}
+Dengan menggunakan \exerciseref{exercise:riemannintdarboux} dan gagasan
+pembuktian dalam \exerciseref{exercise:taggedpartition}, tunjukkan bahwa 
+integral Darboux ekuivalen dengan definisi standar
+integral Riemann, yang kemungkinan besar telah Anda jumpai dalam kalkulus.  Artinya,
+tunjukkan bahwa
+$f \in \sR\bigl([a,b]\bigr)$ jika dan hanya jika terdapat $I \in \R$,
+sedemikian sehingga untuk setiap $\epsilon > 0$ terdapat
+$\delta > 0$ sedemikian sehingga jika $P = \{ x_0,x_1,\ldots,x_n \}$
+adalah partisi dengan $\Delta x_i < \delta$
+untuk setiap $i$, maka
+$\abs{\sum_{i=1}^n f(c_i) \Delta x_i - I} < \epsilon$ untuk setiap himpunan
+$\{ c_1,c_2,\ldots,c_n \}$ dengan $c_i \in [x_{i-1},x_i]$.
+Jika $f \in \sR\bigl([a,b]\bigr)$, maka $I = \int_a^b f$.
+\end{exercise}
+
+
+\begin{exercise}[Menantang]
+Konstruksikan fungsi $f$ dan $g$, 
+dengan
+$f \colon [0,1] \to \R$ terintegralkan Riemann,
+$g \colon [0,1] \to [0,1]$ injektif dan surjektif,
+dan sedemikian sehingga komposisi $f \circ g$ tidak terintegralkan Riemann.
+\end{exercise}
+
+\begin{exercise}
+Andaikan bahwa $f \colon [a,b] \to \R$ adalah fungsi terbatas, dan $P$ adalah
+partisi dari $[a,b]$ sedemikian sehingga $L(P,f)=U(P,f)$.  Buktikan bahwa $f$ adalah
+fungsi konstan.
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Sifat-sifat integral}
+\label{sec:rintprop}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2 kuliah; keterintegralan fungsi dengan
+diskontinuitas dapat dilewati dengan aman}
+
+\subsection{Aditivitas}
+
+Menjumlahkan sekumpulan objek dalam dua bagian lalu menjumlahkan kedua bagian tersebut
+seharusnya sama dengan menjumlahkan semuanya sekaligus.
+Sifat yang bersesuaian untuk integral disebut
+\myindex{sifat aditif integral}.  Pertama-tama, kita membuktikan sifat aditif
+untuk integral Darboux bawah dan atas.
+
+\begin{lemma} \label{lemma:darbouxadd}
+Andaikan $a < b < c$ dan $f \colon [a,c] \to \R$ fungsi terbatas.
+Maka
+\begin{equation*}
+\underline{\int_a^c} f
+=
+\underline{\int_a^b} f
++
+\underline{\int_b^c} f
+\quad \text{dan} \quad
+\overline{\int_a^c} f
+=
+\overline{\int_a^b} f
++
+\overline{\int_b^c} f .
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+Jika kita memiliki partisi $P_1 = \{ x_0,x_1,\ldots,x_k \}$
+dari $[a,b]$ dan $P_2 = \{ x_k, x_{k+1}, \ldots, x_n \}$ dari $[b,c]$,
+maka himpunan $P \coloneqq P_1 \cup P_2 = \{ x_0, x_1, \ldots, x_n \}$ merupakan
+partisi dari $[a,c]$.  Kita peroleh
+\begin{equation*}
+L(P,f) =
+\sum_{i=1}^n m_i \Delta x_i
+=
+\sum_{i=1}^k m_i \Delta x_i
++
+\sum_{i=k+1}^n m_i \Delta x_i
+=
+L(P_1,f) + L(P_2,f) .
+\end{equation*}
+Ketika mengambil supremum ruas kanan atas semua $P_1$ dan $P_2$,
+kita mengambil supremum ruas kiri
+atas semua partisi $P$ dari $[a,c]$ yang memuat $b$.  Jika $Q$ merupakan partisi
+dari $[a,c]$ dan $P = Q \cup \{ b \}$, maka $P$ merupakan penghalusan dari $Q$
+sehingga $L(Q,f) \leq L(P,f)$.  Oleh karena itu, mengambil supremum hanya atas $P$
+yang memuat $b$ sudah cukup untuk memperoleh supremum $L(P,f)$
+atas semua partisi $P$; lihat \exerciseref{exercise:dominatingb}.
+Terakhir, ingat kembali \exerciseref{exercise:supofsum}
+untuk menghitung
+\begin{equation*}
+\begin{split}
+\underline{\int_a^c} f
+& =
+\sup \, \bigl\{ L(P,f) : P \text{ partisi dari } [a,c] \bigr\}
+\\
+& =
+\sup \, \bigl\{ L(P,f) : P \text{ partisi dari } [a,c], b \in P \bigr\}
+\\
+& =
+\sup \, \bigl\{ L(P_1,f) + L(P_2,f) :
+P_1 \text{ partisi dari } [a,b], P_2 \text{ partisi dari } [b,c] \bigr\}
+\\
+& =
+\sup \, \bigl\{ L(P_1,f) : P_1 \text{ partisi dari } [a,b] \bigr\}
++
+\sup \, \bigl\{ L(P_2,f) : P_2 \text{ partisi dari } [b,c] \bigr\}
+\\
+&=
+\underline{\int_a^b} f + \underline{\int_b^c} f .
+\end{split}
+\end{equation*}
+
+Demikian pula, untuk $P$, $P_1$, dan $P_2$ seperti di atas, kita peroleh
+\begin{equation*}
+U(P,f) =
+\sum_{i=1}^n M_i \Delta x_i
+=
+\sum_{i=1}^k M_i \Delta x_i
++
+\sum_{i=k+1}^n M_i \Delta x_i
+=
+U(P_1,f) + U(P_2,f) .
+\end{equation*}
+Kita hendak mengambil infimum ruas kanan
+atas semua $P_1$ dan $P_2$, sehingga kita mengambil infimum
+atas semua partisi $P$ dari $[a,c]$ yang memuat $b$.  Jika $Q$ merupakan partisi
+dari $[a,c]$ dan $P = Q \cup \{ b \}$, maka $P$ merupakan penghalusan dari $Q$
+sehingga $U(Q,f) \geq U(P,f)$.  Oleh karena itu, mengambil infimum hanya atas $P$
+yang memuat $b$ sudah cukup untuk memperoleh infimum $U(P,f)$ atas
+semua $P$.
+Kita peroleh
+\begin{equation*}
+\overline{\int_a^c} f
+=
+\overline{\int_a^b} f + \overline{\int_b^c} f .  \qedhere
+\end{equation*}
+\end{proof}
+
+\begin{prop}
+Misalkan $a < b < c$.  Fungsi $f \colon [a,c] \to \R$ terintegralkan secara Riemann
+jika dan hanya jika $f$ terintegralkan secara Riemann pada $[a,b]$ dan $[b,c]$.  Jika
+$f$ terintegralkan secara Riemann, maka
+\begin{equation*}
+\int_a^c f
+=
+\int_a^b f
++
+\int_b^c f .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Andaikan $f \in \sR\bigl([a,c]\bigr)$.  Maka fungsi tersebut terbatas dan
+$\overline{\int_a^c} f = 
+\underline{\int_a^c} f = 
+\int_a^c f$.  Lema tersebut memberikan
+\begin{equation*}
+\int_a^c f
+=
+\underline{\int_a^c} f
+ =
+\underline{\int_a^b} f + \underline{\int_b^c} f
+ \leq
+\overline{\int_a^b} f + \overline{\int_b^c} f
+ =
+\overline{\int_a^c} f
+ =
+\int_a^c f .
+\end{equation*}
+Jadi, pertidaksamaan tersebut berlaku sebagai kesamaan:
+\begin{equation*}
+\underline{\int_a^b} f + \underline{\int_b^c} f
+=
+\overline{\int_a^b} f + \overline{\int_b^c} f .
+\end{equation*}
+Karena kita juga mengetahui
+$\underline{\int_a^b} f \leq \overline{\int_a^b} f$
+dan
+$\underline{\int_b^c} f \leq \overline{\int_b^c} f$, kita
+menyimpulkan
+\begin{equation*}
+\underline{\int_a^b} f
+=
+\overline{\int_a^b} f
+\qquad \text{dan} \qquad
+\underline{\int_b^c} f
+=
+\overline{\int_b^c} f .
+\end{equation*}
+Jadi, $f$ terintegralkan secara Riemann pada $[a,b]$ dan $[b,c]$, serta rumus yang diinginkan
+berlaku.
+
+Sekarang andaikan $f$ terintegralkan secara Riemann pada $[a,b]$ dan pada $[b,c]$.
+Sekali lagi, fungsi tersebut terbatas, dan lema tersebut memberikan
+\begin{equation*}
+\underline{\int_a^c} f
+=
+\underline{\int_a^b} f + \underline{\int_b^c} f
+=
+\int_a^b f + \int_b^c f
+=
+\overline{\int_a^b} f + \overline{\int_b^c} f
+=
+\overline{\int_a^c} f .
+\end{equation*}
+Oleh karena itu, $f$ terintegralkan secara Riemann pada $[a,c]$, dan integralnya dihitung
+seperti yang dinyatakan.
+\end{proof}
+
+Akibat sederhana dari aditivitas adalah korolari berikut.  Kita
+menyerahkan perinciannya kepada pembaca sebagai latihan.
+
+\begin{cor} \label{intsubcor}
+Jika $f \in \sR\bigl([a,b]\bigr)$ dan
+$[c,d] \subset [a,b]$, maka
+pembatasan $f|_{[c,d]}$ berada dalam $\sR\bigl([c,d]\bigr)$.
+\end{cor}
+
+\subsection{Linearitas dan kemonotonan}
+
+Suatu jumlah merupakan fungsi linear dari suku-sukunya.  Demikian pula integral.
+
+\begin{prop}[Linearitas]
+\index{linearitas integral}\label{prop:integrallinear}
+Misalkan $f$ dan $g$ berada dalam $\sR\bigl([a,b]\bigr)$ dan $\alpha \in \R$.
+\begin{enumerate}[(i)]
+\item $\alpha f$ berada dalam $\sR\bigl([a,b]\bigr)$ dan
+\begin{equation*}
+\int_a^b \alpha f(x) \,dx = \alpha \int_a^b f(x) \,dx .
+\end{equation*}
+\item $f+g$ berada dalam $\sR\bigl([a,b]\bigr)$ dan
+\begin{equation*}
+\int_a^b \bigl( f(x)+g(x) \bigr) \,dx = 
+\int_a^b f(x) \,dx 
++
+\int_a^b g(x) \,dx .
+\end{equation*}
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\pagebreak[2]
+Mari kita buktikan butir pertama untuk $\alpha \geq 0$.
+Misalkan $P$ partisi dari $[a,b]$, dan seperti biasa,
+$m_i \coloneqq \inf \bigl\{ f(x) : x \in [x_{i-1},x_i] \bigr\}$.
+Karena $\alpha \geq 0$, faktor $\alpha$ dapat dikeluarkan
+dari infimum,
+\begin{equation*}
+\inf \bigl\{ \alpha f(x) : x \in [x_{i-1},x_i] \bigr\}
+=
+\alpha \inf \bigl\{ f(x) : x \in [x_{i-1},x_i] \bigr\} = \alpha m_i .
+\end{equation*}
+Oleh karena itu,
+\begin{equation*}
+L(P,\alpha f) =
+\sum_{i=1}^n \alpha m_i \Delta x_i = \alpha \sum_{i=1}^n m_i \Delta x_i = \alpha
+L(P,f).
+\end{equation*}
+Demikian pula,
+\begin{equation*}
+U(P,\alpha f) = \alpha U(P,f) .
+\end{equation*}
+Sekali lagi, karena $\alpha \geq 0$, kita
+dapat mengeluarkan faktor $\alpha$ dari supremum.  Jadi,
+\begin{equation*}
+\begin{split}
+\underline{\int_a^b} \alpha f(x)\,dx & =
+\sup \, \bigl\{ L(P,\alpha f) : P \text{ partisi dari } [a,b] \bigr\}
+\\
+& =
+\sup \, \bigl\{ \alpha L(P,f) : P \text{ partisi dari } [a,b] \bigr\}
+\\
+& =
+\alpha \,
+\sup \, \bigl\{ L(P,f) : P \text{ partisi dari } [a,b] \bigr\}
+\\
+& =
+\alpha
+\underline{\int_a^b} f(x)\,dx .
+\end{split}
+\end{equation*}
+Demikian pula, kita tunjukkan
+\begin{equation*}
+\overline{\int_a^b} \alpha f(x)\,dx
+=
+\alpha
+\overline{\int_a^b} f(x)\,dx .
+\end{equation*}
+Kesimpulannya kini berlaku untuk $\alpha \geq 0$.
+
+Untuk menyelesaikan bukti butir pertama (untuk $\alpha < 0$), kita perlu menunjukkan
+bahwa $-f$ terintegralkan secara Riemann dan
+$\int_a^b - f(x)\,dx =
+-
+\int_a^b f(x)\,dx$.  Bukti fakta ini diserahkan sebagai
+\exerciseref{exercise:proofoflinpropparti}.
+
+Bukti butir kedua diserahkan sebagai
+\exerciseref{exercise:proofoflinproppartii}.
+Bukti tersebut tidak sulit, tetapi juga tidak sesederhana
+yang mungkin tampak pada pandangan pertama.
+\end{proof}
+
+Butir kedua dalam proposisi tersebut tidak berlaku sebagai
+persamaan untuk integral Darboux, tetapi kita memperoleh pertidaksamaan.
+Bukti proposisi berikut merupakan \exerciseref{exercise:upperlowerlinineq}.
+Untuk jumlah atas dan bawah pada partisi tetap, hasil ini mengikuti dari \exerciseref{exercise:sumofsup},
+yaitu supremum suatu jumlah kurang dari atau sama dengan jumlah
+supremumnya, dan demikian pula untuk infimum.
+
+\begin{prop} \label{prop:upperlowerlinineq}
+Misalkan $f \colon [a,b] \to \R$ dan $g \colon [a,b] \to \R$ fungsi
+terbatas.  Maka
+\begin{equation*}
+%\overline{\int_a^b} \bigl(f(x)+g(x)\bigr)\,dx \leq
+%\overline{\int_a^b}f(x)\,dx+\overline{\int_a^b}g(x)\,dx
+\overline{\int_a^b} (f+g) \leq \overline{\int_a^b}f+\overline{\int_a^b}g
+,
+\qquad
+\text{dan}
+\qquad
+\underline{\int_a^b} (f+g) \geq \underline{\int_a^b}f+\underline{\int_a^b}g
+%\underline{\int_a^b} \bigl(f(x)+g(x)\bigr)\,dx \geq
+%\underline{\int_a^b}f(x)\,dx+\underline{\int_a^b}g(x)\,dx
+.
+\end{equation*}
+\end{prop}
+
+Menjumlahkan bilangan-bilangan yang lebih kecil seharusnya menghasilkan nilai yang lebih kecil.
+Hal ini juga berlaku untuk integral.
+
+\begin{prop}[Kemonotonan]
+\index{kemonotonan integral}
+Misalkan $f \colon [a,b] \to \R$ dan $g \colon [a,b] \to \R$ fungsi
+terbatas, dan $f(x) \leq g(x)$
+untuk semua $x \in [a,b]$.  Maka
+\begin{equation*}
+\underline{\int_a^b} f 
+\leq
+\underline{\int_a^b} g 
+\qquad \text{dan} \qquad
+\overline{\int_a^b} f 
+\leq
+\overline{\int_a^b} g .
+\end{equation*}
+Selain itu, jika $f$ dan $g$ berada dalam $\sR\bigl([a,b]\bigr)$, maka
+\begin{equation*}
+\int_a^b f 
+\leq
+\int_a^b g .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Misalkan $P = \{ x_0, x_1, \ldots, x_n \}$ partisi dari $[a,b]$.  Kemudian,
+definisikan
+\begin{equation*}
+m_i \coloneqq \inf \, \bigl\{ f(x) : x \in [x_{i-1},x_i] \bigr\}
+\qquad \text{dan} \qquad
+\widetilde{m}_i \coloneqq \inf \, \bigl\{ g(x) : x \in [x_{i-1},x_i] \bigr\} .
+\end{equation*}
+Karena $f(x) \leq g(x)$, kita memiliki $m_i \leq \widetilde{m}_i$.
+Oleh karena itu,
+\begin{equation*}
+L(P,f)
+=
+\sum_{i=1}^n m_i \Delta x_i
+\leq
+\sum_{i=1}^n \widetilde{m}_i \Delta x_i
+=
+L(P,g) .
+\end{equation*}
+Kita mengambil supremum atas semua $P$ (lihat \propref{prop:funcsupinf}) untuk memperoleh
+\begin{equation*}
+\underline{\int_a^b} f 
+\leq
+\underline{\int_a^b} g .
+\end{equation*}
+Demikian pula, kita memperoleh kesimpulan yang sama untuk integral atas.
+Terakhir, jika $f$ dan $g$ terintegralkan secara Riemann, integral bawah dan atas
+untuk setiap fungsi berimpit, sehingga kesimpulan tersebut berlaku.
+\end{proof}
+
+\subsection{Fungsi kontinu}
+
+Mari kita tunjukkan bahwa fungsi kontinu terintegralkan Riemann.
+Kita bahkan dapat mengizinkan beberapa diskontinuitas.  Kita mulai dengan suatu
+fungsi yang kontinu pada seluruh interval tertutup $[a,b]$.
+
+\begin{lemma} \label{lemma:contint}
+Jika $f \colon [a,b] \to \R$ merupakan fungsi kontinu,
+maka $f \in \sR\bigl([a,b]\bigr)$.
+\end{lemma}
+
+\begin{proof}
+Karena $f$ kontinu pada interval tertutup dan terbatas, fungsi tersebut
+terbatas dan
+kontinu seragam.
+Diberikan $\epsilon > 0$, pilihlah $\delta > 0$ sedemikian sehingga
+$\sabs{x-y} < \delta$ mengakibatkan $\babs{f(x)-f(y)} < \frac{\epsilon}{b-a}$.
+
+Misalkan $P = \{ x_0, x_1, \ldots, x_n \}$
+merupakan partisi dari $[a,b]$ sedemikian sehingga $\Delta x_i < \delta$ untuk setiap $i = 1,2,
+\ldots, n$.  Sebagai contoh,
+ambillah $n$ sedemikian sehingga $\frac{b-a}{n} < \delta$, dan
+misalkan $x_i \coloneqq \frac{i}{n}(b-a) + a$.
+Maka untuk setiap $x, y \in [x_{i-1},x_i]$, kita peroleh 
+$\sabs{x-y} \leq \Delta x_i < \delta$, sehingga
+\begin{equation*}
+f(x)-f(y) \leq \babs{f(x)-f(y)} < \frac{\epsilon}{b-a} .
+\end{equation*}
+Karena $f$ kontinu pada $[x_{i-1},x_i]$, fungsi tersebut mencapai maksimum dan minimum
+pada interval ini.
+Misalkan $x$ merupakan titik tempat $f$ mencapai maksimum dan $y$ merupakan titik
+tempat $f$ mencapai minimum.  Maka $f(x) = M_i$
+dan $f(y) = m_i$ dalam notasi dari definisi integral.
+Oleh karena itu,
+\begin{equation*}
+M_i-m_i = f(x)-f(y) < 
+\frac{\epsilon}{b-a} .
+\end{equation*}
+Dengan demikian,
+\begin{equation*}
+\begin{split}
+\overline{\int_a^b} f - 
+\underline{\int_a^b} f 
+& \leq
+U(P,f) - L(P,f)
+\\
+& =
+\left(
+\sum_{i=1}^n
+M_i \Delta x_i
+\right)
+-
+\left(
+\sum_{i=1}^n
+m_i \Delta x_i
+\right)
+\\
+& =
+\sum_{i=1}^n
+(M_i-m_i) \Delta x_i
+\\
+& <
+\frac{\epsilon}{b-a}
+\sum_{i=1}^n
+\Delta x_i
+\\
+& =
+\frac{\epsilon}{b-a} (b-a)
+= \epsilon .
+\end{split}
+\end{equation*}
+Karena $\epsilon > 0$ dipilih secara sebarang,
+\begin{equation*}
+\overline{\int_a^b} f = \underline{\int_a^b} f ,
+\end{equation*}
+dan $f$ terintegralkan Riemann pada $[a,b]$.
+\end{proof}
+
+Lema kedua mengatakan bahwa fungsi tersebut hanya perlu \myquote{terintegralkan Riemann
+di bagian dalam interval,} asalkan fungsi itu terbatas.  Lema tersebut juga menunjukkan cara
+menghitung integralnya.
+
+\begin{lemma} \label{lemma:boundedimpriemann}
+Misalkan $f \colon [a,b] \to \R$ merupakan fungsi terbatas, serta
+$\{ a_n \}_{n=1}^\infty$ dan $\{b_n \}_{n=1}^\infty$ merupakan barisan sedemikian sehingga
+$a < a_n < b_n < b$ untuk setiap $n$, dengan
+$\lim_{n\to\infty} a_n = a$ dan $\lim_{n\to\infty} b_n = b$.
+Andaikan $f \in \sR\bigl([a_n,b_n]\bigr)$ untuk setiap $n$.
+Maka $f \in \sR\bigl([a,b]\bigr)$ dan
+\begin{equation*}
+\int_a^b f = 
+\lim_{n \to \infty} \int_{a_n}^{b_n} f .
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+Misalkan $M > 0$ merupakan bilangan real sedemikian sehingga $\babs{f(x)} \leq M$.
+Karena $(b-a) \geq (b_n-a_n)$,
+\begin{equation*}
+-M(b-a) \leq
+-M(b_n-a_n) \leq
+\int_{a_n}^{b_n} f
+\leq
+M(b_n-a_n) \leq
+M(b-a) .
+\end{equation*}
+Oleh karena itu, barisan bilangan
+$\bigl\{ \int_{a_n}^{b_n} f \bigr\}_{n=1}^\infty$ terbatas dan berdasarkan
+\hyperref[thm:bwseq]{Bolzano--Weierstrass}
+memiliki subbarisan konvergen yang diindeks oleh $n_k$.  Mari kita sebut
+$L$ sebagai limit dari subbarisan
+$\bigl\{ \int_{a_{n_k}}^{b_{n_k}} f \bigr\}_{k=1}^\infty$.
+
+\lemmaref{lemma:darbouxadd} menyatakan bahwa
+integral bawah dan integral atas bersifat aditif,
+sedangkan hipotesis menyatakan bahwa
+$f$ terintegralkan pada $[a_{n_k},b_{n_k}]$.
+Oleh karena itu,
+\begin{equation*}
+\underline{\int_a^b} f
+=
+\underline{\int_a^{a_{n_k}}} f
++
+\int_{a_{n_k}}^{b_{n_k}} f
++
+\underline{\int_{b_{n_k}}^b} f
+\geq
+-M(a_{n_k}-a)
++
+\int_{a_{n_k}}^{b_{n_k}} f
+-
+M(b-b_{n_k}) .
+\end{equation*}
+Kita ambil limit ketika $k$ menuju $\infty$ pada ruas kanan,
+\begin{equation*}
+\underline{\int_a^b} f
+\geq
+-M\cdot 0
++
+L
+-
+M\cdot 0
+= L .
+\end{equation*}
+
+Berikutnya kita gunakan sifat aditif dari integral atas,
+\begin{equation*}
+\overline{\int_a^b} f
+=
+\overline{\int_a^{a_{n_k}}} f
++
+\int_{a_{n_k}}^{b_{n_k}} f
++
+\overline{\int_{b_{n_k}}^b} f
+\leq
+M(a_{n_k}-a)
++
+\int_{a_{n_k}}^{b_{n_k}} f
++
+M(b-b_{n_k}) .
+\end{equation*}
+Kita ambil subbarisan yang sama 
+$\{ \int_{a_{n_k}}^{b_{n_k}} f \}_{k=1}^\infty$ lalu kita ambil limit 
+untuk memperoleh
+\begin{equation*}
+\overline{\int_a^b} f
+\leq
+M\cdot 0
++
+L
++
+M\cdot 0
+= L .
+\end{equation*}
+Jadi $\overline{\int_a^b} f = \underline{\int_a^b} f = L$,
+sehingga $f$ terintegralkan Riemann dan $\int_a^b f = L$.
+Secara khusus, apa pun
+subbarisan konvergen yang kita pilih,
+$L$ merupakan bilangan yang sama.
+
+Untuk membuktikan pernyataan terakhir lema tersebut, kita gunakan 
+\propref{seqconvsubseqconv:prop}.  Kita telah menunjukkan bahwa setiap
+subbarisan konvergen
+$\bigl\{ \int_{a_{n_k}}^{b_{n_k}} f \bigr\}_{k=1}^\infty$ konvergen ke $L = \int_a^b f$.
+Oleh karena itu, barisan
+$\bigl\{ \int_{a_n}^{b_n} f \bigr\}_{n=1}^\infty$ konvergen dengan limit $\int_a^b f$.
+\end{proof}
+
+Kita katakan bahwa fungsi $f \colon [a,b] \to \R$ memiliki \emph{\myindex{berhingga banyak
+diskontinuitas}} jika terdapat himpunan berhingga $S = \{ x_1, x_2, \ldots, x_n \}
+\subset [a,b]$, dan $f$ kontinu
+di setiap titik dari $[a,b] \setminus S$.
+
+\begin{thm}
+Misalkan $f \colon [a,b] \to \R$ merupakan fungsi terbatas dengan berhingga
+banyak diskontinuitas.  Maka $f \in \sR\bigl([a,b]\bigr)$.
+\end{thm}
+
+\begin{proof}
+Kita membagi interval tersebut menjadi berhingga banyak interval $[a_i,b_i]$
+sedemikian sehingga $f$ kontinu
+pada bagian dalam $(a_i,b_i)$.  Jika $f$ kontinu pada $(a_i,b_i)$,
+maka fungsi tersebut kontinu dan karenanya terintegralkan pada $[c_i,d_i]$ bilamana $a_i < c_i < d_i < b_i$.  Berdasarkan
+\lemmaref{lemma:boundedimpriemann},
+pembatasan
+$f$ pada $[a_i,b_i]$ terintegralkan.
+Berdasarkan sifat aditif integral (serta \hyperref[induction:thm]{induksi}),
+$f$ terintegralkan pada gabungan interval-interval tersebut.
+\end{proof}
+
+\subsection{Lebih lanjut tentang fungsi terintegralkan}
+
+Terkadang lebih mudah (atau perlu)
+mengubah nilai tertentu dari suatu fungsi lalu
+mengintegralkannya.  Hasil berikut menyatakan
+bahwa jika kita mengubah nilai di berhingga
+banyak titik, integralnya tidak berubah.
+
+\begin{prop}
+Misalkan $f \colon [a,b] \to \R$ terintegralkan secara Riemann.  Misalkan $g \colon [a,b] \to
+\R$ sedemikian sehingga $f(x) = g(x)$ untuk semua $x \in [a,b] \setminus S$,
+dengan $S$ suatu himpunan hingga.
+Maka $g$ terintegralkan secara Riemann dan
+\begin{equation*}
+\int_a^b g = \int_a^b f.
+\end{equation*}
+\end{prop}
+
+\begin{proof}[Sketsa bukti]
+Dengan menggunakan aditivitas integral, bagi interval $[a,b]$ menjadi
+interval-interval yang lebih kecil sedemikian sehingga $f(x) = g(x)$ berlaku untuk semua $x$ kecuali di
+titik-titik ujung (perinciannya diserahkan kepada pembaca).
+
+Oleh karena itu, tanpa mengurangi keumuman, andaikan $f(x) = g(x)$ untuk
+semua $x \in (a,b)$.  Bukti mengikuti dari \lemmaref{lemma:boundedimpriemann},
+dan diserahkan sebagai \exerciseref{exercise:changeendpointsintegral}.
+\end{proof}
+
+Terakhir, fungsi monoton (naik atau turun) selalu
+terintegralkan secara Riemann.  Buktinya diserahkan kepada pembaca sebagai bagian dari
+\exerciseref{exercise:boundedvariationintegrable}.
+
+\begin{prop} \label{prop:monotoneintegrable}
+Misalkan $f \colon [a,b] \to \R$ fungsi monoton.  Maka $f \in
+\sR\bigl([a,b]\bigr)$.
+\end{prop}
+
+\subsection{Latihan}
+
+\begin{exercise} \label{exercise:proofoflinpropparti}
+Selesaikan bukti bagian pertama dari \propref{prop:integrallinear}.
+Misalkan $f$ merupakan anggota $\sR\bigl([a,b]\bigr)$.  Buktikan bahwa
+$-f$ merupakan anggota $\sR\bigl([a,b]\bigr)$ dan 
+\begin{equation*}
+\int_a^b - f(x) \,dx = - \int_a^b f(x) \,dx .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise} \label{exercise:proofoflinproppartii}
+Buktikan bagian kedua dari \propref{prop:integrallinear}.
+Misalkan $f$ dan $g$ anggota $\sR\bigl([a,b]\bigr)$.
+Buktikan, tanpa menggunakan \propref{prop:upperlowerlinineq}, bahwa $f+g$ anggota
+$\sR\bigl([a,b]\bigr)$ dan
+\begin{equation*}
+\int_a^b \bigl( f(x)+g(x) \bigr) \,dx = 
+\int_a^b f(x) \,dx 
++
+\int_a^b g(x) \,dx .
+\end{equation*}
+Petunjuk: Salah satu caranya adalah menggunakan \propref{prop:refinement} untuk menemukan sebuah partisi tunggal $P$
+sedemikian sehingga $U(P,f)-L(P,f) < \nicefrac{\epsilon}{2}$ dan
+$U(P,g)-L(P,g) < \nicefrac{\epsilon}{2}$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:changeendpointsintegral}
+Misalkan $f \colon [a,b] \to \R$ terintegralkan secara Riemann, dan misalkan $g \colon [a,b] \to \R$
+sedemikian sehingga $f(x) = g(x)$ untuk semua $x \in (a,b)$.
+Buktikan bahwa $g$ terintegralkan secara Riemann dan bahwa
+\begin{equation*}
+\int_a^b g = \int_a^b f.
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Buktikan \emph{\myindex{teorema nilai rata-rata untuk integral}}:
+Jika $f \colon [a,b] \to \R$ kontinu, maka terdapat
+$c \in [a,b]$ sedemikian sehingga $\int_a^b f = f(c)(b-a)$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon [a,b] \to \R$ fungsi kontinu sedemikian sehingga $f(x) \geq 0$
+untuk semua $x \in [a,b]$ dan $\int_a^b f = 0$.  Buktikan bahwa $f(x) = 0$
+untuk semua $x$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon [a,b] \to \R$ fungsi kontinu
+dan $\int_a^b f = 0$.  Buktikan bahwa
+terdapat $c \in [a,b]$ sedemikian sehingga $f(c) = 0$. (Bandingkan dengan
+latihan sebelumnya.)
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon [a,b] \to \R$ dan $g \colon [a,b] \to \R$
+fungsi-fungsi kontinu sedemikian sehingga $\int_a^b f = \int_a^b g$.
+Tunjukkan bahwa terdapat $c \in [a,b]$ sedemikian sehingga $f(c) = g(c)$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \in \sR\bigl([a,b]\bigr)$.  Misalkan $\alpha, \beta, \gamma$ bilangan-bilangan sebarang dalam
+$[a,b]$ (tidak harus terurut dengan cara apa pun).  Buktikan 
+\begin{equation*}
+\int_\alpha^\gamma f =
+\int_\alpha^\beta f +
+\int_\beta^\gamma f .
+\end{equation*}
+Ingat kembali arti $\int_a^b f$ jika $b \leq a$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \corref{intsubcor}.
+\end{exercise}
+
+\begin{exercise} \label{exercise:easyabsint}
+Andaikan $f \colon [a,b] \to \R$ terbatas dan
+memiliki sejumlah hingga diskontinuitas.
+Tunjukkan bahwa, sebagai fungsi dari $x$, ekspresi $\babs{f(x)}$ terbatas dengan sejumlah hingga
+diskontinuitas sehingga terintegralkan secara Riemann.  Kemudian tunjukkan 
+\begin{equation*}
+\abs{\int_a^b f(x)\,dx} \leq \int_a^b \babs{f(x)}\,dx .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Tunjukkan bahwa fungsi
+Thomae\index{fungsi Thomae} atau \myindex{fungsi popcorn}
+(lihat \exampleref{popcornfunction:example})
+terintegralkan secara Riemann.  Oleh karena itu, terdapat
+fungsi yang diskontinu di semua bilangan rasional (suatu himpunan padat)
+namun terintegralkan secara Riemann.
+
+Secara lebih tepat,
+definisikan $f \colon [0,1] \to \R$ dengan $f(0)=1$ dan, untuk $x > 0$, dengan
+\begin{equation*}
+f(x) \coloneqq 
+\begin{cases}
+\nicefrac{1}{k} & \text{jika } x=\nicefrac{m}{k} \text{ dengan }
+m,k \in \N \text{ serta } m \text{ dan } k \text{ tidak memiliki pembagi bersama selain 1,} \\
+0               & \text{jika } x \text{ irasional.}
+\end{cases}
+\end{equation*}
+Tunjukkan bahwa $\int_0^1 f = 0$.
+\end{exercise}
+
+
+\begin{exnote}
+Jika $I \subset \R$ suatu interval terbatas, maka
+fungsi
+\begin{equation*}
+\varphi_I(x) \coloneqq
+\begin{cases}
+1 & \text{jika } x \in I, \\
+0 & \text{jika tidak,}
+\end{cases}
+\end{equation*}
+disebut \emph{\myindex{fungsi tangga elementer}}.
+\end{exnote}
+
+\begin{exercise} \label{exercise:stepfunctionintegrable}
+Misalkan $I$ interval terbatas sebarang (anda harus mempertimbangkan semua jenis
+interval: tertutup, terbuka, setengah terbuka) dan $a < b$.  Dengan
+hanya menggunakan definisi integral,
+tunjukkan bahwa
+fungsi tangga elementer $\varphi_I$ terintegralkan
+pada $[a,b]$, dan tentukan integralnya dalam bentuk $a$, $b$, serta
+titik-titik ujung $I$.
+\end{exercise}
+
+\begin{exnote}
+Suatu fungsi $f$ disebut
+\emph{\myindex{fungsi tangga}} jika
+dapat ditulis sebagai
+\begin{equation*}
+f(x) = \sum_{k=1}^n \alpha_k \varphi_{I_k} (x)
+\end{equation*}
+untuk beberapa bilangan real $\alpha_1,\alpha_2, \ldots, \alpha_n$
+dan beberapa interval terbatas $I_1,I_2,\ldots,I_n$.
+\end{exnote}
+
+\begin{exercise}
+Dengan menggunakan \exerciseref{exercise:stepfunctionintegrable}, tunjukkan bahwa suatu fungsi
+tangga (lihat di atas) terintegralkan
+pada setiap interval $[a,b]$.  Selanjutnya, tentukan integralnya dalam bentuk
+$a$, $b$, titik-titik ujung $I_k$, dan $\alpha_k$.
+\end{exercise}
+
+\begin{exercise}
+\label{exercise:boundedvariationintegrable}
+Misalkan $f \colon [a,b] \to \R$ suatu fungsi.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa jika $f$ naik, maka fungsi tersebut terintegralkan secara
+Riemann.  Petunjuk: Gunakan partisi seragam; setiap subinterval memiliki panjang yang sama.
+\item
+Gunakan bagian a) untuk menunjukkan bahwa jika $f$ turun, maka fungsi tersebut terintegralkan secara
+Riemann.
+\item
+Andaikan\footnote{$h$ semacam ini dikatakan memiliki \emph{\myindex{variasi terbatas}}.}
+$h = f-g$, dengan $f$ dan $g$ fungsi-fungsi naik
+pada $[a,b]$.  Tunjukkan bahwa $h$ terintegralkan secara Riemann.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Menantang] \label{exercise:hardabsint}
+Andaikan $f \in \sR\bigl([a,b]\bigr)$.  Buktikan bahwa fungsi yang memetakan $x$ ke
+$\babs{f(x)}$ juga terintegralkan secara Riemann pada $[a,b]$.
+Kemudian tunjukkan pertidaksamaan yang sama seperti dalam \exerciseref{exercise:easyabsint}.
+\end{exercise}
+
+\begin{exercise}  \label{exercise:upperlowerlinineq}
+Andaikan $f \colon [a,b] \to \R$ dan $g \colon [a,b] \to \R$
+terbatas.
+\begin{enumerate}[a)]
+\item
+Tunjukkan
+$\overline{\int_a^b} (f+g) \leq \overline{\int_a^b}f+\overline{\int_a^b}g$ dan
+$\underline{\int_a^b} (f+g) \geq
+\underline{\int_a^b}f+\underline{\int_a^b}g$.
+\item
+Temukan contoh $f$ dan $g$ yang membuat
+pertidaksamaan tersebut ketat.  Petunjuk: $f$ dan $g$ hendaknya tidak terintegralkan secara
+Riemann.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon [a,b] \to \R$ kontinu dan $g \colon \R \to \R$
+kontinu Lipschitz.  Definisikan
+\begin{equation*}
+h(x) \coloneqq \int_a^b g(t-x) f(t) \, dt .
+\end{equation*}
+Buktikan bahwa $h$ kontinu Lipschitz.
+\end{exercise}
+
+\begin{exercise} \label{exercise:rieleblem}
+Buktikan suatu versi dari \emph{\myindex{lemma Riemann--Lebesgue}}
+(salah satu dari beberapa hasil yang menyandang nama tersebut):
+Andaikan $f \colon [a,b] \to \R$ kontinu dan definisikan barisan
+$\{ x_n \}_{n=1}^\infty$ dengan
+\begin{equation*}
+x_n \coloneqq \int_a^b f(t) \sin(nt) \, dt .
+\end{equation*}
+Buktikan bahwa $\lim\limits_{n\to\infty} x_n = 0$.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Teorema dasar kalkulus}
+\label{sec:ftc}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1,5 kuliah}
+
+Pada bagian ini kita membahas dan membuktikan
+\emph{\myindex{teorema dasar kalkulus}}.
+Seluruh kalkulus integral dibangun di atas teorema ini,
+dan itulah sebabnya namanya demikian.
+Teorema ini mengaitkan konsep integral dan turunan yang sepintas tidak berkaitan.
+Teorema ini memberi tahu kita cara menghitung antiturunan suatu fungsi
+menggunakan integral dan sebaliknya.
+
+\subsection{Bentuk pertama teorema}
+
+\begin{thm} \label{thm:FTCv1}
+Misalkan $F \colon [a,b] \to \R$ merupakan fungsi kontinu yang diferensiabel
+pada $(a,b)$.  Misalkan $f \in \sR\bigl([a,b]\bigr)$ sedemikian sehingga $f(x) = F'(x)$ untuk $x \in
+(a,b)$.  Maka
+\begin{equation*}
+\int_a^b f = F(b)-F(a) .
+\end{equation*}
+\end{thm}
+
+Teorema tersebut tidak sulit digeneralisasi agar mengizinkan berhingga banyak titik
+di $[a,b]$ tempat $F$ tidak diferensiabel, asalkan fungsi tersebut tetap kontinu.
+Generalisasi ini diserahkan sebagai latihan.
+
+\begin{proof}
+Misalkan $P = \{ x_0, x_1, \ldots, x_n \}$ merupakan partisi dari $[a,b]$.
+Untuk setiap interval $[x_{i-1},x_i]$, gunakan
+\hyperref[thm:mvt]{teorema nilai rata-rata} untuk memperoleh
+$c_i \in (x_{i-1},x_i)$ sedemikian sehingga
+\begin{equation*}
+f(c_i) \Delta x_i = F'(c_i) (x_i - x_{i-1}) = F(x_i) - F(x_{i-1}) .
+\end{equation*}
+Lihat \figureref{fig:fundthmfig}, dan
+perhatikan bahwa luas persegi panjang
+ke-$i$ adalah
+$F(x_{i})-F(x_{i-1})$,
+sedangkan luas total ketiga persegi panjang yang digambarkan adalah
+$F(x_{i+1})-F(x_{i-2})$.
+Gagasannya adalah bahwa dengan mengambil subinterval yang semakin kecil,
+luas total semua persegi panjang ini konvergen ke integral $f$.
+\begin{myfigureht}
+\myincludegraphics{fundthmfig}{%
+Diagram grafik suatu fungsi yang digambar tebal gelap
+dan diberi tanda y sama dengan f dari x sama dengan F aksen dari x,
+beserta tiga subinterval koordinat x.
+Subinterval tengah diberi label membentang dari
+x subskrip kuantitas i dikurangi 1 hingga x subskrip i dan panjangnya Delta x subskrip i.
+Titik c subskrip i ditandai di dalam subinterval ini dan sebuah
+garis putus-putus ditarik vertikal ke atas hingga f dari c subskrip i, tempat garis itu berpotongan dengan
+grafik f.  Sebuah persegi panjang berarsir dengan tinggi ini dan subinterval
+sebagai alas digambar dan diberi label 'luas sama dengan f dari c subskrip i dikali Delta
+x subskrip i sama dengan F dari x subskrip i dikurangi F dari x subskrip kuantitas i dikurangi 1'.
+Dua subinterval lainnya serupa, kecuali pada yang kiri
+kita mengganti i dengan i dikurangi 1 dan pada yang kanan mengganti i dengan
+i ditambah 1.}
+\caption{Teorema nilai rata-rata pada subinterval-subinterval suatu partisi yang
+menghampiri luas di bawah kurva.\label{fig:fundthmfig}}
+\end{myfigureht}
+
+Dengan notasi dari definisi integral,
+$m_i \leq f(c_i) \leq M_i$, dan dengan mengalikannya dengan $\Delta x_i$ diperoleh
+\begin{equation*}
+m_i \Delta x_i \leq F(x_i) - F(x_{i-1}) \leq M_i \Delta x_i .
+\end{equation*}
+Menjumlahkan terhadap $i = 1,2, \ldots, n$ menghasilkan
+\begin{equation*}
+\sum_{i=1}^n m_i \Delta x_i
+\leq \sum_{i=1}^n \bigl(F(x_i) - F(x_{i-1}) \bigr)
+\leq \sum_{i=1}^n M_i \Delta x_i .
+\end{equation*}
+Dalam jumlah di tengah, semua suku selain suku pertama dan terakhir saling menghapus,
+sehingga tersisa $F(x_n)-F(x_0) = F(b)-F(a)$.  Jumlah di sebelah kiri
+dan kanan masing-masing merupakan jumlah bawah dan jumlah atas.  Jadi
+\begin{equation*}
+L(P,f) \leq F(b)-F(a) \leq U(P,f) .
+\end{equation*}
+Kita mengambil supremum $L(P,f)$ atas semua partisi $P$, dan pertidaksamaan kiri
+menghasilkan
+\begin{equation*}
+\underline{\int_a^b} f \leq F(b)-F(a) .
+\end{equation*}
+Serupa dengan itu, mengambil
+infimum $U(P,f)$ atas semua partisi $P$ menghasilkan
+\begin{equation*}
+F(b)-F(a) \leq \overline{\int_a^b} f .
+\end{equation*}
+Karena $f$ terintegralkan Riemann, kita memperoleh
+\begin{equation*}
+\int_a^b f =
+\underline{\int_a^b} f \leq F(b)-F(a) \leq \overline{\int_a^b} f
+= \int_a^b f .
+\end{equation*}
+Semua pertidaksamaan tersebut harus berupa kesamaan, dan pembuktian selesai.
+\end{proof}
+
+Teorema tersebut digunakan untuk menghitung integral.  Andaikan kita mengetahui bahwa
+fungsi $f(x)$ merupakan turunan dari suatu fungsi lain $F(x)$,
+maka kita dapat menemukan bentuk eksplisit untuk $\int_a^b f$.
+
+\begin{example}
+Untuk menghitung
+\begin{equation*}
+\int_0^1 x^2 \,dx ,
+\end{equation*}
+kita perhatikan bahwa $x^2$ merupakan turunan dari $\frac{x^3}{3}$.
+Teorema dasar mengatakan bahwa
+\begin{equation*}
+\int_0^1 x^2 \,dx =
+\frac{1^3}{3}
+-
+\frac{0^3}{3}
+= \frac{1}{3}.
+\end{equation*}
+\end{example}
+
+\subsection{Bentuk kedua teorema}
+
+Bentuk kedua teorema dasar memberi kita cara untuk menyelesaikan
+persamaan diferensial $F'(x) = f(x)$, dengan $f$ merupakan fungsi yang diketahui
+dan kita berusaha mencari $F$ yang memenuhi persamaan tersebut.
+
+\begin{thm} \label{thm:FTCv2}
+Misalkan $f \colon [a,b] \to \R$ merupakan fungsi terintegralkan Riemann.  Definisikan
+\begin{equation*}
+F(x) \coloneqq \int_a^x f .
+\end{equation*}
+Pertama, $F$ kontinu pada $[a,b]$.  Kedua,
+jika $f$ kontinu di $c \in [a,b]$, maka $F$ diferensiabel di $c$
+dan $F'(c) = f(c)$.
+\end{thm}
+
+\begin{proof}
+Karena $f$ terbatas, terdapat $M > 0$
+sedemikian sehingga $\babs{f(x)} \leq M$ untuk semua $x \in [a,b]$.  Andaikan $x,y \in [a,b]$
+dengan $x > y$.  Maka
+\begin{equation*}
+\babs{F(x)-F(y)} =
+\abs{\int_a^x f - \int_a^y f}
+=
+\abs{\int_y^x f}
+\leq
+M\sabs{x-y} .
+\end{equation*}
+Karena simetri, hal yang sama juga berlaku jika $x < y$.
+Jadi $F$ kontinu secara Lipschitz dan karena itu kontinu.
+
+Sekarang andaikan $f$ kontinu di $c$.
+Misalkan diberikan $\epsilon > 0$.  Pilih $\delta > 0$ sedemikian sehingga,
+untuk $x \in [a,b]$,
+$\sabs{x-c} < \delta$ mengakibatkan $\babs{f(x)-f(c)} < \epsilon$.
+Secara khusus,
+untuk $x$ semacam itu, kita mempunyai
+\begin{equation*}
+f(c)-\epsilon < f(x) < f(c) + \epsilon.
+\end{equation*}
+Jadi jika $x > c$, maka
+\begin{equation*}
+\bigl(f(c)-\epsilon\bigr) (x-c) \leq \int_c^x f \leq
+\bigl(f(c) + \epsilon\bigr)(x-c).
+\end{equation*}
+Jika $c > x$, arah pertidaksamaan tersebut berbalik.  Oleh karena itu,
+dengan mengandaikan $x \neq c$, kita memperoleh
+\begin{equation*}
+f(c)-\epsilon
+\leq
+\frac{\int_c^{x} f}{x-c}
+\leq
+f(c)+\epsilon .
+\end{equation*}
+Karena
+\begin{equation*}
+\frac{F(x)-F(c)}{x-c}
+=
+\frac{\int_a^{x} f - \int_a^{c} f}{x-c}
+=
+\frac{\int_c^{x} f}{x-c} ,
+\end{equation*}
+kita mempunyai
+\begin{equation*}
+\abs{\frac{F(x)-F(c)}{x-c} - f(c)} \leq \epsilon .
+\end{equation*}
+Hasilnya pun mengikuti.  Pembaca dipersilakan memeriksa mengapa tidak menjadi masalah bahwa
+pertidaksamaan yang kita peroleh hanya tidak ketat.
+\end{proof}
+
+Tentu saja, jika $f$ kontinu pada $[a,b]$, maka fungsi tersebut otomatis terintegralkan
+Riemann, $F$ diferensiabel pada seluruh $[a,b]$, dan $F'(x) = f(x)$ untuk
+semua $x \in [a,b]$.
+
+\begin{remark} \label{remark:fundthmbase}
+Bentuk kedua teorema dasar kalkulus tetap berlaku jika
+kita mengambil $d \in [a,b]$ dan mendefinisikan
+\begin{equation*}
+F(x) \coloneqq \int_d^x f .
+\end{equation*}
+Artinya, kita dapat menggunakan sembarang titik di $[a,b]$ sebagai titik pangkal.  Pembuktiannya
+diserahkan sebagai latihan.
+\end{remark}
+
+Mari kita lihat akibat suatu diskontinuitas sederhana.  Ambil $f(x) \coloneqq -1$ jika $x
+< 0$, dan $f(x) \coloneqq 1$ jika $x \geq 0$.  Misalkan $F(x) \coloneqq \int_0^x f$.  Tidak
+sulit untuk melihat bahwa $F(x) = \sabs{x}$.  Perhatikan bahwa $f$ diskontinu di
+$0$ dan $F$ tidak diferensiabel di $0$.  Namun, kebalikan dari
+teorema tersebut tidak
+berlaku.
+Misalkan $g(x) \coloneqq 0$ jika $x \neq 0$, dan $g(0) \coloneqq 1$.
+Dengan mengambil $G(x) \coloneqq \int_0^x g$,
+kita memperoleh $G(x) = 0$ untuk semua $x$.  Jadi $g$ diskontinu
+di $0$, tetapi $G'(0)$ ada dan sama dengan 0.
+
+Kesalahpahaman umum tentang integral di kalangan mahasiswa kalkulus adalah
+menganggap integral yang hasilnya tidak dapat diberikan dalam bentuk tertutup sebagai sesuatu yang
+cacat.  Hal ini tidak benar.  Kebanyakan integral yang kita tuliskan tidak dapat
+dihitung dalam bentuk tertutup.  Bahkan beberapa integral yang kita anggap
+berbentuk tertutup sebenarnya tidak demikian.  Kita mendefinisikan
+logaritma alami sebagai antiturunan dari $\nicefrac{1}{x}$
+yang memenuhi $\ln 1 = 0$:
+\begin{equation*}
+\ln x \coloneqq \int_1^x \frac{1}{s}\,ds .
+\end{equation*}
+Bagaimana komputer mencari nilai $\ln x$?
+Salah satu caranya ialah menghampiri integral ini secara numerik.
+Pada hakikatnya,
+kita tidak benar-benar \myquote{menyederhanakan} $\int_1^x \frac{1}{s}\,ds$ dengan
+menuliskan $\ln x$.  Kita sekadar memberi integral tersebut sebuah nama.
+Jika kita memerlukan jawaban numerik,
+mungkin pada akhirnya kita tetap melakukan
+perhitungan dengan menghampiri suatu integral.
+Pada bagian berikutnya, kita bahkan mendefinisikan fungsi eksponensial menggunakan
+logaritma, yang kita definisikan melalui integral.
+
+Fungsi umum lain yang didefinisikan oleh suatu integral yang tidak dapat
+dievaluasi secara simbolik dalam fungsi-fungsi elementer
+adalah fungsi $\operatorname{erf}$, yang didefinisikan sebagai
+\begin{equation*}
+\operatorname{erf}(x) \coloneqq \frac{2}{\sqrt{\pi}} \int_0^x e^{-s^2} \,ds .
+\end{equation*}
+Fungsi ini sering muncul dalam matematika terapan.  Fungsi tersebut semata-mata merupakan
+antiturunan dari $\left(\nicefrac{2}{\sqrt{\pi}}\right) e^{-x^2}$
+yang bernilai nol di nol.
+Bentuk kedua teorema dasar memberi tahu kita bahwa fungsi tersebut dapat ditulis
+sebagai integral.  Jika kita ingin menghitung suatu nilai tertentu, kita
+menghampiri integral itu secara numerik.
+
+\subsection{Penggantian variabel}
+
+Salah satu teorema yang sering digunakan dalam kalkulus untuk menghitung integral adalah teorema
+penggantian variabel; Anda mungkin mengenalnya sebagai
+\emph{substitusi-$u$}\index{substitusi-u@substitusi-$u$}.
+Agar mudah dihubungkan dengan materi kalkulus, kita juga akan
+menamai variabel baru tersebut $u$, yaitu kita melakukan substitusi $u=g(x)$.
+Ingat bahwa suatu fungsi diferensiabel secara kontinu jika
+fungsi tersebut diferensiabel dan turunannya kontinu.
+
+\begin{thm}[Penggantian variabel]
+\index{teorema penggantian variabel}
+Misalkan $g \colon [a,b] \to \R$ fungsi yang diferensiabel secara kontinu,
+misalkan $f \colon [c,d] \to \R$ kontinu, dan andaikan
+$g\bigl([a,b]\bigr) \subset [c,d]$.  Maka
+\begin{equation*}
+\int_a^b f\bigl(g(x)\bigr)\, g'(x)\, dx =
+\int_{g(a)}^{g(b)} f(u)\, du .
+\end{equation*}
+\end{thm}
+
+\begin{proof}
+Karena $g$, $g'$, dan $f$ kontinu, $f\bigl(g(x)\bigr)\,g'(x)$
+merupakan fungsi kontinu pada $[a,b]$, sehingga terintegralkan secara Riemann.
+Demikian pula, $f$ terintegralkan pada setiap subinterval dari $[c,d]$.
+
+Definisikan $F \colon [c,d] \to \R$ dengan
+\begin{equation*}
+F(y) \coloneqq \int_{g(a)}^{y} f(u)\,du .
+\end{equation*}
+Berdasarkan bentuk kedua teorema dasar
+kalkulus
+(lihat \remarkref{remark:fundthmbase} dan \exerciseref{secondftc:exercise}),
+$F$ merupakan fungsi diferensiabel dan $F'(y) = f(y)$.  Terapkan aturan
+rantai,
+\begin{equation*}
+\bigl( F \circ g \bigr)' (x) =
+F'\bigl(g(x)\bigr) g'(x)
+=
+f\bigl(g(x)\bigr) g'(x) .
+\end{equation*}
+Perhatikan bahwa $F\bigl(g(a)\bigr) = 0$, lalu
+gunakan bentuk pertama teorema dasar
+untuk memperoleh
+\begin{multline*}
+%mbxSTARTIGNORE
+\qquad %to center things more
+%mbxENDIGNORE
+\int_{g(a)}^{g(b)} f(u)\,du = F\bigl(g(b)\bigr) = F\bigl(g(b)\bigr)-F\bigl(g(a)\bigr)
+\\
+=
+\int_a^b 
+\bigl( F \circ g \bigr)' (x) \,dx
+=
+\int_a^b 
+f\bigl(g(x)\bigr) g'(x)
+\,dx .
+%mbxSTARTIGNORE
+\qquad %to center things more
+%mbxENDIGNORE
+\qedhere
+\end{multline*}
+\end{proof}
+
+Teorema penggantian variabel sering digunakan untuk menghitung integral dengan mengubahnya
+menjadi integral yang telah kita ketahui atau dapat kita hitung menggunakan teorema dasar
+kalkulus.
+
+\begin{example}
+Turunan $\sin(x)$ adalah $\cos(x)$.
+Dengan menggunakan $g(x) \coloneqq x^2$, kita hitung
+\begin{equation*}
+\int_0^{\sqrt{\pi}} x \cos(x^2) \, dx = \int_0^\pi \frac{\cos(u)}{2} \, du
+=
+\frac{1}{2}
+\int_0^\pi \cos(u) \, du
+=
+\frac{
+\sin(\pi) - \sin(0)
+}{2}
+=
+0 .
+\end{equation*}
+\end{example}
+
+Namun, ingatlah bahwa kita harus memenuhi hipotesis teorema tersebut.  Contoh
+berikut menunjukkan mengapa kita tidak boleh sekadar
+memindah-mindahkan simbol tanpa berpikir.
+Kita harus memastikan bahwa simbol-simbol tersebut benar-benar bermakna.
+
+\begin{example}
+Perhatikan
+\begin{equation*}
+\int_{-1}^{1} \frac{\ln \sabs{x}}{x} \,dx .
+\end{equation*}
+Mungkin kita tergoda untuk mengambil $g(x) \coloneqq \ln \sabs{x}$.  Hitung $g'(x) =
+\nicefrac{1}{x}$ dan coba tuliskan
+\begin{equation*}
+\int_{g(-1)}^{g(1)} u \,du = 
+\int_{0}^{0} u \,du = 0. 
+\end{equation*}
+\myquote{Penyelesaian} ini salah dan tidak menunjukkan
+bahwa kita dapat menghitung integral yang diberikan.  Masalah pertama adalah
+$\frac{\ln \sabs{x}}{x}$ tidak kontinu pada $[-1,1]$.
+Fungsi tersebut tidak terdefinisi di 0 dan tidak dapat dijadikan kontinu dengan menetapkan suatu nilai di
+0.
+Kedua, $\frac{\ln \sabs{x}}{x}$ bahkan tidak terintegralkan secara Riemann pada $[-1,1]$
+(fungsi tersebut tak terbatas).
+Integral yang kita tuliskan sama sekali tidak bermakna.
+Terakhir, $g$ tidak kontinu
+pada $[-1,1]$, apalagi diferensiabel secara kontinu.
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Hitung
+$\displaystyle
+\frac{d}{dx} \biggl( \int_{-x}^x e^{s^2}\,ds \biggr)$.
+\end{exercise}
+
+\begin{exercise}
+Hitung
+$\displaystyle
+\frac{d}{dx} \biggl( \int_{0}^{x^2} \sin(s^2)\,ds \biggr)$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $F \colon [a,b] \to \R$ kontinu dan diferensiabel
+pada $[a,b] \setminus S$, dengan $S$ suatu himpunan hingga.  Andaikan
+terdapat $f \in \sR\bigl([a,b]\bigr)$ sedemikian sehingga $f(x) = F'(x)$ untuk $x \in [a,b]
+\setminus S$.  Tunjukkan bahwa
+$\int_a^b f = F(b)-F(a)$.
+\end{exercise}
+
+\begin{exercise} \label{secondftc:exercise}
+Misalkan $f \colon [a,b] \to \R$ fungsi kontinu.  Pilih sebarang $c \in [a,b]$.
+Definisikan
+\begin{equation*}
+F(x) \coloneqq \int_c^x f .
+\end{equation*}
+Buktikan bahwa $F$ diferensiabel dan $F'(x) = f(x)$ untuk semua $x \in
+[a,b]$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \emph{\myindex{integrasi parsial}}.  Artinya, andaikan $F$ dan
+$G$ merupakan fungsi yang diferensiabel secara kontinu pada $[a,b]$.  Buktikan
+\begin{equation*}
+\int_a^b F(x)G'(x)\,dx
+=
+F(b)G(b)-F(a)G(a)
+-
+\int_a^b F'(x)G(x)\,dx .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Andaikan $F$ dan $G$
+diferensiabel secara kontinu\footnote{
+Bandingkan hipotesis ini dengan \exerciseref{exercise:samediffconst}.}
+dan didefinisikan
+pada $[a,b]$
+sedemikian sehingga $F'(x) = G'(x)$ untuk semua $x \in [a,b]$.
+Dengan menggunakan teorema dasar kalkulus,
+tunjukkan bahwa selisih $F$ dan $G$ merupakan konstanta.  Artinya, tunjukkan bahwa
+terdapat $C \in \R$ sedemikian sehingga
+$F(x)-G(x) = C$.
+\end{exercise}
+
+\begin{exnote}
+Latihan berikut menunjukkan cara menggunakan integral untuk \myquote{memperhalus}
+fungsi yang tidak diferensiabel.
+\end{exnote}
+
+\begin{exercise} \label{exercise:smoothingout}
+Misalkan $f \colon [a,b] \to \R$ fungsi kontinu.  Misalkan $\epsilon > 0$
+konstanta sedemikian sehingga $a+\epsilon < b-\epsilon$.  Untuk $x \in [a+\epsilon,b-\epsilon]$, definisikan
+\begin{equation*}
+g(x) \coloneqq \frac{1}{2\epsilon} \int_{x-\epsilon}^{x+\epsilon} f .
+\end{equation*}
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $g$ diferensiabel dan tentukan turunannya.
+\item
+Misalkan $f$ diferensiabel dan tetapkan $x \in (a,b)$ (ambil $\epsilon$
+cukup kecil).  Apa yang terjadi pada $g'(x)$ ketika $\epsilon$ semakin kecil?
+\item
+Tentukan $g$ untuk $f(x) \coloneqq \sabs{x}$, $\epsilon = 1$ (Anda dapat mengandaikan
+$[a,b]$ cukup besar).
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon [a,b] \to \R$ kontinu dan
+$\int_a^x f = \int_x^b f$ untuk semua $x \in [a,b]$.  Tunjukkan bahwa $f(x) = 0$
+untuk semua $x \in [a,b]$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon [a,b] \to \R$ kontinu dan
+$\int_a^x f = 0$ untuk setiap $x$ rasional dalam $[a,b]$.  Tunjukkan bahwa $f(x) = 0$
+untuk semua $x \in [a,b]$.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Fungsi $f$ disebut \emph{\myindex{fungsi ganjil}} jika $f(x) = -f(-x)$,
+dan $f$ disebut \emph{\myindex{fungsi genap}} jika $f(x) = f(-x)$.  Misalkan $a >
+0$.  Andaikan $f$ kontinu.  Buktikan:
+\begin{enumerate}[a)]
+\item
+Jika $f$ ganjil, maka $\int_{-a}^a f = 0$.
+\item
+Jika $f$ genap, maka $\int_{-a}^a f = 2 \int_0^a f$.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $f(x) \coloneqq \sin(\nicefrac{1}{x})$
+terintegralkan pada setiap interval (Anda dapat mendefinisikan $f(0)$ sebagai nilai apa pun).
+\item
+Hitung $\int_{-1}^1 \sin(\nicefrac{1}{x})\,dx$ (perhatikan
+diskontinuitasnya).
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[menggunakan \sectionref{sec:monotonefunc}]
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Andaikan $f \colon [a,b] \to \R$ monoton naik.
+Berdasarkan \propref{prop:monotoneintegrable},
+%\exerciseref{exercise:boundedvariationintegrable},
+$f$ terintegralkan secara Riemann.  Tunjukkan bahwa jika $f$ diskontinu di $c \in
+(a,b)$, maka $F(x) \coloneqq \int_a^x f$ tidak diferensiabel di $c$.
+\item
+Dalam \exerciseref{exercise:increasingfuncdiscatQ}, Anda mengonstruksi fungsi monoton naik
+$f \colon [0,1] \to \R$ yang diskontinu di setiap
+$x \in [0,1] \cap \Q$.  Gunakan $f$ ini untuk mengonstruksi fungsi $F(x)$ yang
+kontinu pada $[0,1]$; untuk setiap $x \in [0,1] \cap \Q$, fungsi tersebut tidak diferensiabel di titik itu.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Untuk sebarang $\ell \in \N$,
+tunjukkan bahwa limit berikut ada dan tentukan nilainya:
+\begin{equation*}
+\lim_{n\to\infty} \sum_{k=1}^n \frac{k^\ell}{n^{\ell+1}}
+\end{equation*}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Logaritma dan eksponensial}
+\label{sec:logandexp}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1 kuliah (opsional, memerlukan bagian opsional
+\sectionref{sec:limitatinf},
+\sectionref{sec:monotonefunc},
+\sectionref{sec:ift})}
+
+Kita kini memiliki perangkat yang diperlukan untuk mendefinisikan dengan tepat fungsi eksponensial
+dan
+logaritma yang telah Anda kenal dari kalkulus.  Kita mulai dengan
+perpangkatan.
+Jika $n$ bilangan bulat positif, kita definisikan
+\begin{equation*}
+x^n \coloneqq \underbrace{x \cdot x \cdots x}_{n \text{ kali}} .
+\end{equation*}
+Wajar untuk mendefinisikan $x^0 \coloneqq 1$.
+Untuk bilangan bulat negatif, tetapkan $x^{-n} \coloneqq \nicefrac{1}{x^n}$ selama
+$x \neq 0$.
+Selanjutnya, andaikan $x > 0$.
+Definisikan
+$x^{1/n}$ sebagai
+satu-satunya akar pangkat $n$ yang positif.  Terakhir, untuk bilangan
+rasional $\nicefrac{n}{m}$ (dalam bentuk paling sederhana), definisikan
+\begin{equation*}
+x^{n/m} \coloneqq {\bigl(x^{1/m}\bigr)}^n .
+\end{equation*}
+Tidak sulit untuk menunjukkan bahwa
+kita memperoleh bilangan yang sama apa pun
+representasi $\nicefrac{n}{m}$ yang digunakan, sehingga sebenarnya kita tidak perlu menggunakan
+bentuk paling sederhana.
+
+Namun, apa yang dimaksud dengan $\sqrt{2}^{\sqrt{2}}$?  Atau,
+$x^y$ secara umum?  Secara khusus, bagaimana $e^x$ didefinisikan untuk setiap~$x$?
+Dan bagaimana kita menyelesaikan $y=e^x$ untuk~$x$?
+Bagian ini menjawab pertanyaan-pertanyaan tersebut dan beberapa pertanyaan lain.
+
+\subsection{Logaritma}
+\index{logaritma}
+
+Lebih mudah jika kita mendefinisikan logaritma terlebih dahulu.
+Mari kita tunjukkan bahwa
+terdapat tepat satu fungsi dengan sifat-sifat yang sesuai; baru setelah itu
+kita akan menyebutnya \emph{logaritma}.
+
+\begin{prop}
+Terdapat tepat satu fungsi $L \colon (0,\infty) \to \R$ sedemikian sehingga
+\begin{enumerate}[(i)]
+\item \label{it:log:i}
+$L(1) = 0$.
+\item \label{it:log:ii}
+$L$ diferensiabel dan $L'(x) = \nicefrac{1}{x}$.
+\item \label{it:log:iii}
+$L$ naik tegas, bijektif, dan
+\begin{equation*}
+\lim_{x\to 0} L(x) = -\infty , \qquad \text{dan} \qquad
+\lim_{x\to \infty} L(x) = \infty .
+\end{equation*}
+\item \label{it:log:iv}
+$L(xy) = L(x)+L(y)$ untuk semua $x,y \in (0,\infty)$.
+\item \label{it:log:v}
+Jika $q$ bilangan rasional dan $x > 0$, maka
+$L(x^q) = q L(x)$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Untuk membuktikan keberadaan, kita definisikan suatu kandidat dan tunjukkan bahwa kandidat tersebut memenuhi
+semua sifat.  Tetapkan
+\begin{equation*}
+L(x) \coloneqq \int_1^x \frac{1}{t}\,dt .
+\end{equation*}
+
+Jelas bahwa \ref{it:log:i} berlaku.  Sifat \ref{it:log:ii} berlaku
+berdasarkan bentuk kedua teorema dasar kalkulus
+(\thmref{thm:FTCv2}).
+
+Untuk membuktikan sifat \ref{it:log:iv},
+kita mengganti variabel dengan $u=yt$ dan memperoleh
+\begin{equation*}
+L(x) =
+\int_1^{x} \frac{1}{t}\,dt
+=
+\int_y^{xy} \frac{1}{u}\,du
+=
+\int_1^{xy} \frac{1}{u}\,du
+-
+\int_1^{y} \frac{1}{u}\,du
+=
+L(xy)-L(y) .
+\end{equation*}
+
+Mari kita buktikan \ref{it:log:iii}.
+Sifat \ref{it:log:ii}, bersama dengan fakta bahwa $L'(x) = \nicefrac{1}{x} > 0$
+untuk $x > 0$, menyiratkan bahwa $L$
+naik tegas dan karenanya injektif.
+Mari kita tunjukkan bahwa $L$ surjektif.
+Karena $\nicefrac{1}{t} \geq \nicefrac{1}{2}$ ketika $t \in [1,2]$,
+\begin{equation*}
+L(2) = \int_1^2 \frac{1}{t} \,dt \geq \nicefrac{1}{2} .
+\end{equation*}
+Berdasarkan induksi, \ref{it:log:iv} menyiratkan bahwa untuk $n \in \N$,
+\begin{equation*}
+L(2^n) = L(2) + L(2) + \cdots + L(2) = n L(2) .
+\end{equation*}
+Diberikan $y > 0$,
+berdasarkan \hyperref[thm:arch:i]{sifat Archimedes} bilangan real
+(perhatikan bahwa $L(2) > 0$), terdapat $n \in \N$ sedemikian sehingga
+$L(2^n) > y$.  Kemudian,
+\hyperref[IVT:thm]{teorema nilai antara}
+memberikan $x_1 \in (1,2^n)$ sedemikian sehingga $L(x_1) = y$.  Jadi,
+semua bilangan dalam $(0,\infty)$ berada dalam citra $L$.
+Karena $L$ naik, $L(x) > y$ untuk semua $x > 2^n$, sehingga
+\begin{equation*}
+\lim_{x\to\infty} L(x) = \infty .
+\end{equation*}
+Selanjutnya,
+$0 = L(\nicefrac{x}{x}) = L(x) + L(\nicefrac{1}{x})$, sehingga
+$L(x) = - L(\nicefrac{1}{x})$.  Dengan menggunakan $x=2^{-n}$, seperti di atas kita memperoleh
+bahwa $L$ mencapai semua bilangan negatif.  Selain itu,
+\begin{equation*}
+\lim_{x \to 0} L(x) = 
+\lim_{x \to 0} -L(\nicefrac{1}{x})
+=
+\lim_{x \to \infty} -L(x)
+=  - \infty .
+\end{equation*}
+Dalam limit-limit tersebut, perhatikan bahwa hanya $x > 0$ yang berada dalam domain $L$.
+
+Mari kita buktikan \ref{it:log:v}.
+Tetapkan $x > 0$.
+Seperti di atas, \ref{it:log:iv} menyiratkan
+$L(x^n) = n L(x)$
+untuk semua $n \in \N$.
+Kita telah memperoleh bahwa
+$L(x) = - L(\nicefrac{1}{x})$,
+sehingga $L(x^{-n}) = - L(x^n) = -n L(x)$.  Selanjutnya, untuk $m \in \N$,
+\begin{equation*}
+L(x) = L\Bigl({(x^{1/m})}^m\Bigr) = m L\bigl(x^{1/m}\bigr) .
+\end{equation*}
+Dengan menggabungkan semuanya untuk $n \in \Z$ dan $m \in \N$, kita memperoleh
+$L(x^{n/m}) = n L(x^{1/m}) = (\nicefrac{n}{m}) L(x)$.
+
+Ketunggalan mengikuti dari sifat \ref{it:log:i} dan
+\ref{it:log:ii}.  Berdasarkan bentuk pertama
+teorema dasar kalkulus (\thmref{thm:FTCv1}),
+\begin{equation*}
+L(x) = \int_1^x \frac{1}{t}\,dt
+\end{equation*}
+merupakan satu-satunya fungsi sedemikian sehingga $L(1) = 0$ dan $L'(x) = \nicefrac{1}{x}$.
+\end{proof}
+
+Setelah membuktikan
+bahwa terdapat tepat satu fungsi dengan sifat-sifat tersebut,
+kita mendefinisikan \emph{\myindex{logaritma}}, yang terkadang disebut
+\emph{\myindex{logaritma alami}}:
+\glsadd{not:ln}
+\begin{equation*}
+\ln(x) \coloneqq L(x) .
+\end{equation*}
+Lihat \figureref{fig:log}.
+Matematikawan biasanya menulis $\log(x)$, sedangkan mahasiswa kalkulus lebih akrab
+dengan $\ln(x)$.  Untuk semua keperluan praktis, hanya ada satu logaritma:
+logaritma alami.  Lihat \exerciseref{exercise:otherlogbases}.
+\begin{myfigureht}
+\myincludegraphics{logfig}{%
+Grafik y sama dengan ln dari x digambar dengan garis tebal yang berawal curam
+dengan nilai y negatif di sebelah kiri x sama dengan 1,
+memotong sumbu x di 1, dan semakin landai
+ke arah kanan.
+Grafik y sama dengan 1 per x digambar dengan garis putus-putus; garis ini
+selalu positif, berawal tinggi di sebelah kiri, dan
+semakin landai ke arah kanan.
+Daerah antara garis putus-putus dan sumbu x
+untuk x antara 1 dan 4 diarsir, dan nilai grafik
+ln pada x sama dengan 4 ditandai sebagai 'luas daerah yang diarsir sama dengan ln dari 4'.}
+\caption{Grafik $\ln(x)$ bersama $\nicefrac{1}{x}$, yang menunjukkan nilai
+$\ln(4)$.\label{fig:log}}
+\end{myfigureht}
+
+\subsection{Eksponensial}
+\index{eksponensial}
+
+Seperti halnya logaritma, kita mendefinisikan eksponensial melalui sebuah daftar
+sifat.
+
+\begin{prop}
+Terdapat tepat satu fungsi $E \colon \R \to (0,\infty)$ sedemikian sehingga
+\begin{enumerate}[(i)]
+\item \label{it:exp:i}
+$E(0) = 1$.
+\item \label{it:exp:ii}
+$E$ diferensiabel dan $E'(x) = E(x)$.
+\item \label{it:exp:iii}
+$E$ naik tegas, bijektif, dan
+\begin{equation*}
+\lim_{x\to -\infty} E(x) = 0 \qquad \text{dan} \qquad
+\lim_{x\to \infty} E(x) = \infty .
+\end{equation*}
+\item \label{it:exp:iv}
+$E(x+y) = E(x)E(y)$ untuk semua $x,y \in \R$.
+\item \label{it:exp:v}
+Jika $q \in \Q$ dan $x \in \R$, maka
+$E(qx) = {E(x)}^q$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Sekali lagi, kita membuktikan keberadaan fungsi semacam itu dengan mendefinisikan suatu kandidat
+dan membuktikan bahwa kandidat tersebut memenuhi semua sifat.
+Fungsi $L = \ln$ yang didefinisikan di atas memiliki invers.  Misalkan $E$ merupakan
+fungsi invers dari $L$.  Sifat \ref{it:exp:i} berlaku langsung.
+
+Sifat \ref{it:exp:ii} mengikuti
+dari teorema fungsi invers, khususnya
+dari \lemmaref{lemma:ift}:  $L$~memenuhi
+semua hipotesis lema tersebut, sehingga
+\begin{equation*}
+E'(x) = \frac{1}{L'\bigl(E(x)\bigr)} = E(x) .
+\end{equation*}
+
+Mari kita tinjau sifat \ref{it:exp:iii}.
+Fungsi $E$ naik tegas karena
+$E'(x) = E(x) > 0$.  Karena $E$ merupakan fungsi invers dari $L$, fungsi tersebut juga pasti
+bijektif.
+Untuk menentukan limit-limitnya, kita gunakan fakta bahwa
+$E$ naik tegas dan surjektif ke $(0,\infty)$.
+Untuk setiap $M > 0$, terdapat $x_0$ sedemikian sehingga
+$E(x_0) = M$ dan $E(x) \geq M$ untuk semua $x \geq x_0$.
+Demikian pula, untuk setiap $\epsilon > 0$, terdapat
+$x_0$ sedemikian sehingga $E(x_0) = \epsilon$ dan
+$E(x) < \epsilon$ untuk semua $x < x_0$.
+Oleh karena itu,
+\begin{equation*}
+\lim_{x\to -\infty} E(x) = 0 \qquad \text{dan} \qquad
+\lim_{x\to \infty} E(x) = \infty .
+\end{equation*}
+
+Untuk membuktikan sifat \ref{it:exp:iv}, kita gunakan sifat yang bersesuaian
+untuk logaritma.
+Ambil $x, y \in \R$.
+Karena $L$ bijektif, terdapat $a$ dan $b$ sedemikian sehingga $x = L(a)$ dan $y = L(b)$.  Maka
+\begin{equation*}
+E(x+y) =
+E\bigl(L(a)+L(b)\bigr) = 
+E\bigl(L(ab)\bigr) = ab = E(x)E(y)  .
+\end{equation*}
+
+Sifat \ref{it:exp:v} juga mengikuti dari sifat $L$ yang bersesuaian.
+Diberikan $x \in \R$, misalkan $a$ sedemikian sehingga $x = L(a)$.  Maka
+\begin{equation*}
+E(qx) = E\bigl(qL(a)\bigr)
+=
+E\bigl(L(a^q)\bigr) = a^q = {E(x)}^q .
+\end{equation*}
+
+Ketunggalan mengikuti dari
+\ref{it:exp:i} dan
+\ref{it:exp:ii}.
+Misalkan $E$ dan $F$
+merupakan dua fungsi yang memenuhi
+\ref{it:exp:i} dan \ref{it:exp:ii}.
+\begin{equation*}
+\frac{d}{dx} \Bigl( F(x)E(-x) \Bigr)
+=
+F'(x)E(-x) - E'(-x)F(x)
+=
+F(x)E(-x) - E(-x)F(x) = 0 .
+\end{equation*}
+Oleh karena itu, berdasarkan \propref{prop:derzeroconst},
+$F(x)E(-x) = F(0)E(-0) = 1$ untuk semua $x \in \R$.
+Dengan melakukan perhitungan tersebut untuk $F = E$,
+kita memperoleh $E(x)E(-x) = 1$.
+Maka
+\begin{equation*}
+0 = 1-1 = F(x)E(-x) - E(x)E(-x) = \bigl(F(x)-E(x)\bigr) E(-x) .
+\end{equation*}
+%Since $E(x)E(-x) = 1$,
+Terakhir, $E(-x) \neq 0$\footnote{%
+Bagaimanapun, kodomain $E$ adalah $(0,\infty)$.
+Namun, $E(-x) \neq 0$ juga mengikuti
+dari $E(x)E(-x) = 1$.  Oleh karena itu, kita dapat membuktikan ketunggalan $E$
+dengan hanya mengandaikan \ref{it:exp:i} dan \ref{it:exp:ii}, bahkan untuk fungsi $E \colon \R
+\to \R$.}
+untuk semua $x \in \R$.
+Jadi,
+$F(x)-E(x) = 0$ untuk semua $x$, dan pembuktian selesai.
+\end{proof}
+
+Setelah membuktikan bahwa $E$ tunggal, kita mendefinisikan fungsi
+\emph{\myindex{eksponensial}} (lihat \figureref{fig:exp}) sebagai
+\glsadd{not:exp}
+\begin{equation*}
+\exp(x) \coloneqq E(x) .
+\end{equation*}
+\begin{myfigureht}
+\myincludegraphics{expfig}{%
+Medan kemiringan digambar pada bidang xy untuk x yang kira-kira berada antara minus 1 dan 1
+serta y antara 0 dan 4.  Medan kemiringan tersebut berupa kisi ruas-ruas garis pendek dengan
+kemiringan tertentu.  Dalam gambar ini, kemiringannya sama pada setiap baris.
+Semua ruas mengarah ke atas (positif) dan
+semakin curam ketika kita bergerak ke atas.  Grafik fungsi
+eksponensial juga ditampilkan.  Grafik tersebut menunjukkan fungsi naik yang berawal dari sebelah kiri
+dan mengikuti kemiringan-kemiringan yang diberikan:
+Berawal di atas sumbu x, grafik melewati titik (0,1), lalu menjadi
+semakin curam ketika keluar dari gambar di sebelah kanan.}
+\caption{Grafik $e^x$, bersama medan kemiringan dengan kemiringan $y$ di
+setiap titik $(x,y)$.
+Persamaan $\frac{d}{dx} e^x = e^x$ berarti bahwa $y=e^x$ mengikuti kemiringan-kemiringan tersebut.\label{fig:exp}}
+\end{myfigureht}
+
+Jika $y \in \Q$ dan $x > 0$, maka
+\begin{equation*}
+x^y = \exp\bigl(\ln(x^y)\bigr) = \exp\bigl(y\ln(x)\bigr) .
+\end{equation*}
+Sekarang kita dapat memberi makna pada perpangkatan $x^y$ untuk sembarang $y \in \R$;
+jika $x > 0$ dan $y$ irasional, definisikan
+\glsadd{not:pow}
+\begin{equation*}
+x^y \coloneqq \exp\bigl(y\ln(x)\bigr) .
+\end{equation*}
+Karena $\exp$ kontinu, $x^y$ merupakan fungsi kontinu terhadap $y$.
+Oleh karena itu, kita akan
+memperoleh hasil yang sama jika mengambil suatu barisan bilangan rasional
+$\{ y_n \}_{n=1}^\infty$
+yang konvergen ke $y$ dan mendefinisikan $x^y = \lim_{n\to\infty} x^{y_n}$.
+
+Definisikan bilangan $e$,
+yang disebut \emph{\myindex{bilangan Euler}} atau
+\emph{\myindex{basis logaritma alami}}, sebagai
+\glsadd{not:e}
+\begin{equation*}
+e \coloneqq \exp(1) .
+\end{equation*}
+Mari kita benarkan notasi $e^x$ untuk $\exp(x)$:
+\begin{equation*}
+e^x = \exp\bigl(x \ln(e) \bigr) = \exp(x) .
+\end{equation*}
+
+Sifat-sifat logaritma dan eksponensial juga berlaku untuk
+pangkat irasional.  Buktinya langsung.
+
+\begin{prop}
+Misalkan $x, y \in \R$.
+\begin{enumerate}[(i)]
+\item
+$\exp(xy) = {\bigl(\exp(x)\bigr)}^y$.
+\item
+Jika $x > 0$, maka $\ln(x^y) = y \ln (x)$.
+\end{enumerate}
+\end{prop}
+
+\begin{remark}
+Ada cara-cara ekuivalen lain untuk mendefinisikan eksponensial dan logaritma.
+Salah satu cara yang umum adalah mendefinisikan $E$ sebagai solusi persamaan diferensial
+$E'(x) = E(x)$, $E(0) = 1$.  Lihat \exampleref{example:picardexponential}
+untuk sketsa pendekatan tersebut.  Pendekatan lainnya
+adalah mendefinisikan fungsi eksponensial melalui
+deret pangkat; lihat \exampleref{example:exponentialbypowerseries}.
+\end{remark}
+
+\begin{remark}
+Kita telah membuktikan ketunggalan fungsi $L$ dan $E$ hanya dari
+sifat-sifat $L(1)=0$, $L'(x) = \nicefrac{1}{x}$
+serta syarat yang ekuivalen untuk eksponensial,
+$E'(x) = E(x)$, $E(0) = 1$.  Keberadaan juga mengikuti
+hanya dari sifat-sifat tersebut.
+Sebagai alternatif, ketunggalan juga mengikuti
+dari hukum-hukum eksponen; lihat latihan.
+\end{remark}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Untuk bilangan real $y$ dan $b > 0$, definisikan $f \colon (0,\infty) \to \R$
+dan $g \colon \R \to \R$ dengan $f(x) \coloneqq x^y$ dan $g(x) \coloneqq b^x$.  Tunjukkan bahwa $f$
+dan $g$ diferensiabel dan tentukan turunan keduanya.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise} \label{exercise:otherlogbases}
+Misalkan $b > 0$, $b\neq 1$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa untuk setiap $y > 0$, terdapat tepat satu bilangan $x$
+sedemikian sehingga $y = b^x$.  Definisikan
+\emph{\myindex{logaritma dengan basis $b$}},
+$\log_b \colon (0,\infty) \to \R$, dengan
+$\log_b(y) \coloneqq x$.
+\item
+Tunjukkan bahwa $\log_b(x) = \frac{\ln(x)}{\ln(b)}$.
+\item
+Buktikan bahwa jika $c > 0$, $c \neq 1$, maka
+$\log_b(x) = \frac{\log_c(x)}{\log_c(b)}$.
+\item
+Buktikan bahwa $\log_b(xy) =
+\log_b(x)+\log_b(y)$ dan $\log_b(x^y) = y \log_b(x)$.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}[memerlukan \sectionref{sec:taylor}]
+Gunakan \hyperref[thm:taylor]{teorema Taylor} untuk menelaah suku sisa dan menunjukkan bahwa untuk
+semua $x \in \R$
+\begin{equation*}
+e^x = \sum_{n=0}^\infty \frac{x^n}{n!} .
+\end{equation*}
+Petunjuk: Jangan mendiferensialkan deret tersebut suku demi suku (kecuali Anda membuktikan bahwa
+hal itu dapat dilakukan).
+\end{exercise}
+
+\begin{exercise}
+Gunakan rumus jumlah deret geometri untuk menunjukkan (untuk $t \neq -1$)
+\begin{equation*}
+1-t+t^2-\cdots+{(-1)}^n t^n = \frac{1}{1+t} - \frac{{(-1)}^{n+1}t^{n+1}}{1+t}.
+\end{equation*}
+Dengan menggunakan fakta ini, tunjukkan bahwa
+\begin{equation*}
+\ln (1+x) = \sum_{n=1}^\infty \frac{{(-1)}^{n+1}x^n}{n} 
+\end{equation*}
+untuk semua $x \in (-1,1]$ (perhatikan bahwa $x=1$ tercakup).  Terakhir,
+tentukan limit deret harmonik berselang-seling
+\begin{equation*}
+\sum_{n=1}^\infty \frac{{(-1)}^{n+1}}{n} = 1 - \frac{1}{2} +
+\frac{1}{3} - \frac{1}{4} + \cdots
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa
+\begin{equation*}
+e^x = \lim_{n\to\infty} {\left( 1 + \frac{x}{n} \right)}^n .
+\end{equation*}
+Petunjuk: Ambil logaritmanya.\\
+Catatan: Bentuk
+${\left( 1 + \frac{x}{n} \right)}^n$ muncul dalam perhitungan bunga
+majemuk.  Bentuk ini menyatakan jumlah uang dalam rekening bank setelah 1 tahun
+jika pada awalnya 1 dolar disimpan dengan tingkat bunga $x$ (misalnya, $x=0.01$ untuk
+$1\%$) dan bunganya dimajemukkan $n$
+kali selama tahun tersebut.  Eksponensial $e^x$ merupakan hasil pemajemukan
+kontinu.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa untuk semua bilangan bulat $n \geq 2$,
+\begin{equation*}
+\sum_{k=2}^{n}
+\frac{1}{k}
+\leq
+\ln (n)
+\leq
+\sum_{k=1}^{n-1}
+\frac{1}{k} .
+\end{equation*}
+\item
+Buktikan bahwa limit
+\begin{equation*}
+\gamma \coloneqq \lim_{n\to\infty}
+\left( \left( \sum_{k=1}^{n} \frac{1}{k} \right) - \ln (n) \right)
+\end{equation*}
+ada.  Konstanta $\gamma$ ini dikenal sebagai
+\emph{\myindex{konstanta Euler--Mascheroni}}%
+\footnote{Dinamai menurut matematikawan Swiss
+\href{https://en.wikipedia.org/wiki/Leonhard_Euler}{Leonhard Euler}
+(1707--1783)
+dan matematikawan Italia
+\href{https://en.wikipedia.org/wiki/Lorenzo_Mascheroni}{Lorenzo Mascheroni}
+(1750--1800).}.  Belum diketahui apakah $\gamma$ rasional atau tidak.
+Nilainya kira-kira $\gamma \approx 0.5772$.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Tunjukkan bahwa
+\begin{equation*}
+\lim_{x\to\infty} \frac{\ln(x)}{x} = 0 .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa $e^x$ \emph{\myindex{konveks}}; dengan kata lain, tunjukkan bahwa
+jika $a < b$ dan $a \leq x \leq b$, maka
+$e^x \leq e^a \frac{b-x}{b-a} + e^b \frac{x-a}{b-a}$.
+\end{exercise}
+
+\begin{exercise}
+Dengan menggunakan logaritma, tentukan
+\begin{equation*}
+%\lim_{n\to\infty} {\left( 1 + \nicefrac{1}{n} \right)}^n = e .
+\lim_{n\to\infty} n^{1/n} .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa $E(x) = e^x$ merupakan satu-satunya fungsi kontinu sedemikian sehingga
+$E(x+y) = E(x)E(y)$ dan $E(1) = e$.   Dengan cara serupa, buktikan bahwa $L(x) = \ln(x)$
+merupakan satu-satunya fungsi kontinu
+yang terdefinisi untuk $x$ positif sedemikian sehingga $L(xy) = L(x)+L(y)$
+dan $L(e) = 1$.
+\end{exercise}
+
+\begin{exercise}[memerlukan \sectionref{sec:taylor}]\label{exercise:nonanalytic}
+Karena $(e^x)' = e^x$, mudah dilihat bahwa $e^x$
+\myindex{diferensiabel tak hingga kali}\index{diferensiabel!tak hingga kali}
+(memiliki turunan dari setiap orde).  Definisikan fungsi $f \colon \R \to \R$.
+\begin{equation*}
+f(x) \coloneqq \begin{cases}
+e^{-1/x} & \text{jika } x > 0, \\
+0 & \text{jika } x \leq 0.
+\end{cases}
+\end{equation*}
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa untuk setiap $m \in \N$,
+\begin{equation*}
+\lim_{x \to 0^+} \frac{e^{-1/x}}{x^m} = 0 .
+\end{equation*}
+\item
+Buktikan bahwa $f$ diferensiabel tak hingga kali.
+\item
+Hitung deret Taylor untuk $f$ di titik asal, yaitu
+\begin{equation*}
+\sum_{k=0}^\infty
+\frac{f^{(k)}(0)}{k!}x^k .
+\end{equation*}
+Tunjukkan bahwa deret tersebut konvergen, tetapi tidak konvergen ke $f(x)$
+untuk setiap $x > 0$.
+\end{enumerate}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Integral tak wajar}
+\label{sec:impropriemann}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2--3 pertemuan kuliah (bagian opsional, dapat dilewati tanpa masalah, 
+memerlukan \sectionref{sec:limitatinf} yang opsional)}
+
+Sering kali kita perlu mengintegralkan pada seluruh
+garis bilangan real, atau pada interval tak terbatas berbentuk $[a,\infty)$ atau
+$(-\infty,b]$.  Kita mungkin juga ingin mengintegralkan fungsi tak terbatas
+yang terdefinisi pada interval terbuka terbatas $(a,b)$.
+Untuk interval atau fungsi semacam itu, integral Riemann tidak terdefinisi,
+tetapi kita tetap akan menuliskan
+integralnya dengan mengikuti gagasan dalam \lemmaref{lemma:boundedimpriemann}.
+Integral-integral ini disebut \emph{\myindex{integral tak wajar}}
+dan merupakan limit
+dari integral, bukan integral itu sendiri.
+
+\begin{defn}
+Andaikan $f \colon [a,b) \to \R$ adalah fungsi (tidak harus terbatas)
+yang terintegralkan secara Riemann pada $[a,c]$ untuk setiap $a < c < b$.  Kita definisikan
+\begin{equation*}
+\int_a^b f \coloneqq \lim_{c \to b^-} \int_a^{c} f
+\end{equation*}
+jika limit tersebut ada.
+
+Andaikan $f \colon [a,\infty) \to \R$ adalah fungsi sedemikian sehingga
+$f$ terintegralkan secara Riemann pada $[a,c]$ untuk setiap $a < c < \infty$.
+Kita definisikan
+\begin{equation*}
+\int_a^\infty f \coloneqq \lim_{c \to \infty} \int_a^c f
+\end{equation*}
+jika limit tersebut ada.
+
+Jika limit tersebut ada, kita katakan bahwa integral tak wajar itu
+\emph{konvergen}\index{konvergen!integral tak wajar}.
+Jika limit tersebut tidak ada, kita katakan bahwa integral tak wajar itu
+\emph{divergen}\index{divergen!integral tak wajar}.
+
+Dengan cara serupa, kita definisikan integral tak wajar untuk titik ujung kiri.
+Definisi ini diserahkan kepada pembaca.
+\end{defn}
+
+Untuk titik ujung berhingga $b$, jika $f$ terbatas, maka
+\lemmaref{lemma:boundedimpriemann} mengatakan bahwa kita tidak mendefinisikan sesuatu yang baru.  Hal yang baru adalah
+kita dapat menerapkan definisi ini pada fungsi tak terbatas.
+Kumpulan contoh berikut
+begitu berguna sehingga kita menyatakannya sebagai suatu proposisi.
+
+\begin{prop}[Uji-$p$ untuk integral]%
+\index{uji-p untuk integral@uji-$p$ untuk integral}
+\label{impropriemann:ptest}
+Integral tak wajar
+\begin{equation*}
+\int_1^\infty \frac{1}{x^p} \,dx
+\end{equation*}
+konvergen ke $\frac{1}{p-1}$ jika $p > 1$ dan divergen jika $p \leq 1$.
+
+Integral tak wajar
+\begin{equation*}
+\int_0^1 \frac{1}{x^p} \,dx
+\end{equation*}
+konvergen ke $\frac{1}{1-p}$ jika $p < 1$ dan divergen jika $p \geq 1$.
+\end{prop}
+
+\begin{proof}
+Bukti diperoleh dengan menerapkan
+\hyperref[thm:FTCv1]{teorema dasar kalkulus}.
+Mari kita buktikan kasus $p > 1$ untuk titik ujung kanan tak hingga dan
+menyerahkan sisanya kepada pembaca.  Petunjuk: Kasus $p=1$ harus ditangani
+secara terpisah.
+
+Andaikan $p > 1$.  Dengan menggunakan
+teorema dasar tersebut, kita peroleh
+\begin{equation*}
+\int_1^b \frac{1}{x^p} \,dx
+=
+\int_1^b x^{-p} \,dx
+=
+\frac{b^{-p+1}}{-p+1}
+-
+\frac{1^{-p+1}}{-p+1}
+=
+\frac{-1}{(p-1)b^{p-1}}
++
+\frac{1}{p-1} .
+\end{equation*}
+Karena $p > 1$, kita mempunyai $p-1 > 0$.  Dengan mengambil limit saat $b \to \infty$,
+kita peroleh bahwa $\frac{1}{b^{p-1}}$ menuju 0.  Hasil yang diinginkan pun terbukti.
+\end{proof}
+
+Kita menyatakan proposisi berikut tentang \myquote{ekor} hanya untuk satu jenis
+integral tak wajar, meskipun buktinya langsung
+dan sama untuk jenis integral tak wajar lainnya.
+
+\begin{prop} \label{impropriemann:tail}
+Misalkan $f \colon [a,\infty) \to \R$ adalah fungsi
+yang terintegralkan secara Riemann pada $[a,b]$ untuk setiap $b > a$.
+Untuk setiap $b > a$, integral
+$\int_b^\infty f$ konvergen jika dan hanya jika $\int_a^\infty f$
+konvergen; dalam hal ini,
+\begin{equation*}
+\int_a^\infty f
+=
+\int_a^b f +
+\int_b^\infty f .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Misalkan $c > b$.  Maka
+\begin{equation*}
+\int_a^c f
+=
+\int_a^b f +
+\int_b^c f .
+\end{equation*}
+Mengambil limit $c \to \infty$ menyelesaikan bukti.
+\end{proof}
+
+Fungsi tak negatif lebih mudah ditangani,
+seperti ditunjukkan oleh proposisi berikut.
+Latihan-latihan akan menunjukkan bahwa proposisi ini
+hanya berlaku untuk fungsi tak negatif.
+Terdapat proposisi analog
+untuk semua jenis integral tak wajar lainnya, dan pembuktiannya diserahkan kepada
+mahasiswa.
+
+\begin{prop} \label{impropriemann:possimp}
+Andaikan $f \colon [a,\infty) \to \R$ tak negatif ($f(x)
+\geq 0$ untuk setiap $x$) dan
+$f$ terintegralkan secara Riemann pada $[a,b]$ untuk setiap $b > a$.
+\begin{enumerate}[(i)]
+\item 
+\begin{equation*}
+\int_a^\infty f = \sup \left\{ \int_a^x f : x \geq a \right\} .
+\end{equation*}
+\item
+Andaikan $\{ x_n \}_{n=1}^\infty$ adalah barisan dalam $[a,\infty)$
+dengan $\lim_{n\to\infty} x_n = \infty$.  Maka
+$\int_a^\infty f$ konvergen jika dan hanya jika $\lim_{n\to\infty} \int_a^{x_n} f$ ada; dalam
+hal ini,
+\begin{equation*}
+\int_a^\infty f = \lim_{n\to\infty} \int_a^{x_n} f .
+\end{equation*}
+\end{enumerate}
+\end{prop}
+
+Dalam butir pertama, kita mengizinkan nilai $\infty$ pada
+supremum untuk menunjukkan bahwa integral divergen menuju tak hingga.
+
+\begin{proof}
+Kita mulai dengan butir pertama.
+Karena $f$ tak negatif,
+$\int_a^x f$ meningkat sebagai fungsi dari $x$.
+Jika supremumnya tak hingga, maka untuk setiap $M \in \R$
+terdapat $N$ sedemikian sehingga $\int_a^N f \geq M$.  Karena $\int_a^x f$
+meningkat, $\int_a^x f \geq M$ untuk setiap $x \geq N$.  Jadi,
+$\int_a^\infty f$ divergen menuju tak hingga.
+
+Selanjutnya, andaikan supremumnya berhingga, katakanlah
+$A \coloneqq \sup \left\{ \int_a^x f : x \geq a \right\}$.
+Untuk setiap $\epsilon > 0$, terdapat $N$ sedemikian sehingga
+$A - \int_a^N f < \epsilon$.  Karena $\int_a^x f$ meningkat,
+maka
+$A - \int_a^x f < \epsilon$ untuk setiap $x \geq N$, sehingga
+$\int_a^\infty f$ konvergen ke $A$.
+
+Sekarang mari kita tinjau butir kedua.
+Jika $\int_a^\infty f$ konvergen, maka setiap barisan $\{ x_n \}_{n=1}^\infty$ yang menuju
+tak hingga memenuhi kesimpulan.  Bagian yang memerlukan kecermatan adalah
+membuktikan arah sebaliknya.  Andaikan $\{ x_n \}_{n=1}^\infty$ sedemikian sehingga
+$\lim_{n\to\infty} x_n = \infty$, dan limit berikut ada serta bernilai $A$:
+\begin{equation*}
+\lim_{n\to\infty} \int_a^{x_n} f = A
+\end{equation*}
+Diberikan $\epsilon > 0$, pilih $N$ sedemikian sehingga untuk
+setiap $n \geq N$, berlaku
+$A - \epsilon < \int_a^{x_n} f < A + \epsilon$.
+Karena $\int_a^x f$ meningkat sebagai fungsi dari $x$, untuk setiap
+$x \geq x_N$
+\begin{equation*}
+A - \epsilon < \int_a^{x_N} f \leq \int_a^x f .
+\end{equation*}
+Karena $\{ x_n \}_{n=1}^\infty$ menuju $\infty$, untuk setiap 
+$x$ terdapat $x_m$ sedemikian sehingga $m \geq N$ dan $x \leq x_m$.  Maka
+\begin{equation*}
+\int_a^{x} f \leq \int_a^{x_m} f < A + \epsilon .
+\end{equation*}
+Khususnya, untuk setiap $x \geq x_N$, berlaku
+$\abs{\int_a^{x} f - A} < \epsilon$.
+\end{proof}
+
+\begin{prop}[Uji perbandingan untuk integral tak wajar]%
+\index{uji perbandingan untuk integral tak wajar}
+Misalkan
+$f \colon [a,\infty) \to \R$ dan
+$g \colon [a,\infty) \to \R$ adalah fungsi
+yang terintegralkan secara Riemann pada $[a,b]$ untuk setiap $b > a$.   Andaikan
+bahwa untuk setiap $x \geq a$,
+\begin{equation*}
+\babs{f(x)} \leq g(x) .
+\end{equation*}
+\begin{enumerate}[(i)]
+\item Jika $\int_a^\infty g$ konvergen, maka $\int_a^\infty f$ konvergen,
+dan dalam hal ini 
+$\abs{\int_a^\infty f} \leq \int_a^\infty g$.
+\item Jika $\int_a^\infty f$ divergen, maka $\int_a^\infty g$ divergen.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Kita mulai dengan butir pertama.
+Untuk setiap $b$ dan $c$ sedemikian sehingga $a \leq b \leq c$, berlaku 
+$-g(x) \leq f(x) \leq g(x)$, sehingga
+\begin{equation*}
+\int_b^c -g \leq \int_b^c f \leq \int_b^c g  .
+\end{equation*}
+Dengan kata lain, $\abs{\int_b^c f} \leq \int_b^c g$.
+
+Diberikan $\epsilon > 0$.  Berdasarkan
+\propref{impropriemann:tail},
+\begin{equation*}
+\int_a^\infty g =
+\int_a^b g +
+\int_b^\infty g .
+\end{equation*}
+Karena $\int_a^b g$ menuju
+$\int_a^\infty g$ saat $b$ menuju tak hingga,
+$\int_b^\infty g$ menuju 0 saat $b$ menuju tak hingga.  Pilih $B$
+sedemikian sehingga
+\begin{equation*}
+\int_B^\infty g < \epsilon .
+\end{equation*}
+Karena $g$ tak negatif, jika $B \leq b < c$, maka
+$\int_b^c g < \epsilon$ juga.
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan dalam $[a,\infty)$ yang menuju tak hingga.  Ambil $M$ sedemikian sehingga
+$x_n \geq B$ untuk setiap $n \geq M$.  Ambil $n, m \geq M$
+dengan $x_n \leq x_m$,
+\begin{equation*}
+\abs{\int_a^{x_m} f - \int_a^{x_n} f} 
+=
+\abs{\int_{x_n}^{x_m} f} 
+\leq \int_{x_n}^{x_m} g < \epsilon .
+\end{equation*}
+Jadi, barisan $\bigl\{ \int_a^{x_n} f \bigr\}_{n=1}^\infty$ adalah barisan Cauchy dan karena itu konvergen.
+
+Kita perlu menunjukkan bahwa limit tersebut tunggal.  Andaikan $\{ x_n \}_{n=1}^\infty$ adalah barisan
+yang menuju tak hingga sedemikian sehingga
+$\bigl\{ \int_a^{x_n} f \bigr\}_{n=1}^\infty$ konvergen ke $L_1$, dan $\{
+y_n \}_{n=1}^\infty$ adalah barisan
+yang menuju tak hingga sedemikian sehingga
+$\bigl\{ \int_a^{y_n} f \bigr\}_{n=1}^\infty$ konvergen ke $L_2$.  Maka terdapat $n$ sedemikian
+sehingga
+$\babs{\int_a^{x_n} f - L_1} < \epsilon$ dan 
+$\babs{\int_a^{y_n} f - L_2} < \epsilon$.  Kita juga dapat mengandaikan $x_n \geq B$
+dan $y_n \geq B$.  Setelah menukar label kedua barisan jika perlu, andaikan pula $x_n \leq y_n$.  Maka
+\begin{equation*}
+\sabs{L_1 - L_2} \leq
+\abs{L_1 - \int_a^{x_n} f}
++
+\abs{\int_a^{x_n} f- \int_a^{y_n} f}
++
+\abs{\int_a^{y_n} f - L_2}
+<
+\epsilon
++
+\abs{\int_{x_n}^{y_n} f}
++
+\epsilon
+<
+3 \epsilon.
+\end{equation*}
+Karena $\epsilon > 0$ sebarang, $L_1 = L_2$, sehingga
+$\int_a^\infty f$ konvergen.
+Di atas telah kita tunjukkan bahwa $\abs{\int_a^c f} \leq \int_a^c g$ untuk setiap $c > a$.
+Dengan mengambil limit $c \to \infty$, butir pertama terbukti.
+
+Butir kedua tidak lain adalah kontrapositif dari butir pertama.
+\end{proof}
+
+\begin{example}
+Integral tak wajar
+\begin{equation*}
+\int_0^\infty \frac{\sin(x^2)(x+2)}{x^3+1} \,dx
+\end{equation*}
+konvergen.
+
+Bukti:  Perhatikan bahwa kita hanya perlu menunjukkan
+bahwa integral dari 1 hingga tak hingga tersebut konvergen.
+Untuk $x \geq 1$ kita peroleh
+\begin{equation*}
+\abs{\frac{\sin(x^2)(x+2)}{x^3+1}}
+\leq
+\frac{x+2}{x^3+1}
+\leq \frac{x+2}{x^3} \leq
+\frac{x+2x}{x^3} \leq \frac{3}{x^2} .
+\end{equation*}
+Kemudian
+\begin{equation*}
+\int_1^\infty \frac{3}{x^2}\,dx
+=
+3 \int_1^\infty \frac{1}{x^2}\,dx
+%=
+%\lim_{c\to\infty} \int_1^c \frac{3}{x^2} \,dx
+=
+3 .
+\end{equation*}
+Jadi, dengan uji perbandingan dan uji ekor, integral semula
+konvergen.
+\end{example}
+
+\begin{example}
+Kita harus berhati-hati ketika melakukan manipulasi formal pada integral
+tak wajar.
+Integral
+\begin{equation*}
+\int_2^\infty \frac{2}{x^2-1}\,dx
+\end{equation*}
+konvergen berdasarkan uji perbandingan, sekali lagi dengan menggunakan $\nicefrac{1}{x^2}$.  Namun, jika kita
+tergoda untuk menulis
+\begin{equation*}
+\frac{2}{x^2-1} = 
+\frac{1}{x-1}
+-
+\frac{1}{x+1} 
+\end{equation*}
+dan mencoba mengintegralkan setiap bagian secara terpisah, kita tidak akan berhasil.
+\emph{Tidak} benar bahwa kita dapat memisahkan integral tak
+wajar menjadi dua; kita tidak dapat memisahkan limitnya.
+\begin{equation*}
+\begin{split}
+\int_2^\infty \frac{2}{x^2-1} \,dx &=
+\lim_{b\to \infty} \int_2^b \frac{2}{x^2-1} \,dx
+\\
+&=
+\lim_{b\to \infty}
+\left(
+\int_2^b \frac{1}{x-1}\,dx
+-
+\int_2^b \frac{1}{x+1}\,dx
+\right)
+\\
+&\neq
+\int_2^\infty \frac{1}{x-1}\,dx
+-
+\int_2^\infty \frac{1}{x+1}\,dx .
+\end{split}
+\end{equation*}
+Baris terakhir dalam perhitungan tersebut bahkan tidak bermakna.  Kedua
+integral itu divergen menuju tak hingga, sebab kita dapat
+menerapkan uji perbandingan secara tepat dengan
+$\nicefrac{1}{x}$.  Kita memperoleh $\infty - \infty$.
+\end{example}
+
+Sekarang andaikan kita perlu mengambil limit di kedua titik ujung.
+
+\begin{defn}
+Andaikan $f \colon (a,b) \to \R$ suatu fungsi
+yang terintegralkan secara Riemann pada $[c,d]$ untuk semua $c$, $d$
+sedemikian sehingga $a < c < d < b$, maka kita definisikan
+\begin{equation*}
+\int_a^b f \coloneqq \lim_{c \to a^+} \, \lim_{d \to b^-} \, \int_{c}^{d} f
+\end{equation*}
+jika limit-limit tersebut ada.
+
+Andaikan $f \colon \R \to \R$ suatu fungsi sedemikian sehingga
+$f$ terintegralkan secara Riemann pada semua interval terbatas $[a,b]$.  Maka
+kita definisikan
+\begin{equation*}
+\int_{-\infty}^\infty f \coloneqq \lim_{c \to -\infty} \, \lim_{d \to \infty} \, \int_c^d f
+\end{equation*}
+jika limit-limit tersebut ada.
+
+Dengan cara serupa, kita definisikan integral tak wajar dengan satu titik ujung di tak hingga
+dan satu titik ujung berhingga yang tak wajar.  Definisi ini diserahkan kepada pembaca.
+\end{defn}
+
+Kita harus selalu berhati-hati dengan limit ganda.  Definisi
+di atas menyatakan bahwa mula-mula kita mengambil limit ketika $d$ menuju $b$ atau
+$\infty$ untuk $c$ yang tetap, lalu kita mengambil limit terhadap $c$.
+Kita perlu membuktikan bahwa dalam hal ini tidak menjadi masalah limit mana yang
+kita hitung terlebih dahulu.
+
+\begin{example}
+\begin{equation*}
+\int_{-\infty}^\infty \frac{1}{1+x^2} \, dx
+=
+\lim_{a \to -\infty} \, \lim_{b \to \infty} \,
+\int_{a}^b \frac{1}{1+x^2} \, dx
+=
+\lim_{a \to -\infty} \, \lim_{b \to \infty}
+\bigl( \arctan(b) - \arctan(a) \bigr)
+=
+\pi .
+\end{equation*}
+\end{example}
+
+Dalam definisi tersebut, urutan limit selalu dapat dipertukarkan jika limit-limit itu
+ada.  Mari kita nyatakan dan buktikan fakta ini hanya untuk limit pada tak hingga.
+
+\begin{prop}
+Andaikan $f \colon \R \to \R$ terintegralkan pada setiap interval terbatas
+$[a,b]$.
+Maka 
+\begin{equation*}
+\lim_{a \to -\infty} \, \lim_{b \to \infty} \, \int_a^b f
+\quad \text{konvergen} \qquad \text{jika dan hanya jika} \qquad
+\lim_{b \to \infty}
+\,
+\lim_{a \to -\infty}
+\,
+\int_a^b f
+\quad
+\text{konvergen,}
+\end{equation*}
+dalam hal ini kedua
+ekspresi tersebut sama.  Jika salah satu dari kedua
+ekspresi itu konvergen, maka integral tak wajar tersebut konvergen dan
+\begin{equation*}
+\lim_{a\to\infty}
+\int_{-a}^a f
+=
+\int_{-\infty}^\infty f .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Tanpa mengurangi keumuman, andaikan $a < 0$ dan $b > 0$.  Andaikan
+ekspresi pertama konvergen.  Maka
+\begin{equation*}
+\begin{split}
+\lim_{a \to -\infty} \, \lim_{b \to \infty} \, \int_a^b f
+& =
+\lim_{a \to -\infty} \, \lim_{b \to \infty}
+\left(
+\int_a^0 f
++
+\int_0^b f
+\right)
+=
+\left(
+\lim_{a \to -\infty}
+\int_a^0 f
+\right)
++
+\left(
+ \lim_{b \to \infty}
+\int_0^b f
+\right) \\
+& = 
+ \lim_{b \to \infty}
+\left(
+\left(
+\lim_{a \to -\infty}
+\int_a^0 f
+\right) 
++
+\int_0^b f
+\right)
+=
+ \lim_{b \to \infty} \,
+\lim_{a \to -\infty}
+\left(
+\int_a^0 f
++
+\int_0^b f
+\right)  .
+\end{split}
+\end{equation*}
+Perhitungan serupa menunjukkan arah sebaliknya.  Oleh karena itu, jika
+salah satu ekspresi konvergen, maka integral tak wajar tersebut konvergen
+dan
+\begin{multline*}
+\int_{-\infty}^\infty f
+=
+\lim_{a \to -\infty} \, \lim_{b \to \infty} \, \int_a^b f
+=
+\left(
+\lim_{a \to -\infty}
+\int_a^0 f
+\right)
++
+\left(
+ \lim_{b \to \infty}
+\int_0^b f
+\right)
+\\
+=
+\left(
+\lim_{a \to \infty}
+\int_{-a}^0 f
+\right)
++
+\left(
+ \lim_{a \to \infty}
+\int_0^a f
+\right)
+=
+\lim_{a \to \infty}
+\left(
+\int_{-a}^0 f
++
+\int_0^a f
+\right)
+=
+\lim_{a \to \infty}
+\int_{-a}^a f .
+\end{multline*}
+\end{proof}
+
+\begin{example}
+Di sisi lain, Anda harus berhati-hati untuk
+mengambil setiap limit secara terpisah sebelum mengetahui konvergensinya.  Misalkan
+$f(x) = \frac{x}{\sabs{x}}$ untuk $x \neq 0$ dan $f(0) = 0$.
+Jika $a < 0$ dan $b > 0$, maka
+\begin{equation*}
+\int_{a}^b f
+=
+\int_{a}^0 f
++
+\int_{0}^b f
+=
+a+b .
+\end{equation*}
+Untuk setiap $a < 0$ yang tetap, limit ketika $b \to \infty$ adalah tak hingga.
+Jadi, bahkan limit pertama pun tidak ada,
+dan integral takwajar $\int_{-\infty}^\infty f$ tidak konvergen.
+Di sisi lain, jika $a > 0$, maka
+\begin{equation*}
+\int_{-a}^{a} f
+=
+(-a)+a = 0 .
+\end{equation*}
+Oleh karena itu,
+\begin{equation*}
+\lim_{a\to\infty}
+\int_{-a}^{a} f
+= 0 .
+\end{equation*}
+\end{example}
+
+\begin{example}
+Salah satu contoh yang patut diingat untuk integral takwajar
+adalah \emph{\myindex{fungsi sinc}}%
+\footnote{Singkatan dari bahasa Latin: \emph{sinus cardinalis}}.
+Fungsi ini cukup sering muncul
+baik dalam matematika murni maupun matematika terapan.  Definisikan
+\begin{equation*}
+\operatorname{sinc}(x) \coloneqq
+\begin{cases}
+\frac{\sin(x)}{x} & \text{jika } x \neq 0 , \\
+1 & \text{jika } x = 0 .
+\end{cases}
+\end{equation*}
+\begin{myfigureht}
+\myincludegraphics{sincfig}{%
+Grafik fungsi sinc pada interval dari minus 4 pi hingga 4 pi.
+Grafik berosilasi menyerupai fungsi sinus di sebelah kanan
+titik asal, dan menyerupai negatif dari fungsi sinus di sebelah kiri
+titik asal.  Akar fungsi di titik asal tidak lagi ada dan nilai fungsi tepat 1
+di titik asal.  Osilasinya dengan cepat menjadi semakin kecil
+ketika kita menjauhi titik asal.  Fungsi tersebut jelas genap.}
+\caption{Fungsi sinc.\label{figsinc}}
+\end{myfigureht}
+
+Tidaklah sulit untuk menunjukkan bahwa
+fungsi sinc kontinu di nol, tetapi hal itu
+belum penting saat ini.  Hal yang penting adalah
+\begin{equation*}
+\int_{-\infty}^\infty \operatorname{sinc}(x) \,dx = \pi ,
+\qquad \text{sedangkan} \qquad
+\int_{-\infty}^\infty \babs{\operatorname{sinc}(x)} \,dx = \infty .
+\end{equation*}
+Integral fungsi sinc merupakan analog kontinu dari
+deret harmonik berselang-seling $\sum_{n=1}^\infty \nicefrac{{(-1)}^n}{n}$, sedangkan integral
+nilai mutlaknya menyerupai deret harmonik biasa $\sum_{n=1}^\infty \nicefrac{1}{n}$.
+Secara khusus, konvergensi integral tersebut harus dibuktikan secara langsung,
+bukan dengan menggunakan uji perbandingan.
+
+Kita tidak akan membuktikan pernyataan pertama secara persis.  Mari kita buktikan saja
+bahwa integral fungsi sinc konvergen, tanpa perlu mempersoalkan
+nilai limitnya secara persis.  Karena $\frac{\sin(-x)}{-x} = \frac{\sin(x)}{x}$, cukup
+ditunjukkan bahwa
+\begin{equation*}
+\int_{2\pi}^\infty \frac{\sin(x)}{x}\,dx
+\end{equation*}
+konvergen.  Dengan cara ini, kita
+juga menghindari $x=0$ sehingga pembuktiannya menjadi lebih sederhana.
+
+Untuk setiap $n \in \N$, jika $x \in [\pi 2n, \pi (2n+1)]$, kita peroleh
+\begin{equation*}
+\frac{\sin(x)}{\pi (2n+1)}
+\leq
+\frac{\sin(x)}{x}
+\leq
+\frac{\sin(x)}{\pi 2n} ,
+\end{equation*}
+karena $\sin(x) \geq 0$.  Untuk $x \in [\pi (2n+1), \pi (2n+2)]$,
+\begin{equation*}
+\frac{\sin(x)}{\pi (2n+1)}
+\leq
+\frac{\sin(x)}{x}
+\leq
+\frac{\sin(x)}{\pi (2n+2)} ,
+\end{equation*}
+karena $\sin(x) \leq 0$.
+
+Berdasarkan teorema dasar kalkulus,
+\begin{equation*}
+%mbxlatex \begin{aligned}
+\frac{2}{\pi (2n+1)}
+=
+\int_{\pi 2n}^{\pi (2n+1)}
+\frac{\sin(x)}{\pi (2n+1)}
+\,dx
+%mbxlatex &
+\leq
+\int_{\pi 2n}^{\pi (2n+1)}
+\frac{\sin(x)}{x}
+\,dx
+%mbxlatex \\
+%mbxlatex &
+\leq
+\int_{\pi 2n}^{\pi (2n+1)}
+\frac{\sin(x)}{\pi 2n}
+\,dx
+=
+\frac{1}{\pi n} .
+%mbxlatex \end{aligned}
+\end{equation*}
+Dengan cara serupa,
+\begin{equation*}
+\frac{-2}{\pi (2n+1)}
+\leq
+\int_{\pi (2n+1)}^{\pi (2n+2)}
+\frac{\sin(x)}{x}
+\,dx
+\leq
+\frac{-1}{\pi (n+1)} .
+\end{equation*}
+Dengan menjumlahkan keduanya, kita peroleh
+\begin{equation*}
+%mbxlatex \begin{aligned}
+0
+=
+\frac{2}{\pi (2n+1)}
++
+\frac{-2}{\pi (2n+1)}
+%mbxlatex &
+\leq
+\int_{2\pi n}^{2\pi (n+1)}
+\frac{\sin(x)}{x}
+\,dx
+%mbxlatex \\
+%mbxlatex &
+\leq
+\frac{1}{\pi n} 
++
+\frac{-1}{\pi (n+1)} 
+=
+\frac{1}{\pi n(n+1)} .
+%mbxlatex \end{aligned}
+\end{equation*}
+Lihat \figureref{fig:sincbound}.
+\begin{myfigureht}
+\myincludegraphics{sincbound}{%
+Ditampilkan grafik beberapa fungsi pada interval
+dari pi kali 2 n hingga pi kali buka kurung 2 n tambah 2 tutup kurung.
+Semuanya menyerupai gelombang sinus yang amplitudonya mengecil.
+Garis tebal gelap adalah grafik fungsi sinus x dibagi x
+pada seluruh interval.
+Seperti semua fungsi lainnya, nilainya nol di titik ujung kiri,
+titik ujung kanan, dan titik tengah pi kali buka kurung 2 n
+tambah 1 tutup kurung.  Garis titik-titik pada subinterval pertama (separuh kiri),
+yang sangat dekat dengan dan berada di bawah garis penuh, menyatakan
+fungsi sinus x dibagi pi kali buka kurung 2 n tambah 1 tutup kurung.
+Garis putus-putus pada subinterval pertama, yang sangat dekat dengan dan berada di atas
+garis penuh, menyatakan fungsi sinus x dibagi pi kali 2 n.
+Daerah antara garis putus-putus dan sumbu x pada subinterval pertama
+diarsir.
+Pada separuh kanan interval, garis titik-titik menyatakan
+fungsi yang sama seperti sebelumnya, dan sekali lagi berada di bawah garis penuh.
+Garis putus-titik yang sedikit berada di atas garis penuh
+kini menyatakan fungsi sinus x dibagi pi kali buka kurung
+2 n tambah 2 tutup kurung.  Daerah di atas garis putus-titik diarsir.}
+\caption{Batas untuk $\int_{2\pi n}^{2\pi (n+1)} \frac{\sin(x)}{x} \,dx$ dengan menggunakan
+integral yang diarsir (luas bertanda
+$\frac{1}{\pi n} 
++
+\frac{-1}{\pi (n+1)}$).\label{fig:sincbound}}
+\end{myfigureht}
+
+Untuk $k \in \N$, 
+\begin{equation*}
+\int_{2\pi}^{2k\pi} \frac{\sin(x)}{x} \,dx
+=
+\sum_{n=1}^{k-1}
+\int_{2\pi n}^{2\pi (n+1)} \frac{\sin(x)}{x} \,dx 
+\leq
+\sum_{n=1}^{k-1}
+\frac{1}{\pi n(n+1)} .
+\end{equation*}
+Kita memperoleh jumlah-jumlah parsial dari suatu deret dengan suku-suku positif.
+Deret tersebut
+konvergen karena
+$\sum_{n=1}^\infty \frac{1}{\pi n (n+1)}$ merupakan deret konvergen.  Jadi,
+sebagai suatu barisan,
+\begin{equation*}
+\lim_{k\to \infty} \int_{2\pi}^{2k\pi} \frac{\sin(x)}{x} \,dx
+=L \leq
+\sum_{n=1}^{\infty}
+\frac{1}{\pi n(n+1)} < \infty .
+\end{equation*}
+
+Misalkan $M > 2\pi$ sembarang, dan misalkan $k \in \N$
+merupakan bilangan bulat terbesar sedemikian sehingga $2k\pi \leq M$.
+Untuk $x \in [2k\pi,M]$, kita memiliki
+$\frac{-1}{2k\pi} \leq \frac{\sin(x)}{x} \leq \frac{1}{2k\pi}$, sehingga
+\begin{equation*}
+\abs{\int_{2k\pi}^{M} \frac{\sin(x)}{x} \,dx }  \leq
+\frac{M-2k\pi}{2k\pi} \leq \frac{1}{k} .
+\end{equation*}
+Karena $k$ adalah nilai $k$ terbesar yang memenuhi $2k\pi \leq M$,
+ketika $M\in \R$ menuju tak hingga, $k \in \N$ juga menuju tak hingga.
+
+Selanjutnya,
+\begin{equation*}
+\int_{2\pi}^M \frac{\sin(x)}{x}\,dx
+=
+\int_{2\pi}^{2k\pi} \frac{\sin(x)}{x} \,dx
++
+\int_{2k\pi}^{M} \frac{\sin(x)}{x} \,dx .
+\end{equation*}
+Ketika $M$ menuju tak hingga,
+suku pertama pada
+ruas kanan menuju $L$,
+dan suku kedua pada
+ruas kanan
+menuju nol.  Jadi,
+\begin{equation*}
+\int_{2\pi}^\infty \frac{\sin(x)}{x} \,dx = L .
+%\leq \sum_{n=1}^{\infty}
+%\frac{1}{\pi n(n+1)} < \infty .
+\end{equation*}
+
+Integral dua sisi dari fungsi sinc juga ada, sebagaimana telah disebutkan di atas.
+Pernyataan lainnya---bahwa integral
+nilai mutlak fungsi sinc divergen---kita serahkan sebagai latihan.
+\end{example}
+
+\subsection{Uji integral untuk deret}
+
+Teorema dasar
+kalkulus dapat digunakan untuk membuktikan bahwa suatu deret konvergen dan untuk menaksir jumlahnya.
+
+\begin{prop}[Uji integral]\index{uji integral untuk deret}
+Andaikan $f \colon [k,\infty) \to \R$ merupakan fungsi tak negatif yang
+menurun, dengan $k \in \Z$.  Maka
+\begin{equation*}
+\sum_{n=k}^\infty f(n)
+\quad \text{konvergen} \qquad \text{jika dan hanya jika}
+\qquad
+\int_k^\infty f
+\quad \text{konvergen}.
+\end{equation*}
+Dalam hal ini,
+\begin{equation*}
+\int_k^\infty f
+\leq
+\sum_{n=k}^\infty f(n)
+\leq
+f(k)+
+\int_k^\infty f .
+\end{equation*}
+\end{prop}
+Lihat \figureref{fig:integraltest} untuk ilustrasi dengan $k=1$.
+Berdasarkan \propref{prop:monotoneintegrable},
+$f$ terintegralkan
+pada setiap interval $[k,b]$ untuk semua $b > k$, sehingga pernyataan proposisi tersebut
+bermakna tanpa hipotesis keterintegralan tambahan.
+\begin{myfigureht}
+\myincludegraphics{integraltest}{%
+Diagram persegi panjang Darboux untuk fungsi menurun,
+dimulai dari x sama dengan 1 dan berlanjut dalam interval
+sepanjang 1 hingga x sama dengan 10 di sebelah kanan.  Karena fungsi
+tersebut menurun, grafik fungsi melalui
+sudut kiri atas setiap persegi panjang utuh dan juga sudut
+kanan atas setiap persegi panjang yang diarsir.}
+\caption{Luas di bawah kurva,
+$\int_1^\infty f$, dibatasi dari bawah
+oleh luas persegi panjang yang diarsir,
+$f(2)+f(3)+f(4)+\cdots$, dan dibatasi dari atas
+oleh luas seluruh persegi panjang, baik bagian yang diarsir maupun yang tidak,
+$f(1)+f(2)+f(3)+\cdots$.\label{fig:integraltest}}
+\end{myfigureht}
+
+\begin{proof}
+Misalkan $\ell, m \in \Z$ sedemikian sehingga $m > \ell \geq k$.
+Karena $f$ menurun, kita memiliki
+$\int_{n}^{n+1} f \leq f(n) \leq \int_{n-1}^{n} f$.  Oleh karena itu,
+\begin{equation} \label{impropriemann:eqseries}
+\int_\ell^m f
+=
+\sum_{n=\ell}^{m-1} \int_{n}^{n+1} f
+\leq
+\sum_{n=\ell}^{m-1} f(n)
+\leq
+f(\ell) +
+\sum_{n=\ell+1}^{m-1} \int_{n-1}^{n} f
+\leq
+f(\ell)+
+\int_\ell^{m-1} f .
+\end{equation}
+
+Pertama, andaikan $\int_k^\infty f$ konvergen dan
+diberikan $\epsilon > 0$.
+Seperti sebelumnya, karena $f$ tak negatif, terdapat
+$L \in \N$ sedemikian sehingga jika $\ell \geq L$, maka
+$\int_\ell^{m} f < \nicefrac{\epsilon}{2}$ untuk semua $m \geq \ell$.
+Fungsi
+$f$ harus menurun menuju nol (mengapa?), jadi pilih $L$ cukup besar sehingga
+untuk $\ell \geq L$, berlaku $f(\ell) < \nicefrac{\epsilon}{2}$.
+Dengan demikian, untuk $m > \ell \geq L$, berdasarkan
+\eqref{impropriemann:eqseries}, kita memiliki
+\begin{equation*}
+\sum_{n=\ell}^{m} f(n)
+\leq
+f(\ell)+
+\int_\ell^{m} f < \nicefrac{\epsilon}{2} + \nicefrac{\epsilon}{2} = \epsilon .
+\end{equation*}
+Oleh karena itu, deret tersebut bersifat Cauchy dan dengan demikian konvergen.  Taksiran dalam
+proposisi diperoleh dengan mengambil $m$ menuju tak hingga dalam
+\eqref{impropriemann:eqseries} dengan $\ell = k$.
+
+Sebaliknya, andaikan $\int_k^\infty f$ divergen.
+Karena $f$ tak negatif, berdasarkan \propref{impropriemann:possimp},
+barisan $\{ \int_k^m f \}_{m=k}^\infty$ divergen menuju tak hingga.
+Dengan menggunakan
+\eqref{impropriemann:eqseries} dengan $\ell = k$, kita memperoleh
+\begin{equation*}
+\int_k^m f
+\leq
+\sum_{n=k}^{m-1} f(n) .
+\end{equation*}
+Karena ruas kiri menuju tak hingga ketika $m \to \infty$, demikian pula
+ruas kanan.
+\end{proof}
+
+\begin{example}
+Uji integral tidak hanya dapat digunakan untuk menunjukkan bahwa suatu deret konvergen, tetapi juga untuk
+menaksir jumlahnya dengan ketelitian sebarang.
+Mari kita tunjukkan bahwa $\sum_{n=1}^\infty \frac{1}{n^2}$ konvergen.  Setelah itu, kita
+taksir jumlahnya dengan galat kurang dari 0.01.  Karena deret ini merupakan deret-$p$ untuk
+$p=2$, kita telah membuktikan bahwa deret tersebut konvergen (anggap saja kita belum mengetahuinya),
+tetapi kita baru menaksir jumlahnya secara kasar.
+
+Teorema dasar kalkulus menyatakan bahwa untuk semua $k \in \N$,
+\begin{equation*}
+\int_{k}^\infty \frac{1}{x^2}\,dx = \frac{1}{k} .
+\end{equation*}
+Khususnya, deret tersebut pasti konvergen.  Namun, kita juga memiliki
+\begin{equation*}
+\frac{1}{k} = \int_k^\infty \frac{1}{x^2}\,dx
+\leq
+\sum_{n=k}^\infty \frac{1}{n^2}
+\leq
+\frac{1}{k^2}
++
+\int_k^\infty \frac{1}{x^2}\,dx
+=
+\frac{1}{k^2}
++
+\frac{1}{k} .
+\end{equation*}
+Dengan menambahkan jumlah parsial hingga $k-1$, kita memperoleh
+\begin{equation*}
+\frac{1}{k} + \sum_{n=1}^{k-1} \frac{1}{n^2}
+\leq
+\sum_{n=1}^\infty \frac{1}{n^2}
+\leq
+\frac{1}{k^2}
++
+\frac{1}{k} + \sum_{n=1}^{k-1} \frac{1}{n^2} .
+\end{equation*}
+Dengan kata lain,
+$\nicefrac{1}{k} + \sum_{n=1}^{k-1} \nicefrac{1}{n^2}$ merupakan taksiran
+jumlah tersebut dengan galat kurang dari $\nicefrac{1}{k^2}$.  Oleh karena itu, jika kita ingin
+menentukan jumlahnya dengan galat kurang dari 0.01, perhatikan bahwa $\nicefrac{1}{{10}^2} = 0.01$.  Kita
+memperoleh
+\begin{equation*}
+1.6397\ldots
+\approx
+\frac{1}{10} + \sum_{n=1}^{9} \frac{1}{n^2}
+\leq
+\sum_{n=1}^\infty \frac{1}{n^2}
+\leq
+\frac{1}{100}
++
+\frac{1}{10} + \sum_{n=1}^{9} \frac{1}{n^2}
+\approx
+1.6497\ldots .
+\end{equation*}
+Jumlah sebenarnya adalah $\nicefrac{\pi^2}{6} \approx 1.6449\ldots$.
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Selesaikan pembuktian \propref{impropriemann:ptest}.
+\end{exercise}
+
+\begin{exercise}
+Tentukan semua $a \in \R$ yang membuat $\sum_{n=1}^\infty e^{an}$ konvergen.
+Ketika deret tersebut konvergen, tentukan batas atas bagi jumlahnya.
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Taksir $\sum_{n=1}^\infty \frac{1}{n(n+1)}$ dengan galat kurang dari 0.01
+menggunakan uji integral.
+\item
+Hitung jumlah deret tersebut secara eksak
+dan bandingkan.  Petunjuk: Deretnya bersifat teleskopik.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa
+\begin{equation*}
+\int_{-\infty}^\infty \babs{\operatorname{sinc}(x)}\,dx = \infty .
+\end{equation*}
+Petunjuk: Sekali lagi, cukup tunjukkan hal ini pada satu sisi saja.
+\end{exercise}
+
+\begin{exercise}
+Dapatkah Anda menafsirkan
+\begin{equation*}
+\int_{-1}^1 \frac{1}{\sqrt{\sabs{x}}}\,dx
+\end{equation*}
+sebagai integral tak wajar?  Jika ya, hitung nilainya.
+\end{exercise}
+
+\begin{exercise}
+Ambil $f \colon [0,\infty) \to \R$ yang terintegralkan secara Riemann pada
+setiap interval $[0,b]$ dan sedemikian sehingga terdapat $M$, $a$, dan $T$
+dengan $\babs{f(t)} \leq M e^{at}$ untuk semua $t \geq T$.  Tunjukkan bahwa
+\emph{\myindex{transformasi Laplace}} dari $f$ ada.  Artinya, untuk
+setiap $s > a$, integral berikut konvergen:
+\begin{equation*}
+F(s) \coloneqq \int_{0}^\infty f(t) e^{-st} \,dt .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon \R \to \R$ merupakan fungsi yang terintegralkan secara Riemann
+pada setiap interval $[a,b]$ dan sedemikian
+sehingga $\int_{-\infty}^\infty \babs{f(x)}\,dx < \infty$.  Tunjukkan bahwa
+\emph{\myindex{transformasi sinus dan kosinus Fourier}}
+ada.  Artinya, untuk setiap $\omega \geq 0$,
+integral-integral berikut konvergen:
+\begin{equation*}
+F^s(\omega) \coloneqq \frac{1}{\pi} \int_{-\infty}^\infty f(t) \sin(\omega t) \,dt ,
+\qquad
+F^c(\omega) \coloneqq \frac{1}{\pi} \int_{-\infty}^\infty f(t) \cos(\omega t) \,dt .
+\end{equation*}
+Selain itu, tunjukkan bahwa $F^s$ dan $F^c$ merupakan fungsi terbatas.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon [0,\infty) \to \R$ terintegralkan secara Riemann pada setiap interval
+$[0,b]$.  Tunjukkan bahwa $\int_0^\infty f$ konvergen jika dan hanya jika
+untuk setiap $\epsilon > 0$ terdapat $M$ sedemikian sehingga jika $M \leq a < b$,
+maka $\babs{\int_a^b f} < \epsilon$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon [0,\infty) \to \R$ tak negatif dan
+\emph{menurun}.  Buktikan:
+\begin{enumerate}[a)]
+\item
+Jika $\int_0^\infty f < \infty$, maka $\lim\limits_{x\to\infty} f(x) = 0$.
+\item
+Konversnya tidak berlaku.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Temukan contoh fungsi kontinu \emph{tak terbatas} $f \colon
+[0,\infty) \to \R$ yang tak negatif dan sedemikian sehingga $\int_0^\infty f < \infty$.
+Perhatikan bahwa $\lim_{x\to\infty} f(x)$ tidak akan ada; bandingkan dengan
+latihan sebelumnya.
+Petunjuk: Pada setiap interval $[k,k+1]$, $k \in \N$, definisikan fungsi yang
+integralnya pada interval tersebut kurang dari, misalnya, $2^{-k}$.
+\end{exercise}
+
+\begin{exercise}[Lebih menantang]
+Temukan contoh fungsi $f \colon [0,\infty) \to \R$ yang terintegralkan pada semua
+interval sedemikian sehingga $\lim_{n\to\infty} \int_0^n f$ ada sebagai
+limit barisan (jadi $n \in \N$), tetapi
+$\int_0^\infty f$ tidak ada.
+Petunjuk: Untuk semua $n\in \N$, bagi $[n,n+1]$ menjadi dua bagian sama panjang.  Pada satu bagian,
+buat fungsi tersebut negatif; pada bagian lainnya, buat fungsi tersebut positif.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon [1,\infty) \to \R$ sedemikian sehingga
+$g(x) \coloneqq x^2 f(x)$ merupakan fungsi terbatas. Buktikan bahwa
+$\int_1^\infty f$ konvergen.
+\end{exercise}
+
+\begin{exnote}
+Terkadang kita ingin memberikan nilai kepada integral yang biasanya
+bahkan tidak dapat ditafsirkan sebagai integral tak wajar,
+misalnya $\int_{-1}^1 \nicefrac{1}{x}\,dx$.
+Andaikan $f \colon [a,b] \to \R$ merupakan fungsi dan $a < c < b$,
+dengan $f$ terintegralkan secara Riemann pada interval
+$[a,c-\epsilon]$ dan $[c+\epsilon,b]$ untuk semua
+$0 < \epsilon < \min\{c-a,b-c\}$.
+Definisikan
+\emph{\myindex{nilai utama Cauchy}} dari $\int_a^b f$ sebagai
+\begin{equation*}
+p.v.\!\int_a^b f \coloneqq \lim_{\epsilon\to 0^+}
+\left(
+\int_a^{c-\epsilon} f + 
+\int_{c+\epsilon}^b f
+\right) ,
+\end{equation*}
+jika limit tersebut ada.
+\end{exnote}
+
+%\begin{samepage}
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Hitung $p.v.\!\int_{-1}^1 \nicefrac{1}{x}\,dx$.
+\item
+Hitung
+$\lim_{\epsilon\to 0^+}
+( \int_{-1}^{-\epsilon} \nicefrac{1}{x}\,dx +
+\int_{2\epsilon}^1 \nicefrac{1}{x}\,dx )$ dan tunjukkan bahwa hasilnya tidak sama
+dengan nilai utama.
+\item
+Tunjukkan bahwa jika $f$ terintegralkan pada $[a,b]$, maka
+$p.v.\!\int_a^b f = \int_a^b f$ (untuk sebarang $c \in (a,b)$).
+\item
+Andaikan $f \colon [-1,1] \to \R$
+merupakan fungsi ganjil ($f(-x)=-f(x)$) yang terintegralkan pada
+$[-1,-\epsilon]$ dan $[\epsilon,1]$ untuk semua $0 < \epsilon < 1$.
+Buktikan bahwa
+$p.v.\!\int_{-1}^1 f = 0$.
+\item
+Andaikan
+$f \colon [-1,1] \to \R$ kontinu dan diferensiabel di 0.  Tunjukkan bahwa
+$p.v.\!\int_{-1}^1 \frac{f(x)}{x}\,dx$ ada.
+\end{enumerate}
+\end{exercise}
+%\end{samepage}
+
+\begin{samepage}
+\begin{exercise}
+Misalkan $f \colon \R \to \R$ dan
+$g \colon \R \to \R$ merupakan fungsi kontinu, dengan
+$g(x) = 0$ untuk semua $x \notin [a,b]$ bagi suatu interval $[a,b]$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa
+\emph{\myindex{konvolusi}}
+\begin{equation*}
+(g * f)(x) \coloneqq \int_{-\infty}^\infty f(t)g(x-t)\,dt 
+\end{equation*}
+terdefinisi dengan baik untuk semua $x \in \R$.
+\item
+Andaikan $\int_{-\infty}^\infty \babs{f(x)}\,dx < \infty$.  Buktikan bahwa
+\begin{equation*}
+\lim_{x \to -\infty} (g * f)(x) = 0, \qquad \text{dan} \qquad
+\lim_{x \to \infty} (g * f)(x) = 0 .
+\end{equation*}
+\end{enumerate}
+\end{exercise}
+\end{samepage}

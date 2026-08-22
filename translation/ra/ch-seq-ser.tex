@@ -1,0 +1,5042 @@
+\chapter{Barisan dan Deret} \label{seq:chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Barisan dan limit}
+\label{sec:seqsandlims}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2,5 pertemuan kuliah}
+
+Analisis pada dasarnya berkenaan dengan pengambilan limit.  Jenis limit yang paling dasar
+adalah limit barisan bilangan real.
+Kita telah melihat penggunaan barisan secara informal.  Mari kita berikan
+definisi formalnya.
+
+\begin{defn}
+Sebuah \emph{\myindex{barisan}} (bilangan real) adalah fungsi $x \colon \N \to
+\R$.  Alih-alih $x(n)$, kita
+biasanya menyatakan suku ke-$n$ dalam barisan tersebut dengan $x_n$.
+Untuk menyatakan sebuah barisan, kita tulis%
+\footnote{Untuk menyingkat, $\{ x_n \}$ atau $\{ x_n \}_n$ lazim digunakan.}%
+\glsadd{not:sequence}%
+\begin{equation*}
+\{ x_n \}_{n=1}^\infty.
+\end{equation*}
+
+Sebuah barisan $\{ x_n \}_{n=1}^\infty$ disebut \emph{terbatas}\index{barisan terbatas} jika
+fungsi yang mendasarinya terbatas.  Artinya, jika
+terdapat suatu $B \in \R$ sedemikian sehingga
+\begin{equation*}
+\sabs{x_n} \leq B \qquad \text{untuk semua } n \in \N.
+\end{equation*}
+Dengan kata lain, barisan $\{x_n\}_{n=1}^\infty$ terbatas apabila
+himpunan $\{ x_n : n \in \N \}$
+terbatas.
+Dengan cara serupa, kita mendefinisikan istilah
+\emph{terbatas di bawah}\index{terbatas di bawah!barisan} dan
+\emph{terbatas di atas}\index{terbatas di atas!barisan}.
+\end{defn}
+
+Ketika kita perlu
+memberikan sebuah barisan konkret, kita sering menyatakan setiap suku dengan rumus dalam
+$n$.
+Sebagai contoh, $\{ \nicefrac{1}{n} \}_{n=1}^\infty$ menyatakan
+barisan $1, \nicefrac{1}{2}, \nicefrac{1}{3}, \nicefrac{1}{4},
+\nicefrac{1}{5}, \ldots$.
+Barisan $\{ \nicefrac{1}{n} \}_{n=1}^\infty$
+merupakan barisan terbatas ($B=1$ sudah memadai).  Di sisi lain, barisan
+$\{ n \}_{n=1}^\infty$ menyatakan
+$1,2,3,4,\ldots$, dan barisan ini tidak terbatas (mengapa?)
+
+Meskipun notasi untuk barisan
+mirip\footnote{\cite{BS} menggunakan $(x_n)_{n=1}^\infty$ untuk menyatakan
+sebuah barisan alih-alih $\{ x_n \}_{n=1}^\infty$, yaitu notasi yang digunakan oleh \cite{Rudin:baby}.
+Kedua notasi ini lazim digunakan.}
+dengan notasi untuk himpunan, kedua pengertian tersebut
+berbeda.  Sebagai contoh, barisan $\bigl\{ {(-1)}^n \bigr\}_{n=1}^\infty$ adalah barisan
+$-1,1,-1,1,-1,1,\ldots$, sedangkan himpunan nilainya, yaitu
+\emph{daerah hasil barisan}\index{daerah hasil barisan},
+hanyalah himpunan $\{ -1, 1 \}$.  Kita menuliskan himpunan ini
+sebagai $\bigl\{ {(-1)}^n : n \in \N \bigr\}$.
+% When ambiguity can arise, we
+%use the words \emph{sequence} or \emph{set} to distinguish the two
+%concepts.
+
+Contoh barisan lainnya adalah \emph{\myindex{barisan konstan}}.
+Barisan itu adalah $\{ c \}_{n=1}^\infty = c,c,c,c,\ldots$ yang terdiri atas satu
+konstanta $c \in \R$ yang berulang tanpa henti.
+
+%We now get to the idea of a
+%\emph{limit of a sequence}\index{limit!of a sequence}.
+%We will see in \propref{prop:limisunique}
+%that a limit, if it exists, is unique.
+%It makes sense to talk about \emph{the} limit of a sequence.
+
+\begin{defn}
+Sebuah barisan $\{ x_n \}_{n=1}^\infty$ dikatakan \emph{konvergen} ke bilangan
+$x \in \R$ jika untuk setiap $\epsilon > 0$, terdapat suatu $M \in \N$ sedemikian
+sehingga $\sabs{x_n - x} < \epsilon$ untuk semua $n \geq M$.
+Bilangan $x$ disebut \emph{limit} barisan tersebut.
+Kita akan membuktikan bahwa limit $x$ unik, sehingga kita tulis%
+\footnote{Dalam teks, ini dapat ditampilkan sebagai $\lim_{n\to\infty} x_n$.}
+\glsadd{not:limseq}%
+\begin{equation*}
+\lim_{n\to \infty} x_n \coloneqq x .
+\end{equation*}
+
+Barisan
+yang konvergen disebut \emph{konvergen}\index{konvergen!barisan}.
+Jika tidak, kita katakan barisan tersebut \emph{divergen}
+atau bahwa barisan itu bersifat
+\emph{divergen}\index{divergen!barisan}.
+\end{defn}
+
+Sebentar lagi, dalam \propref{prop:limisunique} kita akan menunjukkan bahwa limit $x$ selalu
+unik jika ada.  Jadi, masuk akal untuk berbicara tentang \emph{limit} suatu
+barisan dan kita hanya perlu menunjukkan bahwa barisan tersebut konvergen ke satu
+bilangan.
+Untuk beberapa contoh berikutnya, mari kita berpura-pura bahwa
+kita telah membuktikan bahwa limit itu unik.
+
+Secara intuitif, limit yang bernilai $x$ berarti bahwa pada akhirnya
+setiap suku dalam barisan dekat dengan bilangan $x$.  Lebih tepatnya,
+kita dapat berada sedekat apa pun dengan limit, asalkan kita melangkah cukup jauh dalam
+barisan.  Ini tidak berarti bahwa kita pernah mencapai limit tersebut.  Mungkin saja,
+dan bahkan cukup umum, tidak ada $x_n$ dalam barisan yang sama dengan
+limit $x$.
+Kita mengilustrasikan konsep ini dalam \figureref{figsequenceconvergence}.  Dalam
+gambar tersebut, pertama-tama kita memandang barisan sebagai grafik karena barisan merupakan fungsi pada
+$\N$.   Kedua, kita juga menggambarkannya sebagai barisan titik berlabel pada garis
+bilangan real.
+
+\begin{myfigureht}
+\myincludepdft{sequence-convergence_full}{%
+Dua diagram.
+Diagram pertama adalah grafik sebuah barisan, yaitu,
+nilai-nilainya berada pada sumbu vertikal dan sumbu horizontal menyatakan indeksnya.
+Pada sumbu vertikal,
+bilangan x ditandai dan sebuah garis horizontal
+digambar.  Sebuah pita dari
+x dikurangi epsilon hingga x ditambah epsilon diarsir.  Nilai-nilai
+barisan sebagian besar berada di luar pita yang diarsir
+hingga indeksnya mencapai 7, yang ditandai sebagai M.  Semua nilai
+berikutnya berada di dalam pita tersebut.
+Pada diagram kedua, sumbu x mendatar, dengan
+bilangan x ditandai dan nilai-nilai x subskrip 1, x subskrip 2, hingga x subskrip 10 ditandai
+sebagai tanda skala.}
+\caption{Ilustrasi konvergensi.
+Di bagian atas, kita tampilkan sepuluh titik pertama barisan sebagai grafik
+dengan $M$ dan interval di sekitar limit $x$ ditandai.
+Di bagian bawah, titik-titik dari barisan yang sama ditandai pada
+garis bilangan.\label{figsequenceconvergence}}
+\end{myfigureht}
+
+Ketika kita menulis $\lim_{n\to\infty} x_n = x$ untuk suatu bilangan real $x$, kita menyatakan dua
+hal: pertama, bahwa $\{ x_n \}_{n=1}^\infty$ konvergen, dan kedua, bahwa limitnya adalah
+$x$.
+
+Definisi di atas merupakan salah satu definisi terpenting dalam analisis,
+dan definisi tersebut harus dipahami dengan sempurna.  Pokok utama dalam
+definisi tersebut adalah bahwa untuk \emph{sebarang} $\epsilon > 0$, kita dapat menemukan suatu $M$.  Nilai
+$M$ dapat bergantung pada $\epsilon$, jadi kita baru memilih suatu $M$ setelah mengetahui
+$\epsilon$.  Mari kita ilustrasikan konvergensi melalui beberapa contoh.
+
+\begin{example}
+Barisan konstan $1,1,1,1,\ldots$ konvergen ke 1.  Untuk
+setiap $\epsilon > 0$, pilih $M = 1$.  Artinya, $\sabs{x_n-x} = \sabs{1-1} < \epsilon$ untuk semua $n$.
+\end{example}
+
+\begin{example}
+Klaim: \emph{Barisan $\{ \nicefrac{1}{n} \}_{n=1}^\infty$ konvergen dan}
+\begin{equation*}
+\lim_{n\to \infty} \frac{1}{n} = 0 .
+\end{equation*}
+Bukti: Diberikan sebarang $\epsilon > 0$, cari suatu $M \in \N$ sedemikian sehingga
+$0 < \nicefrac{1}{M} < \epsilon$
+(di sini \hyperref[thm:arch:i]{sifat Archimedes} digunakan).
+Untuk semua $n \geq M$,
+\begin{equation*}
+\sabs{x_n - x}
+=
+\abs{\frac{1}{n} - 0} = \abs{\frac{1}{n}} = \frac{1}{n} \leq \frac{1}{M} < \epsilon .
+\end{equation*}
+\end{example}
+
+\begin{example}
+Barisan $\bigl\{ {(-1)}^n \bigr\}_{n=1}^\infty$ divergen.  Bukti: Jika terdapat
+limit $x$, maka untuk $\epsilon = \frac{1}{2}$, definisi mengharuskan adanya suatu $M$ yang
+memenuhi syarat tersebut.  Andaikan
+$M$ seperti itu ada.
+Maka, untuk $n \geq M$ yang genap, kita hitung
+\begin{equation*}
+\nicefrac{1}{2} > \sabs{x_n - x}  = \sabs{1 - x}
+\qquad \text{dan} \qquad
+\nicefrac{1}{2} > \sabs{x_{n+1} - x}  = \sabs{-1 - x} .
+\end{equation*}
+Dengan demikian, kita memperoleh kontradiksi
+\begin{equation*}
+2 = \babs{1 - x - (-1 -x)} \leq
+\sabs{1 - x} + \sabs{-1 -x} < \nicefrac{1}{2} + \nicefrac{1}{2} = 1 .
+\end{equation*}
+\end{example}
+
+\begin{prop} \label{prop:limisunique}
+Barisan konvergen memiliki limit yang unik.
+\end{prop}
+
+Pembuktian proposisi ini memperlihatkan suatu teknik yang berguna dalam
+analisis.  Banyak pembuktian mengikuti skema umum yang sama.  Kita ingin
+menunjukkan bahwa suatu kuantitas bernilai nol.  Kita menulis kuantitas itu sebagai
+dua kuantitas menggunakan ketaksamaan segitiga, lalu menaksir masing-masing
+dengan bilangan yang sekecil apa pun.
+
+\begin{proof}
+%NOTE: should be word for word the same as 7.3.3
+Andaikan $\{ x_n \}_{n=1}^\infty$ memiliki limit $x$ dan $y$.
+Ambil sebarang $\epsilon > 0$.
+Berdasarkan definisi, cari suatu $M_1$ sedemikian sehingga untuk semua $n \geq M_1$,
+$\sabs{x_n-x} < \nicefrac{\epsilon}{2}$.  Demikian pula, cari suatu $M_2$
+sedemikian sehingga untuk semua $n \geq M_2$, berlaku
+$\sabs{x_n-y} < \nicefrac{\epsilon}{2}$.
+Sekarang ambil suatu $n$ sedemikian sehingga $n \geq M_1$ dan juga $n \geq M_2$, lalu taksir
+\begin{equation*}
+\begin{split}
+\sabs{y-x}
+& =
+\babs{x_n-x - (x_n -y)} \\
+& \leq
+\sabs{x_n-x} + \sabs{x_n -y} \\
+& <
+\frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon .
+\end{split}
+\end{equation*}
+Karena $\sabs{y-x} < \epsilon$ untuk setiap $\epsilon > 0$, diperoleh $\sabs{y-x} = 0$
+dan $y=x$.  Jadi, limit tersebut (jika ada) unik.
+\end{proof}
+
+\begin{prop}
+Setiap barisan konvergen $\{ x_n \}_{n=1}^\infty$ merupakan barisan terbatas.
+\end{prop}
+
+\begin{proof}
+Andaikan $\{ x_n \}_{n=1}^\infty$ konvergen ke $x$.  Jadi, terdapat suatu $M \in \N$
+yang dapat diasumsikan setidaknya 2, dan untuk semua $n \geq M$, berlaku
+$\sabs{x_n - x} < 1$.  Untuk $n \geq M$,
+\begin{equation*}
+\begin{split}
+\sabs{x_n} & = \sabs{x_n - x + x}
+\\
+& \leq \sabs{x_n - x} + \sabs{x}
+\\
+& < 1 + \sabs{x} .
+\end{split}
+\end{equation*}
+Himpunan $\bigl\{ \sabs{x_1}, \sabs{x_2}, \ldots, \sabs{x_{M-1}} , 1+\sabs{x} \bigr\}$
+merupakan himpunan berhingga; oleh karena itu, tetapkan
+\begin{equation*}
+B \coloneqq \max \bigl\{ \sabs{x_1}, \sabs{x_2}, \ldots, \sabs{x_{M-1}}, 1+\sabs{x} \bigr\} .
+\end{equation*}
+Maka, untuk semua $n \in \N$,
+\begin{equation*}
+\sabs{x_n} \leq B. \qedhere
+\end{equation*}
+\end{proof}
+
+Barisan $\bigl\{ {(-1)}^n \bigr\}_{n=1}^\infty$ menunjukkan bahwa pernyataan kebalikannya
+tidak berlaku.  Barisan terbatas belum tentu konvergen.
+
+\begin{example}
+Mari kita tunjukkan bahwa $\left\{ \frac{n^2+1}{n^2+n} \right\}_{n=1}^\infty$ konvergen dan
+\begin{equation*}
+\lim_{n\to\infty} \frac{n^2+1}{n^2+n} = 1 .
+\end{equation*}
+
+Diberikan sebarang $\epsilon > 0$,
+cari $M \in \N$ sedemikian sehingga $\frac{1}{M} < \epsilon$.  Maka, untuk semua $n \geq
+M$,
+\begin{equation*}
+\begin{split}
+%\abs{\frac{n^2+1}{n^2+n} - 1} & =
+%\abs{\frac{n^2+1 - (n^2+n)}{n^2+n}} \\
+\abs{\frac{n^2+1}{n^2+n} - 1}  =
+\abs{\frac{n^2+1 - (n^2+n)}{n^2+n}}
+& =
+\abs{\frac{1 - n}{n^2+n}} \\
+& =
+\frac{n-1}{n^2+n} \\
+& \leq 
+\frac{n}{n^2+n} 
+ =
+\frac{1}{n+1}  \\
+& \leq \frac{1}{n}
+\leq \frac{1}{M} < \epsilon .
+\end{split}
+\end{equation*}
+Oleh karena itu,
+$\lim_{n\to\infty} \frac{n^2+1}{n^2+n} = 1$.
+Contoh ini menunjukkan bahwa kadang-kadang, untuk memperoleh yang diinginkan, kita harus membuang
+sebagian informasi guna mendapatkan taksiran yang lebih sederhana.
+\end{example}
+
+\subsection{Barisan monoton}
+
+Jenis barisan yang paling sederhana adalah barisan monoton.  Memeriksa bahwa
+suatu barisan monoton konvergen semudah memeriksa bahwa barisan itu terbatas.
+Menentukan
+limit suatu barisan monoton
+yang konvergen juga mudah, asalkan kita dapat menentukan supremum atau infimum
+dari suatu himpunan bilangan yang terhitung.
+
+\begin{defn}
+Suatu barisan $\{ x_n \}_{n=1}^\infty$ disebut \emph{monoton naik}\index{barisan
+monoton naik} jika $x_n \leq x_{n+1}$ untuk setiap $n \in \N$.  
+%
+Suatu barisan $\{ x_n \}_{n=1}^\infty$ disebut \emph{monoton turun}\index{barisan
+monoton turun} jika $x_n \geq x_{n+1}$ untuk setiap $n \in \N$.  
+%
+Jika suatu barisan monoton naik atau monoton turun, kita
+cukup mengatakan bahwa barisan tersebut \emph{monoton}\index{barisan
+monoton}.\footnote{Sebagian
+penulis memakai istilah \emph{monotonik}\index{barisan monotonik}.}
+\end{defn}
+
+Sebagai contoh,
+$\{ n \}_{n=1}^\infty$ monoton naik,
+$\{ \nicefrac{1}{n} \}_{n=1}^\infty$ monoton turun,
+barisan konstan $\{ 1 \}_{n=1}^\infty$ sekaligus monoton naik dan monoton
+turun, sedangkan $\bigl\{ {(-1)}^n \bigr\}_{n=1}^\infty$ tidak monoton.
+Beberapa suku pertama dari suatu contoh barisan monoton naik
+ditampilkan dalam 
+\figureref{figsequenceincreasing}.
+
+\begin{myfigureht}
+\myincludegraphics{sequence-increasing}{%
+Grafik beberapa suku pertama suatu barisan dengan sumbu horizontal sebagai
+indeks.  Setiap nilai berikutnya dalam barisan sama dengan atau lebih besar
+daripada nilai sebelumnya, sehingga titik-titik yang menyatakan nilainya bergerak naik saat kita bergerak
+ke kanan sepanjang grafik.}
+\caption{Beberapa suku pertama barisan monoton naik sebagai sebuah
+grafik.\label{figsequenceincreasing}}
+\end{myfigureht}
+
+\begin{thm}[Teorema konvergensi monoton] \label{thm:monotoneconv}
+\index{teorema konvergensi monoton}%
+Suatu barisan monoton $\{ x_n \}_{n=1}^\infty$ terbatas jika dan hanya jika konvergen.
+
+Lebih lanjut, jika $\{ x_n \}_{n=1}^\infty$ monoton naik dan terbatas, maka
+\begin{equation*}
+\lim_{n\to \infty} x_n = \sup \{ x_n : n \in \N \} .
+\end{equation*}
+Jika $\{ x_n \}_{n=1}^\infty$ monoton turun dan terbatas, maka
+\begin{equation*}
+\lim_{n\to \infty} x_n = \inf \{ x_n : n \in \N \} .
+\end{equation*}
+\end{thm}
+
+\begin{proof}
+Perhatikan suatu barisan monoton naik $\{ x_n \}_{n=1}^\infty$.  Andaikan 
+terlebih dahulu barisan tersebut terbatas,
+yakni,
+himpunan $\{ x_n : n \in  \N \}$ terbatas.  Misalkan
+\begin{equation*}
+x \coloneqq \sup \{ x_n : n \in \N \} .
+\end{equation*}
+Ambil sembarang $\epsilon > 0$.  Karena $x$ merupakan supremum,
+harus terdapat setidaknya satu $M \in \N$ sedemikian sehingga $x_{M} > x-\epsilon$.
+Karena $\{ x_n \}_{n=1}^\infty$ monoton naik,
+mudah dilihat (dengan \hyperref[induction:thm]{induksi}) bahwa
+$x_n \geq x_{M}$ untuk setiap $n \geq M$.  Jadi, untuk setiap $n \geq M$,
+\begin{equation*}
+\sabs{x_n-x} = x-x_n \leq x-x_{M} < \epsilon  .
+\end{equation*}
+Dengan demikian, $\{ x_n \}_{n=1}^\infty$ konvergen ke $x$.
+Oleh karena itu, suatu barisan monoton naik yang terbatas bersifat konvergen.
+Untuk arah sebaliknya, kita telah membuktikan bahwa suatu barisan konvergen
+bersifat terbatas.
+
+Bukti untuk barisan monoton turun diserahkan sebagai latihan.
+\end{proof}
+
+Suatu barisan monoton naik $\{ x_n \}_{n=1}^\infty$
+selalu terbatas di bawah karena $x_1 \leq x_2 \leq \cdots \leq x_n$
+untuk setiap $n$, sehingga $x_1$ merupakan batas bawah.  Jadi, untuk menentukan apakah suatu 
+barisan monoton naik terbatas, cukup diperiksa apakah barisan tersebut
+terbatas di atas.  Demikian pula, suatu barisan monoton turun
+selalu terbatas di atas, sehingga cukup diperiksa apakah barisan tersebut
+terbatas di bawah.
+
+\begin{example}
+Ambil barisan $\bigl\{ \frac{1}{\sqrt{n}} \bigr\}_{n=1}^\infty$.
+
+Barisan tersebut
+terbatas di bawah karena
+$\frac{1}{\sqrt{n}} > 0$ untuk setiap $n \in \N$.
+Mari kita tunjukkan bahwa barisan ini monoton turun.  Kita mulai dari
+$\sqrt{n+1} \geq \sqrt{n}$ (mengapa ini benar?).  Dari pertidaksamaan ini
+kita peroleh
+\begin{equation*}
+\frac{1}{\sqrt{n+1}} \leq \frac{1}{\sqrt{n}} .
+\end{equation*}
+Jadi, barisan tersebut monoton turun dan terbatas di bawah (karena itu
+terbatas).  Berdasarkan \thmref{thm:monotoneconv}, kita mendapati bahwa barisan tersebut
+konvergen dan
+\begin{equation*}
+\lim_{n\to \infty} \frac{1}{\sqrt{n}}
+=
+\inf \left\{ \frac{1}{\sqrt{n}} : n \in \N \right\} .
+\end{equation*}
+Kita telah mengetahui bahwa infimum tersebut lebih besar daripada atau sama dengan 0, karena
+0 merupakan batas bawah.  Ambil bilangan $b \geq 0$ sedemikian
+sehingga $b \leq \frac{1}{\sqrt{n}}$ untuk setiap $n$.  Kita kuadratkan kedua ruas untuk
+memperoleh
+\begin{equation*}
+b^2 \leq \frac{1}{n} \qquad \text{untuk setiap } n \in \N.
+\end{equation*}
+Kita telah melihat sebelumnya bahwa ini menyiratkan $b^2 \leq 0$ (suatu konsekuensi
+dari \hyperref[thm:arch:i]{sifat Archimedes}).  Karena $b^2 \geq 0$
+juga, kita peroleh $b^2 = 0$
+dan dengan demikian $b = 0$.
+Oleh karena itu, $b=0$ merupakan batas bawah terbesar, dan $\lim\limits_{n\to\infty} \frac{1}{\sqrt{n}} = 0$.
+\end{example}
+
+\begin{example}
+Perlu berhati-hati:  Menunjukkan bahwa suatu barisan monoton terbatas
+agar dapat menggunakan \thmref{thm:monotoneconv} mungkin sulit.
+Barisan
+$\{ 1 + \nicefrac{1}{2} + \cdots + \nicefrac{1}{n} \}_{n=1}^\infty$
+merupakan barisan monoton naik
+yang bertambah dengan lambat dan bahkan bertambah semakin lambat ketika $n$ semakin
+besar.  Nanti, ketika sampai pada pembahasan deret, kita akan melihat
+bahwa barisan ini tidak memiliki batas atas sehingga tidak konvergen.  Sama sekali tidak
+jelas bahwa barisan ini tidak memiliki batas atas.
+\end{example}
+
+Contoh umum munculnya barisan monoton diberikan oleh
+proposisi berikut.  Buktinya diserahkan sebagai latihan.
+
+\begin{prop} \label{prop:supinfseq}
+Misalkan $S \subset \R$ merupakan himpunan terbatas yang tak kosong.
+Maka terdapat barisan-barisan monoton
+$\{ x_n \}_{n=1}^\infty$ dan $\{ y_n \}_{n=1}^\infty$ sedemikian sehingga $x_n, y_n \in S$ dan
+\begin{equation*}
+\sup\,S = \lim_{n\to \infty} x_n \qquad \text{dan} \qquad \inf\,S =
+\lim_{n\to\infty} y_n .
+\end{equation*}
+\end{prop}
+
+\subsection{Ekor suatu barisan}
+
+\begin{defn}
+Untuk suatu barisan $\{ x_n \}_{n=1}^\infty$,
+\emph{ekor-$K$} (dengan $K \in \N$),
+atau cukup
+\emph{ekor},\index{ekor suatu barisan} dari
+$\{ x_n \}_{n=1}^\infty$ adalah barisan yang dimulai dari suku berindeks $K+1$, biasanya ditulis sebagai
+\begin{equation*}
+\{ x_{n+K} \}_{n=1}^\infty
+\qquad \text{atau} \qquad \{ x_n \}_{n=K+1}^\infty .
+\end{equation*}
+\end{defn}
+
+Sebagai contoh, ekor-$4$ dari $\{ \nicefrac{1}{n} \}_{n=1}^\infty$ adalah
+$\nicefrac{1}{5}, \nicefrac{1}{6}, \nicefrac{1}{7}, \nicefrac{1}{8},
+\ldots$.  Ekor-$0$ suatu barisan adalah barisan itu sendiri.
+Kekonvergenan dan limit suatu barisan hanya bergantung pada ekornya.
+
+\begin{prop}
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan.  Maka pernyataan-pernyataan
+berikut ekuivalen:
+\begin{enumerate}[(i)]
+\item \label{prop:ktail:i}
+Barisan $\{ x_n \}_{n=1}^\infty$ konvergen.
+\item \label{prop:ktail:ii}
+Ekor-$K$ $\{ x_{n+K} \}_{n=1}^\infty$ konvergen untuk semua $K \in \N$.
+\item \label{prop:ktail:iii}
+Ekor-$K$ $\{ x_{n+K} \}_{n=1}^\infty$ konvergen untuk suatu $K \in \N$.
+\end{enumerate}
+Lebih lanjut, jika salah satu (dan karenanya semua) limit tersebut ada, maka untuk semua $K \in \N$
+\begin{equation*}
+\lim_{n\to \infty} x_n = \lim_{n \to \infty} x_{n+K} .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Jelas bahwa
+\ref{prop:ktail:ii} mengakibatkan \ref{prop:ktail:iii}.
+Oleh karena itu, pertama-tama kita akan menunjukkan bahwa
+\ref{prop:ktail:i}
+mengakibatkan
+\ref{prop:ktail:ii},
+kemudian menunjukkan bahwa
+\ref{prop:ktail:iii}
+mengakibatkan
+\ref{prop:ktail:i}.  Dengan kata lain, 
+%mbxSTARTIGNORE
+\begin{equation*}
+\begin{tikzcd}[row sep=0pt]
+& \text{\ref{prop:ktail:ii}} \ar[dr, Rightarrow] & \\
+\text{\ref{prop:ktail:i}} \ar[ur, Rightarrow, "\text{untuk dibuktikan}"] & &
+\text{\ref{prop:ktail:iii}} \ar[ll, Rightarrow, "\text{untuk dibuktikan}"] 
+\end{tikzcd}
+\end{equation*}
+%mbxENDIGNORE
+%mbxlatex \begin{center}
+%mbxlatex \myincludepdft{tail_of_sequence_cd}{Diagram dengan
+%mbxlatex tiga panah implikasi.  Panah pertama dari (i) ke (ii)
+%mbxlatex berlabel "untuk dibuktikan".  Panah kedua dari (ii) ke (iii)
+%mbxlatex tidak berlabel.  Panah ketiga dari (iii) ke (i)
+%mbxlatex berlabel "untuk dibuktikan".}
+%mbxlatex \end{center}
+Dalam prosesnya, kita juga akan menunjukkan bahwa limit-limit tersebut sama.
+
+Kita mulai dengan membuktikan bahwa \ref{prop:ktail:i} mengakibatkan \ref{prop:ktail:ii}.
+Andaikan $\{x_n \}_{n=1}^\infty$ konvergen ke suatu $x \in \R$.
+Ambil sebarang $K \in \N$, dan
+definisikan $y_n \coloneqq x_{n+K}$.  Kita hendak menunjukkan bahwa $\{ y_n \}_{n=1}^\infty$ konvergen
+ke $x$.
+Untuk suatu $\epsilon > 0$, terdapat $M \in \N$ sedemikian sehingga
+$\sabs{x-x_n} < \epsilon$ untuk semua $n \geq M$.
+Perhatikan bahwa $n \geq M$ mengakibatkan $n+K \geq M$.  Oleh karena itu, untuk
+semua $n \geq M$, kita memiliki
+\begin{equation*}
+\sabs{x-y_n} = \sabs{x-x_{n+K}} < \epsilon .
+\end{equation*}
+Akibatnya, $\{ y_n \}_{n=1}^\infty$ konvergen ke $x$.
+
+Selanjutnya, kita buktikan bahwa \ref{prop:ktail:iii} mengakibatkan \ref{prop:ktail:i}.
+Ambil suatu $K \in \N$, definisikan
+$y_n \coloneqq x_{n+K}$, dan andaikan $\{ y_n \}_{n=1}^\infty$ konvergen ke $x \in \R$.
+Artinya, untuk suatu $\epsilon > 0$, terdapat $M' \in \N$ sedemikian sehingga
+$\sabs{x-y_n} < \epsilon$ untuk semua $n \geq M'$.
+Tetapkan $M \coloneqq M'+K$.  Maka $n \geq M$ mengakibatkan $n-K \geq M'$.
+Jadi, setiap kali $n \geq M$, kita memiliki
+\begin{equation*}
+\sabs{x-x_n} = \sabs{x-y_{n-K}} < \epsilon.
+\end{equation*}
+Oleh karena itu, $\{ x_n \}_{n=1}^\infty$ konvergen ke $x$.
+\end{proof}
+
+Dengan demikian, limit tidak bergantung pada bagaimana suatu barisan dimulai, melainkan hanya
+pada ekor barisan tersebut.  Bagian awal barisan
+boleh sebarang.
+
+Sebagai contoh, barisan yang didefinisikan oleh $x_n \coloneqq \frac{n}{n^2+16}$ menurun
+jika kita mulai dari $n=4$ (sebelumnya barisan tersebut meningkat).  Yaitu:
+\begin{equation*}
+\begin{aligned}
+\{ x_n \}_{n=1}^\infty
+={}& \nicefrac{1}{17}, \nicefrac{1}{10}, \nicefrac{3}{25}, \nicefrac{1}{8}, \nicefrac{5}{41},
+\\
+&
+\nicefrac{3}{26}, \nicefrac{7}{65}, \nicefrac{1}{10},
+\nicefrac{9}{97}, \nicefrac{5}{58},\ldots .
+\end{aligned}
+\end{equation*}
+Selain itu,
+\begin{equation*}
+\nicefrac{1}{17} <
+\nicefrac{1}{10} <
+\nicefrac{3}{25} <
+\nicefrac{1}{8} >
+\nicefrac{5}{41} >
+\nicefrac{3}{26} >
+\nicefrac{7}{65} >
+\nicefrac{1}{10} >
+\nicefrac{9}{97} >
+\nicefrac{5}{58} > \ldots .
+\end{equation*}
+Jika kita membuang 3 suku pertama
+dan meninjau ekor-3, barisan tersebut menurun.  Buktinya diserahkan sebagai latihan.  Karena ekor-3
+monoton dan terbatas di bawah oleh nol, ekor tersebut konvergen; oleh karena itu, barisan semula konvergen.
+
+\subsection{Subbarisan}
+
+Kadang-kadang berguna untuk meninjau hanya sebagian suku suatu barisan.
+Subbarisan dari $\{ x_n \}_{n=1}^\infty$ adalah barisan yang memuat
+hanya sebagian bilangan dari $\{ x_n \}_{n=1}^\infty$ dengan urutan yang sama.
+
+\begin{defn}
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan.
+Misalkan $\{ n_i \}_{i=1}^\infty$ suatu barisan bilangan asli yang naik
+secara ketat, yaitu, $n_i < n_{i+1}$ untuk setiap $i \in \N$ (dengan kata lain $n_1 < n_2 < n_3 < \cdots$).  
+Barisan
+\begin{equation*}
+\{ x_{n_i} \}_{i=1}^\infty
+\end{equation*}
+disebut \glsadd{not:subsequence}
+sebuah \emph{\myindex{subbarisan}} dari $\{ x_n \}_{n=1}^\infty$.
+\end{defn}
+
+Jadi, subbarisan tersebut adalah barisan $x_{n_1},x_{n_2},x_{n_3},\ldots$.
+Sebagai contoh,
+barisan
+$\{ \nicefrac{1}{3i} \}_{i=1}^\infty
+= \nicefrac{1}{3},\nicefrac{1}{6},\nicefrac{1}{9},\nicefrac{1}{12},\ldots$
+merupakan subbarisan dari
+$\{ \nicefrac{1}{n} \}_{n=1}^\infty
+= 1, \nicefrac{1}{2},\nicefrac{1}{3},\nicefrac{1}{4},\ldots$.
+Untuk melihat kesesuaian kedua
+barisan ini dengan definisi, ambil $n_i \coloneqq 3i$,
+yakni, $\{ n_i \}_{i=1}^\infty$ adalah
+barisan $3,6,9,12,\ldots$.  
+Bilangan-bilangan $x_{n_i}$ dalam
+subbarisan harus berasal dari barisan semula.  Jadi, $1,0,\nicefrac{1}{3},0,
+\nicefrac{1}{5},\ldots$
+bukan subbarisan dari $\{ \nicefrac{1}{n} \}_{n=1}^\infty$.  Demikian pula, urutan
+harus dipertahankan;
+barisan $1,\nicefrac{1}{3},\nicefrac{1}{2},\nicefrac{1}{5},\ldots$
+bukan subbarisan dari $\{ \nicefrac{1}{n} \}_{n=1}^\infty$.
+
+Ekor suatu barisan merupakan salah satu jenis khusus subbarisan.  Untuk sembarang
+subbarisan, kita mempunyai proposisi berikut mengenai kekonvergenan,
+yang lebih lemah daripada hasil untuk ekor.
+
+\begin{prop} \label{prop:seqtosubseq}
+Jika $\{ x_n \}_{n=1}^\infty$ merupakan barisan konvergen,
+maka setiap subbarisan $\{ x_{n_i} \}_{i=1}^\infty$ juga konvergen, dan
+\begin{equation*}
+\lim_{n\to \infty} x_n = 
+\lim_{i\to \infty} x_{n_i} .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Andaikan $\lim_{n\to \infty} x_n = x$.  Jadi, untuk setiap
+$\epsilon > 0$, terdapat $M \in \N$ sedemikian sehingga untuk setiap $n \geq M$,
+\begin{equation*}
+\sabs{x_n - x} < \epsilon .
+\end{equation*}
+Tidak sulit membuktikan (buktikanlah!) dengan \hyperref[induction:thm]{induksi} bahwa
+$n_i \geq i$ untuk setiap $i \in \N$.  Jadi, $i \geq M$ mengakibatkan $n_i \geq M$.  Dengan demikian,
+untuk setiap $i \geq M$,
+\begin{equation*}
+\sabs{x_{n_i} - x} < \epsilon ,
+\end{equation*}
+dan bukti selesai.
+\end{proof}
+
+\begin{example}
+Adanya suatu subbarisan konvergen tidak mengakibatkan
+barisan itu sendiri konvergen.
+Ambil barisan $0,1,0,1,0,1,\ldots$.  Artinya,
+$x_n = 0$ jika $n$ ganjil, dan $x_n = 1$ jika $n$ genap.  Barisan
+$\{ x_n \}_{n=1}^\infty$ divergen; namun, subbarisan
+$\{ x_{2i} \}_{i=1}^\infty$ konvergen ke 1 dan subbarisan
+$\{ x_{2i+1} \}_{i=1}^\infty$ konvergen ke 0.  Bandingkan dengan \propref{seqconvsubseqconv:prop}.
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exnote}
+Dalam latihan-latihan berikut, silakan gunakan pengetahuan Anda dari kalkulus untuk
+menentukan limitnya, jika limit tersebut ada.  Namun, Anda harus \emph{membuktikan}
+bahwa limit yang
+Anda peroleh benar, atau membuktikan bahwa barisan tersebut divergen.
+\end{exnote}
+
+\begin{exercise}
+Apakah barisan
+$\{ 3n \}_{n=1}^\infty$
+terbatas?  Buktikan atau sangkal.
+\end{exercise}
+
+\begin{exercise}
+Apakah barisan
+$\{ n \}_{n=1}^\infty$
+konvergen?  Jika ya, berapakah limitnya?
+\end{exercise}
+
+\begin{exercise}
+Apakah barisan
+$\left\{ \dfrac{{(-1)}^n}{2n} \right\}_{n=1}^\infty$
+konvergen?  Jika ya, berapakah limitnya?
+\end{exercise}
+
+\begin{exercise}
+Apakah barisan
+$\{ 2^{-n} \}_{n=1}^\infty$
+konvergen?  Jika ya, berapakah limitnya?
+\end{exercise}
+
+\begin{exercise}
+Apakah barisan
+$\left\{ \dfrac{n}{n+1} \right\}_{n=1}^\infty$
+konvergen?  Jika ya, berapakah limitnya?
+\end{exercise}
+
+\begin{exercise}
+Apakah barisan
+$\left\{ \dfrac{n}{n^2+1} \right\}_{n=1}^\infty$
+konvergen?  Jika ya, berapakah limitnya?
+\end{exercise}
+
+\begin{exercise} \label{exercise:absconv}
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan.
+\begin{enumerate}[a)]
+\item Tunjukkan bahwa $\lim\limits_{n\to\infty} x_n = 0$ (artinya, limit tersebut ada dan bernilai nol)
+jika dan hanya jika $\lim\limits_{n\to\infty} \sabs{x_n} = 0$.
+\item Temukan sebuah contoh sedemikian sehingga $\{ \sabs{x_n} \}_{n=1}^\infty$ konvergen dan
+$\{ x_n \}_{n=1}^\infty$
+divergen.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Apakah barisan
+$\left\{ \dfrac{2^n}{n!} \right\}_{n=1}^\infty$
+konvergen?  Jika ya, berapakah limitnya?
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa barisan
+$\left\{ \dfrac{1}{\sqrt[3]{n}} \right\}_{n=1}^\infty$ monoton dan terbatas.  Kemudian gunakan
+\thmref{thm:monotoneconv} untuk menentukan limitnya.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa barisan
+$\left\{ \dfrac{n+1}{n} \right\}_{n=1}^\infty$
+monoton dan terbatas.  Kemudian gunakan
+\thmref{thm:monotoneconv} untuk menentukan limitnya.
+\end{exercise}
+
+\begin{exercise}
+Lengkapi bukti \thmref{thm:monotoneconv} untuk barisan
+monoton turun.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{prop:supinfseq}.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan monoton yang konvergen.  Andaikan
+terdapat $k \in \N$ sedemikian sehingga
+\begin{equation*}
+\lim_{n\to \infty} x_n = x_k .
+\end{equation*}
+Tunjukkan bahwa $x_n = x_k$ untuk semua $n \geq k$.
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Temukan sebuah subbarisan konvergen dari barisan
+$\bigl\{ {(-1)}^n \bigr\}_{n=1}^\infty$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{x_n\}_{n=1}^\infty$ suatu barisan yang didefinisikan oleh
+\begin{equation*}
+x_n \coloneqq 
+\begin{cases}
+n               & \text{jika } n \text{ ganjil} , \\
+\nicefrac{1}{n} & \text{jika } n \text{ genap} .
+\end{cases}
+\avoidbreak
+\end{equation*}
+\begin{enumerate}[a)]
+\item Apakah barisan tersebut terbatas? (buktikan atau sangkal)
+\item Apakah terdapat subbarisan konvergen?  Jika ya, temukan subbarisan tersebut.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan.
+Andaikan terdapat dua subbarisan konvergen $\{ x_{n_i} \}_{i=1}^\infty$ dan
+$\{ x_{m_i} \}_{i=1}^\infty$.  Andaikan
+\begin{equation*}
+\lim_{i\to\infty} x_{n_i} = a
+\qquad \text{dan} \qquad
+\lim_{i\to\infty} x_{m_i} = b,
+\end{equation*}
+dengan $a \neq b$.  Buktikan bahwa $\{ x_n \}_{n=1}^\infty$ tidak konvergen tanpa
+menggunakan \propref{prop:seqtosubseq}.
+\end{exercise}
+
+\begin{exercise}[Perlu kecermatan]
+Temukan suatu barisan $\{ x_n \}_{n=1}^\infty$ sedemikian sehingga untuk setiap $y \in \R$, terdapat
+subbarisan $\{ x_{n_i} \}_{i=1}^\infty$ yang konvergen ke $y$.
+\end{exercise}
+
+\begin{exercise}[Mudah]
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan dan $x \in \R$.
+Andaikan untuk setiap $\epsilon > 0$, terdapat $M$ sedemikian sehingga
+$\sabs{x_n-x} \leq \epsilon$ untuk semua $n \geq M$.
+Tunjukkan bahwa $\lim\limits_{n\to\infty} x_n = x$.
+\end{exercise}
+
+\begin{exercise}[Mudah]
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan dan $x \in \R$ sedemikian sehingga
+terdapat $k \in \N$ sehingga untuk semua $n \geq k$,
+$x_n = x$.  Buktikan bahwa $\{ x_n \}_{n=1}^\infty$ konvergen ke $x$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan dan
+definisikan barisan $\{ y_n \}_{n=1}^\infty$ dengan
+$y_{2k} \coloneqq x_{k^2}$ dan $y_{2k-1} \coloneqq x_k$ untuk semua $k \in \N$.
+Buktikan bahwa $\{ x_n \}_{n=1}^\infty$ konvergen jika dan hanya jika
+$\{ y_n \}_{n=1}^\infty$ konvergen.
+Lebih lanjut, buktikan bahwa jika keduanya konvergen, maka
+$\lim\limits_{n\to\infty} x_n = \lim\limits_{n\to\infty} y_n$.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa ekor-3 dari barisan yang didefinisikan oleh $x_n \coloneqq \frac{n}{n^2+16}$
+monoton turun.  Petunjuk: Andaikan $n \geq m \geq 4$ dan tinjau
+pembilang dari bentuk $x_n-x_m$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $\{ x_n \}_{n=1}^\infty$ suatu barisan sedemikian sehingga
+subbarisan $\{ x_{2n} \}_{n=1}^\infty$, $\{ x_{2n-1} \}_{n=1}^\infty$, dan
+$\{ x_{3n} \}_{n=1}^\infty$ semuanya konvergen.  Tunjukkan bahwa $\{ x_n \}_{n=1}^\infty$ konvergen.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $\{ x_n \}_{n=1}^\infty$ suatu barisan monoton naik yang
+memiliki subbarisan konvergen.
+Tunjukkan bahwa $\{ x_n \}_{n=1}^\infty$ konvergen.
+Catatan: Jadi, untuk barisan monoton, \propref{prop:seqtosubseq} merupakan pernyataan \myquote{jika dan hanya jika}.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Fakta tentang limit barisan}
+\label{sec:factslimsseqs}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2--2.5 pertemuan; barisan yang didefinisikan secara rekursif dapat dilewati
+tanpa masalah}
+
+Pada bagian ini, kita membahas beberapa hasil dasar mengenai limit
+barisan.
+Kita mulai dengan meninjau bagaimana barisan berinteraksi dengan ketaksamaan.
+
+\subsection{Limit dan ketaksamaan}
+
+Lemma dasar mengenai limit dan ketaksamaan disebut lemma apit.
+Lemma ini memungkinkan kita menunjukkan kekonvergenan barisan dalam kasus-kasus sulit
+jika kita menemukan dua barisan konvergen lain yang lebih sederhana dan 
+\myquote{mengapit} barisan semula.
+
+\begin{lemma}[Lemma apit]\index{lemma apit} \label{squeeze:lemma}
+Misalkan $\{ a_n \}_{n=1}^\infty$, 
+$\{ b_n \}_{n=1}^\infty$, dan 
+$\{ x_n \}_{n=1}^\infty$ merupakan barisan-barisan sedemikian sehingga
+\begin{equation*}
+a_n \leq x_n \leq b_n \quad \text{untuk setiap } n \in \N.
+\end{equation*}
+Andaikan $\{ a_n \}_{n=1}^\infty$ dan $\{ b_n \}_{n=1}^\infty$ konvergen dan
+\begin{equation*}
+\lim_{n\to \infty} a_n
+=
+\lim_{n\to \infty} b_n .
+\end{equation*}
+Maka $\{ x_n \}_{n=1}^\infty$ konvergen dan
+\begin{equation*}
+\lim_{n\to \infty} x_n
+=
+\lim_{n\to \infty} a_n
+=
+\lim_{n\to \infty} b_n .
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+Misalkan $x \coloneqq \lim_{n\to\infty} a_n = \lim_{n\to\infty} b_n$.
+Ambil $\epsilon > 0$.
+Pilih $M_1$ sedemikian sehingga untuk setiap $n \geq M_1$, berlaku
+$\sabs{a_n-x} < \epsilon$, dan pilih $M_2$
+sedemikian sehingga untuk setiap $n \geq M_2$,
+berlaku $\sabs{b_n-x} < \epsilon$.  Tetapkan $M \coloneqq \max \{M_1, M_2 \}$.
+Andaikan $n \geq M$.
+Secara khusus,
+$x - a_n < \epsilon$, atau 
+$x - \epsilon < a_n$.  Demikian pula, $b_n < x + \epsilon$.
+Dengan menggabungkan semuanya, kita peroleh
+\begin{equation*}
+x - \epsilon < a_n \leq x_n \leq b_n < x + \epsilon .
+\end{equation*}
+Dengan kata lain, $-\epsilon < x_n-x < \epsilon$ atau $\sabs{x_n-x} < \epsilon$.
+Jadi, $\{x_n\}_{n=1}^\infty$ konvergen ke $x$.
+Lihat \figureref{figsqueeze}.
+\end{proof}
+
+\begin{myfigureht}
+\myincludepdft{figsqueeze}{%
+Diagram garis bilangan real.  Titik-titik ditandai pada garis tersebut
+secara berurutan dari kiri ke kanan: x dikurangi epsilon, a subskrip n, x, x subskrip n,
+b subskrip n, dan x ditambah epsilon.  Panah menegaskan bahwa jarak
+dari x dikurangi epsilon ke x adalah epsilon dan bahwa jarak
+dari x ke x ditambah epsilon juga epsilon.}
+\caption{Bukti lemma apit dalam gambar.\label{figsqueeze}}
+\end{myfigureht}
+
+\begin{example}
+Salah satu penerapan
+\hyperref[squeeze:lemma]{lemma apit} adalah menghitung limit 
+barisan dengan menggunakan limit yang telah kita ketahui.  Sebagai contoh, perhatikan
+barisan $\bigl\{ \frac{1}{n\sqrt{n}} \bigr\}_{n=1}^\infty$.
+Karena $\sqrt{n} \geq 1$ untuk setiap $n \in \N$, berlaku
+\begin{equation*}
+0 \leq \frac{1}{n\sqrt{n}} \leq \frac{1}{n}
+\end{equation*}
+untuk setiap $n \in \N$.  Kita telah mengetahui $\lim_{n\to\infty} \nicefrac{1}{n} = 0$. 
+Oleh karena itu, dengan menggunakan
+barisan konstan $\{ 0 \}_{n=1}^\infty$ dan barisan
+$\{ \nicefrac{1}{n} \}_{n=1}^\infty$ dalam
+lemma apit, kita simpulkan
+\begin{equation*}
+\lim_{n\to\infty} \frac{1}{n\sqrt{n}} = 0 .
+\end{equation*}
+\end{example}
+
+Limit, jika ada, mempertahankan ketaksamaan tak ketat.
+
+\begin{lemma} \label{limandineq:lemma}
+Misalkan $\{ x_n \}_{n=1}^\infty$ dan $\{ y_n \}_{n=1}^\infty$ merupakan
+barisan konvergen dan
+\begin{equation*}
+x_n \leq y_n \quad \text{untuk setiap } n \in \N .
+\end{equation*}
+Maka
+\begin{equation*}
+\lim_{n\to\infty} x_n \leq
+\lim_{n\to\infty} y_n .
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+Misalkan $x \coloneqq \lim_{n\to\infty} x_n$ dan $y \coloneqq \lim_{n\to\infty} y_n$. 
+Ambil 
+$\epsilon > 0$.  Pilih $M_1$ sedemikian sehingga untuk setiap $n \geq M_1$,
+berlaku $\sabs{x_n-x} < \nicefrac{\epsilon}{2}$.  Pilih $M_2$ sedemikian sehingga
+untuk setiap $n \geq M_2$, berlaku
+$\sabs{y_n-y} < \nicefrac{\epsilon}{2}$.  Secara khusus,
+untuk setiap $n \geq \max\{ M_1, M_2 \}$, berlaku
+$x-x_n < \nicefrac{\epsilon}{2}$ dan
+$y_n-y < \nicefrac{\epsilon}{2}$.  Kita menjumlahkan kedua ketaksamaan ini untuk
+memperoleh
+\begin{equation*}
+y_n-x_n+x-y < \epsilon, \qquad \text{atau} \qquad
+y_n-x_n < y-x+ \epsilon .
+\end{equation*}
+Karena $x_n \leq y_n$, berlaku
+$0 \leq y_n-x_n$ dan dengan demikian $0 < y-x+ \epsilon$.
+Dengan kata lain,
+\begin{equation*}
+x-y < \epsilon .
+\end{equation*}
+Karena $\epsilon > 0$ dipilih secara sembarang, kita peroleh
+$x-y \leq 0$.
+Oleh karena itu, $x \leq y$.
+\end{proof}
+
+Korolari berikut diperoleh dengan
+menggunakan barisan konstan dalam
+\lemmaref{limandineq:lemma}.  Buktinya diserahkan sebagai latihan.
+
+\begin{samepage}
+\begin{cor} \label{limandineq:cor}
+\leavevmode
+\begin{enumerate}[(i)]
+\item Jika $\{ x_n \}_{n=1}^\infty$ merupakan barisan konvergen sedemikian sehingga $x_n \geq 0$ untuk setiap
+$n \in \N$,
+maka
+\begin{equation*}
+\lim_{n\to\infty} x_n \geq 0.
+\end{equation*}
+\item
+Misalkan $a,b \in \R$ dan
+misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan konvergen sedemikian sehingga
+\begin{equation*}
+a \leq x_n \leq b \quad \text{untuk setiap } n \in \N .
+\end{equation*}
+Maka
+\begin{equation*}
+a \leq \lim_{n\to\infty} x_n \leq b.
+\end{equation*}
+\end{enumerate}
+\end{cor}
+\end{samepage}
+
+Dalam \lemmaref{limandineq:lemma} dan \corref{limandineq:cor}, kita tidak dapat begitu saja mengganti
+semua ketaksamaan tak ketat dengan
+ketaksamaan ketat.  Sebagai contoh,
+misalkan $x_n \coloneqq \nicefrac{-1}{n}$ dan $y_n \coloneqq \nicefrac{1}{n}$.
+Maka $x_n < y_n$, $x_n < 0$,
+dan $y_n > 0$ untuk setiap $n$.  Namun, ketaksamaan-ketaksamaan ini
+tidak dipertahankan oleh operasi limit karena
+$\lim_{n\to\infty} x_n = \lim_{n\to\infty} y_n = 0$.
+Pesan dari contoh ini adalah bahwa ketaksamaan ketat dapat menjadi ketaksamaan tak ketat
+ketika limit diambil; jika kita mengetahui
+$x_n < y_n$ untuk setiap $n$,
+kita hanya dapat menyimpulkan 
+\begin{equation*}
+\lim_{n \to \infty} x_n \leq
+\lim_{n \to \infty} y_n .
+\end{equation*}
+Hal ini merupakan sumber kesalahan yang umum.
+
+\subsection{Kekontinuan operasi aljabar}
+
+Limit berperilaku baik terhadap operasi aljabar.
+
+\begin{prop} \label{prop:contalg}
+Misalkan $\{ x_n \}_{n=1}^\infty$ dan $\{ y_n \}_{n=1}^\infty$ adalah barisan konvergen.
+\begin{enumerate}[(i)]
+\item \label{prop:contalg:i}
+Barisan $\{ z_n \}_{n=1}^\infty$, dengan $z_n \coloneqq x_n + y_n$, konvergen dan
+\begin{equation*}
+\lim_{n \to \infty} (x_n + y_n) = 
+\lim_{n \to \infty} z_n = 
+\lim_{n \to \infty} x_n + 
+\lim_{n \to \infty} y_n .
+\end{equation*}
+\item \label{prop:contalg:ii}
+Barisan $\{ z_n \}_{n=1}^\infty$, dengan $z_n \coloneqq x_n - y_n$, konvergen dan
+\begin{equation*}
+\lim_{n \to \infty} (x_n - y_n) = 
+\lim_{n \to \infty} z_n = 
+\lim_{n \to \infty} x_n - 
+\lim_{n \to \infty} y_n .
+\end{equation*}
+\item \label{prop:contalg:iii}
+Barisan $\{ z_n \}_{n=1}^\infty$, dengan $z_n \coloneqq x_n y_n$, konvergen dan
+\begin{equation*}
+\lim_{n \to \infty} (x_n y_n) = 
+\lim_{n \to \infty} z_n = 
+\left( \lim_{n \to \infty} x_n \right)
+\left( \lim_{n \to \infty} y_n \right) .
+\end{equation*}
+\item \label{prop:contalg:iv}
+Jika $\lim_{n\to\infty} y_n \neq 0$ dan $y_n \neq 0$ untuk semua $n \in \N$, maka
+barisan $\{ z_n \}_{n=1}^\infty$, dengan $z_n \coloneqq \dfrac{x_n}{y_n}$, konvergen dan
+\begin{equation*}
+\lim_{n \to \infty} \frac{x_n}{y_n} = 
+\lim_{n \to \infty} z_n = 
+\frac{\lim_{n \to \infty} x_n}{\lim_{n \to \infty} y_n} .
+\end{equation*}
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Kita mulai dengan \ref{prop:contalg:i}.
+Misalkan $\{ x_n \}_{n=1}^\infty$ dan $\{ y_n \}_{n=1}^\infty$ adalah barisan konvergen dan
+tulis $z_n \coloneqq x_n + y_n$.  Misalkan $x \coloneqq \lim_{n\to\infty} x_n$,
+$y \coloneqq \lim_{n\to\infty} y_n$, dan $z \coloneqq x+y$.
+Diberikan sebarang $\epsilon > 0$.  
+Carilah suatu $M_1$ sedemikian sehingga untuk semua $n \geq M_1$,
+berlaku
+$\sabs{x_n - x} < \nicefrac{\epsilon}{2}$.  
+Carilah suatu $M_2$ sedemikian sehingga untuk semua $n \geq M_2$,
+berlaku
+$\sabs{y_n - y} < \nicefrac{\epsilon}{2}$.  Ambil $M \coloneqq \max \{ M_1, M_2 \}$.
+Untuk semua $n \geq M$, berlaku
+\begin{equation*}
+\begin{split}
+\sabs{z_n - z} &=
+\babs{(x_n+y_n) - (x+y)} \\
+& =
+\sabs{x_n-x + y_n-y} \\
+& \leq
+\sabs{x_n-x} + \sabs{y_n-y} \\
+& <
+\frac{\epsilon}{2} +
+\frac{\epsilon}{2}
+= \epsilon.
+\end{split}
+\end{equation*}
+Dengan demikian, \ref{prop:contalg:i} terbukti.
+Bukti \ref{prop:contalg:ii} hampir identik dan diserahkan kepada pembaca sebagai
+latihan.
+
+Sekarang kita tangani 
+\ref{prop:contalg:iii}.
+Misalkan lagi bahwa $\{ x_n \}_{n=1}^\infty$ dan $\{ y_n \}_{n=1}^\infty$ adalah barisan konvergen dan
+tulis $z_n \coloneqq x_n y_n$.  Misalkan $x \coloneqq \lim_{n\to\infty} x_n$,
+$y \coloneqq \lim_{n\to\infty} y_n$, dan $z \coloneqq xy$.
+Diberikan sebarang $\epsilon > 0$.
+Misalkan $K \coloneqq \max\{ \sabs{x}, \sabs{y}, \nicefrac{\epsilon}{3} , 1 \}$.
+Carilah suatu $M_1$ sedemikian sehingga untuk semua $n \geq M_1$,
+berlaku
+$\sabs{x_n - x} < \frac{\epsilon}{3K}$.
+Carilah suatu $M_2$ sedemikian sehingga untuk semua $n \geq M_2$,
+berlaku
+$\sabs{y_n - y} < \frac{\epsilon}{3K}$.  Ambil $M \coloneqq \max \{ M_1, M_2 \}$.
+Untuk semua $n \geq M$, berlaku
+\begin{equation*}
+\begin{split}
+\sabs{z_n - z} &=
+\babs{(x_ny_n) - (xy)} \\
+& =
+\babs{(x_n-x+x)(y_n-y+y) - xy} \\
+& =
+\babs{(x_n-x)y + x(y_n-y) +(x_n-x)(y_n-y)} \\
+& \leq
+\babs{(x_n-x)y} + \babs{x(y_n - y)} +
+\babs{(x_n-x)(y_n-y)} \\
+& =
+\sabs{x_n -x}\sabs{y} + 
+\sabs{x}\sabs{y_n -y} + 
+\sabs{x_n -x}\sabs{y_n -y}
+\\
+& <
+\frac{\epsilon}{3K} K + 
+K \frac{\epsilon}{3K} + 
+\frac{\epsilon}{3K}
+\frac{\epsilon}{3K}
+\qquad \qquad \text{(sekarang perhatikan bahwa } \tfrac{\epsilon}{3K} \leq 1
+\text{ dan }
+K \geq 1\text{)}
+\\
+& \leq
+\frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3}
+ = \epsilon .
+\end{split}
+\end{equation*}
+
+Akhirnya, kita tinjau
+\ref{prop:contalg:iv}.
+Kita buktikan klaim yang lebih sederhana berikut:
+
+Klaim: \emph{Jika $\{ y_n \}_{n=1}^\infty$ adalah barisan konvergen sedemikian sehingga
+$\lim_{n\to\infty} y_n \neq 0$ dan $y_n \neq 0$ untuk semua $n \in \N$, maka
+$\{ \nicefrac{1}{y_n} \}_{n=1}^\infty$ konvergen dan}
+\begin{equation*}
+\lim_{n\to\infty} \frac{1}{y_n} = \frac{1}{\lim_{n\to\infty} y_n}  .
+\end{equation*}
+
+Setelah klaim terbukti, kita ambil barisan
+$\{ \nicefrac{1}{y_n} \}_{n=1}^\infty$,
+mengalikannya dengan barisan $\{ x_n \}_{n=1}^\infty$, lalu menerapkan butir
+\ref{prop:contalg:iii}.
+
+Bukti klaim:  Diberikan sebarang $\epsilon > 0$.
+Misalkan $y \coloneqq \lim_{n\to\infty} y_n$.
+Karena $\sabs{y} \neq 0$, berlaku
+$\min \left\{ \sabs{y}^2\frac{\epsilon}{2}, \, \frac{\sabs{y}}{2} \right\} > 0$.
+Carilah suatu $M$ sedemikian sehingga untuk semua $n \geq M$,
+berlaku
+\begin{equation*}
+\sabs{y_n - y} < \min \left\{ \sabs{y}^2\frac{\epsilon}{2}, \, \frac{\sabs{y}}{2}
+\right\} .
+\end{equation*}
+Untuk semua $n \geq M$, berlaku
+$\sabs{y - y_n} < \nicefrac{\sabs{y}}{2}$, sehingga
+\begin{equation*}
+\sabs{y} = 
+\sabs{y - y_n + y_n } \leq
+\sabs{y - y_n} + \sabs{ y_n } < \frac{\sabs{y}}{2} + \sabs{y_n}.
+\end{equation*}
+Dengan mengurangkan $\nicefrac{\sabs{y}}{2}$ dari kedua ruas, kita peroleh
+$\nicefrac{\sabs{y}}{2} < \sabs{y_n}$, atau dengan kata lain,
+\begin{equation*}
+\frac{1}{\sabs{y_n}} < \frac{2}{\sabs{y}} .
+\end{equation*}
+Kita selesaikan bukti klaim tersebut:
+\begin{equation*}
+\begin{split}
+\abs{\frac{1}{y_n} - \frac{1}{y}} &=
+\abs{\frac{y - y_n}{y y_n}} \\
+& =
+\frac{\sabs{y - y_n}}{\sabs{y} \sabs{y_n}} \\
+& \leq
+\frac{\sabs{y - y_n}}{\sabs{y}} \, \frac{2}{\sabs{y}} \\
+& <
+\frac{\sabs{y}^2 \frac{\epsilon}{2}}{\sabs{y}} \, \frac{2}{\sabs{y}}
+= \epsilon .
+\end{split}
+\avoidbreak
+\end{equation*}
+Dengan demikian, bukti selesai.
+\end{proof}
+
+Dengan menyubstitusikan barisan konstan, kita memperoleh beberapa akibat yang sederhana.
+Jika $c \in \R$ dan $\{ x_n \}_{n=1}^\infty$ adalah barisan konvergen, maka
+misalnya
+\begin{equation*}
+\lim_{n \to \infty} c x_n = 
+c \left( \lim_{n \to \infty} x_n \right) \qquad
+\text{dan}
+\qquad
+\lim_{n \to \infty} (c + x_n) = 
+c + \lim_{n \to \infty} x_n .
+\end{equation*}
+Dengan cara serupa, kita memperoleh kesamaan semacam itu untuk pengurangan dan pembagian dengan konstanta.
+
+Karena limit dapat dipertukarkan dengan perkalian, kita dapat menunjukkan (latihan)
+bahwa $\lim_{n\to\infty} x_n^k = {(\lim_{n\to\infty} x_n)}^k$ untuk semua $k \in \N$.
+Artinya, limit dapat dipertukarkan
+dengan perpangkatan.  Mari kita lihat apakah hal yang sama berlaku untuk akar.
+
+\begin{prop}
+\pagebreak[2]
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan konvergen sedemikian
+sehingga $x_n \geq 0$ untuk semua $n \in \N$.
+Maka
+\begin{equation*}
+\lim_{n\to\infty} \sqrt{x_n} =
+\sqrt{ \lim_{n\to\infty} x_n } .
+\end{equation*}
+\end{prop}
+
+Tentu saja, untuk dapat menyatakan hal ini, kita perlu menerapkan
+\corref{limandineq:cor} untuk menunjukkan
+bahwa
+$\lim_{n\to\infty} x_n \geq 0$, sehingga kita dapat mengambil akar kuadrat tanpa
+masalah.
+
+\begin{proof}
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan konvergen dan misalkan $x \coloneqq
+\lim_{n\to\infty} x_n$.
+Seperti baru saja disebutkan, $x \geq 0$.
+
+Pertama, misalkan $x=0$.  Diberikan sebarang $\epsilon > 0$.
+Maka terdapat suatu $M$ sedemikian sehingga untuk semua $n \geq M$, berlaku
+$x_n = \sabs{x_n} < \epsilon^2$, atau dengan kata lain, $\sqrt{x_n} < \epsilon$.
+Jadi,
+\begin{equation*}
+\abs{\sqrt{x_n} - \sqrt{x}} =
+\sqrt{x_n} < \epsilon.
+\end{equation*}
+
+Sekarang misalkan $x > 0$ (dan karenanya $\sqrt{x} > 0$).
+\begin{equation*}
+\begin{split}
+\abs{\sqrt{x_n}-\sqrt{x}} &= 
+\abs{\frac{x_n-x}{\sqrt{x_n}+\sqrt{x}}} \\
+&=
+\frac{1}{\sqrt{x_n}+\sqrt{x}}
+\sabs{x_n-x} \\
+& \leq
+\frac{1}{\sqrt{x}}
+\sabs{x_n-x} .
+\end{split}
+\end{equation*}
+Sisa bukti diserahkan kepada pembaca.
+\end{proof}
+
+Bukti serupa berlaku untuk akar ke-$k$.  Artinya, kita juga
+memperoleh
+$\lim_{n\to\infty} x_n^{1/k} = {( \lim_{n\to\infty} x_n )}^{1/k}$.  Hal ini diserahkan kepada pembaca
+sebagai latihan yang menantang.
+
+Kita juga mungkin ingin mempertukarkan limit dengan tanda nilai mutlak.
+Kebalikan proposisi ini tidak benar; lihat
+\exerciseref{exercise:absconv} bagian b).
+
+\begin{prop}
+Jika $\{ x_n \}_{n=1}^\infty$ adalah barisan konvergen, maka $\{ \sabs{x_n} \}_{n=1}^\infty$
+konvergen dan
+\begin{equation*}
+\lim_{n\to\infty} \sabs{x_n} = 
+\abs{\lim_{n\to\infty} x_n} .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Kita cukup memperhatikan ketaksamaan segitiga terbalik
+\begin{equation*}
+\big\lvert \sabs{x_n} - \sabs{x} \big\rvert \leq \sabs{x_n-x} .
+\end{equation*}
+Jadi, jika $\sabs{x_n -x}$ dapat dibuat sekecil apa pun, hal yang sama berlaku untuk
+$\big\lvert \sabs{x_n} - \sabs{x} \big\rvert$.
+Rinciannya diserahkan kepada pembaca.
+\end{proof}
+
+Mari kita lihat sebuah contoh yang menggabungkan proposisi-proposisi di atas.  Karena
+$\lim_{n\to\infty} \nicefrac{1}{n} = 0$, maka
+\begin{equation*}
+\lim_{n\to \infty}
+\abs{\sqrt{1 + \nicefrac{1}{n}} - \nicefrac{100}{n^2}} =  
+\abs{\sqrt{1 + \Bigl(\lim_{n\to\infty} \nicefrac{1}{n}\Bigr)}
+- 100 \Bigl(\lim_{n\to\infty} \nicefrac{1}{n}\Bigr)\Bigl(\lim_{n\to\infty} \nicefrac{1}{n}\Bigr)} = 1.
+\end{equation*}
+Artinya, limit pada ruas kiri ada karena ruas kanan
+ada.  Kesamaan di atas sebenarnya harus dibaca dari kanan ke kiri.
+
+Di sisi lain, proposisi-proposisi tersebut harus diterapkan dengan hati-hati.
+Sebagai contoh, dengan terlebih dahulu menulis ulang bentuk tersebut menggunakan penyebut bersama,
+kita peroleh
+\begin{equation*}
+\lim_{n\to \infty} \left( \frac{n^2}{n+1} - n \right)
+= -1 .
+\end{equation*}
+Namun, 
+$\bigl\{ \frac{n^2}{n+1} \bigr\}_{n=1}^\infty$ dan 
+$\{n\}_{n=1}^\infty$ tidak konvergen,
+sehingga
+$\Bigl(\lim\limits_{n\to\infty} \frac{n^2}{n+1}\Bigr) -
+\Bigl(\lim\limits_{n\to\infty} n\Bigr)$ tidak bermakna.
+
+\subsection{Barisan yang didefinisikan secara rekursif}
+
+Setelah mengetahui bahwa kita dapat menukar limit dan operasi aljabar, kita dapat
+menghitung limit banyak barisan.
+Salah satu kelasnya adalah barisan yang didefinisikan secara rekursif, yaitu barisan yang
+bilangan berikutnya dihitung dengan suatu rumus dari sejumlah tetap
+unsur sebelumnya dalam barisan tersebut.
+
+\begin{example}
+Misalkan $\{ x_n \}_{n=1}^\infty$ didefinisikan oleh $x_1 \coloneqq 2$ dan
+\begin{equation*}
+x_{n+1} \coloneqq x_n - \frac{x_n^2-2}{2x_n} .
+\end{equation*}
+Pertama-tama, kita harus memastikan bahwa barisan ini terdefinisi dengan baik; kita harus menunjukkan bahwa kita tidak pernah
+membagi dengan nol.
+Kemudian, kita harus memastikan apakah barisan tersebut konvergen.  Barulah setelah itu
+kita dapat mencoba menentukan limitnya.
+
+Mari kita buktikan bahwa untuk semua $n$,
+$x_n$ ada dan $x_n > 0$
+(sehingga barisan tersebut terdefinisi dengan baik dan terbatas di bawah).
+Kita tunjukkan hal ini dengan \hyperref[induction:thm]{induksi}.  Kita tahu bahwa
+$x_1 = 2 > 0$.  Untuk langkah induksi, andaikan $x_n$ ada dan
+$x_n > 0$.  Maka
+\begin{equation*}
+x_{n+1} = x_n - \frac{x_n^2-2}{2x_n} =
+\frac{2x_n^2 - x_n^2+2}{2x_n} =
+\frac{x_n^2+2}{2x_n} .
+\end{equation*}
+Selalu berlaku bahwa $x_n^2+2 > 0$,
+dan karena
+$x_n > 0$, maka $x_{n+1} = \frac{x_n^2+2}{2x_n} > 0$.
+
+Selanjutnya, kita
+tunjukkan bahwa barisan tersebut monoton turun.  Jika kita menunjukkan bahwa
+$x_n^2-2 \geq 0$ untuk semua $n$, maka $x_{n+1} \leq x_n$ untuk semua $n$.
+Jelas bahwa $x_1^2-2 = 4-2 = 2 > 0$.  Untuk sebarang $n$, kita memiliki
+\begin{equation*}
+x_{n+1}^2-2 =
+{\left( \frac{x_n^2+2}{2x_n} \right)}^2 - 2
+=
+\frac{x_n^4+4x_n^2+4 - 8x_n^2}{4x_n^2}
+=
+\frac{x_n^4-4x_n^2+4}{4x_n^2}
+=
+\frac{{\left( x_n^2-2 \right)}^2}{4x_n^2} .
+\end{equation*}
+Karena kuadrat selalu tak negatif,
+$x_{n+1}^2-2 \geq 0$ untuk semua $n$.  Oleh karena itu,
+$\{ x_n \}_{n=1}^\infty$ monoton turun dan terbatas ($x_n > 0$ untuk semua $n$), sehingga
+limitnya ada.  Tinggal menentukan limit tersebut.
+
+Tuliskan
+\begin{equation*}
+2x_nx_{n+1} = x_n^2+2 .
+\end{equation*}
+Karena $\{ x_{n+1} \}_{n=1}^\infty$ merupakan ekor-1 dari $\{ x_n \}_{n=1}^\infty$, barisan tersebut konvergen ke
+limit yang sama.  Definisikan $x \coloneqq \lim_{n\to\infty} x_n$.  Dengan mengambil limit pada
+kedua ruas, kita memperoleh
+\begin{equation*}
+2x^2 = x^2+2 ,
+\end{equation*}
+atau $x^2 = 2$.  Karena $x_n > 0$ untuk semua $n$, kita memperoleh $x \geq 0$, sehingga $x = \sqrt{2}$.
+\end{example}
+
+Anda mungkin pernah melihat barisan di atas.  Barisan tersebut merupakan
+\emph{metode Newton}%
+\footnote{%
+Nama ini diambil dari fisikawan dan matematikawan Inggris
+\href{https://en.wikipedia.org/wiki/Isaac_Newton}{Isaac Newton}
+(1642--1726/7).}
+untuk menentukan akar kuadrat dari 2.  Metode ini sering muncul dalam
+praktik dan konvergen dengan sangat cepat.  Kita menggunakan fakta bahwa
+$x_1^2 -2 >0$, meskipun fakta ini sebenarnya tidak diperlukan untuk menunjukkan kekonvergenan jika kita
+meninjau suatu ekor barisan.
+Barisan tersebut konvergen selama $x_1 \neq 0$, meskipun dengan $x_1$ negatif
+kita akan memperoleh $x=-\sqrt{2}$.  Dengan mengganti angka 2 pada pembilang, kita
+memperoleh akar kuadrat dari sebarang bilangan positif.  Pernyataan-pernyataan ini diserahkan sebagai
+latihan.
+
+Namun, Anda harus berhati-hati.  Sebelum mengambil limit apa pun, Anda harus
+memastikan bahwa barisan tersebut konvergen.  Mari kita lihat sebuah contoh.
+
+\begin{example}
+Andaikan $x_1 \coloneqq 1$ dan $x_{n+1} \coloneqq x_n^2+x_n$.
+Jika kita begitu saja menganggap bahwa limitnya ada (sebut limit itu $x$), maka kita
+akan memperoleh persamaan $x = x^2+x$, yang mungkin membuat kita
+menyimpulkan bahwa $x=0$.  Namun, tidak sulit
+untuk menunjukkan bahwa $\{ x_n \}_{n=1}^\infty$ tak terbatas dan karenanya tidak konvergen.
+
+Hal yang perlu diperhatikan dalam contoh ini adalah bahwa metode tersebut tetap berlaku, tetapi
+hasilnya bergantung pada nilai awal $x_1$.  Jika kita menetapkan $x_1 \coloneqq 0$,
+maka barisan tersebut konvergen dan limitnya memang 0.
+Satu cabang matematika yang disebut dinamika membahas tepat persoalan-persoalan
+semacam ini.
+Lihat
+\exerciseref{exercise:convergentinitialvalues}.
+\end{example}
+
+\subsection{Beberapa uji konvergensi}
+
+Kita tidak selalu perlu kembali ke definisi kekonvergenan
+untuk membuktikan bahwa suatu barisan konvergen.  Pertama-tama, kita berikan sebuah uji konvergensi sederhana.
+Gagasan utamanya adalah bahwa
+$\{ x_n \}_{n=1}^\infty$ konvergen ke $x$ jika dan hanya jika
+$\bigl\{ \sabs{ x_n - x } \bigr\}_{n=1}^\infty$ konvergen ke nol.
+
+\begin{prop} \label{convzero:prop}
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan.
+Andaikan terdapat $x \in \R$
+dan suatu barisan konvergen $\{ a_n \}_{n=1}^\infty$
+sedemikian sehingga
+\begin{equation*}
+\lim_{n\to\infty} a_n = 0
+\end{equation*}
+dan
+\begin{equation*}
+\sabs{x_n - x} \leq a_n
+\qquad
+\text{untuk semua $n \in \N$.}
+\end{equation*}
+Maka $\{ x_n \}_{n=1}^\infty$ konvergen dan $\lim\limits_{n\to\infty} x_n = x$.
+\end{prop}
+
+\begin{proof}
+Ambil $\epsilon > 0$.  Perhatikan bahwa $a_n \geq 0$
+untuk semua $n$.  Pilih $M \in \N$ sedemikian sehingga untuk
+semua $n \geq M$, berlaku
+$a_n = \sabs{a_n - 0} < \epsilon$.  Maka, untuk semua $n \geq M$,
+kita memiliki
+\begin{equation*}
+\sabs{x_n - x} \leq a_n < \epsilon . \qedhere
+\end{equation*}
+\end{proof}
+
+Dengan kata lain, mempelajari kapan suatu barisan memiliki limit sama
+dengan mempelajari kapan barisan lain menuju nol.
+Menentukan apakah suatu barisan tertentu konvergen mungkin sulit, tetapi
+untuk beberapa barisan terdapat uji kekonvergenan yang mudah diterapkan.
+Mari kita lihat salah satu uji tersebut.
+Pertama-tama, kita hitung limit suatu barisan khusus.
+
+\begin{prop}
+Misalkan $c > 0$.
+\begin{enumerate}[(i)]
+\item
+Jika $c < 1$, maka
+\begin{equation*}
+\lim_{n\to\infty} c^n = 0.
+\end{equation*}
+\item
+Jika $c > 1$, maka $\{ c^n \}_{n=1}^\infty$ tak terbatas.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Pertama, tinjau $c < 1$.  Karena $c > 0$, kita memperoleh $c^n > 0$ untuk semua $n \in \N$ melalui
+\hyperref[induction:thm]{induksi}.  Kemudian, $c < 1$ mengakibatkan bahwa
+$c^{n+1} < c^n$ untuk semua $n$.
+Jadi, barisan $\{ c^n \}_{n=1}^\infty$
+terbatas di bawah dan
+menurun.  Oleh karena itu, barisan tersebut konvergen.
+Tetapkan $x \coloneqq \lim_{n\to\infty} c^n$.  Ekor-1 $\{ c^{n+1} \}_{n=1}^\infty$
+juga konvergen ke $x$.  Dengan mengambil limit kedua ruas dari $c^{n+1} = c \cdot
+c^n$, kita memperoleh $x = cx$, atau $(1-c)x=0$.  Jadi, $x=0$ karena $c \neq 1$.
+
+Sekarang, tinjau $c > 1$.
+Ambil sebarang $B > 0$.
+Karena $\nicefrac{1}{c} < 1$, barisan $\bigl\{ {(\nicefrac{1}{c})}^n \bigr\}_{n=1}^\infty$
+konvergen ke $0$.
+Oleh karena itu, untuk suatu $n$ yang cukup besar, kita memperoleh
+\begin{equation*}
+\frac{1}{c^n} =
+{\left(\frac{1}{c}\right)}^n < \frac{1}{B} .
+\end{equation*}
+Dengan kata lain, $c^n > B$, sehingga $B$ bukan batas atas bagi
+$\{ c^n \}_{n=1}^\infty$.  Karena $B$ sebarang, $\{ c^n \}_{n=1}^\infty$ tak terbatas.
+\end{proof}
+
+Dalam proposisi di atas,
+rasio suku ke-$(n+1)$ terhadap suku ke-$n$ adalah $c$.  Kita
+memperumum hasil sederhana ini ke kelas barisan yang lebih luas.
+Lema berikut akan muncul kembali ketika kita membahas deret.
+
+\begin{lemma}[Uji rasio untuk barisan]\index{uji rasio untuk barisan}
+\label{seq:ratiotest}
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan sedemikian sehingga $x_n \neq 0$ untuk semua $n$ dan
+limit berikut
+\begin{equation*}
+L \coloneqq \lim_{n\to\infty} \frac{\sabs{x_{n+1}}}{\sabs{x_n}}
+\qquad
+\text{ada.}
+\end{equation*}
+\begin{enumerate}[(i)]
+\item
+Jika $L < 1$, maka $\{ x_n \}_{n=1}^\infty$ konvergen dan $\lim\limits_{n\to\infty} x_n = 0$.
+\item
+Jika $L > 1$, maka $\{ x_n \}_{n=1}^\infty$ tak terbatas (dan karenanya divergen).
+\end{enumerate}
+\end{lemma}
+
+Jika $L$ ada, tetapi $L=1$, lema tersebut tidak memberikan informasi apa pun.  Kita tidak dapat menarik
+kesimpulan hanya berdasarkan informasi itu.  Sebagai contoh,
+barisan $\{ \nicefrac{1}{n} \}_{n=1}^\infty$ konvergen ke nol, tetapi $L=1$.
+Barisan konstan $\{ 1 \}_{n=1}^\infty$ konvergen ke 1, bukan nol, dan
+$L=1$.  Barisan $\bigl\{ {(-1)}^n \bigr\}_{n=1}^\infty$ sama sekali tidak konvergen, dan
+$L=1$ pula.
+Terakhir, barisan $\{  n \}_{n=1}^\infty$ tak terbatas, dan sekali lagi $L=1$.
+Pernyataan lema tersebut dapat sedikit diperkuat; lihat
+latihan \ref{exercise:strongerratiotest1} dan
+\ref{exercise:strongerratiotest2}.
+
+\begin{proof}
+Andaikan $L < 1$.
+Karena
+$\frac{\sabs{x_{n+1}}}{\sabs{x_n}} \geq 0$ untuk semua $n$, kita memiliki $L \geq 0$.  Pilih
+$r$ sedemikian sehingga $L < r < 1$.
+Kita hendak membandingkan barisan $\{ x_n \}_{n=1}^\infty$ dengan barisan $\{ r^n \}_{n=1}^\infty$.  Gagasannya adalah bahwa
+meskipun rasio $\frac{\sabs{x_{n+1}}}{\sabs{x_n}}$ belum tentu pada akhirnya lebih kecil daripada $L$,
+rasio tersebut pada akhirnya akan lebih kecil daripada $r$, yang masih lebih kecil daripada 1.
+Gagasan intuitif bukti ini diilustrasikan dalam \figureref{figratseq}.
+\begin{myfigureht}
+\myincludepdft{figratseq}{%
+Diagram garis bilangan real dengan titik L di sebelah kiri, kemudian
+sedikit ke kanan terdapat titik r, dan lebih jauh ke kanan terdapat titik 1.
+Garis-garis pendek menandai titik-titik yang mengumpul di sekitar L dan semuanya lebih kecil
+daripada r.}
+\caption{Garis-garis pendek menyatakan rasio
+$\frac{\sabs{x_{n+1}}}{\sabs{x_n}}$
+yang mendekati $L < 1$.\label{figratseq}}
+\end{myfigureht}
+
+Karena $r-L > 0$, terdapat $M \in \N$ sedemikian sehingga untuk
+semua $n \geq M$, kita memiliki
+\begin{equation*}
+\abs{\frac{\sabs{x_{n+1}}}{\sabs{x_n}} - L} < r-L .
+\end{equation*}
+Oleh karena itu, untuk $n \geq M$,
+\begin{equation*}
+\frac{\sabs{x_{n+1}}}{\sabs{x_n}} - L < r-L 
+\qquad \text{atau} \qquad
+\frac{\sabs{x_{n+1}}}{\sabs{x_n}} < r .
+\end{equation*}
+Untuk $n > M$ (artinya untuk $n \geq M+1$),
+tuliskan
+\begin{equation*}
+\sabs{x_n} =
+\sabs{x_M}
+\frac{\sabs{x_{M+1}}}{\sabs{x_{M}}}
+\frac{\sabs{x_{M+2}}}{\sabs{x_{M+1}}}
+\cdots
+\frac{\sabs{x_{n}}}{\sabs{x_{n-1}}}
+<
+\sabs{x_M}
+r r \cdots r = \sabs{x_M} r^{n-M} = (\sabs{x_M} r^{-M}) r^n .
+\end{equation*}
+Barisan $\{ r^n \}_{n=1}^\infty$ konvergen ke nol sehingga
+$\sabs{x_M} r^{-M} r^n$ konvergen ke nol.  Berdasarkan \propref{convzero:prop},
+ekor-$M$
+$\{x_n\}_{n=M+1}^\infty$ konvergen ke nol, sehingga $\{x_n\}_{n=1}^\infty$ konvergen ke nol.
+
+Sekarang, andaikan $L > 1$.  Pilih
+$r$ sedemikian sehingga $1 < r < L$.  Karena $L-r > 0$,
+terdapat $M \in \N$ sedemikian sehingga untuk
+semua $n \geq M$
+\begin{equation*}
+\abs{\frac{\sabs{x_{n+1}}}{\sabs{x_n}} - L} < L-r .
+\end{equation*}
+Oleh karena itu,
+\begin{equation*}
+\frac{\sabs{x_{n+1}}}{\sabs{x_n}} > r .
+\end{equation*}
+Sekali lagi, untuk $n > M$,
+tuliskan
+\begin{equation*}
+\sabs{x_n} =
+\sabs{x_M}
+\frac{\sabs{x_{M+1}}}{\sabs{x_{M}}}
+\frac{\sabs{x_{M+2}}}{\sabs{x_{M+1}}}
+\cdots
+\frac{\sabs{x_{n}}}{\sabs{x_{n-1}}}
+>
+\sabs{x_M}
+r r \cdots r = \sabs{x_M} r^{n-M} = (\sabs{x_M} r^{-M}) r^n .
+\end{equation*}
+Barisan $\{ r^n \}_{n=1}^\infty$ tak terbatas (karena $r > 1$), sehingga
+$\{x_n\}_{n=1}^\infty$ tidak mungkin terbatas (jika $\sabs{x_n} \leq B$ untuk semua $n$, maka
+$r^n < \frac{B}{\sabs{x_M}} r^{M}$ untuk semua $n > M$, yang mustahil).
+Akibatnya, $\{ x_n \}_{n=1}^\infty$ tidak mungkin konvergen.
+\end{proof}
+
+\begin{example}
+Salah satu penerapan sederhana dari lema di atas adalah membuktikan
+\begin{equation*}
+\lim_{n\to\infty} \frac{2^n}{n!} = 0 .
+\end{equation*}
+
+Bukti:
+Hitung
+\begin{equation*}
+\frac{2^{n+1} / (n+1)!}{2^n/n!}
+=
+\frac{2^{n+1}}{2^n}\frac{n!}{(n+1)!}
+=
+\frac{2}{n+1} .
+\end{equation*}
+Tidak sulit melihat bahwa $\bigl\{ \frac{2}{n+1} \bigr\}_{n=1}^\infty$ konvergen ke nol.
+Kesimpulan tersebut mengikuti lema di atas.
+\end{example}
+
+\begin{example} \label{example:nto1overn}
+Penerapan uji rasio yang lebih rumit (dan berguna) adalah membuktikan
+\begin{equation*}
+\lim_{n\to\infty} n^{1/n} = 1 .
+\end{equation*}
+
+Bukti:
+Ambil $\epsilon > 0$.  Tinjau barisan
+$\bigl\{ \frac{n}{{(1+\epsilon)}^n} \bigr\}_{n=1}^\infty$.  Hitung
+\begin{equation*}
+\frac{(n+1)/{(1+\epsilon)}^{n+1}}{n/{(1+\epsilon)}^{n}}
+=
+\frac{n+1}{n} \frac{1}{1+\epsilon} .
+\end{equation*}
+Limit dari $\frac{n+1}{n} = 1+\frac{1}{n}$ ketika $n \to \infty$ adalah 1, sehingga
+\begin{equation*}
+\lim_{n\to \infty} \frac{(n+1)/{(1+\epsilon)}^{n+1}}{n/{(1+\epsilon)}^{n}}
+=
+\frac{1}{1+\epsilon}  < 1 .
+\end{equation*}
+Oleh karena itu, $\bigl\{ \frac{n}{{(1+\epsilon)}^n} \bigr\}_{n=1}^\infty$ konvergen ke 0.
+Khususnya,
+terdapat $M$ sedemikian sehingga untuk $n \geq M$, kita memiliki
+$\frac{n}{{(1+\epsilon)}^n} < 1$, atau
+$n < {(1+\epsilon)}^n$, atau
+$n^{1/n} < 1+\epsilon$.  Karena $n \geq 1$, kita memperoleh $n^{1/n} \geq 1$, sehingga
+$0 \leq n^{1/n}-1 < \epsilon$. Akibatnya,
+$\lim\limits_{n\to\infty} n^{1/n} = 1$.
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Buktikan \corref{limandineq:cor}.  Petunjuk: Gunakan barisan konstan
+dan \lemmaref{limandineq:lemma}.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bagian \ref{prop:contalg:ii} dari \propref{prop:contalg}.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa jika $\{ x_n \}_{n=1}^\infty$ adalah barisan konvergen dan $k \in \N$, maka
+\begin{equation*}
+\lim_{n\to\infty} x_n^k = 
+{\left( \lim_{n\to\infty} x_n \right)}^k .
+\end{equation*}
+Petunjuk: Gunakan \hyperref[induction:thm]{induksi}.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $x_1 \coloneqq \frac{1}{2}$ dan $x_{n+1} \coloneqq x_n^2$.  Tunjukkan bahwa
+$\{ x_n \}_{n=1}^\infty$ konvergen dan tentukan
+$\lim_{n\to\infty} x_n$.  Petunjuk: Anda tidak boleh membagi dengan nol!
+\end{exercise}
+
+\begin{exercise}
+Misalkan $x_n \coloneqq \frac{n-\cos(n)}{n}$.  Gunakan
+\hyperref[squeeze:lemma]{lemma apit} untuk menunjukkan bahwa
+$\{ x_n \}_{n=1}^\infty$ konvergen dan tentukan limitnya.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $x_n \coloneqq \frac{1}{n^2}$ dan $y_n \coloneqq \frac{1}{n}$.  Definisikan
+$z_n \coloneqq \frac{x_n}{y_n}$ dan 
+$w_n \coloneqq \frac{y_n}{x_n}$.  Apakah $\{ z_n \}_{n=1}^\infty$ dan $\{ w_n \}_{n=1}^\infty$
+konvergen?  Berapakah limitnya?  Dapatkah Anda menerapkan \propref{prop:contalg}?
+Mengapa atau mengapa tidak?
+\end{exercise}
+
+\begin{exercise}
+Benar atau salah, buktikan atau berikan contoh tandingan:
+Jika $\{ x_n \}_{n=1}^\infty$ adalah barisan
+sedemikian sehingga $\{ x_n^2 \}_{n=1}^\infty$ konvergen, maka $\{ x_n \}_{n=1}^\infty$ konvergen.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa
+\begin{equation*}
+\lim_{n\to\infty} \frac{n^2}{2^n} = 0 .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan, $x \in \R$, dan $x_n \neq x$ untuk
+semua $n \in \N$.  Misalkan limit
+\begin{equation*}
+L \coloneqq \lim_{n \to \infty} \frac{\sabs{x_{n+1}-x}}{\sabs{x_n-x}}
+\end{equation*}
+ada dan $L < 1$.  Tunjukkan bahwa $\{ x_n \}_{n=1}^\infty$ konvergen ke $x$.
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan konvergen sedemikian
+sehingga $x_n \geq 0$ dan $k \in \N$.
+Tunjukkan
+\begin{equation*}
+\lim_{n\to\infty} x_n^{1/k} =
+{\left( \lim_{n\to\infty} x_n \right)}^{1/k} .
+\end{equation*}
+Petunjuk: Pertama, tangani kasus ketika limitnya nol.
+Selanjutnya, carilah suatu bentuk $q$ sedemikian sehingga $\frac{x_n^{1/k}-x^{1/k}}{x_n-x} =
+\frac{1}{q}$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $r > 0$.  Tunjukkan bahwa dengan memulai dari sebarang $x_1 \neq 0$, barisan
+yang didefinisikan oleh
+\begin{equation*}
+x_{n+1} \coloneqq x_n - \frac{x_n^2-r}{2x_n}
+\end{equation*}
+konvergen ke $\sqrt{r}$ jika $x_1 > 0$ dan ke $-\sqrt{r}$ jika $x_1 < 0$.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Misalkan $\{ a_n \}_{n=1}^\infty$ dan $\{ b_n \}_{n=1}^\infty$ adalah barisan.
+\begin{enumerate}[a)]
+\item
+Misalkan $\{ a_n \}_{n=1}^\infty$ terbatas dan $\{ b_n \}_{n=1}^\infty$ konvergen ke 0.
+Tunjukkan bahwa $\{ a_n b_n \}_{n=1}^\infty$ konvergen ke 0.
+\item
+Berikan contoh ketika $\{ a_n \}_{n=1}^\infty$ tak terbatas, $\{ b_n \}_{n=1}^\infty$ konvergen ke
+0, dan $\{ a_n b_n \}_{n=1}^\infty$ tidak konvergen.
+\item
+Berikan contoh ketika $\{ a_n \}_{n=1}^\infty$ terbatas, $\{ b_n \}_{n=1}^\infty$ konvergen ke
+suatu $x \neq 0$, dan $\{ a_n b_n \}_{n=1}^\infty$ tidak konvergen.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{samepage}
+\begin{exercise}[Mudah] \label{exercise:strongerratiotest1}
+Buktikan versi yang lebih kuat berikut dari \lemmaref{seq:ratiotest}, yaitu uji
+rasio.  
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan sedemikian sehingga $x_n \neq 0$ untuk semua
+$n$.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa jika terdapat $r < 1$ dan $M \in \N$ sedemikian sehingga
+\begin{equation*}
+\frac{\sabs{x_{n+1}}}{\sabs{x_n}} \leq r \quad \text{untuk semua } n \geq M,
+\end{equation*}
+maka $\{ x_n \}_{n=1}^\infty$ konvergen ke $0$.
+\item
+Buktikan bahwa jika terdapat $r > 1$ dan $M \in \N$ sedemikian sehingga
+\begin{equation*}
+\frac{\sabs{x_{n+1}}}{\sabs{x_n}} \geq r  \quad \text{untuk semua } n \geq M,
+\end{equation*}
+maka $\{ x_n \}_{n=1}^\infty$ tak terbatas.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise} \label{exercise:convergentinitialvalues}
+Misalkan $x_1 \coloneqq c$ dan $x_{n+1} \coloneqq x_n^2+x_n$.
+Tunjukkan bahwa $\{ x_n \}_{n=1}^\infty$ konvergen jika dan hanya jika $-1 \leq c \leq 0$; dalam
+hal ini barisan tersebut konvergen ke 0.
+\end{exercise}
+
+\begin{exercise}
+Buktikan $\lim\limits_{n \to \infty} {(n^2+1)}^{1/n} = 1$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa $\bigl\{ {(n!)}^{1/n} \bigr\}_{n=1}^\infty$
+tak terbatas.
+Petunjuk: Tunjukkan bahwa untuk setiap $C > 0$, $\left\{ \frac{C^n}{n!}
+\right\}_{n=1}^\infty$ konvergen ke nol.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Limit superior, limit inferior, dan Bolzano--Weierstrass}
+\label{sec:bw}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1--2 kuliah, pembuktian alternatif BW opsional}
+
+Pada bagian ini, kita mempelajari barisan terbatas dan subbarisannya.
+Kita mendefinisikan apa yang disebut limit superior dan limit inferior
+dari suatu barisan terbatas, yaitu limit terbesar dan terkecil
+yang mungkin dicapai oleh subbarisan-subbarisannya.
+Selain itu, kita membuktikan
+teorema Bolzano--Weierstrass%
+\footnote{%
+Nama teorema ini diambil dari matematikawan Ceko
+\href{https://en.wikipedia.org/wiki/Bernard_Bolzano}{Bernhard Placidus Johann Nepomuk Bolzano}
+(1781--1848), dan matematikawan Jerman
+\href{https://en.wikipedia.org/wiki/Karl_Weierstrass}{Karl Theodor Wilhelm Weierstrass}
+(1815--1897).}, sebuah
+alat yang sangat penting dalam analisis, yang menunjukkan keberadaan
+subbarisan konvergen.
+
+Kita telah membuktikan bahwa setiap barisan konvergen bersifat terbatas; meskipun demikian,
+ada banyak barisan terbatas yang divergen.  Sebagai contoh,
+barisan $\bigl\{ {(-1)}^n \bigr\}_{n=1}^\infty$ bersifat terbatas
+tetapi divergen.  Namun, tidak semuanya hilang, dan kita
+masih dapat menghitung limit tertentu dari suatu barisan terbatas yang divergen.
+
+\subsection{Limit superior dan limit inferior}
+
+Ada cara untuk membentuk barisan monoton dari sembarang barisan, dan
+dengan cara ini kita
+memperoleh \emph{\myindex{limit superior}}\index{limsup} dan
+\emph{\myindex{limit inferior}}\index{liminf}.  Limit-limit ini selalu ada untuk barisan
+terbatas.
+
+Jika suatu barisan $\{ x_n \}_{n=1}^\infty$ terbatas, maka 
+himpunan $\{ x_k : k \in \N \}$ terbatas.  Untuk setiap $n$,
+himpunan $\{ x_k : k \geq n \}$ juga terbatas (karena merupakan subhimpunan), sehingga kita
+mengambil supremum dan infimumnya.
+
+\begin{defn} \label{liminflimsup:def}
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan terbatas.  Definisikan barisan
+$\{ a_n \}_{n=1}^\infty$
+dan $\{ b_n \}_{n=1}^\infty$ dengan
+$a_n \coloneqq \sup \{ x_k : k \geq n \}$ dan
+$b_n \coloneqq \inf \{ x_k : k \geq n \}$.  
+Jika limitnya ada, definisikan\glsadd{not:limsupseq}\glsadd{not:liminfseq}
+\begin{equation*}
+\limsup_{n \to \infty} x_n \coloneqq \lim_{n \to \infty} a_n ,
+\qquad
+\liminf_{n \to \infty} x_n \coloneqq \lim_{n \to \infty} b_n .
+\end{equation*}
+\end{defn}
+
+Untuk suatu barisan terbatas, liminf dan limsup selalu ada (lihat di bawah).  Kita dapat
+mendefinisikan liminf dan limsup untuk barisan tak terbatas jika kita memperbolehkan $\infty$
+dan $-\infty$, dan kita akan melakukannya nanti pada bagian ini.
+Tidak sulit untuk memperumum hasil-hasil berikut agar
+mencakup barisan tak terbatas; namun, terlebih dahulu kita membatasi perhatian pada
+barisan terbatas.
+
+\begin{prop}
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan terbatas.  Misalkan $a_n$ dan $b_n$ seperti dalam
+definisi di atas.
+\begin{enumerate}[(i)]
+\item
+Barisan
+$\{ a_n \}_{n=1}^\infty$ terbatas dan monoton turun
+serta $\{ b_n \}_{n=1}^\infty$ terbatas dan monoton naik.  Secara khusus,
+$\liminf\limits_{n\to\infty} x_n$ dan $\limsup\limits_{n\to\infty} x_n$ ada.
+\item
+$\displaystyle \limsup_{n \to \infty} x_n = \inf \{ a_n : n \in \N \}$
+dan
+$\displaystyle \liminf_{n \to \infty} x_n = \sup \{ b_n : n \in \N \}$.
+\item
+$\displaystyle \liminf_{n \to \infty} x_n \leq \limsup_{n \to \infty} x_n$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Mari kita lihat mengapa $\{ a_n \}_{n=1}^\infty$ merupakan barisan turun.  Karena $a_n$ adalah batas
+atas terkecil untuk $\{ x_k : k \geq n \}$, bilangan ini juga merupakan
+batas atas untuk subhimpunan $\{ x_k : k \geq n+1 \}$.  Oleh karena itu,
+$a_{n+1}$, yakni batas atas terkecil untuk
+$\{ x_k : k \geq n+1 \}$, harus lebih kecil daripada atau sama dengan $a_n$,
+yakni batas atas terkecil untuk
+$\{ x_k : k \geq n \}$.
+Dengan kata lain,
+$a_n \geq a_{n+1}$ untuk semua $n$.  Dengan cara serupa (sebagai latihan),
+$\{ b_n \}_{n=1}^\infty$ merupakan barisan naik.
+Sebagai latihan, tunjukkan bahwa
+jika $\{ x_n \}_{n=1}^\infty$ terbatas, maka $\{ a_n \}_{n=1}^\infty$ dan
+$\{ b_n \}_{n=1}^\infty$ juga harus terbatas.
+
+Butir kedua berlaku karena barisan
+$\{ a_n \}_{n=1}^\infty$ dan $\{ b_n \}_{n=1}^\infty$ monoton dan terbatas.
+
+Untuk butir ketiga, perhatikan bahwa $b_n \leq a_n$, sebab $\inf$ suatu himpunan tak kosong
+lebih kecil daripada atau sama dengan $\sup$-nya.  Barisan $\{ a_n \}_{n=1}^\infty$
+dan $\{ b_n \}_{n=1}^\infty$
+masing-masing konvergen ke limsup dan liminf.
+Terapkan \lemmaref{limandineq:lemma} untuk memperoleh
+\begin{equation*}
+\lim_{n\to \infty} b_n \leq \lim_{n\to \infty} a_n.  \qedhere
+\end{equation*}
+\end{proof}
+\begin{myfigureht}
+\myincludegraphics{sequence-limsupliminf_an_bn}{%
+Grafik contoh barisan x indeks n berupa titik-titik
+untuk 50 titik, yaitu n dari 1 hingga 50.
+Di tengah terdapat dua garis putus-putus horizontal,
+garis atas diberi label lim sup x indeks n saat n menuju tak hingga
+dan
+garis bawah diberi label lim inf x indeks n saat n menuju tak hingga.
+Titik-titik berada di atas maupun di bawah garis-garis tersebut, tetapi tampak
+semakin berkumpul di dekat daerah antara kedua garis pada 
+sisi kanan.  Dua barisan tambahan ditandai,
+di bagian bawah dengan wajik, yaitu barisan yang lebih kecil daripada atau sama dengan
+semua titik dan bernilai konstan sampai bertemu sebuah titik.  Lalu barisan itu naik
+dan kembali konstan sampai bertemu sebuah titik, dan pola ini terus berulang.
+Jadi, barisan itu tampak seperti deretan ruas horizontal yang berakhir ketika
+wajik berada di tempat yang sama dengan sebuah titik, sedangkan semua titik lainnya
+berada di atas wajik-wajik tersebut.
+Semua wajik berada di bawah garis putus-putus yang lebih rendah.
+Pola serupa tetapi terbalik dibentuk oleh lingkaran dari atas,
+yaitu deretan lingkaran sampai bertemu sebuah titik, kemudian turun
+dan berulang, dan semua lingkaran berada di atas atau tepat pada titik-titik.
+Semua lingkaran berada di atas garis putus-putus yang lebih tinggi.}
+\caption{50 suku pertama dari suatu contoh barisan.  Suku-suku $x_n$ dari barisan
+ditandai dengan titik
+%mbxSTARTIGNORE
+(\raisebox{0.25ex}{\tiny$\bullet$}),
+%mbxENDIGNORE
+%mbxlatex ($\boldsymbol{\cdot}$),
+$a_n$ ditandai dengan
+lingkaran ($\circ$), dan
+$b_n$ ditandai dengan wajik ($\diamond$).\label{sequence-limsupliminf_an_bn}}
+\end{myfigureht}
+
+\begin{example} \label{example:liminfsupex}
+Misalkan $\{ x_n \}_{n=1}^\infty$ didefinisikan oleh
+\begin{equation*}
+x_n \coloneqq
+\begin{cases}
+\frac{n+1}{n} & \text{jika } n \text{ ganjil,} \\
+0             & \text{jika } n \text{ genap.}
+\end{cases}
+\end{equation*}
+Mari kita hitung $\liminf$ dan $\limsup$ barisan ini.  Lihat juga
+\figureref{sequence-limsupliminf_an_bn-example}.  Pertama, kita hitung
+limit inferior:
+\begin{equation*}
+\liminf_{n\to\infty} x_n = 
+\lim_{n\to\infty}
+\bigl(
+\inf \{ x_k : k \geq n \}
+\bigr)
+=
+\lim_{n\to\infty} 0 = 0 .
+\end{equation*}
+Untuk limit superior, kita tulis
+\begin{equation*}
+\limsup_{n\to\infty} x_n = 
+\lim_{n\to\infty}
+\bigl(
+\sup \{ x_k : k \geq n \}
+\bigr) .
+\end{equation*}
+Tidak sulit untuk melihat bahwa
+\begin{equation*}
+\sup \{ x_k : k \geq n \} =
+\begin{cases}
+\frac{n+1}{n}   & \text{jika } n \text{ ganjil,} \\
+\frac{n+2}{n+1} & \text{jika } n \text{ genap.}
+\end{cases}
+\end{equation*}
+Kita serahkan kepada pembaca untuk menunjukkan bahwa limitnya adalah 1.  Artinya,
+\begin{equation*}
+\limsup_{n\to\infty} x_n = 1 .
+\end{equation*}
+Perhatikan bahwa barisan $\{ x_n \}_{n=1}^\infty$ bukan barisan konvergen.
+\begin{myfigureht}
+\myincludegraphics{sequence-limsupliminf_an_bn-example}{%
+Penandaan sama seperti pada gambar sebelumnya, tetapi kini untuk suatu
+barisan tertentu.  Garis putus-putus bawah (lim inf) adalah sumbu horizontal
+dan garis putus-putus atas kira-kira berada di tengah gambar.
+Titik pertama berada jauh di atas garis putus-putus atas
+dan sebuah lingkaran berada di
+tempat yang sama, sedangkan wajik berada pada sumbu horizontal.
+Sesungguhnya, semua wajik
+berada pada sumbu horizontal.
+Titik kedua berada pada sumbu horizontal, tetapi lingkarannya berada di atas
+garis putus-putus atas namun lebih rendah daripada titik pertama.
+Titik ketiga berada pada ketinggian yang sama dengan lingkaran kedua
+dan lingkaran ketiga berada di tempat yang sama.
+Pola ini kemudian terus berulang: titik-titik untuk n ganjil
+dan lingkaran-lingkaran semakin mendekati garis putus-putus atas
+dari atas.}
+\caption{20 suku pertama barisan pada \exampleref{example:liminfsupex}.
+Penandaannya seperti pada \figureref{sequence-limsupliminf_an_bn}.
+\label{sequence-limsupliminf_an_bn-example}}
+\end{myfigureht}
+\end{example}
+
+Kita mengaitkan subbarisan tertentu dengan $\limsup$ dan $\liminf$.
+Penting untuk diperhatikan bahwa $\{ a_n \}_{n=1}^\infty$ dan
+$\{ b_n \}_{n=1}^\infty$ bukan
+subbarisan dari $\{ x_n \}_{n=1}^\infty$, dan keduanya juga tidak harus
+terdiri atas bilangan-bilangan yang sama.
+Sebagai contoh, jika barisannya adalah $\{ \nicefrac{1}{n} \}_{n=1}^\infty$, maka
+$b_n = 0$ untuk semua $n \in \N$.
+
+\begin{thm} \label{subseqlimsupinf:thm}
+Jika $\{ x_n \}_{n=1}^\infty$ suatu barisan terbatas, maka ada suatu subbarisan
+$\{ x_{n_k} \}_{k=1}^\infty$ sedemikian sehingga
+\begin{equation*}
+\lim_{k\to \infty} x_{n_k} = \limsup_{n \to \infty} x_n .
+\end{equation*}
+Dengan cara serupa, ada suatu subbarisan (yang mungkin berbeda)
+$\{ x_{m_k} \}_{k=1}^\infty$ sedemikian sehingga
+\begin{equation*}
+\lim_{k\to \infty} x_{m_k} = \liminf_{n \to \infty} x_n .
+\end{equation*}
+\end{thm}
+
+\begin{proof}
+Definisikan $a_n \coloneqq \sup \{ x_k : k \geq n \}$.
+Tuliskan
+$x \coloneqq \limsup_{n\to\infty} x_n = \lim_{n\to\infty} a_n$.
+Kita mendefinisikan subbarisan tersebut secara induktif.
+Misalkan $n_1 \coloneqq 1$, dan andaikan $n_1,n_2,\ldots,n_{k-1}$ sudah didefinisikan untuk
+suatu $k \geq 2$.  Pilih $m \geq n_{k-1} + 1$
+sedemikian sehingga
+\begin{equation*}
+a_{(n_{k-1}+1)} - x_m < \frac{1}{k} .
+\end{equation*}
+$m$ seperti itu ada
+karena $a_{(n_{k-1}+1)}$ adalah supremum dari
+himpunan $\{ x_\ell : \ell \geq n_{k-1} + 1 \}$ sehingga terdapat suku-suku
+barisan yang sedekat apa pun dengan supremum (atau bahkan mungkin sama dengannya).
+Tetapkan $n_{k} \coloneqq  m$.  Subbarisan $\{ x_{n_k} \}_{k=1}^\infty$ kini terdefinisi.  Selanjutnya, kita
+harus membuktikan bahwa subbarisan itu konvergen ke $x$.
+
+Untuk semua $k \geq 2$, kita mempunyai
+$a_{(n_{k-1}+1)} \geq a_{n_k}$ (mengapa?) dan $a_{n_{k}} \geq x_{n_k}$.
+Oleh karena itu, untuk setiap $k \geq 2$,
+\begin{equation*}
+\begin{split}
+\sabs{a_{n_k} - x_{n_k}} & = 
+a_{n_k} - x_{n_k}
+\\
+& \leq
+a_{(n_{k-1}+1)} - x_{n_k}
+\\
+& < \frac{1}{k} .
+\end{split}
+\end{equation*}
+
+Mari kita tunjukkan bahwa $\{ x_{n_k} \}_{k=1}^\infty$ konvergen ke $x$.
+Perhatikan bahwa subbarisan tersebut tidak harus monoton.  Ambil $\epsilon > 0$.
+Karena $\{ a_n \}_{n=1}^\infty$ konvergen ke $x$, subbarisan
+$\{ a_{n_k} \}_{k=1}^\infty$ konvergen ke $x$.
+Jadi, terdapat $M_1 \in \N$
+sedemikian sehingga untuk semua $k \geq M_1$, berlaku
+\begin{equation*}
+\sabs{a_{n_k} - x} < \frac{\epsilon}{2} .
+\end{equation*}
+Pilih $M_2 \in \N$ sedemikian sehingga
+\begin{equation*}
+\frac{1}{M_2} \leq \frac{\epsilon}{2}.
+\end{equation*}
+Ambil $M \coloneqq \max \{M_1 , M_2 , 2 \}$.  Untuk semua $k \geq M$,
+\begin{equation*}
+\begin{split}
+\sabs{x- x_{n_k}} & =
+\sabs{a_{n_k} - x_{n_k} + x - a_{n_k}}
+\\
+& \leq \sabs{a_{n_k} - x_{n_k}} + \sabs{x - a_{n_k}}
+\\
+& < \frac{1}{k} + \frac{\epsilon}{2}
+\\
+& \leq \frac{1}{M_2} + \frac{\epsilon}{2} \leq \frac{\epsilon}{2} +
+\frac{\epsilon}{2} = \epsilon .
+\end{split}
+\end{equation*}
+
+Pernyataan untuk $\liminf$ diserahkan sebagai latihan.
+\end{proof}
+
+\subsection{Menggunakan limit inferior dan limit superior}
+
+Keunggulan $\liminf$ dan $\limsup$ adalah bahwa keduanya selalu dapat dituliskan
+untuk sebarang barisan (terbatas).
+Jika kita dapat menghitungnya dengan suatu cara, kita juga dapat menghitung limit
+barisan itu jika ada, atau menunjukkan bahwa barisan itu divergen.
+Perhitungan dengan $\liminf$ dan $\limsup$ agak
+menyerupai perhitungan dengan limit, meskipun terdapat perbedaan-perbedaan halus.
+
+\begin{prop} \label{liminfsupconv:prop}
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan terbatas.  Maka
+$\{ x_n \}_{n=1}^\infty$ konvergen
+jika dan hanya jika
+\begin{equation*}
+\liminf_{n\to \infty} x_n = 
+\limsup_{n\to \infty} x_n.
+\end{equation*}
+Lebih lanjut, jika $\{ x_n \}_{n=1}^\infty$ konvergen, maka
+\begin{equation*}
+\lim_{n\to \infty} x_n = 
+\liminf_{n\to \infty} x_n = 
+\limsup_{n\to \infty} x_n.
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Misalkan $a_n$ dan $b_n$ seperti dalam \defnref{liminflimsup:def}.
+Secara khusus, untuk semua $n \in \N$,
+\begin{equation*}
+b_n \leq x_n \leq a_n .
+\end{equation*}
+Pertama, misalkan
+$\liminf_{n\to\infty} x_n = \limsup_{n\to\infty} x_n$.
+Maka $\{ a_n \}_{n=1}^\infty$ dan $\{ b_n \}_{n=1}^\infty$
+keduanya konvergen ke limit yang sama.
+Berdasarkan lemma apit
+(\lemmaref{squeeze:lemma}), $\{ x_n \}_{n=1}^\infty$ konvergen dan
+\begin{equation*}
+\lim_{n\to \infty} b_n
+=
+\lim_{n\to \infty} x_n
+=
+\lim_{n\to \infty} a_n .
+\end{equation*}
+
+Sekarang, misalkan $\{ x_n \}_{n=1}^\infty$ konvergen ke $x$.
+Berdasarkan \thmref{subseqlimsupinf:thm},
+terdapat subbarisan $\{ x_{n_k} \}_{k=1}^\infty$
+yang konvergen ke $\limsup_{n\to\infty} x_n$.
+Karena $\{ x_n \}_{n=1}^\infty$ konvergen ke $x$,
+setiap subbarisan konvergen ke $x$ dan
+karena itu $\limsup_{n\to\infty} x_n = \lim_{k\to\infty} x_{n_k} = x$.
+Demikian pula, $\liminf_{n\to\infty} x_n = x$.
+\end{proof}
+
+Limit superior dan limit inferior berperilaku baik
+terhadap subbarisan.
+
+\begin{prop} \label{prop:subseqslimsupinf}
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan terbatas dan
+$\{ x_{n_k} \}_{k=1}^\infty$ adalah subbarisan.  Maka
+\begin{equation*}
+\liminf_{n\to\infty} x_n \leq
+\liminf_{k\to\infty} x_{n_k} \leq
+\limsup_{k\to\infty} x_{n_k} \leq
+\limsup_{n\to\infty} x_n .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Ketaksamaan di tengah telah dibuktikan.  Kita akan membuktikan ketaksamaan
+ketiga dan menyerahkan ketaksamaan pertama sebagai latihan.
+
+Kita ingin membuktikan bahwa
+$\limsup_{k\to\infty} x_{n_k} \leq \limsup_{n\to\infty} x_n$.  Definisikan
+$a_n \coloneqq \sup \{ x_k : k \geq n \}$ 
+seperti biasa.
+Definisikan juga
+$c_n \coloneqq \sup \{ x_{n_k} : k \geq n \}$.
+Tidak selalu benar bahwa $\{ c_n \}_{n=1}^\infty$ merupakan subbarisan
+dari $\{ a_n \}_{n=1}^\infty$.
+Namun, karena $n_k \geq k$ untuk semua $k$, kita memperoleh
+$\{ x_{n_k} : k \geq n \} \subset \{ x_k : k \geq n \}$.
+Supremum suatu himpunan bagian kurang dari atau sama dengan supremum
+himpunan tersebut; oleh karena itu,
+\begin{equation*}
+c_n \leq a_n \qquad \text{untuk semua $n$}.
+\end{equation*}
+\lemmaref{limandineq:lemma} memberikan
+\begin{equation*}
+\lim_{n\to\infty} c_n \leq \lim_{n\to\infty} a_n ,
+\end{equation*}
+yang merupakan kesimpulan yang diinginkan.
+\end{proof}
+
+Limit superior dan limit inferior
+masing-masing merupakan limit subbarisan terbesar dan terkecil.
+Jika subbarisan $\{ x_{n_k} \}_{k=1}^\infty$ dalam proposisi sebelumnya
+konvergen, maka
+$\liminf_{k\to\infty} x_{n_k} = \lim_{k\to\infty} x_{n_k} =
+\limsup_{k\to\infty} x_{n_k}$.  Oleh karena itu,
+\begin{equation*}
+\liminf_{n\to\infty} x_n \leq
+\lim_{k\to\infty} x_{n_k} \leq
+\limsup_{n\to\infty} x_n .
+\end{equation*}
+
+Demikian pula, kita memperoleh uji berguna berikut untuk kekonvergenan
+barisan terbatas.  Buktinya kita serahkan sebagai latihan.
+
+\begin{prop} \label{seqconvsubseqconv:prop}
+Barisan terbatas $\{ x_n \}_{n=1}^\infty$ konvergen ke $x$
+jika dan hanya jika
+setiap subbarisan konvergen
+$\{ x_{n_k} \}_{k=1}^\infty$ juga konvergen ke $x$.
+\end{prop}
+
+\subsection{Teorema Bolzano--Weierstrass}
+
+Meskipun tidak setiap barisan terbatas konvergen, teorema
+Bolzano--Weierstrass memberi tahu kita bahwa setidaknya kita dapat menemukan
+sebuah subbarisan yang konvergen.
+Versi Bolzano--Weierstrass yang kami sajikan dalam bagian ini adalah
+teorema Bolzano--Weierstrass untuk barisan bilangan real.
+
+\begin{thm}[Bolzano--Weierstrass]\index{teorema Bolzano--Weierstrass}\label{thm:bwseq}
+Andaikan suatu barisan bilangan real $\{ x_n \}_{n=1}^\infty$ terbatas.
+Maka terdapat subbarisan konvergen $\{ x_{n_i} \}_{i=1}^\infty$.
+\end{thm}
+
+\begin{proof}
+\thmref{subseqlimsupinf:thm} menyatakan bahwa terdapat
+sebuah subbarisan yang limitnya adalah $\limsup_{n\to\infty} x_n$.
+\end{proof}
+
+Pembaca mungkin menyanggah bahwa
+\thmref{subseqlimsupinf:thm} secara ketat lebih kuat daripada teorema
+Bolzano--Weierstrass yang disajikan di atas.  Hal itu benar.
+Namun,
+\thmref{subseqlimsupinf:thm} hanya berlaku pada garis bilangan real, sedangkan
+Bolzano--Weierstrass berlaku dalam konteks yang lebih umum (yaitu, dalam $\R^n$)
+dengan pernyataan yang nyaris persis sama.
+
+Karena teorema ini begitu penting dalam analisis, kami menyajikan sebuah
+bukti eksplisit.
+Gagasan dalam bukti berikut juga dapat diperumum ke konteks-konteks lain.
+
+\begin{proof}[Bukti alternatif teorema Bolzano--Weierstrass]
+Karena barisan tersebut terbatas, terdapat dua bilangan $a_1 < b_1$
+sedemikian sehingga $a_1 \leq x_n \leq b_1$ untuk semua $n \in \N$.
+Kita akan mendefinisikan sebuah subbarisan $\{ x_{n_i} \}_{i=1}^\infty$ dan dua
+barisan $\{ a_i \}_{i=1}^\infty$ dan $\{ b_i \}_{i=1}^\infty$, sedemikian sehingga
+$\{ a_i \}_{i=1}^\infty$ monoton naik, $\{ b_i \}_{i=1}^\infty$ monoton turun,
+$a_i \leq x_{n_i} \leq b_i$, dan $\lim_{i\to\infty} a_i =
+\lim_{i\to\infty} b_i$.   Dengan demikian,
+konvergensi $\{ x_{n_i} \}_{i=1}^\infty$ diperoleh dari \hyperref[squeeze:lemma]{lemma apit}.
+
+Kita mendefinisikan barisan-barisan tersebut secara induktif.  Kita akan mendefinisikannya
+sedemikian sehingga, untuk semua $i$, berlaku $a_i < b_i$,
+dan $x_n \in [a_i,b_i]$ untuk tak berhingga banyak $n \in \N$.
+Kita telah mendefinisikan $a_1$ dan $b_1$.  Ambil $n_1 \coloneqq 1$, yaitu
+$x_{n_1} = x_1$.
+Andaikan bahwa sampai suatu $k \in \N$,
+kita telah mendefinisikan subbarisan $x_{n_1}, x_{n_2}, \ldots,
+x_{n_k}$, serta barisan $a_1,a_2,\ldots,a_k$
+dan $b_1,b_2,\ldots,b_k$.
+Misalkan $y \coloneqq \frac{a_k+b_k}{2}$.
+Jelas bahwa
+$a_k < y < b_k$.  Jika terdapat tak berhingga banyak $j \in \N$
+sedemikian sehingga $x_j \in [a_k,y]$, tetapkan $a_{k+1} \coloneqq a_k$, $b_{k+1}
+\coloneqq y$,
+dan pilih $n_{k+1} > n_{k}$
+sedemikian sehingga $x_{n_{k+1}} \in [a_k,y]$.  Jika hanya terdapat berhingga banyak
+$j$ yang memenuhi
+$x_j \in [a_k,y]$, maka harus terdapat tak berhingga banyak $j \in
+\N$ sedemikian sehingga
+$x_j \in [y,b_k]$.  Dalam kasus ini, tetapkan $a_{k+1} \coloneqq y$, $b_{k+1}
+\coloneqq b_k$,
+dan pilih $n_{k+1} > n_{k}$
+sedemikian sehingga $x_{n_{k+1}} \in [y,b_k]$.
+
+Sekarang barisan-barisan tersebut telah terdefinisi.  Tinggal dibuktikan bahwa
+$\lim_{i\to\infty} a_i = \lim_{i\to\infty} b_i$.  Kedua limit tersebut ada karena barisan-barisan
+tersebut monoton.  Dalam konstruksi ini,
+$b_i - a_i$ dibagi dua pada setiap langkah.  Oleh karena itu,
+$b_{i+1} - a_{i+1} = \frac{b_i-a_i}{2}$.  Berdasarkan
+\hyperref[induction:thm]{induksi},
+\begin{equation*}
+b_i - a_i = \frac{b_1-a_1}{2^{i-1}} .
+\end{equation*}
+
+Misalkan $x \coloneqq \lim_{i\to\infty} a_i$.  Karena $\{ a_i \}_{i=1}^\infty$ monoton,
+\begin{equation*}
+x = \sup \{ a_i : i \in \N \} .
+\end{equation*}
+Misalkan $y \coloneqq \lim_{i\to\infty} b_i = \inf \{ b_i : i \in \N \}$.  Karena $a_i < b_i$ untuk
+semua $i$, kita memperoleh $x \leq y$.
+Karena barisan-barisan tersebut monoton, untuk semua $i$ berlaku (mengapa?)
+\begin{equation*}
+y-x \leq b_i-a_i = \frac{b_1-a_1}{2^{i-1}} .
+\end{equation*}
+Karena $\frac{b_1-a_1}{2^{i-1}}$ dapat dibuat sekecil apa pun dan $y-x \geq 0$,
+kita memperoleh $y-x = 0$.  Selesaikan dengan \hyperref[squeeze:lemma]{lemma apit}.
+\end{proof}
+
+Bukti lain lagi untuk teorema Bolzano--Weierstrass diperoleh dengan menunjukkan
+klaim berikut,
+yang diserahkan sebagai latihan yang menantang.
+\emph{Klaim: Setiap barisan memiliki subbarisan monoton}.
+
+\subsection{Limit tak hingga}
+
+Sama seperti pada infimum dan supremum, kita dapat memperbolehkan limit tertentu
+bernilai tak hingga.  Dengan kata lain, kita menulis $\lim_{n\to\infty} x_n = \infty$ atau
+$\lim_{n\to\infty} x_n = -\infty$ untuk barisan divergen tertentu.
+
+\begin{defn}
+\index{limit tak hingga!dari barisan}\index{limit!tak hingga}
+Kita mengatakan
+$\{ x_n \}_{n=1}^\infty$ \emph{\myindex{divergen menuju tak hingga}}%
+\footnote{Kadang-kadang dikatakan bahwa $\{ x_n \}_{n=1}^\infty$ \emph{konvergen menuju tak hingga}.}
+jika untuk setiap $K \in
+\R$, terdapat $M \in \N$ sedemikian sehingga untuk semua $n \geq M$, berlaku $x_n >
+K$.  Dalam hal ini kita menulis
+\begin{equation*}
+\lim_{n \to \infty} x_n \coloneqq \infty .  
+\end{equation*}
+Demikian pula,
+jika untuk setiap $K \in \R$ terdapat $M \in \N$ sedemikian sehingga
+untuk semua $n \geq M$, berlaku $x_n < K$, kita mengatakan $\{ x_n \}_{n=1}^\infty$
+\emph{\myindex{divergen menuju minus tak hingga}} dan kita menulis
+\begin{equation*}
+\lim_{n \to \infty} x_n \coloneqq -\infty .  
+\end{equation*}
+\end{defn}
+
+Dengan definisi ini dan dengan memperbolehkan $\infty$ dan $-\infty$,
+kita dapat menulis $\lim_{n\to\infty} x_n$ untuk setiap barisan monoton.
+
+\begin{prop} \label{prop:unboundedmonotone}
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan monoton tak terbatas.  Maka
+\begin{equation*}
+\lim_{n \to \infty} x_n =
+\begin{cases}
+\infty  & \text{jika } \{ x_n \}_{n=1}^\infty \text{ monoton naik,} \\
+-\infty & \text{jika } \{ x_n \}_{n=1}^\infty \text{ monoton turun.}
+\end{cases}
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Kasus monoton naik merupakan akibat dari
+\exerciseref{exercise:infseqlimlims} bagian c) di bawah.
+Misalkan $\{x_n\}_{n=1}^\infty$ monoton turun dan tak terbatas.
+Bahwa barisan ini tak terbatas berarti
+untuk setiap $K \in \R$, terdapat $M \in \N$ sedemikian sehingga $x_M < K$.
+Karena barisan tersebut monoton, $x_n \leq x_M < K$ untuk semua $n \geq M$.
+Oleh karena itu, $\lim_{n\to\infty} x_n = -\infty$.
+\end{proof}
+
+\begin{example}
+\begin{equation*}
+\lim_{n\to \infty} n = \infty,
+\qquad
+\lim_{n\to \infty} n^2 = \infty,
+\qquad
+\lim_{n\to \infty} -n = -\infty.
+\end{equation*}
+Verifikasinya diserahkan kepada pembaca.
+\end{example}
+
+Kita juga dapat memperbolehkan $\liminf$ dan $\limsup$ mengambil
+nilai $\infty$ dan $-\infty$, sehingga
+kita dapat menerapkan $\liminf$ dan $\limsup$
+pada sembarang barisan, bukan hanya
+barisan terbatas.  Sayangnya, barisan $\{ a_n \}_{n=1}^\infty$ dan
+$\{ b_n \}_{n=1}^\infty$
+bukanlah barisan bilangan real, melainkan barisan bilangan real diperluas.  Secara
+khusus, $a_n$ dapat sama dengan $\infty$ untuk suatu $n$, dan $b_n$ dapat sama dengan
+$-\infty$.  Jadi kita tidak memiliki definisi untuk limit-limitnya.
+Namun, karena bilangan real diperluas masih merupakan himpunan terurut, kita
+dapat mengambil supremum dan infimumnya.
+
+\begin{defn}
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan bilangan real yang tak terbatas.  Definisikan
+barisan-barisan bilangan real diperluas dengan
+$a_n \coloneqq \sup \{ x_k : k \geq n \}$ dan
+$b_n \coloneqq \inf \{ x_k : k \geq n \}$.
+Definisikan\glsadd{not:limsupseq}\glsadd{not:liminfseq}
+\index{limit inferior}\index{limit superior}\index{limsup}\index{liminf}
+\begin{equation*}
+\limsup_{n \to \infty} x_n \coloneqq \inf \{ a_n : n \in \N \}, \qquad \text{dan} \qquad
+\liminf_{n \to \infty} x_n \coloneqq \sup \{ b_n : n \in \N \}.
+\end{equation*}
+\end{defn}
+
+Definisi ini sesuai dengan definisi untuk barisan
+terbatas.
+
+\begin{prop}
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan tak terbatas.  Definisikan
+$\{ a_n \}_{n=1}^\infty$ dan $\{ b_n \}_{n=1}^\infty$ seperti di atas.
+Maka $\{ a_n \}_{n=1}^\infty$ monoton turun, dan $\{ b_n \}_{n=1}^\infty$ monoton naik.
+Jika $a_n$ merupakan bilangan real untuk setiap $n$, maka
+$\limsup_{n\to\infty} x_n = \lim_{n\to\infty} a_n$.
+Jika $b_n$ merupakan bilangan real untuk setiap $n$, maka
+$\liminf_{n\to\infty} x_n = \lim_{n\to\infty} b_n$.
+\end{prop}
+
+\begin{proof}
+Seperti sebelumnya,
+$a_n = \sup \{ x_k : k \geq n \} \geq \sup \{ x_k : k \geq n+1 \} =
+a_{n+1}$.  Jadi $\{ a_n \}_{n=1}^\infty$ monoton turun. Demikian pula,
+$\{ b_n \}_{n=1}^\infty$ monoton naik.
+
+Jika barisan $\{ a_n \}_{n=1}^\infty$ merupakan barisan bilangan real, maka
+$\lim_{n\to\infty} a_n = \inf \{ a_n : n \in \N \}$.  Hal ini mengikuti
+\thmref{thm:monotoneconv} jika $\{ a_n \}_{n=1}^\infty$ terbatas dan
+\propref{prop:unboundedmonotone} jika $\{a_n \}_{n=1}^\infty$
+tak terbatas.  Kita melanjutkan dengan cara serupa untuk $\{ b_n \}_{n=1}^\infty$.
+\end{proof}
+
+Definisi ini berperilaku sebagaimana yang diharapkan terhadap
+$\limsup$ dan $\liminf$; lihat latihan \ref{exercise:infseqlimex}
+dan \ref{exercise:infseqlimlims}.
+
+\begin{example}
+Misalkan
+$x_n \coloneqq 0$ untuk $n$ ganjil dan $x_n \coloneqq n$ untuk $n$ genap.
+Maka $a_n = \infty$ untuk semua $n$, karena untuk setiap $M$,
+terdapat $k$ genap sedemikian sehingga $x_k = k \geq M$.
+Di sisi lain, $b_n = 0$ untuk semua $n$, karena
+untuk setiap $n$, himpunan
+$\{ x_k : k \geq n \}$ terdiri atas $0$ dan bilangan-bilangan positif.
+Jadi,
+\begin{equation*}
+\lim_{n\to \infty} x_n \quad \text{tidak ada},
+\qquad
+\limsup_{n\to \infty} x_n = \infty ,
+\qquad
+\liminf_{n\to \infty} x_n = 0.
+\end{equation*}
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan terbatas.  Definisikan $a_n$ dan
+$b_n$ seperti dalam \defnref{liminflimsup:def}.  Tunjukkan bahwa $\{ a_n \}_{n=1}^\infty$
+dan $\{ b_n \}_{n=1}^\infty$ terbatas.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan terbatas.
+Definisikan $b_n$ seperti dalam \defnref{liminflimsup:def}.  Tunjukkan bahwa
+$\{ b_n \}_{n=1}^\infty$ adalah barisan monoton naik.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan bukti \propref{prop:subseqslimsupinf}.  Dengan kata lain,
+misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan terbatas dan
+$\{ x_{n_k} \}_{k=1}^\infty$ adalah subbarisan.  Buktikan
+$\displaystyle \liminf_{n\to\infty} x_n \leq
+\liminf_{k\to\infty} x_{n_k}$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{seqconvsubseqconv:prop}.
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Misalkan $x_n \coloneqq \dfrac{{(-1)}^n}{n}$.
+Tentukan $\limsup\limits_{n\to\infty} x_n$ dan $\liminf\limits_{n\to\infty} x_n$.
+\item
+Misalkan $x_n \coloneqq \dfrac{(n-1){(-1)}^n}{n}$.
+Tentukan $\limsup\limits_{n\to\infty} x_n$ dan $\liminf\limits_{n\to\infty} x_n$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{ x_n \}_{n=1}^\infty$ dan $\{ y_n \}_{n=1}^\infty$ adalah barisan terbatas sedemikian sehingga
+$x_n \leq y_n$ untuk semua $n$.  Tunjukkan
+\begin{equation*}
+\limsup_{n\to\infty} x_n \leq
+\limsup_{n\to\infty} y_n
+\qquad \text{dan} \qquad
+\liminf_{n\to\infty} x_n \leq
+\liminf_{n\to\infty} y_n .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{ x_n \}_{n=1}^\infty$ dan $\{ y_n \}_{n=1}^\infty$ adalah barisan terbatas.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $\{ x_n + y_n \}_{n=1}^\infty$ terbatas.
+\item
+Tunjukkan bahwa
+\begin{equation*}
+\Bigl(\liminf_{n\to \infty} x_n\Bigr)
++
+\Bigl(\liminf_{n\to \infty} y_n\Bigr)
+\leq
+\liminf_{n\to \infty} \, (x_n+y_n) .
+\end{equation*}
+Petunjuk: Salah satu cara pembuktian adalah mencari subbarisan $\{ x_{n_m}+y_{n_m} \}_{m=1}^\infty$ dari
+$\{ x_n + y_n \}_{n=1}^\infty$ yang konvergen.
+Kemudian cari subbarisan $\{ x_{n_{m_i}} \}_{i=1}^\infty$ dari
+$\{ x_{n_m} \}_{m=1}^\infty$ yang konvergen.
+\item
+Temukan $\{ x_n \}_{n=1}^\infty$ dan $\{ y_n \}_{n=1}^\infty$ secara eksplisit sedemikian sehingga
+\begin{equation*}
+\Bigl(\liminf_{n\to \infty} x_n\Bigr)
++
+\Bigl(\liminf_{n\to \infty} y_n\Bigr)
+<
+\liminf_{n\to \infty} \, (x_n+y_n) .
+\end{equation*}
+Petunjuk: Carilah contoh yang tidak memiliki limit.
+\end{enumerate}
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Misalkan $\{ x_n \}_{n=1}^\infty$ dan $\{ y_n \}_{n=1}^\infty$ adalah barisan terbatas (menurut
+latihan sebelumnya, $\{ x_n + y_n \}_{n=1}^\infty$ terbatas).
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa
+\begin{equation*}
+\Bigl(\limsup_{n\to \infty} x_n\Bigr)
++
+\Bigl(\limsup_{n\to \infty} y_n\Bigr)
+\geq
+\limsup_{n\to \infty} \, (x_n+y_n) .
+\end{equation*}
+Petunjuk: Lihat latihan sebelumnya.
+\item
+Temukan $\{ x_n \}_{n=1}^\infty$ dan $\{ y_n \}_{n=1}^\infty$ secara eksplisit sedemikian sehingga
+\begin{equation*}
+\Bigl(\limsup_{n\to \infty} x_n\Bigr)
++
+\Bigl(\limsup_{n\to \infty} y_n\Bigr)
+>
+\limsup_{n\to \infty} \, (x_n+y_n) .
+\end{equation*}
+Petunjuk: Lihat latihan sebelumnya.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Jika $S \subset \R$ adalah suatu himpunan, maka $x \in \R$ disebut \emph{\myindex{titik
+akumulasi}}
+jika untuk setiap $\epsilon > 0$, himpunan $(x-\epsilon,x+\epsilon) \cap S
+\setminus \{ x \}$ tidak kosong.  Dengan kata lain, terdapat titik-titik dalam $S$
+yang berjarak sedekat apa pun dengan $x$.
+Sebagai contoh, $S \coloneqq \{ \nicefrac{1}{n} : n \in \N \}$ memiliki titik akumulasi tunggal $0$, tetapi $0 \notin S$.
+Buktikan versi teorema Bolzano--Weierstrass berikut:
+
+\medskip
+
+\noindent
+\emph{\textbf{Teorema.} Misalkan $S \subset \R$ adalah himpunan tak berhingga yang terbatas,
+maka terdapat setidaknya satu titik akumulasi dari $S$}.
+
+\medskip
+
+Petunjuk: Jika $S$ tak berhingga, maka $S$ memuat suatu himpunan bagian tak berhingga yang terhitung.
+Dengan kata lain, terdapat barisan $\{ x_n \}_{n=1}^\infty$ yang terdiri atas bilangan-bilangan berbeda dalam $S$.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}[Menantang]
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa setiap barisan memuat suatu subbarisan monoton.
+Petunjuk: Sebut $n \in \N$ sebagai suatu \emph{puncak}
+dari barisan
+$\{ x_n \}_{n=1}^\infty$
+jika $x_m \leq x_n$ untuk semua $m \geq n$.
+Ada dua kemungkinan: Barisan tersebut hanya memiliki berhingga banyak
+puncak,
+atau memiliki tak berhingga banyak puncak.
+\item
+Simpulkan teorema Bolzano--Weierstrass.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+\pagebreak[2]
+Buktikan versi yang lebih kuat dari \propref{seqconvsubseqconv:prop}.
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan sedemikian sehingga setiap subbarisan
+$\{ x_{n_m} \}_{m=1}^\infty$ memiliki subbarisan
+$\{ x_{n_{m_i}} \}_{i=1}^\infty$ yang konvergen ke $x$.
+\begin{enumerate}[a)]
+\item
+Pertama, tunjukkan bahwa $\{ x_n \}_{n=1}^\infty$
+terbatas.
+\item
+Sekarang tunjukkan bahwa $\{ x_n \}_{n=1}^\infty$ konvergen ke $x$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{x_n\}_{n=1}^\infty$ adalah barisan terbatas.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa terdapat $s$ sedemikian sehingga untuk setiap $r > s$, terdapat 
+$M \in \N$ sedemikian sehingga untuk semua $n \geq M$, berlaku
+$x_n < r$.
+\item
+Jika $s$ adalah bilangan seperti pada a), buktikan bahwa $\limsup\limits_{n\to\infty} x_n \leq s$.
+\item
+Tunjukkan bahwa jika $S$ adalah himpunan semua $s$ seperti pada a), maka
+$\limsup\limits_{n\to\infty} x_n = \inf \, S$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Mudah] \label{exercise:infseqlimex}
+\pagebreak[2]
+Misalkan $\{ x_n \}_{n=1}^\infty$ sedemikian sehingga $\liminf\limits_{n\to\infty} x_n = -\infty$,
+$\limsup\limits_{n\to\infty} x_n = \infty$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $\{ x_n \}_{n=1}^\infty$ tidak konvergen, dan juga
+bahwa baik $\lim\limits_{n\to\infty} x_n = \infty$
+maupun $\lim\limits_{n\to\infty} x_n = -\infty$
+tidak berlaku.
+\item
+Temukan contoh barisan semacam itu.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \label{exercise:infseqlimlims}
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah suatu barisan.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa
+$\lim\limits_{n\to\infty} x_n = \infty$ jika dan hanya jika
+$\liminf\limits_{n\to\infty} x_n = \infty$.
+\item
+Kemudian tunjukkan bahwa $\lim\limits_{n\to\infty} x_n = - \infty$ jika dan hanya jika
+$\limsup\limits_{n\to\infty} x_n = -\infty$.
+\item
+Jika $\{ x_n \}_{n=1}^\infty$ monoton naik, tunjukkan bahwa
+$\lim_{n\to\infty} x_n$ ada dan berhingga atau $\lim_{n\to\infty} x_n = \infty$.  Dalam kedua
+kasus, $\lim_{n\to\infty} x_n = \sup \{ x_n : n \in \N \}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \label{exercise:strongerratiotest2}
+Buktikan versi yang lebih kuat berikut dari \lemmaref{seq:ratiotest}, yaitu uji
+rasio.
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan sedemikian sehingga $x_n \neq 0$ untuk semua
+$n$.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa jika
+\begin{equation*}
+\limsup_{n \to \infty} \frac{\sabs{x_{n+1}}}{\sabs{x_n}} < 1 ,
+\end{equation*}
+maka $\{ x_n \}_{n=1}^\infty$ konvergen ke $0$.
+\item
+Buktikan bahwa jika
+\begin{equation*}
+\liminf_{n \to \infty} \frac{\sabs{x_{n+1}}}{\sabs{x_n}} > 1 ,
+\end{equation*}
+maka $\{ x_n \}_{n=1}^\infty$ tak terbatas.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan terbatas dan, seperti sebelumnya, $a_n \coloneqq \sup \{ x_k : k \geq n \}$.
+Andaikan bahwa untuk suatu $\ell \in \N$,
+$a_\ell \notin \{ x_k : k \geq \ell \}$.  Tunjukkan bahwa $a_j = a_\ell$ untuk semua $j \geq \ell$, sehingga
+$\limsup\limits_{n\to\infty} x_n = a_\ell$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah suatu barisan,
+dan, seperti sebelumnya, $a_n \coloneqq \sup \{ x_k : k \geq n \}$ serta
+$b_n \coloneqq \inf \{ x_k : k \geq n \}$.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa jika $a_\ell = \infty$ untuk suatu $\ell \in \N$, maka 
+$\limsup\limits_{n\to\infty} x_n = \infty$.
+\item
+Buktikan bahwa jika $b_\ell = -\infty$ untuk suatu $\ell \in \N$, maka 
+$\liminf\limits_{n\to\infty} x_n = -\infty$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan
+sedemikian sehingga $\liminf_{n\to\infty} x_n$ dan
+$\limsup_{n\to\infty} x_n$ keduanya berhingga.  Buktikan bahwa $\{ x_n \}_{n=1}^\infty$ terbatas.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan terbatas dan diberikan $\epsilon > 0$.
+Buktikan bahwa terdapat $M$ sedemikian sehingga untuk semua $k \geq M$,
+\begin{equation*}
+x_k - \Bigl(\limsup_{n\to\infty} x_n\Bigr) < \epsilon \qquad \text{dan} \qquad
+\Bigl(\liminf_{n\to\infty} x_n\Bigr) - x_k < \epsilon .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise} \label{exercise:extendsubseqlimsupinf}
+Perluas \thmref{subseqlimsupinf:thm} ke barisan tak terbatas:
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah suatu barisan.
+Jika $\limsup_{n\to\infty} x_n = \infty$, buktikan bahwa
+terdapat subbarisan $\{ x_{n_i} \}_{i=1}^\infty$ yang konvergen ke $\infty$.
+Kemudian buktikan hasil yang sama untuk $-\infty$, lalu buktikan kedua pernyataan tersebut untuk
+$\liminf$.
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Barisan Cauchy}
+\label{sec:cauchy}
+
+\sectionnotes{kurang dari satu pertemuan kuliah}
+
+Sering kali kita ingin mendeskripsikan suatu bilangan tertentu
+dengan barisan yang konvergen ke bilangan tersebut.  Dalam hal ini, bilangan
+itu sendiri tidak mungkin digunakan dalam bukti bahwa barisan tersebut konvergen.
+Akan sangat berguna jika kita dapat memeriksa kekonvergenan tanpa mengetahui
+limitnya.
+
+\begin{defn}
+Sebuah barisan $\{ x_n \}_{n=1}^\infty$ disebut \emph{\myindex{barisan Cauchy}}%
+\footnote{%
+Dinamai menurut matematikawan Prancis
+\href{https://en.wikipedia.org/wiki/Cauchy}{Augustin-Louis Cauchy} (1789--1857).} jika
+untuk setiap $\epsilon > 0$ terdapat $M \in \N$ sedemikian sehingga
+untuk semua $n \geq M$ dan semua $k \geq M$, berlaku
+\begin{equation*}
+\sabs{x_n - x_k} < \epsilon .
+\end{equation*}
+\end{defn}
+
+Secara informal, sifat Cauchy berarti bahwa pada akhirnya semua suku barisan
+dapat dibuat sedekat apa pun satu sama lain.  Kita mungkin menduga bahwa barisan
+semacam itu konvergen, dan dugaan ini benar karena $\R$ memiliki
+\hyperref[defn:lub]{sifat batas atas terkecil}.  Sebelum membuktikan fakta ini,
+mari kita lihat beberapa contoh.
+
+\begin{example}
+Barisan $\{ \nicefrac{1}{n} \}_{n=1}^\infty$ merupakan barisan Cauchy.
+
+Bukti:  Untuk $\epsilon > 0$ yang diberikan, pilih $M$ sedemikian sehingga
+$M > \nicefrac{2}{\epsilon}$.  Maka, untuk $n,k \geq M$,
+berlaku $\nicefrac{1}{n} < \nicefrac{\epsilon}{2}$
+dan
+$\nicefrac{1}{k} < \nicefrac{\epsilon}{2}$.  Oleh karena itu, untuk $n, k \geq M$,
+berlaku
+\begin{equation*}
+\abs{\frac{1}{n} - \frac{1}{k}}
+\leq
+\abs{\frac{1}{n}} + \abs{\frac{1}{k}}
+< \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon.
+\end{equation*}
+\end{example}
+
+\begin{example}
+Barisan $\bigl\{ {(-1)}^n \bigr\}_{n=1}^\infty$ bukan barisan Cauchy.
+
+Bukti:
+Untuk sembarang $M \in \N$, pilih sembarang bilangan genap $n \geq M$, lalu
+tetapkan $k \coloneqq n+1$.  Maka
+\begin{equation*}
+\begin{split}
+\babs{{(-1)}^n - {(-1)}^k}
+& =
+\babs{{(-1)}^n - {(-1)}^{n+1}}
+\\
+& =
+\babs{1 - (-1)} = 2 .
+\end{split}
+\end{equation*}
+Oleh karena itu, untuk sembarang $\epsilon \leq 2$, definisi tersebut tidak dapat dipenuhi,
+sehingga barisan ini bukan barisan Cauchy.
+\end{example}
+
+%\begin{example}
+%The sequence $\{ \frac{n+1}{n} \}_{n=1}^\infty$ is a Cauchy sequence.
+%
+%Proof:  Given $\epsilon > 0$, find $M$ such that
+%$M > \nicefrac{2}{\epsilon}$.  Then for $n,k \geq M$,
+%we have $\nicefrac{1}{n} < \nicefrac{\epsilon}{2}$
+%and
+%$\nicefrac{1}{k} < \nicefrac{\epsilon}{2}$.  Therefore, for $n, k \geq M$,
+%we have
+%\begin{equation*}
+%\begin{split}
+%\abs{\frac{n+1}{n} - \frac{k+1}{k}}
+%& =
+%\abs{\frac{k(n+1)-n(k+1)}{nk}}
+%\\
+%& =
+%\abs{\frac{kn+k-nk-n}{nk}}
+%\\
+%& =
+%\abs{\frac{k-n}{nk}}
+%\\
+%& \leq
+%\abs{\frac{k}{nk}}
+%+
+%\abs{\frac{-n}{nk}}
+%\\
+%& = \frac{1}{n} + \frac{1}{k}
+%< \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon .
+%\end{split}
+%\end{equation*}
+%\end{example}
+
+\begin{prop}
+Jika suatu barisan adalah barisan Cauchy, maka barisan tersebut terbatas.
+\end{prop}
+
+\begin{proof}
+Andaikan $\{ x_n \}_{n=1}^\infty$ merupakan barisan Cauchy.  Pilih $M$ sedemikian sehingga untuk semua
+$n,k \geq M$, berlaku $\sabs{x_n-x_k} < 1$.  Khususnya,
+untuk semua $n \geq M$,
+\begin{equation*}
+\sabs{x_n - x_M} < 1 .
+\end{equation*}
+Berdasarkan ketaksamaan segitiga terbalik,
+$\sabs{x_n} - \sabs{x_M} \leq \sabs{x_n - x_M} < 1$.  Jadi, untuk $n \geq M$,
+\begin{equation*}
+\sabs{x_n} < 1 + \sabs{x_M}.
+\end{equation*}
+Tetapkan
+\begin{equation*}
+B \coloneqq \max \bigl\{ \sabs{x_1}, \sabs{x_2}, \ldots,
+\sabs{x_{M-1}}, 1+ \sabs{x_M} \bigr\} .
+\end{equation*}
+Maka $\sabs{x_n} \leq B$ untuk semua $n \in \N$.
+\end{proof}
+
+\begin{thm}
+Suatu barisan bilangan real merupakan barisan Cauchy jika dan hanya jika barisan tersebut konvergen.
+\end{thm}
+
+\begin{proof}
+Andaikan $\{ x_n \}_{n=1}^\infty$ konvergen ke $x$,
+dan misalkan $\epsilon > 0$ diberikan.
+Maka terdapat $M$ sedemikian sehingga untuk $n \geq M$,
+\begin{equation*}
+\sabs{x_n - x} < \frac{\epsilon}{2} .
+\end{equation*}
+Jadi, untuk $n \geq M$ dan $k \geq M$,
+\begin{equation*}
+\sabs{x_n - x_k} = 
+\sabs{x_n - x + x - x_k}
+\leq \sabs{x_n-x} + \sabs{x-x_k} < \frac{\epsilon}{2} + \frac{\epsilon}{2} =
+\epsilon .
+\end{equation*}
+
+Arah tersebut mudah.  Sekarang andaikan $\{ x_n \}_{n=1}^\infty$ merupakan barisan Cauchy.
+Kita telah menunjukkan bahwa $\{ x_n \}_{n=1}^\infty$ terbatas.
+Untuk barisan terbatas, liminf dan limsup ada; di sinilah kita menggunakan
+\hyperref[defn:lub]{sifat batas atas terkecil}.
+Jika dapat ditunjukkan bahwa
+\begin{equation*}
+\liminf_{n\to \infty} x_n = \limsup_{n\to\infty} x_n ,
+\end{equation*}
+maka $\{ x_n \}_{n=1}^\infty$ harus konvergen berdasarkan \propref{liminfsupconv:prop}.
+
+
+Definisikan $a \coloneqq \limsup_{n\to\infty} x_n$ dan
+$b \coloneqq \liminf_{n\to\infty} x_n$.
+Berdasarkan \thmref{subseqlimsupinf:thm}, terdapat subbarisan
+$\{ x_{n_i} \}_{i=1}^\infty$ dan
+$\{ x_{m_i} \}_{i=1}^\infty$ sedemikian sehingga
+\begin{equation*}
+\lim_{i\to\infty} x_{n_i} = a
+\qquad \text{dan} \qquad
+\lim_{i\to\infty} x_{m_i} = b.
+\end{equation*}
+Untuk $\epsilon > 0$ yang diberikan,
+terdapat $M_1$ sedemikian sehingga
+$\sabs{x_{n_i} - a} < \nicefrac{\epsilon}{3}$ untuk semua $i \geq M_1$
+dan terdapat $M_2$ sedemikian sehingga
+$\sabs{x_{m_i} - b} < \nicefrac{\epsilon}{3}$ untuk semua $i \geq M_2$.
+Terdapat pula $M_3$ sedemikian sehingga
+$\sabs{x_n-x_k} < \nicefrac{\epsilon}{3}$
+untuk semua $n,k \geq M_3$.
+Tetapkan $M \coloneqq \max \{ M_1, M_2, M_3 \}$.
+Jika $i \geq M$, maka $n_i \geq M$ dan $m_i \geq M$.  Jadi,
+\begin{equation*}
+\begin{split}
+\sabs{a-b} & =
+\sabs{a-x_{n_i}+x_{n_i}
+-x_{m_i}+x_{m_i}
+-b} \\
+& \leq
+\sabs{a-x_{n_i}}
++ \sabs{x_{n_i} -x_{m_i}}
++ \sabs{x_{m_i} -b} \\
+& <
+\frac{\epsilon}{3}
++
+\frac{\epsilon}{3}
++
+\frac{\epsilon}{3}
+= \epsilon .
+\end{split}
+\end{equation*}
+Karena $\sabs{a-b} < \epsilon$ untuk semua $\epsilon > 0$, kita memperoleh $a=b$ dan
+barisan tersebut konvergen.
+\end{proof}
+
+\begin{remark}
+Pernyataan teorema ini kadang digunakan untuk mendefinisikan
+sifat kelengkapan bilangan real.  Suatu himpunan disebut
+\emph{\myindex{lengkap secara Cauchy}} (atau kadang cukup disebut \emph{\myindex{lengkap}})
+jika setiap barisan Cauchy konvergen ke suatu unsur di dalam himpunan tersebut.
+Di atas, kita telah membuktikan bahwa karena $\R$ memiliki
+\hyperref[defn:lub]{sifat batas atas terkecil}, $\R$ lengkap secara Cauchy.
+Kita dapat membentuk $\R$ dengan
+\myquote{melengkapi} $\Q$, yaitu dengan \myquote{menambahkan} titik secukupnya agar semua
+barisan Cauchy konvergen (rincian ini kita lewatkan).
+Medan yang dihasilkan memiliki
+sifat batas atas terkecil.
+Keuntungan mendefinisikan kelengkapan melalui barisan Cauchy adalah bahwa
+definisi tersebut dapat digeneralisasi ke konteks yang lebih abstrak,
+seperti ruang metrik; lihat \chapterref{ms:chapter}.
+\end{remark}
+
+Kriteria Cauchy lebih kuat daripada sekadar syarat bahwa
+$\sabs{x_{n+1}-x_n}$ (atau $\sabs{x_{n+j}-x_n}$ untuk $j$ tetap) menuju nol ketika
+$n$ menuju tak hingga.  Ketika kita membahas jumlah parsial deret harmonik
+(lihat \exampleref{example:harmonicseries} pada bagian berikutnya), kita akan memperoleh
+barisan yang memenuhi $x_{n+1}-x_n = \frac{1}{n+1}$,
+tetapi $\{ x_n \}_{n=1}^\infty$ divergen.
+Bahkan, untuk barisan tersebut,
+$\lim_{n\to\infty} \sabs{x_{n+j}-x_n} = 0$ untuk
+setiap $j \in \N$ (bandingkan dengan \exerciseref{exercise:badnocauchy}).
+Pokok penting dalam definisi Cauchy adalah bahwa $n$ dan $k$
+bervariasi secara independen dan dapat terpisah sejauh apa pun.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Buktikan secara langsung dari definisi barisan Cauchy bahwa
+$\bigl\{ \frac{n^2-1}{n^2} \bigr\}_{n=1}^\infty$ adalah barisan Cauchy.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan sedemikian sehingga
+terdapat suatu konstanta positif $C < 1$ dan, untuk semua $n \geq 2$,
+\begin{equation*}
+\sabs{x_{n+1} - x_n} \leq C \sabs{x_{n}-x_{n-1}} .
+\end{equation*}
+Buktikan bahwa $\{ x_n \}_{n=1}^\infty$ adalah barisan Cauchy.
+Petunjuk: Anda boleh langsung menggunakan rumus berikut (untuk $C \neq 1$):
+\begin{equation*}
+1+ C+ C^2 + \cdots + C^n = \frac{1-C^{n+1}}{1-C}.
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Misalkan $F$ adalah medan terurut yang memuat bilangan-bilangan rasional
+$\Q$, dan $\Q$ padat,
+yaitu, setiap kali $x,y \in F$ memenuhi $x < y$,
+terdapat $q \in \Q$ sedemikian sehingga $x < q < y$.
+Katakan bahwa barisan bilangan rasional $\{ x_n \}_{n=1}^\infty$ adalah barisan Cauchy
+jika untuk setiap $\epsilon \in \Q$ dengan $\epsilon > 0$, terdapat
+$M$ sedemikian sehingga untuk semua $n,k \geq M$, berlaku $\sabs{x_n-x_k} < \epsilon$.
+Misalkan setiap barisan Cauchy yang terdiri atas bilangan rasional mempunyai limit di $F$.
+Buktikan bahwa $F$ mempunyai \hyperref[defn:lub]{sifat batas atas terkecil}.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{ x_n \}_{n=1}^\infty$ dan $\{ y_n \}_{n=1}^\infty$ adalah barisan sedemikian
+sehingga $\lim_{n\to\infty} y_n =0$.  Misalkan bahwa untuk semua $k \in \N$
+dan
+untuk semua $m \geq k$, berlaku
+\begin{equation*}
+\sabs{x_m-x_k} \leq y_k .
+\end{equation*}
+Tunjukkan bahwa $\{ x_n \}_{n=1}^\infty$ adalah barisan Cauchy.
+\end{exercise}
+
+\begin{exercise}
+Misalkan barisan Cauchy $\{ x_n \}_{n=1}^\infty$ sedemikian sehingga untuk setiap $M \in \N$,
+terdapat $k \geq M$ dan $n \geq M$ sedemikian sehingga
+$x_k < 0$ dan $x_n > 0$.  Dengan hanya menggunakan definisi barisan Cauchy
+dan barisan konvergen, tunjukkan bahwa
+barisan tersebut konvergen ke $0$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\sabs{x_n-x_k} \leq \nicefrac{n}{k^2}$ untuk semua $n$ dan $k$.
+Tunjukkan bahwa $\{ x_n \}_{n=1}^\infty$ adalah barisan Cauchy.\footnote{Setelah membuktikan bahwa
+barisan tersebut adalah barisan Cauchy, sebagai latihan tambahan, buktikan bahwa barisan itu konstan.}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan Cauchy sedemikian sehingga untuk tak berhingga banyak
+$n$, berlaku $x_n = c$.  Dengan hanya menggunakan definisi barisan Cauchy, buktikan 
+bahwa $\lim\limits_{n\to\infty} x_n = c$.
+\end{exercise}
+
+\begin{exercise}
+Tentukan apakah pernyataan berikut benar atau salah; buktikan atau berikan contoh tandingan: Jika $\{ x_n \}_{n=1}^\infty$ adalah barisan
+Cauchy, maka terdapat $M$
+sedemikian sehingga untuk semua $n \geq M$, berlaku
+$\sabs{x_{n+1}-x_n}
+\leq
+\sabs{x_{n}-x_{n-1}}$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan 
+$\{ x_n \}_{n=1}^\infty$ adalah barisan sedemikian sehingga untuk setiap $\ell$ dan $k$,
+berlaku
+$\sabs{x_\ell-x_k} \leq y_\ell + z_k$, dengan
+$\{ y_n \}_{n=1}^\infty$ dan 
+$\{ z_n \}_{n=1}^\infty$ merupakan barisan yang konvergen ke $0$.
+Tunjukkan bahwa 
+$\{ x_n \}_{n=1}^\infty$ adalah barisan Cauchy.
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Deret}
+\label{sec:series}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2 kuliah}
+
+Salah satu objek mendasar dalam matematika adalah deret.  Bahkan, ketika
+landasan analisis sedang dikembangkan, motivasinya adalah
+memahami deret.  Pemahaman tentang deret penting dalam penerapan
+analisis.  Sebagai contoh, solusi persamaan diferensial sering kali
+diberikan sebagai deret, dan persamaan diferensial menjadi dasar untuk memahami
+hampir seluruh ilmu pengetahuan modern.
+
+\subsection{Definisi}
+
+\begin{defn}
+Diberikan barisan $\{ x_n \}_{n=1}^\infty$, kita tuliskan objek formal
+\begin{equation*}
+\sum_{n=1}^\infty x_n
+\end{equation*}
+\glsadd{not:series}
+dan menyebutnya \emph{\myindex{deret}}.  Suatu deret
+\emph{konvergen}\index{konvergen!deret} jika barisan
+$\{ s_k \}_{k=1}^\infty$
+yang didefinisikan oleh
+\glsadd{not:finitesum}
+\begin{equation*}
+s_k \coloneqq \sum_{n=1}^k x_n = x_1 + x_2 + \cdots + x_k
+\end{equation*}
+konvergen.
+Bilangan-bilangan $s_k$ disebut
+\emph{\myindex{jumlah parsial}}.
+Jika deret tersebut konvergen, kita tuliskan
+\begin{equation*}
+\sum_{n=1}^\infty x_n =  \lim\limits_{k\to\infty} s_k .
+\end{equation*}
+Dalam hal ini, kita sedikit menyederhanakan persoalan dan memperlakukan
+$\sum_{n=1}^\infty x_n$ sebagai bilangan.
+
+Jika barisan $\{ s_k \}_{k=1}^\infty$ divergen,
+kita mengatakan bahwa deret tersebut \emph{divergen}\index{divergen!deret}.
+Dalam hal ini, $\sum_{n=1}^\infty x_n$ hanyalah objek formal dan bukan bilangan.
+\end{defn}
+
+Dengan kata lain, untuk deret konvergen, kita mempunyai
+\begin{equation*}
+\sum_{n=1}^\infty x_n
+=
+\lim_{k\to\infty} 
+\sum_{n=1}^k x_n .
+\end{equation*}
+Kesamaan ini hanya berlaku jika limit di ruas
+kanan benar-benar ada.  Jika deret tersebut tidak konvergen, ruas kanan
+tidak bermakna (limitnya tidak ada).
+Karena itu, berhati-hatilah karena 
+$\sum_{n=1}^\infty x_n$ memiliki dua makna berbeda (notasi untuk deret itu sendiri 
+atau limit jumlah-jumlah parsial), dan Anda harus menggunakan konteks
+untuk membedakannya.
+
+\begin{remark}
+Kadang-kadang lebih mudah untuk memulai
+deret dari indeks selain 1.  Sebagai contoh, kita dapat menuliskan
+\begin{equation*}
+\sum_{n=0}^\infty r^n = \sum_{n=1}^\infty r^{n-1} .
+\end{equation*}
+Ruas kiri lebih mudah dituliskan.
+\end{remark}
+
+\begin{remark}
+Deret $\sum_{n=1}^\infty x_n$ lazim dituliskan sebagai
+\begin{equation*}
+x_1 + x_2 + x_3 + \cdots
+\end{equation*}
+dengan pengertian bahwa elipsis tersebut menyatakan deret dan
+bukan sekadar penjumlahan.  Kita tidak menggunakan notasi ini karena notasi informal
+semacam itu dapat menimbulkan kesalahan dalam pembuktian.
+\end{remark}
+
+\begin{example}
+Deret
+\begin{equation*}
+\sum_{n=1}^\infty \frac{1}{2^n}
+\end{equation*}
+konvergen dan limitnya adalah 1.  Dengan kata lain,
+\begin{equation*}
+\sum_{n=1}^\infty \frac{1}{2^n} = 
+\lim_{k\to\infty} \sum_{n=1}^k \frac{1}{2^n} = 
+1 .
+\end{equation*}
+
+Bukti: Kita memerlukan kesamaan
+\begin{equation*}
+\left( \sum_{n=1}^k \frac{1}{2^n} \right)
++ \frac{1}{2^k}
+= 1 .
+\end{equation*}
+Kesamaan tersebut langsung berlaku ketika $k=1$.  Bukti untuk $k$ umum
+mengikuti dari \hyperref[induction:thm]{induksi}, yang kita serahkan kepada
+pembaca.  Lihat \figureref{figcutseries} untuk ilustrasinya.
+\begin{myfigureht}
+\myincludepdft{figcutseries}{%
+Diagram garis bilangan real.  Titik 0 berada di kiri dan titik
+1 berada di kanan.  Jarak sebesar setengah ditandai dari 0 ke
+setengah.  Kemudian jarak sebesar seperempat ditandai dari setengah
+ke titik tiga perempat.  Selanjutnya, jarak sebesar seperdelapan ditandai dari
+tiga perempat ke tujuh perdelapan.  Jarak setengah ditambah seperempat ditambah
+seperdelapan juga ditandai, yang menggabungkan ketiga jarak tersebut.
+Terakhir, sisa jarak sebesar seperdelapan dari tujuh perdelapan ke 1 juga
+ditandai.}
+\caption{Kesamaan 
+$\left( \sum_{n=1}^k \frac{1}{2^n} \right)
++ \frac{1}{2^k}
+= 1$ yang diilustrasikan untuk $k=3$.\label{figcutseries}}
+\end{myfigureht}
+
+Misalkan $s_k$ adalah jumlah parsial.  Kita tuliskan
+\begin{equation*}
+\sabs{
+1 - s_k 
+}
+=
+\abs{
+1 - 
+\sum_{n=1}^k \frac{1}{2^n}
+}
+=
+\abs{\frac{1}{2^k}} = 
+\frac{1}{2^k} .
+\end{equation*}
+Barisan $\bigl\{ \frac{1}{2^k} \bigr\}_{k=1}^\infty$, dan
+karena itu $\bigl\{ \sabs{1-s_k} \bigr\}_{k=1}^\infty$,
+konvergen ke nol.  Jadi, $\{ s_k \}_{k=1}^\infty$ konvergen ke $1$.
+\end{example}
+
+\begin{prop} \label{geometric:prop}
+Misalkan
+$-1 < r < 1$.  Maka \emph{\myindex{deret geometri}}
+$\sum_{n=0}^\infty r^n$ konvergen, dan
+\begin{equation*}
+\sum_{n=0}^\infty r^n = \frac{1}{1-r} .
+\end{equation*}
+\end{prop}
+
+Rincian buktinya diserahkan sebagai latihan.
+Pembuktiannya dilakukan dengan menunjukkan bahwa 
+\begin{equation*}
+\sum_{n=0}^{k-1} r^n = \frac{1-r^k}{1-r} ,
+\end{equation*}
+kemudian mengambil limit ketika $k$ menuju $\infty$.
+Deret geometri merupakan salah satu deret terpenting, dan bahkan merupakan
+salah satu dari sedikit deret yang limitnya dapat kita tentukan secara begitu eksplisit.
+
+\medskip
+
+\pagebreak[2]
+Seperti pada barisan, kita dapat membicarakan \emph{\myindex{ekor deret}}.
+
+\begin{prop}
+Misalkan $\sum_{n=1}^\infty x_n$ adalah deret.  Misalkan $M \in \N$.  Maka
+\begin{equation*}
+\sum_{n=1}^\infty x_n \quad \text{konvergen jika dan hanya jika} \quad
+\sum_{n=M}^\infty x_n \quad \text{konvergen.}
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Kita meninjau jumlah-jumlah parsial kedua deret tersebut (untuk $k \geq M$):
+\begin{equation*}
+\sum_{n=1}^{k} x_n
+=
+\left(
+\sum_{n=1}^{M-1} x_n
+\right)
++
+\sum_{n=M}^{k} x_n .
+\end{equation*}
+Perhatikan bahwa 
+$\sum_{n=1}^{M-1} x_n$ adalah bilangan tetap.  Gunakan
+\propref{prop:contalg} untuk menyelesaikan bukti.
+\end{proof}
+
+\subsection{Deret Cauchy}
+
+\begin{defn}
+Deret $\sum_{n=1}^\infty x_n$ disebut \emph{Cauchy} atau
+\emph{deret Cauchy}\index{deret Cauchy}
+jika barisan jumlah parsial $\{ s_n \}_{n=1}^\infty$ merupakan barisan Cauchy.
+\end{defn}
+
+Barisan bilangan real konvergen jika dan hanya jika barisan tersebut
+bersifat Cauchy.  Oleh karena itu, suatu deret konvergen jika dan hanya jika deret tersebut bersifat Cauchy.
+Deret $\sum_{n=1}^\infty x_n$ bersifat Cauchy jika dan hanya jika untuk setiap $\epsilon > 0$,
+terdapat $M \in \N$ sedemikian sehingga untuk setiap $n \geq M$
+dan $k \geq M$, berlaku
+\begin{equation*}
+\abs{ \left( \sum_{i=1}^k x_i \right) - \left( \sum_{i=1}^n x_i \right) }
+< \epsilon .
+\end{equation*}
+Tanpa mengurangi keumuman, kita andaikan $n < k$.  Maka kita tuliskan
+\begin{equation*}
+\abs{ \left( \sum_{i=1}^k x_i \right) - \left( \sum_{i=1}^n x_i \right) }
+=
+\abs{ \sum_{i={n+1}}^k x_i }
+< \epsilon .
+\end{equation*}
+Kita telah membuktikan proposisi sederhana berikut.
+
+\begin{prop} \label{prop:cachyser}
+Deret $\sum_{n=1}^\infty x_n$ bersifat Cauchy
+jika dan hanya jika untuk setiap $\epsilon > 0$, 
+terdapat $M \in \N$ sedemikian sehingga untuk setiap $n \geq M$
+dan setiap $k > n$,
+\begin{equation*}
+\abs{ \sum_{i={n+1}}^k x_i }
+< \epsilon .
+\end{equation*}
+\end{prop}
+
+\subsection{Sifat-sifat dasar}
+
+\begin{prop}
+Misalkan $\sum_{n=1}^\infty x_n$ adalah deret konvergen.  Maka
+barisan $\{ x_n \}_{n=1}^\infty$ konvergen dan
+\begin{equation*}
+\lim_{n\to\infty} x_n = 0.
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Diberikan $\epsilon > 0$.  Karena $\sum_{n=1}^\infty x_n$ konvergen, deret tersebut bersifat Cauchy.
+Jadi, kita memperoleh $M$ sedemikian sehingga untuk setiap $n \geq M$,
+\begin{equation*}
+\epsilon > 
+\abs{ \sum_{i={n+1}}^{n+1} x_i }
+=
+\sabs{ x_{n+1} } .
+\end{equation*}
+Dengan demikian, untuk setiap $n \geq M+1$, berlaku $\sabs{x_{n}} < \epsilon$.
+\end{proof}
+
+\begin{example}
+Jika $r \geq 1$ atau $r \leq -1$, deret geometri $\sum_{n=0}^\infty r^n$
+divergen.
+
+Bukti: $\sabs{r^n} = \sabs{r}^n \geq 1^n = 1$.  Suku-sukunya tidak menuju nol
+sehingga deret tersebut tidak mungkin konvergen.
+\end{example}
+
+Jadi, jika suatu deret konvergen, suku-suku deret tersebut menuju nol.
+Namun, implikasi ini hanya berlaku satu arah.
+Mari kita berikan sebuah contoh.
+
+\begin{example} \label{example:harmonicseries}
+Deret $\sum_{n=1}^\infty \nicefrac{1}{n}$ divergen (meskipun
+$\lim_{n\to\infty} \nicefrac{1}{n} = 0$).
+Ini adalah \emph{\myindex{deret harmonik}} yang terkenal%
+\footnote{Divergensi deret harmonik telah diketahui 
+jauh sebelum teori deret dirumuskan secara ketat.  Bukti yang
+kita berikan merupakan bukti paling awal dan dikemukakan oleh
+\href{https://en.wikipedia.org/wiki/Oresme}{Nicole Oresme}
+(1323?--1382).}.
+
+Bukti: Kita akan menunjukkan bahwa barisan jumlah parsial tak terbatas, sehingga
+tidak mungkin konvergen.
+Tuliskan jumlah parsial $s_n$ untuk $n = 2^k$ sebagai berikut:
+\begin{align*}
+ s_1 & = 1 , \\
+ s_2 & = \left( 1 \right) + \left( \frac{1}{2} \right) , \\
+ s_4 & = \left( 1 \right) + \left( \frac{1}{2} \right) +
+        \left( \frac{1}{3} + \frac{1}{4} \right) , \\
+ s_8 & = \left( 1 \right) + \left( \frac{1}{2} \right) +
+        \left( \frac{1}{3} + \frac{1}{4} \right) +
+        \left( \frac{1}{5} + \frac{1}{6} + \frac{1}{7} + \frac{1}{8} \right) , \\
+& ~~ \vdots \\
+ s_{2^k} & = 
+1 + 
+\sum_{i=1}^k
+\left(
+\sum_{m=2^{i-1}+1}^{2^i} \frac{1}{m}
+\right) .
+\end{align*}
+Perhatikan bahwa $\nicefrac{1}{3} + \nicefrac{1}{4} \geq \nicefrac{1}{4} + \nicefrac{1}{4} =
+\nicefrac{1}{2}$ dan
+$\nicefrac{1}{5} + \nicefrac{1}{6} + \nicefrac{1}{7} + \nicefrac{1}{8}
+\geq \nicefrac{1}{8} + \nicefrac{1}{8} + \nicefrac{1}{8} + \nicefrac{1}{8} =
+\nicefrac{1}{2}$.  Secara lebih umum,
+\begin{equation*}
+\sum_{m=2^{k-1}+1}^{2^k} \frac{1}{m}
+\geq
+\sum_{m=2^{k-1}+1}^{2^k} \frac{1}{2^k}
+=
+(2^{k-1}) \frac{1}{2^k} = \frac{1}{2} .
+\end{equation*}
+Oleh karena itu,
+\begin{equation*}
+s_{2^k} = 
+1 + 
+\sum_{i=1}^k
+\left(
+\sum_{m=2^{i-1}+1}^{2^i} \frac{1}{m}
+\right) 
+\geq
+1 + \sum_{i=1}^k \frac{1}{2} = 1 + \frac{k}{2} .
+\end{equation*}
+Karena $\{ \nicefrac{k}{2} \}_{k=1}^\infty$ tak terbatas berdasarkan
+\hyperref[thm:arch:i]{Sifat Archimedes},
+$\{ s_{2^k} \}_{k=1}^\infty$ tak terbatas,
+sehingga $\{ s_n \}_{n=1}^\infty$ juga tak terbatas.
+Jadi, $\{ s_n \}_{n=1}^\infty$ divergen, dan akibatnya $\sum_{n=1}^\infty \nicefrac{1}{n}$ divergen.
+\end{example}
+
+Seperti jumlah berhingga, deret konvergen berperilaku linear.
+Artinya, kita dapat mengalikannya dengan konstanta
+dan menjumlahkannya, dan operasi-operasi ini dilakukan suku demi suku.
+
+\begin{prop}[Linearitas deret]\index{linearitas deret}
+Misalkan $\alpha \in \R$, sedangkan $\sum_{n=1}^\infty x_n$ dan $\sum_{n=1}^\infty y_n$ adalah
+deret konvergen.  Maka
+\begin{enumerate}[(i)]
+\item
+$\sum_{n=1}^\infty \alpha x_n$ adalah deret konvergen dan
+\begin{equation*}
+\sum_{n=1}^\infty \alpha x_n
+=
+\alpha \sum_{n=1}^\infty x_n .
+\end{equation*}
+\item
+$\sum_{n=1}^\infty ( x_n + y_n )$ adalah deret konvergen dan
+\begin{equation*}
+\sum_{n=1}^\infty ( x_n + y_n ) 
+=
+\left( \sum_{n=1}^\infty x_n \right)
++
+\left( \sum_{n=1}^\infty y_n \right) .
+\end{equation*}
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Untuk butir pertama,
+kita cukup menuliskan jumlah parsial ke-$k$:
+\begin{equation*}
+\sum_{n=1}^k \alpha x_n
+=
+\alpha \left( \sum_{n=1}^k x_n \right) .
+\end{equation*}
+Kita meninjau ruas kanan dan memperhatikan bahwa kelipatan konstan dari
+barisan konvergen
+bersifat konvergen.  Dengan demikian, kita mengambil limit kedua ruas untuk memperoleh
+hasil tersebut.
+
+Untuk butir kedua, kita juga meninjau
+jumlah parsial ke-$k$:
+\begin{equation*}
+\sum_{n=1}^k ( x_n + y_n ) 
+=
+\left( \sum_{n=1}^k x_n \right)
++
+\left( \sum_{n=1}^k y_n \right) .
+\end{equation*}
+Kita meninjau ruas kanan dan memperhatikan bahwa jumlah barisan-barisan konvergen
+bersifat konvergen.  Dengan demikian, kita mengambil limit kedua ruas untuk memperoleh
+proposisi tersebut.
+\end{proof}
+
+Contoh penerapan berguna dari butir pertama adalah rumus
+berikut.  Jika $\sabs{r} < 1$ dan $i \in \N$, maka
+\begin{equation*}
+\sum_{n=i}^\infty r^n = \frac{r^i}{1-r} .
+\end{equation*}
+Rumus tersebut diperoleh dengan menggunakan deret geometri dan mengalikannya dengan
+$r^i$:
+\begin{equation*}
+r^i \sum_{n=0}^\infty r^n =
+\sum_{n=0}^\infty r^{n+i}
+=
+\sum_{n=i}^\infty r^n .
+\end{equation*}
+
+Mengalikan deret tidak sesederhana menjumlahkannya; lihat bagian
+berikutnya.
+Tentu saja, kita tidak mengalikannya
+suku demi suku.  Cara tersebut bahkan tidak berlaku untuk jumlah berhingga:
+$(a+b)(c+d) \neq ac+bd$.
+
+\subsection{Konvergensi mutlak}
+
+Karena barisan monoton lebih mudah ditangani daripada barisan sebarang,
+deret $\sum_{n=1}^\infty x_n$ dengan $x_n \geq 0$ untuk semua $n$
+umumnya juga lebih mudah ditangani.  Barisan jumlah parsialnya monoton naik
+dan konvergen jika terbatas di atas.
+Mari kita nyatakan pernyataan ini secara formal sebagai proposisi.
+
+\begin{prop}
+Jika $x_n \geq 0$ untuk semua $n$, maka $\sum_{n=1}^\infty x_n$ konvergen jika dan hanya jika
+barisan jumlah parsialnya terbatas di atas.
+\end{prop}
+
+Limit barisan monoton naik adalah supremumnya.
+Jadi, ketika $x_n \geq 0$ untuk semua $n$, kita memperoleh
+ketaksamaan
+\begin{equation*}
+\sum_{n=1}^k x_n \leq
+\sum_{n=1}^\infty x_n .
+\end{equation*}
+Jika kita memperbolehkan limit tak hingga, ketaksamaan tersebut tetap
+berlaku bahkan ketika deret divergen menuju tak hingga, meskipun dalam hal itu
+ketaksamaan tersebut tidak terlalu berguna.
+
+Kita akan melihat bahwa kriteria umum berikut untuk kekonvergenan deret 
+berdampak besar pada cara deret dapat dimanipulasi.
+
+\begin{defn}
+Deret $\sum_{n=1}^\infty x_n$
+\emph{\myindex{konvergen mutlak}}\index{konvergensi mutlak} jika
+deret $\sum_{n=1}^\infty \sabs{x_n}$ konvergen.
+Jika suatu deret konvergen tetapi tidak konvergen mutlak, kita mengatakan bahwa
+deret tersebut \emph{\myindex{konvergen bersyarat}}.\index{konvergensi bersyarat}
+\end{defn}
+
+\begin{prop}
+Jika deret $\sum_{n=1}^\infty x_n$ konvergen mutlak, maka deret tersebut konvergen.
+\end{prop}
+
+\begin{proof}
+Suatu deret konvergen jika dan hanya jika deret tersebut bersifat Cauchy.
+Misalkan $\sum_{n=1}^\infty \sabs{x_n}$ bersifat Cauchy.  Artinya, untuk setiap $\epsilon > 0$,
+terdapat $M$ sedemikian sehingga untuk semua $k \geq M$ dan semua $n > k$, berlaku 
+\begin{equation*}
+\sum_{i=k+1}^n \sabs{x_i} 
+=
+\abs{ \sum_{i=k+1}^n \sabs{x_i} }
+<
+\epsilon .
+\end{equation*}
+Kita menerapkan ketaksamaan segitiga untuk jumlah berhingga dan memperoleh
+\begin{equation*}
+\abs{ \sum_{i=k+1}^n x_i }
+\leq
+\sum_{i=k+1}^n \sabs{x_i}
+<
+\epsilon .
+\end{equation*}
+Dengan demikian, $\sum_{n=1}^\infty x_n$ bersifat Cauchy, sehingga deret tersebut konvergen.
+\end{proof}
+
+Jika $\sum_{n=1}^\infty x_n$ konvergen mutlak, limit
+$\sum_{n=1}^\infty x_n$ dan $\sum_{n=1}^\infty \sabs{x_n}$ pada umumnya berbeda.  Menghitung yang satu
+tidak membantu kita menghitung yang lain.  Namun, perhitungan di atas menghasilkan
+ketaksamaan yang berguna untuk deret konvergen mutlak,
+yaitu versi deret dari ketaksamaan segitiga,
+yang pembuktiannya kita serahkan sebagai latihan:
+\begin{equation*}
+\abs{ \sum_{i=1}^\infty x_i }
+\leq
+\sum_{i=1}^\infty \sabs{x_i} .
+\end{equation*}
+
+Deret konvergen mutlak mempunyai banyak sifat yang baik.
+Sebagai contoh, deret konvergen mutlak
+dapat disusun ulang secara sebarang, atau deret-deret semacam itu dapat
+dikalikan dengan mudah.  Sebaliknya, deret konvergen bersyarat
+sering kali tidak berperilaku seperti yang diharapkan.  Lihat bagian berikutnya.
+
+Kita serahkan sebagai latihan untuk menunjukkan bahwa
+\begin{equation*}
+\sum_{n=1}^\infty \frac{{(-1)}^n}{n}
+\end{equation*}
+konvergen, meskipun pembaca sebaiknya menyelesaikan bagian ini sebelum mencobanya.
+Di sisi lain, kita telah membuktikan bahwa
+\begin{equation*}
+\sum_{n=1}^\infty \frac{1}{n}
+\end{equation*}
+divergen.  Oleh karena itu,
+$\sum_{n=1}^\infty \frac{{(-1)}^n}{n}$ merupakan deret konvergen bersyarat.
+
+\subsection{Uji perbandingan dan deret-\texorpdfstring{$p$}{p}}
+
+Kita telah mencatat bahwa agar deret dengan suku-suku positif konvergen,
+suku-sukunya tidak hanya harus menuju nol, tetapi harus menuju nol
+\myquote{cukup cepat.}  Jika kita mengetahui kekonvergenan suatu deret,
+kita dapat menggunakan uji perbandingan berikut untuk melihat apakah suku-suku deret
+lain menuju nol \myquote{cukup cepat.}
+
+\begin{samepage}
+\begin{prop}[Uji perbandingan]\index{uji perbandingan untuk deret}
+Misalkan $\sum_{n=1}^\infty x_n$ dan $\sum_{n=1}^\infty y_n$ adalah deret sedemikian sehingga $0 \leq x_n \leq y_n$
+untuk semua $n \in \N$.
+\begin{enumerate}[(i)]
+\item Jika $\sum_{n=1}^\infty y_n$ konvergen, maka $\sum_{n=1}^\infty x_n$ juga konvergen.
+\item Jika $\sum_{n=1}^\infty x_n$ divergen, maka $\sum_{n=1}^\infty y_n$ juga divergen.
+\end{enumerate}
+\end{prop}
+\end{samepage}
+
+\begin{proof}
+Karena semua suku deret tersebut tak negatif, kedua barisan
+jumlah parsialnya monoton naik.
+Karena $x_n \leq y_n$ untuk semua $n$, jumlah-jumlah parsialnya
+memenuhi, untuk semua $k$,
+\begin{equation} \label{comptest:eq}
+\sum_{n=1}^k x_n \leq \sum_{n=1}^k y_n .
+\end{equation}
+Jika deret $\sum_{n=1}^\infty y_n$ konvergen, jumlah-jumlah parsial deret tersebut
+terbatas.  Oleh karena itu, ruas kanan \eqref{comptest:eq}
+terbatas untuk semua $k$; terdapat $B \in \R$ sedemikian sehingga
+$\sum_{n=1}^k y_n \leq B$ untuk semua $k$, sehingga
+\begin{equation*}
+\sum_{n=1}^k x_n \leq \sum_{n=1}^k y_n \leq B.
+\end{equation*}
+Dengan demikian, jumlah-jumlah parsial untuk $\sum_{n=1}^\infty x_n$
+juga terbatas.  Karena jumlah-jumlah parsial tersebut membentuk barisan monoton naik,
+barisan itu konvergen.  Jadi, butir pertama telah dibuktikan.
+
+Di sisi lain, jika $\sum_{n=1}^\infty x_n$ divergen, barisan jumlah parsialnya
+harus tak terbatas karena monoton naik.  Artinya, jumlah-jumlah parsial
+$\sum_{n=1}^\infty x_n$ pada akhirnya lebih besar daripada sebarang bilangan real.  Dengan menggabungkan hal ini
+dengan \eqref{comptest:eq}, kita melihat bahwa untuk setiap $B \in
+\R$, terdapat $k$ sedemikian sehingga 
+\begin{equation*}
+B \leq \sum_{n=1}^k x_n \leq \sum_{n=1}^k y_n .
+\end{equation*}
+Dengan demikian, jumlah-jumlah parsial untuk $\sum_{n=1}^\infty y_n$ juga tak terbatas, dan
+$\sum_{n=1}^\infty y_n$ juga divergen.
+\end{proof}
+
+Deret yang berguna untuk diterapkan bersama uji perbandingan adalah
+deret-$p$%
+\footnote{Kita belum mendefinisikan $x^p$ untuk $x > 0$ dan
+sebarang $p \in \R$.  Definisinya adalah $x^p \coloneqq \exp ( p \ln x )$.
+Kita akan mendefinisikan logaritma dan eksponensial dalam \sectionref{sec:logandexp}.
+Untuk sementara, Anda dapat memikirkan $p$ rasional,
+dengan $x^{k/m} = {(x^{1/m})}^{k}$.  Lihat juga \exerciseref{exercise:realpower}.}.
+
+\begin{prop}[Deret-$p$ atau uji-$p$]%
+\index{deret-p@deret-$p$}\index{uji-p@uji-$p$}
+Untuk $p \in \R$, 
+deret
+\begin{equation*}
+\sum_{n=1}^\infty \frac{1}{n^p}
+\end{equation*}
+konvergen jika dan hanya jika $p > 1$.
+\end{prop}
+
+\begin{proof}
+Pertama, misalkan $p \leq 1$.
+Karena $n \geq 1$, berlaku
+$\frac{1}{n^p} \geq \frac{1}{n}$.  Karena
+$\sum_{n=1}^\infty \frac{1}{n}$ divergen,
+$\sum_{n=1}^\infty \frac{1}{n^p}$ harus divergen untuk semua $p \leq 1$ berdasarkan uji perbandingan.
+
+Sekarang, misalkan $p > 1$.
+Kita melanjutkan seperti pada
+deret harmonik, tetapi alih-alih menunjukkan bahwa barisan
+jumlah parsial tak terbatas, kita menunjukkan bahwa barisan tersebut terbatas.
+Suku-suku deretnya positif, sehingga barisan jumlah parsial
+monoton naik dan konvergen jika terbatas
+di atas.
+Misalkan $s_n$ menyatakan jumlah parsial ke-$n$.
+\begin{align*}
+ s_1 & = 1 , \\
+ s_3 & = \left( 1 \right) + \left( \frac{1}{2^p} + \frac{1}{3^p} \right) , \\
+ s_7 & = \left( 1 \right) + \left( \frac{1}{2^p} + \frac{1}{3^p} \right) +
+        \left( \frac{1}{4^p} + \frac{1}{5^p} + \frac{1}{6^p} + \frac{1}{7^p} \right) , \\
+& ~~ \vdots \\
+ s_{2^k - 1} &= 
+1 + 
+\sum_{i=1}^{k-1}
+\left(
+\sum_{m=2^i}^{2^{i+1}-1} \frac{1}{m^p}
+\right) .
+\end{align*}
+Alih-alih menaksir dari bawah, kita menaksir dari atas.
+Karena $p$ positif, $2^p < 3^p$, sehingga
+$\frac{1}{2^p} + \frac{1}{3^p} <
+\frac{1}{2^p} + \frac{1}{2^p}$.  Demikian pula,
+$\frac{1}{4^p} + \frac{1}{5^p} +
+\frac{1}{6^p} + \frac{1}{7^p} <
+\frac{1}{4^p} + \frac{1}{4^p} +
+\frac{1}{4^p} + \frac{1}{4^p}$.  Oleh karena itu,
+untuk semua $k \geq 2$,
+\begin{equation*}
+\begin{split}
+s_{2^k-1}
+& =
+1+
+\sum_{i=1}^{k-1}
+\left(
+\sum_{m=2^{i}}^{2^{i+1}-1} \frac{1}{m^p}
+\right) 
+\\
+& <
+1+
+\sum_{i=1}^{k-1}
+\left(
+\sum_{m=2^{i}}^{2^{i+1}-1} \frac{1}{{(2^i)}^p}
+\right) 
+\\
+& =
+1+
+\sum_{i=1}^{k-1}
+\left(
+\frac{2^i}{{(2^i)}^p}
+\right) 
+\\
+& =
+1+
+\sum_{i=1}^{k-1}
+{\left(
+\frac{1}{2^{p-1}}
+\right)}^i .
+\end{split}
+\end{equation*}
+Karena $p > 1$, berlaku $\frac{1}{2^{p-1}} < 1$.
+\propref{geometric:prop} menyatakan bahwa
+\begin{equation*}
+\sum_{i=1}^\infty
+{\left(
+\frac{1}{2^{p-1}}
+\right)}^i
+\end{equation*}
+konvergen.  Jadi,
+\begin{equation*}
+s_{2^k-1} < 
+1+
+\sum_{i=1}^{k-1}
+{\left(
+\frac{1}{2^{p-1}}
+\right)}^i 
+\leq 
+1+
+\sum_{i=1}^\infty
+{\left(
+\frac{1}{2^{p-1}}
+\right)}^i .
+\end{equation*}
+Untuk setiap $n$, terdapat $k \geq 2$ sedemikian sehingga $n \leq 2^k-1$, dan
+karena $\{ s_n \}_{n=1}^\infty$ merupakan barisan monoton, $s_n \leq s_{2^k-1}$.
+Jadi, untuk semua $n$,
+\begin{equation*}
+s_n < 
+1+
+\sum_{i=1}^\infty
+{\left(
+\frac{1}{2^{p-1}}
+\right)}^i
+\end{equation*}
+Dengan demikian, barisan jumlah parsial terbatas dan deret tersebut konvergen.
+\end{proof}
+
+Baik uji deret-$p$ maupun uji perbandingan tidak
+memberi tahu kita nilai limit jumlahnya.  Keduanya hanya memberi tahu bahwa limit
+jumlah-jumlah parsial ada.  Sebagai contoh, meskipun kita mengetahui bahwa
+$\sum_{n=1}^\infty \nicefrac{1}{n^2}$ konvergen, jauh lebih sulit untuk
+menemukan\footnote{Pembuktian fakta inilah yang
+membuat matematikawan Swiss
+\href{https://en.wikipedia.org/wiki/Leonhard_Euler}{Leonhard Euler}
+(1707--1783)
+terkenal.}
+bahwa limitnya adalah $\nicefrac{\pi^2}{6}$.
+Jika kita memperlakukan $\sum_{n=1}^\infty \nicefrac{1}{n^p}$ sebagai fungsi dari $p$,
+kita memperoleh fungsi $\zeta$ (zeta) Riemann.  Kajian mengenai
+perilaku fungsi ini mencakup
+salah satu masalah tak terpecahkan paling terkenal dalam matematika saat ini dan memiliki penerapan
+dalam bidang yang tampaknya tidak berkaitan, seperti kriptografi modern.
+
+\begin{example}
+Deret $\sum_{n=1}^\infty \frac{1}{n^2+1}$ konvergen.
+
+Bukti: Pertama, $\frac{1}{n^2+1} < \frac{1}{n^2}$ untuk semua $n \in \N$.
+Deret $\sum_{n=1}^\infty \frac{1}{n^2}$ konvergen berdasarkan uji deret-$p$.
+Oleh karena itu, berdasarkan uji perbandingan, $\sum_{n=1}^\infty \frac{1}{n^2+1}$ konvergen.
+\end{example}
+
+\subsection{Uji rasio}
+
+Misalkan $r > 0$.  Rasio dua suku berurutan dalam deret geometri
+$\sum_{n=0}^\infty r^n$ adalah $\frac{r^{n+1}}{r^n} = r$, dan deret tersebut konvergen
+setiap kali $r < 1$.  Seperti pada barisan, fakta ini
+dapat diperumum untuk deret yang lebih umum
+asalkan rasio semacam itu ada \myquote{dalam limit.}  Kemudian kita membandingkan
+ekor suatu deret dengan deret geometri.
+
+
+\begin{prop}[Uji rasio]\index{uji rasio untuk deret}
+Misalkan $\sum_{n=1}^\infty x_n$ adalah suatu deret dengan $x_n \neq 0$ untuk semua $n$, dan misalkan
+\begin{equation*}
+L \coloneqq \lim_{n\to\infty} \frac{\sabs{x_{n+1}}}{\sabs{x_n}}
+\qquad \text{ada.}
+\end{equation*}
+\begin{enumerate}[(i)]
+\item
+Jika $L < 1$, maka $\sum_{n=1}^\infty x_n$ konvergen mutlak.
+\item
+Jika $L > 1$, maka $\sum_{n=1}^\infty x_n$ divergen.
+\end{enumerate}
+\end{prop}
+
+Meskipun uji sebagaimana dinyatakan di atas sering kali memadai, uji tersebut dapat sedikit
+diperkuat; lihat \exerciseref{exercise:strongerratiotest}.
+
+\begin{proof}
+Jika $L > 1$, maka
+\lemmaref{seq:ratiotest} menyatakan bahwa barisan $\{ x_n \}_{n=1}^\infty$
+divergen.  Karena syarat perlu bagi kekonvergenan deret adalah
+suku-sukunya menuju nol, kita mengetahui bahwa $\sum_{n=1}^\infty x_n$ harus divergen.
+
+Jadi, misalkan $L < 1$.
+Kita akan menunjukkan bahwa $\sum_{n=1}^\infty \sabs{x_n}$ harus konvergen.
+Buktinya serupa dengan bukti \lemmaref{seq:ratiotest}.  Tentu saja $L \geq
+0$.  
+Pilih
+$r$ sedemikian sehingga $L < r < 1$.  Karena $r-L > 0$, terdapat $M \in \N$ sedemikian sehingga untuk
+semua $n \geq M$,
+\begin{equation*}
+\abs{\frac{\sabs{x_{n+1}}}{\sabs{x_n}} - L} < r-L .
+\end{equation*}
+Oleh karena itu,
+\begin{equation*}
+\frac{\sabs{x_{n+1}}}{\sabs{x_n}} < r .
+\end{equation*}
+Untuk $n > M$ (yaitu untuk $n \geq M+1$),
+tuliskan
+\begin{equation*}
+\sabs{x_n} =
+\sabs{x_M}
+\frac{\sabs{x_{M+1}}}{\sabs{x_{M}}}
+\frac{\sabs{x_{M+2}}}{\sabs{x_{M+1}}}
+\cdots
+\frac{\sabs{x_{n}}}{\sabs{x_{n-1}}}
+<
+\sabs{x_M}
+r r \cdots r = \sabs{x_M} r^{n-M} =
+\bigl(\sabs{x_M} r^{-M}\bigr) r^n .
+\end{equation*}
+Untuk $k > M$, tuliskan jumlah parsial sebagai
+\begin{equation*}
+\begin{split}
+\sum_{n=1}^k \sabs{x_n}
+& =
+\left(\sum_{n=1}^{M} \sabs{x_n} \right)
++
+\left(\sum_{n=M+1}^{k} \sabs{x_n} \right)
+\\
+& <
+\left(\sum_{n=1}^{M} \sabs{x_n} \right)
++
+\left(\sum_{n=M+1}^{k} 
+\bigl(\sabs{x_M} r^{-M}\bigr) r^n
+\right)
+\\
+& =
+\left(\sum_{n=1}^{M} \sabs{x_n} \right)
++
+\bigl(\sabs{x_M} r^{-M}\bigr)
+\left( \sum_{n=M+1}^{k} r^n \right) .
+\end{split}
+\end{equation*}
+Karena $0 < r < 1$, deret geometri
+$\sum_{n=0}^{\infty} r^n$ konvergen, sehingga
+$\sum_{n=M+1}^{\infty} r^n$ juga konvergen.  Kita mengambil
+limit ketika $k$ menuju tak hingga pada ruas kanan di atas dan memperoleh
+\begin{equation*}
+\begin{split}
+\sum_{n=1}^k \sabs{x_n}
+& <
+\left(\sum_{n=1}^{M} \sabs{x_n} \right)
++
+\bigl(\sabs{x_M} r^{-M}\bigr)
+\left( \sum_{n=M+1}^{k} r^n \right) 
+\\
+& \leq
+\left(\sum_{n=1}^{M} \sabs{x_n} \right)
++
+\bigl(\sabs{x_M} r^{-M}\bigr)
+\left( \sum_{n=M+1}^{\infty} r^n \right) .
+\end{split}
+\end{equation*}
+Ruas kanan merupakan bilangan yang tidak bergantung pada $k$.
+Dengan demikian, barisan jumlah parsial $\sum_{n=1}^\infty \sabs{x_n}$ terbatas
+dan $\sum_{n=1}^\infty \sabs{x_n}$ konvergen.  Jadi, $\sum_{n=1}^\infty x_n$
+konvergen mutlak.
+\end{proof}
+
+\begin{example}
+Deret
+\begin{equation*}
+\sum_{n=1}^\infty \frac{2^n}{n!}
+\end{equation*}
+konvergen mutlak.
+
+Bukti: Kita tuliskan
+\begin{equation*}
+\lim_{n\to\infty} \frac{2^{(n+1)}/(n+1)!}{2^n / n!} =
+\lim_{n\to\infty} \frac{2}{n+1} = 0 .
+\end{equation*}
+Oleh karena itu, deret tersebut konvergen mutlak berdasarkan uji rasio.
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Misalkan jumlah parsial ke-$k$ dari $\displaystyle \sum_{n=1}^\infty x_n$ adalah $s_k = \frac{k}{k+1}$.
+Tentukan deret tersebut (yaitu tentukan $x_n$), buktikan bahwa deret tersebut konvergen, lalu
+tentukan limitnya.
+\end{exercise}
+
+\begin{exercise} \label{geometric:exr}
+Buktikan \propref{geometric:prop}; yaitu, untuk $-1 < r < 1$, buktikan
+\begin{equation*}
+\sum_{n=0}^\infty r^n = \frac{1}{1-r} .
+\end{equation*}
+Petunjuk: Lihat \exampleref{example:geometricsum}.
+\end{exercise}
+
+\begin{exercise}
+Tentukan kekonvergenan atau kedivergenan deret-deret berikut.
+
+\medskip
+
+\noindent
+a)
+$\displaystyle \sum_{n=1}^\infty \frac{3}{9n+1}$
+\qquad
+b)
+$\displaystyle \sum_{n=1}^\infty \frac{1}{2n-1}$
+\qquad
+c)
+$\displaystyle \sum_{n=1}^\infty \frac{{(-1)}^n}{n^2}$
+\qquad
+d)
+$\displaystyle \sum_{n=1}^\infty \frac{1}{n(n+1)}$
+\qquad
+e)
+$\displaystyle \sum_{n=1}^\infty n e^{-n^2}$
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item Buktikan bahwa jika
+$\displaystyle
+\sum_{n=1}^\infty x_n
+$
+konvergen, maka
+$\displaystyle
+\sum_{n=1}^\infty ( x_{2n} + x_{2n+1} )
+$
+deret tersebut juga konvergen.
+\item
+Berikan contoh eksplisit ketika kebalikannya tidak berlaku.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Untuk $i=1,2,\ldots,n$, misalkan $\{ x_{i,k} \}_{k=1}^\infty$ menyatakan $n$
+barisan.  Misalkan bahwa untuk setiap $i$,
+\begin{equation*}
+\sum_{k=1}^\infty x_{i,k}
+\end{equation*}
+konvergen.  Buktikan
+\begin{equation*}
+\sum_{i=1}^n \left( \sum_{k=1}^\infty x_{i,k} \right)
+=
+\sum_{k=1}^\infty \left( \sum_{i=1}^n x_{i,k} \right) .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise} \label{exercise:strongerratiotest}
+Buktikan versi uji rasio yang lebih kuat berikut:
+Misalkan $\sum_{n=1}^\infty x_n$ adalah deret.
+\begin{enumerate}[a)]
+\item
+Jika terdapat $N$ dan $\rho < 1$ sedemikian sehingga
+$\frac{\sabs{x_{n+1}}}{\sabs{x_n}} < \rho$ untuk semua $n \geq N$,
+maka deret tersebut konvergen mutlak.
+(Catatan: Secara ekuivalen, syarat ini dapat dinyatakan sebagai
+$\limsup\limits_{n\to\infty} \frac{\sabs{x_{n+1}}}{\sabs{x_n}} < 1$.)
+\item
+Jika terdapat $N$ sedemikian sehingga
+$\frac{\sabs{x_{n+1}}}{\sabs{x_n}} \geq 1$
+untuk semua $n \geq N$,
+maka deret tersebut divergen. 
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan menurun dan
+$\sum_{n=1}^\infty x_n$ konvergen.
+Buktikan $\displaystyle \lim_{n\to\infty} n x_n = 0$.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa $\displaystyle \sum_{n=1}^\infty \frac{{(-1)}^n}{n}$ konvergen.
+Petunjuk: Tinjau jumlah dua suku berurutan.
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item Buktikan bahwa jika $\sum_{n=1}^\infty x_n$ dan $\sum_{n=1}^\infty y_n$ konvergen mutlak, maka
+$\sum_{n=1}^\infty x_ny_n$ konvergen mutlak.
+\item Berikan contoh eksplisit ketika kebalikannya tidak berlaku.
+\item Berikan contoh eksplisit ketika ketiga deret tersebut konvergen mutlak,
+bukan sekadar jumlah berhingga,
+dan $\left(\sum_{n=1}^\infty x_n\right)\left(\sum_{n=1}^\infty y_n\right)
+\neq \sum_{n=1}^\infty x_ny_n$.  Artinya, tunjukkan bahwa deret tidak
+dikalikan suku demi suku.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Buktikan ketaksamaan segitiga untuk deret:
+Jika $\sum_{n=1}^\infty x_n$ konvergen mutlak, maka
+\begin{equation*}
+\abs{\sum_{n=1}^\infty x_n} \leq
+\sum_{n=1}^\infty \sabs{x_n} .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Buktikan \emph{\myindex{uji perbandingan limit}}.  Artinya, buktikan bahwa jika
+$a_n > 0$ dan $b_n > 0$ untuk semua $n$, dan
+\begin{equation*}
+0 < \lim_{n\to\infty} \frac{a_n}{b_n} < \infty ,
+\end{equation*}
+maka $\sum_{n=1}^\infty a_n$ dan $\sum_{n=1}^\infty b_n$ keduanya konvergen atau keduanya divergen.
+\end{exercise}
+
+\begin{exercise} \label{exercise:badnocauchy}
+Misalkan $x_n \coloneqq \sum_{i=1}^n \nicefrac{1}{i}$.  Tunjukkan bahwa untuk setiap $k$,
+kita memperoleh
+$\displaystyle \lim_{n\to\infty} \sabs{x_{n+k}-x_n} = 0$, namun
+$\{ x_n \}_{n=1}^\infty$ bukan barisan Cauchy.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Misalkan $s_k$ adalah jumlah parsial ke-$k$ dari $\sum_{n=1}^\infty x_n$.
+\begin{enumerate}[a)]
+\item
+Misalkan terdapat $m \in \N$ sedemikian sehingga $\lim\limits_{k\to\infty}
+s_{mk}$ ada dan $\lim\limits_{n\to\infty} x_n = 0$.  Tunjukkan bahwa
+$\sum_{n=1}^\infty x_n$ konvergen.
+\item
+Berikan contoh ketika $\lim\limits_{k\to\infty} s_{2k}$ ada dan
+$\lim\limits_{n\to\infty} x_n \neq 0$ (sehingga $\sum_{n=1}^\infty x_n$ divergen).
+\item
+(Menantang) Berikan contoh ketika $\lim_{n\to\infty} x_n = 0$, dan terdapat
+subbarisan $\{ s_{k_i} \}_{i=1}^\infty$ sedemikian sehingga $\displaystyle \lim_{i\to\infty} s_{k_i}$ ada,
+tetapi $\sum_{n=1}^\infty x_n$ tetap divergen.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise} \label{exercise:squareseriesconv}
+Misalkan $\sum_{n=1}^\infty x_n$ konvergen dan $x_n \geq 0$ untuk semua $n$.
+Buktikan bahwa $\sum_{n=1}^\infty x_n^2$ konvergen.
+\end{exercise}
+
+\begin{exercise}[Menantang] \label{exercise:cauchycondensation}
+Misalkan $\{ x_n\}_{n=1}^\infty$ adalah barisan menurun yang terdiri atas bilangan positif.
+Bukti kekonvergenan/kedivergenan deret-$p$ dapat diperumum.
+Buktikan
+\emph{\myindex{prinsip kondensasi Cauchy}}:
+\begin{equation*}
+\sum_{n=1}^\infty x_n
+\qquad \text{konvergen jika dan hanya jika} \qquad
+\sum_{n=1}^\infty 2^n x_{2^n} \qquad \text{konvergen}.
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Gunakan prinsip kondensasi Cauchy
+(lihat \exerciseref{exercise:cauchycondensation})
+untuk menentukan kekonvergenan deret-deret berikut:
+
+\medskip
+
+\noindent
+a) $\displaystyle \sum_{n=1}^\infty \frac{\ln n}{n^2}$
+\qquad
+b) $\displaystyle \sum_{n=2}^\infty \frac{1}{n \ln n}$
+\qquad
+c) $\displaystyle \sum_{n=2}^\infty \frac{1}{n {(\ln n)}^2}$
+\qquad
+d) $\displaystyle \sum_{n=2}^\infty \frac{1}{n (\ln n ){(\ln \ln n)}^2}$
+
+\medskip
+
+\noindent
+Perhatikan bahwa hanya ekor beberapa deret ini yang memenuhi
+hipotesis prinsip tersebut; jelaskan mengapa hal itu sudah memadai.
+
+\noindent
+Petunjuk: Anda boleh menggunakan identitas $\ln (2^n) = n \ln 2$.
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Buktikan \emph{\myindex{teorema Abel}}:
+
+\medskip
+
+\noindent
+\emph{\textbf{Teorema.} Misalkan $\sum_{n=1}^\infty x_n$ adalah deret yang barisan jumlah parsialnya
+terbatas, $\{ \lambda_n \}_{n=1}^\infty$ adalah barisan dengan
+$\lim_{n\to\infty} \lambda_n = 0$, dan
+$\sum_{n=1}^\infty \sabs{ \lambda_{n+1} - \lambda_n }$ konvergen.
+Maka $\sum_{n=1}^\infty \lambda_n x_n$ konvergen.}
+\end{exercise}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Lebih lanjut tentang deret}
+\label{sec:moreonseries}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{hingga 2--3 kuliah (opsional, dapat dilewati dengan aman atau dibahas sebagian)}
+
+\subsection{Uji akar}
+
+Uji yang serupa dengan uji rasio adalah
+\emph{\myindex{uji akar}}.  Bukti uji ini pun serupa.
+Sekali lagi, gagasannya adalah memperumum apa yang terjadi pada deret geometri.
+
+\begin{prop}[Uji akar]
+Misalkan $\sum_{n=1}^\infty x_n$ adalah deret dan misalkan
+\begin{equation*}
+L \coloneqq \limsup_{n\to\infty} {\sabs{x_n}}^{1/n} .
+\end{equation*}
+\begin{enumerate}[(i)]
+\item Jika $L < 1$, maka $\sum_{n=1}^\infty x_n$ konvergen mutlak.
+\item Jika $L > 1$, maka $\sum_{n=1}^\infty x_n$ divergen.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Jika $L > 1$, maka terdapat\footnote{%
+Untuk kasus $L=\infty$, lihat \exerciseref{exercise:extendsubseqlimsupinf}.
+Sebagai alternatif, perhatikan bahwa jika $L=\infty$, maka $\bigl\{ {\sabs{x_{n}}}^{1/n}
+\bigr\}_{n=1}^\infty$
+tak terbatas, sehingga
+$\{ x_n \}_{n=1}^\infty$ juga tak terbatas.}
+subbarisan $\{ x_{n_k} \}_{k=1}^\infty$ sedemikian sehingga
+$L = \lim_{k\to\infty} {\sabs{x_{n_k}}}^{1/n_k}$.  Misalkan
+$r$ sedemikian sehingga $L > r > 1$.  Terdapat $M$ sedemikian
+sehingga untuk semua $k \geq M$, berlaku 
+${\sabs{x_{n_k}}}^{1/n_k} > r > 1$, atau dengan kata lain,
+$\sabs{x_{n_k}} > r^{n_k} > 1$.
+Subbarisan 
+$\bigl\{ \sabs{x_{n_k}} \bigr\}_{k=1}^\infty$,
+dan karena itu juga
+$\bigl\{ \sabs{x_{n}} \bigr\}_{n=1}^\infty$,
+tidak mungkin konvergen ke nol, sehingga deret tersebut divergen.
+
+Sekarang, misalkan $L < 1$.  Pilih $r$ sedemikian sehingga $L < r < 1$.
+Berdasarkan definisi limit superior,
+terdapat $M$ sedemikian sehingga untuk semua $n \geq M$,
+\begin{equation*}
+\sup \bigl\{ {\sabs{x_k}}^{1/k} : k \geq n \bigr\} < r .
+\end{equation*}
+Oleh karena itu, untuk semua $n \geq M$,
+\begin{equation*}
+{\sabs{x_n}}^{1/n} < r , \qquad \text{atau dengan kata lain} \qquad \sabs{x_n} < r^n .
+\end{equation*}
+Misalkan $k > M$, lalu taksir jumlah parsial ke-$k$:
+\begin{equation*}
+\sum_{n=1}^k \sabs{x_n} = 
+\left( \sum_{n=1}^M \sabs{x_n} \right) + 
+\left( \sum_{n=M+1}^k \sabs{x_n} \right)
+\leq
+\left( \sum_{n=1}^M \sabs{x_n} \right) + 
+\left( \sum_{n=M+1}^k r^n \right) .
+\end{equation*}
+Karena $0 < r < 1$,
+deret geometri $\sum_{n=M+1}^\infty r^n$ konvergen ke
+$\frac{r^{M+1}}{1-r}$.  Karena semuanya positif,
+\begin{equation*}
+\sum_{n=1}^k \sabs{x_n} 
+\leq
+\left( \sum_{n=1}^M \sabs{x_n} \right) + 
+\frac{r^{M+1}}{1-r} .
+\end{equation*}
+Dengan demikian, barisan jumlah parsial dari deret $\sum_{n=1}^\infty \sabs{x_n}$ terbatas, dan
+deret tersebut konvergen.  Oleh karena itu, $\sum_{n=1}^\infty x_n$ konvergen mutlak.
+\end{proof}
+
+\subsection{Uji deret berselang-seling}
+
+Uji-uji yang telah kita lihat sejauh ini hanya membahas kekonvergenan mutlak.  Uji
+berikut menghasilkan banyak deret yang konvergen bersyarat.
+
+\begin{prop}[Deret berselang-seling]
+Misalkan $\{ x_n \}_{n=1}^\infty$ adalah barisan bilangan real positif yang monoton turun sedemikian
+sehingga $\lim\limits_{n\to\infty} x_n = 0$.  Maka
+\begin{equation*}
+\sum_{n=1}^\infty {(-1)}^n x_n \qquad \text{konvergen.}
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Misalkan $s_m \coloneqq \sum_{n=1}^m {(-1)}^n x_n$ adalah jumlah parsial ke-$m$.  Maka
+\begin{equation*}
+s_{2k} =
+\sum_{n=1}^{2k} {(-1)}^n x_n
+=
+(-x_1 + x_2) + \cdots + (-x_{2k-1} + x_{2k})
+=
+\sum_{\ell=1}^{k} (-x_{2\ell-1} + x_{2\ell}) .
+\end{equation*}
+Barisan $\{ x_n \}_{n=1}^\infty$ menurun, sehingga $(-x_{2\ell-1}+x_{2\ell}) \leq 0$
+untuk semua $\ell$.
+Dengan demikian, subbarisan $\{ s_{2k} \}_{k=1}^\infty$ dari jumlah-jumlah parsial
+merupakan barisan menurun.  Demikian pula, $(x_{2\ell}-x_{2\ell+1}) \geq 0$, sehingga
+\begin{equation*}
+s_{2k} = - x_1 + ( x_2 - x_3 ) + \cdots + ( x_{2k-2} - x_{2k-1} ) + x_{2k}
+\geq -x_1 .
+\end{equation*}
+Intuisi di balik batas
+$0 \geq s_{2k} \geq -x_1$ diilustrasikan dalam \figureref{fig:seralternate}.
+\begin{myfigureht}
+\myincludegraphics{ser-alternate}{%
+Sebuah diagram pada bidang yang menampilkan nilai-nilai barisan plus-minus x sub n
+untuk n dari 1 hingga 8.  Dengan garis penuh yang dimulai dari sumbu horizontal,
+tampak sebuah "grafik" minus x sub 1, x sub 2, minus x sub 3, x sub 4, dan seterusnya.
+Terlihat bahwa setiap garis penuh berikutnya lebih pendek
+karena setiap x sub n berikutnya lebih kecil daripada sebelumnya.  Dengan garis putus-putus,
+juga ditampilkan minus x sub 2, minus x sub 4, dan seterusnya.
+Selisih
+minus x sub 1 ditambah x sub 2,
+minus x sub 3 ditambah x sub 4,
+minus x sub 5 ditambah x sub 6,
+dan
+minus x sub 7 ditambah x sub 8 ditampilkan dan merupakan selisih
+antara minus x sub 1 dan minus x sub 2 yang bersesuaian.
+Perhatikan bahwa selisih-selisih ini hanya mengisi sebagian panjang total
+garis untuk minus x sub 1.}
+\caption{Menunjukkan bahwa $0 \geq s_{2k} \geq -x_1$ dengan $k=4$ untuk suatu deret berselang-seling.\label{fig:seralternate}}
+\end{myfigureht}
+
+Karena $\{ s_{2k} \}_{k=1}^\infty$ menurun dan terbatas di bawah, barisan tersebut konvergen.
+Misalkan $a \coloneqq \lim_{k\to\infty} s_{2k}$.
+Kita hendak menunjukkan bahwa $\lim_{m\to\infty} s_m = a$ (dan bukan hanya untuk subbarisan tersebut).
+Untuk $\epsilon > 0$, pilih $M$ sedemikian sehingga $\sabs{s_{2k}-a} <
+\nicefrac{\epsilon}{2}$ setiap kali $k \geq M$.
+Karena $\lim_{n\to\infty} x_n = 0$, kita juga dapat
+memperbesar $M$ jika perlu
+untuk memperoleh
+$x_{2k+1} < \nicefrac{\epsilon}{2}$ setiap kali $k \geq M$.  
+Misalkan $m \geq 2M+1$.  Jika $m=2k$, maka $k \geq M+\nicefrac{1}{2} \geq M$ dan
+$\sabs{s_{m}-a}=\sabs{s_{2k}-a} < \nicefrac{\epsilon}{2} < \epsilon$.
+Jika $m=2k+1$, maka $k \geq M$ juga.  Perhatikan bahwa
+$s_{2k+1} = s_{2k} - x_{2k+1}$.
+Jadi
+\begin{equation*}
+\sabs{s_{m}-a} = 
+\sabs{s_{2k+1}-a} = 
+\sabs{s_{2k}-a - x_{2k+1}} \leq
+\sabs{s_{2k}-a} + x_{2k+1} < 
+\nicefrac{\epsilon}{2}+ \nicefrac{\epsilon}{2} = \epsilon .  \qedhere
+\end{equation*}
+\end{proof}
+
+Patut diperhatikan bahwa terdapat deret yang konvergen bersyarat
+dengan nilai mutlak suku-sukunya menuju nol selambat apa pun.
+Deret
+\begin{equation*}
+\sum_{n=1}^\infty \frac{{(-1)}^n}{n^p}
+\end{equation*}
+konvergen untuk $p > 0$ yang sekecil apa pun, tetapi tidak konvergen
+mutlak ketika $p \leq 1$.
+
+\subsection{Penyusunan ulang}
+
+Deret yang konvergen mutlak berperilaku seperti yang kita harapkan.  Sebagai contoh,
+deret yang konvergen mutlak dapat dijumlahkan dalam urutan apa pun.  Hal semacam ini
+tidak berlaku untuk deret yang konvergen bersyarat
+(lihat \exampleref{example:harmonsumanything}
+dan \exerciseref{exercise:seriesconvergestoanything}).
+
+Perhatikan suatu deret
+\begin{equation*}
+\sum_{n=1}^\infty x_n .
+\end{equation*}
+Diberikan fungsi bijektif $\sigma \colon \N \to \N$, penyusunan
+ulang\index{penyusunan ulang deret} yang bersesuaian adalah
+deret:
+\begin{equation*}
+\sum_{k=1}^\infty x_{\sigma(k)} .
+\end{equation*}
+Kita cukup menjumlahkan deret tersebut dalam urutan yang berbeda.
+
+\begin{prop}
+Misalkan $\sum_{n=1}^\infty x_n$ merupakan deret konvergen mutlak yang konvergen ke suatu bilangan
+$x$.  Misalkan $\sigma \colon \N \to \N$ merupakan suatu bijeksi.  Maka
+$\sum_{n=1}^\infty x_{\sigma(n)}$ konvergen mutlak dan konvergen ke $x$.
+\end{prop}
+
+Dengan kata lain,
+setiap penyusunan ulang deret yang konvergen mutlak juga konvergen (secara mutlak)
+ke bilangan yang sama.
+
+\begin{proof}
+Ambil sebarang $\epsilon > 0$.  Karena $\sum_{n=1}^\infty x_n$ konvergen mutlak, ambil $M$ sedemikian sehingga
+\begin{equation*}
+\abs{\left(\sum_{n=1}^M x_n \right) - x} < \frac{\epsilon}{2}
+\qquad \text{dan} \qquad
+\sum_{n=M+1}^\infty \sabs{x_n} < \frac{\epsilon}{2} .
+\end{equation*}
+Karena $\sigma$ merupakan bijeksi,
+terdapat bilangan $K$ sedemikian sehingga untuk setiap
+$n \leq M$, terdapat $k \leq K$ sedemikian sehingga $\sigma(k) = n$.
+Dengan kata lain,
+$\{ 1,2,\ldots,M \} \subset \sigma\bigl(\{ 1,2,\ldots,K \} \bigr)$.
+
+Untuk $N \geq K$, misalkan $Q \coloneqq \max \sigma\bigl(\{ 1,2,\ldots,N \}\bigr)$.
+Hitung
+\begin{equation*}
+\begin{split}
+\abs{\left( \sum_{n=1}^N x_{\sigma(n)} \right) - x}
+& =
+\abs{ \left( \sum_{n=1}^M x_n
++
+\sum_{\substack{n=1\\\sigma(n) > M}}^N x_{\sigma(n)} \right) - x}
+\\
+& \leq
+\abs{ \left( \sum_{n=1}^M x_n \right) - x}
++
+\sum_{\substack{n=1\\\sigma(n) > M}}^N \sabs{x_{\sigma(n)}}
+\\
+& \leq
+\abs{ \left( \sum_{n=1}^M x_n \right) - x}
++
+\sum_{n=M+1}^Q \sabs{x_{n}}
+\\
+& < \nicefrac{\epsilon}{2} + \nicefrac{\epsilon}{2} = \epsilon .
+\end{split}
+\end{equation*}
+Jadi,
+$\sum_{n=1}^\infty x_{\sigma(n)}$ konvergen ke $x$.  Untuk melihat bahwa kekonvergenannya
+bersifat mutlak, kita terapkan argumen di atas pada $\sum_{n=1}^\infty \sabs{x_n}$ untuk menunjukkan
+bahwa $\sum_{n=1}^\infty \sabs{x_{\sigma(n)}}$ konvergen.
+\end{proof}
+
+\begin{example} \label{example:harmonsumanything}
+Mari kita tunjukkan bahwa deret harmonik berselang-seling
+$\sum_{n=1}^\infty \frac{{(-1)}^{n+1}}{n}$, yang tidak konvergen mutlak, dapat
+disusun ulang agar konvergen ke sebarang bilangan.
+Suku-suku berindeks ganjil dan suku-suku berindeks genap masing-masing divergen ke
+tak hingga positif dan tak hingga negatif (buktikanlah!):
+\begin{equation*}
+\sum_{m=1}^\infty \frac{1}{2m-1} = \infty, \qquad \text{dan} \qquad
+\sum_{m=1}^\infty \frac{-1}{2m} = -\infty .
+\end{equation*}
+Untuk menyederhanakan penulisan, misalkan $a_n \coloneqq \frac{{(-1)}^{n+1}}{n}$,
+ambil sebarang bilangan $L \in \R$, dan tetapkan $\sigma(1) \coloneqq 1$.
+Andaikan kita telah
+mendefinisikan $\sigma(n)$ untuk semua $n \leq N$.  Jika
+\begin{equation*}
+\sum_{n=1}^N a_{\sigma(n)} \leq L ,
+\end{equation*}
+maka tetapkan $\sigma(N+1) \coloneqq k$, dengan $k \in \N$ bilangan ganjil terkecil
+yang belum kita gunakan,
+yaitu $\sigma(n) \neq k$ untuk semua $n \leq N$.
+Jika tidak, tetapkan $\sigma(N+1) \coloneqq k$, dengan $k$
+bilangan genap terkecil yang belum kita gunakan.
+
+Menurut konstruksi, $\sigma \colon \N \to \N$ bersifat satu-satu.
+Fungsi ini juga surjektif, sebab jika kita terus menambahkan suku-suku berindeks ganjil (atau genap),
+pada akhirnya jumlah tersebut akan melewati $L$ dan kita beralih
+ke suku-suku berindeks genap (atau ganjil).  Jadi, kita beralih tak berhingga kali.
+
+Terakhir, misalkan $N$ adalah indeks ketika kita baru saja melewati $L$ lalu beralih.
+Andaikan kita baru saja beralih dari indeks ganjil ke indeks genap, sehingga kita mulai
+mengurangkan.
+Andaikan kita terus mengurangkan hingga suatu
+$N' > N$ dan akan beralih kembali dari indeks genap ke indeks ganjil pada langkah berikutnya.
+Maka
+\begin{equation*}
+L + \frac{1}{\sigma(N)} \geq \sum_{n=1}^{N} a_{\sigma(n)}
+> \sum_{n=1}^{N'} a_{\sigma(n)} > L- \frac{1}{\sigma(N')}.
+\end{equation*}
+Hal yang serupa berlaku ketika kita beralih ke arah sebaliknya.
+Oleh karena itu,
+jumlah hingga $N'$ berjarak kurang dari $\frac{1}{\min \{ \sigma(N), \sigma(N') \}}$
+terhadap $L$.  Karena
+kita beralih tak berhingga kali, $\sigma(N) \to \infty$
+dan $\sigma(N') \to \infty$. Dengan demikian,
+\begin{equation*}
+\sum_{n=1}^\infty a_{\sigma(n)} = 
+\sum_{n=1}^\infty \frac{{(-1)}^{\sigma(n)+1}}{\sigma(n)} = L .
+\end{equation*}
+
+Berikut adalah contoh untuk mengilustrasikan pembuktian tersebut.  Ketika $L=1.2$, urutannya
+adalah
+\begin{equation*}
+1+\nicefrac{1}{3}-\nicefrac{1}{2}+\nicefrac{1}{5}+\nicefrac{1}{7}+\nicefrac{1}{9}-\nicefrac{1}{4}+\nicefrac{1}{11}+\nicefrac{1}{13}-\nicefrac{1}{6}
++\nicefrac{1}{15}+\nicefrac{1}{17}+\nicefrac{1}{19} - \nicefrac{1}{8} + \cdots .
+\end{equation*}
+Pada tahap ini, jarak jumlah tersebut dari limit tidak lebih dari $\nicefrac{1}{8}$.
+Lihat \figureref{fig:serrearrange}.
+\begin{myfigureht}
+\myincludegraphics{ser-rearrange}{%
+Diagram suatu barisan yang digambarkan sebagai titik-titik.  Sebuah garis putus-putus horizontal ditampilkan.
+Barisan tersebut bermula di bawah garis putus-putus, lalu berada di atasnya pada
+langkah berikutnya.  Kemudian barisan itu kembali ke bawah garis putus-putus, lalu memerlukan beberapa langkah
+sebelum berada di atas garis putus-putus, dan langkah berikutnya kembali berada di bawah
+garis tersebut.  Demikian seterusnya.  Ukuran langkahnya semakin kecil.}
+\caption{Empat belas jumlah parsial pertama dari penyusunan ulang yang konvergen
+ke $1.2$.\label{fig:serrearrange}}
+\end{myfigureht}
+\end{example}
+
+\subsection{Perkalian deret}
+
+Seperti yang telah
+kita sebutkan,
+perkalian deret agak lebih sulit daripada penjumlahan.
+Jika setidaknya salah satu deret konvergen
+mutlak, kita dapat menggunakan teorema berikut.  Untuk hasil ini, lebih
+mudah jika deret dimulai dari 0, bukan dari 1.
+
+\begin{thm}[\myindex{teorema Mertens}\footnote{Dibuktikan oleh
+matematikawan Jerman
+\href{https://en.wikipedia.org/wiki/Franz_Mertens}{Franz Mertens}
+(1840--1927).}]
+Andaikan $\sum_{n=0}^\infty a_n$ dan $\sum_{n=0}^\infty b_n$ merupakan dua deret konvergen, yang masing-masing konvergen
+ke $A$ dan $B$.  Andaikan setidaknya salah satu deret tersebut
+konvergen mutlak.  Definisikan
+\begin{equation*}
+c_n \coloneqq a_0 b_n + a_1 b_{n-1} + \cdots + a_n b_0 = \sum_{i=0}^n a_i b_{n-i} .
+\end{equation*}
+Maka deret $\sum_{n=0}^\infty c_n$
+konvergen ke $AB$.
+\end{thm}
+
+Deret $\sum_{n=0}^\infty c_n$ disebut \emph{\myindex{hasil kali Cauchy}} dari
+$\sum_{n=0}^\infty a_n$ dan $\sum_{n=0}^\infty b_n$.
+
+\begin{proof}
+Andaikan $\sum_{n=0}^\infty a_n$ konvergen mutlak, dan ambil sebarang
+$\epsilon > 0$.
+Dalam pembuktian ini, daripada memilih taksiran yang rumit hanya agar
+taksiran akhirnya kurang dari $\epsilon$,
+mari kita peroleh suatu taksiran yang bergantung pada $\epsilon$
+dan dapat dibuat sekecil apa pun.
+
+Tuliskan
+\begin{equation*}
+A_m \coloneqq \sum_{n=0}^m a_n , \qquad B_m \coloneqq \sum_{n=0}^m b_n .
+\end{equation*}
+Kita susun ulang jumlah parsial ke-$m$ dari $\sum_{n=0}^\infty c_n$:
+\begin{equation*}
+\begin{split}
+\abs{\left(\sum_{n=0}^m c_n \right) - AB}
+& =
+\abs{\left( \sum_{n=0}^m \sum_{i=0}^n a_i b_{n-i} \right) - AB}
+\\
+& =
+\abs{\left( \sum_{n=0}^m
+  B_n a_{m-n} \right) - AB}
+\\
+& =
+\abs{\left( \sum_{n=0}^m
+  ( B_n -  B ) a_{m-n} \right)
+    + B A_m - AB}
+\\
+& \leq
+\left(
+\sum_{n=0}^m
+  \sabs{ B_n -  B } \sabs{a_{m-n}}
+\right)
++
+\sabs{B}\sabs{A_m - A}
+\end{split}
+\end{equation*}
+Suku kedua di ruas kanan tentu dapat kita buat kecil.
+Kuncinya adalah menangani suku pertama.
+Pilih $K$ sedemikian sehingga untuk semua $m \geq K$, berlaku
+$\sabs{A_m - A} < \epsilon$ dan
+juga
+$\sabs{B_m - B} < \epsilon$.
+Karena $\sum_{n=0}^\infty a_n$ konvergen mutlak,
+terdapat $K$ yang cukup besar sedemikian sehingga
+untuk semua $m \geq K$,
+\begin{equation*}
+\sum_{n=K}^m \sabs{a_n} < \epsilon .
+\end{equation*}
+Karena $\sum_{n=0}^\infty b_n$ konvergen,
+$B_{\text{max}} \coloneqq \sup \bigl\{ \sabs{ B_n - B } : n = 0,1,2,\ldots
+\bigr\}$
+berhingga.  Ambil $m \geq 2K$.
+Khususnya, $m-K+1 > K$.  Jadi,
+\begin{equation*}
+\begin{split}
+\sum_{n=0}^m
+  \sabs{ B_n -  B } \sabs{a_{m-n}}
+& =
+\left(
+\sum_{n=0}^{m-K}
+  \sabs{ B_n -  B } \sabs{a_{m-n}}
+\right)
++
+\left(
+\sum_{n=m-K+1}^m
+  \sabs{ B_n -  B } \sabs{a_{m-n}}
+\right)
+\\
+& \leq
+\left(
+\sum_{n=K}^m
+\sabs{a_{n}}
+\right)
+B_{\text{max}}
++
+\left(
+\sum_{n=0}^{K-1}
+  \epsilon \sabs{a_{n}}
+\right)
+\\
+& \leq
+\epsilon
+B_{\text{max}}
++
+\epsilon
+\left(
+\sum_{n=0}^\infty \sabs{a_{n}}
+\right) .
+\end{split}
+\end{equation*}
+Oleh karena itu, untuk $m \geq 2K$, kita peroleh
+\begin{equation*}
+\begin{split}
+\abs{\left(\sum_{n=0}^m c_n \right) - AB}
+& \leq
+\left(
+\sum_{n=0}^m
+  \sabs{ B_n -  B } \sabs{a_{m-n}}
+\right)
++
+\sabs{B}\sabs{A_m - A}
+\\
+& \leq
+\epsilon
+B_{\text{max}}
++
+\epsilon
+\left(
+\sum_{n=0}^\infty \sabs{a_{n}}
+\right)
++
+\sabs{B}\epsilon
+=
+\epsilon 
+\left(
+B_{\text{max}}
++
+\left(
+\sum_{n=0}^\infty \sabs{a_{n}}
+\right)
++
+\sabs{B}
+\right) .
+\end{split}
+\end{equation*}
+Ekspresi di dalam tanda kurung pada ruas kanan
+merupakan bilangan tetap.
+Jadi,
+kita dapat membuat ruas kanan sekecil apa pun dengan memilih
+$\epsilon> 0$ yang cukup kecil.  Maka $\sum_{n=0}^\infty c_n$ konvergen ke $AB$.
+\end{proof}
+
+\begin{example}
+Jika kedua deret hanya konvergen bersyarat, deret hasil kali Cauchy
+bahkan belum tentu konvergen.
+Andaikan kita mengambil $a_n = b_n = {(-1)}^n \frac{1}{\sqrt{n+1}}$.
+Deret $\sum_{n=0}^\infty a_n = \sum_{n=0}^\infty b_n$
+konvergen
+menurut uji deret berselang-seling; namun, deret tersebut tidak konvergen
+mutlak, seperti dapat dilihat dari uji-$p$.  Mari kita perhatikan
+hasil kali Cauchy-nya.
+\begin{equation*}
+%mbxlatex \begin{aligned}
+c_n
+%mbxlatex &
+= 
+{(-1)}^n
+\left(
+\frac{1}{\sqrt{n+1}} + 
+\frac{1}{\sqrt{2n}} + 
+\frac{1}{\sqrt{3(n-1)}} + \cdots +
+%\frac{1}{\sqrt{2n}} + 
+\frac{1}{\sqrt{n+1}}
+\right)
+%mbxlatex \\
+%mbxlatex &
+=
+{(-1)}^n
+\sum_{i=0}^n \frac{1}{\sqrt{(i+1)(n-i+1)}} .
+%mbxlatex \end{aligned}
+\end{equation*}
+Oleh karena itu,
+\begin{equation*}
+\sabs{c_n} 
+=
+\sum_{i=0}^n \frac{1}{\sqrt{(i+1)(n-i+1)}} 
+\geq
+\sum_{i=0}^n \frac{1}{\sqrt{(n+1)(n+1)}} 
+= 1 .
+\end{equation*}
+Suku-sukunya tidak menuju nol sehingga $\sum_{n=0}^\infty c_n$ tidak mungkin konvergen.
+\end{example}
+
+\subsection{Deret pangkat}
+
+Tetapkan $x_0 \in \R$.
+Sebuah \emph{\myindex{deret pangkat}} di sekitar $x_0$
+adalah deret berbentuk
+\begin{equation*}
+\sum_{n=0}^\infty a_n {(x-x_0)}^n .
+\end{equation*}
+Deret pangkat sesungguhnya merupakan fungsi dari $x$, dan
+banyak fungsi penting dalam analisis dapat dituliskan
+sebagai deret pangkat.  Kita menggunakan konvensi bahwa
+$0^0 = 1$ (yakni jika $x=x_0$ dan $n=0$).
+
+Suatu deret pangkat disebut
+\emph{konvergen}\index{konvergen!deret pangkat} jika
+terdapat setidaknya satu $x \neq x_0$ yang membuat deret tersebut konvergen.
+Jika $x=x_0$, deret tersebut selalu
+konvergen karena semua suku kecuali suku pertama bernilai nol.
+Jika deret tersebut tidak konvergen pada titik mana pun $x \neq x_0$, kita menyebut
+deret tersebut \emph{divergen}\index{divergen!deret pangkat}.
+
+\begin{example} \label{ps:expex}
+Deret
+\begin{equation*}
+\sum_{n=0}^\infty \frac{1}{n!} x^n
+\end{equation*}
+konvergen mutlak untuk semua $x \in \R$.  Untuk $x=0$, hal ini langsung berlaku;
+untuk $x \neq 0$, uji rasio memberikan
+\begin{equation*}
+\lim_{n \to \infty}
+\abs{\frac{\bigl(1/(n+1)!\bigr) \, x^{n+1}}{(1/n!) \, x^{n}}}
+=
+\lim_{n \to \infty}
+\frac{\sabs{x}}{n+1}
+=
+0.
+\end{equation*}
+Ingat dari kalkulus bahwa deret ini konvergen ke $e^x$.
+\end{example}
+
+\begin{example} \label{ps:1kex}
+Deret
+\begin{equation*}
+\sum_{n=1}^\infty \frac{1}{n} x^n
+\end{equation*}
+konvergen mutlak untuk semua $x \in (-1,1)$.  Untuk $x=0$, hal ini langsung berlaku; untuk $0 < \sabs{x} < 1$, uji rasio memberikan:
+\begin{equation*}
+\lim_{n \to \infty}
+\abs{
+\frac{\bigl(1/(n+1) \bigr) \, x^{n+1}}{(1/n) \, x^{n}}
+}
+=
+\lim_{n \to \infty}
+\sabs{x} \frac{n}{n+1}
+=
+\sabs{x} < 1 .
+\end{equation*}
+Deret tersebut konvergen pada $x=-1$ karena
+$\sum_{n=1}^\infty \frac{{(-1)}^n}{n}$ konvergen
+berdasarkan uji deret
+berselang-seling.
+Akan tetapi, deret pangkat tersebut tidak konvergen mutlak pada $x=-1$ karena
+$\sum_{n=1}^\infty \frac{1}{n}$ tidak konvergen.
+Deret tersebut
+divergen pada $x=1$.
+Jika $\sabs{x} > 1$, deret tersebut divergen berdasarkan uji rasio.
+\end{example}
+
+\begin{example} \label{ps:divergeex}
+Deret
+\begin{equation*}
+\sum_{n=1}^\infty n^n x^n
+\end{equation*}
+divergen untuk semua $x \neq 0$.  Mari kita terapkan uji akar:
+\begin{equation*}
+\limsup_{n\to\infty}
+\,
+\sabs{n^n x^n}^{1/n}
+=
+\limsup_{n\to\infty}
+\,
+n \sabs{x}
+= \infty .
+\end{equation*}
+Oleh karena itu, deret tersebut divergen untuk semua $x \neq 0$.
+\end{example}
+
+Secara umum, perilaku konvergensi deret pangkat serupa dengan
+ketiga contoh di atas.
+
+\begin{prop} \label{prop:powerserrealradius}
+Misalkan $\sum_{n=0}^\infty a_n {(x-x_0)}^n$ suatu deret pangkat.
+Jika deret tersebut konvergen, maka deret itu konvergen mutlak pada
+semua $x \in \R$, atau
+terdapat bilangan $\rho$ sedemikian sehingga
+deret tersebut konvergen mutlak pada interval
+$(x_0-\rho,x_0+\rho)$ dan divergen jika $x < x_0-\rho$ atau $x > x_0+\rho$.
+\end{prop}
+
+Bilangan $\rho$ disebut \emph{\myindex{jari-jari konvergensi}} dari
+deret pangkat tersebut.  Kita menulis $\rho = \infty$ jika deret tersebut konvergen untuk
+semua $x$, dan kita menulis $\rho = 0$ jika deret tersebut divergen.
+Pada titik-titik ujung, yakni jika $x = x_0+\rho$ atau $x = x_0-\rho$,
+proposisi tersebut tidak memberikan kesimpulan,
+dan deretnya mungkin konvergen atau mungkin tidak.
+Lihat \figureref{ps:convfig}.
+Dalam \exampleref{ps:1kex},
+jari-jari konvergensinya adalah $\rho=1$;
+dalam \exampleref{ps:expex}, jari-jari konvergensinya adalah $\rho=\infty$;
+dan dalam \exampleref{ps:divergeex}, jari-jari konvergensinya adalah $\rho=0$.
+
+\begin{myfigureht}
+\myincludepdft{ps-conv}{%
+Diagram garis bilangan real dengan tiga titik yang ditandai, dari kiri ke
+kanan, x subskrip 0 dikurangi rho, x subskrip 0, dan x subskrip 0 ditambah rho.
+Bagian garis di sebelah kiri x subskrip 0 dikurangi rho dan
+bagian garis di sebelah kanan x subskrip 0 ditambah rho diberi label
+"divergen".  Interval antara x subskrip 0 dikurangi rho dan
+x subskrip 0 ditambah rho diarsir dan diberi label "konvergen mutlak". 
+Kedua titik x subskrip 0 dikurangi rho dan x subskrip 0 ditambah rho diberi label
+tanda tanya.}
+\caption{Kekonvergenan suatu deret pangkat.\label{ps:convfig}}
+\end{myfigureht}
+
+\begin{proof}
+Tuliskan
+\begin{equation*}
+R \coloneqq \limsup_{n\to\infty} {\sabs{a_n}}^{1/n} .
+\end{equation*}
+Kita menerapkan uji akar,
+\begin{equation*}
+L = \limsup_{n\to\infty} {\babs{a_n {(x-x_0)}^n}}^{1/n} 
+=
+\sabs{x-x_0} \limsup_{n\to\infty} {\sabs{a_n}}^{1/n}
+=
+\sabs{x-x_0} R .
+\end{equation*}
+Jika $R = \infty$, maka $L=\infty$ untuk setiap $x \neq x_0$, dan
+deret tersebut divergen berdasarkan uji akar.
+Di sisi lain,
+jika $R = 0$, maka $L=0$ untuk setiap $x$,
+dan deret tersebut konvergen mutlak untuk semua $x$.
+
+Misalkan $0 < R < \infty$.
+Deret tersebut
+konvergen mutlak jika
+$1 > L = R \sabs{x-x_0}$,
+yakni,
+\begin{equation*}
+\sabs{x-x_0} < \nicefrac{1}{R} .
+\end{equation*}
+Deret tersebut divergen jika
+$1 < L = R \sabs{x-x_0}$,
+atau
+\begin{equation*}
+\sabs{x-x_0} > \nicefrac{1}{R} .
+\end{equation*}
+Dengan menetapkan $\rho \coloneqq \nicefrac{1}{R}$, bukti selesai.
+\end{proof}
+
+Kiranya berguna untuk menyatakan kembali apa yang telah kita peroleh dalam bukti
+sebagai proposisi tersendiri.
+
+\begin{prop}
+Misalkan $\sum_{n=0}^\infty a_n {(x-x_0)}^n$ suatu deret pangkat, dan misalkan
+\begin{equation*}
+R \coloneqq \limsup_{n\to\infty} {\sabs{a_n}}^{1/n} .
+\end{equation*}
+Jika $R = \infty$, deret pangkat tersebut divergen.  Jika
+$R=0$, deret pangkat tersebut konvergen di mana-mana.   Dalam kasus lainnya,
+jari-jari konvergensinya adalah $\rho = \nicefrac{1}{R}$.
+\end{prop}
+
+Sering kali, jari-jari konvergensi ditulis sebagai $\rho = \nicefrac{1}{R}$ dalam
+ketiga kasus tersebut, dengan
+kesepakatan mengenai nilai $\rho$ jika $R = 0$ atau $R =
+\infty$.
+
+\pagebreak[2]
+Deret pangkat yang konvergen dapat dijumlahkan dan dikalikan satu sama lain, serta dikalikan
+dengan konstanta.
+Proposisi berikut memiliki bukti langsung berdasarkan apa yang kita ketahui tentang deret
+secara umum dan deret pangkat secara khusus.  Kita serahkan buktinya kepada pembaca.
+
+\begin{prop}
+Misalkan $\sum_{n=0}^\infty a_n {(x-x_0)}^n$ dan
+$\sum_{n=0}^\infty b_n {(x-x_0)}^n$ dua deret pangkat konvergen
+dengan jari-jari konvergensi sekurang-kurangnya $\rho > 0$, dan misalkan $\alpha \in \R$.  Maka,
+untuk semua $x$ sedemikian sehingga $\sabs{x-x_0} < \rho$, berlaku
+\begin{equation*}
+\left(\sum_{n=0}^\infty a_n {(x-x_0)}^n\right)
++
+\left(\sum_{n=0}^\infty b_n {(x-x_0)}^n\right)
+=
+\sum_{n=0}^\infty (a_n+b_n) {(x-x_0)}^n ,
+\end{equation*}
+\begin{equation*}
+\alpha
+\left(\sum_{n=0}^\infty a_n {(x-x_0)}^n\right)
+=
+\sum_{n=0}^\infty \alpha a_n {(x-x_0)}^n ,
+\end{equation*}
+dan
+\begin{equation*}
+\left(\sum_{n=0}^\infty a_n {(x-x_0)}^n\right)
+\,
+\left(\sum_{n=0}^\infty b_n {(x-x_0)}^n\right)
+=
+\sum_{n=0}^\infty c_n {(x-x_0)}^n ,
+\end{equation*}
+dengan
+$c_n = a_0b_n + a_1 b_{n-1} + \cdots + a_n b_0$.
+\end{prop}
+
+Untuk semua $x$ dengan $\sabs{x-x_0} < \rho$, kita mempunyai dua deret konvergen, sehingga
+penjumlahan suku demi suku dan perkalian dengan konstanta
+mengikuti dari bagian sebelumnya.
+Karena untuk $x$ seperti itu deret-deret tersebut konvergen mutlak,
+kita dapat menerapkan teorema Mertens untuk menentukan hasil kali kedua deret.
+Akibatnya, setelah melakukan operasi aljabar, jari-jari
+konvergensi deret yang dihasilkan sekurang-kurangnya $\rho$.
+Jari-jari konvergensi hasilnya dapat lebih besar secara ketat daripada
+jari-jari konvergensi salah satu deret semula.
+Lihat latihan.
+
+Mari kita lihat beberapa contoh deret pangkat.
+Polinom hanyalah deret pangkat berhingga:  Suatu polinom
+merupakan deret pangkat dengan
+$a_n$ bernilai nol untuk semua $n$ yang cukup besar.  Kita mengembangkan
+suatu polinom menjadi deret pangkat di sekitar sembarang titik $x_0$ dengan menuliskan
+polinom tersebut sebagai polinom dalam $(x-x_0)$.  Sebagai contoh,
+$2x^2-3x+4$ sebagai deret pangkat di sekitar $x_0 = 1$ adalah
+\begin{equation*}
+2x^2-3x+4 = 3 + (x-1) + 2{(x-1)}^2 .
+\end{equation*}
+
+Kita juga dapat mengembangkan
+\emph{\myindex{fungsi rasional}} (yakni hasil bagi polinom)
+menjadi deret pangkat, meskipun kita tidak akan membuktikan fakta ini sepenuhnya di sini.
+Perhatikan bahwa deret yang merepresentasikan suatu fungsi rasional hanya mendefinisikan fungsi tersebut
+pada suatu interval, meskipun fungsi itu terdefinisi di tempat lain.  Sebagai contoh, untuk
+\emph{\myindex{deret geometri}} dan
+$x \in (-1,1)$,
+\begin{equation*}
+\frac{1}{1-x} =
+\sum_{n=0}^\infty x^n .
+\end{equation*}
+deret tersebut divergen jika $\sabs{x} > 1$, meskipun $\frac{1}{1-x}$
+terdefinisi untuk semua $x \neq 1$.
+
+Kita dapat menggunakan deret geometri bersama aturan penjumlahan dan
+perkalian deret pangkat untuk mengembangkan fungsi rasional menjadi deret
+pangkat di sekitar $x_0$,
+asalkan penyebutnya tidak nol pada $x_0$.  Kita nyatakan tanpa
+bukti bahwa hal ini selalu dapat dilakukan, lalu memberikan contoh
+perhitungan semacam itu menggunakan deret geometri.
+
+\begin{example}
+Mari kita kembangkan $\frac{x}{1+2x+x^2}$ menjadi deret pangkat di sekitar titik asal ($x_0 = 0$) dan
+tentukan jari-jari konvergensinya.
+
+Tuliskan $1+2x+x^2 = {(1+x)}^2 = {\bigl(1-(-x)\bigr)}^2$, dan misalkan
+$\sabs{x} < 1$.  Hitung
+\begin{equation*}
+\begin{split}
+\frac{x}{1+2x+x^2}
+&=
+x \,
+{\left(
+\frac{1}{1-(-x)}
+\right)}^2
+\\
+&=
+x \,
+{\left( 
+\sum_{n=0}^\infty {(-1)}^n x^n 
+\right)}^2
+\\
+&=
+x \,
+\left(
+\sum_{n=0}^\infty c_n x^n 
+\right)
+\\
+&=
+\sum_{n=0}^\infty c_n x^{n+1} .
+\end{split}
+\end{equation*}
+Dengan menggunakan rumus hasil kali deret,
+kita memperoleh $c_0 = 1$, $c_1 = -1 -1 = -2$, $c_2 = 1+1+1 = 3$, dan seterusnya.
+Dengan demikian, untuk $\sabs{x} < 1$,
+\begin{equation*}
+\frac{x}{1+2x+x^2}
+=
+\sum_{n=1}^\infty {(-1)}^{n+1} n x^n .
+\end{equation*}
+Jari-jari konvergensinya sekurang-kurangnya 1.  Kita serahkan kepada pembaca untuk
+memverifikasi bahwa jari-jari konvergensinya tepat sama dengan 1.
+\end{example}
+
+Anda dapat menggunakan metode pecahan parsial yang Anda kenal dari kalkulus.
+Sebagai contoh, untuk menentukan deret pangkat bagi $\frac{x^3+x}{x^2-1}$ di sekitar 0, tuliskan
+\begin{equation*}
+\frac{x^3+x}{x^2-1}
+=
+x + \frac{1}{1+x} - \frac{1}{1-x}
+=
+x + \sum_{n=0}^\infty {(-1)}^n x^n - \sum_{n=0}^\infty x^n .
+\end{equation*}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Tentukan kekonvergenan atau kedivergenan deret-deret berikut.
+
+\medskip
+
+\noindent
+a)
+$\displaystyle \sum_{n=1}^\infty \frac{1}{2^{2n+1}}$
+\qquad
+b)
+$\displaystyle \sum_{n=1}^\infty \frac{{(-1)}^{n}(n-1)}{n}$
+\qquad
+c)
+$\displaystyle \sum_{n=1}^\infty \frac{{(-1)}^n}{n^{1/10}}$
+\qquad
+d)
+$\displaystyle \sum_{n=1}^\infty \frac{n^n}{{(n+1)}^{2n}}$
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\sum_{n=0}^\infty a_n$ dan $\sum_{n=0}^\infty b_n$ keduanya
+konvergen mutlak.
+Tunjukkan bahwa deret hasil kali $\sum_{n=0}^\infty c_n$, dengan
+$c_n = a_0 b_n + a_1 b_{n-1} + \cdots + a_n b_0$, juga konvergen mutlak.
+\end{exercise}
+
+\begin{exercise}[Menantang] \label{exercise:seriesconvergestoanything}
+Misalkan $\sum_{n=1}^\infty a_n$ konvergen bersyarat.
+Tunjukkan bahwa untuk sebarang $x \in \R$
+terdapat suatu penyusunan ulang dari $\sum_{n=1}^\infty a_n$
+sedemikian sehingga deret yang disusun ulang tersebut konvergen ke $x$.
+Petunjuk: Lihat \exampleref{example:harmonsumanything}.
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa deret harmonik berselang-seling $\sum_{n=1}^\infty \frac{{(-1)}^{n+1}}{n}$
+memiliki suatu penyusunan ulang
+sedemikian sehingga untuk setiap interval $(x,y)$, terdapat jumlah parsial $s_n$
+dari deret yang disusun ulang tersebut sedemikian sehingga $s_n \in (x,y)$.
+\item
+Tunjukkan bahwa penyusunan ulang yang Anda temukan tidak konvergen.
+Lihat \exampleref{example:harmonsumanything}.
+\item
+Tunjukkan bahwa untuk setiap $x \in \R$, terdapat subbarisan
+jumlah-jumlah parsial $\{ s_{n_k} \}_{k=1}^\infty$ dari penyusunan ulang Anda sedemikian sehingga
+$\lim\limits_{k\to\infty} s_{n_k} = x$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Untuk setiap deret pangkat berikut, tentukan apakah deret tersebut konvergen;
+jika ya, tentukan jari-jari konvergensinya.
+Pada bagian f), perhatikan faktorial pada eksponen.
+
+\medskip
+
+\noindent
+a)
+$\displaystyle \sum_{n=0}^\infty 2^n x^n$
+\qquad
+b) $\displaystyle \sum_{n=0}^\infty n x^n$
+\qquad 
+c) 
+$\displaystyle \sum_{n=0}^\infty n! \, x^n$
+%mbxSTARTIGNORE
+\qquad
+%mbxENDIGNORE
+%mbx <rabr/>
+d) $\displaystyle \sum_{n=0}^\infty \frac{1}{(2n)!} {(x-10)}^n$
+\qquad
+e) $\displaystyle \sum_{n=0}^\infty x^{2n}$
+\qquad
+f) $\displaystyle \sum_{n=0}^\infty n! \, x^{n!}$
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\sum_{n=0}^\infty a_n x^n$ konvergen pada $x=1$.
+\begin{enumerate}[a)]
+\item
+Apa yang dapat Anda simpulkan tentang jari-jari konvergensinya?
+\item
+Jika juga diketahui bahwa pada $x=1$ kekonvergenannya tidak mutlak,
+apa yang dapat Anda simpulkan?
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Kembangkan
+$\dfrac{x}{4-x^2}$ menjadi deret pangkat di sekitar $x_0 = 0$,
+dan hitung jari-jari konvergensinya.
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Berikan contoh ketika jari-jari konvergensi $\sum_{n=0}^\infty a_n x^n$ dan
+$\sum_{n=0}^\infty b_n x^n$ keduanya 1, tetapi jari-jari konvergensi
+jumlah kedua deret tersebut tak hingga.
+\item
+(Lebih sulit)
+Berikan contoh ketika jari-jari konvergensi $\sum_{n=0}^\infty a_n x^n$ dan
+$\sum_{n=0}^\infty b_n x^n$ keduanya 1, tetapi jari-jari konvergensi
+hasil kali kedua deret tersebut tak hingga.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Tentukan cara menghitung jari-jari konvergensi dengan uji rasio.
+Artinya, misalkan $\sum_{n=0}^\infty a_n x^n$ adalah deret pangkat dan
+$R \coloneqq \lim_{n\to\infty} \frac{\sabs{a_{n+1}}}{\sabs{a_n}}$ ada atau sama dengan $\infty$.
+Tentukan jari-jari konvergensinya dan buktikan pernyataan Anda.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa $\lim_{n\to\infty} n^{1/n} = 1$ dengan prosedur berikut: Tuliskan $n^{1/n} = 1+b_n$ dan
+perhatikan bahwa $b_n > 0$ ketika $n > 1$.  Kemudian tunjukkan bahwa ${(1+b_n)}^n \geq
+\frac{n(n-1)}{2}b_n^2$ dan gunakan ini untuk menunjukkan bahwa $\lim\limits_{n\to\infty} b_n = 0$.
+\item
+Gunakan hasil bagian a) untuk menunjukkan bahwa
+jika $\sum_{n=0}^\infty a_n x^n$ adalah deret pangkat konvergen dengan jari-jari konvergensi $R$,
+maka $\sum_{n=0}^\infty n a_n x^n$ juga konvergen dengan jari-jari konvergensi yang sama.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exnote}
+Ada berbagai pengertian tentang keterjumlahan (kekonvergenan)
+suatu deret
+selain pengertian yang telah kita lihat.
+Salah satu yang umum adalah \emph{\myindex{keterjumlahan Ces\`aro}}%
+\footnote{Dinamai menurut matematikawan Italia
+\href{https://en.wikipedia.org/wiki/Ernesto_Ces\%C3\%A0ro}{Ernesto Ces\`aro}
+(1859--1906).}.  Misalkan $\sum_{n=1}^\infty a_n$ adalah deret
+dan $s_n$ adalah jumlah parsial ke-$n$.  Deret tersebut dikatakan
+terjumlah secara Ces\`aro ke $a$ jika
+\begin{equation*}
+a = \lim_{n\to \infty} \frac{s_1 + s_2 + \cdots + s_n}{n} .
+\end{equation*}
+\end{exnote}
+
+\begin{exercise}[Menantang]
+\pagebreak[2]
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Jika $\sum_{n=1}^\infty a_n$ konvergen ke $a$ (dalam pengertian biasa), tunjukkan bahwa
+$\sum_{n=1}^\infty a_n$ terjumlah secara Ces\`aro (lihat di atas) ke $a$.
+\item
+Tunjukkan bahwa dalam pengertian Ces\`aro $\sum_{n=1}^\infty {(-1)}^n$ terjumlah ke
+$\nicefrac{-1}{2}$.
+\item
+Misalkan $a_n \coloneqq k$ ketika $n = k^3$ untuk suatu $k \in \N$,
+$a_n \coloneqq -k$ ketika $n = k^3+1$ untuk suatu $k \in \N$,
+dan selain itu
+misalkan $a_n \coloneqq 0$.  Tunjukkan bahwa $\sum_{n=1}^\infty a_n$ divergen dalam pengertian biasa
+(sebenarnya, baik barisan suku-sukunya maupun barisan jumlah parsialnya tidak terbatas), tetapi deret tersebut
+terjumlah secara Ces\`aro ke 0 (sekilas tampak agak paradoksal).
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Tunjukkan bahwa kemonotonan dalam uji deret berselang-seling
+diperlukan.  Artinya, berikan barisan bilangan real positif
+$\{ x_n \}_{n=1}^\infty$ dengan $\lim_{n\to\infty} x_n = 0$, tetapi
+$\sum_{n=1}^\infty {(-1)}^n x_n$ divergen.
+\end{exercise}
+
+\begin{exercise}
+Berikan suatu deret
+$\sum_{n=1}^\infty x_n$ yang konvergen,
+tetapi $\sum_{n=1}^\infty x_n^2$ divergen.
+Petunjuk: Bandingkan dengan \exerciseref{exercise:squareseriesconv}.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{ c_n \}_{n=1}^\infty$ adalah suatu barisan.  Buktikan bahwa untuk setiap $r \in (0,1)$,
+terdapat barisan bilangan asli yang naik secara ketat $\{ n_k \}_{k=1}^\infty$
+($n_{k+1} > n_k$) sedemikian sehingga
+\begin{equation*}
+\sum_{k=1}^\infty c_k x^{n_k}
+\end{equation*}
+konvergen mutlak untuk semua $x \in [-r,r]$.
+\end{exercise}
+
+\begin{exercise}[Tonelli/Fubini untuk penjumlahan, menantang]
+\label{exercise:tonellifubiniforsums}%
+\index{Fubini untuk penjumlahan}\index{Tonelli untuk penjumlahan}%
+Misalkan $\{ x_{k,\ell} \}_{k=1,\ell=1}^\infty$ menyatakan barisan
+berindeks ganda dan misalkan $\sigma \colon \N \to \N^2$ adalah suatu bijeksi.
+Tinjau deret-deret
+\begin{equation*}
+\text{i)}~\sum_{i=1}^\infty x_{\sigma(i)},
+\qquad
+\text{ii)}~\sum_{k=1}^\infty \left( \sum_{\ell=1}^\infty x_{k,\ell} \right),
+\qquad
+\text{iii)}~\sum_{\ell=1}^\infty \left( \sum_{k=1}^\infty x_{k,\ell} \right) .
+\end{equation*}
+Ekspresi ii) dan iii) merupakan deret yang suku-sukunya sendiri berupa deret; karena itu, kita katakan ekspresi tersebut konvergen
+jika setiap deret di bagian dalam selalu konvergen dan deret di bagian luar kemudian juga
+konvergen.
+\begin{enumerate}[a)]
+\item
+(Tonelli) Misalkan $x_{k,\ell} \geq 0$ untuk semua $k,\ell$.
+Tunjukkan bahwa ketiga deret i), ii), iii) semuanya divergen (ke $\infty$)
+atau semuanya konvergen ke bilangan yang sama.
+Dalam kasus divergensi, beberapa deret \myquote{dalam} mungkin bernilai tak hingga
+dan dalam hal itu kita menganggap seluruh jumlah tersebut divergen.
+\item
+(Fubini) Misalkan i) konvergen mutlak.  Tunjukkan bahwa ii) dan iii)
+konvergen dan keduanya konvergen ke bilangan yang sama dengan i).
+\end{enumerate}
+\end{exercise}

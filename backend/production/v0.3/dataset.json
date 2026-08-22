@@ -1,0 +1,43 @@
+{
+  "authority_status": "authoritative",
+  "canonicalization": {
+    "csv": "ILCSV-0.1",
+    "json": "ILJCS-0.1"
+  },
+  "dataset_id": "urn:uuid:9e12f23b-b124-5662-8d2c-1de6329a0f44",
+  "dataset_key": "lebl.shared.dataset.production-v0.3-r006-live-checkpoint-2026-08-21",
+  "edition_ids": [
+    "urn:uuid:2985f369-c946-5392-be8c-902d3c9215b2",
+    "urn:uuid:58e4a3a5-54be-5ff1-8ec0-1ae191412aa3",
+    "urn:uuid:8d85f0b8-c668-5042-b25a-4ca8bd981aac",
+    "urn:uuid:b562f0c1-9b51-5ffc-8282-a98245414d0c",
+    "urn:uuid:b93a90c3-c379-5254-a35a-6a09e3d70047",
+    "urn:uuid:c8f802a9-20a7-5339-ae47-20a368df3c83",
+    "urn:uuid:d8876a3c-8cdf-5076-b243-9f9de1f2d514"
+  ],
+  "fixture": false,
+  "generated_at": "2026-08-21T00:00:00Z",
+  "lane_id": "R006+R007+R008",
+  "namespace_uuid": "ccdf8f89-242c-5c81-863d-54d9fb08f872",
+  "notice": "Additive v0.3 checkpoint bound to the exact live R006 manifest, admitted terminology, adverse ledger, and Volume I completion receipt; the aggregate two-volume R006 edition remains draft while Volume II is incomplete; v0.1/v0.2 remain unchanged historical snapshots.",
+  "projection_manifest": {
+    "path": "projection_manifest.json",
+    "sha256": "sha256:34f7cb8d24b13e264029538033450eb1c31f2f166ceacc04980f39b5d7d9bac5"
+  },
+  "record_streams": [
+    {
+      "bytes": 2597405,
+      "path": "records.jsonl",
+      "record_count": 2193,
+      "sha256": "sha256:df18b9a1e547d9dcef0f9e2bc6db88a61c10d6b7b2d2734f44dca827123721ea"
+    }
+  ],
+  "resource_ids": [
+    "urn:uuid:372b97ed-b680-56ea-830b-7b6748d2b465",
+    "urn:uuid:884aba97-efd2-550c-a975-a98df314c5d8",
+    "urn:uuid:907ee9c9-fa99-55d1-bcff-29cdb73cd396"
+  ],
+  "schema_name": "lebl.backend.dataset",
+  "schema_version": "0.3.0",
+  "workflow_id": "01a01f57-a34b-7740-9717-596b8116910c/backend-production-v0.3-r006-live"
+}

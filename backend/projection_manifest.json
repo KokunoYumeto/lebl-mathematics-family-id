@@ -1,0 +1,319 @@
+{
+  "csv_dialect": {
+    "encoding": "utf-8",
+    "line_ending": "LF",
+    "quote_all": true
+  },
+  "projections": [
+    {
+      "columns": [
+        {"encoding": "scalar", "name": "id", "source": "id"},
+        {"encoding": "scalar", "name": "semantic_key", "source": "semantic_key"},
+        {"encoding": "scalar", "name": "title", "source": "title"},
+        {"encoding": "canonical_json", "name": "target_locales_json", "source": "target_locales"},
+        {"encoding": "canonical_json", "name": "course_ids_json", "source": "course_ids"},
+        {"encoding": "scalar", "name": "rights_id", "source": "rights_id"},
+        {"encoding": "scalar", "name": "status", "source": "status"},
+        {"encoding": "record_json", "name": "record_json", "source": "$record"}
+      ],
+      "file_name": "programs.csv",
+      "mode": "records",
+      "name": "programs",
+      "record_types": ["program"],
+      "sort_by": ["id"]
+    },
+    {
+      "columns": [
+        {"encoding": "scalar", "name": "id", "source": "id"},
+        {"encoding": "scalar", "name": "semantic_key", "source": "semantic_key"},
+        {"encoding": "scalar", "name": "program_id", "source": "program_id"},
+        {"encoding": "scalar", "name": "title", "source": "title"},
+        {"encoding": "scalar", "name": "curriculum_role", "source": "curriculum_role"},
+        {"encoding": "canonical_json", "name": "prerequisite_course_ids_json", "source": "prerequisite_course_ids"},
+        {"encoding": "canonical_json", "name": "resource_ids_json", "source": "resource_ids"},
+        {"encoding": "scalar", "name": "rights_id", "source": "rights_id"},
+        {"encoding": "scalar", "name": "status", "source": "status"},
+        {"encoding": "record_json", "name": "record_json", "source": "$record"}
+      ],
+      "file_name": "courses.csv",
+      "mode": "records",
+      "name": "courses",
+      "record_types": ["course"],
+      "sort_by": ["id"]
+    },
+    {
+      "columns": [
+        {"encoding": "scalar", "name": "id", "source": "id"},
+        {"encoding": "scalar", "name": "semantic_key", "source": "semantic_key"},
+        {"encoding": "scalar", "name": "title", "source": "title"},
+        {"encoding": "canonical_json", "name": "creators_json", "source": "creators"},
+        {"encoding": "scalar", "name": "original_language", "source": "original_language"},
+        {"encoding": "scalar", "name": "upstream_uri", "source": "upstream_uri"},
+        {"encoding": "scalar", "name": "repository_uri", "source": "repository_uri"},
+        {"encoding": "scalar", "name": "rights_id", "source": "rights_id"},
+        {"encoding": "scalar", "name": "status", "source": "status"},
+        {"encoding": "record_json", "name": "record_json", "source": "$record"}
+      ],
+      "file_name": "resources.csv",
+      "mode": "records",
+      "name": "resources",
+      "record_types": ["resource"],
+      "sort_by": ["id"]
+    },
+    {
+      "columns": [
+        {"encoding": "scalar", "name": "id", "source": "id"},
+        {"encoding": "scalar", "name": "semantic_key", "source": "semantic_key"},
+        {"encoding": "scalar", "name": "resource_id", "source": "resource_id"},
+        {"encoding": "scalar", "name": "edition_kind", "source": "edition_kind"},
+        {"encoding": "scalar", "name": "revision_kind", "source": "revision.kind"},
+        {"encoding": "scalar", "name": "revision_value", "source": "revision.value"},
+        {"encoding": "scalar", "name": "commit_id", "source": "revision.commit_id"},
+        {"encoding": "scalar", "name": "tree_id", "source": "revision.tree_id"},
+        {"encoding": "scalar", "name": "archive_sha256", "source": "revision.archive_sha256"},
+        {"encoding": "scalar", "name": "language", "source": "language"},
+        {"encoding": "scalar", "name": "locale", "source": "locale"},
+        {"encoding": "scalar", "name": "translation_state", "source": "translation_state"},
+        {"encoding": "scalar", "name": "derivative_of_id", "source": "derivative_of_id"},
+        {"encoding": "canonical_json", "name": "build_entrypoints_json", "source": "build_entrypoints"},
+        {"encoding": "scalar", "name": "rights_id", "source": "rights_id"},
+        {"encoding": "scalar", "name": "status", "source": "status"},
+        {"encoding": "record_json", "name": "record_json", "source": "$record"}
+      ],
+      "file_name": "editions.csv",
+      "mode": "records",
+      "name": "editions",
+      "record_types": ["edition"],
+      "sort_by": ["resource_id", "id"]
+    },
+    {
+      "columns": [
+        {"encoding": "scalar", "name": "id", "source": "id"},
+        {"encoding": "scalar", "name": "semantic_key", "source": "semantic_key"},
+        {"encoding": "scalar", "name": "resource_id", "source": "resource_id"},
+        {"encoding": "scalar", "name": "edition_id", "source": "edition_id"},
+        {"encoding": "scalar", "name": "unit_kind", "source": "unit_kind"},
+        {"encoding": "scalar", "name": "source_local_id", "source": "source_local_id"},
+        {"encoding": "scalar", "name": "parent_id", "source": "parent_id"},
+        {"encoding": "scalar", "name": "order_key", "source": "order_key"},
+        {"encoding": "scalar", "name": "label", "source": "label"},
+        {"encoding": "scalar", "name": "title", "source": "title"},
+        {"encoding": "scalar", "name": "source_path", "source": "source_binding.source_path"},
+        {"encoding": "scalar", "name": "source_locator", "source": "source_binding.locator"},
+        {"encoding": "scalar", "name": "source_content_sha256", "source": "source_binding.content_sha256"},
+        {"encoding": "canonical_json", "name": "locale_states_json", "source": "locale_states"},
+        {"encoding": "canonical_json", "name": "concept_ids_json", "source": "concept_ids"},
+        {"encoding": "canonical_json", "name": "prerequisite_ids_json", "source": "prerequisite_ids"},
+        {"encoding": "scalar", "name": "solution_status", "source": "exercise_metadata.solution_status"},
+        {"encoding": "scalar", "name": "rights_id", "source": "rights_id"},
+        {"encoding": "scalar", "name": "status", "source": "status"},
+        {"encoding": "record_json", "name": "record_json", "source": "$record"}
+      ],
+      "file_name": "units.csv",
+      "mode": "records",
+      "name": "units",
+      "record_types": ["unit"],
+      "sort_by": ["resource_id", "order_key", "id"]
+    },
+    {
+      "columns": [
+        {"encoding": "scalar", "name": "id", "source": "id"},
+        {"encoding": "scalar", "name": "semantic_key", "source": "semantic_key"},
+        {"encoding": "scalar", "name": "label", "source": "label"},
+        {"encoding": "scalar", "name": "definition", "source": "definition"},
+        {"encoding": "canonical_json", "name": "notation_json", "source": "notation"},
+        {"encoding": "canonical_json", "name": "source_bindings_json", "source": "source_bindings"},
+        {"encoding": "scalar", "name": "rights_id", "source": "rights_id"},
+        {"encoding": "scalar", "name": "status", "source": "status"},
+        {"encoding": "record_json", "name": "record_json", "source": "$record"}
+      ],
+      "file_name": "concepts.csv",
+      "mode": "records",
+      "name": "concepts",
+      "record_types": ["concept"],
+      "sort_by": ["id"]
+    },
+    {
+      "columns": [
+        {"encoding": "scalar", "name": "id", "source": "id"},
+        {"encoding": "scalar", "name": "semantic_key", "source": "semantic_key"},
+        {"encoding": "scalar", "name": "unit_id", "source": "unit_id"},
+        {"encoding": "scalar", "name": "segment_kind", "source": "segment_kind"},
+        {"encoding": "scalar", "name": "order_key", "source": "order_key"},
+        {"encoding": "scalar", "name": "source_path", "source": "source_binding.source_path"},
+        {"encoding": "scalar", "name": "source_locator", "source": "source_binding.locator"},
+        {"encoding": "scalar", "name": "source_content_sha256", "source": "source_binding.content_sha256"},
+        {"encoding": "canonical_json", "name": "expressions_json", "source": "expressions"},
+        {"encoding": "canonical_json", "name": "concept_ids_json", "source": "concept_ids"},
+        {"encoding": "scalar", "name": "rights_id", "source": "rights_id"},
+        {"encoding": "scalar", "name": "status", "source": "status"},
+        {"encoding": "record_json", "name": "record_json", "source": "$record"}
+      ],
+      "file_name": "segments.csv",
+      "mode": "records",
+      "name": "segments",
+      "record_types": ["segment"],
+      "sort_by": ["unit_id", "order_key", "id"]
+    },
+    {
+      "columns": [
+        {"encoding": "scalar", "name": "id", "source": "id"},
+        {"encoding": "scalar", "name": "semantic_key", "source": "semantic_key"},
+        {"encoding": "scalar", "name": "concept_id", "source": "concept_id"},
+        {"encoding": "scalar", "name": "language", "source": "language"},
+        {"encoding": "scalar", "name": "locale", "source": "locale"},
+        {"encoding": "scalar", "name": "preferred", "source": "preferred"},
+        {"encoding": "canonical_json", "name": "variants_json", "source": "variants"},
+        {"encoding": "canonical_json", "name": "rejected_forms_json", "source": "rejected_forms"},
+        {"encoding": "canonical_json", "name": "scope_ids_json", "source": "scope_ids"},
+        {"encoding": "scalar", "name": "register", "source": "register"},
+        {"encoding": "canonical_json", "name": "evidence_json", "source": "evidence"},
+        {"encoding": "scalar", "name": "rights_id", "source": "rights_id"},
+        {"encoding": "scalar", "name": "status", "source": "status"},
+        {"encoding": "record_json", "name": "record_json", "source": "$record"}
+      ],
+      "file_name": "terms.csv",
+      "mode": "records",
+      "name": "terms",
+      "record_types": ["term"],
+      "sort_by": ["locale", "preferred", "id"]
+    },
+    {
+      "columns": [
+        {"encoding": "scalar", "name": "id", "source": "id"},
+        {"encoding": "scalar", "name": "semantic_key", "source": "semantic_key"},
+        {"encoding": "scalar", "name": "resource_id", "source": "resource_id"},
+        {"encoding": "scalar", "name": "edition_id", "source": "edition_id"},
+        {"encoding": "scalar", "name": "asset_kind", "source": "asset_kind"},
+        {"encoding": "scalar", "name": "path", "source": "path"},
+        {"encoding": "scalar", "name": "mime_type", "source": "mime_type"},
+        {"encoding": "scalar", "name": "sha256", "source": "sha256"},
+        {"encoding": "canonical_json", "name": "dependencies_json", "source": "dependencies"},
+        {"encoding": "scalar", "name": "rights_id", "source": "rights_id"},
+        {"encoding": "scalar", "name": "status", "source": "status"},
+        {"encoding": "record_json", "name": "record_json", "source": "$record"}
+      ],
+      "file_name": "assets.csv",
+      "mode": "records",
+      "name": "assets",
+      "record_types": ["asset"],
+      "sort_by": ["resource_id", "path", "id"]
+    },
+    {
+      "columns": [
+        {"encoding": "scalar", "name": "id", "source": "id"},
+        {"encoding": "scalar", "name": "semantic_key", "source": "semantic_key"},
+        {"encoding": "scalar", "name": "subject_id", "source": "subject_id"},
+        {"encoding": "scalar", "name": "predicate", "source": "predicate"},
+        {"encoding": "scalar", "name": "object_id", "source": "object_id"},
+        {"encoding": "scalar", "name": "order_key", "source": "order_key"},
+        {"encoding": "scalar", "name": "rights_id", "source": "rights_id"},
+        {"encoding": "scalar", "name": "status", "source": "status"},
+        {"encoding": "record_json", "name": "record_json", "source": "$record"}
+      ],
+      "file_name": "relations.csv",
+      "mode": "records",
+      "name": "relations",
+      "record_types": ["relation"],
+      "sort_by": ["subject_id", "predicate", "object_id", "id"]
+    },
+    {
+      "columns": [
+        {"encoding": "scalar", "name": "id", "source": "id"},
+        {"encoding": "scalar", "name": "semantic_key", "source": "semantic_key"},
+        {"encoding": "scalar", "name": "component_kind", "source": "component_kind"},
+        {"encoding": "scalar", "name": "license_expression", "source": "license_expression"},
+        {"encoding": "scalar", "name": "license_uri", "source": "license_uri"},
+        {"encoding": "canonical_json", "name": "attribution_json", "source": "attribution"},
+        {"encoding": "scalar", "name": "change_notice_required", "source": "change_notice_required"},
+        {"encoding": "scalar", "name": "third_party_status", "source": "third_party_status"},
+        {"encoding": "canonical_json", "name": "scope_ids_json", "source": "scope_ids"},
+        {"encoding": "scalar", "name": "status", "source": "status"},
+        {"encoding": "record_json", "name": "record_json", "source": "$record"}
+      ],
+      "file_name": "rights.csv",
+      "mode": "records",
+      "name": "rights",
+      "record_types": ["rights"],
+      "sort_by": ["id"]
+    },
+    {
+      "columns": [
+        {"encoding": "scalar", "name": "id", "source": "id"},
+        {"encoding": "scalar", "name": "semantic_key", "source": "semantic_key"},
+        {"encoding": "scalar", "name": "check_type", "source": "check_type"},
+        {"encoding": "canonical_json", "name": "subject_ids_json", "source": "subject_ids"},
+        {"encoding": "scalar", "name": "result", "source": "result"},
+        {"encoding": "canonical_json", "name": "witness_json", "source": "witness"},
+        {"encoding": "canonical_json", "name": "toolchain_json", "source": "toolchain"},
+        {"encoding": "scalar", "name": "recorded_at", "source": "recorded_at"},
+        {"encoding": "scalar", "name": "status", "source": "status"},
+        {"encoding": "record_json", "name": "record_json", "source": "$record"}
+      ],
+      "file_name": "qa_events.csv",
+      "mode": "records",
+      "name": "qa_events",
+      "record_types": ["qa_event"],
+      "sort_by": ["check_type", "recorded_at", "id"]
+    },
+    {
+      "columns": [
+        {"encoding": "scalar", "name": "id", "source": "id"},
+        {"encoding": "scalar", "name": "semantic_key", "source": "semantic_key"},
+        {"encoding": "scalar", "name": "artifact_kind", "source": "artifact_kind"},
+        {"encoding": "scalar", "name": "path", "source": "path"},
+        {"encoding": "scalar", "name": "bytes", "source": "bytes"},
+        {"encoding": "scalar", "name": "sha256", "source": "sha256"},
+        {"encoding": "canonical_json", "name": "toolchain_json", "source": "toolchain"},
+        {"encoding": "canonical_json", "name": "produced_from_ids_json", "source": "produced_from_ids"},
+        {"encoding": "canonical_json", "name": "manifest_ids_json", "source": "manifest_ids"},
+        {"encoding": "scalar", "name": "rights_id", "source": "rights_id"},
+        {"encoding": "scalar", "name": "status", "source": "status"},
+        {"encoding": "record_json", "name": "record_json", "source": "$record"}
+      ],
+      "file_name": "artifacts.csv",
+      "mode": "records",
+      "name": "artifacts",
+      "record_types": ["artifact"],
+      "sort_by": ["artifact_kind", "path", "id"]
+    },
+    {
+      "columns": [
+        {"encoding": "scalar", "name": "id", "source": "id"},
+        {"encoding": "scalar", "name": "semantic_key", "source": "semantic_key"},
+        {"encoding": "canonical_json", "name": "affected_ids_json", "source": "affected_ids"},
+        {"encoding": "scalar", "name": "defect_summary", "source": "defect_summary"},
+        {"encoding": "canonical_json", "name": "proposed_delta_json", "source": "proposed_delta"},
+        {"encoding": "scalar", "name": "upstream_disposition", "source": "upstream_disposition"},
+        {"encoding": "scalar", "name": "rights_id", "source": "rights_id"},
+        {"encoding": "scalar", "name": "status", "source": "status"},
+        {"encoding": "record_json", "name": "record_json", "source": "$record"}
+      ],
+      "file_name": "corrections.csv",
+      "mode": "records",
+      "name": "corrections",
+      "record_types": ["correction"],
+      "sort_by": ["upstream_disposition", "id"]
+    },
+    {
+      "columns": [
+        {"encoding": "scalar", "name": "exercise_id", "source": "$exercise.id"},
+        {"encoding": "scalar", "name": "semantic_key", "source": "$exercise.semantic_key"},
+        {"encoding": "scalar", "name": "resource_id", "source": "$exercise.resource_id"},
+        {"encoding": "scalar", "name": "source_number", "source": "$exercise.exercise_metadata.source_number"},
+        {"encoding": "scalar", "name": "solution_status", "source": "$exercise.exercise_metadata.solution_status"},
+        {"encoding": "canonical_json", "name": "hint_ids_json", "source": "$support.hint_ids"},
+        {"encoding": "canonical_json", "name": "answer_ids_json", "source": "$support.answer_ids"},
+        {"encoding": "canonical_json", "name": "solution_ids_json", "source": "$support.solution_ids"},
+        {"encoding": "record_json", "name": "record_json", "source": "$exercise"}
+      ],
+      "file_name": "exercise_support.csv",
+      "mode": "exercise_support",
+      "name": "exercise_support",
+      "record_types": ["unit", "relation"],
+      "sort_by": ["resource_id", "semantic_key", "exercise_id"]
+    }
+  ],
+  "schema_name": "lebl.backend.projection_manifest",
+  "schema_version": "0.1.0"
+}

@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: >-
+  Kutip versi Zenodo yang digunakan. Edisi ini diterjemahkan dan diintegrasikan
+  dengan backend modular oleh OpenAI Codex atas permintaan Floris.
+title: "Keluarga Matematika Lebl — Edisi Bahasa Indonesia"
+type: book
+authors:
+  - family-names: Lebl
+    given-names: Jiří
+version: 6.3-id-wip.2026.08.22.u214
+date-released: 2026-08-22
+doi: 10.5281/zenodo.22060179
+repository-code: "https://github.com/KokunoYumeto/lebl-mathematics-family-id"
+url: "https://doi.org/10.5281/zenodo.22059779"
+license: CC-BY-SA-4.0
+keywords:
+  - Bahasa Indonesia
+  - analisis real
+  - buku teks terbuka
+  - LaTeX
+  - backend terjemahan modular
+abstract: >-
+  Edisi Bahasa Indonesia independen untuk keluarga buku matematika Jiří Lebl.
+  Checkpoint U214 memuat Analisis Dasar I lengkap dan Analisis Dasar II sampai
+  Proposisi 10.6.3; R007 dan R008 belum diterjemahkan.

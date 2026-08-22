@@ -1,0 +1,1932 @@
+\chapter{Turunan} \label{der:chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Turunan}
+\label{sec:der}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1 pertemuan}
+
+Gagasan turunan adalah sebagai berikut.
+Jika grafik suatu fungsi secara lokal tampak seperti garis lurus,
+maka kita dapat membicarakan kemiringan garis tersebut.
+Kemiringan itu menyatakan laju perubahan
+nilai fungsi pada titik tertentu tersebut.
+Tentu saja, pembahasan ini mengecualikan fungsi yang memiliki titik sudut atau
+diskontinuitas.
+Mari kita nyatakan secara tepat.
+
+\subsection{Definisi dan sifat-sifat dasar}
+
+\begin{defn}
+Misalkan $I$ suatu interval, misalkan
+$f \colon I \to \R$ suatu fungsi, dan misalkan $c \in I$.  Jika
+limit
+\begin{equation*}
+L \coloneqq \lim_{x \to c} \frac{f(x)-f(c)}{x-c} 
+\end{equation*}
+ada, kita katakan bahwa $f$
+\emph{\myindex{diferensiabel}}\index{fungsi!diferensiabel} di
+$c$, kita sebut $L$ sebagai \emph{\myindex{turunan}} $f$ di $c$,
+dan kita tulis $f'(c) \coloneqq L$.\glsadd{not:derivative}
+
+\medskip
+
+Jika $f$ diferensiabel di setiap $c \in I$, kita cukup mengatakan bahwa
+$f$ \emph{diferensiabel}, dan kemudian kita memperoleh fungsi
+$f' \colon I \to \R$.
+Turunan kadang-kadang ditulis sebagai $\frac{df}{dx}$ atau
+$\frac{d}{dx}\bigl( f(x) \bigr)$.
+
+\medskip
+
+Ekspresi $\frac{f(x)-f(c)}{x-c}$ disebut
+\emph{\myindex{hasil bagi selisih}}.
+\end{defn}
+
+Interpretasi grafis turunan ditampilkan dalam
+\figureref{derivfig}.  Grafik kiri menunjukkan garis yang melalui
+$\bigl(c,f(c)\bigr)$
+dan $\bigl(x,f(x)\bigr)$ dengan kemiringan
+$\frac{f(x)-f(c)}{x-c}$, yaitu
+\emph{\myindex{garis sekan}}.  Ketika kita mengambil limit saat $x$ menuju $c$,
+kita memperoleh grafik kanan, tempat kita melihat
+bahwa turunan fungsi
+di titik $c$ merupakan kemiringan garis singgung pada grafik $f$
+di titik $\bigl(c,f(c)\bigr)$.
+
+\begin{myfigureht}
+\myincludepdft{deriv_derivd}{%
+Dua diagram grafik suatu fungsi f.  Di sebelah kiri,
+titik c dan x ditandai pada sumbu horizontal.
+Titik-titik yang bersesuaian pada grafik f ditandai,
+dan sebuah garis (garis sekan) digambar melalui keduanya.  Garis itu diberi label
+kemiringan sama dengan f dari x dikurangi f dari c, seluruhnya dibagi
+x dikurangi c.
+Di sebelah kanan, fungsi yang sama digambar, tetapi hanya titik c
+yang ditandai.  Sebuah garis yang menyinggung grafik f
+melalui titik yang bersesuaian digambar dan diberi label
+kemiringan sama dengan f aksen dari c.}
+\caption{Interpretasi grafis turunan.\label{derivfig}}
+\end{myfigureht}
+
+Kita memperbolehkan $I$ berupa interval tertutup dan memperbolehkan
+$c$ menjadi titik ujung $I$.  Beberapa buku kalkulus tidak memperbolehkan $c$ menjadi
+titik ujung interval, tetapi seluruh teorinya tetap berlaku jika hal ini diperbolehkan,
+dan pekerjaan kita menjadi lebih mudah.
+
+\begin{example}
+Misalkan $f(x) \coloneqq x^2$ didefinisikan pada seluruh garis bilangan real.  Ambil sebarang $c \in \R$.  Kita peroleh bahwa jika
+$x \neq c$,
+\begin{equation*}
+\frac{x^2-c^2}{x-c} =
+\frac{(x+c)(x-c)}{x-c} =
+(x+c) .
+\end{equation*}
+Oleh karena itu,
+\begin{equation*}
+f'(c) = 
+\lim_{x\to c} \frac{x^2-c^2}{x-c} =
+\lim_{x\to c} (x+c) = 2c.
+\end{equation*}
+\end{example}
+
+\begin{example}
+Misalkan $f(x) \coloneqq ax + b$ untuk bilangan $a, b \in \R$.
+Ambil sebarang $c \in \R$.
+Untuk $x \neq c$,
+\begin{equation*}
+\frac{f(x)-f(c)}{x-c} =
+\frac{a(x-c)}{x-c} = a .
+\end{equation*}
+Oleh karena itu,
+\begin{equation*}
+f'(c) =
+\lim_{x\to c} 
+\frac{f(x)-f(c)}{x-c} =
+\lim_{x\to c} 
+a = a.
+\end{equation*}
+Pada kenyataannya, setiap fungsi diferensiabel secara \myquote{infinitesimal} berperilaku seperti
+fungsi afin $ax + b$.  Banyak hasil
+dan rumus turunan dapat ditebak dengan terlebih dahulu mengerjakannya untuk fungsi afin.
+\end{example}
+
+\begin{example}
+Fungsi $f(x) \coloneqq \sqrt{x}$ diferensiabel untuk $x > 0$.  Untuk melihatnya,
+tetapkan $c > 0$,
+dan andaikan $x \neq c$ serta $x > 0$.  Hitung
+\begin{equation*}
+\frac{\sqrt{x}-\sqrt{c}}{x-c}
+=
+\frac{\sqrt{x}-\sqrt{c}}{(\sqrt{x}-\sqrt{c})(\sqrt{x}+\sqrt{c})}
+=
+\frac{1}{\sqrt{x}+\sqrt{c}} .
+\end{equation*}
+Oleh karena itu,
+\begin{equation*}
+f'(c) =
+\lim_{x\to c}
+\frac{\sqrt{x}-\sqrt{c}}{x-c}
+=
+\lim_{x\to c}
+\frac{1}{\sqrt{x}+\sqrt{c}}
+=
+\frac{1}{2\sqrt{c}} .
+\end{equation*}
+\end{example}
+
+\begin{example}
+Fungsi $f(x) \coloneqq \sabs{x}$ tidak diferensiabel
+di titik asal.  Ketika $x > 0$,
+\begin{equation*}
+\frac{\sabs{x}-\sabs{0}}{x-0} =
+\frac{x-0}{x-0} = 1 .
+\end{equation*}
+Ketika $x < 0$,
+\begin{equation*}
+\frac{\sabs{x}-\sabs{0}}{x-0} =
+\frac{-x-0}{x-0} = -1 .
+\end{equation*}
+\end{example}
+
+Sebuah contoh terkenal dari Weierstrass menunjukkan bahwa terdapat fungsi kontinu
+yang tidak diferensiabel di \emph{titik mana pun}.  Konstruksi
+fungsi tersebut berada di luar cakupan bab ini.  Di sisi lain,
+fungsi diferensiabel selalu kontinu.
+
+\begin{prop}
+Jika $f \colon I \to \R$ diferensiabel di $c \in I$,
+maka fungsi tersebut kontinu di $c$.
+\end{prop}
+
+\begin{proof}
+Kita mengetahui bahwa limit-limit
+\begin{equation*}
+\lim_{x\to c}\frac{f(x)-f(c)}{x-c} = f'(c)
+\qquad
+\text{dan}
+\qquad
+\lim_{x\to c}(x-c) = 0
+\end{equation*}
+ada.  Lebih lanjut,
+\begin{equation*}
+f(x)-f(c) = 
+\left( \frac{f(x)-f(c)}{x-c} \right) (x-c) .
+\end{equation*}
+Oleh karena itu, limit $f(x)-f(c)$ ada dan
+\begin{equation*}
+\lim_{x\to c} \bigl( f(x)-f(c) \bigr) =
+\left(\lim_{x\to c} \frac{f(x)-f(c)}{x-c} \right)
+\left(\lim_{x\to c} (x-c) \right) =
+f'(c) \cdot 0  = 0.
+\end{equation*}
+Jadi, $\lim\limits_{x\to c} f(x) = f(c)$, dan $f$ kontinu di $c$.
+\end{proof}
+
+Salah satu sifat penting turunan adalah linearitas.  Turunan
+merupakan aproksimasi suatu fungsi oleh garis lurus.
+Kemiringan garis yang melalui dua titik berubah secara linear ketika
+koordinat-$y$ diubah secara linear.  Setelah mengambil limit,
+wajar bahwa turunan bersifat linear.
+
+\begin{prop}[Linearitas]
+\index{linearitas turunan}
+Misalkan $I$ suatu interval, misalkan
+$f \colon I \to \R$ dan $g \colon I \to \R$ diferensiabel di $c \in I$,
+dan misalkan $\alpha \in \R$.
+\begin{enumerate}[(i)]
+\item
+Definisikan $h \colon I \to \R$ dengan $h(x) \coloneqq \alpha f(x)$.  Maka
+$h$ diferensiabel di $c$ dan
+$h'(c) = \alpha f'(c)$.
+\item
+Definisikan $h \colon I \to \R$ dengan $h(x) \coloneqq  f(x) + g(x)$.  Maka
+$h$ diferensiabel di $c$ dan
+$h'(c) =  f'(c) + g'(c)$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Pertama, misalkan $h(x) \coloneqq \alpha f(x)$.
+Untuk $x \in I$, $x \neq c$,
+\begin{equation*}
+\frac{h(x)-h(c)}{x-c} =
+\frac{\alpha f(x) - \alpha f(c)}{x-c}
+=
+\alpha \frac{f(x) - f(c)}{x-c} .
+\end{equation*}
+Limit ruas kanan ketika $x$ menuju $c$ ada
+berdasarkan \corref{falg:cor}.  Kita peroleh
+\begin{equation*}
+\lim_{x\to c}\frac{h(x)-h(c)}{x-c} =
+\alpha \lim_{x\to c} \frac{f(x) - f(c)}{x-c} .
+\end{equation*}
+Oleh karena itu, $h$ diferensiabel di $c$,
+dan turunannya dihitung seperti yang dinyatakan.
+
+Berikutnya, definisikan $h(x) \coloneqq f(x)+g(x)$.
+Untuk $x \in I$, $x \neq c$, berlaku
+\begin{equation*}
+\frac{h(x)-h(c)}{x-c} =
+\frac{\bigl(f(x) + g(x)\bigr) - \bigl(f(c) + g(c)\bigr)}{x-c}
+=
+\frac{f(x) - f(c)}{x-c}
++
+\frac{g(x) - g(c)}{x-c} .
+\end{equation*}
+Limit ruas kanan ketika $x$ menuju $c$ ada
+berdasarkan \corref{falg:cor}.  Kita peroleh
+\begin{equation*}
+\lim_{x\to c}\frac{h(x)-h(c)}{x-c} =
+\lim_{x\to c} \frac{f(x) - f(c)}{x-c}
++
+\lim_{x\to c}\frac{g(x) - g(c)}{x-c} .
+\end{equation*}
+Oleh karena itu, $h$ diferensiabel di $c$,
+dan turunannya dihitung seperti yang dinyatakan.
+\end{proof}
+
+Turunan dari hasil kali dua fungsi tidak sama dengan
+hasil kali turunannya.
+Sebagai gantinya, kita memperoleh apa yang disebut \emph{aturan hasil kali}
+atau \emph{\myindex{aturan Leibniz}}%
+\footnote{Dinamai menurut matematikawan Jerman
+\href{https://en.wikipedia.org/wiki/Leibniz}{Gottfried Wilhelm Leibniz}
+(1646--1716).}.
+
+\begin{prop}[Aturan hasil kali]\index{aturan hasil kali}
+Misalkan $I$ suatu interval, misalkan
+$f \colon I \to \R$ dan $g \colon I \to \R$ merupakan
+fungsi yang diferensiabel di $c$.  Jika $h \colon I \to \R$
+didefinisikan oleh
+\begin{equation*}
+h(x) \coloneqq f(x) g(x) ,
+\end{equation*}
+maka $h$ diferensiabel di $c$ dan
+\begin{equation*}
+h'(c) = f(c) g'(c) + f'(c) g(c) .
+\end{equation*}
+\end{prop}
+
+Pembuktian aturan hasil kali diserahkan sebagai latihan.  Kunci pembuktiannya adalah
+identitas
+$f(x) g(x) - f(c) g(c) =
+f(x)\bigl( g(x) - g(c) \bigr)
++ \bigl( f(x) - f(c) \bigr) g(c)$,
+yang diilustrasikan dalam \figureref{figprodrule}.
+\begin{myfigureht}
+\myincludepdft{figprodrule}{%
+Diagram suatu daerah persegi panjang pada bidang yang dibagi
+menjadi 3 persegi panjang.  Sisi horizontal membentang dari 0 sampai
+f dari x, dan sisi vertikal membentang dari 0 sampai g dari x.
+Daerah putih terbesar berupa persegi panjang yang membentang secara horizontal
+dari 0 sampai f dari c, yang sedikit lebih kecil daripada f dari x,
+dan secara vertikal dari 0 sampai g dari c, yang sedikit lebih kecil daripada
+g dari x.  Daerah putih ini diberi label f dari c dikali g dari c.
+Di atasnya terdapat persegi panjang tipis berarsir terang yang membentang
+pada sisi horizontal dari 0 sampai f dari x dan pada sisi vertikal
+dari g dari c sampai g dari x.  Daerah itu diberi label
+f dari x dikali besaran g dari x dikurangi g dari c.
+Terakhir, terdapat persegi panjang tipis berarsir gelap
+yang membentang secara horizontal dari f dari c sampai f dari x dan secara vertikal
+dari 0 sampai g dari c.  Daerah itu diberi label f dari x dikurangi f dari c,
+seluruhnya dikali g dari c.}
+\caption{Gagasan aturan hasil kali.  Luas seluruh persegi panjang
+$f(x)g(x)$ berbeda dari luas persegi panjang putih $f(c)g(c)$
+sebesar luas persegi panjang berarsir terang
+$f(x)\bigl( g(x) - g(c) \bigr)$ ditambah persegi panjang yang lebih gelap
+$\bigl( f(x) - f(c) \bigr) g(c)$.
+Dengan kata lain, secara kasar, $\Delta (f \cdot g)
+= f \cdot \Delta g + \Delta f \cdot g$.\label{figprodrule}}
+\end{myfigureht}
+
+
+
+\begin{prop}[Aturan hasil bagi]\index{aturan hasil bagi}
+Misalkan $I$ suatu interval, misalkan
+$f \colon I \to \R$ dan $g \colon I \to \R$ diferensiabel di $c$
+dan $g(x) \neq 0$ untuk semua $x \in I$.
+Jika $h \colon I \to \R$
+didefinisikan oleh
+\begin{equation*}
+h(x) \coloneqq \frac{f(x)}{g(x)},
+\end{equation*}
+maka $h$ diferensiabel di $c$ dan
+\begin{equation*}
+h'(c) = \frac{f'(c) g(c) - f(c) g'(c)}{{\bigl(g(c)\bigr)}^2} .
+\end{equation*}
+\end{prop}
+
+Sekali lagi, pembuktiannya diserahkan sebagai latihan.
+
+\subsection{Aturan rantai}
+
+Fungsi yang lebih rumit sering kali diperoleh melalui komposisi,
+yang diturunkan dengan menggunakan aturan rantai.  Aturan ini juga memberi tahu kita
+bagaimana suatu turunan berubah jika kita melakukan perubahan variabel.
+
+\begin{prop}[Aturan rantai]
+\index{aturan rantai}
+Misalkan $I_1, I_2$ adalah interval, dan misalkan
+$g \colon I_1 \to I_2$ diferensiabel di $c \in I_1$,
+serta
+$f \colon I_2 \to \R$ diferensiabel di $g(c)$.
+Jika $h \colon I_1 \to \R$
+didefinisikan oleh
+\begin{equation*}
+h(x) \coloneqq (f \circ g) (x) = f\bigl(g(x)\bigr) ,
+\end{equation*}
+maka $h$ diferensiabel di $c$ dan
+\begin{equation*}
+h'(c) = f'\bigl(g(c)\bigr)g'(c) .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Misalkan $d \coloneqq g(c)$.  Definisikan
+$u \colon I_2 \to \R$ dan $v \colon I_1 \to \R$ dengan
+\begin{equation*}
+u(y) \coloneqq
+\begin{cases}
+ \frac{f(y) - f(d)}{y-d}  & \text{jika } y \neq d, \\
+ f'(d)                    & \text{jika } y = d,
+\end{cases}
+\qquad
+v(x) \coloneqq
+\begin{cases}
+ \frac{g(x) - g(c)}{x-c} & \text{jika } x \neq c, \\
+ g'(c)                   & \text{jika } x = c.
+\end{cases}
+\end{equation*}
+Karena $f$ diferensiabel di $d = g(c)$, kita peroleh bahwa
+$u$ kontinu di $d$.  Demikian pula, $v$ kontinu di $c$.
+Untuk setiap $x$ dan $y$,
+\begin{equation*}
+f(y)-f(d) = u(y) (y-d)
+\qquad \text{dan} \qquad
+g(x)-g(c) = v(x) (x-c) .
+\end{equation*}
+Substitusikan persamaan-persamaan ini untuk memperoleh
+\begin{equation*}
+h(x)-h(c)
+=
+f\bigl(g(x)\bigr)-f\bigl(g(c)\bigr)
+=
+u\bigl( g(x) \bigr) \bigl(g(x)-g(c)\bigr)
+=
+u\bigl( g(x) \bigr) \bigl(v(x) (x-c)\bigr) .
+\end{equation*}
+Oleh karena itu, jika $x \neq c$,
+\begin{equation} \label{eq:chainruleeq}
+\frac{h(x)-h(c)}{x-c}
+=
+u\bigl( g(x) \bigr) v(x) .
+\end{equation}
+Dari kekontinuan $u$ dan $v$ masing-masing di $d$ dan $c$, kita peroleh
+$\lim_{y \to d} u(y)
+= f'(d) = f'\bigl(g(c)\bigr)$ dan
+$\lim_{x \to c} v(x) = g'(c)$.
+Fungsi $g$ kontinu di $c$, sehingga $\lim_{x \to c} g(x) = g(c)$.
+Jadi, limit
+ruas kanan \eqref{eq:chainruleeq}
+saat $x$ menuju $c$
+ada dan sama dengan $f'\bigl(g(c)\bigr) g'(c)$.  Dengan demikian, $h$
+diferensiabel di $c$ dan $h'(c) = f'\bigl(g(c)\bigr)g'(c)$.
+\end{proof}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Buktikan aturan hasil kali.
+Petunjuk: Buktikan dan gunakan
+$f(x) g(x) - f(c) g(c) = f(x)\bigl( g(x) - g(c) \bigr) + \bigl( f(x) -
+f(c) \bigr) g(c)$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan aturan hasil bagi.  Petunjuk: Anda dapat melakukannya secara langsung, tetapi mungkin
+lebih mudah untuk mencari turunan $\nicefrac{1}{x}$ lalu menggunakan
+aturan rantai dan aturan hasil kali.
+\end{exercise}
+
+\begin{exercise} \label{exercise:diffofxn}
+Untuk $n \in \Z$,
+buktikan bahwa $x^n$ diferensiabel dan carilah turunannya,
+kecuali, tentu saja, jika $n < 0$ dan $x=0$.
+Petunjuk: Gunakan aturan hasil kali.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa suatu polinomial diferensiabel, dan carilah turunannya.
+Petunjuk: Gunakan latihan sebelumnya.
+\end{exercise}
+
+\begin{exercise}
+Definisikan $f \colon \R \to \R$ dengan
+\begin{equation*}
+f(x) \coloneqq
+\begin{cases}
+x^2 & \text{jika } x \in \Q,\\
+0 & \text{selainnya.}
+\end{cases}
+\end{equation*}
+Buktikan bahwa $f$ diferensiabel di $0$, tetapi diskontinu di semua titik
+kecuali $0$.
+\end{exercise}
+
+\begin{exercise}
+Asumsikan ketaksamaan $\babs{x-\sin(x)} \leq x^2$.  Buktikan bahwa $\sin$
+diferensiabel di $0$, dan carilah turunannya di $0$.
+\end{exercise}
+
+\begin{exercise}
+Dengan menggunakan latihan sebelumnya, buktikan bahwa $\sin$ diferensiabel di setiap $x$
+dan bahwa turunannya adalah $\cos(x)$.  Petunjuk: Gunakan identitas trigonometri
+pengubahan jumlah menjadi hasil kali sebagaimana yang kita lakukan sebelumnya.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon I \to \R$ diferensiabel.  Untuk $n \in \Z$, misalkan $f^n$
+adalah fungsi yang didefinisikan oleh $f^n(x) \coloneqq {\bigl( f(x) \bigr)}^n$.  Jika
+$n < 0$, asumsikan $f(x) \neq 0$ untuk setiap $x \in I$.  Buktikan bahwa
+$(f^n)'(x) = n {\bigl(f(x) \bigr)}^{n-1} f'(x)$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon \R \to \R$ adalah fungsi kontinu Lipschitz yang
+diferensiabel.
+Buktikan bahwa $f'$ adalah fungsi terbatas.
+\end{exercise}
+
+\begin{exercise} \label{exercise:inversederformula}
+Misalkan $I_1, I_2$ adalah interval.
+Misalkan $f \colon I_1 \to I_2$ adalah fungsi bijektif dan $g \colon I_2 \to I_1$
+adalah inversnya.  Misalkan $f$ diferensiabel di $c \in I_1$,
+$f'(c) \neq 0$, dan $g$ diferensiabel di $f(c)$.  Gunakan aturan rantai
+untuk mencari rumus bagi $g'\bigl(f(c)\bigr)$ (dinyatakan dalam $f'(c)$).
+\end{exercise}
+
+\begin{exercise} \label{exercise:bndmuldiff}
+Misalkan $f \colon I \to \R$ terbatas, $g \colon I \to
+\R$ diferensiabel di $c \in I$, dan $g(c) = g'(c) = 0$.  Tunjukkan
+bahwa $h(x) \coloneqq f(x) g(x)$ diferensiabel di $c$.  Petunjuk: Anda
+tidak dapat menerapkan aturan hasil kali.
+\end{exercise}
+
+\begin{exercise} \label{exercise:diffsqueeze}
+Misalkan $f \colon I \to \R$, 
+$g \colon I \to \R$, dan
+$h \colon I \to \R$ adalah fungsi-fungsi.  Misalkan $c \in I$ sedemikian sehingga
+$f(c) = g(c) = h(c)$, $g$ dan $h$ diferensiabel di $c$,
+dan $g'(c) = h'(c)$.  Selanjutnya, misalkan $h(x) \leq f(x) \leq g(x)$ untuk
+setiap $x \in I$.  Buktikan bahwa $f$ diferensiabel di $c$ dan $f'(c) = g'(c) =
+h'(c)$.
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Misalkan $f \colon (-1,1) \to \R$ adalah fungsi sedemikian sehingga $f(x) = x h(x)$ untuk
+suatu fungsi terbatas $h \colon (-1,1) \to \R$.
+Tunjukkan bahwa $g(x) \coloneqq {\bigl( f(x) \bigr)}^2$
+diferensiabel di titik asal dan $g'(0) = 0$.
+\item
+Carilah contoh suatu
+fungsi kontinu $f \colon (-1,1) \to \R$ dengan $f(0) = 0$, tetapi sedemikian
+sehingga $g(x) \coloneqq {\bigl( f(x) \bigr)}^2$ tidak diferensiabel di titik asal.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon I \to \R$ diferensiabel di $c \in I$.
+Buktikan bahwa terdapat bilangan $a$ dan $b$ dengan sifat bahwa
+untuk setiap $\epsilon > 0$, terdapat $\delta > 0$ sedemikian sehingga
+$\babs{a+b(x-c) - f(x)} \leq \epsilon \sabs{x-c}$, apabila $x \in I$ dan
+$\sabs{x-c} < \delta$.
+Dengan kata lain, tunjukkan bahwa
+terdapat fungsi $g \colon I \to \R$
+sedemikian sehingga $\lim_{x\to c} g(x) = 0$ dan
+$\babs{a+b(x-c) - f(x)} = g(x) \sabs{x-c}$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:simpleLHopital}
+Buktikan versi sederhana dari \myindex{aturan L'H\^opital}\index{aturan L'Hospital} berikut.
+Misalkan 
+$f \colon (a,b) \to \R$ dan $g \colon (a,b) \to \R$ adalah fungsi-fungsi
+diferensiabel
+yang turunannya, $f'$ dan $g'$, merupakan fungsi kontinu.
+Misalkan di $c \in (a,b)$ berlaku $f(c) = 0$, $g(c)=0$,
+$g'(x) \neq 0$ untuk setiap $x \in (a,b)$, dan
+$g(x) \neq 0$ apabila $x \neq c$.   Perhatikan
+bahwa limit $\nicefrac{f'(x)}{g'(x)}$ saat $x$ menuju $c$ ada.  Tunjukkan bahwa
+\begin{equation*}
+\lim_{x \to c} \frac{f(x)}{g(x)} = 
+\lim_{x \to c} \frac{f'(x)}{g'(x)} .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon (a,b) \to \R$ diferensiabel di $c \in (a,b)$,
+$f(c)=0$, dan $f'(c) > 0$.
+Buktikan bahwa terdapat $\delta > 0$ sedemikian sehingga $f(x) < 0$
+apabila $c-\delta < x < c$ dan
+$f(x) > 0$ 
+apabila $c < x < c+\delta$.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Teorema nilai rata-rata}
+\label{sec:mvt}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2 kuliah (beberapa penerapan dapat dilewati)}
+
+\subsection{Minimum dan maksimum relatif}
+
+Sebelumnya kita telah membahas maksimum dan minimum mutlak.  Keduanya merupakan puncak tertinggi dan
+lembah terendah di seluruh jajaran pegunungan.  Bagaimana dengan
+puncak masing-masing gunung dan dasar masing-masing lembah?
+Turunan, sebagai konsep lokal, ibarat berjalan di tengah kabut; turunan
+tidak dapat memberi tahu apakah kita berada di puncak tertinggi, tetapi dapat memberi tahu apakah kita berada
+di puncak suatu gunung.
+
+\begin{defn}
+Misalkan $S \subset \R$ adalah suatu himpunan dan
+misalkan $f \colon S \to \R$ adalah suatu fungsi.  Fungsi $f$ dikatakan mempunyai
+\emph{\myindex{maksimum relatif}}\index{maksimum!relatif}
+di $c \in S$ jika terdapat $\delta>0$
+sedemikian sehingga untuk setiap $x \in S$ dengan $\sabs{x-c} < \delta$,
+berlaku $f(x) \leq f(c)$.
+Definisi
+\emph{\myindex{minimum relatif}}\index{minimum!relatif}
+serupa.
+\end{defn}
+
+\begin{lemma}\label{relminmax:lemma}
+Misalkan $f \colon (a,b) \to \R$ diferensiabel di $c \in (a,b)$,
+dan $f$ mempunyai
+minimum relatif atau maksimum relatif di $c$.  Maka
+$f'(c) = 0$.
+\end{lemma}
+
+\begin{proof}
+Misalkan $c$ adalah 
+titik maksimum relatif bagi $f$.  Artinya, terdapat $\delta > 0$ sedemikian
+sehingga untuk setiap $x \in (a,b)$ dengan
+$\sabs{x-c} < \delta$, berlaku $f(x)-f(c) \leq 0$.
+Perhatikan hasil bagi
+selisih.  Jika $c < x < c+\delta$, maka
+\begin{equation*}
+\frac{f(x)-f(c)}{x-c} \leq 0 ,
+\end{equation*}
+dan jika $c-\delta < y < c$, maka
+\begin{equation*}
+\frac{f(y)-f(c)}{y-c} \geq 0 .
+\end{equation*}
+Lihat \figureref{fig:critpt} untuk ilustrasinya.
+\begin{myfigureht}
+\myincludegraphics{critpt}{%
+Ditampilkan grafik suatu fungsi f.
+Tiga titik ditandai pada sumbu horizontal, dari kiri
+ke kanan, yaitu y, c, dan x.  Fungsi tersebut mempunyai maksimum
+di titik c.  Titik-titik pada grafik yang bersesuaian dengan x, c, dan y
+ditandai.
+Melalui titik-titik yang bersesuaian
+dengan y dan c terdapat sebuah garis sekan yang menanjak dan
+diberi keterangan bahwa kemiringannya sama dengan f dari y dikurangi f dari c, seluruhnya
+dibagi besaran y-c, lebih besar daripada atau sama dengan 0.
+Melalui titik-titik yang bersesuaian
+dengan c dan x terdapat sebuah garis sekan yang menurun dan
+diberi keterangan bahwa kemiringannya sama dengan f dari x dikurangi f dari c, seluruhnya
+dibagi besaran x-c, lebih kecil daripada atau sama dengan 0.}
+\caption{Kemiringan garis-garis sekan pada suatu maksimum relatif.\label{fig:critpt}}
+\end{myfigureht}
+
+Karena $a < c < b$, terdapat
+barisan $\{ x_n \}_{n=1}^\infty$ dan
+$\{ y_n \}_{n=1}^\infty$ di $(a,b)$
+sedemikian sehingga $c < x_n < c+\delta$ dan
+$c-\delta < y_n < c$ untuk setiap $n \in \N$, serta
+$\lim_{n\to\infty} x_n = \lim_{n\to\infty} y_n = c$.
+Karena $f$
+diferensiabel di $c$,
+\begin{equation*}
+0 \geq \lim_{n\to\infty} \frac{f(x_n)-f(c)}{x_n-c} 
+=
+f'(c)
+=
+\lim_{n\to\infty} \frac{f(y_n)-f(c)}{y_n-c} \geq 0.
+\end{equation*}
+Bukti untuk kasus maksimum selesai.
+Untuk kasus minimum, perhatikan
+fungsi $-f$.
+\end{proof}
+
+Untuk suatu fungsi diferensiabel, titik tempat 
+$f'(c) = 0$ disebut \emph{\myindex{titik kritis}}.  Ketika $f$ tidak
+diferensiabel di beberapa titik,
+lazim pula dikatakan bahwa $c$ adalah titik kritis
+jika $f'(c)$ tidak ada.
+Teorema tersebut menyatakan bahwa minimum atau maksimum relatif di titik interior
+suatu interval haruslah merupakan titik kritis.
+Seperti yang Anda ingat dari kalkulus, minimum dan maksimum suatu fungsi dicari
+dengan mencari semua titik kritis beserta titik-titik ujung
+interval tersebut, lalu memeriksa di titik mana di antara titik-titik itu
+fungsi bernilai terbesar atau terkecil.
+
+\subsection{Teorema Rolle}
+
+Andaikan suatu fungsi memiliki nilai yang sama di kedua titik ujung suatu interval.
+Secara intuitif, fungsi tersebut semestinya mencapai minimum atau maksimum di bagian dalam
+interval.
+Pada minimum atau maksimum tersebut, turunannya semestinya bernilai nol.
+Lihat \figureref{rollefig} untuk gagasan geometrisnya.
+Inilah isi teorema Rolle%
+\footnote{Dinamai menurut matematikawan Prancis
+\href{https://en.wikipedia.org/wiki/Michel_Rolle}{Michel Rolle}
+(1652--1719).}.
+
+\begin{myfigureht}
+\myincludegraphics{rollefig}{%
+Grafik suatu fungsi digambar pada interval dari a sampai b.
+Fungsi bernilai nol di a dan b.  Fungsi naik menuju
+suatu maksimum,
+lalu turun menuju suatu minimum, kemudian naik kembali.  Maksimum fungsi terjadi
+di titik yang ditandai c.  Garis singgung horizontal digambar pada
+titik yang bersesuaian di grafik.  Perhatikan bahwa garis itu sejajar dengan
+sumbu horizontal.}
+\caption{Titik tempat garis singgung horizontal, yaitu $f'(c) =
+0$.\label{rollefig}}
+\end{myfigureht}
+
+\begin{thm}[Rolle] \label{thm:rolle}
+\index{teorema Rolle}
+Misalkan $f \colon [a,b] \to \R$ suatu fungsi kontinu
+yang diferensiabel pada $(a,b)$ sedemikian sehingga $f(a) = f(b)$.
+Maka terdapat $c \in (a,b)$ sedemikian sehingga $f'(c) = 0$.
+\end{thm}
+
+\begin{proof}
+Karena $f$ kontinu pada $[a,b]$, fungsi tersebut mencapai minimum mutlak dan
+maksimum mutlak pada $[a,b]$.  Kita ingin menerapkan \lemmaref{relminmax:lemma},
+sehingga kita perlu menemukan $c \in (a,b)$ tempat $f$ mencapai minimum atau
+maksimum.
+Tuliskan $K \coloneqq f(a) = f(b)$.
+Jika terdapat $x$ sedemikian sehingga $f(x) > K$, maka maksimum mutlak
+lebih besar daripada $K$ dan karenanya terjadi di suatu $c \in (a,b)$,
+sehingga $f'(c) = 0$.  Di sisi lain, jika terdapat $x$
+sedemikian sehingga $f(x) < K$, maka minimum mutlak terjadi di suatu
+$c \in (a,b)$, sehingga $f'(c) = 0$.  Jika tidak ada $x$ sedemikian sehingga
+$f(x) > K$ atau
+$f(x) < K$, maka $f(x) = K$ untuk semua $x$, dan dengan demikian
+$f'(x) = 0$ untuk semua $x \in (a,b)$, sehingga sebarang $c \in (a,b)$ memenuhi.
+\end{proof}
+
+Syarat bahwa turunan ada untuk semua $x
+\in (a,b)$ mutlak diperlukan.  Perhatikan fungsi $f(x) \coloneqq \sabs{x}$ pada $[-1,1]$.
+Jelas bahwa $f(-1) = f(1)$, tetapi tidak ada titik $c$ tempat $f'(c) = 0$.
+
+\subsection{Teorema nilai rata-rata}
+
+Kita memperluas \hyperref[thm:rolle]{teorema Rolle}
+ke fungsi-fungsi yang mencapai nilai yang berbeda
+di kedua titik ujungnya.
+
+\begin{thm}[Teorema nilai rata-rata] \label{thm:mvt}
+\index{teorema nilai rata-rata}
+Misalkan $f \colon [a,b] \to \R$ merupakan fungsi kontinu yang
+diferensiabel pada $(a,b)$.  Maka terdapat titik $c \in (a,b)$
+sedemikian sehingga
+\begin{equation*}
+f(b)-f(a) = f'(c)(b-a) .
+\end{equation*}
+\end{thm}
+
+Untuk interpretasi geometris teorema nilai rata-rata, lihat
+\figureref{mvtfig}.  Gagasannya ialah bahwa nilai $\frac{f(b)-f(a)}{b-a}$
+merupakan kemiringan garis yang melalui titik-titik $\bigl(a,f(a)\bigr)$
+dan $\bigl(b,f(b)\bigr)$.
+Kemudian $c$ adalah titik sedemikian sehingga $f'(c) = \frac{f(b)-f(a)}{b-a}$, yaitu 
+garis singgung di titik $\bigl(c,f(c)\bigr)$ memiliki kemiringan yang sama dengan
+garis yang melalui $\bigl(a,f(a)\bigr)$ dan $\bigl(b,f(b)\bigr)$.
+Nama tersebut berasal dari fakta bahwa kemiringan garis sekan
+adalah nilai rata-rata turunan, sehingga turunan mencapai nilai rata-ratanya
+di bagian dalam interval.
+
+Teorema ini mengikuti dari \hyperref[thm:rolle]{teorema Rolle}
+dengan mengurangkan dari $f$ fungsi linear afin
+yang nilainya di $a$ dan $b$ sama dengan nilai $f$.
+Grafik fungsi linear afin ini adalah 
+garis sekan---garis lurus yang melalui
+$\bigl(a,f(a)\bigr)$ dan $\bigl(b,f(b)\bigr)$---dan
+turunannya adalah
+$\frac{f(b)-f(a)}{b-a}$.
+Dengan demikian, kita mencari titik tempat
+selisih ini memiliki turunan nol.
+
+\begin{myfigureht}
+\myincludegraphics{mvtfig}{%
+ Grafik suatu fungsi digambar pada interval dari a hingga b.
+ Fungsi tersebut tampak serupa dengan sebelumnya, tetapi tidak lagi
+ bernilai nol di titik-titik ujung; titik ujung kiri bernilai negatif
+ dan titik ujung kanan bernilai positif.  Digambar sebuah garis lurus yang melalui kedua titik ujung
+ kurva, yakni garis yang melalui titik
+ (a, f dari a) dan (b, f dari b).  Di titik yang bersesuaian dengan 
+ c pada sumbu horizontal, garis singgung pada fungsi
+ sejajar dengan garis yang melalui kedua titik ujung.}
+\caption{Interpretasi grafis teorema nilai rata-rata.\label{mvtfig}}
+\end{myfigureht}
+
+
+\begin{proof}
+Definisikan
+fungsi $g \colon [a,b] \to \R$ dengan
+\begin{equation*}
+g(x) \coloneqq
+f(x)-
+\left( f(b)+\frac{f(b)-f(a)}{b-a}(x-b) \right)
+=
+f(x)-
+f(b)-\frac{f(b)-f(a)}{b-a}(x-b) .
+\end{equation*}
+Fungsi $g$ diferensiabel pada $(a,b)$,
+kontinu pada $[a,b]$, serta $g(a) = 0$ dan $g(b) = 0$.  Jadi, terdapat
+suatu
+$c \in (a,b)$ sedemikian sehingga $g'(c) = 0$, yaitu,
+\begin{equation*}
+0 = g'(c) = f'(c)-\frac{f(b)-f(a)}{b-a} .
+\end{equation*}
+Dengan kata lain,
+$f(b)-f(a) = f'(c)(b-a)$.
+\end{proof}
+
+Pembuktian tersebut dapat diperumum.  Dengan meninjau
+$g(x) \coloneqq
+\bigl(f(x)-f(b)\bigr)
+\bigl(\varphi(b)-\varphi(a)\bigr)
+-
+\bigl(f(b)-f(a)\bigr)
+\bigl(\varphi(x)-\varphi(b)\bigr)$,
+dapat dibuktikan versi berikut.  Pembuktiannya kita tinggalkan sebagai latihan.
+
+\begin{thm}[Teorema nilai rata-rata Cauchy] \label{thm:cauchymvt}
+\index{teorema nilai rata-rata Cauchy}
+Misalkan $f \colon [a,b] \to \R$ dan $\varphi \colon [a,b] \to \R$ merupakan
+fungsi-fungsi kontinu yang
+diferensiabel pada $(a,b)$.  Maka terdapat titik $c \in (a,b)$
+sedemikian sehingga
+\begin{equation*}
+\bigl(f(b)-f(a)\bigr)\varphi'(c) = f'(c)\bigl(\varphi(b)-\varphi(a)\bigr) .
+\end{equation*}
+\end{thm}
+
+Teorema nilai rata-rata memiliki keistimewaan sebagai salah satu dari sedikit teorema yang
+pernah dikutip
+di pengadilan.  Ketika polisi mengukur kecepatan mobil dari pesawat terbang, atau
+melalui kamera yang membaca pelat nomor, mereka 
+mengukur waktu yang dibutuhkan mobil untuk bergerak di antara dua titik.
+Teorema nilai rata-rata kemudian
+menyatakan bahwa di suatu tempat mobil itu pasti pernah mencapai kecepatan yang diperoleh dari hasil bagi
+selisih jarak dan selisih waktu.
+
+
+
+\subsection{Penerapan}
+
+Mari kita lihat beberapa penerapan teorema nilai rata-rata.
+Penerapan-penerapan ini memperlihatkan penggunaan khas teorema tersebut, yaitu
+menghilangkan suatu limit dengan menemukan jenis titik yang tepat, tempat
+turunannya bukan sekadar mendekati suatu hasil bagi selisih, melainkan benar-benar
+sama dengannya.
+Pertama, kita menyelesaikan persamaan diferensial pertama kita.
+
+\begin{prop} \label{prop:derzeroconst}
+Misalkan $I$ suatu interval dan
+$f \colon I \to \R$ suatu fungsi diferensiabel sedemikian sehingga $f'(x) = 0$
+untuk semua $x \in I$.
+Maka $f$ konstan.
+\end{prop}
+
+\begin{proof}
+Ambil sebarang $x,y \in I$ dengan $x < y$.
+Karena $I$ suatu interval, $[x,y] \subset I$.
+Maka pembatasan $f$ pada $[x,y]$ memenuhi hipotesis
+\hyperref[thm:mvt]{teorema nilai rata-rata}.
+Oleh karena itu, terdapat $c \in (x,y)$ sedemikian sehingga
+\begin{equation*}
+f(y)-f(x) = f'(c)(y-x).
+\end{equation*}
+Karena $f'(c) = 0$, kita peroleh $f(y) = f(x)$.  Jadi,
+fungsi tersebut konstan.
+\end{proof}
+
+Setelah mengetahui apa artinya suatu fungsi tetap konstan, kita meninjau
+fungsi yang monoton naik dan monoton turun.
+Kita katakan bahwa $f \colon I \to \R$ \emph{\myindex{monoton naik}}
+(berturut-turut, \emph{\myindex{naik tegas}}) jika
+$x < y$ mengakibatkan $f(x) \leq f(y)$ (berturut-turut, $f(x) < f(y)$).
+Kita mendefinisikan
+\emph{\myindex{monoton turun}} dan
+\emph{\myindex{turun tegas}} dengan cara yang sama dengan membalik
+pertidaksamaan untuk $f$.
+
+\begin{prop} \label{incdecdiffprop}
+Misalkan $I$ suatu interval dan
+$f \colon I \to \R$ suatu fungsi diferensiabel.
+%\begin{enumerate}[(i),itemsep=0.5\itemsep,parsep=0.5\parsep,topsep=0.5\topsep,partopsep=0.5\partopsep]
+\begin{enumerate}[(i)]
+\item $f$ monoton naik jika dan hanya jika $f'(x) \geq 0$ untuk semua $x \in I$.
+\item $f$ monoton turun jika dan hanya jika $f'(x) \leq 0$ untuk semua $x \in I$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Mari kita buktikan butir pertama.  Andaikan $f$ monoton naik.
+Untuk semua $x,c \in I$ dengan $x \neq c$,
+\begin{equation*}
+\frac{f(x)-f(c)}{x-c} \geq 0 .
+\end{equation*}
+Dengan mengambil limit saat $x$ menuju $c$, kita peroleh $f'(c) \geq 0$.
+
+Untuk arah sebaliknya, andaikan $f'(x) \geq 0$ untuk semua $x \in I$.
+Ambil sebarang $x, y \in I$ dengan $x < y$, dan perhatikan bahwa $[x,y] \subset I$.
+Menurut \hyperref[thm:mvt]{teorema nilai rata-rata}, terdapat $c \in (x,y)$ sedemikian sehingga
+\begin{equation*}
+f(y)-f(x) = f'(c)(y-x) .
+\end{equation*}
+Karena $f'(c) \geq 0$ dan $y-x > 0$, kita peroleh $f(y) - f(x) \geq 0$ atau $f(x) \leq
+f(y)$, sehingga
+$f$ monoton naik.
+
+Butir kedua, yaitu $f$ monoton turun, kita serahkan kepada pembaca sebagai latihan.
+\end{proof}
+
+Pernyataan serupa tetapi lebih lemah berlaku untuk fungsi naik tegas dan
+fungsi turun tegas.
+
+\begin{prop} \label{incdecdiffstrictprop}
+Misalkan $I$ suatu interval dan
+$f \colon I \to \R$ suatu fungsi diferensiabel.
+\begin{enumerate}[(i)]
+\item
+\label{incdecdiffstrictprop:i}
+Jika $f'(x) > 0$ untuk semua $x \in I$, maka
+$f$ naik tegas.
+\item
+\label{incdecdiffstrictprop:ii}
+Jika $f'(x) < 0$ untuk semua $x \in I$,
+maka $f$ turun tegas.
+\end{enumerate}
+\end{prop}
+
+Pembuktian
+\ref{incdecdiffstrictprop:i}
+kita serahkan sebagai latihan.
+Selanjutnya, \ref{incdecdiffstrictprop:ii}
+mengikuti dari 
+\ref{incdecdiffstrictprop:i} dengan meninjau $-f$
+sebagai gantinya.
+Kebalikan proposisi ini tidak benar.  Fungsi
+$f(x) \coloneqq x^3$ naik tegas, tetapi $f'(0) = 0$.
+
+\medskip
+
+Penerapan lain dari \hyperref[thm:mvt]{teorema nilai rata-rata} adalah hasil berikut mengenai
+letak ekstremum, yang kadang disebut
+\emph{\myindex{uji turunan pertama}}.
+Hasil ini dinyatakan untuk minimum dan maksimum mutlak.
+Untuk menerapkannya guna mencari minimum
+dan maksimum relatif, batasi $f$ pada interval $(c-\delta,c+\delta)$.
+
+\begin{prop} \label{firstderminmaxtest}
+Misalkan $f \colon (a,b) \to \R$ kontinu.  Misalkan $c \in (a,b)$
+dan andaikan
+$f$ diferensiabel pada $(a,c)$ dan $(c,b)$.
+\begin{enumerate}[(i)]
+\item Jika $f'(x) \leq 0$ untuk setiap $x \in (a,c)$ dan
+ $f'(x) \geq 0$ untuk setiap $x \in (c,b)$, maka $f$ memiliki minimum mutlak 
+di $c$.
+\item Jika $f'(x) \geq 0$ untuk setiap $x \in (a,c)$ dan
+ $f'(x) \leq 0$ untuk setiap $x \in (c,b)$, maka $f$ memiliki maksimum mutlak
+di $c$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Kita membuktikan butir pertama dan menyerahkan butir kedua kepada pembaca.
+Ambil $x \in (a,c)$
+dan suatu barisan $\{ y_n\}_{n=1}^\infty$ sedemikian sehingga $x < y_n < c$ untuk semua $n$
+dan $\lim_{n\to\infty} y_n = c$.
+Menurut proposisi sebelumnya,
+$f$ monoton turun pada $(a,c)$ sehingga $f(x) \geq f(y_n)$ untuk semua $n$.
+Karena $f$
+kontinu di $c$, dengan mengambil limit kita peroleh
+$f(x) \geq f(c)$.
+
+Serupa dengan itu, ambil $x \in (c,b)$
+dan suatu barisan $\{ y_n\}_{n=1}^\infty$ sedemikian sehingga $c < y_n < x$ dan
+$\lim_{n\to\infty} y_n = c$.
+Fungsi tersebut monoton naik pada $(c,b)$ sehingga $f(x) \geq f(y_n)$ untuk semua $n$.
+Dari kekontinuan $f$, kita peroleh
+$f(x) \geq f(c)$.  Jadi $f(x) \geq f(c)$ untuk semua
+$x \in (a,b)$.
+\end{proof}
+
+Kebalikan proposisi tersebut tidak berlaku.  Lihat
+\exampleref{baddifffunc:example} di bawah.
+
+\medskip
+
+Penerapan teorema nilai rata-rata lain yang sering digunakan dan mungkin pernah Anda
+lihat dalam kalkulus adalah hasil berikut mengenai keterdiferensialan di
+titik-titik ujung suatu interval.  Pembuktiannya diberikan dalam
+\exerciseref{exercise:endpointderivative}.
+
+\begin{prop} \label{prop:endpointderivative}
+\leavevmode
+\begin{enumerate}[(i)]
+\item
+Andaikan $f \colon [a,b) \to \R$ kontinu, diferensiabel pada $(a,b)$,
+dan $\lim_{x \to a} f'(x) = L$.  Maka $f$ diferensiabel di $a$ dan
+$f'(a) = L$.
+\item
+Andaikan $f \colon (a,b] \to \R$ kontinu, diferensiabel pada $(a,b)$,
+dan $\lim_{x \to b} f'(x) = L$.  Maka $f$ diferensiabel di $b$ dan
+$f'(b) = L$.
+\end{enumerate}
+\end{prop}
+
+Sesungguhnya, dengan menggunakan hasil perluasan \propref{context:prop}, kita tidak perlu mengandaikan
+bahwa $f$ terdefinisi di titik ujung.  Lihat \exerciseref{exercise:extendboundedder}.
+
+\subsection{Kekontinuan turunan dan teorema nilai antara}
+
+Turunan fungsi memenuhi
+sifat nilai antara.
+
+\begin{thm}[Darboux] \label{thm:darboux} \index{teorema Darboux}
+Misalkan $f \colon [a,b] \to \R$ diferensiabel.  Andaikan $y \in \R$ sedemikian
+sehingga $f'(a) < y < f'(b)$ atau
+$f'(a) > y > f'(b)$.  Maka terdapat $c \in (a,b)$ sedemikian sehingga $f'(c) =
+y$.
+\end{thm}
+
+Pembuktian diperoleh dengan menjadikan $g$ sebagai selisih $f$
+dan suatu fungsi linear dengan turunan $y$.
+Fungsi baru $g$ mereduksi masalah
+ke kasus $y=0$, dengan $g'(a) > 0 > g'(b)$.  Artinya, $g$ naik di $a$ dan
+turun di $b$, sehingga harus mencapai maksimum di dalam $(a,b)$,
+tempat turunannya bernilai nol.  Lihat \figureref{darbouxthmfig}.
+
+\begin{myfigureht}
+\myincludegraphics{darbouxthmfig}{%
+Grafik suatu fungsi dengan tiga titik, a, c, b, dalam urutan tersebut,
+yang ditandai pada sumbu horizontal.  Garis singgung digambar pada
+titik-titik yang bersesuaian di grafik.  Dari kiri ke kanan,
+garis pertama miring naik dan diberi label g prima di a lebih besar daripada 0.
+Garis kedua horizontal dan diberi label g prima di c sama dengan 0.
+Garis ketiga miring turun dan diberi label g prima di b lebih kecil daripada 0.}
+\caption{Gagasan pembuktian teorema Darboux.\label{darbouxthmfig}}
+\end{myfigureht}
+
+\begin{proof}
+Andaikan
+$f'(a) < y < f'(b)$.
+Definisikan
+\begin{equation*}
+g(x) \coloneqq yx - f(x) .
+\end{equation*}
+Fungsi $g$ kontinu pada $[a,b]$, sehingga $g$ mencapai maksimum di suatu $c \in
+[a,b]$.
+
+Fungsi $g$ juga diferensiabel pada $[a,b]$.
+Hitung $g'(x) = y-f'(x)$.  Jadi, $g'(a) > 0$.  Karena turunan merupakan
+limit hasil bagi selisih dan bernilai positif, pasti terdapat suatu
+hasil bagi selisih yang positif.  Artinya, pasti terdapat
+$x > a$ sedemikian sehingga
+\begin{equation*}
+\frac{g(x)-g(a)}{x-a} > 0 ,
+\end{equation*}
+atau $g(x) > g(a)$.  Jadi, $g$
+tidak mungkin memiliki maksimum di $a$.  Demikian pula, karena $g'(b) < 0$,
+kita temukan $x < b$ (suatu $x$ yang berbeda) sedemikian sehingga
+$\frac{g(x)-g(b)}{x-b} < 0$ atau $g(x) > g(b)$, sehingga
+$g$ tidak mungkin memiliki maksimum di $b$.
+Oleh karena itu, $c \in (a,b)$,
+dan \lemmaref{relminmax:lemma} berlaku: Karena $g$ mencapai maksimum
+di $c$, kita peroleh $g'(c) = 0$
+dan karenanya $f'(c) = y$.
+
+Demikian pula, jika $f'(a) > y > f'(b)$, gunakan $g(x) \coloneqq f(x)- yx$.
+\end{proof}
+
+Kita telah melihat bahwa
+terdapat fungsi diskontinu yang memiliki
+sifat nilai antara.  Meskipun pada awalnya sulit dibayangkan,
+terdapat pula fungsi yang diferensiabel di mana-mana tetapi turunannya tidak
+kontinu.
+
+\begin{example} \label{baddifffunc:example}
+Misalkan $f \colon \R \to \R$ fungsi yang didefinisikan oleh
+\begin{equation*}
+f(x) \coloneqq
+\begin{cases}
+{\bigl( x \sin(\nicefrac{1}{x}) \bigr)}^2 & \text{jika } x \neq 0, \\
+0 & \text{jika } x = 0.
+\end{cases}
+\end{equation*}
+Kita klaim bahwa $f$ diferensiabel di mana-mana, tetapi
+$f' \colon \R \to \R$ tidak kontinu di
+titik asal.  Selain itu, $f$ memiliki minimum di $0$, tetapi turunannya
+berganti tanda tak berhingga kali di dekat titik asal.
+Lihat \figureref{fig:nonc1diff}.
+\begin{myfigureht}
+\myincludepdft{nonc1diff_full}{%
+Di sebelah kiri terdapat grafik fungsi yang berosilasi antara
+sumbu x dan fungsi x kuadrat, yang grafiknya digambarkan
+sebagai garis putus-putus.
+Di sebelah kanan terdapat fungsi yang berosilasi semakin cepat
+ketika mendekati titik asal, agak menyerupai grafik
+sinus dari 1 per x, tetapi seluruh grafik tampak sedikit dimiringkan
+sehingga juga bergerak ke atas.}
+\caption{Fungsi dengan turunan diskontinu. Fungsi $f$ berada di sebelah kiri
+dan $f'$ di sebelah kanan.  Perhatikan bahwa $f(x) \leq x^2$ pada grafik kiri.\label{fig:nonc1diff}}
+\end{myfigureht}
+
+Bukti: Langsung dari definisi, $f$ memiliki
+minimum mutlak di $0$; kita mengetahui $f(x) \geq 0$ untuk semua $x$ dan $f(0) = 0$.
+
+Untuk $x \neq 0$,
+$f$ diferensiabel
+dan
+turunannya
+adalah $2 \sin (\nicefrac{1}{x}) \bigl( x \sin (\nicefrac{1}{x}) -
+\cos(\nicefrac{1}{x}) \bigr)$.
+Sebagai latihan, tunjukkan bahwa untuk $x_n = \frac{4}{(8n+1)\pi}$,
+berlaku
+$\lim_{n\to\infty} f'(x_n) = -1$, dan untuk
+$y_n = \frac{4}{(8n+3)\pi}$, berlaku
+$\lim_{n\to\infty} f'(y_n) = 1$.  Jadi, $f'$
+tidak mungkin kontinu di $0$
+apa pun nilai $f'(0)$.
+
+Mari kita tunjukkan bahwa $f$ diferensiabel di $0$ dan $f'(0)=0$.
+Untuk $x \neq 0$,
+\begin{equation*}
+\abs{\frac{f(x)-f(0)}{x-0} - 0}
+=
+\abs{\frac{x^2 \sin^2(\nicefrac{1}{x})}{x}}
+=
+\babs{x \sin^2(\nicefrac{1}{x})}
+\leq
+\sabs{x} .
+\end{equation*}
+Tentu saja, ketika $x$ menuju nol, $\sabs{x}$ menuju nol, sehingga
+$\abs{\frac{f(x)-f(0)}{x-0} - 0}$ menuju nol.  Oleh karena itu, $f$
+diferensiabel di 0 dan turunannya di 0 bernilai 0.
+Salah satu hal penting dalam perhitungan di atas
+adalah $\babs{f(x)} \leq x^2$;
+lihat juga Latihan \ref{exercise:bndmuldiff} dan
+\ref{exercise:diffsqueeze}.
+\end{example}
+
+Kadang-kadang berguna untuk mengandaikan bahwa turunan dari suatu fungsi
+diferensiabel bersifat kontinu.  Jika $f \colon I \to \R$ diferensiabel dan
+turunannya $f'$ kontinu pada $I$, kita katakan bahwa $f$
+\emph{\myindex{diferensiabel secara
+kontinu}}\index{diferensiabel!secara kontinu}.  Lazim ditulis
+$C^1(I)$ untuk himpunan fungsi yang diferensiabel secara kontinu
+pada $I$.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Selesaikan pembuktian \propref{incdecdiffprop}.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan pembuktian \propref{firstderminmaxtest}.
+\end{exercise}
+
+\begin{exercise} \label{exercise:boundeddermeanslip}
+Misalkan $f \colon \R \to \R$ adalah fungsi diferensiabel
+sedemikian sehingga $f'$ merupakan fungsi terbatas.  Buktikan
+bahwa $f$ merupakan fungsi kontinu Lipschitz.
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[1]
+Misalkan $f \colon [a,b] \to \R$ diferensiabel dan $c \in [a,b]$.
+Tunjukkan bahwa terdapat barisan $\{ x_n \}_{n=1}^\infty$ yang konvergen menuju $c$, dengan $x_n
+\neq c$ untuk setiap $n$, sedemikian sehingga
+\begin{equation*}
+f'(c) = \lim_{n\to \infty} f'(x_n).
+\avoidbreak
+\end{equation*}
+Perhatikan bahwa hal ini \emph{tidak} menyiratkan bahwa $f'$ kontinu (mengapa?).
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon \R \to \R$ adalah fungsi sedemikian sehingga
+$\babs{f(x)-f(y)} \leq \sabs{x-y}^2$ untuk setiap $x$ dan $y$.  Tunjukkan bahwa
+$f(x) = C$ untuk suatu konstanta $C$.  Petunjuk: Tunjukkan bahwa $f$ diferensiabel
+di setiap titik dan hitunglah turunannya.
+\end{exercise}
+
+\begin{exercise} \label{exercise:posderincr}
+Selesaikan pembuktian \propref{incdecdiffstrictprop}.  Artinya,
+misalkan $I$ adalah interval dan
+$f \colon I \to \R$ adalah fungsi diferensiabel sedemikian sehingga
+$f'(x) > 0$ untuk setiap $x \in I$.
+Tunjukkan bahwa $f$ naik tegas.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon (a,b) \to \R$ adalah fungsi diferensiabel
+sedemikian sehingga
+$f'(x) \neq 0$ untuk setiap $x \in (a,b)$.  Misalkan
+terdapat
+titik $c \in (a,b)$ sedemikian sehingga $f'(c) > 0$.
+Buktikan bahwa $f'(x) > 0$ untuk setiap $x \in (a,b)$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:samediffconst}
+Misalkan $f \colon (a,b) \to \R$ dan $g \colon (a,b) \to \R$ adalah
+fungsi-fungsi diferensiabel sedemikian sehingga $f'(x) = g'(x)$ untuk setiap $x \in (a,b)$;
+tunjukkan bahwa terdapat konstanta $C$ sedemikian sehingga $f(x) = g(x) + C$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan versi \myindex{aturan L'H\^opital}\index{aturan L'Hospital} berikut.
+Misalkan 
+$f \colon (a,b) \to \R$ dan $g \colon (a,b) \to \R$ adalah fungsi-fungsi
+diferensiabel dan $c \in (a,b)$.  Misalkan $f(c) = 0$, $g(c)=0$,
+$g'(x) \neq 0$ apabila $x \neq c$, dan
+limit $\nicefrac{f'(x)}{g'(x)}$ saat $x$ menuju $c$ ada.  Tunjukkan bahwa
+\begin{equation*}
+\lim_{x \to c} \frac{f(x)}{g(x)} = 
+\lim_{x \to c} \frac{f'(x)}{g'(x)} .
+\end{equation*}
+Bandingkan dengan \exerciseref{exercise:simpleLHopital}.
+Catatan: Sebelum melakukan hal lain, buktikan bahwa $g(x) \neq 0$ apabila $x \neq c$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon (a,b) \to \R$ adalah fungsi diferensiabel tak terbatas.  Tunjukkan bahwa
+$f' \colon (a,b) \to \R$ tak terbatas.
+Catatan: Penting bahwa $(a,b)$ merupakan interval terbatas.
+\end{exercise}
+
+\begin{exercise}
+Buktikan teorema yang sebenarnya dibuktikan Rolle pada tahun 1691:
+\emph{Jika $f$ adalah polinomial,
+$f'(a) = f'(b) = 0$ untuk suatu $a < b$,
+dan tidak terdapat $c \in (a,b)$ sedemikian sehingga $f'(c) = 0$,
+maka terdapat paling banyak satu akar $f$ dalam $(a,b)$,
+yaitu paling banyak satu $x \in (a,b)$ sedemikian sehingga $f(x) = 0$.}
+Dengan kata lain, di antara setiap dua akar berurutan dari $f'$ terdapat paling banyak satu
+akar $f$.
+Petunjuk: Misalkan terdapat dua akar dan lihatlah apa yang terjadi.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $a,b \in \R$ dan $f \colon \R \to \R$ diferensiabel,
+$f'(x) = a$ untuk setiap $x$, dan $f(0) = b$.  Carilah $f$ dan buktikan bahwa 
+fungsi tersebut adalah satu-satunya fungsi diferensiabel dengan sifat ini.
+\end{exercise}
+
+\begin{exercise} \label{exercise:endpointderivative}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Buktikan \propref{prop:endpointderivative}.
+\item 
+Misalkan $f \colon (a,b) \to \R$ kontinu, dan misalkan $f$ diferensiabel di setiap titik kecuali di $c \in
+(a,b)$ serta $\lim_{x \to c} f'(x) = L$.
+Buktikan bahwa $f$ diferensiabel di
+$c$ dan $f'(c) = L$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \label{exercise:extendboundedder}
+Misalkan $f \colon (0,1) \to \R$ diferensiabel dan $f'$
+terbatas.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa terdapat fungsi kontinu $g \colon [0,1) \to \R$
+sedemikian sehingga $f(x) = g(x)$ untuk setiap $x \neq 0$.\\
+Petunjuk: \propref{context:prop} dan
+\exerciseref{exercise:boundeddermeanslip}.
+\item
+Carilah contoh dengan $g$ tidak diferensiabel di $x=0$.
+\\
+Petunjuk: Pertimbangkan sesuatu yang didasarkan pada $\sin(\ln x)$,
+dan anggaplah bahwa sifat-sifat dasar
+$\sin$ dan $\ln$ dari kalkulus telah diketahui.
+\item
+Alih-alih mengasumsikan bahwa $f'$ terbatas, asumsikan bahwa $\lim_{x \to 0} f'(x)
+= L$.  Buktikan bahwa $g$ tidak hanya ada, tetapi juga diferensiabel di $0$
+dan $g'(0) = L$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Buktikan \thmref{thm:cauchymvt}.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Teorema Taylor}
+\label{sec:taylor}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{kurang dari satu kuliah (bagian opsional)}
+
+\subsection{Turunan berorde lebih tinggi}
+
+Jika $f \colon I \to \R$ diferensiabel, kita memperoleh fungsi
+$f' \colon I \to \R$.  Fungsi
+$f'$ disebut \emph{\myindex{turunan pertama}} dari $f$.
+Jika $f'$ diferensiabel, dengan
+$f'' \colon I \to \R$ kita menyatakan turunan dari $f'$.  Fungsi $f''$
+disebut \emph{\myindex{turunan kedua}} dari $f$.
+\glsadd{not:secondthirdfourthder}
+Dengan cara yang sama, kita memperoleh
+$f'''$, $f''''$, dan seterusnya.
+Untuk turunan yang lebih banyak,
+notasi tersebut menjadi tidak praktis; dengan
+$f^{(n)}$ kita menyatakan
+\glsadd{not:nthder}
+\emph{turunan ke-$n$}\index{turunan ke-n@turunan ke-$n$} dari $f$.
+%
+Jika $f$ memiliki turunan hingga orde ke-$n$, kita mengatakan bahwa $f$
+\emph{diferensiabel $n$ kali}\index{diferensiabel n kali@diferensiabel $n$ kali}
+\index{diferensiabel!n kali@$n$ kali}.
+
+\subsection{Teorema Taylor}
+
+Teorema Taylor%
+\footnote{Dinamai menurut matematikawan Inggris
+\href{https://en.wikipedia.org/wiki/Brook_Taylor}{Brook Taylor}
+(1685--1731).
+Teorema ini ditemukan oleh
+matematikawan Skotlandia
+\href{https://en.wikipedia.org/wiki/James_Gregory_(mathematician)}{James Gregory}
+(1638--1675).  Pernyataan yang kami berikan
+dikemukakan oleh
+\href{https://en.wikipedia.org/wiki/Lagrange}{Joseph-Louis Lagrange}
+(1736--1813).} (setidaknya versi yang kami berikan di sini)
+merupakan generalisasi dari \hyperref[thm:mvt]{teorema nilai rata-rata}.
+Teorema nilai rata-rata menyatakan bahwa, dengan suatu galat kecil, $f(x)$ untuk $x$ di dekat $x_0$ dapat
+diaproksimasi oleh $f(x_0)$:
+\begin{equation*}
+f(x) = f(x_0) + f'(c)(x-x_0),
+\end{equation*}
+di mana \myquote{galat} $f'(c)(x-x_0)$
+dinyatakan dalam turunan pertama
+di suatu titik $c$ antara $x$ dan $x_0$.
+Teorema Taylor menggeneralisasi hasil ini ke turunan berorde lebih tinggi.
+Teorema ini menyatakan bahwa, dengan suatu galat kecil, setiap fungsi yang
+diferensiabel $n$ kali dapat diaproksimasi di suatu titik $x_0$
+oleh polinom berderajat $n$.  Galat
+aproksimasi ini menuju nol lebih cepat daripada ${(x-x_0)}^{n}$ ketika
+$x$ menuju $x_0$.
+Untuk melihat mengapa ini merupakan aproksimasi yang baik, perhatikan bahwa untuk $n$ yang besar, 
+${(x-x_0)}^n$ sangat kecil dalam interval kecil di sekitar $x_0$.
+Kita akan memerlukan satu turunan lagi (jadi $n+1$) untuk menuliskan galat
+seperti yang kita lakukan dalam teorema nilai rata-rata.
+
+\begin{defn}
+Untuk suatu fungsi yang diferensiabel $n$ kali, katakanlah $f$, yang didefinisikan di sekitar titik $x_0 \in \R$, kita mendefinisikan
+\emph{\myindex{polinom Taylor}} berorde ke-$n$%
+\index{polinom Taylor berorde ke-n@polinom Taylor berorde ke-$n$}
+untuk $f$ di $x_0$ sebagai
+\begin{equation*}
+\begin{split}
+P_n^{x_0}(x)
+& \coloneqq
+\sum_{k=0}^n
+\frac{f^{(k)}(x_0)}{k!}{(x-x_0)}^k
+\\
+& =
+f(x_0)
++ f'(x_0)(x-x_0)
++ \frac{f''(x_0)}{2}{(x-x_0)}^2
++ \frac{f^{(3)}(x_0)}{6}{(x-x_0)}^3
+\\
+& \qquad
++ \cdots
++ \frac{f^{(n)}(x_0)}{n!}{(x-x_0)}^n .
+\end{split}
+\end{equation*}
+\end{defn}
+
+Lihat \figureref{fig:taylorsin} untuk
+polinom Taylor berderajat ganjil bagi fungsi sinus di $x_0=0$.
+Semua suku berderajat genap bernilai nol, sebab turunan berorde genap 
+dari sinus kembali berupa sinus, yang bernilai nol di titik asal.
+\begin{myfigureht}
+\myincludegraphics{taylorsin}{%
+Diberikan grafik fungsi sinus.  Ditampilkan pula beberapa
+aproksimasi.  Pertama, sebuah garis lurus yang
+menyinggung di titik asal diberi label y sama dengan P sub 1 super 0 dari x.
+Kedua, grafik sebuah polinom kubik yang menyinggung grafik sinus
+di titik asal dan cukup mengaproksimasinya di sekitar titik tersebut diberi label
+y sama dengan P sub 3 super 0 dari x.
+Demikian pula untuk aproksimasi berderajat 5 dan berderajat 7.  Semakin tinggi
+derajatnya, semakin jauh dari titik asal grafik tersebut masih cukup dekat 
+dengan fungsi sinus; sebagai contoh, aproksimasi berderajat 7 tampak
+cukup dekat di antara dua titik tempat sinus
+bernilai nol di sekitar titik asal, yaitu minus dan plus pi.}
+\caption{Polinom Taylor berderajat ganjil untuk fungsi
+sinus.\label{fig:taylorsin}}
+\end{myfigureht}
+
+Pernyataan teorema Taylor yang kami berikan mencakup
+\hyperref[thm:mvt]{teorema nilai rata-rata}, yang dapat dipandang sebagai
+teorema Taylor untuk $n=0$.
+
+\begin{thm}[Taylor]\index{teorema Taylor} \label{thm:taylor}
+Misalkan $f \colon [a,b] \to \R$ adalah fungsi dengan $n$ turunan yang
+kontinu pada $[a,b]$ dan sedemikian sehingga $f^{(n+1)}$ ada pada $(a,b)$.
+Untuk titik-titik berbeda $x_0$ dan $x$ di $[a,b]$,
+terdapat titik $c$ antara $x_0$
+dan $x$ sedemikian sehingga
+\begin{equation*}
+f(x)=P_{n}^{x_0}(x)+\frac{f^{(n+1)}(c)}{(n+1)!}{(x-x_0)}^{n+1} .
+\end{equation*}
+\end{thm}
+
+Suku $R_n^{x_0}(x)\coloneqq
+f(x)-P_n^{x_0}(x) =
+\frac{f^{(n+1)}(c)}{(n+1)!}{(x-x_0)}^{n+1}$ disebut
+\emph{suku sisa}\index{suku sisa dalam rumus Taylor}.  Bentuk ini
+disebut
+\emph{\myindex{bentuk Lagrange}} dari suku sisa.  Ada cara lain
+untuk menuliskan suku sisa, tetapi tidak kita bahas.  Perhatikan bahwa $c$ bergantung pada
+$x$ dan $x_0$.
+
+\begin{proof}
+Misalkan $M_{x,x_0}$ adalah bilangan (yang bergantung pada $x$ dan $x_0$) yang memenuhi persamaan
+\begin{equation*}
+f(x)=P_{n}^{x_0}(x)+M_{x,x_0}{(x-x_0)}^{n+1} .
+\end{equation*}
+Definisikan fungsi $g(s)$ dengan
+\begin{equation*}
+g(s) \coloneqq f(s)-P_n^{x_0}(s)-M_{x,x_0}{(s-x_0)}^{n+1} .
+\end{equation*}
+Kita menghitung
+turunan ke-$k$ polinom Taylor di $x_0$ dan memperoleh
+${(P_n^{x_0})}^{(k)}(x_0) = f^{(k)}(x_0)$ untuk
+$k=0,1,2,\ldots,n$ (turunan ke-nol dari suatu fungsi adalah fungsi itu
+sendiri).  Oleh karena itu,
+\begin{equation*}
+g(x_0) = g'(x_0) = g''(x_0) = \cdots = g^{(n)}(x_0) = 0 .
+\end{equation*}
+Khususnya, $g(x_0) = 0$.
+Kita juga memiliki $g(x) = 0$.
+Berdasarkan
+\hyperref[thm:mvt]{teorema nilai rata-rata},
+terdapat $x_1$ antara $x_0$ dan $x$ sedemikian sehingga $g'(x_1) = 0$.
+Dengan menerapkan \hyperref[thm:mvt]{teorema nilai rata-rata}
+pada $g'$, kita memperoleh bahwa terdapat
+$x_2$ antara $x_0$ dan $x_1$ (dan karena itu antara $x_0$ dan $x$)
+sedemikian sehingga $g''(x_2) = 0$.  Kita mengulangi
+argumen ini $n+1$ kali untuk memperoleh bilangan $x_{n+1}$ antara $x_0$ dan $x_n$
+(dan karena itu antara $x_0$ dan $x$) sedemikian sehingga $g^{(n+1)}(x_{n+1}) = 0$.
+
+Misalkan $c \coloneqq x_{n+1}$.
+Kita menghitung turunan ke-$(n+1)$ dari $g$ dan memperoleh
+\begin{equation*}
+g^{(n+1)}(s) = f^{(n+1)}(s)-(n+1)!\,M_{x,x_0} .
+\end{equation*}
+Dengan menyubstitusikan $c$ untuk $s$, kita memperoleh $M_{x,x_0} = \frac{f^{(n+1)}(c)}{(n+1)!}$, dan
+pembuktian selesai.
+\end{proof}
+
+Dalam pembuktian tersebut, kita memperoleh
+${(P_n^{x_0})}^{(k)}(x_0) = f^{(k)}(x_0)$ untuk $k=0,1,2,\ldots,n$.
+Oleh karena itu, polinom Taylor memiliki turunan yang sama dengan $f$ di $x_0$
+hingga turunan ke-$n$.  Itulah sebabnya polinom Taylor merupakan
+aproksimasi yang baik bagi $f$.
+Perhatikan dalam \figureref{fig:taylorsin} bahwa polinom-polinom Taylor merupakan
+aproksimasi yang cukup baik bagi sinus di dekat $x=0$.
+
+Polinom Taylor tidak selalu memberikan aproksimasi yang baik
+di setiap titik.
+Pertimbangkan pengembangan fungsi
+$f(x) \coloneqq \frac{x}{1-x}$ di sekitar 0.
+Untuk $x < 1$, kita memperoleh grafik-grafik dalam
+\figureref{fig:taylorgeom}.  Garis-garis titik-titik adalah aproksimasi berderajat
+pertama, kedua, dan ketiga.
+Garis putus-putus adalah polinom berderajat 20.
+Aproksimasi tersebut memang tampak menjadi
+lebih baik seiring naiknya derajat untuk $x > -1$.
+Untuk $x < -1$, aproksimasi itu justru tampak semakin buruk.
+Polinom-polinom tersebut
+adalah jumlah parsial deret geometri $\sum_{n=1}^\infty x^n$,
+dan deret tersebut hanya konvergen pada $(-1,1)$.
+Lihat pembahasan deret pangkat dalam
+\sectionref{sec:moreonseries}.
+
+\begin{myfigureht}
+\myincludegraphics{taylorgeom}{%
+Dengan garis tebal ditampilkan grafik suatu fungsi pada interval
+dari minus 2 hingga 1, yang memasuki gambar secara mendatar dari kiri di bawah
+sumbu-x, memotong sumbu-x di titik asal, lalu berbelok tajam
+ke atas dan meninggalkan gambar sebelum mencapai 1.
+Grafik tiga polinom Taylor pertama ditampilkan dengan
+garis titik-titik.  Polinom-polinom itu berupa
+garis lurus, polinom kuadrat, dan polinom kubik.
+Ketiganya tampak menjadi 
+aproksimasi yang cukup wajar tepat di sekitar titik asal,
+tetapi memburuk ketika kita menjauh.
+Digambarkan sebuah garis putus-putus yang menandakan aproksimasi berderajat 20, dan
+dari suatu titik yang sedikit lebih besar daripada minus 1 hingga tempat garis
+tebal meninggalkan gambar di sebelah kanan, perbedaan antara keduanya
+tidak terlihat.  Namun, tepat di sekitar minus 1,
+jika kita bergerak dari kanan ke kiri, garis itu melesat naik meninggalkan gambar,
+sehingga untuk x yang lebih kecil daripada minus 1 aproksimasi tersebut jauh lebih buruk
+daripada aproksimasi berderajat rendah (yang sejak awal sudah tidak baik).}
+\caption{Fungsi $\frac{x}{1-x}$, polinom Taylor
+$P_1^0$, $P_2^0$, $P_3^0$ (semuanya bergaris titik-titik), dan polinom $P_{20}^0$
+(bergaris putus-putus).\label{fig:taylorgeom}}
+\end{myfigureht}
+
+Jika $f$ \emph{\myindex{diferensiabel
+tak berhingga kali}}\index{diferensiabel!tak berhingga kali},
+yaitu jika $f$ dapat
+didiferensialkan sebanyak berapa pun, maka 
+kita mendefinisikan \emph{\myindex{deret Taylor}}:
+\begin{equation*}
+%T^{x_0}(x)
+%\coloneqq
+\sum_{k=0}^\infty
+\frac{f^{(k)}(x_0)}{k!}{(x-x_0)}^k .
+\end{equation*}
+Tidak ada jaminan bahwa deret ini konvergen untuk sembarang
+$x \neq x_0$.  Bahkan di tempat deret itu konvergen, tidak ada jaminan
+bahwa deret itu konvergen ke fungsi $f$.  Fungsi $f$
+yang deret Taylornya di setiap titik $x_0$
+konvergen ke $f$ pada suatu interval terbuka yang memuat $x_0$
+disebut
+\emph{fungsi analitik}\index{fungsi analitik}.
+Banyak fungsi yang lazim dijumpai dalam praktik bersifat analitik.
+Lihat \exerciseref{exercise:nonanalytic} untuk contoh fungsi
+nonanalitik.
+
+\medskip
+
+Definisi turunan menyatakan bahwa
+suatu fungsi
+diferensiabel jika fungsi tersebut
+secara lokal diaproksimasi oleh sebuah garis.
+Sebagai catatan, terdapat suatu kebalikan dari teorema
+Taylor,
+yang tidak akan kita nyatakan ataupun buktikan,
+yang mengatakan bahwa jika suatu fungsi
+secara lokal diaproksimasi dengan cara tertentu oleh polinom berderajat $d$, maka fungsi itu
+memiliki $d$ turunan.
+
+\medskip
+
+Teorema Taylor memberikan pembuktian singkat untuk suatu versi
+uji turunan kedua.
+Yang dimaksud dengan \emph{\myindex{minimum relatif ketat}}\index{minimum!relatif ketat}
+dari $f$ di $c$
+adalah bahwa terdapat $\delta > 0$ sedemikian sehingga $f(x) > f(c)$ untuk
+semua $x \in (c-\delta,c+\delta)$ dengan $x\neq c$.
+\emph{\myindex{Maksimum relatif ketat}}\index{maksimum!relatif ketat}
+didefinisikan dengan cara serupa.
+Kekontinuan turunan kedua tidak diperlukan, tetapi pembuktiannya lebih
+sulit dan diserahkan sebagai latihan.  Pembuktian itu juga dapat digeneralisasi
+menjadi uji turunan ke-$n$, yang juga diserahkan sebagai
+latihan.
+
+\begin{prop}[Uji turunan kedua]\index{uji turunan kedua}
+Misalkan $f \colon (a,b) \to \R$ diferensiabel dua kali secara kontinu,
+$x_0 \in (a,b)$, $f'(x_0) = 0$, dan $f''(x_0) > 0$.  Maka $f$ memiliki minimum relatif
+ketat di $x_0$.
+\end{prop}
+
+\begin{proof}
+Karena $f''$ kontinu, terdapat $\delta > 0$
+sedemikian sehingga $f''(c) > 0$ untuk semua $c \in (x_0-\delta,x_0+\delta)$;
+lihat \exerciseref{exercise:positivecontneigh}.
+Ambil $x \in (x_0-\delta,x_0+\delta)$, $x \neq x_0$.
+Teorema Taylor menyatakan bahwa untuk suatu $c$ antara $x_0$ dan $x$,
+\begin{equation*}
+f(x) 
+=
+f(x_0) + f'(x_0) (x-x_0) +
+\frac{f''(c)}{2}{(x-x_0)}^{2} 
+=
+f(x_0) + \frac{f''(c)}{2}{(x-x_0)}^{2}  .
+\end{equation*}
+Karena $f''(c) > 0$ dan ${(x-x_0)}^2 > 0$, kita memperoleh $f(x) > f(x_0)$.
+\end{proof}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Hitunglah polinom Taylor ke-$n$ di $0$ untuk fungsi eksponensial.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $p$ adalah polinomial berderajat $d$.  Untuk $x_0 \in \R$,
+tunjukkan bahwa
+polinom Taylor ke-$d$ bagi $p$ di $x_0$ sama dengan $p$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f(x) \coloneqq \sabs{x}^3$.  Hitunglah $f'(x)$ dan $f''(x)$ untuk setiap $x$,
+tetapi tunjukkan bahwa $f^{(3)}(0)$ tidak ada.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon \R \to \R$ memiliki $n$ turunan kontinu.  Tunjukkan
+bahwa untuk setiap $x_0 \in \R$,
+terdapat polinomial $P$ dan $Q$ berderajat $n$ serta 
+suatu $\epsilon > 0$ sedemikian sehingga $P(x) \leq f(x) \leq Q(x)$ untuk setiap $x \in
+[x_0,x_0+\epsilon]$  dan
+$Q(x)-P(x) = \lambda {(x-x_0)}^n$ untuk suatu $\lambda \geq 0$.
+\end{exercise}
+
+\begin{exercise}
+Jika $f \colon [a,b] \to \R$ memiliki $n+1$ turunan kontinu\footnote{%
+Pernyataan yang sama berlaku jika kita hanya mensyaratkan $n$ turunan,
+tetapi pembuktiannya jauh lebih sulit.
+}
+dan $x_0 \in [a,b]$,
+buktikan
+$\lim\limits_{x\to x_0} \frac{R_n^{x_0}(x)}{{(x-x_0)}^n} = 0$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon [a,b] \to \R$ memiliki $n+1$ turunan kontinu
+dan $x_0 \in (a,b)$.
+Buktikan: $f^{(k)}(x_0) = 0$ untuk setiap $k = 0, 1, 2, \ldots, n$
+jika dan hanya jika $\lim\limits_{x\to x_0} \frac{f(x)}{{(x-x_0)}^{n+1}}$ ada.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $a,b,c \in \R$ dan $f \colon \R \to \R$ diferensiabel dua kali,
+$f''(x) = a$ untuk setiap $x$, $f'(0) = b$, dan $f(0) = c$.  Carilah $f$ dan buktikan bahwa 
+fungsi tersebut adalah satu-satunya fungsi diferensiabel dengan sifat-sifat ini.
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Tunjukkan bahwa suatu konvers sederhana dari teorema Taylor tidak berlaku.
+Carilah fungsi $f \colon \R \to \R$ yang tidak memiliki turunan kedua di $x=0$ sedemikian sehingga
+$\babs{f(x)} \leq \babs{x^3}$, yakni, $f$ mendekati nol di 0 lebih cepat daripada $x^2$, dan
+meskipun $f'(0)$ ada, $f''(0)$ tidak ada.
+\end{exercise}
+
+\begin{exercise} \label{exercise:extendboundedder2}
+Misalkan $f \colon (0,1) \to \R$ diferensiabel dan $f''$
+terbatas.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa terdapat fungsi $g \colon [0,1) \to \R$ yang diferensiabel satu kali
+sedemikian sehingga $f(x) = g(x)$ untuk setiap $x \neq 0$.  Petunjuk: 
+Lihat
+\exerciseref{exercise:extendboundedder}.
+\item
+Carilah contoh dengan $g$ yang tidak diferensiabel dua kali di $x=0$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Buktikan
+\emph{uji turunan ke-$n$}\index{uji turunan ke-n@uji turunan ke-$n$}.
+Misalkan $n \in \N$,
+$x_0 \in (a,b)$, dan $f \colon (a,b) \to \R$ diferensiabel secara kontinu hingga orde ke-$n$,
+dengan $f^{(k)}(x_0) = 0$ untuk $k=1,2,\ldots,n-1$, dan
+$f^{(n)}(x_0)
+\neq 0$.
+Buktikan:
+\begin{enumerate}[a)]
+\item
+Jika $n$ ganjil, maka $f$ tidak memiliki minimum relatif
+maupun maksimum relatif di $x_0$.
+\item
+Jika $n$ genap, maka $f$ memiliki minimum relatif tegas di $x_0$ jika
+$f^{(n)}(x_0) > 0$
+dan maksimum relatif tegas di $x_0$ jika $f^{(n)}(x_0) < 0$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Buktikan versi yang lebih umum dari uji turunan kedua.
+Misalkan $f \colon (a,b) \to \R$ diferensiabel dan $x_0 \in (a,b)$
+sedemikian sehingga $f'(x_0) = 0$, $f''(x_0)$ ada, dan $f''(x_0) > 0$.
+Buktikan bahwa $f$ memiliki minimum
+relatif tegas di $x_0$.  Petunjuk: Tinjaulah definisi limit bagi $f''(x_0)$.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Teorema fungsi invers}
+\label{sec:ift}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{kurang dari 1 pertemuan (bagian opsional, diperlukan untuk
+\sectionref{sec:logandexp}, memerlukan
+\sectionref{sec:monotonefunc})}
+
+\subsection{Teorema fungsi invers}
+
+Kita mulai dengan contoh sederhana.  Perhatikan fungsi $f(x) \coloneqq a x$ untuk suatu
+bilangan $a \neq 0$.  Fungsi $f \colon \R \to \R$ bersifat bijektif, dan inversnya
+adalah $f^{-1}(y) = \frac{1}{a} y$.  Secara khusus, $f'(x) = a$ dan
+$(f^{-1})'(y) = \frac{1}{a}$.  Karena fungsi diferensiabel
+\myquote{secara infinitesimal menyerupai} fungsi linear, kita mengharapkan
+perilaku serupa dari invers suatu fungsi diferensiabel.
+Gagasan utama untuk mendiferensialkan fungsi invers diberikan oleh lema berikut.
+
+\begin{lemma} \label{lemma:ift}
+Misalkan $I,J \subset \R$ merupakan interval.
+Jika $f \colon I \to J$ monoton tegas (dan karenanya injektif),
+surjektif ($f(I) = J$),
+diferensiabel di $x_0 \in I$, dan $f'(x_0) \neq 0$,
+maka invers
+$f^{-1}$ diferensiabel di $y_0 = f(x_0)$ dan
+\begin{equation*}
+(f^{-1})'(y_0) = \frac{1}{f'\bigl( f^{-1}(y_0) \bigr)} = \frac{1}{f'(x_0)} .
+\end{equation*}
+Jika $f$ diferensiabel secara kontinu dan $f'$ tidak pernah nol, maka $f^{-1}$
+diferensiabel secara kontinu.
+\end{lemma}
+
+\begin{proof}
+Berdasarkan \propref{prop:invcont}, $f$ memiliki invers yang kontinu.  Untuk memudahkan,
+namakan invers tersebut $g \colon J \to I$.
+Misalkan $x_0,y_0$ seperti pada pernyataan.  Untuk $x \in I$, tuliskan $y \coloneqq f(x)$.
+Jika $x \neq x_0$, dan dengan demikian $y \neq y_0$, kita peroleh
+\begin{equation*}
+\frac{g(y)-g(y_0)}{y-y_0} =
+\frac{g\bigl(f(x)\bigr)-g\bigl(f(x_0)\bigr)}{f(x)-f(x_0)} =
+\frac{x-x_0}{f(x)-f(x_0)} .
+\end{equation*}
+Lihat \figureref{inversefig} untuk gagasan geometrisnya.
+\begin{myfigureht}
+\myincludepdft{inversefigAB}{%
+Dua diagram.
+Di sebelah kiri, suatu fungsi f yang menyerupai fungsi akar kuadrat
+ditampilkan pada kuadran pertama.  Pada sumbu horizontal
+terdapat titik berlabel x sama dengan g dari y.  Sebuah garis putus-putus
+bergerak vertikal ke atas dari titik ini hingga mencapai titik yang bersesuaian
+pada grafik f.  Garis putus-putus lain, kini horizontal, bergerak ke kiri
+hingga mencapai sumbu y dan titik yang ditandai f dari x sama dengan y.
+Titik lain, x subskrip nol sama dengan g dari y subskrip nol, juga ditandai
+sedikit di sebelah kanan titik pertama.  Susunan yang sama dengan
+garis-garis putus-putus diulang, tetapi x diganti dengan x subskrip nol dan
+y diganti dengan y subskrip nol.
+Sebuah garis sekan digambar melalui kedua titik pada grafik
+dan diberi label dengan kemiringan
+f dari x dikurangi f dari x subskrip nol, seluruhnya dibagi besaran
+x dikurangi x subskrip nol,
+yang sama dengan
+y dikurangi y subskrip nol, seluruhnya dibagi besaran
+g dari y dikurangi g dari y subskrip nol.
+Diagram di sebelah kanan sama, tetapi gambar
+dicerminkan terhadap garis x sama dengan y, sehingga sumbu x
+menjadi sumbu y dan sebaliknya, dan grafik kini lebih menyerupai
+x kuadrat.  Kedua bentuk kemiringan garis sekan tersebut
+saling berkebalikan.}
+\caption{Interpretasi turunan fungsi
+invers.\label{inversefig}}
+\end{myfigureht}
+
+Misalkan
+\begin{equation*}
+Q(x) \coloneqq
+\begin{cases}
+\frac{x-x_0}{f(x)-f(x_0)} & \text{jika } x \neq x_0, \\
+\frac{1}{f'(x_0)}         & \text{jika } x = x_0 \quad \text{(perhatikan bahwa }
+f'(x_0) \neq 0 \text{)}.
+\end{cases}
+\end{equation*}
+Karena $f$ diferensiabel di $x_0$,
+\begin{equation*}
+\lim_{x \to x_0} Q(x) =
+\lim_{x \to x_0} 
+\frac{x-x_0}{f(x)-f(x_0)} 
+=
+\frac{1}{f'(x_0)}
+=
+Q(x_0) ,
+\end{equation*}
+dengan kata lain, $Q$ kontinu di $x_0$.
+Karena $g$ kontinu di $y_0$,
+komposisi $Q\bigl(g(y)\bigr)$ kontinu di $y_0$ berdasarkan
+\propref{prop:compositioncont}.  Untuk $y \neq y_0$, berlaku
+$Q\bigl(g(y)\bigr) = \frac{g(y)-g(y_0)}{y-y_0}$.
+Oleh karena itu,
+\begin{equation*}
+\frac{1}{f'\bigl(g(y_0)\bigr)}
+= Q\bigl(g(y_0)\bigr)
+= \lim_{y \to y_0} Q\bigl(g(y)\bigr)
+= \lim_{y \to y_0} \frac{g(y)-g(y_0)}{y-y_0} .
+\end{equation*}
+Jadi, $g$ diferensiabel di $y_0$, dan $g'(y_0) =
+\frac{1}{f'\left(\vphantom{1^1_1}g(y_0)\right)}$.
+
+Jika $f'$ kontinu dan tidak nol untuk semua $x \in I$,
+maka lema tersebut berlaku untuk semua $x \in I$.  Karena $g$ juga
+kontinu (fungsi ini diferensiabel), turunan $g'(y) =
+\frac{1}{f'\left(\vphantom{1^1_1}g(y)\right)}$ pasti kontinu.
+\end{proof}
+
+Hasil berikut biasanya disebut teorema fungsi invers.
+
+\begin{thm}[Teorema fungsi invers]\index{teorema fungsi invers}
+Misalkan $f \colon (a,b) \to \R$ fungsi yang diferensiabel secara kontinu,
+dan $x_0 \in (a,b)$ suatu titik dengan $f'(x_0) \neq 0$.  Maka terdapat
+interval terbuka $I \subset (a,b)$ dengan $x_0 \in I$, sehingga
+pembatasan $f|_{I}$ injektif dan memiliki invers yang diferensiabel secara kontinu,
+$g \colon J \to I$, yang didefinisikan pada interval $J \coloneqq f(I)$,
+serta
+\begin{equation*}
+g'(y) = \frac{1}{f'\bigl( g(y) \bigr)} \qquad \text{untuk semua } y \in J.
+\end{equation*}
+\end{thm}
+
+\begin{proof}
+Tanpa mengurangi keumuman, andaikan $f'(x_0) > 0$.  Karena $f'$
+kontinu, pasti terdapat interval terbuka $I = (x_0-\delta,x_0+\delta)$
+sedemikian sehingga $f'(x) > 0$ untuk semua $x \in I$.  Lihat
+\exerciseref{exercise:positivecontneigh}.
+
+Berdasarkan \propref{incdecdiffstrictprop}, $f$ naik tegas
+pada $I$, sehingga pembatasan $f|_{I}$ bijektif ke $J \coloneqq f(I)$.
+Karena $f$ kontinu,
+\corref{cor:continterval}
+(atau secara langsung melalui
+\hyperref[IVT:thm]{teorema nilai antara})
+menyiratkan bahwa
+$f(I)$ merupakan interval.
+Sekarang terapkan \lemmaref{lemma:ift}.
+\end{proof}
+
+Dalam \exampleref{example:sqrt2}, kita melihat betapa sulitnya
+membuktikan keberadaan $\sqrt{2}$ tanpa alat apa pun.
+Dengan \hyperref[IVT:thm]{teorema nilai antara},
+keberadaan akar hampir sepele, dan
+dengan perangkat pada bagian ini, kita akan membuktikan
+lebih dari sekadar keberadaan.
+
+\begin{cor}
+Untuk $n \in \N$ dan $x \geq 0$, terdapat tepat satu
+bilangan $y \geq 0$ (dinotasikan $x^{1/n} \coloneqq y$) sedemikian sehingga $y^n = x$.  Selain itu,
+fungsi $g \colon (0,\infty) \to (0,\infty)$ yang didefinisikan oleh
+$g(x) \coloneqq x^{1/n}$ diferensiabel secara kontinu dan
+\begin{equation*}
+g'(x) = \frac{1}{nx^{(n-1)/n}} = \frac{1}{n} \, x^{(1-n)/n} ,
+\end{equation*}
+dengan konvensi $x^{m/n} \coloneqq {(x^{1/n})}^{m}$.
+\end{cor}
+
+\begin{proof}
+Untuk $x=0$, keberadaan tepat satu akar bersifat sepele.
+
+Misalkan $f \colon (0,\infty) \to (0,\infty)$ didefinisikan oleh $f(y) \coloneqq y^n$.
+Fungsi $f$ diferensiabel secara kontinu,
+dan $f'(y) = ny^{n-1}$; lihat \exerciseref{exercise:diffofxn}.
+Untuk $y > 0$, turunan $f'$ positif tegas,
+sehingga, sekali lagi berdasarkan \propref{incdecdiffstrictprop}, $f$ naik
+tegas (hal ini juga dapat dibuktikan secara langsung) dan karenanya injektif.
+Andaikan $M$ dan $\epsilon$ sedemikian sehingga
+$M > 1$ dan $1 > \epsilon > 0$.
+Maka
+$f(M) = M^n \geq M$ dan
+$f(\epsilon) = \epsilon^n \leq \epsilon$.
+Untuk setiap $x$ dengan $\epsilon < x < M$,
+berdasarkan
+\hyperref[IVT:thm]{teorema nilai antara}, kita peroleh $x \in
+f\bigl( [\epsilon,M] \bigr) \subset
+f\bigl( (0,\infty) \bigr)$.  Karena $M$ dan $\epsilon$ dipilih sembarang, $f$ surjektif ke
+$(0,\infty)$, sehingga $f$ bijektif.
+Misalkan $g$ invers dari $f$.  Kita memperoleh
+keberadaan dan ketunggalan akar pangkat
+$n$ yang positif.  \lemmaref{lemma:ift} mengatakan bahwa $g$ memiliki turunan
+kontinu dan $g'(x) =
+\frac{1}{f'\left(\vphantom{1^1_1}g(x)\right)} = \frac{1}{n {(x^{1/n})}^{n-1}}$.
+\end{proof}
+
+\begin{example}
+Korolari tersebut memberikan contoh yang baik ketika teorema fungsi invers
+memberi kita interval yang lebih kecil daripada $(a,b)$.  Ambil $f \colon \R \to \R$
+yang didefinisikan oleh $f(x) \coloneqq x^2$.  Maka $f'(x_0) \neq 0$
+selama $x_0 \neq 0$.  Jika $x_0 > 0$, kita dapat mengambil $I=(0,\infty)$, tetapi
+tidak dapat mengambil interval yang lebih besar.
+\end{example}
+
+\begin{example}
+Contoh lain yang berguna adalah $f(x) \coloneqq x^3$.  Fungsi $f \colon \R \to \R$
+injektif dan surjektif, sehingga $f^{-1}(y) = y^{1/3}$ ada pada seluruh garis
+bilangan real, termasuk nol dan $y$ negatif.  Fungsi $f$ memiliki
+turunan kontinu, tetapi $f^{-1}$ tidak memiliki turunan di titik asal.  Alasannya
+adalah $f'(0) = 0$.  Lihat grafiknya pada \figureref{cubecuberootfig}.
+Perhatikan garis singgung vertikal pada grafik akar pangkat tiga di titik asal.
+Lihat juga \exerciseref{exercise:oddroot}.
+\begin{myfigureht}
+\myincludegraphics{cubecuberoot}{%
+Grafik y sama dengan akar pangkat tiga dari x digambar dengan garis tebal,
+sedangkan grafik y sama dengan x pangkat tiga digambar dengan garis putus-putus.
+Perhatikan bahwa meskipun grafik x pangkat tiga menyinggung sumbu x
+di titik asal, grafik akar pangkat tiga merupakan pencerminannya terhadap
+garis x sama dengan y dan oleh karena itu menyinggung sumbu y vertikal di titik asal.}
+\caption{Grafik $x^3$ dan $x^{1/3}$.\label{cubecuberootfig}}
+\end{myfigureht}
+\end{example}
+
+
+\subsection{Latihan}
+
+\begin{exercise}
+Andaikan $f \colon \R \to \R$ diferensiabel secara kontinu dan
+$f'(x) > 0$ untuk semua $x$.  Tunjukkan bahwa $f$ memiliki invers pada interval $J =
+f(\R)$, inversnya diferensiabel secara kontinu, dan ${(f^{-1})}'(y) >
+0$ untuk semua $y \in f(\R)$.
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Andaikan $I,J$ merupakan interval dan fungsi monoton surjektif $f \colon I \to J$ memiliki invers $g \colon J \to I$.
+Andaikan telah diketahui bahwa $f$ dan $g$ diferensiabel
+di setiap titik dan $f'$ tidak pernah nol.  Dengan menggunakan aturan rantai tetapi bukan
+\lemmaref{lemma:ift}, buktikan rumus
+$g'(y) = \frac{1}{f'\left(\vphantom{1_1^1}g(y)\right)}$. % \bigl( \bigr) are overly big here!
+Catatan: Latihan ini sama dengan \exerciseref{exercise:inversederformula};
+Anda tidak perlu mengerjakannya lagi jika
+sudah pernah menyelesaikannya.
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Misalkan $n\in \N$ genap.
+Buktikan bahwa setiap $x > 0$ memiliki tepat satu akar pangkat $n$ yang negatif.
+Dengan kata lain, terdapat bilangan negatif $y$ sedemikian sehingga $y^n = x$.
+Hitung turunan
+fungsi $g(x) \coloneqq y$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:oddroot}
+Misalkan $n \in \N$ ganjil dan $n \geq 3$.
+Buktikan bahwa setiap $x$ memiliki tepat satu akar pangkat $n$.
+Dengan kata lain, terdapat bilangan $y$ sedemikian sehingga $y^n = x$.  Buktikan bahwa
+fungsi yang didefinisikan oleh $g(x) \coloneqq y$ diferensiabel kecuali di $x=0$
+dan hitung turunannya.  Buktikan bahwa $g$ tidak diferensiabel di $x=0$.
+\end{exercise}
+
+\begin{exercise}[memerlukan \sectionref{sec:taylor}]
+Tunjukkan bahwa jika dalam teorema fungsi invers $f$ memiliki $k$ turunan
+kontinu, maka fungsi invers $g$ juga memiliki $k$ turunan
+kontinu.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f(x) \coloneqq x + 2 x^2 \sin(\nicefrac{1}{x})$ untuk $x \neq 0$ dan
+$f(0) \coloneqq 0$.  Tunjukkan bahwa $f$ diferensiabel untuk setiap $x$, bahwa $f'(0) > 0$,
+tetapi $f$ tidak memiliki invers
+pada interval terbuka mana pun yang memuat titik asal.
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Misalkan $f \colon \R \to \R$ fungsi yang diferensiabel secara kontinu
+dan $k > 0$ bilangan sedemikian sehingga $f'(x) \geq k$ untuk semua $x \in \R$.
+Tunjukkan bahwa $f$ injektif dan surjektif, serta memiliki invers
+$f^{-1} \colon \R \to \R$ yang diferensiabel secara kontinu.
+\item
+Temukan contoh $f \colon \R \to \R$
+sedemikian sehingga $f'(x) > 0$
+untuk semua $x$, tetapi $f$ tidak surjektif.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Andaikan $I,J$ merupakan interval dan fungsi monoton surjektif $f \colon I \to J$ memiliki invers $g \colon J \to I$.
+Andaikan $x \in I$ dan $y \coloneqq f(x) \in J$, serta $g$ diferensiabel di
+$y$.  Buktikan:
+\begin{enumerate}[a)]
+\item
+Jika $g'(y) \neq 0$, maka $f$ diferensiabel di $x$.
+\item
+Jika $g'(y) = 0$, maka $f$ tidak diferensiabel di $x$.
+\end{enumerate}
+\end{exercise}

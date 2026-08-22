@@ -1,0 +1,4033 @@
+\chapter{Integral Multivariabel} \label{mi:chapter}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Integral Riemann pada persegi panjang}
+\label{sec:rirect}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2--3 kuliah}
+
+Seperti dalam \chapterref{int:chapter}, kita mendefinisikan integral Riemann
+menggunakan integral Darboux atas dan bawah. Gagasan dalam bagian ini sangat
+mirip dengan pengintegralan dalam satu dimensi. Kerumitannya terutama menyangkut
+notasi. Perbedaan antara satu dan beberapa dimensi akan makin tampak pada
+bagian-bagian berikutnya.
+
+\subsection{Persegi panjang dan partisi}
+
+\begin{defn}
+Misalkan $(a_1,a_2,\ldots,a_n)$ dan
+$(b_1,b_2,\ldots,b_n)$ memenuhi $a_k \leq b_k$ untuk setiap $k$.
+Himpunan
+$[a_1,b_1] \times
+[a_2,b_2] \times \cdots \times
+[a_n,b_n]$ disebut \emph{\myindex{persegi panjang tertutup}}%
+\index{persegi panjang}.
+Kadang-kadang berguna untuk mengizinkan $a_k = b_k$, dengan
+$[a_k,b_k] = \{ a_k \}$.
+Jika $a_k < b_k$ untuk setiap $k$, maka himpunan
+$(a_1,b_1) \times
+(a_2,b_2) \times \cdots \times
+(a_n,b_n)$ disebut \emph{\myindex{persegi panjang terbuka}}.
+
+Untuk persegi panjang terbuka atau tertutup
+$R \coloneqq [a_1,b_1] \times
+[a_2,b_2] \times \cdots \times
+[a_n,b_n] \subset \R^n$
+atau
+$R \coloneqq (a_1,b_1) \times
+(a_2,b_2) \times \cdots \times
+(a_n,b_n) \subset \R^n$,
+kita definisikan
+\emph{volume berdimensi $n$}%
+\index{volume berdimensi n@volume berdimensi $n$!persegi panjang}%
+\index{volume persegi panjang} dengan
+\glsadd{not:ndimvolume}
+\begin{equation*}
+V(R) \coloneqq
+(b_1-a_1)
+(b_2-a_2)
+\cdots
+(b_n-a_n) .
+\end{equation*}
+
+Suatu \emph{\myindex{partisi}} $P$ dari persegi panjang tertutup
+$R = [a_1,b_1] \times
+[a_2,b_2] \times \cdots \times
+[a_n,b_n]$
+ditentukan oleh partisi-partisi $P_1,P_2,\ldots,P_n$ dari interval
+$[a_1,b_1], [a_2,b_2],\ldots, [a_n,b_n]$.
+Kita tulis $P=(P_1,P_2,\ldots,P_n)$.
+Artinya, untuk setiap $k=1,2,\ldots,n$ terdapat bilangan bulat positif
+$\ell_k$ dan koleksi berhingga terindeks
+$P_k = \{ x_{k,0},x_{k,1},x_{k,2},\ldots,x_{k,\ell_k} \}$ sedemikian sehingga,
+jika $a_k<b_k$,
+\begin{equation*}
+a_k = x_{k,0} < x_{k,1} < x_{k,2} < \cdots < x_{k,{\ell_k}-1} < x_{k,\ell_k} = b_k .
+\end{equation*}
+\emph{Konvensi edisi Indonesia.} Untuk kasus degenerat $a_k=b_k$, ambil
+$\ell_k=1$ dan $x_{k,0}=x_{k,1}=a_k$. Dengan demikian, definisi partisi ini
+juga mencakup persegi panjang dengan satu atau lebih sisi yang panjangnya nol,
+sebagaimana diizinkan di atas.
+
+Dengan memilih $n$ bilangan bulat $j_1,j_2,\ldots,j_n$ yang memenuhi
+$j_k \in \{ 1,2,\ldots,\ell_k \}$, kita memperoleh
+\emph{\myindex{subpersegi panjang}}
+\begin{equation*}
+[x_{1,j_1-1}~,~ x_{1,j_1}]
+\times
+[x_{2,j_2-1}~,~ x_{2,j_2}]
+\times
+\cdots
+\times
+[x_{n,j_n-1}~,~ x_{n,j_n}] .
+\end{equation*}
+Kita urutkan subpersegi panjang tersebut dengan cara apa pun dan menyebut
+$\{R_1,R_2,\ldots,R_N\}$ sebagai subpersegi panjang yang bersesuaian dengan
+partisi $P$ dari $R$, atau, secara singkat, subpersegi panjang dari $P$.
+Dengan kata lain, kita membagi persegi panjang semula menjadi banyak
+subpersegi panjang yang lebih kecil. Lihat \figureref{mv:figrect}.
+
+\begin{myfigureht}
+\myincludepdft{figrect}{%
+Diagram sebuah persegi panjang yang dibagi oleh dua garis horizontal dan dua
+garis vertikal menjadi 9 persegi panjang yang lebih kecil. Empat titik sudut
+pada sumbu horizontal, dari kiri ke kanan, berlabel x subskrip 1 koma 0,
+x subskrip 1 koma 1, x subskrip 1 koma 2, dan x subskrip 1 koma 3. Pada sumbu
+vertikal, dari bawah ke atas, titik-titik sudut berlabel x subskrip 2 koma 0,
+x subskrip 2 koma 1, x subskrip 2 koma 2, dan x subskrip 2 koma 3. Persegi
+panjang yang lebih kecil diberi label mengikuti pola berkelok dari kiri atas
+ke kanan bawah: R subskrip 1, R subskrip 2, dan seterusnya hingga R subskrip 9.}
+\caption{Contoh partisi persegi panjang di $\R^2$. Urutan subpersegi panjang
+tidak penting.\label{mv:figrect}}
+\end{myfigureht}
+
+Misalkan $R \subset \R^n$ persegi panjang tertutup dan
+$f \colon R \to \R$ fungsi terbatas. Misalkan $P$ partisi dari $R$ dengan
+$N$ subpersegi panjang $R_1,R_2,\ldots,R_N$.
+Definisikan
+\glsadd{not:lowerdarbouxsum}
+\glsadd{not:upperdarbouxsum}
+\begin{align*}
+& m_i \coloneqq \inf \bigl\{ f(x) : x \in R_i \bigr\} , & 
+& M_i \coloneqq \sup \bigl\{ f(x) : x \in R_i \bigr\} , \\
+& L(P,f) \coloneqq
+\sum_{i=1}^N m_i V(R_i) , &
+& U(P,f) \coloneqq
+\sum_{i=1}^N M_i V(R_i) .
+\end{align*}
+Kita menyebut $L(P,f)$ sebagai \emph{\myindex{jumlah Darboux bawah}} dan
+$U(P,f)$ sebagai \emph{\myindex{jumlah Darboux atas}}\index{jumlah Darboux}.
+\end{defn}
+
+Untuk melihat kaitannya dengan notasi $\Delta$ dari definisi satu variabel,
+perhatikan bahwa jika
+\begin{equation*}
+R_i = [x_{1,j_1-1}~,~ x_{1,j_1}]
+\times
+[x_{2,j_2-1}~,~ x_{2,j_2}]
+\times
+\cdots
+\times
+[x_{n,j_n-1}~,~ x_{n,j_n}] ,
+\end{equation*}
+maka
+\begin{equation*}
+V(R_i)
+=
+(x_{1,j_1}-x_{1,j_1-1})
+(x_{2,j_2}-x_{2,j_2-1})
+\cdots
+(x_{n,j_n}-x_{n,j_n-1})
+= 
+\Delta x_{1,j_1}
+\Delta x_{2,j_2}
+\cdots
+\Delta x_{n,j_n} .
+\end{equation*}
+Mudah dilihat (dan diserahkan kepada pembaca) bahwa subpersegi panjang dari $P$
+menutupi $R$ semula dan jumlah volumenya sama dengan volume $R$. Artinya,
+\begin{equation*}
+R= \bigcup_{k=1}^N R_k , \qquad \text{dan} \qquad
+V(R) = \sum_{k=1}^N V(R_k).
+\end{equation*}
+
+Pengindeksan dalam definisi mungkin tampak rumit, tetapi untungnya kita jarang
+perlu kembali langsung ke definisi tersebut.
+
+\begin{prop} \label{mv:sumulbound:prop}
+Misalkan $R \subset \R^n$ persegi panjang tertutup dan
+$f \colon R \to \R$ fungsi terbatas. Misalkan $m, M \in \R$ memenuhi
+$m \leq f(x) \leq M$ untuk setiap $x \in R$. Maka, untuk setiap partisi
+$P$ dari~$R$,
+\begin{equation*}
+m \, V(R) \leq
+L(P,f) \leq U(P,f)
+\leq M\, V(R) .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Misalkan $P$ partisi dari $R$. Untuk setiap $i$, berlaku
+$m \leq m_i \leq M_i \leq M$. Selain itu,
+$\sum_{i=1}^N V(R_i) = V(R)$. Karena itu,
+\begin{multline*}
+m \, V(R) =
+m \left( \sum_{i=1}^N V(R_i) \right)
+=
+\sum_{i=1}^N m \, V(R_i)
+\leq
+\sum_{i=1}^N m_i \, V(R_i)
+\leq
+\\
+\leq
+\sum_{i=1}^N M_i \, V(R_i)
+\leq
+\sum_{i=1}^N M \,V(R_i)
+=
+M \left( \sum_{i=1}^N V(R_i) \right)
+=
+M \,V(R) .  \qedhere
+\end{multline*}
+\end{proof}
+
+\subsection{Integral atas dan bawah}
+
+Berdasarkan \propref{mv:sumulbound:prop}, himpunan jumlah Darboux atas dan bawah
+merupakan himpunan terbatas, sehingga kita dapat mengambil infimum dan
+supremumnya. Seperti dalam kasus satu variabel, kita definisikan integral bawah
+dan atas.
+
+\begin{defn}
+Misalkan $f \colon R \to \R$ fungsi terbatas pada persegi panjang tertutup
+$R \subset \R^n$.
+Definisikan
+\glsadd{not:lowerdarbouxR}
+\glsadd{not:upperdarbouxR}
+\begin{equation*}
+%mbxlatex \begin{aligned}
+%mbxlatex &
+\underline{\int_R} f
+\coloneqq \sup \, \bigl\{ L(P,f) : P \text{ partisi dari } R \bigr\} , 
+%mbxSTARTIGNORE
+\qquad
+%mbxENDIGNORE
+%mbxlatex \\
+%mbxlatex &
+\overline{\int_R} f
+\coloneqq \inf \, \bigl\{ U(P,f) : P \text{ partisi dari } R \bigr\} .
+%mbxlatex \end{aligned}
+\end{equation*}
+Kita menyebut $\underline{\int}$ sebagai
+\emph{\myindex{integral Darboux bawah}}\index{integral Darboux} dan
+$\overline{\int}$ sebagai \emph{\myindex{integral Darboux atas}}.
+\end{defn}
+
+Untuk menghaluskan partisi suatu persegi panjang, kita menghaluskan
+partisi-partisi interval yang mendasarinya.
+
+\begin{defn}
+Misalkan $R \subset \R^n$ persegi panjang tertutup.
+Misalkan $P = ( P_1, P_2, \ldots, P_n )$ dan
+$\widetilde{P} = ( \widetilde{P}_1, \widetilde{P}_2, \ldots, \widetilde{P}_n )$
+merupakan partisi dari $R$. Kita menyebut $\widetilde{P}$ sebagai
+\emph{penghalusan}\index{penghalusan partisi} dari $P$ jika, sebagai himpunan,
+$P_k \subset \widetilde{P}_k$ untuk setiap $k = 1,2,\ldots,n$.
+\end{defn}
+
+Jika $\widetilde{P}$ merupakan penghalusan dari $P$, maka subpersegi panjang
+dari $P$ merupakan gabungan subpersegi panjang dari $\widetilde{P}$. Secara
+sederhana, dalam suatu penghalusan kita mengambil subpersegi panjang dari $P$,
+memotongnya menjadi subpersegi panjang yang lebih kecil, dan menamai partisi
+yang dihasilkan $\widetilde{P}$. Lihat \figureref{mv:figrectpart}.
+
+\begin{myfigureht}
+\myincludepdft{figrectpart}{%
+Diagram persegi panjang terbagi seperti diagram sebelumnya, dengan tanda
+tambahan. Dua pemotongan vertikal tambahan dan satu pemotongan horizontal
+ditandai dengan garis putus-putus. Persegi panjang itu kini terbagi menjadi 20
+persegi panjang kecil, yang diberi label R tilde subskrip 1 hingga R tilde
+subskrip 20 tanpa urutan tertentu. Titik-titik pada sumbu horizontal dan
+vertikal ditandai seperti sebelumnya, tetapi sekarang secara berurutan dengan
+x tilde subskrip 1 koma 0 hingga x tilde subskrip 1 koma 5 dan x tilde subskrip
+2 koma 0 hingga x tilde subskrip 2 koma 4. Pada pemotongan lama ditampilkan
+baik tanda lama maupun tanda baru; misalnya, x subskrip 1 koma 2 juga bertanda
+x tilde subskrip 1 koma 3.}
+\caption{Contoh penghalusan partisi dari \figureref{mv:figrect}.
+\myquote{Pemotongan} baru ditandai dengan garis putus-putus. Urutan persis
+subpersegi panjang baru tidak penting.\label{mv:figrectpart}}
+\end{myfigureht}
+
+\begin{prop} \label{mv:prop:refinement}
+Misalkan $R \subset \R^n$ persegi panjang tertutup, $P$ partisi dari $R$, dan
+$\widetilde{P}$ penghalusan dari $P$. Jika $f \colon R \to \R$ terbatas, maka
+\begin{equation*}
+L(P,f) \leq L(\widetilde{P},f) 
+\qquad \text{dan} \qquad
+U(\widetilde{P},f) \leq U(P,f) .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Kita buktikan ketaksamaan pertama; ketaksamaan kedua diperoleh dengan cara
+serupa. Misalkan $R_1,R_2,\ldots,R_N$ subpersegi panjang dari $P$ dan
+$\widetilde{R}_1,\widetilde{R}_2,\ldots,\widetilde{R}_{\widetilde{N}}$
+subpersegi panjang dari $\widetilde{P}$. Misalkan $I_k$ himpunan semua indeks
+$j$ sedemikian sehingga $\widetilde{R}_j \subset R_k$. Sebagai contoh, pada
+gambar \ref{mv:figrect} dan \ref{mv:figrectpart},
+$I_4 = \{ 6, 7, 8, 9 \}$ karena
+$R_4 =
+\widetilde{R}_6 \cup \widetilde{R}_7 \cup
+\widetilde{R}_8 \cup \widetilde{R}_9$.
+Maka,
+\begin{equation*}
+R_k = \bigcup_{j \in I_k} \widetilde{R}_j,
+\qquad
+V(R_k) = \sum_{j \in I_k} V(\widetilde{R}_j).
+\end{equation*}
+
+Seperti biasa, misalkan
+$m_k \coloneqq \inf \bigl\{ f(x) : x \in R_k \bigr\}$ dan
+$\widetilde{m}_j \coloneqq \inf \bigl\{ f(x) : x \in \widetilde{R}_j \bigr\}$.
+Jika $j \in I_k$, maka $m_k \leq \widetilde{m}_j$. Dengan demikian,
+\begin{equation*}
+%mbxlatex \begin{aligned}
+L(P,f)
+=
+\sum_{k=1}^N m_k V(R_k)
+%mbxlatex & 
+=
+\sum_{k=1}^N \sum_{j\in I_k} m_k V(\widetilde{R}_j)
+%mbxlatex \\
+%mbxlatex & 
+\leq
+\sum_{k=1}^N \sum_{j\in I_k} \widetilde{m}_j V(\widetilde{R}_j)
+=
+\sum_{j=1}^{\widetilde{N}} \widetilde{m}_j V(\widetilde{R}_j) = L(\widetilde{P},f) .
+\qedhere
+%mbxlatex \end{aligned}
+\end{equation*}
+\end{proof}
+
+Pokok penting proposisi berikut adalah bahwa integral Darboux bawah kurang dari
+atau sama dengan integral Darboux atas.
+
+\begin{prop} \label{mv:intulbound:prop}
+Misalkan $R \subset \R^n$ persegi panjang tertutup dan
+$f \colon R \to \R$ fungsi terbatas. Misalkan $m, M \in \R$ memenuhi
+$m \leq f(x) \leq M$ untuk setiap $x \in R$. Maka,
+\begin{equation}
+\label{mv:intulbound:eq}
+m \, V(R) \leq
+\underline{\int_R} f \leq \overline{\int_R} f
+\leq M \, V(R).
+\end{equation}
+\end{prop}
+
+\begin{proof}
+Untuk setiap partisi $P$, berdasarkan \propref{mv:sumulbound:prop},
+\begin{equation*}
+m\,V(R) \leq L(P,f) \leq U(P,f) \leq M\,V(R).
+\end{equation*}
+Dengan mengambil supremum $L(P,f)$ dan infimum $U(P,f)$ atas semua partisi $P$,
+kita memperoleh ketaksamaan pertama dan terakhir dalam
+\eqref{mv:intulbound:eq}.
+
+Ketaksamaan kunci dalam \eqref{mv:intulbound:eq} adalah ketaksamaan tengah.
+Misalkan $P=(P_1,P_2,\ldots,P_n)$ dan
+$Q=(Q_1,Q_2,\ldots,Q_n)$ merupakan partisi dari $R$. Definisikan
+$\widetilde{P} = ( \widetilde{P}_1,\widetilde{P}_2,\ldots,\widetilde{P}_n )$
+dengan menetapkan $\widetilde{P}_k \coloneqq P_k \cup Q_k$ untuk setiap $k$.
+Maka $\widetilde{P}$ merupakan partisi dari $R$ serta penghalusan dari $P$ dan
+juga dari $Q$. Berdasarkan \propref{mv:prop:refinement},
+$L(P,f) \leq L(\widetilde{P},f)$ dan
+$U(\widetilde{P},f) \leq U(Q,f)$. Karena itu,
+\begin{equation*}
+L(P,f) \leq L(\widetilde{P},f) \leq U(\widetilde{P},f) \leq U(Q,f) .
+\end{equation*}
+Dengan kata lain, untuk dua partisi sembarang $P$ dan $Q$, berlaku
+$L(P,f) \leq U(Q,f)$.
+Berdasarkan \volIref{\propref*{vI-infsupineq:prop} dari jilid I}{\propref{infsupineq:prop}},
+kita peroleh
+\begin{equation*}
+\sup \, \bigl\{ L(P,f) : P \text{ partisi dari } R \bigr\}
+\leq
+\inf \, \bigl\{ U(P,f) : P \text{ partisi dari } R \bigr\} .
+\end{equation*}
+Dengan kata lain, $\underline{\int_R} f \leq \overline{\int_R} f$.
+\end{proof}
+
+\subsection{Integral Riemann}
+
+Sekarang kita memiliki semua yang diperlukan untuk mendefinisikan integral
+Riemann dalam $n$ dimensi pada persegi panjang. Seperti dalam satu dimensi,
+integral Riemann hanya didefinisikan pada kelas fungsi tertentu, yang disebut
+fungsi terintegralkan secara Riemann.
+
+\begin{defn}
+Misalkan $R \subset \R^n$ persegi panjang tertutup dan
+$f \colon R \to \R$ fungsi terbatas sedemikian sehingga
+\begin{equation*}
+\underline{\int_R} f(x)\,dx = \overline{\int_R} f(x)\,dx .
+\end{equation*}
+Maka $f$ dikatakan \emph{\myindex{terintegralkan secara Riemann}}, dan terkadang
+kita cukup mengatakan \emph{\myindex{terintegralkan}}. Himpunan fungsi yang
+terintegralkan secara Riemann pada $R$ kita lambangkan dengan
+$\sR(R)$.\glsadd{not:integrablefuncR}
+Untuk $f \in \sR(R)$, definisikan \emph{\myindex{integral Riemann}}
+\glsadd{not:riemannintR}
+\begin{equation*}
+\int_R f \coloneqq 
+\underline{\int_R} f = \overline{\int_R} f .
+\end{equation*}
+\end{defn}
+
+Jika variabel $x \in \R^n$ perlu ditonjolkan, kita tulis
+\begin{equation*}
+\int_R f(x)\,dx,
+\qquad
+\int_R f(x_1,\ldots,x_n)\,dx_1 \cdots dx_n,
+\qquad
+\text{atau}
+\qquad
+\int_R f(x)\,dV .
+\end{equation*}
+Jika $R \subset \R^2$, biasanya kita mengatakan luas alih-alih volume dan
+menulis
+\begin{equation*}
+\int_R f(x)\,dA .
+\end{equation*}
+
+\propref{mv:intulbound:prop} langsung menghasilkan proposisi berikut.
+
+\begin{prop} \label{mv:intbound:prop}
+Misalkan $f \colon R \to \R$ fungsi yang terintegralkan secara Riemann pada
+persegi panjang tertutup $R \subset \R^n$. Misalkan $m, M \in \R$ memenuhi
+$m \leq f(x) \leq M$ untuk setiap $x \in R$. Maka,
+\begin{equation*}
+m \, V(R) \leq
+\int_{R} f
+\leq M \, V(R) .
+\end{equation*}
+\end{prop}
+
+\begin{example}
+Fungsi konstan terintegralkan secara Riemann. Buktinya, andaikan
+$f(x) = c$ untuk setiap $x \in R$. Maka,
+\begin{equation*}
+c \, V(R) \leq \underline{\int_R} f \leq \overline{\int_R} f \leq c\, V(R) .
+\end{equation*}
+Jadi, $f$ terintegralkan dan, lebih lanjut, $\int_R f = c\,V(R)$.
+\end{example}
+
+Pembuktian linearitas dan kemonotonan hampir sepenuhnya sama dengan
+pembuktian dalam satu variabel. Dua proposisi berikut kita serahkan sebagai
+latihan.
+
+\begin{samepage}
+\begin{prop}[Linearitas] \label{mv:intlinearity:prop}
+\index{linearitas integral}
+Misalkan $R \subset \R^n$ persegi panjang tertutup,
+$f,g \in \sR(R)$, dan $\alpha \in \R$.
+\begin{enumerate}[(i)]
+\item $\alpha f \in \sR(R)$ dan
+\begin{equation*}
+\int_R \alpha f = \alpha \int_R f .
+\end{equation*}
+\item $f+g \in \sR(R)$ dan
+\begin{equation*}
+\int_R (f+g) = 
+\int_R f
++
+\int_R g .
+\end{equation*}
+\end{enumerate}
+\end{prop}
+\end{samepage}
+
+\begin{prop}[Kemonotonan]
+\index{kemonotonan integral}
+Misalkan $R \subset \R^n$ persegi panjang tertutup, $f,g \in \sR(R)$, dan
+andaikan $f(x) \leq g(x)$ untuk setiap $x \in R$. Maka,
+\begin{equation*}
+\int_R f 
+\leq
+\int_R g .
+\end{equation*}
+\end{prop}
+
+Memeriksa keterintegralan langsung dari definisi sering melibatkan teknik
+berikut, sama seperti dalam kasus satu variabel.
+
+\begin{prop} \label{mv:prop:upperlowerepsilon}
+Misalkan $R \subset \R^n$ persegi panjang tertutup dan
+$f \colon R \to \R$ fungsi terbatas. Maka $f \in \sR(R)$ jika dan hanya jika,
+untuk setiap $\epsilon > 0$, terdapat partisi $P$ dari $R$ sedemikian sehingga
+\begin{equation*}
+U(P,f) - L(P,f) < \epsilon .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Pertama, jika $f$ terintegralkan, maka supremum $L(P,f)$ dan infimum $U(Q,f)$,
+masing-masing atas semua partisi $P$ dan $Q$, bernilai sama. Karena itu,
+infimum $U(P,f)-L(Q,f)$ adalah nol. Dengan mengambil penghalusan bersama
+$\widetilde{P}$ dari $P$ dan $Q$, kita memperoleh
+$U(\widetilde{P},f)-L(\widetilde{P},f) \leq U(P,f)-L(Q,f)$.
+Jadi, infimum $U(P,f)-L(P,f)$ atas semua partisi $P$ adalah nol. Dengan
+demikian, untuk setiap $\epsilon > 0$, terdapat partisi $P$ sedemikian sehingga
+$U(P,f) - L(P,f) < \epsilon$.
+
+Untuk arah sebaliknya, diberikan $\epsilon > 0$, pilih $P$ sedemikian sehingga
+$U(P,f) - L(P,f) < \epsilon$.
+\begin{equation*}
+\overline{\int_R} f - 
+\underline{\int_R} f 
+\leq
+U(P,f) - L(P,f)
+< \epsilon .
+\end{equation*}
+Karena $\overline{\int_R} f \geq \underline{\int_R} f$ dan pernyataan di atas
+berlaku untuk setiap $\epsilon > 0$, kita simpulkan bahwa
+$\overline{\int_R} f = \underline{\int_R} f$ dan $f \in \sR(R)$.
+\end{proof}
+
+Misalkan $f \colon S \to \R$ suatu fungsi dan $R \subset S$ persegi panjang
+tertutup. Jika pembatasan $f|_R$ terintegralkan, untuk ringkasnya kita katakan
+bahwa $f$ \emph{terintegralkan pada $R$}, atau $f \in \sR(R)$, dan kita tulis
+\begin{equation*}
+\int_R f \coloneqq \int_R f|_R .
+\end{equation*}
+
+\begin{prop} \label{mv:prop:integralsmallerset}
+Misalkan $S \subset \R^n$ persegi panjang tertutup. Jika
+$f \colon S \to \R$ terintegralkan dan $R \subset S$ persegi panjang tertutup,
+maka $f$ terintegralkan pada $R$.
+\end{prop}
+
+\begin{proof}
+Jika salah satu sisi $R$ panjangnya nol, maka setiap subpersegi panjang dalam
+setiap partisi $R$ bervolume nol. Karena itu semua jumlah Darboux bawah dan atas
+sama dengan nol, sehingga $f|_R$ terintegralkan. Jadi, untuk sisa pembuktian,
+andaikan semua sisi $R$ mempunyai panjang positif.
+
+Diberikan $\epsilon > 0$, pilih partisi $P=(P_1,\ldots,P_n)$ dari $S$
+sedemikian sehingga $U(P,f)-L(P,f) < \epsilon$. Dengan memperhalus $P$ jika
+perlu, andaikan semua titik ujung $R$ termuat dalam $P$. Artinya, jika
+$R = [a_1,b_1] \times [a_2,b_2] \times \cdots \times [a_n,b_n]$, maka
+$a_i,b_i \in P_i$.
+Misalkan $\widetilde{P} = (\widetilde{P}_1,\ldots,\widetilde{P}_n)$ partisi dari
+$R$ yang diberikan oleh $\widetilde{P}_i = P_i \cap [a_i,b_i]$.
+Subpersegi panjang dari $\widetilde{P}$ merupakan subpersegi panjang dari~$P$;
+dengan kata lain, $R$ merupakan gabungan subpersegi panjang dari~$P$.
+Bagi subpersegi panjang dari $P$ menjadi dua koleksi: misalkan
+$R_1,R_2,\ldots,R_K$ subpersegi panjang dari $P$ yang juga merupakan
+subpersegi panjang dari $\widetilde{P}$, dan misalkan
+$R_{K+1},\ldots,R_N$ sisanya. Lihat \figureref{fig:figrectsubrect}.
+Seperti biasa, misalkan $m_k$ dan $M_k$ masing-masing merupakan infimum dan
+supremum $f$ pada $R_k$. Maka,
+\begin{equation*}
+\begin{split}
+\epsilon & > 
+U(P,f)-L(P,f)
+=
+\sum_{k=1}^K (M_k-m_k) V(R_k)
++
+\sum_{k=K+1}^N (M_k-m_k) V(R_k)
+\\
+&
+\geq
+\sum_{k=1}^K (M_k-m_k) V(R_k)
+=
+U(\widetilde{P},f|_R)-L(\widetilde{P},f|_R) .
+\end{split}
+\end{equation*}
+Karena itu, $f|_R$ terintegralkan.
+\end{proof}
+\begin{myfigureht}
+\myincludepdft{figrectsubrect}{%
+Sebuah persegi panjang dibagi menjadi subpersegi panjang seperti sebelumnya;
+kali ini, 2 pemotongan horizontal dan 3 pemotongan vertikal menghasilkan 12
+persegi panjang yang lebih kecil. Empat persegi panjang kecil pada baris kedua
+dan ketiga serta kolom kedua dan ketiga diberi arsiran gelap dan berlabel
+R subskrip 1, R subskrip 2, R subskrip 3, dan R subskrip 4.}
+\caption{Partisi persegi panjang besar $S$ yang juga menghasilkan partisi
+persegi panjang lebih kecil (diarsir dan diberi garis tepi) $R \subset S$.
+Subpersegi panjang $R_1,R_2,R_3,R_4$ merupakan subpersegi panjang dari
+$\widetilde{P} = \bigl( \{ x_{1,1}, x_{1,2} , x_{1,3} \} ,
+\{ x_{2,1}, x_{2,2} , x_{2,3} \} \bigr)$.\label{fig:figrectsubrect}}
+\end{myfigureht}
+
+\subsection{Integral fungsi kontinu}
+
+Walaupun kelak kita akan membuktikan hasil yang lebih umum, ada baiknya kita
+mulai dengan keterintegralan fungsi kontinu. Untuk itu, kita perlu mengukur
+kehalusan partisi. Dalam satu variabel, kita mengukur panjang subinterval.
+Dalam beberapa variabel, kita mengukur panjang sisi subpersegi panjang.
+Kita katakan persegi panjang $R = [a_1,b_1] \times
+[a_2,b_2] \times \cdots \times
+[a_n,b_n]$ memiliki \emph{panjang setiap sisi yang tidak melebihi $\alpha$}%
+\index{sisi terpanjang} jika
+$b_k-a_k \leq \alpha$ untuk setiap $k=1,2,\ldots,n$.
+
+\begin{prop} \label{prop:diameterrectangle}
+Jika panjang setiap sisi persegi panjang $R \subset \R^n$ tidak melebihi
+$\alpha$, maka, untuk setiap $x,y \in R$,
+\begin{equation*}
+\snorm{x-y} \leq \sqrt{n} \, \alpha .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+\begin{equation*}
+\begin{split}
+\snorm{x-y} 
+& =
+\sqrt{
+{(x_1-y_1)}^2
++
+{(x_2-y_2)}^2
++ \cdots +
+{(x_n-y_n)}^2
+}
+\\
+& \leq
+\sqrt{
+{(b_1-a_1)}^2
++
+{(b_2-a_2)}^2
++ \cdots +
+{(b_n-a_n)}^2
+}
+\\
+& \leq
+\sqrt{
+{\alpha}^2
++
+{\alpha}^2
++ \cdots +
+{\alpha}^2
+}
+=
+\sqrt{n} \, \alpha .  \qedhere
+\end{split}
+\end{equation*}
+\end{proof}
+
+
+\begin{thm} \label{mv:thm:contintrect}
+Misalkan $R \subset \R^n$ persegi panjang tertutup. Jika
+$f \colon R \to \R$ kontinu, maka $f \in \sR(R)$.
+\end{thm}
+
+\begin{proof}
+Pembuktian ini serupa dengan pembuktian satu variabel, meskipun terdapat
+beberapa kerumitan tambahan. Himpunan $R$ tertutup dan terbatas di $\R^n$,
+sehingga kompak. Oleh karena itu, $f$ terbatas pada $R$.
+Karena itu, $f$ kontinu seragam berdasarkan
+\volIref{\thmref*{vI-thm:Xcompactfunifcont} dari jilid I}{\thmref{thm:Xcompactfunifcont}}.
+
+Jika $V(R)=0$, maka setiap subpersegi panjang dari setiap partisi $R$ juga
+bervolume nol. Semua jumlah Darboux bawah dan atasnya sama dengan nol, sehingga
+$f\in\sR(R)$. Oleh sebab itu, selanjutnya andaikan $V(R)>0$.
+
+Diberikan $\epsilon > 0$, pilih $\delta > 0$ sedemikian sehingga
+$\snorm{x-y} < \delta$ mengakibatkan
+$\babs{f(x)-f(y)} < \frac{\epsilon}{V(R)}$.
+
+Ambil partisi $P$ dari $R$ sedemikian sehingga panjang sisi terpanjang setiap
+subpersegi panjang benar-benar kurang dari $\frac{\delta}{\sqrt{n}}$.
+Jika $x,y \in R_k$ untuk suatu subpersegi panjang $R_k$ dari $P$ dan $\alpha_k$
+menyatakan panjang sisi terpanjang $R_k$, maka, berdasarkan proposisi,
+$\snorm{x-y} \leq \sqrt{n}\,\alpha_k <
+\sqrt{n}\frac{\delta}{\sqrt{n}} = \delta$. Karena itu,
+\begin{equation*}
+f(x)-f(y) \leq \babs{f(x)-f(y)} < \frac{\epsilon}{V(R)} .
+\end{equation*}
+Karena $f$ kontinu pada $R_k$ yang kompak, $f$ mencapai maksimum dan minimum
+pada subpersegi panjang ini. Misalkan $x$ titik tempat $f$ mencapai maksimum
+dan $y$ titik tempat $f$ mencapai minimum. Maka $f(x) = M_k$ dan
+$f(y) = m_k$ dalam notasi dari definisi integral. Jadi,
+\begin{equation*}
+M_k-m_k = f(x)-f(y) < 
+\frac{\epsilon}{V(R)} .
+\end{equation*}
+Dengan demikian,
+\begin{equation*}
+\begin{split}
+U(P,f) - L(P,f)
+& =
+\left(
+\sum_{k=1}^N
+M_k V(R_k)
+\right)
+-
+\left(
+\sum_{k=1}^N
+m_k V(R_k)
+\right)
+\\
+& =
+\sum_{k=1}^N
+(M_k-m_k) V(R_k)
+\\
+& <
+\frac{\epsilon}{V(R)}
+\sum_{k=1}^N
+V(R_k)
+= \epsilon.
+\end{split}
+\avoidbreak
+\end{equation*}
+\propref{mv:prop:upperlowerepsilon} kemudian menyatakan bahwa $f \in \sR(R)$.
+\end{proof}
+
+\subsection{Pengintegralan fungsi bertumpuan kompak}
+
+Misalkan $U \subset \R^n$ himpunan terbuka dan $f \colon U \to \R$ suatu
+fungsi. \emph{\myindex{Tumpuan}} $f$ adalah himpunan
+\begin{equation*}
+\operatorname{supp} (f) \coloneqq
+\overline{
+\{ x \in U : f(x) \neq 0 \}
+} ,
+\end{equation*}
+di mana penutupan diambil terhadap topologi subruang pada $U$. Mengambil
+penutupan terhadap topologi subruang sama dengan
+$\overline{
+\{ x \in U : f(x) \neq 0 \}
+} \cap U$, dengan penutupan pada ungkapan terakhir diambil terhadap ruang Euklides
+$\R^n$. Secara khusus,
+$\operatorname{supp} (f) \subset U$.
+Tumpuan adalah penutupan (di $U$) himpunan titik tempat fungsi tidak nol.
+Komplemennya di $U$ terbuka. Jika $x \in U$ dan $x$ tidak termasuk tumpuan
+$f$, maka $f$ identik nol pada suatu lingkungan dari $x$.
+
+Fungsi $f$ dikatakan \emph{\myindex{bertumpuan kompak}} jika $\supp(f)$
+merupakan himpunan kompak.
+
+\begin{example}
+Fungsi $f \colon \R^2 \to \R$ yang didefinisikan oleh
+\begin{equation*}
+f(x,y) \coloneqq
+\begin{cases}
+-x{(x^2+y^2-1)}^2 & \text{jika } \sqrt{x^2+y^2} \leq 1, \\
+0                 & \text{selainnya},
+\end{cases}
+\end{equation*}
+bersifat kontinu dan tumpuannya adalah cakram satuan tertutup
+$C(0,1) = \bigl\{ (x,y) : \sqrt{x^2 + y^2} \leq 1 \bigr\}$. Karena himpunan
+ini kompak, $f$ bertumpuan kompak. Perhatikan bahwa fungsi tersebut bernilai
+nol pada seluruh sumbu-$y$ dan pada lingkaran satuan. Namun, setiap titik
+semacam itu yang terletak dalam cakram satuan tertutup tetap termasuk tumpuan,
+sebab titik tersebut berada dalam penutupan himpunan titik tempat $f$ tidak
+nol. Lihat \figureref{fig:compsup}.
+\begin{myfigureht}
+\myincludepdft{compsup_full}{%
+Di sebelah kiri terdapat grafik permukaan suatu fungsi yang bernilai nol di
+luar cakram satuan. Di dalam cakram, fungsi bernilai positif pada titik-titik
+dengan x negatif dan bernilai negatif pada titik-titik dengan x positif. Di
+sebelah kanan terdapat diagram cakram satuan: sebuah lingkaran berjari-jari 1
+yang berpusat di titik asal, dengan bagian dalam diarsir.}
+\caption{Fungsi bertumpuan kompak (kiri); tumpuannya adalah cakram satuan
+tertutup (kanan).\label{fig:compsup}}
+\end{myfigureht}
+\end{example}
+
+Jika $U \neq \R^n$, kita harus berhati-hati mengambil penutupan di dalam $U$.
+Tinjau dua contoh berikut.
+
+\begin{example}
+Misalkan $B(0,1) \subset \R^2$ cakram satuan. Fungsi
+$f \colon B(0,1) \to \R$ yang didefinisikan oleh
+\begin{equation*}
+f(x,y) \coloneqq
+\begin{cases}
+0                                & \text{jika } \sqrt{x^2+y^2} > \nicefrac{1}{2}, \\
+\nicefrac{1}{2} - \sqrt{x^2+y^2} & \text{jika } \sqrt{x^2+y^2} \leq \nicefrac{1}{2},
+\end{cases}
+\end{equation*}
+bersifat kontinu pada $B(0,1)$ dan tumpuannya adalah bola tertutup yang lebih
+kecil, $C(0,\nicefrac{1}{2})$. Karena himpunan ini kompak, $f$ bertumpuan
+kompak.
+
+Fungsi $g \colon B(0,1) \to \R$ yang didefinisikan oleh
+\begin{equation*}
+g(x,y) \coloneqq
+\begin{cases}
+0 & \text{jika } x \leq 0, \\
+x & \text{jika } x > 0,
+\end{cases}
+\end{equation*}
+bersifat kontinu pada $B(0,1)$, tetapi tumpuannya adalah himpunan
+$\bigl\{ (x,y) \in B(0,1) : x \geq 0 \bigr\}$. Secara khusus, $g$ tidak
+bertumpuan kompak.
+\end{example}
+
+Sesungguhnya kita hanya perlu meninjau kasus $U=\R^n$. Berdasarkan
+\exerciseref{exercise:contcompactsupportRn}, setiap fungsi kontinu bertumpuan
+kompak pada himpunan terbuka $U \subset \R^n$ dapat diperluas menjadi fungsi
+kontinu bertumpuan kompak pada $\R^n$. Jadi, meninjau $U=\R^n$ bukanlah
+penyederhanaan yang berlebihan.
+
+\begin{example}
+Fungsi kontinu $f \colon B(0,1) \to \R$ yang diberikan oleh
+$f(x,y) \coloneqq \sin\bigl(\frac{1}{1-x^2-y^2}\bigr)$
+tidak bertumpuan kompak. Untuk setiap titik di $B(0,1)$, fungsi $f$ tidak
+identik nol pada lingkungan mana pun dari titik tersebut. Jadi, tumpuannya
+adalah seluruh cakram $B(0,1)$.
+Fungsi ini tidak dapat diperluas seperti di atas menjadi fungsi kontinu pada
+$\R^2$. Bahkan, mudah ditunjukkan bahwa tidak ada cara apa pun untuk memperluas
+$f$ menjadi fungsi kontinu pada seluruh $\R^2$ (masalahnya terletak pada batas
+cakram).
+\end{example}
+
+\begin{prop} \label{mv:prop:rectanglessupp}
+Misalkan $f \colon \R^n \to \R$ fungsi kontinu bertumpuan kompak. Jika $R$ dan
+$S$ merupakan persegi panjang tertutup sedemikian sehingga
+$\operatorname{supp}(f) \subset R$
+dan
+$\operatorname{supp}(f) \subset S$, maka
+\begin{equation*}
+\int_S f = \int_R f .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Pilih persegi panjang tertutup $T$ yang memuat $R\cup S$. Karena $f$ kontinu,
+fungsi ini terintegralkan pada $T$, $R$, dan $S$. Selain itu,
+$\operatorname{supp}(f)\subset R\cap S$, sehingga $f$ identik nol pada
+$T\setminus R$ maupun $T\setminus S$. Dengan menerapkan
+\exerciseref{mv:zerooutside} dua kali,
+$\int_R f = \int_T f = \int_S f$.
+\end{proof}
+
+Berdasarkan proposisi ini, jika $f \colon \R^n \to \R$ bertumpuan kompak dan
+terintegralkan pada persegi panjang $R$ yang memuat tumpuan tersebut, kita tulis
+\begin{equation*}
+\int f \coloneqq \int_R f \qquad \text{atau} \qquad 
+\int_{\R^n} f \coloneqq \int_R f .
+\end{equation*}
+Sebagai contoh, jika $f$ kontinu dan bertumpuan kompak, maka
+$\int_{\R^n} f$ ada.
+
+\subsection{Latihan}
+
+\begin{exercise} \label{exercise:contcompactsupportRn}
+Misalkan $U \subset \R^n$ terbuka dan $f \colon U \to \R$ kontinu serta
+bertumpuan kompak. Tunjukkan bahwa fungsi $\widetilde{f} \colon \R^n \to
+\R$, dengan
+\begin{equation*}
+\widetilde{f}(x) \coloneqq
+\begin{cases}
+f(x) & \text{jika } x \in U, \\
+0 & \text{selainnya,}
+\end{cases}
+\avoidbreak
+\end{equation*}
+bersifat kontinu.
+\end{exercise}
+
+
+\begin{exercise}
+Buktikan \propref{mv:intlinearity:prop}.
+\end{exercise}
+
+
+\begin{exercise}
+Misalkan $R \subset \R^n$ persegi panjang tertutup yang panjang salah satu
+sisinya sama dengan 0. Untuk setiap fungsi terbatas $f \colon R \to \R$, tunjukkan
+bahwa $f \in \sR(R)$ dan $\int_R f = 0$.
+\end{exercise}
+
+\begin{exercise} \label{mv:zerosiderectangle}
+Misalkan $R \subset \R^n$ persegi panjang tertutup yang panjang salah satu
+sisinya sama dengan 0, dan misalkan $S$ persegi panjang tertutup dengan $R \subset S$.
+Jika $f \colon S \to \R$ fungsi terbatas sedemikian sehingga $f(x) = 0$ untuk
+$x \in S \setminus R$, tunjukkan bahwa $f \in \sR(S)$ dan $\int_S f = 0$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f\colon \R^n \to \R$ sedemikian sehingga $f(x) \coloneqq 0$ jika
+$x \neq 0$ dan $f(0) \coloneqq 1$. Tunjukkan langsung dari definisi bahwa $f$
+terintegralkan pada
+$R \coloneqq [-1,1] \times [-1,1] \times \cdots \times [-1,1]$, lalu tentukan
+$\int_R f$.
+\end{exercise}
+
+\begin{exercise} \label{mv:zeroinside}
+Misalkan $R \subset \R^n$ dan $S \subset \R^n$ persegi panjang tertutup dengan
+$R \subset S$. Misalkan $h \colon S \to \R$ fungsi terbatas sedemikian sehingga
+$h(x) = 0$ jika $x \notin \partial R$ (batas $R$). Tunjukkan bahwa
+$h \in \sR(S)$ dan
+\begin{equation*}
+\int_{S} h = 0 .
+\avoidbreak
+\end{equation*}
+Petunjuk: Nyatakan $h$ sebagai jumlah fungsi-fungsi seperti pada
+\exerciseref{mv:zerosiderectangle}.
+\end{exercise}
+
+\begin{exercise} \label{mv:zerooutside}
+Misalkan $R$ dan $R'$ dua persegi panjang tertutup di $\R^n$ dengan
+$R' \subset R$. Misalkan $f \colon R \to \R$ termasuk dalam $\sR(R')$ dan
+$f(x) = 0$ untuk $x \in R \setminus R'$. Tunjukkan bahwa $f \in \sR(R)$ dan
+\begin{equation*}
+\int_{R'} f = \int_R f .
+\end{equation*}
+Kerjakan dalam langkah-langkah berikut.
+\begin{enumerate}[a)]
+\item
+Pertama, buktikan dengan asumsi tambahan bahwa $f(x) = 0$ setiap kali
+$x \in \overline{R \setminus R'}$.
+\item
+Tuliskan $f(x) = g(x) + h(x)$, dengan $g(x) = 0$ setiap kali
+$x \in \overline{R \setminus R'}$, sedangkan $h(x)$ bernilai nol kecuali
+mungkin pada $\partial R'$. Kemudian tunjukkan
+$\int_R h = \int_{R'} h = 0$ (lihat \exerciseref{mv:zeroinside}).
+\item
+Tunjukkan bahwa $\int_{R'} f = \int_R f$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $R' \subset \R^n$ dan $R'' \subset \R^n$ dua persegi panjang tertutup
+sedemikian sehingga $R = R' \cup R''$ merupakan persegi panjang tertutup,
+sedangkan $R' \cap R''$ merupakan persegi panjang tertutup yang panjang salah
+satu sisinya sama dengan 0
+(yakni, $V(R' \cap R'') = 0$). Misalkan $f \colon R \to \R$ fungsi sedemikian
+sehingga $f \in \sR(R')$ dan $f \in \sR(R'')$. Tunjukkan bahwa
+$f \in \sR(R)$ dan
+\begin{equation*}
+\int_{R} f = \int_{R'} f + \int_{R''} f .
+\avoidbreak
+\end{equation*}
+Petunjuk: Lihat latihan sebelumnya.
+\end{exercise}
+
+\begin{exercise}
+Buktikan versi yang lebih kuat dari \propref{mv:prop:rectanglessupp}.
+Misalkan $f \colon \R^n \to \R$ fungsi bertumpuan kompak, tetapi tidak harus
+kontinu. Buktikan bahwa jika $R$ persegi panjang tertutup sedemikian sehingga
+$\operatorname{supp}(f) \subset R$ dan $f$ terintegralkan pada $R$, maka untuk
+setiap persegi panjang tertutup lain $S$ dengan
+$\operatorname{supp}(f) \subset S$, fungsi $f$ terintegralkan pada $S$ dan
+$\int_S f = \int_R f$.
+Petunjuk: Lihat \exerciseref{mv:zerooutside}.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $R$ dan $S$ persegi panjang tertutup di $\R^n$. Definisikan
+$f \colon \R^n \to \R$ dengan $f(x) \coloneqq 1$ jika $x \in R$, dan
+$f(x) \coloneqq 0$ selainnya. Buktikan bahwa $f$ terintegralkan pada $S$ dan
+hitung $\int_S f$. Petunjuk: Tangani kasus $S \cap R = \varnothing$ secara
+terpisah; jika irisannya tidak kosong, tinjau $S \cap R$.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Misalkan $R \coloneqq [0,1] \times [0,1] \subset \R^2$.
+\begin{enumerate}[a)]
+\item
+Misalkan $f \colon R \to \R$ didefinisikan oleh
+\begin{equation*}
+f(x,y) \coloneqq 
+\begin{cases}
+1 & \text{jika } x = y, \\
+0 & \text{selainnya.}
+\end{cases}
+\end{equation*}
+Tunjukkan bahwa $f \in \sR(R)$ dan hitung $\int_R f$.
+\item
+Misalkan $f \colon R \to \R$ didefinisikan oleh
+\begin{equation*}
+f(x,y) \coloneqq 
+\begin{cases}
+1 & \text{jika } x \in \Q \text{ atau } y \in \Q, \\
+0 & \text{selainnya.}
+\end{cases}
+\end{equation*}
+Tunjukkan bahwa $f \notin \sR(R)$.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Misalkan $R \subset \R^n$ persegi panjang tertutup, dan misalkan
+$\{ S_j \}_{j=1}^\infty$ barisan persegi panjang tertutup sedemikian sehingga
+$S_j \subset R$ dan $S_j \subset S_{j+1}$ untuk setiap $j$, serta
+$R = \bigcup_{j=1}^\infty S_j$. Misalkan $f \colon R \to \R$ terbatas dan
+$f \in \sR(S_j)$ untuk setiap $j$. Tunjukkan bahwa $f \in \sR(R)$ dan
+\begin{equation*}
+\lim_{j\to\infty} \int_{S_j} f = \int_R f .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f\colon [-1,1] \times [-1,1] \to \R$ fungsi yang terintegralkan
+Riemann dan memenuhi $f(x) = -f(-x)$. Dengan menggunakan definisi integral,
+buktikan bahwa
+\begin{equation*}
+\int_{[-1,1] \times [-1,1]} f = 0 .
+\end{equation*}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Integral berulang dan teorema Fubini}
+\label{sec:iteratedints}
+
+\sectionnotes{1--2 kuliah}
+
+Integral Riemann beberapa peubah sulit dihitung langsung dari definisinya.
+Untuk integral Riemann satu dimensi, kita memiliki teorema dasar kalkulus
+(lihat \volIref{\sectionref*{vI-sec:ftc} di jilid I}{\sectionref{sec:ftc}}),
+yang memungkinkan kita menghitung banyak integral tanpa harus menggunakan
+definisi integral. Kita akan menulis ulang integral Riemann beberapa peubah
+sebagai beberapa integral Riemann satu dimensi melalui pengintegralan
+berulang. Namun, jika $f \colon [0,1]^2 \to \R$ fungsi terintegralkan Riemann,
+belum langsung jelas apakah ketiga ungkapan
+\begin{equation*}
+\int_{[0,1]^2} f ,
+\qquad
+\int_0^1 \int_0^1 f(x,y) \, dx \, dy ,
+\qquad \text{dan}
+\qquad
+\int_0^1 \int_0^1 f(x,y) \, dy \, dx
+\end{equation*}
+bernilai sama, atau bahkan apakah dua ungkapan terakhir terdefinisi.
+
+\begin{example}
+Definisikan
+\begin{equation*}
+f(x,y) \coloneqq 
+\begin{cases}
+1 & \text{jika } x=\nicefrac{1}{2} \text{ dan } y \in \Q, \\
+0 & \text{selainnya.}
+\end{cases}
+\end{equation*}
+Fungsi $f$ terintegralkan Riemann pada $R \coloneqq [0,1]^2$ dan
+$\int_R f = 0$.
+
+Selain itu, $\int_0^1 \int_0^1 f(x,y) \, dx \, dy = 0$. Akan tetapi,
+\begin{equation*}
+\int_0^1 f(\nicefrac{1}{2},y) \, dy
+\end{equation*}
+tidak ada. Jadi, secara ketat,
+$\int_0^1 \int_0^1 f(x,y) \, dy \, dx$ tidak bermakna.
+Lihat \figureref{fig:fubinibad}.
+
+\begin{myfigureht}
+\myincludepdft{fubinibad}{%
+Tiga diagram berbentuk persegi. Di sebelah kiri terdapat persegi putih dengan
+garis abu-abu mendatar di bagian atas dan garis vertikal bertitik-titik yang
+melalui tengahnya. Diagram tengah memuat garis bertitik-titik yang sama, tetapi
+garis abu-abunya kini vertikal dan terletak di bagian kiri persegi. Diagram
+kanan memuat garis bertitik-titik yang sama, dengan dua garis vertikal
+putus-putus, masing-masing sangat dekat di salah satu sisinya. Daerah di
+sebelah kiri
+garis putus-putus pertama diarsir gelap, daerah di sebelah kanan garis
+putus-putus kedua diarsir abu-abu sedang, dan daerah tipis di sekitar garis
+bertitik-titik diarsir dengan warna paling terang.}
+\caption{Kiri: $[0,1]^2$ dengan garis $x=\nicefrac{1}{2}$ ditandai
+bertitik-titik dan $\int_0^1 f(x,y) \, dx$ ditandai sebagai garis penuh abu-abu
+untuk suatu $y$ tetap. Tengah: Diagram serupa, tetapi
+$\int_0^1 f(x,y) \, dy$ ditandai untuk suatu $x \neq \nicefrac{1}{2}$.
+Kanan: Tiga persegi panjang berbeda dalam partisi yang digunakan untuk
+mengintegralkan $f$, masing-masing dengan corak abu-abu berbeda.\label{fig:fubinibad}}
+\end{myfigureht}
+
+Bukti:
+Kita mulai dengan membuktikan keterintegralan $f$. Untuk
+$0 < \epsilon < \nicefrac{1}{2}$, tinjau partisi $[0,1]^2$ dengan partisi
+arah $x$ berupa $\{ 0, \nicefrac{1}{2}-\epsilon,
+\nicefrac{1}{2}+\epsilon,1\}$ dan partisi arah $y$ berupa $\{ 0, 1 \}$.
+Subpersegi panjang yang bersesuaian adalah
+\begin{equation*}
+R_1 \coloneqq [0, \nicefrac{1}{2}-\epsilon] \times [0,1],
+%mbxSTARTIGNORE
+\qquad
+%mbxENDIGNORE
+%mbxlatex \quad
+R_2 \coloneqq [\nicefrac{1}{2}-\epsilon,
+\nicefrac{1}{2}+\epsilon] \times [0,1],
+%mbxSTARTIGNORE
+\qquad
+%mbxENDIGNORE
+%mbxlatex \quad
+R_3 \coloneqq [\nicefrac{1}{2}+\epsilon,1] \times [0,1] .
+\end{equation*}
+Kita memiliki $m_1 = M_1 = 0$, $m_2 =0$, $M_2 = 1$, dan
+$m_3 = M_3 = 0$. Oleh karena itu,
+\begin{equation*}
+L(P,f) = 
+m_1 V(R_1)
++
+m_2 V(R_2)
++
+m_3 V(R_3)
+=
+0 (\nicefrac{1}{2}-\epsilon)
++
+0 (2\epsilon)
++
+0 (\nicefrac{1}{2}-\epsilon) = 0 ,
+\end{equation*}
+dan
+\begin{equation*}
+U(P,f) = 
+M_1 V(R_1)
++
+M_2 V(R_2)
++
+M_3 V(R_3)
+=
+0 (\nicefrac{1}{2}-\epsilon)
++
+1 (2\epsilon)
++
+0 (\nicefrac{1}{2}-\epsilon) = 2 \epsilon .
+\end{equation*}
+Jumlah atas dan jumlah bawah dapat dibuat sedekat apa pun, sedangkan jumlah
+bawah selalu nol. Jadi, fungsi tersebut terintegralkan dan $\int_R f = 0$.
+
+Untuk setiap $y$ tetap, fungsi yang memetakan $x$ ke $f(x,y)$ bernilai nol
+kecuali mungkin pada satu titik, yaitu $x=\nicefrac{1}{2}$. Fungsi semacam ini
+terintegralkan dan $\int_0^1 f(x,y) \, dx = 0$. Oleh karena itu,
+$\int_0^1 \int_0^1 f(x,y) \, dx \, dy = 0$. Akan tetapi, jika
+$x=\nicefrac{1}{2}$, fungsi yang memetakan $y$ ke
+$f(\nicefrac{1}{2},y)$ merupakan fungsi tak terintegralkan yang bernilai 1
+pada bilangan rasional dan 0 pada bilangan irasional. Lihat
+\volIref{\exampleref*{vI-example:dirichletfunc} dari jilid I}{\exampleref{example:dirichletfunc}}.
+\end{example}
+
+Kita mengatasi masalah tidak terdefinisinya integral di bagian dalam dengan
+menggunakan integral atas dan integral bawah, yang selalu terdefinisi untuk
+setiap fungsi terbatas.
+
+\medskip
+
+Kelompokkan koordinat pada $\R^{n+m}$ menjadi dua bagian. Tuliskan koordinat pada
+$\R^{n+m} = \R^n \times \R^m$ sebagai $(x,y)$, dengan $x \in \R^n$ dan
+$y \in \R^m$. Untuk fungsi $f(x,y)$, tulis
+\begin{equation*}
+f_x(y) \coloneqq f(x,y)
+\end{equation*}
+jika $x$ ditetapkan dan kita hendak memandangnya sebagai fungsi dari $y$.
+Tulis
+\begin{equation*}
+f^y(x) \coloneqq f(x,y)
+\end{equation*}
+jika $y$ ditetapkan dan kita hendak memandangnya sebagai fungsi dari $x$.
+
+\begin{thm}[Fubini versi A%
+\footnote{Dinamai menurut matematikawan Italia
+\href{https://en.wikipedia.org/wiki/Guido_Fubini}{Guido Fubini}
+(1879--1943).}] \label{mv:fubinivA} \index{teorema Fubini}
+Misalkan $R \times S \subset \R^n \times \R^m$ merupakan persegi panjang
+tertutup dan $f \colon R \times S \to \R$ fungsi yang terintegralkan. Fungsi
+$g \colon R \to \R$ dan $h \colon R \to \R$ yang didefinisikan oleh
+\begin{equation*}
+g(x) \coloneqq \underline{\int_S} f_x \qquad
+\text{dan} \qquad
+h(x) \coloneqq \overline{\int_S} f_x 
+\end{equation*}
+terintegralkan pada $R$ dan
+\begin{equation*}
+\int_R g = \int_R h = \int_{R \times S} f .
+\end{equation*}
+\end{thm}
+
+Dengan kata lain,
+\begin{equation*}
+\int_{R \times S} f
+=
+ \int_R \left(
+ \underline{\int_S} f(x,y) \, dy
+\right) \, dx
+=
+ \int_R \left(
+ \overline{\int_S} f(x,y) \, dy
+\right) \, dx .
+\end{equation*}
+Jika $f_x$ terintegralkan untuk setiap $x \in R$, misalnya ketika $f$ kontinu, kita
+memperoleh bentuk yang lebih lazim
+\begin{equation*}
+\int_{R \times S} f
+=
+ \int_R \int_S f(x,y) \, dy \, dx .
+\end{equation*}
+
+\begin{proof}
+Partisi dari $R \times S$ dapat ditulis sebagai
+$(P,P') = (P_1,P_2,\ldots,P_n,P'_1,P'_2,\ldots,P'_m)$, dengan
+$P = (P_1,P_2,\ldots,P_n)$ dan
+$P' = (P'_1,P'_2,\ldots,P'_m)$ berturut-turut merupakan partisi dari $R$ dan
+$S$. Misalkan $R_1,R_2,\ldots,R_N$ subpersegi panjang dari $P$, sedangkan
+$R'_1,R'_2,\ldots,R'_K$ subpersegi panjang dari $P'$. Subpersegi panjang dari
+$(P,P')$ adalah $R_i \times R'_j$, dengan $1 \leq i \leq N$ dan
+$1 \leq j \leq K$.
+
+Misalkan
+\begin{equation*}
+m_{i,j} \coloneqq
+\inf_{(x,y) \in R_i \times R'_j} f(x,y) .
+\end{equation*}
+Perhatikan bahwa $V(R_i \times R'_j) = V(R_i)V(R'_j)$, sehingga
+\begin{equation*}
+L\bigl((P,P'),f\bigr) =
+\sum_{i=1}^N
+\sum_{j=1}^K
+m_{i,j} \, V(R_i \times R'_j)
+=
+\sum_{i=1}^N
+\left(
+\sum_{j=1}^K
+m_{i,j} \, V(R'_j) \right) V(R_i) .
+\end{equation*}
+Definisikan
+\begin{equation*}
+m_j(x) \coloneqq \inf_{y \in R'_j} f(x,y) = \inf_{y \in R'_j} f_x(y) .
+\end{equation*}
+Untuk $x \in R_i$, berlaku $m_{i,j} \leq m_j(x)$. Oleh karena itu,
+\begin{equation*}
+\sum_{j=1}^K
+m_{i,j} \, V(R'_j)
+\leq \sum_{j=1}^K m_j(x) \, V(R'_j) = L(P',f_x) \leq
+\underline{\int_S} f_x = g(x) .
+\end{equation*}
+Ketaksamaan ini berlaku untuk setiap $x \in R_i$, sehingga
+\begin{equation*}
+\sum_{j=1}^K
+m_{i,j} \, V(R'_j)
+\leq \inf_{x \in R_i} g(x) .
+\end{equation*}
+Dengan demikian, kita memperoleh
+\begin{equation*}
+L\bigl((P,P'),f\bigr) 
+\leq
+\sum_{i=1}^N
+\left(
+\inf_{x \in R_i} g(x)
+\right) V(R_i) = L(P,g) .
+\end{equation*}
+
+Dengan cara serupa, $U\bigl((P,P'),f\bigr) \geq U(P,h)$; pembuktian
+ketaksamaan ini diserahkan kepada pembaca sebagai latihan. Dengan menggabungkan
+kedua ketaksamaan tersebut dan fakta bahwa $g(x) \leq h(x)$ untuk setiap
+$x \in R$, kita memperoleh
+\begin{equation*}
+L\bigl((P,P'),f\bigr)
+\leq
+L(P,g) \leq
+U(P,g) \leq
+U(P,h) \leq
+U\bigl((P,P'),f\bigr) .
+\end{equation*}
+Karena $f$ terintegralkan, untuk setiap $\eta > 0$ terdapat pasangan partisi
+$P$ dari $R$ dan $P'$ dari $S$ sedemikian sehingga
+$U\bigl((P,P'),f\bigr)-L\bigl((P,P'),f\bigr)<\eta$. Untuk pasangan partisi
+tersebut,
+\begin{equation*}
+U(P,g) - L(P,g)
+\leq
+U\bigl((P,P'),f\bigr) -
+L\bigl((P,P'),f\bigr) < \eta .
+\end{equation*}
+Jadi, menurut kriteria keterintegralan, $g$ terintegralkan. Rangkaian
+ketaksamaan sebelumnya menempatkan baik $\int_R g$ maupun
+$\int_{R \times S} f$ di antara jumlah bawah dan jumlah atas untuk $f$ yang
+selisihnya kurang dari $\eta$. Karena $\eta>0$ sebarang,
+$\int_R g = \int_{R \times S} f$.
+
+Demikian pula,
+\begin{equation*}
+L\bigl((P,P'),f\bigr)
+\leq
+L(P,g) \leq
+L(P,h) \leq
+U(P,h) \leq
+U\bigl((P,P'),f\bigr) ,
+\end{equation*}
+sehingga
+\begin{equation*}
+U(P,h) - L(P,h)
+\leq
+U\bigl((P,P'),f\bigr) -
+L\bigl((P,P'),f\bigr) .
+\end{equation*}
+Dengan memilih pasangan partisi di atas untuk setiap $\eta>0$, kriteria
+keterintegralan menunjukkan bahwa $h$ terintegralkan. Selain itu,
+rangkaian ketaksamaan terakhir menempatkan baik $\int_R h$ maupun
+$\int_{R \times S} f$ di antara dua jumlah untuk $f$ yang selisihnya kurang
+dari $\eta$. Jadi, seperti sebelumnya,
+$\int_R h = \int_{R \times S} f$.
+\end{proof}
+
+Kita juga dapat melakukan pengintegralan berulang dalam urutan sebaliknya.
+Bukti versi ini hampir sama dengan bukti versi A
+(atau dapat diperoleh dengan cepat dari versi A)\@.
+Pembuktiannya diserahkan kepada pembaca sebagai latihan.
+
+\begin{thm}[Fubini versi B]\label{mv:fubinivB}\index{teorema Fubini}
+\pagebreak[2]
+Misalkan $R \times S \subset \R^n \times \R^m$ merupakan persegi panjang
+tertutup dan $f \colon R \times S \to \R$ fungsi yang terintegralkan.
+Fungsi $g \colon S \to \R$ dan $h \colon S \to \R$ yang didefinisikan oleh
+\begin{equation*}
+g(y) \coloneqq \underline{\int_R} f^y \qquad
+\text{dan} \qquad
+h(y) \coloneqq \overline{\int_R} f^y 
+\end{equation*}
+terintegralkan pada $S$, dan
+\begin{equation*}
+\int_S g = \int_S h = \int_{R \times S} f .
+\end{equation*}
+\end{thm}
+
+Dengan kata lain,
+\begin{equation*}
+\int_{R \times S} f
+=
+ \int_S \left(
+ \underline{\int_R} f(x,y) \, dx
+\right) \, dy
+=
+ \int_S \left(
+ \overline{\int_R} f(x,y) \, dx
+\right) \, dy .
+\end{equation*}
+
+Selanjutnya, dengan tetap mengandaikan bahwa $f$ terintegralkan pada
+$R \times S$, misalkan $f_x$ dan $f^y$ terintegralkan untuk setiap $x \in R$
+dan $y \in S$. Misalnya, anggaplah $f$ kontinu. Dengan menggabungkan kedua
+versi tersebut, kita memperoleh rumus yang lazim
+\begin{equation*}
+\int_{R \times S} f
+=
+ \int_R 
+ \int_S f(x,y) \, dy \, dx 
+=
+ \int_S 
+ \int_R f(x,y) \, dx \, dy .
+\end{equation*}
+
+Teorema Fubini sering dinyatakan dalam dua dimensi untuk fungsi kontinu
+$f \colon R \to \R$ pada persegi panjang
+$R = [a,b] \times [c,d]$. Dalam hal ini, teorema Fubini menyatakan bahwa
+\begin{equation*}
+\int_R f = \int_a^b \int_c^d f(x,y) \,dy\,dx
+=
+\int_c^d \int_a^b f(x,y) \,dx\,dy .
+\end{equation*}
+Teorema Fubini lazim dipandang sebagai \emph{teorema} yang memungkinkan kita
+menukar urutan integral berulang, meskipun teorema Fubini memiliki banyak
+variasi dan baru dua di antaranya yang telah kita lihat.
+
+Dengan menerapkan teorema Fubini berulang kali, kita memperoleh akibat berikut.
+Misalkan $R \coloneqq [a_1,b_1] \times [a_2,b_2] \times \cdots \times [a_n,b_n]
+\subset \R^n$ merupakan persegi panjang tertutup dan
+$f \colon R \to \R$ fungsi kontinu. Maka
+\begin{equation*}
+\int_R f = 
+\int_{a_1}^{b_1}
+\int_{a_2}^{b_2}
+\cdots
+\int_{a_n}^{b_n}
+f(x_1,x_2,\ldots,x_n)
+\,
+dx_n
+\,
+dx_{n-1}
+\cdots
+dx_1 .
+\end{equation*}
+
+Kita boleh mengubah urutan pengintegralan ke urutan mana pun yang dikehendaki.
+Dengan tetap mensyaratkan bahwa $f$ terintegralkan pada $R$, syarat kekontinuan
+dapat dilonggarkan dengan memastikan bahwa semua fungsi perantara yang muncul
+dalam urutan pilihan terintegralkan. Sebagai alternatif, integral atas atau
+integral bawah dapat digunakan secara tepat.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Hitung $\int_{0}^1 \int_{-1}^1 xe^{xy} \, dx \, dy$ dengan cara sederhana.
+\end{exercise}
+
+\begin{exercise}
+Buktikan pernyataan $U\bigl((P,P'),f\bigr) \geq U(P,h)$ dari bukti
+\thmref{mv:fubinivA}.
+\end{exercise}
+
+\begin{exercise}[Mudah]
+Buktikan \thmref{mv:fubinivB}.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $R \coloneqq [a,b] \times [c,d]$ dan
+$f \colon R \to \R$ fungsi yang terintegralkan sedemikian sehingga, untuk
+setiap $y \in [c,d]$ yang ditetapkan, fungsi yang memetakan $x$ ke $f(x,y)$
+bernilai nol kecuali pada berhingga banyak titik. Tunjukkan
+\begin{equation*}
+\int_R f = 0 .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $R \coloneqq [a,b] \times [c,d]$ dan
+$f(x,y) \coloneqq g(x)h(y)$ untuk fungsi kontinu
+$g \colon [a,b] \to \R$ dan $h \colon [c,d] \to \R$. Buktikan
+\begin{equation*}
+\int_R f = \left(\int_a^b g\right)\left(\int_c^d h\right) .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Hitunglah, dengan menggunakan kalkulus,
+\begin{equation*}
+\int_0^1 \int_0^1 \frac{x^2-y^2}{{(x^2+y^2)}^2} \, dx \, dy
+\qquad \text{dan} \qquad
+\int_0^1 \int_0^1 \frac{x^2-y^2}{{(x^2+y^2)}^2} \, dy \, dx .
+\end{equation*}
+Dalam setiap integral berulang tersebut, hitung dahulu integral dalam untuk
+nilai positif variabel luar, lalu tafsirkan integral luar sebagai integral tak
+wajar $\lim_{\epsilon \to 0^+}\int_\epsilon^1$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f(x,y) \coloneqq g(x)$, dengan $g \colon [a,b] \to \R$ terintegralkan
+Riemann. Tunjukkan bahwa $f$ terintegralkan Riemann untuk setiap
+$R = [a,b] \times [c,d]$ dan
+\begin{equation*}
+\int_R f = (d-c) \int_a^b g .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Definisikan $f \colon [-1,1] \times [0,1] \to \R$ dengan
+\begin{equation*}
+f(x,y) \coloneqq
+\begin{cases}
+x & \text{jika } y \in \Q, \\
+0 & \text{selain itu.} 
+\end{cases}
+\end{equation*}
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa
+$\int_0^1 \int_{-1}^1 f(x,y) \, dx \, dy$ ada, tetapi
+$\int_{-1}^1 \int_0^1 f(x,y) \, dy \, dx$ tidak ada.
+\item
+Hitung
+$\int_{-1}^1 \overline{\int_0^1} f(x,y) \, dy \, dx$ dan
+$\int_{-1}^1 \underline{\int_0^1} f(x,y) \, dy \, dx$.
+\item
+Tunjukkan bahwa $f$ tidak terintegralkan Riemann pada $[-1,1] \times [0,1]$
+(gunakan Fubini).
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Definisikan $f \colon [0,1] \times [0,1] \to \R$ dengan ketentuan bahwa
+representasi $y=\nicefrac{p}{q}$ di bawah selalu memenuhi
+$p\in\Z$, $q\in\N$, $q>0$, dan $\gcd(|p|,q)=1$ (khususnya, $0=\nicefrac{0}{1}$):
+\begin{equation*}
+f(x,y) \coloneqq
+\begin{cases}
+\nicefrac{1}{q} & \text{jika } x \in \Q, y \in \Q, \text{ dan }
+  y=\nicefrac{p}{q} \text{ dalam bentuk pecahan paling sederhana,} \\
+0               & \text{selain itu.} 
+\end{cases}
+\end{equation*}
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $f$ terintegralkan Riemann pada $[0,1] \times [0,1]$.
+\item
+Tentukan
+$\overline{\int_0^1} f(x,y) \, dx$ dan
+$\underline{\int_0^1} f(x,y) \, dx$ untuk setiap $y \in [0,1]$, dan tunjukkan
+bahwa keduanya tidak sama untuk setiap $y \in \Q \cap [0,1]$.
+\item
+Tunjukkan bahwa
+$\int_0^1 \int_0^1 f(x,y) \, dy \, dx$ ada, tetapi
+$\int_0^1 \int_0^1 f(x,y) \, dx \, dy$ tidak ada.
+\end{enumerate}
+Catatan: Menurut Fubini,
+$\int_0^1 \overline{\int_0^1} f(x,y) \, dx \, dy$ dan
+$\int_0^1 \underline{\int_0^1} f(x,y) \, dx \, dy$ ada dan sama dengan
+$\int_{[0,1]\times[0,1]} f$.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Ukuran luar dan himpunan nol}
+\label{sec:outermeasure}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2 kuliah}
+
+\subsection{Ukuran luar dan himpunan nol}
+
+Sebelum mencirikan semua fungsi yang terintegralkan Riemann, kita perlu sedikit
+menyimpang dari pembahasan utama. Kita akan memperkenalkan cara mengukur besar
+suatu himpunan di $\R^n$.
+
+\begin{defn}
+Kita definisikan \emph{\myindex{ukuran luar}} suatu himpunan
+$S \subset \R^n$ sebagai
+\glsadd{not:outermeasure}
+\begin{equation*}
+m^*(S)
+\coloneqq
+\inf\,
+\sum_{j=1}^\infty V(R_j) ,
+\end{equation*}
+di mana infimum diambil atas semua barisan persegi panjang terbuka
+$\{ R_j \}_{j=1}^\infty$ yang memenuhi
+$S \subset \bigcup_{j=1}^\infty R_j$. Baik jumlah maupun infimum diperbolehkan
+bernilai $\infty$. Lihat \figureref{fig:outermeasure}.
+Secara khusus, $S$ disebut \emph{\myindex{berukuran nol}} atau
+\emph{\myindex{himpunan nol}} jika $m^*(S) = 0$.
+\end{defn}
+
+\begin{myfigureht}
+\myincludepdft{outermeasure}{Himpunan S diarsir abu-abu dan ditutupi oleh
+banyak persegi panjang yang dibatasi garis tipis bertitik-titik. Tiga persegi
+panjang diberi tanda R sub 1, R sub 2, dan R sub 3.}
+\caption{Konstruksi ukuran luar; dalam kasus ini $S \subset R_1 \cup R_2
+\cup R_3 \cup \cdots$, sehingga $m^*(S) \leq V(R_1) + V(R_2)+V(R_3) +
+\cdots$.\label{fig:outermeasure}}
+\end{myfigureht}
+
+Salah satu konsekuensi langsung definisi tersebut
+(\exerciseref{exercise:outermeasuremono}) adalah bahwa jika $A \subset B$,
+maka $m^*(A) \leq m^*(B)$. Tidak sulit pula untuk menunjukkan
+(\exerciseref{exercise:allowfiniteseqsinoutermeasure}) bahwa kita memperoleh
+bilangan $m^*(S)$ yang sama jika keluarga persegi panjang berhingga maupun
+barisan tak hingga diizinkan dalam definisi. Namun, keluarga berhingga saja
+tidak cukup.
+
+Teori ukuran pada $\R^n$ merupakan bidang yang sangat rumit. Kita hanya akan
+memerlukan himpunan berukuran nol, sehingga pembahasan difokuskan pada himpunan
+tersebut. Himpunan $S$ berukuran nol jika untuk setiap $\epsilon > 0$ terdapat
+barisan persegi panjang terbuka $\{ R_j \}_{j=1}^\infty$ sedemikian sehingga
+\begin{equation} \label{mv:eq:nullR}
+S \subset \bigcup_{j=1}^\infty R_j \qquad \text{dan} \qquad
+\sum_{j=1}^\infty V(R_j) < \epsilon.
+\end{equation}
+Jika $S$ berukuran nol dan $S' \subset S$, maka $S'$ berukuran nol. Kita dapat
+menggunakan persegi panjang yang sama.
+
+\pagebreak[2]
+Kadang-kadang lebih mudah menggunakan bola daripada persegi panjang. Selain
+itu, kita dapat memilih bola yang jari-jarinya lebih kecil daripada suatu batas
+tetap.
+
+\begin{prop} \label{mv:prop:ballsnull}
+Misalkan $\delta > 0$ diberikan. Himpunan $S \subset \R^n$ berukuran nol jika
+dan hanya jika, untuk setiap $\epsilon > 0$, terdapat barisan bola terbuka
+$\{ B_k \}_{k=1}^\infty$, dengan $B_k$ berjari-jari $r_k < \delta$,
+sedemikian sehingga
+\begin{equation*}
+S \subset \bigcup_{k=1}^\infty B_k \qquad \text{dan} \qquad
+\sum_{k=1}^\infty r_k^n < \epsilon.
+\end{equation*}
+\end{prop}
+
+Perhatikan bahwa \myquote{volume} $B_k$ sebanding dengan $r_k^n$.
+
+\begin{proof}
+Jika $C$ merupakan kubus tertutup (persegi panjang yang semua panjang sisinya
+sama) dengan panjang sisi $s$, maka menurut
+\propref{prop:diameterrectangle}, $C$ termuat dalam bola tertutup berjari-jari
+$\sqrt{n}\,s$, sehingga juga termuat dalam bola terbuka berjari-jari
+$2\sqrt{n}\,s$.\footnote{%
+Bola tertutup berjari-jari $\frac{\sqrt{n}\,s}{2}$ sebenarnya dapat digunakan,
+tetapi hal itu memerlukan argumen tambahan, sedangkan $\sqrt{n}\,s$ sudah
+memadai.}
+
+Misalkan $R$ merupakan persegi panjang bervolume positif. Pilih bilangan
+$s>0$ yang lebih kecil daripada panjang sisi terpendek $R$ dan memenuhi
+$2\sqrt{n}\,s<\delta$. Jika setiap panjang sisi $R$ merupakan kelipatan bulat
+dari $s$, maka $R$ termuat dalam gabungan kubus tertutup
+$C_1,C_2,\ldots,C_m$ yang panjang sisinya $s$ dan memenuhi
+$\sum_{k=1}^m V(C_k)=V(R)$. Sekarang, andaikan tidak semua panjang sisi $R$
+merupakan kelipatan bulat dari $s$. Tinjau suatu sisi yang panjangnya
+$(\ell+\alpha)s$, dengan $\ell$ bilangan bulat dan $0\leq\alpha<1$. Karena
+$s$ lebih kecil daripada panjang sisi terpendek, $\ell\geq1$, sehingga
+$(\ell+\alpha)s\leq2\ell s$. Dengan memperpanjang sisi tersebut menjadi
+$2\ell s$, dan memperpanjang setiap sisi $R$ dengan cara serupa, kita
+memperoleh persegi panjang baru yang lebih besar, yang volumenya paling besar
+$2^n$ kali volume semula dan panjang sisi-sisinya merupakan kelipatan dari
+$s$. Lihat \figureref{fig:nullrectcube}. Jadi, $R$ termuat dalam gabungan
+kubus tertutup $C_1,C_2,\ldots,C_m$ yang panjang sisinya $s$ dan memenuhi
+\begin{equation*}
+\sum_{k=1}^m V(C_k) \leq 2^n V(R) .
+\end{equation*}
+
+\begin{myfigureht}
+\myincludepdft{nullrectcube}{%
+Sebuah persegi panjang ditandai dengan garis tebal. Kisi persegi yang panjang
+sisinya s, terdiri dari 2 baris dan 4 kolom, disejajarkan dengan sudut kiri atas
+persegi panjang bergaris tebal tersebut. Persegi panjang bergaris tebal
+memanjang sedikit lebih dari 2 s ke kanan dan sedikit lebih dari s ke bawah.
+Dua petak pertama pada arah mendatar diberi tanda ell s sama dengan 2 s,
+sedangkan keseluruhan empat petak pada arah mendatar diberi tanda 2 ell s sama
+dengan 4 s.}
+\caption{Menutupi persegi panjang dengan kubus-kubus yang volume totalnya
+paling besar $2^n V(R)$.\label{fig:nullrectcube}}
+\end{myfigureht}
+
+Sekarang, misalkan $S$ merupakan himpunan nol dan terdapat barisan persegi
+panjang terbuka $\{R_j\}_{j=1}^\infty$ yang gabungannya memuat $S$ dan memenuhi
+\eqref{mv:eq:nullR}. Pilih barisan kubus tertutup
+$\{C_k\}_{k=1}^\infty$, dengan $C_k$ mempunyai panjang sisi $s_k$, seperti di
+atas, yang menutupi semua persegi panjang $\{R_j\}_{j=1}^\infty$ dan memenuhi
+\begin{equation*}
+\sum_{k=1}^\infty s_k^n =
+\sum_{k=1}^\infty V(C_k) \leq
+2^n \sum_{j=1}^\infty V(R_j)
+< 2^n \epsilon.
+\end{equation*}
+Dengan menutupi setiap $C_k$ menggunakan bola $B_k$ berjari-jari
+$r_k=2\sqrt{n}\,s_k<\delta$, kita memperoleh
+\begin{equation*}
+\sum_{k=1}^\infty r_k^n
+=
+\sum_{k=1}^\infty {\bigl(2\sqrt{n}\bigr)}^n s_k^n
+<
+{\bigl(4\sqrt{n}\bigr)}^n \epsilon .
+\end{equation*}
+Karena $S \subset\bigcup_j R_j \subset\bigcup_k C_k \subset\bigcup_k B_k$
+dan ${\bigl(4\sqrt{n}\bigr)}^n\epsilon$ dapat dibuat sekecil apa pun, arah maju
+terbukti.
+
+Untuk arah sebaliknya, misalkan $S$ ditutupi oleh bola $B_j$ berjari-jari
+$r_j$ sedemikian sehingga $\sum_{j=1}^\infty r_j^n<\epsilon$, seperti dalam
+pernyataan proposisi. Setiap $B_j$ termuat dalam kubus terbuka $R_j$ yang
+panjang sisinya $2r_j$. Jadi, $V(R_j)={(2r_j)}^n=2^n r_j^n$. Oleh karena itu,
+\begin{equation*}
+S \subset \bigcup_{j=1}^\infty R_j \qquad \text{dan} \qquad
+\sum_{j=1}^\infty V(R_j)
+\leq
+\sum_{j=1}^\infty 2^n r_j^n < 2^n \epsilon. \qedhere
+\end{equation*}
+\end{proof}
+
+Definisi ukuran luar (bukan hanya himpunan nol) juga dapat dirumuskan dengan
+bola terbuka. Generalisasi ini diserahkan kepada pembaca.
+
+\subsection{Contoh dan sifat dasar}
+
+\begin{example}
+Himpunan $\Q^n \subset \R^n$ yang terdiri atas titik-titik berkoordinat
+rasional berukuran nol.
+
+Bukti:
+Himpunan $\Q^n$ terhitung, sehingga dapat ditulis sebagai barisan
+$q_1,q_2,\ldots$. Tetapkan sembarang $\epsilon>0$. Untuk setiap $q_j$, pilih
+persegi panjang terbuka $R_j$ yang memenuhi $q_j \in R_j$ dan
+$V(R_j)<\epsilon 2^{-j}$. Dengan demikian,
+\begin{equation*}
+\Q^n \subset \bigcup_{j=1}^\infty R_j \qquad \text{dan} \qquad
+\sum_{j=1}^\infty V(R_j) <
+\sum_{j=1}^\infty \epsilon 2^{-j} = \epsilon .
+\end{equation*}
+Karena $\epsilon$ sembarang, $\Q^n$ berukuran nol.
+\end{example}
+
+Contoh tersebut mengarah pada hasil yang lebih umum.
+
+\begin{prop}
+Gabungan terhitung dari himpunan-himpunan berukuran nol juga berukuran nol.
+\end{prop}
+
+\begin{proof}
+Misalkan
+\begin{equation*}
+S = \bigcup_{j=1}^\infty S_j ,
+\end{equation*}
+di mana setiap $S_j$ berukuran nol. Misalkan $\epsilon>0$ diberikan. Untuk
+setiap $j$, terdapat barisan persegi panjang terbuka
+$\{R_{j,k}\}_{k=1}^\infty$ sedemikian sehingga
+\begin{equation*}
+S_j \subset \bigcup_{k=1}^\infty R_{j,k}
+\qquad \text{dan} \qquad
+\sum_{k=1}^\infty V(R_{j,k}) < 2^{-j} \epsilon .
+\end{equation*}
+Maka
+\begin{equation*}
+S \subset \bigcup_{j=1}^\infty \bigcup_{k=1}^\infty R_{j,k} .
+\end{equation*}
+Karena $\N\times\N$ terhitung, keluarga berindeks ganda
+$\{R_{j,k}\}_{j,k=1}^\infty$ dapat didaftarkan sebagai satu barisan persegi
+panjang. Semua $V(R_{j,k})$ tak negatif, sehingga penjumlahan terhadap semua
+indeks $j$ dan $k$ dapat dilakukan dengan terlebih dahulu menjumlahkan terhadap
+$k$, kemudian terhadap $j$; lihat
+\volIref{\exerciseref*{vI-exercise:tonellifubiniforsums} dalam jilid I}{\exerciseref{exercise:tonellifubiniforsums}}.
+Secara khusus,
+\begin{equation*}
+\sum_{j=1}^\infty \sum_{k=1}^\infty V(R_{j,k}) <
+\sum_{j=1}^\infty 2^{-j} \epsilon = \epsilon . \qedhere
+\end{equation*}
+\end{proof}
+
+Contoh berikut bukan hanya menarik, tetapi juga akan berguna nanti.
+
+\begin{example} \label{mv:example:planenull}
+Misalkan $n \in \N$, $k=1,2,\ldots,n$, dan $c \in \R$.
+Maka $P \coloneqq \{x \in \R^n : x_k=c\}$ berukuran nol. Perhatikan bahwa
+jika $n\geq2$, maka $P$ tidak terhitung.
+
+Bukti:
+Pertama, tetapkan $s \in \N$ dan tinjau
+\begin{equation*}
+P_s \coloneqq \bigl\{x \in \R^n : x_k=c \text{ dan } \sabs{x_j}\leq s
+\text{ untuk setiap } j\neq k\bigr\} .
+\end{equation*}
+Untuk sembarang $\eta>0$, pilih $\epsilon>0$ sedemikian sehingga
+$2\epsilon{\bigl(2(s+1)\bigr)}^{n-1}<\eta$, lalu definisikan persegi panjang
+terbuka
+\begin{equation*}
+R \coloneqq \bigl\{x \in \R^n : c-\epsilon<x_k<c+\epsilon \text{ dan }
+\sabs{x_j}<s+1 \text{ untuk setiap } j\neq k\bigr\} .
+\end{equation*}
+Jelas bahwa $P_s\subset R$. Selain itu,
+\begin{equation*}
+V(R) = 2\epsilon {\bigl(2(s+1)\bigr)}^{n-1} .
+\end{equation*}
+Berdasarkan pilihan $\epsilon$, $V(R)<\eta$. Jadi, $P_s$ berukuran nol.
+
+Selanjutnya,
+\begin{equation*}
+P = \bigcup_{s=1}^\infty P_s
+\end{equation*}
+Karena setiap $P_s$ berukuran nol, proposisi sebelumnya menunjukkan bahwa $P$
+berukuran nol.
+\end{example}
+
+\begin{example}
+Jika $a < b$, maka $m^*\bigl([a,b]\bigr) = b-a$.
+
+Bukti:
+Di $\R$, persegi panjang terbuka adalah interval terbuka. Karena
+$[a,b]\subset(a-\epsilon,b+\epsilon)$ untuk setiap $\epsilon>0$, dan panjang
+interval ini adalah $b-a+2\epsilon$, diperoleh
+$m^*\bigl([a,b]\bigr)\leq b-a$.
+
+Ketaksamaan sebaliknya lebih sulit. Misalkan
+$\bigl\{(a_j,b_j)\bigr\}_{j=1}^\infty$ adalah interval-interval terbuka
+sedemikian sehingga
+\begin{equation*}
+[a,b] \subset \bigcup_{j=1}^\infty (a_j,b_j) .
+\end{equation*}
+Kita hendak memberikan batas bawah bagi
+$\sum_{j=1}^\infty(b_j-a_j)$. Karena $[a,b]$ kompak, suatu subselimut hingga
+dari interval-interval terbuka tersebut masih menutupi $[a,b]$. Membuang
+sebagian interval hanya memperkecil jumlah, sehingga cukup ditinjau suatu
+subselimut hingga. Buang satu demi satu setiap interval yang dapat dihilangkan
+tanpa kehilangan sifat menutupi $[a,b]$; dengan demikian, tersisa subselimut
+hingga yang minimal.
+
+Tidak ada interval dalam subselimut minimal ini yang termuat dalam interval lain,
+dan setiap interval memotong $[a,b]$. Beri nomor ulang interval-interval yang
+tersisa sehingga
+$a_1<a_2<\cdots<a_k$. Titik-titik ujung kanannya juga memenuhi
+$b_1<b_2<\cdots<b_k$; jika tidak, salah satu interval akan termuat di interval
+lain. Interval-interval yang berurutan harus bertumpang tindih, sebab jika
+$b_j\leq a_{j+1}$, suatu titik di $[a,b]$ tidak akan tertutupi. Jadi,
+$a_j<a_{j+1}<b_j<b_{j+1}$ untuk setiap $j=1,2,\ldots,k-1$. Selain itu,
+$a_1<a$ dan $b_k>b$. Lihat \figureref{fig:measureinterval} untuk contoh
+konfigurasi. Karena $b_j-a_j>a_{j+1}-a_j$, diperoleh
+\begin{equation*}
+\sum_{j=1}^k (b_j-a_j)
+\geq
+\sum_{j=1}^{k-1} (a_{j+1}-a_j)
++
+(b_k-a_k)
+=
+b_k-a_1 > b-a .
+\end{equation*}
+Jadi, $m^*\bigl([a,b]\bigr)\geq b-a$.
+\begin{myfigureht}
+\myincludepdft{measureinterval}{%
+Diagram interval dari a hingga b pada garis bilangan, yang ditandai dengan
+ruas garis tebal gelap. Empat interval terbuka lain yang saling bertumpang
+tindih menutupi interval utama. Titik-titik ujung kirinya berlabel a subskrip 1
+hingga a subskrip 4, dan titik-titik ujung kanannya berlabel b subskrip 1 hingga
+b subskrip 4. Urutan semua titik dari kiri ke kanan adalah a subskrip 1, a,
+a subskrip 2, b subskrip 1, a subskrip 3, a subskrip 4, b subskrip 2,
+b subskrip 3, b, dan b subskrip 4.}
+\caption{Interval-interval terbuka yang menutupi $[a,b]$ dan memenuhi
+$a_j<a_{j+1}<b_j<b_{j+1}$ untuk $j=1,2,\ldots,k-1$.
+\label{fig:measureinterval}}
+\end{myfigureht}
+\end{example}
+
+\begin{prop} \label{mv:prop:compactnull}
+Misalkan $E\subset\R^n$ merupakan himpunan kompak berukuran nol. Maka, untuk
+setiap $\epsilon>0$, terdapat berhingga banyak persegi panjang terbuka
+$R_1,R_2,\ldots,R_k$ sedemikian sehingga
+\begin{equation*}
+E \subset R_1 \cup R_2 \cup \cdots \cup R_k
+\qquad \text{dan} \qquad
+\sum_{j=1}^k V(R_j) < \epsilon.
+\end{equation*}
+Selain itu, untuk setiap $\epsilon>0$ dan setiap $\delta>0$, terdapat berhingga
+banyak bola terbuka $B_1,B_2,\ldots,B_{\ell}$, masing-masing berjari-jari
+$r_j<\delta$, $j=1,2,\ldots,\ell$, sedemikian sehingga
+\begin{equation*}
+E \subset B_1 \cup B_2 \cup \cdots \cup B_{\ell}
+\qquad \text{dan} \qquad
+\sum_{j=1}^{\ell} r_j^n < \epsilon.
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Karena $E$ berukuran nol, terdapat barisan persegi panjang terbuka
+$\{R_j\}_{j=1}^\infty$ sedemikian sehingga
+\begin{equation*}
+E \subset \bigcup_{j=1}^\infty R_j
+\qquad \text{dan} \qquad
+\sum_{j=1}^\infty V(R_j) < \epsilon.
+\end{equation*}
+Berdasarkan kekompakan $E$, berhingga banyak persegi panjang ini masih menutupi
+$E$.
+Setelah mengubah penomoran jika perlu, terdapat $k$ sedemikian sehingga
+$E\subset R_1\cup R_2\cup\cdots\cup R_k$. Oleh karena itu,
+\begin{equation*}
+\sum_{j=1}^k V(R_j) \leq
+\sum_{j=1}^\infty V(R_j) < \epsilon.
+\end{equation*}
+
+Bukti bahwa kita dapat memilih bola sebagai pengganti persegi panjang
+diserahkan kepada pembaca sebagai latihan.
+\end{proof}
+
+\begin{example} \label{example:cantor}
+Agar pembaca tidak mengira bahwa hanya ada sedikit himpunan berukuran nol dan
+bahwa semuanya sederhana, berikut adalah subhimpunan $[0,1]$ yang tak
+terhitung, kompak, berukuran nol, dan tidak memuat interval apa pun yang
+panjangnya positif. Setiap $x\in[0,1]$ memiliki ekspansi terner:
+\begin{equation*}
+x = \sum_{n=1}^\infty d_n 3^{-n} ,
+\qquad \text{dengan } d_n=0, 1, \text{ atau } 2.
+\end{equation*}
+Lihat \volIref{\sectionref*{vI-sec:decimals} dalam jilid I\@, khususnya
+\exerciseref*{vI-exercise:decimalpropbaseb}}{\sectionref{sec:decimals},
+khususnya \exerciseref{exercise:decimalpropbaseb}}. Definisikan
+\emph{\myindex{himpunan Cantor}} $C$ sebagai
+\begin{equation*}
+C \coloneqq \Bigl\{ x \in [0,1] : x = \sum_{n=1}^\infty d_n 3^{-n},
+\text{ dengan } d_n = 0 \text{ atau } d_n = 2
+\text{ untuk setiap } n \Bigr\} .
+\end{equation*}
+Dengan kata lain, $x$ berada di $C$ jika memiliki ekspansi terner yang hanya
+menggunakan digit $0$ dan $2$. Jika $x$ memiliki dua ekspansi, maka $x$ berada
+di $C$ asalkan salah satunya tidak mengandung digit $1$. Definisikan
+$C_0\coloneqq[0,1]$ dan
+\begin{equation*}
+C_k \coloneqq \Bigl\{ x \in [0,1] : x = \sum_{n=1}^\infty d_n 3^{-n},
+\text{ dengan } d_n = 0 \text{ atau } d_n = 2
+\text{ untuk setiap } n\in\{1,2,\ldots,k\} \Bigr\} .
+\end{equation*}
+Setiap $x\in C$ jelas berada di setiap $C_k$. Sebaliknya, misalkan $x$ berada
+di setiap $C_k$. Setiap $x\in[0,1]$ memiliki paling banyak dua ekspansi terner.
+Jika setiap ekspansi terner $x$ mengandung digit $1$, pada masing-masing
+ekspansi terdapat posisi pertama tempat digit $1$ muncul. Pilih $k$ yang
+sekurang-kurangnya sebesar semua posisi tersebut. Maka tidak satu pun ekspansi
+$x$ hanya menggunakan digit $0$ dan $2$ pada $k$ digit pertamanya, bertentangan
+dengan $x\in C_k$. Jadi, salah satu ekspansi $x$ hanya menggunakan digit $0$
+dan $2$, sehingga $x\in C$. Dengan demikian,
+\begin{equation*}
+C = \bigcap_{k=1}^\infty C_k .
+\end{equation*}
+Lihat \figureref{fig:cantor}.
+
+Hal-hal berikut diserahkan sebagai latihan untuk dibuktikan:
+\begin{enumerate}[(i)]
+\item Setiap $C_k$ merupakan gabungan berhingga dari interval-interval tertutup.
+Himpunan ini diperoleh dari $C_{k-1}$ dengan membuang
+\myquote{sepertiga tengah terbuka} dari setiap interval tertutup.
+\item Setiap $C_k$ tertutup, sehingga $C$ tertutup.
+\item 
+$m^*(C_k) = {\left(\frac{2}{3}\right)}^k$.
+\item Oleh karena itu,
+$m^*(C) = 0$.
+\item Terdapat korespondensi satu-satu antara $C$ dan $[0,1]$; dengan kata lain,
+$C$ tak terhitung.
+\end{enumerate}
+\begin{myfigureht}
+\myincludepdft{cantorfig}{%
+Diagram beberapa himpunan pada garis bilangan yang disusun dalam beberapa baris.
+Baris pertama adalah C subskrip 0, berupa satu ruas garis utuh. C subskrip 1
+pada baris kedua diperoleh dari ruas pada baris pertama dengan menghapus
+sepertiga tengah terbukanya, sehingga tersisa dua ruas garis utuh. Baris
+berikutnya adalah C subskrip 2; sepertiga tengah terbuka dari kedua ruas kembali
+dihapus sehingga tersisa empat ruas.
+Pola ini berlanjut dan digambarkan hingga C subskrip 4, yang terdiri atas
+16 ruas garis utuh.}
+\caption{Konstruksi himpunan Cantor.\label{fig:cantor}}
+\end{myfigureht}
+\end{example}
+
+
+\subsection{Citra himpunan nol oleh fungsi diferensiabel}
+
+Sebelum meninjau citra himpunan berukuran nol, mari kita lihat bagaimana fungsi
+diferensiabel secara kontinu memetakan sebuah bola.
+
+\begin{lemma} \label{lemma:ballmapder}
+Misalkan $U\subset\R^n$ terbuka, $B\subset U$ merupakan bola terbuka atau bola
+tertutup berjari-jari tidak lebih dari $r$, dan
+$f\colon U\to\R^n$ diferensiabel secara kontinu. Misalkan pula $M>0$ dan
+$\bnorm{f'(x)}\leq M$ untuk setiap $x\in B$. Maka $f(B)\subset B'$, dengan
+$B'$ suatu bola yang terbuka jika $B$ terbuka dan tertutup jika $B$ tertutup,
+serta berjari-jari tidak lebih dari $Mr$.
+\end{lemma}
+
+\begin{proof}
+Misalkan mula-mula $B=B(y,\rho)$ terbuka, dengan $0<\rho\leq r$. Karena bola
+$B$ konveks, \propref{mv:prop:convexlip} menyatakan bahwa
+$\bnorm{f(u)-f(v)}\leq M\snorm{u-v}$ untuk setiap $u,v\in B$. Jadi, untuk
+$x\in B$, $\snorm{x-y}<\rho$ dan $\bnorm{f(x)-f(y)}<M\rho$. Dengan kata lain,
+$f(B)\subset B\bigl(f(y),M\rho\bigr)$, dan bola terakhir berjari-jari tidak
+lebih dari $Mr$.
+
+Jika $B$ tertutup, tulis $B=\overline{B(y,\rho)}$ dengan $0<\rho\leq r$.
+Karena $f$ kontinu,
+$f(B)=f\bigl(\overline{B(y,\rho)}\bigr)\subset
+\overline{f\bigl(B(y,\rho)\bigr)}\subset
+\overline{B\bigl(f(y),M\rho\bigr)}$, sebab
+$f(\widebar{A})\subset\overline{f(A)}$ untuk setiap $A\subset U$ yang memenuhi
+$\widebar{A}\subset U$.
+% dan untuk setiap f kontinu (limit barisan di A dipetakan ke limit barisan di f(A)).
+\end{proof}
+
+Citra himpunan berukuran nol oleh pemetaan kontinu belum tentu berukuran nol,
+meskipun menunjukkan hal ini memerlukan usaha (lihat latihan). Namun, jika
+pemetaan tersebut diferensiabel secara kontinu, pemetaan itu tidak dapat
+\myquote{meregangkan} himpunan secara berlebihan.
+
+\begin{prop} \label{prop:imagenull}
+Misalkan $U\subset\R^n$ terbuka dan $f\colon U\to\R^n$ diferensiabel secara
+kontinu. Jika $E\subset U$ berukuran nol, maka $f(E)$ berukuran nol.
+\end{prop}
+
+\begin{proof}
+Kita membuktikan proposisi untuk $E$ kompak dan menyerahkan kasus umum sebagai
+latihan. Misalkan $E$ kompak dan berukuran nol. Jika $E=\varnothing$, hasilnya
+langsung benar; jadi, andaikan $E\neq\varnothing$.
+
+Pertama, kita akan mengganti $U$ dengan himpunan terbuka yang lebih kecil agar
+$\bnorm{f'(x)}$ terbatas. Untuk setiap $x\in E$, pilih bola terbuka $B(x,r_x)$
+sedemikian sehingga bola tertutup $C(x,r_x)\subset U$. Berdasarkan kekompakan,
+terdapat berhingga banyak titik $x_1,x_2,\ldots,x_q$ sedemikian sehingga
+bola-bola $B(x_j,r_{x_j})$ menutupi $E$. Definisikan
+\begin{equation*}
+U' \coloneqq \bigcup_{j=1}^q B(x_j,r_{x_j}), \qquad
+K \coloneqq \bigcup_{j=1}^q C(x_j,r_{x_j}).
+\end{equation*}
+Kita mempunyai $E\subset U'\subset K\subset U$. Sebagai gabungan berhingga
+himpunan-himpunan kompak, $K$ kompak. Fungsi yang memetakan $x$ ke
+$\bnorm{f'(x)}$ kontinu. Oleh karena itu, terdapat $M>0$ sedemikian sehingga
+$\bnorm{f'(x)}\leq M$ untuk setiap $x\in K$. Tanpa mengurangi keumuman, ganti
+$U$ dengan $U'$ dan batasi $f$ pada $U'$. Mulai sekarang, andaikan
+$\bnorm{f'(x)}\leq M$ untuk setiap $x\in U$.
+
+Himpunan $U$ yang baru merupakan gabungan berhingga dari bola-bola terbatas,
+sehingga $U\neq\R^n$. Untuk setiap $x\in E$, ambil jari-jari maksimum
+$\delta_x>0$ sedemikian sehingga
+$B(x,\delta_x)\subset U$, lalu tetapkan
+$\delta\coloneqq\inf_{x\in E}\delta_x$. Kita tunjukkan bahwa $\delta>0$.
+Ambil barisan $\{x_j\}_{j=1}^\infty$ di $E$ sedemikian sehingga
+$\delta_{x_j}\to\delta$. Berdasarkan kekompakan $E$, barisan ini memiliki
+subbarisan yang konvergen ke suatu $y\in E$; namai kembali subbarisan tersebut
+sebagai $\{x_j\}$. Untuk $j$ cukup besar,
+$\snorm{x_j-y}<\frac{\delta_y}{2}$, sehingga ketaksamaan segitiga memberikan
+$\delta_{x_j}>\frac{\delta_y}{2}$. Jadi,
+$\delta\geq\frac{\delta_y}{2}>0$.
+
+Tetapkan sembarang $\eta>0$. Terdapat bola-bola terbuka
+$B_1,B_2,\ldots,B_k$, masing-masing berjari-jari
+$r_j<\nicefrac{\delta}{2}$, $j=1,2,\ldots,k$, sedemikian sehingga
+\begin{equation*}
+E \subset B_1 \cup B_2 \cup \cdots \cup B_k
+\qquad \text{dan} \qquad
+\sum_{j=1}^k r_j^n < \frac{\eta}{M^n}.
+\end{equation*}
+Kita boleh membuang setiap bola yang tidak memotong $E$. Untuk setiap bola
+$B_j$ yang tersisa, pilih $z_j\in B_j\cap E$. Jika $w\in B_j$, maka
+$\snorm{w-z_j}<2r_j<\delta\leq\delta_{z_j}$, sehingga $B_j\subset U$.
+Berdasarkan \lemmaref{lemma:ballmapder}, terdapat bola-bola terbuka
+$B_1',B_2',\ldots,B_k'$, dengan masing-masing $B_j'$ berjari-jari $Mr_j$ dan
+$f(B_j)\subset B_j'$ untuk setiap $j$. Maka,
+\begin{equation*}
+\begin{aligned}
+f(E)
+&
+\subset f(B_1) \cup f(B_2) \cup \cdots \cup f(B_k)
+\\
+&
+\subset B_1' \cup B_2' \cup \cdots \cup B_k'
+\end{aligned}
+\qquad \text{dan} \qquad
+\sum_{j=1}^k {(Mr_j)}^n
+ < \eta. \qedhere
+\end{equation*}
+\end{proof}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Lengkapi bukti \propref{mv:prop:compactnull}: Tunjukkan bahwa bola dapat
+digunakan sebagai pengganti persegi panjang.
+\end{exercise}
+
+\begin{exercise} \label{exercise:outermeasuremono}
+Jika $A\subset B$, maka $m^*(A)\leq m^*(B)$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $X\subset\R^n$ merupakan himpunan sedemikian sehingga, untuk setiap
+$\epsilon>0$, terdapat himpunan $Y$ yang memenuhi $X\subset Y$ dan
+$m^*(Y)\leq\epsilon$. Buktikan bahwa $X$ berukuran nol.
+\end{exercise}
+
+\begin{exercise} \label{exercise:rectanglemeasure}
+Tunjukkan bahwa jika $R\subset\R^n$ merupakan persegi panjang tertutup, maka
+$m^*(R)=V(R)$.
+\end{exercise}
+
+\begin{exercise}
+Penutupan himpunan berukuran nol dapat sangat besar. Temukan contoh himpunan
+$S\subset\R^n$ yang berukuran nol, tetapi penutupannya memenuhi
+$\widebar{S}=\R^n$.
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Buktikan kasus umum \propref{prop:imagenull} tanpa menggunakan kekompakan:
+\begin{enumerate}[a)]
+\item
+Tiru bukti tersebut untuk menunjukkan bahwa proposisi berlaku jika $E$
+\emph{\myindex{relatif kompak}}; himpunan $E\subset U$ disebut relatif kompak
+jika penutupan $E$ dalam topologi subruang pada $U$ bersifat kompak. Dengan kata
+lain, terdapat himpunan kompak $K$ sedemikian sehingga $E\subset K\subset U$.\\
+Petunjuk: Batas atas bagi norma turunan masih berlaku, tetapi pada bagian kedua
+bukti Anda perlu menggunakan keluarga bola yang terhitung. Berhati-hatilah
+karena penutupan $E$ tidak lagi harus berukuran nol.
+\item
+Sekarang, buktikan proposisi itu untuk setiap himpunan nol $E$.\\
+Petunjuk: Pertama, tunjukkan bahwa
+$\{x\in U : \snorm{x-y}\geq
+\nicefrac{1}{m} \text{ untuk setiap } y\notin U
+\text{ dan } \snorm{x}\leq m\}$ kompak untuk setiap $m>0$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $U\subset\R^n$ terbuka dan $f\colon U\to\R$ diferensiabel secara
+kontinu. Misalkan
+$G\coloneqq\bigl\{(x,y)\in U\times\R:y=f(x)\bigr\}$ merupakan grafik $f$.
+Tunjukkan bahwa $G$ berukuran nol di $\R^{n+1}$.
+\end{exercise}
+
+\begin{exercise}
+Diberikan persegi panjang tertutup $R\subset\R^n$, tunjukkan bahwa untuk
+setiap $\epsilon>0$, terdapat bilangan $s>0$ dan berhingga banyak kubus terbuka
+$C_1,C_2,\ldots,C_k$ dengan panjang sisi $s$ sedemikian sehingga
+$R\subset C_1\cup C_2\cup\cdots\cup C_k$ dan
+\begin{equation*}
+\sum_{j=1}^k V(C_j) \leq V(R) + \epsilon .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa terdapat bilangan $k=k(n,r,\delta)$ yang hanya bergantung pada
+$n$, $r$, dan $\delta$, dengan sifat berikut: Diberikan
+$B(x,r)\subset\R^n$ dan $\delta>0$, terdapat $k$ bola terbuka
+$B_1,B_2,\ldots,B_k$, masing-masing berjari-jari tidak lebih dari $\delta$,
+sedemikian sehingga $B(x,r)\subset B_1\cup B_2\cup\cdots\cup B_k$.
+Perhatikan bahwa $k$ dapat dipilih agar hanya bergantung pada $n$ dan rasio
+$\nicefrac{\delta}{r}$.
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Buktikan pernyataan-pernyataan dalam \exampleref{example:cantor}, yaitu:
+\begin{enumerate}[a)]
+\item
+Setiap $C_k$ merupakan gabungan berhingga dari interval-interval tertutup,
+sehingga $C$ tertutup.
+\item
+$m^*(C_k) = {\left(\frac{2}{3}\right)}^k$.
+\item
+$m^*(C) = 0$.
+\item
+Terdapat korespondensi satu-satu antara $C$ dan $[0,1]$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[3]
+Buktikan bahwa himpunan Cantor dalam \exampleref{example:cantor} tidak memuat
+interval yang panjangnya positif. Artinya, jika $a<b$, terdapat titik
+$x\notin C$ sedemikian sehingga $a<x<b$.
+\\
+Perhatikan suatu akibat dari pernyataan ini. Setiap himpunan terbuka di $\R$
+merupakan gabungan terhitung dari interval-interval yang saling lepas, tetapi
+himpunan tertutup (meskipun merupakan komplemen himpunan terbuka) tidak harus
+merupakan gabungan terhitung dari interval-interval ataupun titik-titik.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}[Menantang]
+Mari kita bangun \emph{\myindex{fungsi Cantor}}, yang juga disebut
+\emph{\myindex{tangga Iblis}}. Misalkan $C$ adalah himpunan Cantor dan $C_k$
+seperti dalam \exampleref{example:cantor}. Tuliskan $x\in[0,1]$ dalam
+representasi terner
+$x=\sum_{n=1}^{\infty}d_n3^{-n}$. Jika $d_n\neq1$ untuk setiap $n$, tetapkan
+$c_n\coloneqq\frac{d_n}{2}$ untuk setiap $n$. Jika tidak, misalkan $k$ adalah
+bilangan bulat terkecil yang memenuhi $d_k=1$. Tetapkan
+$c_n\coloneqq\frac{d_n}{2}$ jika $n<k$, $c_k\coloneqq1$, dan
+$c_n\coloneqq0$ jika $n>k$. Definisikan
+\begin{equation*}
+\varphi(x) \coloneqq \sum_{n=1}^\infty c_n \, 2^{-n} .
+\end{equation*}
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa $\varphi$ kontinu dan monoton naik (lihat
+\figureref{fig:cantorfunction}).
+\item
+Buktikan bahwa untuk $x\notin C$, fungsi $\varphi$ diferensiabel di $x$ dan
+$\varphi'(x)=0$. (Perhatikan bahwa $\varphi'$ ada dan bernilai nol kecuali pada
+suatu himpunan berukuran nol, tetapi fungsi tersebut tetap dapat naik dari $0$
+ke $1$.)
+\item
+Definisikan $\psi\colon[0,1]\to[0,2]$ dengan
+$\psi(x)\coloneqq\varphi(x)+x$. Tunjukkan bahwa $\psi$ kontinu, naik tegas, dan
+bijektif.
+\item
+Buktikan bahwa meskipun $m^*(C)=0$, berlaku
+$m^*\bigl(\psi(C)\bigr)\neq0$. Dengan kata lain, fungsi kontinu tidak harus
+memetakan himpunan berukuran nol ke himpunan berukuran nol. Petunjuk:
+$m^*\bigl(\psi([0,1]\setminus C)\bigr)=1$, sedangkan
+$m^*\bigl([0,2]\bigr)=2$.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{myfigureht}
+\myincludegraphics{cantorfunction}{%
+Grafik suatu fungsi pada interval 0 hingga 1, yang ditampilkan pada sumbu
+horizontal. Fungsi ini monoton, berawal dari 0 di sisi kiri, dan berakhir pada
+1 di sisi kanan. Grafik memiliki banyak ruas mendatar yang bersesuaian dengan
+interval-interval sepertiga tengah yang dibuang selama konstruksi himpunan
+Cantor. Sebagai contoh, fungsi bernilai satu per dua dari satu per tiga hingga
+dua per tiga. Fungsi bernilai satu per empat dari satu per sembilan hingga dua
+per sembilan, dan bernilai tiga per empat dari tujuh per sembilan hingga delapan
+per sembilan. Pola yang sama berlaku untuk semua interval sepertiga tengah
+lainnya.}
+\caption{Fungsi Cantor atau tangga Iblis (fungsi $\varphi$ dari latihan).
+\label{fig:cantorfunction}}
+\end{myfigureht}
+
+\begin{exercise} \label{exercise:allowfiniteseqsinoutermeasure}
+Buktikan bahwa ukuran luar yang sama diperoleh jika definisinya mengizinkan
+barisan hingga maupun tak berhingga. Definisikan
+$\mu^*(S)\coloneqq\inf\,\sum_{j\in I}V(R_j)$, dengan infimum diambil atas semua
+himpunan indeks terhitung $I$ (hingga atau tak berhingga) dan semua keluarga
+persegi panjang terbuka $\{R_j\}_{j\in I}$ yang memenuhi
+$S\subset\bigcup_{j\in I}R_j$. Buktikan bahwa untuk setiap $S\subset\R^n$,
+$\mu^*(S)=m^*(S)$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa untuk sebarang dua subhimpunan $A,B\subset\R^n$, berlaku
+$m^*(A\cup B)\leq m^*(A)+m^*(B)$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $A,B\subset\R^n$ dan $m^*(B)=0$. Buktikan bahwa
+$m^*(A\cup B)=m^*(A)$.
+\end{exercise}
+
+\begin{exercise}[Menantang] \label{exercise:outermeasureofsumofrectangles}
+Misalkan $R_1,R_2,\ldots,R_n$ merupakan persegi panjang terbuka yang saling
+lepas. Buktikan bahwa
+$m^*(R_1\cup R_2\cup\cdots\cup R_n)
+=m^*(R_1)+m^*(R_2)+\cdots+m^*(R_n)$.
+Petunjuk: Beberapa latihan di atas mungkin sangat berguna.
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Himpunan fungsi yang terintegralkan secara Riemann}
+\label{sec:riemannlebesgue}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1 kuliah}
+
+\subsection{Osilasi dan kekontinuan}
+
+Misalkan $D \subset \R^n$ dan $f \colon D \to \R$.
+Alih-alih sekadar mengatakan bahwa $f$ kontinu atau tidak kontinu di
+suatu titik $x \in D$,
+kita hendak mengukur seberapa diskontinu $f$ di $x$.
+Untuk setiap $\delta > 0$, definisikan \emph{osilasi}
+$f$ pada bola berjari-jari $\delta$ dalam topologi subruang,
+$B_D(x,\delta) = B_{\R^n}(x,\delta) \cap D$, sebagai
+\glsadd{not:oscillation}
+\begin{equation*}
+o(f,x,\delta) \coloneqq
+{\sup_{y \in B_D(x,\delta)} f(y)}
+-
+{\inf_{y \in B_D(x,\delta)} f(y)}
+= 
+\sup_{y_1,y_2 \in B_D(x,\delta)} \bigl(f(y_1)-f(y_2)\bigr) .
+\end{equation*}
+Artinya, $o(f,x,\delta)$ adalah panjang interval terkecil yang memuat citra
+$f\bigl(B_D(x,\delta)\bigr)$; panjang ini mungkin tak hingga.
+Jika supremum dan infimum dipahami sebagai bilangan real diperluas,
+definisi ini juga bermakna untuk fungsi tak terbatas, yang osilasinya dapat
+bernilai $\infty$, meskipun kita terutama akan membahas fungsi terbatas.
+Jelas bahwa $o(f,x,\delta) \geq 0$ dan
+$o(f,x,\delta) \leq o(f,x,\delta')$ apabila $\delta < \delta'$.
+Oleh karena itu, limit saat $\delta \to 0$ dari kanan ada sebagai bilangan
+real diperluas, dan kita mendefinisikan \emph{\myindex{osilasi}} $f$
+di $x$ sebagai
+\begin{equation*}
+o(f,x) \coloneqq
+\lim_{\delta \to 0^+}
+o(f,x,\delta) =
+\inf_{\delta > 0}
+o(f,x,\delta) .
+\end{equation*}
+
+Kita akan membuktikan bahwa suatu fungsi kontinu di $x$ jika dan hanya jika
+$o(f,x) = 0$.
+Sebagai contoh, misalkan $f \colon \R \to \R$ adalah fungsi Dirichlet, yakni
+$f(x)=1$ jika $x \in \Q$ dan $f(x)=0$ selainnya. Maka $o(f,x) = 1$ untuk setiap
+$x$, sebab setiap interval terbuka memuat bilangan rasional maupun irasional.
+Oleh sebab itu, $f$ tidak kontinu di titik mana pun.
+Sebagai contoh lain, yang barangkali menjadi asal istilah ini,
+misalkan $g \colon \R \to \R$ diberikan oleh
+$g(x) = \sin(\nicefrac{1}{x})$ untuk $x\neq 0$ dan $g(0)=0$;
+lihat \figureref{fig:sin1xosc}.
+Pada titik diskontinuitas $x=0$, kita memperoleh $o(g,0) = 2$, sebab
+dalam setiap lingkungan $0$, fungsi tersebut mengambil baik nilai $1$ maupun $-1$.
+Untuk setiap $x \neq 0$, fungsi itu kontinu sehingga, seperti yang akan kita lihat,
+$o(g,x) = 0$.
+
+\begin{myfigureht}
+% juga digunakan dalam 3.1
+\myincludegraphics{sin1xfig}{%
+Grafik sebuah fungsi pada interval di sekitar titik asal.
+Fungsi tersebut berosilasi
+di antara minus 1 dan 1
+makin cepat ketika x mendekati 0, sedemikian cepat sehingga di dekat titik asal
+grafik tersebut tampak hitam pekat.}
+\caption{Grafik $\sin(\nicefrac{1}{x})$.\label{fig:sin1xosc}}
+\end{myfigureht}
+
+\begin{prop}
+\pagebreak[2]
+Suatu fungsi
+$f \colon D \to \R$ kontinu di $x \in D$ jika dan hanya jika $o(f,x) = 0$.
+\end{prop}
+
+\begin{proof}
+Pertama-tama, andaikan $f$ kontinu di $x \in D$. Untuk sebarang $\epsilon > 0$,
+terdapat $\delta > 0$ sedemikian sehingga untuk $y \in B_D(x,\delta)$,
+berlaku $\babs{f(x)-f(y)} < \epsilon$. Oleh karena itu, jika $y_1,y_2 \in
+B_D(x,\delta)$, maka
+\begin{equation*}
+f(y_1)-f(y_2) =
+\bigl(f(y_1)-f(x)\bigr)-\bigl(f(y_2)-f(x)\bigr) < \epsilon + \epsilon = 2 \epsilon .
+\end{equation*}
+Dengan mengambil supremum atas $y_1$ dan $y_2$, diperoleh
+\begin{equation*}
+o(f,x,\delta) = 
+\sup_{y_1,y_2 \in B_D(x,\delta)} \bigl(f(y_1)-f(y_2)\bigr)
+\leq
+2 \epsilon .
+\end{equation*}
+Karena $o(f,x) \leq o(f,x,\delta) \leq 2\epsilon$ dan $\epsilon > 0$ dapat
+dipilih sebarang, maka $o(f,x) = 0$.
+
+Sebaliknya, andaikan $o(f,x) = 0$. Untuk sebarang $\epsilon > 0$,
+pilih $\delta > 0$ sedemikian sehingga $o(f,x,\delta) < \epsilon$. Jika
+$y \in B_D(x,\delta)$, maka
+\begin{equation*}
+\babs{f(x)-f(y)}
+\leq
+\sup_{y_1,y_2 \in B_D(x,\delta)} \bigl(f(y_1)-f(y_2)\bigr)
+=
+o(f,x,\delta) < \epsilon. \qedhere
+\end{equation*}
+\end{proof}
+
+\begin{prop} \label{prop:seclosed}
+Misalkan $D \subset \R^n$ tertutup,
+$f \colon D \to \R$, dan $\epsilon > 0$.
+Himpunan $\bigl\{ x \in D : o(f,x) \geq \epsilon \bigr\}$ tertutup di $\R^n$.
+\end{prop}
+
+\begin{proof}
+Secara ekuivalen, kita hendak menunjukkan bahwa
+$G \coloneqq \bigl\{ x \in D : o(f,x) < \epsilon \bigr\}$ terbuka dalam topologi subruang pada $D$.
+Ambil $x \in G$.
+Karena $\inf_{\delta > 0} o(f,x,\delta) < \epsilon$, pilih $\delta > 0$
+sedemikian sehingga
+\begin{equation*}
+o(f,x,\delta) < \epsilon .
+\end{equation*}
+Ambil sebarang $\xi \in B_D(x,\nicefrac{\delta}{2})$. Perhatikan bahwa
+$B_D(\xi,\nicefrac{\delta}{2}) \subset B_D(x,\delta)$. Oleh karena itu,
+\begin{equation*}
+o(f,\xi,\nicefrac{\delta}{2}) =
+\sup_{y_1,y_2 \in B_D(\xi,\nicefrac{\delta}{2})} \bigl(f(y_1)-f(y_2)\bigr) 
+\leq
+\sup_{y_1,y_2 \in B_D(x,\delta)} \bigl(f(y_1)-f(y_2)\bigr) = o(f,x,\delta) <
+\epsilon .
+\end{equation*}
+Jadi, $o(f,\xi) < \epsilon$ pula. Karena hal ini berlaku untuk setiap $\xi \in
+B_D(x,\nicefrac{\delta}{2})$, himpunan $G$ terbuka dalam topologi subruang
+pada $D$, sehingga $D \setminus G$ tertutup dalam $D$.
+Karena $D$ tertutup di $\R^n$, himpunan $D \setminus G$ juga tertutup di
+$\R^n$, seperti yang diklaim.
+\end{proof}
+
+
+\subsection{Himpunan fungsi yang terintegralkan secara Riemann}
+
+Kita telah melihat bahwa fungsi kontinu terintegralkan secara Riemann, tetapi
+beberapa jenis diskontinuitas tetap diperbolehkan.
+Ternyata, suatu fungsi terintegralkan secara Riemann jika dan hanya jika
+titik-titik diskontinuitasnya membentuk himpunan berukuran nol.
+
+\begin{thm}[Riemann--Lebesgue atau Lebesgue--Vitali\footnote{%
+\href{https://en.wikipedia.org/wiki/Giuseppe_Vitali}{Giuseppe Vitali}
+(1875--1932) adalah matematikawan Italia. Perhatikan pula bahwa
+nama Riemann--Lebesgue sering
+merujuk pada hasil seperti
+\volIref{\exerciseref*{vI-exercise:rieleblem} dari jilid I}{\exerciseref{exercise:rieleblem}}.}]%
+\index{teorema Riemann--Lebesgue}%
+\index{teorema Lebesgue--Vitali}%
+Misalkan $R \subset \R^n$ persegi panjang tertutup dan $f \colon R \to \R$
+fungsi terbatas. Maka $f$ terintegralkan secara Riemann jika dan hanya jika
+himpunan titik diskontinuitas $f$ berukuran nol.
+\end{thm}
+
+\begin{proof}
+Misalkan $S \subset R$ adalah himpunan titik diskontinuitas $f$, yakni
+$S = \bigl\{ x \in R : o(f,x) > 0 \bigr\}$.
+Andaikan $S$ berukuran nol: $m^*(S) = 0$.
+Untuk membuktikan bahwa $f$ terintegralkan, kita mengurung himpunan bermasalah
+itu di dalam suatu kumpulan subpersegi panjang partisi yang volume totalnya
+kecil. Karena suatu partisi hanya memiliki berhingga banyak
+subpersegi panjang, kita memerlukan kekompakan. Seandainya $S$ tertutup, maka
+$S$ kompak dan dapat ditutupi oleh berhingga banyak persegi panjang kecil.
+Sayangnya, $S$ sendiri pada umumnya tidak tertutup, tetapi himpunan berikut
+tertutup. Untuk $\epsilon > 0$, definisikan
+\begin{equation*}
+S_\epsilon \coloneqq \bigl\{ x \in R : o(f,x) \geq \epsilon \bigr\} .
+\end{equation*}
+Berdasarkan \propref{prop:seclosed}, $S_\epsilon$ tertutup.
+Karena $S_\epsilon\subset R$ dan $R$ terbatas, $S_\epsilon$ kompak. Selain itu,
+$S_\epsilon \subset S$ dan $S$ berukuran nol,
+sehingga $S_\epsilon$ berukuran nol.
+Menurut \propref{mv:prop:compactnull}, terdapat berhingga banyak persegi panjang
+terbuka $O_1,O_2,\ldots,O_k$ yang menutupi $S_\epsilon$ dan memenuhi
+$\sum_{j=1}^k V(O_j) < \epsilon$.
+
+Himpunan $T \coloneqq R \setminus ( O_1 \cup \cdots \cup O_k )$ tertutup dan
+terbatas, sehingga kompak. Karena $o(f,x) < \epsilon$ untuk setiap $x \in T$,
+untuk setiap $x \in T$ terdapat $\delta > 0$ sedemikian sehingga
+$o(f,x,\delta) < \epsilon$. Oleh sebab itu, terdapat persegi panjang tertutup
+$T_x \subset B(x,\delta)$ yang cukup kecil, dengan $x$ berada di bagian dalam
+$T_x$, sedemikian sehingga
+\begin{equation*}
+\sup_{y\in T_x \cap R} f(y) - \inf_{y\in T_x \cap R} f(y) < \epsilon.
+\end{equation*}
+Bagian dalam semua persegi panjang $T_x$ menutupi $T$. Karena $T$ kompak,
+terdapat berhingga banyak di antaranya, $T_1,T_2,\ldots,T_m$, yang menutupi
+$T$. Bentuk partisi $P$ dari titik-titik ujung interval koordinat
+$T_1,T_2,\ldots,T_m$ dan $O_1,O_2,\ldots,O_k$, dengan mengabaikan titik-titik
+yang berada di luar interval koordinat $R$. Subpersegi panjang
+$R_1,R_2,\ldots,R_p$ dari $P$ memiliki sifat bahwa setiap $R_j$ termuat dalam
+suatu $T_\ell$ atau dalam penutupan suatu $O_\ell$. Urutkan subpersegi panjang
+tersebut sedemikian sehingga $R_1,R_2,\ldots,R_q$ merupakan subpersegi panjang
+yang termuat dalam suatu $T_\ell$, sedangkan $R_{q+1},R_{q+2},\ldots,R_{p}$
+merupakan sisanya.
+Lihat \figureref{fig:nullsetintegrate}. Dengan demikian,
+\begin{equation*}
+\sum_{j=1}^q V(R_j) \leq V(R)
+\qquad \text{dan} \qquad
+\sum_{j=q+1}^p V(R_j)
+\leq
+\sum_{\ell=1}^k V(O_\ell)
+< \epsilon .
+\end{equation*}
+Ketaksamaan kedua berlaku karena, untuk setiap $j>q$, kita dapat memilih satu
+$\ell(j)$ sedemikian sehingga $R_j \subset \widebar{O}_{\ell(j)}$. Untuk setiap
+$\ell$ tetap, subpersegi panjang yang dipasangkan dengan $\ell$ memiliki bagian
+dalam yang saling lepas dan semuanya termuat dalam $\widebar{O}_\ell$, sehingga
+jumlah volumenya paling besar $V(O_\ell)$. Dengan menjumlahkan atas semua
+$\ell$, diperoleh ketaksamaan tersebut.
+Misalkan $m_j$ dan $M_j$ masing-masing adalah infimum dan supremum $f$ pada
+$R_j$, seperti biasa. Jika $R_j \subset T_\ell$ untuk suatu $\ell$, maka
+$M_j-m_j < \epsilon$.
+Pilih $B > 0$ sedemikian sehingga
+$\babs{f(x)} \leq B$ untuk setiap $x \in R$. Maka $M_j-m_j \leq 2B$ pada semua
+subpersegi panjang, sehingga
+\begin{equation*}
+\begin{split}
+U(P,f)-L(P,f)
+& =
+\sum_{j=1}^p (M_j-m_j) V(R_j)
+\\
+& =
+\left(
+\sum_{j=1}^q (M_j-m_j) V(R_j)
+\right)
++
+\left(
+\sum_{j=q+1}^p (M_j-m_j) V(R_j)
+\right)
+\\
+& \leq
+\left(
+\sum_{j=1}^q \epsilon\, V(R_j)
+\right)
++
+\left(
+\sum_{j=q+1}^p 2 B\, V(R_j)
+\right)
+\\
+& <
+\epsilon\, V(R)
++
+2B \epsilon = \epsilon \bigl(V(R)+2B\bigr) .
+\end{split}
+\avoidbreak
+\end{equation*}
+Konstruksi di atas berlaku untuk setiap $\epsilon>0$, sedangkan
+$V(R)+2B>0$ tetap. Jadi, untuk sebarang $\eta>0$, pilih sejak awal
+$\epsilon<\eta/\bigl(V(R)+2B\bigr)$; ruas kanan menjadi lebih kecil daripada
+$\eta$. Dengan demikian, $f$ terintegralkan.
+
+\begin{myfigureht}
+\myincludepdft{nullsetintegrate}{%
+Diagram sebuah persegi panjang yang dibagi oleh banyak garis vertikal dan
+horizontal bertitik-titik. Di tengah diagram terdapat garis tebal gelap yang
+bergerigi. Garis ini ditutupi oleh persegi panjang-persegi panjang berarsir,
+yang sisi-sisinya berimpit dengan beberapa garis bertitik-titik.}
+\caption{Persegi panjang $R$, dengan $S_\epsilon$ ditandai oleh garis hitam
+tebal dan setiap $O_\ell$ oleh persegi panjang berarsir. Partisi ditunjukkan
+oleh garis-garis bertitik-titik. Perhatikan bagaimana garis-garis partisi
+membagi bagian dari setiap $O_\ell$ yang berada di dalam $R$ menjadi
+subpersegi panjang $R_j$.\label{fig:nullsetintegrate}}
+\end{myfigureht}
+
+\medskip
+
+\pagebreak[2]
+Untuk arah sebaliknya, andaikan $f$ terintegralkan secara Riemann
+pada $R$.
+Misalkan $S$ kembali menyatakan himpunan titik diskontinuitas $f$. Tinjau
+barisan himpunan
+\begin{equation*}
+S_{1/k} = \bigl\{ x \in R : o(f,x) \geq \nicefrac{1}{k} \bigr\}.
+\end{equation*}
+Tetapkan $k \in \N$.
+Untuk sebarang $\epsilon > 0$, pilih partisi $P$ dengan subpersegi panjang
+$R_1,R_2,\ldots,R_p$ sedemikian sehingga
+\begin{equation*}
+U(P,f)-L(P,f) =
+\sum_{j=1}^p (M_j-m_j) V(R_j)
+< \epsilon .
+\end{equation*}
+Urutkan $R_1,R_2,\ldots,R_p$ sedemikian sehingga bagian dalam masing-masing
+$R_1,R_2,\ldots,R_{q}$ beririsan dengan $S_{1/k}$, sedangkan bagian dalam
+masing-masing $R_{q+1},R_{q+2},\ldots,R_p$ tidak beririsan dengan $S_{1/k}$.
+Tuliskan $R_j^\circ$ untuk bagian dalam $R_j$.
+Andaikan $j \leq q$ dan ambil
+$x \in R_j^\circ \cap S_{1/k}$.
+Pilih $\delta > 0$ yang cukup kecil sehingga $B(x,\delta) \subset R_j$.
+Karena $x \in S_{1/k}$, diperoleh
+$o(f,x,\delta) \geq o(f,x) \geq \nicefrac{1}{k}$.
+Bersama dengan $B(x,\delta) \subset R_j$, hal ini mengakibatkan
+$M_j-m_j \geq \nicefrac{1}{k}$.
+Maka
+\begin{equation*}
+\epsilon >
+\sum_{j=1}^p (M_j-m_j) V(R_j)
+\geq
+\sum_{j=1}^q (M_j-m_j) V(R_j)
+\geq
+\frac{1}{k}
+\sum_{j=1}^q V(R_j) .
+\end{equation*}
+Dengan kata lain,
+$\sum_{j=1}^q V(R_j) < k \epsilon$.
+Misalkan $G$ adalah gabungan batas semua subpersegi panjang dalam $P$.
+Himpunan $G$ berukuran nol karena merupakan gabungan berhingga himpunan sejenis
+dengan yang dibahas dalam \exampleref{mv:example:planenull}.
+Dengan demikian,
+\begin{equation*}
+S_{1/k} \subset R_1^\circ \cup R_2^\circ \cup \cdots \cup R_q^\circ \cup G .
+\end{equation*}
+Untuk menunjukkan secara eksplisit bahwa $S_{1/k}$ berukuran nol, ambil
+sebarang $\eta>0$. Dalam argumen di atas, pilih
+$\epsilon<\eta/(2k)$, sehingga jumlah volume $R_1^\circ,\ldots,R_q^\circ$
+kurang daripada $\eta/2$. Tutupi pula $G$ dengan persegi panjang terbuka yang
+volume totalnya kurang daripada $\eta/2$. Jadi, $S_{1/k}$ dapat ditutupi dengan
+volume total kurang daripada $\eta$, sehingga $S_{1/k}$ berukuran nol. Karena
+\begin{equation*}
+S = \bigcup_{k=1}^\infty S_{1/k}
+\end{equation*}
+dan gabungan terhitung himpunan-himpunan berukuran nol juga berukuran nol,
+maka $S$ berukuran nol.
+\end{proof}
+
+\begin{cor} \label{cor:closednessofriemannintegrable}
+\pagebreak[2]
+Misalkan $R \subset \R^n$ merupakan persegi panjang tertutup.  Misalkan
+$\sR(R)$ adalah himpunan fungsi yang terintegralkan secara Riemann pada $R$.
+Maka
+\begin{enumerate}[(i)]
+\item
+$\sR(R)$ adalah aljabar atas $\R$:
+Jika $f,g \in \sR(R)$ dan $a \in \R$, maka $af \in \sR(R)$,
+$f+g \in \sR(R)$, dan $fg \in \sR(R)$.
+\item
+Jika $f,g \in \sR(R)$ dan
+\begin{equation*}
+\varphi(x) \coloneqq \max \bigl\{ f(x) , g(x) \bigr\} ,
+\qquad
+\psi(x) \coloneqq \min \bigl\{ f(x) , g(x) \bigr\} ,
+\end{equation*}
+maka $\varphi, \psi \in \sR(R)$.
+\item
+Jika $f \in \sR(R)$, maka $\sabs{f} \in \sR(R)$, dengan
+$\sabs{f}(x) \coloneqq \babs{f(x)}$.
+\item
+Jika $R' \subset \R^n$ merupakan persegi panjang tertutup lain,
+$U \subset \R^n$ dan $U' \subset \R^n$ merupakan himpunan terbuka sedemikian
+sehingga $R \subset U$ dan $R' \subset U'$,
+$g \colon U \to U'$ diferensiabel secara kontinu dan bijektif,
+$g^{-1}$ diferensiabel secara kontinu,
+$g(R) \subset R'$,
+dan $f \in \sR(R')$,
+maka komposisi $f \circ g$ terintegralkan secara Riemann pada $R$.
+\end{enumerate}
+\end{cor}
+
+Pembuktiannya termuat dalam latihan-latihan.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Misalkan $f \colon (a,b) \times (c,d) \to \R$ merupakan fungsi kontinu yang
+terbatas. Tunjukkan bahwa integral $f$ pada $R = [a,b] \times [c,d]$
+terdefinisi dengan baik dan nilainya ditentukan secara tunggal. Dengan kata
+lain, perluas $f$ ke $R$ dengan menetapkan nilai-nilai sembarang tetapi terbatas
+pada batas $R$, lalu hitung integralnya dan tunjukkan bahwa hasilnya tidak
+bergantung pada nilai-nilai $f$ pada batas.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $R \subset \R^n$ merupakan persegi panjang tertutup. Tunjukkan bahwa
+$\sR(R)$, yakni himpunan fungsi yang terintegralkan secara Riemann, merupakan
+aljabar atas $\R$. Artinya, tunjukkan bahwa jika $f,g \in \sR(R)$ dan
+$a \in \R$, maka $af \in \sR(R)$, $f+g \in \sR(R)$, dan $fg \in \sR(R)$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $R \subset \R^n$ merupakan persegi panjang tertutup dan
+$f \colon R \to \R$ merupakan fungsi terbatas yang bernilai nol di luar suatu
+himpunan tertutup berukuran nol $E \subset R$. Tunjukkan bahwa $\int_R f$ ada
+dan hitung nilainya.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $R \subset \R^n$ merupakan persegi panjang tertutup, sedangkan
+$f \colon R \to \R$ dan $g \colon R \to \R$ merupakan dua fungsi yang
+terintegralkan secara Riemann. Andaikan $f = g$ di luar suatu himpunan tertutup
+berukuran nol $E \subset R$. Tunjukkan bahwa $\int_R f = \int_R g$.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Misalkan $R \subset \R^n$ merupakan persegi panjang tertutup dan
+$f \colon R \to \R$ merupakan fungsi terbatas.
+\begin{enumerate}[a)]
+\item
+Andaikan terdapat himpunan tertutup berukuran nol $E \subset R$ sedemikian
+sehingga pembatasan $f|_{R\setminus E}$ kontinu. Maka $f \in \sR(R)$.
+\item
+Temukan contoh himpunan berukuran nol $E \subset R$ yang tidak tertutup
+sedemikian sehingga pembatasan $f|_{R\setminus E}$ kontinu dan
+$f \notin \sR(R)$.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Misalkan $R \subset \R^n$ merupakan persegi panjang tertutup dan
+$f \colon R \to \R$ serta $g \colon R \to \R$ terintegralkan secara Riemann.
+Tunjukkan bahwa
+\begin{equation*}
+\varphi(x) \coloneqq \max \bigl\{ f(x) , g(x) \bigr\}
+\qquad
+\text{dan}
+\qquad
+\psi(x) \coloneqq \min \bigl\{ f(x) , g(x) \bigr\}
+\end{equation*}
+terintegralkan secara Riemann.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $R \subset \R^n$ merupakan persegi panjang tertutup dan
+$f \colon R \to \R$ terintegralkan secara Riemann. Tunjukkan bahwa $\sabs{f}$
+terintegralkan secara Riemann. Petunjuk: Definisikan
+$f_+(x) \coloneqq \max \bigl\{ f(x) , 0 \bigr\}$ dan
+$f_-(x) \coloneqq \max \bigl\{ -f(x) , 0 \bigr\}$, lalu nyatakan $\sabs{f}$
+menggunakan $f_+$ dan $f_-$.
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Misalkan $R \subset \R^n$ dan $R' \subset \R^n$ merupakan persegi panjang
+tertutup, sedangkan $U \subset \R^n$ dan $U' \subset \R^n$ merupakan himpunan
+terbuka sedemikian sehingga $R \subset U$ dan $R' \subset U'$.
+Misalkan pula $g \colon U \to U'$ diferensiabel secara kontinu dan bijektif,
+$g^{-1}$ diferensiabel secara kontinu, $g(R) \subset R'$, dan
+$f \in \sR(R')$. Tunjukkan bahwa komposisi $f \circ g$ terintegralkan secara
+Riemann pada $R$.
+\item
+Temukan contoh tandingan ketika $g$ tidak injektif.
+Petunjuk: Cobalah $g(x,y) \coloneqq (x,0)$ dan
+$R=R'=[0,1] \times [0,1]$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan
+$f \colon [0,1]^2 \to \R$ didefinisikan oleh
+\begin{equation*}
+f(x,y) \coloneqq
+\begin{cases}
+\frac{1}{kq} &
+\begin{aligned}
+&\text{jika } x,y \in \Q, \quad x = \frac{\ell}{k}, \quad y=\frac{p}{q}, \\
+&\text{dengan kedua pecahan tersebut ditulis} \\
+&\text{dalam bentuk paling sederhana,}
+\end{aligned} \\
+0            & \text{selain itu.}
+\end{cases}
+\end{equation*}
+Tunjukkan bahwa $f \in \sR\bigl({[0,1]}^2\bigr)$.
+\end{exercise}
+
+\begin{exercise}
+Hitung osilasi $o\bigl(f,(x,y)\bigr)$ untuk setiap $(x,y) \in \R^2$ bagi fungsi
+\begin{equation*}
+f(x,y) \coloneqq
+\begin{cases}
+\frac{xy}{x^2+y^2} & \text{jika } (x,y) \neq (0,0), \\
+0                  & \text{jika } (x,y) = (0,0) .
+\end{cases}
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Perhatikan fungsi popcorn $f \colon [0,1] \to \R$,
+\begin{equation*}
+f(x) \coloneqq
+\begin{cases}
+\frac{1}{q} & \text{jika } x \in \Q \text{ dan } x = \frac{p}{q}
+ \text{ dalam bentuk pecahan paling sederhana,} \\
+0           & \text{selain itu.}
+\end{cases}
+\end{equation*}
+Hitung $o(f,x)$ untuk setiap $x \in [0,1]$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon [a,b] \to \R$ dan $g \colon [c,d] \to \R$ terintegralkan
+secara Riemann. Tunjukkan bahwa fungsi
+$h \colon [a,b] \times [c,d] \to \R$ yang didefinisikan oleh
+$h(x,y) \coloneqq f(x) g(y)$ terintegralkan secara Riemann dan memenuhi
+\begin{equation*}
+\int_{[a,b] \times [c,d]} h =
+\left( \int_a^b f \right)
+\left( \int_c^d g \right) .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $R \subset \R^n$ merupakan persegi panjang tertutup dan
+$f \colon R \to \R$ merupakan fungsi yang terintegralkan secara Riemann dengan
+$f(x) \geq 0$ untuk setiap $x \in R$. Tunjukkan bahwa jika $\int_R f = 0$,
+maka terdapat himpunan berukuran nol $E \subset R$ sedemikian sehingga
+$f(x) = 0$ untuk setiap $x \in R \setminus E$
+(dikatakan bahwa \myquote{$f=0$ \myindex{hampir di mana-mana}}).
+Catatan: Latihan ini secara khusus menyiratkan pernyataan yang cukup subtil
+berikut: jika $V(R)>0$ dan $f(x) > 0$ untuk setiap $x \in R$, maka
+$\int_R f > 0$.
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Himpunan terukur Jordan}
+\label{sec:jordansets}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1--1,5 kuliah}
+
+\subsection{Volume dan himpunan terukur Jordan}
+
+Untuk suatu himpunan
+$S \subset \R^n$, \emph{\myindex{fungsi karakteristik}}
+atau \emph{\myindex{fungsi indikator}} $\chi_S \colon \R^n \to \R$
+didefinisikan oleh
+\glsadd{not:indicatorfunction}
+\begin{equation*}
+\chi_S(x) \coloneqq
+\begin{cases}
+1 & \text{jika } x \in S, \\
+0 & \text{jika } x \notin S.
+\end{cases}
+\end{equation*}
+Himpunan terbatas $S$ disebut \emph{\myindex{terukur Jordan}}\footnote{Dinamai
+menurut matematikawan Prancis
+\href{https://en.wikipedia.org/wiki/Camille_Jordan}{Marie Ennemond Camille Jordan}
+(1838--1922).}
+jika terdapat persegi panjang tertutup $R$ dengan $S \subset R$ sedemikian
+sehingga $\chi_S$ terintegralkan secara Riemann, yakni
+$\chi_S \in \sR(R)$.
+Kondisi ini tidak bergantung pada persegi panjang yang dipilih. Jika
+$S=\varnothing$, maka $\chi_S$ identik nol, sehingga terintegralkan pada setiap
+persegi panjang tertutup yang memuat $S$ dan setiap integralnya bernilai nol.
+Sekarang andaikan $S \neq \varnothing$. Ambil dua persegi panjang tertutup
+$R$ dan $R'$ dengan $S \subset R$ dan $S \subset R'$. Karena $S$ tidak kosong,
+$R \cap R'$ merupakan persegi panjang tertutup yang juga memuat $S$.
+Berdasarkan \propref{mv:prop:integralsmallerset} dan
+\exerciseref{mv:zerooutside}, $\chi_S \in \sR(R \cap R')$, sehingga
+$\chi_S \in \sR(R')$. Jadi,
+\begin{equation*}
+\int_R \chi_S = \int_{R'} \chi_S = \int_{R \cap R'} \chi_S.
+\end{equation*}
+Kita mendefinisikan
+\emph{volume berdimensi $n$}%
+\index{volume berdimensi n@volume berdimensi $n$!himpunan terukur Jordan}%
+\index{volume}
+untuk himpunan terbatas terukur Jordan $S$ dengan
+\glsadd{not:ndimvolume}
+\begin{equation*}
+V(S) \coloneqq \int_R \chi_S ,
+\end{equation*}
+dengan $R$ sebarang persegi panjang tertutup yang memuat $S$.
+
+\begin{prop}
+Himpunan terbatas $S \subset \R^n$ terukur Jordan jika dan hanya jika
+batas $\partial S$ berukuran nol.
+\end{prop}
+
+\begin{proof}
+Misalkan $R$ merupakan persegi panjang tertutup yang memuat $S$ di bagian
+dalamnya. Jika $x \in \partial S$, maka untuk setiap $\delta > 0$, baik
+$S \cap B(x,\delta)$ (tempat $\chi_S$ bernilai 1) maupun
+$(R \setminus S) \cap B(x,\delta)$ (tempat $\chi_S$ bernilai 0) tidak kosong.
+Jadi, $\chi_S$ tidak kontinu di $x$. Jika $x$ berada di bagian dalam $S$ atau
+di komplemen penutupan $\widebar{S}$, maka $\chi_S$ identik satu atau identik
+nol pada suatu lingkungan dari $x$, sehingga $\chi_S$ kontinu di $x$.
+Dengan demikian, himpunan titik diskontinuitas $\chi_S$ tepat sama dengan
+batas $\partial S$. Proposisi pun terbukti.
+\end{proof}
+
+\begin{prop} \label{prop:jordanmeas}
+Misalkan $S$ dan $T$ merupakan himpunan terbatas terukur Jordan. Maka
+\begin{enumerate}[(i)]
+\item Penutupan $\widebar{S}$ terukur Jordan.
+\item Bagian dalam $S^\circ$ terukur Jordan.
+\item $S \cup T$ terukur Jordan.
+\item $S \cap T$ terukur Jordan.
+\item $S \setminus T$ terukur Jordan.
+\end{enumerate}
+\end{prop}
+
+Pembuktian proposisi ini diserahkan sebagai latihan.
+Selanjutnya, kita menunjukkan bahwa volume yang didefinisikan di atas sama
+dengan ukuran luar yang didefinisikan sebelumnya.
+
+\begin{prop}
+Jika $S \subset \R^n$ terukur Jordan, maka $V(S) = m^*(S)$.
+\end{prop}
+
+\begin{proof}
+Jika $S=\varnothing$, maka $V(S)=m^*(S)=0$, sehingga kesimpulannya langsung.
+Selanjutnya, andaikan $S \neq \varnothing$. Untuk $\epsilon > 0$, misalkan
+$R$ merupakan persegi panjang tertutup yang memuat $S$. Pilih suatu partisi
+$P$ dari $R$ sedemikian sehingga
+\begin{equation*}
+U(P,\chi_S) \leq \left( \int_R \chi_S \right) + \epsilon = V(S) + \epsilon
+\qquad \text{dan} \qquad
+L(P,\chi_S) \geq \left( \int_R \chi_S \right) - \epsilon = V(S)-\epsilon.
+\end{equation*}
+Misalkan $R_1,R_2,\ldots,R_k$ merupakan semua subpersegi panjang dalam $P$
+tempat $\chi_S$ tidak identik nol. Artinya, untuk setiap $j$ terdapat suatu
+titik $x \in R_j$ dengan $x \in S$ (yakni $\chi_S(x)=1$). Karena $S$ tidak
+kosong, $k \geq 1$. Misalkan $O_j$ merupakan persegi panjang terbuka dengan
+$R_j \subset O_j$ dan
+$V(O_j) < V(R_j) + \nicefrac{\epsilon}{k}$. Perhatikan bahwa
+$S \subset \bigcup_j O_j$. Maka
+\begin{equation*}
+U(P,\chi_S) = \sum_{j=1}^k V(R_j) > 
+\left(\sum_{j=1}^k V(O_j)\right) - \epsilon \geq m^*(S) - \epsilon .
+\end{equation*}
+Karena $U(P,\chi_S) \leq V(S) + \epsilon$, diperoleh
+$m^*(S) - \epsilon \leq V(S) + \epsilon$. Karena $\epsilon>0$ sebarang,
+$m^*(S) \leq V(S)$.
+
+Misalkan $R'_1,R'_2,\ldots,R'_\ell$ merupakan semua subpersegi panjang dalam
+$P$ tempat $\chi_S$ identik satu. Dengan kata lain, subpersegi panjang tersebut
+termuat dalam $S$. Bagian dalam $R'^\circ_j$ dari subpersegi panjang tersebut
+saling lepas dan $V(R'^\circ_j) = V(R'_j)$. Berdasarkan
+\exerciseref{exercise:outermeasureofsumofrectangles},
+\begin{equation*}
+m^*\Bigl(\bigcup_{j=1}^\ell R'^\circ_j\Bigr)
+=
+\sum_{j=1}^\ell
+V(R'^\circ_j) .
+\end{equation*}
+Oleh karena itu,
+\begin{equation*}
+m^*(S) \geq
+m^*\Bigl(\bigcup_{j=1}^\ell R'_j\Bigr)
+\geq
+m^*\Bigl(\bigcup_{j=1}^\ell R'^\circ_j\Bigr)
+=
+\sum_{j=1}^\ell
+V(R'^\circ_j)
+=
+\sum_{j=1}^\ell
+V(R'_j)
+=
+L(P,\chi_S) \geq V(S) - \epsilon .
+\end{equation*}
+Karena $\epsilon>0$ sebarang, $m^*(S) \geq V(S)$. Dengan demikian,
+$V(S)=m^*(S)$.
+\end{proof}
+
+\subsection{Pengintegralan pada himpunan terukur Jordan}
+
+Di $\R$, pada dasarnya hanya ada satu jenis himpunan yang wajar sebagai daerah
+pengintegralan, yaitu interval. Di $\R^n$ terdapat banyak jenis himpunan yang
+wajar. Himpunan yang sesuai dengan integral Riemann adalah himpunan terukur
+Jordan.
+
+\begin{defn}
+Misalkan $S \subset \R^n$ merupakan himpunan terbatas terukur Jordan.
+Fungsi terbatas $f \colon S \to \R$ dikatakan
+\emph{\myindex{terintegralkan secara Riemann pada $S$}}%
+\index{terintegralkan pada $S$}, atau\glsadd{not:integrablefuncR}
+$f \in \sR(S)$, jika untuk suatu persegi panjang tertutup $R$ dengan
+$S \subset R$, fungsi $\widetilde{f} \colon R \to \R$ yang didefinisikan oleh
+\begin{equation*}
+\widetilde{f}(x) \coloneqq
+\begin{cases}
+f(x) & \text{jika } x \in S, \\
+0 & \text{selain itu},
+\end{cases}
+\end{equation*}
+berada di $\sR(R)$. Kita menulis
+\glsadd{not:riemannintR}%
+\begin{equation*}
+\int_S f \coloneqq \int_R \widetilde{f}.
+\end{equation*}
+\end{defn}
+
+Seperti di atas, \propref{mv:prop:integralsmallerset} dan
+\exerciseref{mv:zerooutside} menunjukkan bahwa pilihan persegi panjang $R$
+tidak memengaruhi hasil dan integral tersebut terdefinisi dengan baik.
+
+Jika $f$ didefinisikan pada himpunan yang lebih besar dan kita ingin
+mengintegralkannya pada $S$, definisi tersebut diterapkan pada pembatasan
+$f|_S$. Secara khusus, misalkan $R$ merupakan persegi panjang tertutup,
+$f \in \sR(R)$, dan $S \subset R$ terukur Jordan. Perluasan nol dari $f|_S$
+ke $R$ adalah hasil kali $f\chi_S$. Karena hasil kali fungsi-fungsi yang
+terintegralkan secara Riemann juga terintegralkan secara Riemann,
+$f|_S \in \sR(S)$ dan
+\begin{equation*}
+\int_S f = \int_R f \chi_S .
+\end{equation*}
+
+\begin{prop}
+Jika $S \subset \R^n$ merupakan himpunan terbatas terukur Jordan dan
+$f \colon S \to \R$ kontinu dan terbatas, maka $f$ terintegralkan secara
+Riemann pada $S$.
+\end{prop}
+
+\begin{proof}
+Definisikan $\widetilde{f}$ seperti di atas untuk suatu persegi panjang
+tertutup $R$ dengan $S \subset R$. Jika
+$x \in R \setminus \widebar{S}$, maka $\widetilde{f}$ identik nol pada suatu
+lingkungan dari $x$. Jika $x$ berada di bagian dalam $S$, maka
+$\widetilde{f}=f$ pada suatu lingkungan dari $x$ dan kontinu di $x$. Jadi,
+$\widetilde{f}$ hanya mungkin diskontinu pada $\partial S$, yang berukuran nol,
+sehingga pembuktian selesai.
+\end{proof}
+
+Suatu sifat dikatakan berlaku
+\emph{\myindex{untuk hampir setiap} $x$}\index{hampir setiap}, atau berlaku
+\emph{\myindex{hampir di mana-mana}}, jika sifat itu berlaku untuk semua $x$
+kecuali pada suatu himpunan berukuran nol. Sebagai contoh,
+$f \colon S \to \R$ dan $g \colon S \to \R$ sama hampir di mana-mana jika
+terdapat himpunan berukuran nol $E \subset S$ sedemikian sehingga
+$f(x) = g(x)$ untuk setiap $x \in S \setminus E$.
+
+\medskip
+
+Banyak sifat baku integral tetap berlaku karena pada dasarnya kita masih
+mengintegralkan pada persegi panjang. Bahkan, beberapa pernyataan dapat
+diperkuat dengan mengganti syarat ``di setiap titik'' menjadi
+\emph{hampir di mana-mana}. Pembuktian ketiga proposisi berikut diserahkan
+sebagai latihan.
+
+\begin{prop} \label{prop:jordanintbasic}
+Misalkan $S \subset \R^n$ merupakan himpunan terbatas terukur Jordan,
+$f \colon S \to \R$ dan $g \colon S \to \R$ terintegralkan secara Riemann
+pada $S$, serta $\alpha \in \R$. Maka
+\begin{enumerate}[(i)]
+\item
+Jika $f = 0$ hampir di mana-mana, maka $\int_S f = 0$.
+\item
+Jika $f = g$ hampir di mana-mana, maka $\int_S f = \int_S g$.
+\item
+$f+g$ terintegralkan secara Riemann pada $S$ dan
+$\int_S (f+g) = \int_S f + \int_S g$.
+\item
+$\alpha f$ terintegralkan secara Riemann pada $S$ dan
+$\int_S \alpha f = \alpha \int_S f$.
+\item
+Jika $f(x) \leq g(x)$ untuk hampir setiap $x$, maka
+$\int_S f \leq \int_S g$.
+\end{enumerate}
+\end{prop}
+
+Integral juga bersifat aditif.
+
+\begin{prop} \label{prop:jordanintadd}
+Misalkan $A \subset \R^n$ dan $B \subset \R^n$ merupakan himpunan terbatas
+terukur Jordan yang saling lepas, dan $f \colon A \cup B \to \R$ sedemikian
+sehingga pembatasan $f|_A$ dan $f|_B$ masing-masing terintegralkan secara
+Riemann pada $A$ dan $B$. Maka $f$ terintegralkan secara Riemann pada
+$A \cup B$ dan
+\begin{equation*}
+\int_{A \cup B} f = \int_A f + \int_B f .
+\end{equation*}
+\end{prop}
+
+Akhirnya, untuk mengintegralkan pada daerah yang bukan persegi panjang dengan
+teorema Fubini, cara yang lazim adalah membagi daerah itu menjadi bagian-bagian
+lebih sederhana yang dapat dibatasi oleh dua grafik. Kita menyatakan hasilnya
+di bidang, tetapi pernyataan serupa dapat dibuat dalam lebih banyak peubah.
+Pembuktiannya sekali lagi diserahkan sebagai latihan.
+
+\begin{prop} \label{prop:intovertypeIset}
+Misalkan $f \colon [a,b] \to \R$ dan $g \colon [a,b] \to \R$ merupakan
+fungsi kontinu sedemikian sehingga $f(x) < g(x)$ untuk setiap
+$x \in (a,b)$. Misalkan
+\begin{equation*}
+U \coloneqq \bigl\{ (x,y) \in \R^2 : a < x < b \text{ dan } f(x) < y < g(x) \bigr\} .
+\end{equation*}
+Lihat \figureref{fig:typeIdomain}.
+Maka $U$ terukur Jordan. Jika $\varphi \colon U \to \R$ kontinu dan terbatas
+pada $U$, dan $\widetilde{\varphi}$ menyatakan perluasan nol $\varphi$ ke suatu
+persegi panjang tertutup yang memuat $U$, maka
+\begin{equation*}
+\int_U \varphi =
+\int_a^b \int_{f(x)}^{g(x)} \widetilde{\varphi}(x,y) \, dy \, dx .
+\end{equation*}
+\end{prop}
+
+Proposisi ini juga berlaku jika $\varphi$ hanya diasumsikan terintegralkan
+secara Riemann. Namun, integral dalam terhadap $y$ harus ditafsirkan sebagai
+integral Darboux atas atau bawah dari fungsi satu peubah
+$y \mapsto \widetilde{\varphi}(x,y)$ pada interval $[f(x),g(x)]$.
+
+\begin{myfigureht}
+\myincludegraphics{typeIdomain}{%
+Diagram suatu daerah pada bidang untuk x di antara garis
+x sama dengan a di kiri dan x sama dengan b di kanan.
+Batas bawahnya adalah grafik y sama dengan f dari x,
+dan batas atasnya adalah grafik y sama dengan g dari x.
+Daerah tersebut diarsir dan garis-garis vertikal digambar untuk
+menunjukkan bahwa irisan setiap garis vertikal dengan daerah itu
+merupakan interval terhubung.}
+\caption{Daerah di antara dua grafik.\label{fig:typeIdomain}}
+\end{myfigureht}
+
+\subsection{Citra himpunan bagian terukur Jordan}
+
+Akhirnya, citra himpunan terukur Jordan juga terukur Jordan di bawah
+pemetaan yang cukup teratur.  Untuk menyederhanakan pembahasan, kita
+mengasumsikan bahwa determinan Jacobian tidak pernah bernilai nol.
+
+\begin{prop} \label{prop:imagejordanmeas}
+Misalkan $U \subset \R^n$ terbuka dan
+$S \subset U$ merupakan himpunan kompak yang terukur Jordan.
+Misalkan
+$g \colon U \to \R^n$ merupakan pemetaan injektif
+yang diferensiabel secara kontinu sedemikian sehingga
+determinan Jacobian $J_g$ tidak pernah bernilai nol pada $S$.
+Maka $g(S)$ terbatas dan terukur Jordan.
+\end{prop}
+
+\begin{proof}
+Tetapkan $T \coloneqq g(S)$.  %Karena $S \subset \R^n$ tertutup dan terbatas, $S$ kompak.
+Berdasarkan
+\volIref{\lemmaref*{vI-lemma:continuouscompact} dari jilid I}{\lemmaref{lemma:continuouscompact}},
+himpunan
+$T$ juga kompak sehingga tertutup dan terbatas.
+Kita mengklaim bahwa $\partial T \subset g(\partial S)$.  Andaikan klaim ini
+telah dibuktikan.  Karena $S$ terukur Jordan,
+$\partial S$ berukuran nol.  Selanjutnya, $g(\partial S)$ berukuran
+nol berdasarkan \propref{prop:imagenull}.  Karena $\partial T \subset g(\partial
+S)$, himpunan $T$ terukur Jordan.
+
+Tinggal membuktikan klaim tersebut.
+Karena $T$ tertutup, $\partial T \subset T$.
+Misalkan $y \in \partial T$.  Maka terdapat
+$x \in S$
+sedemikian sehingga $g(x) = y$, dan menurut hipotesis $J_g(x) \neq 0$.
+Kita gunakan teorema fungsi invers (\thmref{thm:inverse}).  Terdapat
+lingkungan $V \subset U$ dari $x$ dan himpunan terbuka $W$ sedemikian sehingga
+pembatasan $g|_V$ merupakan fungsi bijektif dari $V$ ke $W$
+dengan fungsi invers yang diferensiabel secara kontinu.  Khususnya, $g(x) = y \in W$.
+Karena $y \in \partial T$, terdapat barisan $\{ y_k \}_{k=1}^\infty$ di $W$ dengan
+$\lim_{k\to\infty} y_k = y$ dan $y_k \notin T$.  Karena fungsi invers
+$(g|_V)^{-1}$ kontinu, terdapat
+barisan $\{ x_k \}_{k=1}^\infty$ di $V$ sedemikian sehingga $g(x_k) = y_k$ dan
+$\lim_{k\to\infty} x_k = x$.
+Karena $y_k \notin T = g(S)$, jelas bahwa $x_k \notin S$.  Karena $x \in S$, kita
+menyimpulkan bahwa $x \in \partial S$.  Klaim tersebut terbukti: $\partial T \subset
+g(\partial S)$.
+\end{proof}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Buktikan \propref{prop:jordanmeas}.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa setiap himpunan konveks terbatas terukur Jordan.  Petunjuk:
+Induksi terhadap dimensi.
+\end{exercise}
+
+\begin{exercise} \label{exercise:intovertypeIset}
+Buktikan \propref{prop:intovertypeIset}.  Dengan kata lain,
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $U$ terukur Jordan.
+\item
+Buktikan bahwa
+$\int_U \varphi =
+\int_a^b \int_{f(x)}^{g(x)} \widetilde{\varphi}(x,y) \, dy \, dx$,
+dengan $\widetilde{\varphi}$ menyatakan perluasan nol $\varphi$ ke suatu
+persegi panjang tertutup yang memuat $U$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Kita akan mengonstruksi contoh himpunan terbuka yang tidak terukur Jordan.
+Mulailah dalam satu dimensi.  Misalkan $\{ r_j \}_{j=1}^\infty$ merupakan enumerasi
+semua bilangan rasional dalam $(0,1)$.  Misalkan $(a_j,b_j)$ merupakan interval terbuka
+sedemikian sehingga $(a_j,b_j) \subset (0,1)$ untuk setiap $j$, $r_j \in (a_j,b_j)$,
+dan $\sum_{j=1}^\infty (b_j-a_j) < \nicefrac{1}{2}$.  Sekarang tetapkan $U \coloneqq
+\bigcup_{j=1}^\infty (a_j,b_j)$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa interval-interval terbuka $(a_j,b_j)$ seperti di atas memang ada.
+\item
+Buktikan bahwa $\partial U = [0,1] \setminus U$.
+\item
+Buktikan bahwa $\partial U$ tidak berukuran nol, dan karena itu $U$ tidak terukur Jordan.
+\item
+Tunjukkan bahwa $W \coloneqq
+\bigl( U \times (0,2) \bigr) \cup \bigl( (0,1) \times (1,2) \bigr)$
+merupakan himpunan terbuka yang terhubung dan terbatas di $\R^2$
+serta tidak terukur Jordan.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $K \subset \R^n$ merupakan himpunan tertutup berukuran nol.
+\begin{enumerate}[a)]
+\item
+Jika $K$ terbatas, buktikan bahwa $K$ terukur Jordan.
+\item
+Jika $S \subset \R^n$ terbatas dan terukur Jordan, buktikan bahwa
+$S \setminus K$ terukur Jordan.
+\item
+Konstruksikan himpunan terbatas terukur Jordan $S \subset \R^n$
+dan himpunan terbatas berukuran nol $T \subset \R^n$ sedemikian sehingga
+baik $T$ maupun $S \setminus T$ tidak terukur Jordan.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $U \subset \R^n$ terbuka dan $K \subset U$ kompak.
+Temukan himpunan kompak terukur Jordan $S$ sedemikian sehingga $S \subset U$
+dan $K \subset S^\circ$ ($K$ berada di bagian dalam $S$).
+\end{exercise}
+
+\begin{exercise} \label{exercise:closednessofriemannintegrable}
+Buktikan versi \corref{cor:closednessofriemannintegrable} dengan mengganti semua
+persegi panjang tertutup dengan himpunan terukur Jordan yang tertutup dan terbatas.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{prop:jordanintbasic}.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{prop:jordanintadd}.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Teorema Green}
+\label{sec:mvgreenstheorem}
+
+\sectionnotes{1 kuliah, memerlukan \chapterref{path:chapter}}
+
+Salah satu teorema terpenting dalam kalkulus multivariabel
+adalah teorema Stokes umum,
+suatu generalisasi dari teorema dasar kalkulus.
+Versi dua dimensinya
+disebut teorema Green%
+\footnote{Dinamai menurut fisikawan matematis Britania
+\href{https://en.wikipedia.org/wiki/George_Green_(mathematician)}{George Green}
+(1793--1841).}.  Kita akan menyatakan teorema ini secara umum, tetapi
+hanya membuktikan satu kasus khusus yang penting.
+
+\begin{defn}
+Misalkan $U \subset \R^2$ merupakan himpunan terbuka, terhubung, dan terbatas.
+Andaikan batas
+$\partial U$ merupakan gabungan saling lepas dari citra berhingga banyak
+lintasan tertutup sederhana yang mulus sepotong-sepotong, sedemikian sehingga
+setiap $p \in \partial U$ termasuk dalam penutupan
+$\R^2 \setminus \widebar{U}$.
+Maka $U$ disebut
+\emph{\myindex{domain terbatas dengan batas mulus sepotong-sepotong}}%
+\index{batas mulus sepotong-sepotong}
+di $\R^2$.
+\end{defn}
+
+Kondisi tersebut menyatakan bahwa secara lokal $\partial U$ memisahkan $\R^2$
+menjadi sisi \myquote{dalam} dan sisi \myquote{luar}.  Kondisi ini memastikan
+bahwa $\partial U$ bukan sekadar \myquote{sayatan} di dalam $U$.
+Ketika kita menelusuri setiap lintasan dengan
+orientasi tertentu, sisi kiri dan kanan terdefinisi dengan baik; $U$ berada di
+sisi kiri dan komplemen $U$ di sisi kanan, atau sebaliknya.
+Orientasi pada $U$ adalah arah penelusuran lintasan-lintasan batas tersebut.
+Kita dapat membalik orientasi jika perlu dengan mereparametrisasi lintasan.
+
+\begin{defn}
+Misalkan $U \subset \R^2$ merupakan domain terbatas dengan batas mulus
+sepotong-sepotong, dan setiap komponen batas $\partial U$ telah diberi orientasi.
+Untuk setiap komponen batas, misalkan $\gamma \colon [a,b] \to \R^2$
+merupakan parametrisasi komponen tersebut yang memberikan orientasinya.
+Tuliskan $\gamma(t) = \big(x(t),y(t)\bigr)$.  Jika pada setiap komponen dan
+setiap nilai parameter reguler di setiap bagian mulus, vektor
+$n(t) \coloneqq \bigl(-y'(t),x'(t)\bigr)$ mengarah ke dalam domain,
+yaitu $\epsilon n(t) + \gamma(t) \in U$ untuk semua $\epsilon > 0$ yang cukup
+kecil, maka $\partial U$ \emph{\myindex{berorientasi positif}}.
+Lihat \figureref{fig:positiveorient}.
+Sebaliknya, jika $n(t)$ mengarah ke luar domain pada setiap komponen dan setiap
+nilai parameter reguler, maka $\partial U$
+\emph{\myindex{berorientasi negatif}}.
+\end{defn}
+
+\begin{myfigureht}
+\myincludepdft{positiveorient}{%
+Dua diagram domain berarsir dengan batas yang ditunjukkan oleh panah.
+Di sebelah kiri terdapat domain sederhana U yang batasnya ditandai oleh
+panah-panah yang mengarah mengelilingi domain berlawanan arah jarum jam.  Pada sebuah titik batas
+ditampilkan vektor gamma prima dari t sama dengan x prima dari t, y prima dari
+t, yang mengarah sepanjang batas.  Vektor yang ortogonal terhadap gamma prima
+dan mengarah ke dalam domain juga ditampilkan serta diberi tanda n dari t sama
+dengan minus y prima dari t, x prima dari t.  Di sebelah kanan terdapat diagram
+domain yang memiliki lubang.  Batas luar diorientasikan berlawanan arah jarum
+jam, sedangkan batas dalam di sekitar lubang diorientasikan searah jarum jam.}
+\caption{Domain berorientasi positif (kiri) dan domain berlubang yang
+berorientasi positif (kanan).\label{fig:positiveorient}}
+\end{myfigureht}
+
+Vektor $n(t)$ diperoleh dengan memutar $\gamma'(t)$
+sebesar $90^\circ$ berlawanan arah jarum jam, yaitu ke kiri.
+Ketika kita menelusuri batas berorientasi positif
+sesuai arah orientasinya,
+domain berada \myquote{di sebelah kiri kita.}
+Sebagai contoh,
+jika $U$ merupakan domain terbatas \myquote{tanpa lubang,} yaitu $\partial U$
+terhubung, maka orientasi positif berarti kita menelusuri $\partial U$
+berlawanan arah jarum jam.  Jika terdapat \myquote{lubang,} kita menelusuri
+batas di sekelilingnya searah jarum jam.
+
+\begin{prop}
+Misalkan $U \subset \R^2$ merupakan domain terbatas dengan batas mulus
+sepotong-sepotong.  Maka $U$ terukur Jordan.
+\end{prop}
+
+\begin{proof}
+Kita harus menunjukkan bahwa
+$\partial U$ merupakan himpunan nol.  Karena $\partial U$ merupakan gabungan
+berhingga lintasan mulus sepotong-sepotong, yang masing-masing merupakan
+gabungan berhingga lintasan mulus, cukup kita tunjukkan bahwa citra suatu
+lintasan mulus di $\R^2$ merupakan himpunan nol.
+Misalkan $\gamma \colon [a,b] \to \R^2$ merupakan lintasan mulus.
+Cukup kita tunjukkan bahwa
+$\gamma\bigl((a,b)\bigr)$ merupakan himpunan nol, sebab menambahkan
+titik-titik $\gamma(a)$ dan $\gamma(b)$
+ke himpunan nol tetap menghasilkan himpunan nol.
+Definisikan
+\begin{equation*}
+f \colon (a,b) \times (-1,1) \to \R^2,
+\qquad \text{dengan} \qquad
+f(x,y) \coloneqq \gamma(x) .
+\end{equation*}
+Himpunan $(a,b) \times \{ 0 \}$ merupakan himpunan nol di $\R^2$ dan
+$\gamma\bigl((a,b)\bigr) = f\bigl( (a,b) \times \{ 0 \} \bigr)$.
+Berdasarkan \propref{prop:imagenull},
+$\gamma\bigl((a,b)\bigr)$ merupakan himpunan nol di $\R^2$;
+karena itu
+$\gamma\bigl([a,b]\bigr)$ merupakan himpunan nol, sehingga
+$\partial U$ merupakan himpunan nol.
+\end{proof}
+
+\begin{thm}[Green]\index{Green's theorem}
+Suppose $U \subset \R^2$ is a bounded domain with piecewise smooth boundary with
+the boundary positively oriented.  Suppose $P$ and $Q$ are continuously
+differentiable functions defined on some open set that contains the closure
+$\widebar{U}$.  Then
+\begin{equation*}
+\int_{\partial U}
+P \, dx + Q\,  dy
+=
+\int_{U}
+\left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)
+.
+\end{equation*}
+\end{thm}
+
+We stated Green's theorem in general, although we will only prove a special 
+version of it.  That is, we will only prove it for a special kind of domain.
+The general version follows from the special case 
+by applying further geometry and cutting up the general
+domain into smaller domains on which to apply the special case.
+%We will not prove the general case. 
+
+Let $U \subset \R^2$ be a bounded domain with piecewise smooth boundary.
+We say $U$ is of \emph{type I}\index{type I domain}
+if there exist numbers
+$a < b$, and continuous
+functions $f \colon [a,b] \to \R$ and
+$g \colon [a,b] \to \R$, such that
+\begin{equation*}
+U \coloneqq \bigl\{ (x,y) \in \R^2 : a < x < b \text{ and } f(x) < y < g(x) \bigr\} .
+\end{equation*}
+Similarly, $U$ is of \emph{type II}\index{type II domain}
+if there exist numbers
+$c < d$, and continuous
+functions $h \colon [c,d] \to \R$ and
+$k \colon [c,d] \to \R$, such that
+\begin{equation*}
+U \coloneqq \bigl\{ (x,y) \in \R^2 : c < y < d \text{ and } h(y) < x < k(y) \bigr\} .
+\end{equation*}
+Finally, $U \subset \R^2$ is of \emph{type III}\index{type III domain}
+if it is both of type I and type II\@.  See \figureref{fig:greenstypes}.
+
+\begin{myfigureht}
+\myincludegraphics{greenstypes}{%
+Diagram of three domains.  On the left
+is a type I domain between two graphs where every vertical
+line intersects the domain in a connected interval and
+several vertical lines are drawn in the domain.
+In the middle is a type II domain, which is the same idea
+but with horizontal lines.
+On the right is a type III domain, where both horizontal
+and vertical lines intersect in a connected interval and
+several horizontal and vertical lines are drawn.}
+\caption{Domain types for Green's theorem.\label{fig:greenstypes}}
+\end{myfigureht}
+
+Common domains to apply Green's theorem to are rectangles and discs, and
+these are type III domains.
+We will only prove Green's theorem for type III domains.
+
+\begin{proof}[Proof of Green's theorem for $U$ of type III]
+Let $f,g,h,k$ be the functions defined above.
+Using \propref{prop:intovertypeIset},
+$U$ is Jordan measurable and as $U$ is of type I\@,
+\begin{equation*}
+\begin{split}
+\int_U 
+\left(- \frac{\partial P}{\partial y} \right)
+& =
+\int_a^b \int_{f(x)}^{g(x)}
+\left(- \frac{\partial P}{\partial y} (x,y) \right)
+\, dy \, dx 
+\\
+& =
+\int_a^b \Bigl(
+- P\bigl(x,g(x)\bigr) +
+P\bigl(x,f(x)\bigr)
+\Bigr) \, dx
+\\
+& =
+\int_a^b P\bigl(x,f(x)\bigr) \, dx 
+-
+\int_a^b P\bigl(x,g(x)\bigr) \, dx .
+\end{split}
+\end{equation*}
+We integrate $P\,dx$ along the boundary.
+The one-form $P\,dx$ integrates to zero 
+along the straight vertical lines in the boundary (if there are any).
+Therefore, it is only
+integrated along the top and along the bottom.  As a parameter,
+$x$ runs from left to right.  If we use the parametrizations that take $x$
+to $\bigl(x,f(x)\bigr)$ and to
+$\bigl(x,g(x)\bigr)$, we recognize path integrals above.  However, the second
+path integral is in the wrong direction; the top should be going right to
+left.  After switching this orientation, we find
+\begin{equation*}
+\int_{\partial U} P \, dx
+=
+\int_a^b P\bigl(x,f(x)\bigr) \, dx 
++
+\int_b^a P\bigl(x,g(x)\bigr) \, dx
+=
+\int_U 
+\left(- \frac{\partial P}{\partial y} \right) .
+\end{equation*}
+Similarly, $U$ is also of type II\@.  The form $Q\,dy$ integrates to zero along
+horizontal lines.   So
+\begin{equation*}
+\int_U 
+\frac{\partial Q}{\partial x}
+=
+\int_c^d \int_{h(y)}^{k(y)}
+\frac{\partial Q}{\partial x}(x,y)
+\, dx \, dy 
+=
+\int_c^d \Bigl(
+Q\bigl(k(y),y\bigr) 
+-
+Q\bigl(h(y),y\bigr)
+\Bigr) \, dy 
+=
+\int_{\partial U} Q \, dy .
+\end{equation*}
+Putting the two computations together, we obtain
+\begin{equation*}
+\int_{\partial U} P\, dx + Q \, dy 
+=
+\int_{\partial U} P\, dx + \int_{\partial U} Q \, dy 
+=
+\int_U 
+\Bigl(-\frac{\partial P}{\partial y}\Bigr)
++
+\int_U 
+\frac{\partial Q}{\partial x}
+=
+\int_U 
+\Bigl(
+\frac{\partial Q}{\partial x}
+-\frac{\partial P}{\partial y}
+\Bigr) . \qedhere
+\end{equation*}
+\end{proof}
+
+Let us see how one can use the simple version of Green's (type III domains
+only) for a more complex path.
+
+\begin{example}
+Suppose $P(x,y) = \frac{-y}{x^2+y^2}$, 
+$Q(x,y) = \frac{x}{x^2+y^2}$.  If we think of $(P,Q)$ as a vector, so that
+we have a \emph{\myindex{vector field}}, $(P,Q)$ is
+called the \emph{\myindex{vortex vector field}}, as it gives the velocity
+of particles traveling in a vortex around the origin.  Variations on this
+vector field come up often in applications.
+Suppose that $\gamma$ is a path that goes counterclockwise around
+a rectangle whose interior contains the origin.
+We claim
+\begin{equation*}
+\int_{\gamma} \frac{-y}{x^2+y^2} \, dx + \frac{x}{x^2+y^2} \, dy = 2 \pi .
+\end{equation*}
+
+First we draw a circle $C$ of radius $r > 0$ centered at the origin such
+that the entire circle is within $\gamma$ and oriented clockwise.
+Consider $U$ to be the domain between $\gamma$ and $C$.
+See \figureref{fig:vortexbox}.
+The integral around $\partial U$ is the integral around $\gamma$ plus the
+integral around $C$.
+Now $U$ is not a domain of type III\@, so we cannot just apply the version of
+Green's theorem we actually proved.
+However, if we cut the box along the axis as shown in the figure with
+dashed lines, the four resulting domains,
+let us call them $U_1,U_2,U_3,U_4$,
+are of type III\@.
+The dashed lines are oriented in opposite directions
+for the two $U_j$ that share them,
+and so when we integrate along both,
+ the integrals cancel.  That is,
+\begin{multline*}
+\int_{\partial U} P\, dx + Q \, dy
+=
+\\
+\int_{\partial U_1} P\, dx + Q \, dy
++
+\int_{\partial U_2} P\, dx + Q \, dy
++
+\int_{\partial U_3} P\, dx + Q \, dy
++
+\int_{\partial U_4} P\, dx + Q \, dy .
+\end{multline*}
+Now we are allowed to apply Green's theorem to every $U_j$.
+We leave it to the reader to verify that outside of the origin,
+$\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 0$.
+So for each $j$, we find
+\begin{equation*}
+\int_{\partial U_j} P\, dx + Q \, dy 
+=
+\int_{U_j} \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial
+y} \right)
+=
+\int_{U_j} 0 = 0 ,
+\end{equation*}
+and so $\int_{\partial U} P\, dx + Q \, dy = 0$.
+As $\partial U$ is $C$ together with $\gamma$, we find
+\begin{equation*}
+\int_C P \, dx + Q \, dy
++
+\int_{\gamma} P \, dx + Q \, dy
+=
+\int_{\partial U} P \, dx + Q \, dy = 0 .
+\end{equation*}
+So the integral around $C$ is minus the integral around $\gamma$.  The
+integral around $C$ is easy to compute as on $C$ we have $x^2+y^2 = r^2$,
+so $P(x,y) = \frac{-y}{r^2}$ and $Q(x,y) = \frac{x}{r^2}$.
+We leave it to the reader to compute
+\begin{equation*}
+\int_C P\, dx + Q \, dy
+=
+\int_C \frac{-y}{r^2}\, dx + \frac{x}{r^2} \, dy
+=
+- 2 \pi ,
+\end{equation*}
+making sure to note that $C$ is oriented clockwise not counterclockwise.
+The claim follows.
+\begin{myfigureht}
+\myincludepdft{vortexbox}{%
+A diagram of a domain U that is a rectangle with a circular hole around the
+origin.  The boundary of the rectangle goes around counterclockwise and is
+marked as gamma.  The boundary of the inside circle is marked as C and goes
+clockwise.  The domain U is cut in four pieces by four cuts along the axes
+shown in dashed lines.  The four pieces are labeled as U sub 1 through
+U sub 4.  The boundary of each of these four pieces is marked as going
+counterclockwise, and we note that along the cuts we find that the paths
+giving the boundaries go in both directions and so will cancel each other
+out.}
+\caption{Changing the box integral to an integral around a small circle around
+the origin.  The domain $U$ is the entire shaded area between the circle and the
+box.\label{fig:vortexbox}}
+\end{myfigureht}
+
+We remark that if $\gamma$ did not contain the origin, $\int_\gamma
+P\,dx+Q\,dy = 0$, as we could just apply Green's to $\gamma$.
+So this integral can detect whether the origin is inside $\gamma$ or not.
+\end{example}
+
+As a second example, we illustrate the usefulness of Green's theorem on a fundamental result
+about harmonic functions.
+
+\begin{example}
+Suppose $U \subset \R^2$ is open and
+$f \colon U \to \R$ is harmonic, that is, $f$ is twice continuously
+differentiable and
+satisfies the \emph{\myindex{Laplace equation}},
+$\frac{\partial^2 f}{\partial x^2} +
+\frac{\partial^2 f}{\partial y^2} = 0$.
+Harmonic functions are, for instance, the steady state heat distribution,
+or the electric potential between charges.
+We will prove one of the most fundamental properties of these functions.
+
+Let $D_r \coloneqq B(p,r)$ be a disc such that its closure $\overline{D_r} = C(p,r) \subset U$.  Write
+$p = (x_0,y_0)$.  Orient
+$\partial D_r$ positively.  See \exerciseref{green:balltype3orient}.
+Via Green's and differentiation under the integral,
+\begin{equation*}
+\begin{split}
+0
+& =
+\frac{1}{2\pi r}
+\int_{D_r}
+\left(
+\frac{\partial^2 f}{\partial x^2} +
+\frac{\partial^2 f}{\partial y^2}
+\right)
+\\
+& 
+=
+\frac{1}{2\pi r}
+\int_{\partial D_r}
+- \frac{\partial f}{\partial y} \, dx + 
+\frac{\partial f}{\partial x} \, dy
+\\
+&
+=
+\frac{1}{2\pi r}
+\int_0^{2\pi}
+\biggl(
+- \frac{\partial f}{\partial y} \bigl(x_0+r\cos(t),y_0+r\sin(t)\bigr) \bigl(-r\sin(t)\bigr)
+\\
+& \hspace{1.2in}
++ \frac{\partial f}{\partial x} \bigl(x_0+r\cos(t),y_0+r\sin(t)\bigr) \, r\cos(t)
+\biggr) \, dt
+\\
+&
+=
+\frac{d}{dr}
+\left[
+\frac{1}{2\pi}
+\int_0^{2\pi}
+f\bigl(x_0+r\cos(t),y_0+r\sin(t)\bigr) \, dt
+\right] .
+\end{split}
+\end{equation*}
+Let $g(r) \coloneqq 
+\frac{1}{2\pi}
+\int_0^{2\pi}
+f\bigl(x_0+r\cos(t),y_0+r\sin(t)\bigr) \, dt$ for $r \geq 0$ (small enough).
+The function is continuous at $r=0$ (exercise), and we have just proved that
+$g'(r) = 0$ for all $r > 0$.
+Therefore, $g(0) = g(r)$ for all $r > 0$, and
+\begin{equation*}
+g(r) = g(0) = 
+\frac{1}{2\pi}
+\int_0^{2\pi}
+f\bigl(x_0+0\cos(t),y_0+0\sin(t)\bigr) \, dt
+=
+f(x_0,y_0).
+\end{equation*}
+We
+proved the \emph{\myindex{mean value property}} of harmonic functions:
+\begin{equation*}
+f(x_0,y_0) = 
+\frac{1}{2\pi}
+\int_0^{2\pi}
+f\bigl(x_0+r\cos(t),y_0+r\sin(t)\bigr) \, dt 
+=
+\frac{1}{2\pi r}
+\int_{\partial D_r} f \, ds .
+\end{equation*}
+That is, for a harmonic function, the value at $p = (x_0,y_0)$ equals the average
+of its values
+over a circle of any radius $r$ centered at $(x_0,y_0)$,
+provided $r$ is small enough so that the entire closed disc fits within $U$.
+\end{example}
+
+\subsection{Exercises}
+
+\begin{exercise} \label{green:balltype3orient}
+Prove that a disc $B(p,r) \subset \R^2$ is a type III domain, and prove that
+the orientation given by the parametrization $\gamma(t) =
+\bigl(x_0+r\cos(t),y_0+r\sin(t)\bigr)$ where $p = (x_0,y_0)$ is the positive
+orientation of the boundary $\partial B(p,r)$.
+\\
+Note: Feel free to use what you know about sine and cosine from calculus.
+\end{exercise}
+
+\begin{exercise}
+Prove that a convex bounded domain with piecewise smooth boundary
+is a type III domain.
+\end{exercise}
+
+\begin{exercise}
+Suppose $V \subset \R^2$ is a bounded domain with piecewise smooth boundary
+of type III and suppose that $U \subset \R^2$ is an open set such that
+$\widebar{V} \subset U$.  Suppose $f \colon U \to \R$ is a twice
+continuously differentiable function.  Prove that
+$\int_{\partial V}
+\frac{\partial f}{\partial x} \, dx + 
+\frac{\partial f}{\partial y} \, dy = 0$.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+For a disc $B(p,r) \subset \R^2$, orient the boundary $\partial B(p,r)$
+positively.
+\begin{enumerate}[a)]
+\item
+Compute $\displaystyle \int_{\partial B(p,r)} -y \, dx$.
+\item
+Compute $\displaystyle \int_{\partial B(p,r)} x \, dy$.
+\item
+Compute $\displaystyle \int_{\partial B(p,r)} \frac{-y}{2} \, dx +
+\frac{x}{2} \, dy$.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Using Green's theorem show that the area of a triangle with
+vertices
+$(x_1,y_1)$,
+$(x_2,y_2)$,
+$(x_3,y_3)$ is
+$\frac{1}{2}\sabs{x_1y_2 + x_2 y_3 + x_3 y_1 - y_1x_2 - y_2x_3 - y_3x_1}$.
+Hint: See previous exercise.
+\end{exercise}
+
+\begin{exercise}
+Using the mean value property prove the
+\emph{maximum principle}\index{maximum principle!harmonic functions}
+for harmonic functions:
+Suppose $U \subset \R^2$ is a connected open set and
+$f \colon U \to \R$ is harmonic. Prove that
+if $f$ attains a maximum at $p \in U$, then $f$ is constant.
+\end{exercise}
+
+\begin{exercise}
+Let $f(x,y) \coloneqq \ln \sqrt{x^2+y^2}$.
+\begin{enumerate}[a)]
+\item
+Show $f$ is harmonic where defined.
+\item
+Show $\lim\limits_{(x,y) \to 0} f(x,y) = -\infty$.
+\item
+Using a circle $C_r$ of radius
+$r$ around the origin, compute $\frac{1}{2\pi r} \int_{C_r} f \, ds$.
+What happens as $r \to 0$?
+\item
+Why can't you use Green's theorem in part c)?
+\end{enumerate}
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Change of variables}
+\label{sec:mvchangeofvars}
+
+\sectionnotes{1 lecture}
+
+In one variable, we have the familiar change of variables, the
+$u$-substitution,
+\begin{equation*}
+\int_a^b f\bigl(g(x)\bigr) g'(x)\, dx = 
+\int_{g(a)}^{g(b)} f(u) \, du .
+\end{equation*}
+The analogue in higher dimensions is quite
+a bit more complicated.  The first complication is orientation.  If we use
+the definition of integral from this chapter, then we do not have the notion
+of $\int_a^b$ versus $\int_b^a$.  We are simply integrating over an
+interval $[a,b]$.  With this notation, and assuming $g$ is one-to-one,
+the change of variables becomes
+\begin{equation*}
+\int_{[a,b]} f\bigl(g(x)\bigr) \, \babs{g'(x)}\, dx = 
+\int_{g([a,b])} f(u) \, du .
+\end{equation*}
+In this section we will obtain the several-variable analogue of this form.
+
+Let us remark on the role of $\babs{g'(x)}$ in the formula. 
+The integral measures volumes in general, so in one dimension it measures length.
+Notice that $\babs{g'(x)}$ scales the $dx$ and
+so it scales the lengths.
+If our $g$ is linear, that is, $g(x)=Lx$, then
+$g'(x) = L$ and the length of the interval $g([a,b])$ is simply
+$\sabs{L}(b-a)$.  That is because $g([a,b])$ is either $[La,Lb]$ or
+$[Lb,La]$.  This property holds in higher dimension with $\sabs{L}$ replaced
+by the absolute value of the determinant.
+
+\begin{prop} \label{prop:volrectdet}
+Suppose $R \subset \R^n$ is a rectangle
+and $A \colon \R^n \to \R^n$ is linear.  Then
+$A(R)$ is Jordan measurable and $V\bigl(A(R)\bigr) = \babs{\det (A)} \, V(R)$.
+\end{prop}
+
+\begin{proof}
+It is enough to prove for elementary matrices.  The proof is left as an
+exercise.
+\end{proof}
+
+Let us prove that
+the absolute value of the Jacobian determinant
+$\babs{J_g(x)} = \babs{\det \bigl(g'(x)\bigr)}$
+is the replacement of $\babs{g'(x)}$ for multiple
+dimensions in the change of variables formula.
+The following theorem holds in more generality,
+but this statement is sufficient for many uses.
+
+\begin{thm}
+Suppose $U \subset \R^n$ is open,
+$S \subset U$ is a compact Jordan measurable set, and
+$g \colon U \to \R^n$ is a one-to-one
+continuously differentiable mapping, such that
+$J_g$ is never zero on $S$.
+Suppose $f \colon g(S) \to \R$ is Riemann integrable.
+Then $f \circ g$ is Riemann integrable on $S$ and
+\begin{equation*}
+\int_S f\bigl(g(x)\bigr) \, \babs{J_g(x)} \, dx
+=
+\int_{g(S)} f(u) \, du . 
+\end{equation*}
+\end{thm}
+
+The set $g(S)$ is Jordan measurable by \propref{prop:imagejordanmeas},
+so the left-hand side does make sense.
+That the right-hand side makes sense follows by
+\corref{cor:closednessofriemannintegrable} (actually
+\exerciseref{exercise:closednessofriemannintegrable}).
+
+\begin{proof}
+The set $S$ can be covered by finitely many closed rectangles
+$P_1,P_2,\ldots,P_k$, whose
+interiors do not overlap such that each $P_j \subset U$
+(\exerciseref{mv:changeofvarcoverbyrects}).
+Proving the theorem for $P_j \cap S$ instead of $S$ is enough
+as we can simply add up the integrals.
+Define $f(y) \coloneqq 0$ for all $y \notin g(S)$.
+The new $f$ is Riemann integrable as $g(S)$ is Jordan measurable.
+We can now replace the integrals over $S$ with integrals over the whole
+rectangle.
+We therefore assume without loss of generality that $S$ is a closed rectangle.
+
+The matrix $g'(x)$ is invertible for every $x \in S$,
+and it is continuous.  Therefore, ${\bigl(g'(x)\bigr)}^{-1}$
+and consequently 
+$\bnorm{{\bigl(g'(x)\bigr)}^{-1}}$ is continuous and never zero.
+As $S$ is compact, then there exists an $M > 1$ so that
+$\bnorm{{\bigl(g'(x)\bigr)}^{-1}} \leq M$ for all $x \in S$.
+
+Let $\epsilon > 0$ be given.
+For every $x \in S$, let
+\begin{equation*}
+W_x \coloneqq
+\left\{ y \in U : \bnorm{g'(x)-g'(y)} < \frac{\epsilon}{2M} \right\} .
+\end{equation*}
+By \exerciseref{mv:changeofvarWxopen},
+$W_x$ is open.
+As $x \in W_x$ for every $x$, we have an open cover.
+By the Lebesgue covering lemma
+(\volIref{\lemmaref*{vI-ms:lebesgue} from volume I}{\lemmaref{ms:lebesgue}}),
+there exists a $\delta > 0$ such that
+for every $y \in S$, there is an $x$ such that $B(y,\delta) \subset W_x$.
+In other words, if $Q$ is a rectangle of maximum side length less
+than $\frac{\delta}{\sqrt{n}}$ and $y \in Q$, then $Q \subset
+B(y,\delta) \subset W_x$.  By the triangle inequality,
+$\bnorm{g'(\xi)-g'(\eta)} < \nicefrac{\epsilon}{M}$ for all $\xi, \eta \in Q$.
+
+Let $\varphi(x) \coloneqq f\bigl(g(x)\bigr) \babs{J_g(x)}$.
+There exists a partition $P$ of $S$ such that
+$\epsilon + \int_S \varphi \geq U(P,\varphi)$.
+We can assume $\delta$ is sufficiently small relative to the side
+of each subrectangle of the partition $P$ so that we can cut each such
+subrectangle into further subrectangles each of whose sides $s$ satisfies
+$\frac{\delta}{2\sqrt{n}} \leq s \leq \frac{\delta}{\sqrt{n}}$
+(\exerciseref{mv:changeofvarrectside}).
+Denote these subrectangles by
+$R_1,R_2,\ldots,R_N$.
+For each $j=1,2,\dots,N$, find $x_j \in R_j$ so that
+$\sabs{J_g(x_j)} \leq \sabs{J_g(x)}$ for all $x \in R_j$,
+which is possible as $\sabs{J_g(x)}$ is continuous and $R_j$
+is compact.
+
+Consider some $R_j$.
+First suppose $x_j=0$, $g(0) = 0$, and $g'(0) = I$.
+We claim that
+$g(R_j)$ is contained in a 
+rectangle of volume at most $V(R_j) \, {\bigl(1+4\sqrt{n} \, \epsilon\bigr)}^n$.
+Let us prove this claim.
+For any given $y \in R_j$,
+apply the fundamental theorem of calculus
+to the function $t \mapsto g(ty)$ to find
+$g(y) = \int_0^1 g'(ty)y \,dt$.  As the
+side of $R_j$ is at most $\frac{\delta}{\sqrt{n}}$,
+we have $\snorm{y} \leq \delta$.
+We note that $\bnorm{g'(x)-I} < \epsilon$ as $M > 1$
+and so
+\begin{equation*}
+%mbxlatex \begin{aligned}
+\bnorm{g(y)-y}
+=
+\norm{\int_0^1 \bigl(g'(ty) y - y\bigr) \,dt}
+%mbxlatex &
+\leq
+\int_0^1 \bnorm{g'(ty) y - y} \,dt
+%mbxlatex \\
+%mbxlatex &
+\leq
+\snorm{y} \int_0^1 \bnorm{g'(ty) - I} \,dt
+\leq
+\delta \epsilon .
+%mbxlatex \end{aligned}
+\end{equation*}
+Therefore, $g(R_j) \subset \widetilde{R}_j$, where
+$\widetilde{R}_j$ is a rectangle obtained from
+$R_j$ by extending by
+$\delta \epsilon$ on all sides.  See \figureref{changeofvarssq:fig}.
+
+\begin{myfigureht}
+\myincludepdft{changeofvarssq}{%
+A diagram of a gray rectangle R sub j inside a dashed rectangle tilde
+R sub j.
+A bold figure g of R sub j that is a deformed version of the
+gray rectangle is given and lies completely inside the dashed rectangle.
+The horizontal side of the gray rectangle is labeled as
+s sub 1 and the vertical side is labeled as s sub 2.  The distance between
+the sides of the gray square and the dashed square is labeled as delta
+epsilon.  A point inside all the rectangles is labeled as
+x sub j equals zero equals g of x sub j.
+A point y is labeled on the side of the gray rectangle and a nearby point
+within delta epsilon and on the side of the black rectangle is marked g of y.}
+\caption{Image of $R_j$ under $g$ lies inside
+$\widetilde{R}_j$.  A sample point $y \in R_j$ (on the boundary of $R_j$ in fact) is marked
+and $g(y)$ must lie within with a radius of $\delta\epsilon$
+(also marked).\label{changeofvarssq:fig}}
+\end{myfigureht}
+
+
+If the sides of $R_j$ are $s_1,s_2,\ldots,s_n$, then
+$V(R_j) = s_1 s_2 \cdots s_n$.   Recall $\delta \leq 2\sqrt{n} \, s_j$.
+Thus,
+\begin{equation*}
+\begin{split}
+V(\widetilde{R}_j) & =
+(s_1+2\delta \epsilon )
+(s_2+2\delta \epsilon )
+\cdots
+(s_n+2\delta \epsilon )
+\\
+& \leq
+\bigl(s_1+4 \sqrt{n}\,s_1 \epsilon \bigr)
+\bigl(s_2+4 \sqrt{n}\,s_2 \epsilon \bigr)
+\cdots
+\bigl(s_n+4 \sqrt{n}\,s_n \epsilon \bigr)
+\\
+& =
+s_1 \bigl(1+4 \sqrt{n}\, \epsilon \bigr)
+\,
+s_2 \bigl(1+4 \sqrt{n}\, \epsilon \bigr)
+\cdots
+s_n \bigl(1+4 \sqrt{n}\, \epsilon \bigr)
+=
+V(R_j) \, {\bigl(1+4\sqrt{n} \, \epsilon\bigr)}^n .
+\end{split}
+\end{equation*}
+The claim is proved: $g(R_j) \subset \widetilde{R}_j$ and
+\begin{equation*}
+V\bigl(g(R_j)\bigr) \leq V(\widetilde{R}_j) \leq V(R_j) \,
+{\bigl(1+4\sqrt{n} \, \epsilon\bigr)}^n .
+\end{equation*}
+
+Next, suppose $A \coloneqq g'(0)$ is not necessarily the identity.
+Write $g = A \circ \widetilde{g}$ where $\widetilde{g}'(0) = I$.
+We have that $\snorm{A^{-1}} \leq M$ and so
+\begin{equation*}
+\bnorm{\widetilde{g}'(x)-I} =
+\bnorm{A^{-1}g'(x)-A^{-1}A} \leq
+\bnorm{A^{-1}}\,\bnorm{g'(x)-A} < M \frac{\epsilon}{M} = \epsilon .
+\end{equation*}
+In other words, the claim above applies to $\widetilde{g}$ as what we
+needed in its proof was precisely that $\bnorm{\widetilde{g}'(x)-I} < \epsilon$.
+Therefore, we have that
+$\widetilde{g}(R_j)$
+is contained in a rectangle $\widetilde{R}_j$ with
+$V(\widetilde{R}_j) \leq V(R_j) \, {\bigl(1+4\sqrt{n} \, \epsilon\bigr)}^n$.
+
+By \propref{prop:volrectdet},
+$V\bigl(A(\widetilde{R}_j)\bigr) = \babs{\det(A)} \, V(\widetilde{R}_j)$, and hence
+\begin{equation*}
+\begin{split}
+V\bigl(g(R_j)\bigr) & =
+V\bigl(A\bigl(\widetilde{g}(R_j)\bigr)\bigr)
+\\
+& \leq
+V\bigl(A(\widetilde{R}_j)\bigr)
+\\
+& \leq
+\babs{\det(A)} \, V(R_j) \,
+{\bigl(1+4\sqrt{n} \, \epsilon\bigr)}^n \\
+& =
+\babs{J_g(0)} \, V(R_j) \,
+{\bigl(1+4\sqrt{n} \, \epsilon\bigr)}^n .
+\end{split}
+\end{equation*}
+Translation does not change volume, and therefore
+for every $R_j$, and $x_j \in R_j$, including when $x_j \neq 0$ and $g(x_j)
+\neq 0$, we find
+\begin{equation*}
+V\bigl(g(R_j)\bigr) \leq
+\babs{J_g(x_j)} \, V(R_j) \,
+{\bigl(1+4\sqrt{n} \, \epsilon\bigr)}^n .
+\end{equation*}
+
+Write $f$ as
+$f = f_+ - f_-$ for two nonnegative Riemann integrable
+functions $f_+$ and $f_-$:
+\begin{equation*}
+f_+(u) \coloneqq \max \bigl\{ f(u) , 0 \bigr\}, \qquad
+f_-(u) \coloneqq \max \bigl\{ -f(u) , 0 \bigr\} .
+\end{equation*}
+So, if we prove the theorem for a nonnegative $f$,
+we obtain the theorem for arbitrary $f$.
+Therefore, suppose without loss of generality that 
+$f(u) \geq 0$ for all $u \in g(S)$.
+
+As the rectangles $R_1,R_2,\ldots,R_N$ give a refinement of
+the partition $P$,
+\begin{equation*}
+\begin{split}
+\epsilon + \int_S f\bigl(g(x)\bigr) \, \babs{J_g(x)} \, dx
+& \geq
+\sum_{j=1}^N \biggl(\sup_{x \in R_j} f\bigl(g(x)\bigr) \, \babs{J_g(x)} \biggr) \, V(R_j)
+\\
+& \geq
+\sum_{j=1}^N \biggl(\sup_{x \in R_j} f\bigl(g(x)\bigr) \biggr) \, \babs{J_g(x_j)} \, V(R_j)
+\\
+& \geq
+\sum_{j=1}^N \biggl(\sup_{u \in g(R_j)} f(u) \biggr) \,
+V\bigl(g(R_j)\bigr)
+\frac{1}{{(1+4\sqrt{n} \, \epsilon)}^n}
+\\
+& \geq
+\sum_{j=1}^N \left(\int_{g(R_j)}f(u) \,du \right)
+\frac{1}{{(1+4\sqrt{n} \, \epsilon)}^n}
+\\
+& =
+\frac{1}{{(1+4\sqrt{n} \, \epsilon)}^n}
+\int_{g(S)} f(u) \,du .
+\end{split}
+\end{equation*}
+The last equality follows because the overlaps of the rectangles
+are their boundaries, which are of measure zero, and hence the image
+of their boundaries is also measure zero.
+Let $\epsilon$ go to zero to find
+\begin{equation*}
+\int_S f\bigl(g(x)\bigr) \, \babs{J_g(x)} \, dx \geq \int_{g(S)} f(u) \,du .
+\end{equation*}
+
+Recall that $g^{-1}$ exists and $g^{-1}\bigl(g(S)\bigr) = S$.
+Also, $1 = J_{g\circ g^{-1}} = J_g\bigl(g^{-1}(u)\bigr) \,J_{g^{-1}}(u)$ for $u \in g(S)$.
+So
+\begin{equation*}
+\begin{split}
+\int_{g(S)} f(u) \, du
+& =
+\int_{g(S)} f\Bigl(g\bigl(g^{-1}(u)\bigr)\Bigr) \,
+\Babs{J_g\bigl(g^{-1}(u)\bigr)} \, \babs{J_{g^{-1}}(u)} \, du
+\\
+& \geq
+\int_{g^{-1}(g(S))} f\bigl(g(x)\bigr) \, \babs{J_g(x)} \, dx
+=
+\int_{S} f\bigl(g(x)\bigr) \, \babs{J_g(x)} \, dx .
+\qedhere
+\end{split}
+\end{equation*}
+\end{proof}
+
+\subsection{Exercises}
+
+\begin{exercise}
+Prove \propref{prop:volrectdet}.
+\end{exercise}
+
+\begin{exercise} \label{mv:changeofvarcoverbyrects}
+Suppose $U \subset \R^n$ is open
+and $S \subset U$ is a compact Jordan measurable set.
+Show that there exist finitely many closed rectangles
+$P_1,P_2, \ldots, P_k$ such that $P_j \subset U$,
+$S \subset P_1 \cup P_2 \cup \cdots \cup P_k$, and
+the interiors are mutually disjoint, that is,
+$P_j^\circ \cap P^\circ_\ell = \emptyset$ whenever $j \neq \ell$.
+\end{exercise}
+
+\begin{exercise} \label{mv:changeofvarWxopen}
+Suppose $U \subset \R^n$ is open, $x \in U$,
+and $g \colon U \to \R^n$ is a continuously differentiable mapping.
+For every $c > 0$, show that
+\begin{equation*}
+\bigl\{ y \in U : \bnorm{g'(x)-g'(y)} < c \bigr\}
+\end{equation*}
+is an open set.
+\end{exercise}
+
+\begin{exercise} \label{mv:changeofvarrectside}
+Suppose $R \subset \R^n$ is a closed rectangle.
+Show that if $\delta > 0$ is sufficiently small relative
+to the sides of $R$, then $R$ can be partitioned
+into subrectangles where each side $s$ of every subrectangle
+satisfies $\frac{\delta}{2} \leq s \leq \delta$.
+\end{exercise}
+
+\begin{exercise}
+Prove the following version of the theorem:
+\emph{Suppose $f \colon \R^n \to \R$ is a Riemann integrable
+compactly supported function.  Suppose $K \subset \R^n$
+is the support of $f$, $S$ is a compact set,
+and $g \colon \R^n \to \R^n$ is
+a function that when restricted to a neighborhood $U$ of
+$S$ is one-to-one and continuously differentiable,
+$g(S) = K$ and $J_g$ is never zero on $S$ (in the formula 
+assume $J_g(x) = 0$ if $g$ is not differentiable at $x$, that is, when $x \notin
+U$).  Then}
+\begin{equation*}
+\int_{\R^n} f\bigl(g(x)\bigr) \, \babs{J_g(x)} \, dx
+=
+\int_{\R^{n}} f(u) \, du .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Prove the following version of the theorem:
+\emph{Suppose $S \subset \R^n$ is an open bounded Jordan measurable set,
+$g \colon S \to \R^n$ is a one-to-one
+continuously differentiable mapping such that
+$J_g$ is never zero on $S$, and such that $g(S)$ is bounded and
+Jordan measurable (it is also open).
+Suppose $f \colon g(S) \to \R$ is Riemann
+integrable.  Then $f \circ g$ is Riemann integrable on $S$ and}
+\begin{equation*}
+\int_S f\bigl(g(x)\bigr) \, \babs{J_g(x)} \, dx
+=
+\int_{g(S)} f(u) \, du .
+\end{equation*}
+Hint: Write $S$ as an increasing union of compact Jordan measurable
+sets, then apply the theorem of the section to those.  Then prove that you
+can take the limit.
+\end{exercise}

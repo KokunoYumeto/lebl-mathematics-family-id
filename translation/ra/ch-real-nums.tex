@@ -1,0 +1,2279 @@
+\chapter{Bilangan Real} \label{rn:chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Sifat-sifat dasar} \label{sec:basicpropsrn}
+
+\sectionnotes{1,5 pertemuan kuliah}
+
+Dalam analisis, objek utama yang kita kaji adalah himpunan
+\myindex{bilangan real}.  Karena himpunan ini begitu mendasar, sering kali banyak
+waktu dihabiskan untuk membangun himpunan bilangan real secara formal.  Namun, kita
+akan mengambil pendekatan yang lebih mudah dan mengasumsikan bahwa ada suatu himpunan
+dengan sifat-sifat yang tepat.
+Tiga sifat utama bilangan real adalah bahwa himpunan ini
+terurut, lengkap terhadap urutan tersebut,
+dan merupakan lapangan yang serasi dengan urutan tersebut.
+Kita mulai dengan urutan.
+
+\begin{defn}
+Suatu \emph{\myindex{himpunan terurut}} adalah himpunan $S$ yang dilengkapi
+dengan relasi $<$ sedemikian sehingga
+%\begin{enumerate}[(i),itemsep=0.5\itemsep,parsep=0.5\parsep,topsep=0.5\topsep,partopsep=0.5\partopsep]
+%\begin{enumerate}[(i),nolistsep]
+\begin{enumerate}[(i)]
+\item \emph{(\myindex{trikotomi})} Untuk semua $x, y \in S$, tepat satu di antara
+$x < y$, $x=y$, atau $y < x$ berlaku.
+\item \emph{(transitivitas)} Jika $x,y,z \in S$ sedemikian sehingga $x < y$ dan $y
+< z$, maka $x < z$.
+\end{enumerate}
+Kita menulis $x \leq y$ jika $x < y$ atau $x=y$.  Kita mendefinisikan
+$>$ dan $\geq$ dengan cara yang wajar.
+\glsadd{not:ordereq}
+\glsadd{not:orderlt}
+\glsadd{not:orderleq}
+\glsadd{not:ordergt}
+\glsadd{not:ordergeq}
+\end{defn}
+
+
+Himpunan bilangan rasional $\Q$ adalah himpunan terurut: Kita mengatakan
+$x < y$ jika dan hanya jika $y-x$ adalah bilangan rasional positif, yaitu,
+jika $y-x = \nicefrac{p}{q}$ dengan $p,q \in \N$.  Demikian pula,
+$\N$ dan $\Z$ juga merupakan himpunan terurut.
+
+Ada himpunan terurut yang bukan himpunan bilangan.  Sebagai contoh, himpunan
+negara dapat diurutkan menurut luas daratannya, sehingga India $>$
+Liechtenstein.
+Salah satu himpunan terurut yang lazim dan telah Anda gunakan sejak sekolah dasar
+adalah kamus.  Kamus merupakan himpunan kata terurut dengan urutan yang
+disebut urutan leksikografis.  Himpunan terurut semacam itu sering muncul, misalnya,
+dalam ilmu komputer.  Dalam buku ini, kita terutama akan mempelajari himpunan
+bilangan terurut.
+
+\begin{defn}
+Misalkan $E \subset S$, dengan $S$ suatu himpunan terurut.
+%\begin{enumerate}[(i),itemsep=0.5\itemsep,parsep=0.5\parsep,topsep=0.5\topsep,partopsep=0.5\partopsep]
+%\begin{enumerate}[(i),nolistsep]
+\begin{enumerate}[(i)]
+\item Jika terdapat $b \in S$ sedemikian sehingga $x \leq b$ untuk semua $x \in E$,
+maka $E$ disebut \emph{\myindex{terbatas di atas}} dan $b$
+merupakan suatu \emph{\myindex{batas atas}} bagi $E$.
+\item Jika terdapat $b \in S$ sedemikian sehingga $x \geq b$ untuk semua $x \in E$,
+maka $E$ disebut \emph{\myindex{terbatas di bawah}} dan $b$
+merupakan suatu \emph{\myindex{batas bawah}} bagi $E$.
+\item Jika terdapat batas atas $b_0$ bagi $E$ sedemikian sehingga
+$b_0 \leq b$ untuk setiap batas atas $b$ bagi $E$, maka
+$b_0$ disebut \emph{\myindex{batas atas terkecil}} atau
+\emph{\myindex{supremum}}
+dari $E$.  Lihat \figureref{fig:lub}.  Kita menulis\glsadd{not:sup}
+\begin{equation*}
+\sup\, E \coloneqq b_0 .
+\end{equation*}
+\item Demikian pula, jika terdapat batas bawah $b_0$ bagi $E$ sedemikian sehingga
+$b_0 \geq b$ untuk setiap batas bawah $b$ bagi $E$, maka
+$b_0$ disebut \emph{\myindex{batas bawah terbesar}} atau
+\emph{\myindex{infimum}}
+dari $E$.  Kita menulis\glsadd{not:inf}
+\begin{equation*}
+\inf\, E \coloneqq b_0 .
+\end{equation*}
+\end{enumerate}
+Jika suatu himpunan $E$ terbatas di atas sekaligus terbatas di bawah, kita cukup mengatakan bahwa
+$E$ \emph{terbatas}\index{himpunan terbatas}.
+\end{defn}
+
+Notasi $\sup E$ dan $\inf E$ dapat dibenarkan karena
+supremum (atau infimum) itu tunggal (jika ada): Jika $b$ dan
+$b'$ keduanya merupakan supremum $E$, maka $b \leq b'$ dan $b' \leq b$, karena
+$b$ dan $b'$ sama-sama merupakan batas atas terkecil, sehingga $b=b'$.
+
+
+\begin{myfigureht}
+\myincludepdft{lub}{%
+Diagram himpunan E pada garis bilangan real yang digambarkan sebagai garis horizontal.
+Sebuah panah di kiri menunjukkan bahwa bilangan semakin kecil ketika kita bergerak ke
+kiri, sedangkan panah lain di kanan menunjukkan bahwa bilangan semakin besar
+ketika kita bergerak ke kanan.  Himpunan E ditampilkan sebagai bagian-bagian garis
+bilangan real yang disorot.  Beberapa tanda vertikal yang semuanya berada di sebelah kanan
+himpunan E ditandai sebagai batas atas E, sedangkan tanda terkecil di antaranya,
+yang tepat berada di tepi E, ditandai sebagai batas atas terkecil E.}
+\caption{Himpunan $E$ yang terbatas di atas dan batas atas terkecil dari $E$.\label{fig:lub}}
+\end{myfigureht}
+
+Sebuah contoh sederhana:
+Misalkan $S \coloneqq \{ a, b, c, d, e \}$ diurutkan sebagai $a < b < c < d < e$, dan
+misalkan $E \coloneqq \{ a, c \}$.  Maka $c$, $d$, dan $e$ adalah batas atas bagi $E$, dan
+$c$ adalah batas atas terkecil atau supremum dari $E$.
+
+Supremum atau infimum bagi $E$ (sekalipun ada) tidak harus
+berada di dalam $E$.  Himpunan $E \coloneqq \{ x \in \Q : x < 1 \}$ memiliki batas atas
+terkecil 1, tetapi 1 tidak berada di dalam himpunan $E$ itu sendiri.
+Himpunan
+$G \coloneqq \{ x \in \Q : x \leq 1 \}$ juga memiliki batas atas 1,
+dan dalam kasus ini $1 \in G$.
+Himpunan $P \coloneqq \{ x \in \Q : x \geq 0 \}$ tidak memiliki batas atas (mengapa?) sehingga
+tidak mungkin memiliki batas atas terkecil.  Himpunan $P$ memang memiliki batas bawah
+terbesar, yaitu~0.
+
+\begin{defn} \label{defn:lub}
+Suatu himpunan terurut $S$ memiliki \emph{\myindex{sifat batas atas terkecil}} jika
+setiap himpunan bagian tak kosong
+$E \subset S$ yang terbatas di atas memiliki batas atas terkecil,
+yaitu, $\sup\, E$ ada di dalam $S$.
+\end{defn}
+
+\emph{Sifat batas atas terkecil}
+kadang-kadang disebut \emph{\myindex{sifat kelengkapan}} atau
+\emph{\myindex{sifat kelengkapan Dedekind}}%
+\footnote{%
+Diambil dari nama matematikawan Jerman
+\href{https://en.wikipedia.org/wiki/Richard_Dedekind}{Julius Wilhelm Richard Dedekind}
+(1831--1916).}.
+Bilangan real memiliki sifat ini.
+
+\begin{example}
+Himpunan bilangan rasional $\Q$ tidak memiliki sifat batas atas terkecil.  Himpunan bagian
+$\{ x \in \Q : x^2 < 2 \}$ tidak memiliki supremum di $\Q$.  Nanti
+kita akan melihat (\exampleref{example:sqrt2}) bahwa supremumnya adalah
+$\sqrt{2}$, yang bukan bilangan rasional%
+\footnote{Hal ini juga berlaku untuk semua akar lain dari 2, dan menariknya,
+fakta bahwa $\sqrt[k]{2}$ tidak pernah rasional untuk $k > 1$ berkaitan dengan
+kemustahilan menyetem piano
+secara sempurna dalam semua tangga nada.  Lihat, misalnya:
+\url{https://youtu.be/1Hqm0dYKUx4}.}.
+Andaikan $x \in \Q$ sedemikian sehingga $x^2 = 2$.
+Tuliskan $x=\nicefrac{m}{n}$ dalam bentuk paling sederhana.  Maka ${(\nicefrac{m}{n})}^2 = 2$
+atau
+$m^2 = 2n^2$.  Jadi, $m^2$ habis dibagi 2, sehingga $m$ habis dibagi
+2.  Tuliskan $m = 2k$, sehingga ${(2k)}^2 = 2n^2$.  Bagilah dengan 2
+dan perhatikan bahwa $2k^2 = n^2$, sehingga $n$ habis dibagi 2.  Namun, hal ini
+bertentangan dengan fakta bahwa $\nicefrac{m}{n}$ telah ditulis dalam bentuk paling sederhana.
+\end{example}
+
+Ketiadaan sifat batas atas terkecil pada $\Q$ merupakan salah satu alasan terpenting
+kita bekerja dengan $\R$ dalam analisis.  Himpunan $\Q$
+sudah memadai bagi para ahli aljabar.  Namun, kami para analis memerlukan sifat batas atas
+terkecil untuk dapat bekerja.
+Kita juga mengharuskan bilangan real memiliki banyak sifat aljabar.
+Khususnya, kita mengharuskan bilangan real membentuk suatu lapangan.
+
+
+%\enlargethispage{\baselineskip}
+\begin{defn}
+Suatu himpunan $F$ disebut \emph{\myindex{lapangan}} jika padanya didefinisikan dua operasi,
+yaitu penjumlahan $x+y$ dan perkalian $xy$, serta jika himpunan itu memenuhi
+aksioma-aksioma\index{aksioma} berikut:
+%mbxSTARTIGNORE
+\begin{enumerate}[({A}1)]
+%mbxENDIGNORE
+%mbxCLOSEPARAGRAPH
+%mbx <dl>
+\item
+%mbx <title>(A1)</title>
+Jika $x \in F$ dan $y \in F$, maka $x+y \in F$.
+\item
+%mbx <title>(A2)</title>
+\emph{(komutativitas penjumlahan)}
+$x+y = y+x$ untuk semua $x,y \in F$.
+\item
+%mbx <title>(A3)</title>
+\emph{(asosiativitas penjumlahan)}
+$(x+y)+z = x+(y+z)$ untuk semua $x,y,z \in F$.
+\item
+%mbx <title>(A4)</title>
+Terdapat elemen $0 \in F$ sedemikian sehingga
+$0+x = x$ untuk semua $x \in F$.
+\item
+%mbx <title>(A5)</title>
+Untuk setiap elemen $x\in F$, terdapat elemen $-x \in F$
+sedemikian sehingga $x + (-x) = 0$.
+%mbxCLOSEITEM
+%mbx </dl>
+%mbxSTARTIGNORE
+\end{enumerate}
+\begin{enumerate}[({M}1)]
+%mbxENDIGNORE
+%mbx <dl>
+\item
+%mbx <title>(M1)</title>
+Jika $x \in F$ dan $y \in F$, maka $xy \in F$.
+\item
+%mbx <title>(M2)</title>
+\emph{(komutativitas perkalian)}
+$xy = yx$ untuk semua $x,y \in F$.
+\item
+%mbx <title>(M3)</title>
+\emph{(asosiativitas perkalian)}
+$(xy)z = x(yz)$ untuk semua $x,y,z \in F$.
+\item
+%mbx <title>(M4)</title>
+Terdapat elemen $1 \in F$ (dan $1 \neq 0$) sedemikian sehingga
+$1x = x$ untuk semua $x \in F$.
+\item
+%mbx <title>(M5)</title>
+Untuk setiap $x\in F$ dengan $x \neq 0$, terdapat elemen
+$\nicefrac{1}{x} \in F$
+sedemikian sehingga $x(\nicefrac{1}{x}) = 1$.
+%\end{enumerate}
+%\begin{enumerate}
+%mbxSTARTIGNORE
+\item[(D)]
+%mbxENDIGNORE
+%mbxlatex \item
+%mbx <title>(D)</title>
+\emph{(hukum distributif)} $x(y+z) = xy+xz$
+untuk semua $x,y,z \in F$.
+%mbxSTARTIGNORE
+\end{enumerate}
+%mbxENDIGNORE
+%mbxCLOSEITEM
+%mbx </dl>
+\end{defn}
+
+\begin{example}
+Himpunan bilangan rasional $\Q$ adalah lapangan.  Sebaliknya, $\Z$ bukan
+lapangan karena tidak memuat invers perkalian.  Sebagai contoh,
+tidak ada $x \in \Z$ sedemikian sehingga $2x = 1$, jadi (M5) tidak terpenuhi.  Anda
+dapat memeriksa bahwa (M5) adalah satu-satunya sifat yang gagal\footnote{Seorang ahli aljabar akan mengatakan bahwa $\Z$ adalah
+cincin terurut, atau mungkin cincin komutatif terurut.}.
+\end{example}
+
+Kita akan mengasumsikan fakta-fakta dasar tentang lapangan yang mudah
+dibuktikan dari aksioma-aksioma tersebut.  Sebagai contoh, $0x = 0$ mudah dibuktikan
+dengan memperhatikan bahwa $xx = (0+x)x = 0x+xx$, menggunakan (A4), (D)\@, dan (M2).  Kemudian,
+dengan menggunakan (A5) pada $xx$, bersama (A2), (A3), dan (A4), kita memperoleh $0 = 0x$.
+
+\begin{defn}
+Suatu lapangan $F$ disebut \emph{\myindex{lapangan terurut}} jika
+$F$ juga merupakan himpunan terurut sedemikian sehingga
+\begin{enumerate}[(i)]
+\item \label{defn:ordfield:i} Untuk $x,y,z \in F$, $x < y$ mengakibatkan $x+z <
+y+z$.
+\item \label{defn:ordfield:ii} Untuk $x,y \in F$, $x > 0$ dan $y > 0$
+mengakibatkan $xy > 0$.
+\end{enumerate}
+Jika $x > 0$, kita mengatakan bahwa $x$ \emph{\myindex{positif}}.
+Jika $x < 0$, kita mengatakan bahwa $x$ \emph{\myindex{negatif}}.
+Kita juga mengatakan bahwa $x$ \emph{\myindex{nonnegatif}} jika $x \geq 0$,
+dan $x$ \emph{\myindex{nonpositif}} jika $x \leq 0$.
+\end{defn}
+
+Bilangan rasional $\Q$ dengan urutan bakunya merupakan lapangan terurut.
+Perinciannya kita serahkan kepada pembaca yang berminat.
+
+\begin{prop} \label{prop:bordfield}
+Misalkan $F$ suatu lapangan terurut dan $x,y,z,w \in F$.  Maka
+\begin{enumerate}[(i)]
+\item \label{prop:bordfield:i} Jika $x > 0$, maka $-x < 0$ (dan sebaliknya).
+\item \label{prop:bordfield:ii} Jika $x > 0$ dan $y < z$, maka $xy < xz$.
+\item \label{prop:bordfield:iii} Jika $x < 0$ dan $y < z$, maka $xy > xz$.
+\item \label{prop:bordfield:iv} Jika $x \neq 0$, maka $x^2 > 0$.
+\item \label{prop:bordfield:v} Jika $0 < x < y$, maka $0 < \nicefrac{1}{y} < \nicefrac{1}{x}$.
+\item \label{prop:bordfield:vi} Jika $0 < x < y$, maka $x^2 < y^2$.
+\item \label{prop:bordfield:vii} Jika $x \leq y$ dan $z \leq w$, maka $x + z \leq y + w$.
+\end{enumerate}
+\end{prop}
+
+Perhatikan bahwa \ref{prop:bordfield:iv} secara khusus mengakibatkan $1 > 0$.
+
+\begin{proof}
+Mari kita buktikan \ref{prop:bordfield:i}.  Dari ketaksamaan $x > 0$ dan butir
+\ref{defn:ordfield:i} dalam definisi lapangan terurut diperoleh
+$x + (-x) > 0 + (-x)$.  Dengan menerapkan sifat-sifat aljabar lapangan, kita
+memperoleh $0 > -x$.  Arah \myquote{sebaliknya} diperoleh melalui perhitungan serupa.
+
+Untuk \ref{prop:bordfield:ii}, perhatikan bahwa $y < z$ mengakibatkan
+$0 < z - y$ menurut
+butir \ref{defn:ordfield:i} dalam definisi lapangan terurut.
+Terapkan butir
+\ref{defn:ordfield:ii} dalam definisi lapangan terurut untuk memperoleh
+$0 < x(z-y)$.  Berdasarkan sifat-sifat aljabar, $0 < xz - xy$.
+Dengan kembali menggunakan butir
+\ref{defn:ordfield:i} dalam definisi tersebut, diperoleh $xy < xz$.
+
+Bagian \ref{prop:bordfield:iii} diserahkan sebagai latihan.
+
+Untuk membuktikan bagian \ref{prop:bordfield:iv}, pertama andaikan $x > 0$.
+Menurut butir \ref{defn:ordfield:ii} dalam definisi lapangan terurut,
+$x^2 > 0$ (gunakan $y=x$).  Jika $x < 0$, kita menggunakan
+bagian \ref{prop:bordfield:iii} dari proposisi ini dengan mengambil $y=x$ dan
+$z=0$.
+
+Untuk membuktikan bagian \ref{prop:bordfield:v}, perhatikan bahwa
+$\nicefrac{1}{x}$ tidak mungkin sama dengan nol (mengapa?).
+Andaikan $\nicefrac{1}{x} < 0$,
+maka $\nicefrac{-1}{x} > 0$ menurut \ref{prop:bordfield:i}.
+Terapkan butir \ref{defn:ordfield:ii} dalam definisi (karena $x > 0$) untuk memperoleh
+$x(\nicefrac{-1}{x}) > 0$ atau $-1 > 0$, yang bertentangan dengan $1 > 0$ setelah kembali menggunakan bagian
+\ref{prop:bordfield:i}.  Jadi $\nicefrac{1}{x} > 0$.
+Demikian pula, $\nicefrac{1}{y} > 0$.  Dengan demikian $(\nicefrac{1}{x})(\nicefrac{1}{y}) > 0$
+menurut definisi lapangan terurut, dan berdasarkan bagian \ref{prop:bordfield:ii},
+\begin{equation*}
+(\nicefrac{1}{x})(\nicefrac{1}{y})x < (\nicefrac{1}{x})(\nicefrac{1}{y})y .
+\end{equation*}
+Berdasarkan sifat-sifat aljabar, $\nicefrac{1}{y} < \nicefrac{1}{x}$.
+
+Bagian \ref{prop:bordfield:vi} dan \ref{prop:bordfield:vii} diserahkan sebagai
+latihan.
+\end{proof}
+
+Hasil kali dua bilangan positif (elemen suatu lapangan terurut) bernilai positif
+menurut definisi lapangan terurut.
+Namun, tidak benar bahwa jika hasil kalinya positif, maka masing-masing dari kedua
+faktornya harus positif.  Sebagai contoh, $(-1)(-1) = 1 > 0$.
+
+\begin{prop}
+Misalkan $x,y \in F$, dengan $F$ suatu lapangan terurut.  Jika
+$xy > 0$, maka $x$ dan $y$ keduanya positif atau keduanya negatif.
+\end{prop}
+
+\begin{proof}
+Kita buktikan kontraposisinya: \emph{Jika $x$ atau $y$ bernilai nol, atau
+jika $x$ dan $y$ berlainan tanda, maka $xy$ tidak positif.}
+Jika $x$ atau $y$ bernilai nol, maka $xy$ bernilai nol sehingga tidak positif.
+Jadi, andaikan $x$ dan $y$ tak nol dan
+berlainan tanda.
+Tanpa mengurangi keumuman,
+andaikan $x > 0$ dan $y < 0$.
+Kalikan $y < 0$ dengan $x$ untuk memperoleh $xy < 0x = 0$.
+\end{proof}
+
+\begin{example} \label{example:complexfield}
+Pembaca mungkin pernah mendengar tentang \emph{\myindex{bilangan kompleks}},
+yang biasanya dilambangkan dengan $\C$.\glsadd{not:complex}
+Artinya, $\C$ adalah himpunan bilangan berbentuk
+$x + iy$, dengan $x$ dan $y$ bilangan real, dan $i$ adalah
+bilangan imajiner, yakni bilangan sedemikian sehingga $i^2 = -1$.  Pembaca mungkin
+ingat dari aljabar bahwa $\C$ juga merupakan lapangan; namun, himpunan ini bukan
+lapangan terurut.  Walaupun $\C$ dapat dijadikan himpunan terurut dengan suatu cara,
+tidak mungkin memberikan
+urutan pada $\C$ yang menjadikannya lapangan terurut: Dalam setiap lapangan terurut,
+$-1 < 0$ dan $x^2 > 0$ untuk setiap $x$ yang tak nol, tetapi dalam $\C$, $i^2 = -1$.
+\end{example}
+
+Terakhir, suatu lapangan terurut yang memiliki sifat batas atas terkecil juga memiliki
+sifat yang bersesuaian untuk batas bawah terbesar.
+
+\begin{prop}
+Misalkan $F$ suatu lapangan terurut dengan sifat batas atas terkecil.
+Misalkan $A \subset F$ suatu himpunan tak kosong yang terbatas di bawah.
+Maka $\inf\, A$ ada.
+\end{prop}
+
+\begin{proof}
+Misalkan $B \coloneqq \{ -x : x \in A \}$. Misalkan $b \in F$ suatu batas bawah bagi $A$:
+Jika $x \in A$, maka $x \geq b$
+sehingga $-x \leq -b$.  Jadi $-b$
+merupakan batas atas bagi $B$.
+Karena $F$ memiliki sifat batas atas terkecil, $c\coloneqq\sup\, B$ ada, dan $c \leq -b$.
+Karena $y \leq c$
+untuk semua $y \in B$, kita memperoleh $-c \leq x$ untuk semua $x \in A$.
+Jadi,
+$-c$ merupakan batas bawah bagi $A$.  Karena $-c \geq b$
+dan $b$ adalah sebarang batas bawah bagi $A$,
+batas bawah terbesar dari $A$ ada dan sama dengan $-c$.
+\end{proof}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Buktikan bagian \ref{prop:bordfield:iii} dari \propref{prop:bordfield}.
+Dengan kata lain, misalkan $F$ suatu lapangan terurut dan $x,y,z \in F$.  Buktikan
+bahwa
+jika $x < 0$ dan $y < z$, maka $xy > xz$.
+\end{exercise}
+
+
+\begin{exercise} \label{exercise:finitesethasminmax}
+Misalkan $S$ suatu himpunan terurut.  Misalkan $A \subset S$ suatu himpunan bagian hingga tak kosong.
+Tunjukkan bahwa $A$ terbatas.  Lebih lanjut,
+tunjukkan bahwa
+$\inf\, A$ ada dan berada di $A$, serta
+$\sup\, A$ ada dan berada di $A$.
+Petunjuk: Gunakan \hyperref[induction:thm]{induksi}.
+\end{exercise}
+
+\begin{exercise} \label{exercise:squareineq}
+Buktikan bagian \ref{prop:bordfield:vi} dari \propref{prop:bordfield}.
+Dengan kata lain, misalkan $x, y \in F$, dengan $F$ suatu lapangan terurut, sedemikian sehingga
+$0 < x < y$.  Tunjukkan bahwa $x^2 < y^2$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $S$ suatu himpunan terurut.  Misalkan $B \subset S$ terbatas (di atas dan
+di bawah).  Misalkan $A \subset B$ suatu himpunan bagian tak kosong.
+Andaikan semua $\inf$ dan
+$\sup$ tersebut ada. Tunjukkan bahwa
+\begin{equation*}
+\inf\, B \leq \inf\, A \leq \sup\, A \leq \sup\, B .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $S$ suatu himpunan terurut.  Misalkan $A \subset S$ dan andaikan
+$b$ merupakan batas atas bagi $A$.  Andaikan $b \in A$.  Tunjukkan
+bahwa $b = \sup\, A$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $S$ suatu himpunan terurut.  Misalkan $A \subset S$ tak kosong dan
+terbatas di atas.
+Andaikan $\sup\, A$ ada dan
+$\sup\, A \notin A$.
+Tunjukkan bahwa $A$ memuat suatu himpunan bagian
+tak berhingga terhitung.
+%In particular, $A$ is infinite.
+\end{exercise}
+
+\begin{exercise}
+Temukan suatu urutan tak baku pada himpunan bilangan asli $\N$
+sedemikian sehingga terdapat himpunan bagian sejati tak kosong $A \subsetneq \N$
+dan sedemikian sehingga $\sup\, A$ ada di $\N$, tetapi $\sup\, A \notin A$.
+Agar tidak membingungkan, sebaiknya gunakan notasi lain
+untuk urutan tak baku tersebut, misalnya $n \prec m$.
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Misalkan $F \coloneqq \{ 0, 1, 2 \}$.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa hanya ada
+satu cara untuk mendefinisikan penjumlahan dan perkalian yang menjadikan $F$ suatu
+lapangan, dengan $0$ dan $1$ mempunyai arti lazim seperti pada (A4) dan (M4).
+\item
+Tunjukkan bahwa $F$ tidak mungkin merupakan lapangan terurut.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \label{exercise:dominatingb}
+\pagebreak[2]
+Misalkan $S$ suatu himpunan terurut dan
+misalkan $A$ suatu himpunan bagian tak kosong sedemikian sehingga $\sup \, A$ ada.  Andaikan terdapat
+$B \subset A$ sedemikian sehingga untuk setiap $x \in A$ terdapat $y \in B$
+sedemikian sehingga $x \leq y$.  Tunjukkan bahwa $\sup \, B$ ada dan $\sup \, B = \sup \, A$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $D$ himpunan terurut yang terdiri atas semua kata yang mungkin (bukan hanya kata-kata bahasa Inggris,
+melainkan semua untai huruf dengan panjang sebarang)
+yang menggunakan alfabet Latin dan hanya huruf kecil.  Urutannya adalah
+urutan leksikografis seperti dalam kamus (mis.\ \emph{aa} $<$ \emph{aaa} $<$ \emph{dog} $<$ \emph{door}).
+Misalkan $A$ himpunan bagian dari $D$ yang memuat kata-kata dengan
+huruf pertama `a' (mis.\ \emph{a} $\in A$, \emph{abcd} $\in A$).
+Tunjukkan bahwa $A$ memiliki supremum dan tentukan supremum tersebut.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $F$ suatu lapangan terurut dan $x,y,z,w \in F$.
+\begin{enumerate}[a)]
+\item
+Buktikan bagian \ref{prop:bordfield:vii} dari \propref{prop:bordfield}.
+Dengan kata lain,
+jika $x \leq y$ dan $z \leq w$, maka $x+z \leq y+w$.
+\item
+Buktikan bahwa
+jika $x < y$ dan $z \leq w$, maka $x+z < y+w$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa setiap lapangan terurut harus memuat suatu himpunan tak berhingga terhitung.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\N_{\infty} \coloneqq \N \cup \{ \infty \}$, dengan unsur-unsur $\N$
+mengikuti urutan biasa di antara sesamanya,
+dan $k < \infty$ untuk setiap $k \in \N$.  Tunjukkan bahwa $\N_{\infty}$ merupakan himpunan terurut
+dan bahwa setiap himpunan bagian $E \subset \N_{\infty}$ memiliki supremum di
+$\N_{\infty}$ (pastikan juga menangani kasus himpunan kosong).
+Catatan: Perhatikan bahwa kasus himpunan kosong akan berbeda
+jika himpunan terurut kita adalah bilangan real atau bilangan
+real diperluas dari bagian berikutnya.  Penting bahwa
+himpunan terurut kita di sini adalah $\N_{\infty}$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $S \coloneqq \{ a_k : k \in \N \} \cup \{ b_k : k \in \N \}$, diurutkan sedemikian sehingga
+$a_k < b_j$ untuk setiap $k$ dan $j$,
+$a_k < a_m$ setiap kali $k < m$,
+dan $b_k > b_m$ setiap kali $k < m$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $S$ merupakan himpunan terurut.
+\item
+Tunjukkan bahwa setiap himpunan bagian dari $S$ terbatas (baik di atas maupun di bawah).
+\item
+Temukan himpunan bagian terbatas dari $S$ yang tidak memiliki batas atas terkecil.
+\end{enumerate}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Himpunan bilangan real} \label{sec:setofreals}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2 pertemuan kuliah; bilangan real diperluas bersifat opsional}
+
+\subsection{Himpunan bilangan real}
+
+Akhirnya kita sampai pada sistem bilangan real.  Untuk menyederhanakan pembahasan, alih-alih mengonstruksi
+himpunan bilangan real dari bilangan rasional, kita cukup menyatakan keberadaannya
+sebagai teorema tanpa bukti.  Perhatikan bahwa $\Q$ merupakan
+lapangan terurut.
+
+\begin{thm}
+Terdapat suatu lapangan terurut unik\footnote{Keunikan dipahami hingga isomorfisme, tetapi kita ingin
+menghindari penggunaan aljabar yang berlebihan.  Bagi keperluan kita, cukup mengasumsikan
+bahwa suatu himpunan bilangan real ada.  Lihat Rudin~\cite{Rudin:baby} untuk
+konstruksi dan rincian lebih lanjut.}
+$\R$ yang memiliki \hyperref[defn:lub]{sifat batas atas terkecil}
+sedemikian sehingga $\Q \subset \R$.
+\end{thm}
+
+Perhatikan pula bahwa $\N \subset \Q$.  Kita telah melihat bahwa $1 > 0$.
+Dengan \hyperref[induction:thm]{induksi} (latihan),
+kita dapat membuktikan bahwa $n > 0$ untuk setiap $n \in \N$.
+Dengan cara serupa, kita memverifikasi pernyataan-pernyataan sederhana tentang bilangan rasional.
+Sebagai contoh, kita telah membuktikan bahwa jika $n > 0$, maka $\nicefrac{1}{n} > 0$.
+Selanjutnya, $m < k$ mengakibatkan $\nicefrac{m}{n} < \nicefrac{k}{n}$.
+
+Analisis berkaitan dengan pembuktian ketaksamaan, dan
+proposisi berikut, atau salah satu dari banyak variasinya,
+merupakan cara seorang analis membuktikan ketaksamaan tak ketat.
+
+\begin{prop}
+Jika $x \in \R$ sedemikian sehingga $x \leq \epsilon$ untuk setiap
+$\epsilon \in \R$ dengan
+$\epsilon > 0$, maka $x \leq 0$.
+\end{prop}
+
+\begin{proof}
+Jika $x > 0$, maka $0 < \nicefrac{x}{2} < x$ (mengapa?).  Ambil
+$\epsilon = \nicefrac{x}{2}$ sehingga diperoleh kontradiksi.  Jadi $x \leq 0$.
+\end{proof}
+
+Untuk $x$ nonnegatif, diperoleh kesamaan:
+\emph{Jika $x \geq 0$ sedemikian sehingga $x \leq \epsilon$ untuk setiap
+$\epsilon > 0$, maka $x = 0$.}
+Versi yang umum menggunakan nilai mutlak (lihat \sectionref{sec:absval}):
+\emph{Jika $\sabs{x} \leq \epsilon$ untuk setiap
+$\epsilon > 0$, maka $x = 0$.}
+Untuk membuktikan $x \geq 0$, seorang analis dapat membuktikan
+bahwa $x \geq -\epsilon$ untuk setiap $\epsilon > 0$.
+Mulai sekarang, ketika kita menulis $x \geq 0$ atau
+$\epsilon > 0$, secara otomatis kita maksudkan bahwa $x \in \R$ dan $\epsilon \in \R$.
+
+Gagasan di balik proposisi di atas adalah bahwa
+setiap kali kita memiliki dua bilangan real $a < b$, terdapat bilangan
+real lain $c$ sedemikian sehingga
+$a < c < b$.  Terdapat tak hingga banyaknya $c$ seperti itu.  Salah satunya, misalnya, adalah
+$c = \frac{a+b}{2}$ (mengapa?).
+Kita akan menggunakan fakta ini dalam contoh berikutnya.
+
+Hal yang paling berguna dari $\R$ bagi para analis
+bukan sekadar sifatnya sebagai lapangan terurut, melainkan bahwa lapangan ini memiliki
+\hyperref[defn:lub]{sifat batas atas terkecil}.
+Pada dasarnya, kita menginginkan $\Q$, tetapi kita juga
+ingin dapat mengambil supremum (dan infimum) sesuka hati.
+Jadi, kita mengambil $\Q$ dan menambahkan cukup banyak bilangan untuk memperoleh $\R$.
+
+Kita telah menyebutkan bahwa $\R$ memuat unsur-unsur yang tidak berada di $\Q$
+karena \hyperref[defn:lub]{sifat batas atas terkecil}.  Mari kita
+buktikan hal itu.
+Kita telah melihat bahwa tidak ada
+akar kuadrat rasional dari dua.  Himpunan
+$\{ x \in \Q : x^2 < 2 \}$ mengakibatkan keberadaan bilangan real
+$\sqrt{2}$, meskipun fakta ini memerlukan sedikit usaha.  Lihat pula
+\exerciseref{exercise:sqrt2QorR}.
+
+\begin{example} \label{example:sqrt2}
+Klaim: \emph{Terdapat suatu bilangan positif unik
+$r \in \R$ sedemikian sehingga $r^2 = 2$.  Kita melambangkan $r$ dengan $\sqrt{2}$.}
+
+\begin{proof}
+Ambil himpunan
+$A \coloneqq \{ x \in \R : x^2 < 2 \}$.  Pertama-tama kita tunjukkan bahwa $A$ terbatas di atas dan
+tak kosong.  Ketaksamaan $x \geq 2$ mengakibatkan $x^2 \geq 4$
+(lihat \exerciseref{exercise:squareineq}).
+Jadi, jika $x^2 < 2$, maka $x < 2$.  Dengan demikian, $A$ terbatas di atas.
+Karena $1 \in A$, himpunan $A$ tak kosong.  Oleh karena itu, supremumnya ada.
+
+Misalkan $r \coloneqq \sup\, A$.  Kita akan menunjukkan bahwa $r^2 = 2$ dengan menunjukkan
+bahwa $r^2 \geq 2$ dan $r^2 \leq 2$.  Beginilah cara para analis menunjukkan
+kesamaan, yakni dengan menunjukkan dua ketaksamaan.
+Kita telah mengetahui bahwa $r \geq 1 > 0$.
+
+%\medskip
+Pada uraian berikut, mungkin tampak seakan-akan beberapa bentuk tertentu muncul
+begitu saja.  Ketika menulis bukti seperti ini, tentu saja kita baru menemukan
+bentuk-bentuk tersebut setelah mencoba-coba berdasarkan apa yang ingin kita buktikan.  Urutan
+penulisan bukti tidak harus sama dengan urutan ketika kita
+menemukan bukti tersebut.
+
+Pertama-tama mari kita tunjukkan bahwa $r^2 \geq 2$.
+Ambil bilangan positif $s$ sedemikian sehingga $s^2 < 2$.  Kita ingin mencari $h > 0$
+sedemikian sehingga ${(s+h)}^2 < 2$.
+Karena $2-s^2 > 0$, kita memperoleh $\frac{2-s^2}{2s+1} > 0$.
+Pilih $h \in \R$ sedemikian sehingga
+$0 < h < \frac{2-s^2}{2s+1}$.
+Selain itu, andaikan $h < 1$.  Kita peroleh taksiran:
+\begin{equation*}
+\begin{aligned}
+{(s+h)}^2 - s^2 & = h(2s + h) \\
+ & < h(2s+1) & & \quad \bigl(\text{karena } h < 1\bigr) \\
+ & < 2-s^2 & & \quad \bigl(\text{karena } h < \tfrac{2-s^2}{2s+1} \bigr) .
+\end{aligned}
+\end{equation*}
+Oleh karena itu, ${(s+h)}^2 < 2$.  Jadi $s+h \in A$, tetapi karena $h > 0$,
+kita memperoleh $s+h > s$.  Maka $s < r = \sup\, A$.  Karena $s$ adalah sebarang
+bilangan positif sedemikian sehingga $s^2 < 2$, diperoleh $r^2 \geq 2$.
+
+%\medskip
+
+Sekarang ambil bilangan positif $s$ sedemikian sehingga
+$s^2 > 2$.  Kita ingin mencari $h > 0$ sedemikian sehingga
+${(s-h)}^2 > 2$ dan $s-h$ tetap positif.
+Karena $s^2-2 > 0$, kita memperoleh $\frac{s^2-2}{2s} > 0$.
+Misalkan $h \coloneqq \frac{s^2-2}{2s}$,
+dan periksa bahwa $s-h=s-\frac{s^2-2}{2s} = \frac{s}{2}+\frac{1}{s} > 0$.
+Kita peroleh taksiran:
+\begin{equation*}
+\begin{aligned}
+s^2 - {(s-h)}^2 & = 2sh - h^2 \\
+ & < 2sh & & \quad \bigl( \text{karena } h^2 > 0 \text{ sebab } h \neq 0 \bigr) \\
+ & = s^2-2 & & \quad \bigl( \text{karena } h = \tfrac{s^2-2}{2s} \bigr) .
+\end{aligned}
+\end{equation*}
+Dengan mengurangkan $s^2$ dari kedua ruas lalu mengalikan kedua ruas dengan $-1$, kita memperoleh
+${(s-h)}^2 > 2$.  Oleh karena itu, $s-h \notin A$.
+
+Lebih lanjut, jika $x \geq s-h$,
+maka $x^2 \geq {(s-h)}^2 > 2$ (karena $x > 0$ dan $s-h > 0$), sehingga $x \notin A$.
+Jadi,
+$s-h$ merupakan batas atas bagi $A$.  Namun, $s-h < s$, atau dengan kata
+lain, $s > r = \sup\, A$.  Dengan demikian, $r^2 \leq 2$.
+
+\medskip
+
+Kedua ketaksamaan $r^2 \geq 2$ dan $r^2 \leq 2$ bersama-sama mengakibatkan
+$r^2 = 2$.  Bagian pembuktian keberadaan telah selesai.  Kita masih perlu
+membuktikan keunikan.  Andaikan $s \in \R$ sedemikian sehingga $s^2 = 2$ dan $s > 0$.
+Jadi, $s^2 = r^2$.  Namun, jika $0 < s < r$, maka $s^2 < r^2$.  Dengan cara serupa,
+$0 < r < s$ mengakibatkan $r^2 < s^2$.  Dengan demikian, $s = r$.
+\end{proof}
+\end{example}
+
+Bilangan $\sqrt{2} \notin \Q$.  Himpunan
+$\R \setminus \Q$ disebut himpunan bilangan
+\emph{\myindex{irasional}}.  Kita baru saja membuktikan bahwa $\R \setminus \Q$
+tak kosong.  Seperti akan kita lihat, himpunan ini bukan sekadar tak kosong,
+melainkan benar-benar sangat besar.
+
+Dengan menggunakan teknik yang sama seperti di atas, kita dapat menunjukkan bahwa bilangan real positif
+$x^{1/n}$ ada untuk setiap $n\in \N$ dan setiap $x > 0$.
+Artinya, untuk setiap $x > 0$,
+terdapat bilangan real positif unik $r$ sedemikian sehingga $r^n = x$.
+Buktinya diserahkan sebagai latihan.
+
+\subsection{Sifat Archimedes}
+
+Seperti telah kita lihat, terdapat banyak sekali bilangan real dalam setiap interval.  Namun,
+terdapat pula tak hingga banyaknya bilangan rasional dalam setiap interval.  Pernyataan
+berikut merupakan salah satu fakta mendasar tentang bilangan real.
+Kedua bagian teorema berikut sebenarnya ekuivalen, meskipun mungkin
+tidak tampak demikian pada pandangan pertama.
+
+
+\begin{thm} \label{thm:arch}
+%FIXMEevillayouthack
+\pagebreak[3]
+\leavevmode
+\begin{enumerate}[(i)]
+\item \label{thm:arch:i} \emph{(\myindex{Sifat Archimedes})}%
+\footnote{Dinamai menurut matematikawan Yunani Kuno
+\href{https://en.wikipedia.org/wiki/Archimedes}{Archimedes dari Sirakusa}
+(sekitar\ 287 SM -- sekitar\ 212 SM)\@.
+Sifat ini adalah Aksioma V dari karya Archimedes \myquote{Tentang Bola dan
+Tabung} (225 SM)\@.}
+Jika $x, y \in \R$ dan
+$x > 0$, maka terdapat $n \in \N$ sedemikian sehingga
+\begin{equation*}
+nx > y .
+\end{equation*}
+\item \label{thm:arch:ii} \emph{($\Q$ rapat di $\R$\index{kepadatan
+bilangan rasional})} Jika $x, y \in \R$ dan
+$x < y$, maka terdapat $r \in \Q$ sedemikian sehingga
+$x < r < y$.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+Mari kita buktikan \ref{thm:arch:i}.  Bagi kedua ruas dengan $x$.
+Maka \ref{thm:arch:i} menyatakan bahwa untuk setiap bilangan real $t\coloneqq \nicefrac{y}{x}$,
+kita dapat menemukan $n \in \N$ sedemikian sehingga $n > t$.  Dengan kata lain,
+\ref{thm:arch:i} menyatakan bahwa $\N \subset \R$ tidak terbatas di atas.
+Andaikan, demi memperoleh kontradiksi, bahwa $\N$ terbatas di atas.  Misalkan $b \coloneqq \sup \N$.
+Bilangan $b-1$ tidak mungkin merupakan batas atas bagi $\N$ karena bilangan itu lebih kecil
+daripada $b$ (batas atas terkecil).  Jadi, terdapat $m \in \N$ sedemikian sehingga $m > b-1$.
+Tambahkan satu untuk memperoleh $m+1 > b$, yang bertentangan dengan fakta bahwa $b$ merupakan
+batas atas.
+
+\begin{myfigureht}
+\myincludepdft{figdensofQ}{%
+Diagram garis bilangan real horizontal dengan beberapa tanda vertikal tinggi
+yang berjarak sama, dengan jarak antartanda
+sebesar 1 per n.  Tanda kedua
+dari kiri diberi label m dikurangi 1, lalu seluruhnya dibagi n.
+Setelah tanda ini terdapat bilangan x yang ditandai dengan tanda pendek.
+Tanda tinggi berikutnya diberi label m dibagi n.
+Kemudian terdapat bilangan y, lalu tanda tinggi berlabel
+m ditambah 1, lalu seluruhnya dibagi n.  Setelahnya tampak dua tanda tinggi lagi.}
+\caption{Gagasan bukti kerapatan $\Q$: Carilah $n$ sedemikian sehingga $y-x >
+\nicefrac{1}{n}$, lalu ambil $m$ terkecil sedemikian sehingga $\nicefrac{m}{n} > x$.\label{figdensofQ}}
+\end{myfigureht}
+Mari kita tangani \ref{thm:arch:ii}.
+Lihat \figureref{figdensofQ}
+untuk ilustrasi gagasan di balik bukti tersebut.
+Pertama, andaikan $x \geq 0$.
+Perhatikan bahwa $y-x > 0$.
+Berdasarkan \ref{thm:arch:i}, terdapat $n \in \N$ sedemikian sehingga
+\begin{equation*}
+n(y-x) > 1
+\qquad \text{atau} \qquad
+y-x > \nicefrac{1}{n}.
+\end{equation*}
+Sekali lagi berdasarkan \ref{thm:arch:i}, himpunan
+$A \coloneqq \{ k \in \N : k > nx \}$ tak kosong.  Berdasarkan
+\hyperlink{wop:link}{sifat keterurutan baik}
+dari $\N$, $A$ memiliki unsur terkecil $m$.
+Karena $m \in A$, kita memperoleh $m > nx$.
+Bagi kedua ruas dengan $n$ untuk memperoleh $x < \nicefrac{m}{n}$.
+Karena $m$ merupakan unsur terkecil
+dari $A$, maka $m-1 \notin A$.
+Jika $m > 1$, maka $m-1 \in \N$, tetapi $m-1 \notin A$ sehingga $m-1 \leq nx$.
+Jika $m=1$,
+maka $m-1 = 0$, dan $m-1 \leq nx$ tetap berlaku karena $x \geq 0$.
+Dengan kata lain,
+\begin{equation*}
+m-1 \leq nx \qquad \text{atau} \qquad m \leq nx+1 .
+\end{equation*}
+Di sisi lain,
+dari $n(y-x) > 1$ kita memperoleh $ny > 1+nx$.
+Jadi, $ny > 1+nx \geq m$, dan karena itu $y > \nicefrac{m}{n}$.
+Dengan menggabungkan semuanya, kita memperoleh $x < \nicefrac{m}{n} < y$.
+Jadi, ambil $r = \nicefrac{m}{n}$.
+
+Sekarang andaikan $x < 0$.  Jika $y > 0$, cukup ambil $r=0$.  Jika
+$y \leq 0$, maka $0 \leq -y < -x$, dan kita
+menemukan bilangan rasional $q$ sedemikian sehingga $-y < q < -x$.  Kemudian, ambil $r = -q$.
+\end{proof}
+
+Mari kita nyatakan dan buktikan suatu akibat sederhana tetapi berguna dari
+\hyperref[thm:arch:i]{sifat Archimedes}.
+
+\begin{cor}
+$\inf \{ \nicefrac{1}{n} : n \in \N \} = 0$.
+Lihat \figureref{fig:oneovernset}.
+\end{cor}
+
+\begin{proof}
+Misalkan $A \coloneqq \{ \nicefrac{1}{n} : n \in \N \}$.  Jelas bahwa $A$ tak kosong.
+Selain itu,
+$\nicefrac{1}{n} > 0$ untuk setiap $n \in \N$, sehingga $0$ merupakan batas bawah
+dan $b \coloneqq \inf\, A$ ada.
+Karena $0$ merupakan batas bawah, $b \geq 0$.
+Ambil sebarang $a > 0$.  Berdasarkan
+\hyperref[thm:arch:i]{sifat Archimedes}, terdapat $n$ sedemikian sehingga
+$na > 1$, yaitu $a > \nicefrac{1}{n} \in A$.  Oleh karena itu,
+$a$ tidak mungkin merupakan batas bawah bagi $A$.  Dengan demikian, $b=0$.
+\end{proof}
+
+\begin{myfigureht}
+\myincludegraphics{oneovernset}{%
+Diagram garis bilangan real horizontal dengan tanda-tanda vertikal yang menandai
+bilangan 1, 1 per 2, 1 per 3, 1 per 4, dan seterusnya.  Tanda-tanda ini semakin
+mendekati 0, yang juga ditandai, dan tanda-tanda itu begitu rapat
+ketika mencapai 0 sehingga di sana hanya tampak persegi panjang hitam.}
+\caption{Himpunan $\{ \nicefrac{1}{n} : n \in \N \}$ dan infimumnya $0$.\label{fig:oneovernset}}
+\end{myfigureht}
+
+
+
+\subsection{Menggunakan supremum dan infimum}
+
+Supremum dan infimum
+kompatibel dengan operasi aljabar.  Untuk suatu himpunan $A \subset \R$ dan
+$x \in \R$, definisikan
+\begin{align*}
+x + A & \coloneqq \{ x+y \in \R : y \in A \} , \\
+xA & \coloneqq \{ xy \in \R : y \in A \} .
+\end{align*}
+Sebagai contoh, jika $A = \{ 1,2,3 \}$, maka $5+A = \{ 6,7,8 \}$ dan $3A = \{ 3,6,9
+\}$.
+
+\begin{prop} \label{prop:supinfalg}
+Misalkan $A \subset \R$ tak kosong.
+\begin{enumerate}[(i)]
+\item Jika $x \in \R$ dan $A$ terbatas di atas, maka $\sup (x+A) = x + \sup\, A$.
+\item Jika $x \in \R$ dan $A$ terbatas di bawah, maka $\inf (x+A) = x + \inf\, A$.
+\item Jika $x > 0$ dan $A$ terbatas di atas, maka $\sup (xA) = x ( \sup\, A )$.
+\item Jika $x > 0$ dan $A$ terbatas di bawah, maka $\inf (xA) = x ( \inf\, A )$.
+\item Jika $x < 0$ dan $A$ terbatas di bawah, maka $\sup (xA) = x ( \inf\, A )$.
+\item Jika $x < 0$ dan $A$ terbatas di atas, maka $\inf (xA) = x ( \sup\, A )$.
+\end{enumerate}
+\end{prop}
+
+Perhatikan bahwa mengalikan suatu himpunan dengan bilangan negatif mempertukarkan supremum dan infimum.
+Selain itu, karena proposisi tersebut mengakibatkan adanya
+supremum (atau infimum,\ sesuai kasusnya) dari $x+A$ atau $xA$,
+proposisi tersebut juga mengakibatkan bahwa $x+A$ atau $xA$
+tak kosong dan terbatas di atas (atau di bawah,\ sesuai kasusnya).
+
+\begin{proof}
+Mari kita buktikan pernyataan pertama saja.  Sisanya diserahkan sebagai latihan.
+
+Andaikan $b$ merupakan batas atas bagi $A$.  Artinya, $y \leq b$ untuk setiap $y \in A$.
+Maka $x+y \leq x+b$ untuk setiap $y \in A$, sehingga $x+b$ merupakan batas
+atas bagi $x+A$.  Secara khusus, jika $b = \sup\, A$, maka
+\begin{equation*}
+\sup (x+A) \leq x+b = x+ \sup\, A .
+\end{equation*}
+
+Ketaksamaan sebaliknya dibuktikan dengan cara serupa. Jika $c$ merupakan batas atas bagi $x+A$,
+maka $x+y \leq c$
+untuk setiap $y \in A$, sehingga $y \leq c-x$ untuk setiap $y \in A$.
+Jadi, $c-x$ merupakan batas atas bagi $A$.
+Jika $c = \sup (x+A)$, maka
+\begin{equation*}
+\sup\, A \leq c-x = \sup (x+A) -x .
+\end{equation*}
+Dengan demikian, hasilnya terbukti.
+\end{proof}
+
+Terkadang kita perlu menerapkan supremum atau infimum dua kali.  Berikut sebuah contoh.
+
+\begin{prop} \label{infsupineq:prop}
+Misalkan $A, B \subset \R$ himpunan-himpunan tak kosong sedemikian sehingga $x \leq y$ setiap kali $x \in A$ dan
+$y \in B$.  Maka $A$ terbatas di atas, $B$ terbatas di bawah, dan $\sup\, A \leq \inf\, B$.
+\end{prop}
+
+\begin{proof}
+Setiap $x \in A$ merupakan batas bawah bagi $B$.
+Oleh karena itu, $x \leq \inf\, B$ untuk setiap $x \in A$,
+sehingga $\inf\, B$ merupakan batas atas bagi $A$.
+Dengan demikian, $\sup\, A \leq \inf\, B$.
+\end{proof}
+
+Kita harus berhati-hati terhadap ketaksamaan ketat ketika mengambil supremum dan infimum.
+Perhatikan bahwa $x < y$ setiap kali $x \in A$ dan
+$y \in B$ tetap hanya mengakibatkan $\sup\, A \leq \inf\, B$, bukan ketaksamaan
+ketat.
+Sebagai contoh, ambil $A \coloneqq \{ 0 \}$ dan $B \coloneqq \{ \nicefrac{1}{n}
+: n \in \N \}$.
+Maka $0 < \nicefrac{1}{n}$
+untuk setiap $n \in \N$.  Namun, $\sup\, A = 0$ dan $\inf\, B = 0$.
+Nuansa penting ini sering muncul.
+
+\medskip
+\pagebreak[1]
+
+Bukti fakta berikut, yang
+sering digunakan, diserahkan kepada pembaca.
+Hasil serupa berlaku untuk infimum.
+
+\begin{prop} \label{prop:existsxepsfromsup}
+Jika $S \subset \R$ tak kosong dan terbatas di atas,
+maka untuk setiap $\epsilon > 0$ terdapat $x \in S$ sedemikian
+sehingga $(\sup\, S) - \epsilon < x \leq \sup\, S$.
+\end{prop}
+
+
+Untuk semakin mempermudah penggunaan supremum dan infimum, kita mungkin ingin
+menulis $\sup\, A$ dan $\inf\, A$ tanpa perlu mencemaskan apakah $A$
+terbatas dan tak kosong.  Kita buat definisi-definisi alami berikut.
+
+\begin{defn}
+Misalkan $A \subset \R$ suatu himpunan.
+\begin{enumerate}[(i)]
+\item Jika $A$ kosong, maka $\sup\, A \coloneqq -\infty$.
+\item Jika $A$ tidak terbatas di atas, maka $\sup\, A \coloneqq \infty$.
+\item Jika $A$ kosong, maka $\inf\, A \coloneqq \infty$.
+\item Jika $A$ tidak terbatas di bawah, maka $\inf\, A \coloneqq -\infty$.
+\end{enumerate}
+\end{defn}
+
+Pernyataan-pernyataan dalam definisi di atas
+muncul secara alami jika, alih-alih bekerja pada
+himpunan terurut $\R$, kita mengambil supremum dan infimum
+pada himpunan terurut
+$\R^* \coloneqq \R \cup \{ -\infty , \infty\}$
+\glsadd{not:extreal},\glsadd{not:infinity}
+dengan menetapkan
+\begin{equation*}
+-\infty < \infty \quad \text{dan} \quad
+-\infty < x \quad \text{dan} \quad
+x < \infty \quad \text{untuk setiap $x \in \R$}.
+\end{equation*}
+Himpunan $\R^*$ disebut himpunan \emph{\myindex{bilangan real diperluas}}.
+Untuk kemudahan, $\infty$ dan $-\infty$ terkadang diperlakukan seolah-olah merupakan
+bilangan, tetapi kita tidak mengizinkan operasi aritmetika sebarang terhadapnya.
+Kita dapat mendefinisikan beberapa operasi aritmetika pada $\R^*$.  Sebagian besar operasi
+diperluas dengan cara yang jelas, tetapi kita harus membiarkan
+$\infty-\infty$, $0 \cdot (\pm\infty)$, dan $\frac{\pm\infty}{\pm\infty}$
+tidak terdefinisi.
+Kita tidak
+menggunakan aritmetika ini;
+aritmetika tersebut mudah menimbulkan kekeliruan karena $\R^*$ bukan lapangan.
+Sekarang kita dapat mengambil supremum dan infimum tanpa khawatir akan kekosongan atau
+ketakterbatasan.  Dalam buku ini, kita umumnya menghindari
+penggunaan $\R^*$ di luar latihan dan menyerahkan generalisasi semacam itu kepada pembaca yang berminat.
+
+\subsection{Maksimum dan minimum}
+
+Berdasarkan \exerciseref{exercise:finitesethasminmax},
+suatu himpunan bilangan yang hingga selalu memiliki supremum dan infimum,
+dan keduanya termuat dalam himpunan itu sendiri.
+Dalam kasus ini, biasanya kita tidak menggunakan istilah supremum atau infimum.
+Jika suatu himpunan bilangan real $A$ terbatas di atas dan
+$\sup\, A \in A$, kita dapat menggunakan istilah
+\emph{\myindex{maksimum}} dan notasi $\max\, A$\glsadd{not:max} untuk menyatakan supremum tersebut.
+Demikian pula untuk infimum: Jika $A$ terbatas di bawah
+dan $\inf\, A \in A$, kita dapat menggunakan
+istilah \emph{\myindex{minimum}} dan notasi $\min\, A$.\glsadd{not:min}
+Sebagai contoh,
+\begin{align*}
+& \max \{ 1,2.4,\pi,100 \} = 100 , \\
+& \min \{ 1,2.4,\pi,100 \} = 1 .
+\end{align*}
+Walaupun menulis $\sup$ dan $\inf$ secara teknis mungkin
+benar dalam situasi ini, $\max$ dan
+$\min$ umumnya digunakan untuk menekankan bahwa supremum atau infimum
+berada dalam himpunan itu sendiri, khususnya ketika himpunannya hingga.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Buktikan bahwa
+jika $t > 0$ ($t \in \R$), maka terdapat $n \in \N$ sedemikian sehingga
+$\dfrac{1}{n^2} < t$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa
+jika $t \geq 0$ ($t \in \R$), maka terdapat $n \in \N$ sedemikian sehingga $n-1 \leq t < n$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan bukti \propref{prop:supinfalg}.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $x, y \in \R$.  Andaikan $x^2 + y^2 = 0$.  Buktikan bahwa $x = 0$ dan $y = 0$.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa $\sqrt{3}$ irasional.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $n \in \N$.
+Tunjukkan bahwa $\sqrt{n}$ merupakan bilangan bulat atau
+irasional.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \emph{\myindex{ketaksamaan rata-rata aritmetika-geometrik}}.
+Untuk dua bilangan real positif $x,y$,
+\begin{equation*}
+\sqrt{xy} \leq \frac{x+y}{2} .
+\end{equation*}
+Lebih lanjut, kesamaan berlaku jika dan hanya jika $x=y$.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa untuk setiap pasangan bilangan real $x$ dan $y$ sedemikian sehingga $x < y$,
+terdapat bilangan irasional $s$ sedemikian sehingga $x < s < y$.  Petunjuk:
+Terapkan kerapatan $\Q$ pada $\dfrac{x}{\sqrt{2}}$ dan
+$\dfrac{y}{\sqrt{2}}$, tetapi hindari nol.
+\end{exercise}
+
+\begin{exercise} \label{exercise:supofsum}
+Misalkan $A$ dan $B$ merupakan dua himpunan bilangan real tak kosong dan terbatas.  Misalkan
+$C \coloneqq \{ a+b : a \in A, b \in B \}$.
+Tunjukkan bahwa $C$ merupakan himpunan terbatas dan bahwa
+\begin{equation*}
+\sup\,C = \sup\,A + \sup\,B
+\qquad \text{dan} \qquad
+\inf\,C = \inf\,A + \inf\,B .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $A$ dan $B$ merupakan dua himpunan bilangan real nonnegatif yang tak kosong dan terbatas.
+Definisikan himpunan
+$C \coloneqq \{ ab : a \in A, b \in B \}$.
+Tunjukkan bahwa $C$ merupakan himpunan terbatas dan bahwa
+\begin{equation*}
+\sup\,C = (\sup\,A )( \sup\,B)
+\qquad \text{dan} \qquad
+\inf\,C = (\inf\,A )( \inf\,B).
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}[Sulit] \label{exercise:rootexistshard}
+Diberikan $x > 0$ dan $n \in \N$, tunjukkan bahwa terdapat bilangan real positif unik
+$r$ sedemikian sehingga $x = r^n$.  Biasanya, $r$ dilambangkan dengan $x^{1/n}$.
+\end{exercise}
+
+\begin{exercise}[Mudah]
+Buktikan \propref{prop:existsxepsfromsup}.
+\end{exercise}
+
+\begin{exercise} \label{exercise:bernoulliineq}
+Buktikan \emph{\myindex{ketaksamaan Bernoulli}}%
+\footnote{%
+Dinamai menurut matematikawan Swiss
+\href{https://en.wikipedia.org/wiki/Jacob_Bernoulli}{Jacob Bernoulli}
+(1655--1705).}%
+: Jika $1+x > 0$, maka
+untuk setiap $n \in \N$, berlaku $(1+x)^n \geq 1+nx$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:sqrt2QorR}
+Buktikan $\sup \{ x \in \Q : x^2 < 2 \} = \sup \{ x \in \R : x^2 < 2 \}$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:Dedekind}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa untuk setiap $y \in \R$, berlaku $\sup \{ x \in \Q : x < y \} = y$.
+\item
+Misalkan $A \subset \Q$ suatu himpunan tak kosong yang terbatas di atas sedemikian sehingga setiap kali $x
+\in A$ dan $t \in \Q$ dengan $t < x$, maka $t \in A$.  Andaikan pula
+$\sup\, A \notin A$.  Tunjukkan bahwa terdapat $y \in \R$ sedemikian sehingga
+$A = \{ x \in \Q : x < y \}$.  Himpunan seperti $A$ disebut
+\emph{\myindex{potongan Dedekind}}.
+\item
+Tunjukkan bahwa terdapat bijeksi antara $\R$ dan potongan-potongan Dedekind.
+\end{enumerate}
+Catatan: Dedekind menggunakan himpunan seperti dalam bagian b) pada konstruksi
+bilangan real yang dikembangkannya.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa jika $A \subset \Z$ merupakan himpunan bagian tak kosong yang terbatas di bawah, maka
+terdapat unsur terkecil dalam $A$.
+Kemudian, jelaskan mengapa pernyataan ini akan menyederhanakan bukti
+\thmref{thm:arch} bagian \ref{thm:arch:ii} sehingga kita tidak perlu mengandaikan
+$x \geq 0$.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise} \label{exercise:realpower}
+Andaikan kita mengetahui bahwa $x^{1/n}$ ada untuk setiap $x > 0$ dan setiap $n \in
+\N$ (lihat \exerciseref{exercise:rootexistshard} di atas).
+Untuk bilangan bulat $p$ dan $q > 0$ dengan $\nicefrac{p}{q}$ dalam bentuk paling sederhana,
+definisikan $x^{p/q} \coloneqq
+{(x^{1/q})}^p$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa pangkat tersebut terdefinisi dengan baik sekalipun
+pecahannya tidak dalam bentuk paling sederhana: Jika $\nicefrac{p}{q} =
+\nicefrac{m}{k}$ dengan $m$ dan $k > 0$ bilangan bulat, maka
+${(x^{1/q})}^p = {(x^{1/k})}^m$.
+\item
+Misalkan $x$ dan $y$ dua bilangan positif dan $r$ suatu bilangan rasional.
+Dengan mengandaikan $r > 0$, tunjukkan bahwa
+$x < y$ jika dan hanya jika $x^r < y^r$.  Kemudian, andaikan $r < 0$ dan tunjukkan:
+$x < y$ jika dan hanya jika $x^r > y^r$.
+\item
+Andaikan $x > 1$ dan $r,s$ bilangan-bilangan rasional dengan $r < s$.
+Tunjukkan bahwa $x^r < x^s$.  Jika $0 < x < 1$ dan $r < s$, tunjukkan bahwa $x^r > x^s$.
+Petunjuk: Tuliskan $r$ dan $s$ dengan penyebut yang sama.
+\item
+(Menantang)%
+\footnote{Dalam
+\sectionref{sec:logandexp}
+kita akan mendefinisikan fungsi eksponensial dan logaritma, serta
+mendefinisikan $x^z \coloneqq \exp(z \ln x)$.  Dengan demikian, kita akan memiliki
+perangkat yang memadai untuk membuat pembuktian pernyataan-pernyataan ini jauh lebih mudah.  Namun, pada
+tahap ini kita belum memiliki perangkat tersebut.}
+Untuk bilangan irasional $z \in \R \setminus \Q$ dan $x > 1$, definisikan
+$x^z \coloneqq \sup \{ x^r : r \leq z, r \in \Q \}$,
+untuk $x=1$, definisikan $1^z = 1$,
+dan untuk $0 < x < 1$, definisikan
+$x^z \coloneqq \inf \{ x^r : r \leq z, r \in \Q \}$.
+Buktikan kedua pernyataan pada bagian b) untuk setiap bilangan real $z$.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Nilai mutlak dan fungsi terbatas} \label{sec:absval}
+
+\sectionnotes{0,5--1 pertemuan kuliah}
+
+Salah satu konsep yang akan kita jumpai berulang kali adalah
+\emph{\myindex{nilai mutlak}}.
+Nilai mutlak dapat dipandang sebagai \myquote{ukuran} suatu bilangan real.
+Berikut definisi formalnya:
+\glsadd{not:abs}
+\begin{equation*}
+\sabs{x} \coloneqq
+\begin{cases}
+x & \text{jika } x \geq 0, \\
+-x & \text{jika } x < 0 .
+\end{cases}
+\end{equation*}
+Proposisi berikut memberikan
+sifat-sifat utama nilai
+mutlak.
+
+\begin{prop} \label{prop:absbas}
+\leavevmode
+\begin{enumerate}[(i)]
+\item \label{prop:absbas:i} $\sabs{x} \geq 0$; lebih lanjut, $\sabs{x}=0$ jika dan hanya jika $x = 0$.
+\item \label{prop:absbas:ii} $\sabs{-x} = \sabs{x}$ untuk setiap $x \in \R$.
+\item \label{prop:absbas:iii} $\sabs{xy} = \sabs{x}\sabs{y}$ untuk setiap $x,y \in \R$.
+\item \label{prop:absbas:iv} $\sabs{x}^2 = x^2$ untuk setiap $x \in \R$.
+\item \label{prop:absbas:v} $\sabs{x} \leq y$ jika dan hanya jika $-y \leq x \leq y$.
+\item \label{prop:absbas:vi} $-\sabs{x} \leq x \leq \sabs{x}$ untuk setiap $x \in \R$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\ref{prop:absbas:i}:
+Pertama, andaikan $x \geq 0$.
+Maka $\sabs{x} = x \geq 0$.  Selain itu, $\sabs{x} = x = 0$ jika dan hanya
+jika $x=0$.
+Di sisi lain, jika $x < 0$, maka $\sabs{x} = -x > 0$, dan $\sabs{x}$ tidak pernah nol.
+
+\medskip
+
+\ref{prop:absbas:ii}: Jika $x > 0$, maka $-x < 0$ sehingga $\sabs{-x} = -(-x) = x =
+\sabs{x}$.  Demikian pula ketika $x < 0$, atau $x = 0$.
+
+\medskip
+
+\ref{prop:absbas:iii}:
+Jika $x$ atau $y$ nol, hasilnya langsung jelas.  Ketika $x$ dan
+$y$ keduanya positif, maka $\sabs{x}\sabs{y} = xy$.  Hasil kali bilangan-bilangan
+positif bernilai positif, sehingga $xy$ bernilai
+positif dan $xy = \sabs{xy}$.
+Jika $x$ dan $y$ keduanya negatif,
+maka $xy=(-x)(-y)$ bernilai positif karena alasan yang sama dan sekali lagi $\sabs{xy}=xy$.  Selain itu,
+$\sabs{x}\sabs{y} = (-x)(-y) = xy$.
+Jadi, hasilnya berlaku jika $x$ dan $y$ bertanda sama.
+Jika $x > 0$ dan $y < 0$, maka $\sabs{x}\sabs{y} = x(-y) = -(xy)$.  Sekarang
+$xy$ bernilai negatif dan $\sabs{xy} = -(xy)$, sehingga hasilnya berlaku.  Demikian pula ketika
+$x < 0$ dan $y > 0$.
+
+\medskip
+
+\ref{prop:absbas:iv}:
+Langsung jelas jika $x \geq 0$.  Jika $x < 0$, maka $\sabs{x}^2 = {(-x)}^2 =
+x^2$.
+
+\medskip
+
+\ref{prop:absbas:v}:
+Andaikan $\sabs{x} \leq y$.
+Jika $x \geq 0$, maka $x \leq y$.
+Akibatnya, $y \geq 0$, sehingga $-y \leq 0 \leq x$.
+Jadi, $-y \leq x \leq y$ berlaku.
+Jika $x < 0$, maka $\sabs{x} \leq y$ berarti $-x \leq y$.
+Dengan mengalikan kedua ruas dengan $-1$, kita memperoleh $x \geq -y$.
+Sekali lagi $y \geq 0$, sehingga $y \geq 0 > x$.
+Dengan demikian, $-y \leq x \leq y$.
+
+Di sisi lain, andaikan $-y \leq x \leq y$ berlaku.
+Jika $x \geq 0$, maka $x \leq y$ ekuivalen dengan $\sabs{x} \leq y$.
+Jika $x < 0$, maka $-y \leq x$ mengakibatkan $(-x) \leq y$,
+yang ekuivalen dengan $\sabs{x} \leq y$.
+
+\medskip
+
+\ref{prop:absbas:vi}:
+Terapkan \ref{prop:absbas:v} dengan $y = \sabs{x}$.
+\end{proof}
+
+Salah satu sifat yang cukup sering digunakan sehingga diberi nama adalah
+\emph{\myindex{ketaksamaan segitiga}}.
+
+\begin{prop}[Ketaksamaan Segitiga]
+$\sabs{x+y} \leq \sabs{x}+\sabs{y}$
+untuk setiap $x, y \in \R$.
+\end{prop}
+
+\begin{proof}
+\propref{prop:absbas} memberikan
+$- \sabs{x} \leq x \leq \sabs{x}$ dan
+$- \sabs{y} \leq y \leq \sabs{y}$.  Jumlahkan kedua ketaksamaan ini untuk memperoleh
+\begin{equation*}
+- \bigl(\sabs{x}+\sabs{y}\bigr) \leq x+y \leq \sabs{x}+ \sabs{y} .
+\end{equation*}
+Terapkan kembali \propref{prop:absbas} untuk memperoleh
+$\sabs{x+y} \leq \sabs{x}+\sabs{y}$.
+\end{proof}
+
+Terdapat versi-versi lain dari ketaksamaan segitiga yang juga sering digunakan.
+
+\begin{cor}
+Misalkan $x,y \in \R$.
+\begin{enumerate}[(i)]
+\item \emph{(\myindex{ketaksamaan segitiga terbalik})}
+~
+$\babs{ \, \sabs{x}-\sabs{y} \, } \leq \sabs{x-y}$.
+\item $\sabs{x-y} \leq \sabs{x}+\sabs{y}$.
+\end{enumerate}
+\end{cor}
+
+\begin{proof}
+Masukkan $x=a-b$ dan $y=b$ ke dalam
+ketaksamaan segitiga baku untuk memperoleh
+\begin{equation*}
+\sabs{a} = \sabs{a-b+b} \leq \sabs{a-b} + \sabs{b} ,
+\end{equation*}
+atau $\sabs{a}-\sabs{b} \leq \sabs{a-b}$.  Dengan menukar peran $a$ dan $b$,
+kita memperoleh
+$\sabs{b}-\sabs{a} \leq \sabs{b-a} = \sabs{a-b}$.  Dengan menerapkan
+\propref{prop:absbas}, kita memperoleh ketaksamaan segitiga
+terbalik.
+
+Butir kedua dalam akibat tersebut diperoleh dari
+ketaksamaan segitiga baku dengan mengganti $y$ dengan $-y$, dan memperhatikan bahwa $\sabs{-y} =
+\sabs{y}$.
+\end{proof}
+
+\begin{cor}
+Misalkan $x_1, x_2, \ldots, x_n \in \R$.  Maka
+\begin{equation*}
+\sabs{x_1 + x_2 + \cdots + x_n} \leq
+\sabs{x_1} + \sabs{x_2} + \cdots + \sabs{x_n} .
+\end{equation*}
+\end{cor}
+
+\begin{proof}
+Kita menggunakan \hyperref[induction:thm]{induksi}.
+Kesimpulannya berlaku secara langsung untuk $n=1$, dan
+untuk $n=2$ merupakan ketaksamaan segitiga baku.  Andaikan akibat tersebut
+berlaku untuk $n$.  Pertimbangkan $n+1$ bilangan $x_1,x_2,\ldots,x_{n+1}$:
+Pertama, gunakan ketaksamaan segitiga baku, kemudian gunakan hipotesis
+induksi
+\begin{equation*}
+\begin{split}
+\sabs{x_1 + x_2 + \cdots + x_n + x_{n+1}} & \leq
+\sabs{x_1 + x_2 + \cdots + x_n} + \sabs{x_{n+1}} \\
+& \leq
+\sabs{x_1} + \sabs{x_2} + \cdots + \sabs{x_n} + \sabs{x_{n+1}} .  \qedhere
+\end{split}
+\end{equation*}
+\end{proof}
+
+Mari kita lihat contoh penggunaan ketaksamaan segitiga.
+
+\begin{example}
+Temukan bilangan $M$ sedemikian sehingga $\sabs{x^2-9x+1} \leq M$ untuk setiap $-1 \leq x \leq
+5$.
+
+Dengan menggunakan ketaksamaan segitiga, tuliskan
+\begin{equation*}
+\sabs{x^2-9x+1} \leq \sabs{x^2}+\sabs{-9x}+\sabs{1}
+=
+\sabs{x}^2+9\sabs{x}+1 .
+\end{equation*}
+Ekspresi
+$\sabs{x}^2+9\sabs{x}+1$ bernilai paling besar ketika $\sabs{x}$ paling besar (mengapa?).  Pada interval
+yang diberikan, $\sabs{x}$ paling besar ketika $x=5$, sehingga $\sabs{x}=5$.  Salah satu
+nilai yang mungkin untuk $M$ adalah
+\begin{equation*}
+M = 5^2+9(5)+1 = 71 .
+\end{equation*}
+Tentu saja, terdapat nilai-nilai $M$ lain yang memenuhi.  Batas 71
+jauh lebih besar daripada yang
+diperlukan, tetapi kita tidak meminta nilai $M$ terbaik, hanya satu nilai yang memenuhi.
+\end{example}
+
+Contoh terakhir mengantarkan kita pada konsep fungsi terbatas.
+
+\begin{defn}
+Andaikan $f \colon D \to \R$ suatu fungsi.  Kita mengatakan bahwa $f$
+\emph{terbatas}\index{fungsi terbatas}
+jika terdapat bilangan $M$
+sedemikian sehingga $\babs{f(x)} \leq M$ untuk setiap $x \in D$.
+\end{defn}
+
+Dalam contoh tersebut, kita membuktikan bahwa $x^2-9x+1$ terbatas ketika dipandang sebagai
+fungsi pada $D = \{ x : -1 \leq x \leq 5 \}$.  Di sisi lain,
+jika kita memandang polinom yang sama sebagai fungsi pada seluruh garis bilangan real $\R$,
+maka fungsi tersebut tidak terbatas.
+
+\begin{myfigureht}
+\myincludegraphics{boundedfunc}{%
+Diagram grafik suatu fungsi.
+Domain D ditandai pada sumbu horizontal, dan digambar sebuah garis sinusoidal
+yang merepresentasikan grafik fungsi pada domain tersebut.  Nilai maksimum
+fungsi digambar sebagai garis putus-putus horizontal yang menyentuh
+grafik fungsi dan diberi label sup f dari D.  Demikian pula, nilai
+minimum diberi label inf f dari D.  Dua garis putus-titik lainnya diberi label
+M dan minus M.  Garis berlabel M berada di atas grafik dan garis berlabel
+minus M berada di bawah grafik.  Pada sumbu vertikal, himpunan nilai
+yang dicapai fungsi diberi label f dari D.}
+\caption{Contoh fungsi terbatas, suatu batas $M$, serta supremum dan infimumnya.\label{boundedfuncfig}}
+\end{myfigureht}
+Untuk fungsi $f \colon D \to \R$, kita menulis
+(lihat \figureref{boundedfuncfig} untuk
+sebuah contoh)
+\glsadd{not:supf}\glsadd{not:inff}
+\begin{equation*}
+\sup_{x \in D} f(x) \coloneqq \sup\, f(D) \qquad \text{dan} \qquad
+\inf_{x \in D} f(x) \coloneqq \inf\, f(D) .
+\end{equation*}
+Terkadang kita juga mengganti \myquote{$x \in D$} dengan suatu ekspresi.
+Sebagai contoh, jika, seperti sebelumnya, $f(x) = x^2-9x+1$, untuk $-1 \leq x \leq 5$,
+sedikit kalkulus menunjukkan bahwa
+\begin{equation*}
+\sup_{x \in D} f(x) =
+\sup_{-1 \leq x \leq 5} ( x^2 -9x+1 ) = 11,
+\qquad
+\inf_{x \in D} f(x) =
+\inf_{-1 \leq x \leq 5} ( x^2 -9x+1 ) = \nicefrac{-77}{4} .
+\end{equation*}
+
+
+
+\begin{prop} \label{prop:funcsupinf}
+Jika $f \colon D \to \R$ dan $g \colon D \to \R$ ($D$ tak kosong) merupakan
+fungsi-fungsi terbatas\footnote{Hipotesis keterbatasan digunakan demi kesederhanaan;
+hipotesis ini dapat dihapus jika kita menggunakan bilangan real diperluas.}
+dan
+\begin{equation*}
+f(x) \leq g(x) \qquad \text{untuk setiap } x \in D,
+\end{equation*}
+maka
+\begin{equation} \label{prop:funcsupinf:eq}
+\sup_{x \in D} f(x) \leq \sup_{x \in D} g(x)
+\qquad \text{dan} \qquad
+\inf_{x \in D} f(x) \leq \inf_{x \in D} g(x) .
+\end{equation}
+\end{prop}
+
+Berhati-hatilah dengan variabel-variabelnya.  Variabel $x$ pada ruas kiri
+ketaksamaan dalam \eqref{prop:funcsupinf:eq}
+berbeda dari variabel $x$ pada ruas kanan.  Sebagai contoh,
+ketaksamaan pertama sebaiknya dipandang sebagai
+\begin{equation*}
+\sup_{x \in D} f(x) \leq \sup_{y \in D} g(y) .
+\end{equation*}
+Mari kita buktikan ketaksamaan ini.  Jika $b$ merupakan batas atas bagi $g(D)$, maka
+$f(x) \leq g(x) \leq b$ untuk setiap $x \in D$, sehingga $b$ juga merupakan batas
+atas bagi $f(D)$,
+atau $f(x) \leq b$ untuk setiap $x \in D$.
+Ambil batas atas terkecil dari $g(D)$; maka untuk setiap $x \in D$ diperoleh
+\begin{equation*}
+f(x) \leq \sup_{y \in D} g(y) .
+\end{equation*}
+Oleh karena itu,
+$\sup_{y \in D} g(y)$ merupakan batas atas bagi $f(D)$, sehingga lebih besar atau
+sama dengan batas atas terkecil dari $f(D)$.
+\begin{equation*}
+\sup_{x \in D} f(x) \leq \sup_{y \in D} g(y) .
+\end{equation*}
+Ketaksamaan kedua (pernyataan tentang infimum) diserahkan sebagai latihan
+(\exerciseref{exercise:finishfuncsupinf}).
+
+\medskip
+
+Kekeliruan yang umum adalah menyimpulkan
+\begin{equation} \label{rn:av:ltnottrue}
+\sup_{x \in D} f(x) \leq \inf_{y \in D} g(y) .
+\end{equation}
+Ketaksamaan \eqref{rn:av:ltnottrue} tidak benar berdasarkan hipotesis
+proposisi di atas.  Untuk ketaksamaan yang lebih kuat ini,
+kita memerlukan hipotesis yang lebih kuat
+\begin{equation*}
+f(x) \leq g(y) \qquad \text{untuk setiap } x \in D \text{ dan } y \in D.
+\end{equation*}
+Bukti serta sebuah contoh penyangkal diserahkan sebagai latihan
+(\exerciseref{exercise:supinffuncineq}).
+
+\subsection{Latihan}
+
+\begin{exercise}
+Tunjukkan bahwa
+$\sabs{x-y} < \epsilon$ jika dan hanya jika $x-\epsilon < y < x+\epsilon$.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan: \qquad
+%\begin{enumerate}[a)]
+%\item
+a)
+$\max \{x,y\} = \dfrac{x+y+\sabs{x-y}}{2}$
+%\item
+\qquad
+b)
+$\min \{x,y\} = \dfrac{x+y-\sabs{x-y}}{2}$
+%\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Temukan bilangan $M$ sedemikian sehingga $\sabs{x^3-x^2+8x} \leq M$ untuk setiap $-2 \leq x \leq
+10$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:finishfuncsupinf}
+Selesaikan bukti \propref{prop:funcsupinf}.
+Artinya,
+diberikan suatu himpunan $D$,
+dan dua fungsi terbatas
+$f \colon D \to \R$ dan $g \colon D \to \R$
+sedemikian sehingga $f(x) \leq g(x)$ untuk setiap $x \in D$, buktikan bahwa
+\begin{equation*}
+\inf_{x\in D} f(x) \leq \inf_{x\in D} g(x) .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise} \label{exercise:supinffuncineq}
+Misalkan
+$f \colon D \to \R$ dan $g \colon D \to \R$ merupakan fungsi-fungsi ($D$ tak kosong).
+\begin{enumerate}[a)]
+%
+\item
+Andaikan
+$f(x) \leq g(y)$ untuk setiap $x \in D$ dan $y \in D$.  Tunjukkan bahwa
+\begin{equation*}
+\sup_{x\in D} f(x) \leq \inf_{x\in D} g(x) .
+\end{equation*}
+%
+\item
+Temukan $D$, $f$, dan $g$ tertentu sedemikian sehingga
+$f(x) \leq g(x)$ untuk setiap $x \in D$, tetapi
+\begin{equation*}
+\sup_{x\in D} f(x) > \inf_{x\in D} g(x) .
+\end{equation*}
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{prop:funcsupinf} tanpa asumsi bahwa
+fungsi-fungsinya terbatas.  Petunjuk: Anda perlu menggunakan bilangan
+real diperluas.
+\end{exercise}
+
+\begin{exercise} \label{exercise:sumofsup}
+\pagebreak[2]
+Misalkan $D$ suatu himpunan tak kosong.
+Andaikan $f \colon D \to \R$ dan $g \colon D \to \R$ merupakan fungsi-fungsi terbatas.
+\begin{enumerate}[a)]
+\item
+Tunjukkan
+\begin{equation*}
+%mbxlatex \begin{aligned}
+%mbxlatex &
+\sup_{x\in D} \bigl(f(x) + g(x) \bigr) \leq
+\sup_{x\in D} f(x)
++
+\sup_{x\in D} g(x)
+\qquad \text{dan}
+%mbxSTARTIGNORE
+\qquad
+%mbxENDIGNORE
+%mbxlatex \\
+%mbxlatex &
+\inf_{x\in D} \bigl(f(x) + g(x) \bigr) \geq
+\inf_{x\in D} f(x)
++
+\inf_{x\in D} g(x) .
+%mbxlatex \end{aligned}
+\end{equation*}
+\item
+Temukan sebuah contoh (atau beberapa contoh) yang menghasilkan ketaksamaan ketat.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Andaikan $D$ tak kosong, $f \colon D \to \R$ dan $g \colon D \to \R$ merupakan
+fungsi-fungsi terbatas, dan
+$\alpha \in \R$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $\alpha f \colon D \to \R$ yang didefinisikan oleh $(\alpha f) (x) \coloneqq \alpha
+f(x)$ merupakan fungsi terbatas.
+\item
+Tunjukkan bahwa $f+g \colon D \to \R$ yang didefinisikan oleh $(f+g) (x) \coloneqq f(x) + g(x)$
+merupakan fungsi terbatas.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon D \to \R$ dan $g \colon D \to \R$ merupakan fungsi-fungsi dengan $D$
+tak kosong, $\alpha \in \R$, dan
+ingat kembali arti $f+g$ dan $\alpha f$ dari latihan sebelumnya.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa jika $f+g$ dan $g$ terbatas, maka $f$ terbatas.
+\item
+Temukan contoh dengan $f$ dan $g$ keduanya tak terbatas, tetapi $f+g$
+terbatas.
+\item
+Buktikan bahwa jika $f$ terbatas tetapi $g$ tak terbatas, maka $f+g$
+tak terbatas.
+\item
+Temukan contoh dengan $f$ tak terbatas tetapi $\alpha f$ terbatas.
+\end{enumerate}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Interval dan ukuran \texorpdfstring{$\R$}{R}}
+\label{sec:intandsizeR}
+
+\sectionnotes{0,5--1 pertemuan kuliah (bukti bahwa $\R$ tak terhitung dapat dijadikan opsional)}
+
+Anda tentu pernah melihat notasi untuk interval\index{interval}
+sebelumnya, tetapi mari kita berikan definisi
+formal di sini.  Untuk $a, b \in \R$ sedemikian sehingga $a < b$, kita definisikan
+\glsadd{not:openbdinterval}%
+\glsadd{not:closedbdinterval}%
+\glsadd{not:halfopenbdinterval}%
+\glsadd{not:openubdinterval}%
+\glsadd{not:closedubdinterval}%
+\begin{align*}
+& [a,b] \coloneqq \{ x \in \R : a \leq x \leq b \}, \\
+& (a,b) \coloneqq \{ x \in \R : a < x < b \}, \\
+& (a,b] \coloneqq \{ x \in \R : a < x \leq b \}, \\
+& [a,b) \coloneqq \{ x \in \R : a \leq x < b \} .
+\end{align*}
+Interval $[a,b]$ disebut \emph{\myindex{interval tertutup}}
+dan $(a,b)$ disebut \emph{\myindex{interval terbuka}}.  Interval-interval
+berbentuk $(a,b]$ dan $[a,b)$ disebut
+\emph{interval setengah terbuka}\index{interval setengah terbuka}.
+
+Interval-interval di atas adalah \emph{interval terbatas}\index{interval
+terbatas}, karena $a$ dan $b$ keduanya bilangan real.\footnote{Ketika kita menulis
+$(a,b)$, $[a,b]$, dan seterusnya, yang kita maksud selalu interval terbatas kecuali jika secara eksplisit dikatakan
+bahwa $a$ atau $b$ dapat berupa $-\infty$ atau $\infty$.}
+Kita mendefinisikan \emph{interval tak terbatas}\index{interval tak terbatas},
+\begin{align*}
+& [a,\infty) \coloneqq \{ x \in \R : a \leq x \}, \\
+& (a,\infty) \coloneqq \{ x \in \R : a < x \}, \\
+& (-\infty,b] \coloneqq \{ x \in \R : x \leq b \}, \\
+& (-\infty,b) \coloneqq \{ x \in \R : x < b \} .
+\end{align*}
+Demi kelengkapan, kita definisikan $(-\infty,\infty) \coloneqq \R$.
+Interval $[a,\infty)$, $(-\infty,b]$, dan $\R$ terkadang disebut
+\emph{\myindex{interval tertutup tak terbatas}},
+sedangkan $(a,\infty)$, $(-\infty,b)$, dan $\R$ terkadang disebut
+\emph{\myindex{interval terbuka tak terbatas}}.
+
+Bukti proposisi berikut diserahkan sebagai latihan.
+Singkatnya, interval adalah himpunan dengan setidaknya dua titik
+yang memuat semua titik di antara sebarang dua
+titiknya.\footnote{Terkadang himpunan satu titik dan himpunan kosong
+juga disebut interval, tetapi dalam buku ini interval memiliki setidaknya dua titik.
+Artinya, kita hanya mendefinisikan interval terbatas jika $a < b$.}
+
+\begin{prop} \label{prop:intervaldef}
+Suatu himpunan $I \subset \R$ merupakan interval jika dan hanya jika
+$I$ memuat setidaknya dua titik dan
+untuk setiap $a,c \in I$ dan $b \in \R$ sedemikian sehingga $a < b < c$, berlaku $b \in I$.
+\end{prop}
+
+Kita telah melihat bahwa setiap interval terbuka $(a,b)$ (tentu saja dengan $a < b$)
+tak kosong.  Sebagai contoh, interval tersebut memuat bilangan $\frac{a+b}{2}$.
+Fakta yang tidak terduga adalah bahwa dari sudut pandang teori himpunan,
+semua interval memiliki \myquote{ukuran} yang sama, yakni semuanya memiliki
+kardinalitas yang sama.  Sebagai contoh, pemetaan $f(x) \coloneqq 2x$
+memetakan interval $[0,1]$ secara bijektif ke interval $[0,2]$.
+
+Mungkin yang lebih menarik,
+fungsi $f(x) \coloneqq \tan(x)$
+merupakan pemetaan bijektif dari $(-\nicefrac{\pi}{2},\nicefrac{\pi}{2})$ ke $\R$.  Jadi, interval terbatas
+$(-\nicefrac{\pi}{2},\nicefrac{\pi}{2})$ memiliki kardinalitas yang sama dengan $\R$.  Tidak mudah
+mengonstruksi pemetaan bijektif dari $[0,1]$ ke
+$(0,1)$, tetapi hal itu dapat dilakukan.
+
+Dan jangan khawatir, memang ada cara untuk mengukur \myquote{ukuran} himpunan bagian
+bilangan real yang
+\myquote{mendeteksi}
+perbedaan antara $[0,1]$ dan $[0,2]$.  Namun, definisi yang tepat
+memerlukan perangkat yang jauh lebih banyak daripada yang kita miliki saat ini.
+
+Mari kita bahas lebih lanjut kardinalitas interval dan, dengan demikian,
+kardinalitas $\R$.  Kita telah melihat bahwa bilangan irasional ada;
+artinya,
+$\R \setminus \Q$ tak kosong.  Pertanyaannya: Ada berapa banyak bilangan irasional?
+Ternyata bilangan irasional jauh lebih banyak daripada bilangan
+rasional.  Kita telah melihat bahwa $\Q$ terhitung, dan kita akan menunjukkan
+bahwa $\R$ tak terhitung.
+Faktanya, kardinalitas $\R$ sama dengan
+kardinalitas $\sP(\N)$, meskipun kita tidak akan membuktikan
+klaim ini di sini.
+
+\begin{thm}[Cantor]\index{teorema Cantor}
+$\R$ tak terhitung.
+\end{thm}
+
+Kita menyajikan suatu versi
+bukti asli Cantor dari tahun
+1874 karena bukti ini memerlukan persiapan paling sedikit.  Biasanya bukti ini dinyatakan
+sebagai kontradiksi.  Namun, bukti tersebut lebih mudah
+dipahami sebagai bukti konstruktif langsung bahwa setiap himpunan bagian tak berhingga terhitung
+pasti tidak memuat setidaknya satu unsur.
+
+\begin{proof}
+Misalkan $X \subset \R$ suatu himpunan bagian
+tak berhingga terhitung sedemikian sehingga untuk setiap pasangan bilangan real
+$a < b$, terdapat $x \in X$ sedemikian sehingga $a < x < b$.  Jika $\R$ terhitung,
+kita dapat mengambil $X = \R$.  Kita akan menunjukkan bahwa $X$ pasti merupakan
+himpunan bagian sejati, sehingga $X$ tidak mungkin sama dengan $\R$, dan $\R$ harus
+tak terhitung.
+
+Karena $X$ tak berhingga terhitung,
+terdapat bijeksi dari $\N$ ke $X$.  Kita menuliskan $X$ sebagai
+barisan bilangan real $x_1, x_2, x_3,\ldots$, sedemikian sehingga
+setiap bilangan dalam $X$
+diberikan oleh $x_n$ untuk suatu $n \in \N$.
+
+Secara induktif, kita
+mengonstruksi dua barisan bilangan real $a_1,a_2,a_3,\ldots$ dan
+$b_1,b_2,b_3,\ldots$.  Misalkan
+$a_1 \coloneqq x_1$ dan $b_1 \coloneqq x_1+1$.
+Perhatikan bahwa $a_1 < b_1$ dan
+$x_1 \notin (a_1,b_1)$.
+Untuk suatu $k > 1$,
+andaikan $a_1,a_2,\ldots,a_{k-1}$ dan $b_1,b_2,\ldots,b_{k-1}$ telah
+didefinisikan,
+andaikan
+$a_1 < a_2 < \cdots < a_{k-1} < b_{k-1} < \cdots < b_2 < b_1$,
+dan andaikan
+untuk setiap $j=1,2,\ldots,k-1$,
+berlaku $x_\ell \notin (a_{j},b_{j})$
+untuk $\ell=1,2,\ldots,j$.
+\begin{enumerate}[(i)]
+\item Definisikan $a_k \coloneqq x_n$, dengan $n$ dipilih sebagai bilangan terkecil di antara semua $n \in \N$
+yang memenuhi $x_n \in (a_{k-1},b_{k-1})$.  Unsur $x_n$ semacam itu ada berdasarkan
+asumsi kita mengenai $X$, dan $n \geq k$ berdasarkan asumsi mengenai $(a_{k-1},b_{k-1})$.
+\item Selanjutnya, definisikan $b_k$ sebagai suatu bilangan real dalam $(a_{k},b_{k-1})$,
+misalnya $b_k \coloneqq \frac{a_k+b_{k-1}}{2}$.
+\end{enumerate}
+Perhatikan bahwa %$a_k < b_k$ and
+$a_{k-1} < a_k < b_k < b_{k-1}$.
+Perhatikan pula bahwa $(a_{k},b_{k})$ tidak memuat $x_k$ sehingga
+tidak memuat $x_{\ell}$ untuk $\ell=1,2,\ldots,k$.
+Kedua barisan kini telah didefinisikan.
+
+Klaim: \emph{$a_n < b_m$ untuk setiap $n$ dan $m$ dalam $\N$.} Bukti: Pertama,
+andaikan $n < m$.  Maka $a_n < a_{n+1} < \cdots < a_{m-1} < a_m < b_m$.
+Demikian pula untuk $n > m$.  Kasus dengan kedua indeks sama langsung mengikuti konstruksi.  Klaim terbukti.
+
+Misalkan $A \coloneqq \{ a_n : n \in \N \}$ dan $B \coloneqq \{ b_n : n \in \N \}$.
+Berdasarkan \propref{infsupineq:prop} dan klaim di atas,
+\begin{equation*}
+\sup\, A \leq \inf\, B .
+\end{equation*}
+Definisikan $y \coloneqq \sup\, A$.  Bilangan $y$ tidak mungkin merupakan unsur $A$: Jika $y = a_n$
+untuk suatu $n$, maka $y < a_{n+1}$, yang mustahil.
+Demikian pula, $y$ tidak mungkin merupakan unsur $B$.  Oleh karena itu,
+$a_n < y$ untuk setiap $n\in \N$
+dan $y < b_n$ untuk setiap $n\in \N$.
+Dengan kata lain, untuk setiap $n \in \N$, berlaku $y \in (a_n,b_n)$.
+Berdasarkan konstruksi barisan tersebut, $x_n \notin (a_n,b_n)$,
+sehingga $y \neq x_n$.  Karena $y \neq x_n$ untuk setiap $n \in \N$, diperoleh $y
+\notin X$.
+
+Kita telah mengonstruksi bilangan real $y$ yang tidak berada di $X$, sehingga $X$
+merupakan himpunan bagian sejati dari $\R$.
+Barisan $x_1,x_2,\ldots$ tidak mungkin memuat semua unsur $\R$,
+sehingga $\R$ tak terhitung.
+\end{proof}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Untuk $a < b$, konstruksikan bijeksi eksplisit dari $(a,b]$ ke $(0,1]$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon [0,1] \to (0,1)$ merupakan bijeksi.
+Dengan menggunakan $f$, konstruksikan suatu
+bijeksi dari $[-1,1]$ ke $\R$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:intervaldef}
+Buktikan \propref{prop:intervaldef}.
+Artinya,
+misalkan $I \subset \R$ merupakan himpunan bagian dengan setidaknya dua unsur
+sedemikian sehingga jika $a < b < c$ dan $a, c \in I$, maka $b \in I$.
+Buktikan bahwa $I$ merupakan salah satu dari sembilan jenis interval yang secara eksplisit
+diberikan dalam bagian ini.
+Selanjutnya, buktikan bahwa semua interval yang diberikan dalam bagian ini
+memenuhi sifat tersebut.
+\end{exercise}
+
+\begin{exercise}[Sulit]
+Konstruksikan bijeksi eksplisit dari $(0,1]$ ke $(0,1)$.
+Petunjuk: Salah satu pendekatannya sebagai berikut: Pertama, petakan $(\nicefrac{1}{2},1]$
+ke $(0,\nicefrac{1}{2}]$, lalu petakan
+$(\nicefrac{1}{4},\nicefrac{1}{2}]$
+ke $(\nicefrac{1}{2},\nicefrac{3}{4}]$, dan seterusnya.
+Tuliskan pemetaan tersebut secara eksplisit, yaitu
+tuliskan algoritme yang menentukan dengan tepat bilangan mana dipetakan ke mana.
+Kemudian buktikan bahwa pemetaan tersebut merupakan bijeksi.
+\end{exercise}
+
+\begin{exercise}[Sulit]
+Konstruksikan bijeksi eksplisit dari $[0,1]$ ke $(0,1)$.
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa setiap interval tertutup $[a,b]$ merupakan irisan terhitung
+dari interval-interval terbuka.
+\item
+Tunjukkan bahwa setiap interval terbuka $(a,b)$
+merupakan gabungan terhitung dari interval-interval tertutup.
+\item
+Tunjukkan bahwa irisan
+dari suatu keluarga tak kosong dan mungkin tak hingga yang terdiri atas interval tertutup terbatas,
+$\bigcap\limits_{\lambda \in I} [a_\lambda,b_\lambda]$,
+adalah himpunan kosong, satu titik,
+atau interval tertutup terbatas.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $S$ merupakan himpunan interval terbuka yang saling lepas di $\R$.  Artinya,
+jika $(a,b) \in S$ dan $(c,d) \in S$, maka $(a,b) = (c,d)$
+atau $(a,b) \cap (c,d) = \emptyset$.  Buktikan bahwa $S$ merupakan himpunan terhitung.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa kardinalitas $[0,1]$ sama dengan kardinalitas
+$(0,1)$ dengan menunjukkan bahwa
+$\babs{[0,1]} \leq \babs{(0,1)}$ dan
+$\babs{(0,1)} \leq \babs{[0,1]}$.
+Lihat \defnref{def:comparecards}.
+Bukti ini memerlukan teorema Cantor--Bernstein--Schr\"oder, yang telah kita
+nyatakan tanpa bukti.  Perhatikan bahwa bukti ini tidak menghasilkan
+bijeksi eksplisit.
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Suatu bilangan $x$ disebut \emph{bilangan aljabar}\index{bilangan aljabar} jika $x$ merupakan akar dari
+suatu polinomial tak nol dengan
+koefisien bulat; dengan kata lain, $a_n x^n + a_{n-1} x^{n-1} + \cdots
++ a_1 x + a_0 = 0$ dengan $a_0,a_1,\ldots,a_n \in \Z$, tetapi tidak semuanya nol.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa himpunan semua
+bilangan aljabar terhitung.
+\item
+Tunjukkan bahwa terdapat bilangan yang bukan bilangan aljabar (bilangan transenden)
+(ikuti jejak Cantor dan gunakan fakta bahwa $\R$ tak terhitung).
+\end{enumerate}
+Petunjuk: Anda boleh menggunakan fakta bahwa polinomial tak nol berderajat $n$ memiliki paling banyak $n$ akar
+real.
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Misalkan $F$ merupakan himpunan semua fungsi $f \colon \R \to \R$.
+Buktikan $\sabs{\R} < \sabs{F}$
+dengan menggunakan hasil Cantor pada \thmref{cantorspowersetthm}.\footnote{Menariknya,
+jika $C$ merupakan himpunan fungsi kontinu, maka $\sabs{\R} = \sabs{C}$.}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Representasi desimal bilangan real}
+\label{sec:decimals}
+
+\sectionnotes{1 pertemuan kuliah (opsional)}
+
+Kita sering membayangkan bilangan real melalui
+\emph{representasi desimalnya}\index{representasi desimal}.
+Yang dimaksud dengan
+\emph{\myindex{digit}} (desimal)\index{digit desimal} adalah bilangan bulat
+antara $0$ dan $9$.
+Untuk bilangan bulat positif $n$, kita mencari digit-digit $d_K,d_{K-1},\ldots,d_2,d_1,d_0$ untuk suatu
+$K$ (setiap $d_j$ merupakan bilangan bulat antara $0$ dan $9$) sedemikian sehingga
+\begin{equation*}
+n = d_K {10}^K + d_{K-1} {10}^{K-1} + \cdots + d_2 {10}^2 + d_1 10 + d_0 .
+\end{equation*}
+Kita sering mengasumsikan $d_K \neq 0$ (untuk menghindari nol di depan).
+Untuk merepresentasikan $n$, kita menuliskan barisan
+digit: $n = d_K d_{K-1} \cdots d_2 d_1 d_0$.
+
+Dengan cara serupa, kita
+merepresentasikan beberapa bilangan rasional. Untuk bilangan
+$x$ tertentu, kita dapat mencari
+bilangan bulat tak negatif $K$ dan $M$ serta digit-digit
+$d_K,d_{K-1},\ldots,d_1,d_0,d_{-1},\ldots,d_{-M}$, sedemikian sehingga
+\begin{equation*}
+%mbxlatex \begin{aligned}
+x
+%mbxlatex &
+= d_K {10}^K + d_{K-1} {10}^{K-1} + \cdots + d_2 {10}^2 + d_1 10 + d_0
+%mbxlatex \\
+%mbxlatex & \phantom{={}}
++ d_{-1} {10}^{-1} + d_{-2} {10}^{-2} + \cdots + d_{-M} {10}^{-M} .
+%mbxlatex \end{aligned}
+\end{equation*}
+Kita menuliskan $x = d_K d_{K-1} \cdots d_1 d_0 \, . \, d_{-1} d_{-2} \cdots d_{-M}$.
+
+Tidak setiap bilangan real memiliki representasi semacam itu.
+Bahkan bilangan rasional sederhana
+$\nicefrac{1}{3}$ tidak memilikinya. Bilangan irasional $\sqrt{2}$ juga
+tidak memiliki representasi semacam itu. Untuk memperoleh representasi bagi
+semua bilangan real, kita harus mengizinkan digit dalam jumlah tak hingga.
+
+Tinjau hanya bilangan real dalam interval $[0,1]$. Jika
+kita menemukan representasi untuk bilangan-bilangan ini, dengan menambahkan
+bilangan bulat kepadanya kita memperoleh representasi untuk semua bilangan real.
+Ambil suatu barisan digit desimal tak hingga:
+\begin{equation*}
+0.d_1d_2d_3\ldots.
+\end{equation*}
+Kita memiliki digit $d_j$ untuk setiap $j \in \N$.
+Kita menomori ulang digit-digit tersebut untuk menghindari tanda negatif.
+Kita tuliskan
+\begin{equation*}
+D_n \coloneqq
+\frac{d_1}{10} +
+\frac{d_2}{{10}^2} +
+\frac{d_3}{{10}^3} +
+\cdots +
+\frac{d_n}{{10}^n} .
+\end{equation*}
+Kita katakan bahwa
+barisan digit tersebut merepresentasikan bilangan real $x$ jika
+\begin{equation*}
+x =
+\sup_{n \in \N} \left(
+\frac{d_1}{10} +
+\frac{d_2}{{10}^2} +
+\frac{d_3}{{10}^3} +
+\cdots +
+\frac{d_n}{{10}^n}
+\right) =
+\sup_{n \in \N} \, D_n .
+\end{equation*}
+Bilangan $D_n=0.d_1 d_2 d_3 \ldots d_n$ adalah pemotongan $x$
+hingga $n$ digit desimal.
+
+\begin{prop} \label{prop:decimalprop}
+\leavevmode
+\begin{enumerate}[(i)]
+\item
+Setiap barisan digit tak hingga
+$0.d_1d_2d_3\ldots$ merepresentasikan tepat satu bilangan real $x \in [0,1]$, dan
+\begin{equation*}
+D_n \leq x \leq D_n+\frac{1}{{10}^n} \qquad \text{untuk semua } n \in \N.
+\end{equation*}
+\item
+Untuk setiap $x \in (0,1]$ terdapat barisan digit tak hingga
+$0.d_1d_2d_3\ldots$ yang merepresentasikan $x$.
+Terdapat representasi unik sedemikian sehingga
+\begin{equation*}
+D_n < x \leq D_n+\frac{1}{{10}^n} \qquad \text{untuk semua } n \in \N.
+\end{equation*}
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Kita mulai dengan butir pertama. Ambil sebarang barisan digit
+tak hingga $0.d_1d_2d_3\ldots$. Dengan menggunakan rumus jumlah deret geometri, kita tuliskan
+\begin{equation*}
+\begin{split}
+D_n =
+\frac{d_1}{10} +
+\frac{d_2}{{10}^2} +
+\frac{d_3}{{10}^3} +
+\cdots +
+\frac{d_n}{{10}^n}
+& \leq
+\frac{9}{10} +
+\frac{9}{{10}^2} +
+\frac{9}{{10}^3} +
+\cdots +
+\frac{9}{{10}^n}
+\\
+& =
+\frac{9}{10}
+\bigl( 1 + \nicefrac{1}{10} +
+{(\nicefrac{1}{10})}^2 + \cdots +
+{(\nicefrac{1}{10})}^{n-1} \bigr)
+\\
+& =
+\frac{9}{10}
+\left(
+\frac{1-{(\nicefrac{1}{10})}^{n}}{1-\nicefrac{1}{10}}
+\right)
+= 1-{(\nicefrac{1}{10})}^{n}
+< 1 .
+\end{split}
+\end{equation*}
+Secara khusus, $D_n < 1$ untuk semua $n$. Jumlah bilangan-bilangan tak negatif
+bersifat tak negatif, sehingga $D_n \geq 0$, dan akibatnya
+\begin{equation*}
+0 \leq \sup_{n\in \N} \, D_n \leq 1 .
+\end{equation*}
+Oleh karena itu, $0.d_1d_2d_3\ldots$ merepresentasikan tepat satu bilangan real $x \coloneqq \sup_{n\in
+\N} D_n \in [0,1]$.
+Karena $x$ merupakan supremum, $D_n \leq x$.
+Ambil $m \in \N$. Jika $m < n$, maka $D_m - D_n \leq 0$. Jika kedua indeks sama, selisih tersebut nol. Jika $m > n$, dengan
+perhitungan seperti di atas diperoleh
+\begin{equation*}
+D_m - D_n
+=
+\frac{d_{n+1}}{{10}^{n+1}} +
+\frac{d_{n+2}}{{10}^{n+2}} +
+\frac{d_{n+3}}{{10}^{n+3}} +
+\cdots +
+\frac{d_{m}}{{10}^m}
+\leq
+\frac{1}{{10}^{n}}
+\bigl(
+1-{(\nicefrac{1}{10})}^{m-n}
+\bigr)
+<
+\frac{1}{{10}^{n}} .
+\end{equation*}
+Dengan mengambil supremum terhadap $m$, kita peroleh
+\begin{equation*}
+x - D_n
+\leq
+\frac{1}{{10}^{n}} .
+\end{equation*}
+
+Selanjutnya kita beralih ke
+butir kedua. Ambil sebarang $x \in (0,1]$.
+Pertama, kita membuktikan eksistensinya.
+Untuk memudahkan, tetapkan $D_0 \coloneqq 0$.
+Maka,
+$D_0 < x \leq D_0 + {10}^{-0}$.
+Misalkan kita telah mendefinisikan digit-digit $d_1,d_2,\ldots,d_n$,
+dan bahwa
+$D_k < x \leq D_k + {10}^{-k}$, untuk $k=0,1,2,\ldots,n$. Kita perlu mendefinisikan $d_{n+1}$.
+
+Berdasarkan
+\hyperref[thm:arch:i]{sifat Archimedes} bilangan real,
+terdapat bilangan bulat $j$ sedemikian sehingga
+$x-D_n \leq j {10}^{-(n+1)}$. Ambil $j$ terkecil yang memenuhi sifat tersebut dan diperoleh
+\begin{equation} \label{eq:theDnjineq}
+(j-1){10}^{-(n+1)} < x-D_n \leq j {10}^{-(n+1)} .
+\end{equation}
+Tetapkan $d_{n+1} \coloneqq j-1$.
+Karena $D_n < x$,
+kita memiliki $d_{n+1} = j-1 \geq 0$. Di sisi lain, karena
+$x-D_n \leq {10}^{-n}$, kita memperoleh bahwa
+$j$ paling banyak 10, dan oleh karena itu $d_{n+1} \leq 9$.
+Jadi, $d_{n+1}$ merupakan
+digit desimal.
+Karena $D_{n+1} = D_n + d_{n+1} {10}^{-(n+1)}$,
+tambahkan $D_n$ pada ketaksamaan
+\eqref{eq:theDnjineq} di atas:
+\begin{multline*}
+D_{n+1} = D_n + (j-1){10}^{-(n+1)} < x
+\leq
+D_n + j {10}^{-(n+1)} \\
+=
+D_n + (j-1) {10}^{-(n+1)} +
+{10}^{-(n+1)} = D_{n+1} + {10}^{-(n+1)} .
+\end{multline*}
+Dengan demikian,
+$D_{n+1} < x \leq D_{n+1} + {10}^{-(n+1)}$ berlaku.
+Secara induktif, kita telah
+mendefinisikan barisan digit tak hingga $0.d_1d_2d_3\ldots$.
+
+Tinjau $D_{n} < x \leq D_{n} + {10}^{-n}$.
+Karena $D_n < x$ untuk semua $n$, kita memiliki
+$\sup \{ D_n : n \in \N \} \leq x$.
+Ketaksamaan kedua untuk $D_n$ mengakibatkan
+\begin{equation*}
+x - \sup \{ D_m : m \in \N \}
+\leq
+x - D_n \leq 10^{-n} .
+\end{equation*}
+Karena ketaksamaan tersebut berlaku untuk semua $n$ dan
+${10}^{-n}$ dapat dibuat sekecil apa pun
+(lihat \exerciseref{exercise:bnlimit}),
+kita memiliki $x \leq \sup \{ D_m : m \in \N \}$.
+Oleh karena itu, $\sup \{ D_m : m \in \N \} = x$.
+
+Yang tersisa untuk dibuktikan adalah keunikannya.
+Misalkan $0.e_1e_2e_3\ldots$ merupakan representasi lain dari $x$.
+Misalkan $E_n$ adalah hasil pemotongan hingga $n$ digit dari $0.e_1e_2e_3\ldots$, dan andaikan
+$E_n < x \leq E_n + {10}^{-n}$ untuk semua $n \in \N$.
+Misalkan untuk suatu $K \in \N$, $e_n = d_n$ untuk semua $n < K$, sehingga
+$D_{K-1} = E_{K-1}$. Maka
+\begin{equation*}
+E_K = D_{K-1} + e_K{10}^{-K} < x \leq E_K + {10}^{-K} = D_{K-1} +
+e_K{10}^{-K} + {10}^{-K} .
+\end{equation*}
+Dengan mengurangkan $D_{K-1}$ dan mengalikan dengan ${10}^{K}$, kita memperoleh
+\begin{equation*}
+e_K < (x - D_{K-1}){10}^K \leq e_K + 1 .
+\end{equation*}
+Dengan cara serupa,
+\begin{equation*}
+d_K < (x - D_{K-1}){10}^K \leq d_K + 1 .
+\end{equation*}
+Jadi, baik $e_K$ maupun $d_K$ merupakan bilangan bulat terbesar $j$
+sedemikian sehingga $j < (x - D_{K-1}){10}^K$, dan oleh karena itu $e_K = d_K$.
+Dengan kata lain, representasi tersebut unik.
+\end{proof}
+
+Representasi tersebut tidak unik jika kita tidak mensyaratkan
+$D_n < x$ untuk semua $n$.
+Sebagai contoh, untuk
+bilangan $\nicefrac{1}{2}$, metode dalam pembuktian menghasilkan representasi
+\begin{equation*}
+0.49999\ldots .
+\end{equation*}
+Namun, $\nicefrac{1}{2}$ juga memiliki representasi $0.50000\ldots$.
+
+Satu-satunya bilangan yang memiliki representasi tidak unik
+adalah bilangan yang berakhir dengan barisan tak hingga digit $0$
+atau barisan tak hingga digit $9$, karena satu-satunya representasi yang memenuhi
+$D_n = x$ adalah representasi dengan semua digit setelah digit ke-$n$ bernilai nol.
+Dalam kasus ini,
+terdapat tepat dua representasi dari $x$ (lihat latihan).
+
+Mari kita berikan pembuktian lain bahwa himpunan bilangan real tak terhitung dengan
+menggunakan representasi desimal.
+Ini adalah pembuktian kedua Cantor, yang mungkin lebih dikenal.
+Pembuktian ini mungkin tampak lebih singkat, tetapi itu karena kita telah menyelesaikan
+bagian sulitnya di atas dan kini hanya tersisa sebuah trik cerdik untuk membuktikan bahwa $\R$
+tak terhitung.  Trik ini disebut
+\emph{\myindex{diagonalisasi Cantor}}\index{diagonalisasi} dan
+juga digunakan dalam pembuktian-pembuktian lain.
+
+\begin{thm}[Cantor]
+Himpunan $(0,1]$ tak terhitung.
+\end{thm}
+
+\begin{proof}
+Misalkan $X \coloneqq \{ x_1,x_2,x_3,\ldots \}$ adalah sembarang himpunan bagian terhitung dari bilangan real dalam $(0,1]$.
+Kita akan mengonstruksi suatu bilangan real yang tidak berada di $X$.  Misalkan
+\begin{equation*}
+x_n = 0.d_1^nd_2^nd_3^n\ldots
+\end{equation*}
+merupakan representasi unik dari proposisi tersebut; artinya, $d_j^n$ adalah
+digit ke-$j$ dari bilangan ke-$n$.  Misalkan
+\begin{equation*}
+e_n \coloneqq
+\begin{cases}
+1 & \text{jika } d_n^n \neq 1, \\
+2 & \text{jika } d_n^n = 1.
+\end{cases}
+\end{equation*}
+Misalkan $E_n$ adalah hasil pemotongan hingga $n$ digit dari $y = 0.e_1e_2e_3\ldots$.  Karena
+semua digitnya bukan nol, $E_n < E_{n+1} \leq y$.  Oleh karena itu,
+\begin{equation*}
+E_n < y \leq E_n + {10}^{-n}
+\end{equation*}
+untuk semua $n$, dan representasi tersebut adalah representasi unik untuk $y$ dari
+proposisi tersebut.  Untuk setiap $n$, digit ke-$n$
+dari $y$ berbeda dengan digit ke-$n$ dari $x_n$, sehingga $y \neq x_n$.
+Jadi $y \notin X$, dan karena $X$ merupakan sembarang himpunan bagian terhitung,
+$(0,1]$ harus tak terhitung.  Lihat \figureref{cantorexamplefig} untuk
+contohnya.
+\begin{myfigureht}
+\myincludepdft{cantorexamplefig}{%
+Lima bilangan bertanda x subskrip 1 hingga x subskrip 5 diperlihatkan tersusun sejajar, satu di atas
+yang lain, dalam notasi desimal.
+Lima digit desimal pertama dari setiap bilangan diperlihatkan.
+Secara khusus, x subskrip 1 adalah 0 koma 1 3 2 1 0 dan elipsis yang menyiratkan
+bahwa digit-digitnya berlanjut.
+Digit pertama, yaitu 1, ditandai dengan sebuah kotak.
+x subskrip 2 adalah 0 koma 7 9 4 1 3 dan elipsis.
+Digit kedua, yaitu 9, ditandai dengan sebuah kotak.
+x subskrip 3 adalah 0 koma 3 0 1 3 4 dan elipsis.
+Digit ketiga, yaitu 1, ditandai dengan sebuah kotak.
+x subskrip 4 adalah 0 koma 8 9 2 5 6 dan elipsis.
+Digit keempat, yaitu 5, ditandai dengan sebuah kotak.
+x subskrip 5 adalah 0 koma 1 6 0 2 4 dan elipsis.
+Digit kelima, yaitu 4, ditandai dengan sebuah kotak.
+Elipsis selanjutnya menunjukkan bahwa barisan bilangan terus berlanjut.
+Di sebelah kanan terdapat teks: Bilangan yang tidak ada dalam daftar:
+y sama dengan 0 koma 2 1 2 1 1 elipsis.}
+\caption{Contoh diagonalisasi Cantor, dengan digit diagonal $d_n^n$
+ditandai.\label{cantorexamplefig}}
+\end{myfigureht}
+\end{proof}
+
+Dengan digit desimal, kita juga dapat menemukan banyak bilangan irasional.
+Proposisi berikut berlaku untuk setiap
+bilangan rasional, tetapi demi kesederhanaan kita hanya menyatakannya untuk $x \in (0,1]$.
+
+\begin{prop} \label{prop:rationaldecimal}
+Jika $x \in (0,1]$ adalah bilangan rasional dan $x = 0.d_1d_2d_3\ldots$,
+maka digit desimalnya akhirnya mulai berulang.  Artinya, terdapat
+bilangan bulat positif $N$ dan $P$, sedemikian sehingga untuk semua $n \geq N$, $d_n = d_{n+P}$.
+\end{prop}
+
+\begin{proof}
+Misalkan $x = \nicefrac{p}{q}$ untuk bilangan bulat positif $p$ dan $q$.
+Jika $x$ memiliki representasi desimal yang tidak unik, kedua representasinya
+pada akhirnya memiliki digit berulang,
+baik semuanya $0$ maupun semuanya $9$;
+lihat \exerciseref{exercise:nonuniquedecimals}.
+Oleh karena itu, misalkan $x$ memiliki representasi unik.
+Kita juga misalkan bahwa $x \neq 1$ sehingga $p < q$.
+
+Untuk menghitung digit pertama, ambil $10 p$ dan bagi dengan
+$q$.  Misalkan $d_1$ adalah hasil baginya.
+Sisa $r_1$ adalah suatu bilangan bulat
+antara $0$ dan $q-1$.  Artinya, $d_1$ adalah bilangan bulat terbesar
+sedemikian sehingga $d_1 q \leq 10p$, lalu $r_1 = 10p - d_1q$.
+Karena $p < q$, kita memperoleh $d_1 < 10$, sehingga $d_1$ adalah sebuah digit.
+Selain itu,
+\begin{equation*}
+\frac{d_1}{10} \leq \frac{p}{q} =
+\frac{d_1}{10} + \frac{r_1}{10q} \leq \frac{d_1}{10} +
+\frac{1}{10} .
+\end{equation*}
+Ketaksamaan pertama bersifat ketat karena $x$ memiliki
+representasi unik.  Jadi $d_1$ memang merupakan digit pertama.
+Bagian yang tersisa adalah $\frac{r_1}{10q}$.
+Untuk menghitung $d_2$, bagi $10 r_1$ dengan $q$ sehingga diperoleh $d_2$
+dan $r_2$, dengan $r_2 = 10 r_1 - d_2 q$.
+Nyatakan $r_1$ lalu substitusikan ke dalam
+$\frac{p}{q} = \frac{d_1}{10} + \frac{r_1}{10 q}$
+sehingga diperoleh
+$\frac{p}{q} = \frac{d_1}{10} + \frac{d_2}{{10}^2} +
+\frac{r_2}{{10}^2 q} = D_2 +
+\frac{r_2}{{10}^2 q}$.
+Karena $r_2 < q$, sekali lagi kita memperoleh $d_2 < 10$.
+Untuk menghitung $d_3$, bagi $10 r_2$ dengan $q$
+sehingga diperoleh $d_3$ dan $r_3$.  Demikian seterusnya.
+Setelah menghitung $n-1$ digit, kita memperoleh
+$\frac{p}{q} = D_{n-1} + \frac{r_{n-1}}{10^{n-1} q}$.
+Untuk mendapatkan digit ke-$n$,
+bagi $10 r_{n-1}$ dengan $q$
+untuk memperoleh hasil bagi $d_n$, sisa $r_n$, dan ketaksamaan
+\begin{equation*}
+\frac{d_n}{10} \leq \frac{r_{n-1}}{q} =
+\frac{d_n}{10} + \frac{r_n}{10q} \leq \frac{d_n}{10} +
+\frac{1}{10} .
+\end{equation*}
+Dengan membaginya dengan $10^{n-1}$ dan menambahkan $D_{n-1}$, kita memperoleh
+\begin{equation*}
+D_n \leq D_{n-1} + \frac{r_{n-1}}{10^{n-1} q} = \frac{p}{q} \leq D_n +
+\frac{1}{10^n} .
+\end{equation*}
+Berdasarkan keunikan, kita memang memperoleh
+digit ke-$n$, yaitu $d_n$, dari konstruksi ini.
+
+Digit baru hanya bergantung pada sisa dari langkah
+sebelumnya.
+Terdapat paling banyak $q$ kemungkinan sisa.
+Oleh karena itu, proses tersebut harus mulai berulang setelah paling banyak $q$ langkah,
+sehingga $P$ paling banyak $q$.
+\end{proof}
+
+Kebalikan dari proposisi tersebut juga benar dan diserahkan sebagai latihan.
+
+\begin{example}
+Bilangan
+\begin{equation*}
+x = 0.101001000100001000001\ldots
+\end{equation*}
+adalah bilangan irasional.
+Secara khusus, digit-digitnya adalah satu,
+kemudian nol, kemudian satu, lalu dua nol, lalu satu,
+kemudian tiga nol,
+dan seterusnya.
+Keirasionalan $x$ diperoleh dari
+proposisi tersebut; digit-digitnya tidak pernah mulai berulang.
+Untuk setiap $P$,
+jika kita melangkah cukup jauh, kita menemukan digit 1 yang diikuti sekurang-kurangnya $P$ nol,
+dan terdapat tak hingga banyaknya digit 1 semacam itu.
+Artinya, terdapat tak hingga banyaknya $n$ (jadi $n$ dapat sebesar apa pun)
+sedemikian sehingga $d_n=1$ dan $d_{n+P}=0$, dengan kata lain,
+$d_n \neq d_{n+P}$.
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}[Mudah]
+Apa representasi desimal dari $1$ yang dijamin oleh
+\propref{prop:decimalprop}?  Pastikan Anda menunjukkan bahwa representasi tersebut memang memenuhi
+syaratnya.
+\end{exercise}
+
+\begin{exercise}
+Buktikan kebalikan dari \propref{prop:rationaldecimal}, yaitu,
+jika digit-digit dalam representasi desimal $x$ akhirnya berulang, maka
+$x$ harus rasional.
+\end{exercise}
+
+\begin{exercise} \label{exercise:nonuniquedecimals}
+Tunjukkan bahwa bilangan real $x \in (0,1)$ yang memiliki representasi desimal tidak unik
+tepat merupakan bilangan rasional yang dapat dituliskan
+sebagai $\frac{m}{10^n}$ untuk bilangan bulat $m$ dan $n$ tertentu.  Dalam hal ini, tunjukkan bahwa
+terdapat tepat dua representasi dari $x$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:decimalpropbaseb}
+Misalkan $b \geq 2$ merupakan bilangan bulat.  Definisikan representasi bilangan real dalam
+$[0,1]$ dengan basis $b$, bukan basis 10, dan buktikan
+\propref{prop:decimalprop} untuk basis $b$.
+\end{exercise}
+
+\begin{exercise}
+Dengan menggunakan latihan sebelumnya untuk $b=2$ (biner),
+tunjukkan bahwa kardinalitas $\R$ sama dengan kardinalitas $\sP(\N)$,
+sehingga diperoleh satu lagi bukti (meskipun terkait) bahwa $\R$ tak terhitung.
+Petunjuk: Konstruksikan dua injeksi, satu dari $[0,1]$ ke $\sP(\N)$
+dan satu dari $\sP(\N)$ ke $[0,1]$.  Petunjuk 2: Diberikan suatu
+himpunan $A \subset \N$, pemetaan yang menetapkan digit biner ke-$n$ dari $x$ sama dengan 1 jika
+$n\in A$ hampir berhasil, tetapi tidak injektif.  Modifikasilah pemetaan itu.
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Konstruksikan secara eksplisit suatu injeksi dari $[0,1] \times [0,1]$ ke $[0,1]$ (pikirkan mengapa
+hal ini begitu mengejutkan\footnote{%
+Dengan usaha yang jauh lebih besar (atau dengan menerapkan teorema
+Cantor--Bernstein--Schr\"oder),
+dapat dibuktikan bahwa terdapat suatu bijeksi.
+Ketika membuktikan hasil ini, Cantor konon menulis,
+\myquote{Saya melihatnya, tetapi saya tidak memercayainya.}}).
+Kemudian deskripsikan himpunan bilangan dalam $[0,1]$ yang tidak berada dalam citra
+injeksi Anda (kecuali, tentu saja, Anda berhasil mengonstruksi suatu bijeksi).
+Petunjuk: Tinjau digit pada posisi genap dan ganjil dalam ekspansi desimal.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa jika $x = \nicefrac{p}{q} \in (0,1]$ merupakan bilangan rasional, $q > 1$,
+maka periode $P$ dari digit berulang dalam representasi desimal
+$x$ sebenarnya kurang dari atau sama dengan $q-1$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:bnlimit}
+Buktikan bahwa jika $b \in \N$ dan $b \geq 2$, maka untuk setiap $\epsilon > 0$,
+terdapat $n \in \N$ sedemikian sehingga
+$b^{-n} < \epsilon$.  Petunjuk:
+Salah satu caranya adalah terlebih dahulu membuktikan bahwa $b^n > n$ untuk setiap $n \in \N$ dengan induksi.
+\end{exercise}
+
+\begin{exercise}
+Konstruksikan secara eksplisit suatu injeksi $f \colon \R \to \R \setminus \Q$ dengan menggunakan
+\propref{prop:rationaldecimal}.
+\end{exercise}

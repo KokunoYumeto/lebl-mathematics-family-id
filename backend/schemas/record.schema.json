@@ -1,0 +1,1469 @@
+{
+  "$id": "urn:interlanguage:schema:lebl:record:0.1.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "artifact": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "artifact_kind": {
+              "enum": [
+                "pdf",
+                "html",
+                "epub",
+                "json",
+                "jsonl",
+                "csv",
+                "manifest",
+                "source_archive",
+                "other"
+              ]
+            },
+            "bytes": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "manifest_ids": {
+              "$ref": "#/$defs/idArray"
+            },
+            "path": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "produced_from_ids": {
+              "$ref": "#/$defs/idArray"
+            },
+            "record_type": {
+              "const": "artifact"
+            },
+            "rights_id": {
+              "$ref": "#/$defs/id"
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "toolchain": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "record_type",
+            "artifact_kind",
+            "path",
+            "bytes",
+            "sha256",
+            "toolchain",
+            "produced_from_ids",
+            "manifest_ids",
+            "rights_id"
+          ],
+          "type": "object"
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "asset": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "asset_kind": {
+              "enum": [
+                "figure",
+                "media",
+                "code",
+                "data",
+                "build_dependency",
+                "interactive",
+                "other"
+              ]
+            },
+            "dependencies": {
+              "$ref": "#/$defs/idArray"
+            },
+            "edition_id": {
+              "$ref": "#/$defs/id"
+            },
+            "mime_type": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "path": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "record_type": {
+              "const": "asset"
+            },
+            "resource_id": {
+              "$ref": "#/$defs/id"
+            },
+            "rights_id": {
+              "$ref": "#/$defs/id"
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "source_binding": {
+              "$ref": "#/$defs/sourceBinding"
+            }
+          },
+          "required": [
+            "record_type",
+            "resource_id",
+            "edition_id",
+            "asset_kind",
+            "path",
+            "mime_type",
+            "sha256",
+            "source_binding",
+            "dependencies",
+            "rights_id"
+          ],
+          "type": "object"
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "attribution": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "role": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "uri": {
+          "format": "uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "role"
+      ],
+      "type": "object"
+    },
+    "base": {
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "record_type": {
+          "enum": [
+            "program",
+            "course",
+            "resource",
+            "edition",
+            "unit",
+            "concept",
+            "segment",
+            "term",
+            "asset",
+            "relation",
+            "rights",
+            "qa_event",
+            "artifact",
+            "correction"
+          ]
+        },
+        "recorded_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "schema_name": {
+          "const": "lebl.backend.record"
+        },
+        "schema_version": {
+          "const": "0.1.0"
+        },
+        "semantic_aliases": {
+          "items": {
+            "$ref": "#/$defs/semanticKey"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "semantic_key": {
+          "$ref": "#/$defs/semanticKey"
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "active",
+            "blocked",
+            "deprecated",
+            "superseded"
+          ]
+        },
+        "supersedes_id": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "workflow_id": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_name",
+        "schema_version",
+        "record_type",
+        "id",
+        "semantic_key",
+        "semantic_aliases",
+        "status",
+        "recorded_at",
+        "workflow_id",
+        "supersedes_id"
+      ],
+      "type": "object"
+    },
+    "buildEntryPoint": {
+      "additionalProperties": false,
+      "properties": {
+        "format": {
+          "enum": [
+            "pdf",
+            "html",
+            "epub",
+            "other"
+          ]
+        },
+        "path": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "tool": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "format",
+        "path",
+        "tool"
+      ],
+      "type": "object"
+    },
+    "concept": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "definition": {
+              "type": "string"
+            },
+            "label": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "notation": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "record_type": {
+              "const": "concept"
+            },
+            "rights_id": {
+              "$ref": "#/$defs/id"
+            },
+            "source_bindings": {
+              "items": {
+                "$ref": "#/$defs/sourceBinding"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "record_type",
+            "label",
+            "definition",
+            "notation",
+            "source_bindings",
+            "rights_id"
+          ],
+          "type": "object"
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "correction": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "affected_ids": {
+              "$ref": "#/$defs/idArray"
+            },
+            "defect_summary": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "evidence": {
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            "proposed_delta": {
+              "additionalProperties": false,
+              "properties": {
+                "after_content": {
+                  "type": "string"
+                },
+                "after_sha256": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "before_sha256": {
+                  "$ref": "#/$defs/sha256"
+                }
+              },
+              "required": [
+                "before_sha256",
+                "after_content",
+                "after_sha256"
+              ],
+              "type": "object"
+            },
+            "rationale": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "record_type": {
+              "const": "correction"
+            },
+            "rights_id": {
+              "$ref": "#/$defs/id"
+            },
+            "upstream_disposition": {
+              "enum": [
+                "not_evaluated",
+                "not_reported",
+                "queued_for_single_issue",
+                "included_in_single_issue",
+                "reported",
+                "declined",
+                "not_applicable"
+              ]
+            }
+          },
+          "required": [
+            "record_type",
+            "affected_ids",
+            "defect_summary",
+            "proposed_delta",
+            "rationale",
+            "evidence",
+            "upstream_disposition",
+            "rights_id"
+          ],
+          "type": "object"
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "course": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "curriculum_role": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "prerequisite_course_ids": {
+              "$ref": "#/$defs/idArray"
+            },
+            "program_id": {
+              "$ref": "#/$defs/id"
+            },
+            "record_type": {
+              "const": "course"
+            },
+            "resource_ids": {
+              "$ref": "#/$defs/idArray"
+            },
+            "rights_id": {
+              "$ref": "#/$defs/id"
+            },
+            "title": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "record_type",
+            "program_id",
+            "title",
+            "curriculum_role",
+            "prerequisite_course_ids",
+            "resource_ids",
+            "rights_id"
+          ],
+          "type": "object"
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "creator": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "author",
+            "editor",
+            "translator",
+            "contributor",
+            "publisher"
+          ]
+        },
+        "uri": {
+          "format": "uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "role"
+      ],
+      "type": "object"
+    },
+    "edition": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "build_entrypoints": {
+              "items": {
+                "$ref": "#/$defs/buildEntryPoint"
+              },
+              "type": "array"
+            },
+            "derivative_of_id": {
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/id"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "edition_kind": {
+              "enum": [
+                "upstream",
+                "local_derivative"
+              ]
+            },
+            "language": {
+              "$ref": "#/$defs/languageTag"
+            },
+            "locale": {
+              "$ref": "#/$defs/languageTag"
+            },
+            "record_type": {
+              "const": "edition"
+            },
+            "resource_id": {
+              "$ref": "#/$defs/id"
+            },
+            "revision": {
+              "$ref": "#/$defs/revision"
+            },
+            "rights_id": {
+              "$ref": "#/$defs/id"
+            },
+            "translation_state": {
+              "$ref": "#/$defs/translationState"
+            }
+          },
+          "required": [
+            "record_type",
+            "resource_id",
+            "edition_kind",
+            "revision",
+            "language",
+            "locale",
+            "translation_state",
+            "derivative_of_id",
+            "build_entrypoints",
+            "rights_id"
+          ],
+          "type": "object"
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "locator": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "uri": {
+          "format": "uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "locator",
+        "sha256"
+      ],
+      "type": "object"
+    },
+    "exerciseMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "answer_format": {
+          "enum": [
+            "proof",
+            "calculation",
+            "short_answer",
+            "multiple_choice",
+            "mixed",
+            "other"
+          ]
+        },
+        "response_expected": {
+          "type": "boolean"
+        },
+        "solution_status": {
+          "enum": [
+            "full_solution",
+            "answer_only",
+            "hint_only",
+            "mixed_partial",
+            "none",
+            "unknown",
+            "not_applicable"
+          ]
+        },
+        "source_number": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "response_expected",
+        "answer_format",
+        "solution_status"
+      ],
+      "type": "object"
+    },
+    "expression": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "content_format": {
+          "enum": [
+            "latex",
+            "plaintext",
+            "pretext_xml",
+            "html",
+            "mathml",
+            "other"
+          ]
+        },
+        "content_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "edition_id": {
+          "$ref": "#/$defs/id"
+        },
+        "expression_id": {
+          "$ref": "#/$defs/id"
+        },
+        "expression_key": {
+          "$ref": "#/$defs/semanticKey"
+        },
+        "language": {
+          "$ref": "#/$defs/languageTag"
+        },
+        "locale": {
+          "$ref": "#/$defs/languageTag"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "rights_id": {
+          "$ref": "#/$defs/id"
+        },
+        "role": {
+          "enum": [
+            "source",
+            "translation",
+            "adaptation"
+          ]
+        },
+        "translation_of_expression_id": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "translation_state": {
+          "$ref": "#/$defs/translationState"
+        }
+      },
+      "required": [
+        "expression_id",
+        "expression_key",
+        "edition_id",
+        "role",
+        "language",
+        "locale",
+        "content_format",
+        "content",
+        "content_sha256",
+        "translation_state",
+        "translation_of_expression_id",
+        "provenance",
+        "rights_id"
+      ],
+      "type": "object"
+    },
+    "id": {
+      "pattern": "^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "idArray": {
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "languageTag": {
+      "pattern": "^[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*$",
+      "type": "string"
+    },
+    "localeState": {
+      "additionalProperties": false,
+      "properties": {
+        "edition_id": {
+          "$ref": "#/$defs/id"
+        },
+        "locale": {
+          "$ref": "#/$defs/languageTag"
+        },
+        "state": {
+          "$ref": "#/$defs/translationState"
+        }
+      },
+      "required": [
+        "locale",
+        "edition_id",
+        "state"
+      ],
+      "type": "object"
+    },
+    "program": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "course_ids": {
+              "$ref": "#/$defs/idArray"
+            },
+            "record_type": {
+              "const": "program"
+            },
+            "rights_id": {
+              "$ref": "#/$defs/id"
+            },
+            "target_locales": {
+              "items": {
+                "$ref": "#/$defs/languageTag"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "title": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "record_type",
+            "title",
+            "target_locales",
+            "course_ids",
+            "rights_id"
+          ],
+          "type": "object"
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "enum": [
+            "source_copy",
+            "human",
+            "machine_assisted",
+            "editorial_adaptation"
+          ]
+        },
+        "note": {
+          "type": "string"
+        },
+        "responsible_workflow": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "method",
+        "responsible_workflow"
+      ],
+      "type": "object"
+    },
+    "qaEvent": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "check_type": {
+              "enum": [
+                "source",
+                "math",
+                "language",
+                "topology",
+                "build",
+                "accessibility",
+                "visual"
+              ]
+            },
+            "note": {
+              "type": "string"
+            },
+            "record_type": {
+              "const": "qa_event"
+            },
+            "result": {
+              "enum": [
+                "pass",
+                "fail",
+                "partial",
+                "not_run"
+              ]
+            },
+            "subject_ids": {
+              "$ref": "#/$defs/idArray"
+            },
+            "toolchain": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "witness": {
+              "additionalProperties": false,
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "file",
+                    "log",
+                    "image",
+                    "url",
+                    "manual_observation"
+                  ]
+                },
+                "locator": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sha256": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/$defs/sha256"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "kind",
+                "locator",
+                "sha256"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "record_type",
+            "check_type",
+            "subject_ids",
+            "result",
+            "witness",
+            "toolchain",
+            "note"
+          ],
+          "type": "object"
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "relation": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "object_id": {
+              "$ref": "#/$defs/id"
+            },
+            "order_key": {
+              "$ref": "#/$defs/orderKey"
+            },
+            "predicate": {
+              "enum": [
+                "contains",
+                "precedes",
+                "prerequisite",
+                "depends-on",
+                "xref",
+                "proves",
+                "illustrates",
+                "exercises",
+                "hints",
+                "answers",
+                "solves",
+                "translates",
+                "adapts",
+                "supersedes",
+                "corrects"
+              ]
+            },
+            "record_type": {
+              "const": "relation"
+            },
+            "rights_id": {
+              "$ref": "#/$defs/id"
+            },
+            "subject_id": {
+              "$ref": "#/$defs/id"
+            }
+          },
+          "required": [
+            "record_type",
+            "subject_id",
+            "predicate",
+            "object_id",
+            "order_key",
+            "rights_id"
+          ],
+          "type": "object"
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "resource": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "creators": {
+              "items": {
+                "$ref": "#/$defs/creator"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            "original_language": {
+              "$ref": "#/$defs/languageTag"
+            },
+            "record_type": {
+              "const": "resource"
+            },
+            "repository_uri": {
+              "format": "uri",
+              "type": "string"
+            },
+            "rights_id": {
+              "$ref": "#/$defs/id"
+            },
+            "title": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "upstream_uri": {
+              "format": "uri",
+              "type": "string"
+            }
+          },
+          "required": [
+            "record_type",
+            "title",
+            "creators",
+            "original_language",
+            "upstream_uri",
+            "rights_id"
+          ],
+          "type": "object"
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "revision": {
+      "additionalProperties": false,
+      "properties": {
+        "archive_sha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "commit_id": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "enum": [
+            "commit",
+            "tag",
+            "tree",
+            "archive",
+            "version",
+            "local"
+          ]
+        },
+        "tree_id": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "value": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value",
+        "commit_id",
+        "tree_id",
+        "archive_sha256"
+      ],
+      "type": "object"
+    },
+    "rights": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "attribution": {
+              "items": {
+                "$ref": "#/$defs/attribution"
+              },
+              "type": "array"
+            },
+            "change_notice": {
+              "type": "string"
+            },
+            "change_notice_required": {
+              "type": "boolean"
+            },
+            "component_kind": {
+              "enum": [
+                "program",
+                "course",
+                "resource",
+                "edition",
+                "unit",
+                "segment",
+                "expression",
+                "asset",
+                "artifact",
+                "editorial_metadata",
+                "mixed"
+              ]
+            },
+            "license_expression": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "license_uri": {
+              "format": "uri",
+              "type": "string"
+            },
+            "non_endorsement": {
+              "type": "string"
+            },
+            "record_type": {
+              "const": "rights"
+            },
+            "scope_ids": {
+              "$ref": "#/$defs/idArray"
+            },
+            "third_party_status": {
+              "enum": [
+                "none_known",
+                "separate_terms",
+                "excluded",
+                "unknown",
+                "mixed"
+              ]
+            }
+          },
+          "required": [
+            "record_type",
+            "component_kind",
+            "license_expression",
+            "attribution",
+            "change_notice_required",
+            "change_notice",
+            "non_endorsement",
+            "third_party_status",
+            "scope_ids"
+          ],
+          "type": "object"
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "segment": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "concept_ids": {
+              "$ref": "#/$defs/idArray"
+            },
+            "expressions": {
+              "items": {
+                "$ref": "#/$defs/expression"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            "order_key": {
+              "$ref": "#/$defs/orderKey"
+            },
+            "record_type": {
+              "const": "segment"
+            },
+            "rights_id": {
+              "$ref": "#/$defs/id"
+            },
+            "segment_kind": {
+              "enum": [
+                "heading",
+                "paragraph",
+                "display_math",
+                "list_item",
+                "caption",
+                "exercise_prompt",
+                "hint",
+                "answer",
+                "solution",
+                "code",
+                "other"
+              ]
+            },
+            "source_binding": {
+              "$ref": "#/$defs/sourceBinding"
+            },
+            "unit_id": {
+              "$ref": "#/$defs/id"
+            }
+          },
+          "required": [
+            "record_type",
+            "unit_id",
+            "segment_kind",
+            "order_key",
+            "source_binding",
+            "expressions",
+            "concept_ids",
+            "rights_id"
+          ],
+          "type": "object"
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "semanticKey": {
+      "pattern": "^lebl\\.(ra|diffyqs|ca|shared)\\.[a-z0-9][a-z0-9._-]*$",
+      "type": "string"
+    },
+    "sha256": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "sourceBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "content_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "edition_id": {
+          "$ref": "#/$defs/id"
+        },
+        "locator": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "source_path": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "edition_id",
+        "source_path",
+        "locator",
+        "content_sha256"
+      ],
+      "type": "object"
+    },
+    "term": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "concept_id": {
+              "$ref": "#/$defs/id"
+            },
+            "evidence": {
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "type": "array"
+            },
+            "examples": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "language": {
+              "$ref": "#/$defs/languageTag"
+            },
+            "locale": {
+              "$ref": "#/$defs/languageTag"
+            },
+            "preferred": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "record_type": {
+              "const": "term"
+            },
+            "register": {
+              "enum": [
+                "standard",
+                "formal",
+                "pedagogical",
+                "historical",
+                "specialized"
+              ]
+            },
+            "rejected_forms": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "rights_id": {
+              "$ref": "#/$defs/id"
+            },
+            "scope_ids": {
+              "$ref": "#/$defs/idArray"
+            },
+            "variants": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "record_type",
+            "concept_id",
+            "language",
+            "locale",
+            "preferred",
+            "variants",
+            "rejected_forms",
+            "scope_ids",
+            "register",
+            "evidence",
+            "examples",
+            "rights_id"
+          ],
+          "type": "object"
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "translationState": {
+      "enum": [
+        "source_frozen",
+        "queued",
+        "draft",
+        "translated",
+        "structurally_verified",
+        "mathematically_reviewed",
+        "language_reviewed",
+        "built",
+        "visually_checked",
+        "published",
+        "superseded",
+        "blocked"
+      ]
+    },
+    "unit": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "if": {
+            "properties": {
+              "unit_kind": {
+                "const": "exercise"
+              }
+            },
+            "required": [
+              "unit_kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "exercise_metadata"
+            ]
+          }
+        },
+        {
+          "properties": {
+            "concept_ids": {
+              "$ref": "#/$defs/idArray"
+            },
+            "edition_id": {
+              "$ref": "#/$defs/id"
+            },
+            "exercise_metadata": {
+              "$ref": "#/$defs/exerciseMetadata"
+            },
+            "label": {
+              "type": "string"
+            },
+            "locale_states": {
+              "items": {
+                "$ref": "#/$defs/localeState"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            "order_key": {
+              "$ref": "#/$defs/orderKey"
+            },
+            "parent_id": {
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/id"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "prerequisite_ids": {
+              "$ref": "#/$defs/idArray"
+            },
+            "record_type": {
+              "const": "unit"
+            },
+            "resource_id": {
+              "$ref": "#/$defs/id"
+            },
+            "rights_id": {
+              "$ref": "#/$defs/id"
+            },
+            "source_binding": {
+              "$ref": "#/$defs/sourceBinding"
+            },
+            "source_local_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "title": {
+              "type": "string"
+            },
+            "unit_kind": {
+              "enum": [
+                "book",
+                "chapter",
+                "section",
+                "subsection",
+                "definition",
+                "theorem",
+                "lemma",
+                "proposition",
+                "corollary",
+                "proof",
+                "example",
+                "exercise",
+                "hint",
+                "answer",
+                "solution",
+                "figure",
+                "table",
+                "program",
+                "interactive",
+                "remark",
+                "notation",
+                "other"
+              ]
+            }
+          },
+          "required": [
+            "record_type",
+            "resource_id",
+            "edition_id",
+            "unit_kind",
+            "source_local_id",
+            "parent_id",
+            "order_key",
+            "label",
+            "title",
+            "source_binding",
+            "locale_states",
+            "concept_ids",
+            "prerequisite_ids",
+            "rights_id"
+          ],
+          "type": "object"
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "orderKey": {
+      "pattern": "^[0-9]{4}(?:\\.[0-9]{4})*$",
+      "type": "string"
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/program"
+    },
+    {
+      "$ref": "#/$defs/course"
+    },
+    {
+      "$ref": "#/$defs/resource"
+    },
+    {
+      "$ref": "#/$defs/edition"
+    },
+    {
+      "$ref": "#/$defs/unit"
+    },
+    {
+      "$ref": "#/$defs/concept"
+    },
+    {
+      "$ref": "#/$defs/segment"
+    },
+    {
+      "$ref": "#/$defs/term"
+    },
+    {
+      "$ref": "#/$defs/asset"
+    },
+    {
+      "$ref": "#/$defs/relation"
+    },
+    {
+      "$ref": "#/$defs/rights"
+    },
+    {
+      "$ref": "#/$defs/qaEvent"
+    },
+    {
+      "$ref": "#/$defs/artifact"
+    },
+    {
+      "$ref": "#/$defs/correction"
+    }
+  ],
+  "title": "Lebl backend entity record"
+}

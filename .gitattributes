@@ -1,0 +1,15 @@
+* text=auto eol=lf
+*.tex text diff=tex
+*.md text
+*.csv text
+*.json text
+*.jsonl text
+*.py text
+*.svg text
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.zip binary
+*.xcf binary

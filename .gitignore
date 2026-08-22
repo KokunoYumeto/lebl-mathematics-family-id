@@ -1,0 +1,35 @@
+# Sistem operasi dan editor
+.DS_Store
+Thumbs.db
+*~
+*.swp
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Hasil build LaTeX yang dapat dibuat ulang
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+/translation/ra/html/
+/translation/ra/realanal-out.xml
+/translation/ra/alttexts.txt
+/translation/ra/realanal.pdf
+/translation/ra/realanal2.pdf
+/translation/ra/realanal12.pdf

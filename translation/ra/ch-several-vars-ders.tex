@@ -1,0 +1,4959 @@
+\chapter{Beberapa Variabel dan Turunan Parsial} \label{pd:chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ruang vektor, pemetaan linear, dan kekonveksan}
+\label{sec:vectorspaces}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{3 kuliah}
+
+\subsection{Ruang vektor}
+
+Ruang Euklides $\R^n$ telah muncul dalam bab ruang metrik.
+Dalam bab ini, kita memperluas kalkulus diferensial yang kita bangun
+untuk satu variabel ke beberapa variabel.  Gagasan utama dalam
+kalkulus diferensial adalah menghampiri fungsi diferensiabel dengan fungsi
+linear
+(menghampiri grafik dengan objek datar seperti garis atau bidang).
+Untuk beberapa variabel, kita perlu memperkenalkan sedikit aljabar
+linear sebelum dapat melanjutkan pembahasan.
+Kita mulai dengan ruang vektor dan pemetaan linear antarruang vektor.
+
+Notasi $\vec{v}$ atau cetak tebal
+$\mathbf{v}$ lazim digunakan untuk elemen $\R^n$,
+terutama dalam ilmu terapan.
+Kita cukup menggunakan $v$ biasa, sebagaimana lazim dalam matematika.
+Artinya, $v \in \R^n$ adalah sebuah \emph{\myindex{vektor}}, yaitu
+$v = (v_1,v_2,\ldots,v_n)$\glsadd{not:vector} merupakan tupel-$n$ dari
+bilangan real.\footnote{Subskrip digunakan untuk berbagai keperluan,
+sehingga terkadang kita memiliki beberapa vektor yang juga
+dibedakan dengan subskrip, seperti barisan berhingga atau tak berhingga dari
+vektor-vektor $y_1,y_2,\ldots$.}
+Adakalanya vektor berguna untuk ditulis dan diperlakukan sebagai
+\emph{\myindex{vektor kolom}}, yaitu matriks berukuran $n$-kali-$1$:
+\glsadd{not:vectorcol}
+\begin{equation*}
+v =
+(v_1,v_2,\ldots,v_n) =
+{ \left[
+\begin{smallmatrix}
+v_1 \\ v_2 \\ \vdots \\ v_n
+\end{smallmatrix}
+\right]
+}
+\end{equation*}
+Kita menggunakan bentuk ini ketika diperlukan.
+Bilangan real kita sebut
+\emph{\myindex{skalar}} untuk membedakannya dari vektor.
+
+Kita sering memandang vektor sebagai arah dan besar, lalu menggambar
+vektor sebagai anak panah.  Vektor $(v_1,v_2,\ldots,v_n)$ direpresentasikan
+oleh anak panah dari titik asal ke titik $(v_1,v_2,\ldots,v_n)$.
+Ketika kita memandang vektor sebagai anak panah, pangkalnya
+tidak harus berada di titik asal; sebuah vektor hanyalah arah dan
+besar, tanpa memuat informasi tentang letak titik pangkalnya.
+Terdapat struktur aljabar alami ketika vektor dipandang sebagai anak panah.
+Kita dapat menjumlahkan vektor sebagai anak panah dengan menyusuri satu vektor lalu vektor lainnya.
+Kita juga dapat mengalikan vektor dengan skalar dengan mengubah
+skalanya.  Lihat \figureref{fig:vecasarrow}.
+\begin{myfigureht}
+\myincludepdft{vecasarrow}{%
+Di sebelah kiri terdapat diagram vektor (v subskrip 1, v subskrip 2)
+pada bidang x subskrip 1 x subskrip 2 sebagai anak panah dari titik asal
+ke titik (v subskrip 1, v subskrip 2).
+Di sebelah kanan terdapat diagram penjumlahan vektor dan perkalian
+skalar.
+Pertama, terdapat gambar anak panah v yang disusul oleh
+vektor w yang diletakkan pada ujungnya, kemudian vektor
+v tambah w yang bermula di pangkal v dan berakhir di ujung w.
+Selanjutnya terdapat gambar anak panah v dan anak panah 2 v, dengan
+anak panah 2 v searah dengan v tetapi panjangnya dua
+kali panjang v.}
+\caption{Vektor sebagai anak panah dalam $\R^2$, serta arti penjumlahan dan
+perkalian skalar.\label{fig:vecasarrow}}
+\end{myfigureht}
+
+Sebuah vektor juga dapat merepresentasikan sebuah titik dalam $\R^n$.
+Biasanya, kita memandang $v \in \R^n$
+sebagai titik jika $\R^n$ dipandang sebagai ruang metrik, dan memandangnya
+sebagai anak panah jika kita memperhatikan \emph{struktur ruang vektor} pada
+$\R^n$ (penjumlahan dan perkalian skalar).
+Mari kita definisikan pengertian abstrak ruang vektor, sebab terdapat
+banyak ruang vektor lain selain $\R^n$.
+
+\begin{defn}
+Misalkan $X$ adalah suatu himpunan yang dilengkapi dengan
+operasi penjumlahan, $+ \colon X \times X \to X$,
+dan operasi perkalian skalar, $\cdot \colon \R \times X \to X$,
+(biasanya kita menulis $ax$ alih-alih $a \cdot x$).
+Himpunan $X$ disebut \emph{\myindex{ruang vektor}}
+(atau \emph{\myindex{ruang vektor real}})
+jika syarat-syarat berikut dipenuhi:
+\begin{enumerate}[(i)]
+\item
+%mbxSTARTIGNORE
+\makebox[2.15in][l]{(Penjumlahan bersifat asosiatif)}
+%mbxENDIGNORE
+%mbxlatex (Penjumlahan bersifat asosiatif) \quad
+Jika $u, v, w \in X$, maka $u+(v+w) = (u+v)+w$.
+\item
+%mbxSTARTIGNORE
+\makebox[2.15in][l]{(Penjumlahan bersifat komutatif)}
+%mbxENDIGNORE
+%mbxlatex (Penjumlahan bersifat komutatif) \quad
+Jika $u, v \in X$, maka $u+v = v+u$.
+\item \label{vecspacedefn:addidentity}
+%mbxSTARTIGNORE
+\makebox[2.15in][l]{(Identitas aditif)}
+%mbxENDIGNORE
+%mbxlatex (Identitas aditif) \quad
+Terdapat $0 \in X$ sehingga $v+0=v$ untuk setiap $v \in X$.
+\item \label{vecspacedefn:addinverse}
+%mbxSTARTIGNORE
+\makebox[2.15in][l]{(Invers aditif)}
+%mbxENDIGNORE
+%mbxlatex (Invers aditif) \quad
+Untuk setiap $v \in X$, terdapat $-v \in X$
+sehingga $v+(-v)=0$.
+\item
+%mbxSTARTIGNORE
+\makebox[2.15in][l]{(Hukum distributif)}
+%mbxENDIGNORE
+%mbxlatex (Hukum distributif) \quad
+Jika $a \in \R$ dan $u,v \in X$, maka
+$a(u+v) = au+av$.
+\item
+%mbxSTARTIGNORE
+\makebox[2.15in][l]{(Hukum distributif)}
+%mbxENDIGNORE
+%mbxlatex (Hukum distributif) \quad
+Jika $a,b \in \R$ dan $v \in X$, maka
+$(a+b)v = av+bv$.
+\item
+%mbxSTARTIGNORE
+\makebox[2.15in][l]{(Perkalian bersifat asosiatif)}
+%mbxENDIGNORE
+%mbxlatex (Perkalian bersifat asosiatif) \quad
+Jika $a,b \in \R$ dan $v \in X$, maka
+$(ab)v = a(bv)$.
+\item
+%mbxSTARTIGNORE
+\makebox[2.15in][l]{(Identitas perkalian)}
+%mbxENDIGNORE
+%mbxlatex (Identitas perkalian) \quad
+$1v = v$ untuk setiap $v \in X$.
+\end{enumerate}
+Elemen-elemen ruang vektor biasanya disebut \emph{vektor},
+meskipun elemen-elemen tersebut
+bukan elemen $\R^n$ (vektor dalam pengertian \myquote{tradisional}).
+%
+Jika $Y \subset X$ adalah himpunan bagian yang juga merupakan ruang vektor dengan
+operasi yang sama, maka $Y$ disebut \emph{\myindex{subruang}} atau
+\emph{\myindex{subruang vektor}} dari $X$.
+\end{defn}
+
+Perkalian dengan skalar berlaku sebagaimana yang kita harapkan.
+Sebagai contoh, $2v = (1+1)v = 1v + 1v = v+v$, demikian pula $3v = v+v+v$, dan
+seterusnya.
+Satu fakta khusus yang sering kita gunakan ialah $0 v = 0$, dengan
+nol di sebelah kiri adalah $0 \in \R$ dan nol di sebelah kanan adalah $0 \in X$.
+Untuk melihatnya, mulailah dengan
+$0v = (0+0)v = 0v + 0v$, lalu tambahkan $-(0v)$ pada kedua ruas
+untuk memperoleh $0 = 0v$.  Demikian pula, $-v = (-1)v$, yang diperoleh dari
+$(-1)v+v = (-1)v + 1v = (-1+1)v = 0v = 0$.
+Mulai sekarang, fakta-fakta aljabar semacam ini, yang langsung mengikuti
+definisi, akan digunakan tanpa pembuktian.
+
+\begin{example}
+Himpunan $\R^n$ merupakan ruang vektor;
+vektor nolnya adalah $(0,\ldots,0)$, sedangkan penjumlahan
+dan perkalian dengan skalar dilakukan komponen demi komponen:
+Jika $a \in \R$, $v = (v_1,v_2,\ldots,v_n) \in \R^n$, dan $w =
+(w_1,w_2,\ldots,w_n) \in \R^n$, maka
+\begin{align*}
+& v+w \coloneqq
+(v_1,v_2,\ldots,v_n) +
+(w_1,w_2,\ldots,w_n) 
+=
+(v_1+w_1,v_2+w_2,\ldots,v_n+w_n) , \\
+& a v \coloneqq
+a (v_1,v_2,\ldots,v_n) =
+(a v_1, a v_2,\ldots, a v_n) .
+\end{align*}
+\end{example}
+
+Kita terutama akan membahas ruang vektor \myquote{berdimensi hingga} yang dapat
+dipandang sebagai himpunan bagian dari $\R^n$, tetapi ruang vektor lain juga berguna dalam
+analisis.
+Bahkan ruang vektor yang lebih sederhana seperti ini sebaiknya dipandang
+secara abstrak, bukan sebagai $\R^n$.
+
+\begin{example}
+Sebuah contoh trivial ruang vektor adalah
+$X \coloneqq \{ 0 \}$.  Operasinya didefinisikan dengan cara yang jelas:
+$0 + 0 \coloneqq 0$ dan $a0 \coloneqq 0$.  Vektor nol harus selalu ada,
+sehingga semua ruang vektor merupakan himpunan tak kosong, dan $X$ ini adalah ruang
+vektor terkecil yang mungkin.
+\end{example}
+
+\begin{example}
+Ruang $C([0,1],\R)$ yang terdiri atas fungsi-fungsi kontinu pada interval $[0,1]$
+merupakan ruang vektor.  Untuk dua fungsi $f$ dan $g$ dalam $C([0,1],\R)$ serta
+$a \in \R$, kita mendefinisikan $f+g$ dan $af$ dengan cara yang jelas:
+\begin{equation*}
+(f+g)(x) \coloneqq f(x) + g(x), \qquad (af) (x) \coloneqq a\bigl(f(x)\bigr) .
+\end{equation*}
+Elemen 0 adalah fungsi yang identik nol.  Sebagai latihan, periksalah
+bahwa semua syarat ruang vektor dipenuhi.
+Ruang $C^1([0,1],\R)$ yang terdiri atas fungsi-fungsi yang diferensiabel dan memiliki turunan kontinu merupakan
+subruang dari $C([0,1],\R)$.
+\end{example}
+
+\begin{example}
+Ruang polinom $c_0 + c_1 t + c_2 t^2 + \cdots + c_m t^m$
+(dengan derajat~$m$ sebarang) merupakan ruang vektor,
+yang dinotasikan dengan $\R[t]$\glsadd{not:realpoly} (koefisiennya real dan
+variabelnya adalah $t$).  Operasinya didefinisikan dengan cara yang sama seperti untuk
+fungsi di atas.
+Misalkan terdapat
+dua polinom, yang satu berderajat $m$ dan yang lain berderajat $n$.  Agar sederhana, andaikan $n
+\geq m$.  Maka
+\begin{multline*}
+(c_0 + c_1 t + c_2 t^2 + \cdots + c_m t^m)
++
+(d_0 + d_1 t + d_2 t^2 + \cdots + d_n t^n)
+= \\
+(c_0+d_0) + (c_1+d_1) t + (c_2 + d_2) t^2 + \cdots + (c_m+d_m) t^m
++ d_{m+1} t^{m+1} + \cdots + d_n t^n
+\end{multline*}
+dan
+\begin{equation*}
+a(c_0 + c_1 t + c_2 t^2 + \cdots + c_m t^m)
+=
+(ac_0) + (ac_1) t + (ac_2) t^2 + \cdots + (ac_m) t^m  .
+\end{equation*}
+Walaupun sekilas tampak demikian, $\R[t]$ tidak ekuivalen dengan $\R^n$ untuk $n$ mana pun.
+Secara khusus, ruang ini tidak \myquote{berdimensi hingga.}  Sebentar lagi kita akan merumuskan
+pengertian ini secara tepat.  Kita dapat membentuk suatu
+subruang vektor berdimensi hingga dengan membatasi derajatnya.  Sebagai contoh,
+jika $\sP_n$ adalah himpunan polinom berderajat $n$ atau kurang,
+maka $\sP_n$ merupakan ruang vektor berdimensi hingga, dan dapat kita
+identifikasikan dengan $\R^{n+1}$.
+
+Variabel $t$ di atas sebenarnya hanyalah penanda tempat formal.
+Dengan menetapkan $t$ sama dengan suatu bilangan real, kita memperoleh sebuah fungsi.
+Jadi, ruang $\R[t]$ dapat dipandang sebagai subruang dari $C(\R,\R)$.
+Jika kita membatasi rentang nilai $t$ pada $[0,1]$, $\R[t]$ dapat diidentifikasikan dengan
+subruang dari $C([0,1],\R)$.
+\end{example}
+
+\begin{prop}
+Agar $S \subset X$ menjadi subruang vektor
+dari ruang vektor $X$, kita hanya perlu memeriksa:
+%If $X$ is a vector space, for $S \subset X$
+%to be a vector subspace, we only need to check
+\begin{enumerate}[1)]
+\item
+$0 \in S$.
+\item
+$S$ tertutup terhadap penjumlahan: Jika $x,y \in S$, maka $x+y \in S$.
+\item
+$S$ tertutup terhadap perkalian skalar:
+Jika $x \in S$ dan $a \in \R$, maka $ax \in S$.
+\end{enumerate}
+\end{prop}
+
+Butir 2) dan 3)
+memastikan bahwa penjumlahan dan perkalian skalar memang terdefinisi pada~$S$.
+Butir 1) diperlukan
+untuk memenuhi butir \ref{vecspacedefn:addidentity} dalam definisi ruang
+vektor.  Keberadaan
+invers aditif $-v$, yaitu butir \ref{vecspacedefn:addinverse},
+mengikuti karena $-v = (-1)v$ dan butir 3) menyatakan bahwa
+$-v \in S$ jika $v \in S$.  Semua sifat lainnya berupa persamaan
+yang sudah berlaku dalam $X$ sehingga juga harus berlaku dalam suatu himpunan bagian.
+
+\medskip
+
+Kita dapat menggunakan lapangan selain $\R$ dalam definisi
+(sebagai contoh, bilangan kompleks $\C$ juga lazim digunakan),
+tetapi kita akan tetap menggunakan
+bilangan real\footnote{Jika Anda menginginkan ruang vektor yang sangat tidak biasa atas lapangan lain,
+$\R$ sendiri merupakan ruang vektor atas lapangan $\Q$.}.
+
+\subsection{Kombinasi linear dan dimensi}
+
+\begin{defn}
+Misalkan $X$ adalah suatu ruang vektor,
+$x_1, x_2, \ldots, x_m \in X$ adalah vektor, dan
+$a_1, a_2, \ldots, a_m \in \R$ adalah skalar.  Maka
+\begin{equation*}
+a_1 x_1 + 
+a_2 x_2 +  \cdots
++ a_m x_m
+\end{equation*}
+disebut \emph{\myindex{kombinasi linear}} dari vektor-vektor $x_1, x_2,
+\ldots, x_m$.
+
+Untuk suatu subhimpunan $Y \subset X$, nyatakan $\spn(Y)$,\glsadd{not:span}
+atau \emph{\myindex{rentang}} dari $Y$,
+sebagai himpunan semua kombinasi linear dari semua subhimpunan hingga $Y$.
+Kita katakan $Y$ \emph{merentang} $\spn(Y)$.
+Secara konvensi, tetapkan $\spn(\emptyset) \coloneqq \{ 0 \}$.
+\end{defn}
+
+\begin{example}
+Misalkan $Y \coloneqq \bigl\{ (1,1) \bigr\} \subset \R^2$.  Maka
+\begin{equation*}
+\spn(Y)
+=
+\bigl\{ (x,x) \in \R^2 : x \in \R \bigr\} .
+\end{equation*}
+Dengan kata lain, $\spn(Y)$ adalah garis yang melalui titik asal dan titik $(1,1)$.
+\end{example}
+
+\begin{example} \label{example:vecspr2span}
+Misalkan $Y \coloneqq \bigl\{ (1,1), (0,1) \bigr\} \subset \R^2$.  Maka
+\begin{equation*}
+\spn(Y)
+=
+\R^2 ,
+\end{equation*}
+karena setiap titik $(x,y) \in \R^2$ dapat ditulis sebagai
+suatu kombinasi linear
+\begin{equation*}
+(x,y) = x (1,1) + (y-x) (0,1) .
+\end{equation*}
+\end{example}
+
+\begin{example}
+Misalkan $Y \coloneqq \{ 1, t, t^2, t^3, \ldots \} \subset \R[t]$ dan
+$E \coloneqq \{ 1, t^2, t^4, t^6, \ldots \} \subset \R[t]$.
+Rentang $Y$ adalah seluruh himpunan polinom,
+\begin{equation*}
+\spn(Y) = \R[t] .
+\end{equation*}
+Rentang $E$ adalah himpunan polinom yang hanya memuat pangkat genap dari $t$.
+\end{example}
+
+Misalkan kita memiliki dua kombinasi linear vektor dari $Y$.  Kombinasi linear
+pertama menggunakan vektor $\{ x_1,x_2,\ldots,x_m \}$, sedangkan yang lain menggunakan
+$\{ \widetilde{x}_1,\widetilde{x}_2,\ldots,\widetilde{x}_n \}$.  Jumlah keduanya dapat ditulis
+menggunakan vektor-vektor dari gabungan
+$\{ x_1,x_2,\ldots,x_m \} \cup
+\{ \widetilde{x}_1,\widetilde{x}_2,\ldots,\widetilde{x}_n \}$:
+\begin{multline*}
+(a_1 x_1 + 
+a_2 x_2 +  \cdots
++ a_m x_m)
++
+(b_1 \widetilde{x}_1 + 
+b_2 \widetilde{x}_2 +  \cdots
++ b_n \widetilde{x}_n)
+\\
+=
+a_1 x_1 + 
+a_2 x_2 +  \cdots
++ a_m x_m
++
+b_1 \widetilde{x}_1 + 
+b_2 \widetilde{x}_2 +  \cdots
++ b_n \widetilde{x}_n .
+\end{multline*}
+Jadi, jumlah tersebut juga merupakan kombinasi linear vektor-vektor dari~$Y$.
+Demikian pula,
+kelipatan skalar dari suatu kombinasi linear vektor-vektor dari~$Y$
+merupakan kombinasi linear vektor-vektor dari~$Y$:
+\begin{equation*}
+b (a_1 x_1 + 
+a_2 x_2 +  \cdots
++ a_m x_m)
+=
+b a_1  x_1 + 
+b a_2 x_2 +  \cdots
++ b a_m x_m .
+\end{equation*}
+Terakhir, $0 \in \spn(Y)$; jika $Y$ tak kosong, $0 = 0 v$ untuk suatu $v \in Y$.
+Kita telah membuktikan proposisi berikut.
+
+\begin{prop}
+Misalkan $X$ adalah ruang vektor dan $Y \subset X$ suatu subhimpunan.
+Maka himpunan $\spn(Y)$ merupakan subruang vektor dari $X$.
+\end{prop}
+
+Setiap kombinasi linear unsur-unsur suatu subruang merupakan unsur dari
+subruang itu.  Jadi, $\spn(Y)$ adalah subruang terkecil yang memuat $Y$.
+Secara khusus,
+jika $Y$ sudah merupakan subruang vektor, maka $\spn(Y) = Y$.
+
+\begin{defn}
+Suatu himpunan vektor $\{ x_1, x_2, \ldots, x_m \} \subset X$ disebut 
+\emph{\myindex{bebas linear}}\footnote{%
+Untuk himpunan tak hingga $Y \subset X$, kita katakan $Y$ bebas
+linear jika setiap subhimpunan hingga dari $Y$ bebas linear
+dalam pengertian yang diberikan di sini.
+Namun, keadaan ini hanya muncul pada dimensi tak berhingga.}
+jika persamaan
+\begin{equation} \label{eq:lincomb}
+a_1 x_1 + a_2 x_2 + \cdots + a_m x_m = 0
+\end{equation}
+hanya memiliki solusi trivial $a_1 = a_2 = \cdots = a_m = 0$.
+Secara konvensi, $\emptyset$ bebas linear.
+Suatu himpunan yang tidak bebas linear disebut
+\emph{\myindex{bergantung linear}}.
+%
+Suatu himpunan vektor bebas linear $B \subset X$ sedemikian sehingga
+$\spn(B) = X$ 
+disebut \emph{\myindex{basis}} dari $X$.
+Pada umumnya, kita memandang basis bukan hanya sebagai suatu himpunan, melainkan sebagai
+suatu tupel-$m$ terurut:
+$x_1,x_2,\ldots,x_m$.
+
+Misalkan $d$ adalah bilangan bulat terbesar sedemikian sehingga $X$ memuat suatu himpunan
+yang terdiri atas $d$ vektor bebas linear.  Kita sebut $d$ sebagai
+\emph{\myindex{dimensi}} dari $X$,
+dan kita tulis $\dim \, X \coloneqq d$.
+Jika $X$ memuat suatu himpunan yang terdiri atas $d$ vektor bebas linear 
+untuk nilai $d$ sebesar apa pun, kita katakan
+$X$ berdimensi tak berhingga dan menulis $\dim \, X \coloneqq \infty$.
+%
+Untuk ruang vektor trivial $\{ 0 \}$, kita definisikan $\dim \, \{ 0 \} \coloneqq 0$.
+\end{defn}
+
+Setiap subhimpunan dari himpunan bebas linear jelas bebas linear.
+Jadi, jika suatu himpunan memuat $d$ vektor bebas linear, himpunan itu juga memuat
+himpunan yang terdiri atas $m$ vektor bebas linear untuk setiap $m \leq d$.
+Selain itu, jika suatu himpunan tidak memiliki $d+1$
+vektor bebas linear, tidak ada himpunan yang terdiri atas lebih dari $d+1$ vektor yang bebas
+linear.
+Jadi, $X$ berdimensi $d$ jika terdapat
+himpunan yang terdiri atas $d$ vektor bebas linear, tetapi tidak ada
+himpunan yang terdiri atas $d+1$ vektor yang bebas linear.
+
+Tidak ada unsur dalam suatu himpunan bebas linear yang dapat bernilai nol,
+dan suatu himpunan dengan satu unsur tak nol selalu bebas linear.
+Secara khusus, $\{ 0 \}$ adalah satu-satunya ruang vektor berdimensi $0$.
+Setiap ruang vektor lainnya memiliki dimensi positif
+atau berdimensi tak berhingga.
+Karena himpunan kosong bebas linear, himpunan itu merupakan basis
+dari $\{ 0 \}$.
+
+Sebagai contoh,
+himpunan $Y$ yang terdiri atas dua vektor dalam
+\exampleref{example:vecspr2span} merupakan basis dari $\R^2$, sehingga
+$\dim \, \R^2 \geq 2$.
+Sebentar lagi kita akan melihat bahwa setiap subruang vektor dari $\R^n$
+berdimensi hingga, dan dimensinya kurang dari atau sama dengan $n$.
+Jadi, setiap himpunan yang terdiri atas 3 vektor dalam $\R^2$ bergantung linear, dan
+$\dim \, \R^2 = 2$.
+
+Jika suatu himpunan bergantung linear, maka salah satu
+vektornya merupakan kombinasi linear dari vektor-vektor lainnya.
+Dalam \eqref{eq:lincomb},
+jika $a_k \neq 0$, kita selesaikan untuk $x_k$:
+\begin{equation*}
+x_k = \frac{-a_1}{a_k} x_1 + \cdots + 
+\frac{-a_{k-1}}{a_k} x_{k-1} +
+\frac{-a_{k+1}}{a_k} x_{k+1} +
+\cdots + 
+\frac{-a_m}{a_k} x_m .
+\end{equation*}
+Vektor $x_k$ memiliki sedikitnya dua representasi yang berbeda
+sebagai kombinasi linear vektor-vektor $\{ x_1,x_2,\ldots,x_m \}$, yaitu representasi di atas dan
+$x_k$ itu sendiri. 
+Sebagai contoh, himpunan $\bigl\{ (0,1), (2,3), (1,0) \bigr\}$ dalam $\R^2$ bergantung linear:
+\begin{equation*}
+3(0,1) - (2,3) + 2(1,0) = 0 ,
+\qquad \text{sehingga} \qquad
+(2,3) = 3(0,1) + 2(1,0) .
+\end{equation*}
+
+\begin{prop}
+Misalkan suatu ruang vektor $X$ memiliki basis 
+$B = \{ x_1, x_2, \ldots, x_n \}$.  Maka
+setiap $y \in X$ memiliki representasi tunggal berbentuk
+\begin{equation*}
+y = \sum_{k=1}^n a_k \, x_k
+\end{equation*}
+untuk skalar-skalar $a_1, a_2, \ldots, a_n$ tertentu.
+\end{prop}
+
+\begin{proof}
+Karena $X$ merupakan rentang dari $B$,
+setiap $y \in X$ adalah kombinasi linear unsur-unsur $B$.
+Misalkan
+\begin{equation*}
+y = \sum_{k=1}^n a_k \, x_k = \sum_{k=1}^n b_k \, x_k .
+\end{equation*}
+Maka
+\begin{equation*}
+\sum_{k=1}^n (a_k-b_k) x_k = 0 .
+\end{equation*}
+Karena basis tersebut bebas linear, $a_k = b_k$ untuk setiap $k$, sehingga
+representasinya tunggal.
+\end{proof}
+
+Untuk $\R^n$,
+kita definisikan
+\emph{\myindex{basis standar}} dari $\R^n$:\glsadd{not:standardbasis}
+\begin{equation*}
+e_1 \coloneqq (1,0,0,\ldots,0) , \quad
+e_2 \coloneqq (0,1,0,\ldots,0) , \quad \ldots, \quad
+e_n \coloneqq (0,0,0,\ldots,1) .
+\end{equation*}
+Kita menggunakan huruf $e_k$ yang sama untuk setiap $\R^n$, dan
+ruang $\R^n$ yang sedang kita gunakan dipahami dari konteks.
+Perhitungan langsung menunjukkan bahwa $\{ e_1, e_2, \ldots, e_n \}$ benar-benar
+merupakan basis dari $\R^n$; himpunan itu merentang $\R^n$ dan
+bebas linear.  Bahkan,
+\begin{equation*}
+a = (a_1,a_2,\ldots,a_n) = \sum_{k=1}^n a_k \, e_k .
+\end{equation*}
+
+\begin{prop} \label{mv:dimprop}
+\pagebreak[2]
+Misalkan $X$ adalah ruang vektor dan $d$ bilangan bulat tak negatif.
+\begin{enumerate}[(i)]
+\item \label{mv:dimprop:i}
+Jika $X$ direntang oleh $d$ vektor, maka $\dim \, X \leq d$.
+\item \label{mv:dimprop:ii}
+Jika $T$ merupakan himpunan bebas linear dan
+$v \in X \setminus \spn (T)$, maka
+$T \cup \{ v \}$ bebas linear.
+\item \label{mv:dimprop:iii}
+$\dim \, X = d$ jika dan hanya jika $X$ memiliki basis yang terdiri atas $d$
+vektor.
+Secara khusus, $\dim \, \R^n = n$.
+\item \label{mv:dimprop:iv}
+Jika $Y \subset X$ merupakan subruang vektor dan $\dim \, X = d$,
+maka $\dim \, Y \leq d$.
+\item \label{mv:dimprop:v}
+Jika $\dim \, X = d$ dan suatu himpunan $T$ yang terdiri atas $d$ vektor merentang $X$,
+maka $T$ bebas linear.
+\item \label{mv:dimprop:vi}
+Jika $\dim \, X = d$ dan suatu himpunan $T$ yang terdiri atas $m$ vektor
+bebas linear, maka terdapat himpunan $S$ yang terdiri atas $d-m$
+vektor sedemikian sehingga $T \cup S$ merupakan basis dari $X$.
+\end{enumerate}
+\end{prop}
+
+Secara khusus, butir terakhir menyatakan bahwa jika $\dim X = d$ dan $T$ merupakan
+himpunan yang terdiri atas $d$ vektor bebas linear, maka $T$ merentang $X$.
+Perlu pula diperhatikan bahwa butir \ref{mv:dimprop:iii} menyiratkan bahwa setiap
+basis dari ruang vektor berdimensi hingga memiliki jumlah unsur yang sama.
+
+\begin{proof}
+Semua pernyataan berlaku secara trivial ketika $d=0$, jadi anggap $d \geq 1$.
+
+Kita mulai dengan \ref{mv:dimprop:i}.
+Misalkan $S \coloneqq \{ x_1 , x_2, \ldots, x_d \}$ merentang $X$, dan
+$T \coloneqq \{ y_1, y_2, \ldots, y_m \}$ merupakan subhimpunan bebas
+linear dari $X$.  Kita hendak menunjukkan bahwa $m \leq d$.
+Karena $S$ merentang $X$,
+tuliskan
+\begin{equation*}
+y_1 = \sum_{k=1}^d a_{k,1} x_k ,
+\end{equation*}
+untuk bilangan-bilangan $a_{1,1},a_{2,1},\ldots,a_{d,1}$ tertentu.
+Salah satu
+$a_{k,1}$ tidak nol, sebab jika tidak, $y_1$ akan bernilai nol.
+Tanpa mengurangi keumuman, misalkan $a_{1,1} \neq 0$.  Selesaikan
+\begin{equation*}
+x_1 = \frac{1}{a_{1,1}} y_1 - \sum_{k=2}^d \frac{a_{k,1}}{a_{1,1}} x_k .
+\end{equation*}
+Secara khusus, $\{ y_1 , x_2, \ldots, x_d \}$ merentang $X$, karena $x_1$ dapat
+diperoleh dari $\{ y_1 , x_2, \ldots, x_d \}$.  Oleh karena itu, terdapat bilangan
+$a_{1,2},a_{2,2},\ldots,a_{d,2}$ sedemikian sehingga
+\begin{equation*}
+y_2 = a_{1,2} y_1 + \sum_{k=2}^d a_{k,2} x_k .
+\end{equation*}
+Karena $T$ bebas linear---sehingga $\{ y_1, y_2 \}$ juga bebas
+linear---salah satu $a_{k,2}$
+untuk $k \geq 2$ harus tidak nol.  Tanpa mengurangi keumuman, misalkan 
+$a_{2,2} \neq 0$.  Selesaikan
+\begin{equation*}
+x_2 = \frac{1}{a_{2,2}} y_2 - \frac{a_{1,2}}{a_{2,2}} y_1 - \sum_{k=3}^d
+\frac{a_{k,2}}{a_{2,2}} x_k .
+\avoidbreak
+\end{equation*}
+Secara khusus,
+$\{ y_1 , y_2, x_3, \ldots, x_d \}$ merentang $X$.
+
+Kita lanjutkan prosedur ini.  Jika $m < d$, pembuktian selesai.  Misalkan
+$m \geq d$.
+Setelah $d$ langkah, kita memperoleh bahwa 
+$\{ y_1 , y_2, \ldots, y_d \}$ merentang $X$.  Setiap
+vektor lain $v$ dalam $X$ merupakan kombinasi linear dari
+$\{ y_1 , y_2, \ldots, y_d \}$, sehingga tidak dapat menjadi anggota $T$ karena $T$
+bebas linear.  Jadi, $m = d$.
+
+Kita lanjutkan dengan \ref{mv:dimprop:ii}.
+Misalkan 
+$T = \{x_1,x_2,\ldots,x_m\}$ bebas linear,
+tidak merentang $X$, dan $v \in X \setminus \spn (T)$.
+Misalkan 
+$a_1 x_1 + a_2 x_2 + \cdots + a_m x_m + a_{m+1} v = 0$
+untuk skalar-skalar $a_1,a_2,\ldots,a_{m+1}$ tertentu.
+Jika $a_{m+1} \neq 0$, maka $v$ akan menjadi kombinasi linear dari $T$,
+jadi $a_{m+1} = 0$.  Kemudian, karena $T$ bebas linear, $a_1=a_2=\cdots=a_m = 0$.
+Jadi, $T \cup \{ v \}$ bebas linear.
+
+Kita beralih ke \ref{mv:dimprop:iii}.
+Jika $\dim \, X = d$,
+maka harus ada suatu himpunan bebas linear $T$ yang terdiri atas $d$ vektor,
+dan $T$ harus merentang $X$; jika tidak, kita dapat memilih himpunan vektor bebas
+linear yang lebih besar melalui \ref{mv:dimprop:ii}.
+Jadi, kita memiliki basis yang terdiri atas $d$ vektor.
+Sebaliknya, jika kita memiliki basis yang terdiri atas $d$ vektor,
+dimensinya sedikitnya $d$ karena suatu basis bebas linear.
+Suatu basis juga merentang $X$, sehingga
+berdasarkan \ref{mv:dimprop:i}, kita tahu bahwa dimensinya paling besar $d$.
+Oleh sebab itu, dimensi $X$ harus sama dengan $d$.
+Pernyataan \myquote{secara khusus} diperoleh dengan memperhatikan bahwa
+$\{ e_1, e_2, \ldots, e_n \}$ merupakan basis dari $\R^n$.
+
+Untuk membuktikan \ref{mv:dimprop:iv},
+misalkan $Y \subset X$ merupakan subruang vektor,
+dengan $\dim \, X = d$.  Karena $X$ tidak dapat memuat $d+1$ vektor bebas
+linear, demikian pula $Y$.
+
+Untuk \ref{mv:dimprop:v}, misalkan $T$ merupakan himpunan yang terdiri atas $m$ vektor
+yang bergantung linear
+dan merentang $X$.
+Kita akan menunjukkan bahwa $m > d$.
+Salah satu
+vektor merupakan kombinasi linear dari vektor-vektor lainnya.  Jika kita menghapusnya
+dari $T$, kita memperoleh himpunan yang terdiri atas $m-1$ vektor yang masih merentang $X$.
+Oleh karena itu,
+$d = \dim \, X \leq m-1$ menurut~\ref{mv:dimprop:i}.
+
+Untuk \ref{mv:dimprop:vi}, misalkan $T = \{ x_1, x_2, \ldots, x_m \}$ merupakan
+himpunan bebas linear.  Pertama, $m \leq d$ menurut definisi dimensi.
+Jika $m=d$, himpunan $T$ harus merentang $X$ seperti dalam bukti \ref{mv:dimprop:iii};
+jika tidak, kita dapat menambahkan vektor lain pada $T$.
+Jika $m < d$,  $T$ tidak dapat merentang $X$ menurut \ref{mv:dimprop:iii}.
+Jadi, carilah $v$ yang tidak berada dalam rentang~$T$.
+Berdasarkan \ref{mv:dimprop:ii}, himpunan $T \cup \{ v \}$ merupakan
+himpunan bebas linear yang terdiri atas $m+1$ unsur.
+Oleh karena itu, kita ulangi prosedur ini sebanyak $d-m$ kali untuk
+memperoleh himpunan yang terdiri atas $d$ vektor bebas linear.
+Sekali lagi, himpunan tersebut harus merentang $X$; jika tidak, kita dapat menambahkan satu vektor lagi.
+\end{proof}
+
+\subsection{Pemetaan linear}
+
+Ketika $Y \neq \R$,
+suatu fungsi $f \colon X \to Y$ sering disebut
+\emph{\myindex{pemetaan}} atau \emph{\myindex{peta}}
+alih-alih \emph{fungsi}.
+
+\begin{defn}
+Suatu pemetaan $A \colon X \to Y$ dari ruang vektor $X$ ke $Y$
+disebut \emph{\myindex{linear}} (kita juga mengatakan bahwa $A$ adalah suatu
+\emph{\myindex{transformasi linear}}\index{transformasi, linear}
+atau \emph{\myindex{operator linear}}\index{operator, linear})
+jika untuk setiap $a \in \R$ dan setiap $x,y \in X$,
+\begin{equation*}
+A(a x) = a A(x) \qquad \text{dan} \qquad A(x+y) = A(x)+A(y) .
+\end{equation*}
+Kita biasanya menulis $Ax$ alih-alih $A(x)$ jika $A$ linear.
+Jika $A$ injektif dan surjektif, kita mengatakan bahwa $A$
+\emph{invertibel}\index{transformasi linear invertibel},
+dan menotasikan inversnya dengan $A^{-1}$.
+Jika $A \colon X \to X$ linear, kita mengatakan bahwa $A$ adalah suatu
+\emph{operator linear pada $X$}.
+
+Kita menulis $L(X,Y)$\glsadd{not:LXY} untuk himpunan pemetaan linear dari $X$ ke
+$Y$, dan $L(X)$\glsadd{not:LX} untuk himpunan operator linear pada $X$.
+Jika $a \in \R$ dan $A,B \in L(X,Y)$, definisikan
+pemetaan $aA$ dan $A+B$ dengan
+\begin{equation*}
+(aA)(x) \coloneqq aAx ,
+\qquad
+(A+B)(x) \coloneqq Ax + Bx .
+\end{equation*}
+Jika $A \in L(Y,Z)$ dan $B \in L(X,Y)$, definisikan
+pemetaan $AB \colon X \to Z$ sebagai komposisi $A \circ B$,
+\begin{equation*}
+ABx \coloneqq A(Bx) .
+\end{equation*}
+Terakhir, notasikan dengan $I \in L(X)$ suatu \emph{\myindex{identitas}}: 
+operator linear yang memenuhi $Ix = x$ untuk setiap $x$.
+\end{defn}
+
+\begin{prop} \label{prop:LXYvs}
+Misalkan $X$, $Y$, dan $Z$ adalah ruang vektor.
+\begin{enumerate}[(i)]
+\item Jika $A \in L(X,Y)$, maka $A0 = 0$.
+\item Jika $A,B \in L(X,Y)$, maka $A+B \in L(X,Y)$.
+\item Jika $A \in L(X,Y)$ dan $a \in \R$, maka $aA \in L(X,Y)$.
+\item Jika $A \in L(Y,Z)$ dan $B \in L(X,Y)$, maka $AB \in L(X,Z)$. 
+\item Jika $A \in L(X,Y)$ invertibel, maka $A^{-1} \in L(Y,X)$.
+\end{enumerate}
+\end{prop}
+
+Secara khusus, $L(X,Y)$ merupakan ruang vektor, dengan $0 \in L(X,Y)$ sebagai
+pemetaan linear yang memetakan setiap elemen ke $0$.
+Karena $L(X)$ bukan hanya ruang vektor, melainkan juga
+memiliki operasi perkalian (komposisi),
+ruang ini disebut suatu \emph{\myindex{aljabar}}.
+
+\begin{proof}
+Empat butir pertama kita serahkan sebagai latihan singkat,
+\exerciseref{exercise:LXYvs}.
+Mari kita buktikan butir terakhir.
+Misalkan $a \in \R$ dan $y \in Y$.  Karena $A$ surjektif, terdapat 
+$x \in X$ sedemikian sehingga $y = Ax$.
+Karena pemetaan tersebut juga injektif, $A^{-1}(Az) = z$ untuk setiap $z \in X$.
+Dengan demikian,
+\begin{equation*}
+A^{-1}(ay)
+=
+A^{-1}(aAx)
+=
+A^{-1}\bigl(A(ax)\bigr)
+= ax
+= aA^{-1}(y).
+\end{equation*}
+Serupa dengan itu, misalkan $y_1,y_2 \in Y$ dan $x_1, x_2 \in X$ sedemikian sehingga
+$Ax_1 = y_1$ dan 
+$Ax_2 = y_2$; maka
+\begin{equation*}
+A^{-1}(y_1+y_2)
+=
+A^{-1}(Ax_1+Ax_2)
+=
+A^{-1}\bigl(A(x_1+x_2)\bigr)
+= x_1+x_2
+= A^{-1}(y_1) + A^{-1}(y_2). \qedhere
+\end{equation*}
+\end{proof}
+
+\begin{prop} \label{mv:lindefonbasis}
+Jika $A \in L(X,Y)$ linear, maka pemetaan tersebut sepenuhnya ditentukan
+oleh nilai-nilainya pada suatu basis dari $X$.
+Lebih lanjut, jika $B$ adalah suatu basis dari $X$,
+maka setiap fungsi $\widetilde{A} \colon B \to Y$ dapat diperluas menjadi fungsi
+linear $A$ pada $X$.
+\end{prop}
+
+Kita hanya membuktikan proposisi ini untuk ruang berdimensi hingga, sebab kita
+tidak memerlukan ruang berdimensi tak berhingga.%
+\footnote{Untuk ruang berdimensi tak berhingga, pembuktiannya pada dasarnya sama, tetapi
+sedikit lebih rumit untuk dituliskan.
+Terlebih lagi, kita bahkan belum mendefinisikan apa yang dimaksud dengan basis untuk
+ruang berdimensi tak berhingga.}
+
+\begin{proof}
+Misalkan $\{ x_1, x_2, \ldots, x_n \}$ adalah suatu basis dari $X$, dan tetapkan 
+$y_k \coloneqq A x_k$.  Setiap $x \in X$ memiliki penyajian unik
+\begin{equation*}
+x = \sum_{k=1}^n b_k \, x_k
+\end{equation*}
+untuk beberapa bilangan $b_1,b_2,\ldots,b_n$.  Berdasarkan linearitas,
+\begin{equation*}
+Ax = 
+A\sum_{k=1}^n b_k x_k
+=
+\sum_{k=1}^n b_k \, Ax_k
+=
+\sum_{k=1}^n b_k \, y_k .
+\end{equation*}
+Pernyataan \myquote{lebih lanjut} diperoleh dengan menetapkan $y_k \coloneqq \widetilde{A}(x_k)$,
+kemudian, untuk 
+$x = \sum_{k=1}^n b_k \, x_k$,
+mendefinisikan perluasannya sebagai
+$A(x) \coloneqq \sum_{k=1}^n b_k \, y_k$.  Fungsi ini terdefinisi dengan baik berkat
+keunikan penyajian $x$.
+Pembaca dipersilakan memeriksa bahwa $A$ linear.
+\end{proof}
+
+Untuk suatu pemetaan linear, cukup memeriksa injektivitas di titik asal.
+Artinya, jika satu-satunya $x$ yang memenuhi $Ax =0$ adalah $x=0$, maka $A$ injektif,
+sebab jika $Ay=Az$, maka $A(y-z) = 0$.  Atas alasan ini, 
+kita sering mempelajari \emph{\myindex{ruang nol}} dari $A$, yaitu
+$\{ x \in X : Ax = 0 \}$.
+Untuk ruang vektor berdimensi hingga (dan hanya dalam dimensi hingga),
+kita memperoleh kasus khusus berikut dari
+teorema rank--nulitas dalam aljabar linear.
+
+\begin{prop} \label{mv:prop:lin11onto}
+Jika $X$ adalah ruang vektor berdimensi hingga dan $A \in L(X)$, maka $A$ injektif jika dan hanya jika pemetaan tersebut surjektif.
+\end{prop}
+
+\begin{proof}
+Misalkan $\{ x_1,x_2,\ldots,x_n \}$ adalah suatu basis dari $X$.
+Pertama, andaikan $A$ injektif.  Misalkan $c_1,c_2,\ldots,c_n$ adalah skalar sedemikian sehingga
+\begin{equation*}
+0 =
+\sum_{k=1}^n c_k \, Ax_k =
+A\sum_{k=1}^n c_k \, x_k 
+.
+\end{equation*}
+Karena $A$ injektif,
+satu-satunya vektor yang dipetakan ke 0 adalah vektor 0 itu sendiri.  
+Oleh karena itu,
+\begin{equation*}
+0 =
+\sum_{k=1}^n c_k \, x_k,
+\end{equation*}
+maka $c_k = 0$ untuk setiap $k$ karena $\{ x_1,x_2,\ldots,x_n \}$ adalah suatu basis.
+Jadi, $\{ Ax_1, Ax_2, \ldots, Ax_n \}$ bebas linear.
+Berdasarkan \propref{mv:dimprop}
+dan fakta bahwa dimensinya adalah $n$, kita menyimpulkan bahwa
+$\{ Ax_1, Ax_2, \ldots, Ax_n \}$ merentang $X$.  Akibatnya, $A$ surjektif,
+sebab setiap $y \in X$ dapat ditulis sebagai
+\begin{equation*}
+y = \sum_{k=1}^n a_k \, Ax_k =
+A\sum_{k=1}^n a_k \, x_k .
+\avoidbreak
+\end{equation*}
+
+Untuk arah sebaliknya, andaikan $A$ surjektif.
+Andaikan bahwa untuk suatu pilihan skalar
+$c_1,c_2,\ldots,c_n$,
+\begin{equation*}
+0 = A\sum_{k=1}^n c_k \, x_k =
+\sum_{k=1}^n c_k \, Ax_k .
+\end{equation*}
+Karena $A$ surjektif dan linear, citra basis tersebut merentang ruang sasaran;
+$\{ Ax_1, Ax_2, \ldots, Ax_n \}$ merentang $X$.
+Maka, berdasarkan \propref{mv:dimprop}, himpunan tersebut bebas linear,
+dan $c_k = 0$ untuk setiap $k$.  Dengan kata lain, jika $Ax = 0$, maka $x=0$.
+Jadi, $A$ injektif.
+\end{proof}
+
+Pembuktian proposisi berikut kita serahkan sebagai latihan.
+
+\begin{prop} \label{prop:LXYfinitedim}
+Jika $X$ dan $Y$ adalah ruang vektor berdimensi hingga, maka $L(X,Y)$
+juga berdimensi hingga.
+\end{prop}
+
+Kita dapat mengidentifikasi ruang vektor berdimensi hingga
+$X$ yang berdimensi $n$ dengan $\R^n$, asalkan kita menetapkan suatu basis
+$\{ x_1, x_2, \ldots, x_n \}$ pada $X$.  Artinya, kita mendefinisikan pemetaan linear
+bijektif $A \in L(X,\R^n)$ dengan
+$Ax_k \coloneqq e_k$, dengan $\{ e_1, e_2, \ldots, e_n \}$ sebagai basis standar
+di $\R^n$.  Kita memperoleh
+korespondensi\glsadd{not:mapsto}
+\begin{equation*}
+\sum_{k=1}^n c_k \, x_k \, \in X
+\quad
+\overset{A}{\mapsto}
+\quad
+(c_1,c_2,\ldots,c_n) \, \in \R^n .
+\end{equation*}
+
+\subsection{Kekonveksan}
+
+Suatu himpunan bagian $U$ dari ruang vektor disebut \emph{\myindex{konveks}}
+jika untuk setiap $x,y \in U$, ruas garis dari
+$x$ ke $y$ terletak dalam $U$.  Dengan kata lain, \emph{\myindex{kombinasi konveks}}
+$(1-t)x+ty$ berada dalam $U$ untuk semua $t \in [0,1]$.
+Kita menulis $[x,y]$ untuk ruas garis ini.\glsadd{not:segmentinRn}
+Lihat \figureref{mv:convexcomb}.
+
+\begin{myfigureht}
+\myincludepdft{convexset}{%
+Sebuah daerah oval berarsir berlabel U.  Dua titik,
+x dan y, ditandai di dalamnya, beserta ruas garis di antara keduanya yang
+seluruhnya terletak di dalam U.  Sebuah titik di bagian tengah ruas tersebut
+diberi label satu dikurangi t dikali x ditambah t dikali y.}
+\caption{Kekonveksan.\label{mv:convexcomb}}
+\end{myfigureht}
+
+Dalam $\R$, himpunan konveks tepat merupakan interval, yang juga
+tepat merupakan himpunan terhubung.
+Dalam dua dimensi atau lebih,
+terdapat banyak himpunan terhubung yang tidak konveks.  Sebagai contoh,
+himpunan $\R^2 \setminus \{0\}$ terhubung,
+tetapi tidak konveks---untuk sebarang $x \in \R^2 \setminus \{0\}$ dengan $y \coloneqq -x$,
+kita memperoleh
+$(\nicefrac{1}{2})x + (\nicefrac{1}{2})y = 0$, yang tidak berada dalam himpunan tersebut.
+Bola (dalam metrik standar) di $\R^n$ bersifat konveks.  Hasil ini
+cukup berguna untuk dinyatakan sebagai proposisi,
+tetapi pembuktiannya kita tinggalkan sebagai latihan.
+
+\begin{prop}
+Misalkan $x \in \R^n$ dan $r > 0$.  Bola $B(x,r) \subset \R^n$
+%(menggunakan metrik standar pada $\R^n$)
+bersifat konveks.
+\end{prop}
+
+\begin{example}
+Kombinasi konveks, khususnya, merupakan kombinasi linear.
+Jadi setiap subruang vektor $V$ dari ruang vektor $X$ bersifat konveks.
+\end{example}
+
+\begin{example}
+%Contoh yang agak lebih rumit diberikan sebagai berikut.
+Misalkan $C([0,1],\R)$ adalah ruang vektor fungsi kontinu bernilai real pada $[0,1]$.
+Misalkan $V \subset C([0,1],\R)$ adalah himpunan fungsi $f$ sedemikian sehingga
+\begin{equation*}
+\int_0^1 f(x)\,dx \leq 1 \qquad \text{dan} \qquad
+f(x) \geq 0 \enspace \text{untuk semua } x \in [0,1] .
+\end{equation*}
+Maka $V$ konveks.  Ambil $t \in [0,1]$, dan perhatikan bahwa jika $f,g \in V$,
+maka $(1-t) f(x) + t g(x) \geq 0$ untuk semua $x$.  Lebih lanjut,
+\begin{equation*}
+\int_0^1 \bigl((1-t)f(x) + t g(x)\bigr) \,dx
+=
+(1-t) \int_0^1 f(x) \,dx
++ t \int_0^1 g(x) \,dx \leq 1 .
+\end{equation*}
+Perhatikan bahwa $V$ bukan subruang vektor dari $C([0,1],\R)$.  Fungsi
+$f(x) \coloneqq 1$ berada dalam $V$, tetapi $2f$ dan $-f$ tidak.
+\end{example}
+
+\begin{prop} \label{prop:intersectionconvex}
+Irisan dua himpunan konveks bersifat konveks.  Bahkan,
+jika $\{ C_\lambda \}_{\lambda \in I}$ adalah
+sebarang koleksi himpunan konveks dalam suatu ruang vektor, maka
+\begin{equation*}
+C \coloneqq \bigcap_{\lambda \in I} C_\lambda
+\qquad \text{bersifat konveks.}
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Jika $x, y \in C$, maka $x,y \in C_\lambda$ untuk semua
+$\lambda \in I$, sehingga jika $t \in [0,1]$, maka $(1-t)x + ty \in
+C_\lambda$ untuk semua $\lambda \in I$.  Oleh karena itu, $(1-t)x + ty \in C$ dan $C$
+bersifat konveks.
+\end{proof}
+
+Salah satu konstruksi yang berguna dengan menggunakan irisan himpunan konveks ialah
+\emph{\myindex{selubung konveks}}.  Untuk himpunan bagian $S$ dari ruang
+vektor $X$, definisikan selubung konveks $S$ sebagai irisan semua himpunan konveks
+yang memuat $S$:
+\begin{equation*}
+\operatorname{co}(S) \coloneqq
+\bigcap \{ C \subset X : S \subset C, \text{ dan } C \text{ konveks} \} .
+\end{equation*}
+Dengan kata lain, selubung konveks adalah himpunan konveks terkecil yang memuat $S$.
+Menurut \propref{prop:intersectionconvex}, irisan himpunan-himpunan konveks
+bersifat konveks.
+Jadi selubung konveks bersifat konveks.
+
+\begin{example}
+Selubung konveks dari $\{ 0, 1 \}$ dalam $\R$ adalah $[0,1]$.  Bukti:
+Himpunan konveks yang memuat 0 dan 1 harus memuat $[0,1]$, sehingga
+$[0,1] \subset \operatorname{co}(\{0,1\})$.
+Himpunan $[0,1]$ konveks dan memuat $\{0,1\}$, sehingga
+$\operatorname{co}(\{0,1\}) \subset [0,1]$.
+\end{example}
+
+Pemetaan linear mempertahankan himpunan konveks.  Jadi, dalam arti tertentu, himpunan
+konveks adalah jenis himpunan yang tepat ketika membahas pemetaan linear atau perubahan
+koordinat.
+
+\begin{prop}
+Misalkan $X,Y$ ruang vektor, $A \in L(X,Y)$, dan $C \subset X$ konveks.
+Maka $A(C)$ konveks.
+\end{prop}
+
+\begin{proof}
+Ambil dua titik $p,q \in A(C)$.  Pilih $u,v \in C$ sedemikian sehingga
+$Au = p$ dan $Av=q$.  Karena $C$ konveks,
+$(1-t)u+t v \in C$
+untuk semua $t \in [0,1]$.  Jadi
+\begin{equation*}
+(1-t)p+t q 
+=
+(1-t)Au+tAv
+=
+A\bigl((1-t)u+tv\bigr)
+\in A(C) .  \qedhere
+\end{equation*}
+\end{proof}
+
+
+\subsection{Latihan}
+
+\begin{exercise}
+Tunjukkan bahwa dalam $\R^n$
+(dengan metrik Euklides standar),
+untuk setiap $x \in \R^n$ dan setiap $r > 0$,
+bola $B(x,r)$ bersifat konveks.
+\end{exercise}
+
+
+\begin{exercise}
+Periksalah bahwa $\R^n$ merupakan ruang vektor.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $X$ ruang vektor.
+Buktikan bahwa suatu himpunan berhingga vektor $\{ x_1,x_2,\ldots,x_n \} \subset X$
+bebas linear jika dan hanya jika untuk setiap $k=1,2,\ldots,n$
+\begin{equation*}
+\spn\bigl( \{ x_1,\ldots,x_{k-1},x_{k+1},\ldots,x_n \}\bigr) \subsetneq
+\spn\bigl( \{ x_1,x_2,\ldots,x_n \}\bigr) .
+\end{equation*}
+Artinya, rentang himpunan setelah satu vektor dihapus benar-benar lebih kecil.
+\end{exercise}
+
+\begin{exercise} \label{exercise:intzerosubspace}
+Tunjukkan bahwa himpunan $X \subset C([0,1],\R)$ yang terdiri atas fungsi-fungsi
+dengan $\int_0^1 f = 0$ merupakan subruang vektor.
+Bandingkan dengan \exerciseref{exercise:intoneconvex}.
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Buktikan bahwa $C([0,1],\R)$ merupakan ruang vektor berdimensi tak hingga
+dengan operasi yang didefinisikan secara alami:
+$s=f+g$ dan $m=af$ didefinisikan oleh
+$s(x) \coloneqq f(x)+g(x)$ dan
+$m(x) \coloneqq a f(x)$.
+Petunjuk: Untuk dimensinya, pikirkan fungsi-fungsi yang tidak nol hanya
+pada interval $(\nicefrac{1}{n+1},\nicefrac{1}{n})$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:continuouskernel}
+Misalkan $k \colon [0,1]^2 \to \R$ kontinu.  Tunjukkan bahwa
+$L \colon C([0,1],\R) \to C([0,1],\R)$ yang didefinisikan oleh
+\begin{equation*}
+Lf(y) \coloneqq \int_0^1 k(x,y)f(x)\,dx
+\end{equation*}
+merupakan operator linear.  Pertama, tunjukkan bahwa $L$ terdefinisi dengan baik dengan
+menunjukkan bahwa $Lf$ kontinu setiap kali $f$ kontinu, lalu
+tunjukkan bahwa $L$ linear.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\sP_n$ ruang vektor polinom dalam satu variabel yang berderajat $n$
+atau kurang.  Tunjukkan bahwa $\sP_n$ merupakan ruang vektor berdimensi $n+1$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\R[t]$ ruang vektor polinom dalam satu variabel $t$.  Misalkan
+$D \colon \R[t] \to \R[t]$ operator turunan (turunan terhadap $t$).
+Tunjukkan bahwa $D$ merupakan operator linear.
+\end{exercise}
+
+\begin{exercise}
+Mari kita tunjukkan bahwa \propref{mv:prop:lin11onto} hanya berlaku dalam dimensi
+berhingga.  Ambil ruang polinom $\R[t]$ dan definisikan operator $A \colon \R[t] \to \R[t]$
+dengan $A\bigl(P(t)\bigr) \coloneqq tP(t)$.  Tunjukkan bahwa $A$ linear dan satu-satu, tetapi
+tidak surjektif.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan pembuktian \propref{mv:lindefonbasis} untuk kasus berdimensi hingga.
+Artinya, misalkan
+$\{ x_1, x_2,\ldots x_n \}$ adalah basis bagi $X$,
+$\{ y_1, y_2,\ldots y_n \} \subset Y$, dan definisikan suatu
+fungsi
+\begin{equation*}
+A(x) \coloneqq \sum_{k=1}^n b_k y_k, \qquad \text{jika} \quad x=\sum_{k=1}^n b_k x_k .
+\end{equation*}
+Buktikan bahwa $A \colon X \to Y$ linear.
+\end{exercise}
+
+
+\begin{exercise}
+Buktikan \propref{prop:LXYfinitedim}.  Petunjuk: Suatu transformasi linear ditentukan oleh
+nilainya pada sebuah basis.  Jadi, untuk dua basis
+$\{ x_1,\ldots,x_n \}$ dan
+$\{ y_1,\ldots,y_m \}$ masing-masing bagi $X$ dan $Y$, tinjau operator linear
+$A_{jk}$ yang memenuhi $A_{jk} x_j = y_k$, serta
+$A_{jk} x_\ell = 0$ jika $\ell \neq j$.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}[Mudah]
+Misalkan $X$ dan $Y$ ruang vektor dan $A \in L(X,Y)$ suatu pemetaan
+linear.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa ruang nol $N \coloneqq \{ x \in X : Ax = 0 \}$ merupakan
+ruang vektor.
+\item
+Tunjukkan bahwa daerah hasil $R \coloneqq \{ y \in Y : Ax = y \text{ untuk suatu } x \in X \}$ merupakan
+ruang vektor.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}[Mudah]
+Berikan contoh yang menunjukkan bahwa gabungan himpunan-himpunan konveks belum tentu konveks.
+\end{exercise}
+
+\begin{exercise}
+Hitung selubung konveks dari himpunan tiga titik
+$\bigl\{ (0,0), (0,1), (1,1) \bigr\}$
+dalam $\R^2$.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa himpunan $\bigl\{ (x,y) \in \R^2 : y > x^2 \bigr\}$ bersifat konveks.
+\end{exercise}
+
+\begin{exercise} \label{exercise:intoneconvex}
+Tunjukkan bahwa himpunan $X \subset C([0,1],\R)$ yang terdiri atas fungsi-fungsi
+dengan $\int_0^1 f = 1$ merupakan himpunan konveks, tetapi bukan subruang vektor.
+Bandingkan dengan \exerciseref{exercise:intzerosubspace}.
+\end{exercise}
+
+
+\begin{exercise}
+Tunjukkan bahwa setiap himpunan konveks dalam $\R^n$ terhubung dalam topologi
+standar pada $\R^n$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $K \subset \R^2$ himpunan konveks sedemikian sehingga satu-satunya titik
+berbentuk $(x,0)$ dalam $K$ adalah titik $(0,0)$.  Misalkan pula bahwa
+$(0,1) \in K$ dan $(1,1) \in K$.  Tunjukkan bahwa jika $(x,y) \in K$ dan $x
+\neq 0$, maka $y > 0$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa sebarang irisan subruang-subruang vektor
+merupakan subruang vektor.
+Artinya, jika $X$ ruang vektor dan
+$\{ V_\lambda \}_{\lambda \in I}$ adalah
+sebarang koleksi subruang vektor dari $X$,
+maka
+$\bigcap_{\lambda \in I} V_\lambda$ merupakan subruang vektor dari $X$.
+\end{exercise}
+
+\begin{exercise}[Mudah] \label{exercise:LXYvs}
+Selesaikan pembuktian \propref{prop:LXYvs}, yaitu buktikan empat
+butir pertama dalam proposisi tersebut.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Analisis dengan ruang vektor}
+\label{sec:normsmatsdets}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{3 kuliah}
+
+\subsection{Norma}
+
+Mari kita mulai dengan mengukur besar vektor, dan dengan demikian juga jarak.
+
+\begin{defn}
+Jika $X$ adalah ruang vektor, maka suatu fungsi
+$\snorm{\cdot} \colon X \to \R$ disebut
+\emph{\myindex{norma}}\glsadd{not:norm} jika
+\begin{enumerate}[(i)]
+\item \label{defn:norm:i} $\snorm{x} \geq 0$, dengan $\snorm{x}=0$ jika dan hanya jika $x=0$.
+\item \label{defn:norm:ii} $\snorm{cx} = \sabs{c} \, \snorm{x}$ untuk setiap $c \in \R$ dan $x \in X$.
+\item \label{defn:norm:iii} $\snorm{x+y} \leq \snorm{x}+\snorm{y}$ untuk setiap
+$x,y \in X$
+\qquad (\emph{ketaksamaan segitiga})\index{ketaksamaan segitiga!norma}.
+\end{enumerate}
+Ruang vektor yang dilengkapi dengan suatu norma disebut
+\emph{\myindex{ruang vektor bernorma}}.
+\end{defn}
+
+Untuk suatu norma (sembarang norma) pada ruang vektor $X$,
+definisikan jarak $d(x,y) \coloneqq \snorm{x-y}$, yang
+menjadikan $X$ suatu ruang metrik (latihan).
+Jadi, semua yang telah Anda ketahui tentang ruang metrik berlaku bagi ruang vektor bernorma.
+Sebelum mendefinisikan norma baku pada $\R^n$, kita
+mendefinisikan 
+\emph{\myindex{hasil kali titik}} skalar baku pada $\R^n$.
+Untuk 
+$x=(x_1,x_2,\ldots,x_n) \in \R^n$
+dan $y=(y_1,y_2,\ldots,y_n) \in \R^n$, definisikan\glsadd{not:dotprod}
+\begin{equation*}
+x \cdot y \coloneqq \sum_{k=1}^n x_k\, y_k .
+\end{equation*}
+Hasil kali titik bersifat linear terhadap setiap variabel
+secara terpisah---dalam bahasa yang lebih canggih, hasil kali ini \emph{\myindex{bilinear}}.
+Artinya,
+jika $y$ ditetapkan, pemetaan $x \mapsto x \cdot y$ merupakan pemetaan linear dari
+$\R^n$ ke $\R$.  Demikian pula, jika $x$ ditetapkan,
+$y \mapsto x \cdot y$ bersifat linear.
+Hasil kali ini \emph{\myindex{simetris}}, dalam arti $x \cdot y = y \cdot x$.
+Definisikan \emph{\myindex{norma Euklides}} sebagai\glsadd{not:normRn}
+\begin{equation*}
+\snorm{x} \coloneqq \snorm{x}_{\R^n} \coloneqq \sqrt{x \cdot x} = \sqrt{(x_1)^2+(x_2)^2 + \cdots + (x_n)^2}.
+\end{equation*}
+Biasanya kita cukup menulis $\snorm{x}$.
+Hanya dalam keadaan yang jarang, ketika perlu
+ditekankan bahwa yang dimaksud adalah norma Euklides, kita akan menulis
+$\snorm{x}_{\R^n}$.
+Kecuali dinyatakan lain, jika kita membahas $\R^n$ sebagai ruang vektor bernorma,
+yang dimaksud adalah norma Euklides baku.
+Mudah dilihat bahwa norma Euklides memenuhi \ref{defn:norm:i} dan
+\ref{defn:norm:ii}.  Untuk membuktikan
+bahwa \ref{defn:norm:iii} berlaku, ketaksamaan kuncinya
+adalah ketaksamaan Cauchy--Schwarz
+yang telah kita jumpai sebelumnya.  Karena ketaksamaan ini sangat penting, kita menyatakan dan
+membuktikan versi yang sedikit lebih kuat dengan menggunakan notasi bab ini.
+
+\begin{thm}[\myindex{Ketaksamaan Cauchy--Schwarz}]
+Jika $x, y \in \R^n$, maka
+\begin{equation*}
+\sabs{x \cdot y} \leq \snorm{x} \, \snorm{y} = \sqrt{x\cdot x}\, \sqrt{y\cdot y},
+\avoidbreak
+\end{equation*}
+dengan kesamaan jika dan hanya jika $x = \lambda y$ atau $y = \lambda x$ untuk suatu
+$\lambda \in \R$.
+\pagebreak[2]
+\end{thm}
+
+\begin{proof}
+Jika $x=0$ atau $y = 0$, maka teorema berlaku secara trivial.
+Jadi, andaikan $x \neq 0$ dan $y \neq 0$.
+
+Jika $x$ merupakan kelipatan skalar dari $y$, yaitu $x = \lambda y$ untuk suatu
+$\lambda \in \R$, maka teorema berlaku dengan kesamaan:
+\begin{equation*}
+\sabs{ x \cdot y } =
+\sabs{\lambda y \cdot y} = \sabs{\lambda} \, \sabs{y\cdot y} =
+\sabs{\lambda} \, \snorm{y}^2 = \snorm{\lambda y} \, \snorm{y}
+= \snorm{x} \, \snorm{y} .
+\end{equation*}
+
+Dengan menetapkan $x$ dan $y$,
+$\snorm{x+ty}^2$
+merupakan polinom kuadrat
+sebagai fungsi dari $t$:
+\begin{equation*}
+%mbxlatex \begin{aligned}
+\snorm{x+ty}^2
+=
+(x+ty) \cdot (x+ty)
+%mbxlatex &
+=
+x \cdot x + x \cdot ty + ty \cdot x + ty \cdot ty
+%mbxlatex \\
+%mbxlatex &
+=
+\snorm{x}^2 + 2t(x \cdot y) + t^2 \snorm{y}^2 .
+%mbxlatex \end{aligned}
+\end{equation*}
+Jika $x$ bukan kelipatan skalar dari $y$, maka 
+$\snorm{x+ty}^2 > 0$ untuk setiap $t$.  Jadi, polinom $\snorm{x+ty}^2$
+tidak pernah bernilai nol.
+Aljabar elementer menyatakan bahwa diskriminannya harus negatif:
+\begin{equation*}
+4 {(x \cdot y)}^2 - 4 \snorm{x}^2\snorm{y}^2 < 0.
+\end{equation*}
+Dengan kata lain, ${(x \cdot y)}^2 < \snorm{x}^2\snorm{y}^2$.
+\end{proof}
+
+Butir \ref{defn:norm:iii}, yaitu ketaksamaan segitiga dalam $\R^n$,
+mengikuti perhitungan berikut:
+\begin{equation*}
+\snorm{x+y}^2 
+=
+x \cdot x + y \cdot y + 2 (x \cdot y)
+\leq
+\snorm{x}^2 + \snorm{y}^2 + 2 \bigl(\snorm{x} \,\snorm{y}\bigr)
+=
+{\bigl(\snorm{x} + \snorm{y}\bigr)}^2 .
+\end{equation*}
+
+Jarak
+$d(x,y) \coloneqq \snorm{x-y}$ merupakan jarak baku
+(metrik baku) pada $\R^n$ yang
+kita gunakan ketika membahas ruang metrik.
+
+\begin{defn}
+Misalkan $A \in L(X,Y)$.  Definisikan
+\begin{equation*}
+\snorm{A} \coloneqq
+\sup \bigl\{ \snorm{Ax} : x \in X \text{ dengan } \snorm{x} = 1 \bigr\} .
+\end{equation*}
+Bilangan $\snorm{A}$ (yang mungkin bernilai $\infty$)
+disebut \emph{\myindex{norma operator}}.  Di bawah ini akan kita lihat
+bahwa pada ruang berdimensi hingga, besaran tersebut memang merupakan norma pada $L(X,Y)$.
+Sekali lagi, jika perlu ditekankan norma mana yang dimaksud, kita dapat
+menuliskannya sebagai $\snorm{A}_{L(X,Y)}$.\glsadd{not:normLXY}
+\end{defn}
+
+Sebagai contoh, jika $X=\R^1$ dengan norma $\snorm{x}=\sabs{x}$, elemen-elemen $L(X)$
+merupakan pemetaan berupa perkalian dengan skalar, $x \mapsto ax$, dan kita mengidentifikasikan $a \in \R$ dengan
+elemen $L(X)$ yang bersesuaian.  Jika $\snorm{x}=\sabs{x}=1$, maka $\sabs{a x} = \sabs{a}$, sehingga
+norma operator dari $a$ adalah $\sabs{a}$.
+
+Berdasarkan linearitas,
+$\norm{A \frac{x}{\snorm{x}}} = \frac{\snorm{Ax}}{\snorm{x}}$
+untuk setiap $x \in X$ yang tak nol.
+Vektor $\frac{x}{\snorm{x}}$ memiliki norma 1.
+Oleh karena itu,
+\begin{equation*}
+\snorm{A} =
+\sup \bigl\{ \snorm{Ax} : x \in X \text{ dengan } \snorm{x} = 1 \bigr\}
+=
+\sup_{\substack{x \in X\\x\neq 0}} \frac{\snorm{Ax}}{\snorm{x}} .
+\end{equation*}
+Hal ini menyiratkan, dengan mengandaikan $\snorm{A} \neq \infty$ untuk menghindari persoalan teknis ketika $x=0$,
+bahwa untuk setiap $x \in X$,
+\begin{equation*}
+\snorm{Ax} \leq \snorm{A}  \snorm{x} .
+\avoidbreak
+\end{equation*}
+%We will use this inequality a lot.
+Sebaliknya, jika dapat ditunjukkan bahwa $\snorm{Ax} \leq C \snorm{x}$ untuk setiap $x$,
+maka $\snorm{A} \leq C$.
+
+Dari definisi, tidak sulit untuk melihat bahwa $\snorm{A} = 0$ jika dan
+hanya jika $A = 0$, dengan $A=0$ berarti bahwa $A$ memetakan setiap vektor ke vektor nol.
+Norma operator dari operator identitas juga tidak sulit dihitung:
+\begin{equation*}
+\snorm{I} =
+\sup_{\substack{x \in X\\x\neq 0}} \frac{\snorm{Ix}}{\snorm{x}} 
+=
+\sup_{\substack{x \in X\\x\neq 0}} \frac{\snorm{x}}{\snorm{x}} 
+= 1.
+\end{equation*}
+Norma operator tidak selalu mudah dihitung hanya dengan menggunakan definisinya,
+dan tidak pula mudah dibaca langsung dari bentuk operatornya.
+Perhatikan $\R^2$ dan operator $A \in L(\R^2)$ yang memetakan
+$(x,y)$ ke $(x+y,2x)$.  
+Vektor-vektor bernorma satu dapat ditulis sebagai
+$\bigl(\pm t, \pm \sqrt{1-t^2}\bigr)$
+untuk $t \in [0,1]$
+(atau dapat pula ditulis $\bigl(\cos(\theta), \sin(\theta) \bigr)$).
+Kemudian kita memaksimumkan
+\begin{equation*}
+\bnorm{A(x,y)} = \sqrt{{\left(t \pm \sqrt{1-t^2}\right)}^2+4t^2}
+\end{equation*}
+untuk memperoleh $\snorm{A} = \sqrt{3+\sqrt{5}}$.
+Secara umum, kita sering menempuh dua langkah.  Sebagai contoh, perhatikan
+operator
+$B \in L\bigl(C([0,1],\R),\R\bigr)$
+yang memetakan fungsi kontinu $f$ ke $f(0)$.  Jika $\snorm{f} = 1$ (norma seragam),
+maka jelas bahwa $\babs{f(0)} \leq 1$, sehingga $\sabs{Bf} \leq 1$, yang berarti
+$\snorm{B} \leq 1$.
+Untuk membuktikan bahwa nilainya sama dengan $1$, perhatikan bahwa fungsi konstan $1$ memiliki
+norma $1$, sehingga $B1 = 1$, yang berarti $\snorm{B} \geq 1$.
+Jadi, $\snorm{B}=1$.
+
+Norma operator tidak selalu merupakan norma pada $L(X,Y)$.
+Secara khusus,
+$\snorm{A}$ tidak selalu berhingga untuk $A \in L(X,Y)$.
+Di bawah ini kita membuktikan bahwa $\snorm{A}$ berhingga jika $X$ berdimensi hingga.
+Norma operator berhingga jika dan hanya jika $A$ kontinu.
+Untuk ruang berdimensi tak berhingga, kedua pernyataan tersebut tidak selalu benar.
+Sebagai contoh,
+perhatikan ruang vektor yang terdiri atas fungsi-fungsi yang diferensiabel dan memiliki turunan kontinu pada
+$[0,2\pi]$ dengan norma seragam.  Fungsi-fungsi
+$t \mapsto \sin(n t)$ memiliki norma 1, tetapi turunannya memiliki norma $n$.  Jadi,
+diferensiasi, yang merupakan operator linear bernilai di ruang fungsi-fungsi
+kontinu, memiliki norma operator tak berhingga pada ruang ini.
+Kita akan membatasi pembahasan pada ruang berdimensi hingga.
+
+Untuk suatu ruang vektor berdimensi hingga $X$, kita sering membayangkan
+$\R^n$, meskipun jika $X$ dilengkapi dengan suatu norma, norma tersebut belum tentu
+merupakan norma Euklides baku.  Dalam latihan, Anda dapat membuktikan bahwa
+setiap norma pada $\R^n$ \myquote{ekuivalen} dengan norma Euklides, dalam arti bahwa
+topologi yang dihasilkannya sama.  Demi kesederhanaan, kita hanya membuktikan
+proposisi berikut untuk ruang Euklides, sedangkan pembuktian untuk ruang
+berdimensi hingga secara umum diserahkan sebagai latihan.
+
+\begin{prop} \label{prop:finitedimpropnormfin}
+Misalkan $X$ dan $Y$ adalah ruang vektor bernorma dengan
+$X$ berdimensi hingga, dan misalkan
+$A \in L(X,Y)$.
+Maka $\snorm{A} < \infty$, dan
+$A$ kontinu seragam (Lipschitz dengan konstanta $\snorm{A}$).
+\end{prop}
+
+\begin{proof}
+Seperti telah dinyatakan, kita hanya membuktikan proposisi ini untuk ruang Euklides, jadi andaikan
+bahwa $X = \R^n$ dan normanya adalah norma Euklides baku.
+Kasus umum diserahkan sebagai latihan.
+
+Misalkan $\{ e_1,e_2,\ldots,e_n \}$ adalah basis baku dari $\R^n$.
+Tuliskan $x \in \R^n$, dengan $\snorm{x} = 1$, sebagai
+\begin{equation*}
+x = \sum_{k=1}^n c_k \, e_k .
+\end{equation*}
+Karena $e_k \cdot e_\ell = 0$ apabila $k \neq \ell$ dan $e_k \cdot e_k = 1$,
+kita memperoleh $c_k = x \cdot e_k$.  Berdasarkan Cauchy--Schwarz,
+\begin{equation*}
+\sabs{c_k} = \sabs{ x \cdot e_k }
+\leq \snorm{x} \, \snorm{e_k} = 1 .
+\end{equation*}
+Dengan demikian,
+\begin{equation*}
+\snorm{Ax} =
+\norm{\sum_{k=1}^n c_k \, Ae_k}
+\leq
+\sum_{k=1}^n \sabs{c_k} \, \snorm{Ae_k} 
+\leq
+\sum_{k=1}^n \snorm{Ae_k} .
+\end{equation*}
+Ruas kanan tidak bergantung pada $x$.  Kita telah memperoleh
+batas atas berhingga bagi $\snorm{Ax}$ yang tidak bergantung pada $x$, sehingga $\snorm{A} < \infty$.
+
+Sekarang ambil ruang vektor bernorma $X$ dan $Y$, serta $A \in L(X,Y)$ dengan
+$\snorm{A} < \infty$.
+Untuk $v,w \in X$,
+\begin{equation*}
+\snorm{Av - Aw} =
+\bnorm{A(v-w)} \leq \snorm{A} \, \snorm{v-w} .
+\end{equation*}
+Karena $\snorm{A} < \infty$, ketaksamaan di atas menyatakan bahwa
+$A$ bersifat Lipschitz dengan konstanta $\snorm{A}$.
+\end{proof}
+
+\begin{prop} \label{prop:finitedimpropnorm}
+\pagebreak[3]
+Misalkan $X$, $Y$, dan $Z$ adalah ruang vektor bernorma berdimensi
+hingga\footnote{Jika bagian \myquote{Secara khusus} dihapus dan aljabar
+dengan norma operator tak berhingga ditafsirkan secara tepat, yakni dengan menetapkan bahwa $0$ dikali
+$\infty$ sama dengan 0, maka hasil ini juga berlaku untuk ruang berdimensi tak berhingga.}.
+\begin{enumerate}[(i)]
+\item \label{item:finitedimpropnorm:i}
+Jika $A,B \in L(X,Y)$ dan $c \in \R$, maka
+\begin{equation*}
+\snorm{A+B} \leq \snorm{A}+\snorm{B}, \qquad \snorm{cA} = \sabs{c} \, \snorm{A} .
+\end{equation*}
+Secara khusus, norma operator merupakan suatu norma pada ruang vektor $L(X,Y)$.
+\item \label{item:finitedimpropnorm:ii}
+Jika $A \in L(X,Y)$ dan $B \in L(Y,Z)$, maka
+\begin{equation*}
+\snorm{BA} \leq \snorm{B} \, \snorm{A} .
+\end{equation*}
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Pertama, karena semua ruang berdimensi hingga, semua norma
+operatornya berhingga, sehingga pernyataan-pernyataan tersebut memang bermakna.
+
+Untuk \ref{item:finitedimpropnorm:i}, ambil sebarang $x \in X$.  Maka
+\begin{equation*}
+\bnorm{(A+B)x} =
+\snorm{Ax+Bx} \leq
+\snorm{Ax}+\snorm{Bx} \leq
+\snorm{A} \, \snorm{x}+\snorm{B} \,\snorm{x} =
+\bigl(\snorm{A}+\snorm{B}\bigr) \snorm{x} .
+\end{equation*}
+Jadi, $\snorm{A+B} \leq \snorm{A}+\snorm{B}$.
+Serupa dengan itu,
+\begin{equation*}
+\bnorm{(cA)x} =
+\sabs{c} \, \snorm{Ax} \leq \bigl(\sabs{c} \,\snorm{A}\bigr) \snorm{x} .
+\end{equation*}
+Dengan demikian, $\snorm{cA} \leq \sabs{c} \, \snorm{A}$.  Selanjutnya,
+\begin{equation*}
+\sabs{c} \,  \snorm{Ax}
+=
+\snorm{cAx} \leq \snorm{cA} \, \snorm{x} .
+\end{equation*}
+Oleh sebab itu, $\sabs{c} \, \snorm{A} \leq \snorm{cA}$.
+
+
+Untuk \ref{item:finitedimpropnorm:ii}, tuliskan
+\begin{equation*}
+\snorm{BAx} \leq \snorm{B} \, \snorm{Ax} \leq \snorm{B} \, \snorm{A} \, \snorm{x} .
+\qedhere
+\end{equation*}
+\end{proof}
+
+Suatu norma mendefinisikan metrik,
+yang memberikan topologi ruang metrik pada $L(X,Y)$ untuk ruang vektor berdimensi hingga.
+Jadi, kita dapat membahas
+himpunan terbuka/tertutup, kekontinuan, kekonvergenan, dan sebagainya.
+
+\begin{prop} \label{prop:finitedimpropinv}
+\pagebreak[2]
+Misalkan $X$ adalah ruang vektor bernorma berdimensi hingga.
+Misalkan $GL(X) \subset L(X)$\glsadd{not:GLX} adalah himpunan operator linear
+invertibel.\footnote{$GL(X)$ disebut
+\emph{\myindex{grup linear umum}}, dan singkatan GL berasal dari nama
+bahasa Inggrisnya.}
+\begin{enumerate}[(i)]
+\item \label{finitedimpropinv:i}
+Jika $A \in GL(X)$, $B \in L(X)$, dan
+\begin{equation} \label{eqcontineq}
+\snorm{A-B} <  \frac{1}{\snorm{A^{-1}}},
+\end{equation}
+maka $B \in GL(X)$, yaitu $B$ invertibel.
+Secara khusus, $GL(X)$ terbuka.
+\item \label{finitedimpropinv:ii}
+$A \mapsto A^{-1}$ merupakan fungsi
+kontinu pada $GL(X)$.
+\end{enumerate}
+\end{prop}
+
+Kita ilustrasikan proposisi ini dengan suatu contoh sederhana.
+Perhatikan $X=\R^1$.  Dalam ruang ini, operator linear tidak lain adalah
+bilangan $a$, dan norma operator dari $a$ adalah $\sabs{a}$.
+Operator $a$ invertibel ($a^{-1} = \nicefrac{1}{a}$)
+apabila $a \neq 0$.  Syarat $\sabs{a-b} < \frac{1}{\sabs{a^{-1}}}$
+memang menyiratkan bahwa $b$ tidak nol.  Selain itu, $a \mapsto \nicefrac{1}{a}$
+merupakan fungsi kontinu.
+Jika dimensinya $2$ atau lebih,
+terdapat operator tak invertibel selain operator nol,
+dan persoalannya menjadi sedikit lebih rumit.
+
+\begin{proof}
+Mari kita buktikan \ref{finitedimpropinv:i}.   Kita memiliki informasi tentang $A^{-1}$
+dan $A-B$; keduanya merupakan operator linear.
+Jadi, terapkan keduanya pada suatu vektor:
+\begin{equation*}
+A^{-1}(A-B)x
+=
+x-A^{-1}Bx .
+\end{equation*}
+Oleh karena itu,
+\begin{equation*}
+\begin{split}
+\snorm{x} 
+& =
+\bnorm{A^{-1} (A-B)x + A^{-1}Bx}
+\\
+& \leq
+\snorm{A^{-1}}\,\snorm{A-B}\, \snorm{x} + \snorm{A^{-1}}\,\snorm{Bx} .
+\end{split}
+\end{equation*}
+Andaikan $x \neq 0$, sehingga $\snorm{x} \neq 0$.
+Dengan menggunakan \eqref{eqcontineq}, kita memperoleh
+\begin{equation*}
+\snorm{x} < \snorm{x} + \snorm{A^{-1}} \, \snorm{Bx} .
+\end{equation*}
+Jadi, $\snorm{Bx} \neq 0$ untuk setiap $x \neq 0$, dan akibatnya
+$Bx \neq 0$ untuk setiap $x \neq 0$.  Dengan demikian,
+$B$ injektif; jika $Bx = By$, maka $B(x-y) = 0$, sehingga $x=y$.
+Karena $B$ merupakan pemetaan linear injektif dari $X$ ke $X$, yang berdimensi hingga,
+pemetaan ini juga surjektif berdasarkan \propref{mv:prop:lin11onto}.
+Oleh karena itu, $B$ invertibel.
+Secara khusus, hal ini menunjukkan bahwa $GL(X)$ terbuka.
+
+Mari kita buktikan \ref{finitedimpropinv:ii}.
+Kita harus menunjukkan bahwa operasi pengambilan invers bersifat kontinu.
+Tetapkan $A \in GL(X)$.  Ambil $B$ yang dekat dengan $A$,
+tepatnya $\snorm{A-B} < \frac{1}{2 \snorm{A^{-1}}}$.
+Maka \eqref{eqcontineq} dipenuhi dan $B$ invertibel.
+Perhitungan yang serupa dengan perhitungan di atas (dengan menggunakan $B^{-1}y$ sebagai pengganti $x$) memberikan
+\begin{equation*}
+\snorm{B^{-1}y} \leq 
+\snorm{A^{-1}} \, \snorm{A-B} \,  \snorm{B^{-1}y} + \snorm{A^{-1}} \, \snorm{y}
+\leq
+\frac{1}{2} \snorm{B^{-1}y} + \snorm{A^{-1}}\,\snorm{y} ,
+\end{equation*}
+atau
+\begin{equation*}
+\snorm{B^{-1}y} \leq 
+2\snorm{A^{-1}}\,\snorm{y} .
+\end{equation*}
+Jadi,
+$
+\snorm{B^{-1}} \leq 2 \snorm{A^{-1}}
+$.
+
+Sekarang,
+\begin{equation*}
+A^{-1}(A-B)B^{-1} = 
+A^{-1}(AB^{-1}-I) = 
+B^{-1}-A^{-1} ,
+\end{equation*}
+dan
+\begin{equation*}
+\snorm{B^{-1}-A^{-1}} =
+\bnorm{A^{-1}(A-B)B^{-1}} \leq
+\snorm{A^{-1}}\,\snorm{A-B}\,\snorm{B^{-1}}
+\leq
+2\snorm{A^{-1}}^2
+\snorm{A-B} .
+\end{equation*}
+Oleh karena itu, ketika $B$ menuju $A$, $\snorm{B^{-1}-A^{-1}}$ menuju 0, dan
+dengan demikian operasi pengambilan invers merupakan fungsi kontinu di $A$.
+\end{proof}
+
+\subsection{Matriks}
+
+Setelah menetapkan suatu basis pada ruang vektor
+berdimensi hingga $X$, kita dapat merepresentasikan sebuah vektor dalam $X$ sebagai
+$n$-tupel bilangan---yakni sebuah vektor di $\R^n$.
+Hal yang sama dapat dilakukan terhadap $L(X,Y)$, sehingga diperoleh matriks,
+yang merupakan cara praktis untuk merepresentasikan
+transformasi linear antarruang berdimensi hingga.
+Misalkan $\{ x_1, x_2, \ldots, x_n \}$ dan $\{ y_1, y_2, \ldots, y_m \}$
+masing-masing merupakan basis bagi ruang vektor $X$ dan $Y$.  Suatu operator linear 
+ditentukan oleh nilai-nilainya pada basis.  Untuk $A \in L(X,Y)$,
+$A x_j$ merupakan elemen $Y$.  Definisikan bilangan-bilangan
+$a_{i,j}$ melalui
+\begin{equation} \label{eq:matrixrepresent}
+A x_j = \sum_{i=1}^m a_{i,j} \, y_i ,
+\end{equation}
+dan susun bilangan-bilangan tersebut sebagai sebuah \emph{\myindex{matriks}},
+yang, dengan sedikit penyalahgunaan notasi, juga kita sebut $A$,
+\glsadd{not:matrix}
+\begin{equation*}
+A =
+\begin{bmatrix}
+a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m,1} & a_{m,2} & \cdots & a_{m,n}
+\end{bmatrix} .
+\end{equation*}
+Kadang-kadang kita menulis $A$ sebagai $[a_{i,j}]$.
+Kita menyebut $A$ matriks berukuran $m$-kali-$n$.
+Pada matriks tersebut, \emph{\myindex{kolom}} ke-$j$ memuat tepat koefisien-koefisien
+yang merepresentasikan $A x_j$ terhadap basis $\{ y_1,y_2,\ldots,y_m \}$.
+Dari bilangan-bilangan $a_{i,j}$, melalui rumus
+\eqref{eq:matrixrepresent}, kita memperoleh operator linear yang bersesuaian,
+karena operator itu ditentukan oleh aksinya pada suatu basis.  Jadi, setelah menetapkan
+basis pada $X$ dan $Y$, kita memperoleh korespondensi satu-ke-satu antara
+$L(X,Y)$ dan matriks-matriks berukuran $m$-kali-$n$.
+Jika
+\begin{equation*}
+z = \sum_{j=1}^n z_j \, x_j ,
+\end{equation*}
+maka
+\begin{equation*}
+A z =
+\sum_{j=1}^n z_j \, A x_j 
+=
+\sum_{j=1}^n z_j \left( \sum_{i=1}^m  a_{i,j}\, y_i \right) 
+=
+\sum_{i=1}^m \left(\sum_{j=1}^n  a_{i,j}\, z_j \right) y_i ,
+\end{equation*}
+yang menghasilkan aturan perkalian matriks yang lazim,
+dengan memandang $z$ sebagai vektor kolom, yaitu matriks berukuran $n$-kali-1.
+%
+Secara lebih umum, jika $B$ adalah matriks berukuran $n$-kali-$r$ dengan entri $b_{j,k}$, maka 
+matriks $C = AB$ berukuran $m$-kali-$r$. Entri $(i,k)$ pada matriks ini,
+yaitu $c_{i,k}$, adalah
+\begin{equation*}
+c_{i,k} =
+\sum_{j=1}^n a_{i,j}\,b_{j,k} .
+\end{equation*}
+Salah satu cara mengingatnya ialah dengan mengurutkan indeks
+seperti di atas---\emph{baris, kolom}---dan
+menempatkan elemen-elemen dalam urutan yang sama dengan matriksnya;
+dengan demikian, \myquote{indeks tengah} \myquote{dihilangkan melalui penjumlahan.}
+
+Terdapat korespondensi satu-ke-satu antara matriks dan operator linear dalam
+$L(X,Y)$, setelah kita menetapkan basis pada $X$ dan $Y$.  Jika kita 
+memilih basis yang berbeda, kita memperoleh matriks yang berbeda.
+Pembedaan ini penting.
+Operator $A$ bekerja pada elemen-elemen $X$, sedangkan matriks
+bekerja dengan $n$-tupel bilangan, yaitu vektor-vektor di
+$\R^n$.  Sesuai konvensi, kita menggunakan basis standar di $\R^n$ kecuali dinyatakan
+lain, dan kita mengidentifikasi $L(\R^n,\R^m)$ dengan himpunan matriks berukuran $m$-kali-$n$.
+
+Pemetaan linear yang mengubah satu basis menjadi basis lain direpresentasikan oleh
+matriks persegi yang kolom-kolomnya merepresentasikan vektor-vektor
+basis kedua terhadap basis pertama.  Pemetaan linear semacam itu kita
+sebut \emph{\myindex{perubahan basis}}.  Jadi, untuk dua pilihan
+basis dalam ruang vektor berdimensi $n$, terdapat suatu pemetaan linear
+(suatu perubahan basis)
+yang memetakan satu basis ke basis lainnya, dan pemetaan ini bersesuaian dengan matriks
+berukuran $n$-kali-$n$ yang melakukan operasi terkait pada $\R^n$.
+
+\medskip
+
+Misalkan
+$X=\R^n$, $Y=\R^m$, dan
+semua basis yang digunakan adalah basis standar.
+Dengan menggunakan ketaksamaan Cauchy--Schwarz untuk $c=(c_1,c_2,\ldots,c_n) \in \R^n$, kita peroleh
+\begin{equation*}
+\snorm{Ac}^2
+=
+\sum_{i=1}^m { \left(\sum_{j=1}^n a_{i,j} \, c_j \right)}^2
+\leq
+\sum_{i=1}^m
+\left(
+\left(\sum_{j=1}^n {(a_{i,j})}^2 \right)
+\left(\sum_{j=1}^n {(c_j)}^2 \right)
+\right)
+=
+\left(
+\sum_{i=1}^m \sum_{j=1}^n {(a_{i,j})}^2 \right)
+\snorm{c}^2 .
+\end{equation*}
+Dengan kata lain, kita memperoleh batas bagi norma operator (perhatikan bahwa kesamaan
+jarang terjadi)
+\begin{equation*}
+\snorm{A} \leq
+\sqrt{\sum_{i=1}^m \sum_{j=1}^n {(a_{i,j})}^2} .
+\end{equation*}
+Ruas kanan merupakan norma Euklides pada $\R^{nm}$, yang
+diperoleh dengan memandang semua entri matriks sebagai koordinat.
+Jika entri-entri tersebut menuju nol, maka $\snorm{A}$ menuju nol.
+Sebaliknya,
+\begin{equation*}
+\sum_{i=1}^m \sum_{j=1}^n {(a_{i,j})}^2
+=
+\sum_{j=1}^n \snorm{A e_j}^2
+\leq
+\sum_{j=1}^n \snorm{A}^2
+= n \snorm{A}^2 .
+\end{equation*}
+Jadi, jika norma operator $A$ menuju nol, entri-entrinya juga menuju nol.
+Secara khusus, jika $A$ tetap dan $B$ berubah,
+maka entri-entri $B$ menuju entri-entri $A$ jika dan hanya jika $B$ menuju $A$ dalam
+norma operator ($\snorm{A-B}$ menuju nol).  Kita telah membuktikan:
+
+\begin{prop} \label{prop:matrixcont}
+Topologi (himpunan semua himpunan terbuka) pada $L(\R^n,\R^m)$ tetap sama,
+baik ketika $L(\R^n,\R^m)$ dipandang sebagai ruang metrik dengan norma
+operator maupun dengan metrik Euklides pada $\R^{nm}$.
+
+Secara khusus, misalkan $S$ merupakan ruang metrik dan
+$\pi \colon L(\R^n,\R^m) \to \R^{nm}$ mengidentifikasi
+suatu operator dengan $nm$-tupel yang terdiri atas entri-entri matriks bersesuaian.
+Maka
+$f \colon S \to L(\R^n,\R^m)$
+kontinu
+jika dan hanya jika
+$\pi \circ f \colon S \to \R^{nm}$
+kontinu.
+Demikian pula halnya dengan
+$g \colon L(\R^n,\R^m) \to S$ dan
+$g \circ \pi^{-1} \colon \R^{nm} \to S$.
+\end{prop}
+
+\subsection{Determinan}
+
+Suatu bilangan tertentu dapat dikaitkan dengan matriks persegi untuk mengukur
+bagaimana pemetaan linear yang bersesuaian meregangkan ruang.  Secara khusus,
+bilangan yang disebut determinan ini dapat digunakan untuk menguji invertibilitas matriks.
+
+Definisikan simbol
+$\operatorname{sgn}(x)$\glsadd{not:sgn} (dibaca \myquote{tanda dari $x$}) untuk suatu bilangan $x$ dengan
+\begin{equation*}
+\operatorname{sgn}(x)
+\coloneqq
+\begin{cases}
+-1 & \text{jika } x < 0 , \\
+0  & \text{jika } x = 0 , \\
+1  & \text{jika } x > 0 .
+\end{cases}
+\end{equation*}
+Suatu \emph{\myindex{permutasi}}
+$\sigma = (\sigma_1,\sigma_2,\ldots,\sigma_n)$ adalah
+penyusunan ulang dari $(1,2,\ldots,n)$.
+Definisikan
+\begin{equation} \label{eq:sgndef}
+\operatorname{sgn}(\sigma) = \operatorname{sgn}(\sigma_1,\ldots,\sigma_n)
+\coloneqq
+\prod_{p < q} \operatorname{sgn}(\sigma_q-\sigma_p) .
+\avoidbreak
+\end{equation}
+Di sini $\prod$ menyatakan perkalian, sebagaimana $\sum$ menyatakan
+penjumlahan.\glsadd{not:prod}
+
+Setiap permutasi dapat diperoleh melalui
+suatu barisan transposisi (pertukaran dua unsur).
+Suatu permutasi disebut
+\emph{genap}\index{permutasi genap}
+(atau\ \emph{ganjil})\index{permutasi ganjil}
+jika diperlukan sejumlah genap (atau\ ganjil)
+transposisi untuk mengubah $(1,2,\ldots,n)$ menjadi $\sigma$.
+Sebagai contoh, $(2,4,3,1)$ berjarak dua transposisi dari
+$(1,2,3,4)$ dan karena itu genap: $(1,2,3,4) \to (2,1,3,4) \to (2,4,3,1)$.
+Sifat genap atau ganjil ini terdefinisi dengan baik:
+$\operatorname{sgn}(\sigma)$
+bernilai $1$ jika $\sigma$ genap dan $-1$ jika $\sigma$ ganjil (latihan).
+Fakta ini mengikuti karena penerapan
+suatu transposisi mengubah tanda, sedangkan
+$\operatorname{sgn}(1,2,\ldots,n) = 1$.
+
+Misalkan $S_n$ adalah himpunan semua permutasi pada $n$ unsur (yakni
+\emph{\myindex{grup simetris}}).
+Misalkan $A= [a_{i,j}]$ suatu matriks persegi berukuran $n$-kali-$n$.
+Definisikan \emph{\myindex{determinan}} dari $A$ sebagai
+\glsadd{not:det}
+\begin{equation*}
+\det(A) \coloneqq
+\sum_{\sigma \in S_n}
+\operatorname{sgn} (\sigma) \prod_{i=1}^n a_{i,\sigma_i} .
+\end{equation*}
+
+\begin{prop}
+\pagebreak[0]
+\leavevmode
+\begin{enumerate}[(i)]
+\item \label{prop:det:i} $\det(I) = 1$.
+\item \label{prop:det:ii} Untuk setiap $j=1,2,\ldots,n$, fungsi $x_j
+\mapsto \det\bigl([x_1 ~~~ x_2 ~~~ \cdots ~~~ x_n ]\bigr)$
+bersifat linear.
+\item \label{prop:det:iii} Jika dua kolom suatu matriks dipertukarkan, tanda determinannya
+berubah.
+\item \label{prop:det:iv} Jika dua kolom $A$ sama, maka $\det(A) = 0$.
+\item \label{prop:det:v} Jika suatu kolom bernilai nol, maka $\det(A) = 0$.
+\item \label{prop:det:vi} $A \mapsto \det(A)$ merupakan fungsi kontinu pada
+$L(\R^n)$.
+\item \label{prop:det:vii} $\det\left( \left[\begin{smallmatrix} a & b \\ c
+&d \end{smallmatrix}\right] \right)
+= ad-bc$, dan $\det \bigl( [a] \bigr) = a$.
+\end{enumerate}
+\end{prop}
+
+Bahkan, determinan merupakan satu-satunya fungsi yang memenuhi
+\ref{prop:det:i},
+\ref{prop:det:ii}, dan
+\ref{prop:det:iii},
+tetapi hal itu menyimpang dari pembahasan kita.
+Maksud \ref{prop:det:ii} ialah: jika semua vektor
+$x_1,\ldots,x_n$ kecuali $x_j$ ditetapkan, lalu
+$v,w \in \R^n$ adalah dua vektor,
+dan $a,b \in \R$ adalah skalar, maka
+\begin{multline*}
+\det\bigl([x_1 ~~~ \cdots ~~~ x_{j-1} ~~~ (av+bw) ~~~ x_{j+1} ~~~
+\cdots ~~~ x_n]\bigr) =
+\\
+a \det\bigl([x_1 ~~~ \cdots ~~~ x_{j-1} ~~~ v ~~~ x_{j+1} ~~~
+\cdots ~~~ x_n]\bigr)
++
+b
+\det\bigl([x_1 ~~~ \cdots ~~~ x_{j-1} ~~~ w ~~~ x_{j+1} ~~~ \cdots
+~~~ x_n]\bigr) .
+\end{multline*}
+
+\begin{proof}
+Kita membahas pembuktiannya dengan singkat karena kemungkinan besar Anda pernah melihatnya.
+%
+Butir \ref{prop:det:i} bersifat langsung.  Untuk \ref{prop:det:ii}, perhatikan bahwa setiap suku dalam definisi
+determinan memuat tepat satu faktor dari setiap kolom.
+%
+Butir \ref{prop:det:iii} mengikuti karena menukar dua kolom berarti menukar
+dua bilangan yang bersesuaian dalam setiap unsur $S_n$.  Akibatnya, semua tanda
+berubah.
+Butir \ref{prop:det:iv} mengikuti karena jika dua kolom sama dan kita
+menukarnya, kita memperoleh kembali
+matriks yang sama.  Jadi butir \ref{prop:det:iii} menyatakan bahwa determinannya harus 0.
+%
+Butir \ref{prop:det:v} mengikuti karena hasil kali pada setiap suku dalam definisi memuat
+satu unsur dari kolom nol.
+Butir \ref{prop:det:vi} mengikuti karena $\det$ merupakan polinom dalam entri-entri matriks
+dan karenanya kontinu (sebagai fungsi dari entri-entri matriks).
+Suatu fungsi pada ruang matriks bersifat kontinu terhadap norma operator jika dan hanya jika
+fungsi tersebut kontinu sebagai fungsi dari entri-entri matriks
+(\propref{prop:matrixcont}).
+Terakhir, butir \ref{prop:det:vii} diperoleh melalui perhitungan langsung.
+\end{proof}
+
+Determinan memberi tahu kita tentang luas dan volume serta perubahannya.
+Sebagai contoh, dalam kasus $1$-kali-$1$, suatu matriks hanyalah sebuah bilangan dan
+determinannya tepat sama dengan bilangan tersebut.  Determinan menyatakan bagaimana pemetaan linear
+\myquote{meregangkan} ruang.  Demikian pula,
+misalkan $A \in L(\R^2)$ suatu transformasi linear.
+Dapat diperiksa secara langsung bahwa
+luas citra persegi satuan $A\bigl([0,1]^2\bigr)$ adalah
+$\babs{\det(A)}$; lihat \figureref{fig:imagesquare} untuk sebuah contoh.
+Hal ini berlaku untuk bangun sebarang, bukan hanya persegi
+satuan:
+Nilai mutlak determinan menyatakan faktor peregangan luas.
+Tanda determinan menyatakan apakah citranya
+terbalik (mengubah orientasi) atau tidak.
+Dalam $\R^3$, determinan
+menyatakan perubahan volume tiga dimensi, dan dalam $n$ dimensi menyatakan perubahan
+volume $n$ dimensi.  Pernyataan ini kita berikan tanpa pembuktian.
+\begin{myfigureht}
+\myincludepdft{linalg-imagesquare}{%
+Terdapat dua diagram bidang.  Pada diagram kiri,
+terdapat persegi dengan titik sudut (0,0), (1,0), (1,1), dan (0,1).
+Pada diagram kanan, terdapat persegi dengan titik sudut yang bersesuaian
+(0,0), (1, minus satu), (2,0), dan (1,1), dengan korespondensi yang ditunjukkan
+oleh anak panah.}
+\caption{Citra persegi satuan ${[0,1]}^2$ melalui matriks
+$\left[\begin{smallmatrix}1 & 1 \\ -1 & 1\end{smallmatrix}\right]$.
+Citranya merupakan persegi dengan panjang sisi $\sqrt{2}$, sehingga luasnya 2, dan determinan
+matriks tersebut adalah 2.\label{fig:imagesquare}}
+\end{myfigureht}
+
+\begin{prop}
+Jika $A$ dan $B$ matriks berukuran $n$-kali-$n$, maka $\det(AB) = \det(A)\det(B)$.
+Lebih lanjut, $A$ invertibel jika dan hanya jika $\det(A) \neq 0$, dan dalam
+kasus ini, $\det(A^{-1}) = \frac{1}{\det(A)}$.
+\end{prop}
+
+\begin{proof}
+Misalkan $b_1,b_2,\ldots,b_n$ kolom-kolom dari $B$.  Maka
+\begin{equation*}
+AB = [ Ab_1 \quad Ab_2 \quad  \cdots \quad  Ab_n ] .
+\end{equation*}
+Artinya, kolom-kolom $AB$ adalah
+$Ab_1,Ab_2,\ldots,Ab_n$.
+
+Misalkan $b_{j,k}$ menyatakan unsur-unsur $B$ dan
+$a_j$ menyatakan kolom-kolom $A$.
+Berdasarkan linearitas determinan,
+\begin{equation*}
+\begin{split}
+\det(AB) & =
+\det \bigl([ Ab_1 \quad Ab_2 \quad  \cdots \quad  Ab_n ] \bigr) =
+\det \left(\left[ \sum_{j=1}^n b_{j,1} a_j \quad Ab_2 \quad  \cdots \quad  Ab_n \right]\right) \\
+& =
+\sum_{j=1}^n
+b_{j,1}
+\det \bigl([ a_j \quad Ab_2 \quad  \cdots \quad  Ab_n ]\bigr) \\
+& =
+\sum_{1 \leq j_1,j_2,\ldots,j_n \leq n}
+b_{j_1,1}
+b_{j_2,2}
+\cdots
+b_{j_n,n}
+\det \bigl([ a_{j_1} \quad a_{j_2} \quad  \cdots \quad  a_{j_n} ]\bigr) \\
+& =
+\left(
+\sum_{(j_1,j_2,\ldots,j_n) \in S_n}
+b_{j_1,1}
+b_{j_2,2}
+\cdots
+b_{j_n,n}
+\operatorname{sgn}(j_1,j_2,\ldots,j_n)
+\right)
+\det \bigl([ a_{1} \quad a_{2} \quad  \cdots \quad  a_{n} ]\bigr) .
+\end{split}
+\end{equation*}
+Pada kesamaan terakhir, kita menjumlahkan atas unsur-unsur $S_n$
+alih-alih semua tupel-$n$ bilangan bulat antara 1 dan $n$,
+karena
+jika dua kolom dalam determinan sama, maka
+determinannya nol.  Menyusun ulang kolom-kolom ke
+urutan semula menghasilkan nilai sgn.
+
+Kesimpulan bahwa $\det(AB) = \det(A)\det(B)$
+mengikuti dengan mengenali bahwa ekspresi dalam tanda kurung di atas adalah determinan $B$.
+Hal ini kita peroleh dengan menyubstitusikan $A=I$.
+Ekspresi yang diperoleh untuk determinan $B$ memiliki baris dan kolom
+yang tertukar; sebagai hasil tambahan, kita juga baru saja membuktikan bahwa determinan
+suatu matriks sama dengan determinan transposnya.
+
+Mari kita buktikan bagian
+\myquote{Lebih lanjut.}
+Jika $A$ invertibel,
+maka $A^{-1}A = I$.
+Akibatnya, $\det(A^{-1})\det(A) = \det(A^{-1}A) = \det(I) = 1$.
+Jika $A$ tidak invertibel, maka matriks tersebut tidak injektif, sehingga $A$ memetakan
+suatu vektor tak nol ke nol.
+Dengan kata lain, kolom-kolom $A$ bergantung linear.
+Misalkan
+\begin{equation*}
+\sum_{k=1}^n \gamma_k\, a_k = 0 ,
+\end{equation*}
+dengan tidak semua $\gamma_k$ sama dengan 0.
+Tanpa mengurangi keumuman, misalkan $\gamma_1\neq 0$.
+Ambil
+\begin{equation*}
+B \coloneqq
+\begin{bmatrix}
+\gamma_1 & 0 & 0 & \cdots & 0 \\
+\gamma_2 & 1 & 0 & \cdots & 0 \\
+\gamma_3 & 0 & 1 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+\gamma_n & 0 & 0 & \cdots & 1
+\end{bmatrix} .
+\end{equation*}
+Dengan menggunakan definisi determinan (hanya ada satu
+permutasi $\sigma$ yang membuat $\prod_{i=1}^n b_{i,\sigma_i}$ tak nol),
+kita memperoleh $\det(B) = \gamma_1 \neq 0$.
+Kemudian
+$\det(AB) = \det(A)\det(B) = \gamma_1\det(A)$.
+Kolom pertama $AB$ bernilai nol, sehingga $\det(AB) = 0$.  Kita menyimpulkan
+$\det(A) = 0$.
+\end{proof}
+
+\begin{prop}
+Determinan tidak bergantung pada basis: Jika $A$ dan $B$ adalah
+matriks berukuran $n$-kali-$n$ dan $B$
+invertibel, maka
+\begin{equation*}
+\det(A) = \det(B^{-1}AB) .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+$\det(B^{-1}AB) =
+\det(B^{-1})\det(A)\det(B) =
+\frac{1}{\det(B)}\det(A)\det(B) = \det(A)$.
+\end{proof}
+
+Jika pada suatu basis $A$ adalah matriks yang merepresentasikan suatu
+operator linear, maka untuk basis lain kita dapat menemukan matriks $B$ sedemikian
+sehingga matriks $B^{-1}AB$ membawa kita ke basis pertama, menerapkan $A$ dalam
+basis pertama, lalu membawa kita kembali ke basis awal.
+Misalkan $X$ ruang vektor berdimensi hingga.
+Misalkan $\Phi \in L(X,\R^n)$ memetakan basis $\{ x_1,\ldots,x_n \}$ ke
+basis standar $\{ e_1,\ldots,e_n \}$ dan $\Psi \in L(X,\R^n)$
+memetakan basis lain $\{ y_1, \ldots, y_n \}$ ke basis standar.
+Misalkan $T \in L(X)$ operator linear dan misalkan matriks $A$
+merepresentasikan operator tersebut
+dalam basis $\{ x_1,\ldots,x_n \}$.
+Maka $B$ dipilih sedemikian sehingga diperoleh diagram berikut\footnote{%
+Gambar semacam ini disebut \emph{\myindex{diagram komutatif}}.
+Dalam diagram komutatif,
+mengikuti anak panah melalui jalur mana pun harus memberikan hasil yang sama.}:
+%mbxSTARTIGNORE
+\begin{equation*}
+\begin{tikzcd}[row sep=normal,column sep=large]
+\R^n \ar[r, "B^{-1}AB"]  \ar[dd, bend right=50, "B"'] &
+  \R^n \ar[d, "\Psi^{-1}"'] \\
+X \ar[r, "T"] \ar[u, "\Psi"'] \ar[d, "\Phi"]        &
+  X \\
+\R^n \ar[r, "A"]                                      &
+  \R^n \ar[u, "\Phi^{-1}"] \ar[uu, bend right=50, "B^{-1}"']
+\end{tikzcd}
+\end{equation*}
+%mbxENDIGNORE
+%mbxlatex \begin{center}
+%mbxlatex \myincludepdft{change_of_basis_cd}{Diagram himpunan
+%mbxlatex dan pemetaan di antaranya yang direpresentasikan oleh anak panah.
+%mbxlatex Baris pertama memuat dua himpunan yang keduanya merupakan ruang Euklides n dimensi, R pangkat n.
+%mbxlatex Baris kedua memuat dua himpunan yang keduanya adalah X.
+%mbxlatex Baris ketiga memuat dua himpunan yang keduanya merupakan ruang Euklides n dimensi, R pangkat n.
+%mbxlatex R pangkat n kiri atas memiliki anak panah berlabel B invers A B
+%mbxlatex menuju R pangkat n kanan atas.
+%mbxlatex R pangkat n kiri atas memiliki anak panah berlabel B menuju R pangkat n kiri bawah.
+%mbxlatex R pangkat n kanan bawah memiliki anak panah berlabel B invers
+%mbxlatex menuju R pangkat n kanan atas.
+%mbxlatex X kiri memiliki anak panah berlabel Psi
+%mbxlatex menuju R pangkat n kiri atas,
+%mbxlatex anak panah berlabel Phi menuju R pangkat n kiri bawah,
+%mbxlatex dan anak panah berlabel T menuju X kanan.
+%mbxlatex R pangkat n kanan atas memiliki anak panah berlabel
+%mbxlatex Psi invers menuju X kanan, dan
+%mbxlatex R pangkat n kanan bawah memiliki anak panah
+%mbxlatex berlabel Phi invers menuju X kanan.
+%mbxlatex R pangkat n kiri bawah memiliki anak panah berlabel A
+%mbxlatex menuju R pangkat n kanan bawah.}
+%mbxlatex \end{center}
+Kedua $\R^n$ pada baris bawah merepresentasikan
+$X$ dalam basis pertama, sedangkan kedua $\R^n$ pada baris atas merepresentasikan $X$ dalam
+basis
+kedua.
+
+Jika kita menghitung determinan matriks $A$, kita memperoleh
+determinan yang sama ketika menggunakan basis lain;
+dalam basis lain matriksnya adalah $B^{-1}AB$.
+Akibatnya,
+\begin{equation*}
+\det \colon L(X) \to \R
+\avoidbreak
+\end{equation*}
+merupakan fungsi yang terdefinisi dengan baik tanpa perlu menetapkan suatu basis.
+Artinya, $\det$ didefinisikan pada $L(X)$, bukan hanya pada matriks.
+
+\medskip
+
+Terdapat tiga jenis matriks yang kita sebut
+\emph{matriks elementer}\index{matriks elementer}.
+Misalkan
+$e_1,e_2,\ldots,e_n$ adalah basis standar pada $\R^n$ seperti biasa.
+Pertama,
+untuk $j =
+1,2,\ldots,n$ dan
+$\lambda \in \R$, $\lambda \neq 0$, definisikan
+jenis pertama matriks elementer,
+yaitu matriks
+berukuran $n$-kali-$n$, $E$, dengan
+\begin{equation*}
+Ee_i \coloneqq
+\begin{cases}
+e_i & \text{jika } i \neq j , \\
+\lambda e_i & \text{jika } i = j .
+\end{cases}
+\end{equation*}
+Untuk sebarang matriks berukuran $n$-kali-$m$ yang dinyatakan dengan $M$, matriks $EM$ sama dengan matriks $M$
+kecuali baris ke-$j$ dikalikan dengan $\lambda$.
+Melalui perhitungan mudah (latihan), diperoleh $\det(E) = \lambda$.
+
+Selanjutnya, untuk $j,k$ dengan $j\neq k$ dan $\lambda \in \R$,
+definisikan jenis kedua matriks elementer $E$ dengan
+\begin{equation*}
+Ee_i \coloneqq
+\begin{cases}
+e_i               & \text{jika } i \neq j , \\
+e_i + \lambda e_k & \text{jika } i = j .
+\end{cases}
+\end{equation*}
+Untuk sebarang matriks berukuran $n$-kali-$m$ yang dinyatakan dengan $M$, matriks $EM$ sama dengan matriks $M$
+kecuali $\lambda$ kali baris ke-$j$ ditambahkan pada baris ke-$k$.
+Melalui perhitungan mudah (latihan), diperoleh $\det(E) = 1$.
+
+Terakhir, untuk $j$ dan $k$ dengan $j\neq k$, definisikan
+jenis ketiga matriks elementer $E$ dengan
+\begin{equation*}
+Ee_i \coloneqq
+\begin{cases}
+e_i & \text{jika } i \neq j \text{ dan } i \neq k , \\
+e_k & \text{jika } i = j , \\
+e_j & \text{jika } i = k .
+\end{cases}
+\end{equation*}
+Untuk sebarang matriks berukuran $n$-kali-$m$ yang dinyatakan dengan $M$, matriks $EM$ adalah matriks yang sama dengan
+baris ke-$j$ dan ke-$k$ dipertukarkan.
+Melalui perhitungan mudah (latihan), diperoleh $\det(E) = -1$.
+
+\begin{prop} \label{prop:elemmatrixdecomp}
+Misalkan $T$ matriks invertibel berukuran $n$-kali-$n$.  Maka terdapat suatu
+barisan berhingga matriks elementer $E_1, E_2, \ldots, E_k$ sedemikian sehingga
+\begin{equation*}
+T = E_1 E_2 \cdots E_k ,
+\end{equation*}
+dan
+\begin{equation*}
+\det(T) = \det(E_1)\det(E_2)\cdots \det(E_k) .
+\end{equation*}
+\end{prop}
+
+Pembuktiannya diserahkan sebagai latihan.
+Proposisi tersebut menyatakan bahwa determinan dapat dihitung melalui operasi baris elementer.
+Kita tidak perlu memfaktorkan matriks sepenuhnya menjadi hasil kali
+matriks-matriks elementer.  Cukup lakukan operasi baris
+sampai diperoleh \emph{\myindex{matriks segitiga atas}}, yaitu matriks
+$[a_{i,j}]$ dengan $a_{i,j} = 0$ jika $i > j$.  Menghitung determinan matriks
+semacam ini tidak sulit (latihan).
+
+Faktorisasi menjadi matriks-matriks elementer (atau variasi matriks elementer)
+berguna dalam pembuktian yang melibatkan operator linear sebarang, dengan
+mereduksi pembuktian menjadi kasus matriks elementer, serupa dengan perhitungan
+determinan.
+
+
+\subsection{Latihan}
+
+\begin{exercise}
+Untuk ruang vektor $X$ dengan norma $\snorm{\cdot}$, tunjukkan bahwa
+$d(x,y) \coloneqq \snorm{x-y}$ menjadikan $X$ ruang metrik.
+\end{exercise}
+
+\begin{exercise}[Mudah]
+Tunjukkan bahwa untuk matriks persegi $A$ dan $B$ yang berukuran sama,
+$\det(AB) = \det(BA)$.
+\end{exercise}
+
+\begin{exercise}
+Untuk $x \in \R^n$, definisikan
+\begin{equation*}
+\snorm{x}_{\infty} \coloneqq
+\max \bigl\{ \sabs{x_1}, \sabs{x_2}, \ldots, \sabs{x_n} \bigr\} ,
+\end{equation*}
+yang kadang-kadang disebut norma supremum atau norma maksimum.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $\snorm{\cdot}_\infty$ merupakan norma pada $\R^n$ (yang mendefinisikan
+jarak berbeda).
+\item
+Seperti apa bola satuan $B(0,1)$ menurut norma ini?
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Untuk $x \in \R^n$, definisikan
+\begin{equation*}
+\snorm{x}_{1} \coloneqq \sum_{k=1}^n \sabs{x_k},
+\end{equation*}
+yang kadang-kadang disebut norma-$1$ (atau norma $L^1$).
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $\snorm{\cdot}_1$ merupakan norma pada $\R^n$ (yang mendefinisikan
+jarak berbeda, kadang-kadang disebut jarak taksi).
+\item
+Seperti apa bola satuan $B(0,1)$ menurut norma ini?
+Pikirkan bentuknya dalam ${\mathbb{R}}^2$ dan $\mathbb{R}^3$.
+Petunjuk: Bola itu merupakan interior selubung konveks dari sejumlah berhingga titik.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[3]
+Dengan menggunakan norma Euklides pada $\R^2$, hitung norma operator dari
+operator-operator dalam $L(\R^2)$ yang diberikan oleh matriks berikut:
+
+\medskip
+\noindent
+a)
+$\left[
+\begin{smallmatrix}
+1 & 0 \\
+0 & 2
+\end{smallmatrix}
+\right]$
+\quad
+b)
+$\left[
+\begin{smallmatrix}
+0 & 1 \\
+-1 & 0
+\end{smallmatrix}
+\right]$
+\quad
+c)
+$\left[
+\begin{smallmatrix}
+1 & 1 \\
+0 & 1
+\end{smallmatrix}
+\right]$
+\quad
+d)
+$\left[
+\begin{smallmatrix}
+0 & 1 \\
+0 & 0
+\end{smallmatrix}
+\right]$
+\end{exercise}
+
+
+\begin{exercise} \label{exercise:normonedim}
+\pagebreak[2]
+Dengan menggunakan norma Euklides standar pada $\R^n$, tunjukkan:
+\begin{enumerate}[a)]
+\item
+Misalkan $A \in L(\R,\R^n)$ didefinisikan untuk $x \in \R$ oleh $Ax \coloneqq xa$
+dengan suatu vektor $a \in \R^n$.
+Maka norma operator $\snorm{A}_{L(\R,\R^n)} = \snorm{a}_{\R^n}$.
+(Artinya, norma operator $A$ adalah norma Euklides dari $a$.)
+\item
+Misalkan $B \in L(\R^n,\R)$ didefinisikan untuk $x \in \R^n$ oleh $Bx \coloneqq b \cdot x$
+dengan suatu vektor $b \in \R^n$.
+Maka norma operator $\snorm{B}_{L(\R^n,\R)} = \snorm{b}_{\R^n}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\sigma = (\sigma_1,\sigma_2,\ldots,\sigma_n)$ merupakan permutasi dari
+$(1,2,\ldots,n)$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa kita dapat melakukan sejumlah berhingga transposisi (pertukaran dua
+elemen) untuk memperoleh $(1,2,\ldots,n)$.
+\item
+Dengan menggunakan definisi \eqref{eq:sgndef},
+tunjukkan bahwa $\sigma$ genap jika $\operatorname{sgn}(\sigma) = 1$ dan $\sigma$
+ganjil jika $\operatorname{sgn}(\sigma) = -1$.  Secara khusus, tunjukkan bahwa
+sifat ganjil atau genap terdefinisi dengan baik.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Verifikasi perhitungan determinan untuk ketiga jenis 
+matriks elementer.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{prop:elemmatrixdecomp}.
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Misalkan $D = [d_{i,j}]$ merupakan \emph{\myindex{matriks diagonal}} berukuran $n$-kali-$n$, yakni $d_{i,j} = 0$ jika $i
+\neq j$.  Tunjukkan bahwa $\det(D) = d_{1,1}d_{2,2} \cdots d_{n,n}$.
+\item
+Misalkan $A$ merupakan matriks yang dapat didiagonalisasi.  Artinya, terdapat matriks
+$B$ sedemikian sehingga $B^{-1}AB = D$ untuk suatu matriks diagonal $D = [d_{i,j}]$.  Tunjukkan
+bahwa $\det(A) = d_{1,1}d_{2,2} \cdots d_{n,n}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[1]
+Ambil ruang vektor polinom $\R[t]$ dan misalkan $D \in L(\R[t])$ adalah
+operator turunan (dalam latihan sebelumnya telah kita buktikan bahwa $D$ merupakan operator
+linear).  Untuk $P(t) = c_0 + c_1 t + \cdots + c_n
+t^n \in \R[t]$, definisikan $\snorm{P} \coloneqq \sup \bigl\{ \sabs{c_j} : j = 0,1,2,\ldots,n \bigr\}$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $\snorm{\cdot}$ merupakan norma pada $\R[t]$.
+\item
+Buktikan $\snorm{D} = \infty$.  Petunjuk: Tinjau polinom $t^n$ ketika $n$ menuju tak berhingga.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[1]
+Kita selesaikan pembuktian \propref{prop:finitedimpropnormfin}.
+Misalkan $X$ ruang vektor bernorma berdimensi hingga dengan basis
+$\{ x_1,x_2,\ldots,x_n \}$, dan misalkan $Y$ suatu ruang vektor bernorma. Gunakan $\snorm{\cdot}_X$ untuk norma pada $X$,
+$\snorm{\cdot}_{\R^n}$ untuk norma Euklides standar pada $\R^n$, dan
+$\snorm{\cdot}_{L(X,Y)}$ untuk norma operator.
+\begin{enumerate}[a)]
+\item
+Definisikan $f \colon \R^n \to \R$,
+\begin{equation*}
+f(c_1,c_2,\ldots,c_n) \coloneqq 
+\snorm{c_1 x_1 + c_2 x_2 + \cdots + c_n x_n}_X .
+\end{equation*}
+Tunjukkan bahwa $f$ 
+kontinu.
+\item
+Tunjukkan bahwa terdapat bilangan positif $m$ dan $M$ sedemikian
+sehingga jika $c = (c_1,c_2,\ldots,c_n) \in \R^n$ dengan
+$\snorm{c}_{\R^n} = 1$, maka 
+$m \leq \snorm{c_1 x_1 + c_2 x_2 + \cdots + c_n x_n}_X \leq M$.
+\item
+Tunjukkan bahwa terdapat bilangan $B$ sedemikian sehingga jika
+$\snorm{c_1 x_1 + c_2 x_2 + \cdots + c_n x_n}_X = 1$,
+maka $\sabs{c_j} \leq B$.
+\item
+Gunakan bagian c) untuk menunjukkan bahwa jika $X$ merupakan ruang vektor 
+berdimensi hingga dan $A \in L(X,Y)$, maka $\snorm{A}_{L(X,Y)} < \infty$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \label{exercise:allnormsequiv}
+\pagebreak[3]
+Misalkan $X$ ruang vektor berdimensi hingga dengan basis
+$\{ x_1,x_2,\ldots,x_n \}$.
+\begin{enumerate}[a)]
+\item
+Misalkan $\snorm{\cdot}_X$ merupakan suatu norma pada $X$,
+$c = (c_1,c_2,\ldots,c_n) \in \R^n$,
+dan $\snorm{\cdot}_{\R^n}$ adalah
+norma Euklides standar pada $\R^n$.
+Buktikan bahwa terdapat bilangan $m,M > 0$ sedemikian sehingga
+untuk setiap $c \in \R^n$,
+\begin{equation*}
+m \snorm{c}_{\R^n}
+\leq
+\snorm{c_1 x_1 + c_2 x_2 + \cdots + c_n x_n}_X
+\leq
+M \snorm{c}_{\R^n} .
+\end{equation*}
+Petunjuk: Lihat latihan sebelumnya.
+\item
+Gunakan bagian a) untuk menunjukkan bahwa jika
+$\snorm{\cdot}_1$ dan
+$\snorm{\cdot}_2$ merupakan dua norma pada $X$, maka terdapat
+bilangan $m,M > 0$ (mungkin berbeda dari yang di atas) sedemikian sehingga
+untuk setiap $x \in X$,
+\begin{equation*}
+m \snorm{x}_1
+\leq
+\snorm{x}_2
+\leq
+M \snorm{x}_1 .
+\end{equation*}
+\item
+Tunjukkan bahwa $U \subset X$ terbuka dalam metrik yang didefinisikan oleh
+$\norm{x-y}_1$ jika dan hanya jika $U$ terbuka dalam metrik yang didefinisikan oleh
+$\norm{x-y}_2$.  Jadi, kekonvergenan barisan dan kekontinuan
+fungsi sama untuk kedua norma.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $A$ matriks segitiga atas.  Temukan rumus determinan
+$A$ berdasarkan entri-entri diagonalnya, dan buktikan bahwa rumus tersebut benar.
+\end{exercise}
+
+\begin{exercise}
+Diberikan matriks berukuran $n$-kali-$n$ yang dilambangkan dengan $A$, buktikan bahwa
+$\babs{\det(A)} \leq \snorm{A}^n$ (norma yang digunakan untuk $A$ adalah norma operator).
+Petunjuk: Salah satu caranya ialah terlebih dahulu membuktikannya untuk kasus $\snorm{A}=1$, yang
+berarti semua kolom bernorma paling besar 1, lalu buktikan bahwa hal ini mengakibatkan
+$\babs{\det(A)} \leq 1$ dengan menggunakan linearitas.
+%Petunjuk: Perhatikan bahwa cukup membuktikan hal ini untuk matriks invertibel.  Kemudian
+%jika perlu, susun ulang kolom-kolomnya dan faktorkan $A$ menjadi $n$ matriks, yang masing-masing
+%berbeda dari identitas hanya pada satu kolom.
+\end{exercise}
+
+\begin{exercise}
+Tinjau \propref{prop:finitedimpropinv}
+dengan $X=\R^n$ (untuk setiap $n$) menggunakan norma Euklides.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa taksiran $\snorm{A-B} < \frac{1}{\snorm{A^{-1}}}$ merupakan
+taksiran terbaik yang mungkin:
+Untuk setiap 
+$A \in GL(\R^n)$,
+carilah $B$ yang memenuhi kesamaan dan $B$ tidak invertibel.
+Petunjuk:
+Kesulitannya ialah $\snorm{A}\snorm{A^{-1}}$ tidak selalu sama dengan $1$.
+Buktikan bahwa suatu vektor $x_1$ dapat dilengkapi menjadi basis
+$\{ x_1,\ldots,x_n \}$ sedemikian sehingga $x_1 \cdot x_j = 0$ untuk $j \geq 2$.
+Dengan pilihan $x_1$ yang tepat,
+buat agar $(A-B)x_j = 0$ untuk $j \geq 2$.
+\item
+Untuk setiap $A \in GL(\R^n)$ yang tetap,
+misalkan $\sM$ menyatakan himpunan matriks
+$B$ sedemikian sehingga
+$\snorm{A-B} < \frac{1}{\snorm{A^{-1}}}$.
+Buktikan bahwa meskipun setiap $B \in \sM$ 
+invertibel, $\snorm{B^{-1}}$ tidak terbatas
+sebagai fungsi dari $B$ pada $\sM$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exnote}
+Misalkan $A$ matriks berukuran $n$-kali-$n$.
+Suatu $\lambda \in \C$ (mungkin kompleks bahkan untuk matriks real)
+merupakan \emph{\myindex{nilai eigen}} dari $A$
+jika terdapat vektor tak nol (mungkin kompleks) $x \in \C^n$ sedemikian sehingga
+$Ax = \lambda x$
+(perkalian dengan vektor kompleks didefinisikan sama seperti perkalian dengan vektor real;
+jika $x = a+ib$ untuk vektor real $a$ dan $b$, dan $A$ matriks real, maka $Ax = Aa + i Ab$).
+Bilangan
+\begin{equation*}
+\rho(A) \coloneqq
+\sup \bigl\{ \sabs{\lambda} : \lambda \text{ adalah nilai eigen dari } A \bigr\}
+\end{equation*}
+merupakan \emph{\myindex{radius spektral}} dari $A$.  Di sini $\sabs{\lambda}$ adalah
+modulus kompleks.  Kita menyatakan tanpa bukti bahwa setidaknya satu nilai eigen selalu ada,
+dan tidak terdapat lebih dari $n$ nilai eigen $A$ yang berbeda.  Oleh karena itu, Anda dapat
+mengasumsikan bahwa $0 \leq \rho(A) < \infty$.
+Latihan-latihan di bawah berlaku untuk matriks kompleks, tetapi Anda boleh menganggap
+matriks-matriks tersebut real.
+\end{exnote}
+
+\begin{exercise}
+Misalkan $A,S$ matriks berukuran $n$-kali-$n$, dengan $S$ invertibel.
+Buktikan bahwa $\lambda$ merupakan nilai eigen dari $A$ jika dan hanya
+jika bilangan tersebut merupakan nilai eigen dari $S^{-1}AS$.  Kemudian buktikan bahwa
+$\rho(S^{-1}AS) = \rho(A)$.
+Secara khusus, $\rho$ merupakan fungsi yang terdefinisi dengan baik pada $L(X)$ untuk
+setiap ruang vektor berdimensi hingga $X$.
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Misalkan $A$ matriks berukuran $n$-kali-$n$.
+\begin{enumerate}[a)]
+\item
+Buktikan $\rho(A) \leq \snorm{A}$.  (Lihat definisi $\rho$ di atas.)
+\item
+Untuk setiap $k \in \N$, buktikan
+$\rho(A) \leq \snorm{A^k}^{1/k}$.
+\item
+Misalkan $\displaystyle \lim_{k\to\infty} A^k = 0$ (limit diambil dalam norma operator).
+Buktikan bahwa $\rho(A) < 1$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Kita menyebut himpunan $C \subset \R^n$ \emph{simetris} jika
+$x \in C$ mengakibatkan $-x \in C$.
+\begin{enumerate}[a)]
+\item
+Misalkan $\snorm{\cdot}$ sebarang norma pada $\R^n$.  Tunjukkan bahwa bola satuan tertutup
+$C(0,1)$ (dengan menggunakan metrik yang diinduksi oleh norma ini)
+merupakan himpunan kompak, simetris, dan konveks.
+\item (Menantang)
+Misalkan $C \subset \R^n$ merupakan himpunan kompak,
+simetris, dan konveks yang merentang $\R^n$, serta $0 \in C$.  Tunjukkan bahwa
+\begin{equation*}
+\snorm{x} \coloneqq \inf \left\{ \lambda : \lambda > 0 \text{ dan } \frac{x}{\lambda} \in C \right\}
+\end{equation*}
+merupakan norma pada $\R^n$, dan $C = C(0,1)$ (bola satuan tertutup) dalam metrik yang diinduksi oleh norma ini.
+\end{enumerate}
+Petunjuk: Anda boleh menggunakan hasil \exerciseref{exercise:allnormsequiv}
+bagian c).  Secara khusus, sifat \myquote{kompak} suatu himpunan tidak bergantung pada
+norma.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Turunan}
+\label{sec:svtheder}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2--3 kuliah}
+
+\subsection{Turunan}
+
+Untuk fungsi $f \colon \R \to \R$, kita mendefinisikan
+turunan di $x$ sebagai
+\begin{equation*}
+\lim_{h \to 0} \frac{f(x+h)-f(x)}{h} .
+\end{equation*}
+Dengan kata lain, terdapat suatu bilangan $a$ (turunan $f$ di $x$) sedemikian sehingga
+\begin{equation*}
+%mbxlatex \begin{aligned}
+\lim_{h \to 0} \abs{\frac{f(x+h)-f(x)}{h} - a}
+%mbxlatex &
+=
+\lim_{h \to 0} \abs{\frac{f(x+h)-f(x) - ah}{h}}
+%mbxlatex \\
+%mbxlatex &
+=
+\lim_{h \to 0} \frac{\babs{f(x+h)-f(x) - ah}}{\sabs{h}}
+= 0.
+%mbxlatex \end{aligned}
+\end{equation*}
+
+Perkalian dengan $a$ merupakan pemetaan linear dalam satu dimensi:
+$h \mapsto ah$.
+Dengan kata lain,
+kita memandang $a \in L(\R^1,\R^1)$ sebagai
+hampiran linear terbaik bagi
+perubahan $f$ di sekitar $x$.  Kita menggunakan penafsiran ini
+untuk memperluas diferensiasi ke lebih banyak variabel.
+
+\begin{defn}
+Misalkan $U \subset \R^n$ terbuka dan $f \colon U \to \R^m$ suatu fungsi.  Kita
+mengatakan bahwa $f$ \emph{\myindex{diferensiabel}} di $x \in U$ jika terdapat
+$A \in L(\R^n,\R^m)$ sedemikian sehingga
+\begin{equation*}
+\lim_{\substack{h \to 0\\h\in \R^n}}
+\frac{\bnorm{f(x+h)-f(x) - Ah}}{\snorm{h}} = 0 .
+\end{equation*}
+Sebentar lagi akan kita tunjukkan bahwa $A$, jika ada, bersifat unik.
+Kita menulis $Df(x) \coloneqq A$, atau $f'(x) \coloneqq A$,\glsadd{not:mvder} dan
+mengatakan bahwa $A$ merupakan \emph{\myindex{turunan}} $f$ di $x$.
+Jika $f$ diferensiabel di
+setiap $x \in U$, kita cukup mengatakan bahwa $f$ \emph{diferensiabel}.  Lihat
+\figureref{fig:svder} untuk ilustrasinya.
+\end{defn}
+
+\begin{myfigureht}
+\myincludegraphics{svder}{%
+Grafik contoh fungsi y sama dengan f dari x sub 1, x sub 2.
+Sebuah titik tertentu ditandai pada bidang x sub 1 x sub 2.
+Terdapat anak panah berlabel h pada bidang x sub 1 x sub 2.
+Pada grafik ditampilkan bagian bidang singgung (yakni bidang yang menyinggung
+grafik) di atas titik yang ditandai. Sebuah garis horizontal yang menyatakan h
+kini digambar berawal pada grafik. Kemudian, dari ujung garis itu,
+digambar anak panah vertikal yang membawa kita ke bidang singgung dan
+diberi label A h.}
+\caption{Ilustrasi turunan untuk fungsi $f \colon \R^2 \to \R$.  Vektor $h$ ditampilkan
+pada bidang $x_1x_2$ dengan pangkal di $(x_1,x_2)$, dan vektor
+$Ah \in \R^1$ ditampilkan sepanjang arah $y$.\label{fig:svder}}
+\end{myfigureht}
+
+Untuk fungsi diferensiabel,
+turunan $f$ merupakan fungsi dari $U$ ke $L(\R^n,\R^m)$.  Bandingkan
+dengan kasus satu dimensi, di mana turunannya merupakan fungsi
+dari $U$ ke $\R$, tetapi sesungguhnya kita ingin memandang $\R$ di sini sebagai
+$L(\R^1,\R^1)$.  Seperti dalam satu dimensi, gagasannya ialah bahwa suatu
+pemetaan diferensiabel \myquote{dekat secara infinitesimal} dengan pemetaan linear, dan
+pemetaan linear inilah turunannya.
+
+Perhatikan norma-norma dalam definisi tersebut.
+Norma pada
+pembilang adalah norma pada $\R^m$, sedangkan norma pada penyebut adalah norma pada $\R^n$, tempat $h$
+berada.
+Biasanya, dari konteks dipahami bahwa $h \in \R^n$
+(rumusnya tidak bermakna jika tidak demikian);
+hal ini tidak selalu perlu dinyatakan secara eksplisit.
+Seperti yang dijanjikan, mari kita buktikan bahwa turunannya unik.
+
+\begin{prop}
+Misalkan $U \subset \R^n$ suatu himpunan terbuka dan $f \colon U \to \R^m$ suatu fungsi.  Andaikan
+$x \in U$ dan terdapat
+$A,B \in L(\R^n,\R^m)$ sedemikian sehingga
+\begin{equation*}
+\lim_{h \to 0}
+\frac{\bnorm{f(x+h)-f(x) - Ah}}{\snorm{h}} = 0
+\qquad \text{dan} \qquad
+\lim_{h \to 0}
+\frac{\bnorm{f(x+h)-f(x) - Bh}}{\snorm{h}} = 0 .
+\end{equation*}
+Maka $A=B$.
+\end{prop}
+
+\begin{proof}
+Misalkan $h \in \R^n$, $h \neq 0$.  Hitung
+\begin{equation*}
+\begin{split}
+\frac{\bnorm{(A-B)h}}{\snorm{h}} & =
+\frac{\bnorm{-\bigl(f(x+h)-f(x) - Ah\bigr) + f(x+h)-f(x) - Bh}}{\snorm{h}} \\
+& \leq
+\frac{\bnorm{f(x+h)-f(x) - Ah}}{\snorm{h}} + \frac{\bnorm{f(x+h)-f(x) -
+Bh}}{\snorm{h}} .
+\end{split}
+\end{equation*}
+Jadi
+$\frac{\snorm{(A-B)h}}{\snorm{h}} \to 0$ ketika $h \to 0$.  Untuk
+$\epsilon > 0$, bagi setiap $h$ tak nol dalam suatu bola-$\delta$ di sekitar
+titik asal berlaku
+\begin{equation*}
+\epsilon > 
+\frac{\bnorm{(A-B)h}}{\snorm{h}}
+=
+\norm{(A-B)\frac{h}{\snorm{h}}} .
+\end{equation*}
+Untuk sebarang $v \in \R^n$ dengan $\snorm{v}=1$,
+jika $h = (\nicefrac{\delta}{2}) \, v$, maka $\snorm{h} < \delta$
+dan $\frac{h}{\snorm{h}} = v$.
+Jadi, $\bnorm{(A-B)v} < \epsilon$.  Dengan mengambil supremum atas semua $v$ dengan
+$\snorm{v} = 1$, kita memperoleh norma operator
+$\snorm{A-B} \leq \epsilon$.  Karena $\epsilon > 0$
+dapat dipilih sebarang, $\snorm{A-B} = 0$, atau dengan kata lain $A = B$.
+\end{proof}
+
+\begin{example}
+Jika $f(x) = Ax$ untuk suatu pemetaan linear $A$, maka
+$f'(x) = A$:
+\begin{equation*}
+\frac{\bnorm{f(x+h)-f(x) - Ah}}{\snorm{h}}
+=
+\frac{\bnorm{A(x+h)-Ax - Ah}}{\snorm{h}}
+=
+\frac{0}{\snorm{h}} = 0 .
+\end{equation*}
+\end{example}
+
+\begin{example}
+Definisikan $f \colon \R^2 \to \R^2$ dengan
+\begin{equation*}
+f(x,y) = \bigl(f_1(x,y),f_2(x,y)\bigr) \coloneqq (1+x+2y+x^2,2x+3y+xy).
+\end{equation*}
+Mari kita tunjukkan bahwa $f$ diferensiabel di titik asal dan
+hitung turunannya secara langsung menggunakan definisi.
+Jika turunannya ada, turunan itu berada dalam $L(\R^2,\R^2)$, sehingga dapat
+dinyatakan oleh matriks berukuran $2$-kali-$2$
+$\left[\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right]$.  Misalkan $h =
+(h_1,h_2)$.  Ungkapan berikut harus menuju nol.
+\begin{multline*}
+\frac{\bnorm{
+f(h_1,h_2)-f(0,0)
+-
+(ah_1 +bh_2 , ch_1+dh_2)}
+}{\bnorm{(h_1,h_2)}}
+=
+\\
+\frac{\sqrt{
+{\bigl((1-a)h_1 + (2-b)h_2 + h_1^2\bigr)}^2
++
+{\bigl((2-c)h_1 + (3-d)h_2 + h_1h_2\bigr)}^2}}{\sqrt{h_1^2+h_2^2}} .
+\end{multline*}
+Jika kita memilih $a=1$, $b=2$, $c=2$, $d=3$, ungkapan tersebut menjadi
+\begin{equation*}
+\frac{\sqrt{
+h_1^4 + h_1^2h_2^2}}{\sqrt{h_1^2+h_2^2}}
+=
+\sabs{h_1}
+\frac{\sqrt{
+h_1^2 + h_2^2}}{\sqrt{h_1^2+h_2^2}}
+= \sabs{h_1} .
+\end{equation*}
+Ungkapan ini memang menuju nol ketika $h \to 0$.  Fungsi
+$f$ diferensiabel di titik asal dan
+turunan $f'(0)$ dinyatakan oleh matriks
+$\left[\begin{smallmatrix}1&2\\2&3\end{smallmatrix}\right]$.
+\end{example}
+
+\begin{prop}
+Misalkan $U \subset \R^n$ terbuka dan $f \colon U \to \R^m$
+diferensiabel di $p \in U$.  Maka $f$ kontinu di $p$.
+\end{prop}
+
+\begin{proof}
+Sifat diferensiabel $f$ di $p$ dapat dituliskan dengan cara lain, yaitu dengan meninjau
+\begin{equation*}
+r(h) \coloneqq f(p+h)-f(p) - f'(p) h .
+\end{equation*}
+Fungsi $f$ diferensiabel di $p$ jika
+$\frac{\snorm{r(h)}}{\snorm{h}}$ menuju nol ketika $h \to 0$,
+sehingga
+$r(h)$ sendiri menuju nol.  Pemetaan $h \mapsto f'(p) h$
+merupakan pemetaan linear antarruang berdimensi hingga, sehingga kontinu,
+dan $f'(p) h \to 0$ ketika $h \to 0$.  Dengan demikian,
+$f(p+h)$ harus menuju $f(p)$ ketika $h \to 0$.  Artinya, $f$ kontinu di $p$.
+\end{proof}
+
+Operasi diferensiasi merupakan operator linear pada ruang fungsi-fungsi
+diferensiabel.
+
+\begin{prop}
+Andaikan $U \subset \R^n$ terbuka,
+$f \colon U \to \R^m$ dan
+$g \colon U \to \R^m$ diferensiabel di $p \in U$,
+serta $\alpha \in \R$.  Maka fungsi $f+g$ dan $\alpha f$
+diferensiabel di $p$, dan
+\begin{equation*}
+(f+g)'(p) = f'(p) + g'(p) , \qquad \text{dan} \qquad (\alpha f)'(p) = \alpha
+f'(p) .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Misalkan $h \in \R^n$, $h \neq 0$.  Maka
+\begin{multline*}
+\frac{\bnorm{f(p+h)+g(p+h)-\bigl(f(p)+g(p)\bigr) - \bigl(f'(p) + g'(p)\bigr)h}}{\snorm{h}}
+\\
+\leq
+\frac{\bnorm{f(p+h)-f(p) - f'(p)h}}{\snorm{h}}
++
+\frac{\bnorm{g(p+h)-g(p) - g'(p)h}}{\snorm{h}} ,
+\end{multline*}
+dan
+\begin{equation*}
+\frac{\bnorm{\alpha f(p+h) - \alpha f(p) - \alpha f'(p)h}}{\snorm{h}}
+=
+\sabs{\alpha} \frac{\bnorm{f(p+h)-f(p) - f'(p)h}}{\snorm{h}} .
+\end{equation*}
+Berdasarkan hipotesis, limit ruas-ruas kanan ketika $h$ menuju nol adalah nol.
+Hasil yang diinginkan pun diperoleh.
+\end{proof}
+
+Jika $A \in L(\R^n,\R^m)$ dan $B \in L(\R^m,\R^k)$ merupakan pemetaan linear, maka
+masing-masing merupakan turunannya sendiri.  Komposisi
+$BA \in L(\R^n,\R^k)$ juga merupakan turunannya sendiri, sehingga
+turunan komposisi merupakan komposisi
+turunan-turunannya.  Karena pemetaan diferensiabel
+\myquote{dekat secara infinitesimal}
+dengan pemetaan linear, pemetaan semacam itu memiliki sifat yang sama:
+
+\begin{thm}[Aturan rantai] \index{aturan rantai}
+Misalkan $U \subset \R^n$ dan $V \subset \R^m$ himpunan terbuka, $f \colon U \to
+\R^m$ diferensiabel di $p \in U$, $f(U) \subset V$,
+dan $g \colon V \to \R^\ell$ diferensiabel
+di $f(p)$.  Maka $F \colon U \to \R^{\ell}$ yang didefinisikan oleh
+\begin{equation*}
+F(x) \coloneqq g\bigl(f(x)\bigr)
+\end{equation*}
+diferensiabel di $p$, dan
+\begin{equation*}
+F'(p) = g'\bigl(f(p)\bigr) f'(p) .
+\end{equation*}
+\end{thm}
+
+Tanpa menuliskan titik-titik tempat fungsi dievaluasi, kita menulis
+$F' = {(g \circ f)}' = g' f'$.
+Turunan komposisi $g \circ f$
+merupakan komposisi turunan $g$ dan $f$:
+Jika $f'(p) = A$ dan $g'\bigl(f(p)\bigr) = B$, maka $F'(p) = BA$,
+sama seperti untuk pemetaan linear.
+
+\begin{proof}
+Misalkan $A \coloneqq f'(p)$ dan $B \coloneqq g'\bigl(f(p)\bigr)$.  Ambil $h \in \R^n$ yang tak nol
+dan tulis $q \coloneqq f(p)$, $k \coloneqq f(p+h)-f(p)$.  Definisikan
+\begin{equation*}
+r(h) \coloneqq f(p+h)-f(p) - A h . %= k - Ah.
+\end{equation*}
+Maka $r(h) = k-Ah$ atau $Ah = k-r(h)$, dan $f(p+h) = q+k$.
+Kita meninjau besaran yang perlu
+menuju nol:
+\begin{equation*}
+\begin{split}
+\frac{\bnorm{F(p+h)-F(p) - BAh}}{\snorm{h}}
+& =
+\frac{\bnorm{g\bigl(f(p+h)\bigr)-g\bigl(f(p)\bigr) - BAh}}{\snorm{h}}
+\\
+& =
+\frac{\bnorm{g(q+k)-g(q) - B\bigl(k-r(h)\bigr)}}{\snorm{h}}
+\\
+& \leq
+\frac
+{\bnorm{g(q+k)-g(q) - Bk}}
+{\snorm{h}}
++
+\snorm{B}
+\frac
+{\bnorm{r(h)}}
+{\snorm{h}}
+.
+\end{split}
+\end{equation*}
+Kedua suku di ruas kanan perlu menuju 0
+ketika $h$ menuju 0.
+Pertama, $\snorm{B}$ merupakan konstanta dan $f$ diferensiabel di $p$,
+sehingga
+suku $\snorm{B}\frac{\snorm{r(h)}}{\snorm{h}}$ menuju 0.
+Selanjutnya,
+jika $k=0$, maka
+$\frac
+{\snorm{g(q+k)-g(q) - Bk}}
+{\snorm{h}} = 0$.
+Jadi, andaikan $k \neq 0$.
+Maka
+\begin{equation*}
+\frac
+{\bnorm{g(q+k)-g(q) - Bk}}
+{\snorm{h}}
+ =
+\frac
+{\bnorm{g(q+k)-g(q) - Bk}}
+{\snorm{k}}
+\frac
+{\bnorm{f(p+h)-f(p)}}
+{\snorm{h}} .
+\end{equation*}
+Karena $f$ kontinu di $p$,
+$k$ menuju 0 ketika $h$ menuju 0.
+Dengan demikian,
+$\frac
+{\snorm{g(q+k)-g(q) - Bk}}
+{\snorm{k}}$ menuju 0 karena $g$ diferensiabel di $q$.
+Kita memiliki
+\begin{equation*}
+%mbxlatex \begin{aligned}
+\frac
+{\bnorm{f(p+h)-f(p)}}
+{\snorm{h}}
+%mbxlatex &
+\leq
+\frac
+{\bnorm{f(p+h)-f(p)-Ah}}
+{\snorm{h}}
++
+\frac
+{\snorm{Ah}}
+{\snorm{h}}
+%mbxlatex \\
+%mbxlatex &
+\leq
+\frac
+{\bnorm{f(p+h)-f(p)-Ah}}
+{\snorm{h}}
++
+\snorm{A} .
+%mbxlatex \end{aligned}
+\end{equation*}
+Karena $f$ diferensiabel di $p$,
+untuk $h$ yang cukup kecil, besaran
+$\frac{\snorm{f(p+h)-f(p)-Ah}}{\snorm{h}}$ terbatas.  Oleh karena itu,
+suku
+$
+\frac
+{\snorm{f(p+h)-f(p)}}
+{\snorm{h}}
+$
+tetap terbatas ketika $h$ menuju 0.
+Akibatnya, suku
+$\frac
+{\snorm{g(q+k)-g(q) - Bk}}
+{\snorm{h}}$ menuju nol ketika $h$ menuju 0.
+Oleh karena itu,
+$\frac{\snorm{F(p+h)-F(p) - BAh}}{\snorm{h}}$ menuju nol, dan
+$F'(p) = BA$, seperti yang diklaim.
+\end{proof}
+
+\subsection{Turunan parsial}
+
+Ada cara lain untuk memperumum turunan dari satu dimensi.
+Kita mempertahankan semua variabel kecuali satu agar tetap konstan, lalu mengambil
+turunan satu variabel seperti biasa.
+
+\begin{defn}
+Misalkan
+$f \colon U \to \R$ suatu fungsi pada himpunan terbuka $U \subset \R^n$.
+Jika limit berikut ada, kita tulis
+\glsadd{not:partialder}
+\begin{equation*}
+\frac{\partial f}{\partial x_j} (x) \coloneqq 
+\lim_{h\to 0}\frac{f(x_1,\ldots,x_{j-1},x_j+h,x_{j+1},\ldots,x_n)-f(x)}{h}
+=
+\lim_{h\to 0}\frac{f(x+h e_j)-f(x)}{h} .
+\end{equation*}
+Kita menyebut
+$\frac{\partial f}{\partial x_j} (x)$ sebagai \emph{\myindex{turunan parsial}}
+dari $f$
+terhadap $x_j$.  %Kadang-kadang kita menulis $D_j f$ sebagai gantinya.
+Lihat \figureref{fig:svpartder}.
+Di sini $h$ adalah bilangan, bukan vektor.
+
+Untuk pemetaan $f \colon U \to \R^m$, kita tulis
+$f = (f_1,f_2,\ldots,f_m)$, dengan $f_k$ merupakan fungsi-fungsi
+bernilai real.  Kemudian kita mengambil turunan parsial dari
+komponen-komponennya,
+$\frac{\partial f_k}{\partial x_j}$.
+\end{defn}
+
+\begin{myfigureht}
+\myincludegraphics{svpartder}{%
+Grafik suatu fungsi contoh y sama dengan f dari x subskrip 1, x subskrip 2.
+Sebuah titik tertentu ditandai pada bidang x subskrip 1 x subskrip 2.
+Sebuah bidang dalam arah x subskrip 2 dan y ditandai dengan garis titik-titik,
+dan irisan grafik fungsi f dengan bidang ini
+ditandai dengan garis yang lebih tebal.  Titik pada grafik di atas
+titik x subskrip 1 x subskrip 2 tersebut juga ditandai.  Melalui titik ini
+dan di dalam bidang bertitik-titik digambar garis singgung pada grafik.
+Garis itu diberi label bahwa kemiringannya sama dengan turunan parsial f
+terhadap x subskrip 2 di titik x subskrip 1, x subskrip 2.}
+\caption{Ilustrasi turunan parsial untuk fungsi $f \colon \R^2
+\to \R$.  Bidang $yx_2$ dengan $x_1$ tetap ditandai oleh garis titik-titik,
+dan kemiringan garis singgung pada bidang $yx_2$ adalah
+$\frac{\partial f}{\partial x_2}(x_1,x_2)$.\label{fig:svpartder}}
+\end{myfigureht}
+
+Turunan parsial lebih mudah dihitung dengan seluruh perangkat
+kalkulus, dan menyediakan cara untuk menghitung turunan suatu
+fungsi.
+
+\begin{prop} \label{mv:prop:jacobianmatrix}
+Misalkan $U \subset \R^n$ terbuka dan $f \colon U \to \R^m$
+diferensiabel di $p \in U$.  Maka semua turunan parsial di $p$
+ada dan, terhadap basis standar $\R^n$ dan $\R^m$,
+$f'(p)$ direpresentasikan oleh matriks
+\begin{equation*}
+\begin{bmatrix}
+\frac{\partial f_1}{\partial x_1}(p)
+&
+\frac{\partial f_1}{\partial x_2}(p)
+& \ldots &
+\frac{\partial f_1}{\partial x_n}(p)
+\\[6pt]
+\frac{\partial f_2}{\partial x_1}(p)
+&
+\frac{\partial f_2}{\partial x_2}(p)
+& \ldots &
+\frac{\partial f_2}{\partial x_n}(p)
+\\
+\vdots & \vdots & \ddots & \vdots
+\\
+\frac{\partial f_m}{\partial x_1}(p)
+&
+\frac{\partial f_m}{\partial x_2}(p)
+& \ldots &
+\frac{\partial f_m}{\partial x_n}(p)
+\end{bmatrix} .
+\end{equation*}
+\end{prop}
+
+
+Dengan kata lain,
+\begin{equation*}
+f'(p) \, e_j =
+\sum_{k=1}^m
+\frac{\partial f_k}{\partial x_j}(p) \,e_k .
+\end{equation*}
+Jika $v = \sum_{j=1}^n c_j\, e_j = (c_1,c_2,\ldots,c_n)$, maka
+\begin{equation*}
+f'(p) \, v =
+\sum_{j=1}^n
+\sum_{k=1}^m
+ c_j
+\frac{\partial f_k}{\partial x_j}(p) \,e_k
+=
+\sum_{k=1}^m
+\left(
+\sum_{j=1}^n
+ c_j
+\frac{\partial f_k}{\partial x_j}(p) \right) \,e_k .
+\end{equation*}
+
+\begin{proof}
+Tetapkan suatu $j$ dan perhatikan bahwa untuk $h$ tak nol,
+\begin{equation*}
+\begin{split}
+\norm{\frac{f(p+h e_j)-f(p)}{h} - f'(p) \, e_j} & = 
+\norm{\frac{f(p+h e_j)-f(p) - f'(p) \, h e_j}{h}} \\
+& =
+\frac{\bnorm{f(p+h e_j)-f(p) - f'(p) \, h e_j}}{\snorm{h e_j}} .
+\end{split}
+\end{equation*}
+Ketika $h$ menuju 0, ruas kanan menuju nol berdasarkan
+kediferensiabelan $f$.  Oleh karena itu,
+\begin{equation*}
+\lim_{h \to 0}
+\frac{f(p+h e_j)-f(p)}{h} = f'(p) \, e_j  .
+\end{equation*}
+Limit tersebut diambil dalam $\R^m$.
+Nyatakan $f$ melalui komponen-komponennya,
+$f = (f_1,f_2,\ldots,f_m)$.
+Mengambil limit dalam $\R^m$
+sama dengan mengambil limit pada setiap komponen secara terpisah.
+Jadi, untuk setiap $k$,
+turunan parsial
+\begin{equation*}
+\frac{\partial f_k}{\partial x_j} (p)
+=
+\lim_{h \to 0}
+\frac{f_k(p+h e_j)-f_k(p)}{h}
+\end{equation*}
+ada dan sama dengan komponen ke-$k$ dari $f'(p)\, e_j$, yang merupakan
+kolom ke-$j$ dari $f'(p)$,
+dan pembuktian selesai.
+\end{proof}
+
+Kebalikan proposisi tersebut tidak benar.  Adanya turunan-turunan parsial
+tidak berarti bahwa fungsi tersebut diferensiabel.  Lihat
+latihan.
+Namun, ketika turunan-turunan parsialnya kontinu, kita akan membuktikan bahwa
+kebalikannya berlaku.
+Salah satu akibat proposisi di atas ialah bahwa jika $f$
+diferensiabel pada $U$, maka $f' \colon U \to
+L(\R^n,\R^m)$ merupakan fungsi kontinu jika dan hanya jika
+semua $\frac{\partial f_k}{\partial x_j}$ merupakan fungsi kontinu.
+
+\subsection{Gradien, kurva, dan turunan arah}
+
+Misalkan $U \subset \R^n$ terbuka dan $f \colon U \to \R$ suatu fungsi
+diferensiabel.  Kita mendefinisikan
+\emph{\myindex{gradien}} sebagai
+\glsadd{not:gradient}
+\begin{equation*}
+\nabla f (x) \coloneqq \sum_{j=1}^n \frac{\partial f}{\partial x_j} (x)\, e_j .
+\end{equation*}
+Gradien menyediakan cara untuk merepresentasikan aksi
+turunan sebagai hasil kali titik: $f'(x)\,v = \nabla f(x) \cdot v$.
+
+Misalkan $\gamma \colon (a,b) \subset \R \to \R^n$ diferensiabel.
+Fungsi semacam ini (dan citranya) kadang-kadang disebut \emph{\myindex{kurva}},
+atau \emph{\myindex{kurva diferensiabel}}.
+Tulis $\gamma =
+(\gamma_1,\gamma_2,\ldots,\gamma_n)$.
+Untuk keperluan perhitungan,
+kita mengidentifikasi $L(\R^1)$ dan $\R$ sebagaimana ketika mendefinisikan
+turunan satu variabel.
+Kita juga mengidentifikasi $L(\R^1,\R^n)$ dengan $\R^n$.
+Kita memperlakukan $\gamma'(t)$ sekaligus sebagai operator dalam
+$L(\R^1,\R^n)$ dan sebagai vektor
+$\bigl(\gamma_1'(t),\gamma_2'(t),\ldots,\gamma_n'(t)\bigr)$
+dalam $\R^n$.
+Berdasarkan \propref{mv:prop:jacobianmatrix},
+jika $v\in \R^n$ adalah $\gamma'(t)$ yang diperlakukan sebagai vektor,
+maka $h \mapsto h \, v$ (untuk $h \in \R^1 = \R$) adalah
+$\gamma'(t)$ yang diperlakukan sebagai operator
+dalam $L(\R^1,\R^n)$.
+Kita sering menggunakan sedikit
+penyalahgunaan notasi ini ketika membahas kurva.
+Vektor $\gamma'(t)$ disebut \emph{\myindex{vektor singgung}}.
+Lihat \figureref{fig:difcurveder}.
+\begin{myfigureht}
+\myincludepdft{diffcurveder}{%
+Sebuah kurva digambar pada bidang.
+Awal kurva ditandai sebagai gamma dari a,
+dan ujungnya ditandai sebagai gamma dari b.  Seluruh kurva
+ditandai gamma dari (a,b).
+Sebuah titik pada kurva ditandai gamma dari t, dan sebuah anak panah
+yang berawal di titik ini serta menunjuk sepanjang kurva
+ditandai gamma aksen dari t.}
+\caption{Kurva diferensiabel dan turunannya sebagai
+vektor (agar jelas, diasumsikan $\gamma$ terdefinisi pada $[a,b]$).
+Vektor singgung $\gamma'(t)$ menunjuk sepanjang kurva.\label{fig:difcurveder}}
+\end{myfigureht}
+
+Misalkan $\gamma\bigl((a,b)\bigr) \subset U$ dan tetapkan
+\begin{equation*}
+g(t) \coloneqq f\bigl(\gamma(t)\bigr) .
+\end{equation*}
+Fungsi
+$g$ diferensiabel. Dengan memperlakukan $g'(t)$ sebagai bilangan,
+\begin{equation*}
+g'(t) =
+f'\bigl(\gamma(t)\bigr) \gamma'(t)
+=
+\sum_{j=1}^n
+\frac{\partial f}{\partial x_j} \bigl(\gamma(t)\bigr)
+\frac{d\gamma_j}{dt} (t)
+=
+\sum_{j=1}^n
+\frac{\partial f}{\partial x_j}
+\frac{d\gamma_j}{dt} .
+\end{equation*}
+Demi kemudahan,
+kita sering
+menghilangkan titik tempat evaluasi dilakukan,
+seperti pada ruas paling kanan di atas.
+Dengan notasi gradien dan hasil kali titik,
+persamaan tersebut menjadi
+\begin{equation*}
+g'(t) = (\nabla f) \bigl(\gamma(t)\bigr) \cdot \gamma'(t)
+= \nabla f \cdot \gamma'.
+\end{equation*}
+
+Kita menggunakan gagasan ini untuk mendefinisikan turunan dalam arah tertentu.  Suatu arah
+hanyalah vektor yang menunjuk ke arah tersebut.  Pilih vektor $u \in \R^n$
+sedemikian sehingga $\snorm{u} = 1$, dan tetapkan $x \in U$.
+Kita mendefinisikan
+\emph{\myindex{turunan arah}} sebagai
+\glsadd{not:mvdirder}
+\begin{equation*}
+D_u f (x) \coloneqq \frac{d}{dt}\Big|_{t=0} \bigl[ f(x+tu) \bigr] =
+\lim_{h\to 0}
+\frac{f(x+hu)-f(x)}{h} ,
+\end{equation*}
+di mana notasi
+$\frac{d}{dt}\big|_{t=0}$ menyatakan turunan yang dievaluasi pada $t=0$.
+Ketika $u=e_j$ merupakan vektor basis standar, kita memperoleh
+$\frac{\partial f}{\partial x_j} = D_{e_j} f$.
+Karena itu, notasi $\frac{\partial f}{\partial u}$ kadang-kadang
+digunakan sebagai pengganti $D_u f$.
+
+Definisikan $\gamma$ dengan
+\begin{equation*}
+\gamma(t) \coloneqq x + tu .
+\end{equation*}
+Maka $\gamma'(t) = u$ untuk setiap $t$.
+Mari kita lihat apa yang terjadi pada $f$ ketika kita bergerak sepanjang $\gamma$:
+\begin{equation*}
+D_u f (x) =
+\frac{d}{dt}\Big|_{t=0} \bigl[ f(x+tu) \bigr] =
+(\nabla f) \bigl(\gamma(0)\bigr) \cdot \gamma'(0)
+=
+(\nabla f) (x) \cdot u .
+\end{equation*}
+Faktanya, perhitungan ini berlaku untuk sebarang kurva $\gamma$ sedemikian sehingga
+$\gamma(0) = x$ dan $\gamma'(0) = u$.
+
+Misalkan $(\nabla f)(x) \neq 0$.
+Berdasarkan ketaksamaan Cauchy--Schwarz,
+\begin{equation*}
+\babs{D_u f(x)} \leq \bnorm{(\nabla f)(x)} .
+\end{equation*}
+Kesamaan tercapai ketika $u$ merupakan kelipatan skalar dari
+$(\nabla f)(x)$.  Artinya, ketika
+\begin{equation*}
+u = 
+\frac{(\nabla f)(x)}{\bnorm{(\nabla f)(x)}} ,
+\end{equation*}
+kita memperoleh $D_u f(x) = \bnorm{(\nabla f)(x)}$.
+Gradien menunjuk ke arah tempat
+fungsi bertambah paling cepat, atau dengan kata lain,
+ke arah tempat $D_u f(x)$ bernilai maksimum.
+
+\subsection{Jacobian}
+
+\begin{defn}
+Misalkan $U \subset \R^n$ dan
+$f \colon U \to \R^n$ suatu pemetaan diferensiabel.  Definisikan
+\emph{\myindex{determinan Jacobian}}%
+\footnote{Dinamai menurut matematikawan Italia
+\href{https://en.wikipedia.org/wiki/Carl_Gustav_Jacob_Jacobi}{Carl Gustav Jacob Jacobi}
+(1804--1851).},
+atau cukup
+\emph{\myindex{Jacobian}}%
+\footnote{Matriks dalam \propref{mv:prop:jacobianmatrix} yang merepresentasikan $f'(x)$
+disebut
+\emph{\myindex{matriks Jacobian}}, atau kadang-kadang, secara membingungkan, juga disebut cukup
+\myquote{Jacobian}.},
+dari $f$ di $x$ sebagai
+\glsadd{not:jacobdet}
+\begin{equation*}
+J_f(x) \coloneqq \det\bigl( f'(x) \bigr) .
+\end{equation*}
+Kadang-kadang $J_f$ ditulis sebagai
+\begin{equation*}
+\frac{\partial(f_1,f_2,\ldots,f_n)}{\partial(x_1,x_2,\ldots,x_n)} .
+\end{equation*}
+\end{defn}
+
+Notasi terakhir ini mungkin tampak agak membingungkan,
+tetapi sangat berguna ketika kita perlu menyatakan
+secara tepat variabel dan komponen fungsi yang digunakan,
+seperti yang akan kita lakukan, misalnya, dalam teorema fungsi implisit.
+
+Determinan Jacobian $J_f$ merupakan fungsi bernilai real, dan ketika $n=1$, fungsi ini tidak lain adalah
+turunan.
+Dari aturan rantai dan fakta bahwa $\det(AB) = \det(A)\det(B)$, diperoleh:
+\begin{equation*}
+J_{f \circ g} (x) = J_f\bigl(g(x)\bigr) J_g(x) .
+\end{equation*}
+
+Determinan suatu pemetaan linear memberi tahu kita apa yang terjadi pada
+luas atau volume di bawah pemetaan tersebut.
+Demikian pula, determinan Jacobian mengukur seberapa besar suatu pemetaan diferensiabel
+meregangkan ruang secara lokal dan apakah pemetaan itu membalik orientasi.  Secara khusus, jika determinan
+Jacobian
+tak nol, kita menduga bahwa pemetaan tersebut invertibel secara lokal (dan
+dugaan ini benar, sebagaimana akan kita lihat nanti).
+
+\subsection{Latihan}
+
+\begin{exercise}
+Misalkan $\gamma \colon (-1,1) \to \R^n$ dan
+$\alpha \colon (-1,1) \to \R^n$ dua kurva diferensiabel
+sedemikian sehingga $\gamma(0) = \alpha(0)$ dan $\gamma'(0) = \alpha'(0)$.
+Misalkan $F \colon \R^n \to \R$ suatu fungsi diferensiabel.  Tunjukkan bahwa
+\begin{equation*}
+\frac{d}{dt}\Big|_{t=0}
+F\bigl(\gamma(t)\bigr)
+=
+\frac{d}{dt}\Big|_{t=0}
+F\bigl(\alpha(t)\bigr)
+.
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon \R^2 \to \R$ diberikan oleh
+$f(x,y)
+\coloneqq
+\sqrt{x^2+y^2}$,
+lihat \figureref{fig:distfromorgfunc}.
+Tunjukkan bahwa $f$ tidak diferensiabel di titik asal.
+\end{exercise}
+
+\begin{myfigureht}
+\myincludegraphics{distfromorgfunc}{%
+Grafik dalam ruang xyz dari fungsi z sama dengan f dari x, y, yang berbentuk kerucut
+menghadap ke atas dari titik asal.  Artinya, grafik ini dapat dibentuk
+dengan naik pada sudut 45 derajat sepanjang setiap arah dalam bidang xy menjauhi
+titik asal.}
+\caption{Grafik $\sqrt{x^2+y^2}$.\label{fig:distfromorgfunc}}
+\end{myfigureht}
+
+\begin{samepage}
+\begin{exercise}
+Dengan hanya menggunakan definisi turunan, tunjukkan bahwa
+fungsi-fungsi $f \colon \R^2 \to \R^2$ berikut diferensiabel di titik asal dan
+tentukan turunannya.
+\begin{enumerate}[a)]
+\item
+$f(x,y) \coloneqq (1+x+xy,x)$,
+\item
+$f(x,y) \coloneqq \bigl(y-y^{10},x \bigr)$,
+\item
+$f(x,y) \coloneqq \bigl( {(x+y+1)}^2 , {(x-y+2)}^2 \bigr)$.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Misalkan $f \colon \R \to \R$ dan $g \colon \R \to \R$ fungsi-fungsi diferensiabel.
+Dengan hanya menggunakan definisi turunan, tunjukkan bahwa
+$h \colon \R^2 \to \R^2$ yang didefinisikan oleh $h(x,y)
+\coloneqq \bigl(f(x),g(y)\bigr)$ merupakan fungsi diferensiabel, dan tentukan
+turunannya di setiap titik $(x,y)$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:noncontpartialsexist}
+Definisikan fungsi $f \colon \R^2 \to \R$ dengan
+(lihat \figureref{fig:xyxsqysqvol2})
+\begin{equation*}
+f(x,y)
+\coloneqq
+\begin{cases}
+\frac{xy}{x^2+y^2} & \text{jika } (x,y) \neq (0,0), \\
+0                  & \text{jika } (x,y) = (0,0).
+\end{cases}
+\end{equation*}
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa turunan parsial
+$\frac{\partial f}{\partial x}$ dan
+$\frac{\partial f}{\partial y}$ ada di setiap titik (termasuk titik asal).
+\item
+Tunjukkan bahwa $f$ tidak kontinu di titik asal (dan karenanya tidak
+diferensiabel).
+\end{enumerate}
+\end{exercise}
+
+\begin{myfigureht}
+\myincludegraphics{xyxsqysq}{%
+Grafik fungsi z sama dengan f dari x, y.
+Fungsi tersebut bernilai nol pada sumbu x dan y.
+Di kuadran pertama dan ketiga nilainya positif,
+sedangkan di kuadran kedua dan keempat nilainya negatif.
+Fungsi ini terbatas, tetapi tidak kontinu di titik asal:
+jika didekati sepanjang garis y sama dengan x, fungsi tampak
+konstan dan positif, sedangkan sepanjang garis y sama dengan minus x,
+fungsi tampak konstan dan negatif.  Grafiknya tampak seolah-olah
+selembar karet di titik asal ditarik dengan satu tangan dari atas dan
+satu tangan dari bawah sehingga titik asal membentuk
+lekukan yang memanjang.}
+\caption{Grafik $\frac{xy}{x^2+y^2}$.\label{fig:xyxsqysqvol2}}
+\end{myfigureht}
+
+\begin{samepage}
+\begin{exercise}
+Definisikan fungsi $f \colon \R^2 \to \R$ dengan
+(lihat \figureref{fig:xsqyxsqysq})
+\begin{equation*}
+f(x,y)
+\coloneqq
+\begin{cases}
+\frac{x^2y}{x^2+y^2} & \text{jika } (x,y) \neq (0,0), \\
+0                    & \text{jika } (x,y) = (0,0).
+\end{cases}
+\end{equation*}
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa turunan parsial
+$\frac{\partial f}{\partial x}$ dan
+$\frac{\partial f}{\partial y}$ ada di setiap titik.
+\item
+Tunjukkan bahwa untuk setiap $u \in \R^2$ dengan $\snorm{u}=1$, turunan
+arah $D_u f$ ada di setiap titik.
+\item
+Tunjukkan bahwa $f$ kontinu di titik asal.
+\item
+Tunjukkan bahwa $f$ tidak diferensiabel di titik asal.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{myfigureht}
+\myincludegraphics{xsqyxsqysq}{%
+Grafik fungsi z sama dengan f dari x, y.
+Fungsi tersebut bernilai nol pada sumbu x dan y.
+Di kuadran pertama dan kedua nilainya positif,
+sedangkan di kuadran ketiga dan keempat nilainya negatif.
+Meskipun jelas kontinu, gambar memperlihatkan
+bahwa bentuknya tetap sama ketika kita terus memperbesar
+daerah di sekitar titik asal, sehingga grafik tidak
+memiliki bidang singgung di titik asal.}
+\caption{Grafik $\frac{x^2y}{x^2+y^2}$.\label{fig:xsqyxsqysq}}
+\end{myfigureht}
+
+\begin{samepage}
+\begin{exercise}
+Misalkan $f \colon \R^n \to \R^n$ injektif, surjektif, diferensiabel di setiap
+titik, dan $f^{-1}$ juga diferensiabel di setiap titik.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $f'(p)$ invertibel di setiap titik $p$ dan hitung
+${(f^{-1})}'\bigl(f(p)\bigr)$.  Petunjuk: Tinjau $x = f^{-1}\bigl(f(x)\bigr)$.
+\item
+Misalkan $g \colon \R^n \to \R^n$ suatu fungsi yang diferensiabel di $q \in \R^n$
+dan memenuhi $g(q)=q$.  Misalkan $f(p) = q$ untuk suatu $p \in \R^n$.
+Tunjukkan $J_g(q) = J_{f^{-1} \circ g \circ f}(p)$, dengan $J_g$ menyatakan determinan
+Jacobian.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Misalkan $f \colon \R^2 \to \R$ diferensiabel dan memenuhi
+$f(x,y) = 0$ jika dan hanya jika $y=0$, serta $\nabla f(0,0) = (0,1)$.
+Buktikan bahwa $f(x,y) > 0$ setiap kali $y > 0$, dan
+$f(x,y) < 0$ setiap kali $y < 0$.
+\end{exercise}
+
+\begin{exnote}
+\pagebreak[2]
+Seperti pada fungsi satu variabel, $f \colon U \to \R$ memiliki
+\emph{\myindex{maksimum relatif}} di $p \in U$ jika terdapat
+$\delta >0$ sedemikian sehingga $f(q) \leq f(p)$ untuk setiap $q \in B(p,\delta) \cap U$.
+Definisi \emph{\myindex{minimum relatif}} serupa.
+\end{exnote}
+
+\begin{exercise} \label{exercise:mv:maximumcritical}
+Misalkan $U \subset \R^n$ terbuka dan
+$f \colon U \to \R$ diferensiabel.  Misalkan $f$ memiliki maksimum relatif
+di $p \in U$.  Tunjukkan bahwa $f'(p) = 0$, yakni pemetaan nol dalam
+$L(\R^n,\R)$.  Dengan kata lain, $p$ merupakan
+\emph{\myindex{titik kritis}} dari $f$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon \R^2 \to \R$ diferensiabel dan
+$f(x,y) = 0$ setiap kali $x^2+y^2 = 1$.
+Buktikan bahwa terdapat setidaknya
+satu titik $(x_0,y_0)$ sedemikian sehingga
+$\frac{\partial f}{\partial x}(x_0,y_0) = \frac{\partial f}{\partial
+y}(x_0,y_0) = 0$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:peano}
+Definisikan $f(x,y) \coloneqq ( x-y^2 ) ( 2 y^2 - x)$.  Grafik $f$ disebut
+\emph{\myindex{permukaan Peano}}.%
+\footnote{Dinamai menurut matematikawan Italia
+\href{https://en.wikipedia.org/wiki/Giuseppe_Peano}{Giuseppe Peano}
+(1858--1932).}
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa
+$(0,0)$ merupakan titik kritis, yakni $f'(0,0) = 0$, pemetaan
+linear nol dalam $L(\R^2,\R)$.
+\item
+Tunjukkan bahwa untuk setiap arah, pembatasan $f$ pada garis yang melalui titik asal
+dalam arah tersebut memiliki maksimum relatif di titik asal.  Dengan kata lain,
+untuk setiap $(x,y)$ sedemikian sehingga $x^2+y^2=1$, fungsi $g(t) \coloneqq f(tx,ty)$
+memiliki maksimum relatif di $t=0$.\\
+Petunjuk: Meskipun tidak diperlukan,
+\volIref{\sectionref*{vI-sec:taylor} dari jilid I}{\sectionref{sec:taylor}}
+membuat
+bagian ini lebih mudah.
+\item
+Tunjukkan bahwa $f$ tidak memiliki maksimum relatif di $(0,0)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon \R \to \R^n$ diferensiabel dan $\bnorm{f(t)} = 1$ untuk
+setiap $t$ (artinya, kita memiliki kurva pada permukaan bola satuan).  Tunjukkan bahwa
+$f'(t) \cdot f(t) = 0$ (dengan memperlakukan $f'(t)$ sebagai vektor) untuk setiap $t$.
+\end{exercise}
+
+\begin{exercise}
+Definisikan $f \colon \R^2 \to \R^2$ dengan $f(x,y) \coloneqq
+\bigl(x,y+\varphi(x)\bigr)$ untuk suatu fungsi satu variabel $\varphi$ yang
+diferensiabel.  Tunjukkan bahwa $f$ diferensiabel dan tentukan $f'$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $U \subset \R^n$ terbuka, $p \in U$, dan
+$f \colon U \to \R$,
+$g \colon U \to \R$,
+$h \colon U \to \R$ merupakan fungsi-fungsi sedemikian sehingga
+$f(p) = g(p) = h(p)$, $f$ dan $h$ diferensiabel di $p$,
+$f'(p) = h'(p)$, dan
+\begin{equation*}
+f(x) \leq g(x) \leq h(x) \qquad \text{untuk setiap } x \in U .
+\end{equation*}
+Tunjukkan bahwa $g$ diferensiabel di $p$ dan
+$g'(p) = f'(p) = h'(p)$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan suatu versi \emph{\myindex{teorema nilai rata-rata}}
+untuk fungsi beberapa variabel.  Misalkan $U \subset \R^n$
+terbuka, $f \colon U \to \R$ diferensiabel, $p,q \in U$, dan ruas garis
+$[p,q] \subset U$.  Buktikan bahwa terdapat $x \in [p,q]$ sedemikian sehingga
+$\nabla f (x) \cdot (q-p) = f(q)-f(p)$.
+\end{exercise}
+
+\begin{exercise}
+Definisikan $f \colon \R^2 \to \R$ dengan $f(x,y) \coloneqq \frac{y(x^2+y^2)}{x}$
+ketika $x \neq 0$ dan $f(0,y) \coloneqq 0$.  Tunjukkan bahwa untuk setiap $u \in \R^2$
+dengan $\snorm{u}=1$, diperoleh $D_u f(0) = 0$, yakni turunan
+arah ada dan bernilai nol dalam setiap arah di titik asal, tetapi
+fungsi tersebut tidak kontinu di titik asal (bahkan tidak kontinu setiap kali
+$x=0$).
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Kekontinuan dan turunan}
+\label{sec:svthedercont}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1--2 lectures}
+
+\subsection{Memberi batas pada turunan}
+
+Mari kita buktikan suatu \myquote{\myindex{teorema nilai rata-rata}} untuk fungsi bernilai vektor.
+
+\begin{lemma} \label{lemma:mvtmv}
+Jika $\varphi \colon [a,b] \to \R^n$ diferensiabel pada $(a,b)$ dan
+kontinu pada $[a,b]$, maka terdapat $t_0 \in (a,b)$ sedemikian sehingga
+\begin{equation*}
+\bnorm{\varphi(b)-\varphi(a)} \leq (b-a) \bnorm{\varphi'(t_0)} .
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+Dengan menerapkan teorema nilai rata-rata pada fungsi bernilai skalar
+$t \mapsto \bigl(\varphi(b)-\varphi(a) \bigr) \cdot \varphi(t)$,
+di mana tanda titik menyatakan hasil kali titik, kita memperoleh
+$t_0 \in (a,b)$ sedemikian sehingga
+\begin{equation*}
+\begin{split}
+\bnorm{\varphi(b)-\varphi(a)}^2
+& =
+\bigl( \varphi(b)-\varphi(a) \bigr)
+\cdot
+\bigl( \varphi(b)-\varphi(a) \bigr)
+\\
+& =
+\bigl(\varphi(b)-\varphi(a) \bigr) \cdot \varphi(b) - 
+\bigl(\varphi(b)-\varphi(a) \bigr) \cdot \varphi(a)
+\\
+& = 
+(b-a)
+\bigl(\varphi(b)-\varphi(a) \bigr) \cdot \varphi'(t_0) ,
+\end{split}
+\end{equation*}
+di sini kita memperlakukan $\varphi'$ sebagai vektor di $\R^n$ melalui penyalahgunaan
+notasi yang telah kita sebutkan dalam bagian sebelumnya.
+Jika $\varphi'(t)$ kita pandang sebagai vektor, maka menurut
+\exerciseref{exercise:normonedim},
+$\bnorm{\varphi'(t)}_{L(\R,\R^n)} = \bnorm{\varphi'(t)}_{\R^n}$.
+Dengan kata lain, norma Euklides vektor tersebut sama dengan norma operator
+$\varphi'(t)$.
+
+Menurut ketaksamaan Cauchy--Schwarz,
+\begin{equation*}
+\bnorm{\varphi(b)-\varphi(a)}^2
+=
+(b-a)\bigl(\varphi(b)-\varphi(a) \bigr) \cdot \varphi'(t_0)
+\leq
+(b-a)
+\bnorm{\varphi(b)-\varphi(a)} \, \bnorm{\varphi'(t_0)} . \qedhere
+\end{equation*}
+\end{proof}
+
+Ingat bahwa suatu himpunan $U$ disebut konveks
+jika setiap kali $p,q \in U$, ruas garis dari
+$p$ ke $q$ terletak di dalam $U$.
+
+\begin{prop} \label{mv:prop:convexlip}
+Misalkan $U \subset \R^n$ adalah himpunan terbuka yang konveks, $f \colon U \to \R^m$
+adalah fungsi diferensiabel, dan $M$ memenuhi
+\begin{equation*}
+\bnorm{f'(p)} \leq M
+\qquad \text{untuk setiap } p \in U.
+\end{equation*}
+Maka $f$ bersifat Lipschitz dengan konstanta $M$, yaitu
+\begin{equation*}
+\bnorm{f(p)-f(q)} \leq M \snorm{p-q}
+\qquad
+\text{untuk setiap } p,q \in U.
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Tetapkan $p$ dan $q$ di $U$, lalu perhatikan bahwa
+$(1-t)p+tq \in U$ untuk setiap $t \in [0,1]$
+berdasarkan kekonveksan.
+Selanjutnya,
+\begin{equation*}
+\frac{d}{dt} \Bigl[f\bigl((1-t)p+tq\bigr)\Bigr]
+=
+f'\bigl((1-t)p+tq\bigr) (q-p) .
+\end{equation*}
+Menurut \lemmaref{lemma:mvtmv}, terdapat
+$t_0 \in (0,1)$ sedemikian sehingga
+\begin{equation*}
+\begin{split}
+\bnorm{f(p)-f(q)} & \leq
+\norm{\frac{d}{dt} \Big|_{t=t_0} \Bigl[ f\bigl((1-t)p+tq\bigr) \Bigr] }
+\\
+& \leq
+\norm{f'\bigl((1-t_0)p+t_0q\bigr)} \, \snorm{q-p} \leq
+M \snorm{q-p} . \qedhere
+\end{split}
+\end{equation*}
+\end{proof}
+
+\begin{example}
+Jika $U$ tidak konveks, proposisi tersebut tidak berlaku. Tinjau
+himpunan
+\begin{equation*}
+U \coloneqq \bigl\{ (x,y) : 0.5 < x^2+y^2 < 2 \bigr\}
+\setminus \bigl\{ (x,0) : x < 0 \bigr\} .
+\end{equation*}
+Untuk $(x,y) \in U$,
+misalkan $f(x,y)$ adalah sudut yang dibentuk oleh garis dari titik asal ke $(x,y)$
+dengan sumbu $x$ positif.  Kita bahkan memiliki rumus untuk $f$:
+\begin{equation*}
+f(x,y) = 2 \operatorname{arctan}\left( \frac{y}{x+\sqrt{x^2+y^2}}\right) .
+\end{equation*}
+Bayangkan tangga spiral dengan ruang kosong di tengahnya.  Lihat
+\figureref{mv:fignonlip}.
+
+\begin{myfigureht}
+\myincludepdft{nonlip_full}{%
+Di sebelah kiri terdapat diagram pada bidang xy berupa daerah berbentuk gelang yang diarsir
+(daerah di antara dua lingkaran), berpusat di titik asal, dan memiliki sayatan
+sepanjang sumbu x negatif.
+Sebuah titik (x,y) diberi label pada daerah gelang dan sebuah garis ditarik dari titik ini
+ke titik asal; sudut dari sumbu x positif
+ke garis ini diberi label theta sama dengan f dari x, y.
+Di sebelah kanan terdapat grafik fungsi ini berupa spiral menaik
+yang bermula di bawah bidang xy ketika kita mulai dari sayatan
+dan menyusuri daerah gelang berlawanan arah jarum jam, lalu mencapai bidang xy
+ketika kita tiba di sumbu x positif, dan berada di atas bidang xy
+ketika kita kembali ke sayatan dari sisi lain.}
+\caption{Fungsi non-Lipschitz dengan turunan yang terbatas
+secara seragam.\label{mv:fignonlip}}
+\end{myfigureht}
+
+Fungsi tersebut diferensiabel,
+dan turunannya terbatas pada $U$; hal ini tidak sulit dilihat.  Sekarang
+perhatikan
+apa yang terjadi di dekat sayatan pada anulus di sepanjang sumbu $x$ negatif.
+Ketika kita mendekati sayatan ini dari sisi $y$ positif, $f(x,y)$ mendekati $\pi$.
+Dari sisi $y$ negatif, $f(x,y)$ mendekati $-\pi$.
+Jadi, untuk $\epsilon > 0$ yang kecil, $\babs{f(-1,\epsilon)-f(-1,-\epsilon)}$
+mendekati $2\pi$, sedangkan $\bnorm{(-1,\epsilon)-(-1,-\epsilon)} = 2\epsilon$,
+yang dapat dibuat sekecil apa pun.  Kesimpulan proposisi tersebut tidak
+berlaku untuk $U$ yang tidak konveks ini.
+\end{example}
+
+Mari kita selesaikan persamaan diferensial $f' = 0$.
+
+\begin{cor}
+Jika $U \subset \R^n$ terbuka dan terhubung, $f \colon U \to \R^m$
+diferensiabel,
+dan $f'(x) = 0$ untuk setiap $x \in U$, maka $f$ konstan.
+\end{cor}
+
+\begin{proof}
+Untuk setiap $x \in U$, terdapat bola $B(x,\delta) \subset U$.  Bola
+$B(x,\delta)$ bersifat konveks.  Karena
+$\bnorm{f'(y)} \leq 0$ untuk setiap $y \in B(x,\delta)$, menurut proposisi tersebut,
+$\bnorm{f(x)-f(y)} \leq 0 \snorm{x-y} = 0$.  Jadi, $f(x) = f(y)$ untuk setiap $y \in
+B(x,\delta)$.
+Oleh karena itu, $f^{-1}(c)$ terbuka untuk setiap $c \in \R^m$.
+
+Andaikan $c_0 \in \R^m$ sedemikian sehingga
+$f^{-1}(c_0) \neq \emptyset$. 
+Karena $f$ juga kontinu,
+kedua himpunan
+\begin{equation*}
+U' = f^{-1}(c_0), \qquad U'' = f^{-1}\bigl(\R^m\setminus\{c_0\}\bigr)
+\end{equation*}
+terbuka dan saling lepas, serta $U = U' \cup U''$.  Karena $U'$ tidak kosong
+dan $U$ terhubung, maka
+$U'' = \emptyset$.  Jadi, $f(x) = c_0$ untuk setiap $x \in U$.
+\end{proof}
+
+\subsection{Fungsi yang diferensiabel secara kontinu}
+
+\begin{defn}
+Misalkan $U \subset \R^n$ terbuka.
+Kita mengatakan bahwa $f \colon U \to \R^m$
+\emph{\myindex{diferensiabel secara kontinu}},
+atau berkelas $C^1(U)$\glsadd{not:C1},
+jika $f$ diferensiabel dan $f' \colon U \to L(\R^n,\R^m)$
+kontinu.
+\end{defn}
+
+\begin{prop} \label{mv:prop:contdiffpartials}
+Misalkan $U \subset \R^n$ terbuka dan
+$f \colon U \to \R^m$.  Fungsi
+$f$ diferensiabel secara kontinu jika dan hanya jika 
+turunan parsial $\frac{\partial f_k}{\partial x_j}$
+ada dan kontinu untuk setiap $k$ dan $j$.
+\end{prop}
+
+Tanpa kekontinuan turunan parsial, pernyataan tersebut tidak berlaku.  Keberadaan
+turunan parsial saja tidak berarti bahwa $f$ diferensiabel;
+bahkan, $f$ mungkin tidak kontinu.  Lihat latihan
+untuk bagian sebelumnya dan juga untuk bagian ini.
+
+\begin{proof}
+Kita telah membuktikan bahwa jika $f$ diferensiabel, maka
+turunan parsialnya ada.  Turunan parsial
+merupakan entri-entri matriks yang merepresentasikan $f'(x)$.  Jika
+$f' \colon U \to L(\R^n,\R^m)$ kontinu, maka entri-entri tersebut
+kontinu, sehingga turunan parsialnya kontinu.
+
+Untuk membuktikan arah sebaliknya,
+andaikan turunan parsialnya ada dan kontinu.
+Tetapkan $p \in U$.  Jika kita menunjukkan bahwa $f'(p)$ ada, pembuktian selesai, sebab
+entri-entri matriks yang merepresentasikan $f'(p)$ adalah turunan
+parsial, dan jika entri-entri tersebut merupakan fungsi kontinu,
+fungsi bernilai matriks $f'$ juga kontinu.
+
+Kita menggunakan induksi terhadap dimensi.  Pertama,
+kesimpulan tersebut benar ketika $n=1$
+(latihan; perhatikan bahwa $f$ bernilai vektor).
+Dalam hal ini, $f'(p)$ pada dasarnya merupakan turunan yang dibahas dalam
+\volIref{\chapterref*{vI-der:chapter}}{\chapterref{der:chapter}}.
+Andaikan kesimpulan tersebut benar untuk $\R^{n-1}$.
+Artinya,
+jika kita membatasi fungsi pada $n-1$ variabel pertama, fungsi itu diferensiabel.
+Ketika mengambil turunan parsial terhadap $x_1$ hingga $x_{n-1}$,
+tidak ada bedanya apakah kita meninjau $f$ atau pembatasan $f$ pada himpunan tempat
+$x_n$ bernilai tetap.
+Dalam uraian berikut, dengan sedikit penyalahgunaan notasi,
+kita memandang $\R^{n-1}$ sebagai subhimpunan $\R^n$, yaitu himpunan dalam $\R^n$ tempat $x_n = 0$.
+Dengan kata lain, kita mengidentifikasi vektor $(x_1,x_2,\ldots,x_{n-1})$ dan
+$(x_1,x_2,\ldots,x_{n-1},0)$.
+
+Dengan $p \in U$ yang telah ditetapkan, misalkan
+\begin{equation*}
+A \coloneqq 
+\begin{bmatrix}
+\frac{\partial f_1}{\partial x_1}(p)
+& \ldots &
+\frac{\partial f_1}{\partial x_n}(p)
+\\
+\vdots & \ddots & \vdots
+\\
+\frac{\partial f_m}{\partial x_1}(p)
+& \ldots &
+\frac{\partial f_m}{\partial x_n}(p)
+\end{bmatrix} ,
+%mbxSTARTIGNORE
+\qquad
+%mbxENDIGNORE
+%mbxlatex \quad
+A' \coloneqq 
+\begin{bmatrix}
+\frac{\partial f_1}{\partial x_1}(p)
+& \ldots &
+\frac{\partial f_1}{\partial x_{n-1}}(p)
+\\
+\vdots & \ddots & \vdots
+\\
+\frac{\partial f_m}{\partial x_1}(p)
+& \ldots &
+\frac{\partial f_m}{\partial x_{n-1}}(p)
+\end{bmatrix} ,
+%mbxSTARTIGNORE
+\qquad
+%mbxENDIGNORE
+%mbxlatex \quad
+v \coloneqq 
+\begin{bmatrix}
+\frac{\partial f_1}{\partial x_n}(p)
+\\
+\vdots
+\\
+\frac{\partial f_m}{\partial x_n}(p)
+\end{bmatrix} .
+\end{equation*}
+Ambil sembarang $\epsilon > 0$.  Karena $U$ terbuka, hipotesis induksi memberikan
+suatu $\delta > 0$; dengan memperkecilnya jika perlu, kita dapat memastikan $B(p,\delta) \subset U$ dan
+untuk setiap $h' \in \R^{n-1}$ dengan $\snorm{h'} < \delta$, berlaku
+\begin{equation*}
+\bnorm{f(p+h') - f(p) - A' h'} \leq \epsilon \snorm{h'} .
+\end{equation*}
+Dengan memperkecil $\delta$ jika perlu, kekontinuan turunan parsial memastikan
+bahwa
+\begin{equation*}
+\abs{\frac{\partial f_k}{\partial x_n}(p+h)
+      - \frac{\partial f_k}{\partial x_n}(p)} < \epsilon
+\end{equation*}
+untuk setiap $k$ dan setiap $h \in \R^n$ dengan $\snorm{h} < \delta$.
+
+Andaikan $h = h' + t e_n$ adalah vektor dalam $\R^n$, dengan $h' \in \R^{n-1}$,
+$t \in \R$, sedemikian sehingga
+$\snorm{h} < \delta$.  Maka $\snorm{h'} \leq \snorm{h} < \delta$.
+Perhatikan bahwa $Ah = A' h' + tv$.
+\begin{equation*}
+\begin{split}
+%mbxlatex &
+\bnorm{f(p+h) - f(p) - Ah}
+%mbxSTARTIGNORE
+&
+%mbxENDIGNORE
+%mbxlatex \\
+%mbxlatex & \qquad \qquad
+= \bnorm{f(p+h' + t e_n) - f(p+h') - tv + f(p+h') - f(p) - A' h'}
+\\
+&
+%mbxlatex \qquad \qquad
+\leq \bnorm{f(p+h' + t e_n) - f(p+h') -tv} + \bnorm{f(p+h') - f(p) -
+A' h'}
+\\
+&
+%mbxlatex \qquad \qquad
+\leq \bnorm{f(p+h' + t e_n) - f(p+h') -tv} + \epsilon \snorm{h'} .
+\end{split}
+\end{equation*}
+Karena semua turunan parsial ada, untuk setiap $k$ teorema nilai rata-rata memberikan
+suatu $\theta_k \in [0,t]$ (atau $[t,0]$ jika $t < 0$), sedemikian sehingga
+\begin{equation*}
+f_k(p+h' + t e_n) - f_k(p+h') =
+t \frac{\partial f_k}{\partial x_n}(p+h'+\theta_k e_n).
+\end{equation*}
+Kita mempunyai $\snorm{h'+\theta_k e_n} \leq \snorm{h} < \delta$,
+sehingga penaksiran dapat dituntaskan sebagai berikut:
+\begin{equation*}
+\begin{split}
+\bnorm{f(p+h) - f(p) - Ah}
+& \leq \bnorm{f(p+h' + t e_n) - f(p+h') -tv} + \epsilon \snorm{h'}
+\\
+& \leq \sqrt{\sum_{k=1}^m {\left(t\frac{\partial f_k}{\partial x_n}(p+h'+\theta_k e_n) -
+t \frac{\partial f_k}{\partial x_n}(p)\right)}^2} + \epsilon \snorm{h'}
+\\
+& \leq \sqrt{m}\, \epsilon \sabs{t} + \epsilon \snorm{h'}
+\\
+& \leq (\sqrt{m}+1)\epsilon \snorm{h} . \qedhere
+\end{split}
+\end{equation*}
+\end{proof}
+
+Penerapan yang umum adalah membuktikan bahwa suatu fungsi
+diferensiabel.  Sebagai contoh, kita dapat menunjukkan bahwa semua polinom
+diferensiabel, bahkan diferensiabel secara kontinu,
+dengan menghitung turunan parsialnya.
+
+\begin{cor}
+Suatu polinom $p \colon \R^n \to \R$ dalam beberapa variabel,
+\begin{equation*}
+p(x_1,x_2,\ldots,x_n)
+=
+\sum_{0 \leq j_1+j_2+\cdots+j_n \leq d}
+c_{j_1,j_2,\ldots,j_n}
+\,
+x_1^{j_1}
+x_2^{j_2}
+\cdots
+x_n^{j_n}
+\end{equation*}
+bersifat diferensiabel secara kontinu.
+\end{cor}
+
+\begin{proof}
+Tinjau turunan parsial $p$ terhadap variabel $x_n$.
+Tuliskan $p$ sebagai
+\begin{equation*}
+p(x) = \sum_{j=0}^d p_j(x_1,\ldots,x_{n-1}) \, x_n^j ,
+\end{equation*}
+di mana $p_j$ adalah polinom dalam satu variabel lebih sedikit.
+Maka
+\begin{equation*}
+\frac{\partial p}{\partial x_n}(x)
+= \sum_{j=1}^d p_j(x_1,\ldots,x_{n-1}) \, j x_n^{j-1} ,
+\end{equation*}
+yang kembali merupakan polinom.
+Jadi, turunan parsial polinom ada dan kembali berupa polinom.
+Berdasarkan kekontinuan operasi aljabar, polinom merupakan fungsi kontinu.
+Oleh karena itu, $p$ diferensiabel secara kontinu.
+\end{proof}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Definisikan $f \colon \R^2 \to \R$ sebagai
+\begin{equation*}
+f(x,y) \coloneqq
+\begin{cases}
+(x^2+y^2)\sin\bigl({(x^2+y^2)}^{-1}\bigr) & \text{jika } (x,y) \neq (0,0), \\
+0                                         & \text{jika } (x,y) = (0,0).
+\end{cases}
+\end{equation*}
+Tunjukkan bahwa $f$ diferensiabel di titik asal, tetapi tidak 
+diferensiabel secara kontinu.
+\\
+Catatan: Anda boleh menggunakan pengetahuan tentang sinus dan kosinus dari kalkulus.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon \R^2 \to \R$ adalah fungsi dalam
+\exerciseref{exercise:noncontpartialsexist}, yaitu
+\begin{equation*}
+f(x,y)
+\coloneqq
+\begin{cases}
+\frac{xy}{x^2+y^2} & \text{jika } (x,y) \neq (0,0), \\
+0                  & \text{jika } (x,y) = (0,0).
+\end{cases}
+\end{equation*}
+Hitung turunan parsial 
+$\frac{\partial f}{\partial x}$ dan
+$\frac{\partial f}{\partial y}$ pada setiap titik, lalu tunjukkan bahwa keduanya bukan
+fungsi kontinu.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $B(0,1) \subset \R^2$ adalah bola satuan, yaitu himpunan yang diberikan oleh
+$x^2 + y^2 < 1$.
+Andaikan $f \colon B(0,1) \to \R$ adalah fungsi diferensiabel
+sedemikian sehingga $\babs{f(0,0)} \leq 1$,
+dan 
+$\babs{\frac{\partial f}{\partial x}} \leq 1$ dan
+$\babs{\frac{\partial f}{\partial y}} \leq 1$ di setiap
+titik dalam $B(0,1)$.
+\begin{enumerate}[a)]
+\item
+Tentukan $M \in \R$ sedemikian sehingga $\bnorm{f'(x,y)} \leq M$
+untuk setiap $(x,y) \in
+B(0,1)$.
+\item
+Tentukan $B \in \R$ sedemikian sehingga
+$\babs{f(x,y)} \leq B$
+untuk setiap $(x,y) \in
+B(0,1)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Definisikan $\varphi \colon [0,2\pi] \to \R^2$ dengan $\varphi(t) =
+\bigl(\sin(t),\cos(t)\bigr)$.  Hitung $\varphi'(t)$ untuk setiap $t$.  Hitung
+$\bnorm{\varphi'(t)}$ untuk setiap $t$.  Perhatikan bahwa $\varphi'(t)$ tidak pernah sama dengan vektor nol,
+namun $\varphi(0) = \varphi(2\pi)$.  Oleh karena itu, teorema Rolle tidak berlaku
+untuk fungsi bernilai vektor.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon \R^2 \to \R$ adalah fungsi sedemikian sehingga
+$\frac{\partial f}{\partial x}$ dan
+$\frac{\partial f}{\partial y}$ ada pada setiap titik dan terdapat $M
+\in \R$
+sedemikian sehingga 
+$\babs{\frac{\partial f}{\partial x}} \leq M$ dan
+$\babs{\frac{\partial f}{\partial y}} \leq M$ pada setiap titik.  Tunjukkan bahwa $f$
+kontinu.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Misalkan $f \colon \R^2 \to \R$ adalah fungsi dan
+$M \in \R$, sedemikian sehingga
+untuk setiap $(x,y) \in \R^2$ dengan $x^2+y^2=1$, fungsi $g(t) \coloneqq f(xt,yt)$
+diferensiabel
+dan $\babs{g'(t)} \leq M$ untuk setiap $t$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $f$ kontinu di $(0,0)$.
+\item
+Berikan contoh fungsi $f$ semacam itu yang diskontinu di setiap titik lain dalam
+$\R^2$.\\
+Petunjuk: Ingat kembali cara kita mengonstruksi fungsi yang tidak kontinu di setiap titik pada $[0,1]$.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Andaikan $r \colon \R^n \setminus X \to \R$ adalah fungsi rasional, yaitu
+$p \colon \R^n \to \R$ dan
+$q \colon \R^n \to \R$ adalah polinom,
+$q$ tidak identik nol,
+$X = q^{-1}(0)$, dan
+$r = \frac{p}{q}$.
+Tunjukkan bahwa $r$ diferensiabel secara kontinu.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon \R^n \to \R$ dan $h \colon \R^n \to \R$ adalah dua 
+fungsi diferensiabel sedemikian sehingga $f'(x) = h'(x)$ untuk setiap $x \in \R^n$.
+Buktikan bahwa
+jika $f(0) = h(0)$, maka $f(x) = h(x)$ untuk setiap $x \in \R^n$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan kasus dasar
+pada \propref{mv:prop:contdiffpartials}.  Artinya, buktikan bahwa
+jika $n=1$ dan 
+\myquote{turunan parsial ada dan kontinu}, maka fungsi tersebut
+diferensiabel secara kontinu.  Perhatikan bahwa $f$ bernilai vektor.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $U \subset \R^n$ terbuka, $f \colon U \to \R^m$
+diferensiabel, terdapat $M$ sedemikian sehingga $\bnorm{f'(p)} \leq M$
+untuk setiap $p \in U$, dan $K \subset U$ adalah himpunan kompak.  Buktikan bahwa
+terdapat $M'$ (dengan $M' \geq M$) sedemikian sehingga
+untuk setiap $p,q \in K$ berlaku $\bnorm{f(p)-f(q)} \leq M' \snorm{p-q}$.
+Bandingkan dengan \propref{mv:prop:convexlip}.
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Teorema fungsi invers dan fungsi implisit}
+\label{sec:svinvfuncthm}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2--3 lectures}
+
+Secara intuitif, jika suatu fungsi diferensiabel secara kontinu, maka secara lokal fungsi itu
+\myquote{berperilaku seperti} turunannya (yang merupakan fungsi linear).
+Gagasan teorema fungsi invers adalah bahwa jika suatu fungsi
+diferensiabel secara kontinu dan turunannya invertibel, maka fungsi tersebut
+invertibel (secara lokal).
+
+
+\begin{thm}[Teorema fungsi invers]\index{teorema fungsi invers}
+\label{thm:inverse}
+Misalkan $U \subset \R^n$ himpunan terbuka dan
+$f \colon U \to \R^n$ fungsi yang diferensiabel secara kontinu.
+Andaikan $p \in U$ dan $f'(p)$ invertibel
+(yaitu, $J_f(p) \neq 0$).
+Maka terdapat himpunan terbuka $V, W \subset \R^n$ sedemikian sehingga
+$p \in V \subset U$, $f(V) = W$, dan $f|_V$ injektif.  
+Dengan demikian, terdapat fungsi $g \colon W \to V$ sedemikian sehingga
+$g(y) \coloneqq (f|_V)^{-1}(y)$.
+Selain itu, $g$ diferensiabel secara kontinu
+dan 
+\begin{equation*}
+g'(y) = {\bigl(f'(x)\bigr)}^{-1}, \qquad \text{untuk setiap } x \in V, y = f(x).
+\end{equation*}
+\end{thm}
+Lihat \figureref{fig:inversefuncRn}.
+
+\begin{myfigureht}
+\myincludepdft{inversefuncRn}{%
+Diagram dua himpunan dan pemetaan di antara keduanya.
+Di sebelah kiri terdapat himpunan U yang diarsir dengan batas putus-putus dan subhimpunan V yang lebih kecil,
+diarsir tipis dengan batas putus-putus.  Titik p dan x ditandai di dalam V.
+Di sebelah kanan terdapat himpunan berarsir tipis berlabel W sama dengan f dari V, dengan dua
+titik: satu ditandai f dari p dan satu lagi ditandai y.  Dua panah berlabel f mengarah dari kiri
+ke kanan; satu dari titik p ke titik f dari p
+dan satu lagi dari titik x ke titik y.  Dua panah berlabel g
+mengarah sebaliknya di antara titik-titik yang sama.}
+\caption{Skema teorema fungsi invers dalam $\R^n$.\label{fig:inversefuncRn}}
+\end{myfigureht}
+
+Untuk membuktikan teorema tersebut, kita menggunakan prinsip pemetaan
+kontraksi dari
+\volIref{\chapterref*{vI-ms:chapter}}{\chapterref{ms:chapter}},
+yang telah kita gunakan
+untuk membuktikan teorema Picard.
+Ingat bahwa pemetaan $f \colon X \to Y$ di antara ruang metrik
+$(X,d_X)$ dan $(Y,d_Y)$ merupakan kontraksi 
+jika terdapat $0 \leq k < 1$ sedemikian sehingga
+\begin{equation*}
+d_Y\bigl(f(p),f(q)\bigr) \leq k \, d_X(p,q)
+\qquad \text{untuk setiap } p,q \in X.
+\end{equation*}
+Prinsip pemetaan kontraksi menyatakan bahwa jika $f \colon X \to X$
+merupakan kontraksi dan $X$ ruang metrik lengkap,
+maka terdapat tepat satu titik tetap, yaitu
+terdapat tepat satu $x \in X$ sedemikian sehingga $f(x) = x$.
+
+\begin{proof}
+Tuliskan $A = f'(p)$.  Karena $f'$ kontinu dan domainnya terbuka, kita dapat memilih bola terbuka
+$V \subset U$ yang berpusat di $p$ sedemikian sehingga
+\begin{equation*}
+\bnorm{A-f'(x)} < \frac{1}{2\snorm{A^{-1}}}
+\qquad \text{untuk setiap } x \in V.
+\end{equation*}
+Akibatnya, turunan $f'(x)$ invertibel untuk setiap $x \in V$
+menurut \propref{prop:finitedimpropinv}.
+
+Untuk $y \in \R^n$, definisikan $\varphi_y \colon V \to \R^n$ dengan
+\begin{equation*}
+\varphi_y (x) \coloneqq x + A^{-1}\bigl(y-f(x)\bigr) .
+\end{equation*}
+Karena $A^{-1}$ injektif,
+$\varphi_y(x) = x$ ($x$ adalah titik tetap) jika dan hanya jika
+$y-f(x) = 0$, atau dengan kata lain $f(x)=y$.  Dengan menggunakan aturan rantai, kita memperoleh
+\begin{equation*}
+\varphi_y'(x) = I - A^{-1} f'(x) = A^{-1} \bigl( A-f'(x) \bigr) .
+\end{equation*}
+Jadi, untuk $x \in V$, kita mempunyai
+\begin{equation*}
+\bnorm{\varphi_y'(x)} \leq \snorm{A^{-1}} \, \bnorm{A-f'(x)} < \nicefrac{1}{2} .
+\end{equation*}
+Karena $V$ sebuah bola, himpunan tersebut konveks.  Oleh karena itu,
+\begin{equation*}
+\bnorm{\varphi_y(x_1)-\varphi_y(x_2)} \leq \frac{1}{2} \snorm{x_1-x_2} 
+\qquad
+\text{untuk setiap } x_1,x_2 \in V.
+\end{equation*}
+Dengan kata lain, $\varphi_y$ adalah kontraksi yang didefinisikan pada $V$, meskipun sejauh ini
+kita belum mengetahui jangkauan $\varphi_y$.  Kita belum dapat
+menerapkan teorema titik
+tetap, tetapi kita dapat mengatakan bahwa $\varphi_y$ 
+memiliki paling banyak satu titik tetap dalam $V$:
+Jika $\varphi_y(x_1) = x_1$ dan
+$\varphi_y(x_2) = x_2$, maka
+$\snorm{x_1-x_2} = \bnorm{\varphi_y(x_1)-\varphi_y(x_2)} \leq
+\frac{1}{2} \snorm{x_1-x_2}$, sehingga $x_1 = x_2$.
+Artinya, terdapat paling banyak satu $x \in V$
+sedemikian sehingga $f(x) = y$, sehingga $f|_V$ injektif.
+
+Misalkan $W \coloneqq f(V)$ dan misalkan $g \colon W \to V$ adalah invers dari $f|_V$.
+Kita perlu menunjukkan bahwa $W$ terbuka.  Ambil $y_0 \in W$.
+Terdapat tepat satu $x_0 \in V$ sedemikian sehingga $f(x_0) = y_0$.
+Ambil $r > 0$ yang cukup kecil sehingga bola tertutup $C(x_0,r) \subset V$
+($r > 0$ semacam itu ada karena $V$ terbuka).
+
+Andaikan $y$ memenuhi
+\begin{equation*}
+\snorm{y-y_0} <
+\frac{r}{2\snorm{A^{-1}}} .
+\end{equation*}
+Jika kita menunjukkan bahwa $y \in W$, maka kita telah menunjukkan bahwa $W$ terbuka.
+Jika $x_1 \in
+C(x_0,r)$, maka
+\begin{equation*}
+\begin{split}
+\bnorm{\varphi_y(x_1)-x_0}
+& \leq
+\bnorm{\varphi_y(x_1)-\varphi_y(x_0)} +
+\bnorm{\varphi_y(x_0)-x_0} \\
+& \leq
+\frac{1}{2}\snorm{x_1-x_0} +
+\bnorm{A^{-1}(y-y_0)} \\
+& \leq
+\frac{1}{2}r +
+\snorm{A^{-1}} \, \snorm{y-y_0} \\
+& <
+\frac{1}{2}r +
+\snorm{A^{-1}}
+\frac{r}{2\snorm{A^{-1}}} = r .
+\end{split}
+\end{equation*}
+Jadi, $\varphi_y$ memetakan $C(x_0,r)$ ke dalam $B(x_0,r) \subset C(x_0,r)$.  Pemetaan ini
+merupakan kontraksi pada $C(x_0,r)$, dan $C(x_0,r)$ lengkap (karena setiap subhimpunan tertutup dari
+$\R^n$ lengkap).
+Terapkan prinsip pemetaan kontraksi untuk memperoleh titik tetap $x$,
+yaitu\ $\varphi_y(x) = x$.  Artinya, $f(x) = y$, dan $y \in
+f\bigl(C(x_0,r)\bigr) \subset f(V) = W$.  Oleh karena itu, $W$ terbuka.
+
+Selanjutnya kita perlu menunjukkan bahwa $g$ diferensiabel secara kontinu dan menghitung
+turunannya.  Pertama, mari kita tunjukkan bahwa fungsi tersebut diferensiabel.
+Misalkan $y \in W$ dan $k \in \R^n$, $k \neq 0$, sedemikian sehingga $y+k \in W$.
+Karena $f|_V$ merupakan pemetaan injektif dan surjektif dari $V$ ke $W$,
+terdapat tepat satu $x \in V$ dan tepat satu
+$h \in \R^n$, $h \neq 0$ serta $x+h \in V$, sedemikian sehingga
+$f(x) = y$ dan $f(x+h) = y+k$.
+Dengan kata lain, $g(y) = x$ dan $g(y+k) = x+h$.  Lihat
+\figureref{fig:inversefuncRn2}.
+\begin{myfigureht}
+\myincludepdft{inversefuncRn2}{%
+Diagram dua himpunan dan pemetaan di antara keduanya.
+Di sebelah kiri terdapat himpunan V yang diarsir dengan batas putus-putus dan
+titik x tambah h serta x yang ditandai.
+Di sebelah kanan terdapat himpunan W yang diarsir dengan titik y tambah k
+serta y yang ditandai.
+Dua panah berlabel f mengarah dari kiri
+ke kanan; satu dari titik x tambah h ke titik y tambah k
+dan satu lagi dari titik x ke titik y.  Dua panah berlabel g
+mengarah sebaliknya di antara titik-titik yang sama.}
+\caption{Membuktikan bahwa $g$ diferensiabel.\label{fig:inversefuncRn2}}
+\end{myfigureht}
+
+Kita masih dapat
+memperoleh informasi dari fakta bahwa $\varphi_y$ merupakan kontraksi.
+\begin{equation*}
+\varphi_y(x+h)-\varphi_y(x) = h + A^{-1} \bigl( f(x)-f(x+h) \bigr) = h - A^{-1} k .
+\end{equation*}
+Maka
+\begin{equation*}
+\snorm{h-A^{-1}k} = \bnorm{\varphi_y(x+h)-\varphi_y(x)} \leq
+\frac{1}{2}\snorm{x+h-x} = \frac{\snorm{h}}{2}.
+\end{equation*}
+Menurut ketaksamaan segitiga terbalik, $\snorm{h} - \snorm{A^{-1}k} \leq
+\frac{1}{2}\snorm{h}$.
+Jadi,
+\begin{equation*}
+\snorm{h} \leq 2 \snorm{A^{-1}k} \leq 2 \snorm{A^{-1}} \, \snorm{k}.
+\end{equation*}
+Secara khusus, ketika $k$ menuju 0, $h$ juga menuju 0.
+
+Karena $x \in V$, kita mengetahui bahwa $f'(x)$ invertibel.
+Misalkan $B \coloneqq \bigl(f'(x)\bigr)^{-1}$, yang kita duga merupakan turunan
+$g$ di $y$.  Maka
+\begin{equation*}
+\begin{split}
+\frac{\bnorm{g(y+k)-g(y)-Bk}}{\snorm{k}}
+& =
+\frac{\snorm{h-Bk}}{\snorm{k}}
+\\
+& =
+\frac{\bnorm{h-B\bigl(f(x+h)-f(x)\bigr)}}{\snorm{k}}
+\\
+& =
+\frac{\bnorm{B\bigl(f(x+h)-f(x)-f'(x)h\bigr)}}{\snorm{k}}
+\\
+& \leq
+\snorm{B}
+\frac{\snorm{h}}{\snorm{k}}\,
+\frac{\bnorm{f(x+h)-f(x)-f'(x)h}}{\snorm{h}}
+\\
+& \leq
+2\snorm{B} \, \snorm{A^{-1}}
+\frac{\bnorm{f(x+h)-f(x)-f'(x)h}}{\snorm{h}} .
+\end{split}
+\end{equation*}
+Ketika $k$ menuju 0, $h$ juga menuju 0.  Jadi, ruas kanan menuju 0 karena $f$
+diferensiabel, sehingga
+ruas kiri juga menuju 0.  Dengan demikian,
+$B$ tepat merupakan $g'(y)$ yang kita cari.
+
+Kita telah menunjukkan bahwa $g$ diferensiabel; mari kita tunjukkan bahwa fungsi tersebut berkelas $C^1(W)$.
+Fungsi $g \colon W \to V$ kontinu (karena diferensiabel),
+$f'$ adalah fungsi kontinu dari $V$
+ke $L(\R^n)$, dan $X \mapsto X^{-1}$ adalah fungsi kontinu pada
+himpunan operator invertibel.
+Karena
+$g'(y) = {\bigl( f'\bigl(g(y)\bigr)\bigr)}^{-1}$ merupakan komposisi
+ketiga fungsi
+kontinu tersebut, maka komposisi tersebut kontinu.
+\end{proof}
+
+\begin{cor} \label{cor:IVTopenmap}
+Andaikan $U \subset \R^n$ terbuka dan $f \colon U \to \R^n$ adalah pemetaan yang
+diferensiabel secara kontinu sedemikian sehingga $f'(x)$ invertibel untuk setiap $x \in U$.  Maka
+untuk setiap himpunan terbuka $V \subset U$, himpunan $f(V)$ terbuka ($f$ disebut
+\emph{\myindex{pemetaan terbuka}}).
+\end{cor}
+
+\begin{proof}
+Tanpa mengurangi keumuman, andaikan $U=V$.
+Untuk setiap $y \in f(V)$, pilih $x \in f^{-1}(y)$ (mungkin terdapat lebih
+dari satu titik semacam itu); lalu, berdasarkan teorema fungsi invers, terdapat
+lingkungan $x$ dalam $V$ yang citranya merupakan suatu lingkungan dari $y$.  Dengan demikian,
+$f(V)$ terbuka.
+\end{proof}
+
+\begin{example}
+Teorema tersebut beserta korolarinya tidak berlaku jika $f'(x)$ tidak invertibel untuk
+suatu~$x$.
+Pemetaan $f(x,y) \coloneqq (x,xy)$ memetakan $\R^2$ pada himpunan
+$\R^2 \setminus \bigl\{ (0,y) : y \neq 0 \bigr\}$, yang tidak terbuka maupun tertutup.
+Faktanya, $f^{-1}(0,0) = \bigl\{ (0,y) : y \in \R \bigr\}$.  Perilaku buruk ini
+hanya terjadi pada sumbu $y$; pada setiap titik lain, fungsi tersebut invertibel
+secara lokal.  Jika kita menghindari sumbu $y$, $f$ bahkan injektif.
+\end{example}
+
+\begin{example}
+Fakta bahwa $f'(x)$ invertibel di setiap titik tidak
+berarti bahwa $f$
+injektif.  Fungsi tersebut injektif \myquote{secara lokal}, tetapi belum tentu
+\myquote{secara global.}
+Tinjau $f \colon \R^2 \setminus \bigl\{ (0,0) \bigr\} \to
+\R^2 \setminus \bigl\{ (0,0) \bigr\}$ yang didefinisikan
+oleh $f(x,y) \coloneqq (x^2-y^2,2xy)$.
+Pembaca dipersilakan memverifikasi pernyataan-pernyataan berikut.
+Pemetaan $f$ diferensiabel dan turunannya invertibel.
+Di sisi lain, $f$ bersifat 2-ke-1 secara global: Untuk setiap
+$(a,b)$ yang bukan titik asal, terdapat tepat dua
+solusi bagi $x^2-y^2=a$ dan $2xy=b$ ($f$ juga surjektif).  Perhatikan bahwa
+setelah Anda menunjukkan adanya paling sedikit satu solusi,
+mengganti $x$ dan $y$ dengan $-x$ dan $-y$ menghasilkan solusi lain.
+\end{example}
+
+Keinvertibelan turunan bukan syarat yang perlu,
+melainkan hanya syarat cukup, untuk memiliki invers kontinu dan menjadi pemetaan
+terbuka.  Fungsi $f(x) \coloneqq x^3$ merupakan pemetaan terbuka dari $\R$
+ke $\R$ dan injektif secara global dengan invers kontinu, meskipun
+inversnya tidak diferensiabel di $x=0$.
+
+\medskip
+
+Sebagai catatan tambahan, terdapat masalah terkenal yang terkait dan hingga kini belum sepenuhnya terpecahkan,
+yang disebut \emph{\myindex{konjektur Jacobian}}.  Jika $F \colon \R^n \to
+\R^n$ adalah pemetaan polinomial (setiap komponennya merupakan polinom) dan $J_F$
+(determinan Jacobian) adalah konstanta
+tak nol, apakah $F$ memiliki invers polinom?
+Teorema fungsi invers memberikan invers $C^1$ lokal,
+tetapi pertanyaannya adalah apakah kita selalu dapat
+menemukan invers polinom global.
+Jawabannya afirmatif untuk $n=1$, dan baru-baru ini telah ditemukan contoh tandingan
+untuk $n \geq 3$.
+
+\subsection{Teorema fungsi implisit}
+
+Teorema fungsi invers merupakan kasus khusus teorema fungsi
+implisit, yang akan kita buktikan selanjutnya.  Agak ironis, kita 
+membuktikan teorema fungsi implisit dengan menggunakan teorema fungsi invers.
+Salah satu cara menyatakan teorema fungsi invers adalah bahwa
+persamaan $x-f(y) = 0$ dapat diselesaikan terhadap $y$ sebagai fungsi dari $x$ jika turunannya
+terhadap $y$, yaitu $-f'(y)$, invertibel; hal ini ekuivalen dengan $f'(y)$ invertibel.
+Dengan demikian, terdapat (secara lokal) suatu
+fungsi $g$ sedemikian sehingga $x-f\bigl(g(x)\bigr) = 0$.
+
+Secara umum, persamaan $f(x,y) = 0$ tidak selalu
+dapat diselesaikan terhadap $y$ sebagai fungsi dari $x$.
+Sebagai contoh, pada umumnya tidak ada solusi
+jika $f(x,y)$ sebenarnya tidak bergantung pada $y$.
+Untuk contoh yang lebih menarik, perhatikan bahwa $x^2+y^2-1 = 0$ mendefinisikan lingkaran satuan, dan
+kita dapat secara lokal menyelesaikan persamaan tersebut terhadap $y$ sebagai fungsi dari $x$ apabila 1) kita berada di dekat
+suatu titik pada lingkaran satuan dan 2)~kita tidak berada di titik
+tempat lingkaran memiliki garis singgung vertikal, yaitu tempat
+$\frac{\partial f}{\partial y} = 0$.
+
+Kita tetapkan beberapa notasi.  Misalkan $(x,y) \in
+\R^{n+m}$ menyatakan blok koordinat $(x_1,\ldots,x_n,y_1,\ldots,y_m)$.  
+Dengan demikian, kita dapat menuliskan suatu
+pemetaan linear $A \in L(\R^{n+m},\R^m)$ sebagai
+$A = [ A_x ~ A_y ]$ sehingga $A(x,y) = A_x x + A_y y$,
+dengan $A_x \in L(\R^n,\R^m)$ dan
+$A_y \in L(\R^m)$.
+Pertama, kita berikan versi linear teorema tersebut.
+
+\begin{prop}
+Misalkan $A = [A_x~A_y] \in L(\R^{n+m},\R^m)$ dan andaikan 
+$A_y$ invertibel.  Jika $B = - {(A_y)}^{-1} A_x$, maka
+\begin{equation*}
+0 = A ( x, Bx) = A_x x + A_y Bx .
+\end{equation*}
+Selain itu, untuk setiap $x \in \R^n$, terdapat tepat satu $y \in \R^m$
+yang memenuhi $A(x,y) = 0$, yaitu $y=Bx$.
+\end{prop}
+
+Pembuktiannya langsung: Kita menyelesaikan $A_x x +A_y y = 0$ dan memperoleh $y = Bx$.
+Pendekatan lain adalah \myquote{melengkapi basis,} yaitu menambahkan
+baris-baris pada matriks hingga kita memperoleh matriks invertibel:
+Operator di $L(\R^{n+m})$ yang diberikan oleh
+$(x,y) \mapsto (x,A_x x + A_y y)$
+bersifat invertibel, dan pemetaan $B$
+dapat diperoleh langsung dari inversnya.
+Mari kita tunjukkan bahwa hal yang sama dapat dilakukan untuk fungsi berkelas $C^1$.
+
+\begin{thm}[Teorema fungsi implisit]\index{teorema fungsi implisit}
+\label{thm:implicit}
+Misalkan $U \subset \R^{n+m}$ himpunan terbuka dan $f \colon U \to \R^m$
+pemetaan berkelas $C^1(U)$.  Misalkan $(p,q) \in U$ titik sedemikian sehingga
+$f(p,q) = 0$ dan
+\begin{equation*}
+\frac{\partial(f_1,\ldots,f_m)}{\partial(y_1,\ldots,y_m)} (p,q)  \neq 0 .
+\end{equation*}
+Maka terdapat
+himpunan terbuka $W \subset \R^n$ dengan $p \in W$,
+himpunan terbuka $W' \subset \R^m$ dengan $q \in W'$,
+sedemikian sehingga $W \times W' \subset U$,
+serta
+pemetaan $g \colon W \to W'$ berkelas $C^1(W)$, dengan $g(p) = q$, dan
+untuk setiap $x \in W$, titik $g(x)$ merupakan satu-satunya titik di $W'$
+sedemikian sehingga 
+\begin{equation*}
+f\bigl(x,g(x)\bigr) = 0 .
+\end{equation*}
+Selain itu, jika $A = [ A_x ~ A_y ] = f'(p,q)$, maka
+\begin{equation*}
+g'(p) = -{(A_y)}^{-1}A_x .
+\end{equation*}
+\end{thm}
+
+Syarat
+$\frac{\partial(f_1,\ldots,f_m)}{\partial(y_1,\ldots,y_m)} (p,q) =
+\det(A_y)  \neq 0$
+semata-mata berarti bahwa $A_y$ invertibel.  Jika $n=m=1$, syarat tersebut 
+adalah $\frac{\partial f}{\partial y}(p,q) \neq 0$, dan $W$ serta $W'$ merupakan 
+interval terbuka.  Lihat \figureref{fig:implicitfunc}.
+\begin{myfigureht}
+\myincludepdft{implicitfunc}{%
+Diagram sebuah lingkaran pada bidang xy yang berlabel f dari x koma y sama dengan 0.
+Sebuah titik berlabel p koma q ditandai pada lingkaran di kuadran pertama.
+Titik itu berada di dalam persegi panjang kecil berarsir yang berlabel W kali W aksen.
+Proyeksi persegi panjang berarsir pada sumbu x dan y masing-masing
+berlabel W dan W aksen; keduanya terletak di antara titik asal
+dan titik potong lingkaran dengan sumbu yang bersesuaian.}
+\caption{Teorema fungsi implisit untuk $f(x,y) = x^2+y^2-1$ pada $U=\R^2$ dan
+$(p,q)$ di kuadran pertama.\label{fig:implicitfunc}}
+\end{myfigureht}
+
+\begin{proof}
+Definisikan $F \colon U \to \R^{n+m}$ dengan $F(x,y) \coloneqq \bigl(x,f(x,y)\bigr)$.
+Jelas bahwa $F$ berkelas $C^1$, dan kita ingin menunjukkan bahwa turunannya
+di $(p,q)$ invertibel.
+Mari kita hitung turunannya.  Hasil bagi
+\begin{equation*}
+\frac{\bnorm{f(p+h,q+k) - f(p,q) - A_x h - A_y k}}{\bnorm{(h,k)}}
+\end{equation*}
+menuju nol ketika $\bnorm{(h,k)} = \sqrt{\snorm{h}^2+\snorm{k}^2}$ menuju nol.
+Karena itu, hasil bagi berikut juga menuju nol:
+\begin{multline*}
+\frac{\bnorm{F(p+h,q+k)-F(p,q) - (h,A_x h+A_y k)}}{\bnorm{(h,k)}}
+\\
+\begin{aligned}
+& =
+\frac{\bnorm{\bigl(h,f(p+h,q+k)-f(p,q)\bigr) - (h,A_x h+A_y
+k)}}{\bnorm{(h,k)}}
+\\
+& =
+\frac{\bnorm{f(p+h,q+k) - f(p,q) - A_x h - A_y k}}{\bnorm{(h,k)}} .
+\end{aligned}
+\end{multline*}
+Jadi, turunan $F$ di $(p,q)$ memetakan $(h,k)$ ke $(h,A_x h+A_y k)$.
+Dalam bentuk matriks blok, turunan tersebut adalah
+$\left[\begin{smallmatrix}I & 0\\A_x & A_y\end{smallmatrix}\right]$.  Jika 
+$(h,A_x h+A_y k) = (0,0)$, maka $h=0$, sehingga $A_y k = 0$.  Karena $A_y$
+injektif, $k=0$.  Dengan demikian, $F'(p,q)$ injektif, dan karena itu invertibel.
+Kita terapkan teorema fungsi invers.
+
+Dengan kata lain, terdapat himpunan terbuka $V \subset \R^{n+m}$ dengan
+$F(p,q) = (p,0) \in V$,
+serta pemetaan
+$G \colon V \to \R^{n+m}$ berkelas $C^1$, sedemikian sehingga $F\bigl(G(x,s)\bigr) = (x,s)$ untuk
+setiap $(x,s) \in V$, $G$ injektif, dan $G(V)$ merupakan himpunan terbuka yang termuat dalam $U$; pada
+$G(V)$, pemetaan $F$ dan $G$ saling invers. % (dengan $x \in \R^n$ dan $s \in \R^m$).
+Tuliskan $G = (G_1,G_2)$ (berturut-turut $n$ komponen pertama dan $m$ komponen berikutnya dari $G$).
+Maka
+\begin{equation*}
+F\bigl(G_1(x,s),G_2(x,s)\bigr) = \Bigl(G_1(x,s),f\bigl(G_1(x,s),G_2(x,s) \bigr)\Bigr)
+= (x,s) .
+\end{equation*}
+Jadi, $x = G_1(x,s)$ dan $f\bigl(G_1(x,s),G_2(x,s)\bigr) = f\bigl(x,G_2(x,s)\bigr) = s$.
+Untuk setiap $x$ sedemikian sehingga $(x,0) \in V$, dengan menyubstitusikan $s=0$ kita memperoleh
+\begin{equation*}
+f\bigl(x,G_2(x,0)\bigr) = 0 .
+\end{equation*}
+Karena himpunan $G(V)$ terbuka dan $(p,q) \in G(V)$,
+terdapat himpunan-himpunan terbuka
+$\widetilde{W}$ dan $W'$ sedemikian sehingga $\widetilde{W} \times W' \subset G(V)$, dengan $p
+\in \widetilde{W}$ dan
+$q \in W'$.  Karena $V$ terbuka dan $(p,0) \in V$, setelah memperkecil
+$\widetilde{W}$ jika perlu, kita juga dapat memastikan bahwa $(x,0) \in V$ untuk setiap
+$x \in \widetilde{W}$.
+Ambil $W \coloneqq \bigl\{ x \in \widetilde{W} : G_2(x,0) \in W' \bigr\}$.
+Fungsi yang memetakan $x$ ke $G_2(x,0)$ berkelas $C^1$ pada $\widetilde{W}$; karena
+$W'$ terbuka, $W$ terbuka.  Selain itu, $G(p,0)=(p,q)$; jadi $p \in W$.
+Karena $W \subset \widetilde{W}$, kita juga mempunyai $W \times W' \subset G(V) \subset U$.
+Definisikan
+$g \colon W \to W'$ dengan $g(x) \coloneqq G_2(x,0)$.  Fungsi ini berkelas $C^1$,
+$g(p)=q$, dan persamaan di atas memberikan $f\bigl(x,g(x)\bigr)=0$ untuk setiap $x \in W$.
+Jika $y \in W'$ juga memenuhi $f(x,y)=0$, maka
+$F(x,y)=(x,0)=F\bigl(x,g(x)\bigr)$.  Kedua titik yang menjadi argumen $F$ tersebut berada di $G(V)$,
+dan $F$ injektif pada $G(V)$; oleh karena itu, $y=g(x)$.
+
+Selanjutnya, diferensiasikan pemetaan
+\begin{equation*}
+x\mapsto f\bigl(x,g(x)\bigr)
+\end{equation*}
+di $p$.
+Pemetaan tersebut adalah pemetaan nol, sehingga turunannya nol.
+Dengan menggunakan aturan rantai,
+\begin{equation*}
+0 = A\bigl(h,g'(p)h\bigr) = A_xh + A_yg'(p)h
+\end{equation*}
+untuk setiap $h \in \R^{n}$,
+dan kita memperoleh turunan $g$ yang diinginkan.
+\end{proof}
+
+Dengan kata lain, dalam konteks teorema tersebut, kita mempunyai
+$m$ persamaan dengan $n+m$ peubah tak diketahui:
+\begin{align*}
+& f_1 (x_1,\ldots,x_n,y_1,\ldots,y_m) = 0 , \\
+& f_2 (x_1,\ldots,x_n,y_1,\ldots,y_m) = 0 , \\
+& \qquad \qquad \qquad  \vdots \\
+& f_m (x_1,\ldots,x_n,y_1,\ldots,y_m) = 0 .
+\end{align*}
+Teorema tersebut menjamin adanya solusi lokal di sekitar $(p,q)$ jika $f(p,q)=0$,
+$f=(f_1,f_2,\ldots,f_m)$ merupakan pemetaan berkelas $C^1$
+(komponen-komponennya berkelas $C^1$: turunan parsial terhadap semua variabel ada
+dan kontinu) dan matriks
+\begin{equation*}
+\begin{bmatrix}
+\frac{\partial f_1}{\partial y_1}
+&
+\frac{\partial f_1}{\partial y_2}
+& \ldots &
+\frac{\partial f_1}{\partial y_m}
+\\[6pt]
+\frac{\partial f_2}{\partial y_1}
+&
+\frac{\partial f_2}{\partial y_2}
+& \ldots &
+\frac{\partial f_2}{\partial y_m}
+\\
+\vdots & \vdots & \ddots & \vdots
+\\
+\frac{\partial f_m}{\partial y_1}
+&
+\frac{\partial f_m}{\partial y_2}
+& \ldots &
+\frac{\partial f_m}{\partial y_m}
+\end{bmatrix}
+\end{equation*}
+invertibel di $(p,q)$.
+
+\begin{example}
+Tinjau himpunan yang diberikan oleh $x^2+y^2-{(z+1)}^3 = -1$ dan $e^x+e^y+e^z = 3$
+di sekitar titik $(0,0,0)$.
+Himpunan ini merupakan himpunan nol dari pemetaan
+\begin{equation*}
+f(x,y,z) = \bigl(x^2+y^2-{(z+1)}^3+1,e^x+e^y+e^z-3\bigr) ,
+\end{equation*}
+yang turunannya adalah
+\begin{equation*}
+f' =
+\begin{bmatrix}
+2x & 2y & -3{(z+1)}^2 \\
+e^x & e^y & e^z
+\end{bmatrix} .
+\end{equation*}
+Matriks
+\begin{equation*}
+\begin{bmatrix}
+2(0) & -3{(0+1)}^2 \\
+e^0 & e^0
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & -3 \\
+1 & 1
+\end{bmatrix}
+\end{equation*}
+bersifat invertibel.  Oleh karena itu, di sekitar $(0,0,0)$ kita dapat menyatakan $y$ dan $z$
+masing-masing sebagai fungsi berkelas $C^1$ dari $x$ sedemikian sehingga, untuk $x$ di sekitar $0$,
+\begin{equation*}
+x^2+y(x)^2-{\bigl(z(x)+1\bigr)}^3 = -1,
+\qquad
+e^x+e^{y(x)}+e^{z(x)} = 3 .
+\end{equation*}
+Dengan kata lain, di sekitar titik asal, himpunan solusi merupakan
+kurva mulus di $\R^3$ yang melalui titik asal.
+Teorema tersebut tidak memberi tahu kita cara menemukan $y(x)$ dan $z(x)$ secara eksplisit;
+teorema itu hanya menjamin bahwa kedua fungsi tersebut ada.
+\end{example}
+
+Pengamatan yang menarik dan terkadang berguna dari pembuktian tersebut adalah bahwa kita sebenarnya menyelesaikan persamaan
+$f\bigl(x,G_2(x,s)\bigr) = s$ untuk setiap $(x,s)$ dalam suatu lingkungan dari $(p,0)$, bukan hanya
+untuk $s=0$.
+
+\begin{remark}
+Terdapat versi teorema tersebut untuk tingkat keterdiferensialan sebarang:
+Jika $f$ memiliki turunan kontinu hingga orde $k$ (lihat bagian berikutnya), maka solusinya juga memiliki
+turunan kontinu hingga orde $k$.
+\end{remark}
+
+
+\subsection{Latihan}
+
+\begin{exercise}
+Misalkan $C \coloneqq \bigl\{ (x,y) \in \R^2 : x^2+y^2 = 1 \bigr\}$.
+\begin{enumerate}[a)]
+\item
+Nyatakan $y$ sebagai fungsi dari $x$ di sekitar $(0,1)$ (yaitu, carilah fungsi $g$
+dari teorema fungsi implisit untuk suatu lingkungan dari titik $(p,q) = (0,1)$).
+\item
+Nyatakan $y$ sebagai fungsi dari $x$ di sekitar $(0,-1)$.
+\item
+Nyatakan $x$ sebagai fungsi dari $y$ di sekitar $(-1,0)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Definisikan $f \colon \R^2 \to \R^2$ dengan $f(x,y) \coloneqq
+\bigl(x,y+h(x)\bigr)$ untuk suatu fungsi $h \colon \R \to \R$ yang diferensiabel
+secara kontinu.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $f$ injektif dan surjektif.
+\item
+Hitung $f'$.  (Pastikan Anda menjelaskan mengapa $f'$ ada.)
+\item
+Tunjukkan bahwa $f'$ invertibel di setiap titik dan hitung
+${\bigl(f'(x,y)\bigr)}^{-1}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Definisikan $f \colon \R^2 \to \R^2 \setminus \bigl\{ (0,0) \bigr\}$ dengan
+$f(x,y) \coloneqq \bigl(e^x\cos(y),e^x\sin(y)\bigr)$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $f$ surjektif.
+\item
+Tunjukkan bahwa $f'$ invertibel di setiap titik.
+\item
+Tunjukkan bahwa $f$ tidak injektif; bahkan, untuk setiap $(a,b) \in \R^2
+\setminus \bigl\{ (0,0) \bigr\}$,
+terdapat tak berhingga banyak titik berbeda $(x,y) \in \R^2$ sedemikian sehingga 
+$f(x,y) = (a,b)$.
+\end{enumerate}
+Oleh karena itu, turunan yang invertibel di setiap titik tidak berarti bahwa
+$f$ invertibel secara global.\\
+Catatan: Silakan gunakan pengetahuan Anda tentang sinus dan kosinus dari kalkulus.
+\end{exercise}
+
+\begin{exercise}
+Carilah pemetaan $f \colon \R^n \to \R^n$ yang injektif, surjektif,
+dan diferensiabel secara kontinu, tetapi $f'(0) = 0$.  Petunjuk: Generalisasikan $f(x) = x^3$ dari satu
+dimensi ke $n$ dimensi.
+\end{exercise}
+
+\begin{exercise}
+Tinjau $z^2 + xz + y =0$ di $\R^3$.  Carilah ekspresi $D(x,y)$ sedemikian sehingga,
+jika $D(x_0,y_0) \neq 0$ dan $z^2+x_0z+y_0 = 0$ untuk suatu $z \in \R$,
+maka pada suatu lingkungan dari $(x_0,y_0)$ terdapat
+tepat dua fungsi berbeda $r_1(x,y)$
+dan $r_2(x,y)$ yang diferensiabel secara kontinu, sedemikian sehingga kedua nilai
+$z=r_1(x,y)$ dan $z=r_2(x,y)$ merupakan solusi dari $z^2 + xz + y =0$.
+Apakah Anda mengenali bentuk $D$ dari aljabar?
+\end{exercise}
+
+
+\begin{exercise}
+Andaikan $f \colon (a,b) \to \R^2$ diferensiabel secara kontinu dan
+komponen pertama (komponen $x$) dari $f'(t)$ tidak sama dengan 0
+untuk setiap $t \in (a,b)$.
+Buktikan bahwa terdapat interval terbuka $I \subset \R$ dan
+fungsi $g \colon I \to \R$ yang diferensiabel secara kontinu
+sedemikian sehingga 
+$(x,y) \in f\bigl((a,b)\bigr)$ jika dan hanya jika $x \in I$ dan $y=g(x)$.
+Dengan kata lain, himpunan
+$f\bigl((a,b)\bigr)$ merupakan grafik dari $g$.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Definisikan $f \colon \R^2 \to \R^2$ dengan
+\begin{equation*}
+f(x,y) \coloneqq
+\begin{cases}
+\bigl(x^2 \sin (\nicefrac{1}{x}) + \nicefrac{x}{2} , y \bigr) &
+ \text{jika } x \neq 0, \\
+(0,y) &
+ \text{jika } x=0.
+\end{cases}
+\end{equation*}
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $f$ diferensiabel di setiap titik.
+\item
+Tunjukkan bahwa $f'(0,0)$ invertibel.
+\item
+Tunjukkan bahwa $f$ tidak injektif pada lingkungan mana pun dari titik asal (fungsi ini
+tidak invertibel secara lokal; dengan kata lain, kesimpulan teorema fungsi invers tidak berlaku).
+\item
+Tunjukkan bahwa $f$ tidak diferensiabel secara kontinu.
+\end{enumerate}
+Catatan: Silakan gunakan pengetahuan Anda tentang sinus dan kosinus dari kalkulus.
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}[Koordinat polar] \label{mv:exercise:polarcoordinates}
+\index{koordinat polar}
+Definisikan pemetaan $F(r,\theta) \coloneqq \bigl(r \cos(\theta), r \sin(\theta) \bigr)$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $F$ diferensiabel secara kontinu (untuk setiap $(r,\theta) \in
+\R^2$).
+\item
+Hitung $F'(0,\theta)$ untuk setiap $\theta$.
+\item
+Tunjukkan bahwa jika $r \neq 0$, maka $F'(r,\theta)$ invertibel; oleh karena itu,
+$F$ memiliki invers lokal di sekitar setiap titik dengan $r \neq 0$.
+\item
+Tunjukkan bahwa $F \colon \R^2 \to \R^2$ surjektif dan, untuk setiap titik $(x,y) \in
+\R^2$, himpunan $F^{-1}(x,y)$ tak berhingga.
+\item
+Tunjukkan bahwa $F \colon \R^2 \to \R^2$ bukan pemetaan terbuka.
+Perhatikan bahwa $F|_{(0,\infty) \times \R}$ merupakan pemetaan terbuka
+menurut \corref{cor:IVTopenmap}.
+Petunjuk: Ke manakah
+persegi panjang terbuka kecil seperti $(-\epsilon,\epsilon) \times
+(-\epsilon,\epsilon)$ dipetakan?
+\item
+Tunjukkan bahwa $F|_{(0,\infty) \times [0,2\pi)}$ merupakan bijeksi ke
+$\R^2 \setminus \bigl\{ (0,0) \bigr\}$.
+\end{enumerate}
+Catatan: Silakan gunakan pengetahuan Anda tentang sinus dan kosinus dari kalkulus.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $H \coloneqq \bigl\{ (x,y) \in \R^2 : y > 0 \bigr\}$, dan untuk $(x,y) \in H$
+definisikan
+\begin{equation*}
+F(x,y) \coloneqq \left(
+\frac{x^2+y^2-1}{x^2+2y+y^2+1}
+,~
+\frac{-2x}{x^2+2y+y^2+1}
+\right) .
+\end{equation*}
+Buktikan bahwa $F$ merupakan pemetaan bijektif dari $H$ ke $B(0,1)$, bahwa $F$
+diferensiabel secara kontinu pada $H$, dan bahwa inversnya juga diferensiabel
+secara kontinu.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $U \subset \R^2$ terbuka dan $f \colon U \to \R$ adalah
+fungsi berkelas $C^1$ sedemikian
+sehingga $\nabla f(x,y) \neq 0$ untuk setiap $(x,y) \in U$.  Tunjukkan bahwa setiap
+himpunan level tak kosong merupakan kurva reguler berkelas $C^1$ secara lokal.  Dengan kata lain,
+untuk setiap $(x,y) \in U$, terdapat $\delta > 0$, lingkungan terbuka $V \subset U$ dari $(x,y)$,
+dan fungsi $\gamma \colon (-\delta,\delta) \to V$ berkelas $C^1$ dengan
+$\gamma(0)=(x,y)$ serta $\gamma'(t) \neq 0$ untuk setiap $t \in (-\delta,\delta)$, sedemikian sehingga
+$\gamma\bigl((-\delta,\delta)\bigr)
+= \bigl\{(u,v) \in V : f(u,v)=f(x,y)\bigr\}$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $U \subset \R^2$ terbuka dan $f \colon U \to \R$ adalah
+fungsi berkelas $C^1$ sedemikian
+sehingga $\nabla f(x,y) \neq 0$ untuk setiap $(x,y) \in U$.
+Tunjukkan bahwa untuk setiap $(x,y) \in U$ terdapat lingkungan terbuka $V \subset U$ dari $(x,y)$,
+himpunan terbuka $W \subset \R^2$, serta fungsi bijektif berkelas $C^1$
+$g \colon W \to V$ yang inversnya berkelas $C^1$, sedemikian sehingga
+himpunan-himpunan level dari $f \circ g$ merupakan garis-garis horizontal di $W$; yaitu, untuk setiap
+$c \in (f \circ g)(W)$ terdapat $t_0=t_0(c)$ sedemikian sehingga
+$\bigl\{(s,t) \in W : (f \circ g)(s,t)=c\bigr\}
+=\bigl\{ (s,t_0) \in \R^2 : s \in \R, (s,t_0) \in W \bigr\}$.
+Dengan kata lain, kurva-kurva level dapat \myquote{diluruskan} secara lokal.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Turunan berorde lebih tinggi}
+\label{sec:mvhighordders}
+
+\sectionnotes{kurang dari satu sesi kuliah, opsional, lihat juga bagian opsional
+\volIref{\sectionref*{vI-sec:taylor} dalam jilid I}{\sectionref{sec:taylor}}}
+
+Misalkan $U \subset \R^n$ himpunan terbuka dan $f \colon U \to \R$ suatu fungsi.
+Tuliskan koordinat sebagai $x = (x_1,x_2,\ldots,x_n) \in \R^n$.
+Jika $\frac{\partial f}{\partial x_{\ell}}$ ada di setiap titik dalam $U$,
+maka turunan tersebut juga merupakan fungsi $\frac{\partial f}{\partial x_{\ell}}
+\colon U \to \R$.  Oleh karena itu, kita dapat membicarakan turunan
+parsialnya.  Kita menyatakan 
+turunan parsial $\frac{\partial f}{\partial x_{\ell}}$ terhadap
+$x_m$ dengan\glsadd{not:multivarpartder}
+\begin{equation*}
+\frac{\partial^2 f}{\partial x_m \partial x_{\ell}}
+\coloneqq
+\frac{\partial \Bigl( \frac{\partial f}{\partial x_{\ell}} \Bigr)}{\partial x_m} .
+\end{equation*}
+Jika $m={\ell}$, agar lebih ringkas kita menuliskan 
+$\frac{\partial^2 f}{\partial x_{\ell}^2}$.
+
+Kita mendefinisikan turunan berorde lebih tinggi secara induktif.
+Untuk suatu bilangan bulat $k \geq 2$, andaikan ${\ell}_1,{\ell}_2,\ldots,{\ell}_k$ adalah bilangan bulat antara $1$ dan $n$, dan
+andaikan 
+\begin{equation*}
+\frac{\partial^{k-1} f}{\partial x_{{\ell}_{k-1}} \partial x_{{\ell}_{k-2}}
+\cdots \partial x_{{\ell}_1}}
+\end{equation*}
+ada dan dapat diturunkan terhadap peubah $x_{{\ell}_{k}}$.
+Maka turunan parsial terhadap peubah tersebut dinyatakan dengan
+\begin{equation*}
+\frac{\partial^{k} f}{\partial x_{{\ell}_{k}} \partial x_{{\ell}_{k-1}}
+\cdots \partial x_{{\ell}_1}}
+\coloneqq 
+\frac{\partial \Bigl( \frac{\partial^{k-1} f}{\partial x_{{\ell}_{k-1}} \partial
+x_{{\ell}_{k-2}} \cdots \partial x_{{\ell}_1}} \Bigr)}{\partial x_{{\ell}_{k}}} .
+\end{equation*}
+Turunan semacam itu disebut
+\emph{\myindex{turunan parsial orde $k$}}.
+
+Terkadang notasi $f_{x_{\ell} x_m}$\glsadd{not:subpartder} digunakan untuk
+$\frac{\partial^2 f}{\partial x_m \partial x_{\ell}}$.  Dibandingkan dengan notasi pecahan,
+notasi subskrip ini menuliskan urutan variabel diferensiasi secara terbalik, dan hal itu dapat menjadi penting.
+
+\begin{defn}
+Untuk suatu bilangan bulat positif $k$, andaikan $U \subset \R^n$ himpunan terbuka dan
+$f \colon U \to \R$ suatu fungsi.  Kita mengatakan bahwa $f$ adalah
+\emph{fungsi yang diferensiabel secara kontinu hingga orde $k$}%
+\index{fungsi yang diferensiabel secara kontinu hingga orde k@diferensiabel secara kontinu hingga orde $k$}\index{diferensiabel secara kontinu},
+atau fungsi berkelas $C^k$\glsadd{not:Ck}, jika semua turunan parsial untuk setiap orde
+sampai dengan orde $k$ ada dan kontinu.
+\end{defn}
+
+Jadi, fungsi yang diferensiabel secara kontinu, atau berkelas $C^1$, adalah fungsi yang memiliki semua
+turunan parsial orde pertamanya
+ada dan kontinu; berdasarkan \propref{mv:prop:contdiffpartials}, hal ini sesuai dengan
+definisi kita sebelumnya.  Sebenarnya, kita
+dapat mensyaratkan hanya bahwa semua turunan parsial tepat berorde $k$ ada dan
+kontinu.
+Keberadaan turunan parsial berorde lebih rendah jelas
+diperlukan bahkan untuk mendefinisikan turunan parsial orde $k$.
+Hal ini mengikuti secara rekursif: setiap turunan orde $j<k$ memiliki turunan parsial orde pertama
+berupa turunan orde $j+1$, yang telah diketahui kontinu.
+
+Jika turunan-turunan parsial kontinu, kita dapat menukar urutan diferensiasi parsial.
+
+\begin{prop} \label{mv:prop:swapders}
+Andaikan $U \subset \R^n$ terbuka dan $f \colon U \to \R$ fungsi berkelas $C^2$,
+serta $\ell$ dan $m$ bilangan bulat antara $1$ dan $n$.  Maka
+\begin{equation*}
+\frac{\partial^2 f}{\partial x_m \partial x_{\ell}}
+=
+\frac{\partial^2 f}{\partial x_{\ell} \partial x_m} .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Jika $\ell=m$, kesimpulannya langsung.  Jadi, andaikan $\ell \neq m$.
+Tetapkan $p \in U$, dan misalkan $e_{\ell}$ serta $e_m$ adalah vektor basis standar.
+Pilih dua bilangan positif $s$ dan $t$ yang cukup kecil sehingga
+$p+s_0e_{\ell} +t_0e_m \in U$ apabila
+$0 \leq s_0 \leq s$ dan $0 \leq t_0 \leq t$.
+Setiap $s$ dan $t$ yang cukup kecil memenuhi syarat ini karena $U$ terbuka, sehingga
+memuat bola terbuka kecil (atau kotak terbuka, jika Anda mau) di sekitar $p$.
+
+Terapkan teorema nilai rata-rata pada fungsi
+\begin{equation*}
+\tau \mapsto f(p+se_{\ell} + \tau e_m)-f(p + \tau e_m) ,
+\end{equation*}
+pada interval $[0,t]$
+untuk memperoleh $t_0 \in (0,t)$
+sedemikian sehingga
+\begin{equation*}
+%mbxlatex \begin{aligned}
+%mbxlatex &
+\frac{f(p+se_{\ell} + te_m)- f(p+t e_m) - f(p+s e_{\ell})+f(p)}{t}
+%mbxlatex \\
+%mbxlatex & \qquad \qquad \qquad \qquad
+=
+\frac{\partial f}{\partial x_m}(p + s e_{\ell} + t_0 e_m)
+-
+\frac{\partial f}{\partial x_m}(p + t_0 e_m) .
+%mbxlatex \end{aligned}
+\end{equation*}
+Dengan cara serupa, terdapat bilangan $s_0 \in (0,s)$ sedemikian sehingga
+\begin{equation*}
+\frac{\frac{\partial f}{\partial x_m}(p + s e_{\ell} + t_0 e_m)
+-
+\frac{\partial f}{\partial x_m}(p + t_0 e_m)}{s}
+=
+\frac{\partial^2 f}{\partial x_{\ell} \partial x_m}(p + s_0 e_{\ell} + t_0 e_m) .
+\end{equation*}
+Dengan kata lain,
+\begin{equation*}
+%mbxlatex \begin{aligned}
+g(s,t)
+%mbxlatex &
+\coloneqq
+\frac{f(p+se_{\ell} + te_m)- f(p+t e_m) - f(p+s e_{\ell})+f(p)}{st}
+%mbxlatex \\
+%mbxlatex &
+=
+\frac{\partial^2 f}{\partial x_{\ell} \partial x_m}(p + s_0 e_{\ell} + t_0 e_m) .
+%mbxlatex \end{aligned}
+\end{equation*}
+
+\begin{myfigureht}
+\myincludepdft{der2orderflip}{%
+Diagram pada sebuah bidang
+dengan titik p yang ditandai.
+Panah horizontal ke kanan berlabel e subskrip el,
+dan panah vertikal ke atas berlabel e subskrip m.
+Titik p ditambah s kali e subskrip el ditandai
+pada panah horizontal.
+Pada panah vertikal terdapat titik
+p ditambah t kali e subskrip m dan, di bawahnya,
+titik 
+p ditambah t subskrip nol kali e subskrip m.
+Di atas p ditambah s kali e subskrip el dan di sebelah kanan p ditambah t kali e subskrip m
+terdapat titik p ditambah s kali e subskrip el ditambah t kali e subskrip m.
+Di atas p ditambah s kali e subskrip el dan di sebelah kanan p ditambah t subskrip nol kali e subskrip m
+terdapat titik p ditambah s kali e subskrip el ditambah t subskrip nol kali e subskrip m.
+Terakhir, di antara titik
+p ditambah t subskrip nol kali e subskrip m dan
+p ditambah s kali e subskrip el ditambah t subskrip nol kali e subskrip m
+terdapat titik
+p ditambah s subskrip nol kali e subskrip el ditambah t subskrip nol kali e subskrip m.}
+\caption{Menggunakan teorema nilai rata-rata untuk menaksir
+turunan parsial orde kedua dengan
+suatu hasil bagi selisih.\label{fig:der2orderflip}}
+\end{myfigureht}
+
+Lihat \figureref{fig:der2orderflip}.
+Nilai $s_0$ dan $t_0$ bergantung pada $s$ dan $t$,
+tetapi $0 < s_0 < s$ dan
+$0 < t_0 < t$.
+Ambil himpunan $(0,\epsilon) \times
+(0,\epsilon)$ sebagai domain fungsi $g$, untuk suatu $\epsilon > 0$ yang kecil.
+Ketika $(s,t) \in (0,\epsilon) \times (0,\epsilon)$ menuju $(0,0)$,
+titik
+$(s_0,t_0)$ juga menuju $(0,0)$.
+Berdasarkan kekontinuan turunan parsial orde kedua,
+\begin{equation*}
+\lim_{(s,t) \to (0,0)} g(s,t) = 
+\frac{\partial^2 f}{\partial x_{\ell} \partial x_m}(p) .
+\end{equation*}
+
+Sekarang pertukarkan peran $s$ dan $t$ (serta $\ell$ dan $m$).
+Terapkan teorema nilai rata-rata pada
+fungsi $\sigma \mapsto f(p+\sigma e_{\ell} + te_m)-f(p + \sigma
+e_{\ell})$ untuk
+memperoleh $s_1 \in (0,s)$ sedemikian sehingga
+\begin{equation*}
+%mbxlatex \begin{aligned}
+%mbxlatex &
+\frac{f(p+ se_{\ell} + te_m )- f(p+s e_{\ell}) - f(p+t e_m)+f(p)}{s}
+%mbxlatex \\
+%mbxlatex & \qquad \qquad \qquad \qquad
+=
+\frac{\partial f}{\partial x_{\ell}}(p + s_1 e_{\ell} + t e_m)
+-
+\frac{\partial f}{\partial x_{\ell}}(p + s_1 e_{\ell}) .
+%mbxlatex \end{aligned}
+\end{equation*}
+Dengan menerapkan teorema nilai rata-rata sekali lagi, terdapat $t_1 \in (0,t)$ sedemikian sehingga
+\begin{equation*}
+\frac{\frac{\partial f}{\partial x_{\ell}}(p + s_1 e_{\ell} + t e_m)
+-
+\frac{\partial f}{\partial x_{\ell}}(p + s_1 e_{\ell})}{t}
+=
+\frac{\partial^2 f}{\partial x_m \partial x_{\ell}}(p + s_1 e_{\ell} + t_1 e_m) .
+\end{equation*}
+Jadi, $g(s,t) = \frac{\partial^2 f}{\partial x_m \partial
+x_{\ell}}(p + s_1 e_{\ell} + t_1 e_m)$ untuk fungsi $g$ yang sama seperti di atas.
+Seperti sebelumnya,
+\begin{equation*}
+\lim_{(s,t) \to (0,0)} g(s,t) = 
+\frac{\partial^2 f}{\partial x_m \partial x_{\ell}}(p) .
+\end{equation*}
+Oleh karena itu, kedua turunan parsial tersebut sama.
+\end{proof}
+
+Kesimpulan proposisi tersebut tidak selalu berlaku tanpa asumsi bahwa kedua turunan parsial campuran
+yang bersangkutan kontinu.  Lihat \exerciseref{exercise:mixedpartialsunequal}.
+Perhatikan juga bahwa kita sebenarnya tidak memerlukan fungsi berkelas $C^2$---kita hanya memerlukan
+kedua turunan parsial orde kedua yang terlibat bersifat kontinu.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Andaikan $f \colon U \to \R$ fungsi berkelas $C^2$ untuk suatu himpunan terbuka $U \subset
+\R^n$ dan $p \in U$, serta misalkan $\ell,m \in \{1,\ldots,n\}$.
+Gunakan pembuktian \propref{mv:prop:swapders} untuk mencari suatu ekspresi
+yang hanya memuat nilai-nilai $f$ (padanan hasil bagi selisih
+untuk turunan pertama), yang limitnya adalah
+$\frac{\partial^2 f}{ \partial x_{\ell} \partial x_m}(p)$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:mixedpartialsunequal}
+Definisikan
+\begin{equation*}
+f(x,y) \coloneqq
+\begin{cases}
+\frac{xy(x^2-y^2)}{x^2+y^2} & \text{jika } (x,y) \neq (0,0),\\
+0                           & \text{jika } (x,y) = (0,0).
+\end{cases}
+\end{equation*}
+Tunjukkan bahwa
+\begin{enumerate}[a)]
+\item
+Semua turunan parsial orde pertama ada dan kontinu.
+\item
+Turunan parsial
+$\frac{\partial^2 f}{\partial x \partial y}$ dan
+$\frac{\partial^2 f}{\partial y \partial x}$ ada, tetapi tidak kontinu
+di $(0,0)$, dan
+$\frac{\partial^2 f}{\partial x \partial y}(0,0) \neq 
+\frac{\partial^2 f}{\partial y \partial x}(0,0)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Untuk suatu bilangan bulat positif $k$, misalkan $f \colon U \to \R$ fungsi berkelas $C^k$ untuk suatu himpunan terbuka $U \subset \R^n$
+dan $p \in U$.
+Andaikan ${\ell}_1,{\ell}_2,\ldots,{\ell}_k$ bilangan bulat antara $1$
+dan $n$, serta $\sigma=(\sigma_1,\sigma_2,\ldots,\sigma_k)$ suatu
+permutasi dari $(1,2,\ldots,k)$.  Buktikan bahwa
+\begin{equation*}
+\frac{\partial^{k} f}{\partial x_{{\ell}_{k}} \partial x_{{\ell}_{k-1}}
+\cdots \partial x_{{\ell}_1}} (p)
+=
+\frac{\partial^{k} f}{\partial x_{{\ell}_{\sigma_k}} \partial
+x_{{\ell}_{\sigma_{k-1}}}
+\cdots \partial x_{{\ell}_{\sigma_1}}} (p) .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Untuk suatu bilangan bulat positif $k$, andaikan $\varphi \colon \R^2 \to \R$ fungsi berkelas $C^k$
+sedemikian sehingga
+$\varphi(0,\theta) = \varphi(0,\psi)$ untuk setiap $\theta,\psi \in \R$,
+serta
+$\varphi(r,\theta) = \varphi(r,\theta+2\pi)$
+dan
+$\varphi(r,\theta) = \varphi(-r,\theta+\pi)$
+untuk setiap $r,\theta \in \R$.
+Misalkan $F(r,\theta) \coloneqq \bigl(r \cos(\theta), r \sin(\theta) \bigr)$ dari 
+\exerciseref{mv:exercise:polarcoordinates}.  Tunjukkan bahwa fungsi
+$g \colon \R^2 \to \R$ yang, untuk setiap $(x,y) \in \R^2$, didefinisikan dengan memilih sembarang
+$(r,\theta) \in F^{-1}\bigl(\{(x,y)\}\bigr)$ dan menetapkan
+$g(x,y) \coloneqq \varphi(r,\theta)$ terdefinisi dengan baik (perhatikan bahwa
+cabang invers lokal untuk $F$ hanya tersedia di sekitar titik-titik tak nol), dan bahwa
+pembatasannya pada $\R^2 \setminus \bigl\{ (0,0) \bigr\}$ merupakan fungsi berkelas $C^k$.
+\\
+Catatan: Anda boleh menggunakan pengetahuan Anda tentang sinus dan kosinus dari kalkulus.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon \R^2 \to \R$ fungsi berkelas $C^2$.
+Untuk setiap $(x,y) \in \R^2$, hitung
+\begin{equation*}
+\lim_{t \to 0}
+\frac{f(x+t,y)+f(x-t,y)+f(x,y+t)+f(x,y-t) - 4f(x,y)}{t^2}
+\end{equation*}
+Nyatakan limit tersebut dalam bentuk turunan-turunan parsial $f$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon \R^2 \to \R$ fungsi sedemikian sehingga
+semua turunan parsial orde pertama dan kedua ada.  Selain itu,
+andaikan semua turunan parsial orde kedua merupakan fungsi terbatas.
+Buktikan bahwa $f$ diferensiabel secara kontinu.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Ikuti strategi di bawah ini untuk
+membuktikan versi sederhana berikut dari uji turunan kedua bagi
+fungsi yang didefinisikan pada $\R^2$ (dengan menggunakan $(x,y)$ sebagai koordinat):  \emph{Andaikan $f \colon \R^2
+\to \R$ fungsi berkelas $C^2$ dengan
+titik kritis di titik asal, $f'(0,0) = 0$.  Jika
+\begin{equation*}
+\frac{\partial^2 f}{\partial x^2} (0,0) > 0 \qquad \text{dan} \qquad
+\frac{\partial^2 f}{\partial x^2} (0,0) \frac{\partial^2 f}{\partial y^2}
+(0,0) -
+{\left(\frac{\partial^2 f}{\partial x \partial y} (0,0) \right)}^2 > 0 ,
+\end{equation*}
+maka $f$ mencapai minimum lokal ketat pada $(0,0)$.}
+Gunakan teknik berikut:  Pertama, tanpa mengurangi keumuman, andaikan
+bahwa $f(0,0) = 0$.  Kemudian buktikan:
+\begin{enumerate}[a)]
+\item
+Terdapat $A \in L(\R^2)$ yang invertibel sedemikian sehingga $g = f \circ A$
+memenuhi $\frac{\partial^2 g}{\partial x \partial y} (0,0) = 0$, dan
+$\frac{\partial^2 g}{\partial x^2} (0,0) =
+\frac{\partial^2 g}{\partial y^2} (0,0) = 2$.
+\item
+Untuk setiap $\epsilon > 0$, terdapat $\delta > 0$
+sedemikian sehingga 
+$\babs{g(x,y) - (x^2 + y^2)} \leq \epsilon (x^2+y^2)$ untuk setiap
+$(x,y) \in B\bigl((0,0),\delta\bigr)$.\\
+Petunjuk: Anda dapat menggunakan teorema Taylor satu peubah.
+\item
+Ini berarti bahwa $g$, dan karena itu $f$, mencapai minimum lokal
+ketat pada $(0,0)$.
+\end{enumerate}
+Catatan: Anda harus menghindari godaan untuk sekadar
+menerapkan uji turunan kedua satu variabel sepanjang garis-garis yang melalui
+titik asal; lihat \exerciseref{exercise:peano}.
+\end{exercise}
+\end{samepage}

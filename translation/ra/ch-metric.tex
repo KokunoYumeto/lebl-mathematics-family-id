@@ -1,0 +1,3786 @@
+\chapter{Ruang Metrik} \label{ms:chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ruang metrik}
+\label{sec:metric}
+
+\sectionnotes{1,5 kuliah}
+
+Seperti disebutkan dalam pendahuluan, gagasan utama dalam analisis adalah
+menentukan limit.  Dalam \chapterref{seq:chapter}, kita mempelajari limit
+barisan bilangan real.  Dalam \chapterref{lim:chapter}, kita mempelajari limit
+fungsi ketika suatu variabel real mendekati bilangan real tertentu.
+
+Kita ingin menentukan limit dalam konteks yang lebih rumit.  Sebagai
+contoh, kita ingin membahas barisan titik dalam ruang berdimensi 3.
+Kita ingin mendefinisikan fungsi kontinu dengan beberapa variabel.
+Kita bahkan ingin mendefinisikan fungsi pada ruang yang agak lebih sulit
+dideskripsikan, seperti permukaan bumi.  Di sana pun kita tetap ingin
+membahas limit.
+
+Terakhir, dalam \chapterref{fs:chapter} kita telah melihat limit suatu
+barisan fungsi.
+Kita ingin menyatukan semua pengertian ini agar tidak perlu
+membuktikan ulang teorema demi teorema dalam setiap konteks.  Konsep
+ruang metrik merupakan alat dasar yang ampuh dalam analisis.
+Meskipun tidak memadai untuk mendeskripsikan setiap jenis limit yang
+dijumpai dalam analisis modern, konsep ini membawa kita sangat jauh.
+
+\begin{defn}
+Misalkan $X$ suatu himpunan, dan misalkan
+$d \colon X \times X \to \R$
+suatu fungsi sedemikian sehingga untuk semua $x,y,z \in X$ berlaku
+\begin{enumerate}[(i)]
+%
+\item \label{metric:pos}
+%mbxSTARTIGNORE
+\makebox[2.8in][l]{$d(x,y) \geq 0$.}
+%mbxENDIGNORE
+%mbxlatex $d(x,y) \geq 0$. \qquad
+(\emph{sifat taknegatif})\index{sifat taknegatif metrik}
+%
+\item \label{metric:zero}
+%mbxSTARTIGNORE
+\makebox[2.8in][l]{$d(x,y) = 0$ jika dan hanya jika $x = y$.}
+%mbxENDIGNORE
+%mbxlatex $d(x,y) = 0$ jika dan hanya jika $x = y$. \qquad
+(\emph{\myindex{identitas unsur yang tak terbedakan}})
+%
+\item \label{metric:com}
+%mbxSTARTIGNORE
+\makebox[2.8in][l]{$d(x,y) = d(y,x)$.} 
+%mbxENDIGNORE
+%mbxlatex $d(x,y) = d(y,x)$. \qquad
+(\emph{simetri})\index{simetri metrik}
+%
+\item \label{metric:triang}
+%mbxSTARTIGNORE
+\makebox[2.8in][l]{$d(x,z) \leq d(x,y)+ d(y,z)$.}
+%mbxENDIGNORE
+%mbxlatex $d(x,z) \leq d(x,y)+ d(y,z)$. \qquad
+(\emph{\myindex{ketaksamaan segitiga}})
+\end{enumerate}
+Pasangan $(X,d)$ disebut \emph{\myindex{ruang metrik}}.  Fungsi $d$
+disebut \emph{\myindex{metrik}} atau \emph{\myindex{fungsi jarak}}.
+Jika metriknya jelas dari konteks, terkadang kita cukup menulis $X$
+sebagai ruang metrik alih-alih $(X,d)$.
+\end{defn}
+
+Secara geometris, $d$ adalah jarak antara dua titik.
+Butir \ref{metric:pos}--\ref{metric:com} memiliki tafsiran geometris yang
+jelas: Jarak selalu taknegatif, satu-satunya titik yang berjarak 0 dari
+$x$ adalah $x$ itu sendiri, dan akhirnya jarak dari $x$ ke $y$ sama dengan
+jarak dari $y$ ke $x$.  Ketaksamaan segitiga \ref{metric:triang}
+memiliki tafsiran yang diberikan dalam
+\figureref{fig:mstriang}.
+\begin{myfigureht}
+\myincludepdft{ms-triang}{%
+Segitiga dengan tiga titik sudut x, y, dan z.
+Jarak antara x dan z ditandai sebagai
+d dari x koma z, jarak dari x ke y
+ditandai sebagai d dari x koma y, dan jarak
+dari y ke z ditandai sebagai d dari y koma z.
+Panah dari x ke z berlabel ``lebih pendek'', sedangkan
+panah yang bergerak dari x ke y lalu berbelok ke z
+berlabel ``lebih panjang''.}
+\caption{Diagram ketaksamaan segitiga dalam ruang metrik.\label{fig:mstriang}}
+\end{myfigureht}
+
+Untuk keperluan ilustrasi, akan lebih mudah jika gambar dan diagram dibuat
+pada bidang dengan jarak Euklides sebagai metrik.  Namun, itu hanyalah
+satu contoh khusus ruang metrik.  Fakta bahwa suatu pernyataan tampak
+jelas dari sebuah gambar tidak berarti bahwa pernyataan itu benar dalam
+setiap ruang metrik.  Intuisi dari geometri Euklides dapat menyesatkan
+kita, padahal konsep ruang metrik jauh lebih umum.
+
+Berikut beberapa contoh ruang metrik.
+
+\begin{example}
+Himpunan bilangan real $\R$ merupakan ruang metrik dengan metrik
+\begin{equation*}
+d(x,y) \coloneqq \sabs{x-y} .
+\end{equation*}
+Butir \ref{metric:pos}--\ref{metric:com} dalam definisi tersebut
+mudah diperiksa.  Ketaksamaan segitiga \ref{metric:triang} langsung
+mengikuti ketaksamaan segitiga biasa untuk bilangan real:
+\begin{equation*}
+d(x,z) = \sabs{x-z} = 
+\sabs{x-y+y-z} \leq
+\sabs{x-y}+\sabs{y-z} =
+d(x,y)+ d(y,z) .
+\end{equation*}
+Metrik ini adalah \emph{\myindex{metrik standar pada $\R$}}.  Jika kita
+membahas $\R$ sebagai ruang metrik tanpa menyebut metrik tertentu,
+yang dimaksud adalah metrik ini.
+\end{example}
+
+\begin{example}
+Kita juga dapat mendefinisikan metrik lain pada himpunan bilangan real.
+Sebagai contoh, ambil himpunan bilangan real $\R$ bersama metrik
+\begin{equation*}
+d(x,y) \coloneqq
+\frac{\sabs{x-y}}{\sabs{x-y}+1} .
+\end{equation*}
+Butir \ref{metric:pos}--\ref{metric:com} sekali lagi mudah diperiksa.
+Ketaksamaan segitiga \ref{metric:triang} sedikit lebih sulit.
+Perhatikan bahwa $d(x,y) = \varphi\bigl(\sabs{x-y}\bigr)$, dengan
+$\varphi(t) =
+\frac{t}{t+1}$, dan bahwa $\varphi$ merupakan fungsi naik
+(turunannya positif; lihat \figureref{fig:tovertp1}).
+Oleh karena itu,
+\begin{equation*}
+\begin{split}
+d(x,z) = \varphi\bigl(\sabs{x-z}\bigr)
+& = 
+\varphi\bigl(\sabs{x-y+y-z}\bigr) \\
+& \leq
+\varphi\bigl(\sabs{x-y}+\sabs{y-z}\bigr)
+\\
+& =
+\frac{\sabs{x-y}+\sabs{y-z}}{\sabs{x-y}+\sabs{y-z}+1} \\
+& =
+\frac{\sabs{x-y}}{\sabs{x-y}+\sabs{y-z}+1} +
+\frac{\sabs{y-z}}{\sabs{x-y}+\sabs{y-z}+1}
+\\
+& \leq
+\frac{\sabs{x-y}}{\sabs{x-y}+1} +
+\frac{\sabs{y-z}}{\sabs{y-z}+1} =
+d(x,y)+ d(y,z) .
+\end{split}
+\end{equation*}
+Dengan demikian, fungsi $d$ merupakan metrik dan memberikan
+contoh metrik nonstandar pada $\R$.  Dengan metrik ini,
+$d(x,y) < 1$ untuk semua $x,y \in \R$.  Artinya,
+setiap pasangan titik berjarak kurang dari 1 satuan.
+\begin{myfigureht}
+\myincludegraphics{tovertp1graph}{%
+Grafik suatu fungsi yang mula-mula menanjak secara diagonal
+dari sumbu horizontal, lalu perlahan melandai
+hingga hampir horizontal di ujung kanan grafik;
+sebuah asimtot horizontal di atas grafik
+ditandai dengan garis putus-putus.}
+\caption{Grafik $\frac{t}{t+1}$ untuk $t$ positif dengan asimtot pada 1.\label{fig:tovertp1}}
+\end{myfigureht}
+\end{example}
+
+Suatu ruang metrik yang penting adalah
+\emph{\myindex{ruang Euklides}} berdimensi $n$,
+\glsadd{not:euclidspace}
+$\R^n = \R \times \R \times \cdots \times \R$.   Kita menggunakan notasi berikut
+untuk titik: $x =(x_1,x_2,\ldots,x_n) \in \R^n$.  Kita tidak menuliskan
+$\vec{x}$ ataupun $\mathbf{x}$ untuk sebuah titik di $\R^n$ sebagaimana lazim dalam
+kalkulus multivariabel;
+kita cukup memberinya nama seperti $x$ dan mengingat bahwa $x$
+merupakan unsur $\R^n$.
+Kita juga
+cukup menuliskan $0 \in \R^n$ untuk menyatakan titik $(0,0,\ldots,0)$.  Sebelum
+menjadikan $\R^n$ sebuah ruang metrik, kita membuktikan suatu ketaksamaan penting, yaitu
+ketaksamaan Cauchy--Schwarz.
+
+\begin{lemma}[\myindex{ketaksamaan Cauchy--Schwarz}%
+\footnote{%
+Kadang-kadang ketaksamaan ini disebut \myindex{ketaksamaan Cauchy--Bunyakovsky--Schwarz}.
+\href{https://en.wikipedia.org/wiki/Hermann_Schwarz}{Karl Hermann Amandus
+Schwarz} (1843--1921) adalah matematikawan Jerman dan
+\href{https://en.wikipedia.org/wiki/Viktor_Bunyakovsky}{Viktor Yakovlevich
+Bunyakovsky} (1804--1889) adalah matematikawan Ukraina.  Ketaksamaan yang
+kita nyatakan sebenarnya semestinya disebut ketaksamaan Cauchy, karena
+Bunyakovsky dan Schwarz memberikan bukti untuk versi berdimensi takhingga.}]
+Misalkan $x =(x_1,x_2,\ldots,x_n) \in \R^n$, $y =(y_1,y_2,\ldots,y_n) \in \R^n$.
+Maka
+\begin{equation*}
+{\biggl( \sum_{k=1}^n x_k y_k \biggr)}^2
+\leq
+\biggl(\sum_{k=1}^n x_k^2 \biggr)
+\biggl(\sum_{k=1}^n y_k^2 \biggr) .
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+Kuadrat bilangan real selalu taknegatif.  Oleh karena itu, jumlah kuadrat
+juga taknegatif:
+\begin{equation*}
+\begin{split}
+0 & \leq 
+\sum_{k=1}^n \sum_{\ell=1}^n {(x_k y_\ell - x_\ell y_k)}^2
+\\
+& =
+\sum_{k=1}^n \sum_{\ell=1}^n \bigl( x_k^2 y_\ell^2 + x_\ell^2 y_k^2 - 2 x_k
+x_\ell y_k
+y_\ell \bigr)
+\\
+& =
+\biggl( \sum_{k=1}^n x_k^2 \biggr)
+\biggl( \sum_{\ell=1}^n y_\ell^2 \biggr)
++
+\biggl( \sum_{k=1}^n y_k^2 \biggr)
+\biggl( \sum_{\ell=1}^n x_\ell^2 \biggr)
+-
+2
+\biggl( \sum_{k=1}^n x_k y_k \biggr)
+\biggl( \sum_{\ell=1}^n x_\ell y_\ell \biggr) .
+\end{split}
+\end{equation*}
+Dengan mengganti nama indeks dan membagi dengan 2, kita memperoleh tepat ketaksamaan yang diinginkan,
+\begin{equation*}
+0 \leq 
+\biggl( \sum_{k=1}^n x_k^2 \biggr)
+\biggl( \sum_{k=1}^n y_k^2 \biggr)
+-
+{\biggl( \sum_{k=1}^n x_k y_k \biggr)}^2 .
+\qedhere
+\end{equation*}
+\end{proof}
+
+\begin{example}
+Kita akan membangun
+metrik standar\index{metrik standar pada $\R^n$} untuk $\R^n$.  Definisikan
+\begin{equation*}
+d(x,y) \coloneqq
+\sqrt{
+{(x_1-y_1)}^2 + 
+{(x_2-y_2)}^2 + 
+\cdots +
+{(x_n-y_n)}^2
+} =
+\sqrt{
+\sum_{k=1}^n
+{(x_k-y_k)}^2 
+} .
+\end{equation*}
+Untuk $n=1$, yakni garis real, metrik ini sama dengan metrik yang didefinisikan di atas.
+Untuk $n > 1$,
+seperti sebelumnya, satu-satunya bagian definisi yang agak rumit untuk diperiksa adalah ketaksamaan segitiga.
+Perhitungannya lebih sederhana jika kita bekerja dengan kuadrat metrik.  Dalam
+penaksiran berikut, perhatikan penggunaan ketaksamaan Cauchy--Schwarz.
+\begin{equation*}
+\begin{split}
+{\bigl(d(x,z)\bigr)}^2 & =
+\sum_{k=1}^n
+{(x_k-z_k)}^2 
+\\
+& =
+\sum_{k=1}^n
+{(x_k-y_k+y_k-z_k)}^2 
+\\
+& =
+\sum_{k=1}^n
+\Bigl(
+{(x_k-y_k)}^2+{(y_k-z_k)}^2 + 2(x_k-y_k)(y_k-z_k)
+\Bigr)
+\\
+& =
+\sum_{k=1}^n
+{(x_k-y_k)}^2
++
+\sum_{k=1}^n
+{(y_k-z_k)}^2 
++
+2
+\sum_{k=1}^n
+(x_k-y_k)(y_k-z_k)
+\\
+& \leq
+\sum_{k=1}^n
+{(x_k-y_k)}^2
++
+\sum_{k=1}^n
+{(y_k-z_k)}^2 
++
+2
+\sqrt{
+\sum_{k=1}^n
+{(x_k-y_k)}^2
+\sum_{k=1}^n
+{(y_k-z_k)}^2
+}
+\\
+& =
+{\left(
+\sqrt{
+\sum_{k=1}^n
+{(x_k-y_k)}^2
+}
++
+\sqrt{
+\sum_{k=1}^n
+{(y_k-z_k)}^2 
+}
+\right)}^2
+=
+{\bigl( d(x,y) + d(y,z) \bigr)}^2 .
+\end{split}
+\end{equation*}
+Karena akar kuadrat merupakan fungsi naik,
+ketaksamaan tetap berlaku ketika kita 
+mengambil akar kuadrat kedua ruas, sehingga diperoleh ketaksamaan segitiga.
+\end{example}
+
+\begin{example}
+Himpunan bilangan kompleks $\C$ adalah himpunan bilangan $z = x+iy$, dengan $x$
+dan $y$ berada di $\R$.  Dengan menetapkan $i^2 = -1$, kita menjadikan $\C$
+sebuah medan.
+Untuk keperluan menentukan limit,
+himpunan $\C$ dipandang sebagai ruang metrik $\R^2$, dengan $z=x+iy \in \C$
+bersesuaian dengan $(x,y) \in \R^2$.
+Untuk $z=x+iy$, definisikan \emph{\myindex{modulus kompleks}}\index{modulus}
+sebagai $\sabs{z} \coloneqq \sqrt{x^2+y^2}$.
+Maka untuk dua bilangan kompleks
+$z_1 = x_1 + iy_1$ dan $z_2 = x_2 + iy_2$, jaraknya adalah
+\begin{equation*}
+d(z_1,z_2) = \sqrt{{(x_1-x_2)}^2+ {(y_1-y_2)}^2} = \sabs{z_1-z_2}.
+\end{equation*}
+Selain itu, ketika bekerja dengan bilangan kompleks,
+sering kali lebih mudah menuliskan metrik dalam bentuk
+\emph{\myindex{konjugat kompleks}}: Konjugat dari $z=x+iy$
+adalah $\bar{z} \coloneqq x-iy$.  Dengan demikian,
+${\sabs{z}}^2 = x^2 +y^2 = z\bar{z}$, sehingga ${\sabs{z_1-z_2}}^2 =
+(z_1-z_2)\overline{(z_1-z_2)}$.
+\end{example}
+
+\begin{example}
+Contoh yang perlu selalu diingat adalah
+\emph{\myindex{metrik diskret}}.
+Untuk sebarang himpunan $X$, definisikan
+\begin{equation*}
+d(x,y) \coloneqq
+\begin{cases}
+1 & \text{jika } x \neq y, \\
+0 & \text{jika } x = y.
+\end{cases}
+\end{equation*}
+Dengan kata lain, jarak di antara setiap dua titik yang berbeda adalah sama.  Jika $X$
+merupakan himpunan berhingga, kita dapat membuat diagram; lihat, misalnya,
+\figureref{fig:msdiscmetric}.  Tentu saja, jarak dalam diagram tersebut
+bukanlah jarak Euklides biasa pada bidang.
+Keadaannya menjadi lebih rumit ketika $X$ merupakan himpunan takhingga,
+seperti himpunan bilangan real.
+\begin{myfigureht}
+\myincludepdft{msdiscmetric}{%
+Diagram lima titik a, b, c, d, dan e.  Setiap titik
+dihubungkan dengan setiap titik lainnya oleh sebuah garis, dan setiap garis
+diberi label angka 1.}
+\caption{Contoh ruang metrik diskret $\{ a,b,c,d,e \}$; jarak
+di antara setiap dua titik yang berbeda adalah $1$.\label{fig:msdiscmetric}}
+\end{myfigureht}
+
+Meskipun contoh khusus ini mungkin jarang muncul dalam praktik, contoh ini
+memberikan \myquote{uji kewajaran} yang berguna.  Jika kita mengajukan suatu
+pernyataan tentang ruang metrik, cobalah mengujinya dengan metrik diskret.
+Pembuktian bahwa $(X,d)$ memang merupakan ruang metrik diserahkan sebagai latihan.
+\end{example}
+
+\begin{example} \label{example:msC01}
+Misalkan $C\bigl([a,b],\R\bigr)$\glsadd{not:contfuncs} adalah himpunan
+fungsi kontinu bernilai real pada interval $[a,b]$.
+Definisikan metrik pada $C\bigl([a,b],\R\bigr)$ dengan
+\begin{equation*}
+d(f,g) \coloneqq \sup_{x \in [a,b]} \babs{f(x)-g(x)} .
+\end{equation*}
+Kita periksa sifat-sifatnya.  Pertama, $d(f,g)$ berhingga karena
+$\babs{f(x)-g(x)}$ merupakan fungsi kontinu pada interval tertutup dan terbatas
+$[a,b]$, sehingga fungsi tersebut terbatas.
+Jelas bahwa $d(f,g) \geq 0$;
+nilai itu merupakan supremum bilangan-bilangan taknegatif.  Jika $f = g$,
+maka $\babs{f(x)-g(x)} = 0$ untuk semua $x$, sehingga $d(f,g) = 0$.  Sebaliknya,
+jika $d(f,g) = 0$, maka untuk setiap $x$ berlaku $\babs{f(x)-g(x)} \leq d(f,g) = 0$,
+sehingga $f(x) = g(x)$ untuk semua $x$, dan karenanya $f=g$.  Kesamaan
+$d(f,g) = d(g,f)$ juga sama jelasnya.  Untuk membuktikan ketaksamaan segitiga,
+kita menggunakan ketaksamaan segitiga biasa.
+\begin{equation*}
+\begin{split}
+d(f,g) & =
+\sup_{x \in [a,b]} \babs{f(x)-g(x)} =
+\sup_{x \in [a,b]} \babs{f(x)-h(x)+h(x)-g(x)}
+\\
+& \leq
+\sup_{x \in [a,b]} \Bigl( \babs{f(x)-h(x)}+\babs{h(x)-g(x)} \Bigr)
+\\
+& \leq
+\sup_{x \in [a,b]} \babs{f(x)-h(x)}+
+\sup_{x \in [a,b]} \babs{h(x)-g(x)} = d(f,h) + d(h,g) .
+\end{split}
+\end{equation*}
+Ketika $C\bigl([a,b],\R\bigr)$ dipandang sebagai ruang metrik tanpa menyebutkan metriknya,
+yang dimaksud adalah metrik khusus ini.
+Perhatikan bahwa $d(f,g) = \snorm{f-g}_{[a,b]}$, yaitu norma seragam yang didefinisikan dalam \defnref{def:unifnorm}.
+
+Contoh ini mungkin tampak abstrak pada awalnya, tetapi ternyata bekerja dengan
+ruang seperti $C\bigl([a,b],\R\bigr)$ benar-benar merupakan inti dari sebagian besar
+analisis modern.  Dengan memandang himpunan fungsi sebagai ruang metrik, kita dapat
+mengabstraksikan banyak rincian teknis yang merepotkan dan membuktikan hasil-hasil kuat seperti
+\hyperref[thm:fs:picard]{teorema Picard} dengan lebih sedikit usaha.
+\end{example}
+
+\begin{example}
+Contoh ruang metrik berguna lainnya adalah permukaan bola
+dengan metrik yang biasanya disebut \emph{\myindex{jarak lingkaran besar}}.
+Misalkan $S^2$ adalah \myindex{permukaan bola satuan}\index{permukaan bola} di $\R^3$,
+yaitu $S^2 \coloneqq \{ x \in \R^3 : x_1^2+x_2^2+x_3^2 = 1 \}$.
+Ambil $x$ dan $y$ di $S^2$, lalu pandang vektor dari titik asal menuju $x$
+dan vektor dari titik asal menuju $y$.
+Misalkan $\theta$ adalah sudut di antara kedua vektor tersebut.
+Kemudian definisikan $d(x,y) \coloneqq \theta$.  Lihat \figureref{fig:spheremetric}.
+Hukum kosinus dari kalkulus vektor memberikan
+$d(x,y) = \arccos(x_1y_1+x_2y_2+x_3y_3)$.
+Relatif mudah untuk melihat bahwa fungsi ini memenuhi tiga sifat pertama
+suatu metrik.
+Ketaksamaan segitiga lebih sulit dibuktikan dan memerlukan sedikit lebih banyak
+trigonometri serta aljabar linear daripada yang ingin kita gunakan saat ini,
+jadi kita biarkan tanpa bukti.
+
+\begin{myfigureht}
+\myincludepdft{spheremetric}{%
+Diagram permukaan bola dalam ruang berdimensi 3
+yang ditandai sebagai S pangkat 2.  Titik asal ditandai dengan 0,
+dan terdapat dua titik pada permukaan bola, x dan y.  Terdapat
+garis dari titik asal ke x, garis dari titik asal ke y,
+dan sudut di antara kedua garis tersebut diberi label theta.}
+\caption{Jarak lingkaran besar pada permukaan
+bola satuan.\label{fig:spheremetric}}
+\end{myfigureht}
+
+Jarak ini merupakan jarak terpendek di antara titik-titik pada permukaan bola jika
+kita hanya diperbolehkan bergerak di permukaannya.  Hal ini mudah
+digeneralisasi untuk jari-jari sebarang.  Jika kita mengambil permukaan bola berjari-jari
+$r$, jaraknya kita tetapkan sebagai $d(x,y) \coloneqq r \theta$.  Sebagai contoh, inilah
+cara baku untuk mengukur jarak pada
+permukaan bumi, misalnya jarak yang ditempuh pesawat dari London ke
+Los Angeles.
+\end{example}
+
+Sering kali berguna untuk memandang suatu himpunan bagian dari ruang metrik yang lebih besar
+sebagai ruang metrik tersendiri.  Kita memperoleh proposisi berikut, yang
+memiliki bukti langsung.
+
+\begin{prop}
+Misalkan $(X,d)$ adalah ruang metrik dan $Y \subset X$.  Maka pembatasan
+$d|_{Y \times Y}$ merupakan metrik pada $Y$.
+\end{prop}
+
+\begin{defn}
+Jika $(X,d)$ merupakan ruang metrik, $Y \subset X$, dan $d' \coloneqq d|_{Y \times Y}$,
+maka $(Y,d')$ disebut \emph{\myindex{subruang}} dari $(X,d)$.
+\end{defn}
+
+Lazimnya kita cukup menulis $d$ untuk metrik pada $Y$, sebab metrik tersebut
+merupakan pembatasan metrik pada $X$.  Terkadang kita mengatakan bahwa $d'$
+adalah \emph{\myindex{metrik subruang}} dan $Y$ memiliki
+\emph{\myindex{topologi subruang}}.
+
+\medskip
+
+Suatu himpunan bagian dari bilangan real
+bersifat terbatas apabila semua unsurnya berjarak paling besar suatu nilai tetap
+dari 0.
+Dalam ruang metrik sebarang, mungkin tidak ada titik tetap alami 0,
+tetapi hal ini tidak menjadi masalah untuk konsep keterbatasan.
+
+\begin{defn}
+Misalkan $(X,d)$ adalah ruang metrik.  Suatu himpunan bagian $S \subset X$ disebut
+\emph{terbatas}\index{himpunan terbatas} jika terdapat $p \in X$ dan
+$B \in \R$ sedemikian sehingga
+\begin{equation*}
+d(p,x) \leq B \quad \text{untuk semua } x \in S.
+\end{equation*}
+Kita mengatakan bahwa $(X,d)$ terbatas jika $X$ sendiri merupakan himpunan bagian terbatas.
+\end{defn}
+
+Sebagai contoh, himpunan bilangan real dengan metrik standar bukanlah
+ruang metrik terbatas.  Tidak sulit untuk melihat bahwa suatu
+himpunan bagian bilangan real bersifat terbatas dalam
+pengertian \chapterref{rn:chapter} jika dan hanya jika himpunan itu terbatas sebagai himpunan bagian dari
+ruang metrik bilangan real dengan metrik standar.
+
+Di sisi lain, jika kita mengambil bilangan real dengan metrik diskret,
+kita memperoleh ruang metrik terbatas.  Bahkan, sebarang himpunan dengan
+metrik diskret bersifat terbatas.
+
+Ada beberapa cara ekuivalen lain untuk memperumum konsep keterbatasan,
+yang diserahkan sebagai latihan.  Anggap $X$ tidak kosong untuk menghindari persoalan teknis.
+Maka, untuk himpunan bagian tidak kosong $S \subset X$, sifat terbatas ekuivalen dengan setiap kondisi berikut:
+\begin{enumerate}[(i)]
+\item
+Untuk setiap $p \in X$, terdapat $B > 0$ sedemikian sehingga $d(p,x) \leq B$ untuk
+semua $x \in S$.
+\item
+\glsadd{not:diam}%
+$\operatorname{diam}(S) \coloneqq \sup \bigl\{ d(x,y) : x,y \in S \bigr\} < \infty$.
+\end{enumerate}
+Besaran $\operatorname{diam}(S)$ disebut
+\emph{\myindex{diameter}} suatu himpunan dan biasanya hanya didefinisikan untuk
+himpunan yang tidak kosong.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Tunjukkan bahwa untuk setiap himpunan $X$, metrik diskret ($d(x,y) = 1$ jika $x \neq y$ dan
+$d(x,x) = 0$) memang menjadikan $(X,d)$ suatu ruang metrik.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $X \coloneqq \{ 0 \}$ suatu himpunan.  Dapatkah Anda menjadikannya ruang metrik?
+\end{exercise}
+
+\begin{exercise}
+Misalkan $X \coloneqq \{ a, b \}$ suatu himpunan.  Dapatkah Anda menjadikannya dua ruang
+metrik yang berbeda?  (definisikan dua metrik yang berbeda padanya)
+\end{exercise}
+
+\begin{exercise}
+Misalkan himpunan $X \coloneqq \{ A, B, C \}$ mewakili 3 gedung di kampus.  Misalkan kita
+ingin jarak menyatakan waktu yang diperlukan untuk berjalan kaki dari satu gedung ke
+gedung lainnya.
+Perjalanan antara gedung $A$ dan $B$ memerlukan 5 menit ke arah mana pun.  Akan tetapi,
+gedung $C$ berada di atas bukit dan diperlukan 10 menit dari $A$ serta 15 menit
+dari $B$ untuk mencapai $C$.  Sebaliknya, diperlukan 5 menit untuk berjalan
+dari $C$ ke $A$ dan 7 menit dari $C$ ke $B$, karena kita berjalan
+menuruni bukit.  Apakah jarak-jarak ini mendefinisikan metrik?  Jika ya, buktikan; jika tidak, jelaskan
+alasannya.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $(X,d)$ suatu ruang metrik dan
+$\varphi \colon [0,\infty) \to \R$ suatu
+fungsi naik sedemikian sehingga
+$\varphi(t) \geq 0$ untuk setiap $t$ dan $\varphi(t) = 0$ jika dan hanya jika
+$t=0$.  Andaikan pula $\varphi$ bersifat \emph{\myindex{subaditif}},
+yaitu $\varphi(s+t) \leq \varphi(s)+\varphi(t)$.
+Tunjukkan bahwa dengan $d'(x,y) \coloneqq \varphi\bigl(d(x,y)\bigr)$, kita memperoleh
+ruang metrik baru $(X,d')$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:mscross}
+Misalkan $(X,d_X)$ dan $(Y,d_Y)$ ruang-ruang metrik.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $(X \times Y,d)$ dengan
+$d\bigl( (x_1,y_1), (x_2,y_2) \bigr) \coloneqq d_X(x_1,x_2) + d_Y(y_1,y_2)$ merupakan
+ruang metrik.
+\item
+Tunjukkan bahwa $(X \times Y,d)$ dengan
+$d\bigl( (x_1,y_1), (x_2,y_2) \bigr) \coloneqq \max \bigl\{ d_X(x_1,x_2) ,
+d_Y(y_1,y_2) \bigr\}$ merupakan
+ruang metrik.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $X$ himpunan fungsi-fungsi kontinu pada $[0,1]$.  Misalkan $\varphi \colon
+[0,1] \to (0,\infty)$ kontinu.  Definisikan
+\begin{equation*}
+d(f,g) \coloneqq \int_0^1 \babs{f(x)-g(x)}\varphi(x)\,dx .
+\end{equation*}
+Tunjukkan bahwa $(X,d)$ merupakan ruang metrik.
+\end{exercise}
+
+\begin{exercise} \label{exercise:mshausdorffpseudo}
+Misalkan $(X,d)$ suatu ruang metrik.  Untuk himpunan bagian tak kosong dan terbatas $A$ dan $B$, definisikan
+\begin{equation*}
+d(x,B) \coloneqq \inf \bigl\{ d(x,b) : b \in B \bigr\}
+\qquad \text{dan} \qquad
+d(A,B) \coloneqq \sup \bigl\{ d(a,B) : a \in A \bigr\} .
+\end{equation*}
+Sekarang definisikan \emph{\myindex{metrik Hausdorff}} sebagai
+\begin{equation*}
+d_H(A,B) \coloneqq \max \bigl\{ d(A,B) , d(B,A) \bigr\} .
+\end{equation*}
+Catatan: $d_H$ dapat didefinisikan untuk sebarang himpunan bagian tak kosong jika kita mengizinkan
+bilangan real diperluas.
+\begin{enumerate}[a)]
+\item
+Misalkan $Y \subset \sP(X)$ himpunan semua himpunan bagian tak kosong dan terbatas.
+Buktikan bahwa
+$(Y,d_H)$ merupakan apa yang kita sebut \emph{\myindex{ruang pseudometrik}}:
+$d_H$ memenuhi sifat-sifat metrik
+\ref{metric:pos},
+\ref{metric:com}, 
+\ref{metric:triang}, dan juga
+$d_H(A,A) = 0$ untuk setiap $A \in Y$.
+\item
+Tunjukkan melalui contoh bahwa $d$ sendiri tidak simetris,
+yaitu $d(A,B) \neq d(B,A)$.
+\item
+Carilah suatu ruang metrik $X$ dan dua himpunan bagian tak kosong
+dan terbatas yang berbeda, $A$ dan $B$, sedemikian sehingga $d_H(A,B) = 0$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $(X,d)$ ruang metrik tak kosong dan $S \subset X$ suatu himpunan bagian.  Buktikan:
+\begin{enumerate}[a)]
+\item
+$S$ terbatas jika dan hanya jika
+untuk setiap $p \in X$, terdapat $B > 0$ sedemikian sehingga $d(p,x) \leq B$ untuk
+setiap $x \in S$.
+\item
+Himpunan $S$ yang tak kosong terbatas jika dan hanya jika
+$\operatorname{diam}(S) \coloneqq \sup \{ d(x,y) : x,y \in S \} < \infty$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Dengan bekerja di $\R$, hitunglah $\operatorname{diam}\bigl([a,b]\bigr)$.
+\item
+Dengan bekerja di $\R^n$, untuk setiap $r > 0$, misalkan $B_r \coloneqq \{ x \in \R^n : x_1^2+x_2^2+\cdots+x_n^2
+< r^2 \}$.  Hitunglah $\operatorname{diam}(B_r)$.
+\item
+Misalkan $(X,d)$ suatu ruang metrik dengan sekurang-kurangnya dua titik,
+$d$ adalah metrik diskret, dan $p \in X$.
+Hitunglah
+$\operatorname{diam}(\{ p \})$ dan $\operatorname{diam}(X)$,
+lalu simpulkan bahwa $(X,d)$ terbatas.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Carilah metrik $d$ pada $\N$ sedemikian sehingga $\N$ merupakan himpunan tak terbatas dalam $(\N,d)$.
+\item
+Carilah metrik $d$ pada $\N$ sedemikian sehingga $\N$ merupakan himpunan terbatas dalam $(\N,d)$.
+\item
+Carilah metrik $d$ pada $\N$ sedemikian sehingga untuk setiap $n \in \N$ dan setiap $\epsilon > 0$,
+terdapat $m \in \N$, $m \neq n$, sedemikian sehingga $d(n,m) < \epsilon$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \label{exercise:C1ab}
+Misalkan $C^1\bigl([a,b],\R\bigr)$\glsadd{not:contdifffuncs} himpunan fungsi yang memiliki turunan pertama
+kontinu pada $[a,b]$.
+Definisikan
+\begin{equation*}
+d(f,g) \coloneqq \snorm{f-g}_{[a,b]} + \snorm{f'-g'}_{[a,b]},
+\end{equation*}
+di mana $\snorm{\cdot}_{[a,b]}$ adalah norma seragam.  Buktikan bahwa $d$ merupakan metrik.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Perhatikan $\ell^2$, yakni himpunan barisan $\{ x_n \}_{n=1}^\infty$
+bilangan real
+sedemikian sehingga $\sum_{n=1}^\infty x_n^2 < \infty$.
+\begin{enumerate}[a)]
+\item
+Buktikan \myindex{ketaksamaan Cauchy--Schwarz} untuk dua barisan
+$\{x_n \}_{n=1}^\infty$ dan $\{ y_n \}_{n=1}^\infty$ dalam $\ell^2$:  Buktikan bahwa
+$\sum_{n=1}^\infty x_n y_n$ konvergen (secara mutlak) dan
+\begin{equation*}
+{\biggl( \sum_{n=1}^\infty x_n y_n \biggr)}^2
+\leq
+\biggl(\sum_{n=1}^\infty x_n^2 \biggr)
+\biggl(\sum_{n=1}^\infty y_n^2 \biggr) .
+\end{equation*}
+\item
+Buktikan bahwa $\ell^2$ merupakan ruang metrik dengan metrik
+$d(x,y) \coloneqq \sqrt{\sum_{n=1}^\infty {(x_n-y_n)}^2}$.
+Petunjuk: Jangan lupa menunjukkan bahwa deret untuk $d(x,y)$ selalu konvergen
+ke suatu bilangan berhingga.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Himpunan terbuka dan tertutup}
+\label{sec:mettop}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2 kuliah}
+
+\subsection{Topologi}
+
+Sebelum membahas konvergensi,
+kita mendefinisikan \emph{\myindex{topologi}}.
+Artinya,
+kita mendefinisikan pengertian himpunan terbuka dan tertutup.
+Sebelumnya,
+kita terlebih dahulu mendefinisikan dua himpunan khusus yang terbuka dan tertutup.
+
+\begin{defn}
+Misalkan $(X,d)$ ruang metrik, $x \in X$, dan $\delta > 0$.  Definisikan
+\emph{\myindex{bola terbuka}}, atau cukup \emph{\myindex{bola}}, berjari-jari $\delta$
+yang berpusat di $x$ sebagai
+\glsadd{not:openball}
+\begin{equation*}
+B(x,\delta) \coloneqq \bigl\{ y \in X : d(x,y) < \delta \bigr\} .
+\end{equation*}
+Definisikan \emph{\myindex{bola tertutup}} sebagai
+\glsadd{not:closedball}
+\begin{equation*}
+C(x,\delta) \coloneqq \bigl\{ y \in X : d(x,y) \leq \delta \bigr\} .
+\end{equation*}
+\end{defn}
+
+Ketika berurusan dengan ruang-ruang metrik yang berbeda, terkadang
+penting untuk menegaskan ruang metrik tempat bola tersebut berada.  Untuk itu, kita
+menulis $B_X(x,\delta) \coloneqq B(x,\delta)$ atau $C_X(x,\delta) \coloneqq C(x,\delta)$.
+
+\begin{example}
+Ambil ruang metrik $\R$ dengan metrik standar.  Untuk
+$x \in \R$ dan $\delta > 0$,
+\begin{equation*}
+B(x,\delta) = (x-\delta,x+\delta) \qquad \text{dan} \qquad
+C(x,\delta) = [x-\delta,x+\delta] .
+\end{equation*}
+\end{example}
+
+\begin{example}
+Berhati-hatilah ketika bekerja pada subruang.  Tinjau
+ruang metrik $[0,1]$ sebagai subruang $\R$.  Maka, dalam $[0,1]$,
+\begin{equation*}
+B(0,\nicefrac{1}{2}) = B_{[0,1]}(0,\nicefrac{1}{2})
+= \bigl\{ y \in [0,1] : \sabs{0-y} < \nicefrac{1}{2} \bigr\}
+= [0,\nicefrac{1}{2}) .
+\end{equation*}
+Hasil ini berbeda dengan $B_{\R}(0,\nicefrac{1}{2}) =
+(\nicefrac{-1}{2},\nicefrac{1}{2})$.
+Hal penting yang harus selalu diperhatikan adalah ruang metrik tempat kita
+bekerja.
+\end{example}
+
+\begin{defn}
+Misalkan $(X,d)$ ruang metrik.  Himpunan bagian $V \subset X$
+disebut \emph{terbuka}\index{himpunan terbuka}
+jika untuk setiap $x \in V$, terdapat $\delta > 0$ sedemikian sehingga
+$B(x,\delta) \subset V$.  Lihat \figureref{fig:msopenset}.  Himpunan bagian $E \subset X$ disebut
+\emph{tertutup}\index{himpunan tertutup} jika komplemennya, $E^c = X \setminus E$, terbuka.
+Jika ruang semesta $X$ tidak jelas dari konteks,
+kita mengatakan \emph{$V$ terbuka dalam $X$} dan \emph{$E$ tertutup dalam $X$}.
+
+Jika $x \in V$ dan $V$ terbuka, kita mengatakan
+$V$ merupakan \emph{\myindex{lingkungan terbuka}} bagi $x$ (atau
+terkadang cukup \emph{\myindex{lingkungan}}).
+\end{defn}
+
+\begin{myfigureht}
+\myincludepdft{msopenset}{%
+Suatu daerah pada bidang ditandai dengan warna abu-abu muda,
+berbatas titik-titik, dan berlabel V.
+Di dalam daerah tersebut terdapat lingkaran bertitik-titik
+yang berpusat pada titik berlabel x, berjari-jari delta, dan berlabel
+B dari x koma delta.  Lingkaran beserta bagian dalamnya,
+yang diarsir abu-abu lebih gelap, seluruhnya berada di dalam
+daerah abu-abu muda.}
+\caption{Himpunan terbuka dalam ruang metrik.  Perhatikan bahwa $\delta$ bergantung pada $x$.\label{fig:msopenset}}
+\end{myfigureht}
+
+Secara intuitif, himpunan terbuka $V$ adalah himpunan yang tidak memuat
+\myquote{batasnya}.
+Di mana pun kita berada dalam $V$,
+kita dapat \myquote{bergerak} sedikit dan
+tetap berada dalam $V$.  Demikian pula, himpunan $E$ tertutup jika setiap titik di luar $E$
+berjarak positif dari $E$.
+Bola terbuka dan bola tertutup masing-masing merupakan contoh himpunan terbuka dan tertutup
+(hal ini masih harus dibuktikan).
+Namun, tidak setiap himpunan bersifat terbuka atau tertutup.  Pada umumnya, kebanyakan himpunan bagian tidak memiliki kedua sifat tersebut.
+
+\begin{example}
+Himpunan $(0,\infty) \subset \R$ terbuka:  Untuk sebarang $x \in (0,\infty)$,
+ambil $\delta \coloneqq x$.  Maka $B(x,\delta) = (0,2x) \subset (0,\infty)$.
+
+Himpunan $[0,\infty) \subset \R$ tertutup:  Untuk $x \in (-\infty,0) =
+[0,\infty)^c$,
+ambil $\delta \coloneqq -x$.  Maka $B(x,\delta) = (2x,0) \subset
+(-\infty,0) = [0,\infty)^c$.
+
+Himpunan $[0,1) \subset \R$ tidak terbuka maupun tertutup.  Pertama,
+setiap bola dalam $\R$ yang berpusat di $0$, yaitu $B(0,\delta) = (-\delta,\delta)$, memuat bilangan
+negatif sehingga tidak termuat dalam $[0,1)$.  Jadi, $[0,1)$ tidak terbuka.
+Kedua, setiap bola dalam $\R$ yang berpusat di $1$,
+$B(1,\delta) = (1-\delta,1+\delta)$, memuat
+bilangan yang lebih kecil dari 1 dan lebih besar dari 0
+(misalnya,\ $1-\nicefrac{\delta}{2}$ selama $\delta < 2$).
+Dengan demikian, $[0,1)^c = \R \setminus
+[0,1)$ tidak terbuka, sehingga $[0,1)$ tidak tertutup.
+
+Jika $(X,d)$ sebarang ruang metrik dan $x \in X$ suatu titik, maka $\{ x \}$
+tertutup (latihan).
+Di sisi lain, $\{ x \}$ mungkin terbuka atau tidak, bergantung pada $X$.
+Himpunan $\{ 0 \} \subset \R$ tidak terbuka karena $B(0,\delta)$
+memuat bilangan taknol untuk setiap $\delta > 0$.
+Jika $X=\{ x \}$, maka $\{ x \}$ terbuka.
+\end{example}
+
+\begin{prop} \label{prop:topology:open}
+Misalkan $(X,d)$ ruang metrik.
+\begin{enumerate}[(i)]
+\item \label{topology:openi} $\emptyset$ dan $X$ terbuka.
+\item \label{topology:openii} Jika $V_1, V_2, \ldots, V_k$ merupakan himpunan bagian terbuka dari $X$, maka
+\begin{equation*}
+\bigcap_{j=1}^k V_j
+\end{equation*}
+juga terbuka.  Artinya, irisan berhingga himpunan-himpunan terbuka bersifat terbuka.
+\item \label{topology:openiii} Jika $\{ V_\lambda \}_{\lambda \in I}$ merupakan
+sebarang koleksi himpunan bagian terbuka dari $X$, maka
+\begin{equation*}
+\bigcup_{\lambda \in I} V_\lambda
+\end{equation*}
+juga terbuka.  Artinya, gabungan himpunan-himpunan terbuka bersifat terbuka.
+\end{enumerate}
+\end{prop}
+
+Himpunan indeks $I$ dalam \ref{topology:openiii} boleh berukuran sebarang.
+Dengan $\bigcup_{\lambda \in I} V_\lambda$, yang dimaksud hanyalah himpunan
+semua~$x$ sedemikian sehingga $x \in V_\lambda$ untuk setidaknya satu $\lambda \in I$.
+
+\begin{proof}
+Himpunan $\emptyset$ dan $X$ jelas terbuka dalam $X$.
+
+Mari buktikan \ref{topology:openii}.
+Jika $x \in \bigcap_{j=1}^k V_j$, maka $x \in V_j$ untuk setiap $j$.
+Karena semua $V_j$ terbuka, untuk setiap $j$ terdapat $\delta_j > 0$
+sedemikian sehingga $B(x,\delta_j) \subset V_j$.  Ambil $\delta \coloneqq \min \{
+\delta_1,\delta_2,\ldots,\delta_k \}$ dan perhatikan bahwa $\delta > 0$.  Kita memperoleh
+$B(x,\delta) \subset B(x,\delta_j) \subset V_j$ untuk setiap $j$, sehingga
+$B(x,\delta) \subset \bigcap_{j=1}^k V_j$.  Jadi, irisan tersebut terbuka.
+
+Mari buktikan \ref{topology:openiii}.
+Jika $x \in \bigcup_{\lambda \in I} V_\lambda$, maka $x \in V_\lambda$ untuk suatu
+$\lambda \in I$.
+Karena $V_\lambda$ terbuka, terdapat $\delta > 0$
+sedemikian sehingga $B(x,\delta) \subset V_\lambda$.  Oleh karena itu,
+$B(x,\delta) \subset \bigcup_{\lambda \in I} V_\lambda$,
+sehingga gabungan tersebut terbuka.
+\end{proof}
+
+\begin{example}
+Perhatikan perbedaan antara
+butir
+\ref{topology:openii} dan \ref{topology:openiii}.
+Butir \ref{topology:openii} tidak berlaku bagi sebarang irisan.
+Sebagai contoh,
+$\bigcap_{n=1}^\infty (\nicefrac{-1}{n},\nicefrac{1}{n}) = \{ 0 \}$,
+yang tidak terbuka.
+\end{example}
+
+
+Pembuktian proposisi berikut yang serupa untuk himpunan tertutup
+diserahkan sebagai latihan.
+
+\begin{prop} \label{prop:topology:closed}
+%FIXMEevillayouthack
+\pagebreak[2]
+Misalkan $(X,d)$ ruang metrik.
+\begin{enumerate}[(i)]
+\item \label{topology:closedi} $\emptyset$ dan $X$ tertutup.
+\item \label{topology:closedii} Jika $\{ E_\lambda \}_{\lambda \in I}$ merupakan
+sebarang koleksi himpunan bagian tertutup dari $X$, maka
+\begin{equation*}
+\bigcap_{\lambda \in I} E_\lambda
+\end{equation*}
+juga tertutup.  Artinya, irisan himpunan-himpunan tertutup bersifat tertutup.
+\item \label{topology:closediii} Jika $E_1, E_2, \ldots, E_k$ merupakan himpunan bagian
+tertutup dari $X$, maka
+\begin{equation*}
+\bigcup_{j=1}^k E_j
+\end{equation*}
+juga tertutup.  Artinya, gabungan berhingga himpunan-himpunan tertutup bersifat tertutup.
+\end{enumerate}
+\end{prop}
+
+Walaupun namanya demikian,
+kita belum menunjukkan bahwa bola terbuka bersifat terbuka dan bola tertutup bersifat
+tertutup.  Mari buktikan fakta-fakta ini untuk membenarkan istilah tersebut.
+
+\begin{prop} \label{prop:topology:ballsopenclosed}
+Misalkan $(X,d)$ ruang metrik, $x \in X$, dan $\delta > 0$.  Maka
+$B(x,\delta)$ terbuka dan
+$C(x,\delta)$ tertutup.
+\end{prop}
+
+\begin{proof}
+Misalkan $y \in B(x,\delta)$.  Tetapkan $\alpha \coloneqq \delta-d(x,y)$.  Karena $\alpha
+> 0$, tinjau $z \in B(y,\alpha)$.  Maka
+\begin{equation*}
+d(x,z) \leq d(x,y) + d(y,z) < d(x,y) + \alpha = d(x,y) + \delta-d(x,y) =
+\delta .
+\end{equation*}
+Oleh karena itu, $z \in B(x,\delta)$ untuk setiap $z \in B(y,\alpha)$.  Jadi,
+$B(y,\alpha) \subset B(x,\delta)$, sehingga
+$B(x,\delta)$ terbuka.  Lihat \figureref{fig:ballisopen}.
+
+\begin{myfigureht}
+\myincludepdft{ballisopen}{%
+Sebuah cakram berarsir dengan batas titik-titik, berjari-jari delta,
+berpusat di x dan berlabel B dari x koma delta.
+Cakram lain seluruhnya berada di dalam cakram yang lebih besar,
+menyentuh batasnya dari dalam, berpusat
+di y, dan berjari-jari alfa.
+Titik ketiga, z, berada di dalam
+cakram yang lebih kecil.  Titik x, y, dan z membentuk
+segitiga bergaris putus-putus.}
+\caption{Bukti bahwa $B(x,\delta)$ terbuka: $B(y,\alpha) \subset
+B(x,\delta)$ dengan ilustrasi ketaksamaan segitiga.\label{fig:ballisopen}}
+\end{myfigureht}
+
+Pembuktian bahwa $C(x,\delta)$ tertutup diserahkan sebagai latihan.
+\end{proof}
+
+Sekali lagi, perhatikan ruang metrik tempat kita bekerja.
+Himpunan $[0,\nicefrac{1}{2})$ merupakan
+bola terbuka dalam $[0,1]$, sehingga $[0,\nicefrac{1}{2})$
+terbuka dalam $[0,1]$.  Di sisi lain, $[0,\nicefrac{1}{2})$
+tidak terbuka maupun tertutup dalam $\R$.
+
+\begin{prop} \label{prop:topology:intervals:openclosed}
+Misalkan $a, b$ dua bilangan real dengan $a < b$.  Maka $(a,b)$, $(a,\infty)$,
+dan $(-\infty,b)$ terbuka dalam $\R$.
+Selain itu, $[a,b]$, $[a,\infty)$,
+dan $(-\infty,b]$ tertutup dalam $\R$.
+\end{prop}
+
+Pembuktiannya diserahkan sebagai latihan.  Ingat bahwa
+masih banyak himpunan terbuka dan
+tertutup lain dalam himpunan bilangan real. %$\R$.
+
+\begin{prop} \label{prop:topology:subspaceopen}
+Misalkan $(X,d)$ ruang metrik dan $Y \subset X$.  Maka $U \subset Y$
+terbuka dalam $Y$ (dalam topologi subruang) jika dan hanya jika
+terdapat himpunan terbuka $V \subset X$ (yakni terbuka dalam $X$) sedemikian sehingga
+$V \cap Y = U$.
+\end{prop}
+
+Sebagai contoh, tetapkan $X \coloneqq \R$, $Y \coloneqq [0,1]$, dan $U \coloneqq [0,\nicefrac{1}{2})$.
+Kita telah melihat bahwa $U$ terbuka dalam $Y$.
+Kita dapat mengambil $V \coloneqq (\nicefrac{-1}{2},\nicefrac{1}{2})$.
+
+\begin{proof}
+Andaikan $V \subset X$ terbuka dan $V \cap Y = U$.
+Misalkan $x \in U$.
+Karena $V$ terbuka dan $x \in V$, terdapat
+$\delta > 0$ sedemikian sehingga $B_X(x,\delta) \subset V$.
+Maka
+\begin{equation*}
+B_Y(x,\delta) = B_X(x,\delta) \cap Y \subset V \cap Y = U .
+\end{equation*}
+Jadi, $U$ terbuka dalam $Y$.
+
+Pembuktian arah sebaliknya, yaitu bahwa jika $U \subset Y$
+terbuka dalam topologi subruang maka terdapat $V$ demikian, diserahkan sebagai
+\exerciseref{exercise:mssubspace}.
+\end{proof}
+
+Petunjuk untuk menyelesaikan pembuktian tersebut (latihan) adalah bahwa
+himpunan terbuka dapat dipandang sebagai gabungan bola-bola terbuka.  Jika $U$
+terbuka, maka untuk setiap $x \in U$, terdapat $\delta_x > 0$ (bergantung pada $x$) sedemikian sehingga
+$B(x,\delta_x) \subset U$.  Maka $U = \bigcup_{x\in U} B(x,\delta_x)$.
+
+Untuk himpunan bagian terbuka dari himpunan terbuka atau himpunan bagian tertutup dari himpunan
+tertutup, keadaannya lebih sederhana.
+
+\begin{prop} \label{prop:topology:subspacesame}
+Misalkan $(X,d)$ ruang metrik, $V \subset X$ terbuka,
+dan $E \subset X$ tertutup.
+\begin{enumerate}[(i)]
+\item \label{prop:topology:subspacesame:i}
+$U \subset V$ terbuka dalam topologi subruang jika dan hanya jika $U$ terbuka
+dalam $X$.
+\item \label{prop:topology:subspacesame:ii}
+$F \subset E$ tertutup dalam topologi subruang jika dan hanya jika $F$
+tertutup dalam $X$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Kita buktikan
+\ref{prop:topology:subspacesame:i}
+dan menyerahkan
+\ref{prop:topology:subspacesame:ii} sebagai latihan.
+
+Jika $U \subset V$ terbuka dalam topologi subruang, menurut
+\propref{prop:topology:subspaceopen}, terdapat himpunan $W \subset X$
+yang terbuka dalam $X$ sedemikian sehingga $U = W \cap V$.  Irisan dua himpunan terbuka
+bersifat terbuka, sehingga $U$ terbuka dalam $X$.
+
+Sekarang andaikan $U$ terbuka dalam $X$.  Maka $U = U \cap V$.  Jadi,
+$U$ terbuka dalam $V$, sekali lagi menurut \propref{prop:topology:subspaceopen}.
+\end{proof}
+
+\subsection{Himpunan terhubung}
+
+Mari memperumum gagasan interval ke ruang metrik umum.  Salah satu
+ciri utama interval dalam $\R$ adalah sifat
+terhubungnya---kita dapat bergerak secara kontinu dari satu titik di dalamnya ke
+titik lain tanpa melompat.
+Sebagai contoh, dalam $\R$ kita biasanya mempelajari fungsi pada interval,
+sedangkan dalam ruang metrik yang lebih umum kita biasanya mempelajari fungsi pada himpunan terhubung.
+
+\begin{defn}
+Ruang metrik $(X,d)$ yang tidak kosong%
+\footnote{Sebagian penulis tidak mengecualikan himpunan kosong dari definisi,
+sehingga himpunan kosong terhubung menurut definisi mereka.
+Kita menghindari himpunan kosong pada dasarnya karena alasan yang sama dengan
+1 bukan bilangan prima maupun komposit:  Himpunan terhubung kita memiliki tepat
+dua himpunan bagian terbuka-tertutup, sedangkan himpunan tak terhubung memiliki lebih dari dua.
+Himpunan kosong hanya memiliki satu.}
+disebut \emph{\myindex{terhubung}} jika himpunan bagian dari $X$ yang sekaligus
+terbuka dan tertutup (terkadang disebut himpunan bagian
+\emph{\myindex{terbuka-tertutup}}) hanyalah $\emptyset$ dan $X$ itu sendiri.
+Jika $(X,d)$ yang tidak kosong tidak terhubung, kita menyebutnya
+\emph{\myindex{tak terhubung}}.
+
+Ketika istilah \emph{terhubung} diterapkan pada himpunan bagian tidak kosong $A \subset X$,
+yang dimaksud ialah bahwa $A$, dengan topologi subruangnya, terhubung.
+\end{defn}
+
+Dengan kata lain, $X$ yang tidak kosong terhubung jika setiap kali kita menulis
+$X = X_1 \cup X_2$, dengan $X_1 \cap X_2 = \emptyset$ serta $X_1$ dan $X_2$
+terbuka, maka $X_1 = \emptyset$ atau $X_2 = \emptyset$.
+Jadi, untuk menunjukkan bahwa $X$ tak terhubung, kita harus menemukan himpunan terbuka
+tidak kosong yang saling lepas, $X_1$ dan
+$X_2$, yang gabungannya adalah $X$.
+Untuk himpunan bagian, gagasan ini kita nyatakan sebagai proposisi.
+Proposisi tersebut diilustrasikan dalam \figureref{fig:disconsubset}.
+
+\begin{prop}
+Misalkan $(X,d)$ ruang metrik.
+Himpunan tidak kosong $S \subset X$ tak terhubung jika dan hanya jika
+terdapat himpunan terbuka $U_1$ dan
+$U_2$ dalam $X$ sedemikian sehingga $U_1 \cap U_2 \cap S = \emptyset$,
+$U_1 \cap S \neq \emptyset$,
+$U_2 \cap S \neq \emptyset$, dan
+\begin{equation*}
+S = 
+\bigl( U_1 \cap S \bigr)
+\cup
+\bigl( U_2 \cap S \bigr) .
+\end{equation*}
+\end{prop}
+
+\begin{myfigureht}
+\myincludepdft{disconsubset}{%
+Dua daerah berarsir dengan garis batas penuh sama-sama
+berlabel S.  Sebuah garis titik-titik mengelilingi setiap daerah
+berarsir.
+Bagian dalam daerah pertama ditandai U subskrip 1,
+dan bagian dalam daerah kedua ditandai U subskrip 2.
+Bagian dalam kedua garis titik-titik tersebut saling beririsan, tetapi
+setiap daerah berarsir hanya berada di dalam salah satu garis
+titik-titik.}
+\caption{Himpunan bagian tak terhubung.  Perhatikan bahwa $U_1 \cap U_2$ tidak harus
+kosong, tetapi $U_1 \cap U_2 \cap S = \emptyset$.\label{fig:disconsubset}}
+\end{myfigureht}
+
+
+\begin{proof}
+Pertama, andaikan $S$ tak terhubung: Terdapat
+$S_1$ dan $S_2$ yang tidak kosong, saling lepas, dan
+terbuka dalam $S$, serta $S = S_1 \cup S_2$.
+\propref{prop:topology:subspaceopen} menyatakan bahwa terdapat $U_1$ dan $U_2$
+yang terbuka dalam $X$ sedemikian sehingga $U_1 \cap S = S_1$ dan
+$U_2 \cap S = S_2$.
+
+Untuk arah sebaliknya, mulailah dengan $U_1$ dan $U_2$ tersebut.
+Maka $U_1 \cap S$ dan $U_2 \cap S$ terbuka dalam $S$ menurut
+\propref{prop:topology:subspaceopen}.
+Menurut pembahasan sebelum proposisi, $S$ tak terhubung.
+\end{proof}
+
+\begin{example}
+Misalkan $S \subset \R$ dan terdapat $x,y,z$ sedemikian sehingga $x < z < y$, dengan $x,y \in S$
+dan $z \notin S$.  Klaim: \emph{$S$ tak terhubung}.  Bukti:  Perhatikan bahwa
+\begin{equation*}
+\bigl( (-\infty,z) \cap S \bigr)
+\cup
+\bigl( (z,\infty) \cap S \bigr)
+= S .
+\end{equation*}
+\end{example}
+
+\begin{prop}
+Himpunan tidak kosong $S \subset \R$ terhubung jika dan hanya jika $S$
+merupakan interval atau satu titik.
+\end{prop}
+
+\begin{proof}
+Andaikan $S$ terhubung.  Jika $S$ hanya terdiri atas satu titik,
+pembuktian selesai.  Jadi, andaikan $x < y$ dan $x,y \in S$.  Jika $z \in \R$
+sedemikian sehingga $x < z < y$, maka $(-\infty,z) \cap S$ tidak kosong dan $(z,\infty) \cap
+S$ tidak kosong.  Kedua himpunan itu saling lepas.  Karena
+$S$ terhubung, gabungan keduanya tidak mungkin sama dengan $S$, sehingga $z \in S$.
+Menurut \propref{prop:intervaldef}, $S$ merupakan interval.
+
+Jika $S$ hanya terdiri atas satu titik, maka himpunan tersebut terhubung.
+Selanjutnya, andaikan $S$ merupakan interval.
+Tinjau himpunan bagian terbuka $U_1$ dan $U_2$ dari $\R$ sedemikian sehingga
+$U_1 \cap S$ dan $U_2 \cap S$ tidak kosong, dan
+$S = 
+\bigl( U_1 \cap S \bigr)
+\cup
+\bigl( U_2 \cap S \bigr)$.  Kita akan menunjukkan bahwa $U_1 \cap S$
+dan $U_2 \cap S$ memiliki suatu titik bersama, sehingga keduanya tidak saling lepas;
+hal ini membuktikan bahwa $S$ terhubung.
+Misalkan $x \in U_1 \cap S$
+dan $y \in U_2 \cap S$.  Tanpa mengurangi keumuman, andaikan $x < y$.
+Karena $S$ merupakan interval, $[x,y] \subset S$.
+Perhatikan bahwa $U_2 \cap [x,y] \neq \emptyset$, dan
+tetapkan $z \coloneqq \inf (U_2 \cap [x,y])$.
+Kita ingin menunjukkan bahwa $z \in U_1$.
+Jika $z = x$, maka $z \in U_1$.
+Jika $z > x$,
+maka untuk setiap $\epsilon > 0$, bola $B(z,\epsilon) =
+(z-\epsilon,z+\epsilon)$ memuat titik-titik dalam $[x,y]$ yang tidak berada dalam $U_2$,
+karena $z$ merupakan infimum $U_2 \cap [x,y]$.
+Jadi, $z \notin U_2$ karena $U_2$ terbuka.
+Oleh karena itu, $z \in U_1$ sebab setiap titik dalam $[x,y]$ berada dalam
+$U_1$ atau $U_2$.
+Karena $U_1$ terbuka,
+$B(z,\delta) \subset U_1$ untuk $\delta > 0$ yang cukup kecil.
+Karena $z$ merupakan infimum himpunan tidak kosong $U_2 \cap [x,y]$,
+harus terdapat suatu $w \in U_2 \cap [x,y]$
+sedemikian sehingga $w \in [z,z+\delta) \subset B(z,\delta) \subset U_1$.
+Oleh karena itu, $w \in U_1 \cap U_2 \cap [x,y]$.
+Jadi, $U_1 \cap S$ dan $U_2 \cap S$ tidak saling lepas, sehingga
+$S$ terhubung.
+Lihat \figureref{fig:intervalcon}.
+\end{proof}
+
+\begin{myfigureht}
+\myincludepdft{intervalcon}{%
+Diagram garis bilangan dengan titik
+x yang ditandai di sebelah kiri dan titik y di sebelah
+kanan.  Di antara x dan y terdapat
+titik z dan w.  Suatu interval terbuka
+yang bermula di suatu tempat di sebelah kiri dan berlanjut melewati w (sehingga
+memuat x, z, dan w) ditandai U subskrip 1.
+Suatu interval terbuka dari z yang berlanjut keluar dari diagram
+ke kanan ditandai U subskrip 2.
+Sebuah interval terbuka kecil dari z dikurangi delta
+hingga z ditambah delta yang memuat w juga ditandai.}
+\caption{Bukti bahwa suatu interval terhubung.\label{fig:intervalcon}}
+\end{myfigureht}
+
+\begin{example}
+Sering kali sebuah bola $B(x,\delta)$ terhubung, tetapi hal ini tidak
+selalu benar dalam setiap ruang metrik.
+Sebagai contoh paling sederhana,
+ambil ruang dua titik $\{ a, b\}$ dengan metrik diskret.
+Maka $B(a,2) = \{ a , b \}$ tidak
+terhubung karena $B(a,1) = \{ a \}$ dan
+$B(b,1) = \{ b \}$ terbuka dan saling lepas.
+\end{example}
+
+\subsection{Penutupan dan batas}
+
+Terkadang kita ingin mengambil suatu himpunan dan menambahkan semua titik yang dapat didekati
+dari dalam himpunan tersebut.  Konsep ini disebut penutupan.
+
+\begin{defn}
+Misalkan $(X,d)$ ruang metrik dan $A \subset X$.
+Kita mendefinisikan \emph{\myindex{penutupan}} dari $A$ sebagai himpunan
+\glsadd{not:closure}
+\begin{equation*}
+\widebar{A} \coloneqq \bigcap \{ E \subset X : E \text{ tertutup dan } A \subset
+E \} .
+\end{equation*}
+\end{defn}
+
+Artinya,
+$\widebar{A}$ merupakan irisan semua himpunan tertutup yang memuat $A$.
+
+
+\begin{prop}
+Misalkan $(X,d)$ ruang metrik dan $A \subset X$.  Penutupan $\widebar{A}$
+tertutup dan $A \subset \widebar{A}$.
+Selain itu, jika $A$ tertutup, maka $\widebar{A} = A$.
+\end{prop}
+
+\begin{proof}
+Penutupan merupakan irisan himpunan-himpunan tertutup, sehingga $\widebar{A}$ tertutup.
+Terdapat setidaknya satu himpunan tertutup yang memuat $A$, yaitu $X$ sendiri,
+sehingga $A \subset \widebar{A}$.
+Jika $A$ tertutup, maka $A$ adalah himpunan tertutup yang memuat $A$.
+Jadi, $\widebar{A} \subset A$, sehingga $A = \widebar{A}$.
+\end{proof}
+
+\begin{example}
+Penutupan $(0,1)$ dalam $\R$ adalah $[0,1]$.  Bukti:  Jika
+$E$ tertutup dan memuat $(0,1)$, maka $E$ memuat $0$ dan $1$ (mengapa?).
+Dengan demikian, $[0,1] \subset E$.  Namun, $[0,1]$ juga tertutup.
+Jadi, penutupannya adalah $\overline{(0,1)} = [0,1]$.
+\end{example}
+
+\begin{example}
+Perhatikan dengan cermat ruang metrik tempat kita bekerja.
+Jika $X = (0,\infty)$, maka
+penutupan $(0,1)$ dalam $(0,\infty)$ adalah $(0,1]$.  Bukti:  Seperti
+di atas, $(0,1]$ tertutup dalam $(0,\infty)$ (mengapa?).  Setiap himpunan tertutup $E$
+yang memuat $(0,1)$ harus memuat 1 (mengapa?).  Oleh karena itu, $(0,1] \subset E$,
+sehingga $\overline{(0,1)} = (0,1]$ ketika kita bekerja dalam $(0,\infty)$.
+\end{example}
+
+Mari kita buktikan bahwa penutupan memuat semua titik yang dapat kita
+\myquote{dekati} dari dalam himpunan.
+
+\begin{prop} \label{prop:msclosureappr}
+Misalkan $(X,d)$ ruang metrik dan $A \subset X$.  Maka $x \in \widebar{A}$
+jika dan hanya jika untuk setiap $\delta > 0$, berlaku $B(x,\delta) \cap A \neq \emptyset$.
+\end{prop}
+
+\begin{proof}
+Mari buktikan kedua kontraposisinya.
+Kita akan menunjukkan bahwa $x \notin \widebar{A}$ jika dan hanya jika terdapat
+$\delta > 0$ sedemikian sehingga $B(x,\delta) \cap A = \emptyset$.
+
+Pertama, andaikan $x \notin \widebar{A}$.  Kita mengetahui bahwa $\widebar{A}$
+tertutup.  Dengan demikian, terdapat $\delta > 0$ sedemikian sehingga
+$B(x,\delta) \subset \widebar{A}^c$.  Karena $A \subset \widebar{A}$, kita
+memperoleh $B(x,\delta) \subset \widebar{A}^c \subset A^c$, sehingga
+$B(x,\delta) \cap A = \emptyset$.
+
+Sebaliknya, andaikan terdapat $\delta > 0$ sedemikian sehingga
+$B(x,\delta) \cap A = \emptyset$.
+Dengan kata lain,
+$A \subset {B(x,\delta)}^c$.
+Karena
+${B(x,\delta)}^c$ merupakan himpunan tertutup, $x \not \in {B(x,\delta)}^c$,
+dan $\widebar{A}$ merupakan irisan
+himpunan-himpunan tertutup yang memuat $A$, kita memperoleh $x \notin \widebar{A}$.
+\end{proof}
+
+Kita juga dapat membahas bagian dalam suatu himpunan
+(titik-titik yang tidak dapat kita dekati dari komplemennya),
+serta batas suatu himpunan (titik-titik yang dapat kita
+dekati baik dari himpunan maupun dari komplemennya).
+
+\begin{defn}
+Misalkan $(X,d)$ ruang metrik dan $A \subset X$.
+Kita mendefinisikan \emph{\myindex{bagian dalam}} dari $A$ sebagai himpunan
+\glsadd{not:interior}
+\begin{equation*}
+A^\circ \coloneqq \{ x \in A : \text{terdapat } \delta > 0
+\text{ sedemikian sehingga } B(x,\delta) \subset A \} .
+\end{equation*}
+Kita mendefinisikan \emph{\myindex{batas}} dari $A$ sebagai himpunan
+\glsadd{not:boundary}
+\begin{equation*}
+\partial A \coloneqq \widebar{A}\setminus A^\circ.
+\end{equation*}
+\end{defn}
+
+Sebagai rumusan lain, bagian dalam merupakan gabungan himpunan-himpunan terbuka yang termuat dalam $A$;
+lihat \exerciseref{exercise:interiortopologic}.  Berdasarkan
+definisi, $A^\circ \subset A$;
+namun, titik-titik batas dapat berada atau tidak berada dalam $A$.
+
+\begin{example}
+Misalkan $A \coloneqq (0,1]$ dan $X \coloneqq \R$.  Maka $\widebar{A}=[0,1]$, $A^\circ = (0,1)$,
+dan $\partial A = \{ 0, 1 \}$.
+\end{example}
+
+\begin{example}
+Tinjau $X \coloneqq \{ a, b \}$ dengan metrik diskret,
+dan tetapkan $A \coloneqq \{ a \}$.  Maka $\widebar{A} = A^\circ = A$ dan $\partial A =
+\emptyset$.
+\end{example}
+
+
+\begin{prop}
+Misalkan $(X,d)$ ruang metrik dan $A \subset X$.  Maka $A^\circ$ terbuka
+dan $\partial A$ tertutup.
+\end{prop}
+
+\begin{proof}
+Untuk $x \in A^\circ$, terdapat $\delta > 0$ sedemikian sehingga $B(x,\delta)
+\subset A$.  Jika $z \in B(x,\delta)$, karena bola terbuka bersifat terbuka,
+terdapat $\epsilon > 0$ sedemikian sehingga $B(z,\epsilon) \subset B(x,\delta)
+\subset A$.  Jadi, $z \in A^\circ$.  Oleh karena itu, $B(x,\delta) \subset
+A^\circ$, sehingga $A^\circ$ terbuka.
+
+Karena $A^\circ$ terbuka,
+$\partial A = \widebar{A} \setminus A^\circ = \widebar{A} \cap
+{(A^\circ)}^c$ tertutup.
+\end{proof}
+
+Batas adalah himpunan titik-titik yang dekat dengan himpunan maupun
+komplemennya.  Lihat \figureref{fig:msboundary} untuk diagram
+proposisi berikut.
+
+\begin{prop}
+Misalkan $(X,d)$ ruang metrik dan $A \subset X$.  Maka $x \in \partial A$
+jika dan hanya jika untuk setiap $\delta > 0$,
+$B(x,\delta) \cap A$ dan
+$B(x,\delta) \cap A^c$ keduanya tidak kosong.
+\end{prop}
+
+\begin{myfigureht}
+\myincludepdft{msboundary}{%
+Gambar di sekitar batas himpunan A yang diarsir.
+Batas digambarkan sebagai garis penuh, dengan A di bawah
+dan komplemen A di atasnya.  Lingkaran bertitik-titik
+berjari-jari delta berpusat pada titik x di
+batas dan ditandai sebagai B dari x koma delta.}
+\caption{Batas adalah himpunan tempat setiap bola memuat titik dari himpunan
+dan juga dari komplemennya.\label{fig:msboundary}}
+\end{myfigureht}
+
+\begin{proof}
+Andaikan $x \in \partial A =  \widebar{A} \setminus A^\circ$ dan
+ambil sebarang $\delta > 0$.
+Menurut \propref{prop:msclosureappr}, $B(x,\delta)$ memuat
+suatu titik dari $A$.  Jika $B(x,\delta)$ tidak memuat titik dari $A^c$,
+maka $x$ berada dalam $A^\circ$.  Oleh karena itu, $B(x,\delta)$ juga memuat suatu titik dari
+$A^c$.
+
+Mari buktikan arah sebaliknya dengan kontraposisi.
+Andaikan $x \notin \partial A$, sehingga $x \notin \widebar{A}$ atau $x \in A^\circ$.
+Jika $x \notin \widebar{A}$, maka
+$B(x,\delta) \subset \widebar{A}^c$
+untuk suatu $\delta > 0$ karena $\widebar{A}$ tertutup.
+Jadi, $B(x,\delta) \cap A$ kosong karena $\widebar{A}^c \subset
+A^c$.
+Jika $x \in A^\circ$, maka
+$B(x,\delta) \subset A$ untuk suatu $\delta > 0$,
+sehingga $B(x,\delta) \cap A^c$ kosong.
+\end{proof}
+
+Kita memperoleh akibat langsung berikut tentang penutupan $A$ dan $A^c$.  Kita
+cukup menerapkan \propref{prop:msclosureappr}.
+
+\begin{cor}
+Misalkan $(X,d)$ ruang metrik dan $A \subset X$.
+Maka $\partial A = \widebar{A} \cap \widebar{A^c}$.
+\end{cor}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Buktikan \propref{prop:topology:closed}.  Petunjuk:
+Terapkan \propref{prop:topology:open} pada
+komplemen himpunan-himpunan tersebut.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan pembuktian \propref{prop:topology:ballsopenclosed} dengan
+membuktikan bahwa $C(x,\delta)$ tertutup.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{prop:topology:intervals:openclosed}.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $(X,d)$ ruang metrik tak kosong dengan topologi diskret.  Tunjukkan
+bahwa $X$ terhubung jika dan hanya jika memuat tepat satu elemen.
+\end{exercise}
+
+\begin{exercise}
+Ambil $\Q$ dengan metrik standar, $d(x,y) = \sabs{x-y}$, sebagai ruang metrik kita.
+Buktikan bahwa $\Q$
+\emph{\myindex{terpisah total}}, yaitu, tunjukkan 
+bahwa untuk setiap $x, y \in \Q$ dengan $x \neq y$, terdapat
+dua himpunan terbuka $U$ dan $V$ sedemikian sehingga $x \in U$, $y \in V$,
+$U \cap V = \emptyset$, dan $U \cup V = \Q$.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa dalam ruang metrik,
+setiap himpunan terbuka dapat ditulis sebagai gabungan himpunan-himpunan tertutup.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Buktikan bahwa dalam ruang metrik,
+\begin{enumerate}[a)]
+\item
+$E$ tertutup jika dan hanya jika $\partial E \subset E$.
+\item
+$U$ terbuka jika dan hanya jika $\partial U \cap U = \emptyset$.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Buktikan bahwa dalam ruang metrik,
+\begin{enumerate}[a)]
+\item
+$A$ terbuka jika dan hanya jika $A^\circ = A$.
+\item
+$U \subset A^\circ$
+untuk setiap himpunan terbuka $U$ sedemikian sehingga $U \subset A$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $X$ suatu himpunan serta $d$ dan $d'$ dua metrik pada $X$.
+Andaikan terdapat $\alpha > 0$ dan $\beta > 0$
+sedemikian sehingga $\alpha d(x,y) \leq d'(x,y) \leq \beta d(x,y)$ untuk semua $x,y \in X$.
+Tunjukkan bahwa $U$ terbuka dalam $(X,d)$ jika dan hanya jika $U$ terbuka dalam $(X,d')$.
+Artinya, topologi $(X,d)$ dan $(X,d')$ sama.
+\end{exercise}
+
+
+\begin{exercise}
+Misalkan $\{ S_i \}$, $i \in \N$,
+suatu koleksi subhimpunan terhubung dari ruang metrik $(X,d)$,
+dan terdapat $x \in X$ sedemikian sehingga $x \in S_i$ untuk semua $i \in \N$.
+Tunjukkan bahwa $\bigcup_{i=1}^\infty S_i$ terhubung.
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Misalkan $A$ himpunan terhubung dalam suatu ruang metrik.
+\begin{enumerate}[a)]
+\item
+Apakah $\widebar{A}$ terhubung?  Buktikan atau temukan contoh penyangkal.
+\item
+Apakah $A^\circ$ terhubung?  Buktikan atau temukan contoh penyangkal.
+\end{enumerate}
+Petunjuk: Pikirkan himpunan-himpunan dalam $\R^2$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:mssubspace}
+Selesaikan pembuktian \propref{prop:topology:subspaceopen}.
+Misalkan $(X,d)$ ruang metrik dan $Y \subset X$.  Tunjukkan bahwa
+dengan metrik subruang pada $Y$, jika himpunan $U \subset Y$
+terbuka (dalam $Y$), maka terdapat himpunan terbuka $V \subset X$ sedemikian
+sehingga $U = V \cap Y$.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Misalkan $(X,d)$ ruang metrik.
+\begin{enumerate}[a)]
+\item
+Untuk setiap $x \in X$ dan $\delta > 0$, tunjukkan
+$\overline{B(x,\delta)} \subset C(x,\delta)$.
+\item
+Apakah selalu benar bahwa
+$\overline{B(x,\delta)} = C(x,\delta)$?  Buktikan atau temukan contoh penyangkal.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise} \label{exercise:interiortopologic}
+Misalkan $(X,d)$ ruang metrik dan $A \subset X$.  Tunjukkan bahwa
+$A^\circ = \bigcup \{ V : V \text{ terbuka dan } V \subset A \}$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan pembuktian \propref{prop:topology:subspacesame}.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $(X,d)$ ruang metrik.  Tunjukkan bahwa terdapat metrik terbatas
+$d'$ sedemikian sehingga $(X,d')$ memiliki himpunan-himpunan terbuka yang sama; dengan kata lain,
+topologinya sama.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Misalkan $(X,d)$ ruang metrik.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa untuk setiap $x \in X$, terdapat $\delta > 0$ sedemikian sehingga
+$B(x,\delta) = \{ x \}$, atau $B(x,\delta)$ tak hingga untuk setiap $\delta >  0$.
+\item
+Temukan contoh eksplisit $(X,d)$ dengan $X$ tak hingga, sedemikian sehingga
+untuk setiap $\delta > 0$ dan
+setiap $x \in X$,
+bola $B(x,\delta)$ berhingga.
+\item
+Temukan contoh eksplisit $(X,d)$ sedemikian sehingga untuk setiap $\delta > 0$ dan
+setiap $x \in X$,
+bola $B(x,\delta)$ tak hingga terhitung.
+\item
+Buktikan bahwa jika $X$ tak terhitung, maka terdapat
+$x \in X$ dan $\delta > 0$ sedemikian sehingga $B(x,\delta)$ tak terhitung.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Untuk setiap $x \in \R^n$ dan setiap $\delta > 0$, definisikan \myquote{persegi panjang}
+$R(x,\delta) \coloneqq
+(x_1-\delta,x_1+\delta) \times
+(x_2-\delta,x_2+\delta) \times \cdots \times
+(x_n-\delta,x_n+\delta)$.  Tunjukkan bahwa himpunan-himpunan ini dan bola-bola
+dalam metrik standar membangkitkan koleksi himpunan terbuka yang sama.  Artinya, tunjukkan bahwa himpunan $U \subset \R^n$
+terbuka dalam pengertian metrik standar jika dan hanya jika untuk setiap
+titik $x \in U$, terdapat $\delta > 0$ sedemikian sehingga $R(x,\delta) \subset
+U$.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Barisan dan kekonvergenan}
+\label{sec:metseqs}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1 kuliah}
+
+\subsection{Barisan}
+
+Pengertian barisan dalam ruang metrik sangat mirip dengan barisan
+bilangan real.
+Definisi-definisi terkait pada dasarnya sama dengan definisi untuk bilangan real
+dalam \chapterref{seq:chapter}, dengan $\R$ yang dilengkapi
+dengan metrik standar $d(x,y)=\sabs{x-y}$ digantikan
+oleh ruang metrik sebarang $(X,d)$.
+
+
+\begin{defn}
+Suatu \emph{\myindex{barisan}} dalam ruang metrik $(X,d)$ adalah fungsi
+$x \colon \N \to X$.  Seperti sebelumnya, kita menuliskan $x_n$ untuk elemen ke-$n$ dalam
+barisan tersebut, dan menggunakan notasi berikut untuk seluruh barisan:
+\glsadd{not:sequence}
+\begin{equation*}
+\{ x_n \}_{n=1}^\infty .
+\end{equation*}
+
+Barisan $\{ x_n \}_{n=1}^\infty$ disebut \emph{terbatas}\index{barisan terbatas} jika
+terdapat titik $p \in X$ dan $B \in \R$ sedemikian sehingga
+\begin{equation*}
+d(p,x_n) \leq B \qquad \text{untuk semua } n \in \N.
+\end{equation*}
+Dengan kata lain, barisan $\{x_n\}_{n=1}^\infty$ terbatas apabila
+himpunan $\{ x_n : n \in \N \}$
+terbatas.
+
+Jika $\{ n_k \}_{k=1}^\infty$ merupakan barisan bilangan asli
+sedemikian sehingga $n_{k+1} > n_k$ untuk semua $k$, maka
+barisan $\{ x_{n_k} \}_{k=1}^\infty$\glsadd{not:subsequence}
+disebut
+\emph{\myindex{subbarisan}} dari $\{x_n \}_{n=1}^\infty$.
+\end{defn}
+
+Dengan cara serupa, kita mendefinisikan kekonvergenan.
+Lihat \figureref{fig:sequence-convergence-metric} untuk memperoleh gambaran tentang
+definisi tersebut.
+
+\begin{defn}
+Barisan $\{ x_n \}_{n=1}^\infty$ dalam ruang metrik $(X,d)$ dikatakan
+\emph{konvergen} ke titik
+$p \in X$ jika untuk setiap $\epsilon > 0$, terdapat $M \in \N$ sedemikian
+sehingga $d(x_n,p) < \epsilon$ untuk semua $n \geq M$.  Titik $p$
+disebut \emph{limit}\index{limit!barisan dalam ruang metrik}
+dari $\{ x_n \}_{n=1}^\infty$.
+Kita akan membuktikan bahwa limit tersebut tunggal, sehingga
+kita menuliskan\glsadd{not:limseq}
+\begin{equation*}
+\lim_{n\to \infty} x_n \coloneqq p .
+\end{equation*}
+
+Barisan
+yang konvergen disebut \emph{konvergen}\index{konvergen!barisan dalam ruang
+metrik}.
+Jika tidak, barisan tersebut disebut 
+\emph{divergen}\index{divergen!barisan dalam ruang metrik}.
+\begin{myfigureht}
+\myincludegraphics{sequence-convergence-metric}{%
+Sebuah lingkaran bertitik-titik berjari-jari epsilon yang berpusat di p digambarkan.
+Sejumlah titik dari awal barisan, dari x subskrip 1 hingga
+x subskrip 10, ditampilkan.  Titik-titik x subskrip 1,
+x subskrip 3, x subskrip 4, x subskrip 5, dan x subskrip 6 berada
+di luar lingkaran, sedangkan semua titik lainnya berada di dalamnya.}
+\caption{Barisan yang konvergen ke $p$.  Sepuluh titik pertama 
+ditampilkan dan $M=7$ untuk $\epsilon$ ini.\label{fig:sequence-convergence-metric}}
+\end{myfigureht}
+\end{defn}
+
+Kita mulai dengan membuktikan bahwa limit tersebut tunggal.  Pembuktiannya hampir
+identik (kata demi kata) dengan pembuktian fakta yang sama untuk barisan
+bilangan real,
+\propref{prop:limisunique}.
+Pembuktian banyak hasil yang telah kita ketahui tentang barisan bilangan real dapat
+disesuaikan dengan
+konteks ruang metrik yang lebih umum.  Kita harus mengganti $\sabs{x-y}$
+dengan $d(x,y)$ dalam pembuktian dan menerapkan ketaksamaan segitiga dengan tepat.
+
+\begin{prop} \label{prop:mslimisunique}
+Barisan konvergen dalam ruang metrik memiliki limit tunggal.
+\end{prop}
+
+\begin{proof}
+%NOTE: should be word for word the same as 2.1.6
+Misalkan $\{ x_n \}_{n=1}^\infty$ memiliki limit $x$ dan $y$.
+Ambil sebarang $\epsilon > 0$.
+Dari definisi, pilih $M_1$ sedemikian sehingga untuk semua $n \geq M_1$,
+$d(x_n,x) < \nicefrac{\epsilon}{2}$.  Dengan cara serupa, pilih $M_2$
+sedemikian sehingga untuk semua $n \geq M_2$, berlaku
+$d(x_n,y) < \nicefrac{\epsilon}{2}$.  Sekarang ambil $n$ sedemikian sehingga
+$n \geq M_1$ dan juga $n \geq M_2$; maka diperoleh estimasi berikut:
+\begin{equation*}
+\begin{split}
+d(y,x)
+& \leq
+d(y,x_n) + d(x_n,x) \\
+& <
+\frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon .
+\end{split}
+\end{equation*}
+Karena $d(y,x) < \epsilon$ untuk semua $\epsilon > 0$, kita memperoleh $d(x,y) = 0$
+sehingga $y=x$.  Jadi, limit tersebut (jika ada) tunggal.
+\end{proof}
+
+Pembuktian proposisi-proposisi berikut diserahkan sebagai latihan.
+
+\begin{prop} \label{prop:msconvbound}
+Barisan konvergen dalam ruang metrik bersifat terbatas.
+\end{prop}
+
+\begin{prop} \label{prop:msconvifa}
+Barisan $\{ x_n \}_{n=1}^\infty$ dalam ruang metrik $(X,d)$ konvergen ke $p \in X$
+jika dan hanya
+jika terdapat barisan bilangan real $\{ a_n \}_{n=1}^\infty$ sedemikian sehingga
+\begin{equation*}
+d(x_n,p) \leq a_n \quad \text{untuk semua } n \in \N,
+\qquad
+\text{dan}
+\qquad
+\lim_{n\to\infty} a_n = 0.
+\end{equation*}
+\end{prop}
+
+\begin{prop} \label{prop:mssubseq}
+Misalkan $\{ x_n \}_{n=1}^\infty$ barisan dalam ruang metrik $(X,d)$.
+\begin{enumerate}[(i)]
+\item Jika $\{ x_n \}_{n=1}^\infty$ konvergen ke $p \in X$, maka setiap
+subbarisan $\{ x_{n_k} \}_{k=1}^\infty$
+konvergen ke $p$.
+\item Jika untuk suatu $K \in \N$, ekor-$K$ $\{ x_n \}_{n=K+1}^\infty$
+konvergen ke $p \in X$, maka
+ $\{ x_n \}_{n=1}^\infty$ konvergen ke $p$.
+\end{enumerate}
+\end{prop}
+
+\begin{example}
+Ambil $C\bigl([a,b],\R\bigr)$ sebagai himpunan fungsi kontinu dengan metrik
+yang diinduksi oleh norma seragam.  Kita telah melihat bahwa ini menghasilkan ruang metrik.
+Jika kita mencermati definisi kekonvergenan, kita melihat bahwa definisi tersebut identik
+dengan konvergensi seragam.  Artinya, $\{ f_n \}_{n=1}^\infty$ konvergen seragam jika dan hanya
+jika barisan tersebut konvergen dalam pengertian ruang metrik.
+\end{example}
+
+\begin{remark}
+Mungkin mengejutkan bahwa pada himpunan fungsi $f \colon [a,b] \to
+\R$ (kontinu ataupun tidak)
+tidak ada metrik yang menghasilkan konvergensi titik demi titik karena domain $[a,b]$
+tak terhitung.  Pembuktian
+fakta ini berada di luar cakupan buku ini.
+\end{remark}
+
+\subsection{Konvergensi dalam ruang Euklides}
+
+Dalam ruang Euklides $\R^n$, suatu barisan konvergen jika dan hanya jika setiap
+komponennya konvergen:
+
+\begin{prop} \label{prop:msconveuc}
+Misalkan $\{ x_m \}_{m=1}^\infty$ suatu barisan dalam $\R^n$,
+dengan $x_m = \bigl(x_{m,1},x_{m,2},\ldots,x_{m,n}\bigr) \in \R^n$.
+Maka $\{ x_m \}_{m=1}^\infty$ konvergen jika dan hanya jika
+$\{ x_{m,k} \}_{m=1}^\infty$ konvergen untuk setiap $k=1,2,\ldots,n$; dalam hal ini,
+\begin{equation*}
+\lim_{m\to\infty}
+x_m =
+\Bigl(
+\lim_{m\to\infty} x_{m,1},
+\lim_{m\to\infty} x_{m,2},
+\ldots,
+\lim_{m\to\infty} x_{m,n}
+\Bigr) .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Misalkan
+$\{ x_m \}_{m=1}^\infty$ konvergen ke
+$y = (y_1,y_2,\ldots,y_n) \in \R^n$.
+Untuk $\epsilon > 0$, terdapat $M$ sedemikian sehingga untuk semua
+$m \geq M$, berlaku
+\begin{equation*}
+d(y,x_m) < \epsilon.
+\end{equation*}
+Tetapkan sebarang $k=1,2,\ldots,n$.  Untuk semua $m \geq M$,
+\begin{equation*}
+\bigl\lvert y_k - x_{m,k} \bigr\rvert
+=
+\sqrt{{\bigl(y_k - x_{m,k} \bigr)}^2}
+\leq
+\sqrt{\sum_{\ell=1}^n {\bigl(y_\ell-x_{m,\ell}\bigr)}^2}
+= d(y,x_m) < \epsilon .
+\end{equation*}
+Jadi, barisan $\{ x_{m,k} \}_{m=1}^\infty$ konvergen ke $y_k$.
+
+Untuk arah sebaliknya, misalkan 
+$\{ x_{m,k} \}_{m=1}^\infty$ konvergen ke $y_k$ untuk setiap $k=1,2,\ldots,n$.
+Untuk $\epsilon > 0$, pilih $M$ sedemikian sehingga jika $m \geq M$, maka 
+$\bigl\lvert y_k-x_{m,k} \bigr\rvert < \nicefrac{\epsilon}{\sqrt{n}}$ untuk semua
+$k=1,2,\ldots,n$.  Maka
+\begin{equation*}
+d(y,x_m)
+=
+\sqrt{\sum_{k=1}^n {\bigl(y_k-x_{m,k}\bigr)}^2}
+<
+\sqrt{\sum_{k=1}^n {\left(\frac{\epsilon}{\sqrt{n}}\right)}^2}
+=
+\sqrt{\sum_{k=1}^n \frac{{\epsilon^2}}{n}}
+= \epsilon .
+\end{equation*}
+Artinya, barisan $\{ x_m \}_{m=1}^\infty$ konvergen ke
+$y = (y_1,y_2,\ldots,y_n) \in \R^n$.
+\end{proof}
+
+\begin{example}
+Seperti telah disebutkan, himpunan bilangan kompleks $\C$, dengan $z = x+iy$, dipandang 
+sebagai ruang metrik $\R^2$.  Proposisi tersebut menyatakan bahwa
+barisan $\{ z_n \}_{n=1}^\infty = \{ x_n + iy_n \}_{n=1}^\infty$ konvergen
+ke $z = x+iy$
+jika dan hanya jika $\{ x_n \}_{n=1}^\infty$ konvergen ke $x$ dan 
+$\{ y_n \}_{n=1}^\infty$ konvergen ke $y$.
+\end{example}
+
+\subsection{Kekonvergenan dan topologi}
+
+Topologi---himpunan semua himpunan terbuka dari suatu ruang---menentukan
+barisan mana yang konvergen.
+
+\begin{prop} \label{prop:msconvtopo}
+Misalkan $(X,d)$ ruang metrik dan $\{x_n\}_{n=1}^\infty$ barisan dalam $X$.  Maka
+$\{ x_n \}_{n=1}^\infty$ konvergen ke $p \in X$ jika dan hanya jika untuk setiap lingkungan terbuka
+$U$ dari $p$, terdapat $M \in \N$ sedemikian sehingga untuk semua $n \geq M$,
+berlaku $x_n \in U$.
+\end{prop}
+
+\begin{proof}
+Misalkan $\{ x_n \}_{n=1}^\infty$ konvergen ke $p$.  Misalkan $U$ lingkungan terbuka
+dari $p$.  Terdapat $\epsilon > 0$ sedemikian sehingga $B(p,\epsilon) \subset
+U$.  Karena barisan tersebut konvergen, pilih $M \in \N$ sedemikian sehingga untuk semua $n \geq
+M$, berlaku $d(p,x_n) < \epsilon$, atau dengan kata lain $x_n \in B(p,\epsilon)
+\subset U$.
+
+Mari kita buktikan arah sebaliknya.  Untuk $\epsilon > 0$, tetapkan $U \coloneqq
+B(p,\epsilon)$ sebagai lingkungan dari $p$.  Maka terdapat $M \in \N$
+sedemikian sehingga untuk $n \geq M$, berlaku $x_n \in U = B(p,\epsilon)$, atau dengan kata
+lain, $d(p,x_n) < \epsilon$.
+\end{proof}
+
+Himpunan tertutup memuat limit setiap barisan konvergen di dalamnya.
+
+\begin{prop} \label{prop:msclosedlim}
+Misalkan $(X,d)$ ruang metrik, $E \subset X$ himpunan tertutup,
+dan $\{ x_n \}_{n=1}^\infty$ barisan dalam $E$ yang konvergen ke suatu $p \in X$.
+Maka $p \in E$.
+\end{prop}
+
+\begin{proof}
+Mari kita buktikan kontraposisinya.
+Misalkan $\{ x_n \}_{n=1}^\infty$ barisan dalam $X$ yang konvergen ke $p \in E^c$.
+Karena $E^c$ terbuka, \propref{prop:msconvtopo} menyatakan bahwa terdapat
+$M$ sedemikian sehingga untuk semua $n \geq M$,
+$x_n \in E^c$.  Jadi, $\{ x_n \}_{n=1}^\infty$ bukan barisan dalam $E$.
+\end{proof}
+
+Untuk memperoleh penutupan suatu himpunan $A$, kita mulai dengan $A$, lalu menambahkan 
+titik-titik yang merupakan limit barisan dalam $A$.
+
+\begin{prop} \label{prop:msclosureapprseq}
+Misalkan $(X,d)$ ruang metrik dan $A \subset X$.
+Maka $p \in \widebar{A}$ jika dan hanya jika terdapat barisan
+$\{ x_n \}_{n=1}^\infty$ yang terdiri atas
+elemen-elemen dalam $A$ sedemikian sehingga $\lim\limits_{n\to\infty} x_n = p$.
+\end{prop}
+
+\begin{proof}
+Misalkan $p \in \widebar{A}$.  Untuk setiap $n \in \N$,
+\propref{prop:msclosureappr} menjamin adanya
+titik $x_n \in B(p,\nicefrac{1}{n}) \cap A$.
+Karena $d(p,x_n) < \nicefrac{1}{n}$, kita memperoleh $\lim_{n\to\infty} x_n = p$.
+
+Untuk arah sebaliknya, lihat \exerciseref{exercise:reverseclosedseq}.
+\end{proof}
+
+\subsection{Latihan}
+
+\begin{exercise} \label{exercise:reverseclosedseq}
+Selesaikan pembuktian 
+\propref{prop:msclosureapprseq}:
+Misalkan $(X,d)$ ruang metrik dan
+$A \subset X$.  Misalkan $p \in X$
+sedemikian sehingga terdapat barisan $\{ x_n \}_{n=1}^\infty$ dalam $A$ yang konvergen ke $p$.
+Buktikan bahwa $p \in \widebar{A}$.
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $d(x,y) \coloneqq \min \bigl\{ 1, \sabs{x-y} \bigr\}$ mendefinisikan metrik pada $\R$.
+\item
+Tunjukkan bahwa suatu barisan konvergen dalam $(\R,d)$ jika dan hanya jika barisan tersebut konvergen
+dalam metrik standar.
+\item
+Temukan barisan terbatas dalam $(\R,d)$ yang
+tidak memiliki subbarisan konvergen.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{prop:msconvbound}.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{prop:msconvifa}.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{x_n\}_{n=1}^\infty$ konvergen ke $p$.  Misalkan $f \colon \N
+\to \N$ fungsi satu-ke-satu.  Tunjukkan bahwa
+$\{ x_{f(n)} \}_{n=1}^\infty$ konvergen ke $p$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $(X,d)$ ruang metrik dengan $d$ metrik diskret.  Misalkan 
+$\{ x_n \}_{n=1}^\infty$ barisan konvergen dalam $X$.  Tunjukkan bahwa terdapat
+$K \in \N$ sedemikian sehingga untuk semua $n \geq K$, berlaku $x_n = x_K$.
+\end{exercise}
+
+\begin{exercise}
+Himpunan $S \subset X$ disebut \emph{\myindex{rapat}} dalam $X$ jika
+$X \subset \widebar{S}$, atau dengan kata lain, jika untuk setiap $p \in X$,
+terdapat barisan $\{ x_n \}_{n=1}^\infty$ dalam $S$ yang konvergen ke $p$.
+Buktikan bahwa $\R^n$ memuat subhimpunan rapat yang terhitung.
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Misalkan $\{ U_n \}_{n=1}^\infty$ barisan menurun ($U_{n+1} \subset U_n$ untuk
+semua $n$) dari himpunan-himpunan terbuka dalam ruang metrik $(X,d)$ sedemikian sehingga
+$\bigcap_{n=1}^\infty U_n = \{ p \}$ untuk suatu $p \in X$.  Misalkan 
+$\{ x_n \}_{n=1}^\infty$ barisan titik dalam $X$ sedemikian sehingga $x_n \in U_n$.  Apakah
+$\{ x_n \}_{n=1}^\infty$ harus konvergen ke $p$?  Buktikan atau bangun contoh penyangkal.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $E \subset X$ tertutup dan
+$\{ x_n \}_{n=1}^\infty$ barisan dalam $X$ yang konvergen ke $p \in X$.  Andaikan
+$x_n \in E$ untuk tak hingga banyaknya nilai $n \in \N$.  Tunjukkan bahwa $p \in E$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:extendedrealsmetric}
+Ambil $\R^* = \{ -\infty \} \cup \R \cup \{ \infty \}$ sebagai himpunan bilangan real diperluas.
+Definisikan
+$d(x,y) \coloneqq \babs{ \frac{x}{1+\sabs{x}} - \frac{y}{1+\sabs{y}} }$
+untuk $x, y \in \R$, definisikan
+$d(\infty,x) \coloneqq \babs{ 1 - \frac{x}{1+\sabs{x}} }$,
+$d(-\infty,x) \coloneqq \babs{ 1 + \frac{x}{1+\sabs{x}} }$
+untuk semua $x \in \R$.  Tetapkan pula $d(x,\infty) \coloneqq d(\infty,x)$ dan
+$d(x,-\infty) \coloneqq d(-\infty,x)$ untuk semua $x \in \R$, serta tetapkan
+$d(\infty,-\infty)=d(-\infty,\infty) \coloneqq 2$ dan $d(\infty,\infty)=d(-\infty,-\infty) \coloneqq 0$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $(\R^*,d)$ ruang metrik.
+\item
+Misalkan $\{ x_n \}_{n=1}^\infty$ barisan bilangan real sedemikian sehingga
+untuk setiap $M \in \R$, terdapat $N$ sedemikian sehingga
+$x_n \geq M$ untuk semua $n \geq N$.  Tunjukkan bahwa $\lim\limits_{n\to\infty} x_n = \infty$ dalam
+$(\R^*,d)$.
+\item
+Tunjukkan bahwa suatu barisan bilangan real konvergen ke bilangan real
+dalam $(\R^*,d)$ jika dan
+hanya jika barisan tersebut konvergen dalam $\R$ dengan metrik standar.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{ V_n \}_{n=1}^\infty$ barisan himpunan terbuka
+dalam $(X,d)$
+sedemikian sehingga $V_{n+1} \supset V_n$ untuk semua $n$.  Misalkan $\{ x_n \}_{n=1}^\infty$ barisan
+sedemikian sehingga $x_n \in V_{n+1} \setminus V_n$ dan andaikan 
+$\{ x_n \}_{n=1}^\infty$ konvergen ke $p \in X$.  Tunjukkan bahwa $p \in \partial V$
+dengan $V = \bigcup_{n=1}^\infty V_n$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{prop:mssubseq}.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $(X,d)$ ruang metrik dan $\{ x_n \}_{n=1}^\infty$ barisan dalam $X$.
+Buktikan bahwa $\{ x_n \}_{n=1}^\infty$ konvergen ke $p \in X$
+jika dan hanya jika
+setiap subbarisan dari $\{ x_n \}_{n=1}^\infty$ memiliki subbarisan yang
+konvergen ke $p$.
+\end{exercise}
+
+\begin{exercise}
+Tinjau $\R^n$, dan misalkan $d$ metrik Euklides standar.
+Tetapkan $d'(x,y) \coloneqq \sum_{\ell=1}^n \sabs{x_\ell-y_\ell}$ dan
+$d''(x,y) \coloneqq \max \bigl\{
+\sabs{x_1-y_1},\sabs{x_2-y_2},\cdots,\sabs{x_n-y_n}
+\bigr\}$.
+\begin{enumerate}[a)]
+\item
+Gunakan \exerciseref{exercise:mscross} untuk menunjukkan bahwa
+$(\R^n,d')$ dan
+$(\R^n,d'')$ merupakan ruang metrik.
+\item
+Misalkan $\{ x_k \}_{k=1}^\infty$ barisan dalam $\R^n$ dan $p \in \R^n$.
+Buktikan bahwa pernyataan-pernyataan berikut ekuivalen:
+\begin{enumerate}[(1)]
+\item
+$\{ x_k \}_{k=1}^\infty$ konvergen ke $p$ dalam $(\R^n,d)$.
+\item
+$\{ x_k \}_{k=1}^\infty$ konvergen ke $p$ dalam $(\R^n,d')$.
+\item
+$\{ x_k \}_{k=1}^\infty$ konvergen ke $p$ dalam $(\R^n,d'')$.
+\end{enumerate}
+\end{enumerate}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Kelengkapan dan kekompakan}
+\label{sec:metcompact}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2 kuliah}
+
+\subsection{Barisan Cauchy dan kelengkapan}
+
+Seperti halnya untuk barisan bilangan real, kita mendefinisikan barisan Cauchy.
+
+\begin{defn}
+Misalkan $(X,d)$ ruang metrik.
+Barisan $\{ x_n \}_{n=1}^\infty$ dalam $X$ disebut \emph{\myindex{barisan Cauchy}} jika
+untuk setiap $\epsilon > 0$, terdapat $M \in \N$ sedemikian sehingga
+untuk semua $n \geq M$ dan semua $k \geq M$, berlaku
+\begin{equation*}
+d(x_n, x_k) < \epsilon .
+\end{equation*}
+\end{defn}
+
+Definisi tersebut sekali lagi hanyalah pemindahan konsep
+dari bilangan real ke ruang metrik.  Barisan bilangan
+real merupakan barisan Cauchy dalam pengertian \chapterref{seq:chapter} jika dan hanya jika
+barisan tersebut merupakan barisan Cauchy dalam pengertian di atas, asalkan bilangan real dilengkapi dengan
+metrik standar $d(x,y) = \sabs{x-y}$.
+
+\begin{prop}
+Barisan konvergen dalam ruang metrik merupakan barisan Cauchy.
+\end{prop}
+
+\begin{proof}
+Misalkan $\{ x_n \}_{n=1}^\infty$ konvergen ke $p$.
+Untuk $\epsilon > 0$, terdapat $M$ sedemikian sehingga untuk semua $n \geq M$,
+berlaku $d(p,x_n) < \nicefrac{\epsilon}{2}$.  Jadi,
+untuk semua $n,k \geq M$, berlaku
+$d(x_n,x_k) \leq d(x_n,p) + d(p,x_k) < \nicefrac{\epsilon}{2} +
+\nicefrac{\epsilon}{2} = \epsilon$.
+\end{proof}
+
+\begin{defn}
+Ruang metrik $(X,d)$ disebut
+\emph{\myindex{lengkap}} atau \emph{\myindex{lengkap secara Cauchy}}
+jika setiap barisan Cauchy $\{ x_n \}_{n=1}^\infty$ dalam $X$
+konvergen ke suatu $p \in X$.
+\end{defn}
+
+\begin{prop}
+Ruang $\R^n$ dengan metrik standar merupakan ruang metrik lengkap.
+\end{prop}
+
+Untuk $\R = \R^1$, kelengkapan telah dibuktikan dalam \chapterref{seq:chapter}.
+Pembuktian kelengkapan dalam $\R^n$
+merupakan reduksi ke kasus satu dimensi.
+
+\begin{proof}
+Misalkan $\{ x_m \}_{m=1}^\infty$ barisan Cauchy
+dalam $\R^n$, dengan $x_m = \bigl(x_{m,1},x_{m,2},\ldots,x_{m,n}\bigr) \in \R^n$.
+Karena barisan tersebut merupakan barisan Cauchy, untuk $\epsilon > 0$ terdapat $M$ sedemikian sehingga untuk semua
+$i,j \geq M$,
+\begin{equation*}
+d(x_i,x_j) < \epsilon.
+\end{equation*}
+
+Tetapkan sebarang $k=1,2,\ldots,n$.  Untuk $i,j \geq M$,
+\begin{equation*}
+\bigl\lvert x_{i,k} - x_{j,k} \bigr\rvert
+=
+\sqrt{{\bigl(x_{i,k} - x_{j,k}\bigr)}^2}
+\leq
+\sqrt{\sum_{\ell=1}^n {\bigl(x_{i,\ell}-x_{j,\ell}\bigr)}^2}
+= d(x_i,x_j) < \epsilon .
+\end{equation*}
+Jadi, barisan $\{ x_{m,k} \}_{m=1}^\infty$ merupakan barisan Cauchy.  Karena $\R$
+lengkap, barisan tersebut konvergen; terdapat $y_k \in \R$ sedemikian sehingga
+$y_k = \lim_{m\to\infty} x_{m,k}$.
+Tuliskan $y = (y_1,y_2,\ldots,y_n) \in \R^n$.
+Menurut \propref{prop:msconveuc}, $\{ x_m \}_{m=1}^\infty$ konvergen
+ke $y \in \R^n$, sehingga $\R^n$ lengkap.
+\end{proof}
+
+Dalam bahasa ruang metrik,
+hasil tentang kekontinuan dalam \sectionref{sec:liminter}
+menyatakan bahwa ruang metrik
+$C\bigl([a,b],\R\bigr)$ dari \exampleref{example:msC01} lengkap.
+Pembuktiannya diperoleh dengan \myquote{menguraikan definisi-definisi} 
+dan diserahkan sebagai \exerciseref{exercise:CabRcomplete}.
+
+\begin{prop} \label{prop:CabRcomplete}
+Ruang fungsi kontinu $C\bigl([a,b],\R\bigr)$ dengan metrik yang diinduksi oleh norma
+seragam merupakan ruang metrik lengkap.
+\end{prop}
+
+Subhimpunan dari ruang metrik lengkap seperti $\R^n$, dengan metrik subruang, belum tentu
+lengkap.  Sebagai contoh, $(0,1]$ dengan metrik subruang tidak
+lengkap karena $\{ \nicefrac{1}{n} \}_{n=1}^\infty$ merupakan barisan Cauchy dalam $(0,1]$
+yang tidak memiliki limit dalam $(0,1]$.
+Namun, 
+subruang tertutup dari ruang metrik lengkap bersifat
+lengkap.  Salah satu cara
+memahami himpunan tertutup adalah bahwa himpunan tersebut memuat semua titik yang
+dapat dicapai dari dalam himpunan melalui suatu barisan.
+Pembuktiannya diserahkan sebagai 
+\exerciseref{exercise:closedcomplete}.
+
+\begin{prop} \label{prop:closedcomplete}
+Misalkan $(X,d)$ ruang metrik lengkap dan $E \subset X$
+tertutup.
+Maka $E$ merupakan ruang metrik lengkap dengan metrik subruang.
+\end{prop}
+
+\subsection{Kekompakan}
+
+\begin{defn}
+Misalkan $(X,d)$ ruang metrik dan $K \subset X$. 
+Himpunan $K$ disebut \emph{\myindex{kompak}}
+jika untuk setiap koleksi
+himpunan terbuka $\{ U_{\lambda} \}_{\lambda \in I}$ sedemikian sehingga
+\begin{equation*}
+K \subset \bigcup_{\lambda \in I} U_\lambda ,
+\end{equation*}
+terdapat himpunan bagian berhingga
+$\{ \lambda_1, \lambda_2,\ldots,\lambda_m \} \subset I$
+sedemikian sehingga
+\begin{equation*}
+K \subset \bigcup_{j=1}^m U_{\lambda_j} .
+\end{equation*}
+\end{defn}
+
+Koleksi himpunan terbuka $\{ U_{\lambda} \}_{\lambda \in I}$ seperti di atas
+disebut \emph{\myindex{selimut terbuka}} bagi $K$.  Cara lain untuk mengatakan bahwa
+$K$ kompak ialah dengan mengatakan bahwa \emph{setiap selimut terbuka bagi $K$ memiliki
+\myindex{subselimut} berhingga}.
+
+\begin{example}
+Misalkan $\R$ ruang metrik dengan metrik standar.
+
+Himpunan $\R$ tidak kompak.  Bukti: Untuk $j \in \N$, misalkan $U_j \coloneqq (-j,j)$.
+Setiap $x \in \R$ berada dalam suatu $U_j$ (berdasarkan
+\hyperref[thm:arch:i]{sifat Archimedes}), sehingga kita memperoleh sebuah selimut terbuka.
+Andaikan kita memiliki
+subselimut berhingga $\R \subset U_{j_1} \cup U_{j_2} \cup \cdots \cup U_{j_m}$,
+dan andaikan $j_1 < j_2 < \cdots < j_m$.  Maka $\R \subset U_{j_m}$, tetapi ini
+kontradiksi karena $j_m \in \R$ di satu pihak dan $j_m \notin U_{j_m} =
+(-j_m,j_m)$ di pihak
+lain.
+
+Himpunan $(0,1) \subset \R$ juga tidak kompak.  Bukti:  Ambil 
+himpunan-himpunan $U_{j} \coloneqq (\nicefrac{1}{j},1-\nicefrac{1}{j})$ untuk $j=3,4,5,\ldots$.
+Seperti di atas, $(0,1) = \bigcup_{j=3}^\infty U_j$.  Dan seperti di atas pula,
+jika terdapat subselimut berhingga, maka terdapat satu $U_j$ sedemikian sehingga $(0,1)
+\subset U_j$, yang kembali menghasilkan kontradiksi.
+
+Himpunan $\{ 0 \} \subset \R$ kompak.  Bukti: Diberikan selimut terbuka $\{
+U_{\lambda} \}_{\lambda \in I}$, harus terdapat $\lambda_0 \in I$ sedemikian sehingga $0
+\in U_{\lambda_0}$
+karena $\{ U_{\lambda} \}_{\lambda \in I}$ merupakan selimut.
+Hanya dengan $U_{\lambda_0}$, kita memperoleh
+subselimut berhingga.
+
+Kita akan membuktikan di bawah bahwa $[0,1]$, bahkan setiap interval tertutup
+dan terbatas $[a,b]$, bersifat kompak.
+\end{example}
+
+\begin{prop}
+Misalkan $(X,d)$ ruang metrik.  Jika $K \subset X$ kompak, maka
+$K$ tertutup dan terbatas.
+\end{prop}
+
+\begin{proof}
+Pertama, kita buktikan bahwa himpunan kompak bersifat terbatas.
+Tetapkan $p \in X$.  Kita memiliki selimut terbuka
+\begin{equation*}
+K \subset \bigcup_{n=1}^\infty B(p,n) = X .
+\end{equation*}
+Jika $K$ kompak, maka terdapat sejumlah indeks
+$n_1 < n_2 < \ldots < n_m$ sedemikian sehingga
+\begin{equation*}
+K \subset \bigcup_{j=1}^m B(p,n_j) = B(p,n_m) .
+\end{equation*}
+Karena $K$ termuat dalam sebuah bola, $K$ terbatas.
+Lihat bagian kiri \figureref{fig:compactbndclosed}.
+
+Selanjutnya, kita tunjukkan bahwa himpunan yang tidak tertutup tidak kompak.  Andaikan 
+$\widebar{K} \neq K$, yaitu terdapat titik $x \in \widebar{K}
+\setminus K$.
+Jika $y \neq x$, maka
+$y \notin C(x,\nicefrac{1}{n})$
+untuk $n \in \N$
+sedemikian sehingga $\nicefrac{1}{n} < d(x,y)$.
+Lebih lanjut, $x \notin K$, sehingga
+\begin{equation*}
+K \subset \bigcup_{n=1}^\infty {C(x,\nicefrac{1}{n})}^c .
+\end{equation*}
+Bola tertutup bersifat tertutup, sehingga komplemennya ${C(x,\nicefrac{1}{n})}^c$ terbuka, dan
+kita memperoleh sebuah selimut terbuka.
+Jika kita mengambil sebarang
+koleksi berhingga indeks $n_1 < n_2 < \ldots < n_m$, maka 
+\begin{equation*}
+\bigcup_{j=1}^m {C(x,\nicefrac{1}{n_j})}^c 
+=
+{C(x,\nicefrac{1}{n_m})}^c 
+\end{equation*}
+Karena $x$ berada dalam penutupan $K$,
+maka
+$C(x,\nicefrac{1}{n_m}) \cap K \neq \emptyset$.  Jadi, tidak ada
+subselimut berhingga dan $K$ tidak kompak.
+Lihat bagian kanan \figureref{fig:compactbndclosed}.
+\end{proof}
+
+\begin{myfigureht}
+\myincludepdft{compact_bnd_closed}{%
+Dua diagram.  Himpunan K digambarkan sebagai daerah berarsir dengan
+batas bergaris utuh.  Pada diagram kiri, titik p ditonjolkan
+bersama 3 bola terbuka bersarang (dalam hal ini berbentuk lingkaran)
+berjari-jari 1, 2, dan 3, semuanya berpusat di p dan berbatas garis putus-putus.
+Himpunan K terletak di dalam
+bola terbesar.
+Pada diagram kanan, latar belakang diagram diarsir.
+Titik x yang berada pada batas K diperlihatkan, dan 4 bola tertutup
+digambar sebagai lingkaran dengan bagian dalam yang diarsir dalam warna abu-abu
+yang semakin muda, menandakan bahwa yang sedang ditinjau adalah komplemennya.
+Bola terluar berjari-jari 1, lalu terdapat bola berjari-jari setengah,
+kemudian bola berjari-jari sepertiga, lalu bola berjari-jari seperempat.
+Kita perhatikan bahwa karena x terletak pada batas, komplemen bola-bola tersebut
+menutupi bagian K yang semakin besar.  Di sisi lain, kita juga perhatikan bahwa K
+beririsan tak kosong dengan setiap bola tertutup tersebut.}
+\caption{Pembuktian bahwa himpunan kompak bersifat terbatas (kiri) dan tertutup (kanan).\label{fig:compactbndclosed}}
+\end{myfigureht}
+
+Kita buktikan di bawah bahwa 
+dalam ruang Euklides berdimensi hingga,
+setiap himpunan tertutup dan terbatas bersifat kompak.
+Jadi, himpunan-himpunan tertutup dan terbatas
+dalam $\R^n$ merupakan contoh himpunan kompak.
+Tidak benar bahwa dalam setiap ruang metrik, sifat tertutup dan terbatas ekuivalen
+dengan kekompakan.  Contoh sederhana ialah ruang metrik tak lengkap seperti
+$(0,1)$ dengan metrik subruang yang berasal dari $\R$.
+Namun, pada banyak ruang metrik lengkap yang sangat berguna,
+sifat tertutup dan terbatas tidak
+cukup untuk menjamin kekompakan: $C\bigl([a,b],\R\bigr)$ merupakan ruang metrik
+lengkap, tetapi bola satuan tertutup $C(0,1)$ tidak kompak; lihat
+\exerciseref{exercise:msclbounnotcompt}.  Bandingkan pula dengan
+\exerciseref{exercise:mstotbound}.
+
+Dengan mengesampingkan sifat terbatas untuk sementara,
+perhatikan pula perbedaan antara sifat tertutup dan sifat kompak.  Sifat
+tertutup bergantung pada ruang metrik ambien:
+Himpunan $(0,1]$ tidak tertutup dalam $\R$,
+tetapi tertutup dalam subruang $(0,\infty)$.
+Namun, suatu himpunan $K$ kompak
+dalam suatu ruang metrik $(X,d)$ jika dan hanya jika ia kompak dalam metrik
+subruang pada $K$.  Jadi, untuk himpunan kompak, kita tidak perlu menanyakan
+ruang metrik mana yang memuatnya.
+Di sisi lain, setiap himpunan selalu tertutup dalam 
+metrik subruang ketika dipandang sebagai himpunan bagian dari dirinya sendiri.
+Lihat juga \exerciseref{exercise:subspacecompact}.
+
+Sifat yang berguna dari himpunan kompak dalam ruang metrik ialah bahwa setiap
+barisan dalam himpunan tersebut memiliki subbarisan konvergen yang konvergen
+ke suatu titik dalam himpunan tersebut.
+Himpunan seperti ini disebut
+\emph{\myindex{kompak secara sekuensial}}.
+Kita akan membuktikan bahwa dalam
+konteks ruang metrik, suatu himpunan kompak jika dan hanya jika kompak secara
+sekuensial.
+Pertama, kita buktikan sebuah lema.
+
+\begin{lemma}[Lema selimut Lebesgue%
+\footnote{Dinamai menurut matematikawan Prancis
+\href{https://en.wikipedia.org/wiki/Henri_Lebesgue}{Henri L\'eon Lebesgue}
+(1875--1941).
+Bilangan $\delta$ kadang-kadang disebut \myindex{bilangan Lebesgue} dari
+selimut tersebut.}]\label{ms:lebesgue}
+\index{Lema selimut Lebesgue}
+Misalkan $(X,d)$ ruang metrik dan $K \subset X$.  Andaikan 
+setiap barisan dalam $K$ memiliki subbarisan yang konvergen dalam $K$.  Diberikan
+selimut terbuka $\{ U_\lambda \}_{\lambda \in I}$ bagi $K$, terdapat
+$\delta > 0$ sedemikian sehingga untuk setiap $x \in K$, terdapat $\lambda \in I$
+dengan $B(x,\delta) \subset U_\lambda$.
+\end{lemma}
+
+\begin{proof}
+Kita buktikan lema ini melalui kontrapositifnya.
+Jika kesimpulannya tidak benar, maka
+terdapat
+selimut terbuka $\{ U_\lambda \}_{\lambda \in I}$ bagi $K$ dengan
+sifat berikut.
+Untuk setiap $n \in \N$, terdapat $x_n \in K$ sedemikian sehingga
+$B(x_n,\nicefrac{1}{n})$ tidak termuat dalam satu pun $U_\lambda$.
+Ambil sebarang $x \in K$.  Terdapat
+$\lambda \in I$ sedemikian sehingga $x \in U_\lambda$.  Karena $U_\lambda$ terbuka,
+terdapat $\epsilon > 0$ 
+sedemikian sehingga $B(x,\epsilon) \subset U_\lambda$.  Ambil $M$ sedemikian sehingga
+$\nicefrac{1}{M} < \nicefrac{\epsilon}{2}$.  Jika $y \in 
+B(x,\nicefrac{\epsilon}{2})$ dan $n \geq M$, maka 
+\begin{equation*}
+B(y,\nicefrac{1}{n}) \subset
+B(y,\nicefrac{1}{M}) \subset
+B(y,\nicefrac{\epsilon}{2}) \subset B(x,\epsilon)
+\subset U_\lambda ,
+\end{equation*}
+di mana 
+$B(y,\nicefrac{\epsilon}{2}) \subset B(x,\epsilon)$
+merupakan akibat ketaksamaan segitiga.
+Lihat \figureref{fig:lebesguedelta}.
+Jadi, $y \neq x_n$.
+Dengan kata lain, untuk semua $n \geq M$, berlaku $x_n \notin B(x,\nicefrac{\epsilon}{2})$. 
+Barisan tersebut tidak dapat memiliki subbarisan yang konvergen ke $x$.  Karena $x \in K$
+dipilih sebarang, pembuktian selesai.
+\end{proof}
+
+\begin{myfigureht}
+\myincludepdft{lebesguedelta}{%
+Diagram sebuah himpunan terbuka berarsir U subskrip lambda.
+Titik x dalam U subskrip lambda ditandai, dan sebuah bola berjari-jari
+epsilon yang berpusat di x digambar; bola ini terletak di dalam U subskrip lambda.
+Bola berjari-jari epsilon per 2 yang berpusat di x juga digambar dan
+terletak di dalam bola yang lebih besar.  Titik y dalam bola yang lebih kecil ditandai,
+dan sebuah bola berjari-jari epsilon per 2 yang berpusat di y diperlihatkan.  Kita perhatikan
+bahwa bola yang berpusat di y ini seluruhnya terletak di dalam bola
+berjari-jari epsilon yang berpusat di x, yaitu bola terbesar, dan karena itu juga di dalam U
+subskrip lambda.  Terakhir, diperlihatkan sebuah bola kecil berjari-jari 1 per n yang berpusat di y
+dan terletak di dalam bola epsilon per 2 yang berpusat di y.}
+\caption{Pembuktian lema selimut Lebesgue.
+Perhatikan bahwa $B(y,\nicefrac{\epsilon}{2}) \subset
+B(x,\epsilon)$ berdasarkan ketaksamaan segitiga.\label{fig:lebesguedelta}}
+\end{myfigureht}
+
+Penting untuk memahami apa yang dinyatakan oleh lema tersebut.  Lema itu menyatakan bahwa
+jika $K$ kompak secara sekuensial, maka untuk setiap
+selimut yang diberikan, terdapat satu $\delta > 0$.  Nilai $\delta$ bergantung pada selimutnya,
+tetapi, tentu saja, tidak bergantung pada $x$.
+
+Sebagai contoh, misalkan $K \coloneqq [-10,10]$ dan misalkan
+$U_n \coloneqq (n,n+2)$ untuk $n \in \Z$
+membentuk sebuah selimut terbuka.
+Tinjau $x \in K$. Terdapat $n \in \Z$ 
+sedemikian sehingga $n \leq x < n+1$.
+Jika $n \leq x < n+\nicefrac{1}{2}$, maka
+$B\bigl(x,\nicefrac{1}{2}\bigr) \subset U_{n-1}$.
+Jika $n+ \nicefrac{1}{2} \leq x < n+1$, maka
+$B\bigl(x,\nicefrac{1}{2}\bigr) \subset U_{n}$.  Jadi, $\delta =
+\nicefrac{1}{2}$ dapat digunakan.  Himpunan-himpunan 
+$U'_n \coloneqq \bigl(\frac{n}{2},\frac{n+2}{2} \bigr)$,
+kembali membentuk sebuah selimut terbuka,
+tetapi kini nilai $\delta$ terbesar yang dapat digunakan adalah $\nicefrac{1}{4}$.
+
+Di sisi lain, $\N \subset \R$ tidak kompak secara sekuensial.
+Sebagai latihan, carilah selimut yang tidak memungkinkan sebarang $\delta > 0$.
+
+
+\begin{thm} \label{thm:mscompactisseqcpt}
+Misalkan $(X,d)$ ruang metrik.  Maka $K \subset X$ kompak jika dan
+hanya jika setiap barisan dalam $K$ memiliki subbarisan yang konvergen ke
+suatu titik dalam $K$.
+\end{thm}
+
+\begin{proof}
+Klaim: \emph{Misalkan $K \subset X$ himpunan bagian dari $X$ dan
+$\{ x_n \}_{n=1}^\infty$ barisan dalam $K$.  Andaikan bahwa untuk setiap $x \in K$,
+terdapat bola $B(x,\alpha_x)$ untuk suatu $\alpha_x > 0$ sedemikian sehingga
+$x_n \in B(x,\alpha_x)$ hanya untuk berhingga banyak $n \in \N$.
+Maka $K$ tidak kompak.}
+
+Pembuktian klaim:
+Perhatikan bahwa
+\begin{equation*}
+K \subset \bigcup_{x \in K} B(x,\alpha_x) .
+\end{equation*}
+Setiap koleksi berhingga dari bola-bola tersebut hanya memuat berhingga banyak
+suku dari $\{ x_n \}_{n=1}^\infty$,
+sehingga pasti terdapat $x_n \in K$
+yang tidak berada dalam gabungannya.  Jadi, $K$ tidak kompak dan klaim
+terbukti.
+
+Sekarang andaikan bahwa $K$ kompak dan $\{ x_n \}_{n=1}^\infty$ barisan dalam $K$.
+Maka terdapat $x \in K$ sedemikian sehingga
+untuk setiap $\delta > 0$,
+$B(x,\delta)$ memuat $x_n$ untuk tak berhingga banyak $n \in \N$.
+Kita definisikan subbarisan tersebut secara induktif.
+Bola $B(x,1)$ memuat suatu $x_k$, jadi tetapkan $n_1 \coloneqq k$.
+Andaikan $n_{j-1}$ telah didefinisikan.
+Pasti terdapat $k > n_{j-1}$
+sedemikian sehingga $x_k \in B(x,\nicefrac{1}{j})$.  Definisikan
+$n_j \coloneqq k$.
+Kini kita memperoleh subbarisan $\{ x_{n_j} \}_{j=1}^\infty$.
+Karena
+$d(x,x_{n_j}) < \nicefrac{1}{j}$,  \propref{prop:msconvifa} menyatakan bahwa
+$\lim_{j\to\infty} x_{n_j} = x$.
+
+Untuk arah sebaliknya, andaikan setiap barisan dalam~$K$
+memiliki 
+subbarisan yang konvergen dalam~$K$.
+Ambil
+selimut terbuka $\{ U_\lambda \}_{\lambda \in I}$ bagi $K$.
+Dengan menggunakan lema selimut Lebesgue di atas, diperoleh $\delta > 0$
+sedemikian sehingga untuk setiap $x \in K$, terdapat $\lambda \in I$ dengan
+$B(x,\delta) \subset U_\lambda$.
+
+Pilih $x_1 \in K$ dan dapatkan $\lambda_1 \in I$ sedemikian sehingga $B(x_1,\delta) \subset
+U_{\lambda_1}$.
+Jika $K \subset U_{\lambda_1}$, kita berhenti karena telah memperoleh
+subselimut berhingga.
+Jika tidak, pasti terdapat
+titik $x_2 \in K \setminus U_{\lambda_1}$.
+Perhatikan bahwa $d(x_2,x_1) \geq \delta$.
+Pasti terdapat $\lambda_2 \in I$ sedemikian sehingga
+$B(x_2,\delta) \subset U_{\lambda_2}$.
+Kita lanjutkan secara induktif.  Andaikan $\lambda_{n-1}$ telah didefinisikan.
+Entah
+$U_{\lambda_1} \cup
+U_{\lambda_2} \cup \cdots \cup
+U_{\lambda_{n-1}}$ merupakan selimut berhingga bagi $K$, sehingga kita
+berhenti, atau
+pasti terdapat 
+titik $x_n \in K \setminus \bigl( U_{\lambda_1} \cup
+U_{\lambda_2} \cup \cdots \cup
+U_{\lambda_{n-1}}\bigr)$.
+Perhatikan bahwa $d(x_n,x_j) \geq \delta$ untuk semua $j = 1,2,\ldots,n-1$.
+Selanjutnya, pasti terdapat $\lambda_n \in I$
+sedemikian sehingga $B(x_n,\delta) \subset U_{\lambda_n}$.
+Lihat \figureref{fig:seqcompactiscompact}.
+
+\begin{myfigureht}
+\myincludepdft{seqcompactiscompact}{%
+Sebuah daerah berarsir dengan batas berupa garis penuh diberi label K.
+Empat titik di K diberi label x subskrip 1, x subskrip 2, x subskrip 3, dan x subskrip 4.
+Lingkaran berjari-jari delta digambar dengan pusat di x subskrip 1, x subskrip 2, dan x subskrip 3.
+Di sekeliling setiap lingkaran tersebut terdapat tiga daerah dengan batas berupa garis
+putus-putus yang diberi label U subskrip lambda subskrip 1, 
+U subskrip lambda subskrip 2, dan
+U subskrip lambda subskrip 3.
+Cakram-cakram tersebut, dan karena itu daerah-daerah yang mengelilinginya, tampak secara bertahap
+menyelimuti seluruh himpunan K dari sisi kiri gambar.}
+\caption{Menyelimuti $K$ dengan $U_{\lambda}$.  Titik-titik
+$x_1,x_2,x_3,x_4$, 
+ketiga himpunan 
+$U_{\lambda_1}$,
+$U_{\lambda_2}$,
+$U_{\lambda_3}$,
+dan 
+ketiga bola pertama
+yang berjari-jari $\delta$ digambar.\label{fig:seqcompactiscompact}}
+\end{myfigureht}
+
+Pada suatu tahap kita memperoleh subselimut berhingga bagi $K$,
+atau kita memperoleh
+barisan tak berhingga
+$\{ x_n \}_{n=1}^\infty$ seperti di atas.
+Untuk memperoleh kontradiksi, andaikan bahwa
+tidak terdapat subselimut berhingga dan kita memperoleh barisan $\{ x_n \}_{n=1}^\infty$.
+Untuk semua $n$ dan $k$ dengan $n \neq k$, 
+berlaku $d(x_n,x_k) \geq \delta$.
+Jadi, tidak ada subbarisan dari $\{ x_n \}_{n=1}^\infty$ yang merupakan barisan Cauchy.
+Dengan demikian, tidak ada subbarisan dari $\{ x_n \}_{n=1}^\infty$ yang konvergen,
+dan ini merupakan kontradiksi.
+\end{proof}
+
+\begin{example} \label{example:intervalcompact}
+\thmref{thm:bwseq},
+yaitu teorema Bolzano--Weierstrass untuk barisan bilangan real,
+menyatakan bahwa setiap barisan terbatas dalam $\R$ memiliki
+subbarisan yang konvergen.  Oleh karena itu, setiap barisan dalam interval tertutup $[a,b] \subset \R$ memiliki 
+subbarisan yang konvergen.  Limitnya juga berada dalam $[a,b]$ karena operasi pengambilan limit
+mempertahankan ketaksamaan tak ketat.  Jadi, interval tertutup dan terbatas $[a,b]
+\subset \R$ kompak (secara sekuensial).
+\end{example}
+
+\begin{prop} \label{prop:closedsubsetcompact}
+Misalkan $(X,d)$ ruang metrik dan misalkan $K \subset X$ kompak.  Jika
+$E \subset K$ himpunan tertutup, maka $E$ kompak.
+\end{prop}
+
+Karena $K$ tertutup, $E$ tertutup dalam $K$ jika dan
+hanya jika himpunan tersebut tertutup dalam $X$.
+Lihat \propref{prop:topology:subspacesame}.
+
+\begin{proof}
+Misalkan $\{ x_n \}_{n=1}^\infty$ barisan dalam $E$.  Barisan ini juga merupakan barisan dalam $K$.
+Oleh karena itu, barisan tersebut memiliki subbarisan $\{ x_{n_j} \}_{j=1}^\infty$ yang konvergen ke
+suatu $x \in K$.  Karena $E$ tertutup, limit barisan dalam $E$ juga berada dalam $E$
+sehingga $x \in E$.  Jadi, $E$ kompak.
+\end{proof}
+
+\begin{thm}[Heine--Borel%
+\footnote{Dinamai menurut matematikawan Jerman 
+\href{https://en.wikipedia.org/wiki/Eduard_Heine}{Heinrich Eduard Heine}
+(1821--1881),
+dan matematikawan Prancis
+\href{https://en.wikipedia.org/wiki/\%C3\%89mile_Borel}{F\'elix \'Edouard Justin \'Emile Borel}
+(1871--1956).}]%
+\index{teorema Heine--Borel}
+\label{thm:msbw}
+Setiap himpunan bagian $K \subset \R^n$ yang tertutup dan terbatas bersifat kompak.
+\end{thm}
+
+Jadi, himpunan bagian dari $\R^n$ kompak jika dan hanya jika tertutup dan terbatas,
+suatu syarat yang jauh lebih mudah diperiksa.
+Perlu ditegaskan kembali bahwa teorema Heine--Borel hanya berlaku untuk $\R^n$, bukan
+untuk ruang metrik secara umum.
+Teorema ini bahkan tidak berlaku untuk subruang dari $\R^n$; teorema tersebut hanya berlaku dalam
+$\R^n$ itu sendiri.
+Secara umum, sifat kompak mengakibatkan sifat tertutup dan
+terbatas, tetapi tidak sebaliknya.
+
+\begin{proof}
+Untuk $\R = \R^1$, andaikan $K \subset \R$ tertutup dan terbatas.
+Maka $K \subset [a,b]$ untuk suatu interval tertutup dan terbatas,
+yang kompak menurut \exampleref{example:intervalcompact}.
+Karena $K$ merupakan himpunan bagian tertutup dari suatu himpunan kompak,
+maka himpunan ini kompak menurut \propref{prop:closedsubsetcompact}.
+
+Kita buktikan kasus $n=2$ dan serahkan kasus $n$ sebarang sebagai latihan.
+Karena $K \subset \R^2$ terbatas, terdapat himpunan
+$B=[a,b]\times[c,d] \subset \R^2$ sedemikian sehingga $K \subset B$.  Kita akan menunjukkan
+bahwa $B$ kompak.  Karena itu, $K$, sebagai himpunan bagian tertutup dari $B$ yang kompak,
+juga kompak.  
+
+Misalkan $\bigl\{ (x_k,y_k) \bigr\}_{k=1}^\infty$ barisan dalam $B$.  Dengan kata lain,
+$a \leq x_k \leq b$ dan
+$c \leq y_k \leq d$ untuk semua $k$.  Setiap barisan bilangan real yang terbatas
+memiliki subbarisan
+yang konvergen, sehingga terdapat subbarisan $\{ x_{k_j} \}_{j=1}^\infty$
+yang konvergen.  Subbarisan 
+$\{ y_{k_j} \}_{j=1}^\infty$ juga merupakan barisan terbatas sehingga terdapat
+subbarisan
+$\{ y_{k_{j_i}} \}_{i=1}^\infty$ yang konvergen.  Subbarisan dari suatu
+barisan konvergen tetap konvergen, sehingga 
+$\{ x_{k_{j_i}} \}_{i=1}^\infty$ konvergen.
+Tetapkan
+\begin{equation*}
+x \coloneqq \lim_{i\to\infty} x_{k_{j_i}}
+\qquad \text{dan} \qquad
+y \coloneqq \lim_{i\to\infty} y_{k_{j_i}} .
+\end{equation*}
+Menurut \propref{prop:msconveuc},
+$\bigl\{ (x_{k_{j_i}},y_{k_{j_i}}) \bigr\}_{i=1}^\infty$ konvergen ke $(x,y)$.
+Selain itu, karena $a \leq x_k \leq b$ dan
+$c \leq y_k \leq d$ untuk semua $k$, kita tahu bahwa $(x,y) \in B$.
+\end{proof}
+
+\begin{example}
+Metrik diskret kembali memberikan contoh-contoh tandingan yang menarik.
+Misalkan $(X,d)$ ruang metrik dengan metrik diskret, yaitu $d(x,y) = 1$
+jika $x \neq y$.  Andaikan
+$X$ himpunan tak berhingga.  Maka
+\begin{enumerate}[(i)]
+\item $(X,d)$ merupakan ruang metrik lengkap.
+\item Setiap himpunan bagian $K \subset X$ tertutup dan terbatas.
+\item Himpunan bagian $K \subset X$ kompak jika dan hanya jika himpunan tersebut berhingga.
+\item Kesimpulan lema selimut Lebesgue selalu dipenuhi,
+misalnya dengan $\delta = \nicefrac{1}{2}$,
+bahkan untuk $K \subset X$ yang tidak kompak.
+\end{enumerate}
+Pembuktian
+pernyataan-pernyataan di atas bersifat langsung atau diserahkan sebagai latihan
+di bawah ini.
+\end{example}
+
+\begin{remark}
+Satu hal yang perlu diperhatikan mengenai barisan Cauchy, kelengkapan, kekompakan,
+dan kekonvergenan ialah bahwa kekompakan dan kekonvergenan hanya bergantung pada
+topologi, yaitu pada himpunan mana saja yang merupakan himpunan terbuka.  Di sisi lain,
+barisan Cauchy dan kelengkapan bergantung pada metrik yang digunakan.
+Lihat \exerciseref{exercise:cauchydepndsonmetric}.
+\end{remark}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Misalkan $(X,d)$ ruang metrik dan $A$ subhimpunan berhingga dari $X$.
+Tunjukkan bahwa $A$ kompak.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Misalkan $A \coloneqq \{ \nicefrac{1}{n} : n \in \N \} \subset \R$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan secara langsung dari definisi bahwa $A$
+tidak kompak.
+\item
+Tunjukkan secara langsung dari definisi bahwa $A \cup \{ 0 \}$
+kompak.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+
+\begin{exercise}
+Misalkan $(X,d)$ ruang metrik dengan metrik diskret.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa $X$ lengkap.
+\item
+Buktikan bahwa $X$ kompak jika dan hanya jika $X$ himpunan berhingga.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa gabungan berhingga dari himpunan-himpunan kompak merupakan himpunan kompak.
+\item
+Temukan contoh yang menunjukkan bahwa gabungan tak berhingga banyak himpunan kompak tidak selalu
+kompak.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Buktikan \thmref{thm:msbw} untuk dimensi sebarang.
+Petunjuk: Kuncinya adalah menggunakan notasi yang tepat.
+\end{exercise}
+
+\begin{exercise} \label{exercise:subspacecompact}
+Tunjukkan bahwa himpunan kompak $K$ (dalam sebarang ruang metrik)
+merupakan ruang metrik lengkap (dengan metrik subruang).
+\end{exercise}
+
+\begin{exercise} \label{exercise:CabRcomplete}
+Misalkan $C\bigl([a,b],\R\bigr)$ ruang metrik seperti dalam \exampleref{example:msC01}.  Tunjukkan bahwa
+$C\bigl([a,b],\R\bigr)$ merupakan ruang metrik lengkap.
+\end{exercise}
+
+\begin{exercise}[Menantang] \label{exercise:msclbounnotcompt}
+Misalkan $C\bigl([0,1],\R\bigr)$ ruang metrik pada \exampleref{example:msC01}.  Misalkan $0$
+menyatakan fungsi nol.  Tunjukkan bahwa bola tertutup
+$C(0,1)$ tidak kompak (meskipun tertutup dan terbatas).
+Petunjuk: Bangun barisan fungsi kontinu yang berbeda
+$\{ f_n \}_{n=1}^\infty$ sedemikian sehingga
+$d(f_n,0) = 1$ dan $d(f_n,f_k) = 1$ untuk semua $n \neq k$.  Tunjukkan bahwa
+himpunan $\{ f_n : n \in \N \} \subset C(0,1)$ tertutup tetapi tidak kompak.
+Lihat \chapterref{fs:chapter} untuk memperoleh inspirasi.
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Tunjukkan bahwa terdapat metrik pada $\R$ yang membuat $\R$ menjadi ruang metrik kompak.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $(X,d)$ lengkap dan terdapat koleksi tak hingga terhitung
+dari himpunan kompak tak kosong $E_1 \supset E_2 \supset E_3 \supset
+\cdots$.  Buktikan bahwa $\bigcap_{j=1}^\infty E_j \neq \emptyset$.
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Misalkan $C\bigl([0,1],\R\bigr)$ ruang metrik pada \exampleref{example:msC01}.
+Misalkan $K$ himpunan semua $f \in C\bigl([0,1],\R\bigr)$ sedemikian sehingga
+$f$ sama dengan polinom kuadrat, yaitu\ $f(x) = a+bx+cx^2$, dan
+$\babs{f(x)} \leq 1$ untuk semua $x \in [0,1]$,
+yakni $f \in C(0,1)$.  Tunjukkan bahwa $K$ kompak.
+\end{exercise}
+
+\begin{exercise}[Menantang] \label{exercise:mstotbound}
+Misalkan $(X,d)$ ruang metrik lengkap.
+Tunjukkan bahwa $K \subset X$ kompak jika dan hanya jika $K$ tertutup
+dan untuk setiap $\epsilon > 0$
+terdapat berhingga banyak titik $x_1,x_2,\ldots,x_n$ dengan
+$K \subset \bigcup_{j=1}^n B(x_j,\epsilon)$.
+Catatan: Himpunan $K$ seperti itu disebut \emph{\myindex{terbatas total}},
+sehingga dalam ruang metrik lengkap, suatu himpunan kompak jika dan hanya
+jika tertutup dan terbatas total.
+\end{exercise}
+
+\begin{exercise}
+Ambil $\N \subset \R$ dengan metrik standar.  Temukan selimut terbuka bagi $\N$
+sedemikian sehingga kesimpulan lemma selimut Lebesgue tidak berlaku.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bentuk umum \myindex{teorema Bolzano--Weierstrass}:
+Setiap barisan terbatas $\{ x_k \}_{k=1}^\infty$ dalam $\R^n$
+memiliki subbarisan konvergen.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $X$ ruang metrik dan
+$C \subset \sP(X)$ adalah himpunan semua subhimpunan kompak tak kosong dari $X$.
+Dengan menggunakan metrik Hausdorff dari \exerciseref{exercise:mshausdorffpseudo},
+tunjukkan bahwa $(C,d_H)$ merupakan ruang metrik.  Artinya, tunjukkan bahwa
+jika $L$ dan $K$ subhimpunan kompak tak kosong, maka $d_H(L,K) = 0$
+jika dan hanya jika $L=K$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:closedcomplete}
+Buktikan \propref{prop:closedcomplete}.  Artinya,
+misalkan $(X,d)$ ruang metrik lengkap dan $E \subset X$ himpunan tertutup.
+Tunjukkan bahwa $E$ dengan metrik subruang merupakan ruang metrik lengkap.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $(X,d)$ ruang metrik tak lengkap.  Tunjukkan bahwa terdapat
+himpunan tertutup dan terbatas $E \subset X$ yang tidak kompak.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $(X,d)$ ruang metrik dan $K \subset X$.
+Buktikan bahwa $K$ kompak sebagai subhimpunan dari $(X,d)$ jika dan hanya jika $K$
+kompak sebagai subhimpunan dirinya sendiri dengan metrik subruang.
+\end{exercise}
+
+\begin{exercise} \label{exercise:cauchydepndsonmetric}
+Tinjau dua metrik pada $\R$.
+Misalkan $d(x,y) \coloneqq \sabs{x-y}$ metrik standar,
+dan tetapkan
+$d'(x,y) \coloneqq
+\babs{ \frac{x}{1+\sabs{x}} - \frac{y}{1+\sabs{y}} }$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $(\R,d')$ merupakan ruang metrik (jika Anda telah mengerjakan
+\exerciseref{exercise:extendedrealsmetric}, perhitungannya sama).
+\item
+Tunjukkan bahwa topologinya sama, yaitu bahwa suatu himpunan terbuka dalam
+$(\R,d)$ jika dan hanya jika terbuka dalam $(\R,d')$.
+\item
+Tunjukkan bahwa suatu himpunan kompak dalam
+$(\R,d)$ jika dan hanya jika kompak dalam $(\R,d')$.
+\item
+Tunjukkan bahwa suatu barisan konvergen dalam $(\R,d)$ jika dan hanya jika
+barisan tersebut konvergen dalam $(\R,d')$.
+\item
+Temukan barisan bilangan real yang merupakan barisan Cauchy
+dalam $(\R,d')$ tetapi bukan barisan Cauchy dalam $(\R,d)$.
+\item
+Meskipun $(\R,d)$ lengkap, tunjukkan bahwa $(\R,d')$ tidak lengkap.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \label{exercise:relativelycompactseq}
+\pagebreak[2]
+Misalkan $(X,d)$ ruang metrik lengkap.
+Himpunan $S \subset X$ disebut \emph{\myindex{relatif kompak}}
+jika penutupannya $\widebar{S}$ kompak.
+Buktikan bahwa $S \subset X$ relatif kompak jika dan hanya jika
+untuk setiap barisan $\{ x_n \}_{n=1}^\infty$ dalam $S$, terdapat subbarisan
+$\{ x_{n_k} \}_{k=1}^\infty$ yang konvergen (dalam $X$).
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Fungsi kontinu}
+\label{sec:metcont}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1,5--2 kuliah}
+
+\subsection{Kekontinuan}
+
+\begin{defn}
+Misalkan $(X,d_X)$ dan $(Y,d_Y)$ ruang metrik dan $c \in X$.
+Fungsi $f \colon X \to Y$ disebut
+\emph{kontinu di $c$}\index{kontinu di $c$}
+jika untuk setiap $\epsilon > 0$
+terdapat $\delta > 0$ sedemikian sehingga apabila $x \in X$ dan $d_X(x,c) <
+\delta$, maka
+$d_Y\bigl(f(x),f(c)\bigr) < \epsilon$.
+
+\medskip
+
+Jika $f \colon X \to Y$ kontinu di setiap $c \in X$, kita cukup mengatakan
+bahwa $f$ adalah \emph{fungsi kontinu}\index{fungsi kontinu!dalam ruang
+metrik}\index{fungsi!kontinu}.
+\end{defn}
+
+Definisi ini sesuai dengan definisi dalam \chapterref{lim:chapter} ketika
+$f$ merupakan fungsi bernilai real pada garis real---tentu saja selama kita
+menggunakan metrik standar pada $\R$.
+
+\begin{prop} \label{prop:contiscont}
+Misalkan $(X,d_X)$ dan $(Y,d_Y)$ ruang metrik.
+Fungsi $f \colon X \to Y$
+kontinu di $c \in X$
+jika dan hanya jika untuk setiap barisan $\{ x_n \}_{n=1}^\infty$ dalam $X$
+yang konvergen ke $c$, barisan $\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ konvergen
+ke $f(c)$.
+\end{prop}
+
+\begin{proof}
+Andaikan $f$ kontinu di $c$.  Misalkan $\{ x_n \}_{n=1}^\infty$ suatu
+barisan dalam $X$ yang konvergen ke $c$.  Untuk setiap $\epsilon > 0$,
+terdapat $\delta > 0$ sedemikian sehingga $d_X(x,c) < \delta$ mengakibatkan
+$d_Y\bigl(f(x),f(c)\bigr) < \epsilon$.  Jadi, ambil $M$ sedemikian sehingga
+untuk semua $n \geq M$, berlaku $d_X(x_n,c) < \delta$, sehingga
+$d_Y\bigl(f(x_n),f(c)\bigr) < \epsilon$.  Oleh karena itu, $\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$
+konvergen ke $f(c)$.
+
+Sebaliknya, andaikan $f$ tidak kontinu di $c$.
+Maka terdapat $\epsilon > 0$
+sedemikian sehingga untuk setiap $n \in \N$ terdapat $x_n \in X$
+dengan
+$d_X(x_n,c) < \nicefrac{1}{n}$ dan $d_Y\bigl(f(x_n),f(c)\bigr) \geq
+\epsilon$.  Barisan $\{ x_n \}_{n=1}^\infty$ konvergen ke $c$, tetapi
+$\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$
+tidak konvergen ke $f(c)$.
+\end{proof}
+
+\begin{example}
+Misalkan $f \colon \R^2 \to \R$ suatu polinom.  Artinya,
+\begin{equation*}
+f(x,y) =
+\sum_{j=0}^d
+\sum_{k=0}^{d-j}
+a_{jk}\,x^jy^k =
+a_{0\,0} + a_{1\,0} \, x +
+a_{0\,1} \, y+  
+a_{2\,0} \, x^2+  
+a_{1\,1} \, xy+  
+a_{0\,2} \, y^2+ \cdots +
+a_{0\,d} \, y^d ,
+\end{equation*}
+untuk suatu $d \in \N$ (derajatnya) dan $a_{jk} \in \R$.  Kita akan menunjukkan 
+bahwa $f$ kontinu.  Misalkan $\bigl\{ (x_n,y_n) \bigr\}_{n=1}^\infty$ suatu barisan
+dalam $\R^2$ yang konvergen ke $(x,y) \in \R^2$.  Kita telah membuktikan bahwa ini
+berarti $\lim_{n\to\infty} x_n = x$ dan $\lim_{n\to\infty} y_n = y$.
+Menurut \propref{prop:contalg},
+\begin{equation*}
+\lim_{n\to\infty}
+f(x_n,y_n) =
+\lim_{n\to\infty}
+\sum_{j=0}^d
+\sum_{k=0}^{d-j}
+a_{jk} \, x_n^jy_n^k 
+=
+\sum_{j=0}^d
+\sum_{k=0}^{d-j}
+a_{jk} \, x^jy^k
+=
+f(x,y) .
+\end{equation*}
+Jadi, $f$ kontinu di $(x,y)$, dan karena $(x,y)$ dipilih sembarang, $f$
+kontinu di setiap titik.  Dengan cara yang sama,
+polinom dalam $n$ variabel juga kontinu.
+\end{example}
+
+Berhati-hatilah ketika mengambil limit secara terpisah.
+Tinjau $f \colon \R^2 \to \R$ yang didefinisikan oleh $f(x,y) \coloneqq \frac{xy}{x^2+y^2}$
+di luar titik asal dan $f(0,0) \coloneqq 0$.
+Lihat \figureref{fig:xyxsqysq}.
+Dalam \exerciseref{exercise:dicontR2},
+Anda diminta membuktikan bahwa $f$ tidak kontinu di titik asal.
+Namun, untuk setiap $y$, fungsi $g(x) \coloneqq f(x,y)$
+kontinu,
+dan untuk setiap $x$, fungsi $h(y) \coloneqq f(x,y)$ kontinu.
+\begin{myfigureht}
+\myincludegraphics{xyxsqysq}{%
+Grafik permukaan suatu fungsi yang tampak terjepit di
+titik asal, sehingga jika kita mendekati titik asal pada bidang xy
+dari arah yang berbeda-beda, kita dapat mendekati nilai yang berbeda-beda.}
+\caption{Grafik $\frac{xy}{x^2+y^2}$.\label{fig:xyxsqysq}}
+\end{myfigureht}
+
+\begin{example}
+Misalkan $X$ ruang metrik dan $f \colon X \to \C$ fungsi bernilai
+kompleks.  Tuliskan $f(p) = g(p) + i \, h(p)$, dengan $g \colon X \to \R$
+dan $h \colon X \to \R$ masing-masing bagian real dan imajiner dari $f$.
+Maka $f$ kontinu di $c \in X$ jika dan hanya jika bagian real
+dan bagian imajinernya kontinu di~$c$.  
+Fakta ini berlaku karena $\bigl\{ f(p_n) = g(p_n) + i \, h(p_n) \bigr\}_{n=1}^\infty$
+konvergen ke $f(p) = g(p) + i \, h(p)$ jika dan hanya jika
+$\bigl\{ g(p_n) \bigr\}_{n=1}^\infty$ konvergen ke $g(p)$ dan
+$\bigl\{ h(p_n) \bigr\}_{n=1}^\infty$ konvergen ke $h(p)$.
+\end{example}
+
+\subsection{Kekompakan dan kekontinuan}
+
+Pemetaan kontinu tidak selalu memetakan himpunan tertutup ke himpunan tertutup.  Sebagai contoh,
+$f \colon (0,1) \to \R$ yang didefinisikan oleh $f(x) \coloneqq x$ memetakan himpunan $(0,1)$, yang
+tertutup dalam $(0,1)$, ke himpunan $(0,1)$, yang tidak tertutup dalam $\R$.
+Akan tetapi, citra setiap himpunan kompak di bawah pemetaan kontinu tetap kompak.
+
+\begin{lemma} \label{lemma:continuouscompact}
+Misalkan $(X,d_X)$ dan $(Y,d_Y)$ ruang metrik
+dan $f \colon X \to Y$ suatu fungsi kontinu.  Jika
+$K \subset X$ himpunan kompak, maka $f(K)$ himpunan kompak.
+\end{lemma}
+
+\begin{proof}
+Suatu barisan dalam $f(K)$ dapat dituliskan sebagai
+$\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$, dengan
+$\{ x_n \}_{n=1}^\infty$ suatu barisan dalam $K$.  Himpunan $K$ kompak,
+sehingga terdapat subbarisan
+$\{ x_{n_j} \}_{j=1}^\infty$ yang konvergen ke suatu $x \in K$.
+Karena fungsi tersebut kontinu,
+\begin{equation*}
+\lim_{j\to\infty} f(x_{n_j}) = f(x) \in f(K) .
+\end{equation*}
+Jadi, setiap barisan dalam $f(K)$ mempunyai subbarisan yang konvergen ke
+suatu titik dalam $f(K)$, sehingga $f(K)$ kompak menurut \thmref{thm:mscompactisseqcpt}.
+\end{proof}
+
+Seperti sebelumnya, $f \colon X \to \R$ mencapai
+\emph{\myindex{minimum mutlak}} di $c \in X$ jika
+\begin{equation*}
+f(x) \geq f(c) \qquad \text{untuk semua } x \in X.
+\end{equation*}
+Di sisi lain, $f$ mencapai
+\emph{\myindex{maksimum mutlak}} di $c \in X$ jika
+\begin{equation*}
+f(x) \leq f(c) \qquad \text{untuk semua } x \in X.
+\end{equation*}
+
+\begin{thm}
+Misalkan $(X,d)$ ruang metrik kompak tak kosong
+dan misalkan $f \colon X \to \R$ kontinu.  Maka
+$f$ terbatas dan, bahkan,
+$f$ mencapai minimum mutlak dan maksimum mutlak pada $X$.
+\end{thm}
+
+\begin{proof}
+Karena $X$ kompak dan $f$ kontinu,
+$f(X) \subset \R$ kompak.  Oleh karena itu, $f(X)$ tertutup
+dan terbatas.  Khususnya,
+$\sup f(X) \in f(X)$ dan
+$\inf f(X) \in f(X)$, karena baik supremum maupun infimum
+dapat dihampiri oleh barisan dalam $f(X)$ dan $f(X)$ tertutup.
+Oleh karena itu, terdapat $x \in X$ sedemikian sehingga $f(x) = \sup f(X)$
+dan $y \in X$ sedemikian sehingga $f(y) = \inf f(X)$.
+\end{proof}
+
+\subsection{Kekontinuan dan topologi}
+
+Mari kita melihat cara mendefinisikan kekontinuan dalam istilah topologi, yaitu
+himpunan-himpunan terbuka.  Kita telah melihat bahwa topologi menentukan barisan mana yang 
+konvergen, sehingga tidak mengherankan bahwa topologi juga
+menentukan kekontinuan fungsi.
+
+\begin{lemma} \label{lemma:mstopocontloc}
+Misalkan $(X,d_X)$ dan $(Y,d_Y)$ ruang metrik.
+Fungsi $f \colon X \to Y$ kontinu di $c \in X$
+jika dan hanya jika untuk setiap lingkungan terbuka $U$ bagi $f(c)$ dalam $Y$, himpunan
+$f^{-1}(U)$ memuat suatu lingkungan terbuka bagi $c$ dalam $X$.
+Lihat \figureref{fig:mscontfuncpt}.
+\end{lemma}
+
+\begin{myfigureht}
+\myincludepdft{mscontfuncpt}{%
+Di sisi kiri terdapat daerah berarsir gelap bertanda W dengan batas bertitik-titik,
+yang termuat dalam daerah berarsir terang bertanda invers f dari U
+dengan batas garis-titik.  Di sisi kanan terdapat daerah berarsir terang
+bertanda U dengan batas bertitik-titik.  Sebuah titik bertanda c di daerah W
+dihubungkan oleh panah bertanda f ke titik f dari c di daerah U.}
+\caption{Untuk setiap lingkungan $U$ bagi $f(c)$, himpunan $f^{-1}(U)$ memuat suatu
+lingkungan terbuka $W$ bagi $c$.\label{fig:mscontfuncpt}}
+\end{myfigureht}
+
+\begin{proof}
+Pertama, andaikan $f$ kontinu di $c$.
+Misalkan $U$ suatu lingkungan terbuka bagi $f(c)$
+dalam $Y$; maka $B_Y\bigl(f(c),\epsilon\bigr) \subset U$ untuk suatu $\epsilon >
+0$.  Oleh kekontinuan $f$, terdapat $\delta > 0$
+sedemikian sehingga apabila $x$ memenuhi $d_X(x,c) < \delta$, maka
+$d_Y\bigl(f(x),f(c)\bigr) < \epsilon$.  Dengan kata lain,
+\begin{equation*}
+B_X(c,\delta) \subset f^{-1}\bigl(B_Y\bigl(f(c),\epsilon\bigr)\bigr) \subset
+f^{-1}(U) ,
+\end{equation*}
+dan $B_X(c,\delta)$ merupakan suatu lingkungan terbuka bagi $c$.
+
+Sebaliknya,
+misalkan $\epsilon > 0$ diberikan.  Jika
+$f^{-1}\bigl(B_Y\bigl(f(c),\epsilon\bigr)\bigr)$ memuat suatu
+lingkungan terbuka $W$ bagi $c$, himpunan itu memuat suatu bola.  Artinya, terdapat $\delta > 0$
+sedemikian sehingga
+\begin{equation*}
+B_X(c,\delta) \subset W \subset f^{-1}\bigl(B_Y\bigl(f(c),\epsilon\bigr)\bigr) .
+\end{equation*}
+Ini tepat berarti bahwa jika $d_X(x,c) < \delta$,
+maka $d_Y\bigl(f(x),f(c)\bigr) < \epsilon$.
+Jadi, $f$ kontinu di~$c$.
+\end{proof}
+
+\begin{thm} \label{thm:mstopocont}
+Misalkan $(X,d_X)$ dan $(Y,d_Y)$ ruang metrik.  Fungsi $f \colon X \to Y$
+kontinu jika dan hanya jika
+untuk setiap himpunan terbuka $U \subset Y$, $f^{-1}(U)$ terbuka dalam $X$.
+\end{thm}
+
+Pembuktiannya mengikuti \lemmaref{lemma:mstopocontloc} dan diserahkan sebagai
+latihan.
+
+\begin{example}
+Misalkan $f \colon X \to Y$ fungsi kontinu.
+\thmref{thm:mstopocont} menyatakan bahwa jika $E \subset Y$ tertutup, maka 
+$f^{-1}(E) = X \setminus f^{-1}(E^c)$ juga tertutup.  Oleh karena itu, jika
+kita mempunyai fungsi kontinu
+$f \colon X \to \R$, maka
+\emph{\myindex{himpunan nol}} dari $f$, yaitu, 
+$f^{-1}(0) = \bigl\{ x \in X : f(x) = 0 \bigr\}$, tertutup.
+Kita baru saja membuktikan hasil paling dasar dalam
+\emph{\myindex{geometri aljabar}}, yaitu kajian tentang
+himpunan nol polinom: Himpunan nol suatu polinom tertutup.
+
+Demikian pula, himpunan tempat $f$ bernilai taknegatif,
+$f^{-1}\bigl( [0,\infty) \bigr) = \bigl\{ x \in X : f(x) \geq 0 \bigr\}$,
+tertutup.  Di sisi lain,
+himpunan tempat $f$ bernilai positif,
+$f^{-1}\bigl( (0,\infty) \bigr) = \bigl\{ x \in X : f(x) > 0 \bigr\}$,
+terbuka.  
+\end{example}
+
+\subsection{Kekontinuan seragam}
+
+Seperti halnya untuk fungsi kontinu
+pada garis real, dalam definisi kekontinuan
+kadang-kadang berguna untuk dapat memilih
+satu $\delta$ bagi semua titik.
+
+\begin{defn}
+Misalkan $(X,d_X)$ dan $(Y,d_Y)$ ruang metrik.
+Fungsi $f \colon X \to Y$ disebut
+\emph{kontinu seragam}\index{kontinu seragam!dalam ruang metrik}
+jika untuk setiap $\epsilon > 0$
+terdapat $\delta > 0$ sedemikian sehingga untuk setiap $p,q \in X$ dengan $d_X(p,q) <
+\delta$, berlaku
+$d_Y\bigl(f(p),f(q)\bigr) < \epsilon$.
+\end{defn}
+
+Fungsi kontinu seragam pasti kontinu, tetapi kebalikannya tidak selalu
+berlaku, seperti telah kita lihat.
+
+\begin{thm} \label{thm:Xcompactfunifcont}
+Misalkan $(X,d_X)$ dan $(Y,d_Y)$ ruang metrik.
+Andaikan $f \colon X \to Y$ kontinu dan $X$ kompak.  Maka
+$f$ kontinu seragam.
+\end{thm}
+
+\begin{proof}
+Ambil $\epsilon > 0$.  Untuk setiap $c \in X$, pilih $\delta_c > 0$ sedemikian sehingga
+$d_Y\bigl(f(x),f(c)\bigr) < \nicefrac{\epsilon}{2}$
+untuk setiap
+$x \in B(c,\delta_c)$.
+%$d_X(x,c) < \delta_c$.
+Bola-bola
+$B(c,\delta_c)$ menyelimuti $X$, dan ruang $X$ kompak.  
+Terapkan \hyperref[ms:lebesgue]{lema selimut Lebesgue} untuk memperoleh 
+$\delta > 0$ sedemikian sehingga untuk setiap $x \in X$, terdapat $c \in X$
+dengan $B(x,\delta) \subset B(c,\delta_c)$.
+
+Andaikan $p, q \in X$ dengan $d_X(p,q) < \delta$.
+Pilih $c \in X$ sedemikian sehingga $B(p,\delta) \subset B(c,\delta_c)$.
+Maka $q \in B(c,\delta_c)$.  Berdasarkan ketaksamaan segitiga
+dan definisi $\delta_c$,
+\begin{equation*}
+d_Y\bigl(f(p),f(q)\bigr)
+\leq
+d_Y\bigl(f(p),f(c)\bigr)
++
+d_Y\bigl(f(c),f(q)\bigr)
+<
+\nicefrac{\epsilon}{2}+
+\nicefrac{\epsilon}{2} = \epsilon .  \qedhere
+\end{equation*}
+\end{proof}
+
+Sebagai penerapan kekontinuan seragam,
+kita buktikan suatu kriteria yang berguna bagi
+kekontinuan fungsi yang didefinisikan oleh integral.
+Misalkan $f(x,y)$ fungsi dua variabel dan definisikan
+\begin{equation*}
+g(y) \coloneqq \int_a^b f(x,y) \,dx .
+\end{equation*}
+Pertanyaannya adalah apakah $g$ kontinu.
+Sesungguhnya, kita menanyakan kapan dua operasi limit dapat dipertukarkan.
+Hal ini tidak selalu dapat dilakukan, sehingga diperlukan suatu hipotesis
+tambahan.  Syarat cukup yang berguna (tetapi tidak
+perlu) adalah bahwa $f$ kontinu pada persegi panjang tertutup.
+
+\begin{prop} \label{prop:integralcontcont}
+Jika $f \colon [a,b] \times [c,d] \to \R$ kontinu,
+maka $g \colon [c,d] \to \R$ yang didefinisikan oleh
+\begin{equation*}
+g(y) \coloneqq \int_a^b f(x,y) \,dx  \qquad \text{bersifat kontinu}.
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Tetapkan $y \in [c,d]$ dan
+ambil $\epsilon > 0$.
+Karena $f$ kontinu pada himpunan kompak $[a,b] \times [c,d]$, maka $f$
+kontinu seragam.  
+Secara khusus, terdapat $\delta > 0$ sedemikian sehingga
+untuk setiap $z \in [c,d]$ dengan
+$\sabs{z-y} < \delta$, berlaku
+$\babs{f(x,z)-f(x,y)} < \frac{\epsilon}{b-a}$ untuk semua $x \in [a,b]$.
+Jadi, andaikan $\sabs{z-y} < \delta$.  Maka
+\begin{multline*}
+\babs{
+g(z)-
+g(y)
+}
+=
+\abs{
+\int_a^b 
+f(x,z) \,dx 
+-
+\int_a^b 
+f(x,y) \,dx 
+}
+\\
+=
+\abs{
+\int_a^b 
+\bigl(
+f(x,z) - f(x,y)
+\bigr)
+\,dx 
+}
+\leq
+(b-a)
+\frac{\epsilon}{b-a}
+= \epsilon . \qedhere
+\end{multline*}
+\end{proof}
+
+Dalam penerapan, jika kita tertarik pada kekontinuan di $y_0$, kita hanya
+perlu menerapkan proposisi tersebut pada $[a,b] \times [y_0-\epsilon,y_0+\epsilon]$
+untuk suatu $\epsilon > 0$ yang kecil.  Sebagai contoh, jika $f$ kontinu pada
+$[a,b] \times \R$, maka $g$ kontinu pada $\R$.
+
+\begin{example}
+Fungsi
+\emph{kontinu Lipschitz}%
+\index{kontinu Lipschitz!dalam ruang metrik}%
+\index{fungsi!Lipschitz}
+merupakan contoh lain fungsi kontinu seragam yang berguna.  Artinya, jika
+$(X,d_X)$ dan $(Y,d_Y)$ ruang metrik, maka $f \colon X \to Y$
+disebut Lipschitz atau $K$-Lipschitz jika terdapat $K \in \R$ sedemikian sehingga
+\begin{equation*}
+d_Y\bigl(f(p),f(q)\bigr) \leq K \, d_X(p,q)
+\qquad \text{untuk semua } p,q \in X.
+\end{equation*}
+Fungsi Lipschitz bersifat kontinu seragam:
+Ambil $\delta = \nicefrac{\epsilon}{K}$ (dengan mengandaikan $K > 0$).
+Suatu fungsi dapat kontinu seragam
+tetapi tidak Lipschitz,
+seperti telah kita lihat: $\sqrt{x}$ pada $[0,1]$
+kontinu seragam tetapi tidak Lipschitz.
+
+Perlu disebutkan bahwa
+jika suatu fungsi bersifat Lipschitz, biasanya paling mudah
+untuk langsung menunjukkan bahwa fungsi tersebut Lipschitz meskipun kita hanya
+ingin mengetahui kekontinuannya.
+\end{example}
+
+\subsection{Titik akumulasi dan limit fungsi}
+
+Meskipun kita tidak memulai pembahasan kekontinuan dengan titik akumulasi dan
+belum akan membutuhkannya sampai
+\volIIref{Jilid II\@,}{jauh kemudian,}
+mari kita juga
+terjemahkan gagasan limit fungsi dari garis real ke ruang
+metrik.
+Sekali lagi, kita perlu memulai dengan titik akumulasi.
+
+\begin{defn}
+Misalkan $(X,d)$ ruang metrik dan
+$S \subset X$. Titik $p \in X$ disebut
+\emph{titik akumulasi}\index{titik akumulasi!dalam ruang metrik} dari $S$
+jika untuk setiap $\epsilon > 0$, himpunan $B(p,\epsilon) \cap S
+\setminus \{ p \}$ tidak kosong.
+\end{defn}
+
+Tidak cukup bahwa $p$ berada dalam penutupan $S$;
+titik tersebut harus berada dalam penutupan
+$S \setminus \{ p \}$ (latihan).
+Jadi, $p$ merupakan titik akumulasi jika dan hanya jika terdapat barisan dalam $S \setminus
+\{ p \}$ yang konvergen ke $p$.
+
+\begin{defn}
+\index{limit!fungsi dalam ruang metrik}%
+Misalkan $(X,d_X)$ dan $(Y,d_Y)$ ruang metrik, $S \subset X$, $p \in X$ titik akumulasi dari $S$,
+dan $f \colon S \to Y$ suatu fungsi.
+Andaikan terdapat $L \in Y$ dan, untuk setiap $\epsilon > 0$,
+terdapat $\delta > 0$ sedemikian sehingga untuk setiap $x \in S \setminus \{ p \}$
+dengan $d_X(x,p) < \delta$, berlaku
+\begin{equation*}
+d_Y\bigl(f(x),L\bigr) < \epsilon .
+\end{equation*}
+Kita katakan bahwa $f(x)$
+\emph{konvergen}\index{konvergen!fungsi dalam ruang metrik} ke $L$ saat $x$ menuju
+$p$, dan $L$ merupakan \emph{limit} dari $f(x)$ saat $x$
+menuju $p$.  Jika $L$ tunggal, kita tulis
+\glsadd{not:limfunc}
+\begin{equation*}
+\lim_{x \to p} f(x) \coloneqq L .
+\end{equation*}
+Jika $f(x)$ tidak konvergen saat $x$ menuju $p$, kita katakan bahwa $f$
+\emph{divergen}\index{divergen!fungsi dalam ruang metrik} di $p$.
+\end{defn}
+
+Seperti biasa, kita buktikan bahwa limit tersebut tunggal jika ada.
+Pembuktiannya merupakan terjemahan langsung dari pembuktian
+dalam \chapterref{lim:chapter}, sehingga kita serahkan sebagai latihan.
+
+\begin{prop} \label{prop:mslimitisunique}
+Misalkan $(X,d_X)$ dan $(Y,d_Y)$ ruang metrik, $S \subset X$, $p \in X$
+titik akumulasi dari $S$, dan $f \colon S \to Y$ suatu fungsi
+sedemikian sehingga $f(x)$ konvergen saat $x$ menuju $p$.  Maka
+limit dari $f(x)$ saat $x$ menuju $p$ bersifat tunggal.
+\end{prop}
+
+Dalam setiap ruang metrik, seperti dalam $\R$, limit fungsi dapat
+diganti dengan limit sekuensial.  Pembuktiannya sekali lagi merupakan terjemahan langsung
+dari pembuktian dalam \chapterref{lim:chapter}, dan kita serahkan sebagai
+latihan.  Dengan demikian, sesungguhnya kita hanya perlu membuktikan berbagai hal untuk
+limit sekuensial.
+
+\begin{lemma}\label{ms:seqflimit:lemma}
+Misalkan $(X,d_X)$ dan $(Y,d_Y)$ ruang metrik, $S \subset X$, $p \in X$
+titik akumulasi dari $S$, dan $f \colon S \to Y$ suatu fungsi.
+
+Maka
+$f(x)$ konvergen ke $L \in Y$ saat $x$ menuju $p$ jika dan hanya jika, untuk setiap
+barisan $\{ x_n \}_{n=1}^\infty$
+dalam $S \setminus \{p\}$
+sedemikian sehingga $\lim_{n\to\infty} x_n = p$,
+barisan $\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ konvergen ke $L$.
+\end{lemma}
+
+Dengan menerapkan \propref{prop:contiscont} atau definisinya secara langsung, kita peroleh
+(latihan), seperti dalam \chapterref{lim:chapter}, bahwa untuk titik akumulasi $p \in S$ dari $S
+\subset X$, fungsi
+$f \colon S \to Y$ kontinu di $p$ jika dan hanya jika
+\begin{equation*}
+\lim_{x \to p} f(x) = f(p) .
+\end{equation*}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Tinjau $\N \subset \R$ dengan metrik standar.  Misalkan $(X,d)$ suatu
+ruang metrik dan $f \colon X \to \N$ fungsi kontinu.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa jika $X$ terhubung,
+maka $f$ konstan (citra $f$ hanya terdiri atas satu nilai).
+\item
+Temukan contoh ketika $X$ tidak terhubung dan $f$ tidak konstan.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \label{exercise:dicontR2}
+\pagebreak[2]
+Definisikan $f \colon \R^2 \to \R$ dengan $f(0,0) \coloneqq 0$, dan
+$f(x,y) \coloneqq \frac{xy}{x^2+y^2}$ jika $(x,y) \neq (0,0)$.
+Lihat \figureref{fig:xyxsqysq}.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa untuk setiap $x$ tetap,
+fungsi yang memetakan $y$ ke $f(x,y)$ kontinu.  Demikian pula,
+untuk setiap $y$ tetap, fungsi yang memetakan $x$ ke $f(x,y)$ kontinu.
+\item
+Tunjukkan bahwa $f$ tidak kontinu.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} 
+\pagebreak[2]
+Misalkan $(X,d_X)$, $(Y,d_Y)$ ruang metrik dan
+$f \colon X \to Y$ kontinu.
+Misalkan $A \subset X$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $f(\widebar{A}) \subset \overline{f(A)}$.
+\item
+Tunjukkan melalui contoh bahwa $f(\widebar{A})$ dapat merupakan subhimpunan sejati dari
+$\overline{f(A)}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Buktikan \thmref{thm:mstopocont}.  Petunjuk: Gunakan \lemmaref{lemma:mstopocontloc}.
+\end{exercise}
+
+\begin{exercise} \label{exercise:msconnconn}
+Misalkan $f \colon X \to Y$ kontinu untuk ruang metrik $(X,d_X)$
+dan $(Y,d_Y)$.  Tunjukkan bahwa jika $X$ terhubung, maka $f(X)$ terhubung.
+\end{exercise}
+
+\begin{exercise}
+Buktikan versi berikut dari
+\hyperref[IVT:thm]{teorema nilai antara}.  Misalkan $(X,d)$ ruang metrik
+terhubung dan $f \colon X \to \R$ fungsi kontinu.  Andaikan 
+$x_0,x_1 \in X$ dan $y \in \R$ sedemikian sehingga $f(x_0) < y < f(x_1)$.
+Buktikan bahwa terdapat $z \in X$ sedemikian sehingga $f(z) = y$.
+Petunjuk: Lihat \exerciseref{exercise:msconnconn}.
+\end{exercise}
+
+\begin{exercise}
+Fungsi kontinu $f \colon X \to Y$ antara ruang metrik $(X,d_X)$ dan
+$(Y,d_Y)$ disebut \emph{\myindex{proper}}
+jika untuk setiap himpunan kompak $K \subset Y$, himpunan $f^{-1}(K)$ kompak.
+Andaikan fungsi kontinu $f \colon (0,1) \to (0,1)$ proper dan
+$\{ x_n \}_{n=1}^\infty$ barisan dalam $(0,1)$ yang konvergen ke $0$.  Tunjukkan bahwa
+$\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ tidak memiliki subbarisan yang konvergen dalam $(0,1)$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $(X,d_X)$ dan $(Y,d_Y)$ ruang metrik dan
+$f \colon X \to Y$ fungsi kontinu yang injektif dan surjektif.  Andaikan
+$X$ kompak.  Buktikan bahwa invers $f^{-1} \colon Y \to X$
+kontinu.
+\end{exercise}
+
+\begin{exercise}
+Tinjau ruang metrik fungsi kontinu $C\bigl([0,1],\R\bigr)$.  Misalkan
+$k \colon [0,1] \times [0,1] \to \R$ fungsi kontinu.
+Untuk setiap $f \in C\bigl([0,1],\R\bigr)$, definisikan
+\begin{equation*}
+\varphi_f(x) \coloneqq \int_0^1 k(x,y) f(y) \,dy .
+\end{equation*}
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $T(f) \coloneqq \varphi_f$ mendefinisikan fungsi
+$T \colon C\bigl([0,1],\R\bigr) \to C\bigl([0,1],\R\bigr)$.
+\item
+Tunjukkan bahwa $T$ kontinu.
+\end{enumerate}
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Misalkan $(X,d)$ ruang metrik.
+\begin{enumerate}[a)]
+\item
+Jika $p \in X$,
+tunjukkan bahwa $f \colon X \to \R$ yang didefinisikan
+oleh $f(x) \coloneqq d(x,p)$ kontinu.
+\item
+Definisikan metrik pada $X \times X$ seperti dalam \exerciseref{exercise:mscross} bagian
+b, dan tunjukkan bahwa $g \colon X \times X \to \R$ yang didefinisikan oleh
+$g(x,y) \coloneqq d(x,y)$ kontinu.
+\item
+Tunjukkan bahwa jika $K_1$ dan $K_2$ subhimpunan kompak tak kosong dari $X$, maka
+terdapat $p \in K_1$ dan $q \in K_2$ sedemikian sehingga $d(p,q)$ bernilai minimum,
+yaitu, $d(p,q) = \inf \{ d(x,y) \colon x \in K_1, y \in K_2 \}$.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Misalkan $(X,d)$ ruang metrik kompak tak kosong, dan misalkan $C(X,\R)$ himpunan
+fungsi kontinu bernilai real.  Definisikan
+\begin{equation*}
+d(f,g) \coloneqq \snorm{f-g}_X = \sup_{x \in X} \babs{f(x)-g(x)} .
+\end{equation*}
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $d$ menjadikan $C(X,\R)$ ruang metrik.
+\item
+Tunjukkan bahwa untuk setiap $x \in X$, fungsi evaluasi
+$E_x \colon C(X,\R) \to \R$ yang didefinisikan oleh $E_x(f) \coloneqq f(x)$
+merupakan fungsi kontinu.
+\end{enumerate}
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Misalkan $C\bigl([a,b],\R\bigr)$ himpunan fungsi kontinu dan
+$C^1\bigl([a,b],\R\bigr)$\glsadd{not:contdifffuncs} himpunan fungsi yang
+diferensiabel dan memiliki turunan kontinu pada $[a,b]$.
+Definisikan
+\begin{equation*}
+d_{C}(f,g) \coloneqq \snorm{f-g}_{[a,b]}
+\qquad \text{dan} \qquad
+d_{C^1}(f,g) \coloneqq \snorm{f-g}_{[a,b]} + \snorm{f'-g'}_{[a,b]},
+\end{equation*}
+di mana $\snorm{\cdot}_{[a,b]}$ adalah norma seragam.
+Berdasarkan \exampleref{example:msC01} dan \exerciseref{exercise:C1ab}, kita mengetahui bahwa
+$C\bigl([a,b],\R\bigr)$ dengan $d_C$ merupakan ruang metrik, dan
+begitu pula
+$C^1\bigl([a,b],\R\bigr)$ dengan $d_{C^1}$.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa operator diferensiasi $D \colon 
+C^1\bigl([a,b],\R\bigr) \to C\bigl([a,b],\R\bigr)$ yang didefinisikan oleh
+$D(f) \coloneqq f'$ kontinu.
+\item
+Sebaliknya, jika kita menggunakan metrik $d_C$ pada $C^1\bigl([a,b],\R\bigr)$,
+buktikan bahwa operator diferensiasi tidak lagi kontinu.  Petunjuk: Tinjau
+$\sin(n x)$.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Misalkan $(X,d)$ ruang metrik, $S \subset X$, dan $p \in X$.  Buktikan bahwa
+$p$ merupakan titik akumulasi dari $S$ jika dan hanya jika $p \in \overline{S \setminus \{
+p \}}$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{prop:mslimitisunique}.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \lemmaref{ms:seqflimit:lemma}.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $(X,d_X)$ dan $(Y,d_Y)$ ruang metrik, $S \subset X$, $p \in S$
+suatu titik akumulasi dari $S$, dan misalkan $f \colon S \to Y$ suatu fungsi.
+Buktikan bahwa
+$f \colon S \to Y$ kontinu di $p$ jika dan hanya jika
+\begin{equation*}
+\lim_{x \to p} f(x) = f(p) .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Definisikan
+\begin{equation*}
+f(x,y) \coloneqq
+\begin{cases}
+\frac{2xy}{x^4+y^2} & \text{jika } (x,y) \neq (0,0), \\
+0 & \text{jika } (x,y) = (0,0) .
+\end{cases}
+\end{equation*}
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa untuk setiap $y$ tetap, fungsi yang memetakan $x$ ke $f(x,y)$
+kontinu dan karenanya terintegralkan Riemann.
+\item
+Tunjukkan bahwa untuk setiap $x$ tetap, fungsi yang memetakan $y$ ke $f(x,y)$ kontinu.
+\item
+Tunjukkan bahwa $f$ tidak kontinu di $(0,0)$.
+\item
+Sekarang tunjukkan bahwa $g(y) \coloneqq \int_0^1 f(x,y)\,dx$ tidak kontinu di $y=0$.
+\end{enumerate}
+Catatan: Anda boleh menggunakan pengetahuan tentang $\arctan$ dari kalkulus,
+khususnya bahwa $\frac{d}{ds} \bigl[ \arctan(s) \bigr] = \frac{1}{1+s^2}$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:integralcontcontextra}
+Buktikan versi yang lebih kuat dari \propref{prop:integralcontcont}:
+Jika $f \colon (a,b) \times (c,d) \to \R$ fungsi kontinu yang terbatas,
+maka $g \colon (c,d) \to \R$ yang didefinisikan oleh
+\begin{equation*}
+g(y) \coloneqq \int_a^b f(x,y) \,dx  \qquad \text{bersifat kontinu}.
+\end{equation*}
+Petunjuk: Pertama-tama, integralkan pada $[a+\nicefrac{1}{n},b-\nicefrac{1}{n}]$.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Teorema titik tetap dan teorema Picard sekali lagi}
+\label{sec:metpicard}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1 kuliah (opsional, tidak memerlukan \sectionref{sec:picard})}
+
+Dalam bagian ini kita buktikan teorema titik tetap untuk pemetaan
+kontraksi.  Sebagai penerapan, kita buktikan teorema Picard, yang telah kita buktikan
+tanpa ruang metrik dalam \sectionref{sec:picard}.
+Pembuktian yang disajikan di sini serupa, tetapi berlangsung jauh
+lebih lancar dengan ruang metrik dan teorema titik tetap.
+
+\subsection{Teorema titik tetap}
+
+\begin{defn}
+Misalkan $(X,d_X)$ dan $(Y,d_Y)$ ruang metrik.
+Pemetaan
+$\varphi \colon X \to Y$ disebut \emph{\myindex{kontraksi}}
+(atau pemetaan kontraktif) jika merupakan
+pemetaan $k$-Lipschitz untuk suatu $0 \leq k < 1$, yaitu jika terdapat $0 \leq k < 1$ sedemikian sehingga
+\begin{equation*}
+d_Y\bigl(\varphi(p),\varphi(q)\bigr) \leq k\, d_X(p,q)
+\qquad \text{untuk semua } p,q \in X.
+\end{equation*}
+
+\medskip
+
+Diberikan pemetaan $\varphi \colon X \to X$, titik $x \in X$ disebut
+\emph{\myindex{titik tetap}}
+jika $\varphi(x)=x$.
+\end{defn}
+
+\begin{thm}%
+[Prinsip pemetaan kontraksi\index{prinsip pemetaan kontraksi}
+atau \myindex{teorema titik tetap Banach}\index{teorema titik tetap}%
+\footnote{Dinamai menurut matematikawan Polandia
+\href{https://en.wikipedia.org/wiki/Stefan_Banach}{Stefan Banach}
+(1892--1945), yang pertama kali menyatakan teorema ini pada tahun 1922.}]
+\label{thm:contr}
+Misalkan $(X,d)$ ruang metrik lengkap tak kosong dan $\varphi \colon X \to X$ suatu
+kontraksi.
+Maka $\varphi$ memiliki tepat satu titik tetap.
+\end{thm}
+
+Syarat \emph{lengkap} dan \emph{kontraksi} diperlukan.
+Lihat \exerciseref{exercise:nofixedpoint}.
+
+\begin{proof}
+Pilih $x_0 \in X$.
+Definisikan barisan $\{ x_n \}_{n=0}^\infty$ dengan $x_{n+1} \coloneqq \varphi(x_n)$.  Maka
+\begin{equation*}
+d(x_{n+1},x_n) = d\bigl(\varphi(x_n),\varphi(x_{n-1})\bigr)
+\leq k d(x_n,x_{n-1}) .
+%\leq \cdots
+%\leq k^n d(x_1,x_0) .
+\end{equation*}
+Dengan mengulang langkah ini $n$ kali, diperoleh $d(x_{n+1},x_n) \leq k^n d(x_1,x_0)$.
+Untuk $m > n$,
+\begin{equation*}
+\begin{split}
+d(x_m,x_n)
+& \leq \sum_{i=n}^{m-1} d(x_{i+1},x_i) \\
+& \leq \sum_{i=n}^{m-1} k^i d(x_1,x_0) \\
+& = k^n d(x_1,x_0) \sum_{i=0}^{m-n-1} k^i \\
+& \leq k^n d(x_1,x_0) \sum_{i=0}^{\infty} k^i
+= k^n d(x_1,x_0) \frac{1}{1-k} .
+\end{split}
+\end{equation*}
+Secara khusus, barisan tersebut merupakan barisan Cauchy (mengapa?).  Karena $X$ lengkap,
+tetapkan $x \coloneqq \lim_{n\to\infty} x_n$, dan kita nyatakan bahwa $x$
+merupakan titik tetap tunggal yang dicari.
+
+Titik tetap?  Fungsi $\varphi$ merupakan kontraksi,
+sehingga kontinu Lipschitz:
+\begin{equation*}
+\varphi(x) = \varphi\Bigl( \lim_{n\to\infty} x_n\Bigr) = \lim_{n\to\infty}
+\varphi(x_n) =
+\lim_{n\to\infty} x_{n+1} = x .
+\end{equation*}
+Tunggal?  Misalkan $x$ dan $y$ titik tetap.
+\begin{equation*}
+d(x,y) = d\bigl(\varphi(x),\varphi(y)\bigr) \leq k\, d(x,y) .
+\end{equation*}
+Karena $k < 1$, ketaksamaan tersebut mengakibatkan $d(x,y) = 0$, sehingga $x=y$.  Teorema ini
+terbukti.
+\end{proof}
+
+Pembuktian ini bersifat konstruktif.  Kita bukan hanya mengetahui bahwa 
+terdapat tepat satu titik tetap, melainkan juga mengetahui cara mencarinya.  Mulailah dari
+sebarang titik $x_0 \in X$, lalu hitung berturut-turut $\varphi(x_0)$,
+$\varphi(\varphi(x_0))$,
+$\varphi(\varphi(\varphi(x_0)))$, dan seterusnya untuk memperoleh hampiran yang semakin baik.
+Kita bahkan dapat menentukan seberapa jauh
+hampiran tersebut dari titik tetap.
+Lihat latihan.  Oleh karena itu, gagasan pembuktian ini
+berguna dalam penerapan dunia nyata.
+
+\subsection{Teorema Picard}
+
+Kita mulai dengan ruang metrik tempat kita akan menerapkan
+teorema titik tetap:
+ruang $C\bigl([a,b],\R\bigr)$ dari \exampleref{example:msC01},
+yaitu ruang fungsi kontinu $f \colon [a,b] \to \R$ dengan metrik
+\begin{equation*}
+d(f,g) \coloneqq \snorm{f-g}_{[a,b]} = \sup_{x \in [a,b]} \babs{f(x)-g(x)} .
+\end{equation*}
+Konvergensi dalam metrik ini adalah konvergensi dalam norma seragam, atau dengan
+kata lain, konvergensi seragam. Oleh karena itu,
+$C\bigl([a,b],\R\bigr)$ merupakan ruang metrik lengkap;
+lihat \propref{prop:CabRcomplete}.
+
+\medskip
+
+Sekarang perhatikan persamaan diferensial biasa
+\begin{equation*}
+\frac{dy}{dx} = F(x,y) .
+\end{equation*}
+Diberikan suatu $x_0, y_0$, kita menginginkan fungsi $y=f(x)$ sedemikian sehingga
+$f(x_0) = y_0$ dan
+\begin{equation*}
+f'(x) = F\bigl(x,f(x)\bigr) .
+\end{equation*}
+Untuk menghindari keharusan memperkenalkan banyak nama, kita sering cukup menulis $y' = F(x,y)$
+untuk persamaannya
+dan $y(x)$ untuk solusinya.
+
+Contoh paling sederhana adalah persamaan $y' = y$, $y(0) = 1$.
+Solusinya adalah fungsi eksponensial $y(x) = e^x$. Contoh yang agak lebih rumit
+adalah $y' = -2xy$, $y(0) = 1$, yang solusinya berupa fungsi Gauss
+$y(x) = e^{-x^2}$.
+
+Salah satu persoalan halus adalah seberapa lama solusi itu ada.
+Perhatikan persamaan $y' = y^2$, $y(0)=1$. Maka $y(x) = \frac{1}{1-x}$ merupakan
+solusi. Walaupun $F$ merupakan fungsi yang cukup \myquote{baik} dan khususnya
+terdefinisi untuk setiap $x$ dan $y$, solusi tersebut \myquote{meledak} pada $x=1$.
+Untuk contoh lain yang berkaitan dengan teorema Picard, lihat \sectionref{sec:picard}.
+
+Kita akan mencari solusi di 
+$C\bigl([a,b],\R\bigr)$, yang mungkin terasa aneh pada awalnya karena
+kita mencari fungsi yang terdiferensialkan.
+Penjelasannya adalah bahwa kita meninjau
+persamaan integral yang bersesuaian,
+\begin{equation*}
+f(x)
+=
+y_0 + \int_{x_0}^x F\bigl(t,f(t)\bigr)\,dt .
+\end{equation*}
+Untuk menyelesaikan persamaan integral ini, kita hanya memerlukan fungsi kontinu, sehingga
+dalam arti tertentu tugas kita semestinya lebih mudah---terdapat lebih banyak calon fungsi
+yang dapat dicoba. Cara berpikir seperti ini cukup lazim dalam menyelesaikan persamaan
+diferensial.
+
+\begin{samepage}
+\begin{thm}[Teorema keberadaan dan ketunggalan Picard]%
+\index{teorema keberadaan dan ketunggalan}\index{teorema Picard}
+Misalkan $I, J \subset \R$ merupakan interval tertutup dan terbatas,
+misalkan $I^\circ$ dan $J^\circ$ menyatakan interiornya, dan 
+misalkan $(x_0,y_0) \in I^\circ \times J^\circ$.
+Andaikan $F \colon I \times J \to \R$ kontinu
+dan bersifat Lipschitz terhadap variabel kedua, yaitu terdapat
+$L \in \R$ sedemikian sehingga
+\begin{equation*}
+\babs{F(x,y) - F(x,z)} \leq L \sabs{y-z}
+\qquad \text{untuk setiap } y,z \in J, x \in I .
+\end{equation*}
+Maka terdapat $h > 0$ sedemikian sehingga $[x_0-h,x_0+h] \subset I$ dan terdapat tepat satu fungsi terdiferensialkan
+$f \colon [x_0 - h, x_0 + h] \to J \subset \R$ sedemikian sehingga
+\begin{equation*}
+f'(x) = F\bigl(x,f(x)\bigr) \qquad \text{dan} \qquad f(x_0) = y_0.
+\end{equation*}
+\end{thm}
+\end{samepage}
+
+\begin{proof}
+Tanpa mengurangi keumuman, andaikan $x_0 =0$ (latihan).
+Karena $I \times J$ kompak dan
+$F$ kontinu, maka $F$ terbatas.
+Jadi, ambil $M > 0$ sedemikian sehingga
+$\babs{F(x,y)} \leq M$ untuk setiap $(x,y) \in I\times J$.
+Pilih $\alpha > 0$ sedemikian sehingga
+$[-\alpha,\alpha] \subset I$ dan $[y_0-\alpha, y_0 + \alpha] \subset J$.
+Definisikan
+\begin{equation*}
+h \coloneqq \min \left\{ \alpha, \frac{\alpha}{M+L\alpha} \right\} .
+\end{equation*}
+Perhatikan bahwa $[-h,h] \subset I$. Definisikan
+\begin{equation*}
+Y \coloneqq \Bigl\{ f \in C\bigl([-h,h],\R\bigr) : f\bigl([-h,h]\bigr) \subset J \Bigr\} .
+\end{equation*}
+Jadi, $Y$ adalah himpunan fungsi kontinu pada $[-h,h]$ yang nilainya berada di
+$J$; dengan kata lain, himpunan ini persis terdiri atas
+fungsi-fungsi yang membuat $F\bigl(x,f(x)\bigr)$ terdefinisi.
+Sebagai latihan, tunjukkan bahwa $Y$ merupakan himpunan bagian tertutup dari $C\bigl([-h,h],\R\bigr)$
+(karena $J$ tertutup).
+Ruang $C\bigl([-h,h],\R\bigr)$ lengkap, dan
+himpunan bagian tertutup dari ruang metrik lengkap merupakan ruang metrik lengkap dengan
+metrik subruang; lihat \propref{prop:closedcomplete}. Jadi, $Y$ dengan
+metrik subruang merupakan ruang metrik lengkap.
+Kita tulis $d(f,g) = \snorm{f-g}_{[-h,h]}$ untuk metrik ini.
+
+Definisikan pemetaan
+$T \colon Y \to C\bigl([-h,h],\R\bigr)$ dengan
+\begin{equation*}
+T(f)(x)
+\coloneqq
+y_0 + \int_0^x F\bigl(t,f(t)\bigr)\,dt .
+\end{equation*}
+Sebagai latihan, periksalah bahwa
+$T$ terdefinisi dengan baik, dan bahwa untuk $f \in Y$, $T(f)$ benar-benar berada di $C\bigl([-h,h],\R\bigr)$.
+Misalkan $f \in Y$ dan $\sabs{x} \leq h$.
+Karena $F$ dibatasi oleh $M$, kita peroleh
+\begin{equation*}
+\begin{split}
+\babs{T(f)(x) - y_0}
+&= \abs{\int_0^x F\bigl(t,f(t)\bigr)\,dt} \\
+& \leq 
+\sabs{x} M \leq hM \leq \frac{\alpha M}{M+ L\alpha} \leq \alpha .
+\end{split}
+\end{equation*}
+Jadi, $T(f)\bigl([-h,h]\bigr) \subset [y_0-\alpha,y_0+\alpha] \subset J$, dan
+$T(f) \in Y$. Dengan kata lain, $T(Y) \subset Y$. Mulai sekarang,
+kita memandang $T$ sebagai pemetaan dari $Y$ ke $Y$.
+
+Akan kita tunjukkan bahwa $T \colon Y \to Y$ merupakan kontraksi. Pertama, untuk $x \in [-h,h]$
+dan $f,g \in Y$, kita mempunyai
+\begin{equation*}
+\Babs{F\bigl(x,f(x)\bigr) - F\bigl(x,g(x)\bigr)} \leq
+L\babs{f(x)- g(x)} \leq L \, d(f,g) .
+\end{equation*}
+Oleh karena itu,
+\begin{equation*}
+\begin{split}
+\babs{T(f)(x) - T(g)(x)}
+&= \abs{\int_0^x \Bigl( F\bigl(t,f(t)\bigr) - F\bigl(t,g(t)\bigr)\Bigr)\,dt} \\
+& \leq \sabs{x} L \, d(f,g)
+ \leq h L\, d(f,g)
+ \leq \frac{L\alpha}{M+L\alpha} \, d(f,g) .
+\end{split}
+\end{equation*}
+Kita memilih $M > 0$, sehingga
+$\frac{L\alpha}{M+L\alpha} < 1$.
+Dengan mengambil supremum atas $x \in [-h,h]$ pada ruas kiri di atas, diperoleh
+$d\bigl(T(f),T(g)\bigr) \leq \frac{L\alpha}{M+L\alpha} \, d(f,g)$,
+yaitu $T$ merupakan kontraksi.
+
+Teorema titik tetap (\thmref{thm:contr})
+memberikan tepat satu $f \in Y$ sedemikian sehingga $T(f) = f$.
+Dengan kata lain,
+\begin{equation*} %\label{equation:msinteqpicard}
+f(x) = y_0 + \int_0^x F\bigl(t,f(t)\bigr)\,dt .
+\end{equation*}
+Jelas bahwa $f(0) = y_0$.
+Menurut teorema dasar kalkulus (\thmref{thm:FTCv2}),
+$f$ terdiferensialkan dan turunannya adalah
+$F\bigl(x,f(x)\bigr)$.
+Fungsi terdiferensialkan bersifat kontinu, sehingga
+$f$ adalah satu-satunya fungsi terdiferensialkan $f \colon [-h,h] \to J$
+sedemikian sehingga
+ $f'(x) = F\bigl(x,f(x)\bigr)$ dan $f(0) = y_0$.
+\end{proof}
+
+\subsection{Latihan}
+
+\begin{exnote}
+Untuk latihan lain yang berkaitan dengan teorema Picard, lihat \sectionref{sec:picard}.
+\end{exnote}
+
+\begin{exercise}
+Misalkan $J$ interval tertutup dan terbatas, serta
+$Y \coloneqq \bigl\{ f \in C\bigl([-h,h],\R\bigr) : f\bigl([-h,h]\bigr) \subset J \bigr\}$.
+Buktikan bahwa $Y \subset C\bigl([-h,h],\R\bigr)$ tertutup.  Petunjuk: $J$ tertutup.
+\end{exercise}
+
+\begin{exercise}
+Dalam pembuktian teorema Picard,
+buktikan bahwa jika $f \colon [-h,h] \to J$ kontinu, maka $F\bigl(t,f(t)\bigr)$
+kontinu pada $[-h,h]$ sebagai fungsi terhadap $t$.  Gunakan fakta ini untuk menunjukkan bahwa
+\begin{equation*}
+T(f)(x)
+\coloneqq
+y_0 + \int_0^x F\bigl(t,f(t)\bigr)\,dt
+\end{equation*}
+terdefinisi dengan baik dan bahwa $T(f) \in C\bigl([-h,h],\R\bigr)$.
+\end{exercise}
+
+
+\begin{exercise}
+Buktikan bahwa dalam pembuktian teorema Picard,
+pernyataan \myquote{Tanpa mengurangi keumuman, andaikan $x_0 = 0$}
+dapat dibenarkan.  Artinya, buktikan bahwa jika kita mengetahui teorema tersebut untuk $x_0 = 0$,
+teorema itu berlaku sebagaimana dinyatakan.
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Misalkan $F \colon \R \to \R$ didefinisikan oleh
+$F(x) \coloneqq kx + b$ dengan $0 < k < 1$, $b \in \R$.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa $F$ merupakan kontraksi.
+\item
+Tentukan titik tetapnya dan tunjukkan secara langsung bahwa titik itu tunggal.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Misalkan $f \colon [0,\nicefrac{1}{4}] \to [0,\nicefrac{1}{4}]$ didefinisikan oleh
+$f(x) \coloneqq x^2$.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa $f$
+merupakan kontraksi, dan tentukan konstanta $k$ terbaik (terkecil) yang memenuhi definisi tersebut.
+\item
+Tentukan titik tetapnya dan tunjukkan secara langsung bahwa titik itu tunggal.
+\end{enumerate}
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise} \label{exercise:nofixedpoint}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Berikan contoh kontraksi $f \colon X \to X$
+pada ruang metrik tak lengkap $X$ yang tidak memiliki
+titik tetap.
+\item
+Berikan pemetaan 1-Lipschitz $f \colon X \to X$ pada ruang metrik lengkap $X$ yang tidak memiliki titik tetap.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Tinjau $y' =y^2$, $y(0)=1$.  Gunakan skema iterasi
+dari pembuktian prinsip pemetaan kontraksi.
+Mulailah dengan $f_0(x) = 1$.  Tentukan beberapa 
+iterat (sekurang-kurangnya sampai $f_2$).  Buktikan bahwa
+limit titik demi titik dari $f_n$ adalah $\frac{1}{1-x}$; yaitu, untuk setiap $x$
+dengan $\sabs{x} < h$ bagi suatu $h > 0$,
+buktikan bahwa $\lim\limits_{n\to\infty}f_n(x) = \frac{1}{1-x}$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon X \to X$ merupakan kontraksi dengan konstanta kontraksi $k < 1$.  Andaikan Anda menggunakan prosedur
+iterasi dengan $x_{n+1} \coloneqq f(x_n)$ seperti dalam pembuktian teorema titik tetap.
+Andaikan $x$ merupakan titik
+tetap dari $f$.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa $d(x,x_n) \leq k^n d(x_1,x_0) \frac{1}{1-k}$ untuk semua $n \in \N$.
+\item
+Andaikan $d(y_1,y_2) \leq 16$ untuk semua $y_1,y_2 \in X$, dan $k=
+\nicefrac{1}{2}$.  Tentukan $N$ sedemikian sehingga, dengan memulai dari sebarang titik $x_0 \in X$, 
+$d(x,x_n) \leq 2^{-16}$ untuk semua $n \geq N$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f(x) \coloneqq x-\frac{x^2-2}{2x}$ (Anda mungkin mengenal metode Newton untuk
+$\sqrt{2}$).
+\begin{enumerate}[a)]
+\item
+Buktikan $f\bigl([1,\infty)\bigr) \subset [1,\infty)$.
+\item
+Buktikan bahwa $f \colon [1,\infty) \to [1,\infty)$ merupakan kontraksi.
+\item
+Buktikan bahwa teorema titik tetap dapat diterapkan,
+tentukan satu-satunya $x \geq 1$ sedemikian sehingga $f(x) = x$,
+dan buktikan bahwa $x = \sqrt{2}$.
+Catatan: Secara khusus, teknik dari pembuktian teorema tersebut
+dapat digunakan untuk menghampiri $\sqrt{2}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon X \to X$ merupakan kontraksi dan $(X,d)$ ruang metrik tak kosong
+dengan metrik diskret, yaitu $d(x,y) = 1$ untuk setiap $x \neq y$.
+Buktikan bahwa $f$ konstan; yaitu,
+terdapat $c \in X$ sedemikian sehingga $f(x) = c$ untuk semua $x \in X$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $(X,d)$ ruang metrik lengkap tak kosong,
+$f \colon X \to X$ suatu pemetaan, dan tuliskan
+$f^n$ untuk iterasi ke-$n$ dari $f$.  Andaikan
+untuk setiap $n$ terdapat $k_n > 0$ sedemikian sehingga
+$d\bigl(f^n(x),f^n(y)\bigr) \leq k_n \, d(x,y)$
+untuk semua $x,y \in X$,
+dengan $\sum_{n=1}^\infty k_n < \infty$.
+Buktikan bahwa $f$ memiliki tepat satu titik tetap dalam $X$.
+\end{exercise}

@@ -1,0 +1,36 @@
+/* slightly modified sample from epix samples gallery */
+#include "epix.h"
+using namespace ePiX;
+
+int main()
+{
+  double t;
+  picture(P(0,0), P(4.0,2.0), "3x1.5in");
+
+  begin();
+
+  /* plot some secant lines in gray */
+  pen(Black(0.55));
+  for (t = 0.02; t < 4.0; t=1.5*t) {
+    line(P(0,0),P(t,2.0));
+  }
+
+  pen(Black(1.0));
+
+  h_axis(4);
+  v_axis(2);
+
+  bold();
+
+  /* plot the sqare root as a prabola,
+   * that's nicer */
+  path p;
+  for (t = 0.0; t <= 2.00001; t+=0.04) {
+	  p.pt(P(t*t,t));
+  }
+  p.draw();
+
+  tikz_format();
+  end();
+}
+

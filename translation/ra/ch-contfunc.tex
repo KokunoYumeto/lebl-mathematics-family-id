@@ -1,0 +1,3436 @@
+\chapter{Fungsi Kontinu} \label{lim:chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Limit fungsi}
+\label{sec:limoffunc}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2--3 kuliah}
+
+Sebelum mendefinisikan kekontinuan fungsi, kita akan membahas suatu gagasan
+limit yang sedikit lebih umum daripada limit barisan.
+Diberikan fungsi $f \colon S \to
+\R$, kita ingin melihat perilaku $f(x)$ ketika $x$ mendekati suatu titik tertentu.
+
+\subsection{Titik akumulasi}
+
+Pertama,
+kita kembali ke suatu konsep yang sebelumnya telah dijumpai dalam sebuah latihan.
+Ketika bergerak di dalam himpunan $S$, kita hanya dapat mendekati titik-titik
+yang di sekitarnya terdapat anggota $S$ sedekat apa pun.
+
+\begin{defn}
+Misalkan $S \subset \R$ suatu himpunan.  Bilangan $x \in \R$ disebut
+\emph{\myindex{titik akumulasi}} dari $S$
+jika untuk setiap $\epsilon > 0$, himpunan $(x-\epsilon,x+\epsilon) \cap S
+\setminus \{ x \}$ tidak kosong.
+\end{defn}
+
+Artinya, $x$ merupakan titik akumulasi dari $S$ jika terdapat titik-titik dalam $S$
+yang sedekat apa pun dengan $x$.  Definisi ini juga dapat dinyatakan dengan mengatakan
+bahwa $x$ merupakan titik akumulasi dari $S$ jika untuk setiap $\epsilon > 0$, terdapat
+$y \in S$ sedemikian sehingga $y \neq x$ dan $\sabs{x - y} < \epsilon$.
+Perhatikan bahwa titik akumulasi dari $S$ tidak harus berada dalam $S$.
+
+Mari kita lihat beberapa contoh.
+\begin{enumerate}[(i)]
+\item Himpunan
+$\{ \nicefrac{1}{n} : n \in \N \}$ memiliki nol sebagai satu-satunya titik akumulasi.
+\item Titik-titik akumulasi dari interval terbuka $(0,1)$ adalah
+semua titik dalam interval tertutup $[0,1]$.
+\item
+Himpunan titik akumulasi dari $\Q$ adalah seluruh garis bilangan real $\R$.
+\item 
+Himpunan titik akumulasi dari $[0,1) \cup \{ 2 \}$ adalah interval $[0,1]$.
+\item Himpunan $\N$ tidak memiliki titik akumulasi dalam $\R$.
+\end{enumerate}
+
+\begin{prop}
+Misalkan $S \subset \R$.  Maka $x \in \R$ merupakan titik akumulasi dari $S$
+jika dan hanya jika
+terdapat barisan bilangan konvergen $\{ x_n \}_{n=1}^\infty$ sedemikian sehingga
+$x_n \neq x$ dan $x_n \in S$ untuk semua $n$, serta $\lim\limits_{n\to\infty} x_n = x$.
+\end{prop}
+
+\begin{proof}
+Pertama, andaikan $x$ merupakan titik akumulasi dari $S$.
+Untuk setiap $n \in \N$, pilih $x_n$ sebagai sebarang titik dalam
+$(x-\nicefrac{1}{n},x+\nicefrac{1}{n}) \cap S \setminus \{x\}$, yang
+tidak kosong karena $x$ merupakan titik akumulasi dari $S$.
+Maka
+$x_n$ berada dalam jarak $\nicefrac{1}{n}$ dari $x$, yaitu,
+\begin{equation*}
+\sabs{x-x_n} < \nicefrac{1}{n} .
+\avoidbreak
+\end{equation*}
+Karena $\{ \nicefrac{1}{n} \}_{n=1}^\infty$ konvergen ke nol,
+$\{ x_n \}_{n=1}^\infty$ konvergen ke $x$.
+
+Sebaliknya, jika kita mulai dengan suatu barisan bilangan
+$\{ x_n \}_{n=1}^\infty$ dalam $S$
+yang konvergen ke $x$ dan memenuhi $x_n \neq x$ untuk semua $n$, maka untuk setiap
+$\epsilon > 0$ terdapat $M$ sedemikian sehingga, khususnya, $\sabs{x_M - x} <
+\epsilon$.  Artinya, $x_M \in (x-\epsilon,x+\epsilon) \cap S \setminus \{x\}$.
+\end{proof}
+
+\subsection{Limit fungsi}
+
+Jika fungsi $f$ didefinisikan pada suatu himpunan $S$ dan $c$ merupakan titik akumulasi dari $S$,
+kita mendefinisikan limit $f(x)$ ketika $x$ mendekati $c$.
+Apakah $f$ didefinisikan pada $c$ atau tidak, hal itu tidak berpengaruh pada definisi.
+Bahkan jika fungsi tersebut didefinisikan pada $c$, limit
+fungsi ketika $x$ menuju $c$ dapat saja berbeda
+dari $f(c)$.
+
+\begin{defn}
+\index{limit!fungsi}%
+Misalkan $f \colon S \to \R$ suatu fungsi dan $c$ suatu titik akumulasi dari
+$S \subset \R$.
+Andaikan terdapat $L \in \R$ dan untuk setiap $\epsilon > 0$,
+terdapat $\delta > 0$ sedemikian sehingga setiap kali $x \in S \setminus \{ c \}$
+dan $\sabs{x - c} < \delta$, berlaku
+\begin{equation*}
+\babs{f(x) - L} < \epsilon .
+\end{equation*}
+Kita kemudian mengatakan bahwa $f(x)$ \emph{konvergen}\index{konvergen!fungsi} ke $L$ ketika $x$
+menuju $c$, dan menuliskan
+\glsadd{not:limitasarrows}%
+\begin{equation*}
+f(x) \to L \quad\text{ketika}\quad x \to c .
+\end{equation*}
+Kita mengatakan bahwa $L$ merupakan \emph{limit} dari $f(x)$ ketika $x$
+menuju $c$, dan jika $L$ tunggal (memang demikian), kita menuliskan
+\glsadd{not:limfunc}%
+\begin{equation*}
+\lim_{x \to c} f(x) \coloneqq L .
+\end{equation*}
+Jika tidak terdapat $L$ semacam itu, kita mengatakan bahwa limitnya tidak ada atau
+bahwa $f$ \emph{\myindex{divergen}} pada $c$.
+\end{defn}
+
+Sekali lagi, notasi dan bahasa yang kita gunakan di atas mengasumsikan bahwa limit $L$, jika
+ada, bersifat tunggal; hal ini perlu dibuktikan.  Perhatikan bahwa fakta bahwa $c$
+merupakan titik akumulasi penting untuk membuktikan ketunggalan.
+
+\begin{prop}
+Misalkan $c$ suatu titik akumulasi dari $S \subset \R$ dan misalkan $f \colon S \to \R$
+suatu fungsi sedemikian sehingga $f(x)$ konvergen ketika $x$ menuju $c$.  Maka
+limit $f(x)$ ketika $x$ menuju $c$ bersifat tunggal.
+\end{prop}
+
+\begin{proof}
+Misalkan $L_1$ dan $L_2$ dua bilangan yang sama-sama memenuhi definisi.
+Ambil sebarang $\epsilon > 0$ dan pilih $\delta_1 > 0$ sedemikian sehingga
+$\babs{f(x)-L_1} < \nicefrac{\epsilon}{2}$ 
+untuk semua $x \in S \setminus \{c\}$ dengan $\sabs{x-c} < \delta_1$.
+Pilih pula $\delta_2 > 0$ sedemikian sehingga
+$\babs{f(x)-L_2} < \nicefrac{\epsilon}{2}$
+untuk semua $x \in S \setminus \{c\}$ dengan $\sabs{x-c} < \delta_2$.
+Tetapkan $\delta \coloneqq \min \{ \delta_1, \delta_2 \}$.  Andaikan $x \in S$,
+$\sabs{x-c} < \delta$, dan $x \neq c$.  Karena $\delta > 0$ dan $c$ merupakan titik
+akumulasi, $x$ semacam itu ada.  Maka
+\begin{equation*}
+\sabs{L_1 - L_2} =
+\babs{L_1 - f(x) + f(x) - L_2} \leq
+\babs{L_1 - f(x)} + \babs{f(x) - L_2} < \frac{\epsilon}{2} + \frac{\epsilon}{2}
+= \epsilon.
+\end{equation*}
+Karena $\sabs{L_1-L_2} < \epsilon$ untuk sebarang $\epsilon > 0$, kita peroleh
+$L_1 = L_2$.
+\end{proof}
+
+\begin{example}
+Perhatikan $f \colon \R \to \R$ yang didefinisikan oleh $f(x) \coloneqq x^2$.  Maka
+untuk setiap $c \in \R$,
+\begin{equation*}
+\lim_{x\to c} f(x) = \lim_{x\to c} x^2 = c^2 .
+\end{equation*}
+
+Bukti: Tetapkan $c \in \R$, dan ambil sebarang $\epsilon > 0$.  Tuliskan
+\begin{equation*}
+\delta \coloneqq \min \left\{ 1 , \, \frac{\epsilon}{2\sabs{c}+1} \right\} .
+\end{equation*}
+Ambil $x \neq c$ sedemikian sehingga $\sabs{x-c} < \delta$.  Khususnya,
+$\sabs{x-c} < 1$.  Berdasarkan ketaksamaan segitiga terbalik,
+\begin{equation*}
+\sabs{x}-\sabs{c} \leq \sabs{x-c} < 1 .
+\end{equation*}
+Dengan menambahkan $2\sabs{c}$ pada kedua ruas, kita peroleh
+$\sabs{x} + \sabs{c} < 2\sabs{c} + 1$.  Taksir
+\begin{equation*}
+\begin{split}
+\babs{f(x) - c^2} &= \sabs{x^2-c^2} \\
+&= \babs{(x+c)(x-c)} \\
+&= \sabs{x+c}\sabs{x-c} \\
+&\leq \bigl(\sabs{x}+\sabs{c}\bigr)\sabs{x-c} \\
+&< \bigl(2\sabs{c}+1\bigr)\sabs{x-c} \\
+&< \bigl(2\sabs{c}+1\bigr)\frac{\epsilon}{2\sabs{c}+1} = \epsilon .
+\end{split}
+\end{equation*}
+\end{example}
+
+\begin{example}
+Definisikan $f \colon [0,1) \to \R$ dengan
+\begin{equation*}
+f(x) \coloneqq 
+\begin{cases}
+x & \text{jika } x > 0 , \\
+1 & \text{jika } x = 0 .
+\end{cases}
+\end{equation*}
+Maka
+$\lim\limits_{x\to 0} f(x) = 0$,
+meskipun $f(0) = 1$.  Lihat \figureref{fig:limvaldiff}.
+\begin{myfigureht}
+\myincludegraphics{limvaldiff}{%
+Grafik suatu fungsi yang bernilai 1 ketika variabel bebas
+x bernilai 0; ketika variabel bebas
+x lebih besar dari 0, fungsi tersebut sama dengan x.
+Ditunjukkan bahwa fungsi tidak didefinisikan pada
+x yang sama dengan 1 atau lebih besar dari 1, maupun pada x yang kurang dari 0.}
+\caption{Fungsi dengan limit dan nilai yang berbeda pada $0$.\label{fig:limvaldiff}}
+\end{myfigureht}
+
+Bukti:  Ambil sebarang $\epsilon > 0$.  Misalkan $\delta \coloneqq \epsilon$.
+Untuk $x \in [0,1)$, $x \neq 0$, dan $\sabs{x-0} < \delta$, kita peroleh
+\begin{equation*}
+\babs{f(x) - 0} = \sabs{x} < \delta = \epsilon .
+\end{equation*}
+\end{example}
+
+\subsection{Limit sekuensial} \label{subseq:sequentiallimits}
+
+Mari kita hubungkan limit sebagaimana didefinisikan di atas dengan limit barisan.
+
+\begin{lemma}\label{seqflimit:lemma}
+Misalkan $S \subset \R$, misalkan $c$ titik akumulasi dari $S$, misalkan $f \colon S \to
+\R$ suatu fungsi, dan misalkan $L \in \R$.
+
+Maka
+$f(x) \to L$ ketika $x \to c$ jika dan hanya jika untuk setiap barisan
+$\{ x_n \}_{n=1}^\infty$
+sedemikian sehingga $x_n \in S \setminus \{c\}$ untuk semua $n$,
+dan sedemikian sehingga $\lim_{n\to\infty} x_n = c$,
+barisan $\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ konvergen ke $L$.
+\end{lemma}
+
+\begin{proof}
+Misalkan
+$f(x) \to L$ ketika $x \to c$, dan $\{ x_n \}_{n=1}^\infty$ suatu barisan
+sedemikian sehingga
+$x_n \in S \setminus \{c\}$ dan
+$\lim_{n\to\infty} x_n = c$.
+Kita hendak menunjukkan bahwa $\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ konvergen ke $L$.
+Ambil $\epsilon > 0$.  Cari $\delta > 0$ sedemikian sehingga
+jika $x \in S \setminus \{c\}$ dan $\sabs{x-c} < \delta$, maka
+$\babs{f(x) - L} < \epsilon$.  Karena
+$\{ x_n \}_{n=1}^\infty$ konvergen ke $c$, cari $M$ sedemikian sehingga untuk $n \geq M$,
+berlaku $\sabs{x_n - c} < \delta$.  Oleh karena itu, untuk $n \geq M$,
+\begin{equation*}
+\babs{f(x_n) - L} < \epsilon .
+\end{equation*}
+Dengan demikian, $\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ konvergen ke $L$.
+
+Untuk arah sebaliknya, kita menggunakan pembuktian dengan kontraposisi.  Misalkan
+pernyataan bahwa $f(x) \to L$ ketika $x \to c$ tidak benar.  Negasi dari
+definisi tersebut menyatakan bahwa terdapat $\epsilon > 0$ sedemikian sehingga untuk setiap
+$\delta > 0$ terdapat $x \in S \setminus \{c\}$ dengan
+$\sabs{x-c} < \delta$
+dan $\babs{f(x)-L} \geq \epsilon$.
+
+Gunakan $\nicefrac{1}{n}$ sebagai $\delta$ dalam pernyataan di atas untuk
+membangun barisan $\{ x_n \}_{n=1}^\infty$.  Kita memperoleh
+bahwa terdapat $\epsilon > 0$ sedemikian sehingga untuk setiap $n$,
+terdapat titik $x_n \in S \setminus \{c\}$ dengan
+$\sabs{x_n-c} < \nicefrac{1}{n}$
+dan $\babs{f(x_n)-L} \geq \epsilon$.
+Barisan $\{ x_n \}_{n=1}^\infty$ yang baru dibangun konvergen ke $c$, tetapi
+barisan $\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ tidak konvergen ke $L$.
+Dengan demikian, bukti selesai.
+\end{proof}
+
+Arah sebaliknya dalam lemma dapat diperkuat dengan cukup menyatakan bahwa
+\myquote{$\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ konvergen,} tanpa mensyaratkan limit tertentu.
+Lihat \exerciseref{exercise:seqflimitalt}.
+
+\begin{example}
+$\displaystyle \lim_{x \to 0} \sin( \nicefrac{1}{x} )$
+tidak ada, tetapi
+$\displaystyle \lim_{x \to 0} x\sin( \nicefrac{1}{x} ) = 0$.
+Lihat \figureref{figsin1x}.
+
+\begin{myfigureht}
+%left guy also used in 10.4
+\myincludepdft{sin1x_xsin1x}{%
+Grafik fungsi-fungsi pada suatu interval di sekitar titik asal.
+Di sebelah kiri, fungsi berosilasi
+antara minus 1 dan 1
+semakin cepat ketika x mendekati 0, sedemikian cepat sehingga di dekat titik asal
+grafiknya tampak sebagai daerah hitam pekat.
+Di sebelah kanan, fungsi kembali berosilasi semakin cepat
+ketika x mendekati 0, tetapi kini amplitudonya juga menurun ke 0,
+sehingga daerah yang sepintas tampak hitam pekat sebenarnya menyerupai
+ujung segitiga.}
+\caption{Grafik $\sin(\nicefrac{1}{x})$ dan $x \sin(\nicefrac{1}{x})$.
+Perhatikan bahwa komputer tidak dapat menggambar $\sin(\nicefrac{1}{x})$ dengan tepat
+di dekat nol karena fungsi tersebut berosilasi terlalu cepat.\label{figsin1x}}
+\end{myfigureht}
+
+Bukti:
+Kita mulai dengan $\sin(\nicefrac{1}{x})$.  Definisikan suatu barisan
+dengan
+$x_n \coloneqq \frac{1}{\pi n + \nicefrac{\pi}{2}}$.  Mudah dilihat
+bahwa $\lim_{n\to\infty} x_n = 0$.  Selanjutnya,
+\begin{equation*}
+\sin ( \nicefrac{1}{x_n} )
+=
+\sin (\pi n + \nicefrac{\pi}{2})
+= {(-1)}^n .
+\end{equation*}
+Oleh karena itu, $\bigl\{ \sin ( \nicefrac{1}{x_n} ) \bigr\}_{n=1}^\infty$ tidak konvergen.
+Berdasarkan
+\lemmaref{seqflimit:lemma},
+$\displaystyle \lim_{x \to 0} \sin( \nicefrac{1}{x} )$ tidak ada.
+
+Sekarang tinjau $x\sin(\nicefrac{1}{x})$.  Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan
+sedemikian sehingga $x_n \neq 0$ untuk semua $n$, dan $\lim_{n\to\infty} x_n = 0$.
+Perhatikan bahwa $\babs{\sin(t)} \leq 1$ untuk semua $t \in \R$.  Oleh karena itu,
+\begin{equation*}
+\babs{x_n\sin(\nicefrac{1}{x_n})-0}
+=
+\sabs{x_n}\babs{\sin(\nicefrac{1}{x_n})}
+\leq
+\sabs{x_n} .
+\end{equation*}
+Karena $x_n$ menuju nol, $\sabs{x_n}$ menuju nol, sehingga
+$\bigl\{ x_n\sin(\nicefrac{1}{x_n}) \bigr\}_{n=1}^\infty$ konvergen ke nol.  Berdasarkan
+\lemmaref{seqflimit:lemma},
+$\displaystyle \lim_{x \to 0} x\sin( \nicefrac{1}{x} ) = 0$.
+\end{example}
+
+Ingatlah frasa \myquote{untuk setiap barisan} dalam lemma.
+Sebagai contoh, ambil $\sin(\nicefrac{1}{x})$ dan barisan yang diberikan oleh
+$x_n \coloneqq \nicefrac{1}{\pi n}$.
+Maka $\bigl\{ \sin (\nicefrac{1}{x_n}) \bigr\}_{n=1}^\infty$
+merupakan barisan nol konstan, sehingga
+konvergen ke nol, tetapi limit
+$\sin(\nicefrac{1}{x})$ ketika $x \to 0$ tidak ada.
+
+Dengan menggunakan \lemmaref{seqflimit:lemma},
+kita dapat mulai menerapkan semua yang kita ketahui tentang
+limit barisan pada limit fungsi.  Mari kita berikan beberapa
+contoh penting.
+
+\begin{cor}
+Misalkan $S \subset \R$ dan misalkan $c$ titik akumulasi dari $S$.
+Misalkan $f \colon S \to
+\R$ dan $g \colon S \to \R$ merupakan fungsi-fungsi
+sedemikian sehingga
+limit $f(x)$ dan $g(x)$ ketika $x$ menuju $c$ keduanya ada,
+dan
+\begin{equation*}
+f(x) \leq g(x) \qquad \text{untuk semua } x \in S \setminus \{ c \}.
+\end{equation*}
+Maka
+\begin{equation*}
+\lim_{x\to c} f(x) \leq \lim_{x\to c} g(x) .
+\end{equation*}
+\end{cor}
+
+\begin{proof}
+Ambil $\{ x_n \}_{n=1}^\infty$ sebagai barisan bilangan dalam $S \setminus \{ c \}$
+yang konvergen ke $c$.  Misalkan
+\begin{equation*}
+L_1 \coloneqq \lim_{x\to c} f(x), \qquad \text{dan} \qquad L_2 \coloneqq \lim_{x\to c} g(x) .
+\end{equation*}
+\lemmaref{seqflimit:lemma} menyatakan bahwa $\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ konvergen ke
+$L_1$ dan $\bigl\{ g(x_n) \bigr\}_{n=1}^\infty$ konvergen ke $L_2$.  Kita juga
+mempunyai $f(x_n) \leq g(x_n)$ untuk semua $n$.
+Kita memperoleh $L_1 \leq L_2$ dengan menggunakan
+\lemmaref{limandineq:lemma}.
+\end{proof}
+
+Dengan menerapkan fungsi konstan, kita memperoleh korolari berikut.  Buktinya
+diserahkan sebagai latihan.
+
+\begin{cor} \label{fconstineq:cor}
+Misalkan $S \subset \R$ dan misalkan $c$ titik akumulasi dari $S$.  Misalkan $f \colon S \to
+\R$ suatu fungsi sedemikian sehingga limit $f(x)$ ketika $x$ menuju $c$
+ada.
+Misalkan terdapat dua bilangan real $a$ dan $b$ sedemikian sehingga
+\begin{equation*}
+a \leq f(x) \leq b \qquad \text{untuk semua } x \in S \setminus \{ c \}.
+\end{equation*}
+Maka
+\begin{equation*}
+a \leq \lim_{x\to c} f(x) \leq b .
+\end{equation*}
+\end{cor}
+
+Dengan menggunakan \lemmaref{seqflimit:lemma} dengan cara yang sama seperti di atas, kita juga memperoleh
+korolari-korolari berikut, yang buktinya kembali diserahkan sebagai latihan.
+
+\begin{cor} \label{fsqueeze:cor}
+Misalkan $S \subset \R$ dan misalkan $c$ titik akumulasi dari $S$.
+Misalkan $f \colon S \to \R$,
+$g \colon S \to \R$, dan $h \colon S \to \R$ merupakan fungsi-fungsi sedemikian sehingga
+\begin{equation*}
+f(x) \leq g(x) \leq h(x) \qquad \text{untuk semua } x \in S \setminus \{ c \}.
+\end{equation*}
+Misalkan limit $f(x)$ dan $h(x)$ ketika $x$ menuju $c$ keduanya ada, dan
+\begin{equation*}
+\lim_{x\to c} f(x) = \lim_{x\to c} h(x) .
+\end{equation*}
+Maka limit $g(x)$ ketika $x$ menuju $c$ ada dan
+\begin{equation*}
+\lim_{x\to c} g(x) =
+\lim_{x\to c} f(x) = \lim_{x\to c} h(x) .
+\end{equation*}
+\end{cor}
+
+\begin{cor} \label{falg:cor}
+Misalkan $S \subset \R$ dan misalkan $c$ titik akumulasi dari $S$.
+Misalkan $f \colon S \to \R$ dan
+$g \colon S \to \R$ merupakan fungsi-fungsi
+sedemikian sehingga
+limit $f(x)$ dan $g(x)$ ketika $x$ menuju $c$ keduanya ada.
+Maka
+\begin{enumerate}[(i)]
+\item
+$\displaystyle
+\lim_{x\to c} \bigl(f(x)+g(x)\bigr) = \left(\lim_{x\to c} f(x)\right) + 
+\left(\lim_{x\to c} g(x)\right) .
+$
+\item
+$\displaystyle
+\lim_{x\to c} \bigl(f(x)-g(x)\bigr) = \left(\lim_{x\to c} f(x)\right) -
+\left(\lim_{x\to c} g(x)\right) .
+$
+\item
+$\displaystyle
+\lim_{x\to c} \bigl(f(x)g(x)\bigr) = \left(\lim_{x\to c} f(x)\right)
+\left(\lim_{x\to c} g(x)\right) .
+$
+\item \label{falg:cor:iv} Jika
+$\displaystyle \lim_{x\to c} g(x) \neq 0$
+dan $g(x) \neq 0$ untuk semua $x \in S \setminus \{ c \}$, maka
+\begin{equation*}
+\lim_{x\to c} \frac{f(x)}{g(x)} =
+\frac{\lim_{x\to c} f(x)}{\lim_{x\to c} g(x)} .
+\end{equation*}
+\end{enumerate}
+\end{cor}
+
+\begin{cor} \label{fabs:cor}
+Misalkan $S \subset \R$ dan misalkan $c$ titik akumulasi dari $S$.
+Misalkan $f \colon S \to \R$ suatu fungsi sedemikian sehingga limit $f(x)$ ketika $x$ menuju $c$
+ada.
+Maka
+\begin{equation*}
+\lim_{x\to c} \babs{f(x)} =
+\abs{\lim_{x\to c} f(x)}.
+\end{equation*}
+\end{cor}
+
+\subsection{Limit pembatasan dan limit sepihak}
+
+Kadang-kadang kita bekerja dengan fungsi yang didefinisikan pada suatu subhimpunan.
+
+\begin{defn}
+Misalkan $f \colon S \to \R$ suatu fungsi dan $A \subset S$.  Definisikan
+fungsi $f|_A \colon A \to \R$ dengan
+\begin{equation*}
+f|_A (x) \coloneqq f(x)  \qquad \text{untuk } x \in A.
+\end{equation*}
+Kita menyebut $f|_A$ sebagai \emph{\myindex{pembatasan}} $f$ pada $A$.
+\end{defn}
+
+Fungsi $f|_A$ hanyalah fungsi $f$ yang diambil pada domain yang lebih kecil.
+Proposisi berikut merupakan analog dari pengambilan ekor suatu barisan.
+Proposisi tersebut mengatakan bahwa limit bersifat \myquote{lokal}: limit hanya bergantung pada titik-titik
+yang sedekat apa pun dengan $c$.
+
+\begin{prop} \label{prop:limrest}
+Misalkan $S \subset \R$, $c \in \R$, dan
+misalkan $f \colon S
+\to \R$ suatu fungsi.
+Andaikan
+$A \subset S$ sedemikian sehingga untuk suatu $\alpha > 0$, berlaku
+$(A \setminus \{ c \}) \cap (c-\alpha,c+\alpha) = (S \setminus \{ c \}) \cap (c-\alpha,c+\alpha)$.
+\begin{enumerate}[(i)]
+\item Titik $c$ merupakan titik akumulasi dari $A$ jika dan hanya jika $c$ merupakan titik akumulasi
+dari $S$.
+\item Jika $c$ merupakan titik akumulasi dari $S$, maka $f(x) \to L$ ketika $x \to c$ jika dan hanya jika
+$f|_A(x) \to L$ ketika $x \to c$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Pertama, misalkan $c$ suatu titik akumulasi dari $A$.
+Karena $A \subset S$, jika $( A \setminus \{ c\} ) \cap
+(c-\epsilon,c+\epsilon)$ tidak kosong untuk setiap $\epsilon > 0$,
+maka $( S \setminus \{ c\} ) \cap
+(c-\epsilon,c+\epsilon)$ tidak kosong untuk setiap $\epsilon > 0$.
+Jadi, $c$ merupakan titik akumulasi dari $S$.
+Kedua, andaikan $c$ suatu titik akumulasi
+dari $S$.  Maka untuk $\epsilon > 0$ sedemikian sehingga $\epsilon < \alpha$,
+kita peroleh $( A \setminus \{ c\} ) \cap (c-\epsilon,c+\epsilon) =
+( S \setminus \{ c\} ) \cap (c-\epsilon,c+\epsilon)$, yang tidak kosong.  Hal ini berlaku untuk semua
+$\epsilon < \alpha$ sehingga
+$( A \setminus \{ c\} ) \cap (c-\epsilon,c+\epsilon)$ pasti tidak kosong untuk semua
+$\epsilon > 0$.  Jadi, $c$ merupakan titik akumulasi dari $A$.
+
+Sekarang andaikan $c$ suatu titik akumulasi dari $S$ dan $f(x) \to L$ ketika $x \to c$.  Artinya, untuk setiap $\epsilon > 0$
+terdapat $\delta > 0$ sedemikian sehingga jika $x \in S \setminus \{ c \}$
+dan $\sabs{x-c} < \delta$, maka $\babs{f(x)-L} < \epsilon$.  Karena $A \subset S$,
+jika $x \in A \setminus \{ c \}$, maka $x \in S \setminus \{ c \}$,
+sehingga $f|_A(x) \to L$ ketika $x \to c$.
+
+Terakhir, andaikan $f|_A(x) \to L$ ketika $x \to c$ dan ambil sebarang
+$\epsilon > 0$.
+Terdapat $\delta' > 0$ sedemikian sehingga jika $x \in A \setminus \{ c \}$
+dan $\sabs{x-c} < \delta'$, maka $\babs{ f|_A(x)-L } < \epsilon$.
+Ambil $\delta \coloneqq \min \{ \delta', \alpha \}$.
+Sekarang andaikan $x \in S \setminus \{ c \}$ dan
+$\sabs{x-c} < \delta$.  Karena $\sabs{x-c} < \alpha$, kita peroleh $x \in A \setminus \{ c \}$,
+dan karena $\sabs{x-c} < \delta'$,
+kita peroleh $\babs{f(x)-L} = \babs{ f|_A(x)-L } < \epsilon$.
+\end{proof}
+
+Hipotesis mengenai $A$ dalam proposisi tersebut diperlukan.  Untuk pembatasan
+sebarang, umumnya kita hanya memperoleh implikasi dalam satu arah
+(lihat \exerciseref{exercise:restrictionlimitexercise}).
+Notasi yang lazim untuk limit tersebut adalah
+\begin{equation*}
+\lim_{\substack{x \to c\\x \in A}} f(x) \coloneqq \lim_{x \to c} f|_A(x) .
+\end{equation*}
+Penggunaan pembatasan yang umum dalam konteks limit, yang tidak memenuhi
+hipotesis dalam proposisi tersebut, adalah
+\emph{\myindex{limit sepihak}}%
+\footnote{%
+Terdapat beraneka ragam notasi limit sepihak.
+Sebagai contoh,
+$\lim\limits_{\substack{x \to c\\x < c}} f(x)$,
+$\lim\limits_{x \uparrow c} f(x)$, atau
+$\lim\limits_{x \nearrow c} f(x)$ untuk
+$\lim\limits_{x \to c^-} f(x)$.}.
+
+\begin{defn} \label{defn:onesidedlimits}
+Misalkan $f \colon S \to \R$ suatu fungsi dan misalkan $c \in \R$.  Jika
+$c$ merupakan titik akumulasi dari
+$S \cap (c,\infty)$
+dan limit
+pembatasan $f$ pada $S \cap (c,\infty)$
+ketika $x \to c$ ada, definisikan
+\glsadd{not:onesidedlim}
+\begin{equation*}
+\lim_{x \to c^+} f(x) \coloneqq \lim_{x\to c} f|_{S \cap (c,\infty)}(x) .
+\end{equation*}
+Demikian pula, jika $c$ merupakan titik akumulasi dari
+$S \cap (-\infty,c)$ dan limit pembatasannya ketika $x \to c$
+ada, definisikan
+\begin{equation*}
+\lim_{x \to c^-} f(x) \coloneqq \lim_{x\to c} f|_{S \cap (-\infty,c)}(x) .
+\end{equation*}
+\end{defn}
+
+\propref{prop:limrest} tidak berlaku untuk limit sepihak.
+Limit-limit sepihak dapat saja ada, tetapi limit pada suatu titik tidak ada.  Sebagai
+contoh, definisikan $f \colon \R \to \R$ dengan $f(x) \coloneqq 1$ untuk $x < 0$ dan
+$f(x) \coloneqq 0$ untuk $x \geq 0$.
+Pembaca dipersilakan memverifikasi bahwa
+\begin{equation*}
+\lim_{x \to 0^-} f(x) = 1, \qquad
+\lim_{x \to 0^+} f(x) = 0, \qquad
+\lim_{x \to 0} f(x) \quad \text{tidak ada.}
+\end{equation*}
+Meskipun demikian, kita memiliki pengganti berikut.
+
+\begin{prop} \label{prop:onesidedlimits}
+Misalkan $S \subset \R$ sedemikian sehingga $c$ merupakan titik akumulasi
+dari $S \cap (-\infty,c)$ dan $S \cap (c,\infty)$, misalkan
+$f \colon S \to \R$ suatu fungsi, dan misalkan $L \in \R$.  Maka $c$ merupakan titik akumulasi dari $S$ dan
+\begin{equation*}
+\lim_{x \to c} f(x) = L
+\qquad \text{jika dan hanya jika} \qquad
+\lim_{x \to c^-} f(x) =
+\lim_{x \to c^+} f(x) =
+L .
+\end{equation*}
+\end{prop}
+
+Artinya, limit pada $c$ ada jika dan hanya jika kedua limit sepihak ada dan bernilai sama.  Pembuktiannya
+merupakan penerapan langsung dari definisi limit
+dan diserahkan sebagai latihan.  Pokok utamanya adalah bahwa
+$\bigl( S \cap (-\infty,c) \bigr) \cup \bigl( S \cap (c,\infty) \bigr)
+= S \setminus \{ c \}$.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Tentukan limitnya (dan tentu saja buktikan) atau buktikan bahwa limit tersebut
+tidak ada:
+
+\medskip
+
+\noindent
+\begin{tabular}{lllll}
+a)
+$\displaystyle
+\lim_{x\to c} \sqrt{x}
+$, untuk $c \geq 0$
+& &
+b)
+$\displaystyle
+\lim_{x\to c} x^2+x+1
+$, untuk $c \in \R$
+& &
+c)
+$\displaystyle
+\lim_{x\to 0} x^2 \cos (\nicefrac{1}{x})
+$
+\\
+d)
+$\displaystyle
+\lim_{x\to 0} \sin(\nicefrac{1}{x}) \cos (\nicefrac{1}{x})
+$
+& &
+e)
+$\displaystyle
+\lim_{x\to 0} \sin(x) \cos (\nicefrac{1}{x})
+$ & 
+\end{tabular}
+\end{exercise}
+
+\begin{exercise}
+Buktikan \corref{fconstineq:cor}.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \corref{fsqueeze:cor}.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \corref{falg:cor}.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $A \subset S$.  Tunjukkan bahwa jika $c$ merupakan titik akumulasi dari $A$, maka $c$
+merupakan titik akumulasi dari $S$.  Perhatikan perbedaannya dengan
+\propref{prop:limrest}.
+\end{exercise}
+
+\begin{exercise} \label{exercise:restrictionlimitexercise}
+Misalkan $A \subset S$.  Andaikan $c$ merupakan titik akumulasi dari $A$ dan
+juga merupakan titik akumulasi dari $S$.
+Misalkan $f \colon S \to \R$ suatu fungsi.  Tunjukkan bahwa jika
+$f(x) \to L$ ketika $x \to c$, maka
+$f|_A(x) \to L$ ketika $x \to c$.
+Perhatikan perbedaannya dengan
+\propref{prop:limrest}.
+\end{exercise}
+
+\begin{exercise}
+Berikan contoh fungsi $f \colon [-1,1] \to \R$ sedemikian sehingga untuk
+$A\coloneqq [0,1]$, berlaku
+$f|_A(x) \to 0$ ketika $x \to 0$, tetapi limit $f(x)$ ketika $x \to 0$
+tidak ada.  Jelaskan mengapa Anda tidak dapat menerapkan
+\propref{prop:limrest}.
+\end{exercise}
+
+\begin{exercise}
+Berikan contoh fungsi $f$ dan $g$ sedemikian sehingga limit $f(x)$
+maupun $g(x)$ tidak ada ketika $x \to 0$, tetapi limit $f(x)+g(x)$ ada
+ketika $x \to 0$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:contlimitcomposition}
+Misalkan $c_1$ merupakan titik akumulasi dari $A \subset \R$ dan $c_2$
+merupakan titik akumulasi dari $B \subset \R$.  Andaikan
+$f \colon A \to B$ dan $g \colon B \to \R$ merupakan fungsi
+sedemikian sehingga
+$f(x) \to c_2$ ketika $x \to c_1$ dan
+$g(y) \to L$ ketika $y \to c_2$.  Jika $c_2 \in B$, andaikan juga bahwa $g(c_2) = L$.
+Misalkan $h(x) \coloneqq g\bigl(f(x)\bigr)$ dan tunjukkan
+$h(x) \to L$ ketika $x \to c_1$.
+Petunjuk: Perhatikan bahwa $f(x)$ dapat sama dengan $c_2$ untuk banyak $x \in A$
+(lihat juga
+\exerciseref{exercise:contlimitbadcomposition}).
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon \R \to \R$ merupakan fungsi sedemikian sehingga untuk setiap
+barisan $\{x_n\}_{n=1}^\infty$ dalam $\R$, barisan
+$\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ konvergen.  Buktikan bahwa
+$f$ konstan; artinya,
+$f(x) = f(y)$ untuk semua $x,y \in \R$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:seqflimitalt}
+Buktikan versi yang lebih kuat berikut dari salah satu arah dalam
+\lemmaref{seqflimit:lemma}:
+Misalkan $S \subset \R$, $c$ merupakan titik akumulasi dari $S$, dan $f \colon S \to
+\R$ suatu fungsi.
+Andaikan bahwa untuk setiap barisan $\{x_n\}_{n=1}^\infty$ dalam $S \setminus \{c\}$ sedemikian sehingga
+$\lim_{n\to\infty} x_n = c$, barisan $\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ konvergen.
+Tunjukkan bahwa limit $f(x)$ ketika $x \to c$ ada.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{prop:onesidedlimits}.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $S \subset \R$ dan $c$ merupakan titik akumulasi dari $S$.  Andaikan $f \colon
+S \to \R$ terbatas.  Tunjukkan bahwa terdapat barisan
+$\{ x_n \}_{n=1}^\infty$
+dengan $x_n \in S \setminus \{ c \}$ dan $\lim_{n\to\infty} x_n = c$ sedemikian sehingga
+$\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ konvergen.
+\end{exercise}
+
+\begin{exercise}[Menantang] \label{exercise:contlimitbadcomposition}
+Tunjukkan bahwa asumsi $g(c_2) = L$ dalam
+\exerciseref{exercise:contlimitcomposition} diperlukan.  Artinya, berikan $f$
+dan $g$ sedemikian sehingga $f(x) \to c_2$ ketika $x \to c_1$ dan
+$g(y) \to L$ ketika $y \to c_2$, tetapi $g\bigl(f(x)\bigr)$ tidak menuju $L$
+ketika $x \to c_1$.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa syarat titik akumulasi diperlukan agar definisi limit
+masuk akal.  Artinya, andaikan $c$ bukan titik akumulasi
+dari $S \subset \R$, dan $f \colon S \to \R$ suatu fungsi.  Tunjukkan bahwa
+setiap $L$ akan memenuhi definisi limit di $c$ jika syarat
+bahwa $c$ merupakan titik akumulasi ditiadakan.
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Buktikan \corref{fabs:cor}.
+\item
+Berikan contoh yang menunjukkan bahwa kebalikan
+korolari tersebut tidak berlaku.
+\end{enumerate}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Fungsi kontinu}
+\label{sec:cont}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2--2,5 kuliah}
+
+Kriteria tingkat sekolah menengah untuk konsep kekontinuan
+adalah bahwa suatu fungsi kontinu jika
+kita dapat menggambar grafiknya tanpa mengangkat pena dari kertas.  Meskipun
+konsep intuitif tersebut dapat berguna dalam situasi sederhana, kita memerlukan
+ketelitian.  Perumusan definisi berikut secara tepat memerlukan kontribusi tiga matematikawan besar
+(Bolzano, Cauchy, dan akhirnya Weierstrass),
+dan bentuk akhirnya baru muncul pada akhir abad ke-19.
+
+\subsection{Definisi dan sifat-sifat dasar}
+
+\begin{defn}
+Misalkan $S \subset \R$ dan $c \in S$.
+Kita mengatakan $f \colon S \to \R$
+\emph{kontinu di $c$}\index{kontinu di $c$}
+jika untuk setiap $\epsilon > 0$
+terdapat $\delta > 0$ sedemikian sehingga setiap kali $x \in S$ dan $\sabs{x-c} <
+\delta$, berlaku
+$\babs{f(x)-f(c)} < \epsilon$.
+
+%\medskip
+
+Jika $f \colon S \to \R$ kontinu di setiap $c \in S$, kita cukup mengatakan
+$f$ merupakan \emph{\myindex{fungsi kontinu}}\index{fungsi!kontinu}.
+\end{defn}
+\begin{myfigureht}
+\myincludepdft{contigr}{%
+Diagram grafik suatu fungsi y sama dengan f dari x,
+di dekat titik x sama dengan c.  Grafiknya ditampilkan, beserta
+pita dalam jarak delta dari c dan pita dalam jarak
+epsilon dari f dari c.  Kotak yang berada di dalam
+kedua pita diarsir, dan dalam rentang ini grafik
+berada di dalam rentang vertikal.}
+\caption{Untuk $\sabs{x-c} < \delta$, grafik $f(x)$ harus berada di dalam daerah abu-abu.\label{fig:contigr}}
+\end{myfigureht}
+
+Jika $f$ kontinu untuk semua $c \in A$, kita mengatakan
+$f$ \emph{kontinu pada $A \subset S$}.  Sebuah
+latihan langsung (\exerciseref{exercise:restrictioncontinuous})
+menunjukkan bahwa hal ini mengakibatkan $f|_A$ kontinu, meskipun
+pernyataan sebaliknya tidak berlaku (seperti akan kita lihat dalam \exampleref{example:removablediscont}).
+
+Kekontinuan mungkin merupakan definisi terpenting yang perlu dipahami dalam analisis,
+dan definisi ini tidak mudah.  Lihat \figureref{fig:contigr}.
+Perhatikan bahwa $\delta$ tidak hanya bergantung
+pada $\epsilon$, tetapi juga pada $c$; kita tidak perlu memilih
+satu $\delta$ untuk semua $c \in S$.
+Bukan suatu kebetulan
+bahwa definisi kekontinuan mirip dengan definisi
+limit fungsi.  Ciri utama kekontinuan
+adalah bahwa fungsi kontinu tepat merupakan fungsi yang berperilaku baik terhadap limit.
+
+\begin{prop} \label{contbasic:prop}
+Tinjau fungsi $f \colon S \to \R$ yang didefinisikan pada himpunan $S \subset \R$
+dan misalkan $c \in S$.
+Maka:
+%\begin{enumerate}[(i),itemsep=0.5\itemsep,parsep=0.5\parsep,topsep=0.5\topsep,partopsep=0.5\partopsep]
+\begin{enumerate}[(i)]
+\item \label{contbasic:prop:i}
+Jika $c$ bukan titik akumulasi dari $S$, maka $f$ kontinu di $c$.
+\item \label{contbasic:prop:ii}
+Jika $c$ titik akumulasi dari $S$, maka $f$ kontinu di $c$
+jika dan hanya jika limit $f(x)$ ketika $x \to c$ ada dan
+\begin{equation*}
+\lim_{x\to c} f(x) = f(c) .
+\end{equation*}
+\item \label{contbasic:prop:iii}
+Fungsi $f$ kontinu di $c$ jika dan hanya jika untuk setiap barisan
+$\{ x_n \}_{n=1}^\infty$
+dengan $x_n \in S$ dan $\lim\limits_{n\to\infty} x_n = c$, barisan
+$\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ konvergen
+ke $f(c)$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\pagebreak[2]
+Kita mulai dengan \ref{contbasic:prop:i}.  Misalkan $c$ bukan titik akumulasi dari
+$S$.  Maka terdapat $\delta > 0$
+sedemikian sehingga $S \cap (c-\delta,c+\delta) = \{ c \}$.
+Untuk sebarang $\epsilon > 0$, cukup pilih $\delta$ tersebut.
+Satu-satunya $x \in S$ sedemikian sehingga $\sabs{x-c} < \delta$ adalah $x=c$.  Maka
+$\babs{f(x)-f(c)} = \babs{f(c)-f(c)} = 0 < \epsilon$.
+
+Berikutnya, tinjau \ref{contbasic:prop:ii}.
+Misalkan $c$ titik akumulasi dari $S$.  Mula-mula, misalkan
+$\lim_{x\to c} f(x) = f(c)$.  Maka untuk setiap $\epsilon > 0$,
+terdapat $\delta > 0$ sedemikian sehingga jika $x \in S \setminus \{ c \}$
+dan $\sabs{x-c} < \delta$, maka $\babs{f(x)-f(c)} < \epsilon$.
+Selain itu, $\babs{f(c)-f(c)} = 0 < \epsilon$, sehingga definisi kekontinuan di
+$c$ terpenuhi.  Sebaliknya, misalkan $f$ kontinu
+di $c$.  Untuk setiap $\epsilon > 0$, terdapat $\delta > 0$
+sedemikian sehingga untuk $x \in S$ dengan $\sabs{x-c} < \delta$, berlaku
+$\babs{f(x)-f(c)} < \epsilon$.  Tentu saja, pernyataan tersebut tetap benar jika
+$x \in S \setminus \{ c \} \subset S$.  Oleh karena itu, $\lim_{x\to c} f(x) =
+f(c)$.
+
+Untuk \ref{contbasic:prop:iii}, mula-mula misalkan $f$ kontinu di $c$.
+Misalkan $\{ x_n \}_{n=1}^\infty$
+suatu barisan sedemikian sehingga $x_n \in S$ dan $\lim_{n\to\infty} x_n = c$.  Ambil $\epsilon > 0$.
+Cari $\delta > 0$ sedemikian sehingga $\babs{f(x)-f(c)} < \epsilon$
+untuk semua $x \in S$ dengan $\sabs{x-c} < \delta$.  Cari $M \in \N$
+sedemikian sehingga untuk $n \geq M$, berlaku $\sabs{x_n-c} < \delta$.  Maka untuk
+$n \geq M$, berlaku $\babs{f(x_n)-f(c)} < \epsilon$,
+sehingga $\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$
+konvergen ke $f(c)$.
+
+Arah sebaliknya dari \ref{contbasic:prop:iii} kita buktikan dengan kontraposisi.
+Misalkan $f$ tidak
+kontinu di $c$.  Maka terdapat $\epsilon > 0$
+sedemikian sehingga untuk setiap $\delta > 0$, terdapat $x \in S$
+sedemikian sehingga $\sabs{x-c} < \delta$ dan $\babs{f(x)-f(c)} \geq \epsilon$.
+Definisikan barisan $\{ x_n \}_{n=1}^\infty$ sebagai berikut.
+Ambil $x_n \in S$ sedemikian sehingga $\sabs{x_n-c} < \nicefrac{1}{n}$
+dan $\babs{f(x_n)-f(c)} \geq \epsilon$.
+Sekarang $\{ x_n \}_{n=1}^\infty$ merupakan
+barisan dalam $S$ sedemikian sehingga
+$\lim_{n\to\infty} x_n = c$ dan
+$\babs{f(x_n)-f(c)} \geq \epsilon$ untuk semua $n \in \N$.
+Dengan demikian, $\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$
+tidak konvergen ke $f(c)$.  Barisan tersebut mungkin konvergen atau mungkin tidak, tetapi pasti
+tidak konvergen ke $f(c)$.
+\end{proof}
+
+Butir terakhir dalam proposisi tersebut sangat kuat.  Butir itu memungkinkan kita
+menerapkan dengan cepat apa yang kita ketahui tentang limit barisan pada fungsi kontinu,
+bahkan untuk membuktikan bahwa fungsi tertentu kontinu.
+Butir tersebut juga dapat diperkuat (lihat \exerciseref{exercise:contseqalt}).
+
+\begin{example}
+Fungsi $f \colon (0,\infty) \to \R$
+yang didefinisikan oleh $f(x) \coloneqq \nicefrac{1}{x}$ bersifat kontinu.
+
+Bukti: Tetapkan $c \in (0,\infty)$.
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan dalam $(0,\infty)$ sedemikian sehingga
+$\lim_{n\to\infty} x_n = c$.  Maka
+\begin{equation*}
+f(c) = \frac{1}{c}
+=
+\frac{1}{\lim_{n\to\infty} x_n}
+=
+\lim_{n \to \infty} \frac{1}{x_n}
+=
+\lim_{n \to \infty} f(x_n) .
+\end{equation*}
+Dengan demikian, $f$ kontinu di $c$.  Karena $f$ kontinu di semua $c \in
+(0,\infty)$, $f$ merupakan fungsi kontinu.
+\end{example}
+
+Sebelumnya, kita telah menunjukkan $\lim_{x \to c} x^2 = c^2$ secara langsung.  Oleh karena itu,
+fungsi $x^2$ kontinu.  Butir terakhir dari \propref{contbasic:prop} dan kekontinuan
+operasi aljabar terhadap limit barisan,
+\propref{prop:contalg}, memberikan pembuktian singkat bagi hasil yang jauh lebih umum.
+
+\begin{prop}
+Misalkan $f \colon \R \to \R$ suatu \emph{\myindex{polinom}}.  Artinya,
+\begin{equation*}
+f(x) = a_d x^d + a_{d-1} x^{d-1} + \cdots + a_1 x + a_0 ,
+\end{equation*}
+untuk beberapa konstanta $a_0, a_1, \ldots, a_d$.
+Maka $f$ kontinu.
+\end{prop}
+
+\begin{proof}
+Tetapkan $c \in \R$.
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan sedemikian sehingga
+$\lim_{n\to\infty} x_n = c$.  Maka
+\begin{equation*}
+\begin{split}
+f(c) &=
+a_d c^d + a_{d-1} c^{d-1} + \cdots + a_1 c + a_0 
+\\
+&= 
+a_d {\left(\lim_{n\to\infty} x_n\right)}^d
++ a_{d-1} {\left(\lim_{n\to\infty} x_n\right)}^{d-1}
++ \cdots
++ a_1 \left(\lim_{n\to\infty} x_n\right) + a_0 
+\\
+& =
+\lim_{n \to \infty}
+\left(
+a_d x_n^d + a_{d-1} x_n^{d-1} + \cdots + a_1 x_n + a_0 
+\right)
+=
+\lim_{n \to \infty}
+f(x_n) .
+\avoidbreak
+\end{split}
+\end{equation*}
+Dengan demikian, $f$ kontinu di $c$.  Karena $f$ kontinu di semua $c \in \R$,
+$f$ merupakan fungsi kontinu.
+\end{proof}
+
+Dengan penalaran serupa, atau dengan menggunakan \corref{falg:cor},
+kita dapat membuktikan proposisi berikut.  Buktinya diserahkan sebagai
+latihan.
+
+\begin{prop} \label{contalg:prop}
+Misalkan $f \colon S \to \R$ dan $g \colon S \to \R$ fungsi-fungsi yang
+kontinu di $c \in S$.
+\begin{enumerate}[(i)]
+\item Fungsi $h \colon S \to \R$ yang didefinisikan oleh
+$h(x) \coloneqq f(x)+g(x)$ kontinu di $c$.
+\item Fungsi $h \colon S \to \R$ yang didefinisikan oleh
+$h(x) \coloneqq f(x)-g(x)$ kontinu di $c$.
+\item Fungsi $h \colon S \to \R$ yang didefinisikan oleh
+$h(x) \coloneqq f(x)g(x)$ kontinu di $c$.
+\item Jika $g(x) \neq 0$ untuk semua $x \in S$, fungsi $h \colon S \to \R$
+yang diberikan oleh $h(x) \coloneqq \frac{f(x)}{g(x)}$ kontinu di $c$.
+\end{enumerate}
+\end{prop}
+
+\begin{example} \label{sincos:example}
+Fungsi $\sin(x)$ dan $\cos(x)$ kontinu.
+Dalam perhitungan berikut, kita menggunakan identitas trigonometri
+yang mengubah jumlah menjadi hasil kali.  Kita juga menggunakan fakta sederhana bahwa
+$\babs{\sin(x)} \leq \sabs{x}$, $\babs{\cos(x)} \leq 1$,
+dan $\babs{\sin(x)} \leq 1$.
+\begin{equation*}
+\begin{split}
+\babs{\sin(x)-\sin(c)} & =
+\abs{
+2 \sin \left( \frac{x-c}{2} \right) \cos \left( \frac{x+c}{2} \right)
+}
+\\
+& =
+2
+\abs{ \sin \left( \frac{x-c}{2} \right) }
+\abs{ \cos \left( \frac{x+c}{2} \right) }
+\\
+& \leq
+2
+\abs{ \sin \left( \frac{x-c}{2} \right) }
+\\
+& \leq
+2
+\abs{ \frac{x-c}{2} }
+= \sabs{x-c}
+\end{split}
+\end{equation*}
+\begin{equation*}
+\begin{split}
+\babs{\cos(x)-\cos(c)} & =
+\abs{
+-2 \sin \left( \frac{x-c}{2} \right) \sin \left( \frac{x+c}{2} \right)
+}
+\\
+& =
+2
+\abs{ \sin \left( \frac{x-c}{2} \right) }
+\abs{ \sin \left( \frac{x+c}{2} \right) }
+\\
+& \leq
+2
+\abs{ \sin \left( \frac{x-c}{2} \right) }
+\\
+& \leq
+2
+\abs{ \frac{x-c}{2} }
+= \sabs{x-c}
+\end{split}
+\end{equation*}
+
+Pernyataan bahwa $\sin$ dan $\cos$ kontinu diperoleh dengan mengambil
+sebarang barisan $\{ x_n \}_{n=1}^\infty$ yang konvergen ke $c$, atau dengan menerapkan
+definisi kekontinuan secara langsung.  Rinciannya diserahkan kepada
+pembaca.
+\end{example}
+
+\subsection{Komposisi fungsi kontinu}
+
+Anda mungkin sudah menyadari bahwa salah satu alat dasar untuk
+membangun fungsi yang rumit dari fungsi-fungsi sederhana adalah komposisi.
+Ingat bahwa untuk dua fungsi $f$ dan $g$,
+komposisi $f \circ g$ didefinisikan oleh
+$(f \circ g)(x) \coloneqq f\bigl(g(x)\bigr)$.
+Komposisi
+fungsi-fungsi kontinu juga
+kontinu.
+
+\begin{prop} \label{prop:compositioncont}
+Misalkan $A, B \subset \R$ serta $f \colon B \to \R$ dan $g \colon A \to B$ adalah
+fungsi-fungsi.  Jika $g$ kontinu di $c \in A$ dan
+$f$ kontinu di $g(c)$, maka $f \circ g \colon A \to \R$ kontinu
+di $c$.
+\end{prop}
+
+\begin{proof}
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan dalam $A$ sedemikian sehingga
+$\lim_{n\to\infty} x_n = c$.
+Karena $g$ kontinu di $c$, barisan $\bigl\{ g(x_n) \bigr\}_{n=1}^\infty$ konvergen ke $g(c)$.
+Karena $f$ kontinu di $g(c)$, barisan $\bigl\{ f\bigl(g(x_n)\bigr)
+\bigr\}_{n=1}^\infty$ konvergen
+ke $f\bigl(g(c)\bigr)$.
+Jadi, $f \circ g$ kontinu di $c$.
+\end{proof}
+
+\begin{example}
+Klaim: \emph{${\bigl(\sin(\nicefrac{1}{x})\bigr)}^2$ merupakan fungsi
+kontinu pada $(0,\infty)$.}
+
+Bukti: Fungsi $\nicefrac{1}{x}$ kontinu pada
+$(0,\infty)$ dan $\sin(x)$ kontinu pada $(0,\infty)$ (bahkan
+pada $\R$, tetapi $(0,\infty)$ merupakan daerah hasil $\nicefrac{1}{x}$).
+Oleh karena itu, komposisi $\sin(\nicefrac{1}{x})$ kontinu.  Selain itu,
+$x^2$ kontinu pada interval $[-1,1]$ (daerah hasil $\sin$).
+Jadi, komposisi
+${\bigl(\sin(\nicefrac{1}{x})\bigr)}^2$ kontinu pada $(0,\infty)$.
+\end{example}
+
+\subsection{Fungsi diskontinu}
+
+Ketika $f$ tidak kontinu di $c$, kita
+mengatakan bahwa $f$ \emph{\myindex{diskontinu}} di $c$, atau bahwa fungsi tersebut memiliki
+\emph{\myindex{diskontinuitas}} di~$c$.
+Proposisi berikut merupakan uji yang berguna dan langsung mengikuti
+butir ketiga dari \propref{contbasic:prop}.
+
+\begin{prop}
+Misalkan $f \colon S \to \R$ suatu fungsi dan $c \in S$.  Andaikan
+terdapat barisan $\{ x_n \}_{n=1}^\infty$ dengan $x_n \in S$ untuk semua $n$,
+dan $\lim_{n\to\infty} x_n = c$
+sedemikian sehingga $\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$
+tidak konvergen ke $f(c)$.
+Maka $f$ diskontinu di $c$.
+\end{prop}
+
+Sekali lagi,
+pernyataan bahwa
+$\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ tidak konvergen ke $f(c)$
+berarti bahwa barisan tersebut
+entah sama sekali tidak konvergen,
+atau konvergen ke sesuatu
+yang berbeda dari $f(c)$.
+
+\begin{example} \label{example:jumpdiscont}
+Fungsi $f \colon \R \to \R$ yang didefinisikan oleh
+\begin{equation*}
+f(x) \coloneqq 
+\begin{cases}
+-1 & \text{jika } x < 0, \\
+1 & \text{jika } x \geq 0
+\end{cases}
+\end{equation*}
+tidak kontinu di 0.
+
+Bukti: Tinjau $\{ \nicefrac{-1}{n} \}_{n=1}^\infty$, yang konvergen ke 0.  Maka
+$f(\nicefrac{-1}{n}) = -1$ untuk setiap $n$,
+sehingga
+$\lim_{n\to\infty} f(\nicefrac{-1}{n}) = -1$, tetapi $f(0) = 1$.  Jadi, fungsi tersebut
+tidak kontinu di 0.  Lihat
+\figureref{fig:jumpdiscont}.
+
+\begin{myfigureht}
+\myincludegraphics{jumpdiscont}{%
+Grafik fungsi yang bernilai minus 1 untuk x negatif
+dan 1 untuk x nonnegatif.  Titik minus 1,
+minus setengah, minus sepertiga, dan seterusnya ditandai pada
+sumbu x dan nilai-nilai yang bersesuaian pada
+grafik ditandai dengan titik-titik.}
+\caption{Diskontinuitas loncat.  Nilai
+$f(\nicefrac{-1}{n})$ dan $f(0)$ ditandai sebagai titik hitam.\label{fig:jumpdiscont}}
+\end{myfigureht}
+
+Perhatikan bahwa $f(\nicefrac{1}{n}) = 1$ untuk semua $n \in \N$.
+Oleh karena itu, $\lim_{n\to\infty} f(\nicefrac{1}{n}) = f(0) = 1$.  Jadi,
+$\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ dapat konvergen ke $f(0)$
+untuk suatu barisan khusus
+$\{ x_n \}_{n=1}^\infty$ yang menuju 0,
+meskipun fungsi tersebut diskontinu di 0.
+
+Terakhir, tinjau $f\Bigl(\frac{{(-1)}^n}{n}\Bigr) = {(-1)}^n$.
+Barisan ini divergen.
+\end{example}
+
+\begin{example}
+Sebagai contoh ekstrem, tinjau
+\emph{\myindex{fungsi Dirichlet}}\footnote{Dinamai menurut matematikawan
+Jerman
+\href{https://en.wikipedia.org/wiki/Peter_Gustav_Lejeune_Dirichlet}{Johann Peter Gustav Lejeune
+Dirichlet}
+(1805--1859).}.
+\begin{equation*}
+f(x) \coloneqq
+\begin{cases}
+1 & \text{jika } x \text{ rasional,} \\
+0 & \text{jika } x \text{ irasional.}
+\end{cases}
+\avoidbreak
+\end{equation*}
+Fungsi $f$ diskontinu di setiap $c \in \R$.
+
+Bukti:
+Jika $c$ rasional, ambil barisan $\{ x_n \}_{n=1}^\infty$
+bilangan irasional sedemikian sehingga $\lim_{n\to\infty} x_n = c$ (mengapa hal ini mungkin?).  Maka $f(x_n) = 0$
+sehingga $\lim_{n\to\infty} f(x_n) = 0$, tetapi $f(c) = 1$.
+Jika $c$ irasional, ambil barisan
+$\{ x_n \}_{n=1}^\infty$
+bilangan rasional
+yang konvergen ke $c$ (mengapa hal ini mungkin?).  Maka $\lim_{n\to\infty} f(x_n) = 1$, tetapi $f(c) = 0$.
+\end{example}
+
+Mari kita uji batas intuisi kita.  Mungkinkah
+terdapat fungsi yang kontinu di semua bilangan irasional, tetapi
+diskontinu di semua bilangan rasional?  Di dekat setiap bilangan irasional terdapat bilangan rasional
+dengan jarak sekecil apa pun.  Mungkin agak mengejutkan,
+jawabannya adalah ya, fungsi demikian ada.  Contoh berikut disebut
+\emph{\myindex{fungsi Thomae}}\footnote{Dinamai menurut matematikawan
+Jerman
+\href{https://en.wikipedia.org/wiki/Carl_Johannes_Thomae}{Carl Johannes Thomae}
+(1840--1921).} atau
+\emph{\myindex{fungsi popcorn}}.
+
+\begin{example} \label{popcornfunction:example}
+Definisikan $f \colon (0,1) \to \R$ dengan
+\begin{equation*}
+f(x) \coloneqq 
+\begin{cases}
+\nicefrac{1}{k} & \begin{aligned}
+&\text{jika } x=\nicefrac{m}{k},\ m,k \in \N, \\ &\text{dan } m,k \text{ relatif prima (bentuk paling sederhana),}\end{aligned} \\
+0 & \text{jika } x \text{ irasional.}
+\end{cases}
+\end{equation*}
+Lihat grafik $f$
+dalam \figureref{popcornfig}.
+Kita akan menunjukkan bahwa
+$f$ kontinu di setiap $c$ irasional dan
+diskontinu di setiap $c$ rasional.
+\begin{myfigureht}
+\myincludegraphics{popcornfig}{%
+Grafik suatu fungsi yang tersusun dari titik-titik.
+Titik-titik ini tampak tersusun membentuk
+berbagai segitiga, tetapi jelas bahwa
+fungsi ini diskontinu di semua titik tersebut,
+dan terdapat semakin banyak titik semacam itu
+ketika kita semakin dekat ke sumbu x.}
+\caption{Grafik \myquote{fungsi popcorn.}\label{popcornfig}}
+\end{myfigureht}
+
+Bukti:
+Misalkan $c = \nicefrac{m}{k}$ rasional dan dalam bentuk paling sederhana.  Ambil barisan
+bilangan irasional $\{ x_n \}_{n=1}^\infty$ sedemikian sehingga $\lim_{n\to\infty} x_n = c$.  Maka
+$\lim_{n\to\infty} f(x_n) = \lim_{n\to\infty} 0 = 0$, tetapi $f(c) = \nicefrac{1}{k} \neq 0$.  Jadi, $f$
+diskontinu di $c$.
+
+Sekarang misalkan $c$ irasional, sehingga $f(c) = 0$.  Ambil barisan
+$\{ x_n \}_{n=1}^\infty$ dalam $(0,1)$ sedemikian sehingga $\lim_{n\to\infty} x_n = c$.
+Untuk $\epsilon > 0$, pilih $K \in \N$ sedemikian
+sehingga $\nicefrac{1}{K} < \epsilon$
+berdasarkan \hyperref[thm:arch:i]{sifat Archimedes}.
+Jika $\nicefrac{m}{k} \in (0,1)$ dan $m,k \in \N$, maka $0 < m < k$.
+Jadi, hanya terdapat berhingga banyak bilangan rasional dalam $(0,1)$
+yang penyebut $k$-nya dalam bentuk paling sederhana kurang dari $K$.
+Karena $\lim_{n\to\infty} x_n = c$, setiap bilangan yang tidak sama dengan $c$ hanya dapat muncul
+berhingga kali dalam $\{ x_n \}_{n=1}^\infty$.
+Oleh karena itu,
+terdapat $M$ sedemikian sehingga untuk $n \geq M$, semua bilangan $x_n$
+yang rasional
+memiliki penyebut yang lebih besar daripada atau sama dengan $K$.  Jadi, untuk $n \geq M$,
+\begin{equation*}
+\babs{f(x_n) - 0} = f(x_n) \leq \nicefrac{1}{K} < \epsilon .
+\end{equation*}
+Oleh karena itu, $f$ kontinu di titik irasional $c$.
+\end{example}
+
+Mari kita akhiri dengan contoh yang lebih mudah.
+
+\begin{example} \label{example:removablediscont}
+Definisikan
+$g \colon \R \to \R$ dengan $g(x) \coloneqq 0$ jika $x \neq 0$ dan
+$g(0) \coloneqq 1$.  Maka $g$ tidak kontinu di nol, tetapi kontinu di semua titik lain (mengapa?).
+Titik $x=0$ disebut \emph{\myindex{diskontinuitas yang dapat dihilangkan}}.  Hal itu
+karena jika kita mengubah definisi $g$ dengan menetapkan
+$g(0)$ sama dengan $0$, kita akan memperoleh fungsi kontinu.  Di sisi lain,
+misalkan $f$ adalah fungsi pada \exampleref{example:jumpdiscont}.
+Maka $f$ tidak memiliki
+diskontinuitas yang dapat dihilangkan di $0$.  Bagaimanapun kita mendefinisikan $f(0)$, fungsi tersebut
+tetap tidak kontinu.  Perbedaannya ialah
+$\lim_{x\to 0} g(x)$ ada, sedangkan
+$\lim_{x\to 0} f(x)$ tidak ada.
+
+Kita tetap menggunakan contoh ini untuk menunjukkan fenomena lain.
+Misalkan $A \coloneqq \{ 0 \}$, maka $g|_A$ kontinu (mengapa?), sedangkan $g$ tidak kontinu pada $A$.
+Demikian pula, jika $B \coloneqq \R \setminus \{0 \}$, maka $g|_B$ juga kontinu,
+dan sebenarnya $g$ kontinu pada $B$.
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Dengan menggunakan definisi kekontinuan secara langsung, buktikan bahwa
+$f \colon \R \to \R$ yang didefinisikan oleh
+$f(x) \coloneqq x^2$ bersifat kontinu.
+\end{exercise}
+
+\begin{exercise}
+Dengan menggunakan definisi kekontinuan secara langsung, buktikan bahwa
+$f \colon (0,\infty) \to \R$ yang didefinisikan oleh
+$f(x) \coloneqq \nicefrac{1}{x}$ bersifat kontinu.
+\end{exercise}
+
+\begin{exercise}
+Definisikan $f \colon \R \to \R$ dengan
+\begin{equation*}
+f(x) \coloneqq
+\begin{cases}
+x & \text{jika } x \text{ rasional,} \\
+x^2 & \text{jika } x \text{ irasional.}
+\end{cases}
+\avoidbreak
+\end{equation*}
+Dengan menggunakan definisi kekontinuan secara langsung, buktikan bahwa
+$f$ kontinu di $1$ dan diskontinu di $2$.
+\end{exercise}
+
+\begin{exercise}
+Definisikan $f \colon \R \to \R$ dengan
+\begin{equation*}
+f(x) \coloneqq
+\begin{cases}
+\sin(\nicefrac{1}{x}) & \text{jika } x \neq 0, \\
+0 & \text{jika } x=0.
+\end{cases}
+\avoidbreak
+\end{equation*}
+Apakah $f$ kontinu?  Buktikan jawaban Anda.
+\end{exercise}
+
+\begin{exercise}
+Definisikan $f \colon \R \to \R$ dengan
+\begin{equation*}
+f(x) \coloneqq
+\begin{cases}
+x \sin(\nicefrac{1}{x}) & \text{jika } x \neq 0, \\
+0 & \text{jika } x=0.
+\end{cases}
+\avoidbreak
+\end{equation*}
+Apakah $f$ kontinu?  Buktikan jawaban Anda.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{contalg:prop}.
+\end{exercise}
+
+\begin{exercise} \label{exercise:restrictioncontinuous}
+Misalkan $S \subset \R$ dan $A \subset S$.  Misalkan $f \colon S \to \R$
+suatu fungsi kontinu.
+Buktikan bahwa pembatasan $f|_A$ bersifat kontinu.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $S \subset \R$ sedemikian sehingga $(c-\alpha,c+\alpha) \subset S$ untuk suatu $c \in \R$
+dan $\alpha > 0$.
+Misalkan $f \colon S \to \R$ suatu fungsi dan $A \coloneqq (c-\alpha,c+\alpha)$.  Buktikan bahwa
+jika $f|_A$ kontinu di $c$, maka $f$ kontinu di $c$.
+\end{exercise}
+
+\begin{exercise}
+Berikan contoh fungsi $f \colon \R \to \R$ dan $g \colon \R \to \R$
+sedemikian sehingga fungsi $h$, yang didefinisikan oleh $h(x) \coloneqq f(x) + g(x)$, bersifat kontinu,
+tetapi $f$ dan $g$ tidak kontinu.  Dapatkah Anda menemukan $f$ dan $g$ yang tidak kontinu
+di titik mana pun, tetapi $h$ merupakan fungsi kontinu?
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon \R \to \R$ dan 
+$g \colon \R \to \R$ fungsi-fungsi kontinu.  Andaikan bahwa
+$f(r) = g(r)$ berlaku untuk semua $r \in \Q$.
+Tunjukkan bahwa $f(x) = g(x)$ untuk semua $x \in \R$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:positivecontneigh}
+Misalkan $f \colon \R \to \R$ kontinu.  Andaikan $f(c) > 0$.  Tunjukkan bahwa
+terdapat $\alpha > 0$ sedemikian sehingga untuk semua $x \in (c-\alpha,c+\alpha)$,
+berlaku $f(x) > 0$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon \Z \to \R$ suatu fungsi.  Tunjukkan bahwa $f$ kontinu.
+\end{exercise}
+
+\begin{exercise} \label{exercise:contseqalt}
+Misalkan $f \colon S \to \R$ suatu fungsi dan $c \in S$ sedemikian sehingga untuk setiap
+barisan $\{ x_n \}_{n=1}^\infty$ dalam $S$ dengan $\lim_{n\to\infty} x_n = c$, barisan
+$\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ konvergen.  Tunjukkan bahwa $f$ kontinu di $c$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon [-1,0] \to \R$ dan $g \colon [0,1] \to \R$ kontinu
+serta $f(0) = g(0)$.  Definisikan $h \colon [-1,1] \to \R$ dengan 
+$h(x) \coloneqq f(x)$ jika $x \leq 0$ dan $h(x) \coloneqq g(x)$ jika $x > 0$.  Tunjukkan bahwa
+$h$ kontinu.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $g \colon \R \to \R$ suatu fungsi kontinu sedemikian sehingga $g(0) = 0$,
+dan andaikan $f \colon \R \to \R$ memenuhi
+$\babs{f(x)-f(y)} \leq g(x-y)$ untuk semua $x$ dan $y$.  Tunjukkan bahwa $f$
+kontinu.
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Andaikan $f \colon \R \to \R$ kontinu di $0$ dan
+memenuhi $f(x+y) = f(x) + f(y)$ untuk setiap $x$ dan $y$.
+Tunjukkan bahwa $f(x) = ax$ untuk suatu $a \in \R$.
+Petunjuk: Tunjukkan bahwa $f(nx) = nf(x)$, lalu tunjukkan bahwa $f$ kontinu pada $\R$.
+Kemudian tunjukkan bahwa $\nicefrac{f(x)}{x} = f(1)$ untuk setiap bilangan rasional $x \neq 0$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:minmaxcont}
+Andaikan $S \subset \R$ dan
+misalkan $f \colon S \to \R$ dan
+$g \colon S \to \R$ fungsi-fungsi kontinu.
+Definisikan $p \colon S \to \R$ dengan
+$p(x) \coloneqq \max \bigl\{ f(x) , g(x) \bigr\}$ dan
+$q \colon S \to \R$ dengan
+$q(x) \coloneqq \min \bigl\{ f(x) , g(x) \bigr\}$.  Buktikan bahwa $p$ dan $q$
+kontinu.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon [-1,1] \to \R$ suatu fungsi yang kontinu di semua $x \in
+[-1,1] \setminus \{ 0 \}$.  Tunjukkan bahwa untuk setiap $\epsilon$ sedemikian
+sehingga $0 < \epsilon < 1$, terdapat
+fungsi $g \colon [-1,1] \to \R$ yang kontinu pada seluruh $[-1,1]$ sedemikian sehingga
+$f(x) = g(x)$ untuk semua $x \in [-1,-\epsilon] \cup [\epsilon,1]$, serta 
+$\babs{g(x)} \leq \babs{f(x)}$ untuk semua $x \in [-1,1]$.
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Suatu fungsi $f \colon I \to \R$ disebut \emph{\myindex{konveks}} jika
+setiap kali $a \leq x \leq b$ untuk $a,x,b$ dalam $I$ dengan $a<b$, berlaku
+$f(x) \leq f(a) \frac{b-x}{b-a} + f(b) \frac{x-a}{b-a}$.  Dengan kata lain,
+garis yang ditarik antara $\bigl(a,f(a)\bigr)$ dan $\bigl(b,f(b)\bigr)$ 
+berada di atas grafik $f$.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa
+jika $I = (\alpha,\beta)$ merupakan interval terbuka dan $f \colon I \to \R$ konveks,
+maka $f$ kontinu.
+\item
+Carilah contoh fungsi konveks $f \colon [0,1] \to \R$ yang
+tidak kontinu.
+\end{enumerate}
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Teorema nilai ekstrem dan nilai antara}
+\label{sec:minmaxint}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1,5 kuliah}
+
+Fungsi kontinu pada interval tertutup dan terbatas
+berperilaku sangat baik.
+
+\subsection{Teorema min--maks atau teorema nilai ekstrem}
+
+Ingat bahwa $f \colon [a,b] \to \R$ disebut
+\emph{terbatas}\index{fungsi terbatas}\index{fungsi!terbatas}
+jika terdapat $B \in \R$ sedemikian sehingga
+$\babs{f(x)} \leq B$ untuk semua $x \in [a,b]$.
+Untuk fungsi kontinu pada interval tertutup dan terbatas, kita mempunyai lemma berikut.
+
+\begin{lemma}
+Fungsi kontinu $f \colon [a,b] \to \R$ bersifat terbatas.
+\end{lemma}
+
+\begin{proof}
+Kita membuktikan pernyataan tersebut dengan kontraposisi.  Misalkan $f$ tidak terbatas.
+Maka untuk setiap
+$n \in \N$, terdapat $x_n \in [a,b]$ sedemikian sehingga
+\begin{equation*}
+\babs{f(x_n)} \geq n .
+\end{equation*}
+Barisan $\{ x_n \}_{n=1}^\infty$ terbatas karena $a \leq x_n \leq b$.
+Berdasarkan \hyperref[thm:bwseq]{teorema Bolzano--Weierstrass},
+terdapat subbarisan konvergen $\{ x_{n_i} \}_{i=1}^\infty$.
+Misalkan $x \coloneqq \lim_{i\to\infty} x_{n_i}$.
+Karena $a \leq x_{n_i} \leq b$ untuk semua $i$, berlaku $a \leq x \leq b$.
+Barisan $\bigl\{ f(x_{n_i}) \bigr\}_{i=1}^\infty$ tidak terbatas
+karena
+$\babs{f(x_{n_i})} \geq n_i \geq i$.
+Dengan demikian, $f$ tidak kontinu di $x$ karena
+\begin{equation*}
+f(x)
+=
+f\Bigl( \lim_{i\to\infty} x_{n_i} \Bigr) ,
+\qquad \text{tetapi} \qquad
+\lim_{i\to\infty} f(x_{n_i}) \enspace \text{tidak ada.} \qedhere
+\end{equation*}
+\end{proof}
+
+Perhatikan satu hal penting dalam pembuktian tersebut.
+Keterbatasan $[a,b]$ memungkinkan kita menggunakan Bolzano--Weierstrass,
+sedangkan sifat tertutupnya memastikan bahwa limit kembali berada dalam $[a,b]$.
+Teknik ini lazim digunakan: Cari barisan dengan sifat tertentu,
+lalu gunakan Bolzano--Weierstrass untuk memperoleh subbarisan yang juga konvergen.
+
+Ingat dari kalkulus bahwa $f \colon S \to \R$ mencapai
+\emph{\myindex{minimum mutlak}}\index{minimum!mutlak}%
+\index{mencapai minimum mutlak}
+di $c \in S$ jika
+\begin{equation*}
+f(x) \geq f(c) \qquad \text{untuk semua } x \in S.
+\end{equation*}
+Di sisi lain, $f$ mencapai
+\emph{\myindex{maksimum mutlak}}\index{maksimum!mutlak}%
+\index{mencapai maksimum mutlak}
+di $c \in S$ jika
+\begin{equation*}
+f(x) \leq f(c) \qquad \text{untuk semua } x \in S.
+\end{equation*}
+Jika terdapat $c \in S$ semacam itu, kita mengatakan
+$f$ \emph{mencapai minimum mutlak (atau\ maksimum mutlak) pada
+$S$}, dan kita menyebut
+$f(c)$ sebagai \emph{minimum mutlak (atau\ maksimum mutlak)}.
+%See \figureref{fig:minmax}.
+\begin{myfigureht}
+\myincludegraphics{minmax}{%
+Grafik suatu fungsi pada interval dari a hingga b.
+Grafik tersebut berada di antara dua garis horizontal,
+satu ditandai sebagai maksimum mutlak f yang sama dengan
+f dari c, dan
+satu ditandai sebagai minimum mutlak f yang sama dengan
+f dari d.}
+\caption{$f \colon [a,b] \to \R$ mencapai maksimum mutlak $f(c)$ di
+$c$, dan minimum mutlak $f(d)$ di $d$.\label{fig:minmax}}
+\end{myfigureht}
+
+Jika $S$ merupakan interval tertutup
+dan terbatas, maka fungsi kontinu $f$
+tidak hanya terbatas, tetapi juga harus mencapai minimum mutlak dan maksimum
+mutlak pada $S$.
+
+\begin{thm}[Teorema minimum--maksimum / Teorema nilai ekstrem]
+\index{teorema minimum-maksimum}%
+\index{teorema maksimum-minimum}%
+\index{teorema nilai ekstrem}%
+Fungsi kontinu $f \colon [a,b] \to \R$
+mencapai minimum mutlak dan maksimum mutlak pada $[a,b]$.
+\end{thm}
+
+Sekali lagi, penting diperhatikan bahwa domain $f$ adalah interval tertutup dan terbatas $[a,b]$.
+
+\begin{proof}
+Lemma tersebut menyatakan bahwa $f$ terbatas, sehingga
+himpunan $f\bigl([a,b]\bigr) = \bigl\{ f(x) : x \in [a,b] \bigr\}$ memiliki supremum dan infimum.
+Terdapat barisan-barisan
+dalam himpunan $f\bigl([a,b]\bigr)$ yang mendekati supremum dan infimumnya.
+Artinya, terdapat barisan
+$\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ dan $\bigl\{ f(y_n)
+\bigr\}_{n=1}^\infty$, dengan $x_n$ dan $y_n$ berada dalam $[a,b]$,
+sedemikian sehingga
+\begin{equation*}
+\lim_{n\to\infty} f(x_n) = \inf f\bigl([a,b]\bigr) \qquad \text{dan} \qquad
+\lim_{n\to\infty} f(y_n) = \sup f\bigl([a,b]\bigr).
+\end{equation*}
+Kita belum selesai; kita perlu menentukan tempat minimum dan maksimum tersebut dicapai.
+Masalahnya, barisan $\{ x_n \}_{n=1}^\infty$ dan
+$\{ y_n \}_{n=1}^\infty$ belum tentu konvergen.
+Kita mengetahui bahwa $\{ x_n \}_{n=1}^\infty$ dan $\{ y_n \}_{n=1}^\infty$ terbatas
+(unsur-unsurnya berada dalam interval terbatas $[a,b]$).
+Terapkan
+\hyperref[thm:bwseq]{teorema Bolzano--Weierstrass}
+untuk memperoleh
+subbarisan konvergen
+$\{ x_{n_i} \}_{i=1}^\infty$ dan
+$\{ y_{m_i} \}_{i=1}^\infty$.  Misalkan
+\begin{equation*}
+x \coloneqq \lim_{i\to\infty} x_{n_i}
+\qquad \text{dan} \qquad
+y \coloneqq \lim_{i\to\infty} y_{m_i}.
+\end{equation*}
+Karena $a \leq x_{n_i} \leq b$ untuk semua $i$, berlaku $a \leq x \leq b$.
+Demikian pula, $a \leq y \leq b$.  Jadi, $x$ dan $y$ berada dalam $[a,b]$.
+Untuk barisan yang konvergen,
+limit suatu subbarisan sama dengan limit
+barisan tersebut.  Selain itu, kita dapat melewatkan limit melalui fungsi kontinu $f$.  Jadi,
+\begin{equation*}
+\inf f\bigl([a,b]\bigr) = \lim_{n\to\infty} f(x_n)
+= \lim_{i\to\infty} f(x_{n_i}) = 
+f \Bigl( \lim_{i\to\infty} x_{n_i} \Bigr) = f(x) .
+\end{equation*}
+Demikian pula,
+\begin{equation*}
+\sup f\bigl([a,b]\bigr) = \lim_{n\to\infty} f(y_n)
+= \lim_{i\to\infty} f(y_{m_i}) = 
+f \Bigl( \lim_{i\to\infty} y_{m_i} \Bigr) = f(y) .
+\end{equation*}
+Dengan demikian, $f$ mencapai minimum mutlak di $x$ dan
+maksimum mutlak di $y$.
+\end{proof}
+
+\begin{example}
+Fungsi $f(x) \coloneqq x^2+1$ yang didefinisikan pada interval $[-1,2]$ mencapai minimum
+di $x=0$ dengan $f(0) = 1$.  Fungsi tersebut mencapai maksimum di $x=2$ dengan $f(2) = 5$.
+Perhatikan bahwa domain definisi berpengaruh.  Jika kita memilih domain
+$[-10,10]$, maka $f$ tidak lagi mencapai maksimum di $x=2$.
+Sebaliknya,
+maksimum dicapai di $x=10$ dan juga di $x=-10$.
+\end{example}
+
+Melalui contoh-contoh, kita menunjukkan bahwa berbagai hipotesis teorema tersebut
+benar-benar diperlukan.
+
+\begin{example}
+Fungsi $f \colon \R \to \R$ yang didefinisikan oleh $f(x) \coloneqq x$
+tidak mencapai minimum maupun maksimum.  Jadi, penting bahwa
+kita meninjau interval terbatas.
+\end{example}
+
+\begin{example}
+Fungsi $f \colon (0,1) \to \R$ yang didefinisikan oleh $f(x) \coloneqq \nicefrac{1}{x}$
+tidak mencapai minimum maupun maksimum.
+Fungsi tersebut kontinu, tetapi $(0,1)$ tidak tertutup.
+Nilai-nilai fungsi tersebut
+tak terbatas ketika kita mendekati $0$.  Selain itu, ketika kita mendekati $x=1$, nilai-nilai
+fungsi mendekati $1$, tetapi $f(x) > 1$ untuk semua $x \in (0,1)$.  Tidak ada
+$x \in (0,1)$ sedemikian sehingga $f(x) = 1$.  Jadi, penting bahwa
+kita meninjau interval tertutup.
+\end{example}
+
+\begin{example}
+Kekontinuan juga penting.
+Definisikan $f \colon [0,1] \to \R$ dengan
+$f(x) \coloneqq \nicefrac{1}{x}$ untuk $x > 0$ dan tetapkan $f(0) \coloneqq 0$.
+Fungsi tersebut tidak mencapai maksimum.  Domain $[0,1]$ tertutup dan
+terbatas, tetapi masalahnya adalah
+fungsi tersebut tidak kontinu di 0.
+\end{example}
+
+\subsection{Teorema nilai antara Bolzano}
+
+Teorema nilai antara Bolzano merupakan salah satu landasan utama analisis.
+Teorema ini kadang-kadang hanya disebut teorema nilai antara atau cukup
+teorema Bolzano.  Untuk membuktikan teorema Bolzano, kita membuktikan
+lema yang lebih sederhana berikut ini.
+
+\begin{lemma} \label{IVT:lemma}
+Misalkan $f \colon [a,b] \to \R$ suatu fungsi kontinu.
+Andaikan $f(a) < 0$ dan $f(b) > 0$.
+Maka terdapat bilangan $c \in (a,b)$
+sedemikian sehingga $f(c) = 0$.
+\end{lemma}
+
+\begin{proof}
+Kita mendefinisikan dua barisan $\{ a_n \}_{n=1}^\infty$
+dan $\{ b_n \}_{n=1}^\infty$ secara induktif:
+\begin{enumerate}[(i)]
+\item Tetapkan $a_1 \coloneqq a$ dan $b_1 \coloneqq b$.
+\item Jika $f\left(\frac{a_n+b_n}{2}\right) \geq 0$, tetapkan $a_{n+1} \coloneqq a_n$ dan
+$b_{n+1} \coloneqq \frac{a_n+b_n}{2}$.
+\item Jika $f\left(\frac{a_n+b_n}{2}\right) < 0$, tetapkan $a_{n+1} \coloneqq \frac{a_n+b_n}{2}$ dan
+$b_{n+1} \coloneqq b_n$.
+\end{enumerate}
+\begin{myfigureht}
+\myincludegraphics{bisect}{%
+Grafik suatu fungsi yang memotong
+sumbu-x di c sambil naik.  Interval
+a subskrip 1 hingga b subskrip 1 ditandai; f bernilai negatif
+di a subskrip 1 dan positif di b subskrip 1.
+Interval berikutnya berawal di a subskrip 2, yang sama dengan a subskrip 1,
+dan b subskrip 2 berada di tengah interval sebelumnya.
+Sekali lagi, fungsi bernilai negatif di a subskrip 2 dan positif
+di b subskrip 2.  Kita melanjutkan dengan interval-interval
+tempat f bernilai negatif di sebelah kiri dan positif
+di sebelah kanan.
+Interval berikutnya berawal di a subskrip 3, yang sama dengan
+a subskrip 2, dan berakhir di b subskrip 3, yang
+berada di tengah interval sebelumnya.
+Untuk interval berikutnya, a subskrip 4 berada di tengah dan
+b subskrip 4 sama dengan b subskrip 3.
+Berikutnya, a subskrip 5 kembali berada di tengah dan b subskrip 5
+sama dengan b subskrip 4.  Bilangan c berada
+di dalam semua interval ini.}
+\caption{Menentukan akar (metode biseksi).\label{bisectfig}}
+\end{myfigureht}
+Lihat \figureref{bisectfig} untuk contoh lima langkah pertama.
+Jika $a_n < b_n$, maka $a_n < \frac{a_n+b_n}{2} < b_n$.  Jadi,
+$a_{n+1} < b_{n+1}$.
+Karena $a_1 = a < b = b_1$,
+\hyperref[induction:thm]{induksi} memberikan
+$a_n < b_n$ untuk semua $n$.
+Selain itu, $a_n \leq a_{n+1}$ dan
+$b_n \geq b_{n+1}$ untuk semua $n$; dengan kata lain, kedua barisan tersebut monoton.
+Karena $a_n < b_n \leq b_1 = b$ dan
+$b_n > a_n \geq a_1 = a$ untuk semua $n$,
+kedua barisan tersebut juga terbatas.  Oleh karena itu,
+kedua barisan tersebut konvergen.
+Misalkan $c \coloneqq \lim_{n\to\infty} a_n$ dan $d \coloneqq \lim_{n\to\infty} b_n$;
+berlaku pula $a \leq c \leq d \leq b$.  Kita perlu
+menunjukkan bahwa $c=d$.
+Perhatikan bahwa
+\begin{equation*}
+b_{n+1} - a_{n+1} = \frac{b_n-a_n}{2}.
+\end{equation*}
+Dengan \hyperref[induction:thm]{induksi},
+\begin{equation*}
+b_n - a_n = \frac{b_1-a_1}{2^{n-1}} = 2^{1-n} (b-a) .
+\end{equation*}
+Karena $2^{1-n}(b-a)$ konvergen ke nol, dengan mengambil limit ketika $n$ menuju
+tak hingga kita memperoleh
+\begin{equation*}
+d-c = \lim_{n\to\infty} (b_n - a_n) =
+\lim_{n\to\infty} 2^{1-n} (b-a) = 0.
+\avoidbreak
+\end{equation*}
+Dengan kata lain, $c=d$.
+
+Berdasarkan konstruksinya, untuk semua $n$,
+\begin{equation*}
+f(a_n) < 0
+\qquad \text{dan} \qquad
+f(b_n) \geq 0 .
+\end{equation*}
+Karena
+$\lim_{n\to\infty} a_n = \lim_{n\to\infty} b_n = c$
+dan $f$ kontinu di $c$, kita dapat mengambil
+limit dalam ketaksamaan-ketaksamaan tersebut:
+\begin{equation*}
+f(c) = \lim_{n\to\infty} f(a_n) \leq 0
+\qquad \text{dan} \qquad
+f(c) = \lim_{n\to\infty} f(b_n) \geq 0 .
+\end{equation*}
+Karena $f(c) \geq 0$ dan
+$f(c) \leq 0$, kita menyimpulkan bahwa $f(c) = 0$.
+Dengan demikian, $c \neq a$ dan $c \neq b$, sehingga
+$a < c < b$.
+\end{proof}
+
+\begin{thm}[Teorema nilai antara Bolzano] \label{IVT:thm}
+\index{teorema Bolzano}
+\index{teorema nilai antara Bolzano}
+\index{teorema nilai antara}
+Misalkan $f \colon [a,b] \to \R$ suatu fungsi kontinu.
+Andaikan $y \in \R$ sedemikian sehingga $f(a) < y < f(b)$
+atau $f(a) > y > f(b)$.  Maka terdapat $c \in (a,b)$
+sedemikian sehingga $f(c) = y$.
+\end{thm}
+
+Teorema tersebut menyatakan bahwa suatu fungsi kontinu pada interval tertutup
+mencapai semua nilai di antara nilai-nilai pada kedua titik ujungnya.
+
+\begin{proof}
+Jika $f(a) < y < f(b)$, definisikan $g(x) \coloneqq f(x)-y$.  Dengan demikian,
+$g(a) < 0$ dan $g(b) > 0$, lalu kita menerapkan \lemmaref{IVT:lemma}
+pada $g$ untuk memperoleh $c$.  Jika $g(c) = 0$, maka $f(c) = y$.
+
+Demikian pula, jika $f(a) > y > f(b)$, definisikan $g(x) \coloneqq y-f(x)$.
+Sekali lagi, $g(a) < 0$ dan $g(b) > 0$, lalu kita menerapkan \lemmaref{IVT:lemma} untuk
+memperoleh $c$.
+Seperti sebelumnya, jika $g(c) = 0$, maka $f(c) = y$.
+\end{proof}
+
+Jika suatu fungsi kontinu, pembatasannya
+pada suatu himpunan bagian juga kontinu; jika $f \colon S \to \R$ kontinu dan
+$[a,b] \subset S$, maka $f|_{[a,b]}$ juga kontinu.  Pada umumnya, kita
+menerapkan teorema tersebut pada suatu fungsi yang kontinu pada himpunan $S$ yang lebih besar,
+tetapi membatasi perhatian kita pada suatu interval.
+
+
+Pembuktian lema tersebut memberi tahu kita cara menentukan akar $c$.
+Pembuktian itu tidak hanya berguna bagi kita para matematikawan murni,
+tetapi juga memuat gagasan yang berguna dalam matematika terapan,
+yang disebut \emph{\myindex{metode biseksi}}.
+
+
+\begin{example}[Metode biseksi] %\index{metode biseksi}
+Polinom $f(x) \coloneqq x^3-2x^2+x-1$ memiliki akar real dalam $(1,2)$.  Kita cukup
+memperhatikan bahwa $f(1) = -1$ dan $f(2) = 1$.  Oleh karena itu, harus terdapat titik $c
+\in (1,2)$ sedemikian sehingga $f(c) = 0$.  Untuk memperoleh hampiran akar yang
+lebih baik, kita mengikuti pembuktian \lemmaref{IVT:lemma}.
+Kita memeriksa 1.5 dan memperoleh $f(1.5) = -0.625$.  Oleh karena itu,
+terdapat akar polinom tersebut dalam $(1.5,2)$.  Selanjutnya, kita memeriksa 1.75
+dan mendapati bahwa $f(1.75) \approx -0.016$.  Jadi, terdapat akar $f$ dalam
+$(1.75,2)$.  Selanjutnya, kita memeriksa 1.875 dan memperoleh $f(1.875) \approx 0.44$;
+dengan demikian, terdapat akar dalam $(1.75,1.875)$.  Kita mengikuti prosedur ini hingga memperoleh
+ketelitian yang memadai.  Bahkan, akar tersebut berada di $c \approx 1.7549$.
+\end{example}
+
+Teknik tersebut merupakan metode paling sederhana untuk menentukan akar polinom,
+suatu masalah yang umum dalam matematika terapan.
+Secara umum, menentukan akar secara cepat, tepat,
+dan otomatis merupakan hal yang sulit.
+Ada metode lain yang lebih cepat untuk menentukan akar polinom, seperti
+metode Newton.  Salah satu keunggulan metode di atas adalah
+kesederhanaannya.  Begitu kita menemukan suatu interval tempat teorema nilai antara
+berlaku, kita dijamin dapat menemukan hampiran akar dengan ketelitian yang
+diinginkan dalam sejumlah langkah berhingga.  Selain itu, metode
+biseksi menentukan akar fungsi kontinu apa pun,
+bukan hanya polinom.
+
+Teorema tersebut menjamin adanya suatu $c$ sedemikian sehingga $f(c) = y$, tetapi
+mungkin terdapat akar lain dari persamaan $f(c) = y$.  Jika kita mengikuti
+prosedur dalam pembuktian, kita dijamin dapat menemukan hampiran untuk
+salah satu akar tersebut.  Kita perlu berusaha lebih keras untuk menemukan akar-akar lainnya.
+
+\medskip
+
+Polinom berderajat genap mungkin tidak memiliki akar real sama sekali.
+Tidak ada bilangan real $x$ sedemikian sehingga $x^2+1 = 0$.  Sebaliknya,
+polinom berderajat ganjil selalu memiliki setidaknya satu akar real.
+
+\begin{prop}
+Misalkan $f(x)$ suatu polinom berderajat ganjil.  Maka $f$ memiliki akar real.
+\end{prop}
+
+\begin{proof}
+Andaikan $f$ suatu polinom berderajat ganjil $d$.  Kita tuliskan
+\begin{equation*}
+f(x) = a_d x^d + a_{d-1} x^{d-1} + \cdots + a_1 x + a_0 ,
+\end{equation*}
+dengan $a_d \neq 0$.  Kita membaginya dengan $a_d$ untuk memperoleh
+\emph{\myindex{polinom monik}}\footnote{Istilah \emph{monik} berarti bahwa
+koefisien $x^d$ adalah 1.}
+\begin{equation*}
+g(x) \coloneqq x^d + b_{d-1} x^{d-1} + \cdots + b_1 x + b_0 ,
+\end{equation*}
+dengan $b_k = \nicefrac{a_k}{a_d}$.
+Mari kita tunjukkan bahwa $g(n)$
+positif untuk suatu $n \in \N$ yang cukup besar.
+Pertama, kita membandingkan suku berderajat tertinggi dengan suku-suku lainnya:
+\begin{equation*}
+\begin{split}
+\abs{\frac{b_{d-1} n^{d-1} + \cdots + b_1 n + b_0}{n^d}}
+& =
+\frac{\sabs{b_{d-1} n^{d-1} + \cdots + b_1 n + b_0}}{n^d}
+\\
+& \leq
+\frac{\sabs{b_{d-1}} n^{d-1} + \cdots + \sabs{b_1} n + \sabs{b_0}}{n^d}
+\\
+& \leq
+\frac{\sabs{b_{d-1}} n^{d-1} + \cdots + \sabs{b_1} n^{d-1} + \sabs{b_0} n^{d-1}}{n^d}
+\\
+& =
+\frac{n^{d-1}\bigl(\sabs{b_{d-1}} + \cdots + \sabs{b_1} + \sabs{b_0}\bigr)}{n^d}
+\\
+& =
+\frac{1}{n}
+\bigl(\sabs{b_{d-1}} + \cdots + \sabs{b_1} + \sabs{b_0}\bigr) .
+\end{split}
+\end{equation*}
+Oleh karena itu,
+\begin{equation*}
+\lim_{n\to\infty} \frac{b_{d-1} n^{d-1} + \cdots + b_1 n + b_0}{n^d}
+= 0 .
+\end{equation*}
+Jadi, terdapat $M \in \N$ sedemikian sehingga
+\begin{equation*}
+\abs{\frac{b_{d-1} M^{d-1} + \cdots + b_1 M + b_0}{M^d}} < 1 ,
+\end{equation*}
+yang mengakibatkan
+\begin{equation*}
+-(b_{d-1} M^{d-1} + \cdots + b_1 M + b_0) < M^d .
+\end{equation*}
+Oleh karena itu, $g(M) > 0$.
+
+Selanjutnya, tinjau $g(-n)$ untuk $n \in \N$.  Dengan argumen serupa,
+terdapat $K \in \N$ sedemikian sehingga
+$b_{d-1} {(-K)}^{d-1} + \cdots + b_1 (-K) + b_0 < K^d$
+dan karena itu $g(-K) < 0$ (lihat \exerciseref{exercise:odddegnegativeK}).
+Dalam pembuktiannya,
+pastikan Anda menggunakan fakta bahwa $d$ ganjil.
+Secara khusus, jika $d$ ganjil, maka ${(-n)}^d = -(n^d)$.
+
+Kita menerapkan teorema nilai antara untuk memperoleh
+$c \in (-K,M)$ sedemikian sehingga $g(c) = 0$.  Karena $g(x) = \frac{f(x)}{a_d}$,
+maka $f(c) = 0$, dan pembuktian selesai.
+\end{proof}
+
+\begin{example}
+Anda mungkin ingat betapa kerasnya kita bekerja
+dalam \exampleref{example:sqrt2}
+untuk menunjukkan bahwa $\sqrt{2}$ ada.
+Dengan teorema Bolzano, kita dapat membuktikan keberadaan akar ke-$k$ dari setiap bilangan positif
+$y > 0$ tanpa kesulitan.
+Kita menyatakan bahwa untuk setiap $k \in \N$ dan setiap $y > 0$,
+terdapat bilangan $x > 0$ sedemikian sehingga $x^k = y$.
+
+Pembuktian: Jika $y=1$, pernyataannya jelas, jadi andaikan $y\neq 1$.
+Demikian pula, andaikan $k \geq 2$.
+Misalkan $f(x) \coloneqq x^k - y$.  Perhatikan bahwa $f(0) = -y < 0$.
+Jika $y < 1$, maka $f(1) = 1^k -y > 0$.  Jika $y > 1$,
+maka $f(y) = y^k-y = y(y^{k-1}-1) > 0$.
+Dalam kedua kasus tersebut, terapkan teorema Bolzano untuk memperoleh $x > 0$ sedemikian sehingga $f(x) = 0$,
+atau dengan kata lain $x^k = y$.
+\end{example}
+
+\begin{example}
+Menariknya, terdapat fungsi-fungsi diskontinu yang memiliki
+sifat nilai antara.
+Fungsi
+\begin{equation*}
+f(x) \coloneqq
+\begin{cases}
+\sin(\nicefrac{1}{x}) & \text{jika } x \neq 0, \\
+0 & \text{jika } x=0,
+\end{cases}
+\end{equation*}
+tidak kontinu di $0$; namun, $f$ memiliki sifat nilai antara:
+Setiap kali $a < b$ dan $y$ sedemikian sehingga $f(a) < y < f(b)$
+atau $f(a) > y > f(b)$,
+terdapat $c \in (a,b)$ sedemikian sehingga $f(c) = y$.
+Lihat \figureref{figsin1x} untuk grafik $\sin(\nicefrac{1}{x})$.
+Pembuktiannya diserahkan sebagai \exerciseref{exercise:meanvaluepropsin1x}.
+\end{example}
+
+Teorema nilai antara menyatakan bahwa jika $f \colon [a,b] \to \R$
+kontinu, maka $f\bigl([a,b]\bigr)$ memuat semua nilai di antara $f(a)$ dan
+$f(b)$.  Sebenarnya, pernyataan yang lebih kuat berlaku.  Dengan menggabungkan semua hasil dalam bagian ini,
+kita dapat membuktikan akibat berguna berikut, yang pembuktiannya diserahkan sebagai latihan.
+Petunjuk: Lihat \figureref{fig:imageinterval} dan perhatikan titik-titik ujung
+interval citranya.
+
+\begin{cor} \label{cor:imageofinterval}
+Jika $f \colon [a,b] \to \R$ kontinu, maka citra langsung
+$f\bigl([a,b]\bigr)$
+merupakan interval tertutup dan terbatas atau suatu bilangan tunggal.
+\end{cor}
+
+\begin{myfigureht}
+\myincludepdft{figimageinterval}{%
+Grafik fungsi y sama dengan f dari x pada interval
+dari a hingga b, yang ditandai dengan garis tebal.  Pada sumbu
+vertikal, himpunan semua nilai yang dicapai oleh fungsi
+ditandai sebagai f dari interval tertutup dari a hingga b.}
+\caption{Citra fungsi kontinu $f \colon [a,b] \to \R$.\label{fig:imageinterval}}
+\end{myfigureht}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Carilah contoh fungsi diskontinu $f \colon [0,1] \to \R$
+yang menyebabkan kesimpulan teorema nilai antara gagal berlaku.
+\end{exercise}
+
+\begin{exercise}
+Carilah contoh fungsi diskontinu \emph{terbatas} $f \colon [0,1]
+\to \R$ yang tidak memiliki minimum mutlak maupun maksimum mutlak.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon (0,1) \to \R$ suatu fungsi kontinu sedemikian sehingga
+$\displaystyle \lim_{x\to 0} f(x) =
+\displaystyle \lim_{x\to 1} f(x) = 0$.  Buktikan bahwa
+$f$ mencapai minimum mutlak atau maksimum mutlak pada $(0,1)$
+(tetapi mungkin tidak keduanya).
+\end{exercise}
+
+\begin{exercise} \label{exercise:meanvaluepropsin1x}
+Misalkan
+\begin{equation*}
+f(x) \coloneqq
+\begin{cases}
+\sin(\nicefrac{1}{x}) & \text{jika } x \neq 0, \\
+0 & \text{jika } x=0.
+\end{cases}
+\end{equation*}
+Buktikan bahwa $f$ memiliki sifat nilai antara.
+Artinya, untuk setiap $a < b$, jika terdapat $y$ sedemikian sehingga $f(a) < y < f(b)$
+atau $f(a) > y > f(b)$, maka
+terdapat $c \in (a,b)$ sedemikian sehingga $f(c) = y$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:odddegnegativeK}
+Misalkan $g(x)$ suatu polinom monik berderajat ganjil $d$, yaitu,
+\begin{equation*}
+g(x) = x^d + b_{d-1} x^{d-1} + \cdots + b_1 x + b_0 ,
+\end{equation*}
+untuk beberapa bilangan real $b_{0}, b_1, \ldots, b_{d-1}$.  Buktikan bahwa terdapat
+$K \in \N$ sedemikian sehingga $g(-K) < 0$.  Petunjuk: Pastikan Anda menggunakan fakta bahwa
+$d$ ganjil.  Anda perlu menggunakan fakta bahwa ${(-n)}^d = -(n^d)$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $g(x)$ suatu polinom monik berderajat genap positif $d$, yaitu,
+\begin{equation*}
+g(x) = x^d + b_{d-1} x^{d-1} + \cdots + b_1 x + b_0 ,
+\end{equation*}
+untuk beberapa bilangan real $b_{0}, b_1, \ldots, b_{d-1}$.  Andaikan
+$g(0) < 0$.  Buktikan bahwa $g$ memiliki sekurang-kurangnya dua akar real yang berbeda.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \corref{cor:imageofinterval}:
+Misalkan $f \colon [a,b] \to \R$ suatu fungsi kontinu.  Buktikan
+bahwa citra langsung $f\bigl([a,b]\bigr)$ merupakan interval tertutup dan terbatas atau
+sebuah bilangan tunggal.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon \R \to \R$ kontinu dan periodik dengan periode
+$P > 0$.  Artinya, $f(x+P) = f(x)$ untuk setiap $x \in \R$.  Buktikan bahwa $f$
+mencapai minimum mutlak dan maksimum mutlak.
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Misalkan $f(x)$ suatu polinom terbatas;
+dengan kata lain, terdapat $M$ sedemikian sehingga $\babs{f(x)} \leq M$
+untuk setiap $x \in \R$.  Buktikan bahwa $f$ harus konstan.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon [0,1] \to [0,1]$ kontinu.  Buktikan bahwa $f$
+memiliki titik tetap; dengan kata lain, buktikan bahwa terdapat $x \in [0,1]$ sedemikian sehingga
+$f(x) = x$.
+\end{exercise}
+
+\begin{exercise}
+Carilah contoh fungsi kontinu terbatas $f \colon \R \to \R$ yang
+tidak mencapai minimum mutlak maupun maksimum mutlak pada $\R$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon \R \to \R$ kontinu sedemikian sehingga
+$x \leq f(x) \leq x+1$ untuk setiap $x \in \R$.  Tentukan $f(\R)$.
+\end{exercise}
+
+\begin{exercise}
+Benar atau salah? Buktikan atau carilah contoh tandingan.  Jika $f \colon \R \to
+\R$ suatu fungsi kontinu sedemikian sehingga $f|_{\Z}$ terbatas, maka $f$
+terbatas.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon [0,1] \to (0,1)$ suatu bijeksi.  Buktikan bahwa $f$ tidak
+kontinu.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon \R \to \R$ kontinu.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa jika terdapat $c$ sedemikian sehingga $f(c)f(-c) < 0$,
+maka terdapat $d \in \R$ sedemikian sehingga $f(d) = 0$.
+\item
+Carilah fungsi kontinu $f$ sedemikian sehingga
+$f(\R) = \R$, tetapi $f(x)f(-x) \geq 0$ untuk setiap $x \in \R$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $g(x)$ suatu polinom monik berderajat genap $d$, yaitu,
+\begin{equation*}
+g(x) = x^d + b_{d-1} x^{d-1} + \cdots + b_1 x + b_0 ,
+\end{equation*}
+untuk beberapa bilangan real $b_{0}, b_1, \ldots, b_{d-1}$.
+Buktikan bahwa $g$ mencapai minimum mutlak pada $\R$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f(x)$ suatu polinom berderajat $d$ dan
+$f(\R) = \R$.  Buktikan bahwa $d$ ganjil.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Kekontinuan seragam}
+\label{sec:unifcont}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1,5--2 kuliah (perluasan kontinu dapat dijadikan materi opsional)}
+
+\subsection{Kekontinuan seragam}
+
+Kita sebelumnya menekankan bahwa $\delta$ dalam definisi kekontinuan
+bergantung pada titik $c$.  Dalam beberapa situasi, kita diuntungkan jika dapat
+memilih $\delta$ yang tidak bergantung pada titik mana pun; karena itu, konsep
+ini kita beri nama.
+
+\begin{defn}
+Misalkan $S \subset \R$, dan misalkan $f \colon S \to \R$ suatu fungsi.
+Andaikan untuk setiap $\epsilon > 0$ terdapat $\delta > 0$
+sedemikian sehingga jika $x, c \in S$ dan
+$\sabs{x-c} < \delta$, berlaku $\babs{f(x)-f(c)} < \epsilon$.
+Kita katakan bahwa $f$ \emph{\myindex{kontinu seragam}}.
+\end{defn}
+
+Fungsi yang kontinu seragam tentu kontinu.
+Satu-satunya perbedaan antara kedua definisi tersebut ialah bahwa dalam
+kekontinuan seragam, untuk suatu $\epsilon > 0$ kita memilih $\delta > 0$
+yang berlaku untuk semua $c \in S$.  Artinya, $\delta$ tidak lagi boleh
+bergantung pada $c$; pilihan tersebut hanya bergantung pada $\epsilon$.  Kini domain
+definisi fungsi berpengaruh.  Fungsi yang tidak kontinu seragam pada suatu
+himpunan yang lebih besar dapat menjadi kontinu seragam ketika dibatasi pada
+himpunan yang lebih kecil.
+Perhatikan bahwa $x$ dan $c$ tidak diperlakukan secara berbeda dalam definisi
+ini.
+
+\begin{example}
+$f \colon [0,1] \to \R$ yang didefinisikan oleh $f(x) \coloneqq x^2$ kontinu
+seragam.
+
+Bukti: Perhatikan bahwa $0 \leq x,c \leq 1$.  Maka
+\begin{equation*}
+\sabs{x^2-c^2} = \sabs{x+c}\sabs{x-c}
+\leq \bigl(\sabs{x}+\sabs{c}\bigr) \sabs{x-c}
+\leq (1+1)\sabs{x-c} .
+\end{equation*}
+Jadi, untuk $\epsilon > 0$, ambil $\delta \coloneqq \nicefrac{\epsilon}{2}$.
+Jika $\sabs{x-c} < \delta$, maka $\sabs{x^2-c^2} \leq 2 \sabs{x-c} < \epsilon$.
+
+\medskip
+
+Di sisi lain, $g \colon \R \to \R$ yang didefinisikan oleh
+$g(x) \coloneqq x^2$ tidak kontinu seragam.
+
+Bukti: Andaikan fungsi tersebut kontinu seragam.
+Maka, untuk setiap $\epsilon > 0$,
+akan terdapat $\delta > 0$ sedemikian sehingga
+jika $\sabs{x-c} < \delta$, maka $\sabs{x^2 -c^2} < \epsilon$.
+Ambil $x > 0$ dan tetapkan
+$c \coloneqq x+\nicefrac{\delta}{2}$.  Kita peroleh
+\begin{equation*}
+\epsilon >
+\sabs{x^2-c^2} = \sabs{x+c}\sabs{x-c}
+=
+(2x+\nicefrac{\delta}{2})\nicefrac{\delta}{2} 
+\geq 
+\delta x .
+\end{equation*}
+Jadi, $x < \nicefrac{\epsilon}{\delta}$ untuk semua $x > 0$, suatu
+kontradiksi.
+\end{example}
+
+
+\begin{example}
+Fungsi $f \colon (0,1) \to \R$ yang didefinisikan oleh
+$f(x) \coloneqq \nicefrac{1}{x}$ tidak kontinu seragam.
+
+Bukti: Untuk $\epsilon > 0$, ketaksamaan $\epsilon >
+\abs{\nicefrac{1}{x}-\nicefrac{1}{y}}$ berlaku jika dan hanya jika
+\begin{equation*}
+\epsilon >
+\abs{\nicefrac{1}{x}-\nicefrac{1}{y}}
+=
+\frac{\sabs{y-x}}{\sabs{xy}} 
+=
+\frac{\sabs{y-x}}{xy} ,
+\end{equation*}
+atau
+\begin{equation*}
+\sabs{x-y} < xy \epsilon .
+\end{equation*}
+Andaikan $\epsilon < 1$.
+Kita ingin mengetahui apakah suatu $\delta > 0$ yang kecil akan berlaku.
+Jika $x \in (0,1)$ dan
+$y = x+\nicefrac{\delta}{2} \in (0,1)$,
+maka $\sabs{x-y} = \nicefrac{\delta}{2} < \delta$.
+Dengan menyubstitusikan $y$ ke dalam ketaksamaan di atas, kita memperoleh
+$\nicefrac{\delta}{2} <
+x \bigl( x+\nicefrac{\delta}{2} \bigr) \epsilon < x$.
+Jika definisi kekontinuan seragam terpenuhi, maka ketaksamaan
+$\nicefrac{\delta}{2} < x$ akan berlaku untuk semua $x > 0$ yang kecil.
+Namun, hal itu mengakibatkan $\delta \leq 0$.
+Jadi, tidak ada satu pun $\delta > 0$ yang berlaku untuk semua titik.
+\end{example}
+
+Contoh-contoh tersebut menunjukkan bahwa jika $f$ didefinisikan pada interval
+yang tidak tertutup atau tidak terbatas, maka $f$ mungkin kontinu tetapi tidak
+kontinu seragam.  Namun, untuk interval tertutup dan terbatas $[a,b]$, kita
+dapat menyatakan hasil berikut.
+
+\begin{thm} \label{unifcont:thm}
+Misalkan $f \colon [a,b] \to \R$ suatu fungsi kontinu.  Maka $f$
+kontinu seragam.
+\end{thm}
+
+\begin{proof}
+Kita membuktikan pernyataan tersebut dengan kontraposisi.
+Andaikan $f$ tidak kontinu seragam.  Kita akan membuktikan bahwa terdapat
+$c \in [a,b]$ sedemikian sehingga $f$ tidak kontinu di titik itu.  Negasi definisi kekontinuan seragam
+adalah sebagai berikut: Terdapat $\epsilon > 0$ sedemikian sehingga untuk
+setiap $\delta > 0$, terdapat titik-titik $x, y$ dalam $[a,b]$ dengan
+$\sabs{x-y} < \delta$ dan $\babs{f(x)-f(y)} \geq \epsilon$.
+
+Jadi, untuk $\epsilon > 0$ di atas, kita memperoleh barisan
+$\{ x_n \}_{n=1}^\infty$ dan $\{ y_n \}_{n=1}^\infty$ sedemikian sehingga
+$\sabs{x_n-y_n} < \nicefrac{1}{n}$ serta $\babs{f(x_n)-f(y_n)} \geq
+\epsilon$.  Berdasarkan
+\hyperref[thm:bwseq]{Bolzano--Weierstrass},
+terdapat subbarisan konvergen
+$\{ x_{n_k} \}_{k=1}^\infty$.  Tetapkan $c \coloneqq \lim_{k\to\infty} x_{n_k}$.
+Karena $a \leq x_{n_k} \leq b$ untuk semua $k$, kita memperoleh
+$a \leq c \leq b$.  Kita estimasikan
+\begin{equation*}
+\sabs{y_{n_k} - c} =
+\sabs{y_{n_k} - x_{n_k} + x_{n_k} - c} \leq
+\sabs{y_{n_k} - x_{n_k}}
++
+\sabs{x_{n_k}-c}
+<
+\nicefrac{1}{n_k} 
++
+\sabs{x_{n_k}-c} .
+\end{equation*}
+Karena $\nicefrac{1}{n_k}$ dan $\sabs{x_{n_k}-c}$ keduanya menuju nol ketika
+$k$ menuju tak hingga, $\{ y_{n_k} \}_{k=1}^\infty$ konvergen dan limitnya
+adalah $c$.  Sekarang kita tunjukkan bahwa $f$ tidak kontinu di $c$.
+Kita estimasikan
+\begin{equation*}
+\begin{split}
+\babs{f(x_{n_k}) - f(c)} & =
+\babs{f(x_{n_k}) - f(y_{n_k}) + f(y_{n_k}) - f(c)} \\
+& \geq
+\babs{f(x_{n_k}) - f(y_{n_k})} - \babs{f(y_{n_k}) - f(c)} \\
+& \geq
+\epsilon - \babs{f(y_{n_k})-f(c)} .
+\end{split}
+\end{equation*}
+Dengan kata lain,
+\begin{equation*}
+\babs{f(x_{n_k})-f(c)} 
++
+\babs{f(y_{n_k})-f(c)}  \geq
+\epsilon .
+\end{equation*}
+Setidaknya salah satu barisan $\bigl\{ f(x_{n_k}) \bigr\}_{k=1}^\infty$ atau
+$\bigl\{ f(y_{n_k}) \bigr\}_{k=1}^\infty$ tidak dapat konvergen ke $f(c)$.
+Jika tidak, ruas kiri ketaksamaan tersebut akan menuju nol, sedangkan ruas
+kanannya positif.  Dengan demikian, $f$ tidak mungkin kontinu di $c$.
+\end{proof}
+
+Seperti sebelumnya, perhatikan unsur kunci dalam pembuktian: Kita dapat
+menerapkan Bolzano--Weierstrass karena interval $[a,b]$ terbatas, dan limit
+subbarisan kembali berada dalam $[a,b]$ karena interval tersebut tertutup.
+
+\subsection{Perluasan kontinu}
+
+Fungsi yang kontinu seragam pada interval terbuka dapat diperluas secara kontinu
+ke titik-titik ujungnya.
+Kuncinya adalah lemma berikut, yang juga memiliki banyak kegunaan lain.
+Lemma tersebut mengatakan bahwa fungsi kontinu seragam mempertahankan barisan Cauchy.
+Persoalan baru di sini adalah bahwa untuk suatu barisan Cauchy,
+limitnya mungkin tidak berada dalam domain fungsi.
+
+\begin{lemma} \label{unifcauchycauchy:lemma}
+Misalkan $S \subset \R$ dan misalkan $f \colon S \to \R$ suatu fungsi kontinu seragam.  Misalkan
+$\{ x_n \}_{n=1}^\infty$ suatu barisan Cauchy dalam $S$.
+Maka $\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ merupakan barisan Cauchy.
+\end{lemma}
+
+\begin{proof}
+Ambil sebarang $\epsilon > 0$.  Terdapat $\delta > 0$ sedemikian sehingga
+$\babs{f(x)-f(y)} < \epsilon$ setiap kali $x,y \in S$ dan $\sabs{x-y} < \delta$.  Pilih $M
+\in \N$ sedemikian sehingga untuk semua $n, k \geq M$, berlaku $\sabs{x_n-x_k} < \delta$.
+Maka untuk semua $n, k \geq M$, berlaku $\babs{f(x_n)-f(x_k)} < \epsilon$.
+\end{proof}
+
+Salah satu penerapan lemma di atas adalah hasil perluasan berikut.  Hasil ini mengatakan bahwa
+suatu fungsi pada interval terbuka kontinu seragam jika dan hanya jika
+fungsi tersebut dapat diperluas menjadi fungsi kontinu pada interval tertutup.
+
+\begin{prop} \label{context:prop}
+Fungsi $f \colon (a,b) \to \R$ kontinu seragam jika dan hanya jika
+kedua limit
+\begin{equation*}
+L_a \coloneqq \lim_{x \to a} f(x) \qquad \text{dan} \qquad
+L_b \coloneqq \lim_{x \to b} f(x)
+\end{equation*}
+ada dan fungsi $\widetilde{f} \colon [a,b] \to \R$
+yang didefinisikan oleh
+\begin{equation*}
+\widetilde{f}(x) \coloneqq
+\begin{cases}
+f(x) & \text{jika } x \in (a,b), \\
+L_a & \text{jika } x = a, \\
+L_b & \text{jika } x = b
+\end{cases}
+\end{equation*}
+bersifat kontinu.
+\end{prop}
+
+\begin{proof}
+Salah satu arahnya singkat.  Jika $\widetilde{f}$ kontinu, maka
+fungsi tersebut kontinu seragam berdasarkan \thmref{unifcont:thm}.  Karena $f$ merupakan
+pembatasan $\widetilde{f}$ pada $(a,b)$, fungsi $f$ juga kontinu seragam
+(latihan).
+
+Sekarang andaikan $f$ kontinu seragam.  Pertama-tama kita harus menunjukkan
+bahwa limit $L_a$ dan $L_b$ ada.  Mari kita pusatkan perhatian pada $L_a$.
+Ambil $\{ x_n \}_{n=1}^\infty$ dalam $(a,b)$ sedemikian sehingga
+$\lim_{n\to\infty} x_n = a$.
+Barisan $\{ x_n \}_{n=1}^\infty$ merupakan barisan Cauchy, sehingga berdasarkan
+\lemmaref{unifcauchycauchy:lemma}
+barisan $\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ merupakan barisan Cauchy dan karenanya konvergen.
+Misalkan $L_1 \coloneqq \lim_{n\to\infty} f(x_n)$.  Ambil barisan lain
+$\{ y_n \}_{n=1}^\infty$ dalam $(a,b)$ sedemikian sehingga $\lim_{n\to\infty} y_n = a$.
+Dengan penalaran yang sama,
+kita peroleh $L_2 \coloneqq \lim_{n\to\infty} f(y_n)$.  Jika kita menunjukkan bahwa $L_1 = L_2$, maka
+limit $L_a = \lim_{x\to a} f(x)$ ada.  Ambil sebarang $\epsilon > 0$.
+Pilih $\delta > 0$ sedemikian sehingga $\sabs{x-y} < \delta$ mengakibatkan $\babs{f(x)-f(y)} <
+\nicefrac{\epsilon}{3}$.  Pilih $M \in \N$ sedemikian sehingga untuk
+$n \geq M$, berlaku $\sabs{a-x_n} < \nicefrac{\delta}{2}$,
+$\sabs{a-y_n} < \nicefrac{\delta}{2}$,
+$\babs{f(x_n)-L_1} < \nicefrac{\epsilon}{3}$, dan
+$\babs{f(y_n)-L_2} < \nicefrac{\epsilon}{3}$.  Maka untuk $n \geq M$,
+\begin{equation*}
+\sabs{x_n-y_n} = 
+\sabs{x_n-a+a-y_n} \leq
+\sabs{x_n-a}+\sabs{a-y_n} < \nicefrac{\delta}{2} + \nicefrac{\delta}{2} =
+\delta.
+\end{equation*}
+Jadi,
+\begin{equation*}
+\begin{split}
+\sabs{L_1-L_2} &=
+\babs{L_1-f(x_n)+f(x_n)-f(y_n)+f(y_n)-L_2} \\
+& \leq 
+\babs{L_1-f(x_n)}+\babs{f(x_n)-f(y_n)}+\babs{f(y_n)-L_2} \\
+& <
+\nicefrac{\epsilon}{3} + \nicefrac{\epsilon}{3} + \nicefrac{\epsilon}{3}
+=
+\epsilon .
+\end{split}
+\end{equation*}
+Oleh karena itu, $L_1 = L_2$.
+Jadi, $L_a$ ada.  Pembuktian bahwa $L_b$ ada diserahkan sebagai latihan.
+
+Jika $L_a = \lim_{x\to a} f(x)$
+ada, maka $\lim_{x\to a} \widetilde{f}(x)$ ada
+dan sama dengan $L_a$
+(lihat \propref{prop:limrest}).  Hal yang sama berlaku untuk $L_b$.
+Jadi, $\widetilde{f}$ kontinu di $a$ dan $b$.
+Karena $f$ kontinu di $c \in (a,b)$,
+kita peroleh bahwa
+$\widetilde{f}$ kontinu di $c \in (a,b)$ (gunakan kembali \propref{prop:limrest}).
+\end{proof}
+
+Penerapan umum proposisi ini (bersama
+\propref{prop:onesidedlimits})
+adalah sebagai berikut.
+Jika $f \colon (-1,0) \cup (0,1) \to \R$ kontinu seragam,
+maka $\lim_{x\to 0} f(x)$ ada dan fungsi tersebut
+memiliki \emph{\myindex{singularitas yang dapat dihilangkan}}.
+Artinya,
+kita dapat memperluas fungsi tersebut menjadi fungsi kontinu pada $(-1,1)$.
+
+
+\subsection{Fungsi kontinu Lipschitz}
+
+\begin{defn}
+Suatu fungsi $f \colon S \to \R$
+disebut \emph{\myindex{kontinu Lipschitz}}\index{fungsi!Lipschitz}%
+\footnote{Dinamai menurut matematikawan Jerman
+\href{https://en.wikipedia.org/wiki/Rudolf_Lipschitz}{Rudolf Otto Sigismund Lipschitz}
+(1832--1903).} jika terdapat $K \in \R$ sedemikian sehingga
+\begin{equation*}
+\babs{f(x)-f(y)} \leq K \sabs{x-y} 
+\qquad \text{untuk semua } x \text{ dan } y \text{ dalam } S.
+\end{equation*}
+\end{defn}
+
+Kelas fungsi yang bersifat kontinu Lipschitz sangat luas.  Namun, berhati-hatilah.
+Seperti halnya untuk fungsi kontinu seragam,
+domain definisi fungsi tersebut penting.  Lihat contoh-contoh di bawah
+dan bagian latihan.  Pertama, kita benarkan penggunaan kata \emph{kontinu}.
+
+\begin{prop}
+Fungsi kontinu Lipschitz bersifat kontinu seragam.
+\end{prop}
+
+\begin{proof}
+Misalkan $f \colon S \to \R$ suatu fungsi dan pilih konstanta positif $K$ sedemikian sehingga
+$\babs{f(x)-f(y)} \leq K \sabs{x-y}$
+untuk semua $x, y$ dalam $S$.
+Ambil sebarang $\epsilon > 0$.  Pilih $\delta \coloneqq
+\nicefrac{\epsilon}{K}$.
+Untuk semua $x$ dan $y$ dalam $S$ sedemikian sehingga
+$\sabs{x-y} < \delta$,
+\begin{equation*}
+\babs{f(x)-f(y)} \leq K \sabs{x-y} < K \delta = K \frac{\epsilon}{K} =
+\epsilon .
+\end{equation*}
+Oleh karena itu, $f$ kontinu seragam.
+\end{proof}
+
+Kita tafsirkan kekontinuan Lipschitz secara geometris.  Misalkan $f$ suatu fungsi
+kontinu Lipschitz dengan suatu konstanta $K$.  Ketaksamaan tersebut dapat ditulis ulang
+sehingga untuk $x \neq y$ berlaku
+\begin{equation*}
+\abs{\frac{f(x)-f(y)}{x-y}} \leq K .
+\end{equation*}
+Besaran $\frac{f(x)-f(y)}{x-y}$ merupakan kemiringan garis
+yang melalui titik $\bigl(x,f(x)\bigr)$
+dan $\bigl(y,f(y)\bigr)$, yaitu suatu \emph{\myindex{garis sekan}}.  Oleh karena itu, $f$
+kontinu Lipschitz jika dan hanya jika setiap garis yang memotong grafik $f$ di setidaknya dua
+titik berbeda memiliki nilai mutlak kemiringan yang kurang dari atau sama dengan $K$.
+Lihat \figureref{fig:lipschitz}.
+\begin{myfigureht}
+\myincludegraphics{lipschitzfig}{%
+Grafik suatu fungsi dengan beberapa titik sudut.  Dua
+titik pada sumbu horizontal ditandai dengan x
+dan y.  Sebuah garis digambar melalui titik-titik yang bersesuaian
+pada grafik, dan kemiringannya diberi label
+f dari x dikurangi f dari y, semuanya dibagi x dikurangi y.}
+\caption{Kemiringan suatu garis sekan.
+Suatu fungsi bersifat Lipschitz jika %$\abs{\text{slope}} =
+$\abs{\frac{f(x)-f(y)}{x-y}} \leq K$ untuk semua $x$ dan $y$.\label{fig:lipschitz}}
+\end{myfigureht}
+
+\begin{example}
+Fungsi $\sin(x)$ dan $\cos(x)$ bersifat kontinu Lipschitz.
+Dalam \exampleref{sincos:example} kita telah melihat kedua ketaksamaan berikut.
+\begin{equation*}
+\babs{\sin(x)-\sin(y)} 
+\leq \sabs{x-y}
+\qquad \text{dan} \qquad
+\babs{\cos(x)-\cos(y)}
+\leq \sabs{x-y} .
+\end{equation*}
+
+Jadi, sinus dan kosinus bersifat kontinu Lipschitz dengan $K=1$.
+\end{example}
+
+\begin{example}
+Fungsi $f \colon [1,\infty) \to \R$ yang didefinisikan oleh $f(x) \coloneqq \sqrt{x}$
+bersifat kontinu Lipschitz. Buktinya:
+\begin{equation*}
+\abs{\sqrt{x}-\sqrt{y}} = 
+\abs{\frac{x-y}{\sqrt{x}+\sqrt{y}}}
+=
+\frac{\sabs{x-y}}{\sqrt{x}+\sqrt{y}} .
+\end{equation*}
+Karena $x \geq 1$ dan $y \geq 1$, kita peroleh $\frac{1}{\sqrt{x}+\sqrt{y}}
+\leq \frac{1}{2}$.  Oleh karena itu,
+\begin{equation*}
+\abs{\sqrt{x}-\sqrt{y}} = 
+\abs{\frac{x-y}{\sqrt{x}+\sqrt{y}}}
+\leq
+\frac{1}{2}
+\sabs{x-y}.
+\end{equation*}
+
+Di sisi lain, $g \colon [0,\infty) \to \R$ yang didefinisikan oleh
+$g(x) \coloneqq \sqrt{x}$ tidak kontinu Lipschitz.  Buktinya:
+Andaikan terdapat $K$ sedemikian sehingga untuk semua $x,y \in [0,\infty)$,
+\begin{equation*}
+\abs{\sqrt{x}-\sqrt{y}} 
+\leq
+K \sabs{x-y} ,
+\end{equation*}
+Kita peroleh $K > 0$, sebab $K < 0$ mustahil,
+dan $K=0$ akan berarti bahwa $g$ konstan.
+Tetapkan $y=0$ untuk memperoleh
+$\sqrt{x} \leq K x$.
+Untuk $x > 0$, kita peroleh
+$\nicefrac{1}{K} \leq \sqrt{x}$ atau $\nicefrac{1}{K^2} \leq x$.
+Hal ini tidak mungkin benar untuk semua
+$x > 0$.  Jadi, tidak ada $K$ yang memenuhi dan $g$ tidak
+kontinu Lipschitz.  Lihat \figureref{fig:sqrtgraph} dan perhatikan bahwa garis-garis
+sekan semakin tegak ketika kita mendekati $x=0$.
+\begin{myfigureht}
+\myincludegraphics{sqrtgraph}{%
+Grafik suatu fungsi yang mula-mula naik secara vertikal
+di titik ujung kiri, lalu cepat melengkung sehingga menjadi
+jauh lebih mendatar di titik ujung kanan.
+Digambar garis-garis sekan yang melalui titik ujung kiri dan suatu
+barisan titik pada grafik yang semakin mendekati
+titik ujung kiri.
+Tampak bahwa garis-garis sekan semakin
+tegak ketika titik kedua
+pada garis sekan semakin dekat
+ke titik ujung kiri.}
+\caption{Grafik $\sqrt{x}$ dan beberapa garis sekan yang melalui $(0,0)$ dan
+$(x,\sqrt{x})$.\label{fig:sqrtgraph}}
+\end{myfigureht}
+
+Fungsi $g$ pada contoh terakhir kontinu seragam,
+tetapi tidak kontinu Lipschitz.
+Untuk melihat bahwa $\sqrt{x}$ merupakan fungsi yang
+kontinu seragam pada $[0,\infty)$,
+perhatikan bahwa pembatasannya pada $[0,1]$ kontinu seragam berdasarkan \thmref{unifcont:thm}.
+Pembatasannya pada $[1,\infty)$ juga bersifat Lipschitz (dan karenanya kontinu seragam).
+Tidak sulit (latihan) untuk menunjukkan bahwa ini berarti $\sqrt{x}$ merupakan
+fungsi kontinu seragam pada $[0,\infty)$.
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Misalkan $f \colon S \to \R$ kontinu seragam.  Misalkan $A \subset S$.
+Maka pembatasan $f|_A$ kontinu seragam.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon (a,b) \to \R$ suatu fungsi kontinu seragam.
+Selesaikan pembuktian \propref{context:prop} dengan menunjukkan bahwa
+limit
+$\lim\limits_{x \to b} f(x)$
+ada.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa $f \colon (c,\infty) \to \R$ untuk suatu $c > 0$
+yang didefinisikan oleh $f(x) \coloneqq \nicefrac{1}{x}$ bersifat kontinu Lipschitz.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa $f \colon (0,\infty) \to \R$
+yang didefinisikan oleh $f(x) \coloneqq \nicefrac{1}{x}$ tidak kontinu Lipschitz.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Misalkan $A$ dan $B$ merupakan interval.
+Misalkan $f \colon A \to \R$ dan $g \colon B \to \R$ fungsi-fungsi kontinu seragam
+sedemikian sehingga $f(x) = g(x)$ untuk $x \in A \cap B$.  Definisikan
+fungsi $h \colon A \cup B \to \R$ dengan $h(x) \coloneqq f(x)$ jika
+$x \in A$ dan $h(x) \coloneqq g(x)$ jika $x \in B \setminus A$.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa jika $A \cap B \neq \emptyset$, maka $h$ kontinu seragam.
+\item
+Temukan contoh dengan $A \cap B = \emptyset$ dan $h$ bahkan tidak
+kontinu.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}[Menantang]
+Misalkan $f \colon \R \to \R$ suatu polinomial berderajat
+$d \geq 2$.  Tunjukkan bahwa $f$ tidak kontinu
+Lipschitz.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon (0,1) \to \R$ suatu fungsi kontinu terbatas.  Tunjukkan bahwa
+fungsi
+$g(x) \coloneqq x(1-x)f(x)$ kontinu seragam.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa $f \colon (0,\infty) \to \R$ yang didefinisikan oleh $f(x) \coloneqq \sin
+(\nicefrac{1}{x})$ tidak kontinu seragam.
+\end{exercise}
+
+\begin{exercise}[Menantang]
+Misalkan $f \colon \Q \to \R$ suatu fungsi kontinu seragam.  Tunjukkan bahwa
+terdapat fungsi kontinu seragam $\widetilde{f} \colon \R \to \R$
+sedemikian sehingga $f(x) = \widetilde{f}(x)$ untuk semua $x \in \Q$.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Temukan fungsi kontinu $f \colon (0,1) \to \R$ dan barisan
+$\{ x_n \}_{n=1}^\infty$ dalam
+$(0,1)$ yang merupakan barisan Cauchy, tetapi $\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ bukan barisan Cauchy.
+\item
+Buktikan bahwa jika $f \colon \R \to \R$ kontinu,
+dan $\{ x_n \}_{n=1}^\infty$ merupakan
+barisan Cauchy, maka $\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ juga merupakan barisan Cauchy.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{samepage}
+\begin{exercise}
+Buktikan:
+\begin{enumerate}[a)]
+\item
+Jika $f \colon S \to \R$ dan $g \colon S \to \R$ kontinu seragam,
+maka $h \colon S \to \R$ yang diberikan oleh $h(x) \coloneqq f(x) + g(x)$
+kontinu seragam.
+\item
+Jika $f \colon S \to \R$ kontinu seragam dan $a \in \R$,
+maka $h \colon S \to \R$ yang diberikan oleh $h(x) \coloneqq a f(x)$
+kontinu seragam.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Buktikan:
+\begin{enumerate}[a)]
+\item
+Jika $f \colon S \to \R$ dan $g \colon S \to \R$ bersifat Lipschitz,
+maka $h \colon S \to \R$ yang diberikan oleh $h(x) \coloneqq f(x) + g(x)$
+bersifat Lipschitz.
+\item
+Jika $f \colon S \to \R$ bersifat Lipschitz dan $a \in \R$,
+maka $h \colon S \to \R$ yang diberikan oleh $h(x) \coloneqq a f(x)$
+bersifat Lipschitz.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Jika $f \colon [0,1] \to \R$ diberikan oleh $f(x) \coloneqq x^m$ untuk suatu bilangan bulat
+$m \geq 0$,
+tunjukkan bahwa $f$ bersifat Lipschitz dan temukan konstanta Lipschitz terbaik (terkecil)
+$K$ (yang tentu saja bergantung pada $m$).
+Petunjuk:
+$(x-y)(x^{m-1} + x^{m-2}y + x^{m-3}y^2 + \cdots + x y^{m-2} + y^{m-1}) = x^m
+- y^m$ untuk $m$ positif.
+\item
+Dengan menggunakan latihan sebelumnya, tunjukkan bahwa jika $f \colon [0,1] \to \R$
+suatu polinomial, yaitu $f(x) \coloneqq a_m x^m + a_{m-1} x^{m-1} + \cdots + a_0$,
+maka $f$ bersifat Lipschitz.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Andaikan untuk $f \colon [0,1] \to \R$ berlaku $\babs{f(x)-f(y)} \leq K
+\sabs{x-y}$ untuk semua $x,y$ dalam $[0,1]$,
+dan $f(0) = f(1) = 0$.
+Buktikan bahwa $\babs{f(x)} \leq \nicefrac{K}{2}$ untuk semua $x \in [0,1]$.  Tunjukkan pula dengan contoh bahwa
+$\nicefrac{K}{2}$ merupakan batas terbaik yang mungkin.
+Artinya, temukan fungsi kontinu
+yang memenuhi $\babs{f(x)} = \nicefrac{K}{2}$ untuk suatu $x \in [0,1]$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon \R \to \R$ kontinu dan periodik dengan periode
+$P > 0$.  Artinya, $f(x+P) = f(x)$ untuk semua $x \in \R$.  Tunjukkan bahwa $f$
+kontinu seragam.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon S \to \R$ dan $g \colon [0,\infty) \to [0,\infty)$
+merupakan fungsi, $g$ kontinu di $0$, $g(0) = 0$, dan
+setiap kali $x$ dan $y$ berada dalam $S$, berlaku $\babs{f(x)-f(y)} \leq
+g\bigl(\sabs{x-y}\bigr)$.
+Buktikan bahwa $f$ kontinu seragam.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon [a,b] \to \R$ suatu fungsi sedemikian sehingga untuk setiap $c \in
+[a,b]$ terdapat $K_c > 0$ dan $\epsilon_c > 0$ yang memenuhi
+$\babs{f(x)-f(y)} \leq K_c \sabs{x-y}$ untuk semua $x$ dan $y$ dalam
+$(c-\epsilon_c,c+\epsilon_c) \cap [a,b]$.  Dengan kata lain, $f$
+\myquote{bersifat Lipschitz lokal.}
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa terdapat satu $K > 0$ sedemikian sehingga
+$\babs{f(x)-f(y)} \leq K \sabs{x-y}$ untuk semua $x,y$ dalam $[a,b]$.
+\item
+Temukan contoh tandingan terhadap pernyataan di atas jika intervalnya terbuka, yaitu,
+temukan $f \colon (a,b) \to \R$ yang bersifat Lipschitz lokal, tetapi tidak
+Lipschitz.
+\end{enumerate}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Limit di tak hingga}
+\label{sec:limitatinf}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{kurang dari 1 kuliah (opsional, dapat dihilangkan dengan aman kecuali
+\sectionref{sec:monotonefunc} atau
+\sectionref{sec:impropriemann} juga dibahas)}
+
+\subsection{Limit di tak hingga}
+
+Seperti halnya barisan, suatu variabel kontinu juga dapat menuju tak hingga.
+
+\begin{defn}
+Kita mengatakan bahwa $\infty$ merupakan \emph{\myindex{titik akumulasi}} dari $S \subset \R$ jika untuk setiap
+$M \in \R$, terdapat $x \in S$ sedemikian sehingga $x \geq M$.  Demikian pula,
+$- \infty$ merupakan \emph{titik akumulasi} dari $S \subset \R$ jika untuk setiap
+$M \in \R$, terdapat $x \in S$ sedemikian sehingga $x \leq M$.
+
+\index{limit!fungsi di tak hingga}%
+Misalkan $f \colon S \to \R$ suatu fungsi, dengan 
+$\infty$ merupakan titik akumulasi dari $S$.
+Jika terdapat $L \in \R$
+dengan sifat
+bahwa untuk setiap $\epsilon > 0$, terdapat $M \in \R$ sedemikian sehingga
+\begin{equation*}
+\babs{f(x) - L} < \epsilon 
+\end{equation*}
+setiap kali $x \in S$ dan $x \geq M$, kita mengatakan bahwa $f(x)$
+\emph{konvergen}\index{konvergen!fungsi} ke $L$
+ketika $x$ menuju $\infty$.  Kita menyebut $L$ suatu \emph{limit}
+dan, jika tunggal, menuliskan
+\glsadd{not:limfuncinf}
+\begin{equation*}
+\lim_{x \to \infty} f(x) \coloneqq L .
+\end{equation*}
+Sebagai alternatif, kita menuliskan $f(x) \to L$ ketika $x \to \infty$.
+
+Demikian pula, jika $-\infty$ merupakan titik akumulasi dari $S$
+dan
+terdapat $L \in \R$
+sedemikian sehingga untuk setiap $\epsilon > 0$, terdapat $M \in \R$ sedemikian sehingga
+\begin{equation*}
+\babs{f(x) - L} < \epsilon 
+\end{equation*}
+setiap kali $x \in S$ dan $x \leq M$, kita mengatakan bahwa $f(x)$ \emph{konvergen} ke $L$
+ketika $x$ menuju $-\infty$.
+Sebagai alternatif, kita menuliskan $f(x) \to L$ ketika $x \to -\infty$.
+Kita menyebut $L$ suatu \emph{limit} dan, jika tunggal, menuliskan
+\begin{equation*}
+\lim_{x \to -\infty} f(x) \coloneqq L .
+\end{equation*}
+\end{defn}
+
+Hal pertama yang perlu dilakukan, seperti biasa, adalah membuktikan bahwa limit tersebut, jika ada,
+bersifat tunggal.
+Kita menyerahkannya sebagai latihan bagi pembaca.
+
+\begin{prop} \label{liminfty:unique}
+Limit di $\infty$ atau $-\infty$ sebagaimana didefinisikan di atas bersifat tunggal jika ada.
+\end{prop}
+
+\begin{example}
+Misalkan $f(x) \coloneqq \frac{1}{\sabs{x}+1}$.  Maka
+\begin{equation*}
+\lim_{x\to \infty} f(x) = 0 \qquad \text{dan} \qquad
+\lim_{x\to -\infty} f(x) = 0 .
+\end{equation*}
+
+Bukti:
+Ambil $\epsilon > 0$.  Cari $M > 0$ yang cukup besar
+sehingga $\frac{1}{M+1} < \epsilon$.  Jika
+$x \geq M$, maka $0 < \frac{1}{\sabs{x}+1} = \frac{1}{x+1} \leq \frac{1}{M+1} < \epsilon$.
+Limit pertama pun diperoleh.
+Bukti untuk $-\infty$ diserahkan kepada pembaca.
+\end{example}
+
+\begin{example}
+Misalkan $f(x) \coloneqq \sin(\pi x)$.  Maka $\lim_{x\to\infty} f(x)$ tidak ada.
+Untuk membuktikan fakta ini, perhatikan bahwa jika $x = 2n+\nicefrac{1}{2}$ untuk suatu $n \in
+\N$, maka $f(x)=1$,
+sedangkan jika $x = 2n+\nicefrac{3}{2}$, maka $f(x)=-1$.
+Kedua nilai ini, $1$ dan $-1$, tidak mungkin sekaligus berada
+dalam jarak $\epsilon$ yang kecil dari satu bilangan real yang sama.
+
+Berhati-hatilah agar tidak mencampuradukkan limit kontinu dengan limit barisan.
+Kita dapat mengatakan
+\begin{equation*}
+\lim_{n \to \infty} \sin(\pi n) = 0, \qquad \text{tetapi} \qquad
+\lim_{x \to \infty} \sin(\pi x) \enspace \text{tidak ada}.
+\end{equation*}
+Tentu saja, notasi tersebut ambigu:  Apakah yang kita maksud adalah
+barisan $\bigl\{ \sin (\pi n) \bigr\}_{n=1}^\infty$ atau fungsi $\sin(\pi x)$
+dari suatu variabel real?  Kita sekadar menggunakan konvensi
+bahwa $n \in \N$, sedangkan $x \in \R$.  Ketika notasinya tidak jelas,
+sebaiknya nyatakan secara eksplisit di himpunan mana variabel tersebut berada, atau jenis
+limit apa yang sedang digunakan.  Jika ada kemungkinan timbul kebingungan, kita dapat
+menuliskan, misalnya,
+\begin{equation*}
+\lim_{\substack{n \to \infty\\n \in \N}} \sin(\pi n) .
+\end{equation*}
+\end{example}
+
+Terdapat hubungan antara limit kontinu dan limit barisan, tetapi kita harus meninjau semua
+barisan yang menuju tak hingga, seperti sebelumnya dalam \lemmaref{seqflimit:lemma}.
+
+\begin{lemma} \label{seqflimitinf:lemma}
+Misalkan $f \colon S \to \R$ suatu fungsi, $\infty$ suatu titik
+akumulasi dari $S \subset \R$, dan $L \in \R$.  Maka
+\begin{equation*}
+\lim_{x\to\infty} f(x) = L
+\qquad \text{jika dan hanya jika} \qquad
+\lim_{n\to\infty} f(x_n) = L
+\end{equation*}
+untuk setiap barisan $\{ x_n \}_{n=1}^\infty$ dalam $S$ sedemikian sehingga $\lim\limits_{n\to\infty} x_n = \infty$.
+\end{lemma}
+
+Lemma tersebut juga berlaku untuk limit ketika $x \to -\infty$.
+Buktinya hampir identik dan
+diserahkan sebagai latihan.
+
+\begin{proof}
+Pertama, misalkan $f(x) \to L$ ketika $x \to \infty$.
+Untuk sebarang $\epsilon > 0$, terdapat $M$ sedemikian sehingga untuk semua $x \in S$
+yang memenuhi $x \geq M$,
+berlaku $\babs{f(x)-L} < \epsilon$.
+Misalkan $\{ x_n \}_{n=1}^\infty$
+suatu barisan dalam $S$ sedemikian sehingga $\lim_{n\to\infty} x_n = \infty$.  Maka terdapat
+$N$ sedemikian sehingga
+$x_n \geq M$
+untuk semua $n \geq N$.
+Dengan demikian,
+$\babs{f(x_n)-L} < \epsilon$.
+
+Kita membuktikan arah sebaliknya dengan kontraposisi.  Misalkan $f(x)$ tidak
+menuju $L$ ketika $x \to \infty$.
+Ini berarti bahwa terdapat $\epsilon > 0$
+sedemikian sehingga untuk setiap $n \in \N$, terdapat $x \in S$, $x \geq n$, yang kita
+namai $x_n$, sedemikian sehingga $\babs{f(x_n)-L} \geq \epsilon$.
+Tinjau barisan $\{ x_n \}_{n=1}^\infty$.  Jelas bahwa 
+$\bigl\{ f(x_n) \bigr\}_{n=1}^\infty$ tidak konvergen ke $L$.  Tinggal diperhatikan
+bahwa $\lim_{n\to\infty} x_n = \infty$ karena $x_n \geq n$ untuk semua $n$.
+\end{proof}
+
+Dengan menggunakan lemma tersebut, sekali lagi kita menerjemahkan hasil-hasil mengenai limit
+sekuensial menjadi hasil-hasil mengenai limit kontinu ketika $x$ menuju tak hingga.  Artinya,
+kita memperoleh analog dari akibat-akibat
+dalam \sectionref{subseq:sequentiallimits} secara hampir langsung.  Kita cukup mengizinkan 
+titik akumulasi $c$ berupa $\infty$ atau $-\infty$, selain
+suatu bilangan real.  Kita menyerahkan
+verifikasi pernyataan-pernyataan ini kepada mahasiswa.
+
+\subsection{Limit tak hingga}
+
+Seperti pada barisan, sering kali berguna untuk membedakan beberapa
+fungsi divergen dan membicarakan limit yang bernilai tak hingga
+seolah-olah limit tersebut ada.
+
+\begin{defn}
+\index{limit tak hingga!fungsi}\index{limit!tak hingga}%
+Misalkan $f \colon S \to \R$ suatu fungsi dan andaikan
+$S$ memiliki $\infty$ sebagai titik akumulasi.
+Kita katakan bahwa $f(x)$
+\emph{\myindex{divergen ke tak hingga}}
+ketika $x$ menuju $\infty$
+jika untuk setiap $N \in \R$
+terdapat $M \in \R$ sedemikian sehingga
+\begin{equation*}
+f(x) > N
+\end{equation*}
+setiap kali $x \in S$ dan $x \geq M$.
+Kita tulis
+\begin{equation*}
+\lim_{x \to \infty} f(x) \coloneqq \infty ,
+\end{equation*}
+atau kita katakan bahwa $f(x) \to \infty$ ketika $x \to \infty$.
+\end{defn}
+
+Definisi serupa dapat dibuat untuk limit ketika $x \to -\infty$
+atau ketika $x \to c$ untuk $c$ berhingga.  Definisi serupa juga dapat
+dibuat untuk limit yang bernilai $-\infty$.  Perumusan definisi-definisi tersebut
+diserahkan sebagai latihan.
+Perhatikan bahwa
+kadang-kadang digunakan ungkapan yang sedikit tidak tepat (dalam konteks ini),
+yaitu
+\emph{\myindex{konvergen ke tak hingga}}.
+Kita dapat kembali menggunakan limit sekuensial, dan suatu analog dari
+\lemmaref{seqflimit:lemma} diserahkan sebagai latihan.
+
+\begin{example}
+Mari kita tunjukkan bahwa $\lim\limits_{x \to \infty} \frac{1+x^2}{1+x} = \infty$.
+
+Bukti: Untuk $x \geq 1$, berlaku
+\begin{equation*}
+\frac{1+x^2}{1+x} \geq 
+\frac{x^2}{x+x}  = 
+\frac{x}{2} .
+\end{equation*}
+Untuk sebarang $N \in \R$, pilih $M = \max \{ 2N+1 , 1 \}$.
+Jika $x \geq M$, maka $x \geq 1$ dan $\nicefrac{x}{2} > N$.
+Jadi,
+\begin{equation*}
+\frac{1+x^2}{1+x} \geq 
+\frac{x}{2} > N .
+\end{equation*}
+\end{example}
+
+\subsection{Komposisi}
+
+Terakhir, seperti halnya limit pada bilangan berhingga,
+limit berperilaku baik terhadap komposisi apabila diberikan
+asumsi kekontinuan.
+
+\begin{prop} \label{prop:inflimcompositions}
+Andaikan $f \colon A \to B$, $g \colon B \to \R$, $A, B \subset \R$,
+$a \in \R \cup \{ -\infty, \infty\}$ merupakan titik akumulasi $A$,
+dan $b \in \R \cup \{ -\infty, \infty\}$ merupakan titik akumulasi $B$.
+Andaikan
+\begin{equation*}
+\lim_{x \to a} f(x) = b\qquad \text{dan} \qquad \lim_{y \to b} g(y) = c
+\end{equation*}
+untuk suatu $c \in \R \cup \{ -\infty, \infty \}$.
+Jika $b \in B$, andaikan pula $g(b) = c$.
+Maka
+\begin{equation*}
+\lim_{x \to a} g\bigl(f(x)\bigr) = c .
+\end{equation*}
+\end{prop}
+
+Pembuktiannya langsung dan diserahkan sebagai latihan.  Kita telah
+mengetahui proposisi tersebut ketika $a, b, c \in \R$ (lihat Latihan
+\ref{exercise:contlimitcomposition} dan
+\ref{exercise:contlimitbadcomposition}).  Sekali lagi, syarat bahwa $g$
+kontinu di $b$, jika $b \in B$, memang diperlukan.
+
+\begin{example}
+Misalkan $h(x) \coloneqq e^{-x^2+x}$.  Maka
+\begin{equation*}
+\lim_{x\to \infty} h(x) = 0 .
+\end{equation*}
+
+Bukti:
+Pernyataan tersebut diperoleh setelah kita mengetahui bahwa
+\begin{equation*}
+\lim_{x\to \infty} (-x^2+x) = -\infty
+\end{equation*}
+dan
+\begin{equation*}
+\lim_{y\to -\infty} e^y = 0 ,
+\end{equation*}
+yang biasanya dibuktikan ketika fungsi eksponensial didefinisikan.
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Buktikan \propref{liminfty:unique}.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon [1,\infty) \to \R$ suatu fungsi.  Definisikan
+$g \colon (0,1] \to \R$ melalui $g(x) \coloneqq f(\nicefrac{1}{x})$.
+Dengan menggunakan definisi limit secara langsung,
+tunjukkan bahwa $\lim_{x\to 0^+} g(x)$
+ada jika dan hanya jika $\lim_{x\to \infty} f(x)$ ada; dalam
+hal ini kedua limit tersebut sama.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{prop:inflimcompositions}.
+\end{exercise}
+
+\begin{exercise}
+Mari kita jelaskan alasan bagi terminologi tersebut.
+Misalkan $f \colon \R \to \R$ suatu fungsi sedemikian sehingga
+$\lim_{x \to \infty} f(x) = \infty$ (divergen menuju tak hingga).
+Tunjukkan bahwa $f(x)$ divergen (yakni tidak konvergen) ketika $x \to \infty$.
+\end{exercise}
+
+\begin{exercise}
+Rumuskan definisi limit $f(x)$ menuju $-\infty$ ketika $x \to
+\infty$, $x \to -\infty$, dan $x \to c$ untuk $c \in \R$ yang berhingga.
+Kemudian nyatakan definisi limit $f(x)$ menuju $\infty$ 
+ketika $x \to -\infty$, dan ketika $x \to c$ untuk $c \in \R$ yang berhingga.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $P(x) \coloneqq x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0$ merupakan \emph{\myindex{polinom monik}}
+berderajat $n \geq 1$ (monik berarti koefisien $x^n$ adalah 1).
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa jika $n$ genap, maka $\lim\limits_{x\to\infty} P(x) = 
+\lim\limits_{x\to-\infty} P(x) = \infty$.
+\item
+Tunjukkan bahwa jika $n$ ganjil, maka
+$\lim\limits_{x\to\infty} P(x) = \infty$ dan
+$\lim\limits_{x\to-\infty} P(x) = -\infty$ (lihat latihan sebelumnya).
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{ x_n \}_{n=1}^\infty$ suatu barisan.  Tinjau $S \coloneqq \N \subset \R$, dan
+$f \colon S \to \R$ yang didefinisikan oleh $f(n) \coloneqq x_n$.  Tunjukkan bahwa
+kedua pengertian limit,
+\begin{equation*}
+\lim_{n\to\infty} x_n \qquad \text{dan} \qquad
+\lim_{x\to\infty} f(x) 
+\end{equation*}
+ekuivalen.  Artinya, tunjukkan bahwa jika salah satunya ada, maka
+yang lainnya juga ada, dan dalam hal ini keduanya sama.
+\end{exercise}
+
+\begin{exercise}
+Perluas \lemmaref{seqflimitinf:lemma} sebagai berikut.
+Andaikan $S \subset \R$ memiliki titik akumulasi $c \in \R$, $c = \infty$,
+atau $c = -\infty$.  Misalkan $f \colon S \to \R$ suatu fungsi dan andaikan
+$L = \infty$ atau $L = -\infty$.  Tunjukkan bahwa
+\begin{equation*}
+\begin{aligned}
+&
+\lim_{x\to c} f(x) = L
+\\
+&
+\qquad \text{jika dan hanya jika}
+\\
+&
+\lim_{n\to\infty} f(x_n) = L \enspace \text{untuk setiap barisan }
+\{ x_n \}_{n=1}^\infty, \\
+& \qquad \text{sedemikian sehingga } \lim_{n\to\infty} x_n = c, \quad
+x_n \in S \setminus \{c\} \text{ untuk setiap } n  .
+\end{aligned}
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon \R \to \R$ merupakan fungsi periodik dengan periode 2, yakni $f(x + 2) =
+f(x)$ untuk setiap $x$.  Definisikan $g \colon \R \to \R$ dengan 
+$g(0) \coloneqq f(0)$ dan, untuk $x \neq 0$, dengan
+\begin{equation*}
+g(x) \coloneqq f\left(\frac{\sqrt{x^2+1}-1}{x}\right)
+\end{equation*}
+\begin{enumerate}[a)]
+\item
+Tentukan fungsi $\varphi \colon (-1,1) \to \R$ sedemikian sehingga
+$g\bigl(\varphi(t)\bigr) = f(t)$, yakni $\varphi^{-1}(x) = 
+\frac{\sqrt{x^2+1}-1}{x}$ untuk $x \neq 0$.
+\item
+Tunjukkan bahwa $f$ kontinu jika dan hanya jika $g$ kontinu dan
+\begin{equation*}
+\lim_{x \to \infty} g(x) = 
+\lim_{x \to -\infty} g(x) = 
+f(1) = f(-1) .
+\end{equation*}
+\end{enumerate}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Fungsi monoton dan kekontinuan}
+\label{sec:monotonefunc}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1 pertemuan (opsional, dapat dihilangkan dengan aman kecuali
+\sectionref{sec:ift} juga dibahas, memerlukan \sectionref{sec:limitatinf})}
+
+\begin{defn}
+Misalkan $S \subset \R$.
+Kita katakan bahwa $f \colon S \to \R$ \emph{\myindex{monoton naik}}
+(berturut-turut, \emph{\myindex{naik tegas}}) jika untuk $x,y \in S$ dengan
+$x < y$ berlaku $f(x) \leq f(y)$ (berturut-turut, $f(x) < f(y)$).
+Kita definisikan
+\emph{\myindex{monoton turun}} dan
+\emph{\myindex{turun tegas}} dengan cara yang sama, yaitu dengan membalik
+ketaksamaan untuk $f$.
+
+Jika suatu fungsi monoton naik atau monoton turun, kita katakan fungsi tersebut
+\emph{monoton}\index{fungsi monoton}.  Jika fungsi tersebut
+naik tegas atau turun tegas, kita katakan fungsi tersebut
+\emph{monoton tegas}\index{fungsi monoton tegas}.
+\end{defn}
+
+Kadang-kadang istilah \emph{\myindex{tak menurun}}
+(berturut-turut, \emph{\myindex{tak menaik}}) digunakan
+untuk fungsi monoton naik (berturut-turut, monoton turun) guna menekankan bahwa fungsi itu tidak
+harus naik tegas (berturut-turut, turun tegas).
+
+Jika $f$ monoton naik, maka $-f$ monoton turun, dan sebaliknya.  Oleh karena itu,
+banyak hasil mengenai fungsi monoton cukup dibuktikan, misalnya, untuk fungsi
+monoton naik, lalu hasil untuk fungsi monoton turun diperoleh dengan mudah.
+
+\subsection{Kekontinuan fungsi monoton}
+
+Limit satu sisi untuk fungsi monoton dihitung
+dengan menghitung infimum dan supremum.
+
+\begin{prop} \label{prop:monotlimits}
+Misalkan $S \subset \R$, $c \in \R$,
+$f \colon S \to \R$ monoton naik,
+dan
+$g \colon S \to \R$ monoton turun.
+Jika $c$ merupakan titik akumulasi dari $S \cap (-\infty,c)$, maka
+\begin{equation*}
+\lim_{x \to c^-} f(x) = \sup \{ f(x) : x < c, x \in S \}
+%mbxSTARTIGNORE
+\qquad \text{dan} \qquad
+%mbxENDIGNORE
+%mbxlatex \quad \text{and} \quad
+\lim_{x \to c^-} g(x) = \inf \{ g(x) : x < c, x \in S \} .
+\end{equation*}
+Jika $c$ merupakan titik akumulasi dari $S \cap (c,\infty)$, maka
+\begin{equation*}
+\lim_{x \to c^+} f(x) = \inf \{ f(x) : x > c, x \in S \}
+%mbxSTARTIGNORE
+\qquad \text{dan} \qquad
+%mbxENDIGNORE
+%mbxlatex \quad \text{and} \quad
+\lim_{x \to c^+} g(x) = \sup \{ g(x) : x > c, x \in S \} .
+\end{equation*}
+Jika $\infty$ merupakan titik akumulasi dari $S$, maka
+\begin{equation*}
+\lim_{x \to \infty} f(x) = \sup \{ f(x) : x \in S \}
+%mbxSTARTIGNORE
+\qquad \text{dan} \qquad
+%mbxENDIGNORE
+%mbxlatex \quad \text{and} \quad
+\lim_{x \to \infty} g(x) = \inf \{ g(x) : x \in S \} .
+\end{equation*}
+Jika $-\infty$ merupakan titik akumulasi dari $S$, maka
+\begin{equation*}
+\lim_{x \to -\infty} f(x) = \inf \{ f(x) : x \in S \}
+%mbxSTARTIGNORE
+\qquad \text{dan} \qquad
+%mbxENDIGNORE
+%mbxlatex \quad \text{and} \quad
+\lim_{x \to -\infty} g(x) = \sup \{ g(x) : x \in S \} .
+\end{equation*}
+\end{prop}
+
+Dengan kata lain, semua limit satu sisi ada setiap kali limit tersebut
+terdefinisi.  Oleh karena itu, untuk fungsi monoton, ketika kita mengatakan
+bahwa limit kiri $x \to c^-$
+ada, yang kita maksud ialah bahwa $c$ merupakan titik akumulasi dari $S \cap (-\infty,c)$,
+dan demikian pula untuk limit kanan.
+
+\begin{proof}
+Misalkan $f$ monoton naik, dan kita akan menunjukkan kesamaan
+pertama.  Bagian lain dari bukti ini sangat serupa dan diserahkan sebagai
+latihan.
+
+Misalkan $a \coloneqq \sup \{ f(x) : x < c, x \in S \}$.  Jika $a = \infty$,
+maka untuk sebarang $M \in \R$, terdapat $x_M \in S$, $x_M < c$, sedemikian sehingga $f(x_M) > M$. 
+Karena $f$ monoton naik, $f(x) \geq f(x_M) >  M$ untuk setiap $x \in S$ dengan $x > x_M$.
+Ambil $\delta \coloneqq c-x_M > 0$ agar definisi limit yang
+bernilai tak hingga terpenuhi.
+
+Selanjutnya, misalkan $a < \infty$.
+Ambil sebarang $\epsilon > 0$.  Karena $a$ merupakan supremum dan
+$S \cap (-\infty,c)$ tidak kosong, $a \in \R$ dan
+terdapat
+$x_\epsilon \in S$,
+$x_\epsilon < c$,
+sedemikian sehingga $f(x_\epsilon) > a-\epsilon$.  Karena $f$ monoton naik,
+jika $x \in S$ dan $x_\epsilon < x < c$, maka
+$a-\epsilon < f(x_\epsilon) \leq f(x) \leq a$.  Misalkan
+$\delta \coloneqq c-x_\epsilon$.  Maka untuk $x \in S \cap (-\infty,c)$
+dengan $\sabs{x-c} < \delta$,
+berlaku $\babs{f(x)-a} < \epsilon$.
+\end{proof}
+
+Misalkan $f \colon S \to \R$ monoton naik, $c \in S$, dan
+kedua limit satu sisinya ada.
+Karena $f(x) \leq f(c) \leq f(y)$
+setiap kali $x < c < y$, dengan mengambil limit kita memperoleh
+\begin{equation*}
+\lim_{x \to c^-} f(x) \leq f(c) \leq \lim_{x \to c^+} f(x) .
+\end{equation*}
+Maka $f$ kontinu di $c$ jika dan hanya jika kedua limit tersebut sama
+satu sama lain (dan karenanya sama dengan $f(c)$).  Lihat juga
+\propref{prop:onesidedlimits}.
+Lihat \figureref{fig:figinccont} untuk memperoleh gambaran mengenai seperti apa
+suatu diskontinuitas.
+
+
+\begin{cor} \label{cor:continterval}
+Jika $I \subset \R$ merupakan interval dan $f \colon I \to \R$ 
+monoton dan tidak konstan, maka $f(I)$ merupakan interval jika dan hanya jika $f$
+kontinu.
+\end{cor}
+
+Asumsi bahwa $f$ tidak konstan digunakan untuk menghindari persoalan teknis
+bahwa $f(I)$ merupakan satu titik: $f(I)$ merupakan satu
+titik jika dan hanya jika $f$ konstan.  Fungsi konstan bersifat 
+kontinu.
+
+\begin{proof}
+Tanpa mengurangi keumuman, misalkan $f$ monoton naik.
+
+Pertama, misalkan $f$ kontinu.  Ambil dua titik
+$f(x_1), f(x_2)$ di $f(I)$ dan misalkan
+$f(x_1) < f(x_2)$.
+Karena $f$ monoton naik, $x_1 < x_2$.  Berdasarkan
+\hyperref[IVT:thm]{teorema nilai antara},
+untuk sebarang $y$ dengan $f(x_1) < y < f(x_2)$, kita menemukan
+$c \in (x_1,x_2) \subset I$ sedemikian sehingga $f(c) = y$, jadi $y \in f(I)$. 
+Dengan demikian, $f(I)$ merupakan interval.
+
+Mari kita buktikan arah sebaliknya dengan kontraposisi.
+Misalkan $f$ tidak kontinu di $c \in I$,
+dan $c$ bukan titik ujung dari $I$.
+Misalkan
+\begin{equation*}
+%mbxlatex \begin{aligned}
+a
+%mbxlatex &
+\coloneqq \lim_{x \to c^-} f(x) = \sup \bigl\{ f(x) : x \in I, x < c \bigr\} ,
+%mbxSTARTIGNORE
+\qquad
+%mbxENDIGNORE
+%mbxlatex \\
+b
+%mbxlatex &
+\coloneqq \lim_{x \to c^+} f(x) = \inf \bigl\{ f(x) : x \in I, x > c \bigr\} .
+%mbxlatex \end{aligned}
+\end{equation*}
+Karena $c$ merupakan titik diskontinuitas, $a < b$.
+Jika $x < c$, maka $f(x) \leq a$, dan
+jika $x > c$, maka $f(x) \geq b$.  Oleh karena itu,
+tidak ada titik
+di $(a,b) \setminus \bigl\{ f(c) \bigr\}$ yang termasuk dalam $f(I)$.
+Terdapat $x_1 \in I$ dengan $x_1 < c$, sehingga
+$f(x_1) \leq a$, dan terdapat $x_2 \in I$ dengan $x_2 > c$,
+sehingga $f(x_2) \geq b$.  Baik $f(x_1)$ maupun $f(x_2)$ termasuk dalam $f(I)$,
+tetapi terdapat titik-titik di antaranya yang tidak termasuk dalam $f(I)$.
+Jadi, $f(I)$ bukan merupakan interval.  Lihat \figureref{fig:figinccont}.
+
+Jika $c \in I$ merupakan titik ujung, buktinya serupa dan diserahkan sebagai latihan.
+\end{proof}
+
+\begin{myfigureht}
+\myincludepdft{figinccont}{%
+Diagram grafik fungsi dengan diskontinuitas loncatan beserta pengaruhnya
+terhadap citra fungsi tersebut.
+Fungsi ini didefinisikan pada interval bertanda I.  Titik x subskrip 1, c, dan
+x subskrip 2 ditandai di dalam I dan tersusun dalam urutan tersebut dari kiri ke kanan.
+Fungsi naik secara kontinu sampai x sama dengan c,
+tempat fungsi mendekati a; yaitu, limit f dari x ketika x mendekati
+c dari kiri adalah a.  Nilai f di c adalah f dari c, yang lebih besar daripada a
+dan lebih kecil daripada b, dengan b merupakan limit f dari x ketika x mendekati c dari
+kanan.  Kemudian fungsi terus naik secara kontinu hingga ujung
+interval I.  Citra f terbagi menjadi tiga bagian.
+Bagian terendah merupakan
+interval yang batas atasnya a, dan interval ini memuat
+f dari x subskrip 1.
+Bagian berikutnya hanyalah titik f dari c.
+Bagian ketiga, yang tertinggi, merupakan interval yang berawal di b,
+dan interval ini memuat f dari x subskrip 2.}
+\caption{Diskontinuitas fungsi monoton naik $f \colon I \to \R$ di
+$c$.\label{fig:figinccont}}
+\end{myfigureht}
+
+Salah satu sifat mencolok dari fungsi monoton adalah bahwa fungsi tersebut tidak mungkin memiliki
+terlalu banyak diskontinuitas.
+
+\begin{cor} \label{cor:monotcountcont}
+Misalkan $I \subset \R$ merupakan interval dan
+$f \colon I \to \R$ monoton.  Maka $f$ memiliki himpunan
+titik diskontinuitas yang terhitung.
+\end{cor}
+
+\begin{proof}
+Misalkan $E \subset I$ merupakan himpunan semua titik diskontinuitas
+yang bukan titik ujung dari $I$.  Karena hanya ada
+dua titik ujung, cukup ditunjukkan bahwa $E$ terhitung.
+Tanpa mengurangi keumuman, misalkan $f$ monoton naik.
+Kita akan mendefinisikan suatu injeksi $h \colon E \to \Q$.
+Untuk setiap $c \in E$,
+kedua limit satu sisi dari $f$ ada karena $c$ bukan titik ujung.
+Misalkan
+\begin{equation*}
+%mbxlatex \begin{aligned}
+a
+%mbxlatex &
+\coloneqq \lim_{x \to c^-} f(x) = \sup \bigl\{ f(x) : x \in I, x < c \bigr\} ,
+%mbxSTARTIGNORE
+\qquad
+%mbxENDIGNORE
+%mbxlatex \\
+b
+%mbxlatex &
+\coloneqq \lim_{x \to c^+} f(x) = \inf \bigl\{ f(x) : x \in I, x > c \bigr\} .
+%mbxlatex \end{aligned}
+\end{equation*}
+Karena $c$ merupakan titik diskontinuitas, $a < b$.  
+Terdapat bilangan rasional $q \in (a,b)$, jadi tetapkan $h(c) \coloneqq q$.
+Misalkan $d \in E$ merupakan titik diskontinuitas lain.
+Jika $d > c$, terdapat
+$x \in I$ dengan $c < x < d$, sehingga $\lim_{x \to d^-} f(x) \geq b$.
+Oleh karena itu, bilangan rasional yang kita pilih untuk $h(d)$ berbeda dari $q$,
+sebab $q=h(c) < b$ dan $h(d) > b$.
+Demikian pula jika $d < c$.  Setelah membuat pilihan seperti itu untuk
+setiap unsur $E$, kita memperoleh fungsi 
+satu-ke-satu (injektif) ke dalam $\Q$.  Oleh karena itu, $E$ terhitung.
+\end{proof}
+
+\begin{example} \label{example:countdiscont}
+Nyatakan bilangan bulat terbesar yang kurang dari atau sama dengan $x$
+dengan $\lfloor x \rfloor$.
+Definisikan $f \colon [0,1] \to \R$ dengan
+\begin{equation*}
+f(x) \coloneqq
+x +
+\sum_{n=0}^{\lfloor 1/(1-x) \rfloor}
+2^{-n} ,
+\end{equation*}
+untuk $x < 1$ dan $f(1) \coloneqq 3$.
+Sebagai latihan, tunjukkan bahwa $f$ naik tegas, terbatas, dan
+memiliki diskontinuitas di setiap titik $1-\nicefrac{1}{k}$ untuk $k \in \N$ dengan $k \geq 2$.  Secara khusus,
+himpunan titik diskontinuitas fungsi tersebut terhitung, tetapi fungsi itu terbatas dan
+didefinisikan pada interval tertutup terbatas.  Lihat \figureref{fig:countdiscont}.
+\begin{myfigureht}
+\myincludegraphics{increasing-discont-fig}{%
+Grafik fungsi pada interval dari 0 hingga 1
+yang tersusun atas ruas-ruas garis lurus yang miring ke atas.  Terdapat
+ruas pertama yang melintasi separuh grafik, berawal pada 
+y sama dengan 1,5 dan berakhir pada y sama dengan 2.  Kemudian terdapat
+diskontinuitas loncatan ke atas dan ruas garis lain yang jauh lebih pendek,
+yang juga miring ke atas.  Rangkaian loncatan ke atas yang makin kecil dan
+ruas garis miring ke atas yang makin pendek ini terus berlanjut hingga
+pada x sama dengan 1 kita mencapai y sama dengan 3.}
+\caption{Fungsi naik tegas pada $[0,1]$ dengan himpunan titik diskontinuitas
+yang terhitung.\label{fig:countdiscont}}
+\end{myfigureht}
+
+Dengan cara serupa, kita dapat menemukan contoh fungsi monoton yang diskontinu pada himpunan rapat
+seperti bilangan rasional.  Lihat latihan.
+\end{example}
+
+
+\subsection{Kekontinuan fungsi invers}
+
+
+Fungsi monoton tegas $f$ bersifat satu-satu (injektif).
+Untuk melihat fakta ini,
+perhatikan bahwa jika $x \neq y$, kita dapat mengasumsikan $x < y$.  Kita memperoleh $f(x) <
+f(y)$ jika $f$ naik tegas, atau $f(x) > f(y)$ jika $f$ turun
+tegas, sehingga $f(x) \neq f(y)$.
+Oleh karena itu, $f$ harus memiliki invers $f^{-1}$ yang terdefinisi pada daerah hasilnya.
+
+\begin{prop} \label{prop:invcont}
+Jika $I \subset \R$ adalah suatu interval dan $f \colon I \to \R$ monoton
+tegas, maka invers $f^{-1} \colon f(I) \to I$ kontinu.
+\end{prop}
+
+\begin{proof}
+Misalkan $f$ naik tegas.  Buktinya hampir
+sama untuk fungsi yang turun tegas.
+Karena $f$ naik tegas, demikian pula $f^{-1}$.  Artinya, jika $f(x) <
+f(y)$, maka harus berlaku $x < y$ dan oleh karena itu
+$f^{-1}\bigl(f(x)\bigr) < f^{-1}\bigl(f(y)\bigr)$.
+
+Ambil $c \in f(I)$.
+Jika $c$ bukan titik akumulasi dari $f(I)$, maka $f^{-1}$ kontinu di $c$
+secara otomatis.  Jadi, misalkan $c$ adalah titik akumulasi dari $f(I)$.
+Misalkan kedua limit satu sisi berikut ada, yakni keduanya
+terdefinisi:
+\begin{align*}
+x_0 & \coloneqq \lim_{y \to c^-} f^{-1}(y) =
+\sup \bigl\{ f^{-1}(y) : y < c, y \in f(I) \bigr\}
+=
+\sup \bigl\{ x \in I : f(x) < c \bigr\} , \\
+x_1 & \coloneqq \lim_{y \to c^+} f^{-1}(y) =
+\inf \bigl\{ f^{-1}(y) : y > c, y \in f(I) \bigr\}
+=
+\inf \bigl\{ x \in I : f(x) > c \bigr\} .
+\end{align*}
+Kita memiliki $x_0 \leq x_1$ karena $f^{-1}$ monoton naik.
+Untuk setiap $x \in I$ dengan $x > x_0$, berlaku $f(x) \geq c$.  Karena $f$ naik tegas,
+harus berlaku $f(x) > c$ untuk setiap $x \in I$ dengan $x > x_0$.  Oleh karena itu,
+\begin{equation*}
+\{ x \in I : x > x_0 \} \subset \bigl\{ x \in I : f(x) > c \bigr\}.
+\end{equation*}
+Infimum himpunan di sebelah kiri adalah $x_0$, dan infimum himpunan di sebelah kanan
+adalah $x_1$, sehingga kita memperoleh $x_0 \geq x_1$.
+Jadi, $x_1 = x_0$, dan $f^{-1}$ kontinu di $c$.
+
+Jika salah satu limit satu sisi tidak ada (yakni, ketika pengambilan limit dari
+sisi tersebut tidak terdefinisi), argumennya serupa
+dan diserahkan sebagai latihan.
+\end{proof}
+
+\begin{example}
+Proposisi tersebut tidak mensyaratkan bahwa $f$ sendiri kontinu.  Misalkan
+$f \colon \R \to \R$ didefinisikan oleh
+\begin{equation*}
+f(x) \coloneqq
+\begin{cases}
+x & \text{jika } x < 0, \\
+x+1 & \text{jika } x \geq 0. \\
+\end{cases}
+\end{equation*}
+Fungsi $f$ tidak kontinu di $0$.
+Citra dari $I = \R$ adalah himpunan 
+$(-\infty,0)\cup [1,\infty)$, yang bukan suatu interval.
+Dengan demikian, $f^{-1} \colon (-\infty,0)\cup [1,\infty)
+\to \R$ dapat ditulis sebagai
+\begin{equation*}
+f^{-1}(y) =
+\begin{cases}
+y & \text{jika } y < 0, \\
+y-1 & \text{jika } y \geq 1. 
+\end{cases}
+\end{equation*}
+Tidak sulit untuk melihat bahwa $f^{-1}$ adalah fungsi kontinu.  Lihat
+\figureref{invcontfig} untuk grafik-grafiknya.
+\begin{myfigureht}
+\myincludepdft{invcontfigAB}{%
+Dua grafik.  Di sebelah kiri, sebuah garis diagonal menanjak yang membentang dari
+kiri bawah ke titik asal (tidak termasuk titik asal),
+lalu meloncat ke atas dan kemudian terus bergerak diagonal ke atas.
+Pada grafik di sebelah kanan, garis pertama yang membentuk
+grafik itu sama, tetapi kemudian terdapat sebuah interval pendek yang tidak dilalui
+grafik dan garisnya dimulai kembali pada sumbu horizontal,
+lalu bergerak diagonal ke atas lagi.}
+\caption{Grafik $f$ di sebelah kiri dan $f^{-1}$ di sebelah kanan.\label{invcontfig}}
+\end{myfigureht}
+\end{example}
+
+Perhatikan apa yang terjadi pada proposisi tersebut jika $f(I)$ merupakan suatu interval.
+Dalam hal itu, kita cukup
+menerapkan \corref{cor:continterval} pada $f$ dan $f^{-1}$.  Artinya, jika
+$f \colon I \to J$ adalah fungsi monoton tegas yang surjektif dan $I$ serta $J$ merupakan interval,
+maka $f$ dan $f^{-1}$ keduanya kontinu.  Lebih lanjut, $f(I)$ merupakan suatu
+interval tepat ketika $f$ kontinu.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Misalkan $f \colon [0,1] \to \R$ monoton.  Buktikan bahwa $f$ terbatas.
+\end{exercise}
+
+\begin{exercise}
+Lengkapi bukti \propref{prop:monotlimits}.
+Petunjuk: Anda dapat mengurangi pekerjaan menjadi separuhnya dengan memperhatikan bahwa jika $g$ monoton turun,
+maka $-g$ monoton naik.
+\end{exercise}
+
+\begin{exercise}
+Lengkapi bukti \corref{cor:continterval}.
+\end{exercise}
+
+\begin{exercise}
+Buktikan pernyataan-pernyataan dalam \exampleref{example:countdiscont}.
+\end{exercise}
+
+\begin{exercise}
+Lengkapi bukti \propref{prop:invcont}.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Misalkan $S \subset \R$, dan $f \colon S \to \R$ merupakan fungsi
+monoton naik.  Buktikan:
+\begin{enumerate}[a)]
+\item
+Jika $c$ merupakan titik akumulasi
+dari $S \cap (c,\infty)$, maka
+$\lim\limits_{x\to c^+} f(x) < \infty$.
+\item
+Jika $c$ merupakan titik akumulasi dari $S \cap (-\infty,c)$
+dan $\lim\limits_{x\to c^-} f(x) = \infty$, maka
+$S \subset (-\infty,c)$.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Misalkan $I \subset \R$ merupakan suatu interval dan $f \colon I \to \R$ suatu fungsi.
+Andaikan untuk setiap $c \in I$, terdapat $a, b \in \R$ dengan
+$a > 0$ sedemikian sehingga $f(x) \geq a x + b$ untuk setiap $x \in I$
+dan $f(c) = a c + b$.  Tunjukkan bahwa $f$ naik tegas.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $I$ dan $J$ merupakan interval dan
+$f \colon I \to J$ merupakan fungsi kontinu dan bijektif (satu-satu dan surjektif).
+Tunjukkan bahwa $f$ monoton tegas.
+\end{exercise}
+
+\begin{exercise}
+Tinjau suatu fungsi monoton $f \colon I \to \R$ pada interval $I$.  Buktikan bahwa terdapat
+fungsi $g \colon I \to \R$ sedemikian sehingga
+$\lim\limits_{x \to c^-} g(x) = g(c)$ untuk setiap $c$ dalam $I$ kecuali
+titik ujung yang lebih kecil (kiri) dari $I$, dan sedemikian sehingga
+$g(x) = f(x)$ untuk setiap $x \in I$ di luar suatu himpunan terhitung.
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Misalkan $S \subset \R$ suatu himpunan bagian.  Jika $f \colon S \to \R$ monoton naik dan
+terbatas,
+maka tunjukkan bahwa terdapat fungsi monoton naik $F \colon \R \to \R$
+sedemikian sehingga $f(x) = F(x)$ untuk setiap $x \in S$.
+\item
+Temukan contoh fungsi $f \colon S \to \R$ yang terbatas dan naik tegas sedemikian sehingga
+fungsi monoton naik $F$ seperti di atas tidak dapat naik tegas, bagaimanapun kita
+memilihnya.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Menantang] \label{exercise:increasingfuncdiscatQ}
+Temukan contoh fungsi monoton naik $f \colon [0,1] \to \R$
+yang memiliki diskontinuitas pada setiap bilangan rasional.  Kemudian tunjukkan bahwa citra
+$f\bigl([0,1]\bigr)$ tidak memuat interval apa pun.  Petunjuk: Enumerasikan
+bilangan-bilangan rasional dan definisikan
+fungsi tersebut dengan suatu deret.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $I$ merupakan suatu interval dan $f \colon I \to \R$ monoton.
+Tunjukkan bahwa $\R \setminus f(I)$ merupakan gabungan terhitung dari interval-interval yang saling lepas.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon [0,1] \to (0,1)$ monoton naik.  Tunjukkan bahwa untuk setiap
+$\epsilon > 0$, terdapat
+fungsi naik tegas $g \colon [0,1] \to (0,1)$ sedemikian sehingga
+$g(0) = f(0)$, $f(x) \leq g(x)$ untuk setiap $x$, dan $g(1)-f(1) < \epsilon$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa \myindex{fungsi Dirichlet}
+$f \colon [0,1] \to\R$, yang didefinisikan oleh $f(x) \coloneqq 1$
+jika $x$ rasional dan $f(x) \coloneqq 0$ selainnya, tidak dapat ditulis sebagai
+selisih dua fungsi monoton naik.  Artinya, tidak terdapat fungsi monoton naik
+$g$ dan $h$ sedemikian sehingga $f(x) = g(x) - h(x)$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon (a,b) \to (c,d)$ merupakan fungsi naik tegas
+dan surjektif.  Buktikan bahwa terdapat $g \colon (a,b) \to (c,d)$
+yang juga naik tegas dan surjektif, serta $g(x) < f(x)$ untuk setiap $x \in
+(a,b)$.
+\end{exercise}

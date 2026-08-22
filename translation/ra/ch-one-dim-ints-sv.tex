@@ -1,0 +1,2046 @@
+\chapter{Integral Satu Dimensi dalam Beberapa Variabel} \label{path:chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Diferensiasi di bawah tanda integral}
+\label{sec:diffunderint}
+
+\sectionnotes{kurang dari satu kuliah}
+
+Misalkan $f(x,y)$ fungsi dua variabel, dan definisikan
+\begin{equation*}
+g(y) \coloneqq \int_a^b f(x,y) \,dx .
+\end{equation*}
+Jika $f$ kontinu pada persegi panjang kompak $[a,b] \times [c,d]$, maka
+\volIref{\propref*{vI-prop:integralcontcont} dari jilid I}{\propref{prop:integralcontcont}}
+menyatakan bahwa $g$ kontinu pada $[c,d]$.
+
+Andaikan $f$ dapat diturunkan terhadap $y$.  
+Kapan kita dapat \myquote{mendiferensialkan di bawah tanda integral}?
+Dengan kata lain, kapan $g$ diferensiabel dan turunannya diberikan oleh
+\begin{equation*}
+g'(y) \overset{?}{=} \int_a^b \frac{\partial f}{\partial y}(x,y) \,dx .
+\end{equation*}
+Diferensiasi merupakan operasi limit, sehingga sebenarnya kita menanyakan kapan
+kedua operasi limit berupa integrasi dan diferensiasi dapat dipertukarkan.
+Kedua operasi itu tidak selalu dapat dipertukarkan, sehingga diperlukan hipotesis
+tambahan.  Pertanyaan pertama
+yang kita hadapi adalah keterintegralan
+$\frac{\partial f}{\partial y}$, tetapi rumus di atas tetap dapat gagal meskipun
+$\frac{\partial f}{\partial y}$ terintegralkan sebagai fungsi dari $x$ untuk setiap
+$y$ tetap.
+
+Kita buktikan versi sederhana, tetapi mungkin paling berguna, dari hasil semacam ini.
+
+\begin{thm}[\myindex{Aturan integral Leibniz}]
+Andaikan $f \colon [a,b] \times [c,d] \to \R$ fungsi kontinu
+sedemikian sehingga $\frac{\partial f}{\partial y}$ ada untuk setiap $(x,y) \in [a,b]
+\times [c,d]$ dan kontinu.  Definisikan $g \colon [c,d] \to \R$ dengan
+\begin{equation*}
+g(y) \coloneqq \int_a^b f(x,y) \,dx .
+\end{equation*}
+Maka $g$ diferensiabel secara kontinu dan
+\begin{equation*}
+g'(y) = \int_a^b \frac{\partial f}{\partial y}(x,y) \,dx .
+\end{equation*}
+\end{thm}
+
+Hipotesis tentang $f$ dan $\frac{\partial f}{\partial y}$ dapat
+diperlemah; lihat, misalnya, \exerciseref{exercise:strongerleibniz},
+tetapi tidak dapat dihilangkan begitu saja.
+Gagasan utama dalam pembuktian mengharuskan
+$\frac{\partial f}{\partial y}$ ada dan kontinu untuk semua $x \in [a,b]$,
+termasuk kedua titik ujungnya; dalam arah $y$ kita hanya memerlukan
+interval kecil.  Dalam penerapan, kita sering mengambil $[c,d]$ sebagai
+interval kecil di sekitar titik tempat kita perlu melakukan diferensiasi.
+
+\begin{proof}
+Tetapkan $y \in [c,d]$ dan misalkan $\epsilon > 0$ diberikan.
+Karena $\frac{\partial f}{\partial y}$ kontinu pada $[a,b] \times [c,d]$, turunan parsial tersebut
+kontinu seragam.  Secara khusus, terdapat $\delta > 0$ sedemikian sehingga,
+apabila $y_1 \in [c,d]$ dengan
+$\sabs{y_1-y} < \delta$, untuk setiap $x \in [a,b]$ kita mempunyai
+\begin{equation*}
+\abs{\frac{\partial f}{\partial y}(x,y_1)-\frac{\partial f}{\partial y}(x,y)} < \epsilon .
+\end{equation*}
+
+Andaikan $h$ memenuhi $y+h \in [c,d]$ dan $0 < \sabs{h} < \delta$.
+Tetapkan $x$ sejenak,
+lalu terapkan teorema nilai rata-rata untuk memperoleh $y_1$ di antara $y$ dan $y+h$ sedemikian sehingga
+\begin{equation*}
+\frac{f(x,y+h)-f(x,y)}{h}
+=
+\frac{\partial f}{\partial y}(x,y_1) .
+\end{equation*}
+Karena $\sabs{y_1-y} \leq \sabs{h} < \delta$,
+\begin{equation*}
+\abs{
+\frac{f(x,y+h)-f(x,y)}{h}
+-
+\frac{\partial f}{\partial y}(x,y) 
+}
+=
+\abs{
+\frac{\partial f}{\partial y}(x,y_1) 
+-
+\frac{\partial f}{\partial y}(x,y) 
+}
+< \epsilon .
+\end{equation*}
+Argumen tersebut berlaku untuk setiap $x \in [a,b]$ (nilai $y_1$ dapat
+bergantung pada $x$).  Dengan demikian, sebagai fungsi dari
+$x$,
+\begin{equation*}
+x \mapsto \frac{f(x,y+h)-f(x,y)}{h}
+\qquad
+\text{konvergen seragam ke}
+\qquad
+x \mapsto \frac{\partial f}{\partial y}(x,y)
+\qquad
+\text{ketika } h \to 0 .
+\end{equation*}
+Kita mendefinisikan konvergensi seragam untuk barisan, tetapi gagasannya
+sama.  Anda dapat mengganti $h$ dengan barisan bilangan tak nol
+$\{ h_n \}_{n=1}^\infty$
+yang konvergen menuju $0$ sedemikian sehingga $y+h_n \in [c,d]$, lalu membiarkan $n \to \infty$.
+
+Tinjau hasil bagi selisih untuk $g$,
+\begin{equation*}
+\frac{g(y+h)-g(y)}{h}
+=
+\frac{\int_a^b f(x,y+h) \,dx -
+\int_a^b f(x,y) \,dx }{h}
+=
+\int_a^b \frac{f(x,y+h)-f(x,y)}{h} \,dx .
+\end{equation*}
+Konvergensi seragam memungkinkan limit dan integral dipertukarkan.
+Jadi,
+\begin{equation*}
+\lim_{h\to 0}
+\frac{g(y+h)-g(y)}{h}
+= 
+\int_a^b 
+\lim_{h\to 0}
+\frac{f(x,y+h)-f(x,y)}{h} \,dx 
+=
+\int_a^b 
+\frac{\partial f}{\partial y}(x,y) \,dx .
+\end{equation*}
+Selanjutnya, berdasarkan
+\volIref{\propref*{vI-prop:integralcontcont} dari jilid I}{\propref{prop:integralcontcont}} yang disebutkan di atas,
+$g'$ kontinu pada $[c,d]$.
+\end{proof}
+
+\begin{example}
+Misalkan
+\begin{equation*}
+f(y) = \int_0^1 \sin(x^2-y^2) \,dx .
+\end{equation*}
+Maka
+\begin{equation*}
+f'(y) = \int_0^1 -2y\cos(x^2-y^2) \,dx .
+\end{equation*}
+\end{example}
+
+\begin{example} \label{example:counterexamplediffunder}
+Tinjau
+\begin{equation*}
+\int_0^{1} \frac{x-1}{\ln(x)} \,dx .
+\end{equation*}
+Integran tersebut
+dapat diperluas menjadi fungsi kontinu pada $[0,1]$, sehingga
+integralnya ada; lihat \exerciseref{exercise:counterexamplediffunder}.  Kesulitannya adalah menghitung integral tersebut.
+Kita memperkenalkan parameter $y$
+dan mendefinisikan suatu fungsi:
+\begin{equation*}
+g(y) \coloneqq \int_0^{1} \frac{x^y-1}{\ln(x)} \,dx .
+\end{equation*}
+Fungsi
+$\frac{x^y-1}{\ln(x)}$
+juga dapat diperluas menjadi fungsi kontinu pada
+$[0,1] \times [0,1]$ (ini juga bagian dari latihan tersebut).
+Lihat \figureref{fig:diffunderexample}.
+\begin{myfigureht}
+\myincludegraphics{diffunderexample}{%
+Plot permukaan suatu fungsi di kuadran pertama pada bidang xy.
+Fungsi bernilai nol pada sumbu x maupun sumbu y, tetapi menanjak sangat
+curam ketika menjauh dari sumbu y.}
+\caption{Grafik $z= \frac{x^y-1}{\ln(x)}$ pada $[0,1] \times [0,1]$.\label{fig:diffunderexample}}
+\end{myfigureht}
+
+
+Oleh karena itu,
+$g$ merupakan fungsi kontinu pada $[0,1]$ dan $g(0) = 0$.
+Untuk setiap $0 < \epsilon < 1$, turunan parsial integran terhadap $y$, yaitu $x^y$,
+memiliki perluasan kontinu pada $[0,1] \times [\epsilon,1]$.  Oleh karena itu,
+untuk $0 < y \leq 1$, kita dapat mendiferensialkan di bawah tanda integral,
+\begin{equation*}
+g'(y) =
+\int_0^{1} \frac{\ln(x) x^y}{\ln(x)} \,dx 
+=
+\int_0^{1} x^y \,dx =
+\frac{1}{y+1} .
+\end{equation*}
+Pada baris pertama, pembatalan faktor $\ln(x)$ berlaku untuk $0<x<1$; nilai-nilai
+titik ujung diberikan oleh perluasan kontinu dan tidak mengubah integral Riemann.
+Kita perlu menghitung $g(1)$ dengan mengetahui bahwa $g'(y) = \frac{1}{y+1}$ untuk
+$0<y\leq1$ dan $g(0) = 0$.  Kalkulus elementer menyatakan bahwa
+$g(1) = \int_0^1 g'(y)\,dy = \ln(2)$.
+Dengan demikian,
+\begin{equation*}
+\int_0^{1} \frac{x-1}{\ln(x)} \,dx  = \ln(2).
+\end{equation*}
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise} \label{exercise:counterexamplediffunder}
+Buktikan dua pernyataan yang dinyatakan dalam
+\exampleref{example:counterexamplediffunder}:
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa $\frac{x-1}{\ln(x)}$ dapat diperluas menjadi fungsi kontinu pada
+$[0,1]$.  Artinya, terdapat fungsi kontinu pada $[0,1]$
+yang sama dengan $\frac{x-1}{\ln(x)}$ pada $(0,1)$.
+\item
+Buktikan bahwa $\frac{x^y-1}{\ln(x)}$ dapat diperluas menjadi fungsi kontinu
+pada $[0,1] \times [0,1]$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Andaikan $h \colon \R \to \R$ kontinu dan $g
+\colon \R \to \R$ diferensiabel secara kontinu serta berdukungan
+kompak.  Artinya, terdapat suatu $M > 0$ sedemikian sehingga $g(x) = 0$ apabila
+$\sabs{x} \geq M$.  Definisikan
+\begin{equation*}
+f(x) \coloneqq \int_{-\infty}^\infty h(y)g(x-y)\,dy  .
+\end{equation*}
+Buktikan bahwa $f$ diferensiabel.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f \colon \R \to \R$ diferensiabel tak berhingga kali (turunan
+semua orde ada)
+dan $f(0) = 0$.  Buktikan bahwa terdapat fungsi $g \colon \R \to \R$ yang
+diferensiabel tak berhingga kali sedemikian sehingga $f(x) = x\,g(x)$.
+Buktikan juga bahwa
+jika $f'(0) \neq 0$, maka $g(0) \neq 0$.\\
+Petunjuk: Tuliskan
+$f(x) = \int_0^x f'(s) \,ds$, lalu ubah batas integralnya menjadi $0$ dan $1$.
+\end{exercise}
+
+\begin{exercise}
+Hitung $\int_0^1 e^{tx} \,dx$.  Untuk setiap bilangan bulat $n \geq 0$, peroleh rumus untuk
+$\int_0^1 x^n e^{x} \,dx$ tanpa menggunakan integrasi parsial, melainkan
+melalui diferensiasi di bawah tanda integral.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $U \subset \R^n$ terbuka dan andaikan
+$f(x,y_1,y_2,\ldots,y_n)$ adalah fungsi kontinu
+yang didefinisikan pada $[0,1] \times U \subset \R^{n+1}$.
+Andaikan
+$\frac{\partial f}{\partial y_1},
+\frac{\partial f}{\partial y_2},\ldots,
+\frac{\partial f}{\partial y_n}$
+ada dan kontinu pada $[0,1] \times U$.
+Buktikan bahwa $F \colon U \to \R$ yang didefinisikan oleh
+\begin{equation*}
+F(y_1,y_2,\ldots,y_n) \coloneqq
+\int_0^1
+f(x,y_1,y_2,\ldots,y_n)
+\, dx
+\end{equation*}
+diferensiabel secara kontinu.
+\end{exercise}
+
+\begin{myfigureht}
+\myincludegraphics{diffunderex916}{%
+Plot permukaan suatu fungsi pada persegi satuan.  Pada kedua sumbu fungsi
+bernilai nol; di bagian lain persegi fungsi bernilai positif.  Namun, di titik asal
+grafik tampak tidak kontinu: ketika bergerak dari bagian dalam persegi menuju
+titik asal, nilai fungsi tampaknya mendekati suatu nilai positif, bukan nol.}
+\caption{Grafik $z= \frac{xy^3}{{(x^2+y^2)}^2}$ pada
+$[0,1] \times [0,1]$.\label{fig:diffunderex916}}
+\end{myfigureht}
+
+\begin{exercise}
+\pagebreak[2]
+Kerjakan secara rinci contoh tandingan berikut.  Misalkan
+\begin{equation*}
+f(x,y) \coloneqq
+\begin{cases}
+\frac{xy^3}{{(x^2+y^2)}^2} & \text{jika } x \neq 0 \text{ atau } y \neq 0, \\
+0                          & \text{jika } x = 0 \text{ dan } y = 0.
+\end{cases}
+\end{equation*}
+Lihat \figureref{fig:diffunderex916}.
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa untuk setiap $y$ tetap, fungsi $x \mapsto f(x,y)$
+terintegralkan Riemann pada $[0,1]$, dan
+\begin{equation*}
+g(y) \coloneqq \int_0^1 f(x,y) \, dx = \frac{y}{2(y^2+1)} .
+\end{equation*}
+Dengan demikian, $g'(y)$ ada dan merupakan fungsi kontinu:
+\begin{equation*}
+g'(y) =
+\frac{d}{dy} \int_0^1 f(x,y) \, dx
+=
+\frac{1-y^2}{2{(y^2+1)}^2} .
+\end{equation*}
+\item
+Buktikan bahwa $\frac{\partial f}{\partial y}$ ada untuk semua $x$ dan $y$, lalu
+hitunglah turunan tersebut.
+\item
+Buktikan bahwa untuk semua $y$, integral
+\begin{equation*}
+\int_0^1 \frac{\partial f}{\partial y} (x,y) \, dx
+\end{equation*}
+ada, tetapi
+\begin{equation*}
+g'(0) \neq \int_0^1 \frac{\partial f}{\partial y} (x,0) \, dx .
+\end{equation*}
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Kerjakan secara rinci contoh tandingan berikut.  Misalkan
+\begin{equation*}
+f(x,y) \coloneqq
+\begin{cases}
+x \,\sin \left(\frac{y}{x^2+y^2}\right) & \text{jika } (x,y) \neq (0,0),\\
+0                                       & \text{jika } (x,y)=(0,0).
+\end{cases}
+\end{equation*}
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa $f$ kontinu pada seluruh $\R^2$.
+Dengan demikian, fungsi berikut terdefinisi dengan baik untuk setiap $y \in \R$:
+\begin{equation*}
+g(y) \coloneqq \int_0^1 f(x,y) \, dx .
+\end{equation*}
+\item
+Buktikan bahwa $\frac{\partial f}{\partial y}$ ada untuk semua $(x,y)$,
+tetapi tidak kontinu di $(0,0)$.
+\item
+Buktikan bahwa $\int_0^1 \frac{\partial f}{\partial y}(x,0) \, dx$ tidak
+ada bahkan jika kita menggunakan integral tak wajar; artinya,
+limit
+$\lim\limits_{h \to 0^+} \int_h^1 \frac{\partial f}{\partial y}(x,0) \, dx$
+tidak ada.
+\end{enumerate}
+Catatan: Anda boleh menggunakan pengetahuan tentang sinus dan kosinus dari kalkulus.
+\end{exercise}
+
+\begin{exercise} \label{exercise:strongerleibniz}
+\pagebreak[3]
+Perkuat aturan integral Leibniz sebagai berikut.
+Andaikan $f \colon (a,b) \times (c,d) \to \R$ adalah fungsi kontinu yang terbatas
+sedemikian sehingga $\frac{\partial f}{\partial y}$ ada untuk semua $(x,y) \in (a,b)
+\times (c,d)$ serta kontinu dan terbatas.  Definisikan $g \colon (c,d) \to \R$
+dengan
+\begin{equation*}
+g(y) \coloneqq \int_a^b f(x,y) \,dx .
+\end{equation*}
+Integral di atas, demikian pula integral pada rumus berikut, dipahami sebagai
+integral tak wajar pada kedua titik ujung.
+Maka $g$ diferensiabel secara kontinu dan
+\begin{equation*}
+g'(y) = \int_a^b \frac{\partial f}{\partial y}(x,y) \,dx .
+\end{equation*}
+Petunjuk: Lihat juga \volIref{\exerciseref*{vI-exercise:integralcontcontextra} dan
+\thmref*{vI-thm:dersconverge} dari
+jilid I}{\exerciseref{exercise:integralcontcontextra} dan
+\thmref{thm:dersconverge}}.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $g \colon \R \to \R$ diferensiabel secara kontinu,
+$h \colon \R^2 \to \R$ kontinu, dan
+$\frac{\partial h}{\partial x}$ ada serta kontinu di setiap titik.  Buktikan bahwa
+\begin{equation*}
+F(x,y) \coloneqq g(x) + \int_0^y h(x,s) \,ds
+\end{equation*}
+diferensiabel secara kontinu dan merupakan solusi persamaan diferensial parsial
+$\frac{\partial F}{\partial y} = h$ dengan syarat awal
+$F(x,0) = g(x)$ untuk semua $x \in \R$.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Integral lintasan}
+\label{sec:pathintegral}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2--3 kuliah}
+
+\subsection{Lintasan mulus sepotong-sepotong}
+
+Misalkan $\gamma \colon [a,b] \to \R^n$ suatu fungsi dan tuliskan
+$\gamma = (\gamma_1,\gamma_2,\ldots,\gamma_n)$. 
+Andaikan $\gamma$ 
+\emph{diferensiabel secara kontinu},
+yang berarti bahwa fungsi tersebut diferensiabel dan turunannya kontinu.
+Dengan kata lain, terdapat fungsi kontinu $\gamma' \colon [a,b]
+\to \R^n$ sedemikian sehingga, untuk setiap $t \in [a,b]$, berlaku
+$\lim\limits_{h \to 0}
+\frac{\snorm{\gamma(t+h)-\gamma(t) - \gamma'(t) \, h}}{\sabs{h}} = 0$.
+Pada titik ujung, limit ini dipahami secara relatif terhadap $[a,b]$,
+sehingga $t+h \in [a,b]$.
+Kita memandang
+$\gamma'(t)$ sebagai operator linear (matriks $n \times 1$) atau sebagai
+vektor,
+$\gamma'(t) =
+\bigl( \gamma_1'(t), \gamma_2'(t), \ldots, \gamma_n'(t) \bigr)$.
+Secara ekuivalen, 
+$\gamma_j$ adalah fungsi yang diferensiabel secara kontinu pada $[a,b]$
+untuk setiap $j=1,2,\ldots,n$.
+Menurut \exerciseref{exercise:normonedim}, norma operator dari
+operator $\gamma'(t)$ sama dengan
+norma Euklides dari vektor yang bersesuaian, sehingga kita dapat menuliskan 
+$\bnorm{\gamma'(t)}$ tanpa menimbulkan kerancuan.
+
+\begin{defn}
+Fungsi $\gamma \colon [a,b] \to \R^n$
+disebut \emph{\myindex{lintasan mulus}}
+atau
+\emph{\myindex{lintasan yang diferensiabel secara kontinu}}\footnote{Dalam
+literatur, kata \myquote{mulus} kadang-kadang berarti
+\myquote{diferensiabel tak berhingga kali}.}
+jika
+$\gamma$ diferensiabel secara kontinu dan
+$\gamma'(t) \neq 0$ untuk semua $t \in [a,b]$.
+
+Fungsi $\gamma \colon [a,b] \to \R^n$ disebut
+\emph{\myindex{lintasan mulus sepotong-sepotong}} atau
+\emph{\myindex{lintasan diferensiabel secara kontinu sepotong-sepotong}}
+jika terdapat berhingga banyak titik
+$t_0 = a < t_1 < t_2 < \cdots < t_k = b$ sedemikian sehingga
+pembatasan $\gamma|_{[t_{j-1},t_j]}$ merupakan lintasan mulus untuk setiap
+$j=1,2,\ldots,k$.
+
+Lintasan $\gamma$ disebut 
+\emph{\myindex{lintasan tertutup}} jika $\gamma(a) = \gamma(b)$; artinya,
+lintasan tersebut bermula dan berakhir di titik yang sama.
+Lintasan $\gamma$ disebut \emph{\myindex{lintasan sederhana}} jika 
+1) $\gamma$ merupakan fungsi injektif, atau 2)
+$\gamma|_{[a,b)}$ injektif dan $\gamma(a)=\gamma(b)$ ($\gamma$ merupakan
+lintasan tertutup sederhana).
+\end{defn}
+
+
+\begin{example} \label{mv:example:unitsquarepath}
+Misalkan $\gamma \colon [0,4] \to \R^2$ didefinisikan oleh
+\begin{equation*}
+\gamma(t) \coloneqq
+\begin{cases}
+(t,0)   & \text{jika } t \in [0,1],\\
+(1,t-1) & \text{jika } t \in (1,2],\\
+(3-t,1) & \text{jika } t \in (2,3],\\
+(0,4-t) & \text{jika } t \in (3,4].
+\end{cases}
+\end{equation*}
+\begin{myfigureht}
+\myincludegraphics{squarepath}{%
+Diagram persegi pada bidang xy dengan panah-panah yang menunjukkan arah lintasan.
+Pada t sama dengan 0, lintasan berada di titik asal; lalu bergerak ke kanan
+menuju (1,0) pada t sama dengan 1, ke atas menuju (1,1) pada t sama dengan 2,
+ke kiri menuju (0,1) pada t sama dengan 3, dan akhirnya ke bawah kembali ke
+titik asal pada t sama dengan 4.}
+\caption{Lintasan $\gamma$ yang menelusuri keliling persegi satuan.\label{fig:squarepath}}
+\end{myfigureht}
+
+Lintasan $\gamma$ menelusuri keliling persegi satuan
+berlawanan arah jarum jam.  Lihat \figureref{fig:squarepath}.  Lintasan ini
+mulus sepotong-sepotong.  Sebagai contoh,
+$\gamma|_{[1,2]}(t) = (1,t-1)$ sehingga
+$(\gamma|_{[1,2]})'(t) = (0,1) \neq 0$.  Demikian pula untuk ketiga sisi lainnya.
+Perhatikan bahwa
+$(\gamma|_{[1,2]})'(1) = (0,1)$,
+$(\gamma|_{[0,1]})'(1) = (1,0)$, tetapi
+$\gamma'(1)$ tidak ada.  Di titik-titik sudut, $\gamma$ 
+tidak diferensiabel.
+Lintasan $\gamma$ merupakan lintasan tertutup sederhana karena $\gamma|_{[0,4)}$
+injektif dan $\gamma(0)=\gamma(4)$.
+\end{example}
+
+Definisi lintasan mulus sepotong-sepotong yang kita berikan mengimplikasikan
+bahwa lintasan tersebut kontinu (latihan).  Untuk fungsi umum, banyak penulis juga
+memperbolehkan berhingga banyak ketakkontinuan ketika menggunakan istilah \emph{mulus
+sepotong-sepotong}; karena itu, dapat dikatakan bahwa kita mendefinisikan lintasan mulus
+sepotong-sepotong sebagai fungsi yang \emph{\myindex{kontinu dan mulus sepotong-sepotong}}.
+Walaupun lintasan mulus saja sudah dapat digunakan, dalam perhitungan lintasan
+yang paling mudah dituliskan sering kali mulus sepotong-sepotong.
+
+Pada umumnya, kita lebih tertarik pada citra langsung $\gamma\bigl([a,b]\bigr)$
+daripada pada parametrisasi tertentu, walaupun parametrisasi juga
+penting sampai taraf tertentu.  Ketika berbicara secara informal tentang lintasan atau kurva,
+kita sering memaksudkan himpunan $\gamma\bigl([a,b]\bigr)$, bergantung
+pada konteks.
+
+
+\begin{example}
+Syarat $\gamma'(t) \neq 0$ berarti bahwa, secara lokal di sepanjang setiap cabang reguler, citra
+$\gamma\bigl([a,b]\bigr)$
+tidak memiliki \myquote{sudut} di tempat $\gamma$ mulus.
+Tinjau $\gamma \colon \R \to \R^2$ yang didefinisikan oleh
+\begin{equation*}
+\gamma(t) \coloneqq
+\begin{cases}
+(t^2,0) & \text{jika } t < 0,\\
+(0,t^2) & \text{jika } t \geq 0.
+\end{cases}
+\end{equation*}
+Lihat \figureref{fig:cornersmoothpath}.
+Pemeriksaan bahwa $\gamma$ diferensiabel secara kontinu diserahkan kepada pembaca,
+namun citra $\gamma(\R) = \bigl\{ (x,y) \in \R^2 : (x,y) =
+(s,0) \text{ atau } (x,y) = (0,s) \text{ untuk suatu } s \geq 0 \bigr\}$ memiliki
+\myquote{sudut} di titik asal.  Hal ini terjadi karena $\gamma'(0) = (0,0)$.
+Terdapat contoh yang lebih rumit, misalnya yang memiliki sudut dalam jumlah tak berhingga;
+lihat latihan.
+\begin{myfigureht}
+\myincludegraphics{cornersmoothpath}{%
+Diagram lintasan pada bidang.  Pada t sama dengan minus 1, lintasan berada di
+(1,0) pada sumbu x positif, lalu bergerak ke kiri sepanjang sumbu x, melewati
+titik bertanda t sama dengan minus satu per dua, hingga mencapai titik asal
+pada t sama dengan 0.  Di sana lintasan berbelok ke atas sepanjang sumbu y
+positif, melewati t sama dengan satu per dua, lalu mencapai titik bertanda
+t sama dengan 1.}
+\caption{Lintasan \myquote{mulus} yang memiliki sudut jika turunan yang bernilai nol diizinkan.  Titik-titik
+yang bersesuaian dengan beberapa nilai
+$t$ ditandai dengan noktah.\label{fig:cornersmoothpath}}
+\end{myfigureht}
+\end{example}
+
+Pada setiap ruas mulus, syarat $\gamma'(t) \neq 0$ juga di titik-titik ujung
+subinterval menjamin bahwa ruas tersebut tidak memiliki sudut dan berakhir secara
+reguler; artinya, ruas itu dapat diperpanjang sedikit melampaui titik-titik ujung
+sambil tetap reguler jika diperlukan.  Sekali lagi, lihat latihan.
+
+\begin{example}
+Untuk $a<b$, grafik fungsi $f \colon [a,b] \to \R$ yang diferensiabel secara kontinu
+merupakan lintasan mulus.  Definisikan $\gamma \colon [a,b] \to \R^2$ dengan
+\begin{equation*}
+\gamma(t) \coloneqq \bigl(t,f(t)\bigr) .
+\end{equation*}
+Maka $\gamma'(t) = \bigl( 1 , f'(t) \bigr)$, yang tidak pernah nol,
+dan $\gamma\bigl([a,b]\bigr)$ merupakan grafik $f$.
+
+Ada cara lain untuk memparametrisasikan lintasan tersebut.  Artinya, terdapat
+lintasan-lintasan berbeda dengan citra yang sama.
+Fungsi $t \mapsto (1-t)a+tb$ memetakan interval $[0,1]$ ke $[a,b]$.
+Definisikan
+$\alpha \colon [0,1] \to \R^2$ dengan
+\begin{equation*}
+\alpha(t) \coloneqq \bigl((1-t)a+tb,f((1-t)a+tb)\bigr) .
+\end{equation*}
+Maka
+$\alpha'(t) = \bigl( b-a ,~ (b-a)f'((1-t)a+tb) \bigr)$, yang tidak pernah nol.
+Sebagai himpunan, $\alpha\bigl([0,1]\bigr) = \gamma\bigl([a,b]\bigr)
+= \bigl\{ (x,y) \in \R^2 : x \in [a,b] \text{ dan } f(x) = y \bigr\}$,
+yang tidak lain adalah grafik $f$.
+\end{example}
+
+Contoh terakhir mengantar kita pada suatu definisi.
+
+\begin{defn}
+Misalkan $\gamma \colon [a,b] \to \R^n$ lintasan mulus dan
+$h \colon [c,d] \to [a,b]$ fungsi bijektif yang diferensiabel secara kontinu
+sedemikian sehingga $h'(t) \neq 0$ untuk semua $t \in [c,d]$.  Maka
+komposisi
+$\gamma \circ h$ disebut
+\emph{\myindex{reparametrisasi mulus}}\index{reparametrisasi}
+dari $\gamma$.
+
+Misalkan $\gamma \colon [a,b] \to \R^n$ lintasan mulus sepotong-sepotong dan
+$h \colon [c,d] \to [a,b]$ fungsi bijektif yang mulus sepotong-sepotong,
+dengan semua limit sepihak dari $h'$ pada titik-titik partisi ada dan tak nol.
+Komposisi
+$\gamma \circ h$ disebut
+\emph{\myindex{reparametrisasi mulus sepotong-sepotong}} dari $\gamma$.
+
+Jika $h$ naik secara ketat, dikatakan bahwa $h$ 
+\emph{\myindex{mempertahankan orientasi}}.  Jika $h$ turun secara ketat, dikatakan bahwa
+$h$ \emph{\myindex{membalik orientasi}}.
+\end{defn}
+
+Reparametrisasi merupakan lintasan lain dengan citra yang sama.  Artinya,
+$(\gamma \circ h)\bigl([c,d]\bigr) =
+\gamma \bigl([a,b]\bigr)$.
+
+Syarat pada $h$ yang mulus sepotong-sepotong berarti bahwa
+terdapat suatu partisi $t_0 = c < t_1 < t_2 < \cdots < t_k = d$
+sedemikian sehingga $h|_{[t_{j-1},t_j]}$ diferensiabel secara kontinu
+dan $\bigl(h|_{[t_{j-1},t_j]}\bigr)'(t) \neq 0$
+untuk semua $t \in [t_{j-1},t_j]$.
+Karena $h$ bijektif, fungsi tersebut naik ketat atau
+turun ketat.  Jadi, $\bigl(h|_{[t_{j-1},t_j]}\bigr)'(t) > 0$
+untuk semua $t$, atau $\bigl(h|_{[t_{j-1},t_j]}\bigr)'(t) < 0$ untuk semua $t$.
+
+\begin{prop} \label{prop:reparamapiecewisesmooth}
+Jika $\gamma \colon [a,b] \to \R^n$ merupakan lintasan mulus sepotong-sepotong
+dan $\gamma \circ h \colon [c,d] \to \R^n$ merupakan
+reparametrisasi mulus sepotong-sepotong, maka $\gamma \circ h$
+merupakan lintasan mulus sepotong-sepotong.
+\end{prop}
+
+\begin{proof}
+Andaikan $h$ mempertahankan orientasi; artinya, $h$ naik ketat.
+Jika $h \colon [c,d] \to [a,b]$ memberikan reparametrisasi mulus sepotong-sepotong,
+maka untuk suatu partisi
+$r_0 = c < r_1 < r_2 < \cdots < r_\ell = d$, pembatasan
+$h|_{[r_{j-1},r_j]}$ diferensiabel secara kontinu dengan turunan
+positif.
+
+Kita perhalus partisi dari definisi kemulusan sepotong-sepotong untuk $\gamma$
+dengan menambahkan titik-titik
+$\{ h(r_0), h(r_1), h(r_2), \ldots, h(r_\ell) \}$, lalu urutkan dan namai ulang
+partisi itu sebagai $t_0 = a < t_1 < t_2 < \cdots < t_k = b$.
+Misalkan $s_j \coloneqq h^{-1}(t_j)$.  Maka
+$s_0 = c < s_1 < s_2 < \cdots < s_k = d$
+merupakan partisi yang memuat semua titik $r_i$, sehingga merupakan penghalusan
+dari partisi $r_0 < r_1 < \cdots < r_\ell$.
+Jika $\tau \in [s_{j-1},s_j]$, maka $h(\tau) \in [t_{j-1},t_j]$
+karena $h(s_{j-1}) = t_{j-1}$,
+$h(s_{j}) = t_j$, dan
+$h$ naik ketat.
+Selain itu, $h|_{[s_{j-1},s_j]}$ diferensiabel secara kontinu, dan
+$\gamma|_{[t_{j-1},t_j]}$ juga diferensiabel secara kontinu.
+Dengan demikian,
+\begin{equation*}
+(\gamma \circ h)|_{[s_{j-1},s_{j}]} (\tau)
+=
+\gamma|_{[t_{j-1},t_{j}]} \bigl( h|_{[s_{j-1},s_j]}(\tau) \bigr) .
+\end{equation*}
+Oleh karena itu, fungsi 
+$(\gamma \circ h)|_{[s_{j-1},s_{j}]}$
+diferensiabel secara kontinu dan, menurut aturan rantai,
+\begin{equation*}
+\bigl( (\gamma \circ h)|_{[s_{j-1},s_{j}]} \bigr) ' (\tau)
+=
+\bigl( \gamma|_{[t_{j-1},t_{j}]} \bigr)' \bigl( h(\tau) \bigr)
+\bigl(h|_{[s_{j-1},s_j]}\bigr)'(\tau) \neq 0 .
+\end{equation*}
+Akibatnya, $\gamma \circ h$ merupakan lintasan mulus sepotong-sepotong.
+Pembuktian untuk $h$ yang membalik orientasi diserahkan sebagai latihan.
+\end{proof}
+
+Jika dua lintasan sederhana yang mulus sepotong-sepotong dan reguler serta tidak tertutup memiliki citra yang sama,
+pembuktian bahwa terdapat reparametrisasi diserahkan sebagai latihan.  Pernyataan
+yang sama berlaku untuk lintasan tertutup sederhana yang mulus sepotong-sepotong
+dan reguler apabila titik pangkal yang dipilih juga sama; jika titik pangkalnya berbeda, diperlukan reparametrisasi siklik
+pada lingkaran parameter.  Di sinilah asumsi bahwa turunan pada setiap ruas mulus
+dari kedua lintasan tidak pernah nol menjadi penting.
+
+\subsection{Integral lintasan bentuk-1}
+
+\begin{defn}
+Gunakan $(x_1,x_2,\ldots,x_n) \in \R^n$ sebagai koordinat kita.
+Diberikan $n$ fungsi kontinu bernilai riil
+$\omega_1,\omega_2,\ldots,\omega_n$ yang didefinisikan pada himpunan $S \subset \R^n$,
+kita mendefinisikan \emph{\myindex{bentuk-1}}\index{bentuk diferensial derajat satu}
+sebagai objek berbentuk
+\glsadd{not:oneform}
+\begin{equation*}
+\omega = \omega_1 \,dx_1 + \omega_2 \,dx_2 + \cdots + \omega_n \,dx_n .
+\end{equation*}
+Kita dapat merepresentasikan $\omega$ sebagai fungsi kontinu dari $S$ ke $\R^n$,
+tetapi lebih baik memandangnya sebagai jenis objek yang berbeda.
+\end{defn}
+
+\begin{example}
+\begin{equation*}
+\omega(x,y) \coloneqq \frac{-y}{x^2+y^2} \,dx + \frac{x}{x^2+y^2} \,dy
+\end{equation*}
+merupakan bentuk-1 yang didefinisikan pada $\R^2 \setminus \{ (0,0) \}$.
+\end{example}
+
+\begin{defn}
+Misalkan $\gamma \colon [a,b] \to \R^n$ lintasan mulus
+dan misalkan
+\begin{equation*}
+\omega = \omega_1 \,dx_1 + \omega_2 \,dx_2 + \cdots + \omega_n \,dx_n
+\end{equation*}
+merupakan bentuk-1 yang didefinisikan pada citra langsung $\gamma\bigl([a,b]\bigr)$.
+Tuliskan $\gamma = (\gamma_1,\gamma_2,\ldots,\gamma_n)$.
+Definisikan:
+\begin{equation*}
+\begin{split}
+\int_{\gamma} \omega
+& \coloneqq
+\int_a^b 
+\Bigl(
+\omega_1\bigl(\gamma(t)\bigr) \gamma_1'(t) +
+\omega_2\bigl(\gamma(t)\bigr) \gamma_2'(t) + \cdots +
+\omega_n\bigl(\gamma(t)\bigr) \gamma_n'(t) \Bigr) dt
+\\
+&\phantom{:}=
+\int_a^b 
+\left(
+\sum_{j=1}^n
+\omega_j\bigl(\gamma(t)\bigr) \gamma_j'(t) \right) dt .
+\end{split}
+\end{equation*}
+Untuk mengingat definisi ini, perhatikan bahwa $x_j$ adalah $\gamma_j(t)$; sebagai
+kaidah substitusi, $dx_j$ menjadi $\gamma_j'(t) \, dt$.
+
+Jika $\gamma$ mulus sepotong-sepotong, ambil partisi yang bersesuaian
+$t_0 = a < t_1 < t_2 < \ldots < t_k = b$, dan andaikan partisi tersebut
+minimal
+%\footnote{Pembatasan ini sebenarnya tidak mutlak diperlukan, tetapi 
+%membuat integral langsung terdefinisi dengan baik.}
+dalam arti bahwa $\gamma$ tidak diferensiabel
+di setiap $t_1,t_2,\ldots,t_{k-1}$.  Karena setiap $\gamma|_{[t_{j-1},t_j]}$
+merupakan lintasan mulus, definisikan
+\begin{equation*}
+\int_{\gamma} \omega
+\coloneqq
+\int_{\gamma|_{[t_0,t_1]}} \omega
+\,
++
+\,
+\int_{\gamma|_{[t_1,t_2]}} \omega
+\,
++ \, \cdots \, + \,
+\int_{\gamma|_{[t_{k-1},t_k]}} \omega .
+\end{equation*}
+\end{defn}
+
+Notasi integral lintasan bentuk-1 dapat dipahami melalui rumus
+\myquote{substitusi $u$} yang dikenal dari kalkulus.
+Secara agak informal, sebagai kaidah substitusi,
+jika $x_j(t) = \gamma_j(t)$, maka $dx_j$ menjadi $\gamma_j'(t) \, dt$.
+
+Lintasan dapat dipotong menjadi sublintasan atau disambungkan.  Pembuktiannya merupakan penerapan langsung
+dari aditivitas integral Riemann dan diserahkan sebagai latihan.
+Proposisi berikut membenarkan cara kita mendefinisikan integral pada lintasan
+mulus sepotong-sepotong.  Proposisi itu juga menunjukkan bahwa kita dapat
+menggunakan sembarang partisi yang sesuai, bukan hanya partisi minimal dalam definisi.
+
+\begin{prop} \label{mv:prop:pathconcat}
+Misalkan $\gamma \colon [a,c] \to \R^n$ lintasan mulus sepotong-sepotong
+dan $b \in (a,c)$.
+Definisikan lintasan-lintasan mulus sepotong-sepotong
+$\alpha \coloneqq \gamma|_{[a,b]}$ dan
+$\beta \coloneqq \gamma|_{[b,c]}$.
+Misalkan $\omega$ bentuk-1 yang didefinisikan pada
+$\gamma\bigl([a,c]\bigr)$.  Maka
+\begin{equation*}
+\int_{\gamma} \omega =
+\int_{\alpha} \omega +
+\int_{\beta} \omega .
+\end{equation*}
+\end{prop}
+
+
+\begin{example} \label{example:mv:irrotoneformint}
+Misalkan bentuk-1 $\omega$ dan lintasan $\gamma \colon [0,2\pi] \to \R^2$ didefinisikan oleh
+\begin{equation*}
+\omega(x,y) \coloneqq \frac{-y}{x^2+y^2} \,dx + \frac{x}{x^2+y^2} \,dy,
+\qquad
+\gamma(t) \coloneqq \bigl(\cos(t),\sin(t)\bigr) .
+\end{equation*}
+Maka
+\begin{equation*}
+\begin{split}
+\int_{\gamma} \omega
+& =
+\int_0^{2\pi}
+\Biggl(
+\frac{-\sin(t)}{{\bigl(\cos(t)\bigr)}^2+{\bigl(\sin(t)\bigr)}^2}
+\bigl(-\sin(t)\bigr)
+%mbxlatex \\
+%mbxlatex & \phantom{=\int_0^{2\pi}\Biggl(~}
++
+\frac{\cos(t)}{{\bigl(\cos(t)\bigr)}^2+{\bigl(\sin(t)\bigr)}^2}
+\bigl(\cos(t)\bigr)
+\Biggr) \, dt
+\\
+& =
+\int_0^{2\pi}
+1 \, dt
+= 2\pi .
+\end{split}
+\end{equation*}
+Selanjutnya, parametrisasikan ulang kurva yang sama menggunakan
+$\alpha \colon [0,1] \to \R^2$ yang didefinisikan oleh $\alpha(t) \coloneqq \bigl(\cos(2\pi
+t),\sin(2 \pi t)\bigr)$.  Dengan $h(t)=2\pi t$, kita mempunyai
+$\alpha=\gamma\circ h$, sehingga $\alpha$ merupakan reparametrisasi mulus dari $\gamma$.
+Maka
+\begin{equation*}
+\begin{split}
+\int_{\alpha} \omega
+& =
+\int_0^{1}
+\Biggl(
+\frac{-\sin(2\pi t)}{{\bigl(\cos(2\pi t)\bigr)}^2+{\bigl(\sin(2\pi t)\bigr)}^2}
+\bigl(-2\pi \sin(2\pi t)\bigr)
+\\
+& \phantom{=\int_0^1\Biggl(~}
++
+\frac{\cos(2 \pi t)}{{\bigl(\cos(2 \pi t)\bigr)}^2+{\bigl(\sin(2 \pi t)\bigr)}^2}
+\bigl(2 \pi \cos(2 \pi t)\bigr)
+\Biggr) \, dt
+\\
+& =
+\int_0^{1}
+2\pi \, dt
+= 2\pi .
+\end{split}
+\end{equation*}
+Terakhir, lakukan reparametrisasi dengan $\beta \colon [0,2\pi] \to \R^2$
+yang didefinisikan oleh $\beta(t) \coloneqq \bigl(\cos(-t),\sin(-t)\bigr)$.
+Secara eksplisit, $\beta=\gamma\circ h$ untuk $h(t)=2\pi-t$.  Maka
+\begin{equation*}
+\begin{split}
+\int_{\beta} \omega
+& =
+\int_0^{2\pi}
+\Biggl(
+\frac{-\sin(-t)}{{\bigl(\cos(-t)\bigr)}^2+{\bigl(\sin(-t)\bigr)}^2}
+\bigl(\sin(-t)\bigr)
+%mbxlatex \\
+%mbxlatex & \phantom{=\int_0^{2\pi}\Biggl(~}
++
+\frac{\cos(-t)}{{\bigl(\cos(-t)\bigr)}^2+{\bigl(\sin(-t)\bigr)}^2}
+\bigl(-\cos(-t)\bigr)
+\Biggr) \, dt
+\\
+& =
+\int_0^{2\pi}
+(-1) \, dt
+= -2\pi .
+\end{split}
+\end{equation*}
+Lintasan $\alpha$ merupakan reparametrisasi dari $\gamma$ yang mempertahankan
+orientasi, dan kedua integralnya sama.  Lintasan $\beta$
+merupakan reparametrisasi dari $\gamma$ yang membalik orientasi, dan integralnya
+merupakan negatif dari integral semula.  Lihat \figureref{fig:circlepathrepar}.
+\begin{myfigureht}
+\myincludegraphics{circlepathrepar}{%
+Lintasan melingkari titik asal.  Panah menunjukkan arah berlawanan jarum jam
+untuk gamma dan alfa, sedangkan beta bergerak searah jarum jam.
+Titik pada sumbu x positif merupakan titik awal bagi $\gamma$ dan $\alpha$ serta
+titik akhir bagi $\beta$, dan diberi label gamma dari 0 sama dengan alfa dari 0
+sama dengan beta dari 2 pi.  Titik yang sama juga memenuhi gamma dari 2 pi sama
+dengan alfa dari 1 sama dengan beta dari 0.
+Titik berikutnya di kuadran pertama, di pertengahan menuju sumbu y positif,
+diberi label gamma dari pi per 4 sama dengan alfa dari satu per delapan sama dengan
+beta dari 7 pi per 4.  Titik pada sumbu y positif diberi label gamma dari pi per 2
+sama dengan alfa dari satu per empat sama dengan beta dari 3 pi per 2.  Titik pada
+sumbu x negatif diberi label gamma dari pi sama dengan alfa dari satu per dua sama
+dengan beta dari pi.  Titik pada sumbu y negatif diberi label gamma dari 3 pi per 2
+sama dengan alfa dari tiga per empat sama dengan beta dari pi per 2.}
+\caption{Lintasan lingkaran yang direparametrisasi dengan dua cara berbeda. Panah
+menunjukkan orientasi $\gamma$ dan $\alpha$. Lintasan $\beta$ menelusuri
+lingkaran dalam arah yang berlawanan.\label{fig:circlepathrepar}}
+\end{myfigureht}
+\end{example}
+
+Contoh sebelumnya bukan suatu kebetulan.
+Nilai integral lintasan tidak bergantung pada pilihan reparametrisasi bijektif,
+kecuali melalui orientasi: pembalikan orientasi mengubah tandanya.  Parametrisasi
+sebarang dengan citra yang sama tidak termasuk dalam pernyataan ini karena banyaknya penelusuran juga berpengaruh.
+
+\begin{prop} \label{mv:prop:pathintrepararam}
+Misalkan $\gamma \colon [a,b] \to \R^n$ lintasan mulus sepotong-sepotong dan
+$\gamma \circ h \colon [c,d] \to \R^n$ reparametrisasi mulus sepotong-sepotong.
+Andaikan $\omega$ bentuk-1 yang didefinisikan pada himpunan $\gamma\bigl([a,b]\bigr)$.  Maka
+\begin{equation*}
+\int_{\gamma \circ h} \omega =
+\begin{cases}
+\int_{\gamma} \omega  & \text{jika } h \text{ mempertahankan orientasi,}\\
+-\int_{\gamma} \omega & \text{jika } h \text{ membalik orientasi.}
+\end{cases}
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Mula-mula, andaikan $\gamma$ dan $h$ keduanya mulus.
+Tuliskan $\omega = \omega_1 \, dx_1 + \omega_2 \, dx_2 + \cdots +
+\omega_n \, dx_n$.
+Andaikan $h$ mempertahankan orientasi.  Gunakan
+rumus penggantian variabel untuk integral Riemann:
+\begin{equation*}
+\begin{split}
+\int_{\gamma} \omega
+& =
+\int_a^b 
+\left(
+\sum_{j=1}^n
+\omega_j\bigl(\gamma(t)\bigr) \gamma_j'(t)
+\right) dt
+\\
+& =
+\int_c^d 
+\left(
+\sum_{j=1}^n
+\omega_j\Bigl(\gamma\bigl(h(\tau)\bigr)\Bigr) \gamma_j'\bigl(h(\tau)\bigr)
+\right) h'(\tau) \, d\tau
+\\
+& =
+\int_c^d 
+\left(
+\sum_{j=1}^n
+\omega_j\Bigl(\gamma\bigl(h(\tau)\bigr)\Bigr) (\gamma_j \circ h)'(\tau)
+\right) d\tau
+=
+\int_{\gamma \circ h} \omega .
+\end{split}
+\end{equation*}
+Jika $h$ membalik orientasi, penggantian variabel menukar urutan batas integrasi
+dan menghasilkan tanda minus.
+Rincian ini, beserta penyelesaian pembuktian untuk lintasan mulus
+sepotong-sepotong, diserahkan kepada pembaca dalam \exerciseref{mv:exercise:pathpiece}.
+\end{proof}
+
+Berdasarkan proposisi ini (dan latihan), jika $\Gamma
+\subset \R^n$ merupakan citra lintasan mulus sepotong-sepotong yang sederhana,
+yaitu $\gamma\bigl([a,b]\bigr)$, maka asalkan orientasinya ditentukan, yaitu arah
+penelusuran kurva, kita dapat menuliskan
+\begin{equation*}
+\int_{\Gamma} \omega ,
+\end{equation*}
+tanpa menyebutkan $\gamma$ tertentu.
+Selain itu, untuk lintasan tertutup sederhana, titik awal parametrisasi juga
+tidak memengaruhi integral: lintasan dapat dipotong di titik awal baru lalu
+disambungkan kembali.  Lihat latihan.
+
+Ingat bahwa \emph{sederhana} berarti $\gamma$ injektif, kecuali bahwa
+$\gamma(a)=\gamma(b)$ diperbolehkan untuk lintasan tertutup sederhana; khususnya,
+$\gamma$ injektif ketika dibatasi pada $[a,b)$.
+Kita dapat sedikit memperlemah syarat bahwa lintasan harus sederhana.
+Sebagai contoh, cukup andaikan terdapat himpunan berhingga $E \subset [a,b]$
+sedemikian sehingga
+$\gamma|_{[a,b]\setminus E}$ injektif.
+%Artinya, terdapat himpunan berhingga $E \subset [a,b]$
+%dan $\gamma|_{[a,b]\setminus E}$ injektif.
+Lihat \exerciseref{mv:exercise:curveintegral}.  Namun, syarat tersebut tidak dapat
+dihilangkan sepenuhnya, seperti diperlihatkan oleh contoh berikut.
+
+\begin{example}
+Ambil $\gamma \colon [0,2\pi] \to \R^2$ yang diberikan oleh $\gamma(t) \coloneqq
+\bigl(\cos(t),\sin(t)\bigr)$, dan
+$\beta \colon [0,2\pi] \to \R^2$ dengan $\beta(t) \coloneqq
+\bigl(\cos(2t),\sin(2t)\bigr)$.  Perhatikan bahwa
+$\gamma\bigl([0,2\pi]\bigr) = \beta\bigl([0,2\pi]\bigr)$; kedua lintasan menelusuri
+kurva yang sama, yaitu lingkaran satuan.  Akan tetapi, $\gamma$ mengelilingi lingkaran
+satuan satu kali berlawanan arah jarum jam, sedangkan $\beta$ mengelilingi
+lingkaran satuan dua kali (dalam arah yang sama). 
+Lihat \figureref{fig:circlepathrepar2}.
+\begin{myfigureht}
+\myincludegraphics{circlepathrepar2}{%
+Lintasan mengelilingi titik asal berlawanan arah jarum jam.  Gamma menelusuri
+lingkaran satu kali, sedangkan beta menelusurinya dua kali.  Titik awal pada sumbu x
+positif diberi label gamma dari 0 sama dengan beta dari 0 sama dengan beta dari pi.
+Titik di kuadran pertama, di pertengahan menuju sumbu y positif, diberi label
+gamma dari pi per 4 sama dengan beta dari pi per 8 sama dengan beta dari 9 pi per 8.
+Titik pada sumbu y positif diberi label gamma dari pi per 2 sama dengan beta dari
+pi per 4 sama dengan beta dari 5 pi per 4.  Titik pada sumbu x negatif diberi label
+gamma dari pi sama dengan beta dari pi per 2 sama dengan beta dari 3 pi per 2.
+Titik pada sumbu y negatif diberi label gamma dari 3 pi per 2 sama dengan beta dari
+3 pi per 4 sama dengan beta dari 7 pi per 4.  Titik akhir yang sama dengan titik awal
+diberi label gamma dari 2 pi sama dengan beta dari 2 pi.}
+\caption{Lintasan lingkaran yang ditelusuri satu kali oleh
+$\gamma \colon [0,2\pi] \to \R^2$
+dan dua kali oleh
+$\beta \colon [0,2\pi] \to \R^2$.\label{fig:circlepathrepar2}}
+\end{myfigureht}
+
+Hitung
+\begin{align*}
+& \int_{\gamma} -y\, dx + x\,dy
+=
+\int_0^{2\pi}
+\Bigl( \bigl(-\sin(t) \bigr) \bigl(-\sin(t) \bigr) + \cos(t) \cos(t) \Bigr) dt
+=
+2 \pi,\\
+& \int_{\beta} -y\, dx + x\,dy
+=
+\int_0^{2\pi}
+\Bigl( \bigl(-\sin(2t) \bigr) \bigl(-2\sin(2t) \bigr) + \cos(2t)
+\bigl(2\cos(2t)\bigr) \Bigr) dt
+=
+4 \pi.
+\end{align*}
+\end{example}
+
+Kadang-kadang berguna untuk mendefinisikan integral lintasan bagi suatu pemetaan
+$\gamma \colon [a,b] \to \R^n$ yang diferensiabel secara kontinu, tetapi tidak harus
+merupakan lintasan reguler menurut definisi kita.  Andaikan $\omega$ didefinisikan
+pada $\gamma\bigl([a,b]\bigr)$.  Definisikan
+\glsadd{not:pathintegralomega}
+\begin{equation*}
+\int_{\gamma} \omega \coloneqq \int_a^b
+\left(
+\sum_{j=1}^n
+\omega_j\bigl(\gamma(t)\bigr) \gamma_j'(t)
+\right) dt 
+\end{equation*}
+untuk setiap $\gamma$ yang diferensiabel secara kontinu.  Kasus yang
+muncul secara alami adalah ketika $\gamma$ konstan.  Dalam hal ini,
+$\gamma'(t) = 0$ untuk semua $t$, dan $\gamma\bigl([a,b]\bigr)$ merupakan satu
+titik, yang kita pandang sebagai \myquote{kurva} dengan panjang nol.  Maka
+$\int_{\gamma} \omega = 0$ untuk setiap $\omega$.
+
+\subsection{Integral lintasan suatu fungsi}
+
+Selanjutnya, kita mengintegralkan suatu fungsi terhadap
+\emph{\myindex{ukuran panjang busur}} $ds$.  Untuk fungsi tak negatif, gambaran geometrisnya
+adalah luas di bawah grafik fungsi di atas suatu lintasan.
+Bayangkan sebuah pagar tegak di atas $\gamma$, dengan tinggi yang diberikan oleh fungsi.
+Integralnya adalah luas pagar tersebut.  Untuk fungsi bernilai riil umum, integral ini
+bertanda; luas geometris pagar diperoleh dengan mengintegralkan nilai mutlak fungsi.
+Lihat \figureref{fig:fenceintegral}.
+\begin{myfigureht}
+\myincludegraphics{fenceintegral}{%
+Diagram dalam ruang xyz.  Kurva gamma digambar sebagai garis tebal pada
+bidang xy.  Sebuah permukaan vertikal berarsir seperti pagar berdiri di atas
+kurva tersebut, dengan tinggi yang berbeda-beda di atas titik-titik yang berbeda.
+Untuk fungsi tak negatif, luas permukaan berarsir menggambarkan integral.}
+\caption{Lintasan $\gamma \colon [a,b] \to \R^2$ pada bidang $xy$ (kurva tebal), dan fungsi
+$z=f(x,y)$ yang digambarkan di atasnya dalam arah $z$.  Untuk $f\geq0$, integral merupakan
+luas berarsir yang ditampilkan.\label{fig:fenceintegral}}
+\end{myfigureht}
+
+\begin{defn}
+Andaikan $\gamma \colon [a,b] \to \R^n$ lintasan mulus, dan
+$f \colon \gamma\bigl([a,b]\bigr) \to \R$ fungsi kontinu.  Definisikan
+\glsadd{not:lineintegralf}
+\begin{equation*}
+\int_{\gamma} f \,ds \coloneqq
+\int_a^b f\bigl( \gamma(t) \bigr) \bnorm{\gamma'(t)} \, dt .
+\end{equation*}
+Untuk menegaskan variabelnya, kita dapat menggunakan
+\begin{equation*}
+\int_{\gamma} f(x) \,ds(x) \coloneqq \int_{\gamma} f \,ds .
+\end{equation*}
+
+Definisi untuk lintasan mulus sepotong-sepotong serupa dengan definisi sebelumnya
+dan diserahkan kepada pembaca.
+\end{defn}
+
+Integral lintasan suatu fungsi juga tidak bergantung pada pilihan reparametrisasi
+bijektif, dan dalam hal ini orientasi tidak berpengaruh.
+
+\begin{prop} \label{mv:prop:lineintrepararam}
+Misalkan $\gamma \colon [a,b] \to \R^n$ lintasan mulus sepotong-sepotong dan
+$\gamma \circ h \colon [c,d] \to \R^n$ reparametrisasi mulus sepotong-sepotong.
+Andaikan $f$ fungsi kontinu yang didefinisikan pada himpunan
+$\gamma\bigl([a,b]\bigr)$.  Maka
+\begin{equation*}
+\int_{\gamma \circ h} f\, ds = \int_{\gamma} f\, ds .
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Andaikan $h$ mempertahankan orientasi serta $\gamma$ dan $h$
+keduanya mulus.  Maka 
+\begin{equation*}
+\begin{split}
+\int_{\gamma} f \, ds
+& =
+\int_a^b 
+f\bigl(\gamma(t)\bigr) \bnorm{\gamma'(t)} \, dt
+\\
+& =
+\int_c^d 
+f\Bigl(\gamma\bigl(h(\tau)\bigr)\Bigr)
+\bnorm{\gamma'\bigl(h(\tau)\bigr)} h'(\tau) \, d\tau
+\\
+& =
+\int_c^d 
+f\Bigl(\gamma\bigl(h(\tau)\bigr)\Bigr)
+\bnorm{\gamma'\bigl(h(\tau)\bigr) h'(\tau)} \, d\tau
+\\
+& =
+\int_c^d 
+f\bigl((\gamma \circ h)(\tau)\bigr) \bnorm{(\gamma \circ h)'(\tau)} \, d\tau
+\\
+& = 
+\int_{\gamma \circ h} f \, ds .
+\end{split}
+\end{equation*}
+Jika $h$ membalik orientasi, penggantian variabel menukar urutan batas
+integrasi.  Karena $h'(\tau)<0$, berlaku
+$\bnorm{\gamma'(h(\tau))h'(\tau)}=\bnorm{\gamma'(h(\tau))}\sabs{h'(\tau)}$;
+tanda minus dari pembalikan batas tepat mengimbangi
+$\sabs{h'(\tau)}=-h'(\tau)$.
+Rincian ini, beserta penyelesaian pembuktian untuk lintasan mulus
+sepotong-sepotong, diserahkan kepada pembaca dalam \exerciseref{mv:exercise:linepiece}.
+\end{proof}
+
+Seperti sebelumnya, berdasarkan proposisi ini (dan latihan),
+jika $\gamma$ sederhana, pilihan reparametrisasi bijektif tidak berpengaruh.
+Untuk lintasan tertutup sederhana, perubahan titik awal ditangani dengan memotong
+dan menyambungkan lintasan secara siklik, lalu menggunakan aditivitas.
+Oleh karena itu, jika $\Gamma = \gamma\bigl( [a,b] \bigr)$, kita cukup
+menuliskan
+\begin{equation*}
+\int_\Gamma f\, ds .
+\end{equation*}
+Dalam hal ini kita juga tidak perlu memperhatikan orientasi; kedua arah
+menghasilkan integral yang sama.
+
+\begin{example}
+Misalkan $f(x,y) \coloneqq x$.  Misalkan $C \subset \R^2$ bagian lingkaran satuan
+pada setengah bidang $x \geq 0$.  Kita hendak menghitung
+\begin{equation*}
+\int_C f \, ds .
+\end{equation*}
+Parametrisasikan kurva $C$ dengan $\gamma \colon
+[\nicefrac{-\pi}{2},\nicefrac{\pi}{2}] \to \R^2$ yang didefinisikan oleh
+$\gamma(t) \coloneqq \bigl(\cos(t),\sin(t)\bigr)$.
+Maka $\gamma'(t) = \bigl(-\sin(t),\cos(t)\bigr)$, dan
+\begin{equation*}
+\int_C f \, ds =
+\int_\gamma f \, ds
+=
+\int_{-\pi/2}^{\pi/2} \cos(t) \sqrt{ {\bigl(-\sin(t)\bigr)}^2 +  
+{\bigl(\cos(t)\bigr)}^2 } \, dt
+=
+\int_{-\pi/2}^{\pi/2} \cos(t) \, dt = 2.
+\end{equation*}
+\end{example}
+
+\begin{defn}
+Andaikan $\Gamma \subset \R^n$ diparametrisasikan oleh lintasan sederhana
+yang mulus sepotong-sepotong, $\gamma \colon [a,b] \to \R^n$; artinya,
+$\gamma\bigl( [a,b] \bigr) = \Gamma$.  Kita mendefinisikan
+\emph{\myindex{panjang}}\index{panjang kurva} dengan
+\begin{equation*}
+\ell(\Gamma) \coloneqq \int_{\Gamma} ds = \int_{\gamma} ds .
+\end{equation*}
+\end{defn}
+
+Jika $\gamma$ mulus,
+\begin{equation*}
+\ell(\Gamma) = 
+\int_a^b
+\bnorm{\gamma'(t)}\, dt .
+\end{equation*}
+Perlu disebutkan bahwa lazim untuk menuliskan
+$\int_a^b
+\bnorm{\gamma'(t)}\, dt$ meskipun lintasannya hanya mulus sepotong-sepotong.
+$\gamma'(t)$ ada dan kontinu kecuali mungkin pada berhingga banyak titik partisi.
+Pada titik-titik tersebut, perluas fungsi yang dinotasikan dengan $\gamma'$ dengan
+menetapkan nilai sembarang, misalnya nol.  Fungsi $\bnorm{\gamma'(t)}$ yang
+dihasilkan terbatas dan kontinu kecuali di berhingga banyak titik, sehingga integral
+Riemann tersebut ada.
+
+\begin{example}
+Misalkan $x,y \in \R^n$ dua titik berbeda dan tuliskan $[x,y]$ untuk ruas garis lurus
+di antara $x$ dan $y$.  Parametrisasikan
+$[x,y]$ dengan $\gamma(t) \coloneqq (1-t)x + ty$ untuk $t$ dari $0$ hingga $1$.
+Lihat \figureref{fig:straightpath}.
+Maka $\gamma'(t) = y-x$, sehingga
+\begin{equation*}
+\ell\bigl([x,y]\bigr)
+=
+\int_{[x,y]} ds
+=
+\int_0^1 \snorm{y-x} \, dt
+=
+\snorm{y-x} .
+\end{equation*}
+Panjang $[x,y]$ adalah jarak Euklides standar antara $x$ dan $y$,
+yang membenarkan penamaan tersebut.  Jika $x=y$, rumus yang sama tetap berlaku
+melalui konvensi kurva konstan dengan panjang nol.
+\begin{myfigureht}
+\myincludegraphics{straightpath}{%
+Diagram lintasan garis lurus dari titik x menuju titik y, dengan arah
+ditunjukkan oleh sebuah panah.  Lintasan diberi label [x,y].  Titik x juga
+diberi label t sama dengan 0, dan titik y diberi label t sama dengan 1.}
+\caption{Lintasan lurus antara $x$ dan $y$ yang diparametrisasikan
+oleh $(1-t)x + ty$.\label{fig:straightpath}}
+\end{myfigureht}
+\end{example}
+
+Untuk $r>0$, lintasan sederhana dan mulus sepotong-sepotong
+$\gamma \colon [0,r] \to \R^n$ disebut
+\emph{\myindex{parametrisasi panjang busur}} jika
+untuk semua $t \in [0,r]$ berlaku
+\begin{equation*}
+\ell\bigl( \gamma\bigl([0,t]\bigr) \bigr) = t .
+\end{equation*}
+Jika $\gamma$ mulus, maka
+\begin{equation*}
+\int_0^t d\tau =
+t = \ell\bigl( \gamma\bigl([0,t]\bigr) \bigr) =
+\int_0^t
+\bnorm{\gamma'(\tau)}
+\, d\tau
+\end{equation*}
+untuk semua $t$.
+Teorema dasar kalkulus kemudian menyatakan
+bahwa $\bnorm{\gamma'(t)} = 1$ untuk semua $t$.
+Demikian pula, untuk $\gamma$ yang mulus sepotong-sepotong, diperoleh
+$\bnorm{\gamma'(t)} = 1$ untuk semua $t$ tempat turunannya ada.
+Pada titik-titik partisi, turunan sepihak pada setiap ruas yang bersebelahan
+juga mempunyai norma satu.
+Bayangkan parametrisasi semacam ini sebagai gerak di sepanjang kurva dengan kelajuan
+1.  Jika $\gamma \colon [0,r] \to \R^n$ merupakan parametrisasi panjang busur, lazim
+menggunakan $s$ sebagai variabel, sehingga $\int_\gamma f \,ds
+= \int_0^r f\bigl(\gamma(s)\bigr) \,ds$.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Buktikan bahwa jika $\varphi \colon [a,b] \to \R^n$ merupakan lintasan mulus
+sepotong-sepotong menurut definisi kita, maka $\varphi$ merupakan fungsi kontinu.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan pembuktian \propref{prop:reparamapiecewisesmooth} untuk reparametrisasi
+yang membalik orientasi.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{mv:prop:pathconcat}.
+\end{exercise}
+
+\begin{exercise} \label{mv:exercise:pathpiece}
+Selesaikan pembuktian \propref{mv:prop:pathintrepararam}
+untuk
+\begin{enumerate}[a)]
+\item
+reparametrisasi yang membalik orientasi, dan
+\item
+lintasan serta reparametrisasi yang mulus
+sepotong-sepotong.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \label{mv:exercise:linepiece}
+Selesaikan pembuktian \propref{mv:prop:lineintrepararam}
+untuk
+\begin{enumerate}[a)]
+\item
+reparametrisasi yang membalik orientasi, dan
+\item
+lintasan serta reparametrisasi yang mulus
+sepotong-sepotong.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Andaikan $\gamma \colon [a,b] \to \R^n$ lintasan mulus sepotong-sepotong dan $f$
+fungsi kontinu yang didefinisikan pada citra $\gamma\bigl([a,b]\bigr)$.
+Berikan definisi untuk $\int_{\gamma} f \,ds$.
+\end{exercise}
+
+\begin{exercise}
+Dengan menggunakan definisi secara langsung, hitung:
+\begin{enumerate}[a)]
+\item
+Panjang busur keliling persegi satuan dari
+\exampleref{mv:example:unitsquarepath} dengan parametrisasi yang diberikan.
+\item
+Panjang busur lingkaran satuan dengan parametrisasi
+$\gamma \colon [0,1] \to \R^2$, $\gamma(t) \coloneqq \bigl(\cos(2\pi t),\sin(2\pi t)\bigr)$.
+\item
+Panjang busur lingkaran satuan dengan parametrisasi
+$\beta \colon [0,2\pi] \to \R^2$, $\beta(t) \coloneqq \bigl(\cos(t),\sin(t)\bigr)$.
+\end{enumerate}
+Catatan: Anda boleh menggunakan pengetahuan tentang sinus dan kosinus dari kalkulus.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $\gamma \colon [0,1] \to \R^n$ lintasan mulus dan
+$\omega$ bentuk-1 yang didefinisikan pada citra $\gamma\bigl([0,1]\bigr)$.
+Untuk $r \in (0,1]$, definisikan $\gamma_r \colon [0,r] \to \R^n$
+sebagai pembatasan $\gamma$ pada $[0,r]$, lalu definisikan
+$h(r) \coloneqq \int_{\gamma_r} \omega$ dan tetapkan $h(0)\coloneqq 0$.
+Buktikan bahwa $h$ diferensiabel secara kontinu pada $[0,1]$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $\gamma \colon [a,b] \to \R^n$ lintasan mulus.
+Buktikan bahwa terdapat $\epsilon > 0$ dan fungsi yang diferensiabel secara kontinu
+$\widetilde{\gamma} \colon (a-\epsilon,b+\epsilon) \to \R^n$
+dengan $\widetilde{\gamma}(t) = \gamma(t)$ untuk semua $t \in [a,b]$
+dan $\widetilde{\gamma}'(t) \neq 0$ untuk semua $t \in 
+(a-\epsilon,b+\epsilon)$.  Artinya, buktikan bahwa lintasan mulus dapat diperpanjang
+sedikit melampaui ujung-ujung interval parameternya.
+\end{exercise}
+
+\begin{exercise} 
+Andaikan $\alpha \colon [a,b] \to \R^n$ dan
+$\beta \colon [c,d] \to \R^n$ lintasan mulus sepotong-sepotong sedemikian sehingga
+$\Gamma \coloneqq \alpha\bigl([a,b]\bigr) = \beta\bigl([c,d]\bigr)$.
+Buktikan bahwa terdapat berhingga banyak titik
+$\{ p_1,p_2,\ldots,p_k\} \subset \Gamma$ sedemikian sehingga himpunan
+$\alpha^{-1}\bigl( \{ p_1,p_2,\ldots,p_k\} \bigr)$
+dan
+$\beta^{-1}\bigl( \{ p_1,p_2,\ldots,p_k\} \bigr)$
+berturut-turut merupakan partisi dari $[a,b]$ dan $[c,d]$ sedemikian sehingga
+pembatasan setiap lintasan mulus pada tiap subinterval partisinya sendiri
+(artinya, partisi-partisi ini seperti dalam definisi lintasan mulus
+sepotong-sepotong).
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[3]
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Andaikan $\gamma \colon [a,b] \to \R^n$ dan $\alpha \colon [c,d] \to \R^n$
+dua lintasan mulus yang injektif dan
+$\gamma\bigl([a,b]\bigr) = \alpha\bigl([c,d]\bigr)$.  Buktikan bahwa
+terdapat reparametrisasi mulus $h \colon [a,b] \to [c,d]$
+sedemikian sehingga $\gamma = \alpha \circ h$.\\
+Petunjuk 1: Tidak sulit untuk membuktikan bahwa $h$ ada.
+Intinya adalah membuktikan bahwa $h$ diferensiabel secara kontinu
+dengan turunan tak nol.  Terapkan teorema fungsi implisit,
+meskipun pada awalnya dimensinya mungkin tampak tidak sesuai.\\
+Petunjuk 2: Tinjau dahulu turunan $h$ pada $(a,b)$.
+\item
+Buktikan hal yang sama seperti pada bagian (a), tetapi sekarang untuk lintasan tertutup
+sederhana, dengan asumsi tambahan $\gamma(a) = \gamma(b) = \alpha(c) = \alpha(d)$.
+\item
+Buktikan bagian (a) dan (b) untuk lintasan mulus sepotong-sepotong, sehingga diperoleh
+reparametrisasi mulus sepotong-sepotong.\\
+Petunjuk: Intinya adalah menemukan dua
+partisi sedemikian sehingga, pada setiap pasangan subinterval yang bersesuaian,
+pembatasan kedua lintasan mempunyai citra yang sama dan keduanya mulus; lihat
+latihan sebelumnya.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} 
+\pagebreak[1]
+Misalkan $\alpha \colon [a,b] \to \R^n$ dan
+$\beta \colon [b,c] \to \R^n$ merupakan lintasan mulus sepotong-sepotong dengan
+$\alpha(b)=\beta(b)$. Definisikan $\gamma \colon [a,c] \to \R^n$ dengan
+\begin{equation*}
+\gamma(t) \coloneqq
+\begin{cases}
+\alpha(t) & \text{jika } t \in [a,b], \\
+\beta(t)  & \text{jika } t \in (b,c].
+\end{cases}
+\end{equation*}
+Buktikan bahwa $\gamma$ merupakan lintasan mulus sepotong-sepotong. Buktikan pula
+bahwa, jika $\omega$ adalah bentuk-1 yang terdefinisi pada citra lintasan
+$\gamma$, maka
+\begin{equation*}
+\int_{\gamma} \omega =
+\int_{\alpha} \omega +
+\int_{\beta} \omega .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise} \label{mv:exercise:closedcurveintegral}
+\pagebreak[1]
+Misalkan $\gamma \colon [a,b] \to \R^n$ dan
+$\beta \colon [c,d] \to \R^n$ merupakan dua lintasan tertutup sederhana yang
+mulus sepotong-sepotong. Artinya, $\gamma(a)=\gamma(b)$,
+$\beta(c)=\beta(d)$, dan pembatasan $\gamma|_{[a,b)}$ serta
+$\beta|_{[c,d)}$ bersifat injektif.
+Misalkan $\Gamma = \gamma\bigl([a,b]\bigr) = \beta\bigl([c,d]\bigr)$ dan
+$\omega$ merupakan bentuk-1 yang terdefinisi pada $\Gamma \subset \R^n$.
+Buktikan bahwa berlaku salah satu dari
+\begin{equation*}
+\int_\gamma \omega = 
+\int_\beta \omega,
+\qquad \text{atau} \qquad 
+\int_\gamma \omega = 
+- \int_\beta \omega.
+\end{equation*}
+Secara khusus, notasi $\int_{\Gamma} \omega$ bermakna apabila orientasi
+penelusuran $\Gamma$ ditentukan.
+Petunjuk: Lihat tiga latihan sebelumnya.
+\end{exercise}
+
+\begin{exercise} \label{mv:exercise:curveintegral}
+Misalkan $\gamma \colon [a,b] \to \R^n$ dan
+$\beta \colon [c,d] \to \R^n$ merupakan dua lintasan mulus sepotong-sepotong
+yang injektif kecuali pada berhingga banyak titik. Artinya, terdapat himpunan
+berhingga $S \subset [a,b]$ dan $T \subset [c,d]$ sedemikian sehingga
+$\gamma|_{[a,b]\setminus S}$ dan $\beta|_{[c,d]\setminus T}$ bersifat
+injektif. Misalkan
+$\Gamma = \gamma\bigl([a,b]\bigr) = \beta\bigl([c,d]\bigr)$ dan $\omega$
+merupakan bentuk-1 yang terdefinisi pada $\Gamma \subset \R^n$.
+
+\emph{Koreksi edisi Indonesia.}
+Hipotesis di atas saja tidak menjamin
+$\int_\gamma\omega=\pm\int_\beta\omega$, berbeda dengan pernyataan dalam teks
+sumber. Sebagai contoh, pada kurva berbentuk angka delapan, satu lintasan dapat
+membalik orientasi hanya pada salah satu lobus; pilih $\omega$ yang integralnya
+tak nol pada kedua lobus. Ambil himpunan berhingga $V\subset\Gamma$ yang memuat
+semua titik ujung, titik sudut, dan titik perpotongan-diri kedua parametrisasi,
+dan sebut setiap komponen terhubung dari $\Gamma\setminus V$ sebagai busur
+reguler. Tambahkan salah satu dari dua hipotesis berikut: kedua lintasan
+menginduksi orientasi yang sama pada setiap busur reguler, atau keduanya
+menginduksi orientasi yang berlawanan pada setiap busur tersebut. Dalam kedua
+kasus itu, buktikan berturut-turut bahwa
+\begin{equation*}
+\int_\gamma \omega = 
+\int_\beta \omega,
+\qquad \text{atau} \qquad 
+\int_\gamma \omega = 
+- \int_\beta \omega.
+\end{equation*}
+Jika orientasinya bercampur, integral harus diuraikan busur demi busur; sekadar
+menentukan satu arah global pada $\Gamma$ tidaklah cukup.
+\\
+Petunjuk: Terapkan gagasan dari latihan sebelumnya secara terpisah pada setiap
+busur reguler.
+\end{exercise}
+
+\begin{exercise}
+Definisikan $\gamma \colon [0,1] \to \R^2$ dengan
+$\gamma(t) \coloneqq \Bigl( t^3 \sin(\nicefrac{1}{t}),\,
+t{\bigl(3t^2\sin(\nicefrac{1}{t})-t\cos(\nicefrac{1}{t})\bigr)}^2 \Bigr)$
+untuk
+$t \neq 0$ dan $\gamma(0) = (0,0)$. Buktikan bahwa
+\begin{enumerate}[a)]
+\item
+$\gamma$ diferensiabel secara kontinu pada $[0,1]$.
+\item
+Buktikan bahwa himpunan
+$\{t\in(0,1] : \gamma'(t)=(0,0)\}$ tak berhingga. Dengan menulis $u=1/t$,
+karakterisasikan semua akar melalui persamaan $\tan(u)=u/3$, lalu indekskan
+seluruh himpunan tersebut, tanpa ada yang dilewati, sebagai barisan
+$t_1>t_2>\cdots>0$ yang konvergen ke~$0$.
+\item
+Buktikan bahwa titik-titik $\gamma(t_n)$ terletak pada garis $y=0$ dan bahwa
+tanda koordinat $x$ dari $\gamma(t_n)$ berselang-seling antara positif dan
+negatif.
+\item
+Buktikan bahwa tidak ada lintasan mulus sepotong-sepotong $\alpha$ yang citranya
+sama dengan $\gamma\bigl([0,1]\bigr)$. Petunjuk: Gunakan bagian (c) dan fakta
+bahwa $\alpha$ hanya mempunyai berhingga banyak ruas mulus. Pada sedikitnya satu
+ruas yang mencapai titik asal, tunjukkan bahwa turunan sepihak harus nol atau
+tidak dapat ada; keduanya bertentangan dengan regularitas ruas tersebut.
+\item
+(Komputer) Jika tersedia perangkat lunak yang dapat menggambar kurva parametrik,
+gambarlah kurva ini hanya untuk $t$ dalam rentang $[0,0.1]$; pada
+rentang yang lebih lebar perilaku tersebut tidak akan tampak. Secara khusus,
+perhatikan bahwa $\gamma\bigl([0,1]\bigr)$ mempunyai tak berhingga banyak
+\myquote{sudut}
+di dekat titik asal.
+\end{enumerate}
+Catatan: Anda boleh menggunakan hasil tentang sinus dan kosinus dari kalkulus.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Ketaktergantungan pada lintasan}
+\label{sec:pathind}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2 kuliah}
+
+\subsection{Integral bebas lintasan}
+
+Misalkan $U \subset \R^n$ himpunan terbuka dan $\omega$ bentuk-1 yang
+terdefinisi pada $U$. Integral $\omega$ dikatakan
+\emph{\myindex{tidak bergantung pada lintasan}}
+apabila, untuk setiap pasangan titik $x,y \in U$ yang dapat dihubungkan oleh
+lintasan mulus sepotong-sepotong dan untuk setiap pasangan lintasan semacam itu
+$\gamma \colon [a,b] \to U$ dan
+$\beta \colon [c,d] \to U$ yang memenuhi $\gamma(a) = \beta(c) = x$
+dan $\gamma(b) = \beta(d) = y$, berlaku
+\begin{equation*}
+\int_\gamma \omega = \int_\beta \omega .
+\end{equation*}
+Untuk $x$ dan $y$ yang dapat dihubungkan oleh lintasan semacam itu, dalam hal ini
+kita cukup menulis
+\begin{equation*}
+\int_x^y \omega \coloneqq \int_\gamma \omega = \int_\beta \omega .
+\end{equation*}
+Tidak setiap bentuk-1 menghasilkan integral yang tidak bergantung pada lintasan;
+bahkan, kebanyakan tidak demikian.
+
+\begin{example}
+Pada $U=\R^2$, tinjau bentuk-1 $\omega=y\,dx$. Misalkan
+$\gamma \colon [0,1] \to \R^2$ lintasan
+$\gamma(t) \coloneqq (t,0)$ dari $(0,0)$ ke $(1,0)$. Misalkan
+$\beta \colon [0,1] \to \R^2$ lintasan
+$\beta(t) \coloneqq \bigl(t,(1-t)t\bigr)$ yang juga menghubungkan kedua titik
+tersebut. Maka
+\begin{align*}
+& \int_\gamma y \, dx = 
+\int_0^1 \gamma_2(t) \gamma_1'(t) \, dt
+=
+\int_0^1 0 (1) \, dt = 0 ,\\
+& \int_\beta y \, dx = 
+\int_0^1 \beta_2(t) \beta_1'(t) \, dt
+=
+\int_0^1 (1-t)t(1) \, dt = \frac{1}{6} .
+\end{align*}
+Integral $y\,dx$ bergantung pada lintasan. Secara khusus, notasi
+$\int_{(0,0)}^{(1,0)} y\,dx$ tidak mempunyai makna tunggal.
+\end{example}
+
+\begin{defn}
+Misalkan $U \subset \R^n$ himpunan terbuka dan $f \colon U \to \R$ fungsi
+yang diferensiabel secara kontinu. Bentuk-1
+\begin{equation*}
+df \coloneqq
+\frac{\partial f}{\partial x_1} \, dx_1 + 
+\frac{\partial f}{\partial x_2} \, dx_2 + \cdots +
+\frac{\partial f}{\partial x_n} \, dx_n 
+\end{equation*}
+disebut \emph{\myindex{turunan total}} dari $f$.
+
+Himpunan terbuka $U \subset \R^n$ disebut
+\emph{\myindex{terhubung lintasan}}%
+\footnote{Biasanya definisi ini hanya mensyaratkan lintasan kontinu, tetapi
+untuk himpunan terbuka kedua definisi tersebut ekuivalen. Lihat latihan.}
+apabila, untuk setiap dua titik $x$ dan $y$ di $U$, terdapat lintasan mulus
+sepotong-sepotong yang berawal di $x$ dan berakhir di $y$.
+\end{defn}
+
+Sebagai latihan, buktikan bahwa setiap himpunan terbuka yang terhubung juga
+terhubung lintasan.
+
+\begin{prop} \label{mv:prop:pathinddf}
+Misalkan $U \subset \R^n$ himpunan terbuka yang terhubung lintasan dan $\omega$
+bentuk-1 yang terdefinisi pada $U$. Integral $\omega$ tidak bergantung pada
+lintasan (untuk semua $x,y \in U$) jika dan hanya jika terdapat fungsi
+$f \colon U \to \R$ yang diferensiabel secara kontinu sedemikian sehingga
+$\omega = df$.
+
+Bahkan, jika fungsi $f$ semacam itu ada, maka untuk setiap pasangan titik
+$x,y \in U$ berlaku
+\begin{equation*}
+\int_{x}^y \omega = f(y)-f(x) .
+\end{equation*}
+\end{prop}
+
+Dengan kata lain, jika kita menetapkan $p \in U$, maka
+$f(x) = C + \int_{p}^x \omega$ untuk suatu konstanta $C$.
+
+\begin{proof}
+Pertama, andaikan integral tersebut tidak bergantung pada lintasan. Pilih
+$p \in U$. Karena $U$ terhubung lintasan, terdapat lintasan dari $p$ ke setiap
+$x \in U$. Definisikan
+\begin{equation*}
+f(x) \coloneqq \int_{p}^x \omega .
+\end{equation*}
+Tuliskan $\omega = \omega_1 \,dx_1 + \omega_2 \,dx_2 + \cdots + \omega_n \,dx_n$.
+Kita akan membuktikan bahwa, untuk setiap $j = 1,2,\ldots,n$, turunan parsial
+$\frac{\partial f}{\partial x_j}$ ada dan sama dengan $\omega_j$.
+
+Ambil sembarang vektor basis standar $e_j$. Karena $U$ terbuka, pilih $r>0$
+sedemikian sehingga $\overline{B}(x,r)\subset U$, lalu ambil bilangan real $h$
+dengan $0<\sabs{h}<r$. Dengan demikian, seluruh ruas dari $x$ ke $x+he_j$
+berada di $U$. Hitunglah
+\begin{equation*}
+\frac{f(x+h e_j) - f(x)}{h} =
+\frac{1}{h} \left( \int_{p}^{x+he_j} \omega - \int_{p}^x \omega \right)
+=
+\frac{1}{h} \int_{x}^{x+he_j} \omega ,
+\end{equation*}
+Kesamaan ini mengikuti dari \propref{mv:prop:pathconcat} dan ketaktergantungan
+pada lintasan, sebab
+$\int_{p}^{x+he_j} \omega =
+\int_{p}^{x} \omega +
+\int_{x}^{x+he_j} \omega$: kita sengaja memilih lintasan dari $p$ ke
+$x+he_j$ yang melalui $x$, lalu memotong lintasan tersebut menjadi dua bagian.
+Lihat \figureref{fig:pathindantider}.
+
+\begin{myfigureht}
+\myincludepdft{pathindantider}{%
+Diagram dengan arah horizontal berlabel e sub j. Sebuah lintasan melengkung
+bergerak dari titik p ke titik x, lalu sebuah ruas garis bergerak dari x ke
+x ditambah h kali e sub j, sepanjang arah e sub j jika h positif dan arah
+sebaliknya jika h negatif.}
+\caption{Menggunakan ketaktergantungan pada lintasan untuk menghitung turunan
+parsial.\label{fig:pathindantider}}
+\end{myfigureht}
+
+
+Karena integral bebas lintasan, pilih lintasan paling sederhana dari $x$ ke
+$x+he_j$, yaitu $\gamma(t) \coloneqq x+t he_j$ untuk $t \in [0,1]$.
+Seluruh lintasan ini berada di $U$. Perhatikan bahwa
+$\gamma'(t) = h e_j$ hanya mempunyai satu komponen tak nol, yaitu komponen
+ke-$j$ yang bernilai $h$. Oleh karena itu,
+\begin{equation*}
+\frac{1}{h} \int_{x}^{x+he_j} \omega 
+=
+\frac{1}{h} \int_{\gamma} \omega 
+=
+\frac{1}{h} \int_0^1 \omega_j(x+the_j) h \, dt 
+=
+\int_0^1 \omega_j(x+the_j) \, dt  .
+\end{equation*}
+Kita ingin mengambil limit ketika $h \to 0$. Fungsi $\omega_j$ kontinu di
+$x$. Diberikan $\epsilon > 0$, pilih $0<\delta\leq r$ sedemikian sehingga
+$\babs{\omega_j(x)-\omega_j(y)} < \epsilon$ setiap kali
+$\snorm{x-y}<\delta$. Jika $0<\sabs{h}<\delta$, maka
+$\babs{\omega_j(x+the_j)-\omega_j(x)} < \epsilon$ untuk semua
+$t \in [0,1]$, dan kita memperoleh taksiran
+\begin{equation*}
+\abs{\int_0^1 \omega_j(x+the_j) \, dt  - \omega_j(x)}
+=
+\abs{\int_0^1 \bigl( \omega_j(x+the_j) - \omega_j(x) \bigr) \, dt}
+\leq
+\epsilon .
+\end{equation*}
+Jadi,
+\begin{equation*}
+\lim_{h\to 0}\frac{f(x+h e_j) - f(x)}{h} = \omega_j(x) .
+\end{equation*}
+Semua turunan parsial $f$ ada, dan setiap
+$\frac{\partial f}{\partial x_j}$ sama dengan koefisien yang bersesuaian,
+$\omega_j$, yang kontinu. Jadi, $f$ diferensiabel secara kontinu dan
+$df = \omega$.
+
+Untuk arah sebaliknya, andaikan terdapat fungsi $f$ yang diferensiabel secara
+kontinu dan memenuhi $df = \omega$. Ambil lintasan mulus
+$\gamma \colon [a,b] \to U$ dengan $\gamma(a) = x$ dan
+$\gamma(b) = y$. Maka
+\begin{equation*}
+\begin{split}
+\int_\gamma df
+& =
+\int_a^b
+\biggl(
+\frac{\partial f}{\partial x_1}\bigl(\gamma(t)\bigr) \gamma_1'(t)+
+\frac{\partial f}{\partial x_2}\bigl(\gamma(t)\bigr) \gamma_2'(t)+ \cdots +
+\frac{\partial f}{\partial x_n}\bigl(\gamma(t)\bigr) \gamma_n'(t)
+\biggr) \, dt
+\\
+& = 
+\int_a^b
+\frac{d}{dt} \Bigl[ f\bigl(\gamma(t)\bigr) \Bigr]\, dt
+\\
+& = f(y)-f(x) .
+\end{split}
+\end{equation*}
+Nilai integral hanya bergantung pada $x$ dan $y$, bukan pada lintasan yang
+ditempuh. Untuk lintasan mulus sepotong-sepotong dengan partisi
+$a=t_0<t_1<\cdots<t_k=b$, terapkan perhitungan di atas pada setiap pembatasan
+$\gamma|_{[t_{i-1},t_i]}$, lalu jumlahkan. Suku-suku pada titik partisi saling
+meniadakan, sehingga tetap diperoleh
+$\int_\gamma df=f\bigl(\gamma(b)\bigr)-f\bigl(\gamma(a)\bigr)$. Jadi, integral
+tersebut bebas lintasan.
+\end{proof}
+
+Ketaktergantungan pada lintasan dapat dinyatakan dengan lebih ringkas melalui
+integral pada lintasan tertutup.
+
+\begin{prop}
+Misalkan $U \subset \R^n$ himpunan terbuka yang terhubung lintasan dan $\omega$
+bentuk-1 yang terdefinisi pada $U$. Maka $\omega = df$ untuk suatu fungsi
+$f \colon U \to \R$ yang diferensiabel secara kontinu jika dan hanya jika
+\begin{equation*}
+\int_{\gamma} \omega = 0
+\qquad
+\text{untuk setiap lintasan tertutup mulus sepotong-sepotong }
+\gamma \colon [a,b] \to U.
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Andaikan $\omega = df$ dan misalkan $\gamma$ lintasan tertutup yang mulus
+sepotong-sepotong. Karena $\gamma(a) = \gamma(b)$, proposisi sebelumnya
+memberikan
+\begin{equation*}
+\int_{\gamma} \omega = f\bigl(\gamma(b)\bigr) - f\bigl(\gamma(a)\bigr) = 0 .
+\end{equation*}
+
+Sekarang andaikan $\int_{\gamma} \omega = 0$ untuk setiap lintasan tertutup
+mulus sepotong-sepotong $\gamma$. Ambil dua titik $x,y$ di $U$ dan dua lintasan
+mulus sepotong-sepotong yang menghubungkannya. Setelah reparametrisasi afin yang
+mempertahankan orientasi, tanpa mengurangi keumuman tuliskan kedua lintasan itu
+sebagai $\alpha \colon [0,1] \to U$ dan $\beta \colon [0,1] \to U$, dengan
+$\alpha(0) = \beta(0) = x$ dan $\alpha(1) = \beta(1) = y$. Lihat
+\figureref{fig:twopaths}.
+\begin{myfigureht}
+\myincludepdft{twopaths}{%
+Dua titik, x dan y, beserta dua lintasan berbeda, alfa dan beta, yang sama-sama
+berawal di x dan berakhir di y.}
+\caption{Dua lintasan dari $x$ ke $y$.\label{fig:twopaths}}
+\end{myfigureht}
+
+Definisikan $\gamma \colon [0,2] \to U$ dengan
+\begin{equation*}
+\gamma(t) \coloneqq
+\begin{cases}
+\alpha(t)  & \text{jika } t \in [0,1], \\
+\beta(2-t) & \text{jika } t \in (1,2].
+\end{cases}
+\end{equation*}
+Lintasan ini mulus sepotong-sepotong: gabungkan partisi berhingga untuk
+$\alpha$ dengan partisi lintasan balik $t\mapsto\beta(2-t)$. Secara khusus,
+$\gamma|_{[0,1]}(t) = \alpha(t)$ dan
+$\gamma|_{[1,2]}(t) = \beta(2-t)$, serta
+$\gamma(1) = \alpha(1) = \beta(2-1)$. Lintasan ini juga tertutup karena
+$\gamma(0) = \alpha(0) = \beta(0) = \gamma(2)$. Jadi,
+\begin{equation*}
+0 = \int_{\gamma} \omega = \int_{\alpha} \omega - \int_{\beta} \omega .
+\end{equation*}
+Kesamaan ini pertama-tama mengikuti dari \propref{mv:prop:pathconcat}; bagian
+kedua menelusuri $\beta$ dalam arah sebaliknya sehingga memberikan
+$-\int_\beta\omega$. Dengan demikian, integral $\omega$ pada $U$ bebas
+lintasan.
+\end{proof}
+
+Apa pun perumusan ketaktergantungan pada lintasan, kriterianya sering sulit
+diperiksa---kita harus memeriksa sesuatu \myquote{untuk semua lintasan.}
+Ada kriteria lokal yang lebih mudah, berupa persamaan diferensial, yang menjamin
+ketaktergantungan pada lintasan. Dengan kata lain, kriteria itu menjamin adanya
+\emph{\myindex{antiturunan}} $f$ yang turunan totalnya adalah bentuk-1
+$\omega$ yang diberikan. Karena kriterianya lokal, pada umumnya kita hanya
+memperoleh fungsi $f$ secara lokal.
+Jika kriteria lokal tersebut terpenuhi, antiturunan dapat ditemukan pada setiap
+domain
+\emph{\myindex{terhubung sederhana}}. Secara informal, ini adalah himpunan
+terbuka terhubung tempat setiap dua lintasan dengan titik-titik ujung yang sama
+dapat dihomotopikan satu sama lain di dalam himpunan tersebut sambil
+mempertahankan kedua titik ujung. Untuk menyederhanakan pembahasan, kita
+membuktikan hasil ini bagi domain berbentuk bintang, yang sering kali sudah
+memadai. Sebagai tambahan, pembuktian untuk kasus berbentuk bintang membangun
+antiturunannya secara eksplisit. Karena bola berbentuk bintang, hasil ini pun
+berlaku secara lokal.
+
+\begin{defn}
+Misalkan $U \subset \R^n$ himpunan terbuka dan $p \in U$. Kita menyebut $U$
+\emph{\myindex{domain berbentuk bintang}}
+terhadap $p$ apabila, untuk setiap titik lain $x \in U$, ruas garis $[p,x]$
+berada di dalam $U$, yaitu apabila
+$(1-t)p + tx \in U$ untuk semua $t \in [0,1]$.
+Jika kita hanya mengatakan \emph{berbentuk bintang}, yang dimaksud adalah bahwa
+$U$ berbentuk bintang terhadap suatu $p \in U$. Lihat
+\figureref{fig:starshaped}.
+\begin{myfigureht}
+\myincludepdft{starshaped}{%
+Daerah berarsir berbentuk bintang terhadap titik p. Beberapa titik di dalam
+daerah, termasuk titik x, dihubungkan ke p, dan setiap ruas garis tersebut
+seluruhnya berada di dalam daerah.}
+\caption{Domain berbentuk bintang terhadap $p$.\label{fig:starshaped}}
+\end{myfigureht}
+\end{defn}
+
+Perhatikan perbedaan antara berbentuk bintang dan konveks. Setiap himpunan
+konveks berbentuk bintang, tetapi domain berbentuk bintang belum tentu konveks.
+
+\begin{thm}[\myindex{Lema Poincar\'e}]
+Misalkan $U \subset \R^n$ domain berbentuk bintang dan $\omega$ bentuk-1 yang
+diferensiabel secara kontinu serta terdefinisi pada $U$. Artinya,
+\begin{equation*}
+\omega =
+\omega_1 \,dx_1 +
+\omega_2 \,dx_2 + \cdots +
+\omega_n \,dx_n ,
+\end{equation*}
+dengan $\omega_1,\omega_2,\ldots,\omega_n$ fungsi-fungsi yang diferensiabel
+secara kontinu. Andaikan, untuk setiap $j$ dan $k$,
+\begin{equation*}
+\frac{\partial \omega_j}{\partial x_k} = \frac{\partial \omega_k}{\partial x_j} .
+\avoidbreak
+\end{equation*}
+Maka terdapat fungsi $f \colon U \to \R$ yang diferensiabel secara kontinu
+hingga orde dua dan memenuhi $df = \omega$.
+\end{thm}
+
+Syarat pada turunan $\omega$ tepat menyatakan bahwa urutan diferensiasi
+parsial kedua dapat dipertukarkan. Jika $df = \omega$ dan $f$ diferensiabel
+secara kontinu hingga orde dua, maka
+\begin{equation*}
+\frac{\partial \omega_j}{\partial x_k}
+=
+\frac{\partial^2 f}{\partial x_k \partial x_j} 
+=
+\frac{\partial^2 f}{\partial x_j \partial x_k} 
+=
+\frac{\partial \omega_k}{\partial x_j} .
+\end{equation*}
+Syarat ini jelas perlu. Lema Poincar\'e menyatakan bahwa syarat tersebut juga
+cukup apabila $U$ berbentuk bintang.
+
+\begin{proof}
+Andaikan $U$ berbentuk bintang terhadap
+$p=(p_1,p_2,\ldots,p_n) \in U$. Untuk
+$x = (x_1,x_2,\ldots,x_n) \in U$, definisikan pemetaan radial
+$\gamma_x \colon [0,1] \to U$ dengan
+$\gamma_x(t) \coloneqq (1-t)p + tx$, sehingga $\gamma_x'(t) = x-p$. Jika
+$x\neq p$, pemetaan ini merupakan lintasan mulus; jika $x=p$, gunakan
+perluasan definisi integral bagi pemetaan $C^1$, yang memberi integral nol.
+Definisikan
+\begin{equation*}
+f(x) \coloneqq \int_{\gamma_x} \omega
+=
+\int_0^1
+\left(
+\sum_{k=1}^n
+\omega_k \bigl((1-t)p + tx \bigr) \, (x_k-p_k)
+\right) dt .
+\end{equation*}
+Untuk membenarkan diferensiasi di bawah tanda integral, tetapkan
+$x\in U$ dan pilih $\rho>0$ sedemikian sehingga
+$\overline{B}(x,\rho)\subset U$. Karena $U$ berbentuk bintang terhadap $p$,
+himpunan kompak
+$\{(1-t)p+ty:t\in[0,1],\ y\in\overline{B}(x,\rho)\}$ seluruhnya berada di
+$U$. Koefisien $\omega_k$ beserta semua turunan parsial pertamanya kontinu pada
+himpunan tersebut. Karena itu, kita boleh mendiferensialkan terhadap $x_j$ di
+bawah tanda integral:
+\begin{equation*}
+\begin{split}
+\frac{\partial f}{\partial x_j}(x) & =
+\int_0^1
+\left(
+\left(
+\sum_{k=1}^n
+\frac{\partial \omega_k}{\partial x_j} \bigl((1-t)p + tx \bigr) \, t
+(x_k-p_k)
+\right)
++
+\omega_j \bigl((1-t)p + tx \bigr)
+\right)
+ dt
+\\
+& = 
+\int_0^1
+\left(
+\left(
+\sum_{k=1}^n
+\frac{\partial \omega_j}{\partial x_k} \bigl((1-t)p + tx \bigr) \, t
+(x_k-p_k)
+\right)
++
+\omega_j \bigl((1-t)p + tx \bigr)
+\right) dt
+\\
+& = 
+\int_0^1
+\frac{d}{dt}
+\Bigl[
+t \omega_j\bigl((1-t)p + tx \bigr)
+\Bigr]
+\,
+dt
+\\
+&= \omega_j(x) .
+\end{split}
+\end{equation*}
+Inilah kesamaan yang hendak dibuktikan. Karena
+$\frac{\partial f}{\partial x_j}=\omega_j$ dan setiap $\omega_j$ diferensiabel
+secara kontinu, semua turunan parsial kedua $f$ ada dan kontinu. Jadi, $f$
+diferensiabel secara kontinu hingga orde dua dan $df=\omega$.
+\end{proof}
+
+\begin{example}
+Tanpa hipotesis tertentu pada $U$, teorema tersebut tidak benar. Pada
+$\R^2 \setminus \{ (0,0) \}$, definisikan
+\begin{equation*}
+\omega(x,y) \coloneqq \frac{-y}{x^2+y^2} \,dx + \frac{x}{x^2+y^2} \,dy .
+\end{equation*}
+Maka
+\begin{equation*}
+\frac{\partial}{\partial y} \left[ 
+\frac{-y}{x^2+y^2} \right] =
+\frac{y^2-x^2}{{(x^2+y^2)}^2}
+=
+\frac{\partial}{\partial x} \left[ 
+\frac{x}{x^2+y^2} \right] .
+\end{equation*}
+Namun, tidak ada fungsi
+$f \colon \R^2 \setminus \{ (0,0) \} \to \R$ yang memenuhi $df = \omega$.
+Dalam \exampleref{example:mv:irrotoneformint}, kita mengintegralkan dari
+$(1,0)$ kembali ke $(1,0)$ sepanjang lingkaran satuan berlawanan arah jarum
+jam, yaitu dengan
+$\gamma(t) = \bigl(\cos(t),\sin(t)\bigr)$ untuk $t \in [0,2\pi]$, dan
+memperoleh integral $2\pi$. Jika integral itu bebas lintasan---atau, dengan kata
+lain, jika terdapat $f$ yang memenuhi $df = \omega$---hasilnya seharusnya nol.
+\end{example}
+
+\subsection{Medan vektor}
+
+Jika pada setiap titik terdapat sebuah vektor---yang kita sebut medan
+vektor---kita dapat mengintegralkan komponennya sepanjang suatu lintasan.
+Integral semacam ini, misalnya, menghitung usaha yang dilakukan medan gaya pada
+partikel yang bergerak sepanjang lintasan.
+
+\begin{defn}
+Misalkan $U \subset \R^n$ suatu himpunan. Fungsi kontinu
+$v \colon U \to \R^n$ disebut \emph{\myindex{medan vektor}}. Tuliskan
+$v = (v_1,v_2,\ldots,v_n)$.
+
+Diberikan lintasan mulus $\gamma \colon [a,b] \to \R^n$ dengan
+$\gamma\bigl([a,b]\bigr) \subset U$, kita mendefinisikan integral lintasan
+medan vektor $v$ sebagai
+\glsadd{not:pathintegralvecfield}
+\begin{equation*}
+\int_{\gamma} v \cdot d\gamma
+\coloneqq
+\int_a^b v\bigl(\gamma(t)\bigr) \cdot \gamma'(t) \, dt ,
+\end{equation*}
+di sini tanda titik menyatakan hasil kali titik standar. Untuk lintasan mulus
+sepotong-sepotong, definisinya diperoleh dengan mengintegralkan pada setiap
+interval mulus lalu menjumlahkan hasil-hasilnya.
+\end{defn}
+
+Dengan menguraikan definisi, kita memperoleh
+\begin{equation*}
+\int_{\gamma} v \cdot d\gamma
+=
+\int_{\gamma} \bigl(v_1 \,dx_1 + v_2 \,dx_2 + \cdots + v_n \,dx_n\bigr) .
+\end{equation*}
+Semua yang kita ketahui tentang integrasi bentuk-1 berlaku pula untuk integrasi
+medan vektor. Integral medan vektor disebut bebas lintasan apabila, untuk setiap
+dua lintasan mulus sepotong-sepotong $\gamma$ dan $\beta$ di $U$ dengan titik
+awal dan titik akhir yang sama, berlaku
+\begin{equation*}
+\int_\gamma v \cdot d\gamma = \int_\beta v \cdot d\beta .
+\end{equation*}
+Jika $U$ terbuka dan terhubung lintasan, sifat ini berlaku jika dan hanya jika
+terdapat fungsi
+$f \colon U\to\R$ yang diferensiabel secara kontinu dengan
+$v = \nabla f$. Artinya, $v$ merupakan gradien suatu fungsi. Fungsi $f$
+kemudian disebut \emph{\myindex{potensial}} bagi $v$.
+
+Medan vektor $v$ yang integral lintasannya bebas lintasan disebut
+\emph{\myindex{medan vektor konservatif}}. Istilah ini digunakan karena medan
+vektor semacam itu muncul dalam sistem fisika tempat suatu besaran, yaitu
+energi, bersifat kekal.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Carilah $f \colon \R^2 \to \R$ sedemikian sehingga $df = xe^{x^2+y^2}\, dx +
+ye^{x^2+y^2} \, dy$.
+\end{exercise}
+
+\begin{exercise}
+Carilah $\omega_2 \colon \R^2 \to \R$ sedemikian sehingga terdapat fungsi
+$f \colon \R^2 \to \R$ yang diferensiabel secara kontinu dan memenuhi
+$df = e^{xy} \,dx + \omega_2 \,dy$.
+\end{exercise}
+
+\begin{exercise}
+Jabarkan secara mandiri rincian kasus lintasan mulus sepotong-sepotong dalam
+pembuktian \propref{mv:prop:pathinddf}: terapkan perhitungan bagi lintasan mulus
+pada setiap subinterval partisi, lalu tunjukkan bahwa suku-suku di titik partisi
+saling meniadakan.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa jika $U \subset \R^n$ merupakan domain berbentuk bintang, maka
+$U$ terhubung lintasan. Petunjuk: Untuk dua titik berbeda, gabungkan ruas-ruas
+garis melalui pusat bintang dan hilangkan setiap ruas konstan. Untuk
+menghubungkan suatu titik $x$ kembali ke dirinya sendiri, pilih $q\neq x$ dalam
+bola kecil yang termuat di $U$, lalu tempuh ruas dari $x$ ke $q$ dan kembali ke
+$x$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa
+$U \coloneqq \R^2 \setminus \{ (x,y) \in \R^2 : x \leq 0, y=0 \}$ merupakan
+domain berbentuk bintang, lalu carilah semua titik $(x_0,y_0) \in U$ yang
+menjadikan $U$ berbentuk bintang terhadap $(x_0,y_0)$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $U_1$ dan $U_2$ dua himpunan terbuka di $\R^n$ dengan
+$U_1 \cap U_2$ tak kosong dan terhubung lintasan. Andaikan terdapat fungsi
+$f_1 \colon U_1 \to \R$ dan $f_2 \colon U_2 \to \R$ yang keduanya
+diferensiabel secara kontinu hingga orde dua serta memenuhi
+$df_1 = df_2$ pada $U_1 \cap U_2$. Buktikan bahwa terdapat fungsi
+$F \colon U_1 \cup U_2 \to \R$ yang diferensiabel secara kontinu hingga orde
+dua sedemikian sehingga $dF = df_1$ pada $U_1$ dan $dF = df_2$ pada $U_2$.
+\end{exercise}
+
+\begin{exercise}[Sulit]
+Misalkan $\gamma \colon [a,b] \to \R^n$ lintasan sederhana, tidak tertutup,
+dan mulus sepotong-sepotong (jadi, $\gamma$ injektif). Andaikan $\omega$
+bentuk-1 yang diferensiabel secara kontinu dan terdefinisi pada suatu himpunan
+terbuka $V$, dengan $\gamma\bigl([a,b]\bigr) \subset V$ dan
+$\frac{\partial \omega_j}{\partial x_k} = \frac{\partial \omega_k}{\partial
+ x_j}$
+untuk semua $j$ dan $k$. Buktikan bahwa terdapat himpunan terbuka $U$ dengan
+$\gamma\bigl([a,b]\bigr) \subset U \subset V$ dan fungsi
+$f \colon U \to \R$ yang diferensiabel secara kontinu hingga orde dua serta
+memenuhi $df = \omega$.
+\\
+Petunjuk 1: $\gamma\bigl([a,b]\bigr)$ kompak.\\
+Petunjuk 2: Tutupi citra lintasan, menurut urutan parameternya, dengan berhingga
+banyak bola terbuka $B_1,\ldots,B_m\subset V$ sedemikian sehingga
+$B_i\cap B_{i+1}\neq\varnothing$ dan $B_i\cap B_j=\varnothing$ jika
+$\sabs{i-j}>1$.\\
+Petunjuk 3: Setiap $B_i\cap B_{i+1}$ konveks, sehingga terhubung lintasan.
+Gunakan latihan sebelumnya secara induktif untuk merekatkan antiturunan lokal
+pada bola-bola tersebut.
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa himpunan terbuka yang terhubung $U \subset \R^n$ juga terhubung
+lintasan. Petunjuk: Mulailah dengan titik $x \in U$, lalu definisikan
+$U_x \subset U$ sebagai himpunan semua titik yang dapat dicapai dari $x$ oleh
+suatu lintasan. Buktikan bahwa $U_x$ dan $U \setminus U_x$ keduanya terbuka.
+Untuk melihat bahwa $x\in U_x$, pilih $q\neq x$ dalam bola kecil yang termuat di
+$U$ dan gunakan lintasan pergi-pulang sepanjang ruas $xq$. Jadi, $U_x$ tak
+kosong dan haruslah $U_x = U$.
+\item
+Buktikan arah sebaliknya, yaitu bahwa setiap himpunan
+$U \subset \R^n$ yang terhubung lintasan juga terhubung.\footnote{Koreksi edisi
+Indonesia: Teks sumber menambahkan syarat \myquote{terbuka}, tetapi arah ini
+tidak memerlukannya karena setiap lintasan mulus sepotong-sepotong bersifat
+kontinu. Keterbukaan diperlukan pada bagian (a) dan pada kesetaraan dengan
+definisi berbasis lintasan kontinu dalam latihan berikutnya.} Petunjuk: Untuk
+memperoleh kontradiksi, andaikan terdapat dua himpunan terbuka relatif yang tak
+kosong dan saling lepas dengan gabungan $U$. Lalu gunakan lintasan mulus
+sepotong-sepotong (dan karenanya kontinu) dari suatu titik di himpunan pertama
+ke suatu titik di himpunan kedua.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Biasanya keterhubungan lintasan didefinisikan dengan lintasan kontinu, bukan
+lintasan mulus sepotong-sepotong. Buktikan bahwa kedua definisi itu ekuivalen
+untuk himpunan terbuka di $\R^n$. Dengan kata lain, buktikan pernyataan berikut.\\
+Andaikan $U \subset \R^n$ terbuka dan untuk setiap $x,y \in U$ terdapat fungsi
+kontinu $\gamma \colon [a,b] \to U$ dengan $\gamma(a) = x$ dan
+$\gamma(b) = y$. Maka $U$ terhubung lintasan menurut definisi kita, yaitu
+terdapat lintasan mulus sepotong-sepotong di $U$ dari $x$ ke $y$. Untuk
+$x\neq y$, gunakan kekompakan citra lintasan kontinu untuk membangun rantai
+poligonal berhingga di dalam bola-bola yang termuat di $U$, lalu hapus
+pengulangan titik sudut yang berurutan. Untuk $x=y$, gunakan lintasan pergi-pulang di
+dalam bola kecil di $U$.
+\end{exercise}
+
+\begin{exercise}[Sulit]
+\pagebreak[2]
+Tinjau
+\begin{equation*}
+\omega(x,y) \coloneqq \frac{-y}{x^2+y^2} \, dx + \frac{x}{x^2+y^2} \, dy .
+\end{equation*}
+Bentuk-1 ini terdefinisi pada $\R^2 \setminus \{ (0,0) \}$. Misalkan
+$\gamma \colon [a,b] \to \R^2 \setminus \{ (0,0) \}$ lintasan tertutup yang
+mulus sepotong-sepotong. Definisikan
+$R \coloneqq \{ (x,y) \in \R^2 : x \leq 0 \text{ dan } y=0 \}$, yaitu sinar
+sumbu-$x$ nonpositif.
+
+\emph{Koreksi edisi Indonesia.} Andaikan himpunan parameter
+$T\coloneqq\{t\in[a,b):\gamma(t)\in R\}$, bukan sekadar himpunan titik citra
+pada $R$, berhingga dan mempunyai tepat $k$ anggota. Buktikan bahwa
+\begin{equation*}
+\int_{\gamma} \omega = 2 \pi \ell ,
+\end{equation*}
+untuk suatu bilangan bulat $\ell$ dengan $\sabs{\ell} \leq k$.\\
+Petunjuk 1: Buktikan terlebih dahulu bahwa, untuk lintasan
+$\beta\colon[c,d]\to\R^2\setminus\{(0,0)\}$ dengan
+$\beta(c),\beta(d)\in R$ dan $\beta((c,d))\cap R=\varnothing$, integral
+$\int_{\beta} \omega$ bernilai $-2\pi$, 0, atau $2\pi$.
+\\
+Petunjuk 2: Di atas Anda telah membuktikan bahwa $\R^2 \setminus R$ berbentuk
+bintang.
+\\
+Catatan: Bilangan $\ell$ disebut \emph{\myindex{bilangan putar}}; bilangan ini
+menghitung banyaknya putaran bersih $\gamma$ mengelilingi titik asal; putaran
+berlawanan arah jarum jam dihitung positif.
+\end{exercise}
