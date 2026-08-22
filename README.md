@@ -6,28 +6,29 @@ dikerjakan; cakupan setiap buku dinyatakan secara eksplisit di bawah.
 
 ## Mulai membaca
 
-- **[Analisis Dasar I — edisi lengkap, 334 halaman](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/download/r006-v6.3-id-wip.2026.08.22.u216/Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf)**
-- **[Analisis Dasar II — WIP sampai bukti Teorema 10.6.4, 147 halaman](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/download/r006-v6.3-id-wip.2026.08.22.u216/Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_Teorema_Green_10.6.4.pdf)**
-- [Rilis GitHub U216](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/r006-v6.3-id-wip.2026.08.22.u216)
-- [Salinan pelestarian Zenodo](https://doi.org/10.5281/zenodo.22062325)
+- **[Analisis Dasar I — edisi lengkap, 334 halaman](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/download/r006-v6.3-id-wip.2026.08.23.u219/Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf)**
+- **[Analisis Dasar II — WIP sampai akhir Bagian 10.6, 150 halaman](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/download/r006-v6.3-id-wip.2026.08.23.u219/Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_Akhir_Bagian_10.6.pdf)**
+- [Rilis GitHub U219](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/r006-v6.3-id-wip.2026.08.23.u219)
+- [Salinan pelestarian Zenodo](https://doi.org/10.5281/zenodo.22062970)
   (concept DOI: [10.5281/zenodo.22059779](https://doi.org/10.5281/zenodo.22059779))
 
-PDF Jilid II sengaja berakhir tepat setelah bukti Teorema 10.6.4 untuk domain
-tipe III. Contoh medan vektor pusaran berikutnya dan semua materi sesudahnya
-tidak disertakan. Tidak ada ekor berbahasa Inggris yang disamarkan sebagai
-bagian edisi Indonesia.
+PDF Jilid II sengaja berakhir tepat setelah ketujuh latihan Bagian 10.6,
+Teorema Green. Contoh medan vektor pusaran, contoh sifat nilai rata-rata fungsi
+harmonik, dan seluruh latihan bagian itu sudah disertakan. Bagian 10.7 belum
+disertakan. Tidak ada ekor berbahasa Inggris yang disamarkan sebagai bagian
+edisi Indonesia.
 
 ## Status korpus
 
 | ID | Buku | Peran kurikulum | Status Bahasa Indonesia |
 |---|---|---|---|
-| R006 | *Basic Analysis I–II* | C10/C20 | Jilid I lengkap; Jilid II sampai bukti Teorema 10.6.4 untuk domain tipe III |
+| R006 | *Basic Analysis I–II* | C10/C20 | Jilid I lengkap; Jilid II sampai akhir Bagian 10.6, Teorema Green, termasuk tujuh latihan |
 | R007 | *Notes on Diffy Qs* | B70 | belum diterjemahkan |
 | R008 | *Guide to Cultivating Complex Analysis* | C50 | belum diterjemahkan |
 
-Checkpoint ini memuat 216 unit R006 yang diterima: 213 unit isi dan tiga
+Checkpoint ini memuat 219 unit R006 yang diterima: 216 unit isi dan tiga
 driver pembaca. Backend produksi v0.3 adalah checkpoint deterministik yang
-telah divalidasi untuk 167 unit; 49 unit yang lebih baru sudah ada dalam
+telah divalidasi untuk 167 unit; 52 unit yang lebih baru sudah ada dalam
 manifes dan ledger hidup, tetapi belum diklaim sebagai proyeksi backend v0.4.
 
 ## Isi repositori

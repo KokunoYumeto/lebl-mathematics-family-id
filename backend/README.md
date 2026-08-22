@@ -3,8 +3,8 @@
 Status: implementasi eksperimental untuk lane Lebl; belum menjadi backend
 kanonik lintas-korpus. Angka v0.1 menamai envelope/skema arsitektur. Direktori
 `production/v0.3/` adalah checkpoint data produksi terbeku terbaru dalam rilis
-U216 dan memuat 167 unit yang telah divalidasi. Manifes terjemahan hidup telah
-maju ke 216 unit; selisih 49 unit itu belum diklaim sebagai checkpoint v0.4.
+U219 dan memuat 167 unit yang telah divalidasi. Manifes terjemahan hidup telah
+maju ke 219 unit; selisih 52 unit itu belum diklaim sebagai checkpoint v0.4.
 
 This directory implements the shared interoperability envelope for only the
 R006/R007/R008 Lebl family. It keeps `ra`, `diffyqs`, and `ca` as distinct

@@ -610,3 +610,8 @@ LEBL-TERM-0608,concept.domain.type-iii,R006,type III domain,domain tipe III,,,fo
 LEBL-TERM-0609,concept.interval.connected,R006,connected interval,interval terhubung,,,formal,R006 ch-multivar-int.tex,admitted,
 LEBL-TERM-0610,concept.geometry.vertical-line,R006,vertical line,garis vertikal,,,formal,R006 ch-multivar-int.tex,admitted,
 LEBL-TERM-0611,concept.geometry.disc,R006,disc,cakram,,,formal,R006 ch-multivar-int.tex,admitted,
+LEBL-TERM-0612,concept.physics.vector-field.vortex,R006,vortex vector field,medan vektor pusaran,,,formal,R006 ch-multivar-int.tex,admitted,
+LEBL-TERM-0613,concept.analysis.harmonic-function,R006,harmonic function,fungsi harmonik,,,formal,R006 ch-multivar-int.tex,admitted,
+LEBL-TERM-0614,concept.pde.laplace-equation,R006,Laplace equation,persamaan Laplace,,,formal,R006 ch-multivar-int.tex,admitted,
+LEBL-TERM-0615,concept.analysis.harmonic.mean-value-property,R006,mean value property,sifat nilai rata-rata,,,formal,R006 ch-multivar-int.tex,admitted,
+LEBL-TERM-0616,concept.analysis.harmonic.maximum-principle,R006,maximum principle,prinsip maksimum,,,formal,R006 ch-multivar-int.tex,admitted,

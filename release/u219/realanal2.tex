@@ -1,0 +1,688 @@
+\documentclass[12pt]{book}
+
+%For sending to printer such as lulu/createspace, search for %PRINT
+
+%See text for 
+%FIXMEevillayouthack
+% for evil layout hacks
+
+%\usepackage{pdf14}
+%Paper saving
+%\documentclass[12pt,openany]{book}
+%\documentclass[10pt,openany]{book}
+%\documentclass[8pt,openany]{extbook}
+%if using smaller font you should also rerun the figures,
+% that is in figures/ run run-all-xp.sh (must have epix installed)
+
+
+\usepackage[T1]{fontenc}
+\usepackage[indonesian]{babel}
+
+\usepackage[shortlabels]{enumitem}
+\usepackage{ifpdf}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{graphbox}
+\usepackage{color}
+
+% Remove page numbers on chapter opens
+% must come before fullpage
+\usepackage{nopageno}
+
+\usepackage[headings]{fullpage}
+
+% smaller margins top/bottom margins
+\addtolength{\textheight}{0.8in}
+\addtolength{\topmargin}{-0.3in}
+
+%PRINT
+%First offset even/odd pages a bit
+% not for the coil bound full letter size one
+%\addtolength{\oddsidemargin}{0.2in}
+%\addtolength{\evensidemargin}{-0.2in}
+
+%PRINT
+%Now cut page size a bit.  I'll run it through ghostcript anyway
+%to convert to the right size, but this is good for crown quatro
+%conversion, don't use for the full letter size versions
+%\addtolength{\paperwidth}{-0.3in}
+%\addtolength{\paperheight}{-1in}
+%\addtolength{\topmargin}{-0.5in}
+%\addtolength{\oddsidemargin}{-0.15in}
+%\addtolength{\evensidemargin}{-0.15in}
+
+% discourage pagebreak at end of display, put before \end{equation}
+\newcommand{\avoidbreak}{\postdisplaypenalty=100}
+
+\usepackage[toctitles]{titlesec}
+
+\usepackage{varioref}
+\usepackage{imakeidx}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage{xr}
+\usepackage{hyperref} % do NOT set [ocgcolorlinks] here!
+
+%If you have an older tex installation you might need
+%to comment out the next line:
+%PRINT for a printer (lulu/createspace) run without
+\usepackage[ocgcolorlinks]{ocgx2}
+
+%\usepackage[all]{hypcap} %handled by caption
+\usepackage[shortalphabetic]{amsrefs}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{import}
+
+%\usepackage{draftwatermark}
+%\SetWatermarkText{Draft of v2.0 as of \today. May change substantially!}
+%\SetWatermarkAngle{90}
+%\SetWatermarkHorCenter{0.5in}
+%\SetWatermarkColor[gray]{0.7}
+%\SetWatermarkScale{0.18}
+
+\usepackage[margin=10pt,font=small,labelfont=bf,labelsep=colon,singlelinecheck=false]{caption}
+
+\usepackage{tikz}
+\usetikzlibrary{cd}
+%\usepackage{rotating}
+
+\usepackage{cellspace}
+\usepackage[toc,nopostdot,sort=use,automake]{glossaries}
+
+\usepackage{vogtwidebar}
+
+%%%
+%NOTE: If changing fonts, also change fonts in figures/run-xp-topdf.sh
+% AND then rerun run-all-xp.sh (must have epix installed)
+%%%
+% Times
+%\usepackage{txfonts}
+% Times, but symbol/cm/ams math fonts
+%\usepackage{mathptmx}
+% But we do want helvetica for sans
+%\usepackage{helvet}
+
+%Palatino
+\usepackage[theoremfont]{newpxtext}
+\usepackage[vvarbb]{newpxmath}
+% Indonesian ij must remain two searchable Unicode characters, not Dutch U+0133.
+\pdfglyphtounicode{ij}{0069 006A}
+\linespread{1.05}
+\usepackage[scr=boondoxo]{mathalfa} % but we want the nice fancy script fonts
+
+% Footnotes should use symbols, not numbers.  Numbered footnotes are
+% evil, (footmisc no longer conflicts with hyperref)
+% however footmisc now has some sort of conflict with texlive 2026
+%\usepackage[perpage,symbol*]{footmisc}
+
+% footnotes per page using symbols
+\counterwithout{footnote}{chapter} % Fix footnotes starting at 2 on the first page of a chapter.
+\usepackage{perpage}
+\MakePerPage{footnote}
+% On a clean first pass, perpage has not yet learned the page breaks and the
+% counter can exceed the nine values supported by \fnsymbol.  Use a numeric
+% fallback only for that bootstrap pass; later passes retain pagewise symbols.
+\renewcommand{\thefootnote}{\ifnum\value{footnote}<10 \fnsymbol{footnote}\else\arabic{footnote}\fi}
+
+\usepackage{footnote}
+
+%enumitem global options
+\setlist{leftmargin=*,itemsep=0.5\itemsep,parsep=0.5\parsep,topsep=0.5\topsep,partopsep=0.5\partopsep}
+
+\newenvironment{myfigureht}{%
+\begin{figure}[h!t]
+\noindent\rule{\textwidth}{0.4pt}\vspace{12pt}\par\centering}%
+{\par\noindent\rule{\textwidth}{0.4pt}
+\end{figure}}
+
+% useful
+\newcommand{\ignore}[1]{}
+
+% analysis/geometry stuff
+\newcommand{\ann}{\operatorname{ann}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\Orb}{\operatorname{Orb}}
+\newcommand{\hol}{\operatorname{hol}}
+\newcommand{\aut}{\operatorname{aut}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\sing}{\operatorname{sing}}
+
+% reals
+\newcommand{\esssup}{\operatorname{ess~sup}}
+\newcommand{\essran}{\operatorname{essran}}
+\newcommand{\innprod}[2]{\langle #1 | #2 \rangle}
+\newcommand{\linnprod}[2]{\langle #1 , #2 \rangle}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Nul}{\operatorname{Nul}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\sabs}[1]{\lvert {#1} \rvert}
+\newcommand{\snorm}[1]{\lVert {#1} \rVert}
+\newcommand{\abs}[1]{\left\lvert {#1} \right\rvert}
+\newcommand{\norm}[1]{\left\lVert {#1} \right\rVert}
+\newcommand{\babs}[1]{\bigl\lvert {#1} \bigr\rvert}
+\newcommand{\bnorm}[1]{\bigl\lVert {#1} \bigr\rVert}
+\newcommand{\Babs}[1]{\Bigl\lvert {#1} \Bigr\rvert}
+\newcommand{\Bnorm}[1]{\Bigl\lVert {#1} \Bigr\rVert}
+\newcommand{\bbabs}[1]{\biggl\lvert {#1} \biggr\rvert}
+\newcommand{\bbnorm}[1]{\biggl\lVert {#1} \biggr\rVert}
+\newcommand{\BBabs}[1]{\Biggl\lvert {#1} \Biggr\rvert}
+\newcommand{\BBnorm}[1]{\Biggl\lVert {#1} \Biggr\rVert}
+
+% sets (some)
+\newcommand{\C}{{\mathbb{C}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\Z}{{\mathbb{Z}}}
+\newcommand{\N}{{\mathbb{N}}}
+\newcommand{\Q}{{\mathbb{Q}}}
+\newcommand{\D}{{\mathbb{D}}}
+\newcommand{\F}{{\mathbb{F}}}
+
+% consistent
+\newcommand{\bB}{{\mathbb{B}}}
+\newcommand{\bC}{{\mathbb{C}}}
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\bZ}{{\mathbb{Z}}}
+\newcommand{\bN}{{\mathbb{N}}}
+\newcommand{\bQ}{{\mathbb{Q}}}
+\newcommand{\bD}{{\mathbb{D}}}
+\newcommand{\bF}{{\mathbb{F}}}
+\newcommand{\bH}{{\mathbb{H}}}
+\newcommand{\bO}{{\mathbb{O}}}
+\newcommand{\bP}{{\mathbb{P}}}
+\newcommand{\bK}{{\mathbb{K}}}
+\newcommand{\bV}{{\mathbb{V}}}
+\newcommand{\CP}{{\mathbb{CP}}}
+\newcommand{\RP}{{\mathbb{RP}}}
+\newcommand{\HP}{{\mathbb{HP}}}
+\newcommand{\OP}{{\mathbb{OP}}}
+\newcommand{\sA}{{\mathscr{A}}}
+\newcommand{\sB}{{\mathscr{B}}}
+\newcommand{\sC}{{\mathscr{C}}}
+\newcommand{\sF}{{\mathscr{F}}}
+\newcommand{\sG}{{\mathscr{G}}}
+\newcommand{\sH}{{\mathscr{H}}}
+\newcommand{\sM}{{\mathscr{M}}}
+\newcommand{\sO}{{\mathscr{O}}}
+\newcommand{\sP}{{\mathscr{P}}}
+\newcommand{\sQ}{{\mathscr{Q}}}
+\newcommand{\sR}{{\mathscr{R}}}
+\newcommand{\sS}{{\mathscr{S}}}
+\newcommand{\sI}{{\mathscr{I}}}
+\newcommand{\sL}{{\mathscr{L}}}
+\newcommand{\sK}{{\mathscr{K}}}
+\newcommand{\sU}{{\mathscr{U}}}
+\newcommand{\sV}{{\mathscr{V}}}
+\newcommand{\sX}{{\mathscr{X}}}
+\newcommand{\sY}{{\mathscr{Y}}}
+\newcommand{\sZ}{{\mathscr{Z}}}
+\newcommand{\fS}{{\mathfrak{S}}}
+
+\newcommand{\interior}{\operatorname{int}}
+
+% Topo stuff
+\newcommand{\id}{\textit{id}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\Torsion}{\operatorname{Torsion}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\Hom}{\operatorname{Hom}}
+
+%extra thingies
+%\newcommand{\mapsfrom}{\ensuremath{\text{\reflectbox{$\mapsto$}}}}
+\newcommand{\from}{\ensuremath{\leftarrow}}
+\newcommand{\dhat}[1]{\hat{\hat{#1}}}
+\newcommand{\spn}{\operatorname{span}}
+
+% San Serif fonts
+%\renewcommand{\familydefault}{\sfdefault}
+
+% To allow skrinking to 5.5 x 8.5 inches without whitespaces
+% Make sure to rerun makeindex and makeglossaries as well
+% Useful for printing on lulu.com and saving on paper
+%\addtolength{\textheight}{2.13in}
+%\addtolength{\paperheight}{2.13in}
+
+\definecolor{mypersianblue}{rgb}{0.11, 0.22, 0.73}
+
+\hypersetup{
+    pdfborderstyle={/S/U/W 0.5}, %this just in case ocg isn't there
+    %PRINT do this (and comment out the above):
+    %pdfborder={0 0 0},
+    citecolor=mypersianblue,
+    filecolor=mypersianblue,
+    linkcolor=mypersianblue,
+    urlcolor=mypersianblue,
+    pdfkeywords={analisis real, integral Riemann, turunan, limit, barisan},
+    pdfsubject={Analisis Real},
+    pdftitle={Analisis Dasar II: Pengantar Analisis Real, Jilid II — Cuplikan Kerja sampai Akhir Bagian 10.6 (2026-08-23)},
+    pdfauthor={Ji\v{r}\'i Lebl},
+    pdflang={id-ID}
+}
+
+% This is really just for marking these
+% so that they are easy to find
+% the second argument is the reference if they are in the same book
+\newcommand{\volIref}[2]{#1\@}
+
+% xr is loaded before hyperref
+\externaldocument[vI-]{realanal}
+
+% Our graphics commands
+\newcommand{\myincludegraphics}[3][]{\includegraphics[#1]{figures/#2}}
+\newcommand{\myincludepdft}[2]{\subimport*{figures/}{#1.pdf_t}}
+
+% Set up our index
+\makeindex
+
+% Very simple indexing
+\newcommand{\myindex}[1]{#1\index{#1}}
+
+% Quotes
+\newcommand{\myquote}[1]{``#1''}
+
+% define this to be empty to kill notes
+\newcommand{\sectionnotes}[1]{\noindent \emph{Catatan: #1} \medskip \par}
+
+% Define this to be empty to not skip page before the sections to
+% save some paper
+\newcommand{\sectionnewpage}{\clearpage}
+%\newcommand{\sectionnewpage}{}
+
+\author{Ji\v{r}\'i Lebl}
+
+\title{Analisis Dasar II: Pengantar Analisis Real, Jilid II}
+
+% Don't include subsections
+\setcounter{tocdepth}{1}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{prop}[thm]{Proposisi}
+\newtheorem{cor}[thm]{Akibat}
+
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Catatan}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definisi}
+
+\newtheoremstyle{exercise}% name
+  {}% Space above
+  {}% Space below
+  {\itshape \small}% Body font
+  {}% Indent amount
+  {\bfseries \itshape \small}% Theorem head font
+  {:}% Punctuation after theorem head
+  {.5em}% Space after theorem head
+  {}% Theorem head spec (can be left empty, meaning "normal")
+
+\newenvironment{exnote}{\small}{}
+
+\theoremstyle{exercise}
+\newtheorem{exercise}{Latihan}[section]
+
+\newtheoremstyle{example}% name
+  {}% Space above
+  {}% Space below
+  {}% Body font
+  {}% Indent amount
+  {\bfseries}% Theorem head font
+  {:}% Punctuation after theorem head
+  {.5em}% Space after theorem head
+  {}% Theorem head spec (can be left empty, meaning "normal")
+
+\theoremstyle{example}
+\newtheorem{example}[thm]{Contoh}
+
+\usepackage{suffix}
+
+% referencing
+\newcommand{\figureref}[1]{\hyperref[#1]{Gambar~\ref*{#1}}}
+\WithSuffix\newcommand\figureref*[1]{Gambar~\ref*{#1}}
+\newcommand{\tableref}[1]{\hyperref[#1]{Tabel~\ref*{#1}}}
+\WithSuffix\newcommand\tableref*[1]{Tabel~\ref*{#1}}
+\newcommand{\chapterref}[1]{\hyperref[#1]{bab~\ref*{#1}}}
+\WithSuffix\newcommand\chapterref*[1]{bab~\ref*{#1}}
+\newcommand{\Chapterref}[1]{\hyperref[#1]{Bab~\ref*{#1}}}
+\WithSuffix\newcommand\Chapterref*[1]{Bab~\ref*{#1}}
+\newcommand{\sectionref}[1]{\hyperref[#1]{\S\ref*{#1}}}
+\WithSuffix\newcommand\sectionref*[1]{\S\ref*{#1}}
+\newcommand{\exerciseref}[1]{\hyperref[#1]{Latihan~\ref*{#1}}}
+\WithSuffix\newcommand\exerciseref*[1]{Latihan~\ref*{#1}}
+\newcommand{\remarkref}[1]{\hyperref[#1]{Catatan~\ref*{#1}}}
+\WithSuffix\newcommand\remarkref*[1]{Catatan~\ref*{#1}}
+\newcommand{\exampleref}[1]{\hyperref[#1]{Contoh~\ref*{#1}}}
+\WithSuffix\newcommand\exampleref*[1]{Contoh~\ref*{#1}}
+\newcommand{\thmref}[1]{\hyperref[#1]{Teorema~\ref*{#1}}}
+\WithSuffix\newcommand\thmref*[1]{Teorema~\ref*{#1}}
+\newcommand{\propref}[1]{\hyperref[#1]{Proposisi~\ref*{#1}}}
+\WithSuffix\newcommand\propref*[1]{Proposisi~\ref*{#1}}
+\newcommand{\lemmaref}[1]{\hyperref[#1]{Lema~\ref*{#1}}}
+\WithSuffix\newcommand\lemmaref*[1]{Lema~\ref*{#1}}
+\newcommand{\corref}[1]{\hyperref[#1]{Akibat~\ref*{#1}}}
+\WithSuffix\newcommand\corref*[1]{Akibat~\ref*{#1}}
+\newcommand{\defnref}[1]{\hyperref[#1]{Definisi~\ref*{#1}}}
+\WithSuffix\newcommand\defnref*[1]{Definisi~\ref*{#1}}
+
+
+% List of Symbols/Notation
+% rubber: depend notations.tex
+\loadglsentries{notations}
+\makeglossaries
+
+\begin{document}
+
+\setcounter{chapter}{0}
+\refstepcounter{chapter}
+\label{rn:chapter}
+\refstepcounter{chapter}
+\label{seq:chapter}
+\refstepcounter{chapter}
+\label{lim:chapter}
+\refstepcounter{chapter}
+\label{der:chapter}
+\refstepcounter{chapter}
+\label{int:chapter}
+\refstepcounter{chapter}
+\label{fs:chapter}
+\refstepcounter{chapter}
+\label{ms:chapter}
+
+%\let\oldchapter\chapter
+%\renewcommand*{\chapter}[1]{\oldchapter[#1]{#1 \hspace{\fill} {\rm \normalsize \today}}}
+
+\ifpdf
+  \pdfbookmark{Halaman Judul}{title}
+\fi
+\newlength{\centeroffset}
+\setlength{\centeroffset}{-0.5\oddsidemargin}
+\addtolength{\centeroffset}{0.5\evensidemargin}
+%\addtolength{\textwidth}{-\centeroffset}
+\thispagestyle{empty}
+\vspace*{\stretch{1}}
+\noindent\hspace*{\centeroffset}\makebox[0pt][l]{\begin{minipage}{\textwidth}
+\flushright
+{\Huge\bfseries \sffamily Analisis Dasar II }
+\noindent\rule[-1ex]{\textwidth}{5pt}\\[2.5ex]
+\hfill\emph{\Large \sffamily Pengantar Analisis Real, Jilid II}
+\end{minipage}}
+
+\vspace{\stretch{1}}
+\noindent\hspace*{\centeroffset}\makebox[0pt][l]{\begin{minipage}{\textwidth}
+\flushright
+{\bfseries 
+oleh Ji{\v r}\'i Lebl\\[3ex]} 
+\today
+\\
+  (versi sumber 6.3)\\[1.5ex]
+  \textbf{Cuplikan kerja Bahasa Indonesia — 23 Agustus 2026}\\
+  Selesai berurutan sampai seluruh Bagian 10.6, Teorema Green,\\
+  termasuk ketujuh latihan; Bagian 10.7 belum disertakan.
+% --- 6th edition, 3rd update)
+\end{minipage}}
+
+%\addtolength{\textwidth}{\centeroffset}
+\vspace{\stretch{2}}
+
+
+\pagebreak
+
+\vspace*{\fill}
+
+\noindent
+Ditata menggunakan \LaTeX.
+
+
+\bigskip
+
+\noindent
+Hak cipta \copyright 2012--2026 Ji{\v r}\'i Lebl
+
+%PRINT
+% not for lulu
+%\noindent
+%ISBN-13: 979-8851945977
+
+
+%PRINT
+% not for lulu
+%\medskip
+%\noindent
+%Cover image: Tree in Balboa Park, San Diego, California,
+%\copyright 2021 Ji{\v r}\'i Lebl, all rights reserved.
+%
+% not needed since the kdp version is does not include the cc licese
+%Cover image cannot be reused in derivative works.
+
+%PRINT
+% not for lulu
+%\ignore{
+
+\bigskip
+
+\noindent
+\myincludegraphics[width=1.38in]{license}{Logo lisensi CC BY-NC-SA}
+\quad
+\myincludegraphics[width=1.38in]{license2}{Logo lisensi CC BY-SA}
+
+\bigskip
+
+\noindent
+Karya ini
+%PRINT
+% not for lulu, not needed anymore, see above
+%(except the cover art)
+tersedia dengan dua pilihan lisensi:
+Lisensi Internasional Creative Commons
+Atribusi-Nonkomersial-BerbagiSerupa 4.0 dan
+Lisensi Internasional Creative Commons
+Atribusi-BerbagiSerupa 4.0.
+Untuk melihat salinan lisensi-lisensi tersebut, kunjungi
+\url{https://creativecommons.org/licenses/by-nc-sa/4.0/}
+atau
+\url{https://creativecommons.org/licenses/by-sa/4.0/}
+atau kirim surat kepada
+Creative Commons
+PO Box 1866, Mountain View, CA 94042, USA\@.
+
+\bigskip
+
+\noindent
+Anda boleh menggunakan, mencetak, menggandakan, dan membagikan buku ini
+sebanyak yang Anda inginkan. Anda boleh menjadikan buku ini sebagai dasar
+catatan Anda sendiri dan menggunakan kembali bagian-bagiannya selama lisensinya
+tetap sama. Anda boleh memilih CC BY-NC-SA atau CC BY-SA, sesuai dengan lisensi
+yang cocok untuk tujuan Anda. Karya turunan Anda wajib menggunakan setidaknya
+salah satu lisensi tersebut. Karya turunan wajib ditandai secara jelas sebagai
+karya turunan.
+
+\bigskip
+
+\noindent
+Edisi Bahasa Indonesia ini merupakan karya turunan yang diterjemahkan dan
+disunting oleh OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna. Edisi ini dilisensikan di bawah
+Lisensi Internasional Creative Commons Atribusi-BerbagiSerupa 4.0 (CC BY-SA
+4.0). Edisi ini dibuat secara independen dan tidak didukung atau disahkan oleh
+penulis maupun penerbit karya sumber.
+%PRINT
+% not for lulu
+%}
+
+\bigskip
+
+\noindent
+Selama penulisan buku ini, penulis mendapat dukungan sebagian dari hibah NSF
+DMS-1362337.
+
+\bigskip
+
+\noindent
+Tanggal merupakan pengenal utama suatu versi. Nomor versi atau edisi utama
+dinaikkan hanya jika terdapat perubahan yang substansial. Sejak edisi keenam,
+kedua jilid menggunakan nomor versi yang sama.
+%Each volume has its own version number.
+
+\bigskip
+
+\noindent
+Lihat \url{https://www.jirka.org/ra/} atau \url{https://jirilebl.github.io/ra/}
+untuk informasi lebih lanjut (termasuk informasi kontak, kemungkinan
+pembaruan, dan daftar ralat).
+
+%PRINT
+% not for lulu
+%\ignore{
+
+\bigskip
+
+\noindent
+Sumber \LaTeX\ buku ini tersedia untuk kemungkinan modifikasi dan penyesuaian
+di GitHub: \url{https://github.com/jirilebl/ra}
+%PRINT
+% not for lulu
+%}
+
+
+% For large print do this
+%\large
+
+\microtypesetup{protrusion=false}
+\tableofcontents
+\microtypesetup{protrusion=true}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Pendahuluan}
+\addcontentsline{toc}{chapter}{Pendahuluan}
+\markboth{PENDAHULUAN}{PENDAHULUAN}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Tentang buku ini}
+
+\input{frag-vol2-intro.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Several Variables and Partial Derivatives chapter
+\input{ch-several-vars-ders.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% One-dimensional Integrals in Several Variables chapter
+\input{ch-one-dim-ints-sv.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Multivariable Integral chapter
+\input{ch-multivar-int.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Approximating functions chapter
+\input{ch-approximate.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleardoublepage  
+\phantomsection
+\addcontentsline{toc}{chapter}{Bacaan Lanjutan}
+\markboth{BACAAN LANJUTAN}{BACAAN LANJUTAN}
+\begin{bibchapter}[Bacaan Lanjutan]
+\begin{biblist}[\normalsize]
+
+\bib{Rosenlicht}{book}{
+   author={Rosenlicht, Maxwell},
+   title={Introduction to Analysis},
+   note={Cetak ulang edisi 1968},
+   publisher={Dover Publications Inc.},
+   place={New York},
+   date={1986},
+   pages={viii+254},
+   isbn={0-486-65038-3},
+}
+
+\bib{Rudin:baby}{book}{
+   author={Rudin, Walter},
+   title={Principles of Mathematical Analysis},
+   edition={3},
+   note={International Series in Pure and Applied Mathematics},
+   publisher={McGraw-Hill Book Co.},
+   place={New York},
+   date={1976},
+   pages={x+342},
+}
+
+\bib{Trench}{book}{
+   author={Trench, William F.},
+   title={Introduction to Real Analysis},
+   year={2003},
+   publisher={Pearson Education},
+   note={\url{http://ramanujan.math.trinity.edu/wtrench/texts/TRENCH_REAL_ANALYSIS.PDF}},
+}
+
+
+
+\end{biblist}
+\end{bibchapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\indexname}  
+\microtypesetup{protrusion=false}
+\printindex
+\microtypesetup{protrusion=true}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% automake on glossaries doesn't work if the index is before the glossary.
+% That's why the List of Notation is last, no other reason.  Problem is
+% that printindex does a clearpage which screws up the delayed write18
+% that glossaries sets up
+%
+
+\begingroup
+\renewcommand{\entryname}{Notasi}
+\renewcommand{\descriptionname}{Deskripsi}
+\renewcommand{\pagelistname}{Halaman}
+\setglossarystyle{long3colheader}
+% correctly set up with cellspace
+\renewenvironment{theglossary}%
+  {\setlength\cellspacetoplimit{4pt}
+   \setlength\cellspacebottomlimit{4pt}
+   \setlength\LTleft{0pt}
+   \setlength\LTright{0pt}
+   \markboth{DAFTAR NOTASI}{DAFTAR NOTASI}
+   \renewcommand{\arraystretch}{1.12}%
+   \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}@{\hspace{0.025\textwidth}}>{\raggedright\arraybackslash}p{0.61\textwidth}@{\hspace{0.025\textwidth}}>{\raggedleft\arraybackslash}p{0.12\textwidth}@{}}}%
+  {\end{longtable}}%
+\microtypesetup{protrusion=false}
+\printglossary[title=Daftar Notasi] 
+\microtypesetup{protrusion=true}
+\endgroup
+
+
+\end{document}
