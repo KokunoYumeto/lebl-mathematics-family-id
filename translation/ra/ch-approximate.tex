@@ -275,82 +275,82 @@ Operator linear yang merepresentasikan turunan adalah perkalian dengan
 bilangan kompleks $f'(t)$, sehingga tidak ada yang hilang dalam identifikasi ini.
 
 
-\subsection{Exercises}
+\subsection{Latihan}
 
 \begin{exercise}
-Check that $\C$ is a field.
+Periksa bahwa $\C$ merupakan lapangan.
 \end{exercise}
 
 \begin{exercise}
-Prove that for $z,w \in \C$, we have
+Buktikan bahwa untuk $z,w \in \C$ berlaku
 $\sabs{zw} = \sabs{z} \, \sabs{w}$.
 \end{exercise}
 
 \begin{exercise}
-Finish the proof of \propref{prop:continuityofcomplex}.
+Selesaikan pembuktian \propref{prop:continuityofcomplex}.
 \end{exercise}
 
 \begin{exercise}
-Prove \propref{prop:cachysercomplex}.
+Buktikan \propref{prop:cachysercomplex}.
 \end{exercise}
 
 \begin{exercise}
-Prove \propref{prop:absconvmeansconv}.
+Buktikan \propref{prop:absconvmeansconv}.
 \end{exercise}
 
 \begin{samepage}
 \begin{exercise}
-Given $x +iy$ define the matrix
+Untuk $x +iy$, definisikan matriks
 $\left[ \begin{smallmatrix} x & -y \\ y & x \end{smallmatrix} \right]$.
-Prove:
+Buktikan:
 \begin{enumerate}[a)]
 \item
-The action of this matrix on a vector $(s,t)$ is the same
-as multiplying $(x+iy)(s+it)$.
+Aksi matriks ini pada vektor $(s,t)$ sama dengan mengalikan
+$(x+iy)(s+it)$.
 \item
-Multiplying two such matrices is the same multiplying the underlying complex
-numbers and then finding the corresponding matrix for the product.
-In other words, the field $\C$ can be identified with a subset of the 2-by-2 matrices.
+Mengalikan dua matriks semacam ini sama dengan mengalikan bilangan kompleks
+yang mendasarinya, lalu mencari matriks yang bersesuaian dengan hasil kali tersebut.
+Dengan kata lain, lapangan $\C$ dapat diidentifikasi dengan suatu subhimpunan matriks 2-kali-2.
 \item
-The matrix
+Matriks
 $\left[ \begin{smallmatrix} x & -y \\ y & x \end{smallmatrix} \right]$
-has eigenvalues $x+iy$ and $x-iy$.  Recall that $\lambda$ is
-an eigenvalue of a matrix $A$ if $A-\lambda I$ (a complex matrix in our case)
-is not invertible, that is,
-if it has linearly dependent rows: one row is a (complex) multiple
-of the other.
+memiliki nilai eigen $x+iy$ dan $x-iy$. Ingat bahwa $\lambda$ adalah
+nilai eigen matriks $A$ jika $A-\lambda I$ (matriks kompleks dalam kasus kita)
+tidak invertibel, yaitu,
+jika baris-barisnya bergantung secara linear: satu baris merupakan kelipatan
+(kompleks) dari baris lainnya.
 \end{enumerate}
 \end{exercise}
 \end{samepage}
 
 \begin{exercise}
-Prove the Bolzano--Weierstrass theorem for complex sequences.
-Suppose $\{ z_n \}_{n=1}^\infty$ is a bounded sequence of complex numbers.
-That is, there exists an $M$ such that $\sabs{z_n} \leq M$ for all $n$.
-Prove that there exists a subsequence $\{ z_{n_k} \}_{k=1}^\infty$
-that converges to some $z \in \C$.
+Buktikan teorema Bolzano--Weierstrass untuk barisan kompleks.
+Misalkan $\{ z_n \}_{n=1}^\infty$ merupakan barisan bilangan kompleks yang terbatas.
+Artinya, terdapat $M$ sedemikian sehingga $\sabs{z_n} \leq M$ untuk semua $n$.
+Buktikan bahwa terdapat subbarisan $\{ z_{n_k} \}_{k=1}^\infty$
+yang konvergen ke suatu $z \in \C$.
 \end{exercise}
 
 \begin{exercise}
 \leavevmode
 \begin{enumerate}[a)]
 \item
-Prove that there is no simple mean value theorem for complex-valued
-functions:  Find a differentiable function $f \colon [0,1] \to \C$ such that
-$f(0) = f(1) = 0$, but $f'(t) \neq 0$ for all $t \in [0,1]$.
+Buktikan bahwa tidak ada teorema nilai rata-rata sederhana untuk fungsi bernilai kompleks:
+Temukan fungsi diferensiabel $f \colon [0,1] \to \C$ sedemikian sehingga
+$f(0) = f(1) = 0$, tetapi $f'(t) \neq 0$ untuk semua $t \in [0,1]$.
 \item
-However, there is a weaker form of the mean value theorem as there is for vector-valued
-functions.  Prove: If $f \colon [a,b] \to \C$ is continuous and differentiable in
-$(a,b)$, and for some $M$, $\babs{f'(x)} \leq M$ for all $x \in (a,b)$, then
+Namun, ada bentuk teorema nilai rata-rata yang lebih lemah sebagaimana untuk fungsi bernilai vektor.
+Buktikan: Jika $f \colon [a,b] \to \C$ kontinu dan diferensiabel pada
+$(a,b)$, dan untuk suatu $M$ berlaku $\babs{f'(x)} \leq M$ untuk semua $x \in (a,b)$, maka
 $\babs{f(b)-f(a)} \leq M \sabs{b-a}$.
 \end{enumerate}
 \end{exercise}
 
 \begin{exercise}
-Prove that there is no simple mean value theorem for integrals
-for complex-valued
-functions:  Find a continuous function $f \colon [0,1] \to \C$ such that
-$\int_0^1 f = 0$ but $f(t) \neq 0$ for all $t \in [0,1]$.
+Buktikan bahwa tidak ada teorema nilai rata-rata sederhana untuk integral
+fungsi bernilai kompleks:
+Temukan fungsi kontinu $f \colon [0,1] \to \C$ sedemikian sehingga
+$\int_0^1 f = 0$ tetapi $f(t) \neq 0$ untuk semua $t \in [0,1]$.
 \end{exercise}
 
 

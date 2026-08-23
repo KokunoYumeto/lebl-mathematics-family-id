@@ -1,0 +1,114 @@
+% R008 — Guide to Cultivating Complex Analysis (Bahasa Indonesia)
+% Reader-facing translation unit: source/ca-v1.9/ca.tex lines 556–667.
+% Source release: v1.9 (commit a4d25d9ba37a486a5a020219eb8bd4e6602fd14c).
+% Translation provenance: OpenAI Codex gpt-5.6-sol, Ultra, acting on the user's request.
+% Preserve the source labels, cross-reference macros, bibliography keys, and
+% diagram structure when this unit is integrated into the full driver.
+
+\chapter*{Pendahuluan} \label{ch:intro}
+\addcontentsline{toc}{chapter}{Pendahuluan}
+\markboth{PENDAHULUAN}{PENDAHULUAN}
+
+\begin{myepigraph}
+Jika Anda tidak dapat membuktikan bahwa seseorang keliru, jangan panik. Anda selalu dapat memanggilnya dengan nama-nama buruk.
+
+---Oscar Wilde
+\end{myepigraph}
+
+Tujuan buku ini adalah mengajarkan mata kuliah analisis kompleks tingkat
+pascasarjana selama satu semester bagi mahasiswa pascasarjana yang baru masuk.\footnote{Saya menulisnya khusus untuk mengajar Math 5283 di Oklahoma State University.}
+Tujuh bab pertama merupakan rangkaian semester pertama yang wajar dalam
+urutan dua semester; semester kedua dapat membahas beberapa variabel kompleks
+(misalnya, \cite{scv:book}) atau mungkin analisis harmonik.
+Buku ini mungkin juga digunakan untuk rangkaian dua semester yang lebih
+elementer jika lampiran dibahas terlebih dahulu dan semua bagian opsional dari
+teks utama juga dibahas.
+Kami mengasumsikan pengetahuan dasar analisis tingkat sarjana pada variabel
+real, yang di beberapa perguruan tinggi disebut \myquote{kalkulus lanjut}.
+Teks ini mengasumsikan pengetahuan tentang ruang metrik dan kalkulus
+diferensial beberapa variabel, tetapi jika pembaca belum menguasai topik-topik
+tersebut atau belum pernah mempelajarinya, hasil-hasil yang diperlukan
+disajikan (beserta pembuktiannya) dalam lampiran.
+Dengan demikian, prasyarat dasar untuk mata kuliah ini setidaknya satu
+semester analisis tingkat sarjana jika lampiran juga dibahas atau dibaca; jika
+mahasiswa telah mempelajari ruang metrik dan pemetaan di $\R^2$, kuliah dapat
+langsung dimulai pada \Chapterref{ch:complexplane}.
+Pengetahuan yang sangat dasar tentang aljabar linear dan aljabar abstrak
+tingkat sarjana juga bermanfaat.
+
+Prasyarat analisis terutama dapat ditemukan dalam
+\cites{ra:book,ra:book2,Rudin:principles}.
+Bacaan lanjutan yang direkomendasikan tentang analisis kompleks adalah
+\cites{Boas,Conway1,Conway2,Rudin,Ullrich}.
+Lihat bab yang dengan tepat diberi nama
+\hyperref[ch:furtherreading]{Bacaan Lanjutan}.
+
+Buku ini berpandangan bahwa kita tidak perlu mendefinisikan ulang dan
+membuktikan kembali hal-hal yang telah dibahas dalam mata kuliah analisis real
+tingkat sarjana, terutama yang berkaitan dengan pemetaan bidang.
+Kita dapat segera beralih ke fungsi holomorf sebagai solusi persamaan
+Cauchy--Riemann, misalnya.
+Hubungannya adalah memahami baik turunan suatu pemetaan bidang maupun
+perkalian dengan bilangan kompleks sebagai matriks real berukuran $2 \times 2$.
+Ketika memperkenalkan integral garis, kami menghubungkannya dengan integral
+garis yang telah dipelajari mahasiswa dalam kalkulus.
+Teorema fungsi invers holomorf dapat diperkenalkan sejak awal sebagai
+konsekuensi teorema fungsi invers standar di $\R^2$.
+Garis besar pembuktian analisis kompleks murni ditunda ke latihan.
+Ini bukan sekadar langkah penghematan waktu.
+Intinya adalah menekankan bahwa kita tidak sedang mendefinisikan dunia yang
+sama sekali baru dan berbeda.
+
+Kami juga berusaha memperkenalkan pendekatan $z,\bar{z}$ alih-alih hanya
+pendekatan $x,y$ murni.
+Misalnya, kami memperkenalkan dan menggunakan operator Wirtinger.
+Ini benar-benar cara yang lebih baik untuk memikirkan variabel kompleks.
+
+Kami berusaha untuk tidak mendefinisikan terminologi atau notasi yang
+bertentangan dengan apa yang telah dipelajari pembaca sebelumnya.
+Terutama, istilah \myquote{diferensiabel} umumnya kami sisakan untuk konteks
+turunan real, dan kami menggunakan \myquote{diferensiabel kompleks} bila
+diperlukan.
+Meskipun demikian, kami sering menulis \myquote{(real) diferensiabel} atau
+\myquote{diferensiabel (dalam arti real)} untuk memperjelas bahwa yang
+dimaksud adalah diferensiabilitas real.
+
+Terakhir, beberapa bagian dalam tujuh bab pertama diberi tanda $\star$ dan
+dapat dilewati dengan mudah pada pembacaan pertama (meskipun ini bukan berarti
+bagian tersebut tidak penting, hanya saja tidak diperlukan untuk materi
+selanjutnya).
+Dengan melewati sebagian bagian, mungkin kita dapat membahas topik-topik lain
+yang lebih lanjut.
+
+\medskip
+
+Ketergantungan umum bab-bab non-lampiran ditunjukkan dalam diagram berikut.
+Biasanya saya menjalankan kuliah satu semester dengan menempuh bab
+\ref{ch:complexplane}--\ref{ch:counting}, melewati versi homotopi Cauchy,
+untuk menyelesaikan teori dasar fungsi holomorf, kemudian menuju
+\ref{ch:montelriemann} (pemetaan Montel dan Riemann), serta beberapa bagian
+dari \ref{ch:harmonic} (fungsi harmonik).
+Ada beberapa topik tambahan untuk rencana yang berbeda, seperti
+\ref{ch:weier} (faktorisasi Weierstrass), \ref{ch:runge} (Runge), dan
+\ref{ch:analcont} (kelanjutan analitik).
+\begin{equation*}
+\begin{tikzcd}[cramped, row sep=small]
+{\text{\Chdotref{ch:complexplane}}} \arrow[r] &
+{\text{\Chdotref{ch:holanal}}} \arrow[r] &
+{\text{\Chdotref{ch:cauchysimple}}} \arrow[r] &
+{\text{\Chdotref{ch:log}}} \arrow[dl] \\
+& & {\text{\Chdotref{ch:counting}}} \arrow[dl] \arrow[d]
+\arrow[dr] \\
+& {\text{\Chdotref{ch:montelriemann}}} \arrow[dl] \arrow[d] &
+{\text{\Chdotref{ch:harmonic}}} &
+{\text{\Chdotref{ch:weier}}}
+\\
+{\text{\Chdotref{ch:runge}}} &
+{\text{\Chdotref{ch:analcont}}}
+\end{tikzcd}
+\end{equation*}
+Satu-satunya alasan mengapa \ref{ch:runge} (Runge) bergantung pada
+\ref{ch:montelriemann} (pemetaan Montel dan Riemann) adalah bahwa kita
+membuktikan \lemmaref{lemma:patharoundK} (di sekitar setiap himpunan kompak
+terdapat suatu siklus yang homolog dengan nol) sebagai contoh penerapan
+pemetaan Riemann.

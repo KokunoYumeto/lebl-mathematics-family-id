@@ -1,0 +1,55 @@
+% R008 — Guide to Cultivating Complex Analysis (Bahasa Indonesia)
+% Reader-facing translation unit: source/ca-v1.9/ca.tex lines 788–835.
+% Source release: v1.9 (commit a4d25d9ba37a486a5a020219eb8bd4e6602fd14c).
+% Translation provenance: OpenAI Codex gpt-5.6-sol, Ultra, acting on the user's request.
+% Preserve source glossary hooks, mathematical notation, and equation structure.
+
+Diberikan bilangan kompleks $z=x+iy$, \myquote{kembaran jahatnya} adalah
+\emph{\myindex{konjugat kompleks}} dari $z$:
+\glsadd{not:conj}%
+\begin{equation*}
+\bar{z} \overset{\text{def}}{=} x-iy.
+\end{equation*}
+Bilangan $x$ disebut
+\emph{\myindex{bagian real}} dan $y$ disebut
+\emph{\myindex{bagian imajiner}}. Kita menulis
+\glsadd{not:real}%
+\glsadd{not:imag}%
+\begin{equation*}
+\Re z = 
+\Re (x+iy) =
+\frac{z+\bar{z}}{2}
+= x, \qquad 
+\Im z = 
+\Im (x+iy) =
+\frac{z-\bar{z}}{2i}
+=
+y .
+\end{equation*}
+Pengamatan yang sangat berguna adalah bahwa kita menuliskan
+bagian real dan bagian imajiner dalam bentuk $z$ dan $\bar{z}$.
+Setiap ekspresi yang kita tulis dalam bentuk bagian real dan imajiner dari $z$
+juga dapat kita tulis dalam bentuk $z$ dan $\bar{z}$, dan sebaliknya.
+Sebagai contoh,
+\begin{equation*}
+x^3 + y^3 + 3ixy
+=
+{\left( \frac{z+ \bar{z}}{2} \right)}^3 + 
+{\left( \frac{z- \bar{z}}{2i} \right)}^3 + 
+3i {\left( \frac{z+ \bar{z}}{2} \right)} 
+{\left( \frac{z- \bar{z}}{2i} \right)} ,
+\end{equation*}
+atau
+\begin{equation*}
+z^2 - i \bar{z}^2 + z \bar{z}
+=
+{(x+iy)}^2 - i {(x-iy)}^2 + 
+(x+iy)(x-iy) .
+\end{equation*}
+Mungkin tampak bahwa ekspresi dalam $z$ dan $\bar{z}$ lebih
+rumit.
+Yakni, $z$ dan $\bar{z}$ bukanlah
+\myquote{variabel-variabel yang independen.}
+Namun, sangatlah kuat untuk berpikir dalam bentuk $z$ dan $\bar{z}$
+alih-alih $x$ dan $y$, serta dalam banyak konteks berpura-pura seolah-olah
+$z$ dan $\bar{z}$ benar-benar merupakan variabel yang independen.

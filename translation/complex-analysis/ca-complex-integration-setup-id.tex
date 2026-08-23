@@ -1,0 +1,28 @@
+% R008 — Guide to Cultivating Complex Analysis (Bahasa Indonesia)
+% Reader-facing translation unit: source/ca-v1.9/ca.tex lines 1016–1036.
+% Source release: v1.9 (commit a4d25d9ba37a486a5a020219eb8bd4e6602fd14c).
+% Translation provenance: OpenAI Codex gpt-5.6-sol, Ultra, acting on the user's request.
+% Preserve source notation, integration equations, and mathematical structure.
+
+Jika $X \subset \R$, yaitu jika $f$ merupakan fungsi satu variabel real,
+maka $f' = u' + iv'$.
+Secara ekuivalen, kita memperlakukan $f$ sebagai fungsi dari $\R$ ke $\R^2$
+dan karena itu $f'$ adalah matriks $2 \times 1$---vektor kolom, atau dengan
+kata lain, $f'$ merepresentasikan bilangan kompleks jika kita
+mengidentifikasikan $\C$ dengan $\R^2$.
+
+Hal-hal serupa berlaku untuk integrasi.
+Untuk $f \colon [a,b] \to \C$,
+kita mengatakan bahwa $f$ terintegralkan (Riemann) jika $u$ dan $v$ juga
+demikian, lalu
+\begin{equation*}
+\int_a^b f(t) \, dt = 
+\int_a^b u(t) \, dt + i \int_a^b v(t) \, dt .
+\end{equation*}
+Memang, begitulah cara mengintegralkan fungsi bernilai vektor
+untuk sembarang ruang vektor, dan $\C = \R^2$ merupakan ruang vektor.
+Analisis dasar memberi tahu kita bahwa jika diberikan fungsi bernilai real
+yang terintegralkan Riemann $u \colon [a,b] \to \R$,
+maka $\abs{u}$ terintegralkan Riemann dan
+$\abs{\int_a^b u(t) \, dt} \leq \int_a^b \sabs{u(t)} \, dt$.
+Hasil serupa berlaku untuk fungsi bernilai kompleks.

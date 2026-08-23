@@ -1,0 +1,34 @@
+% R008 — Guide to Cultivating Complex Analysis (Bahasa Indonesia)
+% Reader-facing translation unit: source/ca-v1.9/ca.tex lines 734–759.
+% Source release: v1.9 (commit a4d25d9ba37a486a5a020219eb8bd4e6602fd14c).
+% Translation provenance: OpenAI Codex gpt-5.6-sol, Ultra, acting on the user's request.
+% Preserve source labels, glossary hooks, mathematical notation, and structure.
+
+\subsection{Bilangan kompleks sebagai bidang} 
+
+Anda tentu pernah melihat medan bilangan kompleks,
+tetapi mari kita tinjau kembali definisinya.
+Sebagai suatu himpunan, misalkan \emph{\myindex{medan bilangan kompleks}}
+\glsadd{not:C}$\C$ adalah himpunan $\R^2 = \R \times \R$.
+Himpunan ini merupakan sebuah bidang, sehingga kita menyebutnya
+\emph{\myindex{bidang kompleks}}%
+\footnote{Meskipun ada seorang matematikawan aneh di luar sana yang
+menganggap bahwa \emph{bidang kompleks} adalah $\C^2 = \C \times \C$.
+Jika Anda mendengar seseorang mengatakan demikian, pukul kepalanya dengan
+sopan untuk saya.}.
+Agar menjadi medan, kita mendefinisikan penjumlahan dan perkalian:
+\begin{align*}
+(a,b) + (c,d) & \overset{\text{def}}{=} (a+c,b+d) , \\
+(a,b) (c,d) & \overset{\text{def}}{=} (ac-bd,bc+da) .
+\end{align*}
+
+\begin{exbox}
+\begin{exercise}%[\neededexmark]
+Periksa bahwa $\C$ adalah medan, dengan identitas aditif
+$0=(0,0)$ dan identitas multiplikatif $1=(1,0)$.
+Artinya, $\C$ merupakan grup Abelian terhadap penjumlahan,
+bilangan kompleks tak nol merupakan grup Abelian terhadap perkalian,
+dan hukum distributif berlaku. Petunjuk: Invers multiplikatif dari $(a,b)$
+adalah $\left(\frac{a}{a^2+b^2},\frac{-b}{a^2+b^2}\right)$.
+\end{exercise}
+\end{exbox}

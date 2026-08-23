@@ -14,7 +14,7 @@ dikerjakan; cakupan setiap buku dinyatakan secara eksplisit di bawah.
 
 PDF Jilid II pada rilis U228 sengaja berakhir tepat setelah keenam latihan pada
 akhir Bagian 10.7, penggantian variabel. Pohon `main` melanjutkan Bab 11 secara
-kontigu sampai pembukaan fungsi bernilai kompleks (U233), tetapi kelanjutan
+kontigu sampai seluruh latihan bidang kompleks (U234), tetapi kelanjutan
 itu belum dimasukkan ke PDF rilis dan tidak disamarkan sebagai bagian pembaca.
 
 ## Status korpus
@@ -22,21 +22,23 @@ itu belum dimasukkan ke PDF rilis dan tidak disamarkan sebagai bagian pembaca.
 | ID | Buku | Peran kurikulum | Status Bahasa Indonesia |
 |---|---|---|---|
 | R006 | *Basic Analysis I–II* | C10/C20 | Jilid I lengkap; Jilid II sampai akhir Bagian 10.7 (Bab 11 dan seterusnya belum diterjemahkan) |
-| R007 | *Notes on Diffy Qs* | B70 | belum diterjemahkan |
-| R008 | *Guide to Cultivating Complex Analysis* | C50 | belum diterjemahkan |
+| R007 | *Notes on Diffy Qs* | B70 | U001--U006 pendahuluan awal selesai; terjemahan aktif |
+| R008 | *Guide to Cultivating Complex Analysis* | C50 | U001--U017 pendahuluan/bidang kompleks awal selesai; terjemahan aktif |
 
 Checkpoint U228 yang dipublikasikan memuat 228 unit R006 yang diterima: 225
-unit isi dan tiga driver pembaca. Pohon `main` melanjutkan terjemahan ke 233
-unit (230 unit isi dan tiga driver), termasuk pembukaan bidang kompleks,
+unit isi dan tiga driver pembaca. Pohon `main` melanjutkan terjemahan ke 234
+unit (231 unit isi dan tiga driver), termasuk pembukaan bidang kompleks,
 definisi bagian real/imajiner, konjugat dan modulus, serta sifat dan limit
 bilangan kompleks melalui proposisi kontinuitas, konvergensi deret, dan
-pembukaan fungsi bernilai kompleks pada `ch-approximate.tex`. Audit bounded
+fungsi bernilai kompleks dan delapan latihan bidang kompleks pada
+`ch-approximate.tex`. Audit bounded
 U231, U232, dan U233 tercatat di
 [`qa/R006_COMPLEX_PLANE_U231_20260823.md`](qa/R006_COMPLEX_PLANE_U231_20260823.md)
 dan [`qa/R006_COMPLEX_SERIES_U232_20260823.md`](qa/R006_COMPLEX_SERIES_U232_20260823.md),
-serta [`qa/R006_COMPLEX_VALUED_FUNCTIONS_U233_20260823.md`](qa/R006_COMPLEX_VALUED_FUNCTIONS_U233_20260823.md).
+serta [`qa/R006_COMPLEX_VALUED_FUNCTIONS_U233_20260823.md`](qa/R006_COMPLEX_VALUED_FUNCTIONS_U233_20260823.md)
+dan [`qa/R006_COMPLEX_EXERCISES_U234_20260823.md`](qa/R006_COMPLEX_EXERCISES_U234_20260823.md).
 Backend produksi v0.3 adalah checkpoint deterministik yang
-telah divalidasi untuk 167 unit; 61 unit yang lebih baru sudah ada dalam
+telah divalidasi untuk 167 unit; 72 unit yang lebih baru sudah ada dalam
 manifes dan ledger hidup, tetapi belum diklaim sebagai proyeksi backend v0.4.
 
 ## Isi repositori

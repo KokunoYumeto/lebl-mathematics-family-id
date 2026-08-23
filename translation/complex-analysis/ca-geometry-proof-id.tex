@@ -1,0 +1,29 @@
+% R008 — Guide to Cultivating Complex Analysis (Bahasa Indonesia)
+% Reader-facing translation unit: source/ca-v1.9/ca.tex lines 868–890.
+% Source release: v1.9 (commit a4d25d9ba37a486a5a020219eb8bd4e6602fd14c).
+% Translation provenance: OpenAI Codex gpt-5.6-sol, Ultra, acting on the user's request.
+% Preserve source mathematical notation and proof structure.
+
+\begin{proof}
+Kuadrat modulus suatu bilangan kompleks selalu taknegatif.
+Dengan demikian,
+\begin{equation*}
+\begin{split}
+0 & \leq {\sabs{z\bar{w}-\bar{z}w}}^2 \\
+  & =    (z\bar{w}-\bar{z}w)(\bar{z}w-z\bar{w}) \\
+  & =    2z\bar{z}w\bar{w} - z^2\bar{w}^2 - \bar{z}^2w^2 \\
+  & =    4z\bar{z}w\bar{w} - {(z\bar{w}+\bar{z}w)}^2 \\
+  & =    {\bigl(2\sabs{z}\sabs{w}\bigr)}^2 - {\bigl(2 \Re z\bar{w}\bigr)}^2 .
+\end{split}
+\end{equation*}
+Ini membuktikan Cauchy--Schwarz.
+Kita membuktikan ketaksamaan segitiga melalui Cauchy--Schwarz:
+\begin{equation*}
+\begin{split}
+{\sabs{z+w}}^2 & =    (z+w)(\bar{z}+\bar{w}) \\
+               & =    z\bar{z} + w\bar{w} + z\bar{w} + \bar{z}w \\
+               & \leq z\bar{z} + w\bar{w} + 2 \sabs{z}\sabs{w} \\
+               & =    {\bigl(\sabs{z}+\sabs{w}\bigr)}^2 . \qedhere
+\end{split}
+\end{equation*}
+\end{proof}

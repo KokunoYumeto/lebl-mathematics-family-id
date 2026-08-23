@@ -1,0 +1,340 @@
+\chapter*{Pendahuluan} \label{intro:chapter}
+%mbxSTARTIGNORE
+\addfakecontentsline{Pendahuluan}
+\markboth{PENDAHULUAN}{PENDAHULUAN}
+%mbxENDIGNORE
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Catatan tentang catatan ini}
+\label{notes:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{Bagian untuk pengajar.}
+
+Buku ini berawal dari catatan kuliah saya untuk Math 286
+di \href{https://www.math.uiuc.edu/}{University of Illinois di
+Urbana-Champaign} (UIUC)
+pada Musim Gugur 2008 dan
+Musim Semi 2009.
+Ini adalah mata kuliah pertama tentang persamaan diferensial untuk para insinyur.
+Dengan menggunakan buku ini, saya juga mengajar Math 285 di UIUC\@,
+Math 20D di
+\href{https://www.math.ucsd.edu/}{University of California, San Diego} (UCSD),
+serta Math 2233 dan 4233 di
+\href{https://math.okstate.edu/}{Oklahoma State University} (OSU).
+Biasanya mata kuliah-mata kuliah ini diajarkan dengan menggunakan
+Edwards dan Penney, \emph{Differential
+Equations and Boundary Value Problems: Computing and Modeling}~\cite{EP}, atau
+Boyce dan DiPrima,
+\emph{Elementary
+Differential Equations and Boundary Value Problems}~\cite{BD},
+dan buku ini dimaksudkan sebagai pengganti yang kurang lebih dapat langsung digunakan.
+Buku-buku lain yang saya gunakan sebagai sumber informasi dan inspirasi
+adalah karya klasik (dan murah) E.L.\ Ince,
+\emph{Ordinary Differential Equations}~\cite{I},
+Stanley Farlow, \emph{Differential Equations and Their
+Applications}~\cite{F}, yang kini tersedia dari Dover,
+Berg dan McGregor,
+\emph{Elementary Partial Differential Equations}~\cite{BM},
+serta buku gratis karya William Trench,
+\emph{Elementary
+Differential Equations with Boundary Value Problems}~\cite{T}.
+Lihat bab \hyperref[furtherreading:chapter]{Bacaan Lanjutan} di bagian akhir buku.
+
+\subsection{Organisasi}
+
+Pengorganisasian buku ini, sampai tingkat tertentu,
+mengharuskan bab-babnya dibahas secara berurutan.
+Bab-bab selanjutnya dapat dilewati.
+Ketergantungan materi yang dibahas kira-kira adalah sebagai berikut:
+
+% If changing make sure to also update figures/chapterdiagram.pdf_t
+% That's a hopefully short term hack before I figure out how to do it
+% better so that it also gets links and such
+%mbxSTARTIGNORE
+\begin{equation*}
+\begin{tikzcd}[cramped, row sep=small]
+& {\text{\hyperref[intro:chapter]{Pendahuluan}}} \arrow[d] \\
+{\text{\Appendixref{linalg:appendix}}} \arrow[dd, dotted]
+& {\text{\Chapterref{fo:chapter}}} \arrow[d] \\
+& {\text{\Chapterref{ho:chapter}}} \arrow[dddr] \arrow[dd] \arrow[dl] \arrow[dr] \\
+{\text{\Chapterref{sys:chapter}}} \arrow[dr, dotted] \arrow[d] & &
+  {\text{\Chapterref{ps:chapter}}} \\
+{\text{\Chapterref{nlin:chapter}}} & {\text{\Chapterref{FS:chapter}}} \arrow[d]
+\arrow[dr,dotted] \\
+& {\text{\Chapterref{SL:chapter}}}
+& {\text{\Chapterref{LT:chapter}}}
+\end{tikzcd}
+\end{equation*}
+%mbxENDIGNORE
+%mbxlatex \begin{center}
+%mbxlatex \inputpdft{chapterdiagram}{%
+%mbxlatex Diagram dengan 'Pendahuluan' di bagian atas, dengan sebuah panah
+%mbxlatex menuju 'Bab 1', lalu sebuah panah menuju 'Bab 2', kemudian empat
+%mbxlatex panah menuju 'Bab 3', 'Bab 4', 'Bab 6', dan
+%mbxlatex 'Bab 7'. 'Bab 3' memiliki sebuah panah menuju 'Bab 8'
+%mbxlatex dan sebuah panah putus-putus menuju 'Bab 4'. 'Bab 4' memiliki
+%mbxlatex sebuah panah menuju 'Bab 5' dan sebuah panah putus-putus menuju 'Bab 6'.
+%mbxlatex Ada juga 'Lampiran A' dengan sebuah panah putus-putus menuju 'Bab 3'.}
+%mbxlatex \end{center}
+
+Ada beberapa rujukan dalam bab \ref{FS:chapter} dan \ref{SL:chapter}
+ke \chapterref{sys:chapter} (sebagian aljabar linear), tetapi rujukan tersebut
+tidak esensial dan dapat dibaca sekilas,
+sehingga \chapterref{sys:chapter}
+dapat dengan aman dilewati, sementara
+bab \ref{FS:chapter} dan \ref{SL:chapter} tetap dibahas.
+\Chapterref{LT:chapter} tidak bergantung pada
+\chapterref{FS:chapter}, kecuali bahwa
+bagian PDE pada \ref{laplacepde:section} membuat
+beberapa rujukan ke
+\chapterref{FS:chapter},
+meskipun secara teori bagian tersebut dapat dibahas
+secara terpisah.
+\appendixref{linalg:appendix} yang lebih mendalam tentang aljabar linear
+dapat menggantikan ulasan singkat pada \sectionref{sec:matrix}
+untuk mata kuliah yang menggabungkan aljabar linear dan ODE.
+
+\subsection{Mata kuliah yang umum}
+
+Buku ini dapat digunakan untuk menyelenggarakan beberapa mata kuliah yang berbeda.
+Ada dua mata kuliah satu semester yang semula diajarkan di UIUC\@.
+Keduanya mencakup ODE dan juga beberapa PDE.
+Mata kuliah pertama berlangsung selama 4 jam per minggu (Math 286):
+
+\medskip
+
+\noindent
+\hyperref[intro:chapter]{Pendahuluan} (\ref{introde:section}),
+\chapterref{fo:chapter} (\ref{integralsols:section}--\ref{numer:section}),
+\chapterref{ho:chapter},
+\chapterref{sys:chapter},
+\chapterref{FS:chapter} (\ref{bvp:section}--\ref{dirich:section}),
+\chapterref{SL:chapter} (atau
+\ref{LT:chapter} atau \ref{ps:chapter} atau \ref{nlin:chapter}).
+
+\medskip
+
+Mata kuliah kedua di UIUC berlangsung 3 jam per minggu (Math 285):
+
+\medskip
+
+\noindent
+\hyperref[intro:chapter]{Pendahuluan} (\ref{introde:section}),
+\chapterref{fo:chapter} (\ref{integralsols:section}--\ref{numer:section}),
+\chapterref{ho:chapter},
+\chapterref{FS:chapter} (\ref{bvp:section}--\ref{dirich:section}),
+dan mungkin \chapterref{SL:chapter},
+\ref{LT:chapter}, atau \ref{ps:chapter}.
+
+\medskip
+
+Mata kuliah satu semester dengan 3 jam per minggu yang tidak membahas sistem maupun PDE
+akan mencakup, selain pendahuluan,
+%\sectionref{introde:section},
+\chapterref{fo:chapter},
+\chapterref{ho:chapter},
+\chapterref{LT:chapter}, dan \chapterref{ps:chapter},
+(dengan beberapa bagian dilewati seperti di atas).
+Sebaliknya, mata kuliah umum yang membahas sistem mungkin perlu melewati transformasi Laplace dan deret pangkat,
+lalu membahas
+%\sectionref{introde:section},
+\chapterref{fo:chapter},
+\chapterref{ho:chapter},
+\chapterref{sys:chapter}, dan \chapterref{nlin:chapter}.
+
+\medskip
+
+Jika beberapa bagian perlu dilewati pada awalnya, inti yang baik dari
+bagian-bagian tentang ODE tunggal adalah:
+\ref{introde:section},
+\ref{integralsols:section}--\ref{intfactor:section},
+\ref{auteq:section},
+\ref{solinear:section},
+\ref{sec:ccsol},
+\ref{sec:mv}--\ref{forcedo:section}.
+
+\medskip
+
+Buku lengkap dapat dibahas dengan laju yang cukup cepat dalam kira-kira 76 pertemuan
+(tanpa \appendixref{linalg:appendix})
+atau 86 pertemuan (dengan \appendixref{linalg:appendix} menggantikan
+\sectionref{sec:matrix}).
+Ini belum memperhitungkan ujian, peninjauan ulang,
+atau waktu yang dihabiskan di laboratorium komputer. % (if using IODE for example).
+Dengan materi ini, mata kuliah dua kuartal atau dua semester dapat diselenggarakan dengan mudah.
+Sebagai contoh (dengan kemungkinan melewati beberapa bagian secara strategis):
+
+\medskip
+
+\noindent
+Semester 1:
+\hyperref[intro:chapter]{Pendahuluan},
+\chapterref{fo:chapter},
+\chapterref{ho:chapter},
+\chapterref{LT:chapter},
+\chapterref{ps:chapter}.
+\\
+Semester 2:
+\Chapterref{sys:chapter},
+\chapterref{nlin:chapter},
+\chapterref{FS:chapter},
+\chapterref{SL:chapter}.
+
+\medskip
+
+Mata kuliah gabungan tentang ODE dan aljabar linear dapat disusun sebagai berikut:
+
+\medskip
+
+\noindent
+\hyperref[intro:chapter]{Pendahuluan},
+\chapterref{fo:chapter} (\ref{integralsols:section}--\ref{numer:section}),
+\chapterref{ho:chapter},
+\appendixref{linalg:appendix},
+\chapterref{sys:chapter} (tanpa \sectionref{sec:matrix}), mungkin
+\chapterref{nlin:chapter}.
+
+\medskip
+
+Bab tentang
+transformasi Laplace (\chapterref{LT:chapter}),
+bab tentang Sturm--Liouville (\chapterref{SL:chapter}),
+bab tentang deret pangkat (\chapterref{ps:chapter}),
+dan bab tentang sistem nonlinear (\chapterref{nlin:chapter}),
+kurang lebih dapat saling dipertukarkan dan dapat diperlakukan sebagai \myquote{topik}.
+Jika \chapterref{nlin:chapter} dibahas, sebaiknya bab itu ditempatkan tepat
+setelah \chapterref{sys:chapter},
+dan \chapterref{SL:chapter} paling baik dibahas tepat setelah
+\chapterref{FS:chapter}.
+Jika waktu terbatas, dua bagian pertama dari
+\chapterref{ps:chapter} merupakan unit mandiri yang cukup baik.
+
+%\medskip
+\subsection{Sumber daya komputer}
+
+Situs web buku ini,
+\url{https://www.jirka.org/diffyqs/}
+atau
+\url{https://jirilebl.github.io/diffyqs/},
+memuat sumber daya berikut:
+\begin{enumerate}
+\item Demo SAGE interaktif.
+\item Pekerjaan rumah WeBWorK daring
+(dengan menggunakan instalasi WeBWorK sendiri atau Edfinity)
+untuk sebagian besar bagian, yang disesuaikan untuk buku ini.
+\item PDF gambar-gambar yang digunakan dalam buku ini.
+\item Video YouTube dan slide yang sesuai untuk beberapa bagian.
+\end{enumerate}
+
+Saya menggunakan IODE\index{perangkat lunak IODE}
+(\url{https://publish.illinois.edu/iode-diffeq/})
+dalam mata kuliah UIUC.
+IODE adalah paket perangkat lunak gratis yang
+bekerja dengan Matlab (perangkat lunak proprietari) atau Octave (perangkat lunak gratis).
+%Unfortunately IODE is not kept up to date at this point, and may have
+%trouble running on newer versions of Matlab.
+Grafik dalam buku ini dibuat dengan
+perangkat lunak Genius\index{perangkat lunak Genius}
+(lihat \url{https://www.jirka.org/genius.html}).
+%  I use Genius
+%in class to show these (and other) graphs.
+
+Kode sumber \LaTeX\ buku ini juga tersedia
+untuk kemungkinan modifikasi dan penyesuaian
+di GitHub (\url{https://github.com/jirilebl/diffyqs}).
+
+%\medskip
+
+%\textbf{Ucapan terima kasih:}
+
+\subsection{Ucapan terima kasih}
+
+Pertama-tama, saya ingin menyampaikan terima kasih kepada Rick Laugesen. Saya menggunakan catatan kuliahnya yang ditulis tangan
+ketika pertama kali mengajar
+Math 286. Pengorganisasian buku ini sampai Bab 5,
+serta pilihan
+materi yang dibahas, sangat dipengaruhi oleh catatannya. Banyak
+contoh dan perhitungan diambil dari catatannya. Saya juga sangat berutang budi kepada Rick atas semua nasihat yang diberikannya, bukan hanya tentang pengajaran
+Math 286.
+Atas bantuan menemukan kesalahan dan saran-saran lainnya,
+saya juga ingin menyampaikan terima kasih (tanpa urutan tertentu):
+John P.\ D'Angelo,
+Sean Raleigh, Jessica Robinson, Michael Angelini, Leonardo Gomes, Jeff
+Winegar, Ian Simon, Thomas Wicklund, Eliot Brenner, Sean Robinson,
+Jannett Susberry, Dana Al-Quadi, Cesar Alvarez, Cem Bagdatlioglu,
+Nathan Wong, Alison Shive, Shawn White, Wing Yip Ho, Joanne Shin,
+Gladys Cruz, Jonathan Gomez, Janelle Louie, Navid Froutan,
+Grace Victorine, Paul Pearson, Jared Teague, Ziad Adwan,
+Martin Weilandt, S\"{o}nmez \c{S}ahuto\u{g}lu,
+Pete Peterson, Thomas Gresham, Prentiss Hyde, Jai Welch,
+Simon Tse, Andrew Browning, James Choi, Dusty Grundmeier,
+John Marriott,
+Jim Kruidenier,
+Barry Conrad,
+Wesley Snider,
+Colton Koop,
+Sarah Morse,
+Erik Boczko,
+Asif Shakeel,
+Chris Peterson,
+Nicholas Hu,
+Paul Seeburger,
+Jonathan McCormick,
+David Leep,
+William Meisel,
+Shishir Agrawal,
+Tom Wan,
+Andres Valloud,
+Martin Irungu,
+Justin Corvino,
+Tai-Peng Tsai,
+Santiago Mendoza Reyes,
+Glen Pugh,
+Michael Tran,
+Heber Farnsworth,
+Tam\'as Zsoldos,
+Mark Mills,
+George Ballinger,
+dan mungkin orang-orang lain yang saya lupakan.
+Terakhir, saya ingin menyampaikan terima kasih atas hibah NSF DMS-0900885 dan DMS-1362337.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sectionnewpage
+\section{Pengantar persamaan diferensial}
+\label{introde:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{lebih dari 1 kuliah\EPref{, \S1.1 dalam \cite{EP}}\BDref{, bab 1 dalam \cite{BD}}}
+
+\subsection{Persamaan diferensial}
+
+Hukum-hukum fisika umumnya dituliskan sebagai persamaan diferensial.
+Oleh karena itu, semua bidang sains dan teknik menggunakan persamaan diferensial sampai tingkat tertentu.
+Persamaan diferensial penting untuk memahami hampir segala sesuatu yang akan
+Anda pelajari dalam kelas sains dan teknik.
+Anda dapat menganggap matematika sebagai bahasa sains, dan
+persamaan diferensial adalah salah satu bagian terpenting dari bahasa ini
+sejauh menyangkut sains dan teknik. Sebagai analogi,
+misalkan mulai sekarang semua kelas Anda diajarkan dalam bahasa Swahili.
+Penting untuk mempelajari bahasa Swahili terlebih dahulu, atau Anda akan sangat
+kesulitan mendapatkan nilai baik di kelas.
+
+Sebuah \emph{\myindex{persamaan diferensial}} hanyalah persamaan yang melibatkan
+bukan hanya variabel tak diketahui, tetapi juga turunannya.
+Dalam kalkulus, Anda mungkin telah melihat dan bahkan menyelesaikan banyak
+persamaan diferensial tanpa menyadarinya.
+Berikut contoh yang mungkin belum pernah Anda lihat:
+\begin{equation} \label{eq1}
+\frac{dx}{dt} + x = 2 \cos t .
+\end{equation}
+Besaran tak diketahui, $x$, adalah \emph{\myindex{variabel dependen}} dan $t$ adalah
+\emph{\myindex{variabel independen}}. Artinya, $x$ adalah fungsi dari $t$.
+Persamaan \eqref{eq1}
+adalah contoh \emph{\myindex{persamaan diferensial orde pertama}}, karena
+hanya melibatkan turunan pertama variabel dependen.
+Persamaan ini muncul dari hukum pendinginan Newton, ketika suhu lingkungan
+berosilasi terhadap waktu.

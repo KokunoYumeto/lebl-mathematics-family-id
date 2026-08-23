@@ -1,0 +1,38 @@
+% R008 — Guide to Cultivating Complex Analysis (Bahasa Indonesia)
+% Reader-facing translation unit: source/ca-v1.9/ca.tex lines 837–866.
+% Source release: v1.9 (commit a4d25d9ba37a486a5a020219eb8bd4e6602fd14c).
+% Translation provenance: OpenAI Codex gpt-5.6-sol, Ultra, acting on the user's request.
+% Preserve source labels, glossary/index hooks, mathematical notation, and structure.
+
+\subsection{Geometri dan topologi bidang}
+
+Ukuran $z$ diukur dengan apa yang disebut \emph{\myindex{modulus}},
+yang sebenarnya adalah \emph{\myindex{jarak Euclidean}}
+dari titik asal ke $z$:
+\glsadd{not:mod}%
+\begin{equation*}
+\sabs{z} \overset{\text{def}}{=} \sqrt{z \bar{z}} = \sqrt{x^2+y^2} .
+\end{equation*}
+Secara lebih sederhana, ${\sabs{z}}^2 = z\bar{z}$.
+Perhatikan bahwa $\sabs{z} \geq 0$, dan $\sabs{z} = 0$
+jika dan hanya jika $z=0$.
+
+\begin{prop}[Cauchy--Schwarz dan ketaksamaan segitiga]
+Jika $z,w \in \C$, maka
+\begin{enumerate}[(i)]
+\item
+$\sabs{\Re z\bar{w}} \leq \sabs{z} \sabs{w}$ \quad (ketaksamaan
+Cauchy--Schwarz\footnote{%
+Nama ini keliru.
+Ada yang (secara keliru) mengatakan bahwa namanya seharusnya
+Cauchy--Bunyakovsky--Schwarz.
+Bunyakovsky dan Schwarz membuktikan versi berdimensi tak hingga.
+Versi ini seharusnya disebut ketaksamaan Cauchy, tetapi sayangnya nama itu
+dapat merujuk pada ketaksamaan lain, yaitu estimasi Cauchy.}, perhatikan bahwa
+$\Re z
+\bar{w}$ adalah hasil kali titik di $\R^2$),\index{Cauchy--Schwarz}
+\item
+$\sabs{z+w} \leq \sabs{z} + \sabs{w}$ \quad (ketaksamaan segitiga).%
+\index{triangle inequality!complex numbers}
+\end{enumerate}
+\end{prop}

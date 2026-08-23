@@ -1,0 +1,70 @@
+% R008 — Guide to Cultivating Complex Analysis (Bahasa Indonesia)
+% Reader-facing translation unit: source/ca-v1.9/ca.tex lines 673–733.
+% Source release: v1.9 (commit a4d25d9ba37a486a5a020219eb8bd4e6602fd14c).
+% Translation provenance: OpenAI Codex gpt-5.6-sol, Ultra, acting on the user's request.
+% Preserve source labels, glossary hooks, mathematical notation, and structure.
+
+\chapter{Bidang Kompleks} \label{ch:complexplane}
+
+\begin{myepigraph}
+Jelas ini anggaran. Isinya banyak angka.
+
+---George W.\ Bush
+\end{myepigraph}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Bilangan kompleks} \label{sec:complexnums}
+
+Matematika modern\footnote{Dalam konteks ini, \emph{modern} berarti
+\myquote{setelah Abad Pertengahan.}}
+bermula dari mengambil pernyataan yang salah seperti
+\myquote{semua polinom memiliki akar} dan mendefinisikan ulang apa yang dapat
+dimaksud dengan \myquote{akar}, yaitu mendefinisikan ulang \myquote{bilangan},
+agar pernyataan tersebut menjadi benar.
+Dalam hal ini, kita sampai pada bilangan kompleks.
+Meskipun teknik ini (menggeser tiang gawang) terasa seperti curang, teknik ini
+memberikan pada kita hampir seluruh matematika yang kita kenal, baik murni
+maupun terapan.
+Teknik yang sama dimulai dengan bilangan asli
+\glsadd{not:N}$\N = \{ 1,2,3,\ldots \}$, satu-satunya
+bilangan yang tampak langsung dari alam,
+kemudian memberikan bilangan nol dan bilangan negatif sehingga menghasilkan
+bilangan bulat \glsadd{not:Z}$\Z$, agar kita dapat menyelesaikan persamaan
+seperti $n+2 = 1$.
+Dari \glsadd{not:Z}$\Z$, kita mendefinisikan bilangan rasional
+\glsadd{not:Q}$\Q$ untuk menyelesaikan\footnote{%
+Apakah kita benar-benar menyelesaikan $2x=1$ dengan menulis
+$x = \nicefrac{1}{2}$? Bagaimanapun, $\nicefrac{1}{2}$ hanyalah pengganti
+untuk suatu objek yang tidak dapat kita uraikan dengan cara apa pun selain
+\myquote{apa pun yang akan menjadi hasil $1$ dibagi $2$ seandainya objek itu
+ada.}}
+persamaan seperti $2x=1$.
+Kita memperluas $\Q$ menjadi bilangan real \glsadd{not:R}$\R$
+untuk menyelesaikan persamaan seperti $x^2=2$.
+Sebenarnya, definisi bilangan real kita dibuat sedemikian rupa sehingga kita
+mendapatkan teorema seperti teorema nilai antara, Bolzano--Weierstrass,
+dan sebagainya.
+Maka, tidaklah terlalu jauh untuk melakukan hal yang sama ketika berusaha
+menyelesaikan $z^2+1=0$.
+Sebagaimana pada bilangan real, konsekuensi menambahkan $\sqrt{-1}$ ke dalam
+campuran ini jauh lebih mendalam daripada sekadar menemukan akar polinom.
+
+Menariknya, sementara langkah menuju analisis dengan bilangan real merupakan
+langkah menuju jurang, langkah menuju analisis dengan bilangan kompleks adalah
+langkah menuju negeri ajaib dalam dongeng.
+Mata kuliah analisis real tahun pertama menghancurkan harapan dan impian
+mahasiswa.
+Pernyataan yang masuk akal ternyata salah dan contoh tandingan yang aneh
+berlimpah.
+Sebaliknya, mata kuliah analisis kompleks mengisi mahasiswa dengan optimisme
+yang tidak realistis.
+Mata kuliah ini dipenuhi pernyataan naif dan konyol yang hanya mungkin
+dianggap masuk akal oleh mahasiswa kalkulus yang buruk.\footnote{%
+Misalnya: Jika Anda dapat mendiferensialkan sekali, Anda dapat
+mendiferensialkan dua kali.
+Setiap fungsi kurang lebih berperilaku seperti fungsi linear.
+Jika semua turunan di suatu titik bernilai nol, fungsi tersebut konstan.
+Dan seterusnya.}
+Keduanya adalah polisi baik/polisi buruk, yin/yang,
+dalam analisis kontemporer.
