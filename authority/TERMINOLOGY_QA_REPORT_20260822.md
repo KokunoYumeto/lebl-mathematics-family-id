@@ -58,13 +58,31 @@ suatu himpunan`, `himpunan terhitung`, dan `himpunan tak terhitung`. Definisi
 bilingual langsung `denumerabel (terhitung tak hingga)` dan mendefinisikan
 `enumerasi`. Ragam
 pembuktian formalnya juga konsisten dengan edisi ini: `untuk setiap`,
-`terdapat`, `sedemikian sehingga`, `maka`, dan `Diberikan`.
+`terdapat`, `maka`, dan `Diberikan`. Audit ulang seluruh 60 halaman tidak
+menemukan frasa `sedemikian sehingga`; frasa itu karena itu tidak diperlakukan
+sebagai bukti dari modul ini.
+
+Untuk mengikat pilihan khusus `hasil kali Kartesius` yang tidak digunakan oleh
+modul UT tersebut, bukti tambahan diunduh dari repositori resmi Universitas
+Ahmad Dahlan:
+
+- Soffi Widyanesti Priwantoro, *Dasar-dasar Matematika Diskrit dan Graf*, UAD
+  Press, 2020,
+  <https://eprints.uad.ac.id/32231/1/ilovepdf_merged%20%286%29.pdf>.
+- Salinan bukti lokal:
+  `universitas-ahmad-dahlan-dasar-dasar-matematika-diskrit-dan-graf.pdf`,
+  1.719.957 byte, 95 halaman PDF, SHA-256
+  `5761dce0e6d055b9bb60ee32afedcc39818071de99f168e510f34554f9583063`.
+- Definisi 3.D.1 pada halaman cetak 30 / halaman PDF 39 memakai frasa persis
+  `hasil kali kartesius`. Halaman itu diperiksa melalui ekstraksi dan render
+  visual. Buku ini hanya menjadi bukti terminologi dan tidak masuk paket rilis
+  Lebl.
 
 ## Rekonsiliasi dengan glosarium R006
 
 | Konsep | Sebelum QA | Bukti lapangan | Keputusan |
 |---|---|---|---|
-| Cartesian product | `produk Kartesius` | UT memakai `hasil kali silang`; publikasi matematika perguruan tinggi Indonesia lazim memakai `hasil kali Kartesius` | Ubah pilihan utama menjadi `hasil kali Kartesius`; simpan `produk Kartesius` sebagai varian; tolak `hasil kali silang` dalam edisi ini karena bertabrakan dengan istilah *vector cross product*. |
+| Cartesian product | `produk Kartesius` | UT memakai `hasil kali silang`; buku UAD memakai `hasil kali kartesius` secara eksplisit pada Definisi 3.D.1 | Ubah pilihan utama menjadi `hasil kali Kartesius`; simpan `produk Kartesius` sebagai varian; tolak `hasil kali silang` dalam edisi ini karena bertabrakan dengan istilah *vector cross product*. |
 | element | `elemen`, varian `anggota` | UT memakai `anggota` | Pertahankan pilihan dan varian; bukti ditambahkan. |
 | empty set | `himpunan kosong` | Sama | Pertahankan; bukti ditambahkan. |
 | proper subset | `himpunan bagian sejati` | Sama | Pertahankan; bukti ditambahkan. |
@@ -94,3 +112,13 @@ keringkasan dan konsistensi tanpa memperbaiki makna.
 
 Putusan: dua koreksi istilah dipropagasikan; semua pilihan utama lain yang
 dibandingkan lulus QA, dengan bukti dan varian diperkuat secara eksplisit.
+
+## Koreksi bukti audit — 2026-08-23
+
+Audit independen menemukan bahwa versi awal laporan secara keliru memasukkan
+`sedemikian sehingga` ke daftar frasa yang diklaim hadir dalam modul UT dan
+tidak mengikat klaim `hasil kali Kartesius` ke berkas tertentu. Klaim pertama
+telah dihapus setelah pemeriksaan ulang 60 halaman menghasilkan nol kemunculan.
+Klaim kedua kini terikat pada buku UAD, halaman cetak 30 / PDF 39, dengan
+identitas, URL, ukuran, hash, ekstraksi, dan render visual di atas. Tidak ada
+perubahan tambahan pada pilihan istilah atau teks terjemahan yang diperlukan.

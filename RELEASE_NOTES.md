@@ -1,4 +1,4 @@
-# Keluarga Matematika Lebl — cuplikan kerja U219 — 2026-08-23
+# Keluarga Matematika Lebl - cuplikan kerja U227 - 2026-08-23
 
 Ini adalah cuplikan pelestarian publik yang jujur dan dapat direproduksi,
 bukan klaim bahwa seluruh korpus tiga buku telah selesai.
@@ -8,24 +8,25 @@ bukan klaim bahwa seluruh korpus tiga buku telah selesai.
 - `Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf`: edisi Bahasa Indonesia R006
   Jilid I yang lengkap, 334 halaman, telah melewati build penuh dan pemeriksaan
   visual seluruh halaman.
-- `Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_Akhir_Bagian_10.6.pdf`:
-  cuplikan kerja R006 Jilid II, 150 halaman. Berkas sengaja berakhir tepat
-  setelah ketujuh latihan Bagian 10.6, Teorema Green. Contoh medan vektor
-  pusaran, contoh sifat nilai rata-rata fungsi harmonik, dan seluruh latihan
-  bagian itu sudah disertakan; Bagian 10.7 belum disertakan. Tidak ada ekor
-  berbahasa Inggris.
-- `lebl-mathematics-family-id-source-backend-wip-u219-20260823.zip`: sumber LaTeX,
+- `Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_Akhir_Bukti_Teorema_Penggantian_Variabel.pdf`:
+  cuplikan kerja R006 Jilid II, 154 halaman. Berkas sengaja berakhir tepat
+  setelah bukti lengkap Teorema 10.7.2. Pembukaan Bagian 10.7, Proposisi
+  10.7.1, pernyataan teorema, Gambar 10.17, dan bukti lengkap disertakan;
+  latihan Bagian 10.7 belum diterjemahkan dan tidak muncul. Tiga rujukan bukti
+  ke latihan yang belum disertakan ditampilkan sebagai nomor biasa, bukan
+  tautan mati. Tidak ada ekor berbahasa Inggris.
+- `lebl-mathematics-family-id-source-backend-wip-u227-20260823.zip`: sumber LaTeX,
   manifes terjemahan, terminologi, catatan koreksi, bukti otoritas, bukti QA,
   serta backend modular netral-lokal. Foto sampul ritel yang haknya tidak
   termasuk dalam lisensi buku sengaja dikecualikan.
 
-Pada batas ini terdapat 219 unit R006 yang diterima: 216 unit isi dan tiga unit
+Pada batas ini terdapat 227 unit R006 yang diterima: 224 unit isi dan tiga unit
 driver pembaca. R007 (*Notes on Diffy Qs*) dan R008 (*Guide to Cultivating
 Complex Analysis*) belum diterjemahkan; paket hanya memuat bukti otoritas dan
 pemetaan cakupannya untuk kelanjutan yang dapat direproduksi.
 
 Backend produksi v0.3 adalah checkpoint beku yang telah divalidasi untuk 167
-unit. Lima puluh dua unit R006 yang lebih baru tetap dilestarikan dalam
+unit. Enam puluh unit R006 yang lebih baru tetap dilestarikan dalam
 `translation/TRANSLATION_MANIFEST.jsonl`, `control/TERMINOLOGY.csv`, dan
 `control/ADVERSE_LEDGER.jsonl`; proyeksi backend berikutnya belum diklaim
 selesai.
@@ -46,9 +47,9 @@ resmi dan tidak menyiratkan dukungan penulis atau institusi mana pun.
 ## Status repositori
 
 Zenodo menjadi salinan pelestarian yang berdiri sendiri pada concept DOI
-`10.5281/zenodo.22059779`; cuplikan U219 berada pada DOI versi
-`10.5281/zenodo.22062970` dan tidak membuat concept yang bersaing. Repositori
+`10.5281/zenodo.22059779`; cuplikan U227 berada pada DOI versi
+`10.5281/zenodo.22063321` dan tidak membuat concept yang bersaing. Repositori
 GitHub publik berada di
-<https://github.com/KokunoYumeto/lebl-mathematics-family-id>; rilis GitHub U219
+<https://github.com/KokunoYumeto/lebl-mathematics-family-id>; rilis GitHub U227
 mencerminkan tiga artefak substantif yang sama dan menambahkan manifes,
 lisensi, serta checksum khusus rilis.
