@@ -1,13 +1,14 @@
-# Keluarga Matematika Lebl - cuplikan kerja U228 / kelanjutan main U232 - 2026-08-23
+# Keluarga Matematika Lebl - cuplikan kerja U228 / kelanjutan main U233 - 2026-08-23
 
 ## Kelanjutan pohon `main` setelah U228
 
 Setelah rilis publik U228, pohon `main` meneruskan terjemahan R006 secara
-kontigu pada Chapter 11 di `ch-approximate.tex` (raw lines 5--245).
-Manifes kini memuat 232 unit (229 unit isi dan tiga driver); audit slice yang
+kontigu pada Chapter 11 di `ch-approximate.tex` (raw lines 5--280).
+Manifes kini memuat 233 unit (230 unit isi dan tiga driver); audit slice yang
 terikat hash ada di `qa/R006_COMPLEX_PLANE_U229_U230_20260823.md`,
 `qa/R006_COMPLEX_PLANE_U231_20260823.md`, dan
-`qa/R006_COMPLEX_SERIES_U232_20260823.md`. Perubahan
+`qa/R006_COMPLEX_SERIES_U232_20260823.md`, dan
+`qa/R006_COMPLEX_VALUED_FUNCTIONS_U233_20260823.md`. Perubahan
 ini belum mengubah artefak pembaca 155 halaman yang dibekukan pada rilis U228.
 
 Ini adalah cuplikan pelestarian publik yang jujur dan dapat direproduksi,
@@ -28,7 +29,7 @@ bukan klaim bahwa seluruh korpus tiga buku telah selesai.
   termasuk dalam lisensi buku sengaja dikecualikan.
 
 Pada batas rilis U228 terdapat 228 unit R006 yang diterima: 225 unit isi dan
-tiga unit driver pembaca. Pohon `main` kini memuat 232 unit (229 isi dan tiga
+tiga unit driver pembaca. Pohon `main` kini memuat 233 unit (230 isi dan tiga
 driver). R007 (*Notes on Diffy Qs*) dan R008 (*Guide to Cultivating
 Complex Analysis*) belum diterjemahkan; paket hanya memuat bukti otoritas dan
 pemetaan cakupannya untuk kelanjutan yang dapat direproduksi.

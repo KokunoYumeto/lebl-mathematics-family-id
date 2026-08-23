@@ -239,41 +239,40 @@ sebenarnya membahas konvergensi deret bilangan real nonnegatif.
 Anda dapat langsung menerapkan uji-uji ini
 tanpa perlu membuktikan ulang apa pun untuk deret kompleks.
 
-\subsection{Complex-valued functions}
+\subsection{Fungsi bernilai kompleks}
 
-When we deal with complex-valued functions
-$f \colon X \to \C$, we often write
-$f = u+i\,v$ for real-valued functions $u \colon X \to \R$ and $v \colon X \to
+Ketika membahas fungsi bernilai kompleks
+$f \colon X \to \C$, kita sering menulis
+$f = u+i\,v$ untuk fungsi bernilai real $u \colon X \to \R$ dan $v \colon X \to
 \R$.
 
-Suppose we wish to integrate
-$f \colon [a,b] \to \C$.  We write
-$f = u+i\,v$ for real-valued $u$ and~$v$.
-We say that $f$ is \emph{Riemann integrable}\index{Riemann
-integrable!complex-valued function}
-if $u$ and $v$ are Riemann
-integrable, and in this case we define
+Misalkan kita ingin mengintegralkan
+$f \colon [a,b] \to \C$. Kita menulis
+$f = u+i\,v$ untuk $u$ dan~$v$ yang bernilai real.
+Kita mengatakan bahwa $f$ \emph{terintegralkan secara Riemann}\index{terintegralkan secara Riemann!
+fungsi bernilai kompleks}
+jika $u$ dan $v$ terintegralkan secara Riemann,
+dan dalam hal ini kita mendefinisikan
 \begin{equation*}
 \int_a^b f \coloneqq \int_a^b u + i \int_a^b v .
 \end{equation*}
-We make the same definition for every other type of integral (improper,
-multivariable, etc.).
+Kita menggunakan definisi yang sama untuk setiap jenis integral lainnya (tak wajar,
+multivariabel, dan sebagainya).
 
-Similarly when we differentiate, write $f \colon [a,b] \to \C$ as
-$f = u+i\,v$.  Thinking of $\C$ as $\R^2$, we say that $f$ is differentiable
-if $u$ and $v$ are differentiable.  For a function valued in $\R^2$, the derivative
-is represented by a vector in $\R^2$.  Now a vector in $\R^2$ is a complex
-number.  In other words,
-we write
-the
-\emph{derivative}\index{derivative!complex-valued function}
-as
+Demikian pula, ketika melakukan diferensiasi, tuliskan $f \colon [a,b] \to \C$ sebagai
+$f = u+i\,v$. Dengan memandang $\C$ sebagai $\R^2$, kita mengatakan bahwa $f$ diferensiabel
+jika $u$ dan $v$ diferensiabel. Untuk fungsi yang bernilai di $\R^2$, turunannya
+direpresentasikan oleh suatu vektor di $\R^2$. Vektor di $\R^2$ tersebut sekarang merupakan bilangan
+kompleks. Dengan kata lain,
+kita menulis
+\emph{turunan}\index{turunan!fungsi bernilai kompleks}
+sebagai
 \glsadd{not:mvder}
 \begin{equation*}
 f'(t) \coloneqq u'(t) + i \, v'(t) .
 \end{equation*}
-The linear operator representing the derivative is the multiplication by
-the complex number $f'(t)$, so nothing is lost in this identification.
+Operator linear yang merepresentasikan turunan adalah perkalian dengan
+bilangan kompleks $f'(t)$, sehingga tidak ada yang hilang dalam identifikasi ini.
 
 
 \subsection{Exercises}

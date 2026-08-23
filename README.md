@@ -14,7 +14,7 @@ dikerjakan; cakupan setiap buku dinyatakan secara eksplisit di bawah.
 
 PDF Jilid II pada rilis U228 sengaja berakhir tepat setelah keenam latihan pada
 akhir Bagian 10.7, penggantian variabel. Pohon `main` melanjutkan Bab 11 secara
-kontigu sampai konvergensi deret kompleks (U232), tetapi kelanjutan
+kontigu sampai pembukaan fungsi bernilai kompleks (U233), tetapi kelanjutan
 itu belum dimasukkan ke PDF rilis dan tidak disamarkan sebagai bagian pembaca.
 
 ## Status korpus
@@ -26,13 +26,15 @@ itu belum dimasukkan ke PDF rilis dan tidak disamarkan sebagai bagian pembaca.
 | R008 | *Guide to Cultivating Complex Analysis* | C50 | belum diterjemahkan |
 
 Checkpoint U228 yang dipublikasikan memuat 228 unit R006 yang diterima: 225
-unit isi dan tiga driver pembaca. Pohon `main` melanjutkan terjemahan ke 232
-unit (229 unit isi dan tiga driver), termasuk pembukaan bidang kompleks,
+unit isi dan tiga driver pembaca. Pohon `main` melanjutkan terjemahan ke 233
+unit (230 unit isi dan tiga driver), termasuk pembukaan bidang kompleks,
 definisi bagian real/imajiner, konjugat dan modulus, serta sifat dan limit
-bilangan kompleks melalui proposisi kontinuitas dan konvergensi deret pada
-`ch-approximate.tex`. Audit bounded U231 dan U232 tercatat di
+bilangan kompleks melalui proposisi kontinuitas, konvergensi deret, dan
+pembukaan fungsi bernilai kompleks pada `ch-approximate.tex`. Audit bounded
+U231, U232, dan U233 tercatat di
 [`qa/R006_COMPLEX_PLANE_U231_20260823.md`](qa/R006_COMPLEX_PLANE_U231_20260823.md)
-dan [`qa/R006_COMPLEX_SERIES_U232_20260823.md`](qa/R006_COMPLEX_SERIES_U232_20260823.md).
+dan [`qa/R006_COMPLEX_SERIES_U232_20260823.md`](qa/R006_COMPLEX_SERIES_U232_20260823.md),
+serta [`qa/R006_COMPLEX_VALUED_FUNCTIONS_U233_20260823.md`](qa/R006_COMPLEX_VALUED_FUNCTIONS_U233_20260823.md).
 Backend produksi v0.3 adalah checkpoint deterministik yang
 telah divalidasi untuk 167 unit; 61 unit yang lebih baru sudah ada dalam
 manifes dan ledger hidup, tetapi belum diklaim sebagai proyeksi backend v0.4.
