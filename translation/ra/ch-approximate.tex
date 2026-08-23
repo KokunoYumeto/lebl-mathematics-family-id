@@ -192,37 +192,36 @@ $\displaystyle \lim_{n\to \infty} \bar{z}_n = \bar{z}$.
 \end{enumerate}
 \end{prop}
 
-As we have seen above, convergence in $\C$ is the same as convergence in
-$\R^2$.  In particular, a sequence in $\C$ converges if and only if
-the real and imaginary parts converge.  Therefore, feel free to apply
-everything you have learned about convergence in $\R^2$, as well as
-applying results about real numbers to the real and imaginary parts.
+Seperti telah kita lihat di atas, konvergensi di $\C$ sama dengan konvergensi di
+$\R^2$. Secara khusus, suatu barisan di $\C$ konvergen jika dan hanya jika
+bagian real dan imajinernya konvergen. Karena itu, silakan terapkan
+semua yang telah Anda pelajari tentang konvergensi di $\R^2$, serta
+terapkan hasil-hasil tentang bilangan real pada bagian real dan imajinernya.
 
-We also need convergence of complex series.  Let $\{ z_n \}_{n=1}^\infty$ be a
-sequence of complex
-numbers. The series
+Kita juga memerlukan konvergensi deret kompleks. Misalkan $\{ z_n \}_{n=1}^\infty$ merupakan
+barisan bilangan kompleks. Deret
 \begin{equation*}
 \sum_{n=1}^\infty z_n
 \end{equation*}
-\emph{converges}\index{converges!complex series} if the sequence of partial sums converges, that is, if
+\emph{konvergen}\index{konvergen!deret kompleks} jika barisan jumlah parsialnya konvergen, yaitu jika
 \begin{equation*}
-\lim_{k\to\infty} \sum_{n=1}^k z_n \qquad \text{exists.}
+\lim_{k\to\infty} \sum_{n=1}^k z_n \qquad \text{ada.}
 \avoidbreak
 \end{equation*}
-A series \emph{converges absolutely}\index{converges absolutely!complex series}
-if $\sum_{n=1}^\infty \sabs{z_n}$ converges.
+Suatu deret \emph{konvergen absolut}\index{konvergen absolut!deret kompleks}
+jika $\sum_{n=1}^\infty \sabs{z_n}$ konvergen.
 
-We say a series
-is \emph{Cauchy}\index{Cauchy!complex series}
-if the sequence of partial sums is Cauchy.  The following two
-propositions have essentially the same proofs
-as their analogues for real series and we
-leave them as exercises.
+Kita mengatakan suatu deret
+bersifat \emph{Cauchy}\index{Cauchy!deret kompleks}
+jika barisan jumlah parsialnya bersifat Cauchy. Dua
+proposisi berikut pada dasarnya memiliki pembuktian yang sama
+dengan padanannya untuk deret real, dan
+kita serahkan sebagai latihan.
 
 \begin{prop} \label{prop:cachysercomplex}
-The complex series $\sum_{n=1}^\infty z_n$ is Cauchy if for every $\epsilon > 0$, 
-there exists an $M \in \N$ such that for every $n \geq M$
-and every $k > n$, we have
+Deret kompleks $\sum_{n=1}^\infty z_n$ bersifat Cauchy jika untuk setiap $\epsilon > 0$
+terdapat $M \in \N$ sedemikian sehingga untuk setiap $n \geq M$
+dan setiap $k > n$, berlaku
 \begin{equation*}
 \abs{ \sum_{j={n+1}}^k z_j }
 < \epsilon .
@@ -230,16 +229,15 @@ and every $k > n$, we have
 \end{prop}
 
 \begin{prop} \label{prop:absconvmeansconv}
-If a complex series $\sum_{n=1}^\infty z_n$ converges absolutely, then it converges.
+Jika suatu deret kompleks $\sum_{n=1}^\infty z_n$ konvergen absolut, maka deret tersebut konvergen.
 \end{prop}
 
-The series $\sum_{n=1}^\infty \sabs{z_n}$ is a real series.  All the
-convergence tests (ratio test, root test, etc.)\ that talk about
-absolute convergence work with the numbers $\sabs{z_n}$, that is, they
-are really talking about convergence of series of nonnegative real
-numbers.
-You can directly apply these tests
-without needing to reprove anything for complex series.
+Deret $\sum_{n=1}^\infty \sabs{z_n}$ merupakan deret real. Semua
+uji konvergensi (uji rasio, uji akar, dan sebagainya)\ yang membahas
+konvergensi absolut bekerja pada bilangan $\sabs{z_n}$; artinya, uji-uji tersebut
+sebenarnya membahas konvergensi deret bilangan real nonnegatif.
+Anda dapat langsung menerapkan uji-uji ini
+tanpa perlu membuktikan ulang apa pun untuk deret kompleks.
 
 \subsection{Complex-valued functions}
 
