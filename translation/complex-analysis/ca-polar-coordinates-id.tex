@@ -1,0 +1,30 @@
+% R008 — Guide to Cultivating Complex Analysis (Bahasa Indonesia)
+% Reader-facing translation unit: source/ca-v1.9/ca.tex lines 1265–1288.
+% Source release: v1.9 (commit a4d25d9ba37a486a5a020219eb8bd4e6602fd14c).
+% Translation provenance: OpenAI Codex gpt-5.6-sol, Ultra, acting on the user's request.
+% Preserve source equations, labels, and figure paths.
+
+\subsection{Koordinat polar}
+
+Karena bilangan kompleks dapat dipandang sebagai titik-titik pada bidang, kita dapat menggunakan
+\emph{\myindex{koordinat polar}}
+untuk merepresentasikan bilangan kompleks.
+Yaitu, $x = r \cos \theta$ dan $y= r \sin \theta$.
+Kita menuliskan $z$ dalam \emph{\myindex{bentuk polar}} sebagai
+\begin{equation*}
+z = x+iy = r e^{i \theta} .
+\end{equation*}
+Di sini, $r = \sabs{z} = \sqrt{x^2+y^2}$ adalah modulus, dan
+$\theta$ adalah sudut yang dibentuk oleh $x+iy$ dengan sumbu real positif (sumbu-$x$).
+$\theta$ disebut \emph{\myindex{argumen}}. Lihat
+\figureref{fig:polarcoords}.
+Alasan untuk notasi ini adalah
+rumus Euler, sehingga
+\begin{equation*}
+z = r e^{i\theta} = r\cos \theta + i r\sin \theta  = x+iy .
+\end{equation*}
+
+\begin{myfig}
+\subimport*{figures/}{polarcoords.pdf_t}
+\caption{Koordinat polar.\label{fig:polarcoords}}
+\end{myfig}

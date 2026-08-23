@@ -1,0 +1,35 @@
+% R008 — Guide to Cultivating Complex Analysis (Bahasa Indonesia)
+% Reader-facing translation unit: source/ca-v1.9/ca.tex lines 1324–1353.
+% Source release: v1.9 (commit a4d25d9ba37a486a5a020219eb8bd4e6602fd14c).
+% Translation provenance: OpenAI Codex gpt-5.6-sol, Ultra, acting on the user's request.
+% Preserve source equations, notation, glossary hooks, and footnote structure.
+
+\subsection{Argumen}
+
+Kita mencoba mendefinisikan argumen dari $z = re^{i\theta}$ sebagai
+\glsadd{not:arg}%
+\begin{equation*}
+\arg z
+\overset{\text{def?}}{=}
+\theta ,
+\end{equation*}
+tetapi kita menghadapi masalah bahwa jika $\theta$ merupakan salah satu argumen dari $z$,
+maka $\theta+2\pi$, $\theta-2\pi$, atau $\theta + k 2\pi$ juga merupakan argumennya
+untuk setiap bilangan bulat $k$. Dengan kata lain,
+$\arg z$ bukanlah fungsi dalam pengertian klasik, melainkan sebuah
+\emph{\myindex{fungsi bernilai banyak}}%
+\footnote{Analis yang tidak berkecimpung dalam analisis kompleks terkadang akan menyatakan bahwa
+fungsi bernilai banyak tidak masuk akal, tetapi Anda boleh mengabaikan para pengacau itu.}. Definisi
+yang tepat adalah
+\glsadd{not:arg}%
+\begin{equation*}
+\arg z
+\overset{\text{def}}{=}
+\ldots,\theta - 4\pi,
+\theta - 2\pi,
+\theta ,
+\theta + 2\pi,
+\theta + 4\pi, \ldots
+\end{equation*}
+Masih ada satu persoalan kecil. Jika $z=0$, maka $z=0=0 e^{i\theta}$ untuk sembarang
+$\theta$. Oleh karena itu, kita hanya mendefinisikan argumen untuk $z$ yang tak nol.

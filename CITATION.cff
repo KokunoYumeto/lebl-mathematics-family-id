@@ -7,9 +7,9 @@ type: book
 authors:
   - family-names: Lebl
     given-names: Jiří
-version: 6.3-id-wip.2026.08.23.u228
+version: 6.3-id-wip.2026.08.23.u310
 date-released: 2026-08-23
-doi: 10.5281/zenodo.22070430
+doi: 10.5281/zenodo.22071911
 repository-code: "https://github.com/KokunoYumeto/lebl-mathematics-family-id"
 url: "https://doi.org/10.5281/zenodo.22059779"
 license: CC-BY-SA-4.0
@@ -21,5 +21,6 @@ keywords:
   - backend terjemahan modular
 abstract: >-
   Edisi Bahasa Indonesia independen untuk keluarga buku matematika Jiří Lebl.
-  Checkpoint U228 memuat Analisis Dasar I lengkap dan Analisis Dasar II sampai
-  akhir Bagian 10.7; Bab 11 dan seterusnya, R007, dan R008 belum diterjemahkan.
+  Checkpoint U310 memuat Analisis Dasar I lengkap; Analisis Dasar II sampai
+  akhir Subbagian 11.2.1; bab pendahuluan Notes on Diffy Qs; dan Guide to
+  Cultivating Complex Analysis sampai pemetaan eksponensial atas garis dan pita.

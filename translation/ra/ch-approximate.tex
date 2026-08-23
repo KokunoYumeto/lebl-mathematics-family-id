@@ -357,31 +357,30 @@ $\int_0^1 f = 0$ tetapi $f(t) \neq 0$ untuk semua $t \in [0,1]$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \sectionnewpage
-\section{Swapping limits}
+\section{Pertukaran limit}
 \label{sec:swaplim}
 
 %mbxINTROSUBSECTION
 
-\sectionnotes{2 lectures}
+\sectionnotes{2 kuliah}
 
-\subsection{Continuity}
+\subsection{Kekontinuan}
 
-Let us get back to swapping limits and expand on
-\volIref{\chapterref*{vI-fs:chapter} of volume I}{\chapterref{fs:chapter}}.
-Let $\{ f_n \}_{n=1}^\infty$ be a sequence
-of functions $f_n \colon X \to Y$ for a set $X$ and a metric space $Y$.
-Let $f \colon X \to Y$ be a
-function and for every $x \in X$, suppose
+Mari kita kembali ke pertukaran limit dan memperluas pembahasan
+\volIref{\chapterref*{vI-fs:chapter} dari jilid I}{\chapterref{fs:chapter}}.
+Misalkan $\{ f_n \}_{n=1}^\infty$ suatu barisan
+fungsi $f_n \colon X \to Y$ untuk suatu himpunan $X$ dan ruang metrik $Y$.
+Misalkan $f \colon X \to Y$ suatu
+fungsi dan andaikan untuk setiap $x \in X$ berlaku
 \begin{equation*}
 f(x) = \lim_{n\to \infty} f_n(x) .
 \end{equation*}
-We say the sequence $\{ f_n \}_{n=1}^\infty$
-\emph{\myindex{converges pointwise}}\index{pointwise convergence} to $f$.
+Kita mengatakan barisan $\{ f_n \}_{n=1}^\infty$
+\emph{\myindex{konvergen titik demi titik}}\index{konvergensi titik demi titik} ke $f$.
 
-For $Y=\C$, a series of functions
-\emph{converges pointwise}\index{converges pointwise!complex
-series}\index{pointwise convergence!complex series} to $f$ if
-for every $x \in X$, we have
+Untuk $Y=\C$, suatu deret fungsi
+\emph{konvergen titik demi titik}\index{konvergen titik demi titik!deret kompleks}\index{konvergensi titik demi titik!deret kompleks} ke $f$ jika
+untuk setiap $x \in X$, berlaku
 \begin{equation*}
 f(x) = \lim_{n\to \infty} \sum_{k=1}^n f_k(x) =
 \sum_{k=1}^\infty f_k(x) .
@@ -389,163 +388,164 @@ f(x) = \lim_{n\to \infty} \sum_{k=1}^n f_k(x) =
 
 \medskip
 
-The question is:
-If $f_n$ are all continuous, is $f$ continuous?  Differentiable?
-Integrable?  What are the derivatives or integrals of $f$?
-For example, for continuity of the pointwise limit of a sequence
-of functions
-$\{ f_n \}_{n=1}^\infty$, we are asking if
+Pertanyaannya:
+Jika semua $f_n$ kontinu, apakah $f$ kontinu?  Diferensiabel?
+Dapat diintegralkan?  Apa turunan atau integral dari $f$?
+Sebagai contoh, untuk kekontinuan limit titik demi titik dari suatu barisan
+fungsi
+$\{ f_n \}_{n=1}^\infty$, kita menanyakan apakah
 \begin{equation*}
 \lim_{x\to x_0} \lim_{n\to\infty} f_n(x)
 \overset{?}{=}
 \lim_{n\to\infty} \lim_{x\to x_0} f_n(x) .
 \end{equation*}
-A priori, we do not even know if both sides exist, let alone if they equal each other.
+Secara apriori, kita bahkan tidak tahu apakah kedua ruas tersebut ada,
+apalagi apakah keduanya sama.
 
 \begin{example}
-The functions $f_n \colon \R \to \R$,
+Fungsi $f_n \colon \R \to \R$,
 \begin{equation*}
 f_n(x) \coloneqq \frac{1}{1+nx^2},
 \end{equation*}
-are continuous and converge pointwise to the discontinuous function
+kontinu dan konvergen titik demi titik ke fungsi yang tidak kontinu
 \begin{equation*}
 f(x) \coloneqq 
 \begin{cases}
-1 & \text{if } x=0, \\
-0 & \text{else.}
+1 & \text{jika } x=0, \\
+0 & \text{selainnya.}
 \end{cases}
 \end{equation*}
 \end{example}
 
-So pointwise convergence is not enough to preserve continuity (nor even
-boundedness).  For that, we need uniform convergence.
-Let $f_n \colon X \to Y$ be functions.  Then
-$\{f_n\}_{n=1}^\infty$ \emph{\myindex{converges uniformly}}\index{uniform convergence}
-to $f$ if
-for every $\epsilon > 0$, there exists an $M$ such that
-for all $n \geq M$ and all $x \in X$, we have
+Jadi, konvergensi titik demi titik tidak cukup untuk mempertahankan kekontinuan
+(bahkan keterbatasan). Untuk itu, kita memerlukan konvergensi seragam.
+Misalkan $f_n \colon X \to Y$ fungsi-fungsi. Maka
+$\{f_n\}_{n=1}^\infty$ \emph{\myindex{konvergen seragam}}\index{konvergensi seragam}
+ke $f$ jika
+untuk setiap $\epsilon > 0$, terdapat suatu $M$ sedemikian sehingga
+untuk semua $n \geq M$ dan semua $x \in X$, berlaku
 \begin{equation*}
 d\bigl(f_n(x),f(x)\bigr) < \epsilon .
 \end{equation*}
 
-A series $\sum_{n=1}^\infty f_n$ of complex-valued functions converges uniformly
-to $f$ if the sequence of
-partial sums converges uniformly, that is, if for every $\epsilon > 0$,
-there exists an $M$ such that
-for all $n \geq M$ and all $x \in X$,
+Deret $\sum_{n=1}^\infty f_n$ dari fungsi-fungsi bernilai kompleks konvergen seragam
+ke $f$ jika barisan
+jumlah parsialnya konvergen seragam, yaitu, jika untuk setiap $\epsilon > 0$,
+terdapat suatu $M$ sedemikian sehingga
+untuk semua $n \geq M$ dan semua $x \in X$,
 \begin{equation*}
 \abs{\left(\sum_{k=1}^n f_k(x)\right)-f(x)} < \epsilon .
 \end{equation*}
 
-The simplest property preserved by uniform convergence is
-boundedness.  We leave the proof of the following proposition as an
-exercise.  It is almost identical to the proof for real-valued functions.
+Sifat paling sederhana yang dipertahankan oleh konvergensi seragam adalah
+keterbatasan. Pembuktian proposisi berikut kami serahkan sebagai
+latihan. Pembuktiannya hampir identik dengan pembuktian untuk fungsi bernilai real.
 
 \begin{prop} \label{prop:uniformconvbounded}
-Let $X$ be a set and $(Y,d)$ a metric space.
-If $f_n \colon X \to Y$ are bounded functions and converge uniformly to $f
-\colon X \to Y$, then $f$ is bounded.
+Misalkan $X$ suatu himpunan dan $(Y,d)$ suatu ruang metrik.
+Jika $f_n \colon X \to Y$ adalah fungsi-fungsi terbatas dan konvergen seragam ke $f
+\colon X \to Y$, maka $f$ terbatas.
 \end{prop}
 
-If $X$ is a set and $(Y,d)$ is a metric space, then a sequence $f_n \colon X
-\to Y$ is \emph{\myindex{uniformly Cauchy}} if for every $\epsilon > 0$, there is an $M$ such that
-for all $n, m \geq M$ and all $x \in X$, we have
+Jika $X$ suatu himpunan dan $(Y,d)$ suatu ruang metrik, maka suatu barisan $f_n \colon X
+\to Y$ disebut \emph{\myindex{Cauchy seragam}} jika untuk setiap $\epsilon > 0$, terdapat suatu $M$ sedemikian sehingga
+untuk semua $n, m \geq M$ dan semua $x \in X$, berlaku
 \begin{equation*}
 d\bigl(f_n(x),f_m(x)\bigr) < \epsilon .
 \end{equation*}
-The notion is the same as for real-valued functions.
-The proof of the following proposition is
-again essentially the same as in that setting and
-is left as an exercise.
+Gagasan ini sama seperti untuk fungsi bernilai real.
+Pembuktian proposisi berikut
+pada dasarnya juga sama seperti pada kasus tersebut dan
+diserahkan sebagai latihan.
 
 \begin{prop} \label{prop:unifcauchymetric}
-Let $X$ be a set, $(Y,d)$ be a metric space, and
-$f_n \colon X \to Y$ be functions.
-If $\{ f_n \}_{n=1}^\infty$ converges uniformly,
-then $\{f_n\}_{n=1}^\infty$ is uniformly Cauchy.  Conversely, if 
-$\{f_n\}_{n=1}^\infty$ is uniformly Cauchy and $(Y,d)$ is Cauchy-complete,
-then $\{f_n\}_{n=1}^\infty$ converges uniformly.
+Misalkan $X$ suatu himpunan, $(Y,d)$ suatu ruang metrik, dan
+$f_n \colon X \to Y$ fungsi-fungsi.
+Jika $\{ f_n \}_{n=1}^\infty$ konvergen seragam,
+maka $\{f_n\}_{n=1}^\infty$ bersifat Cauchy seragam. Sebaliknya, jika
+$\{f_n\}_{n=1}^\infty$ bersifat Cauchy seragam dan $(Y,d)$ lengkap secara Cauchy,
+maka $\{f_n\}_{n=1}^\infty$ konvergen seragam.
 \end{prop}
 
-For $f \colon X \to \C$, we write\glsadd{not:uniformnorm}
+Untuk $f \colon X \to \C$, kita tuliskan\glsadd{not:uniformnorm}
 \begin{equation*}
 \snorm{f}_X \coloneqq \sup_{x \in X} \babs{f(x)} .
 \end{equation*}
-We call $\snorm{\cdot}_X$
-the \emph{\myindex{supremum norm}} or \emph{\myindex{uniform norm}},
-and the subscript denotes the set over which the supremum is taken.
-Then a sequence of functions
-$f_n \colon X \to \C$ converges uniformly to $f \colon X \to \C$ if and only if
+Kita menyebut $\snorm{\cdot}_X$
+sebagai \emph{\myindex{norma supremum}} atau \emph{\myindex{norma seragam}},
+dan subskripnya menunjukkan himpunan tempat supremum diambil.
+Maka suatu barisan fungsi
+$f_n \colon X \to \C$ konvergen seragam ke $f \colon X \to \C$ jika dan hanya jika
 \begin{equation*}
 \lim_{n\to \infty} \snorm{f_n-f}_X = 0 .
 \end{equation*}
 
-The supremum norm satisfies the triangle inequality: For every $x \in X$,
+Norma supremum memenuhi ketaksamaan segitiga: Untuk setiap $x \in X$,
 \begin{equation*}
 \babs{f(x)+g(x)} \leq
 \babs{f(x)}+\babs{g(x)} \leq
 \snorm{f}_X+\snorm{g}_X .
 \end{equation*}
-Take a supremum on the left to get
+Ambil supremum pada ruas kiri untuk memperoleh
 \begin{equation*}
 \snorm{f+g}_X \leq
 \snorm{f}_X+\snorm{g}_X .
 \end{equation*}
 
-For a compact metric space $X$,
-the uniform norm is a norm on the vector space $C(X,\C)$.
-We leave it as an exercise.
-While we will not need it, $C(X,\C)$ is in fact a complex
-vector space, that is, in the definition of a vector space we can replace
-$\R$ with $\C$.
-Convergence in the metric space $C(X,\C)$ is
-uniform convergence.
+Untuk ruang metrik kompak $X$,
+norma seragam merupakan norma pada ruang vektor $C(X,\C)$.
+Kami menyerahkan pembuktiannya sebagai latihan.
+Meskipun kita tidak akan memerlukannya, $C(X,\C)$ sebenarnya merupakan ruang
+vektor kompleks, yaitu, dalam definisi ruang vektor kita dapat mengganti
+$\R$ dengan $\C$.
+Konvergensi dalam ruang metrik $C(X,\C)$ adalah
+konvergensi seragam.
 
-We will study a couple of types of series of functions, and
-a useful test for uniform convergence of a series is the 
-\emph{\myindex{Weierstrass $M$-test}}.
+Kita akan mempelajari beberapa jenis deret fungsi, dan
+suatu uji yang berguna untuk konvergensi seragam suatu deret adalah
+\emph{\myindex{uji-$M$ Weierstrass}}.
 
-\begin{thm}[\myindex{Weierstrass $M$-test}] \label{thm:weiermtest}
-Let $X$ be a set.
-Suppose $f_n \colon X \to \C$ are functions and $M_n > 0$ numbers such
-that
+\begin{thm}[\myindex{uji-$M$ Weierstrass}] \label{thm:weiermtest}
+Misalkan $X$ suatu himpunan.
+Andaikan $f_n \colon X \to \C$ adalah fungsi-fungsi dan $M_n > 0$ adalah bilangan-bilangan sedemikian
+sehingga
 \begin{equation*}
-\babs{f_n(x)}\leq M_n \quad \text{for all } x \in X,
-\qquad \text{and} \qquad
+\babs{f_n(x)}\leq M_n \quad \text{untuk semua } x \in X,
+\qquad \text{dan} \qquad
 \sum_{n=1}^\infty M_n
-\quad \text{converges}.
+\quad \text{konvergen}.
 \end{equation*}
-Then
+Maka
 \begin{equation*}
 \sum_{n=1}^\infty f_n(x)
-\quad \text{converges uniformly}.
+\quad \text{konvergen seragam}.
 \end{equation*}
 \end{thm}
 
-Another way to state the theorem is to say that if
-$\sum_{n=1}^\infty \snorm{f_n}_X$ converges, then $\sum_{n=1}^\infty f_n$ converges uniformly.
-Note that the converse of this theorem is not true.
-Applying the theorem to $\sum_{n=1}^\infty \babs{f_n(x)}$, we
-see that this series also converges uniformly.  So the series converges both absolutely
-and uniformly.
+Cara lain untuk menyatakan teorema tersebut adalah dengan mengatakan bahwa jika
+$\sum_{n=1}^\infty \snorm{f_n}_X$ konvergen, maka $\sum_{n=1}^\infty f_n$ konvergen seragam.
+Perhatikan bahwa kebalikan teorema ini tidak benar.
+Dengan menerapkan teorema tersebut pada $\sum_{n=1}^\infty \babs{f_n(x)}$, kita
+melihat bahwa deret ini juga konvergen seragam. Jadi, deret tersebut konvergen absolut
+sekaligus seragam.
 
 \begin{proof}
-Suppose $\sum_{n=1}^\infty M_n$ converges.  Given $\epsilon > 0$,
-we have that the partial sums of $\sum_{n=1}^\infty M_n$ are Cauchy so
-there is an $N$ such that for all $m, n \geq N$ with $m > n$, we have
+Andaikan $\sum_{n=1}^\infty M_n$ konvergen. Ambil $\epsilon > 0$.
+Jumlah-jumlah parsial deret $\sum_{n=1}^\infty M_n$ bersifat Cauchy, sehingga
+terdapat suatu $N$ sedemikian sehingga untuk semua $m, n \geq N$ dengan $m > n$, berlaku
 \begin{equation*}
 \sum_{k=n+1}^m M_k < \epsilon .
 \end{equation*}
-We estimate a Cauchy difference of the partial
-sums of the functions:
+Kita menaksir selisih Cauchy antara jumlah-jumlah parsial
+fungsi-fungsi tersebut:
 \begin{equation*}
 \abs{\sum_{k=n+1}^m f_k(x)} \leq
 \sum_{k=n+1}^m \babs{f_k(x)} \leq
 \sum_{k=n+1}^m M_k < \epsilon .
 \end{equation*}
-The series converges by \propref{prop:cachysercomplex}.
-The convergence is uniform, as $N$ does not depend on $x$.
-Indeed, for all $n \geq N$,
+Deret tersebut konvergen berdasarkan \propref{prop:cachysercomplex}.
+Konvergensinya seragam karena $N$ tidak bergantung pada $x$.
+Sesungguhnya, untuk semua $n \geq N$,
 \begin{equation*}
 \abs{\sum_{k=1}^\infty f_k(x) - \sum_{k=1}^n f_k(x)} \leq
 \abs{\sum_{k=n+1}^\infty f_k(x)} \leq \epsilon .
@@ -554,16 +554,16 @@ Indeed, for all $n \geq N$,
 \end{proof}
 
 \begin{example} \label{example:sinnsqfourier}
-The series
+Deret
 \begin{equation*}
 \sum_{n=1}^\infty \frac{\sin(nx)}{n^2}
 \end{equation*}
-converges uniformly on $\R$.  See \figureref{fig:fouriersern2}.
-This series is a Fourier series, and
-we will see more of these in a later section.  Proof:
-The series converges uniformly because
+konvergen seragam pada $\R$. Lihat \figureref{fig:fouriersern2}.
+Deret ini merupakan deret Fourier, dan
+kita akan melihat lebih banyak deret semacam ini pada bagian selanjutnya. Pembuktian:
+Deret tersebut konvergen seragam karena
 $\sum_{n=1}^\infty \frac{1}{n^2}$
-converges and
+konvergen dan
 \begin{equation*}
 \abs{\frac{\sin(nx)}{n^2}} \leq 
 \frac{1}{n^2} .
@@ -572,92 +572,92 @@ converges and
 
 \begin{myfigureht}
 \myincludegraphics{fouriersern2}{%
-A graph of a function in a bold line that is 
-a wave with a shallow down slope and steep upslope.
-Several approximations are given in shades of gray,
-where the darker (earlier) ones are closer to a regular sine wave
-and the lighter ones are closer to the dark bold line.}
-\caption{Plot of 
-$\sum_{n=1}^\infty \frac{\sin(n x)}{n^2}$ including
-the first 8 partial sums in various shades of gray.\label{fig:fouriersern2}}
+Grafik suatu fungsi yang digambarkan dengan garis tebal, berbentuk
+gelombang dengan lereng turun yang landai dan lereng naik yang curam.
+Beberapa aproksimasi diperlihatkan dalam berbagai nuansa abu-abu;
+aproksimasi yang lebih gelap (lebih awal) lebih menyerupai gelombang sinus biasa,
+sedangkan yang lebih terang lebih menyerupai garis tebal gelap.}
+\caption{Grafik
+$\sum_{n=1}^\infty \frac{\sin(n x)}{n^2}$ yang mencakup
+8 jumlah parsial pertamanya dalam berbagai nuansa abu-abu.\label{fig:fouriersern2}}
 \end{myfigureht}
 
 \begin{example}
-The series
+Deret
 \begin{equation*}
 \sum_{n=0}^\infty \frac{x^n}{n!} 
 \end{equation*}
-converges uniformly on every bounded interval.
-This series is a power series that we will study shortly.
-Proof: Take the interval $[-r,r] \subset \R$ (every bounded interval
-is contained in some $[-r,r]$).
-The series $\sum_{n=0}^\infty \frac{r^n}{n!}$ converges by the ratio test,
-so $\sum_{n=0}^\infty \frac{x^n}{n!}$ converges uniformly on $[-r,r]$ as
+konvergen seragam pada setiap interval terbatas.
+Deret ini merupakan deret pangkat yang akan segera kita pelajari.
+Pembuktian: Ambil interval $[-r,r] \subset \R$ (setiap interval terbatas
+termuat dalam suatu $[-r,r]$).
+Deret $\sum_{n=0}^\infty \frac{r^n}{n!}$ konvergen berdasarkan uji rasio,
+sehingga $\sum_{n=0}^\infty \frac{x^n}{n!}$ konvergen seragam pada $[-r,r]$ karena
 \begin{equation*}
 \abs{\frac{x^n}{n!} } \leq 
 \frac{r^n}{n!} .
 \end{equation*}
 \end{example}
 
-Now we would love to say something about the limit.  For example, is it
-continuous?
+Sekarang kita ingin mengetahui sesuatu tentang limit tersebut. Sebagai contoh,
+apakah limit itu kontinu?
 
 
 \begin{prop} \label{prop:uniformswitch}
-Let $(X,d_X)$ and $(Y,d_Y)$ be metric spaces, and suppose $(Y,d_Y)$ is
-Cauchy-complete.
-Suppose $f_n \colon X \to Y$ converge uniformly to
- $f \colon X \to Y$.  
-Let $\{ x_k \}_{k=1}^\infty$ be a sequence in $X$ and $x \coloneqq \lim_{k \to \infty} x_k$.  Suppose
+Misalkan $(X,d_X)$ dan $(Y,d_Y)$ ruang-ruang metrik, dan andaikan $(Y,d_Y)$
+lengkap secara Cauchy.
+Andaikan $f_n \colon X \to Y$ konvergen seragam ke
+ $f \colon X \to Y$.
+Misalkan $\{ x_k \}_{k=1}^\infty$ suatu barisan dalam $X$ dan $x \coloneqq \lim_{k \to \infty} x_k$. Andaikan
 \begin{equation*}
 a_n \coloneqq \lim_{k \to \infty} f_n(x_k)
 \end{equation*}
-exists for all $n$.  Then
-$\{a_n\}_{n=1}^\infty$ converges and 
+ada untuk semua $n$. Maka
+$\{a_n\}_{n=1}^\infty$ konvergen dan
 \begin{equation*}
 \lim_{k \to \infty} f(x_k) = \lim_{n\to\infty} a_n .
 \end{equation*}
 \end{prop}
 
-In other words,
+Dengan kata lain,
 \begin{equation*}
 \lim_{k \to \infty} \lim_{n\to\infty} f_n(x_k) =
 \lim_{n \to \infty} \lim_{k\to\infty} f_n(x_k) .
 \end{equation*}
 
 \begin{proof}
-First we show that $\{ a_n \}_{n=1}^\infty$ converges.  As
-$\{ f_n \}_{n=1}^\infty$ converges uniformly, it is uniformly Cauchy. 
-Let $\epsilon > 0$ be given.  There is
-an $M$ such that for all $m,n \geq M$, we have
+Pertama, kita tunjukkan bahwa $\{ a_n \}_{n=1}^\infty$ konvergen. Karena
+$\{ f_n \}_{n=1}^\infty$ konvergen seragam, barisan ini bersifat Cauchy seragam.
+Ambil $\epsilon > 0$. Terdapat
+suatu $M$ sedemikian sehingga untuk semua $m,n \geq M$, berlaku
 \begin{equation*}
-d_Y\bigl(f_n(x_k),f_m(x_k)\bigr) < \epsilon \qquad \text{for all } k .
+d_Y\bigl(f_n(x_k),f_m(x_k)\bigr) < \epsilon \qquad \text{untuk semua } k .
 \end{equation*}
-Note that
+Perhatikan bahwa
 $d_Y(a_n,a_m) \leq
 d_Y\bigl(a_n,f_n(x_k)\bigr) +
 d_Y\bigl(f_n(x_k),f_m(x_k)\bigr) +
-d_Y\bigl(f_m(x_k),a_m\bigr)$ and take the limit as $k \to \infty$ to find
+d_Y\bigl(f_m(x_k),a_m\bigr)$. Dengan mengambil limit ketika $k \to \infty$, kita memperoleh
 \begin{equation*}
 d_Y(a_n,a_m) \leq \epsilon .
 \end{equation*}
-Hence $\{a_n\}_{n=1}^\infty$ is Cauchy and converges since $Y$ is complete.  Write
+Karena itu, $\{a_n\}_{n=1}^\infty$ bersifat Cauchy dan konvergen karena $Y$ lengkap. Tuliskan
 $a \coloneqq \lim_{n \to \infty} a_n$.
 
-Find an $\ell \in \N$ such that
+Pilih suatu $\ell \in \N$ sedemikian sehingga
 \begin{equation*}
 d_Y\bigl(f_\ell(p),f(p)\bigr) < \nicefrac{\epsilon}{3}
 \end{equation*}
-for all $p \in X$.  Assume $\ell$ is large enough
-so that
+untuk semua $p \in X$. Pastikan pula $\ell$ cukup besar
+sehingga
 \begin{equation*}
 d_Y(a_\ell,a) < \nicefrac{\epsilon}{3}  .
 \end{equation*}
-Find an $N \in \N$ such that for $m \geq N$,
+Pilih suatu $N \in \N$ sedemikian sehingga untuk $m \geq N$,
 \begin{equation*}
 d_Y\bigl(f_\ell(x_m),a_\ell\bigr) < \nicefrac{\epsilon}{3}  .
 \end{equation*}
-Then for
+Maka untuk
 $m \geq N$,
 \begin{equation*}
 d_Y\bigl(f(x_m),a\bigr)
@@ -674,48 +674,48 @@ d_Y\bigl(a_\ell,a\bigr)
 \end{equation*}
 \end{proof}
 
-We obtain an immediate corollary about continuity.
-If $f_n$ are all continuous, then $a_n = f_n(x)$.
-Hence,
-$\{ a_n \}_{n=1}^\infty$ converges automatically to
-$f(x)$ by the hypothesis and so we do not require completeness of $Y$.
+Kita memperoleh korolari langsung mengenai kekontinuan.
+Jika semua $f_n$ kontinu, maka $a_n = f_n(x)$.
+Karena itu,
+$\{ a_n \}_{n=1}^\infty$ secara otomatis konvergen ke
+$f(x)$ berdasarkan hipotesis, sehingga kita tidak memerlukan kelengkapan $Y$.
 
 \begin{cor} \label{cor:metricuniformcontinuous}
-Let $X$ and $Y$ be metric spaces.
-If $f_n \colon X \to Y$ are continuous functions
-such that
-$\{ f_n \}_{n=1}^\infty$ converges uniformly to $f \colon X \to Y$,
-then $f$ is continuous.
+Misalkan $X$ dan $Y$ ruang-ruang metrik.
+Jika $f_n \colon X \to Y$ fungsi-fungsi kontinu
+sedemikian sehingga
+$\{ f_n \}_{n=1}^\infty$ konvergen seragam ke $f \colon X \to Y$,
+maka $f$ kontinu.
 \end{cor}
 
-The converse is not true.  Just because the limit is continuous does not mean
-that the convergence is uniform.  For example:
-$f_n \colon (0,1) \to \R$ defined by $f_n(x) \coloneqq x^n$ converge to
-the zero function, but not uniformly.  However, if we add extra conditions
-on the sequence, we can obtain a partial converse such as Dini's theorem,
-\volIref{see \exerciseref*{vI-exercise:dinisthm} from volume I}{see \exerciseref{exercise:dinisthm}}.
+Kebalikannya tidak benar. Fakta bahwa limitnya kontinu tidak berarti
+bahwa konvergensinya seragam. Sebagai contoh:
+$f_n \colon (0,1) \to \R$ yang didefinisikan oleh $f_n(x) \coloneqq x^n$ konvergen ke
+fungsi nol, tetapi tidak secara seragam. Namun, jika kita menambahkan syarat-syarat tambahan
+pada barisan tersebut, kita dapat memperoleh kebalikan parsial seperti teorema Dini,
+\volIref{lihat \exerciseref*{vI-exercise:dinisthm} dari jilid I}{lihat \exerciseref{exercise:dinisthm}}.
 
-In \exerciseref{exercise:CXCnormedspace}, the reader is asked to prove
-that for a compact $X$, $C(X,\C)$ is a normed vector space
-with the uniform norm and hence a metric space.  We have just shown that
-$C(X,\C)$ is Cauchy-complete:  \propref{prop:unifcauchymetric} says that a Cauchy
-sequence in $C(X,\C)$ converges uniformly to some function,
-and \corref{cor:metricuniformcontinuous} shows that the limit is
-continuous and hence in $C(X,\C)$.
+Dalam \exerciseref{exercise:CXCnormedspace}, pembaca diminta untuk membuktikan
+bahwa untuk $X$ kompak, $C(X,\C)$ merupakan ruang vektor bernorma
+dengan norma seragam dan dengan demikian merupakan ruang metrik. Kita baru saja menunjukkan bahwa
+$C(X,\C)$ lengkap secara Cauchy: \propref{prop:unifcauchymetric} mengatakan bahwa suatu barisan Cauchy
+dalam $C(X,\C)$ konvergen seragam ke suatu fungsi,
+dan \corref{cor:metricuniformcontinuous} menunjukkan bahwa limitnya
+kontinu dan dengan demikian merupakan anggota $C(X,\C)$.
 
 \begin{cor}
-Let $(X,d)$ be a compact metric space.
-Then $C(X,\C)$ is a Cauchy-complete metric space.
+Misalkan $(X,d)$ suatu ruang metrik kompak.
+Maka $C(X,\C)$ merupakan ruang metrik yang lengkap secara Cauchy.
 \end{cor}
 
 \begin{example}
-By \exampleref{example:sinnsqfourier},
-the Fourier series 
+Berdasarkan \exampleref{example:sinnsqfourier},
+deret Fourier
 \begin{equation*}
 \sum_{n=1}^\infty \frac{\sin(nx)}{n^2}
 \end{equation*}
-converges uniformly and hence is continuous by \corref{cor:metricuniformcontinuous} (as is visible
-in \figureref{fig:fouriersern2}).
+konvergen seragam dan karenanya kontinu berdasarkan \corref{cor:metricuniformcontinuous} (seperti yang tampak
+pada \figureref{fig:fouriersern2}).
 \end{example}
 
 \subsection{Integration}

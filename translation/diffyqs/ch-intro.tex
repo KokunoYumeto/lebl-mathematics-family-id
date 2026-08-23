@@ -5,6 +5,7 @@
 %mbxENDIGNORE
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Catatan tentang catatan ini}
 \label{notes:section}
 
@@ -338,3 +339,825 @@ adalah contoh \emph{\myindex{persamaan diferensial orde pertama}}, karena
 hanya melibatkan turunan pertama variabel dependen.
 Persamaan ini muncul dari hukum pendinginan Newton, ketika suhu lingkungan
 berosilasi terhadap waktu.
+
+\subsection{Solusi persamaan diferensial}
+
+Menyelesaikan persamaan diferensial \eqref{eq1} berarti mencari $x$ sebagai fungsi dari $t$. Artinya, kita ingin mencari suatu fungsi dari $t$, yang kita sebut $x$, sedemikian rupa sehingga ketika kita memasukkan $x$, $t$, dan $\frac{dx}{dt}$ ke dalam \eqref{eq1}, persamaan tersebut berlaku;
+artinya, ruas kiri sama dengan ruas kanan.
+Idenya sama seperti pada persamaan biasa (aljabar) yang hanya memuat
+$x$ dan $t$. Kita klaim bahwa
+\begin{equation*}
+x = x(t) = \cos t + \sin t
+\end{equation*}
+merupakan sebuah \emph{\myindex{solusi}}.
+Bagaimana memeriksanya? Kita cukup memasukkan $x$ ke dalam persamaan \eqref{eq1}! Pertama-tama kita
+perlu menghitung $\frac{dx}{dt}$. Kita memperoleh bahwa $\frac{dx}{dt} =
+-\sin t + \cos t$. Sekarang mari kita hitung ruas kiri
+dari \eqref{eq1}.
+\begin{equation*}
+\frac{dx}{dt} + x =
+\underbrace{(-\sin t + \cos t)}_{\frac{dx}{dt}}
++
+\underbrace{(\cos t + \sin t)}_{x}
+=
+2\cos t .
+\end{equation*}
+Hore! Kita tepat mendapatkan ruas kanan.
+Namun, masih ada lagi!
+Kita klaim bahwa
+$x = \cos t + \sin t + e^{-t}$ juga merupakan
+solusi. Mari kita coba,
+\begin{equation*}
+\frac{dx}{dt} = -\sin t + \cos t - e^{-t} .
+\end{equation*}
+Kita substitusikan ke ruas kiri \eqref{eq1}
+\begin{equation*}
+\frac{dx}{dt} + x =
+\underbrace{(-\sin t + \cos t - e^{-t})}_{\frac{dx}{dt}} +
+\underbrace{(\cos t + \sin t + e^{-t})}_{x}
+= 2\cos t .
+\end{equation*}
+Dan sekali lagi berhasil!
+
+Jadi, dapat ada banyak solusi yang berbeda. Untuk persamaan ini, semua
+solusi dapat ditulis dalam bentuk
+\begin{equation*}
+x = \cos t + \sin t + C e^{-t} ,
+\end{equation*}
+untuk suatu konstanta $C$. Konstanta $C$ yang berbeda akan menghasilkan solusi
+yang berbeda, jadi sesungguhnya ada tak terhingga banyak solusi yang mungkin.
+Lihat \figurevref{intro:plotsfig} untuk grafik beberapa solusi ini.
+Kita akan melihat cara menemukan solusi-solusi ini
+di bagian selanjutnya.
+
+\medskip
+
+\begin{mywrapfig}{3.25in}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{intro-plots-alt}{%
+Grafik dengan 3 kurva yang bermula di sisi kiri pada tempat berbeda,
+masing-masing pada 3, 1, dan minus 1.
+Ketiga garis tersebut cenderung saling mendekat
+dan semakin mendekati bentuk yang tampak seperti gelombang sinus.}
+\caption{Beberapa solusi dari $\frac{dx}{dt} + x = 2 \cos t$.\label{intro:plotsfig}}
+\end{mywrapfig}%
+
+
+Menyelesaikan persamaan diferensial bisa cukup sulit.
+Tidak ada metode umum yang menyelesaikan setiap persamaan diferensial. Kita
+umumnya akan berfokus pada cara memperoleh rumus eksak untuk solusi persamaan
+diferensial tertentu, tetapi kita juga akan menghabiskan sedikit waktu
+untuk memperoleh solusi hampiran.
+Kita juga akan meluangkan waktu untuk memahami persamaan tanpa menyelesaikannya.
+
+Sebagian besar buku ini didedikasikan untuk
+\emph{persamaan diferensial biasa\index{persamaan diferensial biasa}}
+atau ODEs\index{ODE}, yaitu persamaan dengan
+hanya satu variabel independen, yang turunannya hanya terhadap
+variabel ini.
+Jika ada beberapa variabel independen, kita memperoleh
+\emph{persamaan diferensial parsial\index{persamaan diferensial parsial}}
+atau PDEs\index{PDE}.
+%We will briefly see these near the
+%end of the course.
+
+Bahkan untuk ODE, yang sangat dipahami, bukanlah pertanyaan sederhana
+berupa menjalankan prosedur mekanis untuk mendapatkan solusi.
+Ketika dapat menemukan solusi eksak, solusi tersebut biasanya lebih disukai
+daripada solusi hampiran. Penting untuk memahami bagaimana solusi tersebut ditemukan.
+Walaupun dalam penerapan nyata Anda akan menyerahkan banyak perhitungan aktual
+kepada komputer, Anda perlu memahami apa yang dilakukannya.
+Sering kali perlu menyederhanakan atau mentransformasikan persamaan Anda
+menjadi sesuatu yang dapat dipahami dan diselesaikan komputer.
+Anda bahkan mungkin perlu membuat asumsi dan perubahan tertentu pada model
+untuk mencapai hal ini.
+
+Untuk menjadi insinyur atau ilmuwan yang berhasil, Anda akan dituntut menyelesaikan
+masalah dalam pekerjaan yang belum pernah Anda lihat sebelumnya. Penting untuk
+mempelajari teknik pemecahan masalah, agar Anda dapat menerapkannya pada masalah baru.
+Kesalahan umum adalah mengharapkan bahwa Anda dapat mempelajari suatu resep
+untuk menyelesaikan semua masalah yang akan Anda temui dalam karier selanjutnya.
+Mata kuliah ini tidak terkecuali.
+
+\subsection{Persamaan diferensial dalam praktik}
+
+\begin{mywrapfigsimp}{3.05in}{3.35in}
+\noindent
+\inputpdft{1-1-fig}{%
+Sebuah diagram yang menghubungkan tiga istilah di bagian atas: 'Masalah dunia nyata',
+kemudian panah berlabel 'abstraksikan' menghubungkan ke 'Model matematika',
+lalu panah berlabel 'selesaikan' menghubungkan ke 'Solusi matematika',
+dan akhirnya panah berlabel 'interpretasikan' kembali ke istilah
+pertama.}
+\diffypdfversion{\par\vspace*{5pt}}
+\end{mywrapfigsimp}
+Bagaimana kita menggunakan persamaan diferensial dalam sains dan teknik?
+Pertama, kita memiliki suatu \emph{\myindex{masalah dunia nyata}} yang ingin
+kita pahami.
+Kita membuat beberapa asumsi penyederhanaan dan membangun
+\emph{\myindex{model matematika}}.
+Artinya, kita menerjemahkan situasi dunia nyata menjadi
+satu (atau beberapa) persamaan diferensial.
+Kemudian kita menggunakan matematika untuk memperoleh semacam
+\emph{\myindex{solusi matematika}}.
+Masih ada yang harus dilakukan. Kita harus menafsirkan hasilnya.
+Kita harus mencari tahu apa yang dikatakan solusi matematika tentang masalah dunia nyata
+yang kita mulai.
+
+Merumuskan model matematika dan menafsirkan
+hasilnya adalah hal yang Anda lakukan dalam kelas fisika dan teknik.
+Dalam mata kuliah ini, kita terutama berfokus pada analisis matematika.
+Kadang-kadang kita akan
+bekerja dengan contoh dunia nyata sederhana
+untuk memperoleh intuisi dan
+motivasi tentang apa yang kita lakukan.
+Mari kita lihat
+contoh seluruh proses.
+
+\begin{example}
+Salah satu persamaan diferensial paling dasar
+adalah \emph{\myindex{model pertumbuhan eksponensial}}.
+Misalkan $P$ menyatakan populasi
+beberapa bakteri di cawan Petri. Kita mengasumsikan bahwa tersedia cukup makanan
+dan ruang. Maka laju pertumbuhan bakteri sebanding
+dengan populasi---populasi yang lebih besar tumbuh lebih cepat.
+Misalkan $t$ menyatakan waktu (katakan dalam detik) dan $P$ populasi.
+Model kita adalah
+\begin{equation*}
+\frac{dP}{dt} = kP ,
+\end{equation*}
+untuk suatu konstanta positif $k > 0$.
+
+Misalkan ada 100 bakteri pada waktu 0 dan 200 bakteri 10 detik kemudian.
+Berapa banyak bakteri akan ada 1 menit sejak waktu 0 (dalam 60 detik)?
+
+%mbxSTARTIGNORE
+\begin{mywrapfig}{3.25in}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{intro-plotbact}{%
+Grafik fungsi pertumbuhan eksponensial (kurva cekung ke atas yang makin lama
+makin curam ke arah kanan) yang bermula pada 100 di sisi kiri
+dan berakhir pada 6400 di sisi kanan.}
+\caption{Pertumbuhan bakteri dalam 60 detik pertama.\label{intro:plotbactfig}}
+\end{mywrapfig}
+%mbxENDIGNORE
+%
+% Make sure to keep the above and the mbx figure below in sync!
+%
+Pertama-tama kita perlu menyelesaikan persamaan. Kita klaim bahwa solusinya diberikan oleh
+\begin{equation*}
+P(t) = C e^{kt} ,
+\end{equation*}
+dengan $C$ suatu konstanta. Mari kita coba:
+\begin{equation*}
+\frac{dP}{dt} = C k e^{kt} = k P .
+\end{equation*}
+Dan ini benar-benar merupakan solusi.
+
+Baik\@, sekarang bagaimana? Kita tidak mengetahui $C$, dan kita tidak mengetahui $k$.
+Namun, kita mengetahui sesuatu. Kita mengetahui $P(0) = 100$, dan kita mengetahui
+$P(10) = 200$. Kita masukkan kondisi-kondisi ini dan melihat apa yang terjadi:
+\begin{align*}
+& 100 = P(0) = C e^{k0} = C, \quad \text{jadi} \quad C=100,\\
+& 200 = P(10) = C e^{k10} = 100 \, e^{k10} .
+\end{align*}
+Karena itu, $2 = e^{10k}$ atau $k = \frac{\ln 2}{10} \approx 0.069$.
+Jadi
+\begin{equation*}
+P(t) = 100 \, e^{(\ln 2) t / 10} \approx 100 \, e^{0.069 t} .
+\end{equation*}
+Pada satu menit, $t=60$, populasinya adalah $P(60) = 6400$. Lihat
+\figurevref{intro:plotbactfig}.
+
+
+%mbxlatex \begin{myfig}
+%mbxlatex \capstart
+%mbxlatex \diffyincludegraphics{width=3in}{width=4.5in}{intro-plotbact}{%
+%mbxlatex Grafik fungsi pertumbuhan eksponensial (kurva cekung ke atas yang makin lama
+%mbxlatex makin curam ke arah kanan) yang bermula pada 100 di sisi kiri
+%mbxlatex dan berakhir pada 6400 di sisi kanan.}
+%mbxlatex \caption{Pertumbuhan bakteri dalam 60 detik pertama.\label{intro:plotbactfig}}
+%mbxlatex \end{myfig}
+
+
+Marilah kita menafsirkan hasilnya. Apakah solusi kita berarti
+harus tepat ada 6400 bakteri di cawan pada detik 60? Tidak! Kita membuat
+asumsi yang mungkin tidak benar secara tepat, hanya kira-kira.
+Jika asumsi kita masuk akal,
+maka akan ada kira-kira 6400 bakteri.
+Selain itu, dalam kehidupan nyata $P$ adalah
+besaran diskret, yaitu bilangan bulat. Namun, model kita tidak bermasalah menyatakan
+bahwa, misalnya, pada detik 61, $P(61) \approx 6859.35$.
+%Obviously there
+%are either 6859 bacteria or 6860 bacteria.
+\end{example}
+
+Biasanya, $k$ dalam $\frac{dP}{dt} = kP$ diberikan,
+dan kita ingin menyelesaikan
+persamaan untuk suatu \emph{\myindex{kondisi awal}}.
+Sebagai contoh, masalahnya dapat berbunyi:
+Selesaikan persamaan
+$\frac{dP}{dt} = P$ (jadi $k=1$)
+dengan syarat $P(0) = 1000$ (kondisi awal).
+Maka solusinya adalah (latihan)
+\begin{equation*}
+P(t) = 1000 \, e^t .
+\end{equation*}
+Kita menyebut $P(t) = C e^t$ sebagai \emph{\myindex{solusi umum}},
+karena setiap solusi
+persamaan tersebut dapat ditulis dalam bentuk ini untuk suatu konstanta $C$.
+Kita memerlukan kondisi awal untuk mengetahui nilai $C$, agar memperoleh
+\emph{\myindex{solusi khusus}} yang kita cari,
+dalam hal ini, $P(t) = 1000\, e^t$.
+Secara umum, ketika kita mengatakan
+\myquote{solusi khusus,} kita hanya bermaksud suatu solusi.
+
+Dalam kehidupan nyata, parameter seperti $k$
+sering kali harus dihitung atau diestimasi terlebih dahulu.
+Contoh di atas
+menunjukkan bagaimana menemukan solusi analitik untuk persamaan diferensial
+berguna dalam menemukan parameter-parameter tersebut.
+
+\subsection{Empat persamaan fundamental} \label{subsection:fourfundamental}
+
+Beberapa persamaan sering muncul dan
+berguna untuk menghafalkan seperti apa
+solusinya.
+Mari kita sebut sebagai \myindex{empat persamaan fundamental}.
+Solusinya cukup mudah
+ditebak dengan mengingat sifat-sifat eksponensial, sinus, dan kosinus.
+Solusi-solusi tersebut juga mudah diperiksa, dan itu selalu harus Anda lakukan.
+Tidak perlu bertanya-tanya apakah Anda mengingat solusi dengan benar.
+
+\medskip
+
+Persamaan pertama adalah
+\begin{equation*}
+\frac{dy}{dx} = k y ,
+\end{equation*}
+untuk suatu konstanta $k > 0$.
+Di sini $y$ adalah variabel dependen dan $x$ variabel independen.
+Solusi umum untuk persamaan ini adalah
+\begin{equation*}
+y(x) = C e^{kx} .
+\avoidbreak
+\end{equation*}
+Di atas kita telah melihat bahwa fungsi ini merupakan solusi, meskipun kita menggunakan
+nama variabel yang berbeda.
+
+\medskip
+
+Berikutnya, kita memiliki
+\begin{equation*}
+\frac{dy}{dx} = -k y ,
+\end{equation*}
+untuk suatu konstanta $k > 0$.
+Solusi umum untuk persamaan ini adalah
+\begin{equation*}
+y(x) = C e^{-kx} .
+\end{equation*}
+
+\begin{exercise}
+Periksa bahwa $y$ yang diberikan benar-benar merupakan solusi untuk persamaan di atas.
+\end{exercise}
+
+Selanjutnya, ambil
+\emph{\myindex{persamaan diferensial orde kedua}}
+\begin{equation*}
+\frac{d^2y}{{dx}^2} = -k^2 y ,
+\end{equation*}
+untuk suatu konstanta $k > 0$.
+Solusi umum untuk persamaan ini adalah
+\begin{equation*}
+y(x) = C_1 \cos(kx) + C_2 \sin(kx) .
+\end{equation*}
+Karena persamaan ini merupakan persamaan diferensial orde kedua,
+kita memiliki dua konstanta dalam solusi umum kita.
+
+\begin{exercise}
+Periksa bahwa $y$ yang diberikan benar-benar merupakan solusi untuk persamaan di atas.
+\end{exercise}
+
+Terakhir, pertimbangkan persamaan diferensial orde kedua
+\begin{equation*}
+\frac{d^2y}{{dx}^2} = k^2 y ,
+\end{equation*}
+untuk suatu konstanta $k > 0$.
+Solusi umum untuk persamaan ini adalah
+\begin{equation*}
+y(x) = C_1 e^{kx} + C_2 e^{-kx} ,
+\end{equation*}
+atau
+\begin{equation*}
+y(x) = D_1 \cosh(kx) + D_2 \sinh(kx) .
+\end{equation*}
+
+Bagi yang belum tahu, $\cosh$ dan $\sinh$ didefinisikan oleh
+\begin{equation*}
+\cosh x = \frac{e^{x} + e^{-x}}{2} , \qquad
+\sinh x = \frac{e^{x} - e^{-x}}{2} .
+\end{equation*}
+Keduanya disebut
+\emph{\myindex{kosinus hiperbolik}}
+dan
+\emph{\myindex{sinus hiperbolik}}.
+Fungsi-fungsi ini terkadang lebih mudah
+digunakan daripada eksponensial. Keduanya memiliki beberapa sifat familiar yang bagus, seperti
+$\cosh 0 = 1$, $\sinh 0 = 0$, dan $\frac{d}{dx} \cosh x = \sinh x$
+(tidak, itu bukan salah ketik)
+serta $\frac{d}{dx} \sinh x = \cosh x$.
+
+\begin{exercise}
+Periksa bahwa kedua bentuk $y$ yang diberikan
+benar-benar merupakan solusi untuk persamaan di atas.
+\end{exercise}
+
+\begin{example}
+Dalam persamaan berorde lebih tinggi, Anda mendapatkan lebih banyak konstanta yang harus dicari untuk
+memperoleh solusi khusus dan karena itu memerlukan lebih banyak kondisi awal.
+Persamaan $\frac{d^2y}{dx^2} = 0$ memiliki
+solusi umum $y = C_1 x + C_2$; cukup integralkan dua kali dan jangan lupakan
+konstanta integrasi. Pertimbangkan kondisi awal $y(0) =
+2$ dan $y'(0) = 3$. Kita substitusikan solusi umum kita dan mencari
+konstanta-konstantanya:
+\begin{equation*}
+2 = y(0) = C_1 \cdot 0 + C_2 = C_2, \qquad
+3 = y'(0) = C_1 .
+\end{equation*}
+Dengan kata lain, $y = 3x + 2$ adalah solusi khusus yang kita cari.
+\end{example}
+
+
+Catatan menarik tentang $\cosh$: Grafik $\cosh$ persis merupakan bentuk
+rantai yang tergantung. Bentuk ini disebut
+\emph{\myindex{katenaria}}.
+Bertentangan dengan anggapan umum, bentuk ini bukan
+parabola. Jika Anda membalik grafik $\cosh$, grafik itu juga merupakan lengkung ideal untuk
+menopang beratnya sendiri---parabola tidak akan berhasil.
+Sebagai contoh,
+menurut National Park Service,
+rumus eksak yang digunakan oleh
+para arsitek
+Gateway Arch di Saint Louis adalah
+(yang disebut katenaria berbobot)
+\begin{equation*}
+y = A\left( \cosh \left( \frac{C}{L} x \right) - 1 \right), \quad
+\text{dengan}
+\quad
+A=68.7672,
+C=3.0022,
+L = 299.2239.
+\end{equation*}
+%\begin{equation*}
+%y = -127.7 \; \textrm{ft} \cdot \cosh\left(\frac{x}{127.7}  \;
+%\textrm{ft}\right) + 757.7 \; \textrm{ft} .
+%\end{equation*}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Tunjukkan bahwa $x = e^{4t}$ merupakan solusi dari $x'''-12 x'' + 48 x' - 64 x = 0$.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa $x = e^{t}$ bukan merupakan solusi dari $x'''-12 x'' + 48 x' - 64 x = 0$.
+\end{exercise}
+
+\begin{exercise}
+Apakah $y = \sin t$ merupakan solusi dari ${\left( \frac{dy}{dt} \right)}^2 = 1 - y^2$?
+Berikan justifikasi.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $y'' + 2y' - 8y = 0$. Sekarang coba solusi berbentuk $y = e^{rx}$ untuk
+suatu konstanta $r$ (yang belum diketahui). Apakah ini merupakan solusi
+untuk suatu $r$? Jika ya, tentukan semua $r$ yang demikian.
+\end{exercise}
+
+\begin{exercise}
+Verifikasi bahwa $x = C e^{-2t}$ merupakan solusi dari $x' = -2x$.
+Tentukan $C$ agar memenuhi kondisi awal $x(0) = 100$.
+\end{exercise}
+
+\begin{exercise}
+Verifikasi bahwa $x = C_1 e^{-t} + C_2 e^{2t}$ merupakan solusi dari $x'' - x' -2 x =
+0$. Tentukan $C_1$ dan $C_2$ agar memenuhi kondisi awal $x(0) = 10$
+dan $x'(0) = 0$.
+\end{exercise}
+
+\begin{exercise}
+Carilah solusi untuk
+${(x')}^2 + x^2 = 4$
+dengan menggunakan pengetahuan Anda tentang turunan fungsi-fungsi yang
+Anda kenal dari kalkulus dasar.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan:
+\begin{tasks}(2)
+\task $\dfrac{dA}{dt} = -10 A, \quad A(0)=5$
+\task $\dfrac{dH}{dx} = 3 H, \quad H(0)=1$
+\task $\dfrac{d^2y}{dx^2} = 4 y, \quad y(0)=0, \quad y'(0)=1$
+\task $\dfrac{d^2x}{dy^2} = -9 x, \quad x(0)=1, \quad x'(0)=0$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Apakah ada solusi untuk $y' = y$ sedemikian sehingga $y(0) = y(1)$?
+\end{exercise}
+
+\begin{exercise}
+Populasi kota X adalah 100 ribu 20 tahun yang lalu,
+dan 120 ribu 10 tahun yang lalu. Dengan mengasumsikan
+pertumbuhan konstan, Anda dapat menggunakan model populasi eksponensial
+(seperti pada bakteri). Berapa perkiraan populasi saat ini?
+\end{exercise}
+
+\begin{exercise}
+Misalkan seorang pelatih sepak bola sekarang menerima gaji
+satu juta dolar, dan kenaikan gaji sebesar $10\%$ setiap tahun
+(jadi model eksponensial, seperti populasi bakteri).
+Misalkan $s$ adalah gaji dalam jutaan dolar, dan $t$ adalah waktu dalam tahun.
+\begin{tasks}(2)
+\task
+Berapa $s(0)$ dan $s(1)$?
+\task
+Kira-kira berapa tahun yang diperlukan agar gaji menjadi 10 juta?
+\task
+Kira-kira berapa tahun yang diperlukan agar gaji menjadi 20 juta?
+\task
+Kira-kira berapa tahun yang diperlukan agar gaji menjadi 30 juta?
+\end{tasks}
+\end{exercise}
+
+
+%mbxSTARTIGNORE
+\noindent
+\emph{Catatan: Latihan bernomor 101 dan lebih tinggi memiliki solusi di
+bagian belakang buku.}
+%mbxENDIGNORE
+
+%mbx <p><em>Catatan: Latihan bernomor 101 dan lebih tinggi memiliki solusi.</em></p>
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Tunjukkan bahwa $x = e^{-2t}$ merupakan solusi dari $x'' + 4x' + 4x = 0$.
+\end{exercise}
+\exsol{%
+Hitung $x' = -2e^{-2t}$ dan $x'' = 4e^{-2t}$. Kemudian
+$(4e^{-2t}) + 4 (-2e^{-2t}) + 4 (e^{-2t}) = 0$.
+}
+
+\begin{exercise}
+Apakah $y = x^2$ merupakan solusi dari $x^2y'' - 2y = 0$? Berikan justifikasi.
+\end{exercise}
+\exsol{%
+Ya.
+}
+
+\begin{exercise}
+Misalkan $xy'' - y' = 0$. Coba solusi berbentuk $y = x^r$. Apakah ini
+merupakan solusi untuk suatu~$r$? Jika ya, tentukan semua $r$ yang demikian.
+\end{exercise}
+\exsol{%
+$y=x^r$ merupakan solusi untuk $r=0$ dan $r=2$.
+}
+
+
+\begin{exercise}
+Verifikasi bahwa $x=C_1e^t+C_2$ merupakan solusi dari $x''-x' = 0$. Tentukan $C_1$ dan
+$C_2$ agar $x$ memenuhi $x(0) = 10$ dan $x'(0) = 100$.
+\end{exercise}
+\exsol{%
+$C_1 = 100$, $C_2 = -90$
+}
+
+\begin{exercise}
+Selesaikan $\frac{d\varphi}{ds} = 8 \varphi$ dan $\varphi(0) = -9$.
+\end{exercise}
+\exsol{%
+$\varphi = -9 e^{8s}$
+}
+
+\begin{exercise}
+Selesaikan:
+\begin{tasks}(2)
+\task $\dfrac{dx}{dt} = -4x, \quad x(0)=9$
+\task $\dfrac{d^2x}{dt^2} = -4x, \quad x(0)=1, \quad x'(0)=2$
+\task $\dfrac{dp}{dq} = 3 p, \quad p(0)=4$
+\task $\dfrac{d^2T}{dx^2} = 4 T, \quad T(0)=0, \quad T'(0)=6$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$x=9e^{-4t}$ \quad
+b)~$x=\cos(2t)+\sin(2t)$ \quad
+c)~$p=4e^{3q}$ \quad
+d)~$T=3\sinh(2x)$
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Klasifikasi persamaan diferensial}
+\label{classification:section}
+
+%Mungkin tidak ada rujukan [EP]?
+\sectionnotes{kurang dari 1 pertemuan atau dijadikan bacaan\BDref{, \S1.3 dalam \cite{BD}}}
+
+Ada banyak jenis persamaan diferensial, dan kita mengklasifikasikannya ke dalam
+berbagai kategori berdasarkan sifat-sifatnya. Mari kita tinjau secara singkat
+klasifikasi yang paling mendasar. Kita telah melihat perbedaan antara
+persamaan diferensial biasa dan persamaan diferensial parsial:
+\begin{itemize}
+\item
+Sebuah \emph{persamaan diferensial biasa}\index{persamaan diferensial biasa}\index{ODE}
+(ODE) adalah persamaan yang turunannya diambil hanya terhadap satu variabel.
+Artinya, hanya ada satu variabel independen.
+\item
+Sebuah \emph{persamaan diferensial parsial}\index{persamaan diferensial parsial}\index{PDE}
+(PDE) adalah persamaan yang bergantung pada turunan parsial terhadap beberapa variabel.
+Artinya, ada beberapa variabel independen.
+\end{itemize}
+
+Mari kita lihat beberapa contoh persamaan diferensial biasa:
+\begin{align*}
+& \frac{d y}{dt} = ky , & & \text{(Pertumbuhan eksponensial\index{pertumbuhan eksponensial})} \\
+& \frac{d y}{dt} = k(A-y) , & & \text{(\myindex{Hukum pendinginan Newton})} \\
+& m \frac{d^2 x}{dt^2} + c \frac{dx}{dt} + kx = f(t) . & &
+\text{(Getaran mekanis\index{getaran mekanis})}
+\end{align*}
+Dan beberapa contoh persamaan diferensial parsial:
+\begin{align*}
+& \frac{\partial y}{\partial t} + c \frac{\partial y}{\partial x} = 0 , & &
+\text{(Persamaan transport\index{persamaan transport})} \\
+& \frac{\partial u}{\partial t} = \frac{\partial^2 u}{\partial x^2} , & &
+\text{(Persamaan panas\index{persamaan panas})} \\
+& \frac{\partial^2 u}{\partial t^2} = \frac{\partial^2 u}{\partial x^2} +
+\frac{\partial^2 u}{\partial y^2} . & &
+\text{(Persamaan gelombang dalam 2 dimensi\index{persamaan gelombang dalam 2 dimensi})}
+\end{align*}
+
+Jika beberapa persamaan bekerja bersama-sama, kita memperoleh apa yang disebut
+\emph{\myindex{sistem persamaan diferensial}}. Sebagai contoh,
+\begin{equation*}
+y' = x , \qquad x' = y
+\end{equation*}
+merupakan sistem persamaan diferensial biasa.
+\myindex{Persamaan Maxwell} untuk elektromagnetisme,
+\begin{align*}
+& \nabla \cdot \vec{D} = \rho, & & \nabla \cdot \vec{B} = 0 , \\
+& \nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t}, &
+& \nabla \times \vec{H} = \vec{J} + \frac{\partial \vec{D}}{\partial t} ,
+\end{align*}
+merupakan sistem persamaan diferensial parsial.
+Operator divergensi $\nabla \cdot$ dan
+operator curl $\nabla \times$ dapat dituliskan dalam bentuk turunan parsial dari
+fungsi-fungsi yang melibatkan variabel $x$, $y$, dan $z$.
+
+\medskip
+
+Informasi berikutnya adalah \emph{\myindex{orde}} persamaan (atau sistem).
+Orde adalah orde turunan tertinggi yang muncul. Jika turunan tertinggi yang muncul
+adalah turunan pertama, persamaan tersebut berorde pertama. Jika turunan tertinggi
+yang muncul adalah turunan kedua, persamaan tersebut berorde kedua. Sebagai contoh,
+hukum pendinginan Newton di atas merupakan persamaan orde pertama, sedangkan
+persamaan getaran mekanis merupakan persamaan orde kedua.
+Persamaan yang mengatur getaran transversal pada suatu balok,
+\begin{equation*}
+a^4 \frac{\partial^4 y}{\partial x^4} + \frac{\partial^2 y}{\partial t^2} = 0,
+\end{equation*}
+merupakan persamaan diferensial parsial orde keempat. Persamaan ini berorde
+keempat karena setidaknya satu turunannya merupakan turunan keempat. Fakta bahwa
+turunan terhadap $t$ hanya berorde kedua tidak mengubah hal tersebut.
+
+Pada bab pertama, kita akan mulai menangani persamaan diferensial biasa
+orde pertama, yaitu persamaan berbentuk $\frac{dy}{dx} = f(x,y)$.
+Secara umum, persamaan berorde lebih rendah lebih mudah ditangani dan memiliki
+perilaku yang lebih sederhana; itulah sebabnya kita memulainya dari sana.
+
+\medskip
+
+Kita juga membedakan cara variabel dependen muncul dalam persamaan (atau sistem).
+Khususnya, suatu persamaan disebut
+\emph{linear}\index{persamaan linear} jika variabel dependen (atau variabel-variabelnya)
+beserta turunannya muncul secara linear, yaitu hanya berpangkat satu, tidak
+dikalikan satu sama lain, dan tidak ada fungsi lain dari variabel dependen yang
+muncul. Persamaan tersebut merupakan jumlah beberapa suku, dengan setiap suku
+berupa fungsi dari variabel independen, atau fungsi dari variabel independen yang
+dikalikan dengan suatu variabel dependen atau salah satu turunannya.
+Suatu persamaan diferensial biasa bersifat linear jika dapat dituliskan dalam bentuk
+\begin{equation} \label{classification:eqlingen}
+a_n(x) \frac{d^n y}{dx^n} +
+a_{n-1}(x) \frac{d^{n-1} y}{dx^{n-1}} +
+\cdots
++
+a_{1}(x) \frac{dy}{dx}
++
+a_{0}(x) y = b(x) .
+\end{equation}
+Fungsi-fungsi $a_0$, $a_1$, \ldots, $a_n$ disebut
+\emph{\myindex{koefisien}}.
+Persamaan tersebut boleh bergantung secara sembarang pada variabel independen.
+Jadi,
+\begin{equation} \label{classification:eqlinex}
+e^x \frac{d^2 y}{dx^2} +
+\sin(x) \frac{d y}{dx} +
+x^2 y
+=
+\frac{1}{x}
+\end{equation}
+merupakan persamaan linear karena $y$ dan turunannya hanya muncul secara linear.
+
+Semua persamaan dan sistem yang diberikan sebagai contoh di atas bersifat linear.
+Linearitas mungkin tidak langsung tampak pada persamaan Maxwell kecuali kita
+menuliskan divergensi dan curl dalam bentuk turunan parsial.
+Jika suatu persamaan tidak linear, kita menyebutnya
+\emph{nonlinear}\index{persamaan nonlinear}.
+Mari kita lihat beberapa contoh persamaan nonlinear. \myindex{Persamaan Burgers},
+\begin{equation*}
+\frac{\partial y}{\partial t} +
+y \frac{\partial y}{\partial x} =
+\nu \frac{\partial^2 y}{\partial x^2} ,
+\end{equation*}
+merupakan persamaan diferensial parsial nonlinear orde kedua. Persamaan tersebut
+nonlinear karena $y$ dan $\frac{\partial y}{\partial x}$ dikalikan satu sama lain.
+Persamaan
+\begin{equation} \label{classification:eqnonlinode}
+\frac{dx}{dt} = x^2
+\end{equation}
+merupakan persamaan diferensial biasa nonlinear orde pertama karena variabel
+dependen $x$ berpangkat dua. Contoh ODE nonlinear lainnya adalah persamaan bandul
+\begin{equation} \label{classification:pendulum}
+\theta''+\sin(\theta)=0 ,
+\end{equation}
+yang nonlinear karena variabel dependen $\theta$ muncul di dalam fungsi $\sin$.
+Persamaan nonlinear terkenal sulit diselesaikan dan solusinya dapat berperilaku
+aneh serta tak terduga. Barangkali Anda pernah mendengar teori chaos dan kupu-kupu
+di Amazon yang menyebabkan badai topan di Atlantik, semuanya akibat persamaan nonlinear.
+Karena itu, kadang-kadang kita mempelajari persamaan linear yang berkaitan,
+seperti $\theta''+\theta=0$ untuk bandul, sebagai gantinya.
+Solusi dari $\theta''+\sin(\theta) = 0$ dan
+$\theta''+\theta=0$ berbeda, tetapi keduanya berdekatan selama suatu selang waktu
+pendek, sedangkan persamaan linear jauh lebih mudah diselesaikan dan dianalisis.
+
+\medskip
+
+Suatu persamaan linear selanjutnya disebut \emph{\myindex{homogen}} jika
+semua sukunya bergantung pada variabel dependen. Artinya, tidak ada suku yang
+hanya merupakan fungsi dari variabel independen. Jika tidak, persamaan tersebut
+disebut \emph{\myindex{nonhomogen}} atau
+\emph{\myindex{takhomogen}}. Sebagai contoh,
+persamaan pertumbuhan eksponensial, persamaan gelombang, atau persamaan transport
+di atas semuanya homogen. Persamaan getaran mekanis di atas bersifat nonhomogen
+selama $f(t)$ bukan fungsi nol. Demikian pula, jika suhu lingkungan $A$ tidak nol,
+hukum pendinginan Newton bersifat nonhomogen.
+Suatu ODE linear homogen dapat dituliskan dalam bentuk
+\begin{equation*}
+a_n(x) \frac{d^n y}{dx^n} +
+a_{n-1}(x) \frac{d^{n-1} y}{dx^{n-1}} +
+\cdots
++
+a_{1}(x) \frac{dy}{dx}
++
+a_{0}(x) y = 0 .
+\end{equation*}
+Bandingkan dengan \eqref{classification:eqlingen} dan perhatikan bahwa tidak ada
+fungsi $b(x)$.
+
+\medskip
+
+Jika koefisien suatu persamaan linear sebenarnya merupakan fungsi konstan,
+persamaan tersebut dikatakan memiliki
+\emph{koefisien konstan}\index{koefisien konstan}.
+Koefisien adalah fungsi yang mengalikan variabel dependen atau salah satu
+turunannya, bukan fungsi $b(x)$ yang berdiri sendiri.
+Suatu ODE nonhomogen dengan koefisien konstan adalah persamaan berbentuk
+\begin{equation*}
+a_n \frac{d^n y}{dx^n} +
+a_{n-1} \frac{d^{n-1} y}{dx^{n-1}} +
+\cdots
++
+a_{1} \frac{dy}{dx}
++
+a_{0} y = b(x) ,
+\end{equation*}
+dengan $a_0, a_1, \ldots, a_n$ semuanya konstan,
+tetapi $b$ boleh bergantung pada variabel independen $x$.
+Persamaan getaran mekanis merupakan ODE nonhomogen orde kedua dengan koefisien
+konstan\@. Tata nama yang sama berlaku untuk PDE, sehingga persamaan transport,
+persamaan panas, dan persamaan gelombang semuanya merupakan contoh PDE linear
+dengan koefisien konstan. Persamaan linear yang koefisiennya tidak konstan
+kadang-kadang disebut persamaan \emph{\myindex{berkoefisien variabel}}.
+
+\medskip
+
+Terakhir, suatu persamaan (atau sistem) disebut \emph{\myindex{otonom}}
+jika persamaan tersebut tidak bergantung pada variabel independen.
+Untuk persamaan diferensial biasa otonom, variabel independen kemudian dipandang
+sebagai waktu. Persamaan otonom berarti persamaan yang tidak berubah seiring waktu.
+Sebagai contoh, hukum pendinginan Newton bersifat otonom, begitu pula persamaan
+\eqref{classification:eqnonlinode} dan
+\eqref{classification:pendulum}. Sebaliknya, getaran mekanis (selama $f(t)$
+tidak konstan) atau \eqref{classification:eqlinex} tidak bersifat otonom.
+Suatu ODE otonom orde pertama yang umum berbentuk
+\begin{equation*}
+\frac{dx}{dt} = f(x) .
+\end{equation*}
+
+\pagebreak[3]
+\subsection{Latihan}
+
+\begin{exercise}
+Klasifikasikan persamaan-persamaan berikut. Apakah masing-masing merupakan ODE
+atau PDE? Apakah merupakan satu persamaan atau suatu sistem? Berapa ordenya?
+Apakah linear atau nonlinear, dan jika linear, apakah homogen dan berkoefisien
+konstan? Jika merupakan ODE\@, apakah otonom?
+\begin{tasks}(2)
+\task $\displaystyle \sin(t) \frac{d^2 x}{dt^2} + \cos(t) x = t^2$
+\task $\displaystyle \frac{\partial u}{\partial x} + 3 \frac{\partial u}{\partial y} = xy$
+\task $\displaystyle y''+3y+5x=0, \quad x''+x-y=0$
+\task $\displaystyle \frac{\partial^2 u}{\partial t^2} + u\frac{\partial^2 u}{\partial s^2} =
+0$
+\task $\displaystyle x''+tx^2=t$
+\task $\displaystyle \frac{d^4 x}{dt^4} = 0$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Jika $\vec{u} = (u_1,u_2,u_3)$ merupakan sebuah vektor, kita memiliki divergensi
+$\nabla \cdot \vec{u} =
+\frac{\partial u_1}{\partial x} +
+\frac{\partial u_2}{\partial y} +
+\frac{\partial u_3}{\partial z}$ dan
+curl
+$\nabla \times \vec{u} =
+\Bigl(
+\frac{\partial u_3}{\partial y} - \frac{\partial u_2}{\partial z} , ~
+\frac{\partial u_1}{\partial z} - \frac{\partial u_3}{\partial x} , ~
+\frac{\partial u_2}{\partial x} - \frac{\partial u_1}{\partial y} \Bigr)$.
+Perhatikan bahwa curl suatu vektor tetap merupakan sebuah vektor. Tuliskan
+persamaan Maxwell dalam bentuk turunan parsial dan klasifikasikan sistem tersebut.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $F$ adalah fungsi linear dua variabel, yaitu
+$F(x,y) = ax+by$ untuk konstanta $a$ dan $b$.
+Misalkan $a \neq 0$.
+Klasifikasikan persamaan berbentuk $F(y',y) = 0$.
+\end{exercise}
+
+\begin{exercise}
+Tuliskan sebuah contoh eksplisit sistem yang terdiri atas dua ODE berorde tiga,
+linear, berkoefisien variabel (yakni\ tidak berkoefisien konstan), nonotonom,
+dan nonhomogen, sedemikian sehingga setiap turunan yang dapat muncul benar-benar
+muncul.
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Klasifikasikan persamaan-persamaan berikut. Apakah masing-masing merupakan ODE
+atau PDE? Apakah merupakan satu persamaan atau suatu sistem? Berapa ordenya?
+Apakah linear atau nonlinear, dan jika linear, apakah homogen dan berkoefisien
+konstan? Jika merupakan ODE\@, apakah otonom?
+\begin{tasks}(2)
+\task $\displaystyle \frac{\partial^2 v}{\partial x^2} + 3 \frac{\partial^2
+v}{\partial y^2} = \sin(x)$
+\task $\displaystyle \frac{d x}{dt} + \cos(t) x = t^2+t+1$
+\task $\displaystyle \frac{d^7 F}{dx^7} = 3F(x)$
+\task $\displaystyle y''+8y'=1$
+\task $\displaystyle x''+tyx'=0, \quad y''+txy = 0$
+\task $\displaystyle \frac{\partial u}{\partial t} = \frac{\partial^2 u}{\partial s^2} + u^2$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)
+PDE\@, persamaan, berorde $2^{\text{nd}}$, linear, nonhomogen, berkoefisien konstan.\\
+b)
+ODE\@, persamaan, berorde $1^{\text{st}}$, linear, nonhomogen, tidak berkoefisien konstan, tidak otonom.\\
+c)
+ODE\@, persamaan, berorde $7^{\text{th}}$, linear, homogen, berkoefisien konstan, otonom.\\
+d)
+ODE\@, persamaan, berorde $2^{\text{nd}}$, linear, nonhomogen, berkoefisien konstan, otonom.\\
+e)
+ODE\@, sistem, berorde $2^{\text{nd}}$, nonlinear.\\
+f)
+PDE\@, persamaan, berorde $2^{\text{nd}}$, nonlinear.
+}
+
+\begin{exercise}
+Tuliskan bentuk umum persamaan diferensial biasa linear orde \emph{nol}.
+Tuliskan solusi umumnya.
+\end{exercise}
+\exsol{%
+persamaan: $a(x) y = b(x)$, solusi: $y = \frac{b(x)}{a(x)}$.
+}
+
+\begin{exercise}
+Untuk nilai $k$ yang mana $\frac{dx}{dt}+x^k = t^{k+2}$ bersifat linear?
+Petunjuk: Ada dua jawaban.
+\end{exercise}
+\exsol{%
+$k=0$ atau $k=1$
+}

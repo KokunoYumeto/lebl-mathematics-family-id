@@ -1,0 +1,27 @@
+% R008 — Guide to Cultivating Complex Analysis (Bahasa Indonesia)
+% Reader-facing translation unit: source/ca-v1.9/ca.tex lines 1054–1072.
+% Source release: v1.9 (commit a4d25d9ba37a486a5a020219eb8bd4e6602fd14c).
+% Translation provenance: OpenAI Codex gpt-5.6-sol, Ultra, acting on the user's request.
+% Preserve source footnote formula, label, notation, and matrix structure.
+
+\subsection{Representasi matriks bilangan kompleks}
+
+Karena $\C$ adalah $\R^2$, kita dapat memandang
+$\C$ sebagai ruang vektor real berdimensi dua dengan mengabaikan perkalian
+kompleks.
+Basis standarnya adalah $1$ dan $i$.
+Untuk memasukkan kembali perkalian ke dalam pembahasan, kita memandang
+operator linear pada $\R^2$.
+Diberikan bilangan kompleks $\xi$, pemetaan $z \mapsto \xi z$ merupakan
+operator linear-real\footnote{$L \colon \C \to \C$ bersifat linear-real jika
+$L(a z + b w) = aL(z)+bL(z)$ untuk semua $a,b \in \R$ dan $z,w \in \C$.}.
+Suatu operator linear-real pada $\R^2$ diberikan oleh matriks real
+berukuran $2 \times 2$.
+Tepatnya, bilangan kompleks $\xi = a+ib$ dapat direpresentasikan oleh matriks
+real berukuran $2 \times 2$
+\begin{equation} \label{eq:complexnumbermatrix}
+\begin{bmatrix}
+a & -b \\
+b & a
+\end{bmatrix} .
+\end{equation}
