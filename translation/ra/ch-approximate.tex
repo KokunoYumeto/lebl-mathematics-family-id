@@ -93,41 +93,40 @@ dan definisikan \emph{\myindex{modulus}} sebagai
 \end{equation*}
 \end{defn}
 
-Modulus is the complex analogue of the absolute value and
-has similar properties.
-For example,
-$\sabs{zw} = \sabs{z} \, \sabs{w}$ (exercise).
-The complex conjugate is a reflection of the plane across the real axis.
-The real numbers are precisely those numbers for which the imaginary
-part $y=0$.  In particular, they are precisely those numbers which satisfy
-the equation
+Modulus merupakan analog kompleks dari nilai mutlak dan
+memiliki sifat-sifat serupa.
+Sebagai contoh,
+$\sabs{zw} = \sabs{z} \, \sabs{w}$ (latihan).
+Konjugat kompleks merupakan pencerminan bidang terhadap sumbu real.
+Bilangan real tepatnya adalah bilangan-bilangan yang bagian imajinernya
+$y=0$. Secara khusus, bilangan-bilangan tersebut tepatnya adalah
+bilangan yang memenuhi persamaan
 \begin{equation*}
 z = \bar{z} .
 \end{equation*}
 
-As $\C$ is really $\R^2$, we let the metric on $\C$ be the standard
-euclidean metric on $\R^2$.
-In particular,
+Karena $\C$ sebenarnya adalah $\R^2$, kita gunakan pada $\C$ metrik
+Euklides standar pada $\R^2$.
+Secara khusus,
 \begin{equation*}
 \sabs{z} = d(z,0) , \qquad 
-\text{and also} \qquad 
+\text{dan juga} \qquad 
 \sabs{z-w} = d(z,w) .
 \end{equation*}
-So the topology on $\C$ is
-the same exact topology as the standard topology on $\R^2$
-with the euclidean metric,
-and $\sabs{z}$ is equal to the euclidean norm on $\R^2$.
-Importantly, since $\R^2$ is a complete metric space, then
-so is $\C$.
-As $\sabs{z}$ is the euclidean norm on $\R^2$, we have the
-\emph{triangle inequality}\index{triangle inequality!complex numbers}
-of both flavors:
+Jadi, topologi pada $\C$ sama persis dengan topologi standar pada $\R^2$
+dengan metrik Euklides,
+dan $\sabs{z}$ sama dengan norma Euklides pada $\R^2$.
+Yang penting, karena $\R^2$ merupakan ruang metrik lengkap, maka
+$\C$ juga demikian.
+Karena $\sabs{z}$ merupakan norma Euklides pada $\R^2$, kita memiliki
+\emph{ketaksamaan segitiga}\index{ketaksamaan segitiga!bilangan kompleks}
+dalam kedua bentuk:
 \begin{equation*}
-\sabs{z+w} \leq \sabs{z}+\sabs{w} \qquad \text{and} \qquad
+\sabs{z+w} \leq \sabs{z}+\sabs{w} \qquad \text{dan} \qquad
 \big\lvert \sabs{z}-\sabs{w} \big\rvert \leq \sabs{z-w} .
 \end{equation*}
 
-The complex conjugate and the modulus are even more intimately related:
+Konjugat kompleks dan modulus ternyata berkaitan lebih erat:
 \begin{equation*}
 \sabs{z}^2 =
 x^2+y^2 =
@@ -136,56 +135,55 @@ z \bar{z} .
 \end{equation*}
 
 \begin{remark}
-There is no natural ordering on the complex numbers.
-In particular,
-no ordering that makes the complex numbers into an ordered field.
-Ordering is one of the things we lose when we go from real to complex
-numbers.
+Tidak ada urutan alami pada bilangan kompleks.
+Secara khusus,
+tidak ada urutan yang menjadikan bilangan kompleks sebagai lapangan terurut.
+Pengurutan adalah salah satu hal yang hilang ketika kita beralih dari bilangan real
+ke bilangan kompleks.
 \end{remark}
 
-\subsection{Complex numbers and limits}
+\subsection{Bilangan kompleks dan limit}
 
-Algebraic operations with complex numbers are
-continuous because convergence in 
-$\R^2$ is the same as convergence for each component, and we already know
-that the real algebraic operations are continuous.  For example,
-write $z_n = x_n + i\,y_n$ and
-$w_n = s_n + i\,t_n$, and suppose that
-$\lim_{n\to\infty} z_n = z = x+i\,y$ and $\lim_{n\to\infty} w_n = w = s+i\,t$.
-Let us show
+Operasi aljabar pada bilangan kompleks bersifat kontinu karena konvergensi di
+$\R^2$ sama dengan konvergensi pada setiap komponen, dan kita telah mengetahui
+bahwa operasi aljabar real bersifat kontinu. Sebagai contoh,
+tuliskan $z_n = x_n + i\,y_n$ dan
+$w_n = s_n + i\,t_n$, dan misalkan
+$\lim_{n\to\infty} z_n = z = x+i\,y$ serta $\lim_{n\to\infty} w_n = w = s+i\,t$.
+Mari kita tunjukkan
 \begin{equation*}
 \lim_{n\to\infty} z_n w_n = zw .
 \end{equation*}
-First,
+Pertama,
 \begin{equation*}
 z_n w_n = (x_ns_n-y_nt_n) + i(x_nt_n+y_ns_n) .
 \end{equation*}
-The topology on $\C$ is the same as on $\R^2$, and so
-$x_n \to x$, $y_n \to y$, $s_n \to s$, and $t_n \to t$.
-Hence,
+Topologi pada $\C$ sama dengan topologi pada $\R^2$, sehingga
+$x_n \to x$, $y_n \to y$, $s_n \to s$, dan $t_n \to t$.
+Dengan demikian,
 \begin{equation*}
-\lim_{n\to\infty} (x_ns_n-y_nt_n) = xs-yt \qquad \text{and} \qquad
+\lim_{n\to\infty} (x_ns_n-y_nt_n) = xs-yt \qquad \text{dan} \qquad
 \lim_{n\to\infty} (x_nt_n+y_ns_n) = xt+ys .
 \end{equation*}
-As
+Karena
 $(xs-yt)+i(xt+ys) = zw$,
 \begin{equation*}
 \lim_{n\to\infty} z_n w_n = zw .
 \end{equation*}
 
-Similarly, the modulus and the complex conjugate are continuous functions.  We
-leave the remainder of the proof of the following proposition as an exercise.
+Demikian pula, modulus dan konjugat kompleks merupakan fungsi kontinu. Kita
+serahkan sisa pembuktian proposisi berikut sebagai latihan.
 
 \begin{prop} \label{prop:continuityofcomplex}
-Suppose $\{ z_n \}_{n=1}^\infty$, $\{ w_n \}_{n=1}^\infty$ are sequences of complex numbers converging
-to $z$ and $w$ respectively.  Then
+Misalkan $\{ z_n \}_{n=1}^\infty$, $\{ w_n \}_{n=1}^\infty$ merupakan barisan bilangan kompleks yang masing-masing konvergen
+ke $z$ dan $w$. Maka
 \begin{enumerate}[(i)]
 \item
 $\displaystyle \lim_{n\to \infty} (z_n + w_n) = z + w$.
 \item
 $\displaystyle \lim_{n\to \infty} z_n w_n = z w$.
 \item
-Assuming $w_n \neq 0$ for all $n$ and $w \neq 0$,
+Andaikan $w_n \neq 0$ untuk semua $n$ dan $w \neq 0$,
 $\displaystyle \lim_{n\to \infty} \frac{z_n}{w_n} = \frac{z}{w}$.
 \item
 $\displaystyle \lim_{n\to \infty} \sabs{z_n} = \sabs{z}$.

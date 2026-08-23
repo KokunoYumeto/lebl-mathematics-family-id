@@ -12,10 +12,10 @@ dikerjakan; cakupan setiap buku dinyatakan secara eksplisit di bawah.
 - [Salinan pelestarian Zenodo](https://doi.org/10.5281/zenodo.22070430)
   (concept DOI: [10.5281/zenodo.22059779](https://doi.org/10.5281/zenodo.22059779))
 
-PDF Jilid II sengaja berakhir tepat setelah keenam latihan pada akhir Bagian
-10.7, penggantian variabel. Bab 11 dan ekor sesudahnya belum diterjemahkan dan
-tidak muncul dalam pembaca. Tidak ada ekor berbahasa Inggris yang disamarkan
-sebagai bagian edisi Indonesia.
+PDF Jilid II pada rilis U228 sengaja berakhir tepat setelah keenam latihan pada
+akhir Bagian 10.7, penggantian variabel. Pohon `main` melanjutkan Bab 11 secara
+kontigu sampai proposisi kontinuitas bilangan kompleks (U231), tetapi kelanjutan
+itu belum dimasukkan ke PDF rilis dan tidak disamarkan sebagai bagian pembaca.
 
 ## Status korpus
 
@@ -26,9 +26,12 @@ sebagai bagian edisi Indonesia.
 | R008 | *Guide to Cultivating Complex Analysis* | C50 | belum diterjemahkan |
 
 Checkpoint U228 yang dipublikasikan memuat 228 unit R006 yang diterima: 225
-unit isi dan tiga driver pembaca. Pohon `main` melanjutkan terjemahan ke 230
-unit (227 unit isi dan tiga driver), termasuk pembukaan bidang kompleks serta
-definisi bagian real/imajiner, konjugat, dan modulus pada `ch-approximate.tex`.
+unit isi dan tiga driver pembaca. Pohon `main` melanjutkan terjemahan ke 231
+unit (228 unit isi dan tiga driver), termasuk pembukaan bidang kompleks,
+definisi bagian real/imajiner, konjugat dan modulus, serta sifat dan limit
+bilangan kompleks melalui proposisi kontinuitas pada `ch-approximate.tex`.
+Audit bounded U231 tercatat di
+[`qa/R006_COMPLEX_PLANE_U231_20260823.md`](qa/R006_COMPLEX_PLANE_U231_20260823.md).
 Backend produksi v0.3 adalah checkpoint deterministik yang
 telah divalidasi untuk 167 unit; 61 unit yang lebih baru sudah ada dalam
 manifes dan ledger hidup, tetapi belum diklaim sebagai proyeksi backend v0.4.
