@@ -6,29 +6,28 @@ dikerjakan; cakupan setiap buku dinyatakan secara eksplisit di bawah.
 
 ## Mulai membaca
 
-- **[Analisis Dasar I - edisi lengkap, 334 halaman](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/download/r006-v6.3-id-wip.2026.08.23.u227/Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf)**
-- **[Analisis Dasar II - WIP sampai bukti lengkap Teorema 10.7.2, 154 halaman](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/download/r006-v6.3-id-wip.2026.08.23.u227/Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_Akhir_Bukti_Teorema_Penggantian_Variabel.pdf)**
-- [Rilis GitHub U227](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/r006-v6.3-id-wip.2026.08.23.u227)
+- **[Analisis Dasar I - edisi lengkap, 334 halaman](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/download/r006-v6.3-id-wip.2026.08.23.u228/Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf)**
+- **[Analisis Dasar II - WIP sampai akhir Bagian 10.7, 155 halaman](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/download/r006-v6.3-id-wip.2026.08.23.u228/Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_Akhir_Bagian_10.7.pdf)**
+- [Rilis GitHub U228](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/r006-v6.3-id-wip.2026.08.23.u228)
 - [Salinan pelestarian Zenodo](https://doi.org/10.5281/zenodo.22063321)
   (concept DOI: [10.5281/zenodo.22059779](https://doi.org/10.5281/zenodo.22059779))
 
-PDF Jilid II sengaja berakhir tepat setelah bukti lengkap Teorema 10.7.2,
-penggantian variabel. Pembukaan Bagian 10.7, Proposisi 10.7.1, pernyataan
-teorema, gambar, dan bukti sudah disertakan. Latihan Bagian 10.7 belum
-diterjemahkan dan tidak muncul dalam pembaca. Tidak ada ekor berbahasa Inggris
-yang disamarkan sebagai bagian edisi Indonesia.
+PDF Jilid II sengaja berakhir tepat setelah keenam latihan pada akhir Bagian
+10.7, penggantian variabel. Bab 11 dan ekor sesudahnya belum diterjemahkan dan
+tidak muncul dalam pembaca. Tidak ada ekor berbahasa Inggris yang disamarkan
+sebagai bagian edisi Indonesia.
 
 ## Status korpus
 
 | ID | Buku | Peran kurikulum | Status Bahasa Indonesia |
 |---|---|---|---|
-| R006 | *Basic Analysis I–II* | C10/C20 | Jilid I lengkap; Jilid II sampai bukti lengkap Teorema 10.7.2, dengan latihan Bagian 10.7 belum diterjemahkan |
+| R006 | *Basic Analysis I–II* | C10/C20 | Jilid I lengkap; Jilid II sampai akhir Bagian 10.7 (Bab 11 dan seterusnya belum diterjemahkan) |
 | R007 | *Notes on Diffy Qs* | B70 | belum diterjemahkan |
 | R008 | *Guide to Cultivating Complex Analysis* | C50 | belum diterjemahkan |
 
-Checkpoint ini memuat 227 unit R006 yang diterima: 224 unit isi dan tiga
+Checkpoint ini memuat 228 unit R006 yang diterima: 225 unit isi dan tiga
 driver pembaca. Backend produksi v0.3 adalah checkpoint deterministik yang
-telah divalidasi untuk 167 unit; 60 unit yang lebih baru sudah ada dalam
+telah divalidasi untuk 167 unit; 61 unit yang lebih baru sudah ada dalam
 manifes dan ledger hidup, tetapi belum diklaim sebagai proyeksi backend v0.4.
 
 ## Isi repositori
