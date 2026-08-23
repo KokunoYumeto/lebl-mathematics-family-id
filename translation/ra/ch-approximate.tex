@@ -2,91 +2,91 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Functions as Limits} \label{approx:chapter}
+\chapter{Fungsi sebagai Limit} \label{approx:chapter}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Complex numbers}
+\section{Bilangan kompleks}
 \label{sec:complexnums}
 
 %mbxINTROSUBSECTION
 
-\sectionnotes{half a lecture}
+\sectionnotes{setengah kuliah}
 
-\subsection{The complex plane}
+\subsection{Bidang kompleks}
 
-In this chapter, we consider approximation of functions, or in other words,
-functions as limits of sequences and series.
-We will extend some results we already saw to a somewhat more
-general setting, and we will look at some completely new results.
-In particular, we consider complex-valued functions.
-We gave complex numbers as examples before, but
-let us start from scratch and properly define the complex number field.
+Dalam bab ini, kita membahas aproksimasi fungsi, atau dengan kata lain,
+fungsi sebagai limit barisan dan deret.
+Kita akan memperluas beberapa hasil yang telah kita lihat ke suatu
+latar yang sedikit lebih umum, dan akan melihat beberapa hasil yang sama sekali baru.
+Secara khusus, kita membahas fungsi bernilai kompleks.
+Sebelumnya kita telah memberikan bilangan kompleks sebagai contoh, tetapi
+mari kita mulai dari awal dan mendefinisikan lapangan bilangan kompleks secara tepat.
 
-A complex number is just a pair $(x,y) \in \R^2$ on which we define
-multiplication (see below).
-We call the set the \emph{complex numbers}\index{complex number}
-and denote it by $\C$.
-We identify $x \in \R$ with $(x,0) \in \C$.
-The $x$-axis is then called the \emph{\myindex{real axis}} and the $y$-axis is
-called the \emph{\myindex{imaginary axis}}.
-As $\C$ is just the plane, we also call the set $\C$ the
-\emph{\myindex{complex plane}}.
+Bilangan kompleks hanyalah pasangan $(x,y) \in \R^2$ yang padanya kita
+mendefinisikan perkalian (lihat di bawah).
+Kita menyebut himpunan ini \emph{bilangan kompleks}\index{bilangan kompleks}
+dan menotasikannya dengan $\C$.
+Kita mengidentifikasi $x \in \R$ dengan $(x,0) \in \C$.
+Sumbu-$x$ kemudian disebut \emph{\myindex{sumbu real}} dan sumbu-$y$ disebut
+\emph{\myindex{sumbu imajiner}}.
+Karena $\C$ hanyalah bidang, kita juga menyebut himpunan $\C$ sebagai
+\emph{\myindex{bidang kompleks}}.
 
-Define:
+Definisikan:
 \begin{equation*}
 (x,y) + (s,t) \coloneqq (x+s,y+t) , \qquad
 (x,y) (s,t) \coloneqq (xs-yt,xt+ys) .
 \end{equation*}
-Under the identification above, we have $0 = (0,0)$ and $1 = (1,0)$.  These
-two operations make the plane into a field (exercise).
-We write a complex number $(x,y)$ as $x+iy$, where we
-define\footnote{Note that engineers use $j$ instead of $i$.}
+Dengan identifikasi di atas, kita memiliki $0 = (0,0)$ dan $1 = (1,0)$.
+Kedua operasi ini menjadikan bidang tersebut sebuah lapangan (latihan).
+Kita menulis bilangan kompleks $(x,y)$ sebagai $x+iy$, dengan
+mendefinisikan\footnote{Perhatikan bahwa para insinyur menggunakan $j$ sebagai pengganti $i$.}
 \glsadd{not:imaginary}
 \begin{equation*}
 i \coloneqq (0,1) .
 \end{equation*}
-Notice that $i^2 = (0,1)(0,1) = (0-1,0+0) = -1$.
-That is, $i$ is a solution to the polynomial equation
+Perhatikan bahwa $i^2 = (0,1)(0,1) = (0-1,0+0) = -1$.
+Artinya, $i$ adalah solusi persamaan polinomial
 \begin{equation*}
 z^2+1=0 .
 \end{equation*}
-From now on, we will not use the notation $(x,y)$ and use only $x+iy$.
-See \figureref{fig:complexplane}.
+Mulai sekarang, kita tidak akan menggunakan notasi $(x,y)$ dan hanya menggunakan $x+iy$.
+Lihat \figureref{fig:complexplane}.
 \begin{myfigureht}
 \myincludegraphics{complexplane}{%
-Diagram of a number in the complex plane.  The number 1 is marked on the
-horizontal axis to the right of the origin,
-and the number i is marked on the vertical axis above the origin.
-The number x is marked on the horizontal axis and a number i y is marked
-on the vertical axis.  The combination x plus i y is marked at the point
+Diagram sebuah bilangan pada bidang kompleks. Bilangan 1 ditandai pada
+sumbu horizontal di sebelah kanan titik asal,
+dan bilangan i ditandai pada sumbu vertikal di atas titik asal.
+Bilangan x ditandai pada sumbu horizontal dan bilangan i y ditandai
+pada sumbu vertikal. Kombinasi x ditambah i y ditandai pada titik
 (x,y).}
-\caption{The points $1$, $i$, $x$, $iy$, and $x+iy$ in the complex
-plane.\label{fig:complexplane}}
+\caption{Titik-titik $1$, $i$, $x$, $iy$, dan $x+iy$ pada bidang
+kompleks.\label{fig:complexplane}}
 \end{myfigureht}
 
-We generally use $x,y,r,s,t$ for real values and $z,w,\xi,\zeta$
-for complex values, although that is not a hard and fast rule.  In
-particular, $z$ is often used as a third real variable in $\R^3$.
+Kita umumnya menggunakan $x,y,r,s,t$ untuk nilai real dan $z,w,\xi,\zeta$
+untuk nilai kompleks, meskipun ini bukan aturan yang kaku. Khususnya,
+$z$ sering digunakan sebagai variabel real ketiga dalam $\R^3$.
 
 \begin{defn}
-Suppose $z= x+iy$.
-We call $x$ 
-the \emph{\myindex{real part}} of $z$, and 
-we call $y$
-the \emph{\myindex{imaginary part}} of $z$.  We write
+Misalkan $z= x+iy$.
+Kita menyebut $x$ 
+sebagai \emph{\myindex{bagian real}} dari $z$, dan 
+menyebut $y$
+sebagai \emph{\myindex{bagian imajiner}} dari $z$. Kita menulis
 \glsadd{not:realpart}\glsadd{not:imagpart}
 \begin{equation*}
 \Re\, z \coloneqq x , \qquad
 \Im\, z \coloneqq y .
 \end{equation*}
-Define 
+Definisikan
 \glsadd{not:conj}
-\emph{\myindex{complex conjugate}} as
+\emph{\myindex{konjugat kompleks}} sebagai
 \begin{equation*}
 \bar{z} \coloneqq x-iy ,
 \end{equation*}
-and define \emph{\myindex{modulus}} as
+dan definisikan \emph{\myindex{modulus}} sebagai
 \glsadd{not:modulus}
 \begin{equation*}
 \sabs{z} \coloneqq \sqrt{x^2+y^2} .

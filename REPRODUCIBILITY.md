@@ -1,4 +1,4 @@
-# Batas dan reproduksi paket sumber U228
+# Batas dan reproduksi paket sumber U228 / kelanjutan main U230
 
 Paket ini mempertahankan pekerjaan publik pada 23 Agustus 2026.
 
@@ -6,8 +6,10 @@ Paket ini mempertahankan pekerjaan publik pada 23 Agustus 2026.
   diterima berurutan sampai akhir Bagian 10.7, penggantian variabel. Materi
   sesudah batas itu tetap berupa sumber upstream dan tidak diklaim telah
   diterjemahkan.
-- `translation/TRANSLATION_MANIFEST.jsonl` mengikat 228 unit: 225 unit isi dan
-  tiga driver pembaca, masing-masing dengan irisan sumber/sasaran dan SHA-256.
+- `translation/TRANSLATION_MANIFEST.jsonl` mengikat 230 unit pada pohon `main`:
+  227 unit isi dan tiga driver pembaca, masing-masing dengan irisan
+  sumber/sasaran dan SHA-256. Rilis U228 yang dipreservasi membekukan 228 unit;
+  U229/U230 adalah kelanjutan main setelah batas publik itu.
 - `release/u228/` menyediakan overlay framing yang menghasilkan pembaca WIP
   Jilid II 155 halaman dan berhenti tepat setelah keenam latihan Bagian 10.7.
 - `control/` memuat terminologi, komponen hak, dan koreksi sumber yang diperlukan
@@ -17,7 +19,8 @@ Paket ini mempertahankan pekerjaan publik pada 23 Agustus 2026.
   backend v0.4. Paket ringkas tidak memuat seed historis v0.1/v0.2, sehingga v0.3
   adalah snapshot terikat hash, bukan build yang berdiri sendiri.
 - `qa/` memuat bukti build Jilid I, bukti tiga unit penutup Bagian 10.6, bukti
-  teorema penggantian variabel, dan pembaca WIP U228 155 halaman.
+  teorema penggantian variabel, pembaca WIP U228 155 halaman, serta audit
+  slice U229/U230 pada `R006_COMPLEX_PLANE_U229_U230_20260823.md`.
 
 Urutan reproduksi pembaca U228 dijelaskan di `release/u228/README.md`. Foto
 sampul ritel `cover*.png`, `cover*.xcf`, dan thumbnail terkait tidak ada dalam

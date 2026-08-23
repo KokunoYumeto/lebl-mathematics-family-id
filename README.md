@@ -9,7 +9,7 @@ dikerjakan; cakupan setiap buku dinyatakan secara eksplisit di bawah.
 - **[Analisis Dasar I - edisi lengkap, 334 halaman](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/download/r006-v6.3-id-wip.2026.08.23.u228/Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf)**
 - **[Analisis Dasar II - WIP sampai akhir Bagian 10.7, 155 halaman](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/download/r006-v6.3-id-wip.2026.08.23.u228/Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_Akhir_Bagian_10.7.pdf)**
 - [Rilis GitHub U228](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/r006-v6.3-id-wip.2026.08.23.u228)
-- [Salinan pelestarian Zenodo](https://doi.org/10.5281/zenodo.22063321)
+- [Salinan pelestarian Zenodo](https://doi.org/10.5281/zenodo.22070430)
   (concept DOI: [10.5281/zenodo.22059779](https://doi.org/10.5281/zenodo.22059779))
 
 PDF Jilid II sengaja berakhir tepat setelah keenam latihan pada akhir Bagian
@@ -25,8 +25,11 @@ sebagai bagian edisi Indonesia.
 | R007 | *Notes on Diffy Qs* | B70 | belum diterjemahkan |
 | R008 | *Guide to Cultivating Complex Analysis* | C50 | belum diterjemahkan |
 
-Checkpoint ini memuat 228 unit R006 yang diterima: 225 unit isi dan tiga
-driver pembaca. Backend produksi v0.3 adalah checkpoint deterministik yang
+Checkpoint U228 yang dipublikasikan memuat 228 unit R006 yang diterima: 225
+unit isi dan tiga driver pembaca. Pohon `main` melanjutkan terjemahan ke 230
+unit (227 unit isi dan tiga driver), termasuk pembukaan bidang kompleks serta
+definisi bagian real/imajiner, konjugat, dan modulus pada `ch-approximate.tex`.
+Backend produksi v0.3 adalah checkpoint deterministik yang
 telah divalidasi untuk 167 unit; 61 unit yang lebih baru sudah ada dalam
 manifes dan ledger hidup, tetapi belum diklaim sebagai proyeksi backend v0.4.
 
