@@ -718,33 +718,33 @@ konvergen seragam dan karenanya kontinu berdasarkan \corref{cor:metricuniformcon
 pada \figureref{fig:fouriersern2}).
 \end{example}
 
-\subsection{Integration}
+\subsection{Integrasi}
 
 \begin{prop} \label{prop:complexlimitswapintegral}
-Suppose $f_n \colon [a,b] \to \C$
-are Riemann integrable and suppose that $\{ f_n \}_{n=1}^\infty$ converges
-uniformly to $f \colon [a,b] \to \C$.  Then $f$ is Riemann integrable
-and
+Misalkan $f_n \colon [a,b] \to \C$
+terintegralkan secara Riemann dan andaikan $\{ f_n \}_{n=1}^\infty$ konvergen
+seragam ke $f \colon [a,b] \to \C$. Maka $f$ terintegralkan secara Riemann
+dan
 \begin{equation*}
 \int_a^b f = \lim_{n\to \infty} \int_a^b f_n .
 \end{equation*}
 \end{prop}
 
-Since the integral of a complex-valued function is just the integral of
-the real and imaginary parts separately,
-the proof follows directly by the results of
-\volIref{\chapterref*{vI-fs:chapter} of volume~I}{\chapterref{fs:chapter}}.
-We leave the details as an exercise.
+Karena integral suatu fungsi bernilai kompleks hanyalah integral
+bagian real dan imajinernya secara terpisah,
+pembuktiannya langsung mengikuti hasil-hasil dalam
+\volIref{\chapterref*{vI-fs:chapter} dari jilid~I}{\chapterref{fs:chapter}}.
+Rinciannya kita serahkan sebagai latihan.
 
 \begin{cor}
 \pagebreak[2]
-Suppose $f_n \colon [a,b] \to \C$
-are Riemann integrable and suppose that
+Misalkan $f_n \colon [a,b] \to \C$
+terintegralkan secara Riemann dan andaikan bahwa
 \begin{equation*}
 \sum_{n=1}^\infty f_n(x)
 \end{equation*}
-converges uniformly.  Then the series is Riemann integrable on $[a,b]$
-and
+konvergen seragam. Maka deret tersebut terintegralkan secara Riemann pada $[a,b]$
+dan
 \begin{equation*}
 \int_a^b \sum_{n=1}^\infty f_n(x) \,dx
 =
@@ -753,7 +753,7 @@ and
 \end{cor}
 
 \begin{example}
-Let us show how to integrate a Fourier series.
+Mari kita tunjukkan cara mengintegralkan suatu deret Fourier.
 \begin{equation*}
 \int_{0}^x \sum_{n=1}^\infty \frac{\cos(nt)}{n^2} \,dt
 =
@@ -761,101 +761,101 @@ Let us show how to integrate a Fourier series.
 =
 \sum_{n=1}^\infty \frac{\sin(nx)}{n^3}
 \end{equation*}
-The swapping of integral and sum is possible because of uniform convergence,
-which we have proved before using the Weierstrass $M$-test
+Pertukaran integral dan jumlah dimungkinkan oleh konvergensi seragam,
+yang sebelumnya telah kita buktikan menggunakan uji-$M$ Weierstrass
 (\thmref{thm:weiermtest}).
 \end{example}
 
-We remark that we can swap integrals and limits under far less stringent hypotheses,
-but for that we would need a stronger integral than the Riemann integral,
-such as the Lebesgue integral.
+Perhatikan bahwa kita dapat mempertukarkan integral dan limit di bawah hipotesis yang jauh lebih lemah,
+tetapi untuk itu kita memerlukan integral yang lebih kuat daripada integral Riemann,
+seperti integral Lebesgue.
 
-\subsection{Differentiation}
+\subsection{Diferensiasi}
 
-Recall that a complex-valued function
-$f \colon [a,b] \to \C$, where $f(x) = u(x)+i\,v(x)$,
-is differentiable if $u$ and $v$ are differentiable
-and the derivative is
+Ingat bahwa suatu fungsi bernilai kompleks
+$f \colon [a,b] \to \C$, dengan $f(x) = u(x)+i\,v(x)$,
+diferensiabel jika $u$ dan $v$ diferensiabel
+dan turunannya adalah
 \begin{equation*}
 f'(x) = u'(x)+i\,v'(x) .
 \end{equation*}
 
-The proof of the following theorem is to apply the corresponding theorem for
-real functions to $u$ and $v$, and is left as an exercise.
+Pembuktian teorema berikut dilakukan dengan menerapkan teorema yang bersesuaian untuk
+fungsi real pada $u$ dan $v$, dan diserahkan sebagai latihan.
 
 \begin{thm} \label{thm:dersconvergecomplex}
-Let $I \subset \R$ be a bounded interval and let
-$f_n \colon I \to \C$ be continuously differentiable functions.
-Suppose $\{ f_n' \}_{n=1}^\infty$ converges uniformly to $g \colon I \to \C$,
-and suppose $\{ f_n(c) \}_{n=1}^\infty$ is a
-convergent sequence for some $c \in I$.  Then $\{ f_n \}_{n=1}^\infty$ converges uniformly to 
-a continuously differentiable function $f \colon I \to \C$, and $f' = g$.
+Misalkan $I \subset \R$ suatu interval terbatas dan misalkan
+$f_n \colon I \to \C$ fungsi-fungsi yang diferensiabel secara kontinu.
+Andaikan $\{ f_n' \}_{n=1}^\infty$ konvergen seragam ke $g \colon I \to \C$,
+dan andaikan $\{ f_n(c) \}_{n=1}^\infty$ merupakan suatu
+barisan konvergen untuk suatu $c \in I$.  Maka $\{ f_n \}_{n=1}^\infty$ konvergen seragam ke 
+suatu fungsi $f \colon I \to \C$ yang diferensiabel secara kontinu, dan $f' = g$.
 \end{thm}
 
-Uniform convergence of the functions themselves is not enough.
-The derivatives may not converge and the limit function need not even be
-differentiable.
-In \sectionref{sec:stoneweier}, we will prove that
-continuous functions are uniform limits of polynomials, yet as the following
-example demonstrates, a continuous function need not be differentiable
-anywhere.
+Konvergensi seragam dari fungsi-fungsi itu sendiri tidaklah cukup.
+Turunannya mungkin tidak konvergen dan fungsi limitnya bahkan tidak harus
+diferensiabel.
+Dalam \sectionref{sec:stoneweier}, kita akan membuktikan bahwa
+fungsi-fungsi kontinu merupakan limit seragam dari polinom, tetapi seperti yang ditunjukkan oleh
+contoh berikut, suatu fungsi kontinu tidak harus diferensiabel
+di titik mana pun.
 
 \begin{example}
-There exist continuous nowhere differentiable functions.
-Such functions are often called
-\emph{Weierstrass functions}\index{Weierstrass function},
-although this
-particular one, essentially due to
+Terdapat fungsi kontinu yang tidak diferensiabel di mana pun.
+Fungsi semacam itu sering disebut
+\emph{fungsi Weierstrass}\index{fungsi Weierstrass},
+meskipun fungsi
+khusus ini, yang pada hakikatnya berasal dari
 Takagi\footnote{\href{https://en.wikipedia.org/wiki/Teiji_Takagi}{Teiji
-Takagi} (1875--1960) was a Japanese mathematician.}, is a different example than what Weierstrass gave.
-Define
+Takagi} (1875--1960) adalah seorang matematikawan Jepang.}, merupakan contoh yang berbeda dari yang diberikan Weierstrass.
+Definisikan
 \begin{equation*}
-\varphi(x) \coloneqq \sabs{x} \qquad \text{for } x \in [-1,1] .
+\varphi(x) \coloneqq \sabs{x} \qquad \text{untuk } x \in [-1,1] .
 \end{equation*}
-Extend $\varphi$ to all of $\R$ by making it
-2-periodic:
-Decree that
-$\varphi(x) = \varphi(x+2)$.  The function $\varphi \colon \R \to \R$
-is continuous, in fact, $\babs{\varphi(x)-\varphi(y)} \leq \sabs{x-y}$ (why?).
-See \figureref{fig:triangwave}.
+Perluas $\varphi$ ke seluruh $\R$ dengan menjadikannya
+2-periodik:
+Tetapkan bahwa
+$\varphi(x) = \varphi(x+2)$.  Fungsi $\varphi \colon \R \to \R$
+kontinu; bahkan, $\babs{\varphi(x)-\varphi(y)} \leq \sabs{x-y}$ (mengapa?).
+Lihat \figureref{fig:triangwave}.
 \begin{myfigureht}
 \myincludegraphics{triangwave}{%
-A function whose graph is a sequence of triangles, that is,
-the function is 0 at all the even integers, and it is 1 at all the odd
-integers.  In between the graph is a straight line.}
-\caption{The 2-periodic function $\varphi$.\label{fig:triangwave}}
+Suatu fungsi yang grafiknya berupa deretan segitiga; yakni,
+fungsi tersebut bernilai 0 pada semua bilangan bulat genap, dan bernilai 1 pada semua bilangan bulat
+ganjil.  Di antaranya, grafik tersebut berupa garis lurus.}
+\caption{Fungsi 2-periodik $\varphi$.\label{fig:triangwave}}
 \end{myfigureht}
 
-As $\sum_{n=0}^\infty {\left(\frac{3}{4}\right)}^n$ converges and $\babs{\varphi(x)} \leq
-1$ for all $x$, by the $M$-test
+Karena $\sum_{n=0}^\infty {\left(\frac{3}{4}\right)}^n$ konvergen dan $\babs{\varphi(x)} \leq
+1$ untuk semua $x$, menurut uji-$M$
 (\thmref{thm:weiermtest}),
 \begin{equation*}
 f(x) \coloneqq \sum_{n=0}^\infty 
 {\left(\frac{3}{4}\right)}^n \varphi(4^n x)
 \end{equation*}
-converges uniformly and hence is continuous.
-See \figureref{fig:nowherediff}.
+konvergen seragam sehingga kontinu.
+Lihat \figureref{fig:nowherediff}.
 
 \begin{myfigureht}
 \myincludegraphics{nowherediff}{%
-A graph of an extremely wild function with lots of 
-thin high peaks and low minima as if it was drawn by scribbling extremely
-fast up and down with a pen.}
-\caption{Plot of the nowhere differentiable function $f$.\label{fig:nowherediff}}
+Grafik suatu fungsi yang sangat liar dengan banyak 
+puncak tinggi yang runcing dan titik minimum yang rendah, seakan-akan digambar dengan menggerakkan pena secara sangat
+cepat naik turun.}
+\caption{Grafik fungsi $f$ yang tidak diferensiabel di mana pun.\label{fig:nowherediff}}
 \end{myfigureht}
 
-We claim $f \colon
-\R \to \R$ is nowhere differentiable.
-Fix $x$, and we will show $f$ is not differentiable at $x$.
-Define
+Kita mengklaim bahwa $f \colon
+\R \to \R$ tidak diferensiabel di mana pun.
+Ambil sembarang $x$, dan akan kita tunjukkan bahwa $f$ tidak diferensiabel di $x$.
+Definisikan
 \begin{equation*}
 \delta_m \coloneqq \pm \frac{1}{2} 4^{-m} ,
 \avoidbreak
 \end{equation*}
-where the sign is chosen so that there is no integer
-between $4^m x$ and $4^m(x+\delta_m) = 4^m x \pm \frac{1}{2}$.
+dengan tanda dipilih sedemikian sehingga tidak ada bilangan bulat
+di antara $4^m x$ dan $4^m(x+\delta_m) = 4^m x \pm \frac{1}{2}$.
 
-We want to look at the difference quotient
+Kita akan meninjau hasil bagi selisih
 \begin{equation*}
 \frac{f(x+\delta_m)-f(x)}{\delta_m}
 =
@@ -863,20 +863,20 @@ We want to look at the difference quotient
 {\left(\frac{3}{4}\right)}^n
 \frac{\varphi\bigl(4^n(x+\delta_m)\bigr)-\varphi(4^nx)}{\delta_m} .
 \end{equation*}
-Fix $m$ for a moment.  Consider the expression inside the series:
+Untuk sementara, tetapkan $m$.  Tinjau ekspresi di dalam deret:
 \begin{equation*}
 \gamma_{n} \coloneqq
 \frac{\varphi\bigl(4^n(x+\delta_m)\bigr)-\varphi(4^nx)}{\delta_m} .
 \end{equation*}
-If $n > m$, then $4^n\delta_m$ is an even integer.  As $\varphi$
-is 2-periodic we get that $\gamma_n = 0$.
+Jika $n > m$, maka $4^n\delta_m$ merupakan bilangan bulat genap.  Karena $\varphi$
+2-periodik, diperoleh $\gamma_n = 0$.
 
-As there is no integer between 
-$4^m(x+\delta_m) = 4^m x\pm\nicefrac{1}{2}$ and $4^m x$, then on this interval
-$\varphi(t) = \pm t + \ell$ for some integer $\ell$.
-In particular,
+Karena tidak ada bilangan bulat di antara 
+$4^m(x+\delta_m) = 4^m x\pm\nicefrac{1}{2}$ dan $4^m x$, maka pada interval ini
+$\varphi(t) = \pm t + \ell$ untuk suatu bilangan bulat $\ell$.
+Secara khusus,
 $\abs{\varphi\bigl(4^m(x+ \delta_m)\bigr)-\varphi(4^mx)} =
-\abs{4^mx\pm\nicefrac{1}{2}-4^mx} = \nicefrac{1}{2}$.  Therefore,
+\abs{4^mx\pm\nicefrac{1}{2}-4^mx} = \nicefrac{1}{2}$.  Oleh karena itu,
 \begin{equation*}
 \sabs{\gamma_m} =
 \abs{
@@ -884,7 +884,7 @@ $\abs{\varphi\bigl(4^m(x+ \delta_m)\bigr)-\varphi(4^mx)} =
 }
 = 4^m .
 \end{equation*}
-Similarly, suppose $n < m$.  Since $\babs{\varphi(s) -\varphi(t)} \leq
+Demikian pula, andaikan $n < m$.  Karena $\babs{\varphi(s) -\varphi(t)} \leq
 \sabs{s-t}$,
 \begin{equation*}
 \sabs{\gamma_n} =
@@ -895,7 +895,7 @@ Similarly, suppose $n < m$.  Since $\babs{\varphi(s) -\varphi(t)} \leq
 .
 \end{equation*}
 
-And so
+Dengan demikian,
 \begin{equation*}
 \begin{split}
 \abs{
@@ -944,25 +944,25 @@ And so
 \frac{3^m +1}{2} .
 \end{split}
 \end{equation*}
-As $m \to \infty$, we have
-$\delta_m \to 0$, but $\frac{3^m+1}{2}$
-goes to infinity.  So $f$ cannot be differentiable at~$x$.
+Ketika $m \to \infty$, kita memperoleh
+$\delta_m \to 0$, tetapi $\frac{3^m+1}{2}$
+menuju tak hingga.  Jadi $f$ tidak mungkin diferensiabel di~$x$.
 \end{example}
 
-\subsection{Exercises}
+\subsection{Latihan}
 
 \begin{exercise}
-Prove \propref{prop:uniformconvbounded}.
+Buktikan \propref{prop:uniformconvbounded}.
 \end{exercise}
 
 \begin{exercise}
-Prove \propref{prop:unifcauchymetric}.
+Buktikan \propref{prop:unifcauchymetric}.
 \end{exercise}
 
 \begin{exercise} \label{exercise:CXCnormedspace}
-Suppose $(X,d)$ is a compact metric space.
-Prove that the uniform norm $\snorm{\cdot}_X$ is a norm on the vector space of
-continuous complex-valued functions $C(X,\C)$.
+Misalkan $(X,d)$ adalah ruang metrik kompak.
+Buktikan bahwa norma seragam $\snorm{\cdot}_X$ merupakan norma pada ruang vektor
+fungsi-fungsi kontinu bernilai kompleks $C(X,\C)$.
 \end{exercise}
 
 \begin{exercise}
@@ -970,63 +970,63 @@ continuous complex-valued functions $C(X,\C)$.
 \leavevmode
 \begin{enumerate}[a)]
 \item
-Prove that
+Buktikan bahwa
 $f_n(x) \coloneqq 2^{-n} \sin(2^n x)$
-converge uniformly to zero, but there exists a dense set $D \subset \R$
-such that $\lim_{n\to\infty} f_n'(x) = 1$ for all $x \in D$.
+konvergen seragam ke nol, tetapi terdapat himpunan padat $D \subset \R$
+sedemikian sehingga $\lim_{n\to\infty} f_n'(x) = 1$ untuk setiap $x \in D$.
 \item
-Prove that
+Buktikan bahwa
 $\sum_{n=1}^\infty 2^{-n} \sin(2^n x)$
-converges uniformly to a continuous function,
-and there exists a dense set $D \subset \R$
-where the derivatives of the partial sums do not converge.
+konvergen seragam ke suatu fungsi kontinu,
+dan terdapat himpunan padat $D \subset \R$
+sehingga turunan jumlah-jumlah parsial tersebut tidak konvergen di setiap titik himpunan itu.
 \end{enumerate}
 \end{exercise}
 
 \begin{exercise}
-Prove that $\snorm{f}_{C^1} \coloneqq \snorm{f}_{[a,b]}+\snorm{f'}_{[a,b]}$
-is a norm on the vector space of
-continuously differentiable complex-valued functions $C^1\bigl([a,b],\C\bigr)$.
+Buktikan bahwa $\snorm{f}_{C^1} \coloneqq \snorm{f}_{[a,b]}+\snorm{f'}_{[a,b]}$
+merupakan norma pada ruang vektor fungsi-fungsi bernilai kompleks yang
+diferensiabel secara kontinu $C^1\bigl([a,b],\C\bigr)$.
 \end{exercise}
 
 \begin{exercise}
-Prove \thmref{thm:dersconvergecomplex}.
+Buktikan \thmref{thm:dersconvergecomplex}.
 \end{exercise}
 
 \begin{exercise}
-Prove \propref{prop:complexlimitswapintegral} by reducing to the real
-result.
+Buktikan \propref{prop:complexlimitswapintegral} dengan mereduksinya ke
+hasil untuk kasus real.
 \end{exercise}
 
 \begin{exercise}
-Work through the following counterexample to the converse of
-the Weierstrass $M$-test (\thmref{thm:weiermtest}).  Define
-$f_n \colon [0,1] \to \R$ by
+Kerjakan rincian contoh penyangkal berikut untuk kebalikan
+uji-$M$ Weierstrass (\thmref{thm:weiermtest}).  Definisikan
+$f_n \colon [0,1] \to \R$ melalui
 \begin{equation*}
 f_n(x) \coloneqq
 \begin{cases}
-\frac{1}{n} & \text{if } \frac{1}{n+1} < x < \frac{1}{n},\\
-0	    & \text{else.}
+\frac{1}{n} & \text{jika } \frac{1}{n+1} < x < \frac{1}{n},\\
+0	    & \text{selainnya.}
 \end{cases}
 \end{equation*}
-Prove that $\sum_{n=1}^\infty f_n$ converges uniformly, but
+Buktikan bahwa $\sum_{n=1}^\infty f_n$ konvergen seragam, tetapi
 $\sum_{n=1}^\infty \snorm{f_n}_{[0,1]}$
-does not converge.
+tidak konvergen.
 \end{exercise}
 
 \begin{exercise}
-Suppose $f_n \colon [0,1] \to \R$ are monotone increasing functions and
-suppose that $\sum_{n=1}^\infty f_n$ converges pointwise.  Prove that
+Misalkan $f_n \colon [0,1] \to \R$ adalah fungsi-fungsi yang monoton naik dan
+misalkan $\sum_{n=1}^\infty f_n$ konvergen titik demi titik.  Buktikan bahwa
 $\sum_{n=1}^\infty f_n$
-converges uniformly.
+konvergen seragam.
 \end{exercise}
 
 \begin{exercise}
-Prove that
+Buktikan bahwa
 \begin{equation*}
 \sum_{n=1}^\infty e^{-nx}
 \end{equation*}
-converges for all $x > 0$ to a differentiable function.
+konvergen untuk setiap $x > 0$ ke suatu fungsi yang diferensiabel.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

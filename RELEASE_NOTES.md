@@ -1,81 +1,84 @@
-# Keluarga Matematika Lebl — cuplikan kerja U310 — 2026-08-23
+# Keluarga Matematika Lebl — cuplikan kerja U319 — 2026-08-24
 
 Ini adalah cuplikan pelestarian publik yang jujur dan dapat direproduksi,
 bukan klaim bahwa seluruh korpus tiga buku telah selesai.
 
 ## Isi pembaca
 
-- `Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf`: edisi Bahasa Indonesia R006
-  Jilid I yang lengkap, 334 halaman.
-- `Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_11.2.1_Kekontinuan.pdf`:
-  cuplikan kerja R006 Jilid II, 176 halaman. Berkas berakhir tepat setelah
-  Subbagian 11.2.1, `Kekontinuan`; `Integration` dan seluruh ekor berikutnya
-  tidak dimuat.
-- `lebl-mathematics-family-id-source-backend-wip-u310-20260823.zip`: sumber
-  LaTeX, manifes terjemahan, terminologi, ledger koreksi, bukti otoritas dan
-  QA, overlay pembaca U310, serta backend modular netral-lokal.
+- `Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_11.2_Latihan.pdf`:
+  cuplikan R006 Jilid II, 180 halaman. Berkas berakhir tepat setelah seluruh
+  sepuluh latihan yang menutup Bagian 11.2, `Pertukaran limit`; Bagian 11.3
+  dan ekor berikutnya tidak dimuat.
+- `Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf`: edisi R006 Jilid I yang
+  lengkap, 334 halaman.
+- `lebl-mathematics-family-id-source-backend-wip-u319-20260824.zip`: sumber
+  LaTeX, manifes terjemahan, terminologi, ledger koreksi, bukti otoritas/QA,
+  overlay pembaca U319, dan backend modular netral-lokal.
 
 Foto sampul ritel yang haknya tidak termasuk dalam lisensi buku sengaja
 dikecualikan. Pembaca Jilid II dibuat melalui cutoff sumber, bukan pemotongan
-halaman PDF; daftar isi, bibliografi, indeks, dan daftar notasi tetap dibangun
-secara normal.
+PDF; daftar isi, bibliografi, indeks, dan daftar notasi dibangun secara normal.
 
 ## Cakupan terjemahan
 
-Manifes hidup memuat 310 unit yang diterima:
+Manifes memuat 319 unit yang diterima:
 
-- R006: 251 unit; Jilid I lengkap dan Jilid II sampai akhir Subbagian 11.2.1;
-- R007: 12 unit; bab pendahuluan lengkap, berikutnya persamaan diferensial orde
-  satu;
-- R008: 47 unit; sampai pemetaan eksponensial atas garis dan pita, berikutnya
-  bola Riemann.
+- R006: 254 unit; Jilid I lengkap dan Jilid II sampai seluruh Latihan Bagian
+  11.2;
+- R007: 15 unit; pendahuluan lengkap dan Bab 1 sampai rumus integral tentu
+  untuk kondisi awal;
+- R008: 50 unit; sampai akhir bagian bola Riemann.
 
-Manifes adalah 437.400 byte dengan SHA-256
-`00f16705241a2ff94a80c5971cbefd7ade17fbc5529e46f71738436bd09a88ec`.
-Tidak ada ID unit duplikat, dan semua hash komponen berbentuk SHA-256 lowercase
-yang valid.
+Manifes adalah 452.035 byte dengan SHA-256
+`0718642d139d80c505605d6cd47d5f836ba15dd0bde7a7f02e344922fee4d703`.
+Tidak ada ID unit duplikat dan seluruh hash komponen valid.
 
 ## Backend modular v0.4
 
-Checkpoint produksi U310 memuat 2.623 rekaman netral-lokal dan lima belas
-proyeksi CSV. Dua build independen masing-masing menghasilkan 26 berkas,
-11.027.539 byte, dan tidak mempunyai satu pun perbedaan path, ukuran, atau
-hash. Hash aliran rekaman kanonik adalah
-`027a1a2007a10343cbcef904387450dacb40d4f3ddbedd7c5327c50b507b265d`.
+Checkpoint `v0.4-live-2026.08.23-u319-tqa-a` memuat 2.650 rekaman netral-lokal
+dan lima belas proyeksi CSV. Dua build independen masing-masing menghasilkan
+26 berkas, 11.227.185 byte, dan tidak mempunyai satu pun perbedaan path,
+ukuran, atau hash. Hash aliran rekaman kanonik adalah
+`062f7e040cc79ac7b8c428bfd2b7149a831262402a69d46800242ae1efc01c29`.
 Validasi skema JSON, integritas referensial, dialek CSV, dan putar-balik tepat
-2.623 rekaman semuanya lulus.
+2.650 rekaman semuanya lulus. Build replay tidak disertakan agar byte tidak
+digandakan.
 
 ## QA istilah, matematika, dan layout
 
-Pemeriksaan istilah satu kali mencari sumber Indonesia pada bidang yang sama.
-Paket TeX arXiv kandidat diperiksa tetapi ternyata berbahasa Inggris dan tidak
-dipakai sebagai bukti. Dua sumber akademik Indonesia diperiksa sebagai
-fallback; hanya `hasil kali Kartesius` dan `terhitung tak hingga` yang perlu
-disempurnakan dan dipropagasikan.
+Paket TeX arXiv kandidat diperiksa tetapi berbahasa Inggris dan tidak dipakai
+sebagai bukti istilah Indonesia. Sumber akademik Indonesia pada analisis real
+diperiksa sebagai fallback. Bentuk pilihan konsisten `lingkungan` dan
+`subbarisan` dipertahankan; variasi lapangan dicatat dalam ledger tanpa
+memaksakan penggantian teks yang tidak diperlukan.
 
-Build penuh dengan ekor sumber membuktikan 672 ID unik dan 952 referensi tanpa
-target yang hilang. Build pembaca cutoff lulus converter tanpa error. Tiga
-referensi ke materi yang sengaja berada setelah cutoff mempertahankan nomor
-sumbernya tanpa menyertakan atau memalsukan target. Lima pass TeX menghasilkan
-PDF 176 halaman tanpa error, undefined control sequence, unresolved-reference
-warning, missing character, atau U+FFFD. Halaman pembuka, seluruh batas baru,
-gambar, dan back matter dirender dan diperiksa: blok teks terpusat dan memenuhi
-halaman, rumus terbaca, dan tidak ada clipping atau overlap.
+Audit visual terakhir menemukan lima residu Inggris dalam daftar jalur mata
+kuliah pada pendahuluan. Semuanya dilokalkan menjadi `Bab`, `dan`, dan
+`mungkin` tanpa mengubah rujukan atau isi matematika, lalu pembaca penuh
+dibangun ulang. Build integrasi membuktikan 672 ID unik dan 952 referensi
+internal tanpa target hilang. Build cutoff mempunyai 627 ID unik; hanya dua
+target setelah batas yang sengaja dibekukan. Lima pass TeX stabil, semua 76
+font tertanam, dan ekstraksi tidak memuat U+FFFD atau referensi `??`.
+
+PDF akhir 180 halaman adalah 1.909.146 byte dengan SHA-256
+`303ec82e16d133e938247f6611e31e36cb435ff0285a7b33fbbf4f8a5eb91725`.
+Halaman 1-6, 167-180, dan seluruh lokasi overfull dirender dan diperiksa:
+tidak ada clipping, overlap, glyph rusak, atau formula tidak terbaca.
 
 ## Otoritas, provenance, dan lisensi
 
-Sumber matematika adalah Jiří Lebl, *Basic Analysis: Introduction to Real
+Sumber matematika R006 adalah Jiří Lebl, *Basic Analysis: Introduction to Real
 Analysis*, rilis `v6.3`, commit
 `00f5a8635cfba0d908cd95da53068572f30687b1`, tree
 `6e7d5c2c3116ff305ff27a5ac2923f26836b6bb7`.
 
-Edisi turunan ini memilih jalur **CC BY-SA 4.0** dari lisensi ganda sumber.
-Jiří Lebl dikreditkan sebagai penulis. Penerjemahan, penyuntingan, QA istilah,
-metadata aksesibilitas, dan integrasi backend dilakukan oleh **OpenAI Codex
-gpt-5.6-sol, Ultra** atas instruksi pengguna. Ini bukan edisi resmi dan tidak
-menyiratkan dukungan penulis atau institusi mana pun.
+Edisi turunan memilih jalur **CC BY-SA 4.0**. Jiří Lebl dikreditkan sebagai
+penulis. Penerjemahan, penyuntingan, QA istilah, metadata aksesibilitas, dan
+integrasi backend dilakukan oleh **OpenAI Codex gpt-5.6-sol, Ultra** atas
+instruksi pengguna. Ini bukan edisi resmi dan tidak menyiratkan dukungan
+penulis atau institusi mana pun.
 
-Zenodo mempertahankan concept DOI `10.5281/zenodo.22059779`; versi U310 adalah
-`10.5281/zenodo.22071911`. Repositori publik berada di
+Zenodo mempertahankan concept DOI `10.5281/zenodo.22059779`; versi U319 adalah
+`10.5281/zenodo.22073827`. Repositori publik berada di
 <https://github.com/KokunoYumeto/lebl-mathematics-family-id> dan rilis GitHub
-U310 mencerminkan payload substantif yang sama.
+U319 mencerminkan delapan aset substantif yang sama.

@@ -1,0 +1,28 @@
+R007 bounded translation QA receipt
+
+Unit title: Notasi integral tak tentu dan antiturunan
+Source: source/diffyqs-v6.11/ch-first-order-ode.tex
+Target: translation/diffyqs/ch-first-order-ode.tex
+Source inclusive raw lines: 50-74
+Target inclusive raw lines: 50-74
+Alignment separator: source and target raw line 49 are blank
+Exact next cursor: source and target raw line 76 (raw line 75 is the blank separator)
+
+Hash normalization for slices: UTF-8, LF line endings, exactly one trailing LF
+Source slice SHA-256: 3265d7eba7d8c8f2f6dd6446c35d59b292c0c9af3026ff9a9d8a2aaf8ff6ee75
+Target slice SHA-256: 1ecb75ef1c2276586ad75407812a48c7d5a71d729e6a6f0cc680709a0c301ae3
+
+Full target byte count: 2836
+Full target SHA-256: 5442db1cef4b38a54486aa0ccce9c91f49b31f63e77e69ff7b7fec26b6c2073e
+
+Deterministic QA:
+PASS - source and target slices each contain 25 raw lines
+PASS - TeX command sequence and counts are identical
+PASS - environment sequence is identical: begin{equation*}, end{equation*}
+PASS - inline math sequence is byte-identical
+PASS - display formula body is byte-identical
+PASS - target brace counts are balanced
+PASS - TeX triple-hyphen dash sentinel is preserved
+PASS - target is UTF-8 without BOM, uses LF line endings, and ends with LF
+
+No solution environment or solution state occurs in this unit.

@@ -1,0 +1,28 @@
+R007 bounded translation QA receipt
+
+Unit title: Solusi integral tentu untuk kondisi awal
+Source: source/diffyqs-v6.11/ch-first-order-ode.tex
+Target: translation/diffyqs/ch-first-order-ode.tex
+Source inclusive raw lines: 76-87
+Target inclusive raw lines: 76-87
+Alignment separator: source and target raw line 75 are blank
+Exact next cursor: source and target raw line 89 (raw line 88 is the blank separator)
+
+Hash normalization for slices: UTF-8, LF line endings, exactly one trailing LF
+Source slice SHA-256: b229494c720e7d5f3bbfee7031b1c660c835a68075aaf52c043859372a5e6d28
+Target slice SHA-256: 138e389387c6ea83e7e4bdd2822d4d619ca1eedfa0ad217d0e75b5dcbd814320
+
+Full target byte count: 3477
+Full target SHA-256: 4d5ac6eb202388bd0d9c5bc324e607634bed11e7643c5654058e8bf4f5ec4756
+
+Deterministic QA:
+PASS - source and target slices each contain 12 raw lines
+PASS - TeX command sequence and counts are identical (7 commands each)
+PASS - environment sequence is identical: begin{equation}, end{equation}
+PASS - label/ID sequence is identical: label{int:eqdef}
+PASS - inline math sequence is byte-identical (9 fragments each)
+PASS - display equation block is byte-identical
+PASS - target brace nesting is balanced
+PASS - target is strict UTF-8 without BOM, uses LF line endings, and ends with LF
+
+No xref, figure, exercise, or solution environment/state occurs in this unit.

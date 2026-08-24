@@ -1,0 +1,86 @@
+{
+  "schema": "lebl-id-r006-translation-qa-v1",
+  "generated_at": "2026-08-23T22:32:35+02:00",
+  "resource_id": "R006",
+  "unit_id": "ra.v2.functions-as-limits.complex-plane.integration",
+  "unit_title_source": "Integration",
+  "unit_title_target": "Integrasi",
+  "source": {
+    "path": "source/ra-v6.3/ch-approximate.tex",
+    "raw_line_range_inclusive": [726, 776],
+    "line_count": 51,
+    "slice_sha256": "72d0a0bed01c87d6a78fe057734dd5709d96b5b15ac86cb5b9ce24fbb8c3eb66"
+  },
+  "target": {
+    "path": "translation/ra/ch-approximate.tex",
+    "raw_line_range_inclusive": [721, 771],
+    "line_count": 51,
+    "slice_sha256": "5f0a9ec3af5a601bc49684878f551a60b2e5bf92b776a5a0437d0090f582ec73",
+    "full_file_bytes": 181708,
+    "full_file_sha256": "21e9656e7b2d32c4b00413179fb4f4952da73d9c80ffac0d5a321a4d3a0cfe8a"
+  },
+  "coherent_stop_boundary": {
+    "source_next_nonblank_raw_line": 778,
+    "source_next_nonblank_text": "\\subsection{Differentiation}",
+    "target_next_nonblank_raw_line": 773,
+    "target_next_nonblank_text": "\\subsection{Differentiation}"
+  },
+  "validation": {
+    "ordered_tex_command_stream": {
+      "state": "pass",
+      "source_count": 64,
+      "target_count": 64
+    },
+    "ordered_environment_stream": {
+      "state": "pass",
+      "source_token_count": 14,
+      "target_token_count": 14
+    },
+    "ordered_inline_math_payloads": {
+      "state": "pass",
+      "source_count": 7,
+      "target_count": 7,
+      "comparison": "byte-identical UTF-8 payloads"
+    },
+    "ordered_display_equation_payloads": {
+      "state": "pass",
+      "source_count": 4,
+      "target_count": 4,
+      "comparison": "byte-identical UTF-8 payloads"
+    },
+    "ordered_label_and_reference_arguments": {
+      "state": "pass",
+      "source_count": 4,
+      "target_count": 4,
+      "arguments": [
+        "prop:complexlimitswapintegral",
+        "vI-fs:chapter",
+        "fs:chapter",
+        "thm:weiermtest"
+      ]
+    },
+    "slice_braces": {
+      "state": "pass",
+      "source_open_close": [37, 37],
+      "target_open_close": [37, 37],
+      "minimum_nesting_depth": 0,
+      "final_nesting_depth": 0
+    },
+    "full_target_tex_syntax": {
+      "state": "pass",
+      "brace_open_close": [3817, 3817],
+      "brace_minimum_nesting_depth": 0,
+      "brace_final_nesting_depth": 0,
+      "environment_stack_balanced": true
+    },
+    "mojibake_scan": {
+      "state": "pass",
+      "markers_found": []
+    },
+    "reader_facing_prose_review": {
+      "state": "pass",
+      "method": "line-by-line bilingual review for natural id-ID terminology and source completeness"
+    }
+  },
+  "notes": "The complete Integration subsection was translated contiguously. The proposition, explanatory proof note, corollary, Fourier-series example, and Lebesgue-integral qualification are intact. No source, manifest, control, backend, shared ledger, or publication file was edited."
+}

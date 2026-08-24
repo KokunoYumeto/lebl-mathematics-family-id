@@ -1,0 +1,55 @@
+{
+  "task": "Lebl R006 bounded Indonesian translation",
+  "completed_title": {
+    "source": "\\subsection{Exercises}",
+    "target": "\\subsection{Latihan}"
+  },
+  "source_slice": {
+    "path": "source/ra-v6.3/ch-approximate.tex",
+    "raw_line_start": 957,
+    "raw_line_end": 1035,
+    "hash_convention": "SHA-256 of UTF-8 bytes after LF normalization with exactly one trailing LF",
+    "sha256": "262d5de5c90f3800583b3ac2f082ab925161d88bc60bfc3afa8112faad0f3177"
+  },
+  "target_slice": {
+    "path": "translation/ra/ch-approximate.tex",
+    "raw_line_start": 952,
+    "raw_line_end": 1030,
+    "hash_convention": "SHA-256 of UTF-8 bytes after LF normalization with exactly one trailing LF",
+    "sha256": "227d1327ce7efd777caadefb8b58761a619955e0e1c455c45497bf237fec874d"
+  },
+  "target_file": {
+    "path": "translation/ra/ch-approximate.tex",
+    "byte_count": 182186,
+    "sha256_raw_bytes": "b06e83c2a6508e059bea6e21bd41fed65b5c75545f7221da12090e59b7713e61",
+    "encoding": "UTF-8 without BOM",
+    "newline_style": "LF"
+  },
+  "next_cursor": {
+    "source_raw_line": 1037,
+    "target_raw_line": 1032,
+    "source_next_translatable_line": 1040,
+    "target_next_translatable_line": 1035,
+    "title": "Power series and analytic functions"
+  },
+  "deterministic_validation": {
+    "inline_math_sequence_exact_after_localized_text_normalization": true,
+    "inline_math_count_source_target": "19/19",
+    "display_math_sequence_exact": true,
+    "display_math_count_source_target": "2/2",
+    "latex_macro_sequence_exact": true,
+    "latex_macro_count_source_target": "85/85",
+    "environment_sequence_exact": true,
+    "environment_count_source_target": "28/28",
+    "label_xref_sequence_exact": true,
+    "label_xref_count_source_target": "6/6",
+    "exercise_count_source_target": "10/10",
+    "solution_environment_count_source_target": "0/0",
+    "brace_balance_source_target": "0/0"
+  },
+  "independent_review": {
+    "status": "pass_after_correction",
+    "correction": "Localized two retained case-condition strings from if/else to jika/selainnya, matching established chapter usage.",
+    "result": "All 10 exercises, formulas, commands, environments, label, five cross-references, ordering, and zero-solution state remain exact; the subsection closes the section before the next section heading."
+  }
+}

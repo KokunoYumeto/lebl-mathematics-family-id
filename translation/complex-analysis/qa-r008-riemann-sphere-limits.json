@@ -1,0 +1,82 @@
+{
+  "schema": "lebl-r008-translation-qa-v1",
+  "resource_id": "R008",
+  "unit_id": "ca.v1.9.riemann-sphere.limits",
+  "title_source": "Limits on the Riemann sphere",
+  "title_target": "Limit pada bola Riemann",
+  "qa_date": "2026-08-23",
+  "status": "pass",
+  "source": {
+    "path": "source/ca-v1.9/ca.tex",
+    "raw_lines_inclusive": "1539-1585",
+    "line_count": 47,
+    "slice_encoding": "UTF-8 with LF line endings and one trailing LF",
+    "slice_sha256_utf8_lf": "40bc2396812771a6893ea3afe1276e8a86efe62c2508874be3805b87418cfbe0"
+  },
+  "target": {
+    "path": "translation/complex-analysis/ca-riemann-sphere-limits-id.tex",
+    "translated_payload_lines_inclusive": "7-53",
+    "translated_payload_line_count": 47,
+    "translated_payload_encoding": "UTF-8 with LF line endings and one trailing LF",
+    "translated_payload_sha256_utf8_lf": "853672553e198863ce1f00ef3afb9bb48d743ef22e89f465e0f15e561fab673f",
+    "full_file_encoding": "UTF-8 without BOM, LF line endings, trailing LF",
+    "full_file_byte_count": 2222,
+    "full_file_sha256": "5f7001c401328a0f842311c87d784254f1b4986ce5b5883b54e6e05cf3246e2d"
+  },
+  "deterministic_checks": {
+    "source_target_payload_line_counts_equal": true,
+    "per_line_ordered_tex_command_and_inline_math_signatures_exact": true,
+    "ordered_tex_command_tokens": {
+      "source": 85,
+      "target": 85,
+      "exact": true
+    },
+    "ordered_environment_boundary_tokens": {
+      "source": 14,
+      "target": 14,
+      "exact": true
+    },
+    "ordered_inline_math_payloads": {
+      "source": 31,
+      "target": 31,
+      "exact": true
+    },
+    "ordered_equation_star_blocks": {
+      "source": 1,
+      "target": 1,
+      "exact": true
+    },
+    "dollar_delimiters": {
+      "source": 62,
+      "target": 62,
+      "equal": true
+    },
+    "braces": {
+      "source_open": 32,
+      "source_close": 32,
+      "target_open": 32,
+      "target_close": 32,
+      "target_final_depth": 0,
+      "target_min_depth": 0,
+      "balanced": true
+    },
+    "exercise_environments": {
+      "source": 5,
+      "target": 5,
+      "equal": true
+    },
+    "neededexmark_comments": {
+      "source": 5,
+      "target": 5,
+      "equal": true
+    },
+    "mojibake_count": 0
+  },
+  "semantic_review": {
+    "status": "pass",
+    "terminology": "Natural id-ID wording uses bola Riemann, limit, kompaktifikasi satu titik, and the required glossary-consistent metrik Euklides.",
+    "content_and_state": "The definition, compactness observation, all formulas, and five unsolved exercise states are preserved; no solution or new mathematical content was added."
+  },
+  "scope_note": "The limits-on-the-Riemann-sphere definition and its complete five-exercise equivalence block form one coherent contiguous unit.",
+  "next_boundary": "source/ca-v1.9/ca.tex raw line 1587, the paragraph beginning 'It then makes sense to talk about the value of nicefrac{1}{z} at the origin'"
+}

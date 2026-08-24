@@ -1,0 +1,74 @@
+{
+  "schema": "lebl-r008-translation-qa-v1",
+  "resource_id": "R008",
+  "unit_id": "ca.v1.9.riemann-sphere.stereographic-projection",
+  "title_source": "The Riemann sphere: stereographic projection",
+  "title_target": "Bola Riemann: proyeksi stereografik",
+  "qa_date": "2026-08-23",
+  "status": "pass",
+  "source": {
+    "path": "source/ca-v1.9/ca.tex",
+    "raw_lines_inclusive": "1454-1537",
+    "line_count": 84,
+    "slice_sha256_utf8_lf": "873df103288b6d5033cb9d2de5d2c82be277cc7131fb879a632d77f6780670f8"
+  },
+  "target": {
+    "path": "translation/complex-analysis/ca-riemann-sphere-stereographic-projection-id.tex",
+    "translated_payload_lines_inclusive": "7-90",
+    "translated_payload_line_count": 84,
+    "translated_payload_sha256_utf8_lf": "3260d67b61361e94390f45c3651d86c465ebc9f30a8d059ffcccff8a98fcf219",
+    "full_file_byte_count": 4091,
+    "full_file_sha256": "05aa56bc725b19e9b60632572a9abe8e89a73aca72ea946acffbef74ca1098e9"
+  },
+  "deterministic_checks": {
+    "source_target_payload_line_counts_equal": true,
+    "ordered_tex_command_tokens": {
+      "source": 124,
+      "target": 124,
+      "exact": true
+    },
+    "ordered_environment_boundary_tokens": {
+      "source": 18,
+      "target": 18,
+      "exact": true
+    },
+    "ordered_inline_math_payloads": {
+      "source": 52,
+      "target": 52,
+      "exact": true
+    },
+    "ordered_equation_star_blocks_after_text_prose_normalization": {
+      "source": 3,
+      "target": 3,
+      "exact": true,
+      "localized_text_macros": "three if-to-jika instances and one and-to-dan instance"
+    },
+    "protected_macro_arguments": {
+      "glsadd": { "source": 2, "target": 2, "ordered_exact": true },
+      "figureref": { "source": 1, "target": 1, "ordered_exact": true },
+      "exampleref": { "source": 1, "target": 1, "ordered_exact": true },
+      "includegraphics": { "source": 1, "target": 1, "ordered_exact": true },
+      "label": { "source": 1, "target": 1, "ordered_exact": true }
+    },
+    "dollar_delimiters": { "source": 104, "target": 104, "equal": true },
+    "braces": {
+      "source_open": 46,
+      "source_close": 46,
+      "target_open": 46,
+      "target_close": 46,
+      "target_final_depth": 0,
+      "target_min_depth": 0,
+      "balanced": true
+    },
+    "exercise_environments": { "source": 3, "target": 3, "equal": true },
+    "neededexmark_comments": { "source": 2, "target": 2, "equal": true },
+    "mojibake_count": 0
+  },
+  "independent_review": {
+    "status": "pass_after_correction",
+    "correction": "Two occurrences of metrik Euclidean were refined to the glossary-consistent natural Indonesian metrik Euklides.",
+    "semantic_and_structural_result": "All 52 inline formulas, three normalized displays, 124 TeX commands, 18 environment tokens, protected identifiers, figure placement, content order, and three unsolved exercise states remain exact."
+  },
+  "scope_note": "Section opening, Riemann-sphere topology motivation, stereographic-projection construction, figure, and all three immediately attached exercises are complete. No solution was added.",
+  "next_boundary": "source/ca-v1.9/ca.tex raw line 1539, the distinct unit on limits on the Riemann sphere"
+}

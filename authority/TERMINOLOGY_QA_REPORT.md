@@ -122,3 +122,44 @@ telah dihapus setelah pemeriksaan ulang 60 halaman menghasilkan nol kemunculan.
 Klaim kedua kini terikat pada buku UAD, halaman cetak 30 / PDF 39, dengan
 identitas, URL, ukuran, hash, ekstraksi, dan render visual di atas. Tidak ada
 perubahan tambahan pada pilihan istilah atau teks terjemahan yang diperlukan.
+
+## Revalidasi independen pada batas U319 — 2026-08-23
+
+Instruksi QA terminologi yang diterima kembali pada batas bagian U319
+diterapkan sebagai revalidasi terhadap byte sumber, bukan sebagai klaim baru
+yang mengabaikan pemeriksaan di atas. Hash paket sumber arXiv:2008.00182 dan
+TeX hasil dekompresi dihitung ulang dan tetap persis
+`c11869e512de4b3e1e8d73a5551669d5090316a981bb17292dd01e3c560a1ec7`
+serta
+`a54893466f4297b1c90361dc588095c8a229e56d9cca6bc35127c51a67545e74`.
+Isi TeX tetap berbahasa Inggris, sehingga kandidat tersebut tetap ditolak
+sebagai bukti istilah Bahasa Indonesia.
+
+Sebagai pemeriksaan silang tambahan, diunduh dan diperiksa langsung:
+
+- Dr. Usmadi, M.Pd., *Analisis Real (Bahan Ajar)*, Program Studi Pendidikan
+  Matematika, Universitas Muhammadiyah Sumatera Barat, 2020,
+  <https://eprints.umsb.ac.id/185/1/Bahan%20Ajar%20Analisis%20Real%202020.pdf>;
+- salinan audit `qa/terminology-field-qa-20260823/Bahan_Ajar_Analisis_Real_2020.pdf`,
+  471.133 byte, 48 halaman, SHA-256
+  `ba65292b6a2230dd00f29725035386e7e8a9300d65bb6a358ba0ae45d36f3d91`;
+- ekstraksi teks berhalaman, 137.746 byte, SHA-256
+  `2c09a2690f1ba868ae5239bb6a5470bc00f43f57ea21b673da43ed842450b3b9`;
+  halaman PDF 13, 23, 40, dan 45 juga dirender dan diperiksa visual.
+
+Sumber tambahan ini secara langsung mendukung `ketaksamaan`, `supremum`
+(`batas atas terkecil`), `himpunan terbuka`, `konvergensi`, `barisan monoton`,
+dan istilah bernama Cauchy serta Bolzano--Weierstrass yang sudah dipilih dalam
+edisi. Sumber memakai `persekitaran` dan juga mencatat `kitaran` untuk
+*neighborhood*; untuk *subsequence*, sumber memakai `sub barisan` dan
+`barisan bagian`. Edisi mempertahankan bentuk utama `lingkungan` dan
+`subbarisan` karena keduanya konsisten di seluruh korpus dan bentuk tertutup
+`subbarisan` merupakan standardisasi morfologis yang lebih baik. Bentuk-bentuk
+yang teramati ditambahkan sebagai varian pada `LEBL-TERM-0135`,
+`LEBL-TERM-0341`, `LEBL-TERM-0625`, dan `LEBL-TERM-0626`. Tidak ada perubahan
+pilihan utama, makna, rumus, atau teks pembaca yang dibenarkan oleh bukti baru,
+sehingga tidak ada propagasi massal yang diperlukan.
+
+Metadata repositori dan rilis sudah memuat identifikasi persis
+`OpenAI Codex gpt-5.6-sol, Ultra` sambil mempertahankan Jiří Lebl sebagai
+penulis sumber dan mempertahankan seluruh kredit kontributor manusia.

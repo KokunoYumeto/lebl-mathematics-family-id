@@ -1,0 +1,53 @@
+% R008 — Guide to Cultivating Complex Analysis (Bahasa Indonesia)
+% Reader-facing translation unit: source/ca-v1.9/ca.tex lines 1539–1585.
+% Source release: v1.9 (commit a4d25d9ba37a486a5a020219eb8bd4e6602fd14c).
+% Translation provenance: OpenAI Codex gpt-5.6-sol, Ultra, acting on the user's request.
+% Preserve source equations, notation, references, labels, figure paths, and exercise states.
+
+Tujuan bola Riemann adalah memberikan nilai $\infty$ pada limit-limit tertentu
+dan memungkinkan pengambilan limit ketika $z$ menuju $\infty$.  Untuk suatu
+fungsi $f \colon U \subset \C_\infty \to \C_\infty$, kita definisikan
+\begin{equation*}
+\lim_{z \to z_0} f(z) = L
+\end{equation*}
+sebagai limit menurut topologi pada bola Riemann,
+termasuk
+kasus ketika $z_0 = \infty$, $L = \infty$, atau keduanya.
+Untungnya, bola Riemann bersifat kompak.
+Memang, secara topologis, bola ini sama dengan
+\myquote{kompaktifikasi satu titik} dari $\C$.
+
+\begin{exbox}
+\begin{exercise}%[\neededexmark]
+Misalkan $L \in \C$ dan $z_0 \in \C$.
+Tunjukkan bahwa $\lim_{z\to z_0} f(z) = L$ dalam pengertian bola Riemann
+jika dan hanya jika $\lim_{z \to z_0} f(z) = L$ dalam pengertian biasa (metrik Euklides
+pada $\C$).
+\end{exercise}
+
+\begin{exercise}%[\neededexmark]
+Misalkan $L \in \C$.
+Tunjukkan bahwa $\lim_{z\to \infty} f(z) = L$ dalam pengertian bola Riemann
+jika dan hanya jika untuk setiap $\epsilon > 0$ terdapat suatu $M$ sedemikian sehingga
+$\sabs{f(z)-L} < \epsilon$ setiap kali $z \in \C$ dan $\sabs{z} > M$.
+\end{exercise}
+
+\begin{exercise}%[\neededexmark]
+Misalkan $z_0 \in \C$.
+Tunjukkan bahwa $\lim_{z\to z_0} f(z) = \infty$ dalam pengertian bola Riemann
+jika dan hanya jika untuk setiap $M > 0$ terdapat suatu $\delta > 0$ sedemikian sehingga
+$\sabs{f(z)} > M$ setiap kali $0 < \sabs{z-z_0} < \delta$.
+\end{exercise}
+
+\begin{exercise}%[\neededexmark]
+Misalkan $L \in \C_\infty$.
+Tunjukkan bahwa $\lim\limits_{z\to\infty} f(z) = L$ jika dan hanya jika
+$\lim\limits_{z \to 0} f(\nicefrac{1}{z}) = L$.
+\end{exercise}
+
+\begin{exercise}%[\neededexmark]
+Misalkan $z_0 \in \C_\infty$.
+Tunjukkan bahwa $\lim\limits_{z\to z_0} f(z) = \infty$ jika dan hanya jika
+$\lim\limits_{z \to z_0} \frac{1}{f(z)} = 0$.
+\end{exercise}
+\end{exbox}

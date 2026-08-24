@@ -1,0 +1,27 @@
+R007 TRANSLATION QA RECEIPT
+Date: 2026-08-23
+
+Unit: First-order equations — Integrals as solutions, opening through first example
+Target title: Persamaan orde pertama — Integral sebagai solusi, pembukaan hingga contoh pertama
+Source: source/diffyqs-v6.11/ch-first-order-ode.tex raw lines 1-48 inclusive
+Source slice: 1464 bytes; SHA-256 ec7c979187badc3497540ffd5b8267cd7c9687428773a028267cdd8a4f945761
+Target: translation/diffyqs/ch-first-order-ode.tex raw lines 1-48 inclusive
+Target file: 1539 bytes; SHA-256 963f5d6cf9310a7d853ee92dcbefcac655c395b0c2aee900df9f1c5ea308636c
+Boundary: complete first example ends at source and target raw line 48; source raw line 49 is blank and the next prose begins at raw line 50.
+
+Deterministic structural QA: PASS
+- Strict UTF-8 decode: pass.
+- Source-slice and target line counts: 48 / 48.
+- Ordered TeX control tokens: 34 / 34, identical.
+- Ordered inline-math payloads: 8 / 8, byte-identical after line normalization.
+- Ordered equation/equation* payloads: 5 / 5, byte-identical after line normalization.
+- Ordered label, cite, and eqref keys: 6 / 6, identical.
+- Ordered begin/end environment tokens: 12 / 12, identical.
+- Opening/closing braces: source 26/26; target 26/26.
+- Decorative comment line: identical.
+- Mojibake signature scan: zero findings.
+
+Bounded prose QA: PASS
+- Chapter and section titles, instructional notes, exposition, and example prose are translated into natural reader-facing id-ID.
+- Mathematical formulas, macros, identifiers, labels, citations, cross-references, environments, emphasis markup, and the source claim sequence are preserved.
+- No prose beyond the coherent raw-line-48 boundary was translated.

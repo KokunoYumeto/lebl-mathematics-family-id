@@ -258,10 +258,12 @@ def validate_schema_documents(backend: Path) -> tuple[dict[str, Any], dict[str, 
     return documents  # type: ignore[return-value]
 
 
-def validate_projection_manifest(manifest: dict[str, Any]) -> None:
+def validate_projection_manifest(
+    manifest: dict[str, Any], schema_version: str = SCHEMA_VERSION
+) -> None:
     if manifest.get("schema_name") != "lebl.backend.projection_manifest":
         raise BackendError("projection manifest: wrong schema_name")
-    if manifest.get("schema_version") != SCHEMA_VERSION:
+    if manifest.get("schema_version") != schema_version:
         raise BackendError("projection manifest: wrong schema_version")
     dialect = manifest.get("csv_dialect")
     if dialect != {"encoding": "utf-8", "line_ending": "LF", "quote_all": True}:
@@ -358,7 +360,9 @@ def add_references(references: list[tuple[str, str]], values: Any, where: str) -
 
 
 def validate_records(
-    records: list[dict[str, Any]], record_schema: dict[str, Any]
+    records: list[dict[str, Any]],
+    record_schema: dict[str, Any],
+    schema_version: str = SCHEMA_VERSION,
 ) -> dict[str, Any]:
     by_id: dict[str, dict[str, Any]] = {}
     semantic_keys: set[str] = set()
@@ -377,7 +381,7 @@ def validate_records(
             raise BackendError(f"{record_type} {record.get('id')}: missing fields {missing}")
         if unexpected:
             raise BackendError(f"{record_type} {record.get('id')}: unexpected fields {unexpected}")
-        if record["schema_name"] != SCHEMA_NAME or record["schema_version"] != SCHEMA_VERSION:
+        if record["schema_name"] != SCHEMA_NAME or record["schema_version"] != schema_version:
             raise BackendError(f"{record_type} {record.get('id')}: schema identity mismatch")
         record_id = record["id"]
         key = record["semantic_key"]
@@ -646,7 +650,7 @@ def validate_exercise_support(
 
 
 def validate_dataset(backend: Path, dataset_path: Path) -> tuple[dict[str, Any], list[dict[str, Any]], dict[str, Any]]:
-    record_schema, _dataset_schema, _projection_schema = validate_schema_documents(backend)
+    record_schema, dataset_schema, _projection_schema = validate_schema_documents(backend)
     dataset = load_json(dataset_path)
     required = {
         "schema_name",
@@ -668,7 +672,17 @@ def validate_dataset(backend: Path, dataset_path: Path) -> tuple[dict[str, Any],
     missing = sorted(required - set(dataset))
     if missing:
         raise BackendError(f"dataset manifest: missing fields {missing}")
-    if dataset["schema_name"] != "lebl.backend.dataset" or dataset["schema_version"] != SCHEMA_VERSION:
+    schema_version = dataset.get("schema_version")
+    declared_dataset_version = dataset_schema.get("properties", {}).get("schema_version", {}).get("const")
+    declared_record_version = (
+        record_schema.get("$defs", {}).get("base", {}).get("properties", {}).get("schema_version", {}).get("const")
+    )
+    if (
+        dataset["schema_name"] != "lebl.backend.dataset"
+        or not isinstance(schema_version, str)
+        or schema_version != declared_dataset_version
+        or schema_version != declared_record_version
+    ):
         raise BackendError("dataset manifest: schema identity mismatch")
     if dataset["lane_id"] != LANE_ID or dataset["namespace_uuid"] != str(NAMESPACE_UUID):
         raise BackendError("dataset manifest: lane or namespace mismatch")
@@ -686,7 +700,7 @@ def validate_dataset(backend: Path, dataset_path: Path) -> tuple[dict[str, Any],
     if sha256_bytes(projection_bytes) != dataset["projection_manifest"]["sha256"]:
         raise BackendError("dataset manifest: projection manifest hash mismatch")
     projection_manifest = load_json(projection_path)
-    validate_projection_manifest(projection_manifest)
+    validate_projection_manifest(projection_manifest, schema_version)
 
     records: list[dict[str, Any]] = []
     for stream in dataset["record_streams"]:
@@ -701,7 +715,7 @@ def validate_dataset(backend: Path, dataset_path: Path) -> tuple[dict[str, Any],
         records.extend(stream_records)
     if records != sorted(records, key=lambda item: (item["record_type"], item["id"])):
         raise BackendError("combined record streams are not globally sorted")
-    summary = validate_records(records, record_schema)
+    summary = validate_records(records, record_schema, schema_version)
     by_id = {record["id"]: record for record in records}
     for resource_id in dataset["resource_ids"]:
         if resource_id not in by_id or by_id[resource_id]["record_type"] != "resource":
@@ -873,8 +887,13 @@ def main() -> int:
         print(result)
         return 0
 
-    backend = Path(__file__).resolve().parents[1]
     dataset_path = resolve_dataset(args.dataset)
+    self_contained_backend = dataset_path.parent
+    schema_names = ("record.schema.json", "dataset.schema.json", "projection-manifest.schema.json")
+    if all((self_contained_backend / "schemas" / name).is_file() for name in schema_names):
+        backend = self_contained_backend
+    else:
+        backend = Path(__file__).resolve().parents[1]
     projection_manifest, records, summary = validate_dataset(backend, dataset_path)
     if args.command == "validate":
         print(canonical_json(summary))

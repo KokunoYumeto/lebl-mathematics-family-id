@@ -1,0 +1,98 @@
+{
+  "schema": "lebl-r008-translation-qa-v1",
+  "resource_id": "R008",
+  "unit_id": "ca.v1.9.riemann-sphere.infinity-arithmetic",
+  "title_source": "Infinity at infinity and partial arithmetic on the Riemann sphere",
+  "title_target": "Nilai tak hingga dan aritmetika parsial pada bola Riemann",
+  "qa_date": "2026-08-23",
+  "status": "pass",
+  "source": {
+    "path": "source/ca-v1.9/ca.tex",
+    "raw_lines_inclusive": "1587-1644",
+    "line_count": 58,
+    "slice_encoding": "UTF-8 with LF line endings and one trailing LF",
+    "slice_sha256_utf8_lf": "c16d85d58f30095c4331494babfec5d38b69eadba9f4703568af115ef48d2b30"
+  },
+  "target": {
+    "path": "translation/complex-analysis/ca-riemann-sphere-infinity-arithmetic-id.tex",
+    "translated_payload_lines_inclusive": "7-64",
+    "translated_payload_line_count": 58,
+    "translated_payload_encoding": "UTF-8 with LF line endings and one trailing LF",
+    "translated_payload_sha256_utf8_lf": "e77188efa31c770b11e30fcb810b54532608ce0b6ff4ed2b0337fa85594e7205",
+    "full_file_encoding": "UTF-8 without BOM, LF line endings, trailing LF",
+    "full_file_byte_count": 3129,
+    "full_file_sha256": "1c760b51c24c048ff0fd695c75c5dda705274d9fab698ef8a4003556755cbf76"
+  },
+  "deterministic_checks": {
+    "source_target_payload_line_counts_equal": true,
+    "per_line_ordered_tex_command_signatures_exact": true,
+    "ordered_tex_command_tokens": {
+      "source": 97,
+      "target": 97,
+      "exact": true
+    },
+    "ordered_environment_boundary_tokens": {
+      "source": 6,
+      "target": 6,
+      "exact": true
+    },
+    "labels": {
+      "source": 1,
+      "target": 1,
+      "ordered_exact": true
+    },
+    "ordered_inline_math_skeletons_after_text_argument_masking": {
+      "source": 45,
+      "target": 45,
+      "exact": true,
+      "note": "Only the reader-facing prose inside the two text commands in the displayed limit was localized."
+    },
+    "ordered_equation_star_skeletons_after_text_argument_masking": {
+      "source": 1,
+      "target": 1,
+      "exact": true
+    },
+    "dollar_delimiters": {
+      "source": 90,
+      "target": 90,
+      "equal": true
+    },
+    "braces": {
+      "source_open": 44,
+      "source_close": 44,
+      "target_open": 44,
+      "target_close": 44,
+      "target_final_depth": 0,
+      "target_min_depth": 0,
+      "balanced": true
+    },
+    "exercise_environments": {
+      "source": 1,
+      "target": 1,
+      "equal": true
+    },
+    "exbox_environments": {
+      "source": 1,
+      "target": 1,
+      "equal": true
+    },
+    "neededexmark_comments": {
+      "source": 1,
+      "target": 1,
+      "equal": true
+    },
+    "disabled_comment_formula_lines": {
+      "source": 3,
+      "target": 3,
+      "byte_exact": true
+    },
+    "mojibake_count": 0
+  },
+  "semantic_review": {
+    "status": "pass",
+    "terminology": "Natural id-ID wording uses bola Riemann, bilangan real diperluas, polinomial, titik asal, aritmetika parsial, and tidak terdefinisi. This slice has no Euclidean-metric occurrence, so the established term metrik Euklides required no insertion.",
+    "content_and_state": "The value-at-infinity discussion, polynomial exercise and hint, distinction between extended-real and Riemann-sphere limits, partial arithmetic, every formula, the label, and the unsolved exercise state are preserved. The disabled three-line source comment remains byte-exact and commented out."
+  },
+  "scope_note": "The discussion from the value of 1/z at the origin through the undefined Riemann-sphere arithmetic expressions forms one coherent contiguous unit before the next section.",
+  "next_boundary": "source/ca-v1.9/ca.tex raw line 1648, the section heading 'Linear fractional transformations'"
+}

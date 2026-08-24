@@ -1,0 +1,64 @@
+% R008 — Guide to Cultivating Complex Analysis (Bahasa Indonesia)
+% Reader-facing translation unit: source/ca-v1.9/ca.tex lines 1587–1644.
+% Source release: v1.9 (commit a4d25d9ba37a486a5a020219eb8bd4e6602fd14c).
+% Translation provenance: OpenAI Codex gpt-5.6-sol, Ultra, acting on the user's request.
+% Preserve source equations, notation, references, labels, comments, and exercise states.
+
+Dengan demikian, masuk akal untuk menyebut nilai $\nicefrac{1}{z}$ di titik asal
+sebagai $\infty$, dan nilai $z$ di $\infty$ sebagai $\infty$.
+Bahkan, setiap polinomial yang tidak konstan bernilai $\infty$ di $\infty$.
+
+\begin{exbox}
+\begin{exercise}%[\neededexmark]
+\label{exercise:polygoesinf}
+Misalkan $P(z) = a_d z^d + a_{d-1} z^{d-1} + \cdots + a_1 z + a_0$ adalah
+suatu polinomial dengan $a_0,\ldots,a_d \in \C$.  Buktikan bahwa jika $d \geq 1$
+dan $a_d \neq 0$ ($P$ tidak konstan),
+maka $\lim_{z \to \infty} P(z) = \infty$.
+Petunjuk: Jika $a_d = 1$, maka dengan menggunakan
+$\abs{\frac{a_{d-1} z^{d-1} + \cdots + a_1 z + a_0}{z^d}}$, diperoleh
+$\abs{P(z)} \geq \frac{1}{2} \sabs{z}^d$ untuk $z$ bermodulus cukup besar.
+\end{exercise}
+\end{exbox}
+
+Dalam kalkulus dan analisis real dasar, Anda mungkin pernah menjumpai
+limit tak hingga dalam pengertian bilangan real diperluas.
+Meskipun kedua jenis limit tak hingga, baik dalam pengertian
+bilangan real diperluas maupun dalam pengertian bola Riemann,
+tampak serupa dan pada dasarnya menggunakan notasi yang sama,
+keduanya berbeda.
+Sebagai contoh,
+\begin{equation*}
+\lim_{x \to 0} \frac{1}{x} \quad \text{tidak ada,} \qquad \text{tetapi} \qquad
+\lim_{z \to 0} \frac{1}{z} = \infty .
+\end{equation*}
+Di ruas kiri, kita secara tersirat menggunakan pengertian bilangan real diperluas
+($x$ real, bukan?) dan di
+ruas kanan, kita secara tersirat menggunakan pengertian bola Riemann ($z$ tampaknya kompleks).
+Asumsi tersirat semacam itu tentu saja dapat menimbulkan kebingungan.
+Dalam buku ini, limit akan dipahami dalam pengertian bola Riemann
+kecuali dinyatakan lain atau sudah jelas.
+Jika mungkin timbul kebingungan, kita akan menulis $\infty$ pada bilangan real diperluas
+sebagai $+\infty$.
+
+\medskip
+
+Aritmetika (parsial) yang dapat kita
+definisikan secara wajar dengan $\infty$ pada bola Riemann
+cukup berbeda dari
+$\infty$ pada bilangan real diperluas.
+Untuk $c \neq \infty$, kita dapat mendefinisikan $c+\infty = \infty$,
+tetapi baik $\infty+\infty$ maupun $\infty-\infty$ tidak bermakna.
+Sebagai contoh, jika $f(z) = z$ dan $g(z) = c-z$,
+maka $\lim_{z \to \infty} f(z) = \infty$,
+$\lim_{z \to \infty} g(z) = \infty$, tetapi $\lim_{z \to \infty}
+\bigl(f(z)+g(z)\bigr) = c$, sehingga $\infty+\infty$ tidak bermakna.
+Berbeda dari bilangan real diperluas,
+wajar (dan terkadang berguna) untuk mendefinisikan $\nicefrac{c}{0} = \infty$ untuk
+$c \neq 0$, $\nicefrac{c}{\infty} = 0$ untuk $c \neq \infty$,
+dan $c \cdot \infty = \infty$ untuk $c \neq 0$.
+%We could also define $\infty \cdot \infty = \infty$, $\frac{0}{\infty} = 0$,
+%and
+%$\frac{\infty}{0} = \infty$.
+Sebaiknya ungkapan $0 \cdot \infty$, $\nicefrac{0}{0}$, dan
+$\nicefrac{\infty}{\infty}$ dibiarkan tidak terdefinisi.

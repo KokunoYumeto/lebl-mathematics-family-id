@@ -1,0 +1,87 @@
+\chapter{Persamaan orde pertama} \label{fo:chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Integral sebagai solusi}
+\label{integralsols:section}
+
+\sectionnotes{1 pertemuan (atau kurang)\EPref{, \S1.2 dalam \cite{EP}}\BDref{,
+dibahas dalam \S1.2 dan \S2.1 di \cite{BD}}}
+
+Suatu ODE orde pertama adalah persamaan berbentuk
+\begin{equation*}
+\frac{dy}{dx} = f(x,y) ,
+\end{equation*}
+atau cukup
+\begin{equation*}
+y' = f(x,y) .
+\end{equation*}
+Secara umum, tidak ada rumus atau prosedur sederhana yang dapat diikuti untuk
+menemukan solusi.
+Dalam beberapa pertemuan berikutnya, kita akan melihat kasus-kasus ketika solusi
+tidak sulit diperoleh.
+Pada bagian ini, kita meninjau kasus ketika $f$ hanya bergantung pada $x$,
+yaitu persamaannya berbentuk
+\begin{equation} \label{ias:inteq}
+y' = f(x) .
+\end{equation}
+Kita dapat mengintegralkan (mencari antiturunan) kedua ruas persamaan terhadap $x$:
+\begin{equation*}
+\int y'(x) \,dx = \int f(x) \,dx + C ,
+\end{equation*}
+yakni,
+\begin{equation*}
+y(x) = \int f(x) \,dx + C .
+\end{equation*}
+Fungsi $y(x)$ ini sebenarnya adalah solusi umum.
+Jadi, untuk menyelesaikan \eqref{ias:inteq},
+kita mencari suatu antiturunan dari $f(x)$
+lalu menambahkan konstanta sembarang untuk memperoleh solusi umum.
+
+\begin{example}
+Carilah solusi umum dari $y' = 3 x^2$.
+
+Dari kalkulus dasar, kita tahu
+bahwa solusi umum haruslah $y = x^3 + C$. Mari kita periksa dengan
+menurunkannya:
+$y' = 3x^2$. Kita memperoleh kembali \emph{persis} persamaan semula.
+\end{example}
+
+Kini saat yang tepat untuk membahas satu hal mengenai
+notasi dan istilah dalam kalkulus. Buku-buku teks kalkulus
+memperkeruh persoalan dengan membicarakan integral terutama sebagai sesuatu
+yang disebut \myindex{integral tak tentu}. Integral tak tentu
+sebenarnya adalah \emph{\myindex{antiturunan}}
+(bahkan, seluruh keluarga antiturunan
+dengan satu parameter). Sesungguhnya hanya ada satu integral, yaitu
+integral tentu.
+Satu-satunya alasan penggunaan notasi integral tak tentu adalah bahwa kita selalu dapat
+menuliskan antiturunan sebagai integral tentu. Artinya, menurut teorema dasar
+kalkulus, kita selalu dapat menuliskan
+$\int f(x) \,dx + C$ sebagai
+\begin{equation*}
+\int_{x_0}^x f(t) \,dt + C .
+\end{equation*}
+Karena itulah digunakan istilah \emph{\myindex{mengintegralkan}}, padahal yang sebenarnya kita maksud mungkin
+\emph{\myindex{mencari antiturunan}}.
+Pengintegralan hanyalah salah satu cara untuk menghitung
+antiturunan (dan cara ini selalu berhasil; lihat
+contoh-contoh berikut). Pengintegralan didefinisikan sebagai luas di bawah grafik---kebetulan
+cara ini juga menghitung antiturunan.
+Demi konsistensi, kita akan tetap menggunakan
+notasi integral tak tentu ketika menginginkan antiturunan,
+dan Anda harus \emph{selalu} memandang integral tentu
+sebagai cara untuk menuliskannya.
+
+Biasanya, kita juga mempunyai kondisi awal seperti $y(x_0) = y_0$
+untuk sepasang bilangan $x_0$ dan $y_0$ ($x_0$ sering kali 0, tetapi tidak selalu).
+Dengan demikian, kita dapat menuliskan solusi secara elegan sebagai integral tentu.
+Misalkan masalah kita adalah $y' = f(x)$, $y(x_0) = y_0$. Maka solusinya adalah
+\begin{equation} \label{int:eqdef}
+y(x) = \int_{x_0}^x f(t) \,dt + y_0 .
+\end{equation}
+Mari kita periksa!
+Dengan teorema dasar kalkulus, kita memperoleh
+$y' = f(x)$, dan ternyata $y$ memang merupakan suatu
+solusi. Apakah solusi ini memenuhi kondisi awal? Ya,
+$y(x_0) = \int_{x_0}^{x_0} f(t)\,dt + y_0 = y_0$. Ternyata benar!
