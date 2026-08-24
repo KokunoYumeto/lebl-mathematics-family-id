@@ -1,5 +1,26 @@
 # Production backend checkpoints
 
+## Public checkpoint U361
+
+`v0.4-live-2026.08.24-u361-e/` is the authoritative checkpoint for release
+U361. It binds the 361-row translation manifest, 722-row live terminology
+ledger, 241-event adverse ledger, and seven-entry O001 solution-gap ledger.
+
+- 3,520 canonical records, 361 manifest segments, 372 units, 710 concepts,
+  722 expressions, and exactly 722 current logical terms;
+- seven O001 exercise gaps, four source hints, and no invented answers or
+  solutions;
+- 15 deterministic CSV projections;
+- 27 files / 15,051,229 bytes;
+- `records.jsonl` SHA-256
+  `1f9c3bfe0513cdda8aa496fce0d8d5870e73bbd3211481708f3a75bed1c0fa2d`;
+- canonical inventory SHA-256
+  `a8396edb38b192a955431715b0eb44abae823bfd80370f876089c1c0f4ef96af`.
+
+All schemas, referential checks, 15 CSV views, and lossless round trips pass.
+Independent replay `-u361-f` produced the identical path/byte/hash inventory
+and is intentionally omitted from the public package.
+
 ## Public checkpoint U333
 
 `v0.4-live-2026.08.24-u333-a/` is the authoritative checkpoint for release

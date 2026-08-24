@@ -2270,43 +2270,43 @@ Gunakan hasil ini untuk menunjukkan bahwa
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \sectionnewpage
-\section[Maximum principle and fundamental theorem of algebra]{Maximum principle and the fundamental theorem of algebra}
+\section[Prinsip maksimum dan teorema dasar aljabar]{Prinsip maksimum dan teorema dasar aljabar}
 \label{sec:fundalgeb}
 
-\sectionnotes{half a lecture, optional}
+\sectionnotes{setengah kuliah, opsional}
 
-In this section we study the local behavior of polynomials,
-and analytic functions in general,
-and the growth of polynomials as $z$ goes to infinity.
-As an application, we prove the fundamental theorem of algebra:
-Any nonconstant polynomial has a complex root.
-We consider polynomials in a complex variable $z$
-and so we may emphasize their domain by calling them complex polynomials.
+Pada bagian ini kita mempelajari perilaku lokal polinom dan,
+secara lebih umum, fungsi analitik,
+serta pertumbuhan polinom ketika $z$ menuju tak hingga.
+Sebagai penerapan, kita membuktikan teorema dasar aljabar:
+Setiap polinom yang tidak konstan memiliki akar kompleks.
+Kita meninjau polinom dalam variabel kompleks $z$,
+sehingga untuk menekankan domainnya kita dapat menyebutnya polinom kompleks.
 
 \begin{lemma} \label{lemma:polyalwaysgetssmaller}
-Let $\epsilon > 0$,
-let $p(z)$ be a nonconstant complex polynomial, or more generally
-a nonconstant power series converging in $B(z_0,\epsilon)$,
-and suppose $p(z_0) \neq 0$.
-Then there exists a $w \in B(z_0,\epsilon)$ such that $\babs{p(w)} < \babs{p(z_0)}$.
+Misalkan $\epsilon > 0$,
+misalkan $p(z)$ suatu polinom kompleks yang tidak konstan, atau, secara lebih umum,
+suatu deret pangkat yang tidak konstan dan konvergen pada $B(z_0,\epsilon)$,
+dan andaikan $p(z_0) \neq 0$.
+Maka terdapat $w \in B(z_0,\epsilon)$ sedemikian sehingga $\babs{p(w)} < \babs{p(z_0)}$.
 \end{lemma}
 
 \begin{proof}
-We prove this lemma for a polynomial and leave the general case as
+Kita membuktikan lema ini untuk polinom; kasus yang lebih umum diserahkan sebagai
 \exerciseref{exercise:minprinciple}.
-Without loss of generality assume that $z_0 = 0$ and $p(0) = 1$.  Write
+Tanpa mengurangi keumuman, andaikan $z_0 = 0$ dan $p(0) = 1$.  Tuliskan
 \begin{equation*}
 p(z) = 1+a_kz^k + a_{k+1}z^{k+1} + \cdots + a_d z^d ,
 \end{equation*}
-where $a_k \neq 0$.  Pick $t$ such that $a_k e^{ikt} = -\sabs{a_k}$, which
-we can do by the discussion on trigonometric functions.  Suppose
-$r > 0$ is small enough such that
-$1-r^k \sabs{a_k} > 0$.  We have
+dengan $a_k \neq 0$.  Pilih $t$ sedemikian sehingga $a_k e^{ikt} = -\sabs{a_k}$; hal
+ini dapat kita lakukan berdasarkan pembahasan tentang fungsi trigonometri.  Andaikan
+$r > 0$ cukup kecil sehingga
+$1-r^k \sabs{a_k} > 0$.  Kita peroleh
 \begin{equation*}
 p(r e^{it}) =
 1-r^k \sabs{a_k} + r^{k+1}a_{k+1}e^{i(k+1)t} + \cdots + r^{d}a_{d}e^{idt} .
 \end{equation*}
-So
+Jadi,
 \begin{equation*}
 \begin{split}
 %mbxlatex &
@@ -2333,7 +2333,7 @@ p(r e^{it})
 1-r^k \sabs{a_k} .
 \end{split}
 \end{equation*}
-In other words,
+Dengan kata lain,
 \begin{equation*}
 \babs{
 p(r e^{it}) }
@@ -2346,54 +2346,54 @@ a_{k+1}e^{i(k+1)t} + \cdots + r^{d-k-1}a_{d}e^{idt}
 }
 \right) .
 \end{equation*}
-For small enough $r$, the expression in the parentheses is positive
-as $\sabs{a_k} > 0$.  Hence, $\babs{p(re^{it})} < 1 = p(0)$.
+Untuk $r$ yang cukup kecil, ekspresi dalam tanda kurung bernilai positif
+karena $\sabs{a_k} > 0$.  Oleh karena itu, $\babs{p(re^{it})} < 1 = p(0)$.
 \end{proof}
 
-What the lemma
-says is that the only minima the modulus of analytic functions
-has are precisely at the zeros.
-It is sometimes called the \emph{\myindex{minimum modulus principle}}.
-If $f$ is analytic and nonzero at a point,
-then $\nicefrac{1}{f}$ is analytic near that point.  Applying the lemma and
-the identity theorem, one obtains the \emph{maximum modulus principle}, or sometimes
-just the \emph{maximum principle}.
+Menurut lema tersebut, titik-titik minimum dari modulus suatu fungsi analitik
+tidak lain adalah titik-titik nol fungsi itu.
+Hasil ini kadang disebut \emph{\myindex{prinsip modulus minimum}}.
+Jika $f$ analitik dan tidak nol di suatu titik,
+maka $\nicefrac{1}{f}$ analitik di sekitar titik tersebut.  Dengan menerapkan lema ini dan
+teorema identitas, diperoleh \emph{prinsip modulus maksimum}, atau kadang-kadang
+cukup disebut \emph{prinsip maksimum}.
 
-\begin{thm}[Maximum modulus principle]\index{maximum modulus principle}%
-\index{maximum principle!analytic functions}%
+\begin{thm}[Prinsip modulus maksimum]\index{prinsip modulus maksimum}%
+\index{prinsip maksimum!fungsi analitik}%
 \label{thm:maxprinciple}
-If $U \subset \C$ is open and connected,
-$f \colon U \to \C$ is analytic, and $\babs{f(z)}$ attains a relative
-maximum at $z_0 \in U$, then $f$ is constant.
+Jika $U \subset \C$ terbuka dan terhubung,
+$f \colon U \to \C$ analitik, dan $\babs{f(z)}$ mencapai suatu
+maksimum relatif di $z_0 \in U$, maka $f$ konstan.
 \end{thm}
 
-The details of the proof are left as \exerciseref{exercise:maxprinciple}.
+Perincian buktinya diserahkan kepada pembaca dalam
+\exerciseref{exercise:maxprinciple}.
 
 \begin{remark}
-The lemma (and the maximum principle) does not hold if we restrict to the real numbers.  For
-example, $x^2+1$ has a minimum at $x=0$, but no zero there.
-There is a $w$ arbitrarily close to $0$ such that $\sabs{w^2+1} < 1$, but this
-$w$ is necessarily not real.  Letting $w = i\epsilon$ for small
-$\epsilon > 0$ works.
+Lema tersebut (dan prinsip maksimum) tidak berlaku jika kita membatasi diri pada bilangan real.  Sebagai
+contoh, $x^2+1$ memiliki minimum di $x=0$, tetapi tidak memiliki titik nol di sana.
+Terdapat $w$ yang dapat dipilih sedekat apa pun dengan $0$ sedemikian sehingga $\sabs{w^2+1} < 1$, tetapi
+$w$ ini mesti bukan bilangan real.  Pilihan $w = i\epsilon$ untuk
+$\epsilon > 0$ yang cukup kecil memenuhi sifat tersebut.
 \end{remark}
 
-The moral of the story is that if $p(0) = 1$, then very close to 0, the
-series (or polynomial)
-looks like $1+az^k$, and $1+az^k$ has no minimum at the origin.  All the higher
-powers of $z$ are too small to make a difference.  For polynomials, we find similar behavior
-at infinity.
+Intinya adalah bahwa jika $p(0) = 1$, maka pada titik-titik yang sangat dekat dengan 0,
+deret (atau polinom) tersebut
+tampak seperti $1+az^k$, dan $1+az^k$ tidak memiliki minimum di titik asal.  Semua
+pangkat $z$ yang lebih tinggi terlalu kecil untuk memberi pengaruh.  Untuk polinom, kita menemukan perilaku serupa
+di tak hingga.
 
 \begin{lemma}
-Let $p(z)$ be a nonconstant complex polynomial.  Then for any $M > 0$, there exists
-an $R > 0$ such that
-$\babs{p(z)} \geq M$ whenever $\sabs{z} \geq R$.
+Misalkan $p(z)$ suatu polinom kompleks tak konstan.  Maka, untuk setiap $M > 0$, terdapat
+$R > 0$ sedemikian sehingga
+$\babs{p(z)} \geq M$ apabila $\sabs{z} \geq R$.
 \end{lemma}
 
 \begin{proof}
-Write $p(z) = a_0 + a_1 z + \cdots + a_d z^d$ and suppose that $d \geq 1$
-and $a_d \neq 0$.
-Suppose $\sabs{z} \geq R$ (so also $\sabs{z}^{-1} \leq R^{-1}$).
-We estimate:
+Tuliskan $p(z) = a_0 + a_1 z + \cdots + a_d z^d$ dan misalkan $d \geq 1$
+serta $a_d \neq 0$.
+Andaikan $\sabs{z} \geq R$ (sehingga juga $\sabs{z}^{-1} \leq R^{-1}$).
+Kita memperoleh taksiran:
 \begin{equation*}
 \begin{split}
 \babs{p(z)}
@@ -2414,135 +2414,135 @@ R^d \bigl(\sabs{a_d} -
 .
 \end{split}
 \end{equation*}
-Then the expression in parentheses is eventually positive for large enough
-$R$.  In particular, for large enough $R$, this expression
-is greater than
-$\frac{\sabs{a_d}}{2}$, and so
+Ekspresi dalam tanda kurung tersebut pada akhirnya bernilai positif untuk
+$R$ yang cukup besar.  Secara khusus, untuk $R$ yang cukup besar, ekspresi ini
+lebih besar daripada
+$\frac{\sabs{a_d}}{2}$, sehingga
 \begin{equation*}
 \babs{p(z)}
 \geq
 R^d \frac{\sabs{a_d}}{2} .
 \end{equation*}
-Therefore,
-we can pick $R$ large enough to be bigger than a given $M$.
+Dengan demikian,
+kita dapat memilih $R$ cukup besar sehingga batas bawah tersebut lebih besar daripada $M$ yang diberikan.
 \end{proof}
 
-This second lemma does \emph{not} generalize to analytic
-functions, even those defined on the entire plane $\C$.  The function
-$\cos(z)$ is a counterexample.
-We had to look
-at the term with the largest degree, and we only have such a term for
-a polynomial.  In fact, something that we will not prove is that
-an analytic function defined on all of $\C$ satisfying the conclusion
-of the lemma must be a polynomial.
+Lema kedua ini \emph{tidak} dapat diperumum ke fungsi
+analitik, bahkan ke fungsi yang didefinisikan pada seluruh bidang $\C$.  Fungsi
+$\cos(z)$ merupakan contoh tandingan.
+Kita tadi harus memperhatikan
+suku yang berderajat tertinggi, dan suku semacam itu hanya dimiliki oleh
+polinom.  Bahkan, meskipun tidak akan kita buktikan, setiap fungsi analitik
+yang didefinisikan pada seluruh $\C$ dan memenuhi kesimpulan lema tersebut
+mesti merupakan polinom.
 
-The moral of the story here is that for very large $\sabs{z}$ (far away from
-the origin) a polynomial of degree $d$ really looks like a constant multiple
-of $z^d$.
+Intinya di sini adalah bahwa ketika $\sabs{z}$ sangat besar (jauh dari
+titik asal), polinom berderajat $d$ benar-benar tampak seperti kelipatan konstan
+dari $z^d$.
 
-\begin{thm}[Fundamental theorem of algebra]
-\index{fundamental theorem of algebra}%
-Let $p(z)$ be a nonconstant complex polynomial, then there exists a $z_0 \in \C$
-such that $p(z_0) = 0$.
+\begin{thm}[Teorema dasar aljabar]
+\index{teorema dasar aljabar}%
+Misalkan $p(z)$ suatu polinom kompleks tak konstan.  Maka terdapat $z_0 \in \C$
+sedemikian sehingga $p(z_0) = 0$.
 \end{thm}
 
 \begin{proof}
-Let $\mu \coloneqq \inf \bigl\{ \babs{p(z)} : z \in \C \bigr\}$.  Find an $R$ such that
-for all $z$ with $\sabs{z} \geq R$, we have $\babs{p(z)} \geq \mu+1$.
-Therefore, every $z$ with $\babs{p(z)}$ close to $\mu$ must be in the
-closed ball $C(0,R) = \bigl\{ z \in \C : \sabs{z} \leq R \bigr\}$.  As $\babs{p(z)}$
-is a continuous real-valued function, it achieves its minimum
-on the compact set $C(0,R)$ (closed and bounded) and this minimum must
-be $\mu$.  So there is a $z_0 \in C(0,R)$ such that $\babs{p(z_0)} = \mu$.
-As that is a minimum of $\babs{p(z)}$ on $\C$, by the first lemma
-above, we have $\babs{p(z_0)} = 0$.
+Misalkan $\mu \coloneqq \inf \bigl\{ \babs{p(z)} : z \in \C \bigr\}$.  Pilih $R$ sedemikian sehingga
+untuk setiap $z$ dengan $\sabs{z} \geq R$, berlaku $\babs{p(z)} \geq \mu+1$.
+Dengan demikian, setiap $z$ dengan $\babs{p(z)}$ dekat dengan $\mu$ mesti berada di dalam
+bola tertutup $C(0,R) = \bigl\{ z \in \C : \sabs{z} \leq R \bigr\}$.  Karena $\babs{p(z)}$
+merupakan fungsi kontinu bernilai real, fungsi ini mencapai minimumnya
+pada himpunan kompak $C(0,R)$ (tertutup dan terbatas), dan minimum ini mesti
+sama dengan $\mu$.  Jadi, terdapat $z_0 \in C(0,R)$ sedemikian sehingga $\babs{p(z_0)} = \mu$.
+Karena nilai ini merupakan minimum $\babs{p(z)}$ pada $\C$, berdasarkan lema pertama
+di atas diperoleh $\babs{p(z_0)} = 0$.
 \end{proof}
 
-The fundamental theorem also does not generalize to analytic functions.  The
-exponential $e^{z}$ is an analytic function on $\C$ with no zeros.
+Teorema dasar tersebut juga tidak dapat diperumum ke fungsi analitik.  Fungsi
+eksponensial $e^{z}$ analitik pada $\C$ tetapi tidak memiliki titik nol.
 
-\subsection{Exercises}
+\subsection{Latihan}
 
 \begin{exercise} \label{exercise:minprinciple}
-Prove \lemmaref{lemma:polyalwaysgetssmaller} for an analytic function.  That
-is, suppose that $p(z)$ is a nonconstant power series converging in
+Buktikan \lemmaref{lemma:polyalwaysgetssmaller} untuk fungsi analitik.  Artinya,
+misalkan $p(z)$ suatu deret pangkat tak konstan yang konvergen dalam
 $B(z_0,\epsilon)$.
 \end{exercise}
 
 \begin{exercise} \label{exercise:maxprinciple}
-Use \lemmaref{lemma:polyalwaysgetssmaller} for analytic functions to prove \thmref{thm:maxprinciple}.
+Gunakan \lemmaref{lemma:polyalwaysgetssmaller} untuk fungsi analitik guna membuktikan \thmref{thm:maxprinciple}.
 \end{exercise}
 
 \begin{exercise}
-Let $U \subset \C$ be open and $z_0 \in U$.
-Suppose $f \colon U \to \C$ is analytic and $f(z_0) = 0$.  Show that
-there exists an $\epsilon > 0$ such that either
-$f(z) \neq 0$ for all $z$ with $0 < \sabs{z} < \epsilon$
-or $f(z) = 0$ for all $z \in B(z_0,\epsilon)$.
-In other words, zeros of analytic functions are isolated.
-Of course, same holds for polynomials.
+Misalkan $U \subset \C$ terbuka dan $z_0 \in U$.
+Andaikan $f \colon U \to \C$ analitik dan $f(z_0) = 0$.  Tunjukkan bahwa
+terdapat $\epsilon > 0$ sedemikian sehingga salah satu dari dua hal berikut berlaku:
+$f(z) \neq 0$ untuk setiap $z$ dengan $0 < \sabs{z-z_0} < \epsilon$,
+atau $f(z) = 0$ untuk setiap $z \in B(z_0,\epsilon)$.
+Dengan kata lain, titik nol fungsi analitik terisolasi, kecuali jika fungsi tersebut identik
+nol pada suatu lingkungan titik itu.  Secara khusus, semua titik nol polinom yang tidak identik nol bersifat terisolasi.
 \end{exercise}
 
 \begin{exnote}
 \pagebreak[1]
-A \emph{\myindex{rational function}} is a function
+Suatu \emph{\myindex{fungsi rasional}} adalah fungsi
 $f(z) \coloneqq \frac{p(z)}{q(z)}$
-where $p$ and $q$ are polynomials and $q$ is not identically zero.
-A point $z_0 \in \C$ where $f(z_0) = 0$ (and therefore $p(z_0) = 0$)
-is called a \emph{zero}\index{zero of a function}.
-A point $z_0 \in \C$ is called a \emph{\myindex{singularity}} of
-$f$ if $q(z_0) = 0$.  As zeros of polynomials are isolated,
-singularities of rational functions are isolated
-and so are called
-\emph{isolated singularities}\index{isolated singularity}.
-An isolated singularity is called
-\emph{removable}\index{removable singularity}
-if $\lim_{z \to z_0} f(z)$ exists.
-An isolated singularity is called a \emph{\myindex{pole}} if 
+di mana $p$ dan $q$ merupakan polinom dan $q$ tidak identik nol.
+Titik $z_0 \in \C$ yang memenuhi $f(z_0) = 0$ (dan karena itu $p(z_0) = 0$)
+disebut \emph{titik nol}\index{titik nol fungsi}.
+Titik $z_0 \in \C$ disebut suatu \emph{\myindex{singularitas}} fungsi
+$f$ jika $q(z_0) = 0$.  Karena titik-titik nol polinom bersifat terisolasi,
+singularitas fungsi rasional juga bersifat terisolasi
+dan karena itu disebut
+\emph{singularitas terisolasi}\index{singularitas terisolasi}.
+Suatu singularitas terisolasi disebut
+\emph{dapat dihilangkan}\index{singularitas yang dapat dihilangkan}
+jika $\lim_{z \to z_0} f(z)$ ada.
+Suatu singularitas terisolasi disebut \emph{\myindex{kutub}} jika 
 $\lim_{z \to z_0} \babs{f(z)} = \infty$.
-We say $f$ has a pole at $\infty$ if
+Kita mengatakan bahwa $f$ memiliki kutub di $\infty$ jika
 \begin{equation*}
 \lim_{z \to \infty} \babs{f(z)} = \infty ,
 \end{equation*}
-that is, if for every $M > 0$ there exists an $R > 0$ such that
-$\babs{f(z)} > M$ for all $z$ with $\sabs{z} > R$.
+yakni jika untuk setiap $M > 0$ terdapat $R > 0$ sedemikian sehingga
+$\babs{f(z)} > M$ untuk setiap $z$ dengan $\sabs{z} > R$.
 \end{exnote}
 
 \begin{exercise}
-Show that a rational function that is not identically
-zero has at most finitely many zeros and
-singularities.  In fact, show that if $p$ is a polynomial of 
-degree $n > 0$ it has at most $n$ zeros.
+Tunjukkan bahwa fungsi rasional yang tidak identik
+nol hanya memiliki berhingga banyak titik nol dan
+singularitas.  Bahkan, tunjukkan bahwa jika $p$ merupakan polinom
+berderajat $n > 0$, maka polinom tersebut memiliki paling banyak $n$ titik nol.
 \\
-Hint: If $z_0$ is a zero of $p$, then without loss of generality assume $z_0 =
-0$.  Then use induction.
+Petunjuk: Jika $z_0$ merupakan titik nol $p$, maka tanpa mengurangi keumuman, andaikan $z_0 =
+0$.  Kemudian gunakan induksi.
 \end{exercise}
 
 \begin{exercise}
-Prove that if $z_0$ is a removable singularity of a rational
-function $f(z) \coloneqq \frac{p(z)}{q(z)}$, then there exist
-polynomials $\widetilde{p}$ and $\widetilde{q}$ such that
-$\widetilde{q}(z_0) \neq 0$ and $f(z) =
+Buktikan bahwa jika $z_0$ merupakan singularitas yang dapat dihilangkan dari fungsi
+rasional $f(z) \coloneqq \frac{p(z)}{q(z)}$, maka terdapat
+polinom $\widetilde{p}$ dan $\widetilde{q}$ sedemikian sehingga
+$\widetilde{q}(z_0) \neq 0$ dan $f(z) =
 \frac{\widetilde{p}(z)}{\widetilde{q}(z)}$.
 \\
-Hint: Without loss of generality assume $z_0 = 0$.
+Petunjuk: Tanpa mengurangi keumuman, andaikan $z_0 = 0$.
 \end{exercise}
 
 \begin{exercise}
-Given a rational function $f$ with an isolated singularity at $z_0$,
-show that $z_0$ is either removable or a pole.
+Diberikan fungsi rasional $f$ dengan singularitas terisolasi di $z_0$,
+tunjukkan bahwa singularitas di $z_0$ tersebut dapat dihilangkan atau merupakan kutub.
 \\
-Hint: See the previous exercise.
+Petunjuk: Lihat latihan sebelumnya.
 \end{exercise}
 
 \begin{exercise}
-Let $f$ be a rational function and $S \subset \C$ be the 
-set of the singularities of $f$.
-Prove that $f$ is equal to a nonconstant polynomial on $\C \setminus S$
-if and only if
-$f$ has a pole at infinity and all the singularities are removable.
+Misalkan $f$ suatu fungsi rasional dan $S \subset \C$ merupakan
+himpunan singularitas $f$.
+Buktikan bahwa $f$ sama dengan suatu polinom tak konstan pada $\C \setminus S$
+jika dan hanya jika
+$f$ memiliki kutub di tak hingga dan semua singularitasnya dapat dihilangkan.
 \\
-Hint: See exercises above.
+Petunjuk: Lihat latihan-latihan di atas.
 \end{exercise}
 
 
