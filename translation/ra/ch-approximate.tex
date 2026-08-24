@@ -1548,102 +1548,106 @@ pangkat di sekitar titik asal yang konvergen ke $f$
 memiliki jari-jari konvergensi tepat $1$.
 Dapatkah Anda melihat alasannya? (latihan)
 
-\subsection{Identity theorem for analytic functions}
+\subsection{Teorema identitas untuk fungsi analitik}
 
 \begin{lemma}
-Suppose $f(z) = \sum_{k=0}^\infty a_k z^k$ is a convergent power series and
-$\{ z_n \}_{n=1}^\infty$ is a sequence of nonzero complex numbers converging to 0,
-such that $f(z_n) = 0$ for all $n$.  Then $a_k = 0$ for every~$k$.
+Misalkan $f(z) = \sum_{k=0}^\infty a_k z^k$ adalah deret pangkat konvergen dan
+$\{ z_n \}_{n=1}^\infty$ adalah barisan bilangan kompleks tak nol yang konvergen ke 0,
+sedemikian sehingga $f(z_n) = 0$ untuk semua $n$.  Maka $a_k = 0$ untuk setiap~$k$.
 \end{lemma}
 
 \begin{proof}
-By continuity, we know $f(0) = 0$, so $a_0 = 0$.
-Suppose there exists some nonzero $a_k$.
-Let $m$ be the smallest $m$ such that $a_m \neq 0$.  Then
+Berdasarkan kekontinuan, kita tahu bahwa $f(0) = 0$, sehingga $a_0 = 0$.
+Misalkan terdapat suatu $a_k$ yang tak nol.
+Ambil $m$ sebagai indeks terkecil sedemikian sehingga $a_m \neq 0$.  Maka
 \begin{equation*}
 f(z) = \sum_{k=m}^\infty a_k z^k = 
 z^m \sum_{k=m}^\infty a_k z^{k-m} =
 z^m \sum_{k=0}^\infty a_{k+m} z^{k} .
 \end{equation*}
-Write $g(z) = \sum_{k=0}^\infty a_{k+m} z^{k}$ (this series converges
-on the same set as $f$).  $g$ is continuous and $g(0) = a_m \neq 0$.  Thus
-there exists some $\delta > 0$ such that $g(z) \neq 0$ for all $z \in
-B(0,\delta)$.  As $f(z) = z^m g(z)$, the only point in $B(0,\delta)$ where
-$f(z) = 0$ is when $z=0$, but this contradicts the assumption
-that $f(z_n) = 0$ for all $n$.
+Tuliskan $g(z) = \sum_{k=0}^\infty a_{k+m} z^{k}$ (deret ini konvergen
+pada himpunan yang sama seperti deret untuk $f$).  Fungsi $g$ kontinu dan
+$g(0) = a_m \neq 0$.  Jadi, terdapat suatu $\delta > 0$ sedemikian sehingga
+$g(z) \neq 0$ untuk semua $z \in B(0,\delta)$.  Karena $f(z) = z^m g(z)$,
+satu-satunya titik di $B(0,\delta)$ tempat $f(z) = 0$ adalah $z=0$, tetapi hal
+ini bertentangan dengan asumsi bahwa $f(z_n) = 0$ untuk semua $n$.
 \end{proof}
 
-Recall that in a metric space $X$, a \emph{cluster point}
-(or sometimes \emph{limit point}) of a set
-$E$ is a point $p \in X$ such that
-$B(p,\epsilon) \setminus \{ p \}$ contains points of $E$
-for all $\epsilon > 0$.
+Ingatlah bahwa dalam ruang metrik $X$, sebuah \emph{titik akumulasi}
+(atau terkadang \emph{titik limit}) dari suatu himpunan
+$E$ adalah titik $p \in X$ sedemikian sehingga
+$B(p,\epsilon) \setminus \{ p \}$ memuat titik-titik dari $E$
+untuk setiap $\epsilon > 0$.
 
-\begin{thm}[Identity theorem]
+\begin{thm}[Teorema identitas]
 \label{thm:identityanalytic}%
-\index{identity theorem}%
-Let $U \subset \C$ be open and connected.  If $f \colon U \to \C$
-and $g \colon U \to \C$ are analytic functions that are
-equal on a set $E \subset U$, and $E$ has a cluster point
-in $U$, then $f(z) = g(z)$ for all $z \in U$.
+\index{teorema identitas}%
+Misalkan $U \subset \C$ terbuka dan terhubung.  Jika $f \colon U \to \C$
+dan $g \colon U \to \C$ merupakan fungsi-fungsi analitik yang bernilai
+sama pada suatu himpunan $E \subset U$, dan $E$ memiliki titik akumulasi
+di $U$, maka $f(z) = g(z)$ untuk semua $z \in U$.
 \end{thm}
 
-In most common applications of this theorem $E$ is an open set or perhaps a curve.
+Dalam penerapan yang paling umum dari teorema ini, $E$ adalah himpunan terbuka
+atau mungkin sebuah kurva.
 
 \begin{proof}
-Without loss of generality suppose $E$ is the set of all points $z \in U$ such that
-$g(z)=f(z)$.  Note that $E$ must be closed as $f$ and $g$ are continuous.
+Dengan mengganti $E$, jika perlu, dengan himpunan semua titik $z \in U$ yang
+memenuhi $g(z)=f(z)$, kita boleh menganggap $E$ adalah himpunan tersebut.
+Perhatikan bahwa $E$ harus tertutup relatif terhadap $U$ karena $f$ dan $g$
+kontinu.
 
-Suppose $E$ has a cluster point.  Without loss of generality assume that $0$
-is this cluster point.  Near $0$,
-we have the expansions
+Misalkan $p \in U$ adalah suatu titik akumulasi dari $E$.  Dengan mengganti
+peubah $w=z-p$ serta mentranslasikan domain dan kedua fungsi, kita boleh
+mengambil $p=0$.  Di sekitar $0$, kita memiliki ekspansi
 \begin{equation*}
 f(z) = \sum_{k=0}^\infty a_k {z}^k 
 \qquad
-\text{and}
+\text{dan}
 \qquad
 g(z) = \sum_{k=0}^\infty b_k {z}^k ,
 \end{equation*}
-which converge in some ball $B(0,\rho)$.  Therefore the series
+yang konvergen dalam suatu bola $B(0,\rho)$.  Oleh karena itu, deret
 \begin{equation*}
 0 = f(z)-g(z) = 
 \sum_{k=0}^\infty (a_k-b_k) z^k
 \end{equation*}
-converges in $B(0,\rho)$.  As $0$ is a cluster point of $E$, there
-is a sequence of nonzero points $\{ z_n \}_{n=1}^\infty$ such that
-$f(z_n) -g(z_n) = 0$.  Hence, by the lemma above 
-$a_k = b_k$ for all $k$.  Therefore, $B(0,\rho) \subset E$.
+konvergen dalam $B(0,\rho)$.  Karena $0$ adalah titik akumulasi dari $E$,
+terdapat barisan titik tak nol $\{ z_n \}_{n=1}^\infty$ yang konvergen ke $0$
+sedemikian sehingga $f(z_n) -g(z_n) = 0$ untuk semua $n$.  Jadi, berdasarkan lema di atas,
+$a_k = b_k$ untuk semua $k$.  Oleh karena itu, $B(0,\rho) \subset E$.
 
-Thus the set of cluster points of $E$ is open.  The set of cluster points
-of $E$ is also closed: A limit of cluster points of $E$ is in $E$
-as it is closed, and it is clearly a cluster point of $E$.
-As $U$ is connected, the set of cluster points of $E$
-is equal to $U$, or in other words $E = U$.
+Dengan demikian, himpunan semua titik akumulasi dari $E$ terbuka relatif
+terhadap $U$.  Himpunan itu juga tertutup relatif terhadap $U$: limit di $U$
+dari titik-titik akumulasi $E$ berada di $E$ karena $E$ tertutup relatif
+terhadap $U$, dan jelas merupakan titik akumulasi dari $E$.
+Karena $U$ terhubung, himpunan semua titik akumulasi dari $E$
+sama dengan $U$, atau dengan kata lain $E = U$.
 \end{proof}
 
-By restricting our attention to real $x$, we obtain the same
-theorem for connected open subsets of $\R$, which are just open intervals.
+Dengan membatasi perhatian kita pada $x$ real, kita memperoleh teorema yang sama
+untuk himpunan bagian terbuka dan terhubung dari $\R$, yaitu interval terbuka.
 
-\subsection{Exercises}
+\subsection{Latihan}
 
 \begin{exercise}
-Let
+Misalkan
 \begin{equation*}
 a_{k,m} \coloneqq
 \begin{cases}
-1        & \text{if } k=m,\\
--2^{k-m} & \text{if } k<m,\\
-0        & \text{if } k>m.
+1        & \text{jika } k=m,\\
+-2^{k-m} & \text{jika } k<m,\\
+0        & \text{jika } k>m.
 \end{cases}
 \end{equation*}
-Compute (or show the limit doesn't exist):
+Hitung (atau tunjukkan bahwa limitnya tidak ada):
 \\
-a)~$\displaystyle \sum_{m=1}^\infty \sabs{a_{k,m}}~$ for all $k$,
+a)~$\displaystyle \sum_{m=1}^\infty \sabs{a_{k,m}}~$ untuk setiap $k$,
 %mbxSTARTIGNORE
 \hspace{\fill}
 %mbxENDIGNORE
 %mbxlatex \qquad
-b)~$\displaystyle \sum_{k=1}^\infty \sabs{a_{k,m}}~$ for all $m$,
+b)~$\displaystyle \sum_{k=1}^\infty \sabs{a_{k,m}}~$ untuk setiap $m$,
 %mbxSTARTIGNORE
 \hspace{\fill}
 %mbxENDIGNORE
@@ -1660,197 +1664,197 @@ d)~$\displaystyle \sum_{k=1}^\infty \sum_{m=1}^\infty a_{k,m}$,
 %mbxlatex \qquad
 e)~$\displaystyle \sum_{m=1}^\infty \sum_{k=1}^\infty a_{k,m}$.
 \\
-Hint: Fubini for sums does not apply.
-In fact, answers to d) and e) are different.
+Petunjuk: Teorema Fubini untuk deret tidak berlaku.
+Bahkan, jawaban untuk d) dan e) berbeda.
 \end{exercise}
 
 \begin{exercise}
 \pagebreak[2]
-Let $f(x) \coloneqq \frac{1}{1+x^2}$.  Prove that
+Misalkan $f(x) \coloneqq \frac{1}{1+x^2}$.  Buktikan bahwa
 \begin{enumerate}[a)]
 \item
-$f$ is an analytic function on all of $\R$
-by finding a power series for $f$ at every $a \in \R$,
+$f$ merupakan fungsi analitik pada seluruh $\R$
+dengan menemukan deret pangkat untuk $f$ di setiap $a \in \R$,
 \item
-the radius of convergence of
-the power series for $f$ at the origin is 1.
+jari-jari konvergensi dari
+deret pangkat untuk $f$ di titik asal adalah 1.
 \end{enumerate}
 \end{exercise}
 
 
 \begin{exercise}
 \pagebreak[2]
-Suppose $f \colon \C \to \C$ is analytic.  Show that for each
-$n$, there are at most finitely many zeros of $f$ in $B(0,n)$, that is,
-$f^{-1}(0) \cap B(0,n)$ is finite for each $n$.
+Misalkan $f \colon \C \to \C$ analitik dan bukan fungsi nol.  Tunjukkan bahwa untuk setiap
+$n$, hanya terdapat berhingga banyak titik nol dari $f$ di $B(0,n)$, yaitu,
+$f^{-1}(0) \cap B(0,n)$ berhingga untuk setiap $n$.
 \end{exercise}
 
 \begin{exercise}
-Suppose $U \subset \C$ is open and connected, $0 \in U$, and $f \colon U
-\to \C$ is analytic.  Treating $f$ as a function of a real $x$
-at the origin, suppose $f^{(n)}(0) = 0$ for all $n$.  Show that $f(z) = 0$
-for all $z \in U$.
+Misalkan $U \subset \C$ terbuka dan terhubung, $0 \in U$, dan $f \colon U
+\to \C$ analitik.  Dengan memandang $f$ sebagai fungsi dari peubah real $x$
+di titik asal, misalkan $f^{(n)}(0) = 0$ untuk semua $n$.  Tunjukkan bahwa $f(z) = 0$
+untuk semua $z \in U$.
 \end{exercise}
 
 \begin{exercise}
-Suppose $U \subset \C$ is open and connected, $0 \in U$, and $f \colon U
-\to \C$ is analytic.  For real $x$ and $y$,
-let $h(x) \coloneqq f(x)$ and $g(y) \coloneqq -i \, f(iy)$.
-Show that $h$ and $g$ are infinitely differentiable at the origin and
+Misalkan $U \subset \C$ terbuka dan terhubung, $0 \in U$, dan $f \colon U
+\to \C$ analitik.  Untuk $x$ dan $y$ real yang cukup dekat dengan $0$ sehingga
+$x \in U$ dan $iy \in U$, misalkan $h(x) \coloneqq f(x)$ dan
+$g(y) \coloneqq -i \, f(iy)$.
+Tunjukkan bahwa $h$ dan $g$ diferensiabel tak berhingga kali di titik asal dan
 $h'(0) = g'(0)$.
 \end{exercise}
 
 \begin{exercise}
-Suppose a function $f$ is analytic in some neighborhood of the origin,
-and that there exists an $M$
-such that $\sabs{f^{(n)}(0)} \leq M$ for all $n$.
-Prove that the series of $f$ at the origin converges for all $z \in \C$.
+Misalkan suatu fungsi $f$ analitik pada suatu lingkungan dari titik asal,
+dan terdapat suatu $M$
+sedemikian sehingga $\sabs{f^{(n)}(0)} \leq M$ untuk semua $n$.
+Buktikan bahwa deret pangkat $f$ di titik asal konvergen untuk semua $z \in \C$.
 \end{exercise}
 
 \begin{exercise}
-Suppose $f(z) \coloneqq \sum_{n=0}^\infty c_n z^n$ with a radius of convergence 1.  Suppose $f(0)
-= 0$, but $f$ is not the zero function.
-Show that there exists a $k \in \N$ and a convergent
-power series $g(z) \coloneqq \sum_{n=0}^\infty d_n z^n$ with radius of convergence 1
-such that $f(z) = z^k g(z)$ for all $z \in B(0,1)$, and $g(0) \neq 0$.
+Misalkan $f(z) \coloneqq \sum_{n=0}^\infty c_n z^n$ dengan jari-jari konvergensi 1.  Misalkan $f(0)
+= 0$, tetapi $f$ bukan fungsi nol.
+Tunjukkan bahwa terdapat suatu $k \in \N$ dan suatu
+deret pangkat konvergen $g(z) \coloneqq \sum_{n=0}^\infty d_n z^n$ dengan jari-jari konvergensi 1
+sedemikian sehingga $f(z) = z^k g(z)$ untuk semua $z \in B(0,1)$, dan $g(0) \neq 0$.
 \end{exercise}
 
 \begin{exercise}
-Suppose $U \subset \C$ is open and connected.  Suppose that
-$f \colon U \to \C$ is analytic, $U \cap \R \neq \emptyset$ and
-$f(x) = 0$ for all $x \in U \cap \R$.  Show that $f(z) = 0$ for all $z \in
+Misalkan $U \subset \C$ terbuka dan terhubung.  Misalkan
+$f \colon U \to \C$ analitik, $U \cap \R \neq \emptyset$, dan
+$f(x) = 0$ untuk semua $x \in U \cap \R$.  Tunjukkan bahwa $f(z) = 0$ untuk semua $z \in
 U$.
 \end{exercise}
 
 \begin{exercise}
-For $\alpha \in \C$ and $k=0,1,2,3\ldots$, define
+Untuk $\alpha \in \C$ dan $k=0,1,2,3\ldots$, definisikan
 \begin{equation*}
 \binom{\alpha}{k} \coloneqq \frac{\alpha(\alpha-1)\cdots(\alpha-k+1)}{k!} .
 \end{equation*}
 \begin{enumerate}[a)]
 \item
-Show that the series
+Tunjukkan bahwa deret
 \begin{equation*}
 f(z) \coloneqq \sum_{k=0}^\infty \binom{\alpha}{k} z^k
 \end{equation*}
-converges whenever $\sabs{z} < 1$.
-In fact, prove that for $\alpha = 0,1,2,3,\ldots$ the radius of
-convergence is $\infty$, and for all other $\alpha$
-the radius of convergence is 1.
+konvergen setiap kali $\sabs{z} < 1$.
+Bahkan, buktikan bahwa untuk $\alpha = 0,1,2,3,\ldots$ jari-jari
+konvergensinya adalah $\infty$, dan untuk semua $\alpha$ lainnya
+jari-jari konvergensinya adalah 1.
 \item
-Show that for $x \in \R$, $\sabs{x} < 1$, we have
+Tunjukkan bahwa untuk $x \in \R$, $\sabs{x} < 1$, kita mempunyai
 \begin{equation*}
 (1+x) f'(x) = \alpha f(x) ,
 \end{equation*}
-meaning that $f(x) = (1+x)^\alpha$.
+yang berarti bahwa $f(x) = (1+x)^\alpha$.
 \end{enumerate}
 \end{exercise}
 
 \begin{exercise}
-Suppose $f \colon \C \to \C$ is analytic and suppose that for some
-open interval $(a,b) \subset \R$, $f$ is real-valued on $(a,b)$.  Show
-that $f$ is real-valued on $\R$.
+Misalkan $f \colon \C \to \C$ analitik dan misalkan untuk suatu
+interval terbuka $(a,b) \subset \R$, $f$ bernilai real pada $(a,b)$.  Tunjukkan
+bahwa $f$ bernilai real pada $\R$.
 \end{exercise}
 
 \begin{exercise}
-Let $\D \coloneqq B(0,1)$ be the unit disc.  Suppose
-$f \colon \D \to \C$ is analytic with power series
-$\sum_{n=0}^\infty c_n z^n$.  Suppose $\sabs{c_n} \leq 1$ for all $n$.  Prove that for
-all $z \in \D$, we have
+Misalkan $\D \coloneqq B(0,1)$ adalah cakram satuan.  Misalkan
+$f \colon \D \to \C$ analitik dengan deret pangkat
+$\sum_{n=0}^\infty c_n z^n$.  Misalkan $\sabs{c_n} \leq 1$ untuk semua $n$.  Buktikan bahwa untuk
+semua $z \in \D$, kita mempunyai
 $\babs{f(z)} \leq \frac{1}{1-\sabs{z}}$.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \sectionnewpage
-\section{Complex exponential and trigonometric functions}
+\section{Eksponensial kompleks dan fungsi trigonometri}
 \label{sec:complexexp}
 
 %mbxINTROSUBSECTION
 
-\sectionnotes{1 lecture}
+\sectionnotes{1 kuliah}
 
-\subsection{The complex exponential}
+\subsection{Eksponensial kompleks}
 
-Let
+Definisikan
 \begin{equation*}
 E(z) \coloneqq \sum_{k=0}^\infty \frac{1}{k!} z^k .
 \end{equation*}
-This series converges for all $z \in \C$.
-So by
-\corref{cor:powerseranalytic}, $E$ is analytic on $\C$.   We notice that $E(0) = 1$,
-and that for $z=x \in \R$, $E(x) \in \R$.  Keeping $x$ real, direct
-computation shows
+Deret ini konvergen untuk setiap $z \in \C$.
+Jadi, menurut
+\corref{cor:powerseranalytic}, $E$ analitik pada $\C$. Kita perhatikan bahwa $E(0) = 1$
+dan, untuk $z=x \in \R$, berlaku $E(x) \in \R$. Dengan tetap mengambil $x$ real,
+perhitungan langsung menunjukkan
 \begin{equation*}
 \frac{d}{dx} \bigl( E(x) \bigr) = E(x) .
 \end{equation*}
-In \volIref{\sectionref*{vI-sec:logandexp} of volume I}{\sectionref{sec:logandexp}} (or by Picard's theorem), we proved that
-the unique function on the real line satisfying $E' = E$ and
-$E(0) = 1$ is the exponential.  In other words, for $x \in \R$, $e^x = E(x)$.
+Dalam \volIref{\sectionref*{vI-sec:logandexp} pada volume I}{\sectionref{sec:logandexp}} (atau dengan Teorema Picard), kita membuktikan bahwa
+satu-satunya fungsi pada garis real yang memenuhi $E' = E$ dan
+$E(0) = 1$ adalah fungsi eksponensial. Dengan kata lain, untuk $x \in \R$, $e^x = E(x)$.
 
-For complex numbers $z$, we define\glsadd{not:complexexp}
+Untuk bilangan kompleks $z$, kita definisikan\glsadd{not:complexexp}
 \begin{equation*}
 e^z \coloneqq E(z) = 
 \sum_{k=0}^\infty \frac{1}{k!} z^k .
 \end{equation*}
-On the real line, this new definition agrees with our previous one.
-See \figureref{fig:complexexpgraphs}.  Notice that in the $x$ direction
-(the real direction)
-the graph behaves like the real exponential, and in the $y$ direction
-(the imaginary direction) the graph oscillates.
+Pada garis real, definisi baru ini sama dengan definisi kita sebelumnya.
+Lihat \figureref{fig:complexexpgraphs}. Perhatikan bahwa pada arah $x$
+(arah real),
+grafik berperilaku seperti eksponensial real, sedangkan pada arah $y$
+(arah imajiner) grafik berosilasi.
 
 \begin{myfigureht}
 \myincludepdft{real_imag_exp}{%
-The surface graphs. 
-For a fixed x both graphs are sinusoidal in the y direction
-with the amplitude of the oscillations being larger for larger x.
-In fact for negative x the graph is so small at this scale that it is
-impossible to note the oscillations there.
-In the right graph the sinusoidal wave is shifted so that
-on the left the graph goes up exponentially above the x-axis
-while on the right the graph above the x-axis is simply zero,
-that is the x-axis is contained in the graph.  The graph above
-x-axis is marked with a bold line on the graph.}
-\caption{Graphs of the real part (left) and imaginary part (right)
-of the complex exponential $e^z = e^{x+iy}$.  The $x$-axis goes from $-4$ to
-$4$, the $y$-axis goes from $-6$ to $6$, and the vertical axis goes from
+Grafik permukaan.
+Untuk x tetap, kedua grafik berbentuk sinusoidal pada arah y,
+dengan amplitudo osilasi yang semakin besar ketika x semakin besar.
+Untuk x negatif, grafik bahkan begitu kecil pada skala ini sehingga
+osilasinya tidak dapat terlihat.
+Pada grafik kanan, gelombang sinusoidal digeser. Pada grafik kiri,
+irisan tepat di atas sumbu x naik secara eksponensial, sedangkan pada grafik
+kanan irisan tepat di atas sumbu x selalu bernilai nol; dengan kata lain,
+sumbu x termuat dalam grafik kanan. Irisan grafik di atas sumbu x ditandai
+dengan garis tebal.}
+\caption{Grafik bagian real (kiri) dan bagian imajiner (kanan)
+dari eksponensial kompleks $e^z = e^{x+iy}$. Sumbu $x$ membentang dari $-4$ hingga
+$4$, sumbu $y$ membentang dari $-6$ hingga $6$, dan sumbu vertikal membentang dari
 $-e^{4} \approx -54.6$
-to
-$e^{4} \approx 54.6$.  The plot of the real exponential ($y=0$)
-is marked in a bold line.\label{fig:complexexpgraphs}}
+hingga
+$e^{4} \approx 54.6$. Grafik eksponensial real ($y=0$)
+ditandai dengan garis tebal.\label{fig:complexexpgraphs}}
 \end{myfigureht}
 
-\begin{prop}[Law of exponents\index{law of exponents}]
-Let $z,w \in \C$ be complex numbers.  Then
+\begin{prop}[Hukum eksponen\index{hukum eksponen}]
+Misalkan $z,w \in \C$ adalah bilangan kompleks. Maka
 \begin{equation*}
 e^{z+w} = e^z e^w.
 \end{equation*}
 \end{prop}
 
 \begin{proof}
-We already know that
-the equality
-$e^{x+y} = e^x e^y$ holds for all
-real numbers $x$ and $y$.
-For every fixed $y \in \R$, consider the expressions as
-functions of $x$ and apply the identity theorem
-(\thmref{thm:identityanalytic}) to get that
-$e^{z+y} = e^ze^y$ for all $z \in \C$.  Fixing an arbitrary $z \in \C$,
-we get
-$e^{z+y} = e^ze^y$ for all $y \in \R$.  Again by the identity theorem 
+Kita sudah mengetahui bahwa kesamaan
+$e^{x+y} = e^x e^y$ berlaku untuk semua
+bilangan real $x$ dan $y$.
+Untuk setiap $y \in \R$ yang tetap, pandang kedua ruas sebagai
+fungsi dari $x$ dan terapkan teorema identitas
+(\thmref{thm:identityanalytic}) untuk memperoleh
+$e^{z+y} = e^ze^y$ bagi setiap $z \in \C$. Dengan menetapkan sembarang $z \in \C$,
+kita memperoleh
+$e^{z+y} = e^ze^y$ bagi setiap $y \in \R$. Sekali lagi menurut teorema identitas,
 $e^{z+w} = e^z e^w$
-for all $w \in \C$.
+bagi setiap $w \in \C$.
 \end{proof}
 
-A simple consequence of the proposition is that $e^z \neq 0$ for all $z \in \C$,
-as $e^z e^{-z} = e^{z-z} = 1$.
-This computation means that ${(e^z)}^{-1} = e^{-z}$.
-Combining that fact with the law of exponents gives
+Konsekuensi langsung dari proposisi ini adalah $e^z \neq 0$ untuk setiap $z \in \C$,
+karena $e^z e^{-z} = e^{z-z} = 1$.
+Perhitungan ini berarti bahwa ${(e^z)}^{-1} = e^{-z}$.
+Dengan menggabungkan fakta tersebut dan hukum eksponen, kita memperoleh
 \begin{equation*}
-{(e^z)}^{n} = e^{nz} \qquad \text{for all } n \in \Z.
+{(e^z)}^{n} = e^{nz} \qquad \text{untuk setiap } n \in \Z.
 \end{equation*}
-A yet more complicated consequence is that we
-can compute the power series for the exponential at any point $a \in
+Konsekuensi lain yang sedikit lebih rumit adalah bahwa kita
+dapat menghitung deret pangkat untuk fungsi eksponensial di sembarang titik $a \in
 \C$:
 \begin{equation*}
 e^z = e^a e^{z-a} = \sum_{k=0}^\infty \frac{e^a}{k!} {(z-a)}^k .

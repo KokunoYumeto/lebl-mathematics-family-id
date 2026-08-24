@@ -7,9 +7,9 @@ type: book
 authors:
   - family-names: Lebl
     given-names: Jiří
-version: 6.3-id-wip.2026.08.24.u330
+version: 6.3-id-wip.2026.08.24.u333
 date-released: 2026-08-24
-doi: 10.5281/zenodo.22074515
+doi: 10.5281/zenodo.22076849
 repository-code: "https://github.com/KokunoYumeto/lebl-mathematics-family-id"
 url: "https://doi.org/10.5281/zenodo.22059779"
 license: CC-BY-SA-4.0
@@ -23,7 +23,7 @@ keywords:
   - backend terjemahan modular
 abstract: >-
   Edisi Bahasa Indonesia independen untuk keluarga buku matematika Jiří Lebl.
-  Checkpoint parsial U330 memuat Analisis Dasar I lengkap; Analisis Dasar II
-  sampai akhir Subbagian 11.3.4, dengan Identity theorem belum dimuat; Notes
+  Checkpoint parsial U333 memuat Analisis Dasar I lengkap; Analisis Dasar II
+  sampai akhir Subbagian 11.4.1, dengan fungsi trigonometri dan pi belum dimuat; Notes
   on Diffy Qs sampai rumus integral tentu untuk kondisi awal; dan Guide to
   Cultivating Complex Analysis sampai akhir bagian bola Riemann.
