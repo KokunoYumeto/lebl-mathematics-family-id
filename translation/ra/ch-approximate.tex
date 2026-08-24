@@ -1032,127 +1032,127 @@ konvergen untuk setiap $x > 0$ ke suatu fungsi yang diferensiabel.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \sectionnewpage
-\section{Power series and analytic functions}
+\section{Deret pangkat dan fungsi analitik}
 \label{sec:analfuncs}
 
 %mbxINTROSUBSECTION
 
-\sectionnotes{2--3 lectures}
+\sectionnotes{2--3 kuliah}
 
-\subsection{Analytic functions}
+\subsection{Fungsi analitik}
 
-A (complex) power series is a series of the form
+Suatu deret pangkat (kompleks) adalah deret berbentuk
 \begin{equation*}
 \sum_{n=0}^\infty c_n {(z-a)}^n
 \end{equation*}
-for $c_n, z, a \in \C$.  We say the series
-\emph{converges}\index{converges!power series} if the series converges for
-some $z \neq a$.
+untuk $c_n, z, a \in \C$.  Kita mengatakan deret tersebut
+\emph{konvergen}\index{konvergen!deret pangkat} jika deret itu konvergen untuk
+suatu $z \neq a$.
 
-Let $U \subset \C$ be an open set and
-$f \colon U \to \C$ a function.
-Suppose that for every $a \in U$ there exists a $\rho > 0$ and a power
-series that converges to the function
+Misalkan $U \subset \C$ merupakan himpunan terbuka dan
+$f \colon U \to \C$ suatu fungsi.
+Andaikan untuk setiap $a \in U$ terdapat $\rho > 0$ dan suatu deret
+pangkat yang konvergen ke fungsi tersebut,
 \begin{equation*}
 f(z) = \sum_{n=0}^\infty c_n {(z-a)}^n
 \end{equation*}
-for all $z \in B(a,\rho)$.
-Then we say $f$ is an \emph{\myindex{analytic}} function.
-Similarly, given an interval $(a,b) \subset \R$, we say that $f \colon (a,b) \to \C$
-is analytic or perhaps \emph{\myindex{real-analytic}}
-if for each point $c \in
-(a,b)$ there is a power series around $c$ that converges in some
+untuk semua $z \in B(a,\rho)$.
+Maka kita mengatakan bahwa $f$ adalah fungsi \emph{\myindex{analitik}}.
+Serupa dengan itu, untuk interval $(a,b) \subset \R$, kita mengatakan bahwa $f \colon (a,b) \to \C$
+bersifat analitik atau dapat pula disebut \emph{\myindex{analitik real}}
+jika untuk setiap titik $c \in
+(a,b)$ terdapat deret pangkat di sekitar $c$ yang konvergen pada suatu
 $(c-\rho,c+\rho)$
-for some $\rho > 0$.
-As we will sometimes talk about real and sometimes about complex power
-series, we will use $z$ to denote a complex number and $x$ a real number.
-We will always mention which case we are working with.
+untuk suatu $\rho > 0$.
+Karena kita kadang-kadang akan membahas deret pangkat real dan kadang-kadang
+deret pangkat kompleks, kita akan memakai $z$ untuk menyatakan bilangan kompleks dan $x$ bilangan real.
+Kita akan selalu menyebutkan kasus mana yang sedang dibahas.
 
-An analytic function has different expansions around different points.
-Moreover, convergence does not automatically happen on the entire
-domain of the function.  For example, if $\sabs{z} < 1$, then
+Suatu fungsi analitik memiliki pengembangan yang berbeda di sekitar titik-titik yang berbeda.
+Selain itu, konvergensi tidak otomatis terjadi pada seluruh
+domain fungsi.  Sebagai contoh, jika $\sabs{z} < 1$, maka
 \begin{equation*}
 \frac{1}{1-z} = \sum_{n=0}^\infty z^n .
 \end{equation*}
-While the left-hand side exists on all of $z \neq 1$, the right-hand side
-happens to converge only if $\sabs{z} < 1$.  See a graph
-of a small piece of $\frac{1}{1-z}$ in \figureref{fig:1over1mz}.
-We cannot graph the
-function itself; we can only graph its real or imaginary parts for lack
-of dimensions in our universe.
+Walaupun ruas kiri terdefinisi untuk setiap $z \neq 1$, ruas kanan
+ternyata hanya konvergen jika $\sabs{z} < 1$.  Lihat grafik
+sebagian kecil dari $\frac{1}{1-z}$ pada \figureref{fig:1over1mz}.
+Kita tidak dapat menggambar grafik
+fungsi itu sendiri; kita hanya dapat menggambar bagian real atau bagian imajinernya karena
+dimensi alam semesta kita tidak mencukupi.
 
 \begin{myfigureht}
 \myincludepdft{real_imag_1over1mz}{%
-Two surface graphs in 3D over the xy-plane.  On both graphs a vertical line
-is marked above a point (1,0) on the xy-plane.  The graphs are shown on a
-small patch around the origin and ending before getting to the (1,0) point.
-The left graph is flatter away from the vertical line and goes upwards
-steeply as we get closer to the vertical line.  The right graph is similar,
-but goes upwards steeply as we get closer to the vertical line from
-the region where y is negative and goes steeply down as we approach the
-vertical line from the region where y is positive.}
-\caption{Graphs of the real and imaginary parts of $z=x+iy \mapsto \frac{1}{1-z}$
-in the square $[-0.8,0.8]^2$.  The singularity at $z=1$ is marked with a
-vertical dashed line.\label{fig:1over1mz}}
+Dua grafik permukaan 3D di atas bidang xy.  Pada kedua grafik, suatu garis vertikal
+ditandai di atas titik (1,0) pada bidang xy.  Grafik-grafik tersebut ditampilkan pada
+petak kecil di sekitar titik asal dan berakhir sebelum mencapai titik (1,0).
+Grafik kiri lebih datar jauh dari garis vertikal dan menanjak
+curam ketika mendekati garis vertikal.  Grafik kanan serupa,
+tetapi menanjak curam ketika mendekati garis vertikal dari
+daerah tempat y bernilai negatif dan menurun curam ketika mendekati
+garis vertikal dari daerah tempat y bernilai positif.}
+\caption{Grafik bagian real dan bagian imajiner dari $z=x+iy \mapsto \frac{1}{1-z}$
+pada persegi $[-0.8,0.8]^2$.  Singularitas di $z=1$ ditandai dengan
+garis vertikal putus-putus.\label{fig:1over1mz}}
 \end{myfigureht}
 
-\subsection{Convergence of power series}
+\subsection{Konvergensi deret pangkat}
 
-We proved several results for power series of a real variable in
-\volIref{\sectionref*{vI-sec:moreonseries} of volume I}{\sectionref{sec:moreonseries}}.   For the most part the convergence
-properties of power series deal with the series
-$\sum_{k=0}^\infty \sabs{c_k} \, \sabs{z-a}^k$
-and so we have already proved many results about complex power
-series.  In particular, we computed what is called the
-radius of convergence of a power series.
+Kita telah membuktikan beberapa hasil untuk deret pangkat dengan peubah real dalam
+\volIref{\sectionref*{vI-sec:moreonseries} pada Jilid I}{\sectionref{sec:moreonseries}}.   Sebagian besar sifat
+konvergensi deret pangkat berkaitan dengan deret
+$\sum_{k=0}^\infty \sabs{c_k} \, \sabs{z-a}^k$,
+sehingga kita sebenarnya telah membuktikan banyak hasil mengenai deret pangkat
+kompleks.  Khususnya, kita telah menghitung apa yang disebut
+jari-jari konvergensi suatu deret pangkat.
 
 \begin{prop}
 \pagebreak[2]
-Let $\sum_{n=0}^\infty c_n {(z-a)}^n$ be a power series.
-There exists a $\rho \in [0,\infty]$ such that
+Misalkan $\sum_{n=0}^\infty c_n {(z-a)}^n$ suatu deret pangkat.
+Terdapat $\rho \in [0,\infty]$ sedemikian sehingga
 \begin{enumerate}[(i)]
-\item If $\rho = 0$, then the series diverges for every $z \neq a$.
-\item If $\rho = \infty$, then the series converges absolutely for all $z \in \C$.
-\item If $0 < \rho < \infty$, then the
-series converges absolutely on $B(a,\rho)$,
-and diverges when $\sabs{z-a} > \rho$.
+\item Jika $\rho = 0$, maka deret tersebut divergen untuk setiap $z \neq a$.
+\item Jika $\rho = \infty$, maka deret tersebut konvergen mutlak untuk semua $z \in \C$.
+\item Jika $0 < \rho < \infty$, maka deret tersebut
+konvergen mutlak pada $B(a,\rho)$,
+dan divergen ketika $\sabs{z-a} > \rho$.
 \end{enumerate}
-Furthermore, if $0 < r < \rho$, then
-the series converges uniformly on the closed ball $C(a,r)$.
+Lebih lanjut, jika $0 < r < \rho$, maka
+deret tersebut konvergen secara seragam pada bola tertutup $C(a,r)$.
 \end{prop}
 
-The number $\rho$ is the \emph{\myindex{radius of convergence}}.
-See \figureref{fig:radiusconvcomplex}.
-The radius of convergence gives a disc around $a$ where the series converges.  A power series
-is convergent if $\rho > 0$.
+Bilangan $\rho$ disebut \emph{\myindex{jari-jari konvergensi}}.
+Lihat \figureref{fig:radiusconvcomplex}.
+Jari-jari konvergensi menentukan sebuah cakram berpusat di $a$ tempat deret tersebut konvergen.  Suatu deret pangkat
+dikatakan konvergen jika $\rho > 0$.
 \begin{myfigureht}
 \myincludepdft{radiusconvcomplex}{%
-A dotted circle centered at a of radius rho.
-The inside of the circle is shaded and labeled with "series converges".
-The outside of the circle is labeled with "series does not converge".}
-\caption{Radius of convergence.\label{fig:radiusconvcomplex}}
+Sebuah lingkaran bertitik-titik berpusat di a dengan jari-jari rho.
+Bagian dalam lingkaran diarsir dan diberi label "deret konvergen".
+Bagian luar lingkaran diberi label "deret tidak konvergen".}
+\caption{Jari-jari konvergensi.\label{fig:radiusconvcomplex}}
 \end{myfigureht}
 
 \begin{proof}
-We use the real version of this proposition,
-\volIref{\propref*{vI-prop:powerserrealradius} in volume I}{\propref{prop:powerserrealradius}}.
-Let
+Kita menggunakan versi real dari proposisi ini,
+\volIref{\propref*{vI-prop:powerserrealradius} pada Jilid I}{\propref{prop:powerserrealradius}}.
+Misalkan
 \begin{equation*}
 R \coloneqq \limsup_{n\to\infty} \sqrt[n]{\sabs{c_n}} .
 \end{equation*}
-If $R = 0$, then
-$\sum_{n=0}^\infty \sabs{c_n} \, \sabs{z-a}^n$ converges for all $z$.
-If $R = \infty$, then
-$\sum_{n=0}^\infty \sabs{c_n} \, \sabs{z-a}^n$ converges only at $z=a$.
-Otherwise, let $\rho \coloneqq \nicefrac{1}{R}$.
-Then
-$\sum_{n=0}^\infty \sabs{c_n} \, \sabs{z-a}^n$ converges when
-$\sabs{z-a} < \rho$, and diverges (in fact the terms of the series
-do not go to zero) when $\sabs{z-a} > \rho$.
+Jika $R = 0$, maka
+$\sum_{n=0}^\infty \sabs{c_n} \, \sabs{z-a}^n$ konvergen untuk semua $z$.
+Jika $R = \infty$, maka
+$\sum_{n=0}^\infty \sabs{c_n} \, \sabs{z-a}^n$ hanya konvergen di $z=a$.
+Jika tidak, misalkan $\rho \coloneqq \nicefrac{1}{R}$.
+Maka
+$\sum_{n=0}^\infty \sabs{c_n} \, \sabs{z-a}^n$ konvergen ketika
+$\sabs{z-a} < \rho$, dan divergen (bahkan suku-suku deretnya
+tidak menuju nol) ketika $\sabs{z-a} > \rho$.
 
-To prove the \myquote{Furthermore,} suppose
-$0 < r < \rho$ and $z \in C(a,r)$.  Then
-consider the partial sums
+Untuk membuktikan pernyataan \myquote{Lebih lanjut,} andaikan
+$0 < r < \rho$ dan $z \in C(a,r)$.  Perhatikan
+jumlah parsial
 \begin{equation*}
 \abs{\sum_{n=0}^k c_n {(z-a)}^n}
 \leq
@@ -1162,43 +1162,43 @@ consider the partial sums
 \end{equation*}
 \end{proof}
 
-If $\sum_{n=0}^\infty c_n {(z-a)}^n$ converges for some $z$, then
+Jika $\sum_{n=0}^\infty c_n {(z-a)}^n$ konvergen untuk suatu $z$, maka
 \begin{equation*}
 \sum_{n=0}^\infty c_n {(w-a)}^n
 \end{equation*}
-converges absolutely whenever $\sabs{w-a} < \sabs{z-a}$.
-Conversely, if the series diverges at $z$, then it must diverge at $w$
-whenever $\sabs{w-a} > \sabs{z-a}$.
-Hence, to show
-that the radius of convergence is at least some number, we simply need to
-show convergence at some point by any method we know.
+konvergen mutlak setiap kali $\sabs{w-a} < \sabs{z-a}$.
+Sebaliknya, jika deret tersebut divergen di $z$, maka deret itu juga harus divergen di $w$
+setiap kali $\sabs{w-a} > \sabs{z-a}$.
+Jadi, untuk menunjukkan
+bahwa jari-jari konvergensinya sekurang-kurangnya sebesar suatu bilangan tertentu, kita hanya perlu
+menunjukkan konvergensi di suatu titik dengan metode apa pun yang kita ketahui.
 
 \begin{example}
-We list some series we already know:
+Kita daftarkan beberapa deret yang telah kita kenal:
 \begin{align*}
 & &
 & \sum_{n=0}^\infty z^n
-& & \text{has radius of convergence } 1.
+& & \text{memiliki jari-jari konvergensi } 1.
 & &
 \\
 & &
 & \sum_{n=0}^\infty \frac{1}{n!} z^n
-& & \text{has radius of convergence } \infty.
+& & \text{memiliki jari-jari konvergensi } \infty.
 & &
 \\
 & &
 & \sum_{n=0}^\infty n^n z^n
-& & \text{has radius of convergence } 0.
+& & \text{memiliki jari-jari konvergensi } 0.
 & &
 \end{align*}
 \end{example}
 
 \begin{example}
-Note the difference between $\frac{1}{1-z}$ and its power series.  Let us
-expand $\frac{1}{1-z}$ as a power series around a point $a \neq 1$.
-Let $c \coloneqq \frac{1}{1-a}$, then
+Perhatikan perbedaan antara $\frac{1}{1-z}$ dan deret pangkatnya.  Mari kita
+kembangkan $\frac{1}{1-z}$ sebagai deret pangkat di sekitar titik $a \neq 1$.
+Misalkan $c \coloneqq \frac{1}{1-a}$, maka
 \begin{equation*}
-\frac{1}{1-z} = 
+\frac{1}{1-z} =
 \frac{c}{1-c(z-a)}
 =
 c
@@ -1206,70 +1206,70 @@ c
 =
 \sum_{n=0}^\infty \left( \frac{1}{{(1-a)}^{n+1}} \right) {(z-a)}^n .
 \end{equation*}
-The series $\sum_{n=0}^\infty c^n {(z-a)}^n$ converges if and only if 
-the series on the right-hand side converges.  Compute,
+Deret $\sum_{n=0}^\infty c^n {(z-a)}^n$ konvergen jika dan hanya jika
+deret di ruas kanan konvergen.  Kita hitung,
 \begin{equation*}
 \limsup_{n\to\infty}
 \sqrt[n]{\sabs{c^n}} = \sabs{c}
 = \frac{1}{\sabs{1-a}} .
 \end{equation*}
-The radius of convergence of the power series is $\sabs{1-a}$, that is, the
-distance from $1$ to $a$.  The function $\frac{1}{1-z}$
-has a power series
-representation around every $a \neq 1$ and so is analytic in $\C \setminus
+Jari-jari konvergensi deret pangkat tersebut adalah $\sabs{1-a}$, yaitu
+jarak dari $1$ ke $a$.  Fungsi $\frac{1}{1-z}$
+memiliki representasi deret pangkat
+di sekitar setiap $a \neq 1$ sehingga bersifat analitik pada $\C \setminus
 \{ 1 \}$.
-The domain of the function is bigger than the region
-of convergence of the power series representing the function at any point.
+Domain fungsi tersebut lebih luas daripada daerah
+konvergensi deret pangkat yang merepresentasikan fungsi itu di sekitar titik mana pun.
 \end{example}
 
-It turns out that 
-if a function has a power series representation converging to the function
-on some ball,
-then it has a power series representation at every point in the ball.  We will prove this
-result later.
+Ternyata,
+jika suatu fungsi memiliki representasi deret pangkat yang konvergen ke fungsi tersebut
+pada suatu bola,
+maka fungsi itu memiliki representasi deret pangkat di sekitar setiap titik dalam bola tersebut.  Kita akan membuktikan
+hasil ini nanti.
 
-\subsection{Properties of analytic functions}
+\subsection{Sifat-sifat fungsi analitik}
 
 \begin{prop}
-If
+Jika
 \begin{equation*}
 f(z) \coloneqq \sum_{n=0}^\infty c_n {(z-a)}^n
 \end{equation*}
-is convergent in $B(a,\rho)$ for some $\rho > 0$, then
-$f \colon B(a,\rho) \to \C$ is continuous.
-In particular, analytic functions are continuous.
+konvergen pada $B(a,\rho)$ untuk suatu $\rho > 0$, maka
+$f \colon B(a,\rho) \to \C$ kontinu.
+Khususnya, fungsi analitik bersifat kontinu.
 \end{prop}
 
 \begin{proof}
-For $z_0 \in B(a,\rho)$, pick $r < \rho$ such that $z_0 \in B(a,r)$.
-On $B(a,r)$ the
-partial sums (which are continuous) converge uniformly,
-and so the limit $f|_{B(a,r)}$ is continuous.
-Any sequence converging to
-$z_0$ has some tail that is completely in the open ball $B(a,r)$.
-Hence, $f$ is continuous at $z_0$.
+Untuk $z_0 \in B(a,\rho)$, pilih $r < \rho$ sedemikian sehingga $z_0 \in B(a,r)$.
+Pada $B(a,r)$,
+jumlah parsial (yang kontinu) konvergen secara seragam,
+sehingga limitnya, $f|_{B(a,r)}$, kontinu.
+Setiap barisan yang konvergen ke
+$z_0$ memiliki suatu ekor yang seluruhnya berada dalam bola terbuka $B(a,r)$.
+Jadi, $f$ kontinu di $z_0$.
 \end{proof}
 
-In \volIref{\corref*{vI-cor:differentiatepowerser} of volume
-I}{\corref{cor:differentiatepowerser}}, we proved that we can
-differentiate real power series term by term.  That is,
-we proved that if
+Dalam \volIref{\corref*{vI-cor:differentiatepowerser} pada Jilid
+I}{\corref{cor:differentiatepowerser}}, kita telah membuktikan bahwa kita dapat
+mendiferensialkan deret pangkat real suku demi suku.  Dengan kata lain,
+kita membuktikan bahwa jika
 \begin{equation*}
 f(x) \coloneqq \sum_{n=0}^\infty c_n {(x-a)}^n
 \end{equation*}
-converges for real $x$ in an interval around $a \in \R$, then we can differentiate
-term by term and obtain a series
+konvergen untuk $x$ real pada suatu interval di sekitar $a \in \R$, maka kita dapat mendiferensialkannya
+suku demi suku dan memperoleh deret
 \begin{equation*}
 f'(x) =
 \sum_{n=1}^\infty n c_n {(x-a)}^{n-1}
 =
 \sum_{n=0}^\infty (n+1)c_{n+1} {(x-a)}^{n} 
 \end{equation*}
-with the same radius of convergence.
-We only proved this theorem when $c_n$ is real.
-However, for complex $c_n$,
-we write
-$c_n = s_n + i t_n$, and as $x$ and $a$ are real
+dengan jari-jari konvergensi yang sama.
+Kita hanya membuktikan teorema ini ketika $c_n$ bernilai real.
+Namun, untuk $c_n$ kompleks,
+kita tulis
+$c_n = s_n + i t_n$, dan karena $x$ serta $a$ real,
 \begin{equation*}
 \sum_{n=0}^\infty c_n {(x-a)}^n
 =
@@ -1278,11 +1278,11 @@ $c_n = s_n + i t_n$, and as $x$ and $a$ are real
 i
 \sum_{n=0}^\infty t_n {(x-a)}^n .
 \end{equation*}
-We apply the theorem to the real and
-imaginary parts.
+Kita terapkan teorema tersebut pada bagian real dan
+bagian imajiner.
 
-By iterating this theorem, we find that an
-analytic function is infinitely differentiable:
+Dengan menerapkan teorema ini berulang kali, kita peroleh bahwa suatu
+fungsi analitik diferensiabel tak berhingga kali:
 \begin{equation*}
 %mbxlatex \begin{aligned}
 f^{(\ell)}(x)
@@ -1295,109 +1295,109 @@ f^{(\ell)}(x)
 \sum_{n=0}^\infty (n+\ell)(n+\ell-1)\cdots (n+1) c_{n+\ell} {(x-a)}^{n} .
 %mbxlatex \end{aligned}
 \end{equation*}
-In particular,
+Khususnya,
 \begin{equation} \label{eq:formulaforpscoeffs}
 f^{(\ell)}(a) = \ell! \, c_\ell .
 \avoidbreak
 \end{equation}
-The coefficients are uniquely determined by the derivatives of the
-function, and vice versa.
+Koefisien-koefisien tersebut ditentukan secara unik oleh turunan
+fungsi tersebut, dan sebaliknya.
 
-On the other hand, just because we have an infinitely differentiable
-function doesn't mean that the numbers $c_n$ obtained by
-$c_n = \frac{f^{(n)}(0)}{n!}$ give a convergent power series.
-There is a theorem, which we will not prove,
-that given an arbitrary sequence $\{ c_n \}_{n=1}^\infty$, there exists an
-infinitely differentiable function $f$ such that
-$c_n = \frac{f^{(n)}(0)}{n!}$.  Moreover, even if the obtained series
-converges, it may not converge to the function we started with.
-For an example,
-see \volIref{\exerciseref*{vI-exercise:nonanalytic} in volume I}{\exerciseref{exercise:nonanalytic}}:  The
-function
+Di sisi lain, adanya fungsi yang diferensiabel tak berhingga kali
+tidak berarti bahwa bilangan $c_n$ yang diperoleh dari
+$c_n = \frac{f^{(n)}(0)}{n!}$ menghasilkan deret pangkat yang konvergen.
+Terdapat sebuah teorema, yang tidak akan kita buktikan,
+yang menyatakan bahwa untuk sebarang barisan $\{ c_n \}_{n=1}^\infty$, terdapat
+fungsi $f$ yang diferensiabel tak berhingga kali sedemikian sehingga
+$c_n = \frac{f^{(n)}(0)}{n!}$.  Selain itu, sekalipun deret yang diperoleh
+konvergen, deret itu belum tentu konvergen ke fungsi semula.
+Sebagai contoh,
+lihat \volIref{\exerciseref*{vI-exercise:nonanalytic} pada Jilid I}{\exerciseref{exercise:nonanalytic}}:  Fungsi
+berikut
 \begin{equation*}
 f(x) \coloneqq
 \begin{cases}
-e^{-1/x} & \text{if } x > 0,\\
-0        & \text{if } x \leq 0,
+e^{-1/x} & \text{jika } x > 0,\\
+0        & \text{jika } x \leq 0,
 \end{cases}
 \end{equation*}
-is infinitely differentiable, and all derivatives at the origin are zero.
-So
-its series at the origin would be just the zero series, and while that
-series converges, it does not converge to~$f$ for $x > 0$.
+diferensiabel tak berhingga kali, dan semua turunannya di titik asal bernilai nol.
+Jadi,
+deretnya di titik asal hanyalah deret nol; walaupun
+deret tersebut konvergen, deret itu tidak konvergen ke~$f$ untuk $x > 0$.
 
 \medskip
 
-We can apply an affine transformation $z \mapsto z+a$ that
-converts a power series at $a$ to a series at the origin.
-That is, if
+Kita dapat menerapkan transformasi afin $z \mapsto z+a$ yang
+mengubah deret pangkat di sekitar $a$ menjadi deret di sekitar titik asal.
+Artinya, jika
 \begin{equation*}
 f(z) = \sum_{n=0}^\infty c_n {(z-a)}^n,
-\qquad \text{we consider} \qquad
+\qquad \text{kita tinjau} \qquad
 f(z+a) = \sum_{n=0}^\infty c_n {z}^n.
 \end{equation*}
-Therefore, it is usually
-sufficient to prove results about power series at the origin.
-From now on, we often assume $a=0$ for simplicity.
+Karena itu, biasanya
+cukup untuk membuktikan hasil mengenai deret pangkat di sekitar titik asal.
+Mulai sekarang, demi kesederhanaan, kita sering mengandaikan $a=0$.
 
-\subsection{Power series as analytic functions}
+\subsection{Deret pangkat sebagai fungsi analitik}
 
-We need a theorem on swapping limits of series, that is, 
-Fubini's theorem for sums.  For real series this was
-\volIref{\exerciseref*{vI-exercise:tonellifubiniforsums} in volume
-I}{\exerciseref{exercise:tonellifubiniforsums}}, but we have a slicker
-argument now.
+Kita memerlukan teorema tentang pertukaran limit deret, yakni
+teorema Fubini untuk penjumlahan.  Untuk deret real, hasil ini merupakan
+\volIref{\exerciseref*{vI-exercise:tonellifubiniforsums} pada Jilid
+I}{\exerciseref{exercise:tonellifubiniforsums}}, tetapi sekarang kita memiliki
+argumen yang lebih elegan.
 
-\begin{thm}[\myindex{Fubini for sums}] \label{thm:fubiniforsums}
-Let $\{ a_{k,m} \}_{k=1,m=1}^\infty$ be a double
-sequence of complex numbers and suppose that for every $k$ the series
+\begin{thm}[\myindex{Fubini untuk penjumlahan}] \label{thm:fubiniforsums}
+Misalkan $\{ a_{k,m} \}_{k=1,m=1}^\infty$ suatu barisan ganda
+bilangan kompleks dan andaikan bahwa untuk setiap $k$, deret
 \begin{equation*}
-\sum_{m=1}^\infty \sabs{a_{k,m}} \qquad \text{converges}
+\sum_{m=1}^\infty \sabs{a_{k,m}} \qquad \text{konvergen}
 \end{equation*}
-and furthermore that
+dan, lebih lanjut, bahwa
 \begin{equation*}
 \sum_{k=1}^\infty \left( \sum_{m=1}^\infty \sabs{a_{k,m}} \right)
-\qquad \text{converges}.
+\qquad \text{konvergen}.
 \end{equation*}
-Then
+Maka
 \begin{equation*}
 \sum_{k=1}^\infty \left( \sum_{m=1}^\infty a_{k,m} \right)
 =
 \sum_{m=1}^\infty \left( \sum_{k=1}^\infty a_{k,m} \right) ,
 \end{equation*}
-where all the series involved converge.
+dan semua deret yang terlibat konvergen.
 \end{thm}
 
 \begin{proof}
-Let $E$ be the set $\{ \nicefrac{1}{n} : n \in \N \} \cup \{ 0 \}$,
-and treat it as a metric space with the metric inherited from $\R$.
-Define the sequence of functions $f_k \colon E \to \C$
-by
+Misalkan $E$ himpunan $\{ \nicefrac{1}{n} : n \in \N \} \cup \{ 0 \}$,
+dan pandang himpunan tersebut sebagai ruang metrik dengan metrik yang diwarisi dari $\R$.
+Definisikan barisan fungsi $f_k \colon E \to \C$
+dengan
 \begin{equation*}
 f_k(\nicefrac{1}{n}) \coloneqq \sum_{m=1}^n a_{k,m}
 \qquad
-\text{and}
+\text{dan}
 \qquad
 f_k(0) \coloneqq \sum_{m=1}^\infty a_{k,m} .
 \end{equation*}
-As the series converges, each $f_k$ is continuous at $0$
-(since 0 is the only cluster point, they are continuous at every point of
-$E$, but we don't need that).
-For all $x \in E$, we have
+Karena deret tersebut konvergen, setiap $f_k$ kontinu di $0$
+(karena 0 adalah satu-satunya titik akumulasi, fungsi-fungsi tersebut kontinu di setiap titik
+dalam $E$, tetapi kita tidak memerlukan fakta itu).
+Untuk setiap $x \in E$, kita memiliki
 \begin{equation*}
 \babs{f_k(x)} \leq \sum_{m=1}^\infty \sabs{a_{k,m}} .
 \end{equation*}
-As $\sum_k \sum_m \sabs{a_{k,m}}$ converges (and does not depend on
-$x$), we know that
+Karena $\sum_k \sum_m \sabs{a_{k,m}}$ konvergen (dan tidak bergantung pada
+$x$), kita tahu bahwa
 \begin{equation*}
 \sum_{k=1}^n f_k(x)
 \end{equation*}
-converges uniformly on $E$.  Define
+konvergen secara seragam pada $E$.  Definisikan
 \begin{equation*}
 g(x) \coloneqq \sum_{k=1}^\infty f_k(x) ,
 \end{equation*}
-which is, therefore, a continuous function at $0$.
-So
+yang karena itu merupakan fungsi kontinu di $0$.
+Dengan demikian,
 \begin{equation*}
 \begin{split}
 \sum_{k=1}^\infty \left( \sum_{m=1}^\infty a_{k,m} \right)
@@ -1417,44 +1417,44 @@ So
 \end{equation*}
 \end{proof}
 
-Now we prove that once we have a series converging to a function
-in some interval, we can expand the function around every point.
+Sekarang kita buktikan bahwa jika suatu deret konvergen ke sebuah fungsi
+pada suatu interval, kita dapat mengembangkan fungsi tersebut di sekitar setiap titik.
 
-\begin{thm}[Taylor's theorem for real-analytic functions]
-\index{Taylor's theorem!real-analytic}%
+\begin{thm}[Teorema Taylor untuk fungsi analitik real]
+\index{Teorema Taylor!analitik real}%
 \label{thm:tayloranal}
-Let
+Misalkan
 \begin{equation*}
 f(x) \coloneqq \sum_{k=0}^\infty a_k x^k
 \end{equation*}
-be a power series converging in $(-\rho,\rho)$ for some $\rho > 0$.  Given any $a \in
-(-\rho,\rho)$,
-and $x$ such that $\sabs{x-a} < \rho-\sabs{a}$, we have
+merupakan suatu deret pangkat yang konvergen pada $(-\rho,\rho)$ untuk suatu $\rho > 0$.  Untuk setiap $a \in
+(-\rho,\rho)$
+dan setiap $x$ yang memenuhi $\sabs{x-a} < \rho-\sabs{a}$, berlaku
 \begin{equation*}
 f(x) =
 \sum_{k=0}^\infty \frac{f^{(k)}(a)}{k!} {(x-a)}^{k} .
 \end{equation*}
 \end{thm}
 
-The power series at $a$ could of course converge in a larger interval, but
-the one above is guaranteed.  It is the largest symmetric interval about
-$a$ that fits in $(-\rho,\rho)$.
+Deret pangkat yang berpusat di $a$ tentu saja dapat konvergen pada interval yang lebih besar, tetapi
+konvergensi pada interval di atas dijamin.  Interval tersebut adalah interval simetris terbesar yang berpusat di
+$a$ dan termuat dalam $(-\rho,\rho)$.
 
 \begin{proof}
-Given $a$ and $x$ as in the theorem,
-write
+Untuk $a$ dan $x$ sebagaimana dalam teorema,
+tuliskan
 \begin{equation*}
 \begin{split}
 f(x) &= \sum_{k=0}^\infty a_k {\bigl((x-a)+a\bigr)}^k \\
 &= \sum_{k=0}^\infty a_k \sum_{m=0}^k \binom{k}{m} a^{k-m} {(x-a)}^m .
 \end{split}
 \end{equation*}
-Define $c_{k,m} \coloneqq a_k \binom{k}{m} a^{k-m}$ if $m \leq k$ and $0$ if $m >
-k$.  Then 
+Definisikan $c_{k,m} \coloneqq a_k \binom{k}{m} a^{k-m}$ jika $m \leq k$ dan $0$ jika $m >
+k$.  Maka
 \begin{equation} \label{eq:tsproof}
 f(x) = \sum_{k=0}^\infty \, \sum_{m=0}^\infty c_{k,m} {(x-a)}^m .
 \end{equation}
-Let us show that the double sum converges absolutely.
+Mari kita tunjukkan bahwa jumlah ganda tersebut konvergen mutlak.
 \begin{equation*}
 \begin{split}
 \sum_{k=0}^\infty \, \sum_{m=0}^\infty \babs{ c_{k,m} {(x-a)}^m}
@@ -1465,13 +1465,13 @@ Let us show that the double sum converges absolutely.
 & = \sum_{k=0}^\infty \sabs{a_k} {\bigl(\sabs{x-a}+\sabs{a}\bigr)}^k ,
 \end{split}
 \end{equation*}
-and this series converges as long as 
-$(\sabs{x-a}+\sabs{a}) < \rho$ or in other words if
+dan deret ini konvergen selama
+$(\sabs{x-a}+\sabs{a}) < \rho$, atau dengan kata lain jika
 $\sabs{x-a} < \rho-\sabs{a}$.
 
-Using \thmref{thm:fubiniforsums},
-swap the order of summation in \eqref{eq:tsproof}, and 
-the following series converges when $\sabs{x-a} < \rho-\sabs{a}$:
+Dengan menggunakan \thmref{thm:fubiniforsums},
+tukar urutan penjumlahan dalam \eqref{eq:tsproof}; maka
+deret berikut konvergen ketika $\sabs{x-a} < \rho-\sabs{a}$:
 \begin{equation*}
 f(x) =
 \sum_{k=0}^\infty \, \sum_{m=0}^\infty c_{k,m} {(x-a)}^m
@@ -1480,46 +1480,46 @@ f(x) =
 \left( \sum_{k=0}^\infty
 c_{k,m} \right) {(x-a)}^m .
 \end{equation*}
-The formula in terms of derivatives at $a$ follows by
-differentiating the series to obtain \eqref{eq:formulaforpscoeffs}.
+Rumus yang dinyatakan melalui turunan di $a$ diperoleh dengan
+mendiferensialkan deret tersebut untuk memperoleh \eqref{eq:formulaforpscoeffs}.
 \end{proof}
 
-Note that if a series converges for real $x \in (a-\rho,a+\rho)$ it also converges
-for all complex numbers in $B(a,\rho)$.
-We have the following corollary, which says that functions defined
-by power series are analytic.
+Perhatikan bahwa jika suatu deret konvergen untuk peubah real $x \in (a-\rho,a+\rho)$, deret itu juga konvergen
+untuk semua bilangan kompleks dalam $B(a,\rho)$.
+Kita memperoleh korolari berikut, yang menyatakan bahwa fungsi yang didefinisikan
+oleh deret pangkat bersifat analitik.
 
 \begin{cor} \label{cor:powerseranalytic}
-For every $a \in \C$,
-if $\sum_{k=0}^\infty c_k {(z-a)}^k$ converges to $f(z)$ in $B(a,\rho)$ and $b \in
+Untuk setiap $a \in \C$,
+jika $\sum_{k=0}^\infty c_k {(z-a)}^k$ konvergen ke $f(z)$ dalam $B(a,\rho)$ dan $b \in
 B(a,\rho)$,
-then there exists a power series
-$\sum_{k=0}^\infty d_k {(z-b)}^k$ that converges to $f(z)$ in $B(b,\rho-\sabs{b-a})$.
+maka terdapat deret pangkat
+$\sum_{k=0}^\infty d_k {(z-b)}^k$ yang konvergen ke $f(z)$ dalam $B(b,\rho-\sabs{b-a})$.
 \end{cor}
 
 \begin{proof}
-Without loss of generality assume that $a=0$ and $b \neq 0$.  We can rotate to assume that $b$ is real, but
-since that is harder to picture, let us do it explicitly.
-Let $\alpha \coloneqq \frac{\bar{b}}{\sabs{b}}$.
-Notice that
+Tanpa mengurangi keumuman, andaikan $a=0$ dan $b \neq 0$.  Kita dapat melakukan rotasi sehingga $b$ bernilai real, tetapi
+karena hal itu lebih sulit dibayangkan, mari kita lakukan secara eksplisit.
+Misalkan $\alpha \coloneqq \frac{\bar{b}}{\sabs{b}}$.
+Perhatikan bahwa
 \begin{equation*}
 \abs{\nicefrac{1}{\alpha}} = \sabs{\alpha}
 = 1 .
 \end{equation*}
-Therefore the series
+Karena itu, deret
 $\sum_{k=0}^\infty c_k {(\nicefrac{z}{\alpha})}^k = 
 \sum_{k=0}^\infty c_k \alpha^{-k} {z}^k$
-converges to $f(\nicefrac{z}{\alpha})$ in $B(0,\rho)$.
-When $z=x$ is real
-we apply \thmref{thm:tayloranal} at $\sabs{b}$ and get
-a series that converges
-to $f(\nicefrac{z}{\alpha})$ on $B(\sabs{b},\rho-\sabs{b})$.
-That is, there is a convergent series
+konvergen ke $f(\nicefrac{z}{\alpha})$ dalam $B(0,\rho)$.
+Ketika $z=x$ bernilai real,
+kita menerapkan \thmref{thm:tayloranal} pada titik $\sabs{b}$ dan memperoleh
+sebuah deret yang konvergen
+ke $f(\nicefrac{z}{\alpha})$ pada $B(\sabs{b},\rho-\sabs{b})$.
+Artinya, terdapat deret konvergen
 \begin{equation*}
 f(\nicefrac{z}{\alpha}) =
 \sum_{k=0}^\infty a_k {\bigl(z - \sabs{b}\bigr)}^k .
 \end{equation*}
-Using $\alpha b = \sabs{b}$, we find
+Dengan menggunakan $\alpha b = \sabs{b}$, kita peroleh
 \begin{equation*}
 f(z) = f(\nicefrac{\alpha z}{\alpha}) =
 \sum_{k=0}^\infty a_k {(\alpha z - \sabs{b})}^k 
@@ -1528,25 +1528,25 @@ f(z) = f(\nicefrac{\alpha z}{\alpha}) =
 =
 \sum_{k=0}^\infty a_k\alpha^k {(z - b)}^k ,
 \end{equation*}
-and this series converges for all $z$ such that
+dan deret ini konvergen untuk semua $z$ sedemikian sehingga
 $\bigl\lvert \alpha z-\sabs{b}\bigr\rvert < \rho-\sabs{b}$
-or $\sabs{z - b} < \rho-\sabs{b}$.
+atau $\sabs{z - b} < \rho-\sabs{b}$.
 \end{proof}
 
-We proved above that a convergent power series is an
-analytic function where it converges.  We have also shown before that
-$\frac{1}{1-z}$ is analytic outside of $z=1$.
+Di atas telah kita buktikan bahwa deret pangkat yang konvergen mendefinisikan
+fungsi analitik pada daerah konvergensinya.  Sebelumnya juga telah kita tunjukkan bahwa
+$\frac{1}{1-z}$ bersifat analitik di setiap titik selain $z=1$.
 
-Note that just because a real-analytic function is analytic on the
-entire real line, it does not necessarily mean that it has a power series
-representation that converges everywhere.  For example, the function
+Perhatikan bahwa meskipun suatu fungsi analitik real bersifat analitik pada
+seluruh garis real, hal itu belum tentu berarti fungsi tersebut memiliki representasi deret pangkat
+yang konvergen di semua titik.  Sebagai contoh, fungsi
 \begin{equation*}
 f(x) = \frac{1}{1+x^2}
 \end{equation*}
-happens to be a real-analytic function on $\R$ (exercise).  A power
-series around the origin converging to $f$
-has a radius of convergence of exactly $1$.
-Can you see why? (exercise)
+merupakan fungsi analitik real pada $\R$ (latihan).  Deret
+pangkat di sekitar titik asal yang konvergen ke $f$
+memiliki jari-jari konvergensi tepat $1$.
+Dapatkah Anda melihat alasannya? (latihan)
 
 \subsection{Identity theorem for analytic functions}
 

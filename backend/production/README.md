@@ -1,9 +1,32 @@
 # Production backend checkpoints
 
-## Public checkpoint U319
+## Public checkpoint U330
 
-`v0.4-live-2026.08.23-u319-tqa-a/` is the authoritative live checkpoint for
-release U319. It binds the 319-row translation manifest and the 626-row
+`v0.4-live-2026.08.24-u330-figfix-a/` is the authoritative checkpoint for
+release U330. It binds the 330-row translation manifest, the 643-row
+terminology ledger, and the localized Figure 11.6 derivative assets.
+
+- 2,683 canonical records;
+- 15 deterministic CSV projections;
+- 26 files / 11,495,077 bytes;
+- `records.jsonl` SHA-256
+  `a072ad3b76864de53bd1a5802dd9aaee5f9067f2e63b192eafdc308bc9fff9bf`;
+- input manifest SHA-256
+  `c45f42524e598f724e5845c1a7e3c38b9c43de241dcae63b48870b2683d1b34b`;
+- input terminology SHA-256
+  `9192208da259eb7f0b7ab8dd9ceb7569ed0af8f1d90c27a349fd0e84c36ac463`.
+
+The dataset passes schema and referential validation. Every CSV projection
+round-trips to the exact canonical record set. An independent replay produced
+the identical 26-file inventory SHA-256
+`8c60d50e03a80441dcc5e73ba398ab37f1b258048cb34368d44d474296ac68df`;
+that duplicate replay is intentionally omitted from the public repository and
+source package.
+
+## Preserved public checkpoint U319
+
+`v0.4-live-2026.08.23-u319-tqa-a/` is the preserved checkpoint for release
+U319. It binds the 319-row translation manifest and the 626-row
 terminology ledger used after the field-terminology revalidation.
 
 - 2,650 canonical records;
@@ -16,10 +39,7 @@ terminology ledger used after the field-terminology revalidation.
 - input terminology SHA-256
   `2e844ec82fa781b2fb3eb67deed21e55ab8c2dc25fcb2e609d46603f3a32e6aa`.
 
-The dataset passes schema and referential validation. Every CSV projection
-round-trips to the exact canonical record set. An independent replay produced
-an identical 26-file inventory; that duplicate replay is intentionally omitted
-from the public repository and source package.
+Its validation and replay evidence remain intact as release history.
 
 ## Baseline and builders
 
