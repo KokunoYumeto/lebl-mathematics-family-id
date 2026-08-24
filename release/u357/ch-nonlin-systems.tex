@@ -1,0 +1,2553 @@
+\chapter{Sistem nonlinear} \label{nlin:chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Linearisasi, titik kritis, dan kesetimbangan}
+\label{linearization:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1 pertemuan\EPref{, \S6.1--\S6.2 dalam \cite{EP}}\BDref{,
+\S9.2--\S9.3 dalam \cite{BD}}}
+
+%\subsection{Persamaan nonlinear}
+
+Selain beberapa selingan singkat dalam \chapterref{fo:chapter},
+kita terutama membahas persamaan
+linear. Persamaan linear memadai dalam banyak penerapan, tetapi dalam kenyataan,
+kebanyakan fenomena memerlukan persamaan nonlinear. Namun, persamaan nonlinear
+terkenal jauh lebih sulit dipahami daripada persamaan linear, dan
+banyak fenomena baru yang aneh muncul ketika kita mengizinkan persamaan kita
+bersifat nonlinear.
+Jangan khawatir, waktu yang kita gunakan untuk mempelajari persamaan linear tidak sia-sia.
+Persamaan nonlinear sering kali dapat dihampiri dengan persamaan linear jika kita hanya memerlukan
+solusi secara \myquote{lokal}---hanya untuk jangka waktu singkat atau
+hanya untuk parameter tertentu. Pemahaman terhadap persamaan linear juga dapat
+memberi kita pemahaman kualitatif tentang masalah nonlinear yang lebih umum.
+Gagasannya serupa dengan yang Anda lakukan dalam kalkulus ketika mencoba
+menghampiri suatu fungsi dengan garis yang memiliki kemiringan yang tepat.
+
+\begin{mywrapfigsimp}{1.45in}{1.75in}
+\noindent
+\inputpdft{mv-pend}{%
+%note that this diagram appears more than once in the book
+Diagram sebuah bandul. Sebuah bandul diperlihatkan terpancang pada satu titik di atas
+dan bergerak sepanjang busur lingkaran. Ujung bawah bandul diberi label m, dan
+sudut antara bandul dan garis vertikal diberi label theta.
+Panjang bandul diberi label L.}
+\end{mywrapfigsimp}
+Dalam \sectionref{sec:mv} kita meninjau bandul dengan
+panjang $L$. Tujuannya adalah mencari sudut $\theta(t)$ sebagai
+fungsi waktu $t$. Persamaan untuk susunan ini adalah
+persamaan nonlinear
+\begin{equation*}
+\theta'' + \frac{g}{L} \sin \theta = 0 .
+\end{equation*}
+Alih-alih menyelesaikan persamaan ini, kita menyelesaikan persamaan linear yang
+jauh lebih mudah
+\begin{equation*}
+\theta'' + \frac{g}{L} \theta = 0 .
+\end{equation*}
+Meskipun solusi persamaan linear bukan persis yang kita
+cari, solusi itu cukup dekat dengan solusi semula, selama
+sudut $\theta$ kecil dan selang waktunya singkat.
+
+Anda mungkin bertanya: Mengapa kita tidak langsung menyelesaikan masalah nonlinear itu? Nah,
+persamaan yang dimaksud mungkin sangat sulit, tidak praktis, atau mustahil diselesaikan
+secara analitik. Kita bahkan mungkin
+tidak tertarik pada solusi sebenarnya.
+Kita mungkin hanya tertarik
+pada gambaran kualitatif mengenai perilaku solusi. Misalnya,
+%we may be interested in
+apa yang terjadi ketika waktu menuju tak hingga?
+%In the case
+%of the pendulum we found that it oscillates and we can even approximate
+%the period well if the swings are small.
+%In other words, why do more work, when we can do less.
+%The exact solution, even if found, might be harder to analyze.
+
+
+\subsection{Sistem otonom dan analisis bidang fase}
+
+Kita membatasi perhatian pada sistem otonom berdimensi dua
+\begin{equation*}
+x' = f(x,y) , \qquad y' = g(x,y) ,
+\end{equation*}
+dengan $f(x,y)$ dan $g(x,y)$ merupakan fungsi dua variabel, dan
+turunannya diambil terhadap waktu $t$. Solusinya adalah
+fungsi $x(t)$ dan $y(t)$ sedemikian sehingga
+\begin{equation*}
+x'(t) = f\bigl(x(t),y(t)\bigr), \qquad
+y'(t) = g\bigl(x(t),y(t)\bigr) .
+\end{equation*}
+Cara kita menganalisis sistem ini sangat mirip dengan
+\sectionref{auteq:section}, tempat kita mempelajari satu persamaan otonom. Gagasan
+dalam dua dimensi sama, tetapi perilakunya dapat
+jauh lebih rumit.
+%We will do the same sort of analysis.  We will
+%look for the \emph{critical points} of the system and then we will analyze
+%what happens when time goes to infinity.
+
+Mungkin yang terbaik adalah memandang sistem persamaan tersebut sebagai satu persamaan vektor
+\begin{equation} \label{eq:nlinautn2}
+\begin{bmatrix} x \\ y \end{bmatrix} ' =
+\begin{bmatrix} f(x,y) \\ g(x,y) \end{bmatrix} .
+\end{equation}
+Seperti dalam \sectionref{sec:introtosys}, kita menggambar
+\emph{\myindex{potret fase}} (atau \emph{\myindex{diagram fase}}),
+tempat setiap titik $(x,y)$ bersesuaian dengan keadaan tertentu dari sistem.
+Kita menggambar \emph{\myindex{medan vektor}}
+yang pada setiap
+titik $(x,y)$ diberikan oleh vektor
+$\left[ \begin{smallmatrix} f(x,y) \\ g(x,y) \end{smallmatrix} \right]$.
+Dan seperti sebelumnya, jika kita menemukan solusi, kita menggambar lintasannya
+dengan memplot semua titik $\bigl(x(t),y(t)\bigr)$ untuk suatu rentang $t$.
+
+\begin{example} \label{example:nlin-1b-example}
+Tinjau persamaan orde kedua $x''=-x+x^2$.
+Tuliskan persamaan ini sebagai sistem nonlinear orde pertama
+\begin{equation*}
+x' = y , \qquad y' = -x+x^2 .
+\end{equation*}
+Potret fase beserta beberapa lintasannya digambar dalam
+\figurevref{fig:nlin-1b}.
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{nlin-1b}{%
+Plot medan arah (kisi panah) pada bidang xy.
+Di tengah, panah-panah mengitari titik kritis di
+titik asal searah jarum jam. Kemudian,
+pada titik (1,0), medan arahnya berupa titik pelana, yaitu,
+panah-panah sepanjang kurva miring turun secara diagonal menuju titik kritis,
+sedangkan pada kurva miring naik secara diagonal menjauhi titik kritis.
+Di sebelah kiri titik kritis, panah-panah kira-kira mengarah ke bawah; di atas titik kritis,
+panah-panah kira-kira mengarah ke kanan;
+di sebelah kanan titik kritis, panah-panah kira-kira mengarah ke atas;
+dan di bawah titik kritis, panah-panah kira-kira mengarah ke kiri.
+Panah-panah tampak semakin panjang ketika semakin jauh dari titik kritis.
+Beberapa lintasan juga digambar. Di sekitar titik kritis
+(0,0) terdapat beberapa lintasan berbentuk telur dengan ujung runcing ke arah
+x positif. Lalu ada satu lintasan yang tampak
+melewati titik kritis (1,0) sambil membentuk gelung, walaupun untuk benar-benar
+membentuk gelung, lintasan harus melawan arah panah setelah melewati
+titik kritis. Kemudian terdapat beberapa lintasan lain;
+beberapa lintasan berawal dari kanan bawah, naik secara diagonal,
+tetapi kemudian berbelok ke kiri hingga mencapai separuh kiri gambar
+dengan tetap berada di bawah sumbu x.
+Kemudian lintasan-lintasan itu berbelok ke atas hingga
+berada di separuh atas gambar, lalu berbelok ke kanan hingga mencapai
+separuh kanan gambar, tempat lintasan itu berbelok naik secara diagonal dan meninggalkan
+gambar. Sepasang lintasan lain berawal di bawah sumbu x pada
+sisi kanan gambar, dekat dengan sumbu x, lalu sekadar berbelok
+ke kanan hingga meninggalkan gambar, tanpa pernah melewati x sama dengan 1.}
+\caption{Potret fase beserta beberapa lintasan dari
+$x' = y$, $y' = -x+x^2$. \label{fig:nlin-1b}}
+\end{myfig}
+
+Dari potret fase tampak jelas bahwa bahkan sistem sederhana ini memiliki
+perilaku yang cukup rumit. Beberapa lintasan terus berosilasi mengitari
+titik asal, dan beberapa lainnya bergerak menuju tak hingga. Kita akan sering
+kembali ke contoh ini dan menganalisisnya secara lengkap dalam bagian ini (dan bagian berikutnya).
+\end{example}
+
+Jika kita memperbesar diagram di dekat suatu titik tempat
+$\left[ \begin{smallmatrix} f(x,y) \\ g(x,y) \end{smallmatrix} \right]$
+tidak nol, maka panah-panah di sekitarnya pada umumnya menunjuk ke arah yang pada dasarnya sama
+dan memiliki besar yang pada dasarnya sama.
+Dengan kata lain, perilaku di dekat titik seperti itu tidak terlalu menarik.
+Tentu saja kita mengasumsikan bahwa $f(x,y)$ dan $g(x,y)$ kontinu.
+
+Mari kita pusatkan perhatian pada titik-titik dalam diagram fase
+di atas, tempat lintasan-lintasan
+tampak berawal, berakhir, atau mengitari sesuatu. Kita melihat dua titik demikian:
+$(0,0)$ dan $(1,0)$. Lintasan-lintasan tampak mengitari titik $(0,0)$,
+dan tampak masuk ke atau keluar dari titik $(1,0)$.
+%
+Titik-titik ini tepat merupakan titik tempat turunan $x$
+dan $y$ sama-sama nol. Kita definisikan \emph{titik kritis}\index{titik kritis}
+sebagai titik $(x,y)$ sedemikian sehingga
+\begin{equation*} 
+\begin{bmatrix} f(x,y) \\ g(x,y) \end{bmatrix} = \vec{0} .
+\avoidbreak
+\end{equation*}
+Dengan kata lain, inilah titik-titik tempat $f(x,y)=0$ dan $g(x,y)=0$.
+
+Titik kritis adalah tempat perilaku sistem, dalam arti tertentu,
+paling rumit. Jika
+$\left[ \begin{smallmatrix} f(x,y) \\ g(x,y) \end{smallmatrix} \right]$
+nol, maka di sekitarnya vektor dapat menunjuk ke arah mana pun.
+Selain itu, lintasan-lintasan menuju, menjauhi, atau mengitari
+titik-titik ini. Jadi, jika kita mencari perilaku kualitatif jangka panjang dari sistem,
+kita perlu melihat apa yang terjadi di dekat titik kritis.
+
+Titik kritis juga kadang-kadang disebut
+\emph{kesetimbangan}\index{kesetimbangan}, karena pada titik kritis terdapat apa yang disebut
+\emph{solusi kesetimbangan}\index{solusi kesetimbangan}.
+Jika $(x_0,y_0)$ adalah titik kritis, maka kita memiliki solusi
+\begin{equation*}
+x(t) = x_0, \quad y(t) = y_0 .
+\end{equation*}
+Dalam \examplevref{example:nlin-1b-example}, terdapat dua solusi
+kesetimbangan:
+\begin{equation*}
+x(t) = 0, \quad y(t) = 0,
+\qquad \text{dan} \qquad
+x(t) = 1, \quad y(t) = 0.
+\end{equation*}
+Bandingkan pembahasan tentang kesetimbangan ini dengan pembahasan dalam
+\sectionref{auteq:section}. Konsep yang mendasarinya
+persis sama.
+
+\subsection{Linearisasi}
+
+Dalam \sectionref{sec:twodimaut} kita mempelajari perilaku sistem linear
+homogen yang terdiri atas dua persamaan di dekat titik kritis. Untuk sistem linear
+dua variabel yang diberikan oleh matriks invertibel, satu-satunya titik kritis adalah
+titik asal $(0,0)$.
+Mari kita manfaatkan pemahaman yang kita peroleh dalam bagian itu
+untuk memahami apa yang terjadi di dekat titik kritis sistem nonlinear.
+
+Dalam kalkulus, kita belajar menaksir suatu fungsi dengan mengambil
+turunannya dan melakukan linearisasi. Kita bekerja dengan cara serupa pada sistem persamaan diferensial biasa nonlinear.
+Misalkan $(x_0,y_0)$ adalah titik kritis.
+Pertama, ganti variabel menjadi $(u,v)$, sehingga $(u,v)=(0,0)$ bersesuaian dengan
+$(x_0,y_0)$. Artinya,
+\begin{equation*}
+u=x-x_0, \qquad v=y-y_0 .
+\end{equation*}
+Selanjutnya kita perlu mencari turunannya. Dalam kalkulus multivariabel, Anda mungkin
+pernah melihat bahwa versi turunan untuk beberapa variabel adalah
+\emph{\myindex{matriks Jacobian}}%
+\footnote{Dinamai menurut matematikawan Jerman
+\href{https://en.wikipedia.org/wiki/Carl_Gustav_Jacob_Jacobi}{Carl Gustav Jacob Jacobi}
+(1804--1851).}. Matriks Jacobian dari
+fungsi bernilai vektor
+$\left[ \begin{smallmatrix} f(x,y) \\ g(x,y) \end{smallmatrix} \right]$
+pada $(x_0,y_0)$ adalah
+\begin{equation*}
+\begin{bmatrix}
+\frac{\partial f}{\partial x}(x_0,y_0) &
+\frac{\partial f}{\partial y}(x_0,y_0) \\
+\frac{\partial g}{\partial x}(x_0,y_0) &
+\frac{\partial g}{\partial y}(x_0,y_0)
+\end{bmatrix} .
+\end{equation*}
+Matriks ini memberikan hampiran linear terbaik ketika $u$ dan $v$ (dan
+karena itu $x$ dan $y$) berubah.
+Kita mendefinisikan \emph{\myindex{linearisasi}} persamaan
+\eqref{eq:nlinautn2} sebagai sistem linear
+\begin{equation*}
+\begin{bmatrix} u \\ v \end{bmatrix} ' =
+\begin{bmatrix}
+\frac{\partial f}{\partial x}(x_0,y_0) &
+\frac{\partial f}{\partial y}(x_0,y_0) \\
+\frac{\partial g}{\partial x}(x_0,y_0) &
+\frac{\partial g}{\partial y}(x_0,y_0)
+\end{bmatrix} 
+\begin{bmatrix} u \\ v \end{bmatrix} .
+\end{equation*}
+
+\begin{example} \label{example:nlin-1b-examplelin}
+Mari kita gunakan kembali persamaan dalam
+\exampleref{example:nlin-1b-example}:
+$x' = y$, $y' = -x+x^2$. Terdapat dua titik kritis, $(0,0)$
+dan $(1,0)$. Matriks Jacobian pada sembarang titik adalah
+\begin{equation*}
+\begin{bmatrix}
+\frac{\partial f}{\partial x}(x,y) &
+\frac{\partial f}{\partial y}(x,y) \\
+\frac{\partial g}{\partial x}(x,y) &
+\frac{\partial g}{\partial y}(x,y)
+\end{bmatrix} =
+\begin{bmatrix}
+0 & 1 \\
+-1+2x & 0
+\end{bmatrix}.
+\end{equation*}
+Pada $(0,0)$, yaitu ketika $x=0$ dan $y=0$, matriks Jacobiannya adalah
+\begin{equation*}
+\begin{bmatrix}
+0 & 1 \\
+-1 & 0
+\end{bmatrix} ,
+\end{equation*}
+dan variabel baru kita adalah
+$u=x$ dan $v=y$. Linearisasi pada $(0,0)$ adalah
+\begin{equation*}
+\begin{bmatrix} u \\ v \end{bmatrix} ' =
+\begin{bmatrix}
+0 & 1 \\
+-1 & 0
+\end{bmatrix}
+\begin{bmatrix} u \\ v \end{bmatrix} .
+\end{equation*}
+
+Pada titik $(1,0)$, matriks Jacobiannya
+adalah
+$\left[ \begin{smallmatrix}
+0 & 1 \\
+1 & 0
+\end{smallmatrix} \right]$,
+dan variabel baru kita adalah
+$u=x-1$ dan $v=y$.
+Linearisasi pada $(1,0)$ adalah
+\begin{equation*}
+\begin{bmatrix} u \\ v \end{bmatrix} ' =
+\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}
+\begin{bmatrix} u \\ v \end{bmatrix} .
+\end{equation*}
+
+Diagram fase dari kedua linearisasi pada
+titik kritis $(0,0)$ dan $(1,0)$ diberikan dalam \figurevref{fig:nlin-1b-lin}. Perhatikan
+bahwa variabelnya kini $u$ dan $v$, yang berbeda pada setiap
+titik kritis. Bandingkan
+\figureref{fig:nlin-1b-lin} dengan \figurevref{fig:nlin-1b}, dan perhatikan terutama
+perilaku di dekat titik-titik kritis.
+
+\begin{myfig}
+\capstart
+%original files nlin-1b-lin-00 nlin-1b-lin-01
+\diffyincludegraphics{width=6.24in}{width=9in}{nlin-1b-lin-00-01}{%
+Dua plot medan arah (kisi panah) pada bidang uv.
+Di sebelah kiri, panah-panah sekadar mengitari titik asal searah jarum jam, dengan beberapa
+lintasan melingkar digambar. Di sebelah kanan terdapat
+gambar pelana: sepanjang garis v sama dengan u, panah-panah menjauhi
+titik asal, sedangkan sepanjang v sama dengan minus u, panah-panah menuju titik asal. Garis
+v sama dengan u
+dan v sama dengan minus u digambar sebagai lintasan. Pada gambar yang dibagi oleh garis-garis ini,
+di daerah sebelah kiri, panah-panah umumnya mengarah ke bawah, sedikit ke
+kanan di bagian atas dan sedikit ke kiri di bagian bawah. Ada suatu lintasan di daerah ini
+yang berawal di luar gambar pada sisi kiri,
+bergerak turun dan agak ke kanan sebelum berbelok ke kiri
+dan meninggalkan gambar. Situasinya serupa pada tiga daerah lainnya:
+di daerah atas panah-panah kira-kira mengarah ke kanan, di daerah
+kanan panah-panah kira-kira mengarah ke atas, dan di daerah bawah
+panah-panah kira-kira mengarah ke kiri.}
+\caption{Diagram fase beserta beberapa lintasan dari
+linearisasi pada titik kritis $(0,0)$ (kiri) dan $(1,0)$ (kanan) untuk
+$x' = y$, $y' = -x+x^2$. \label{fig:nlin-1b-lin}}
+\end{myfig}
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Sketsalah medan vektor bidang fase untuk:
+\begin{tasks}(3)
+\task $x'=x^2$, \enspace $y'=y^2$,
+\task $x'=(x-y)^2$, \enspace $y'=-x$,
+\task $x'=e^y$, \enspace $y'=e^x$.
+\end{tasks}
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Pasangkan sistem
+\begin{tasks}[label=\arabic*)](3)
+\task $x'=x^2$, \enspace $y'=y^2$,
+\task $x'=xy$, \enspace $y'=1+y^2$,
+\task $x'=\sin(\pi y)$, \enspace $y'=x$,
+\end{tasks}
+dengan medan vektor di bawah ini. Berikan alasan.
+\begin{tasks}(3)
+\task
+\parbox[c]{1.75in}{\diffyincludegraphics{width=1.75in}{width=1.75in}{nlin-exer-xy-1py2}{%
+Medan arah pada bidang xy, dengan semua panah
+tampak kecil dan menunjuk langsung ke atas sepanjang sumbu x. Panah-panah di atas
+sumbu x menunjuk ke atas dan menjauhi titik asal, sedangkan panah-panah di bawah
+sumbu x juga menunjuk kira-kira ke atas dan menuju titik asal.}}
+\task
+\parbox[c]{1.75in}{\diffyincludegraphics{width=1.75in}{width=1.75in}{nlin-exer-x2-y2}{%
+Medan arah pada bidang xy, dengan panah nol di titik asal,
+panah pada sumbu x menunjuk ke kanan, dan panah pada sumbu y menunjuk ke atas. Di kuadran
+pertama, panah-panah kira-kira menjauhi titik asal, dan di kuadran ketiga
+panah-panah kira-kira menuju titik asal. Di kuadran kedua,
+panah-panah mula-mula mengarah ke kanan dan perlahan berbelok ke atas ketika kita bergerak
+ke kanan. Di kuadran keempat, panah-panah mula-mula mengarah ke atas di bagian bawah lalu
+berbelok ke kanan ketika kita bergerak naik.}}
+\task
+\parbox[c]{1.75in}{\diffyincludegraphics{width=1.75in}{width=1.75in}{nlin-exer-sinpiy-x}{%
+Medan arah pada bidang xy, dengan panah-panah yang tampak mengitari
+dua titik pada sumbu y berlawanan arah jarum jam, satu di atas titik asal dan
+satu di bawah titik asal.}}
+\end{tasks}
+\end{exercise}
+\end{samepage}
+
+
+\begin{exercise}
+Carilah titik-titik kritis dan linearisasi sistem-sistem berikut.
+\begin{tasks}(2)
+\task $x'=x^2-y^2$, \enspace $y'=x^2+y^2-1$,
+\task $x'=-y$, \enspace $y'=3x+yx^2$,
+\task $x'=x^2+y$, \enspace $y'=y^2+x$.
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Untuk sistem-sistem berikut, verifikasilah bahwa $(0,0)$ merupakan titik kritis,
+dan carilah linearisasinya pada $(0,0)$.
+\begin{tasks}(2)
+\task $x'=x+2y+x^2-y^2$, \enspace $y'=2y-x^2$
+\task $x'=-y$, \enspace $y'=x-y^3$
+\task* $x'=ax+by+f(x,y)$, $y'=cx+dy+g(x,y)$, dengan
+$f(0,0) = 0$,
+$g(0,0) = 0$, dan semua turunan parsial pertama $f$ dan $g$
+juga nol pada $(0,0)$, yaitu,
+$\frac{\partial f}{\partial x}(0,0) = 
+\frac{\partial f}{\partial y}(0,0) = 
+\frac{\partial g}{\partial x}(0,0) = 
+\frac{\partial g}{\partial y}(0,0) = 0$.
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Ambil $x'=(x-y)^2$, \enspace $y'=(x+y)^2$.
+\begin{tasks}
+\task Carilah himpunan titik kritis.
+\task Sketsalah diagram fase dan jelaskan perilaku di dekat titik(-titik)
+kritis.
+\task Carilah linearisasinya. Apakah linearisasi itu membantu memahami sistem?
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Ambil $x'=x^2$, \enspace $y'=x^3$.
+\begin{tasks}
+\task Carilah himpunan titik kritis.
+\task Sketsalah diagram fase dan jelaskan perilaku di dekat titik(-titik)
+kritis.
+\task Carilah linearisasinya. Apakah linearisasi itu membantu memahami sistem?
+\end{tasks}
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\pagebreak[2]
+\begin{exercise}
+Carilah titik-titik kritis dan linearisasi sistem-sistem berikut.
+\begin{tasks}(2)
+\task $x'=\sin(\pi y)+(x-1)^2$, \enspace $y'=y^2-y$,
+\task $x'=x+y+y^2$, \enspace $y'=x$,
+\task $x'=(x-1)^2+y$, \enspace $y'=x^2+y$.
+\end{tasks}
+\end{exercise}
+\exsol{%
+a) Titik kritis $(1,0)$ dan $(1,1)$.
+Pada $(1,0)$, dengan $u=x-1$, $v=y$, linearisasinya adalah
+$u'=\pi v$, $v'=-v$.
+Pada $(1,1)$, dengan $u=x-1$, $v=y-1$, linearisasinya adalah
+$u'=-\pi v$, $v'=v$.\\
+b) Titik kritis $(0,0)$ dan $(0,-1)$.
+Pada $(0,0)$, dengan $u=x$, $v=y$, linearisasinya adalah
+$u'=u+v$, $v'=u$.
+Pada $(0,-1)$, dengan $u=x$, $v=y+1$, linearisasinya adalah
+$u'=u-v$, $v'=u$.\\
+c) Titik kritis $(\nicefrac{1}{2},\nicefrac{-1}{4})$. Dengan
+$u=x-\nicefrac{1}{2}$, $v=y+\nicefrac{1}{4}$, linearisasinya adalah
+$u'=-u+v$, $v'=u+v$.
+}
+
+\begin{exercise}
+Pasangkan sistem
+\begin{tasks}[label=\arabic*)](2)
+\task $x'=y^2$, \enspace $y'=-x^2$,
+\task $x'=y$, \enspace $y'=(x-1)(x+1)$,
+\task $x'=y+x^2$, \enspace $y'=-x$,
+\end{tasks}
+dengan medan vektor di bawah ini. Berikan alasan.
+\begin{tasks}(3)
+\task
+\parbox[c]{1.75in}{\diffyincludegraphics{width=1.75in}{width=1.75in}{nlin-exer-y-xm1xp1}{%
+Plot medan arah pada bidang xy.
+Di sebelah kiri plot, panah-panah tampak bergerak searah jarum jam mengitari suatu titik
+di sebelah kiri titik asal pada sumbu x. Lalu, di sebelah kanan, panah-panah
+tampak menuju suatu titik di sebelah kanan titik asal sepanjang garis diagonal
+menurun, dan menjauhi titik itu sepanjang garis diagonal menaik.
+Di sisi kiri plot, panah-panah kira-kira mengarah ke atas;
+di bagian atas, kira-kira mengarah ke kanan; di sisi kanan, kira-kira
+mengarah ke atas; dan di bagian bawah, kira-kira mengarah ke kiri.}}
+\task
+\parbox[c]{1.75in}{\diffyincludegraphics{width=1.75in}{width=1.75in}{nlin-exer-ypx2-mx}{%
+Plot medan arah pada bidang xy.
+Panah-panah tampak bergerak searah jarum jam mengitari titik asal, tetapi tidak
+dengan pola yang benar-benar melingkar.
+Di bagian atas, panah-panah sebagian besar mengarah ke kanan, meskipun agak mengarah ke atas
+di sebelah kiri dan ke bawah di sebelah kanan, serta sedikit
+lebih kecil di tengah gambar. Di sisi kiri
+gambar, semua panah kira-kira menunjuk ke kiri dan ke atas,
+meskipun ukurannya lebih kecil di bagian bawah gambar. Di sisi kanan
+gambar, panah-panah kira-kira menunjuk ke kanan dan sedikit
+ke bawah, serta lebih kecil di bagian bawah gambar. Sepanjang bagian bawah
+gambar, dari kiri ke kanan, panah-panah mula-mula menunjuk ke atas dan ke kiri,
+lalu perlahan berbelok ke kanan, kemudian ke bawah hingga akhirnya menunjuk
+ke bawah dan ke kanan di sudut kanan bawah.}}
+\task
+\parbox[c]{1.75in}{\diffyincludegraphics{width=1.75in}{width=1.75in}{nlin-exer-y2-mx2}{%
+Plot medan arah pada bidang xy.
+Panah-panah tampak datang dari kiri atas dan kira-kira menunjuk ke bawah serta ke kanan.
+Panah-panah itu terus bergerak ke arah tersebut, tetapi seakan-akan ingin
+memutar mengelilingi titik asal.
+Panah-panah yang berawal di atas garis y sama dengan minus x
+mengikuti kurva yang mengitari bagian atas titik asal, sedangkan yang
+berawal di bawah garis tersebut mengikuti kurva yang mengitari bagian bawah titik asal.}}
+\end{tasks}
+\end{exercise}
+\exsol{%
+1) adalah c), \quad 2) adalah a), \quad 3) adalah b)
+}
+
+
+\begin{samepage}
+\begin{exercise}
+Gagasan titik kritis dan linearisasi juga berlaku dalam dimensi yang lebih
+tinggi. Anda cukup memperbesar matriks Jacobian dengan menambahkan lebih banyak fungsi
+dan lebih banyak variabel. Untuk sistem tiga persamaan berikut,
+carilah titik-titik kritis dan linearisasinya:
+\begin{equation*}
+x' = x + z^2, \qquad y' = z^2-y, \qquad z' = z+x^2.
+\end{equation*}
+\end{exercise}
+\end{samepage}
+\exsol{%
+Titik kritisnya adalah $(0,0,0)$ dan
+$(-1, 1, -1)$.
+Linearisasi pada titik asal, dengan variabel $u=x$, $v=y$, $w=z$, adalah
+$u' = u$, $v'=-v$, $w' = w$.
+Linearisasi pada titik $(-1,1,-1)$, dengan variabel $u=x+1$,
+$v=y-1$, $w=z+1$, adalah
+%$x=u-1$
+%$y=v+1$
+%$z=w-1$
+%$u' = u-1 + (w-1)^2$, $v' = (w-1)^2-v+1$, $w' = (w-1)+(u-1)^2$.
+%$u' = u + w^2-2w$, $v' = w^2-2w-v$, $w' = w+u^2-2u$
+$u'=u-2w$, $v'=-v-2w$, $w'=w-2u$.
+}
+
+\begin{exercise}
+Setiap sistem tak otonom berdimensi dua $x'=f(x,y,t)$, $y'=g(x,y,t)$ dapat
+ditulis sebagai sistem otonom berdimensi tiga (tiga persamaan). Tuliskan
+sistem otonom ini menggunakan variabel $u$, $v$, $w$.
+\end{exercise}
+\exsol{%
+$u' = f(u,v,w)$, $v'=g(u,v,w)$, $w' = 1$.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Kestabilan dan klasifikasi titik kritis terisolasi}
+\label{nlinstability:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1,5--2 pertemuan\EPref{, \S6.1--\S6.2 dalam \cite{EP}}\BDref{,
+\S9.2--\S9.3 dalam \cite{BD}}}
+
+\subsection{Titik kritis terisolasi dan sistem hampir linear}
+
+Suatu titik kritis disebut
+\emph{terisolasi}\index{titik kritis terisolasi}
+jika titik itu merupakan satu-satunya titik kritis dalam suatu
+\myquote{lingkungan} kecil di sekitar titik tersebut.
+Artinya, jika kita memperbesar cukup jauh, titik itulah
+satu-satunya titik kritis yang terlihat.
+Dalam \exampleref{example:nlin-1b-example} di atas,
+kedua titik kritis terisolasi.
+Sebaliknya, jika terdapat satu kurva penuh yang terdiri atas titik-titik
+kritis, titik-titik itu tidak terisolasi.
+
+Suatu sistem disebut \emph{\myindex{hampir linear}} pada titik kritis
+$(x_0,y_0)$ jika titik kritis tersebut terisolasi dan matriks Jacobian pada titik itu
+invertibel, atau secara ekuivalen jika sistem yang dilinearisasi memiliki titik kritis
+terisolasi. Dalam kasus demikian, suku-suku nonlinear sangat kecil
+dan sistem berperilaku seperti linearisasinya, setidaknya ketika kita berada dekat
+dengan titik kritis.
+
+Sebagai contoh, sistem dalam
+Contoh~\ref{example:nlin-1b-example} dan \ref{example:nlin-1b-examplelin}
+memiliki dua titik kritis terisolasi $(0,0)$ dan $(1,0)$, dan
+hampir linear pada kedua titik kritis karena
+matriks Jacobian pada kedua titik,
+$\left[ \begin{smallmatrix} 0 & 1 \\ -1 & 0 \end{smallmatrix} \right]$ dan
+$\left[ \begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix} \right]$,
+invertibel.
+
+Sebaliknya, sistem $x' = x^2$, $y' = y^2$ memiliki titik kritis terisolasi
+pada $(0,0)$, tetapi matriks Jacobian
+\begin{equation*}
+\begin{bmatrix} 2x & 0 \\ 0 & 2y \end{bmatrix}
+\end{equation*}
+bernilai nol ketika $(x,y) = (0,0)$. Jadi sistem ini tidak hampir
+linear.
+Contoh yang lebih buruk lagi adalah sistem $x' = x$, $y' = x^2$, yang tidak memiliki
+titik kritis terisolasi; $x'$ dan $y'$ sama-sama nol
+setiap kali $x=0$, yaitu pada seluruh sumbu $y$.
+
+Untungnya, titik kritis paling sering
+terisolasi, dan sistem hampir linear pada titik-titik kritisnya.
+Jadi, jika kita mempelajari apa yang terjadi di sana, kita telah memahami sebagian besar
+situasi yang muncul dalam penerapan.
+
+
+
+\subsection{Kestabilan dan klasifikasi titik kritis terisolasi}
+
+Setelah kita memiliki titik kritis terisolasi, sistem hampir linear pada
+titik kritis tersebut, dan kita telah menghitung sistem linearisasi
+yang terkait, kita dapat mengklasifikasikan perilaku
+solusinya. Kurang lebih, kita menggunakan klasifikasi sistem linear
+dua variabel dari \sectionref{sec:twodimaut}, dengan satu catatan
+kecil.
+Mari kita daftar perilakunya berdasarkan nilai eigen
+matriks Jacobian pada titik kritis dalam \tablevref{pln:behtab2}.
+Tabel ini sangat mirip dengan \tablevref{pln:behtab},
+kecuali tidak adanya titik \myquote{pusat}.
+%There is also a new column
+%that we will discuss.
+Kita akan membahas pusat kemudian, karena kasus itu lebih rumit.
+
+\begin{table}[h!t]
+\mybeginframe
+\capstart
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Nilai eigen matriks Jacobian & Perilaku & Kestabilan \\
+\midrule
+real dan keduanya positif & sumber / simpul tak stabil & tak stabil \\
+real dan keduanya negatif & serapan / simpul stabil & stabil asimtotik \\
+real dan berlainan tanda & pelana & tak stabil \\
+kompleks dengan bagian real positif & sumber spiral & tak stabil \\
+kompleks dengan bagian real negatif & serapan spiral & stabil asimtotik \\
+\bottomrule
+\end{tabular}
+\end{center}
+\caption{Perilaku sistem hampir linear di dekat titik kritis
+terisolasi. \label{pln:behtab2}}
+\myendframe
+\end{table}
+
+Pada kolom ketiga,
+kita menandai titik sebagai \emph{stabil asimtotik} atau \emph{tak stabil}. Secara formal,
+\emph{\myindex{titik kritis stabil}} $(x_0,y_0)$ adalah titik yang memenuhi hal berikut:
+untuk setiap jarak kecil $\epsilon$ dari $(x_0,y_0)$, dan setiap kondisi awal
+dalam radius yang mungkin lebih kecil di sekitar $(x_0,y_0)$, lintasan
+sistem tidak pernah menjauh dari $(x_0,y_0)$ melebihi $\epsilon$.
+\emph{\myindex{Titik kritis tak stabil}} adalah titik yang tidak stabil.
+Secara informal, suatu titik stabil jika, ketika kita mulai dekat dengan titik kritis dan
+mengikuti suatu lintasan, kita menuju, atau setidaknya tidak menjauh
+dari,
+titik kritis tersebut.
+
+Titik kritis stabil $(x_0,y_0)$ disebut \emph{\myindex{stabil asimtotik}} jika,
+untuk setiap kondisi awal yang cukup dekat dengan $(x_0,y_0)$ dan setiap
+solusi $\bigl( x(t), y(t) \bigr)$ yang memenuhi kondisi tersebut,
+\begin{equation*}
+\lim_{t \to \infty} \bigl( x(t), y(t) \bigr) = (x_0,y_0) .
+\end{equation*}
+Artinya, titik kritis stabil asimtotik
+jika setiap lintasan dengan kondisi awal yang cukup dekat
+menuju titik kritis $(x_0,y_0)$.
+
+\begin{example} \label{example:nlin-xplusy}
+Tinjau
+$x'=-y-x^2$,
+$y'=-x+y^2$.
+Lihat \figurevref{fig:nlin-ex813-new} untuk diagram fasenya.
+Mari kita cari titik-titik kritisnya. Inilah titik-titik tempat
+$-y-x^2 = 0$ dan $-x+y^2=0$. Persamaan pertama berarti $y = -x^2$, sehingga
+$y^2 = x^4$. Dengan menyubstitusikannya ke persamaan kedua, kita memperoleh
+$-x+x^4 = 0$. Dengan memfaktorkan, kita memperoleh $x(x^3-1)=0$. Karena kita hanya mencari
+solusi real, kita mendapatkan $x=0$ atau $x=1$. Dengan mencari $y$ yang
+bersesuaian menggunakan $y = -x^2$, kita memperoleh dua titik kritis, yaitu $(0,0)$
+dan $(1,-1)$. Jelas bahwa titik-titik kritis ini terisolasi.
+
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{nlin-ex813-new}{%
+Plot medan arah pada bidang xy untuk x antara minus 2 dan 2
+serta y antara minus 2 dan 2. Terdapat dua titik kritis, satu di
+titik asal dan satu di (1, minus 1). Titik asal berupa pelana, dengan panah-panah
+yang datang ke arahnya sepanjang kurva diagonal menaik dan panah-panah yang keluar
+sepanjang kurva diagonal menurun. Titik (1, minus 1) adalah serapan, dengan
+panah-panah yang menunjuk ke arahnya. Beberapa lintasan diperlihatkan; lintasan yang
+berawal di sisi kanan untuk y kira-kira di bawah
+y sama dengan 1 dan
+di sisi bawah kira-kira di kanan x sama dengan minus 1 bergerak masuk ke serapan. Lintasan
+lain berbelok menuju dan meninggalkan gambar pada sisi kiri atas
+plot.}
+\caption{Potret fase beserta beberapa contoh lintasan dari
+$x'=-y-x^2$, $y'=-x+y^2$. \label{fig:nlin-ex813-new}}
+\end{myfig}
+
+Matriks Jacobiannya adalah
+\begin{equation*}
+\begin{bmatrix}
+-2x & -1 \\
+-1 & 2y
+\end{bmatrix} .
+\end{equation*}
+Pada titik $(0,0)$, kita memperoleh matriks
+$\left[ \begin{smallmatrix} 0 & -1 \\ -1 & 0 \end{smallmatrix} \right]$
+yang nilai eigennya $1$ dan $-1$. Karena matriksnya invertibel, sistem hampir linear
+pada $(0,0)$. Karena nilai eigennya real
+dan berlainan tanda, kita memperoleh titik pelana, yaitu titik kesetimbangan
+yang tak stabil.
+
+Pada titik $(1,-1)$, kita memperoleh matriks
+$\left[ \begin{smallmatrix} -2 & -1 \\ -1 & -2 \end{smallmatrix} \right]$
+yang
+nilai eigennya $-1$ dan $-3$.
+Matriksnya invertibel, sehingga sistem hampir linear pada $(1,-1)$.
+Karena kedua nilai eigen real dan negatif, titik
+kritis tersebut merupakan serapan, dan karena itu merupakan titik kesetimbangan yang stabil asimtotik.
+Artinya, jika kita mulai dari sembarang titik $(x_i,y_i)$ yang dekat dengan $(1,-1)$ sebagai
+kondisi awal dan memplot suatu lintasan, lintasan itu mendekati $(1,-1)$.
+Dengan kata lain,
+\begin{equation*}
+\lim_{t \to \infty} \bigl( x(t), y(t) \bigr) = (1,-1) .
+\end{equation*}
+Seperti yang dapat
+Anda lihat dari diagram, perilaku ini bahkan berlaku untuk beberapa
+titik awal yang cukup jauh dari $(1,-1)$, tetapi tentu tidak berlaku untuk semua
+titik awal.
+\end{example}
+
+\begin{example} \label{example:nlin-withexp}
+Tinjau
+$x'=y+y^2e^x$,
+$y'=x$. Pertama, kita mencari titik-titik kritis. Inilah titik tempat
+$y+y^2e^x = 0$ dan $x=0$. Dengan menyederhanakan, kita memperoleh $0=y+y^2 = y(y+1)$. Jadi,
+titik kritisnya adalah $(0,0)$ dan $(0,-1)$, sehingga keduanya terisolasi. Mari kita
+hitung matriks Jacobiannya:
+\begin{equation*}
+\begin{bmatrix}
+y^2e^x & 1+2ye^x \\
+1 & 0
+\end{bmatrix}.
+\end{equation*}
+
+Pada titik $(0,0)$ kita memperoleh matriks
+$\left[ \begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix} \right]$, sehingga
+kedua nilai eigennya adalah $1$ dan $-1$. Karena matriksnya invertibel, sistem hampir linear
+pada $(0,0)$. Dan, karena nilai eigennya real
+serta berlainan tanda, kita memperoleh titik pelana, yaitu titik kesetimbangan
+yang tak stabil.
+
+Pada titik $(0,-1)$ kita memperoleh matriks
+$\left[ \begin{smallmatrix} 1 & -1 \\ 1 & 0 \end{smallmatrix} \right]$ yang
+nilai eigennya adalah $\frac{1}{2} \pm i \frac{\sqrt{3}}{2}$.
+Matriksnya invertibel, sehingga sistem hampir linear pada $(0,-1)$.
+Karena kita memiliki nilai eigen kompleks dengan bagian real positif, titik
+kritis itu merupakan sumber spiral, dan karena itu merupakan titik kesetimbangan yang tak stabil.
+
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{nlin-ex813}{%
+Plot medan arah pada bidang xy untuk x antara minus 2 dan 2
+serta y antara minus 2 dan 2. Titik asal adalah titik kritis berupa pelana,
+dengan panah-panah menuju titik asal sepanjang kurva miring menurun
+dan panah-panah keluar sepanjang kurva miring menaik. Titik
+(0, minus 1) merupakan sumber spiral, dengan panah-panah yang melilit keluar dari
+titik kritis berlawanan arah jarum jam. Beberapa lintasan diperlihatkan, terutama dua
+lintasan yang berpilin keluar dari titik kritis (0, minus 1).}
+\caption{Potret fase beserta beberapa contoh lintasan dari
+$x'=y+y^2e^x$, $y'=x$. \label{fig:nlin-ex813}}
+\end{myfig}
+
+Lihat \figurevref{fig:nlin-ex813} untuk diagram fasenya. Perhatikan kedua
+titik kritis serta perilaku panah-panah dalam medan vektor di sekitar
+titik-titik tersebut.
+\end{example}
+
+\subsection{Masalah pada pusat}
+
+Ingatlah bahwa pusat pada sistem linear berarti lintasan-lintasan
+bergerak dalam orbit eliptis tertutup
+dengan suatu arah mengitari titik kritis. Titik
+kritis seperti itu kita sebut \emph{\myindex{pusat}} atau
+\emph{\myindex{pusat stabil}}. Titik ini bukan titik kritis yang stabil
+asimtotik, karena lintasan tidak pernah mendekati titik kritis,
+tetapi setidaknya jika Anda mulai cukup dekat dengan titik kritis,
+Anda akan tetap dekat dengannya. Contoh paling sederhana dari
+perilaku semacam itu adalah sistem linear dengan pusat. Contoh
+lain adalah titik kritis $(0,0)$ dalam
+\examplevref{example:nlin-1b-example}.
+
+Masalah pada pusat dalam sistem nonlinear terletak pada kenyataan bahwa
+gerak suatu lintasan menuju atau menjauhi titik kritis ditentukan oleh tanda
+bagian real nilai eigen matriks Jacobian, sedangkan matriks Jacobian
+dalam sistem nonlinear berubah dari titik ke titik. Karena bagian
+real ini nol pada titik kritis itu sendiri, di dekatnya nilainya dapat bertanda apa pun,
+yang berarti lintasan dapat ditarik menuju atau menjauhi titik
+kritis.
+
+\begin{example}
+Contoh perilaku bermasalah semacam itu adalah sistem
+$x'=y, y' = -x+y^3$. Satu-satunya titik kritis
+adalah titik asal $(0,0)$. Matriks Jacobiannya adalah
+\begin{equation*}
+\begin{bmatrix}
+0 & 1 \\
+-1 & 3 y^2 \\
+\end{bmatrix} .
+\end{equation*}
+Pada
+$(0,0)$, matriks Jacobiannya adalah
+$\left[ \begin{smallmatrix}
+0 & 1 \\
+-1 & 0 \\
+\end{smallmatrix} \right]$, yang memiliki nilai eigen $\pm i$. Jadi,
+linearisasinya memiliki pusat.
+
+Dengan menggunakan persamaan kuadrat, nilai eigen
+matriks Jacobian pada sembarang titik $(x,y)$ adalah
+\begin{equation*}
+\lambda = 
+\frac{3}{2}y^2 \pm
+i
+\frac{\sqrt{4-9y^4}}{2} .
+\end{equation*}
+Pada setiap titik dengan $y \neq 0$ (jadi, pada hampir semua titik di dekat titik asal), nilai eigennya memiliki bagian real positif ($y^2$ tidak pernah
+negatif). Bagian real positif ini
+mendorong lintasan menjauhi titik asal. Contoh lintasan untuk suatu
+kondisi awal di dekat titik asal diberikan dalam
+\figurevref{fig:nlin-unstable-center}.
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{nlin-unstable-centerfig}{%
+Plot medan arah pada bidang xy.
+Panah-panah di sekitar titik asal tampak mengitari titik asal
+berlawanan arah jarum jam. Diperlihatkan suatu lintasan yang sangat rapat melilit,
+yang melilit keluar dari titik kritis dan akhirnya meninggalkan gambar (bahkan
+berbelok ke arah yang berbeda dari arah lilitannya).}
+\caption{Titik kritis tak stabil (sumber spiral) pada titik asal
+untuk $x'=y, y' = -x+y^3$, meskipun linearisasinya memiliki pusat. \label{fig:nlin-unstable-center}}
+\end{myfig}
+\end{example}
+
+Pesan dari contoh tersebut adalah bahwa analisis lebih lanjut diperlukan ketika
+linearisasi memiliki pusat. Analisisnya secara umum akan lebih
+rumit daripada contoh di atas dan lebih mungkin memerlukan
+pertimbangan kasus demi kasus. Kerumitan seperti ini seharusnya tidak
+mengejutkan Anda. Pada tahap ini dalam perjalanan matematika Anda, Anda telah
+menemui banyak keadaan ketika suatu uji sederhana tidak memberikan kesimpulan,
+sehingga diperlukan analisis yang lebih cermat dan mungkin bersifat ad hoc.
+Ingatlah, misalnya, ketika
+uji turunan kedua untuk maksimum atau minimum
+tidak memberikan kesimpulan.
+
+\subsection{Persamaan konservatif}
+
+Persamaan berbentuk
+\begin{equation*}
+x'' + f(x) = 0,
+\end{equation*}
+dengan $f(x)$ fungsi sembarang, disebut
+\emph{\myindex{persamaan konservatif}}. Sebagai contoh, persamaan bandul
+adalah persamaan konservatif. Persamaan-persamaan ini konservatif karena tidak ada
+gesekan dalam sistem sehingga energi dalam sistem \myquote{kekal.}
+Mari kita tuliskan persamaan ini sebagai
+sistem PDB nonlinear:
+\begin{equation*}
+x' = y, \qquad y' = -f(x) .
+\end{equation*}
+Jenis persamaan ini memiliki
+keuntungan bahwa kita dapat mencari lintasannya dengan mudah.
+
+Caranya adalah mula-mula memandang $y$ sebagai fungsi $x$ untuk sementara. Lalu,
+gunakan aturan rantai
+\begin{equation*}
+x'' = y' = \frac{dy}{dx} x' = y \frac{dy}{dx} ,
+\end{equation*}
+dengan tanda prima menyatakan turunan terhadap $t$.
+Kita memperoleh $y \frac{dy}{dx} + f(x) = 0$. Kita mengintegralkan terhadap
+$x$ untuk mendapatkan
+$\int y \frac{dy}{dx} \,dx + \int f(x)\, dx = C$. Dengan kata lain,
+\begin{equation*}
+\frac{1}{2} y^2  + \int f(x)\, dx = C .
+\end{equation*}
+Kita memperoleh persamaan implisit untuk lintasan, dengan nilai $C$ yang berbeda
+memberikan lintasan yang berbeda. Nilai
+$C$ tetap kekal pada setiap lintasan. Ungkapan ini
+kadang-kadang disebut \emph{\myindex{Hamiltonian}} atau energi
+sistem.
+Jika Anda melihat kembali \sectionref{exact:section}, Anda akan memperhatikan
+bahwa $y\frac{dy}{dx} + f(x) = 0$ adalah persamaan eksak, dan
+kita baru saja menemukan fungsi potensial.
+
+\begin{example}
+Mari kita cari lintasan untuk persamaan $x'' + x-x^2 = 0$,
+yakni persamaan dari
+\examplevref{example:nlin-1b-example}. Sistem orde pertama
+yang bersesuaian adalah
+\begin{equation*}
+x' = y , \qquad y' = -x+x^2 .
+\end{equation*}
+Lintasan memenuhi
+\begin{equation*}
+\frac{1}{2} y^2  + \frac{1}{2} x^2 - \frac{1}{3} x^3  = C .
+\end{equation*}
+Kita selesaikan untuk $y$
+\begin{equation*}
+y = \pm \sqrt{-x^2 + \frac{2}{3} x^3  + 2C} .
+\end{equation*}
+
+Dengan memplot grafik-grafik ini, kita mendapatkan tepat lintasan-lintasan dalam
+\figurevref{fig:nlin-1b}. Secara khusus, kita melihat bahwa di dekat titik asal
+lintasannya berupa \emph{\myindex{kurva tertutup}}: lintasan itu terus
+mengitari titik asal, tanpa pernah berpilin masuk atau keluar. Dengan demikian, kita menemukan cara
+untuk memverifikasi bahwa titik kritis pada $(0,0)$ adalah pusat stabil.
+Titik kritis pada $(1,0)$ adalah pelana, seperti yang telah kita perhatikan.
+Contoh ini merupakan ciri khas persamaan konservatif.
+\end{example}
+
+Tinjau persamaan konservatif sembarang
+$x'' + f(x) = 0$.
+Semua titik kritis terjadi ketika $y=0$ (pada
+sumbu $x$), yaitu ketika $x' = 0$. Titik kritisnya adalah
+titik-titik pada sumbu $x$ tempat $f(x) = 0$.
+Lintasannya diberikan oleh
+\begin{equation*}
+y = \pm \sqrt{ - 2 \int f(x)\, dx + 2C} .
+\end{equation*}
+Jadi, semua lintasan simetris terhadap sumbu $x$. Secara khusus,
+tidak mungkin ada sumber atau serapan spiral.
+Matriks Jacobiannya adalah
+\begin{equation*}
+\begin{bmatrix}
+0 & 1 \\
+-f'(x) & 0
+\end{bmatrix} .
+\end{equation*}
+Titik kritisnya hampir linear jika $f'(x) \neq 0$ pada titik
+kritis. Misalkan $J$ menyatakan matriks Jacobian.
+Nilai eigen $J$ adalah solusi dari
+\begin{equation*}
+0 = \det(J - \lambda I) = \lambda^2 + f'(x) .
+\end{equation*}
+Karena itu, $\lambda = \pm \sqrt{-f'(x)}$. Dengan kata lain, kita memperoleh
+nilai eigen real yang berlainan tanda (jika $f'(x) < 0$),
+atau nilai eigen imajiner murni (jika $f'(x) > 0$).
+Hanya ada dua kemungkinan untuk titik kritis, yaitu \emph{titik pelana
+tak stabil}, atau \emph{pusat stabil}.
+Tidak pernah ada serapan atau sumber.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Untuk sistem di bawah ini, cari dan klasifikasikan titik-titik kritisnya.
+Nyatakan pula
+apakah kesetimbangannya stabil, stabil asimtotik, atau tak stabil.
+\begin{tasks}(2)
+\task $x'=-x+3x^2, y'=-y$
+\task $x'=x^2+y^2-1$, $y'=x$
+\task $x'=ye^x$, $y'=y-x+y^2$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Carilah persamaan implisit lintasan untuk sistem konservatif
+berikut. Selanjutnya, carilah titik kritisnya (jika ada) dan klasifikasikan.
+\begin{tasks}(2)
+\task $x''+ x+x^3 = 0$
+\task $\theta''+\sin \theta = 0$
+\task $z''+ (z-1)(z+1) = 0$
+\task $x''+ x^2+1 = 0$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Cari dan klasifikasikan titik(-titik) kritis dari $x' = -x^2$, $y' = -y^2$.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Misalkan $x'=-xy$, $y'=x^2-1-y$.
+\begin{tasks}
+\task
+Tunjukkan bahwa terdapat dua serapan spiral di
+$(-1,0)$ dan $(1,0)$.
+\task
+Untuk setiap titik awal berbentuk $(0,y_0)$, carilah lintasannya.
+\task
+Dapatkah suatu lintasan yang berawal pada $(x_0,y_0)$ dengan $x_0 > 0$ berpilin menuju
+titik kritis $(-1,0)$? Mengapa atau mengapa tidak?
+\end{tasks}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise} \label{exercise:increasing}
+Dalam contoh $x'=y$, $y'=y^3-x$,
+tunjukkan bahwa untuk setiap lintasan, jarak
+dari titik asal merupakan fungsi yang meningkat.
+Simpulkan
+bahwa pada titik asal sistem berperilaku seperti sumber spiral.
+Petunjuk: Tinjau $f(t) =
+{\bigl(x(t)\bigr)}^2 + 
+{\bigl(y(t)\bigr)}^2$ dan tunjukkan bahwa turunannya positif.
+\end{exercise}
+
+
+\begin{exercise}
+Misalkan $f$ selalu positif.
+Carilah lintasan dari $x''+f(x') = 0$.
+Adakah titik kritis?
+\end{exercise}
+
+\begin{exercise}
+Misalkan $x' = f(x,y)$, $y' = g(x,y)$. Misalkan $g(x,y) > 1$ untuk
+semua $x$ dan $y$. Adakah titik kritis? Apa yang dapat kita katakan tentang
+lintasan ketika $t$ menuju tak hingga?
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Untuk sistem-sistem di bawah ini, cari dan klasifikasikan titik-titik kritisnya.
+\begin{tasks}(3)
+\task $x'=-x+x^2$, $y'=y$
+\task $x'=y-y^2-x$, $y'=-x$
+\task $x'=xy$, $y'=x+y-1$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a) $(0,0)$: pelana (tak stabil), $(1,0)$: sumber (tak stabil), \qquad
+b) $(0,0)$: serapan spiral (stabil asimtotik), $(0,1)$: pelana (tak stabil), \qquad
+c) $(1,0)$: pelana (tak stabil), $(0,1)$: sumber (tak stabil)
+}
+
+\begin{exercise}
+Carilah persamaan implisit lintasan untuk sistem konservatif
+berikut. Selanjutnya, carilah titik kritisnya (jika ada) dan klasifikasikan.
+\begin{tasks}(3)
+\task $x''+ x^2 = 4$
+\task $x''+ e^x = 0$
+\task $x''+ (x+1)e^x = 0$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a) $\frac{1}{2}y^2 + \frac{1}{3}x^3 -4x = C$, titik kritis:
+$(-2,0)$, pelana tak stabil, dan $(2,0)$, pusat stabil. \quad
+b) $\frac{1}{2}y^2 + e^x = C$, tidak ada titik kritis. \quad
+c) $\frac{1}{2}y^2 + xe^x = C$, titik kritis pada $(-1,0)$ adalah pusat stabil.
+}
+
+\begin{exercise}
+Sistem konservatif $x''+x^3 = 0$ tidak hampir linear. Meskipun demikian,
+klasifikasikan titik(-titik) kritisnya.
+\end{exercise}
+\exsol{%
+Titik kritis pada $(0,0)$.
+Lintasannya adalah $y = \pm \sqrt{2C-(\nicefrac{1}{2})x^4}$; untuk $C > 0$, lintasan ini menghasilkan kurva
+tertutup di sekitar titik asal, sehingga titik kritis tersebut merupakan pusat stabil.
+}
+
+\begin{exercise}
+Turunkan klasifikasi yang analog untuk titik kritis pada persamaan berdimensi satu,
+seperti $x'= f(x)$, berdasarkan turunannya. Titik $x_0$ kritis ketika $f(x_0) = 0$ dan
+hampir linear jika sebagai tambahan $f'(x_0) \neq 0$. Tentukan apakah titik kritis itu stabil atau tak stabil
+berdasarkan tanda $f'(x_0)$. Jelaskan. Petunjuk: lihat \sectionref{auteq:section}.
+\end{exercise}
+\exsol{%
+Titik kritis $x_0$ stabil jika $f'(x_0) < 0$ dan tak stabil jika $f'(x_0)
+> 0$.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\sectionnewpage
+\section{Penerapan sistem nonlinear}
+\label{nlinapps:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2 pertemuan\EPref{, \S6.3--\S6.4 dalam \cite{EP}}\BDref{, \S9.3,
+\S9.5 dalam \cite{BD}}}
+
+Dalam bagian ini kita mempelajari dua contoh sistem nonlinear yang sangat
+umum. Pertama, kita meninjau persamaan bandul nonlinear. Sebelumnya kita telah
+melihat linearisasi persamaan bandul, tetapi kita mencatat bahwa linearisasi itu
+hanya berlaku untuk sudut kecil dan waktu singkat. Sekarang kita mencari tahu
+apa yang terjadi untuk sudut besar. Berikutnya, kita meninjau persamaan
+pemangsa--mangsa, yang memiliki berbagai penerapan dalam persoalan pemodelan
+di bidang biologi, kimia, ekonomi, dan bidang lainnya.
+
+\subsection{Bandul}
+
+Contoh pertama yang kita pelajari adalah persamaan bandul
+$\theta''+\frac{g}{L} \sin \theta = 0$. Di sini, $\theta$ adalah simpangan
+sudut, $g$ adalah percepatan gravitasi, dan $L$ adalah panjang bandul. Dalam
+persamaan ini kita mengabaikan gesekan, jadi yang kita bicarakan adalah bandul
+ideal.
+
+\begin{mywrapfigsimp}{1.45in}{1.75in}
+\noindent
+\inputpdft{mv-pend}{%
+%note that this diagram appears more than once in the book
+Diagram sebuah bandul. Sebuah bandul tampak terikat pada satu titik di bagian
+atas dan bergerak sepanjang busur lingkaran. Bagian bawah bandul diberi label
+m, dan sudut antara bandul dan garis vertikal diberi label theta.
+Panjang bandul diberi label L.}
+\end{mywrapfigsimp}
+Persamaan ini adalah persamaan konservatif, sehingga kita dapat menggunakan
+analisis persamaan konservatif dari bagian sebelumnya.
+Kita mengubah persamaan tersebut menjadi sistem dua dimensi
+dalam variabel $(\theta,\omega)$ dengan memperkenalkan variabel baru
+$\omega = \theta'$:
+\begin{equation*}
+\begin{bmatrix}
+\theta \\ \omega
+\end{bmatrix} '
+=
+\begin{bmatrix}
+\omega \\
+- \frac{g}{L} \sin \theta
+\end{bmatrix} .
+\end{equation*}
+Titik kritis sistem ini terjadi ketika $\omega = 0$ dan $-\frac{g}{L}
+\sin \theta = 0$, atau dengan kata lain ketika $\sin \theta = 0$. Jadi titik
+kritisnya terjadi ketika $\omega = 0$ dan $\theta$ merupakan kelipatan
+$\pi$. Artinya, titik-titik tersebut adalah $\ldots (-2\pi,0), (-\pi,0),
+(0,0), (\pi,0), (2\pi,0) \ldots$. Walaupun terdapat tak hingga banyak titik
+kritis, semuanya terisolasi. Untuk persamaan konservatif, terdapat dua jenis
+titik kritis: pusat stabil atau titik pelana.
+
+Kita menghitung matriks Jacobian:
+\begin{equation*}
+\begin{bmatrix}
+\frac{\partial}{\partial \theta} \Bigl( \omega \Bigr) & 
+\frac{\partial}{\partial \omega} \Bigl( \omega \Bigr) \\
+\frac{\partial}{\partial \theta} \Bigl( - \frac{g}{L} \sin \theta \Bigr) & 
+\frac{\partial}{\partial \omega} \Bigl( - \frac{g}{L} \sin \theta \Bigr)
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & 1 \\
+- \frac{g}{L} \cos \theta & 0
+\end{bmatrix} .
+\end{equation*}
+Nilai eigen matriks ini adalah
+$\lambda = \pm \sqrt{-\frac{g}{L}\cos \theta}$.
+Nilai eigennya bernilai real ketika $\cos \theta < 0$. Hal ini terjadi pada
+kelipatan ganjil $\pi$. Nilai eigennya murni imajiner ketika
+$\cos \theta > 0$. Hal ini terjadi pada kelipatan genap $\pi$. Oleh karena
+itu, sistem memiliki pusat stabil di titik-titik $\ldots (-2\pi,0), (0,0),
+(2\pi,0) \ldots$, dan memiliki pelana tak stabil di titik-titik
+$\ldots (-3\pi,0), (-\pi,0), (\pi,0), (3\pi,0) \ldots$. Perhatikan diagram
+fase pada \figurevref{fig:nlin-pend-phasediag}, tempat kita mengambil
+$\frac{g}{L} = 1$ demi kesederhanaan.
+
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{nlin-pend-phasediag}{%
+Plot medan arah pada bidang theta omega
+(dengan sudut theta sebagai arah horizontal)
+untuk theta antara minus 7 dan 7 serta omega antara minus 3 dan 3.
+Tampak 5 titik kritis.
+Tampak 3 pusat, satu di titik asal, satu di (minus 2 pi,0),
+dan satu di (2 pi,0). Anak-anak panah berputar searah jarum jam mengelilingi
+pusat-pusat tersebut. Tampak 2 pelana, satu di (minus pi,0) dan satu di
+(pi,0). Beberapa lintasan digambar. Lintasan di sekitar pusat hanya
+mengelilinginya dalam bentuk elips. Lintasan yang bermula tinggi di sisi
+kiri bergerak dengan gerak berombak seolah-olah ditolak oleh pusat-pusat
+sepanjang bagian atas plot dan keluar di sisi kanan plot.
+Lintasan di bagian bawah melakukan hal yang sama dengan arah terbalik.
+Ada pula lintasan yang mengelilingi pusat-pusat dan bertemu
+pelana secara diagonal.}
+\caption{Diagram bidang fase dan beberapa lintasan persamaan
+bandul nonlinear. \label{fig:nlin-pend-phasediag}}
+\end{myfig}
+
+Dalam persamaan yang dilinearisasi, kita hanya memiliki satu titik kritis,
+yaitu pusat di $(0,0)$. Sekarang kita melihat dengan lebih jelas apa yang
+dimaksud ketika kita mengatakan bahwa linearisasi baik untuk sudut kecil.
+Sumbu horizontal adalah sudut simpangan. Sumbu vertikal adalah kecepatan
+sudut bandul. Misalkan kita mulai dari $\theta = 0$ (tanpa simpangan), dan
+memulai dengan kecepatan sudut $\omega$ yang kecil. Lintasan kemudian terus
+mengelilingi titik kritis $(0,0)$ sepanjang suatu lingkaran hampiran. Hal ini bersesuaian
+dengan ayunan pendek bandul ke depan dan ke belakang. Ketika $\theta$ tetap
+kecil, lintasan benar-benar tampak seperti lingkaran sehingga sangat dekat
+dengan linearisasi kita.
+
+Ketika kita memberi bandul dorongan yang cukup besar, bandul melewati titik
+teratas dan terus berputar pada porosnya. Perilaku ini bersesuaian dengan
+kurva-kurva berombak yang tidak memotong sumbu horizontal pada diagram fase.
+Misalkan kita meninjau kurva-kurva atas, ketika kecepatan sudut $\omega$
+besar dan positif. Saat itu bandul terus berputar mengelilingi porosnya.
+Kecepatannya besar ketika bandul berada dekat titik terbawah, dan paling kecil
+ketika bandul berada dekat titik teratas lintasannya.
+
+Pada setiap titik kritis terdapat solusi kesetimbangan. Pertimbangkan solusi
+$\theta = 0$; bandul tidak bergerak dan menggantung lurus ke bawah. Posisi
+ini stabil bagi bandul, sehingga merupakan kesetimbangan \emph{stabil}.
+
+Jenis solusi kesetimbangan lainnya berada pada titik tak stabil, misalnya
+$\theta = \pi$. Di sini bandul terbalik. Memang, bandul dapat diseimbangkan
+dalam posisi ini dan akan tetap di sana, tetapi ini merupakan kesetimbangan
+\emph{tak stabil}. Dorongan sekecil apa pun akan membuat bandul mulai berayun
+dengan hebat.
+
+Lihat \figurevref{fig:nlin-pend} untuk diagramnya. Gambar pertama adalah
+kesetimbangan stabil $\theta = 0$. Gambar kedua bersesuaian dengan
+\myquote{lingkaran-lingkaran hampiran} pada diagram fase di sekitar
+$\theta =0$ ketika kecepatan sudut kecil. Gambar ketiga adalah kesetimbangan
+tak stabil $\theta = \pi$. Gambar terakhir bersesuaian dengan garis-garis
+berombak untuk kecepatan sudut besar.
+
+\begin{myfig}
+\capstart
+\inputpdft{nlin-pend}{%
+Empat diagram kemungkinan gerak bandul.
+Dari kiri ke kanan, gambar pertama menunjukkan bandul diam yang menggantung
+ke bawah dengan label 'theta sama dengan 0'.
+Gambar kedua, berlabel 'Kecepatan sudut kecil', menunjukkan bandul berayun
+dengan anak panah yang menandai gerak bolak-balik pada busur lingkaran.
+Gambar ketiga, berlabel 'theta sama dengan pi', menunjukkan bandul diam yang
+seimbang tepat ke atas. Gambar terakhir, berlabel 'Kecepatan sudut besar',
+menunjukkan bandul yang berputar penuh mengelilingi porosnya.}
+\caption{Berbagai kemungkinan gerak bandul. \label{fig:nlin-pend}}
+\end{myfig}
+
+Besaran
+\begin{equation*}
+\frac{1}{2} \omega^2  - \frac{g}{L} \cos \theta 
+\avoidbreak
+\end{equation*}
+tetap konstan pada setiap solusi. Besaran ini adalah energi atau Hamiltonian
+sistem.
+
+Karena persamaan kita konservatif, maka (sebagai latihan)
+lintasannya diberikan oleh
+\begin{equation*}
+\omega = \pm \sqrt{ \frac{2g}{L} \cos \theta + C} ,
+\end{equation*}
+untuk berbagai nilai $C$.
+Mari kita tinjau kondisi awal $(\theta_0,0)$, yaitu kita membawa bandul ke
+sudut $\theta_0$, lalu melepaskannya begitu saja (kecepatan sudut awal 0).
+Kita substitusikan kondisi awal ke persamaan di atas dan menyelesaikannya
+untuk $C$, sehingga diperoleh
+\begin{equation*}
+C = - \frac{2g}{L} \cos \theta_0 .
+\end{equation*}
+Jadi, rumus lintasannya adalah
+\begin{equation*}
+\omega = \pm \sqrt{ \frac{2g}{L}} \sqrt{ \cos \theta - \cos \theta_0 } .
+\end{equation*}
+
+Mari kita tentukan periodenya, yaitu waktu yang diperlukan bandul untuk
+berayun ke depan dan ke belakang.
+Kita perhatikan bahwa lintasan di sekitar titik asal pada bidang fase
+simetris terhadap sumbu $\theta$ maupun sumbu $\omega$. Artinya, ditinjau
+dari $\theta$, waktu yang diperlukan dari $\theta_0$ ke $-\theta_0$ sama
+dengan waktu dari $-\theta_0$ kembali ke $\theta_0$. Selain itu, waktu yang
+diperlukan dari $-\theta_0$ ke $0$ sama dengan waktu dari $0$ ke
+$\theta_0$. Oleh karena itu, mari kita cari waktu yang diperlukan bandul
+untuk bergerak dari sudut 0 ke sudut $\theta_0$, yaitu seperempat osilasi
+penuh, lalu kita kalikan dengan 4.
+
+Kita menentukan waktu ini dengan mencari
+$\frac{dt}{d\theta}$ dan mengintegralkannya dari $0$ sampai $\theta_0$.
+Periode adalah empat kali integral ini. Mari kita tetap berada di daerah
+tempat $\omega$ positif. Karena $\omega = \frac{d\theta}{dt}$, dengan
+membaliknya kita memperoleh
+\begin{equation*}
+\frac{dt}{d\theta} = \sqrt{\frac{L}{2g}} \frac{1}{\sqrt{\cos \theta - \cos \theta_0 }} .
+\end{equation*}
+Oleh karena itu, periode $T$ diberikan oleh
+\begin{equation*}
+T = 4 \sqrt{\frac{L}{2g}} \int_0^{\theta_0} \frac{1}{\sqrt{\cos \theta -
+\cos \theta_0 }}\, d\theta .
+\end{equation*}
+Integral tersebut merupakan integral tak wajar, dan secara umum tidak dapat
+kita evaluasi secara simbolik. Jika ingin menghitung suatu nilai $T$
+tertentu, kita harus menggunakan hampiran numerik.
+
+Ingat dari \sectionref{sec:mv}, persamaan yang dilinearisasi
+$\theta''+\frac{g}{L}\theta = 0$ memiliki periode
+\begin{equation*}
+T_{\text{linear}} = 2\pi \sqrt{\frac{L}{g}} .
+\end{equation*}
+Kita memplot $T$, $T_{\text{linear}}$, dan galat relatif
+$\frac{T-T_{\text{linear}}}{T}$ pada \figurevref{fig:TvsT0}. Galat relatif
+menyatakan, dalam persentase, seberapa jauh hampiran kita dari periode
+sebenarnya. Perhatikan bahwa $T_{\text{linear}}$ hanyalah sebuah konstanta.
+Nilainya tidak berubah bersama sudut awal $\theta_0$. Periode sebenarnya $T$
+semakin besar ketika $\theta_0$ semakin besar.
+Perhatikan bahwa galat relatif kecil ketika $\theta_0$ kecil. Galatnya masih
+hanya $15\%$ ketika $\theta_0 = \nicefrac{\pi}{2}$, yaitu sudut 90 derajat.
+Galatnya $3.8\%$ ketika bermula dari $\nicefrac{\pi}{4}$, yaitu sudut
+45 derajat. Pada sudut awal 5 derajat, galatnya hanya $0.048 \%$.
+
+\begin{myfig}
+\capstart
+%original files nlin-T-vs-T0-abs nlin-T-vs-T0-relerr
+\diffyincludegraphics{width=6.24in}{width=9in}{nlin-T-vs-T0-abs-relerr}{%
+Dua plot. Pada plot kiri, T dan T sub linear diplot sebagai fungsi theta
+sub 0 untuk theta sub 0 antara 0 dan pi per 2.
+Plot T sub linear adalah garis horizontal pada 2 pi, sedangkan plot T
+bermula pada 2 pi di kiri, tetapi perlahan naik hingga jauh di atas 7 di
+kanan. Plot kanan menunjukkan galat relatif kedua besaran, yang bermula dari
+nol ketika theta sub 0 sama dengan 0, lalu naik hingga sekitar 0.15 di kanan.}
+\caption{Plot $T$ dan $T_{\text{linear}}$ dengan $\frac{g}{L} =
+1$ (kiri), serta plot galat relatif
+$\frac{T-T_{\text{linear}}}{T}$ (kanan), untuk $\theta_0$ antara 0 dan
+$\nicefrac{\pi}{2}$. \label{fig:TvsT0}}
+\end{myfig}
+
+Walaupun tidak langsung terlihat dari rumus, benar bahwa
+\begin{equation*}
+\lim_{\theta_0 \uparrow \pi} T = \infty .
+\end{equation*}
+Artinya, periode menuju tak hingga ketika sudut awal mendekati titik
+kesetimbangan tak stabil. Jadi, jika kita menempatkan bandul hampir terbalik,
+bandul mungkin memerlukan waktu sangat lama untuk turun. Hal ini konsisten
+dengan perilaku limitnya: bandul yang tepat terbalik tidak pernah melakukan
+osilasi, sehingga keadaan itu dapat kita anggap memiliki periode tak hingga.
+
+\subsection{Sistem pemangsa--mangsa atau Lotka--Volterra}
+
+Salah satu penerapan sederhana sistem nonlinear yang paling umum adalah sistem
+yang disebut \emph{\myindex{pemangsa--mangsa}} atau
+\emph{\myindex{Lotka--Volterra}}%
+\footnote{Dinamai menurut matematikawan, kimiawan, dan ahli statistika Amerika
+\href{https://en.wikipedia.org/wiki/Alfred_J._Lotka}{Alfred James Lotka}
+(1880--1949) dan matematikawan serta fisikawan Italia
+\href{https://en.wikipedia.org/wiki/Vito_Volterra}{Vito Volterra}
+(1860--1940).}
+Sebagai contoh, sistem semacam ini muncul ketika dua spesies berinteraksi,
+yang satu sebagai mangsa dan yang lain sebagai pemangsa. Karena itu, tidak
+mengherankan bahwa persamaan-persamaan tersebut juga diterapkan dalam
+ekonomi. Sistem ini juga muncul dalam reaksi kimia.
+Dalam biologi, sistem persamaan ini menjelaskan variasi periodik alami pada
+populasi berbagai spesies. Sebelum persamaan diferensial diterapkan, variasi
+periodik pada populasi ini membingungkan para ahli biologi.
+
+Kita tetap menggunakan contoh klasik kelinci dan rubah di sebuah hutan.
+Contoh ini paling mudah dipahami.
+\begin{equation*}
+\begin{aligned}
+& x = \# \text{ kelinci (mangsa),} \\
+& y = \# \text{ rubah (pemangsa).}
+\end{aligned}
+\end{equation*}
+Ketika kelinci berjumlah banyak, makanan bagi rubah melimpah sehingga
+populasi rubah bertambah. Namun, ketika populasi rubah bertambah, lebih banyak
+kelinci dimakan. Jadi, ketika rubah berjumlah banyak, populasi kelinci
+seharusnya berkurang, dan sebaliknya.
+Model Lotka--Volterra mengusulkan bahwa perilaku ini dideskripsikan oleh
+sistem persamaan
+\begin{equation*}
+\begin{aligned}
+& x' = (a-by)x, \\
+& y' = (cx-d)y,
+\end{aligned}
+\end{equation*}
+dengan $a,b,c,d$ sebagai sejumlah parameter yang mendeskripsikan interaksi
+rubah dan kelinci\footnote{Interaksi ini tidak berakhir baik bagi kelinci.}.
+Dalam model ini, semuanya merupakan bilangan positif.
+
+Mari kita analisis gagasan di balik model ini. Model tersebut merupakan
+gagasan yang sedikit lebih rumit dan didasarkan pada model populasi
+eksponensial. Pertama, uraikan
+\begin{equation*}
+x' = (a-by)x = ax - byx .
+\end{equation*}
+Tanpa adanya rubah, kelinci diperkirakan tumbuh secara eksponensial.
+Di sinilah suku $ax$ berperan: pertumbuhan populasi sebanding dengan populasi
+itu sendiri. Kita mengasumsikan bahwa kelinci selalu menemukan cukup makanan
+dan memiliki cukup ruang untuk berkembang biak. Namun, ada komponen lain
+$-byx$, yakni populasi juga berkurang sebanding dengan jumlah rubah.
+Keduanya dapat kita tulis sebagai $(a-by)x$, sehingga bentuknya menyerupai
+pertumbuhan atau peluruhan eksponensial, tetapi konstantanya bergantung pada
+jumlah rubah.
+
+Persamaan bagi rubah sangat serupa. Uraikan lagi:
+\begin{equation*}
+y' = (cx-d)y = cxy-dy .
+\end{equation*}
+Rubah memerlukan makanan (kelinci) untuk berkembang biak: semakin banyak
+makanan, semakin besar laju pertumbuhannya, sehingga muncul suku $cxy$.
+Di sisi lain, terdapat kematian alami dalam populasi rubah, sehingga muncul
+suku $-dy$.
+
+Tanpa menunda lagi, mari kita mulai dengan sebuah contoh eksplisit. Misalkan
+persamaannya adalah
+\begin{equation*}
+x' = (0.4-0.01y)x, \qquad y' = (0.003x-0.3)y .
+\end{equation*}
+Lihat \figurevref{fig:nlin-pred-prey} untuk potret fasenya. Dalam contoh ini,
+masuk akal untuk memplot $x$ dan $y$ sebagai grafik terhadap waktu.
+Karena itu, grafik kedua pada \figureref{fig:nlin-pred-prey} merupakan grafik
+$x$ dan $y$ pada sumbu vertikal (mangsa $x$ adalah garis lebih tipis dengan
+puncak lebih tinggi), terhadap waktu pada sumbu horizontal. Solusi khusus
+yang digambar memiliki kondisi awal 20 rubah dan 50 kelinci.
+\begin{myfig}
+\capstart
+%original files nlin-pred-prey-phase nlin-pred-prey-graphs
+\diffyincludegraphics{width=6.24in}{width=9in}{nlin-pred-prey-phase-graphs}{%
+Di sebelah kiri terdapat medan arah untuk x antara 0 dan 200 serta y antara
+0 dan 100. Anak-anak panah berputar berlawanan arah jarum jam mengelilingi
+titik kritis di (100,40). Beberapa lintasan diplot; bentuknya tidak benar-benar
+melingkar. Lintasan bergerak kira-kira ke kanan sepanjang bagian bawah,
+lalu berbelok naik kira-kira secara diagonal, kemudian turun kembali di sisi
+kiri. Lintasan besar menyerupai segitiga yang sudut-sudutnya sangat
+membulat. Di sebelah kanan terdapat plot untuk t antara 0 dan 40, dengan
+grafik pemangsa berupa garis merah tebal dan mangsa berupa garis biru tipis.
+Pada awalnya, jumlah pemangsa lebih rendah daripada jumlah mangsa.
+Mula-mula mangsa bertambah dengan cepat dan mencapai puncak ketika pemangsa
+sedang bertambah, lalu jumlah mangsa turun tajam. Ketika jumlah mangsa turun
+hingga kira-kira setengah tinggi puncaknya, jumlah pemangsa mencapai puncak
+dan mulai turun. Jumlah mangsa berhenti turun, pulih, lalu mulai bertambah
+lagi, sementara jumlah pemangsa terus turun sedikit lebih lama. Kemudian
+siklus ini berulang. Kurva mangsa jauh lebih tinggi, dengan puncak di atas
+225, sedangkan pemangsa mencapai puncak sekitar 80. Nilai minimum pemangsa
+sekitar 15, sedangkan nilai minimum mangsa sekitar 32. Kurva pemangsa lebih
+curam ketika naik dan kurang curam ketika turun, sedangkan kurva mangsa naik
+dan turun dengan kemiringan yang hampir sama, mungkin sedikit lebih lambat
+ketika naik.}
+\caption{Potret fase (kiri) dan grafik $x$ serta $y$ untuk
+sebuah solusi contoh (kanan). \label{fig:nlin-pred-prey}}
+\end{myfig}
+
+Mari kita analisis apa yang tampak pada grafik. Kita bekerja dalam keadaan
+umum alih-alih memasukkan bilangan tertentu. Kita mulai dengan mencari titik
+kritis. Tetapkan $(a-by)x = 0$ dan $(cx-d)y = 0$.
+Persamaan pertama dipenuhi jika $x=0$ atau $y=\nicefrac{a}{b}$. Jika $x=0$,
+persamaan kedua mengakibatkan $y=0$. Jika $y= \nicefrac{a}{b}$, persamaan
+kedua mengakibatkan $x=\nicefrac{d}{c}$.
+Terdapat dua kesetimbangan: di $(0,0)$ ketika tidak ada hewan sama sekali,
+dan di $(\nicefrac{d}{c},\nicefrac{a}{b})$.
+Dalam contoh khusus kita, $x = \nicefrac{d}{c} = 100$ dan
+$y = \nicefrac{a}{b} = 40$. Ini adalah titik dengan 100 kelinci dan 40 rubah.
+
+Kita menghitung matriks Jacobian:
+\begin{equation*}
+\begin{bmatrix}
+a-by & -bx \\
+cy & cx-d
+\end{bmatrix} .
+\end{equation*}
+Di titik asal $(0,0)$ kita memperoleh matriks
+$\left[ \begin{smallmatrix}
+a & 0 \\
+0 & -d
+\end{smallmatrix} \right]$, sehingga nilai eigennya adalah $a$ dan $-d$,
+yang real dan berlainan tanda. Jadi, titik kritis di titik asal merupakan
+pelana. Hal ini masuk akal. Jika kita bermula dengan sejumlah rubah tetapi
+tanpa kelinci, rubah akan punah; artinya, kita mendekati titik asal.
+Jika kita bermula tanpa rubah dan dengan beberapa kelinci, kelinci akan terus
+berkembang biak tanpa kendali sehingga kita menjauhi titik asal.
+
+Baiklah\@, bagaimana dengan titik kritis lainnya di
+$(\nicefrac{d}{c},\nicefrac{a}{b})$? Di sini matriks Jacobian menjadi
+\begin{equation*}
+\begin{bmatrix}
+0 & -\frac{bd}{c} \\
+\frac{ac}{b} & 0
+\end{bmatrix} .
+\end{equation*}
+Nilai eigen memenuhi $\lambda^2 + ad = 0$. Dengan kata lain,
+$\lambda = \pm i \sqrt{ad}$. Karena nilai eigennya murni imajiner, kita
+berada dalam kasus yang tidak dapat diputuskan hanya melalui linearisasi.
+Kita mungkin memiliki pusat stabil, serapan spiral, atau sumber spiral.
+Artinya, kesetimbangannya dapat stabil asimtotik, stabil, atau tak stabil.
+Tentu saja, gambar di atas tampaknya menyiratkan bahwa titik itu merupakan
+pusat stabil. Namun, jangan pernah hanya memercayai gambar. Mungkin
+osilasinya semakin besar, tetapi hanya \emph{sangat} lambat. Tentu saja hal
+ini buruk karena menyiratkan bahwa cepat atau lambat akan terjadi sesuatu
+pada populasi kita. Selain itu, saya hanya menggambar contoh yang sangat
+khusus dengan lintasan yang sangat khusus.
+
+Bagaimana kita dapat memastikan bahwa kita berada dalam keadaan stabil?
+Seperti telah kita katakan, untuk nilai eigen yang murni imajiner, kita perlu
+bekerja sedikit lebih jauh. Sebelumnya kita menemukan bahwa, untuk sistem
+konservatif, terdapat suatu besaran yang tetap konstan pada lintasan
+sehingga lintasan harus membentuk gelung tertutup.
+Kita dapat menggunakan teknik serupa di sini. Kita hanya perlu mencari
+besaran apa yang tetap konstan. Setelah mencoba-coba, kita menemukan bahwa
+konstanta
+\begin{equation*}
+C = \frac{y^a x^d}{e^{cx+by}} = y^a x^d e^{-cx-by}
+\end{equation*}
+tetap konstan. Besaran semacam ini disebut \emph{\myindex{konstanta
+gerak}}. Mari kita periksa bahwa $C$ benar-benar merupakan konstanta gerak.
+Bagaimana memeriksanya? Konstanta adalah sesuatu yang tidak berubah terhadap
+waktu, jadi mari kita hitung turunannya terhadap waktu:
+\begin{equation*}
+C' = 
+a y^{a-1}y' x^d e^{-cx-by}
++
+y^a d x^{d-1} x' e^{-cx-by}
++
+y^a x^d e^{-cx-by} (-cx'-by') .
+\end{equation*}
+Persamaan kita menyatakan nilai $x'$ dan $y'$, jadi mari kita substitusikan:
+\begin{equation*}
+\begin{split}
+C' & = 
+a y^{a-1} (cx-d)y x^d e^{-cx-by}
++
+y^a d x^{d-1} (a-by)x e^{-cx-by}
+\\
+& \phantom{mm} +
+y^a x^d e^{-cx-by} \bigl(-c(a-by)x-b(cx-d)y\bigr)
+\\
+& =
+y^a x^d e^{-cx-by}
+\Bigl(
+a (cx-d)
++
+d (a-by)
++
+\bigl(-c(a-by)x-b(cx-d)y\bigr) \Bigr)
+\\
+& = 
+0 .
+\end{split}
+\end{equation*}
+Jadi, $C$ konstan sepanjang lintasan. Bahkan, bentuk
+$C = \frac{y^a x^d}{e^{cx+by}}$ memberi kita persamaan implisit bagi
+lintasan. Bagaimanapun juga, setelah menemukan konstanta gerak ini,
+lintasan harus berupa kurva-kurva sederhana---yakni kurva level dari
+$\frac{y^a x^d}{e^{cx+by}}$. Ternyata, titik kritis
+$(\nicefrac{d}{c},\nicefrac{a}{b})$ merupakan titik maksimum bagi $C$
+(dibiarkan sebagai latihan). Jadi, $(\nicefrac{d}{c},\nicefrac{a}{b})$
+adalah titik kesetimbangan stabil, dan kita tidak perlu khawatir rubah serta
+kelinci punah atau populasinya meledak.
+
+Satu kekurangan model yang bagus ini ialah bahwa jumlah rubah dan kelinci
+merupakan besaran diskret, sedangkan kita memodelkannya dengan variabel
+kontinu. Model kita tidak mempersoalkan keberadaan, misalnya, 0.1 ekor rubah
+di hutan, padahal kenyataannya hal itu tidak masuk akal. Hampirannya wajar
+selama jumlah rubah dan kelinci besar, tetapi kurang masuk akal untuk jumlah
+kecil. Kita harus berhati-hati ketika menafsirkan hasil apa pun dari model
+semacam ini.
+
+Konsekuensi menarik (dan mungkin berlawanan dengan intuisi) dari model ini
+adalah bahwa menambahkan hewan ke hutan dapat menyebabkan kepunahan, sebab
+variasinya akan menjadi terlalu besar dan salah satu populasi akan mendekati
+nol. Sebagai contoh, misalkan terdapat 20 rubah dan 50 kelinci seperti
+sebelumnya, tetapi sekarang kita memasukkan lebih banyak rubah sehingga
+jumlahnya menjadi 200. Jika perhitungan dijalankan, kita mendapati bahwa
+jumlah kelinci akan merosot menjadi sedikit lebih dari 1 ekor di seluruh
+hutan. Dalam kenyataan, kemungkinan besar ini berarti kelinci punah, lalu
+rubah juga akan punah karena tidak memiliki makanan.
+
+Menunjukkan bahwa suatu sistem persamaan memiliki solusi stabil dapat menjadi
+persoalan yang sangat sulit. Ketika Isaac Newton mengemukakan hukum-hukum
+gerak planetnya, ia membuktikan bahwa satu planet yang mengorbit satu matahari
+merupakan sistem stabil. Namun, tata surya dengan lebih dari 1 planet ternyata
+sungguh sangat sulit. Bahkan, sistem semacam itu berperilaku kaotik (lihat
+\sectionref{sec:chaos}), yang berarti bahwa perubahan kecil pada kondisi awal
+menimbulkan hasil jangka panjang yang sangat berbeda. Dari eksperimen numerik dan
+pengukuran, kita mengetahui bahwa Bumi tidak akan terlempar ke ruang
+hampa atau menabrak Matahari, setidaknya selama beberapa juta tahun.
+Namun, kita tidak mengetahui apa yang terjadi setelah itu.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Ambil \emph{\myindex{persamaan bandul nonlinear teredam}}
+$\theta '' + \mu \theta' + (\nicefrac{g}{L})
+\sin \theta = 0$ untuk suatu $\mu > 0$ (artinya, terdapat gesekan).
+\begin{tasks}
+\task
+Untuk menyederhanakan, misalkan $\mu = 1$ dan $\nicefrac{g}{L} = 1$.
+Tentukan dan klasifikasikan titik-titik kritisnya.
+\task
+Lakukan hal yang sama untuk sebarang $\mu > 0$ dan sebarang $g$
+serta $L$, tetapi dengan redaman kecil, khususnya
+$\mu^2 < 4(\nicefrac{g}{L})$.
+\task
+Jelaskan makna temuan Anda dan apakah hasilnya sesuai dengan apa yang
+Anda perkirakan dalam kenyataan.
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Misalkan kelinci tidak tumbuh secara eksponensial, tetapi secara logistik.
+Secara khusus, tinjau
+\begin{equation*}
+x' = (0.4-0.01y)x - \gamma x^2, \qquad y' = (0.003x-0.3)y .
+\end{equation*}
+Untuk dua nilai $\gamma$ berikut, tentukan dan klasifikasikan semua titik
+kritis di kuadran positif, yakni untuk $x \geq 0$ dan $y \geq 0$.
+Kemudian sketsakan diagram fasenya. Bahas implikasinya bagi perilaku populasi
+dalam jangka panjang.
+\begin{tasks}(2)
+\task
+$\gamma=0.001$, 
+\task
+$\gamma=0.01$.
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{tasks}
+\task Misalkan $x$ dan $y$ adalah variabel positif. Tunjukkan bahwa
+$\frac{y x}{e^{x+y}}$ mencapai maksimum di $(1,1)$.
+\task Misalkan $a,b,c,d$ adalah konstanta positif, dan misalkan pula $x$ serta
+$y$ adalah variabel positif. Tunjukkan bahwa
+$\frac{y^a x^d}{e^{cx+by}}$ mencapai maksimum di
+$(\nicefrac{d}{c},\nicefrac{a}{b})$.
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Untuk persamaan bandul, misalkan kita mengambil lintasan yang menghasilkan
+gerak berputar penuh, misalnya
+$\omega = \sqrt{\frac{2g}{L} \cos \theta
++ \frac{2g}{L} + \omega_0^2}$. Ini adalah lintasan dengan kecepatan sudut
+terendah $\omega_0$. Tentukan bentuk integral bagi waktu yang diperlukan
+bandul untuk melakukan satu putaran penuh.
+\end{exercise}
+
+\begin{exercise}[menantang]
+Ambil bandul dan misalkan posisi awalnya adalah $\theta = 0$.
+\begin{tasks}
+\task
+Tentukan rumus $\omega$ yang memberikan lintasan dengan syarat
+awal $(0,\omega_0)$. Petunjuk: Cari tahu bagaimana $C$ harus dinyatakan dalam
+$\omega_0$.
+\task
+Tentukan kecepatan sudut kritis $\omega_1$ sedemikian sehingga, untuk setiap
+kecepatan sudut awal yang lebih tinggi, bandul akan terus berputar
+mengelilingi porosnya, sedangkan untuk setiap kecepatan sudut awal yang lebih
+rendah, bandul hanya akan berayun ke depan dan ke belakang.
+Petunjuk: Ketika bandul tidak melewati titik teratas, rumus untuk
+$\omega$ tidak terdefinisi bagi beberapa nilai $\theta$.
+\task
+Menurut Anda, apa yang terjadi jika kondisi awalnya adalah $(0,\omega_1)$,
+yakni sudut awalnya 0 dan kecepatan sudut awalnya tepat $\omega_1$?
+\end{tasks}
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Ambil persamaan bandul nonlinear teredam $\theta '' + \mu \theta' +
+(\nicefrac{g}{L})
+\sin \theta = 0$ untuk suatu $\mu > 0$ (artinya, terdapat gesekan).
+Misalkan gesekannya besar, khususnya $\mu^2 > 4 (\nicefrac{g}{L})$.
+\begin{tasks}
+\task
+Tentukan dan klasifikasikan titik-titik kritisnya.
+\task
+Jelaskan makna temuan Anda dan apakah hasilnya sesuai dengan apa yang
+Anda perkirakan dalam kenyataan.
+\end{tasks}
+\end{exercise}
+\exsol{%
+a) Titik-titik kritisnya adalah $\omega=0$, $\theta=k\pi$ untuk setiap
+bilangan bulat $k$. Ketika $k$ ganjil, kita memperoleh titik pelana.
+Ketika $k$ genap, kita memperoleh serapan. \quad
+b)~Temuan ini berarti bandul akan langsung menuju salah satu serapan,
+misalnya $(0,0)$, dan tidak akan berayun ke depan dan ke belakang.
+Gesekannya terlalu besar untuk memungkinkan osilasi, persis seperti sistem
+massa--pegas yang teredam berlebih.
+}
+
+\begin{exercise}
+Misalkan kita memiliki sistem pemangsa--mangsa dengan rubah yang juga dibunuh
+pada laju konstan $h$ ($h$ rubah dibunuh per satuan waktu):
+$x' = (a-by)x,$  $y' = (cx-d)y - h$.
+\begin{tasks}
+\task Tentukan titik-titik kritis dan matriks Jacobian sistem.
+\task Masukkan konstanta $a=0.4$, $b=0.01$, $c=0.003$, $d=0.3$, $h=10$.
+Analisis titik-titik kritisnya. Menurut Anda, apa maknanya bagi hutan itu?
+\end{tasks}
+\end{exercise}
+\exsol{%
+a) Dengan menyelesaikan persamaan untuk titik kritis, kita memperoleh
+$(0,-\nicefrac{h}{d})$ dan
+$(\frac{bh+ad}{ac},\frac{a}{b})$.
+Matriks Jacobian di $(0,-\nicefrac{h}{d})$ adalah
+$\left[
+\begin{smallmatrix}
+a+bh/d & 0 \\
+-ch/d & -d
+\end{smallmatrix}
+\right]$
+dengan nilai eigen $a+bh/d$ dan $-d$. Nilai eigennya real dengan tanda
+berlawanan sehingga kita memperoleh pelana. (Namun, dalam penerapannya kita
+hanya meninjau kuadran positif, sehingga titik kritis ini tidak relevan.)
+Di $(\frac{bh+ad}{ac},\frac{a}{b})$ kita memperoleh matriks Jacobian
+$\left[
+\begin{smallmatrix}
+0 & -\frac{b \left( b h+a d\right) }{a c}\\
+\frac{a c}{b} & \frac{b h+a d}{a}-d
+\end{smallmatrix}
+\right]$.
+b)~Untuk bilangan khusus yang diberikan, titik kritis kedua adalah
+$(\frac{550}{3},40)$
+dan matriksnya adalah
+$\left[
+\begin{smallmatrix}
+0 & -11/6 \\
+3/25 & 1/4
+\end{smallmatrix}
+\right]$, yang memiliki nilai eigen
+$\frac{5\pm i \sqrt{327}}{40}$. Oleh karena itu, terdapat sumber spiral;
+solusinya berpilin ke luar. Solusi itu pada akhirnya mengenai salah satu
+sumbu, $x=0$ atau $y=0$, sehingga salah satu populasi di hutan akan punah.
+}
+
+\begin{exercise}[menantang]
+Misalkan rubah tidak pernah mati. Artinya, kita memiliki sistem
+$x' = (a-by)x,$ $y' = cxy$.
+Tentukan titik-titik kritisnya dan perhatikan bahwa titik-titik itu tidak
+terisolasi. Apa yang akan terjadi pada populasi di hutan jika populasi awal kedua spesies
+bernilai positif? Petunjuk: Pikirkan konstanta geraknya.
+\end{exercise}
+\exsol{%
+Titik-titik kritis berada pada garis $x=0$. Di kuadran positif, $y'$ selalu
+positif sehingga populasi rubah selalu bertambah.
+Konstanta geraknya adalah $C = y^ae^{-cx-by}$.
+Untuk setiap $C$, kurva ini harus mengenai sumbu $y$ (mengapa?),
+sehingga lintasan akan mendekati suatu titik pada sumbu $y$ dan jumlah
+kelinci akan menuju nol.
+}
+
+
+%We have a conservative equation and so (exercise) the
+%trajectories are given by
+%\begin{equation*}
+%\omega = \pm \sqrt{ \frac{2g}{L} \cos \theta + C} ,
+%\end{equation*}
+%for various values of $C$.  Let us figure out what $C$ corresponds to an
+%initial condition $(0,\omega_0)$.  A little bit of thought tells us that
+%such a $C = \omega_0^2 - \frac{2g}{L}$.  Taking just the top part of the
+%trajectory we get
+%\begin{equation*}
+%\omega = \sqrt{ \frac{2g}{L} \cos \theta - \frac{2g}{L} + \omega_0^2} .
+%\end{equation*}
+%What we are trying to do is figure out when this will have no
+%\myquote{gaps,} that
+%is when what is under the square root is always positive.  The minimum is
+%clearly taken when $\theta$ is an odd multiple of $\pi$, in this case we
+%will get precisely zero when
+%\begin{equation*}
+%0 = \frac{2g}{L} \cos \pi - \frac{2g}{L} + \omega_0^2 ,
+%\end{equation*}
+%or in other words, solving for $\omega_0$ (and assuming it is positive) we
+%have
+%\begin{equation*}
+%\omega_0 = 2 \sqrt{\frac{g}{L}} .
+%\end{equation*}
+%In the case we graphed, that is, when $\frac{g}{L} = 1$, then this magic
+%$\omega_0 = 2$.  Notice that the trajectory that seems to go through the 
+%saddle points goes through the point $(0,2)$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+
+\section{Siklus limit}
+\label{limitcycles:section}
+
+\sectionnotes{kurang dari 1 pertemuan\EPref{, dibahas dalam \S6.1 dan \S6.4
+dalam \cite{EP}}\BDref{, \S9.7 dalam \cite{BD}}}
+
+Untuk sistem nonlinear, lintasan tidak harus sekadar mendekati atau
+meninggalkan satu titik. Lintasan bahkan dapat mendekati himpunan yang lebih
+besar, misalnya lingkaran atau kurva tertutup lainnya.
+
+\begin{example}
+\emph{\myindex{Osilator Van der Pol}}\footnote{Dinamai menurut fisikawan
+Belanda
+\href{https://en.wikipedia.org/wiki/Balthasar_van_der_Pol}{Balthasar van der
+Pol} (1889--1959).}
+adalah persamaan berikut:
+\begin{equation*}
+x''-\mu(1-x^2) x' + x = 0,
+\end{equation*}
+dengan $\mu$ sebagai suatu konstanta positif. Osilator Van der Pol berasal
+dari kajian rangkaian listrik, tetapi diterapkan dalam berbagai bidang seperti
+biologi, seismologi, dan ilmu fisika lainnya.
+
+Untuk menyederhanakan, kita menggunakan $\mu = 1$. Diagram fase diberikan
+pada plot kiri dalam \figurevref{fig:nlin-van-der-fig}, dengan $y=x'$ seperti
+biasa. Perhatikan bahwa lintasan tampak sangat cepat menetap pada suatu
+kurva tertutup. Di sebelah kanan terdapat plot satu solusi untuk $t=0$ sampai
+$t=30$ dengan kondisi awal $x(0) = 0.1$ dan $x'(0) = 0.1$. Solusi tersebut
+dengan cepat menuju solusi periodik.
+\begin{myfig}
+\capstart
+%original files nlin-van-der-phase nlin-van-der-plot1
+\diffyincludegraphics{width=6.24in}{width=9in}{nlin-van-der-phase-plot1}{%
+Di sebelah kiri terdapat bidang fase (plot arah) osilator Van der Pol, dengan
+sumbu horizontal berupa x dan sumbu vertikal berupa turunan x prima.
+Sumbu horizontal maupun vertikal membentang dari minus 4 sampai 4.
+Pada plot ini, anak-anak panah tampak bergerak mengelilingi titik asal searah
+jarum jam. Namun, ada satu lintasan yang merupakan kurva tertutup (sebuah
+gelung), yang disebut siklus limit. Bentuknya secara sangat kasar menyerupai
+persegi panjang membulat yang terbaring. Kurva itu kira-kira membentang antara
+minus 2 dan 2 pada sumbu horizontal x serta antara minus 3 dan 3 pada sumbu
+vertikal. Sebuah lintasan yang bermula di dalam siklus limit ini berpilin
+ke luar menuju siklus limit dan semakin mendekatinya. Demikian pula, beberapa
+lintasan yang bermula di luar mendekati siklus limit dari luar dan semakin
+mendekatinya. Baik dari dalam maupun luar, pendekatannya sangat cepat, dan
+lintasan bahkan belum satu kali mengelilinginya ketika sudah tidak dapat
+dibedakan dari siklus limit. Di sebelah kanan terdapat plot pada bidang tx
+untuk t antara 0 dan 30 dari sebuah solusi contoh yang bermula dekat titik
+asal. Solusi itu dengan cepat memasuki osilasi periodik besar antara kira-kira
+minus 2 dan 2.}
+\caption{Potret fase (kiri) dan grafik sebuah solusi contoh
+osilator Van der Pol.\label{fig:nlin-van-der-fig}}
+\end{myfig}
+
+Osilator Van der Pol merupakan contoh \emph{\myindex{osilasi relaksasi}}.
+Kata relaksasi merujuk pada lonjakan tiba-tiba (bagian solusi yang sangat
+curam). Untuk $\mu$ yang lebih besar, bagian curam ini lebih jelas.
+Untuk $\mu$ yang lebih kecil, siklus limit lebih menyerupai lingkaran.
+Bahkan, jika $\mu = 0$, maka $x''+x=0$, yang merupakan sistem linear dengan
+sebuah pusat dan semua lintasannya berupa lingkaran.
+\end{example}
+
+Lintasan pada potret fase yang berupa kurva tertutup (kurva yang membentuk
+gelung) disebut \emph{\myindex{lintasan tertutup}}.
+\emph{\myindex{siklus limit}} adalah lintasan tertutup sedemikian sehingga
+setidaknya satu lintasan lain berpilin masuk menuju lintasan tersebut
+(atau berpilin keluar darinya). Sebagai contoh, kurva tertutup pada potret
+fase persamaan Van der Pol adalah siklus limit.
+Jika semua lintasan yang bermula dekat siklus limit berpilin masuk menuju
+siklus tersebut, siklus limit disebut
+\emph{stabil asimtotik}\index{siklus limit stabil asimtotik}.
+Siklus limit pada osilator Van der Pol stabil asimtotik.
+
+Untuk sebuah lintasan tertutup dalam sistem otonom, setiap solusi yang
+bermula pada lintasan itu bersifat periodik. Kurva semacam ini disebut
+\emph{\myindex{orbit periodik}}.
+Lebih tepatnya, jika $\bigl(x(t),y(t)\bigr)$ merupakan solusi sedemikian
+sehingga untuk suatu $t_0$ titik $\bigl(x(t_0),y(t_0)\bigr)$ terletak pada
+orbit periodik, maka $x(t)$ maupun $y(t)$ merupakan fungsi periodik (dengan
+periode yang sama). Artinya, terdapat suatu bilangan $P$ sedemikian sehingga
+$x(t) = x(t+P)$ dan $y(t) = y(t+P)$.
+
+Tinjau sistem
+\begin{equation} \label{nlin:gensys}
+x' = f(x,y), \qquad y' = g(x,y) ,
+\end{equation}
+dengan fungsi $f$ dan $g$ memiliki turunan kontinu pada suatu daerah $R$
+di bidang.
+
+\begin{theorem}[Poincar\'e--Bendixson\footnote{%
+\href{https://en.wikipedia.org/wiki/Ivar_Otto_Bendixson}{Ivar Otto Bendixson}
+(1861--1935) adalah seorang matematikawan Swedia.}]%
+\index{Teorema Poincar\'e--Bendixson}
+Misalkan $R$ adalah daerah tertutup dan terbatas (daerah pada bidang yang
+mencakup batasnya dan jarak titik-titiknya dari titik asal terbatas), dan \eqref{nlin:gensys} tidak memiliki titik kritis di $R$.
+Misalkan $\bigl(x(t), y(t)\bigr)$ merupakan solusi
+\eqref{nlin:gensys} di $R$ yang ada untuk semua $t \geq t_0$. Maka solusi
+tersebut merupakan fungsi periodik, atau solusi tersebut menuju suatu solusi
+periodik di $R$.
+\end{theorem}
+
+Inti teorema ini adalah bahwa, jika Anda menemukan satu solusi yang ada untuk
+semua $t$ yang cukup besar (yakni ketika $t$ menuju tak hingga) dan tetap
+berada dalam daerah terbatas tanpa titik kritis, maka Anda telah menemukan
+orbit periodik atau solusi yang berpilin menuju siklus limit---dalam jangka
+panjang, solusi itu sangat dekat dengan fungsi periodik.
+Jika $R$ memuat titik kritis, perilakunya mungkin lebih rumit: solusi dapat
+menuju suatu gelung yang tersusun atas titik-titik kritis yang dihubungkan
+oleh lintasan, atau solusi dapat sekadar menuju sebuah titik kritis.
+Teorema tersebut lebih merupakan pernyataan kualitatif daripada alat yang
+membantu perhitungan. Dalam praktiknya, sulit untuk menemukan solusi analitik
+atau menunjukkan bahwa solusi tersebut ada untuk sepanjang waktu.
+Namun, jika kita menduga solusinya ada, kita menyelesaikannya secara numerik
+untuk waktu yang besar guna menghampiri siklus limit.
+Keterbatasan lainnya ialah bahwa teorema ini hanya berlaku dalam dua dimensi.
+Dalam tiga dimensi atau lebih, ruang geraknya terlalu luas.
+
+Teorema ini berlaku bagi semua solusi osilator Van der Pol. Solusi yang
+bermula di titik mana pun selain titik asal $(0,0)$ menuju solusi periodik
+di sekitar siklus limit, sedangkan kondisi awal $(0,0)$ memberikan solusi
+konstan $x=0$, $y=0$.
+
+\begin{example}
+Tinjau
+\begin{equation*}
+x' = y + {(x^2+y^2-1)}^2 x, \qquad
+y' = -x + {(x^2+y^2-1)}^2 y.
+\end{equation*}
+Medan vektor dan solusi dengan kondisi awal
+$(1.02,0)$, $(0.9,0)$, dan $(0.1,0)$ digambar pada
+\figurevref{fig:nlin-unstable-limit-cycle}.
+
+%\begin{mywrapfig}{3.25in}
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{nlin-unstable-limit-cycle}{%
+Plot arah suatu siklus limit tak stabil pada bidang xy, dengan siklus limit
+berbentuk lingkaran satuan dan semua anak panah bergerak kira-kira searah
+jarum jam. Sebuah lintasan dari dalam mendekati siklus limit, sedangkan
+lintasan yang bermula tepat di luar siklus limit berpilin ke luar,
+mengelilinginya satu setengah kali, lalu terlepas dan keluar dari gambar
+melalui bagian atas.}
+\caption{Contoh siklus limit tak stabil.\label{fig:nlin-unstable-limit-cycle}}
+\end{myfig}
+%\end{mywrapfig}
+
+Perhatikan bahwa titik-titik pada lingkaran satuan (berjarak satu dari titik
+asal) memenuhi $x^2+y^2-1=0$. Selain itu, $x(t) = \sin(t)$,
+$y = \cos(t)$ merupakan solusi sistem. Oleh karena itu, kita memiliki
+lintasan tertutup.
+Untuk titik yang tidak terletak pada lingkaran satuan, suku kedua dalam $x'$ mendorong solusi
+lebih jauh dari sumbu $y$ daripada pada sistem $x' = y$, $y' = -x$, sedangkan
+$y'$ mendorong solusi lebih jauh dari sumbu $x$ daripada pada sistem linear
+$x'=y$, $y' = -x$. Dengan kata lain, untuk semua kondisi awal lainnya,
+lintasan akan berpilin ke luar.
+
+Ini berarti bahwa, untuk kondisi awal di dalam lingkaran satuan, solusi
+berpilin ke luar menuju solusi periodik pada lingkaran satuan, sedangkan untuk
+kondisi awal di luar lingkaran satuan, solusi berpilin menjauh menuju tak
+hingga. Oleh karena itu, lingkaran satuan merupakan siklus limit, tetapi tidak
+stabil asimtotik.
+Teorema Poincar\'e--Bendixson berlaku untuk titik awal di dalam lingkaran
+satuan karena solusi-solusi tersebut tetap terbatas, tetapi tidak berlaku
+untuk titik awal di luar sebab solusi-solusi tersebut menuju tak hingga.
+\end{example}
+
+Analisis serupa berlaku bagi sistem
+\begin{equation*}
+x' = y + {(x^2+y^2-1)} x, \qquad
+y' = -x + {(x^2+y^2-1)} y.
+\end{equation*}
+Lingkaran satuan sekali lagi merupakan lintasan tertutup. Titik di luar
+lingkaran satuan berpilin ke luar menuju tak hingga, tetapi sekarang titik
+di dalam lingkaran satuan berpilin menuju titik kritis di titik asal.
+Lingkaran satuan merupakan siklus limit yang tak stabil secara asimtotik,
+dan semua lintasan berpilin menjauh darinya.
+Jika kita meninjau sistem linear $x' = y$, $y' = -x$, semua lingkaran yang
+berpusat di titik asal (bukan hanya lingkaran satuan) merupakan lintasan
+tertutup, tetapi tidak ada lintasan yang berpilin menuju lintasan lain,
+sehingga tidak satu pun lingkaran tersebut merupakan siklus limit.
+%By Poincar\'e--Bendixson, 
+Semua solusi ini periodik.
+
+Menurut teorema Picard (\thmvref{sys:picardthm}), di setiap titik pada bidang
+kita selalu dapat menemukan solusi \eqref{nlin:gensys} pada suatu selang waktu
+singkat, baik ke depan maupun ke belakang, selama $f$ dan $g$ memiliki turunan kontinu.
+Jadi, jika kita menemukan lintasan tertutup dalam sistem otonom, maka untuk
+setiap titik awal di dalam lintasan tertutup itu, solusi akan ada untuk
+sepanjang waktu dan tetap terbatas (solusi tetap berada di dalam lintasan
+tertutup). Begitu kita menemukan solusi di atas yang mengelilingi lingkaran
+satuan, kita mengetahui bahwa untuk setiap titik awal di dalam lingkaran,
+solusi ada untuk sepanjang waktu dan teorema Poincar\'e--Bendixson berlaku.
+
+\medskip
+
+Selanjutnya, kita mencari kondisi ketika siklus limit (atau orbit periodik)
+tidak ada. Kita mengasumsikan persamaan \eqref{nlin:gensys} terdefinisi pada
+\emph{\myindex{daerah terhubung sederhana}}, yaitu daerah tanpa lubang yang
+dapat kita kelilingi. Sebagai contoh, seluruh bidang merupakan daerah
+terhubung sederhana. Demikian pula bagian dalam cakram satuan. Namun, seluruh
+bidang dengan satu titik dihilangkan bukan merupakan daerah terhubung
+sederhana karena memiliki \myquote{lubang} di titik asal.
+
+\begin{theorem}[Bendixson--Dulac%
+\footnote{%
+\href{https://en.wikipedia.org/wiki/Henri_Dulac}{Henri Dulac} (1870--1955)
+adalah seorang matematikawan Prancis.}]%
+\index{Teorema Bendixson--Dulac}
+Misalkan $R$ adalah daerah terhubung sederhana, dan ekspresi%
+%Suppose $f$ and $g$ are functions with continuous derivatives in
+%a simply connected region $R$, and
+%If the expression%
+\footnote{Biasanya ekspresi dalam Teorema Bendixson--Dulac adalah
+$\frac{\partial (\varphi f)}{\partial x} + \frac{\partial (\varphi
+g)}{\partial y}$
+untuk suatu fungsi diferensiabel secara kontinu $\varphi$.
+Untuk menyederhanakan,
+kita hanya meninjau kasus $\varphi = 1$.}
+\begin{equation*}
+\frac{\partial f}{\partial x} + \frac{\partial g}{\partial y}
+\end{equation*}
+selalu positif atau selalu negatif pada $R$ (kecuali mungkin pada himpunan
+kecil seperti titik-titik terisolasi atau kurva-kurva), maka sistem
+\eqref{nlin:gensys} tidak memiliki lintasan tertutup di dalam $R$.
+\end{theorem}
+
+Teorema ini memberikan cara untuk menolak keberadaan lintasan tertutup,
+dan karena itu juga cara untuk menolak keberadaan siklus limit.
+Ekspresi $\frac{\partial f}{\partial x} + \frac{\partial g}{\partial y}$
+mungkin tampak muncul begitu saja, tetapi ekspresi itu disebut
+\emph{\myindex{divergensi}} medan vektor.
+Divergensi mengukur seberapa besar medan vektor \myquote{mengembang} di setiap
+titik dan muncul dalam banyak konteks lain.
+Teorema tersebut menyatakan bahwa, jika medan vektor mengembang di seluruh
+$R$ atau menyusut di seluruh $R$, maka tidak ada lintasan tertutup dan
+karena itu tidak ada siklus limit.
+Mungkin ini terasa intuitif---jika partikel bergerak mengikuti medan vektor
+dan semakin menjauh satu sama lain, kita tidak mengharapkan partikel apa pun
+bergerak dalam gelung.
+Pengecualian mengenai titik atau kurva berarti bahwa divergensi dapat bernilai
+nol di beberapa titik atau pada sebuah kurva, tetapi tidak pada himpunan yang
+lebih besar.
+
+\begin{example}
+Tinjau $x'=y+y^2e^x$, $y'=x$ pada seluruh bidang (lihat
+\examplevref{example:nlin-withexp}).
+Bidang tersebut terhubung sederhana sehingga teorema dapat diterapkan.
+Kita menghitung
+$\frac{\partial f}{\partial x} + \frac{\partial g}{\partial y} =
+y^2e^x+ 0$. Fungsi $y^2e^x$ selalu positif kecuali pada garis $y=0$.
+Oleh karena itu, menurut teorema tersebut, sistem tidak memiliki lintasan
+tertutup.
+\end{example}
+
+Salah satu cara informal yang umum, tetapi tidak sepenuhnya benar, untuk
+menyatakan teorema tersebut ialah menyimpulkan bahwa tidak ada solusi periodik
+yang tetap berada dalam $R$. Contoh di atas memiliki dua titik kritis dan
+karena itu memiliki solusi konstan. Fungsi konstan bersifat periodik.
+Kesimpulan teorema adalah bahwa tidak ada lintasan yang membentuk kurva
+tertutup, atau dengan kata lain, tidak ada solusi periodik tak konstan yang
+tetap berada dalam $R$.
+
+\begin{example}
+Tinjau sebuah contoh yang agak lebih rumit.
+Ambil sistem $x'=-y-x^2$, $y'=-x+y^2$ (lihat
+\examplevref{example:nlin-xplusy}). Kita menghitung
+$\frac{\partial f}{\partial x} + \frac{\partial g}{\partial y} =
+-2x + 2y=2(-x+y)$. Ekspresi ini dapat bernilai positif maupun negatif, sehingga jika kita
+membicarakan seluruh bidang, teorema tidak dapat langsung diterapkan.
+Namun, kita dapat menerapkannya pada himpunan tempat $-x+y \geq 0$.
+Menurut teorema, tidak ada lintasan tertutup dalam himpunan tersebut.
+Demikian pula, tidak ada lintasan tertutup dalam himpunan
+$-x+y \leq 0$. Kita belum dapat menyimpulkan bahwa tidak ada lintasan
+tertutup di seluruh bidang. Sejauh yang kita ketahui, mungkin separuh
+lintasan itu berada dalam himpunan $-x+y \geq 0$ dan separuh lainnya dalam
+himpunan $-x+y \leq 0$.
+
+Kuncinya adalah meninjau garis tempat $-x+y=0$, atau $x=y$.
+Pada garis ini,
+$x' = -y-x^2 = -x-x^2$ dan $y' = -x+y^2 = -x+x^2$.
+Secara khusus, jika $x=y$, maka $x' \leq y'$. Jadi anak-anak panah, yakni
+vektor-vektor $(x',y')$, selalu menunjuk ke dalam himpunan tempat
+$-x+y \geq 0$. Kita tidak mungkin bermula dalam himpunan
+$-x+y \geq 0$ lalu masuk ke himpunan $-x+y \leq 0$. Begitu berada dalam
+himpunan $-x+y \geq 0$, kita tetap di sana. Jadi, tidak ada lintasan
+tertutup yang dapat memiliki titik dalam kedua himpunan.
+\end{example}
+
+\begin{example}
+Tinjau
+$x' = y+(x^2+y^2-1)x$,
+$y' = -x +(x^2+y^2-1)y$ pada daerah $R$ yang diberikan oleh
+$x^2+y^2 > \frac{1}{2}$. Artinya, $R$ adalah daerah di luar lingkaran
+berjari-jari $\frac{1}{\sqrt{2}}$ yang berpusat di titik asal. Terdapat
+lintasan tertutup dalam $R$, yaitu $x=\cos(t)$, $y=\sin(t)$.
+Selain itu,
+\begin{equation*}
+\frac{\partial f}{\partial x} + 
+\frac{\partial g}{\partial y} = 4x^2+4y^2-2 ,
+\end{equation*}
+yang selalu positif pada $R$. Jadi, apa yang terjadi? Teorema
+Bendixson--Dulac tidak berlaku karena daerah $R$ tidak terhubung
+sederhana---daerah tersebut memiliki lubang, yaitu lingkaran yang kita
+hilangkan!
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Tunjukkan bahwa sistem-sistem berikut tidak memiliki lintasan tertutup.
+\begin{tasks}(2)
+\task $x'=x^3+y,\quad y'=y^3+x^2$,
+\task $x'=e^{x-y},\quad y'=e^{x+y}$,
+\task $x'=x+3y^2-y^3,\quad y'=y^3+x^2$.
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Rumuskan syarat agar sistem linear berukuran 2 kali 2
+${\vec{x}}' = A \vec{x}$ bukan merupakan pusat dengan menggunakan
+teorema Bendixson--Dulac. Artinya, teorema tersebut menyatakan sesuatu
+tentang unsur-unsur tertentu dari $A$.
+\end{exercise}
+
+\begin{exercise}
+Jelaskan mengapa Teorema Bendixson--Dulac tidak berlaku bagi sistem
+konservatif apa pun $x''+h(x) = 0$.
+\end{exercise}
+
+\begin{exercise}
+Sistem seperti $x'=x, y'=y$ memiliki solusi yang ada untuk sepanjang waktu
+$t$, tetapi tidak memiliki lintasan tertutup. Jelaskan mengapa Teorema
+Poincar\'e--Bendixson tidak berlaku.
+\end{exercise}
+
+\begin{exercise}
+Persamaan diferensial juga dapat diberikan dalam sistem koordinat yang
+berbeda. Misalkan kita memiliki sistem $r' = 1-r^2$, $\theta' = 1$ yang
+diberikan dalam koordinat polar. Tentukan semua lintasan tertutup dan
+periksa apakah lintasan tersebut merupakan siklus limit; jika ya, tentukan
+apakah lintasan itu stabil asimtotik.
+\end{exercise}
+
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Tunjukkan bahwa sistem-sistem berikut tidak memiliki lintasan tertutup.
+\begin{tasks}(2)
+\task $x'=x+y^2,\quad y'=y+x^2$,
+\task $x'=-x\sin^2(y),\quad y'=e^x$,
+\task $x'=xy^2,\quad y'=x+x^2$.
+\end{tasks}
+\end{exercise}
+\exsol{%
+Gunakan Teorema Bendixson--Dulac.
+a) $f_x+g_y = 1+1 > 0$, sehingga tidak ada lintasan tertutup.
+b) $f_x+g_y = -\sin^2(y)+0 < 0$ untuk semua $x,y$, kecuali garis-garis yang
+diberikan oleh $y=k\pi$ (tempat kita memperoleh nol), sehingga tidak ada
+lintasan tertutup.
+c) $f_x+g_y = y^2 + 0 > 0$ untuk semua $x,y$, kecuali garis yang diberikan
+oleh $y=0$ (tempat kita memperoleh nol), sehingga tidak ada lintasan
+tertutup.
+}
+
+\begin{exercise}
+Misalkan suatu sistem otonom pada bidang memiliki solusi
+$x=\cos(t)(1+e^{-t})$, $y=\sin(t)(1+e^{-t})$. Apa yang dapat Anda katakan
+tentang sistem tersebut (khususnya tentang siklus limit dan solusi periodik)?
+\end{exercise}
+\exsol{%
+Dengan menggunakan Teorema Poincar\'e--Bendixson, sistem memiliki sebuah
+siklus limit, yaitu lingkaran satuan yang berpusat di titik asal, karena
+$x=\cos(t)(1+e^{-t})$, $y=\sin(t)(1+e^{-t})$ semakin mendekati lingkaran
+satuan. Jadi, $x=\cos(t)$, $y=\sin(t)$ merupakan solusi periodiknya.
+}
+
+\begin{exercise}
+Tunjukkan bahwa siklus limit osilator Van der Pol (untuk $\mu > 0$)
+tidak mungkin seluruhnya terletak dalam himpunan tempat $-1 < x < 1$.
+Bandingkan dengan \figurevref{fig:nlin-van-der-fig}.
+\end{exercise}
+\exsol{%
+$f(x,y) = y$, $g(x,y) = \mu(1-x^2)y-x$. Jadi,
+$f_x+g_y = \mu(1-x^2)$. Teorema Bendixson--Dulac menyatakan bahwa tidak
+ada lintasan tertutup yang seluruhnya terletak dalam himpunan $x^2 < 1$.
+}
+
+\begin{exercise}
+Tinjau sistem $r' = \sin(r)$, $\theta' = 1$ yang diberikan dalam koordinat
+polar. Tentukan semua lintasan tertutup.
+\end{exercise}
+\exsol{%
+Lintasan tertutup adalah lintasan tempat $\sin(r) = 0$. Oleh karena itu,
+semua lingkaran yang berpusat di titik asal dan berjari-jari kelipatan positif
+$\pi$ merupakan lintasan tertutup.
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Chaos} \label{sec:chaos}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1 pertemuan\EPref{, \S6.5 dalam \cite{EP}}\BDref{,
+\S9.8 dalam \cite{BD}}}
+
+Anda tentu pernah mendengar cerita tentang kepakan sayap kupu-kupu di
+Amazon yang menyebabkan badai di Atlantik Utara.  Pada bagian sebelumnya,
+kita menyebutkan bahwa perubahan kecil pada kondisi awal planet-planet dapat
+menghasilkan konfigurasi planet yang sangat berbeda dalam jangka panjang.
+Ini merupakan contoh
+\emph{\myindex{sistem kaotik}}.
+Chaos matematis sebenarnya bukanlah kekacauan---ada tatanan yang persis di
+balik apa yang tampak.  Semuanya tetap deterministik.  Namun, sistem kaotik
+sangat peka terhadap kondisi awal.  Ini juga berarti bahwa galat kecil yang
+ditimbulkan oleh hampiran numerik akan dengan sangat cepat menjadi galat
+besar, sehingga penghampiran numerik untuk jangka waktu panjang hampir tidak
+mungkin dilakukan.  Hal ini menjadi bagian besar dari kesulitannya karena,
+secara umum, sistem kaotik tidak dapat diselesaikan secara analitik.
+
+Ambillah cuaca sebagai contoh, mungkin sistem kaotik yang paling dikenal.
+Perubahan kecil pada kondisi awal
+(misalnya suhu di setiap titik atmosfer) menghasilkan prediksi yang sangat
+berbeda dalam waktu relatif singkat, sehingga kita tidak dapat meramalkan
+cuaca dengan akurat.  Lagi pula, kita sebenarnya tidak mengetahui syarat
+awalnya secara tepat.  Kita mengukur suhu di beberapa titik dengan sejumlah
+galat, lalu memperkirakan entah bagaimana keadaan di antara titik-titik itu.
+Tidak mungkin kita dapat mengukur secara akurat pengaruh setiap kepakan sayap
+kupu-kupu.  Selanjutnya kita menyelesaikan persamaannya secara numerik dan
+dengan demikian memperkenalkan galat baru.  Anda sebaiknya tidak mengandalkan
+ramalan cuaca untuk waktu lebih dari beberapa hari ke depan.  Namun, kita akan
+melihat bahwa masih ada informasi yang dapat diperoleh tentang sistem kaotik
+pada skala waktu yang lebih panjang.  Dalam konteks cuaca, kita dapat
+mempelajari iklim.
+
+Perilaku kaotik pertama kali diperhatikan oleh Edward
+Lorenz\footnote{\href{https://en.wikipedia.org/wiki/Edward_Norton_Lorenz}{Edward Norton Lorenz} (1917--2008) adalah
+matematikawan dan meteorolog Amerika.}
+pada tahun 1960-an ketika ia mencoba memodelkan konveksi (gerakan) udara yang
+ditimbulkan oleh panas.  Lorenz menelaah sistem yang relatif sederhana:
+\begin{equation*}
+x' = -10x +10y, \qquad y' = 28x-y-xz, \qquad z'=-\frac{8}{3}z + xy .
+\end{equation*}
+Perubahan kecil pada kondisi awal menghasilkan solusi yang sangat berbeda
+setelah waktu yang cukup singkat.
+
+\begin{mywrapfigsimp}{0.95in}{1.25in}
+\noindent
+\inputpdft{chaos-pend}{%
+Diagram sebuah bandul yang dipasang pada ujung bandul lain.  Massa pada
+kedua ujung digambarkan dengan ukuran berbeda, dan kedua panjangnya juga
+berbeda.}
+\end{mywrapfigsimp}
+Contoh sederhana yang dapat dicoba oleh pembaca dan menunjukkan perilaku
+kaotik adalah bandul ganda.  Persamaan untuk susunan ini agak rumit dan
+penurunannya cukup
+\myindex{menjemukan}, sehingga kita tidak akan menuliskannya.  Gagasannya
+adalah memasang sebuah bandul pada ujung bandul lain.  Gerakan massa di bagian
+bawah akan tampak kaotik.  Jenis sistem kaotik ini menjadi dasar sejumlah
+mainan meja kantor yang unik.  Versi sederhananya mudah dibuat.  Ambillah
+seutas tali.  Ikatkan dua mur yang berat pada dua titik berbeda di tali;
+satu di ujung, dan satu lagi agak di atasnya.  Sekarang beri mur bawah sedikit
+dorongan.  Selama ayunannya tidak terlalu besar dan tali tetap tegang, Anda
+memiliki sistem bandul ganda.
+
+\subsection{Persamaan Duffing dan atraktor aneh}
+
+Mari kita pelajari apa yang disebut \emph{\myindex{persamaan Duffing}}:
+\begin{equation*}
+x'' + a x' + bx + cx^3 = C \cos(\omega t) .
+\end{equation*}
+Di sini $a$, $b$, $c$, $C$, dan $\omega$ adalah konstanta.
+Selain suku $c x^3$, persamaan ini tampak seperti sistem massa-pegas yang
+dipaksa.  Adanya $c x^3$ berarti pegas tersebut tidak sepenuhnya mematuhi
+hukum Hooke (dan memang tidak ada pegas nyata yang mematuhinya secara persis).
+Ketika $c$ tidak nol, persamaan ini tidak mempunyai solusi bentuk tertutup,
+sehingga kita harus menggunakan solusi numerik, sebagaimana lazimnya untuk
+sistem nonlinear.  Tidak semua pilihan konstanta dan kondisi awal menunjukkan
+perilaku kaotik.  Mari kita pelajari
+\begin{equation*}
+x''+0.05 x' + x^3 = 8\cos(t) .
+\end{equation*}
+
+Persamaan ini tidak otonom, sehingga kita tidak dapat menggambar medan vektor
+pada bidang fase.  Kita tetap dapat menggambar lintasan, dengan $y=x'$ seperti
+biasa.  Dalam \figurevref{nlin:duf-two-traj}, kita menggambar lintasan untuk
+$t$ dari 0 hingga 15 bagi dua kondisi awal yang sangat berdekatan, yaitu
+$(2,3)$ dan $(2,2.9)$, serta menggambar solusinya di ruang $(x,t)$.  Pada
+awalnya kedua lintasan berdekatan, tetapi tidak lama kemudian keduanya
+menyimpang secara nyata.  Kepekaan terhadap kondisi awal inilah yang kita
+maksud ketika mengatakan bahwa sistem tersebut berperilaku kaotik.
+
+\begin{myfig}
+\capstart
+%original files nlin-duf-two-traj nlin-duf-two-sols
+\diffyincludegraphics{width=6.24in}{width=9in}{nlin-duf-two-traj-sols}{%
+Di sebelah kiri terdapat grafik dua lintasan dalam ruang fase (ruang dengan
+x pada sumbu mendatar dan x prima pada sumbu tegak).  Kedua lintasan bermula
+di sebelah kanan grafik dengan posisi yang sangat berdekatan dan mengikuti
+jalur yang mirip selama beberapa saat, tetapi kemudian menyimpang dengan
+sangat cepat dan akhirnya tidak lagi dapat dikenali sebagai pasangan.  Bentuk
+yang diikutinya kira-kira berupa gelung besar di sebelah kiri lalu gelung yang
+lebih kecil di sebelah kanan, dan kadang-kadang membentuk gelung lebih kecil
+di antaranya.  Di sebelah kanan terdapat grafik x terhadap t dari 0 hingga 15
+untuk kedua solusi, yang naik turun ketika mengikuti bentuk-bentuk tersebut.
+Kedua grafik hampir tidak dapat dibedakan di sisi kiri dan hampir sama hingga
+kira-kira t sama dengan 7, tetapi ketika t mencapai 15 keduanya tampak berbeda
+dan terpisah cukup jauh.}
+\caption{Di kiri, dua lintasan dalam ruang fase untuk $0 \leq t \leq 15$ bagi persamaan Duffing,
+yang satu dengan kondisi awal $(2,3)$ dan yang lain dengan kondisi awal $(2,2.9)$.  Di
+kanan, kedua solusi dalam ruang $(x,t)$. \label{nlin:duf-two-traj}}
+\end{myfig}
+
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=6.24in}{width=9in}{nlin-duf-long}{%
+Grafik lebar untuk t antara 0 dan 100, dengan sumbu x tegak yang membentang
+kira-kira dari -3 hingga 3.  Grafik menunjukkan fungsi yang naik turun
+berkali-kali dengan irama umum yang kurang lebih sama; puncak dan lembahnya
+secara sangat kasar mempunyai tinggi yang sama, tetapi setiap puncak berbentuk
+sangat berbeda dan memiliki lekukan khasnya sendiri.}
+\caption{Solusi persamaan Duffing yang diberikan untuk $t$ dari 0 hingga 100.
+\label{nlin:duf-long}}
+\end{myfig}
+
+\pagebreak[2]
+Mari kita tinjau perilaku jangka panjangnya.
+Dalam \figurevref{nlin:duf-long}, kita menggambar solusi $x$ dengan kondisi awal
+$(2,3)$ untuk rentang waktu yang lebih panjang.  Sulit melihat pola apa pun
+dalam bentuk solusi tersebut selain bahwa solusi itu tampak berosilasi, tetapi
+setiap osilasi tampak cukup khas.  Osilasi memang diharapkan karena adanya
+suku pemaksa.  Perlu disebutkan bahwa, agar gambar itu dihasilkan dengan
+akurat, algoritme numeriknya menggunakan jumlah langkah yang luar biasa
+besar\footnote{Sebagai rujukan, sebenarnya digunakan 30.000 langkah dengan
+algoritme Runge--Kutta; lihat latihan dalam \sectionref{numer:section}.},
+sebab dalam sistem kaotik bahkan galat kecil pun merambat dengan cepat.
+
+
+Sistem kaotik sangat sulit dianalisis, begitu pula tatanan di balik apa yang
+tampak kacau sangat sulit ditemukan.  Namun, mari kita coba melakukan sesuatu
+yang dahulu kita lakukan untuk sistem massa-pegas standar.  Salah satu cara
+kita menganalisis sistem itu adalah dengan menentukan perilaku jangka
+panjangnya (yang tidak bergantung pada kondisi awal).  Dari gambar di atas jelas
+bahwa kita tidak akan memperoleh uraian eksak yang rapi mengenai perilaku
+jangka panjang sistem kaotik ini.  Akan tetapi, barangkali kita dapat menemukan
+suatu keteraturan pada apa yang terjadi selama setiap \myquote{osilasi} dan
+pada kesamaan di antara osilasi-osilasi tersebut.
+
+Konsep yang akan kita bahas adalah \emph{\myindex{penampang Poincar\'e}}%
+\footnote{Dinamai menurut cendekiawan serbabisa asal Prancis
+\href{https://en.wikipedia.org/wiki/Henri_Poincar\%C3\%A9}{Jules Henri
+Poincar\'e} (1854--1912).}.  Alih-alih melihat $t$ dalam suatu interval,
+kita melihat kedudukan sistem pada suatu urutan waktu tertentu.  Bayangkan
+menyalakan lampu strobo dengan frekuensi tetap dan menggambar titik tempat
+solusi berada pada setiap kilatan.  Frekuensi strobo yang tepat bergantung
+pada sistem yang sedang ditinjau.  Untuk persamaan Duffing paksa (dan
+sistem serupa lainnya), frekuensi yang tepat adalah frekuensi suku pemaksa.
+Untuk persamaan Duffing di atas, carilah solusi
+$\bigl(x(t),y(t)\bigr)$, lalu perhatikan titik-titik
+\begin{equation*}
+\bigl(x(0),y(0)\bigr), \quad
+\bigl(x(2\pi),y(2\pi)\bigr), \quad
+\bigl(x(4\pi),y(4\pi)\bigr), \quad
+\bigl(x(6\pi),y(6\pi)\bigr), \quad \ldots
+\end{equation*}
+Karena kita sebenarnya tidak berminat pada bagian transien solusi, yaitu
+bagian solusi yang bergantung pada kondisi awal, kita melewatkan sejumlah
+langkah di awal.  Misalnya, kita dapat melewatkan 100 langkah pertama dan
+mulai menggambar titik pada $t = 100(2\pi)$, yaitu
+\begin{equation*}
+\bigl(x(200\pi),y(200\pi)\bigr), \quad
+\bigl(x(202\pi),y(202\pi)\bigr), \quad
+\bigl(x(204\pi),y(204\pi)\bigr), \quad \ldots
+\end{equation*}
+Gambar titik-titik ini disebut penampang Poincar\'e.  Setelah cukup banyak
+titik digambar, muncullah pola yang menarik dalam
+\figurevref{nlin:strange} (gambar sebelah kiri), yang disebut
+\emph{\myindex{atraktor aneh}}.
+
+\begin{myfig}
+\capstart
+%original files nlin-strange nlin-strange2
+\diffyincludegraphics{width=6.24in}{width=9in}{nlin-strange-strange2}{%
+Dua grafik ribuan titik pada atraktor aneh.  Keduanya terdeformasi dengan
+cara yang sedikit berbeda karena grafik sebelah kanan mengalami pergeseran
+fase.  Titik-titik itu tampak mengendap pada pita-pita tipis yang melengkung,
+saling membelit, dan terdistorsi seolah-olah dilihat melalui cermin distorsi
+di wahana rumah cermin.}
+\caption{Atraktor aneh.  Grafik kiri tidak mengalami pergeseran fase,
+sedangkan grafik kanan mengalami pergeseran fase
+$\nicefrac{\pi}{4}$. \label{nlin:strange}}
+\end{myfig}
+
+Untuk suatu barisan titik, \emph{\myindex{atraktor}} adalah himpunan yang
+semakin lama semakin didekati oleh titik-titik dalam barisan tersebut; dengan
+kata lain, titik-titik itu tertarik kepadanya.  Penampang Poincar\'e sebenarnya
+bukan atraktor itu sendiri, tetapi karena titik-titiknya sangat dekat dengan
+atraktor, kita dapat melihat bentuknya.  Atraktor aneh merupakan himpunan yang
+sangat rumit.  Himpunan ini memiliki struktur fraktal: sejauh apa pun Anda
+memperbesar gambar, Anda akan terus melihat struktur rumit yang sama.
+
+Kondisi awal tidak berpengaruh pada hasil akhirnya.  Jika kita memulai dengan
+kondisi awal lain, titik-titik pada akhirnya bergerak mendekati atraktor.
+Karena itu, selama beberapa titik pertama dibuang, kita memperoleh gambar yang
+sama.  Demikian pula, galat kecil dalam hampiran numerik tidak menjadi masalah
+di sini.
+
+Hal yang menakjubkan ialah bahwa sistem kaotik seperti persamaan Duffing sama
+sekali tidak acak.  Ada tatanan yang sangat rumit di dalamnya, dan atraktor
+aneh mengungkapkan sesuatu tentang tatanan ini.  Kita tidak dapat menyatakan
+dengan tepat keadaan akhir sistem, tetapi dengan frekuensi strobo yang tetap,
+kita dapat mempersempit kemungkinannya menjadi titik-titik pada atraktor.
+
+Jika kita menggunakan pergeseran fase, misalnya $\nicefrac{\pi}{4}$, dan
+memperhatikan waktu-waktu
+\begin{equation*}
+\nicefrac{\pi}{4}, \quad
+2\pi+\nicefrac{\pi}{4}, \quad
+4\pi+\nicefrac{\pi}{4}, \quad
+6\pi+\nicefrac{\pi}{4}, \quad
+\ldots
+\end{equation*}
+kita memperoleh atraktor yang sedikit berbeda.  Gambarnya adalah bagian kanan
+\figurevref{nlin:strange}.  Atraktor itu tampak seperti atraktor semula yang
+diputar, digeser, dan sedikit didistorsi.  Untuk setiap pergeseran fase, Anda
+dapat menemukan himpunan titik yang secara berkala terus didekati kembali oleh
+sistem.
+
+Pelajari gambar-gambarnya dan terutama perhatikan skalanya---di mana atraktor
+tersebut berada pada bidang fase.  Perhatikan daerah tempat atraktor aneh itu
+berada dan bandingkan dengan grafik lintasan dalam
+\figurevref{nlin:duf-two-traj}.
+
+Mari kita bandingkan bagian ini dengan pembahasan osilasi paksa dalam
+\sectionref{forcedo:section}.  Tinjau
+\begin{equation*}
+x''+2p x' + \omega_0^2 x = \frac{F_0}{m} \cos (\omega t) .
+\end{equation*}
+Persamaan ini seperti persamaan Duffing, tetapi tanpa suku $x^3$.
+Solusi periodik tunaknya berbentuk
+\begin{equation*}
+x = C \cos (\omega t + \gamma) .
+\end{equation*}
+Dengan pengamatan strobo berfrekuensi $\omega$, kita memperoleh satu titik
+dalam ruang fase.  Atraktor dalam keadaan ini adalah satu titik---hasil yang
+wajar karena sistemnya tidak kaotik.  Sistem ini justru merupakan kebalikan
+dari sistem kaotik: setiap perbedaan yang ditimbulkan oleh kondisi awal lenyap
+dengan sangat cepat, dan sistem selalu menetap pada gerak periodik tunak yang
+sama.
+
+\subsection{Sistem Lorenz}
+
+Untuk menemukan perilaku kaotik dalam dua dimensi, kita harus mempelajari
+sistem yang dipaksa atau sistem nonotonom, seperti persamaan Duffing.
+Teorema Poincar\'e--Bendixson menyatakan bahwa solusi suatu sistem otonom dua
+dimensi yang ada untuk seluruh waktu mendatang akan menuju tak hingga,
+bersifat periodik, mendekati suatu gelung, atau mungkin mendekati titik
+kritis.  Itu sama sekali bukan perilaku kaotik yang kita cari.
+
+Dalam tiga dimensi, bahkan sistem otonom dapat bersifat kaotik.  Mari kita
+kembali sejenak ke \myindex{sistem Lorenz}
+\begin{equation*}
+x' = -10x +10y, \qquad y' = 28x-y-xz, \qquad z'=-\frac{8}{3}z + xy .
+\end{equation*}
+Sistem Lorenz adalah sistem otonom tiga dimensi yang menunjukkan perilaku
+kaotik.  Lihat \figurevref{nlin:lorenz} untuk contoh lintasan, yang kini berupa
+kurva dalam ruang tiga dimensi.
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{nlin-lorenz}{%
+Sebuah lintasan dalam ruang xyz tiga dimensi.  Bentuknya kira-kira dua gelung
+yang bertemu pada suatu sudut; lintasan mengitari salah satu gelung satu kali
+atau lebih, lalu tampak berpindah secara acak ke gelung lain, dan kemudian
+kembali lagi setelah satu putaran atau lebih.  Setiap putaran memiliki
+jari-jari yang berbeda.  Sebagian orang menggambarkan bentuk ini seperti
+kupu-kupu.}
+\caption{Sebuah lintasan dalam sistem Lorenz. \label{nlin:lorenz}}
+\end{myfig}
+
+Solusi-solusinya cenderung menuju sebuah \emph{atraktor} di ruang, yang disebut
+\emph{\myindex{atraktor Lorenz}}.  Dalam hal ini pengamatan dengan strobo tidak
+diperlukan; solusi akan cenderung menuju himpunan atraktor.  Sekali lagi kita
+tidak dapat benar-benar melihat atraktornya sendiri, tetapi jika kita mencoba
+mengikuti suatu solusi cukup lama, seperti pada gambar, kita memperoleh
+gambaran yang cukup baik mengenai bentuk atraktor tersebut.  Atraktor Lorenz
+juga merupakan atraktor aneh dan memiliki struktur fraktal yang rumit.  Sama
+seperti pada persamaan Duffing, yang hendak kita gambar bukan seluruh lintasan.
+Kita mulai menggambar lintasan setelah beberapa waktu berlalu, ketika lintasan
+sudah dekat dengan atraktor.
+
+Jalur lintasan bukan sekadar bentuk angka delapan yang berulang.  Lintasan
+berputar beberapa kali di sebelah kiri dengan jumlah yang tampak acak, kemudian
+berputar beberapa kali di sebelah kanan, dan seterusnya.  Karena sistem ini
+muncul dalam peramalan cuaca, kita dapat membayangkannya sebagai beberapa hari
+bercuaca hangat yang disusul beberapa hari bercuaca dingin.  Tidak mudah
+meramalkan kapan cuaca akan berubah, sebagaimana tidak mudah meramalkan jauh
+sebelumnya kapan solusi akan berpindah ke sisi lain.  Lihat
+\figurevref{nlin:lorenz-graphx} untuk grafik komponen $x$ dari solusi yang
+digambar di atas.  Nilai $x$ negatif bersesuaian dengan \myquote{gelung} kiri,
+dan nilai $x$ positif bersesuaian dengan \myquote{gelung} kanan.  Di sisi lain,
+meskipun kita tidak dapat meramalkan cuaca, kita \emph{dapat} mengatakan
+sesuatu tentang iklim---cuaca akan berada di suatu tempat dekat atraktor.
+
+Sebagian besar matematika yang kita pelajari dalam buku ini cukup klasik dan
+telah dipahami dengan baik.  Sebaliknya, chaos, termasuk sistem Lorenz, tetap
+menjadi pokok penelitian masa kini.  Selain itu, chaos telah diterapkan bukan
+hanya dalam sains, tetapi juga dalam seni.
+
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{nlin-lorenz-graphx}{%
+Grafik sebuah fungsi pada bidang tx untuk t dari 0 hingga 15 dan x kira-kira
+antara minus 18 dan 18.  Fungsi bermula sedikit di atas sumbu t dan membentuk
+puncak tajam ke atas, di atas sumbu t, lalu puncak tajam ke bawah, kemudian puncak tajam
+ke atas, disusul 6 puncak tajam ke bawah yang mula-mula kecil lalu membesar,
+kemudian dua puncak tajam ke atas, satu puncak tajam ke bawah, dua puncak tajam
+ke atas, satu puncak tajam ke bawah, satu puncak tajam ke atas, dua puncak tajam
+ke bawah, lalu dua puncak tajam ke atas.  Puncak-puncak itu berbeda ukuran dan
+sedikit berbeda bentuk; tidak tampak pola yang berarti.}
+\caption{Grafik komponen $x(t)$ dari solusi.
+\label{nlin:lorenz-graphx}}
+\end{myfig}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Untuk persamaan nonkaotik
+$x''+2p x' + \omega_0^2 x = \frac{F_0}{m} \cos (\omega t)$, andaikan kita
+melakukan pengamatan dengan strobo berfrekuensi $\omega$ seperti yang telah
+disebutkan di atas.  Gunakan solusi periodik tunak yang telah diketahui untuk
+menentukan secara tepat titik yang menjadi atraktor bagi penampang Poincar\'e.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}[proyek]
+Sebuah atraktor fraktal sederhana dapat digambar melalui permainan chaos
+berikut.  Gambarlah tiga titik sudut suatu segitiga dan beri nama, misalnya
+$p_1$, $p_2$, dan $p_3$.  Gambarlah suatu titik acak $p$ (titik ini tidak harus
+merupakan salah satu dari ketiga titik tadi).  Lempar sebuah dadu untuk memilih
+salah satu di antara $p_1$, $p_2$, atau $p_3$ secara acak (misalnya angka 1 dan
+4 berarti $p_1$, angka 2 dan 5 berarti $p_2$, serta angka 3 dan 6 berarti
+$p_3$).  Andaikan yang terpilih adalah $p_2$.  Misalkan $p_{\text{new}}$ adalah
+titik tepat di tengah antara $p$ dan $p_2$.  Gambarlah titik ini, lalu sekarang
+gunakan $p$ untuk menyatakan titik baru $p_{\text{new}}$ tersebut.  Ulangi
+langkah-langkah ini terus-menerus.  Usahakan bekerja dengan teliti dan gambarlah
+sebanyak mungkin iterasi.  Titik-titik Anda akan tertarik menuju apa yang
+disebut \emph{\myindex{segitiga Sierpinski}}.  Permainan ini dijalankan dengan
+komputer selama 10.000 iterasi untuk menghasilkan gambar dalam
+\figurevref{nlin:sierpinski}.
+\end{exercise}
+\end{samepage}
+
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{nlin-sierpinski}{%
+Diagram yang disebut segitiga Sierpinski, tersusun dari titik-titik pada
+bidang xy.  Titik sudut segitiga berada di (0,0), (1,0), dan (0.5,0.8).
+Di dalamnya terdapat segitiga kosong yang lebih kecil, sebangun, dan terbalik,
+dengan titik-titik tengah sisi segitiga besar sebagai titik sudutnya.  Tiga
+segitiga tegak yang tersisa tidak terisi, tetapi masing-masing memiliki
+segitiga kosong seperti yang di tengah; ketiga segitiga tegak tersebut
+mengulangi pola ini tanpa akhir.  Dengan demikian, seluruh segitiga tampak
+seolah-olah tersusun atas tak terhingga banyak segitiga kosong yang terbalik.}
+\caption{10.000 iterasi permainan chaos yang menghasilkan
+segitiga Sierpinski. \label{nlin:sierpinski}}
+\end{myfig}
+
+\begin{exercise}[proyek]
+Buatlah bandul ganda yang dijelaskan dalam teks menggunakan seutas tali dan
+dua mur (atau manik-manik berat).  Cobalah berbagai posisi mur tengah dan,
+jika diinginkan, gunakan mur dengan bobot berbeda.  Uraikan apa yang Anda
+temukan.
+\end{exercise}
+
+\begin{exercise}[proyek komputer]
+Gunakan perangkat lunak komputer (seperti Matlab, Octave, atau bahkan mungkin
+lembar sebar) untuk menggambar solusi persamaan Duffing paksa yang diberikan
+dengan metode Euler.  Gambarlah solusi untuk $t$ dari 0 hingga 100 dengan
+beberapa ukuran langkah (kecil) yang berbeda.  Bahaslah hasilnya.
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Carilah titik-titik kritis sistem Lorenz beserta linearisasi yang terkait.
+\end{exercise}
+\exsol{%
+Titik-titik kritis: $(0,0,0)$, $(6\sqrt{2},6 \sqrt{2}, 27)$,
+$(-6 \sqrt{2},-6 \sqrt{2}, 27)$.
+Linearisasi di $(0,0,0)$ dengan $u=x$, $v=y$, $w=z$ adalah
+$u' = -10u+10v$, $v'=28u-v$, $w'=-(\nicefrac{8}{3})w$.
+Linearisasi di $(6 \sqrt{2},6\sqrt{2},27)$ dengan $u=x-6\sqrt{2}$,
+$v=y-6\sqrt{2}$, $w=z-27$ adalah
+$u' = -10u+10v$, $v'=u-v-6\sqrt{2}w$, $w'=6\sqrt{2}u+6\sqrt{2}v-(\nicefrac{8}{3})w$.
+Linearisasi di $(-6 \sqrt{2},-6\sqrt{2},27)$ dengan $u=x+6\sqrt{2}$,
+$v=y+6\sqrt{2}$, $w=z-27$ adalah
+$u' = -10u+10v$, $v'=u-v+6\sqrt{2}w$, $w'=-6\sqrt{2}u-6\sqrt{2}v-(\nicefrac{8}{3})w$.
+}

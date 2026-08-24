@@ -6,13 +6,15 @@ dikerjakan; cakupan setiap buku dinyatakan secara eksplisit.
 
 ## Mulai membaca
 
-- **[Analisis Dasar II — WIP sampai akhir Bagian 11.4, 198 halaman](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/download/lebl-family-id-wip.2026.08.24.u336/Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_11.4_Latihan.pdf)**
-- **[Analisis Dasar I — edisi lengkap, 334 halaman](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/download/lebl-family-id-wip.2026.08.24.u336/Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf)**
-- [Rilis GitHub U336](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id-wip.2026.08.24.u336)
-- [Salinan pelestarian Zenodo U336](https://doi.org/10.5281/zenodo.22082567)
+- **[Notes on Diffy Qs — Bab 8 Sistem nonlinear, 40 halaman](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/download/lebl-family-id-wip.2026.08.24.u357/Notes_on_Diffy_Qs_Bab_8_Sistem_Nonlinear_Bahasa_Indonesia_v6.11_PARSIAL.pdf)**
+- **[Analisis Dasar II — WIP sampai akhir Bagian 11.4, 198 halaman](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/download/lebl-family-id-wip.2026.08.24.u357/Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_11.4_Latihan.pdf)**
+- **[Analisis Dasar I — edisi lengkap, 334 halaman](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/download/lebl-family-id-wip.2026.08.24.u357/Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf)**
+- [Rilis GitHub U357](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id-wip.2026.08.24.u357)
+- [Salinan pelestarian Zenodo U357](https://doi.org/10.5281/zenodo.22086636)
   (concept DOI: [10.5281/zenodo.22059779](https://doi.org/10.5281/zenodo.22059779))
 
-PDF Jilid II berakhir setelah seluruh Bagian 11.4, `Eksponensial kompleks dan
+Pembaca R007 memuat terjemahan lengkap Bab 8 dan tidak mencampurkan bab hulu
+berbahasa Inggris. PDF R006 Jilid II berakhir setelah seluruh Bagian 11.4, `Eksponensial kompleks dan
 fungsi trigonometri`, termasuk sebelas latihan. Bagian berikutnya, `Prinsip
 maksimum dan teorema dasar aljabar`, dan ekor yang belum diterjemahkan tidak
 dimuat. Ini adalah cuplikan pembaca yang jujur, bukan PDF hibrida dengan ekor
@@ -22,18 +24,19 @@ berbahasa Inggris.
 
 | ID | Buku | Peran kurikulum | Status Bahasa Indonesia |
 |---|---|---|---|
-| R006 | *Basic Analysis I–II* | C10/C20 | Jilid I lengkap; Jilid II kontigu sampai akhir Bagian 11.4 (U271) |
-| R007 | *Notes on Diffy Qs* | B70 | Pendahuluan lengkap; Bab 1 sampai rumus integral tentu untuk kondisi awal (U015) |
+| R006 | *Basic Analysis I–II* | C10/C20 | Jilid I lengkap; sumber hidup Jilid II sampai lema modulus minimum pertama (U272); pembaca publik sampai akhir Bagian 11.4 |
+| R007 | *Notes on Diffy Qs* | B70 | Pendahuluan lengkap; Bab 1 sampai rumus integral tentu untuk kondisi awal (U015); Bab 8 lengkap sebagai 20 unit |
 | R008 | *Guide to Cultivating Complex Analysis* | C50 | Kontigu sampai akhir bagian bola Riemann (U050) |
 
-Manifes hidup memuat **336 unit**: R006 271, R007 15, dan R008 50. Setiap unit
+Manifes hidup memuat **357 unit**: R006 272, R007 35, dan R008 50. Setiap unit
 mengikat irisan sumber dan sasaran dengan SHA-256; SHA-256 manifes adalah
-`05e5e333ae2e9ee427887c96d91848d9e99b95e4c3391f77a209ede8677a002c`.
+`783aff8d2d58a6ae8d152816cd7d8799c95c0eda27c04c61b719b5b4d56d47ba`.
 Backend produksi v0.4 memuat
-**2.701 rekaman** netral-lokal, 672 ekspresi, dan lima belas proyeksi CSV.
-Checkpoint `v0.4-live-2026.08.24-u336-a` memuat 26 berkas dan 11.659.282 byte;
+**3.326 rekaman** netral-lokal, 714 ekspresi, 700 konsep, 734 rekaman istilah
+fisik, tepat 712 istilah logis kini, dan lima belas proyeksi CSV.
+Checkpoint `v0.4-live-2026.08.24-u357-a` memuat 26 berkas dan 13.493.718 byte;
 inventaris replay identik mempunyai SHA-256
-`e39eec0b1c05b39a274ffc6fa1f23408e81c8d163a76bb4d6d8339cfb4be2321`.
+`cf2c08405a3c7926d2f5b1e54d1d7b94733636156256a609b84648791f27976e`.
 Validasi skema, integritas referensial, dan putar-balik CSV semuanya lulus.
 PDF pembaca Jilid II U336 mempunyai SHA-256
 `78543d4e8087e68589e8f15d0a3a969b3282247c7c9c2cdcb6f658dfa4b68e4f`.
@@ -48,8 +51,8 @@ PDF pembaca Jilid II U336 mempunyai SHA-256
 - [`authority/`](authority/) — identitas sumber, batas lisensi, dan bukti
   penggunaan istilah Bahasa Indonesia;
 - [`qa/`](qa/) — bukti build, audit unit, dan validasi backend;
-- [`release/u336/`](release/u336/) — overlay sumber untuk membangun pembaca
-  Jilid II pada batas R006-U271;
+- [`release/u357/`](release/u357/) — overlay sumber untuk membangun pembaca
+  R007 Bab 8; overlay R006 U336 tetap dipertahankan;
 - [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) — urutan rekonstruksi dan
   pemeriksaan hash.
 
@@ -76,6 +79,15 @@ blok penuh yang terpusat; tidak ada formula terpotong, tumpang tindih, glyph
 rusak, atau ekor yang tidak diterjemahkan. Converter berakhir dengan nol error;
 639 ID dan 909 referensi silang diperiksa, dengan hanya dua target masa depan
 yang sengaja berada di luar cutoff.
+
+Pembaca R007 Bab 8 berasal dari chapter v6.11 lengkap yang diverifikasi ulang
+oleh pemilik lane: 1.591 perintah, 444 batas lingkungan, 735 payload inline,
+70 payload display, 31 label, 26 panggilan gambar, serta seluruh dependensi
+bibliografi cocok. Proof campuran 472 halaman konvergen tanpa error atau
+referensi tak terdefinisi; semua 39 halaman bab dirender. Overlay label
+menghasilkan `Bab`, `Catatan`, `Contoh`, `Gambar`, `Tabel`, `Latihan`,
+`Teorema`, dan `Bukti` tanpa scaffold Inggris. Pembaca 40 halaman mempunyai
+SHA-256 `8d392ef36104027fd680d1bfd73a153ea3e69ead1d4c6867143ab9d2f8f6c3ad`.
 
 ## Otoritas, perubahan, dan lisensi
 

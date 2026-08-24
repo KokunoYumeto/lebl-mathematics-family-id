@@ -10,7 +10,9 @@ deterministic JSONL/CSV envelope.  It never reads Git or the wider workspace.
 from __future__ import annotations
 
 import copy
+import csv
 import hashlib
+import io
 import json
 import os
 import re
@@ -25,9 +27,9 @@ from referencing import Registry, Resource
 LANE = Path(__file__).resolve().parents[2]
 PRODUCTION = LANE / "backend" / "production"
 V03 = PRODUCTION / "v0.3"
-STAMP = "2026-08-23T00:00:00Z"
+STAMP = "2026-08-24T00:00:00Z"
 WORKFLOW = "01a01f57-a34b-7740-9717-596b8116910c/backend-production-v0.4-live"
-OUT_DEFAULT = PRODUCTION / "v0.4-live-2026.08.23"
+OUT_DEFAULT = PRODUCTION / "v0.4-live-2026.08.24"
 
 sys.path.insert(0, str(LANE / "backend" / "tools"))
 import backend_tool as bt  # noqa: E402
@@ -45,6 +47,20 @@ TARGET_KEYS = {
 }
 RESOURCE_KEYS = {role: f"lebl.{ns}.resource.primary" for role, ns in NS.items()}
 RIGHTS_KEYS = {role: f"lebl.{ns}.rights.cc-by-sa-4.0" for role, ns in NS.items()}
+TERMINOLOGY_FIELDS = (
+    "term_id",
+    "concept_id",
+    "resource_scope",
+    "source_term",
+    "preferred_id",
+    "variants_id",
+    "rejected_id",
+    "register",
+    "evidence",
+    "status",
+    "notes",
+)
+TERM_REGISTERS = {"standard", "formal", "pedagogical", "historical", "specialized"}
 
 
 def sha(data: bytes) -> str:
@@ -70,6 +86,50 @@ def load_jsonl(path: Path) -> tuple[list[dict], bytes]:
         raise RuntimeError(f"non-canonical JSONL input: {path}")
     rows = [json.loads(line) for line in data.decode("utf-8").splitlines()]
     return rows, data
+
+
+def split_ledger_cell(value: str) -> list[str]:
+    return list(dict.fromkeys(part.strip() for part in value.split(";") if part.strip()))
+
+
+def terminology_roles(value: str) -> tuple[str, ...]:
+    supplied = split_ledger_cell(value)
+    if not supplied or any(role not in NS for role in supplied):
+        raise RuntimeError(f"invalid terminology resource_scope: {value!r}")
+    return tuple(role for role in NS if role in supplied)
+
+
+def terminology_namespace(roles: tuple[str, ...]) -> str:
+    return NS[roles[0]] if len(roles) == 1 else "shared"
+
+
+def terminology_register(value: str) -> str:
+    normalized = "specialized" if value == "qualified" else value
+    if normalized not in TERM_REGISTERS:
+        raise RuntimeError(f"unsupported terminology register: {value!r}")
+    return normalized
+
+
+def load_terminology_rows(data: bytes) -> list[dict]:
+    reader = csv.DictReader(io.StringIO(data.decode("utf-8-sig"), newline=""))
+    if tuple(reader.fieldnames or ()) != TERMINOLOGY_FIELDS:
+        raise RuntimeError(f"unexpected terminology columns: {reader.fieldnames}")
+    rows = [dict(row) for row in reader]
+    term_ids: set[str] = set()
+    for row in rows:
+        for field in ("term_id", "concept_id", "resource_scope", "source_term", "preferred_id"):
+            if not row[field]:
+                raise RuntimeError(f"empty {field} in terminology row: {row}")
+        if row["term_id"] in term_ids:
+            raise RuntimeError(f"duplicate terminology term_id: {row['term_id']}")
+        if not row["concept_id"].startswith("concept."):
+            raise RuntimeError(f"invalid concept_id: {row['concept_id']}")
+        if row["status"] != "admitted":
+            raise RuntimeError(f"unsupported terminology status: {row['status']}")
+        terminology_roles(row["resource_scope"])
+        terminology_register(row["register"])
+        term_ids.add(row["term_id"])
+    return rows
 
 
 def registry_for(*schemas: dict) -> Registry:
@@ -160,13 +220,17 @@ def build(out: Path = OUT_DEFAULT) -> dict:
     # Terminology is CSV, not JSONL; retain it byte-for-byte as an input witness.
     terminology_path = LANE / "00_control" / "TERMINOLOGY.csv"
     terminology_bytes = terminology_path.read_bytes()
+    terminology_rows = load_terminology_rows(terminology_bytes)
     adverse_path = LANE / "00_control" / "ADVERSE_LEDGER.jsonl"
     adverse_bytes = adverse_path.read_bytes()
 
     old_records, _ = load_jsonl(V03 / "records.jsonl")
     records = [copy.deepcopy(record) for record in old_records]
     by_key = {record["semantic_key"]: record for record in records}
-    templates = {kind: next(record for record in records if record["record_type"] == kind) for kind in ("unit", "segment", "qa_event", "artifact")}
+    templates = {
+        kind: next(record for record in records if record["record_type"] == kind)
+        for kind in ("unit", "segment", "qa_event", "artifact", "concept", "term")
+    }
     existing_units = {record.get("source_local_id"): record for record in records if record["record_type"] == "unit"}
     resources = {role: by_key[RESOURCE_KEYS[role]] for role in NS}
     sources = {role: by_key[SOURCE_KEYS[role]] for role in NS}
@@ -299,7 +363,146 @@ def build(out: Path = OUT_DEFAULT) -> dict:
         records.append(qa)
         by_key[qa_key] = qa
 
-    manifest_artifact_key = "lebl.shared.artifact.translation-manifest-live-2026-08-23"
+    # Preserve every retained v0.3 record, then add a count-complete live
+    # terminology view.  Changed retained rows receive versioned superseding
+    # term records; the historical records remain byte-identical.
+    by_id = {record["id"]: record for record in records}
+    if len(by_id) != len(records) or len(by_key) != len(records):
+        raise RuntimeError("duplicate retained/generated record identity")
+
+    existing_terms: dict[str, dict] = {}
+    concept_by_ledger_id: dict[str, dict] = {}
+    for record in records:
+        if record["record_type"] != "term":
+            continue
+        ledger_term_id = record["ledger_binding"]["term_id"]
+        if ledger_term_id in existing_terms:
+            raise RuntimeError(f"duplicate retained ledger term_id: {ledger_term_id}")
+        existing_terms[ledger_term_id] = record
+
+        ledger_concept_id = record["ledger_binding"]["concept_id"]
+        concept = by_id.get(record["concept_id"])
+        if concept is None or concept["record_type"] != "concept":
+            raise RuntimeError(f"invalid retained concept reference: {ledger_term_id}")
+        prior = concept_by_ledger_id.get(ledger_concept_id)
+        if prior is not None and prior["id"] != concept["id"]:
+            raise RuntimeError(f"split concept identity: {ledger_concept_id}")
+        concept_by_ledger_id[ledger_concept_id] = concept
+
+    shared_right = by_key["lebl.shared.rights.editorial-metadata-unspecified"]
+    added_concepts = 0
+    added_terms = 0
+    superseding_terms = 0
+
+    def append_unique(record: dict) -> None:
+        if record["semantic_key"] in by_key:
+            raise RuntimeError(f"semantic key collision: {record['semantic_key']}")
+        if record["id"] in by_id:
+            raise RuntimeError(f"UUID collision: {record['id']}")
+        records.append(record)
+        by_key[record["semantic_key"]] = record
+        by_id[record["id"]] = record
+
+    for row in terminology_rows:
+        roles = terminology_roles(row["resource_scope"])
+        namespace = terminology_namespace(roles)
+        right = rights[roles[0]] if len(roles) == 1 else shared_right
+
+        ledger_concept_id = row["concept_id"]
+        concept = concept_by_ledger_id.get(ledger_concept_id)
+        if concept is None:
+            concept_suffix = slug(ledger_concept_id.removeprefix("concept."))
+            concept_key = f"lebl.{namespace}.concept.ledger.{concept_suffix}"
+            concept = copy.deepcopy(templates["concept"])
+            concept.update(
+                {
+                    "id": bt.record_uuid("concept", concept_key),
+                    "semantic_key": concept_key,
+                    "semantic_aliases": [],
+                    "status": "active",
+                    "recorded_at": STAMP,
+                    "workflow_id": WORKFLOW,
+                    "supersedes_id": None,
+                    "label": row["source_term"],
+                    "definition": "",
+                    "notation": [],
+                    "source_bindings": [],
+                    "rights_id": right["id"],
+                }
+            )
+            append_unique(concept)
+            concept_by_ledger_id[ledger_concept_id] = concept
+            added_concepts += 1
+
+        retained = existing_terms.get(row["term_id"])
+        if retained is not None and retained["ledger_binding"] == row:
+            continue
+
+        term_key = f"lebl.{namespace}.term.ledger.{slug(row['term_id'])}.id-id"
+        supersedes_id = None
+        if retained is not None:
+            revision = hashlib.sha256(canon(row)).hexdigest()[:16]
+            term_key += f".revision-{revision}"
+            supersedes_id = retained["id"]
+            superseding_terms += 1
+
+        term = copy.deepcopy(templates["term"])
+        term.update(
+            {
+                "id": bt.record_uuid("term", term_key),
+                "semantic_key": term_key,
+                "semantic_aliases": [],
+                "status": "active",
+                "recorded_at": STAMP,
+                "workflow_id": WORKFLOW,
+                "supersedes_id": supersedes_id,
+                "concept_id": concept["id"],
+                "language": "id",
+                "locale": "id-ID",
+                "preferred": row["preferred_id"],
+                "variants": split_ledger_cell(row["variants_id"]),
+                "rejected_forms": split_ledger_cell(row["rejected_id"]),
+                "scope_ids": [resources[role]["id"] for role in roles],
+                "register": terminology_register(row["register"]),
+                "evidence": [
+                    {
+                        "locator": f"inputs/TERMINOLOGY.csv:{row['term_id']}",
+                        "sha256": sha(canon(row)),
+                    }
+                ],
+                "examples": [],
+                "rights_id": right["id"],
+                "ledger_binding": copy.deepcopy(row),
+            }
+        )
+        append_unique(term)
+        added_terms += 1
+
+    for identity_field in ("id", "semantic_key"):
+        values = [record[identity_field] for record in records]
+        if len(values) != len(set(values)):
+            raise RuntimeError(f"duplicate {identity_field}")
+
+    term_records = [record for record in records if record["record_type"] == "term"]
+    superseded_term_ids = {
+        record["supersedes_id"]
+        for record in term_records
+        if record["supersedes_id"] is not None
+    }
+    current_terms = [record for record in term_records if record["id"] not in superseded_term_ids]
+    current_by_ledger_id = {
+        record["ledger_binding"]["term_id"]: record for record in current_terms
+    }
+    live_by_ledger_id = {row["term_id"]: row for row in terminology_rows}
+    if len(current_by_ledger_id) != len(current_terms):
+        raise RuntimeError("duplicate current logical terminology ID")
+    if set(current_by_ledger_id) != set(live_by_ledger_id):
+        raise RuntimeError("current logical terminology coverage mismatch")
+    for term_id, row in live_by_ledger_id.items():
+        if current_by_ledger_id[term_id]["ledger_binding"] != row:
+            raise RuntimeError(f"stale current terminology row: {term_id}")
+
+    manifest_artifact_key = "lebl.shared.artifact.translation-manifest-live-2026-08-24"
     artifact = copy.deepcopy(templates["artifact"])
     artifact.update(
         {
@@ -324,13 +527,33 @@ def build(out: Path = OUT_DEFAULT) -> dict:
     validate_references(records)
     record_bytes = b"".join(canon(record) + b"\n" for record in records)
 
-    projection = load_json(V03 / "projection_manifest.json")
+    projection = copy.deepcopy(load_json(V03 / "projection_manifest.json"))
+    term_projections = [
+        item for item in projection["projections"] if item["name"] == "terms"
+    ]
+    if len(term_projections) != 1:
+        raise RuntimeError("expected exactly one terms projection")
+    term_columns = term_projections[0]["columns"]
+    if any(column["name"] == "supersedes_id" for column in term_columns):
+        raise RuntimeError("unexpected pre-existing supersedes_id projection")
+    record_json_index = next(
+        index for index, column in enumerate(term_columns)
+        if column["name"] == "record_json"
+    )
+    term_columns.insert(
+        record_json_index,
+        {
+            "encoding": "scalar",
+            "name": "supersedes_id",
+            "source": "supersedes_id",
+        },
+    )
     dataset = copy.deepcopy(load_json(V03 / "dataset.json"))
     projection_bytes = (json.dumps(projection, ensure_ascii=False, sort_keys=True, indent=2) + "\n").encode("utf-8")
     dataset.update(
         {
-            "dataset_id": bt.dataset_uuid("lebl.shared.dataset.production-v0.4-live-2026-08-23"),
-            "dataset_key": "lebl.shared.dataset.production-v0.4-live-2026-08-23",
+            "dataset_id": bt.dataset_uuid("lebl.shared.dataset.production-v0.4-live-2026-08-24"),
+            "dataset_key": "lebl.shared.dataset.production-v0.4-live-2026-08-24",
             "generated_at": STAMP,
             "workflow_id": WORKFLOW,
             "notice": "Additive mixed-resource live checkpoint for the R006/R007/R008 Lebl family. Retained v0.3 bytes are preserved; newer manifest units are represented with locale-neutral unit, segment, and QA records. The exact runtime provenance is OpenAI Codex gpt-5.6-sol, Ultra.",
@@ -361,6 +584,23 @@ def build(out: Path = OUT_DEFAULT) -> dict:
         (stage / "dataset.json").write_bytes(dataset_bytes)
         (stage / "projection_manifest.json").write_bytes(projection_bytes)
         receipts = bt.project_csvs(projection, records, stage / "csv", force=True)
+        with (stage / "csv" / "terms.csv").open(encoding="utf-8", newline="") as stream:
+            projected_terms = list(csv.DictReader(stream))
+        projected_superseded_ids = {
+            row["supersedes_id"] for row in projected_terms if row["supersedes_id"]
+        }
+        projected_current_terms = [
+            row for row in projected_terms if row["id"] not in projected_superseded_ids
+        ]
+        projected_current_ids = {
+            row["ledger_term_id"] for row in projected_current_terms
+        }
+        if len(projected_terms) != len(term_records):
+            raise RuntimeError("projected physical terminology count mismatch")
+        if len(projected_current_terms) != len(terminology_rows):
+            raise RuntimeError("projected current terminology count mismatch")
+        if projected_current_ids != set(live_by_ledger_id):
+            raise RuntimeError("projected current terminology IDs mismatch")
         roundtrip = bt.roundtrip_csvs(projection, records, stage / "csv")
         if roundtrip.get("roundtrip") != "pass" or roundtrip.get("recovered_records") != len(records):
             raise RuntimeError(f"CSV round-trip failed: {roundtrip}")
@@ -370,6 +610,9 @@ def build(out: Path = OUT_DEFAULT) -> dict:
             f"(R006/R007/R008), with {added_units} units added beyond retained v0.3.\n\n"
             "This is a locale-neutral machine projection; reader-facing TeX remains in the lane's `translation/` directory. "
             "Separate resource, edition, rights, source, target, and provenance identities are preserved.\n\n"
+            f"Terminology: {len(term_records)} physical records preserve history; "
+            f"{len(current_terms)} current logical terms exactly reproduce the live terminology ledger. "
+            "A term is current when its record ID is not named by another term's `supersedes_id`.\n\n"
             "Terminology QA evidence: `authority/terminology_evidence/2026-08-22-indonesian-field-usage-qa/TERMINOLOGY_QA_REPORT.md`.\n"
             "Translation/runtime provenance: `OpenAI Codex gpt-5.6-sol, Ultra`, acting on the user's request.\n"
         ).encode("utf-8")
@@ -384,6 +627,11 @@ def build(out: Path = OUT_DEFAULT) -> dict:
             "live_manifest_rows": len(live_manifest),
             "added_unit_rows": added_units,
             "record_count": len(records),
+            "added_concept_rows": added_concepts,
+            "added_term_rows": added_terms,
+            "superseding_term_rows": superseding_terms,
+            "physical_term_rows": len(term_records),
+            "current_logical_term_rows": len(current_terms),
             "record_stream": {"bytes": len(record_bytes), "sha256": sha(record_bytes)},
             "manifest": {"bytes": len(manifest_bytes), "sha256": sha(manifest_bytes)},
             "csv_projection": {"receipts": receipts, "roundtrip": roundtrip},
@@ -393,7 +641,18 @@ def build(out: Path = OUT_DEFAULT) -> dict:
         }
         (stage / "VALIDATION.json").write_bytes((json.dumps(validation, ensure_ascii=False, sort_keys=True, indent=2) + "\n").encode("utf-8"))
         os.replace(stage, out)
-    return {"output": str(out), "live_manifest_rows": len(live_manifest), "added_units": added_units, "record_count": len(records), "record_stream_sha256": sha(record_bytes)}
+    return {
+        "output": str(out),
+        "live_manifest_rows": len(live_manifest),
+        "added_units": added_units,
+        "added_concepts": added_concepts,
+        "added_terms": added_terms,
+        "superseding_terms": superseding_terms,
+        "physical_terms": len(term_records),
+        "current_logical_terms": len(current_terms),
+        "record_count": len(records),
+        "record_stream_sha256": sha(record_bytes),
+    }
 
 
 if __name__ == "__main__":

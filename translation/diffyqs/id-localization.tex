@@ -1,0 +1,82 @@
+% Reader-facing Indonesian localization overlay for Notes on Diffy Qs v6.11.
+% Load after diffyqssetup.sty.  This file changes presentation labels only;
+% it does not change mathematical content, counters, labels, or references.
+
+\renewcommand{\chaptername}{Bab}
+\renewcommand{\appendixname}{Lampiran}
+\renewcommand{\contentsname}{Daftar Isi}
+\renewcommand{\listfigurename}{Daftar Gambar}
+\renewcommand{\listtablename}{Daftar Tabel}
+\renewcommand{\figurename}{Gambar}
+\renewcommand{\tablename}{Tabel}
+\renewcommand{\indexname}{Indeks}
+\renewcommand{\bibname}{Daftar Pustaka}
+\renewcommand{\partname}{Bagian}
+\renewcommand{\proofname}{Bukti}
+\renewcommand{\seename}{lihat}
+\renewcommand{\alsoname}{lihat juga}
+
+\renewcommand{\sectionnotes}[1]{%
+  \noindent\emph{Catatan: #1}\medskip\par}
+
+% amsthm creates these begin-environment commands directly.  Replacing only
+% their displayed names preserves the theorem styles, counters, and optional
+% notes established by diffyqssetup.sty.
+\makeatletter
+\renewcommand{\theorem}{%
+  \@thm{\let\thm@swap\@gobble\th@plain}{theorem}{Teorema}}
+\renewcommand{\exercise}{%
+  \@thm{\let\thm@swap\@gobble\th@exercise}{exercise}{Latihan}}
+\makeatother
+
+\renewcommand{\exampleclaim}{%
+  \par\addvspace{\medskipamount}\noindent\refstepcounter{example}%
+  \hbox{\bfseries Contoh \theexample:}%
+  \hspace{0.5em}\ignorespaces}
+\renewcommand{\exampleclaimname}[1]{%
+  \par\addvspace{\medskipamount}\noindent\refstepcounter{example}%
+  \hbox{\bfseries Contoh \theexample\ {\normalfont (#1)}:}%
+  \hspace{0.5em}\ignorespaces}
+\renewcommand{\remarkclaim}{%
+  \par\addvspace{\medskipamount}\noindent\refstepcounter{remark}%
+  \hbox{\bfseries Catatan \theremark:}%
+  \hspace{0.5em}\ignorespaces}
+\renewcommand{\remarkclaimname}[1]{%
+  \par\addvspace{\medskipamount}\noindent\refstepcounter{remark}%
+  \hbox{\bfseries Catatan \theremark\ {\normalfont (#1)}:}%
+  \hspace{0.5em}\ignorespaces}
+
+\renewcommand{\figurevref}[1]{\myvref{Gambar}{#1}}
+\renewcommand{\figureref}[1]{\myref{Gambar}{#1}}
+\renewcommand{\tablevref}[1]{\myvref{Tabel}{#1}}
+\renewcommand{\tableref}[1]{\myref{Tabel}{#1}}
+\renewcommand{\chapterref}[1]{\myref{bab}{#1}}
+\renewcommand{\Chapterref}[1]{\myref{Bab}{#1}}
+\renewcommand{\appendixref}[1]{\myref{lampiran}{#1}}
+\renewcommand{\Appendixref}[1]{\myref{Lampiran}{#1}}
+\renewcommand{\subsectionref}[1]{\myref{subbagian}{#1}}
+\renewcommand{\subsectionvref}[1]{\myvref{subbagian}{#1}}
+\renewcommand{\exercisevref}[1]{\myvref{Latihan}{#1}}
+\renewcommand{\exerciseref}[1]{\myref{Latihan}{#1}}
+\renewcommand{\examplevref}[1]{\myvref{Contoh}{#1}}
+\renewcommand{\exampleref}[1]{\myref{Contoh}{#1}}
+\renewcommand{\thmvref}[1]{\myvref{Teorema}{#1}}
+\renewcommand{\thmref}[1]{\myref{Teorema}{#1}}
+\renewcommand{\remarkref}[1]{\myref{Catatan}{#1}}
+
+% varioref page-position phrases used by \myvref.
+\renewcommand{\reftextfaceafter}{pada halaman seberang}
+\renewcommand{\reftextfacebefore}{pada halaman seberang}
+\renewcommand{\reftextafter}{pada halaman berikutnya}
+\renewcommand{\reftextbefore}{pada halaman sebelumnya}
+\renewcommand{\reftextcurrent}{pada halaman ini}
+\renewcommand{\reftextfaraway}[1]{pada halaman~\pageref{#1}}
+
+\renewcommand{\printanswers}{%
+  \cleardoublepage
+  \phantomsection
+  \chapter*{Solusi untuk Latihan Terpilih}%
+  \markboth{SOLUSI UNTUK LATIHAN TERPILIH}{SOLUSI UNTUK LATIHAN TERPILIH}%
+  \addfakecontentsline{Solusi untuk Latihan Terpilih}%
+  \unvbox\answerscollect\setbox\answerscollect=\vbox{}% 
+}
