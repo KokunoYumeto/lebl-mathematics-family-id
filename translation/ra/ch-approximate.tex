@@ -1860,115 +1860,115 @@ dapat menghitung deret pangkat untuk fungsi eksponensial di sembarang titik $a \
 e^z = e^a e^{z-a} = \sum_{k=0}^\infty \frac{e^a}{k!} {(z-a)}^k .
 \end{equation*}
 
-\subsection{Trigonometric functions and $\pi$}
+\subsection{Fungsi trigonometri dan $\pi$}
 
-We can now finally define \emph{\myindex{sine}} and \emph{\myindex{cosine}}
-by the equation
+Kini akhirnya kita dapat mendefinisikan \emph{\myindex{fungsi sinus}} dan \emph{\myindex{fungsi kosinus}}
+melalui persamaan
 \begin{equation*}
 e^{x+iy} = e^x \bigl( \cos(y) + i \sin(y) \bigr) .
 \end{equation*}
-In fact, we define sine and cosine for all complex $z$:
+Lebih umum, kita mendefinisikan fungsi sinus dan fungsi kosinus untuk setiap bilangan kompleks $z$:
 \glsadd{not:sin}\glsadd{not:cos}
 \begin{equation*}
 \cos(z) \coloneqq \frac{e^{iz} + e^{-iz}}{2}
-\qquad\text{and}\qquad
+\qquad\text{dan}\qquad
 \sin(z) \coloneqq \frac{e^{iz} - e^{-iz}}{2i} .
 \end{equation*}
 
-Let us use our definition to prove common properties of
-sine and cosine.  In the process, we also define the
-number $\pi$.
+Mari kita gunakan definisi ini untuk membuktikan sifat-sifat umum
+fungsi sinus dan fungsi kosinus. Dalam prosesnya, kita juga mendefinisikan
+bilangan $\pi$.
 
 \begin{prop}
-The sine and cosine functions have the following properties:
+Fungsi sinus dan fungsi kosinus memiliki sifat-sifat berikut:
 \begin{enumerate}[(i)]
-\item For all $z \in \C$,\index{Euler's formula}
+\item Untuk setiap $z \in \C$,\index{rumus Euler}
 \begin{equation*}
 e^{iz} = \cos(z) + i\sin(z) \qquad
-\text{(Euler's formula)}.
+\text{(rumus Euler)}.
 \end{equation*}
 \item $\cos(0) = 1$, $\sin(0) = 0$.
-\item For all $z \in \C$,
+\item Untuk setiap $z \in \C$,
 \begin{equation*}
 \cos(-z) = \cos(z), \qquad
 \sin(-z) = -\sin(z).
 \end{equation*}
-\item For all $z \in \C$,
+\item Untuk setiap $z \in \C$,
 \begin{equation*}
 \cos(z) = \sum_{k=0}^\infty \frac{{(-1)}^k}{(2k)!} z^{2k} ,
 \qquad
 \sin(z) = \sum_{k=0}^\infty \frac{{(-1)}^k}{(2k+1)!} z^{2k+1} .
 \end{equation*}
-\item For all $x \in \R$
+\item Untuk setiap $x \in \R$
 \begin{equation*}
 \cos(x) = \Re (e^{ix})
-\qquad\text{and}\qquad
+\qquad\text{dan}\qquad
 \sin(x) = \Im (e^{ix}) .
 \end{equation*}
-\item For all $z \in \C$,
+\item Untuk setiap $z \in \C$,
 \begin{equation*}
 {\bigl( \cos(z) \bigr)}^2 + {\bigl( \sin(z) \bigr)}^2 = 1 .
 \end{equation*}
-\item For all $x \in \R$,
+\item Untuk setiap $x \in \R$,
 \begin{equation*}
 \babs{\sin(x)} \leq 1, \qquad \babs{\cos(x)} \leq 1 .
 \end{equation*}
-\item For all $x \in \R$,
+\item Untuk setiap $x \in \R$,
 \begin{equation*}
 \frac{d}{dx} \bigl[ \cos(x) \bigr] = -\sin(x)
-\qquad \text{and} \qquad
+\qquad \text{dan} \qquad
 \frac{d}{dx} \bigl[ \sin(x) \bigr] = \cos(x) .
 \end{equation*}
-\item For all $x \geq 0$,
+\item Untuk setiap $x \geq 0$,
 \begin{equation*}
 \sin(x) \leq x .
 \end{equation*}
 \item
-There exists an $x > 0$ such that $\cos(x) = 0$.  We define
+Terdapat $x > 0$ sedemikian sehingga $\cos(x) = 0$. Kita definisikan
 \glsadd{not:pi}
 \begin{equation*}
 \pi \coloneqq 2 \, \inf \{ x > 0 : \cos(x) = 0 \} .
 \end{equation*}
 \item
-For all $z \in \C$, 
+Untuk setiap $z \in \C$,
 \begin{equation*}
-e^{2\pi i} = 1 \qquad \text{and} \qquad e^{z + i 2\pi} = e^z.
+e^{2\pi i} = 1 \qquad \text{dan} \qquad e^{z + i 2\pi} = e^z.
 \end{equation*}
 \item
-Sine and cosine are $2\pi$-periodic and not periodic with any smaller
-period.  That is, $2\pi$ is the smallest number such that for all $z \in \C$,
+Fungsi sinus dan fungsi kosinus periodik dengan periode $2\pi$ dan tidak memiliki periode positif
+yang lebih kecil. Artinya, $2\pi$ adalah bilangan positif terkecil sedemikian sehingga untuk setiap $z \in \C$,
 \begin{equation*}
 \sin(z+2\pi) = \sin(z)
-\qquad \text{and} \qquad
+\qquad \text{dan} \qquad
 \cos(z+2\pi) = \cos(z) .
 \end{equation*}
 \item
-The function $x \mapsto e^{ix}$ is a bijective map from $[0,2\pi)$
-onto the set of $z \in \C$ such that $\sabs{z} = 1$.
+Fungsi $x \mapsto e^{ix}$ merupakan pemetaan bijektif dari $[0,2\pi)$
+ke himpunan semua $z \in \C$ sedemikian sehingga $\sabs{z} = 1$.
 \end{enumerate}
 \end{prop}
 
-The proposition immediately implies that $\sin(x)$ and $\cos(x)$ are 
-real whenever $x$ is real.
+Proposisi ini langsung menyiratkan bahwa $\sin(x)$ dan $\cos(x)$ bernilai
+real apabila $x$ real.
 
 \begin{proof}
-The first three items follow directly from the definition.
-The computation of the power series for both is left as an exercise.
-As the complex conjugate is a continuous function, the definition
-of $e^z$ implies
-$\overline{e^z} = e^{\bar{z}}$.  If
-$x$ is real,
+Tiga butir pertama langsung mengikuti definisi.
+Perhitungan deret pangkat untuk kedua fungsi tersebut diserahkan sebagai latihan.
+Karena pemetaan konjugasi kompleks bersifat kontinu, definisi
+$e^z$ menyiratkan
+$\overline{e^z} = e^{\bar{z}}$. Jika
+$x$ real,
 \begin{equation*}
 \overline{e^{ix}} = e^{-ix} .
 \end{equation*}
-Thus for real $x$,
+Jadi, untuk $x$ real,
 $\cos(x) =
 \frac{e^{ix}+e^{-ix}}{2} =
 \frac{e^{ix}+\overline{e^{ix}}}{2} =
 \Re (e^{ix})$
-and similarly $\sin(x) = \Im (e^{ix})$.
+dan, secara serupa, $\sin(x) = \Im (e^{ix})$.
 
-For real $x$, we compute
+Untuk $x$ real, kita hitung
 \begin{equation*}
 1 =  e^{ix} e^{-ix}
 = e^{ix} \, \overline{e^{ix}}
@@ -1976,157 +1976,168 @@ For real $x$, we compute
 = \babs{\cos(x) + i \sin(x)}^2
 = {\bigl( \cos(x) \bigr)}^2 + {\bigl( \sin(x) \bigr)}^2 .
 \end{equation*}
-A slightly more complicated computation shows this fact for
-complex numbers, see \exerciseref{exercise:cossinidentity}.
-In particular, $e^{ix}$ is \emph{\myindex{unimodular}} for real $x$;
-the values lie on the unit circle.
-A square of a real number is always nonnegative:
+Perhitungan yang sedikit lebih rumit menunjukkan fakta ini untuk
+bilangan kompleks; lihat \exerciseref{exercise:cossinidentity}.
+Khususnya, $e^{ix}$ bersifat \emph{\myindex{bermodulus satu}} untuk $x$ real;
+nilai-nilainya terletak pada lingkaran satuan.
+Kuadrat suatu bilangan real selalu nonnegatif:
 \begin{equation*}
 {\bigl(\sin(x)\bigr)}^2 = 1-{\bigl(\cos(x)\bigr)}^2 \leq 1 .
 \end{equation*}
-So $\babs{\sin(x)} \leq 1$ and similarly 
+Jadi, $\babs{\sin(x)} \leq 1$ dan, secara serupa,
 $\babs{\cos(x)} \leq 1$.
 
-We leave the computation of the derivatives to the reader as exercises.
-Let us prove that $\sin(x) \leq x$ for $x \geq 0$.
-Consider
-$f(x) \coloneqq x-\sin(x)$ and differentiate:
+Perhitungan kedua turunan tersebut kita serahkan kepada pembaca sebagai latihan.
+Mari kita buktikan bahwa $\sin(x) \leq x$ untuk $x \geq 0$.
+Pandang
+$f(x) \coloneqq x-\sin(x)$ dan turunkan:
 \begin{equation*}
 f'(x) = \frac{d}{dx} \bigl[ x - \sin(x) \bigr]
 =
 1 -\cos(x) \geq 0 ,
 \end{equation*}
-for all $x \in \R$ as $\babs{\cos(x)} \leq 1$.
-In other words, $f$ is increasing and $f(0) = 0$.
-So $f$ must be nonnegative when $x \geq 0$ and hence, $\sin(x) \leq x$.
+untuk setiap $x \in \R$ karena $\babs{\cos(x)} \leq 1$.
+Dengan kata lain, $f$ monoton naik dan $f(0) = 0$.
+Jadi, $f$ nonnegatif ketika $x \geq 0$; oleh karena itu, $\sin(x) \leq x$.
 
-Next, we claim there exists a positive $x$ such that $\cos(x) = 0$.
-As $\cos(0) = 1 > 0$, $\cos(x) > 0$
-for $x$ near $0$.  Namely,
-there is some
-$y > 0$ such that $\cos(x) > 0$ on $[0,y)$.
-Then $\sin(x)$ is strictly
-increasing on $[0,y)$.  As $\sin(0) = 0$, we have
-$\sin(x) > 0$ for $x \in (0,y)$.  Take $a \in (0,y)$.  By
-the mean value theorem, there is a $c \in (a,y)$ such that
+Selanjutnya, kita klaim bahwa terdapat $x$ positif sedemikian sehingga $\cos(x) = 0$.
+Karena $\cos(0) = 1 > 0$, berlaku $\cos(x) > 0$
+untuk $x$ yang cukup dekat dengan $0$. Definisikan
+$S \coloneqq \{ t > 0 : \cos(x) > 0 \text{ untuk setiap } x \in [0,t) \}$.
+Himpunan $S$ tak kosong. Pilih $y_0 \in S$ dan $a \in (0,y_0)$.
+Karena $\cos(x) > 0$ pada $[0,y_0)$, fungsi $\sin(x)$ naik tegas
+pada $[0,y_0)$. Karena $\sin(0) = 0$, kita memperoleh $\sin(a) > 0$.
+Sekarang, ambil sembarang $y \in S$ dengan $y > a$. Pada $[0,y)$,
+fungsi $\sin$ naik tegas. Menurut teorema nilai rata-rata,
+terdapat $c \in (a,y)$ sedemikian sehingga
 \begin{equation*}
 2 \geq \cos(a)-\cos(y) = \sin(c)(y-a) \geq \sin(a)(y-a) .
 \end{equation*}
-As $a \in (0,y)$, we have $\sin(a) > 0$ and so
+Karena $\sin(a) > 0$, kita memperoleh
 \begin{equation*}
 y \leq \frac{2}{\sin(a)} + a .
 \end{equation*}
-Hence there is some largest $y$ such that $\cos(x) > 0$ in $[0,y)$,
-and let $y$ be the largest such number.
-By continuity, $\cos(y) = 0$.
-In fact, $y$ is the
-smallest positive $y$ such that $\cos(y) = 0$.  As mentioned,
-$\pi$ is defined to be $2y$.
+Batas ini berlaku bagi setiap $y \in S$ dengan $y > a$, sedangkan anggota $S$
+yang memenuhi $y \leq a$ sudah terbatas. Jadi, $S$ terbatas di atas. Definisikan
+$y \coloneqq \sup S$. Dari sifat supremum, $\cos(x) > 0$ untuk setiap $x \in [0,y)$,
+sehingga kekontinuan memberikan $\cos(y) \geq 0$. Jika $\cos(y) > 0$, kekontinuan
+akan memberikan suatu $t > y$ dengan $t \in S$, bertentangan dengan definisi supremum.
+Oleh karena itu, $\cos(y) = 0$. Karena $\cos(x) > 0$ untuk setiap $x \in [0,y)$,
+$y$ adalah nilai positif terkecil sedemikian sehingga $\cos(y) = 0$. Seperti telah disebutkan,
+$\pi$ didefinisikan sebagai $2y$.
 
-As $\cos(\nicefrac{\pi}{2}) = 0$, we find
+Karena $\cos(\nicefrac{\pi}{2}) = 0$, kita peroleh
 ${\bigl(\sin(\nicefrac{\pi}{2})\bigr)}^2 = 1$.
-As $\sin$ is positive on $(0,\nicefrac{\pi}{2})$, we have
+Karena $\sin$ positif pada $(0,\nicefrac{\pi}{2})$, kita mempunyai
 $\sin(\nicefrac{\pi}{2}) = 1$.
-Hence,
+Dengan demikian,
 \begin{equation*}
 e^{i \pi /2} = i ,
 \end{equation*}
-and by the law of exponents,
+dan, menurut hukum eksponen,
 \begin{equation*}
 e^{i \pi} = -1 ,
 \qquad 
 e^{i 2\pi} = 1 .
 \end{equation*}
-So $e^{i2\pi} = 1 = e^0$.  The law of exponents also says
+Jadi, $e^{i2\pi} = 1 = e^0$. Hukum eksponen juga menyatakan
 \begin{equation*}
 e^{z+i2\pi} = e^z e^{i2\pi} = e^z
 \end{equation*}
-for all $z \in \C$.  Immediately, we also obtain
-$\cos(z+2\pi) = \cos(z)$ and $\sin(z+2\pi) = \sin(z)$.
-So $\sin$ and $\cos$ are $2\pi$-periodic.
+untuk setiap $z \in \C$. Kita juga langsung memperoleh
+$\cos(z+2\pi) = \cos(z)$ dan $\sin(z+2\pi) = \sin(z)$.
+Jadi, $\sin$ dan $\cos$ periodik dengan periode $2\pi$.
 
-We claim that $\sin$ and $\cos$ are not periodic with a smaller period.  It
-suffices to show that if $e^{ix} = 1$ for the
-smallest positive $x$, then
-$x = 2\pi$.  Let $x$ be the smallest positive $x$ such that
-$e^{ix} = 1$.
-Of course, $x \leq 2\pi$.
-By the law of exponents,
+Kita klaim bahwa $\sin$ dan $\cos$ tidak periodik dengan periode positif yang lebih kecil.
+Untuk itu, ambil sembarang $x$ yang memenuhi $0 < x \leq 2\pi$ dan
+$e^{ix} = 1$. Kita akan menunjukkan bahwa $x = 2\pi$.
+Menurut hukum eksponen,
 \begin{equation*}
 {\bigl(e^{ix/4}\bigr)}^4 = 1 .
 \end{equation*}
-If $e^{ix/4} = a+ib$, then
+Jika $e^{ix/4} = a+ib$, maka
 \begin{equation*}
 {(a+ib)}^4
 =a^4-6a^2b^2+b^4 + i\bigl(4ab(a^2-b^2)\bigr)
 =1 .
 \end{equation*}
-Then either $a = 0$ or $a^2 = b^2$.
-As $\nicefrac{x}{4} \leq \nicefrac{\pi}{2}$, we have $a = \cos(\nicefrac{x}{4}) \geq 0$ and
+Karena $0 < \nicefrac{x}{4} \leq \nicefrac{\pi}{2}$, kita mempunyai
 $b = \sin(\nicefrac{x}{4}) > 0$.
-If $a^2=b^2$, then
-$a^4-6a^2b^2+b^4 = -4a^4 < 0$ and in particular not equal to 1.
-Therefore $a=0$, in which case $\nicefrac{x}{4} = \nicefrac{\pi}{2}$.
-Hence $2\pi$ is the smallest period we could choose for $e^{ix}$
-and so also for $\cos$ and $\sin$.
+Selain itu, $a = \cos(\nicefrac{x}{4}) \geq 0$. Bagian imajiner pada persamaan di atas
+harus nol. Karena $b > 0$, maka $a = 0$ atau $a^2 = b^2$.
+Jika $a^2=b^2$, maka
+$a^4-6a^2b^2+b^4 = -4a^4 < 0$, dan khususnya tidak sama dengan 1.
+Oleh karena itu, $a=0$; dalam hal ini $\nicefrac{x}{4} = \nicefrac{\pi}{2}$.
+Jadi, $x = 2\pi$.
 
-Finally, we wish to show that $e^{ix}$ is one-to-one and onto
-from the set $[0,2\pi)$ to the set of $z \in \C$ such that
-$\sabs{z} = 1$.  Suppose $e^{ix} = e^{iy}$ and 
-$x > y$.  Then
-$e^{i(x-y)} = 1$, meaning $x-y$ is a multiple of $2\pi$ and hence
-only one of them can live in $[0,2\pi)$.
-To show $e^{ix}$ is onto, pick $(a,b) \in \R^2$ such that $a^2+b^2 = 1$.
-Suppose first that $a,b \geq 0$.  By the intermediate value theorem,
-there must exist an $x \in [0,\nicefrac{\pi}{2}]$ such that
-$\cos(x) = a$, and hence $b^2 = \bigl(\sin(x)\bigr)^2$.  As
-$b$ and $\sin(x)$ are nonnegative, $b = \sin(x)$.
-Since $-\sin(x)$ is the derivative of $\cos(x)$
-and $\cos(-x) = \cos(x)$,
-we have that $\sin(x) < 0$ for $x \in [\nicefrac{-\pi}{2},0)$.
-Using the same reasoning, we obtain that
-if $a > 0$ and $b \leq 0$, we can find an $x$ in $[\nicefrac{-\pi}{2},0)$,
-and by periodicity,
-$x \in [\nicefrac{3\pi}{2},2\pi)$ such that $\cos(x) = a$ and $\sin(x)=b$.
-Multiplying by $-1$ is the same as multiplying by $e^{i\pi}$ or
-$e^{-i\pi}$.  So we can always assume that $a \geq 0$ (details are left
-as an exercise).
+Sekarang, misalkan $T > 0$ merupakan periode fungsi sinus. Maka, untuk setiap $x \in \R$,
+$\sin(x+T)=\sin(x)$. Dengan menurunkan identitas ini terhadap $x$, kita memperoleh
+$\cos(x+T)=\cos(x)$. Jika $T$ merupakan periode fungsi kosinus, penalaran yang sama,
+dengan menurunkan identitas $\cos(x+T)=\cos(x)$ terhadap $x$, menghasilkan
+$\sin(x+T)=\sin(x)$. Dengan demikian, setiap periode positif dari salah satu fungsi
+memberikan, pada $x=0$, $\sin(T)=\sin(0)$ dan $\cos(T)=\cos(0)$.
+Menurut rumus Euler, periode tersebut memenuhi
+$e^{iT}=\cos(T)+i\sin(T)=\cos(0)+i\sin(0)=1$.
+Hasil di atas menunjukkan bahwa tidak ada periode positif yang lebih kecil daripada $2\pi$.
+
+Terakhir, kita ingin menunjukkan bahwa $e^{ix}$ merupakan pemetaan bijektif
+dari himpunan $[0,2\pi)$ ke himpunan semua $z \in \C$ sedemikian sehingga
+$\sabs{z} = 1$. Misalkan $e^{ix} = e^{iy}$ dan
+$x > y$. Maka,
+$0 < x-y < 2\pi$ karena $x,y \in [0,2\pi)$. Akan tetapi, $e^{i(x-y)} = 1$,
+bertentangan dengan hasil di atas. Jadi, pemetaan tersebut injektif.
+Untuk menunjukkan bahwa pemetaan $x \mapsto e^{ix}$ surjektif, ambil $(a,b) \in \R^2$ sedemikian sehingga $a^2+b^2 = 1$.
+Pertama, andaikan $a,b \geq 0$. Menurut teorema nilai antara,
+terdapat $x \in [0,\nicefrac{\pi}{2}]$ sedemikian sehingga
+$\cos(x) = a$, dan akibatnya $b^2 = \bigl(\sin(x)\bigr)^2$. Karena
+$b$ dan $\sin(x)$ nonnegatif, berlaku $b = \sin(x)$.
+Karena $-\sin(x)$ merupakan turunan $\cos(x)$
+dan $\cos(-x) = \cos(x)$,
+kita memperoleh $\sin(x) < 0$ untuk $x \in [\nicefrac{-\pi}{2},0)$.
+Dengan penalaran yang sama, kita memperoleh bahwa
+jika $a > 0$ dan $b < 0$, kita dapat menemukan $x_0$ dalam $(\nicefrac{-\pi}{2},0)$
+sedemikian sehingga $\cos(x_0) = a$ dan $\sin(x_0)=b$. Menurut periodisitas,
+$x \coloneqq x_0+2\pi \in (\nicefrac{3\pi}{2},2\pi)$ juga memenuhi
+$\cos(x) = a$ dan $\sin(x)=b$. Kasus $(a,b)=(0,-1)$ diperoleh dengan $x=\nicefrac{3\pi}{2}$.
+Mengalikan dengan $-1$ sama dengan mengalikan dengan $e^{i\pi}$ atau
+$e^{-i\pi}$. Jadi, kita selalu dapat mengasumsikan bahwa $a \geq 0$ (rincian diserahkan
+sebagai latihan).
 \end{proof}
 
-\subsection{The unit circle and polar coordinates}
+\subsection{Lingkaran satuan dan koordinat polar}
 
-The arclength of a curve parametrized by $\gamma \colon [a,b] \to \C$ is given
-by
+Jika $\gamma \colon [a,b] \to \C$ merupakan kurva mulus sepotong-sepotong,
+panjang busurnya diberikan oleh
 \begin{equation*}
 \int_a^b \babs{\gamma'(t)} \, dt .
 \end{equation*}
-We have that $e^{it}$ parametrizes the circle for $t$ in $[0,2\pi)$.
-As $\frac{d}{dt} \bigl( e^{it} \bigr) = ie^{it}$, the circumference of the
-circle (the arclength) is
+Pemetaan $t \mapsto e^{it}$, untuk $t \in [0,2\pi)$, merupakan parametrisasi
+bijektif lingkaran satuan. Untuk menghitung keliling, kita gunakan parametrisasi
+satu putaran penuh pada interval tertutup $[0,2\pi]$. Karena
+$\frac{d}{dt} \bigl( e^{it} \bigr) = ie^{it}$, keliling
+lingkaran (panjang busurnya) adalah
 \begin{equation*}
 \int_0^{2\pi} \sabs{i e^{it}}  \,  dt
 =
 \int_0^{2\pi} 1  \,  dt  = 2\pi .
 \end{equation*}
 
-More generally, $e^{it}$ parametrizes the circle by arclength.
-That is, $t$ measures the arclength on a circle of radius 1 by
-the angle in radians.  So the definitions of $\sin$ and $\cos$ given
-above agree with the standard geometric definitions.
+Lebih umum, pemetaan $t \mapsto e^{it}$ merupakan parametrisasi panjang busur bagi lingkaran.
+Artinya, $t$, sebagai ukuran sudut dalam radian, mengukur panjang busur pada
+lingkaran berjari-jari 1. Jadi, definisi $\sin$ dan $\cos$ yang diberikan
+di atas sesuai dengan definisi geometris standar.
 
-All the points on the unit circle can be achieved by
-$e^{it}$ for some $t$.
-Therefore,
-we can write
-a complex number $z \in \C$
-(in what we call \emph{\myindex{polar coordinates}}) as
+Setiap titik pada lingkaran satuan dapat dituliskan sebagai $e^{it}$ untuk suatu $t$.
+Oleh karena itu, setiap bilangan kompleks $z \in \C$ dapat dituliskan dalam
+\emph{\myindex{koordinat polar}} sebagai
 \begin{equation*}
 z = r e^{i\theta}
 \end{equation*}
-for some $r \geq 0$ and $\theta \in \R$.  The $\theta$ is, of course,
-not unique as $\theta$ or $\theta+2\pi$ gives the same number.
-The law of exponents $e^{a+b} = e^a e^b$ leads to a useful formula for powers
-and products of complex numbers in polar coordinates:
+untuk suatu $r \geq 0$ dan $\theta \in \R$. Tentu saja, $\theta$
+tidak tunggal karena $\theta$ dan $\theta+2\pi$ menghasilkan bilangan yang sama.
+Hukum eksponen $e^{a+b} = e^a e^b$ menghasilkan rumus yang berguna untuk perpangkatan
+dan hasil kali bilangan kompleks dalam koordinat polar. Rumus perpangkatan berlaku untuk
+$n \in \N$, dan juga untuk $n \in \Z$ apabila $r > 0$:
 \begin{equation*}
 {(r e^{i\theta})}^n
 = r^n e^{i n \theta} ,
@@ -2137,61 +2148,62 @@ and products of complex numbers in polar coordinates:
 rs e^{i(\theta+\gamma)} .
 \end{equation*}
 
-\subsection{Exercises}
+\subsection{Latihan}
 
 \begin{exercise}
-Derive the power series for $\sin(z)$ and $\cos(z)$ at the origin.
+Turunkan deret pangkat untuk $\sin(z)$ dan $\cos(z)$ di titik asal.
 \end{exercise}
 
 \begin{exercise}
-Using the power series, show that for real $x$, we have
-$\frac{d}{dx} \bigl[ \sin(x)\bigr] = \cos(x)$ and
+Dengan menggunakan deret pangkat, tunjukkan bahwa untuk $x$ real berlaku
+$\frac{d}{dx} \bigl[ \sin(x)\bigr] = \cos(x)$ dan
 $\frac{d}{dx} \bigl[ \cos(x)\bigr] = -\sin(x)$.
 \end{exercise}
 
 \begin{exercise}
-Finish the proof of the argument showing that $x \mapsto e^{ix}$ from
-$[0,2\pi)$ is onto the unit circle.  In particular, assume that
-we get all points of the form $(a,b)$ where $a^2+b^2=1$ and $a \geq 0$.
-By multiplying by $e^{i\pi}$ or $e^{-i\pi}$, show that we get everything,
-that is, even points where $a < 0$.
+Lengkapi bukti bahwa pemetaan $x \mapsto e^{ix}$ dari
+$[0,2\pi)$ ke lingkaran satuan bersifat surjektif. Secara khusus, andaikan bahwa
+kita telah memperoleh semua titik berbentuk $(a,b)$ dengan $a^2+b^2=1$ dan $a \geq 0$.
+Dengan mengalikan dengan $e^{i\pi}$ atau $e^{-i\pi}$, tunjukkan bahwa kita memperoleh
+semua titik, yakni juga titik-titik dengan $a < 0$.
 \end{exercise}
 
 \begin{exercise}
-Show that the exponential is onto $\C \setminus \{ 0 \}$, and in fact,
-that for every nonzero $w$, there are infinitely many $z \in \C$ such that $e^z=w$.
+Buktikan bahwa fungsi eksponensial kompleks $z \mapsto e^z$ surjektif dari $\C$
+ke $\C \setminus \{ 0 \}$, dan bahkan
+bahwa untuk setiap $w$ tak nol, terdapat tak berhingga banyak $z \in \C$ sedemikian sehingga $e^z=w$.
 \end{exercise}
 
 \begin{exercise}
-Prove that for every $w \neq 0$ and every $\epsilon > 0$,
-there exists a $z \in \C$ with $\sabs{z} < \epsilon$ such that $e^{1/z} = w$.
+Buktikan bahwa untuk setiap $w \neq 0$ dan setiap $\epsilon > 0$,
+terdapat $z \in \C$ dengan $\sabs{z} < \epsilon$ sedemikian sehingga $e^{1/z} = w$.
 \end{exercise}
 
 \begin{exercise}\label{exercise:cossinidentity}
-We showed
+Kita telah menunjukkan bahwa
 ${\bigl( \cos(x) \bigr)}^2 + {\bigl( \sin(x) \bigr)}^2 = 1$
-for all $x \in \R$.
-Prove that
+untuk setiap $x \in \R$.
+Buktikan bahwa
 ${\bigl( \cos(z) \bigr)}^2 + {\bigl( \sin(z) \bigr)}^2 = 1$
-for all $z \in \C$.
+untuk setiap $z \in \C$.
 \end{exercise}
 
 \begin{exercise}
-Prove the trigonometric identities
-$\sin(z + w) = \sin(z) \cos(w) + \cos(z) \sin(w)$ and
-$\cos(z + w) = \cos(z) \cos(w) - \sin(z) \sin(w)$ for all $z,w \in \C$.
+Buktikan identitas trigonometri
+$\sin(z + w) = \sin(z) \cos(w) + \cos(z) \sin(w)$ dan
+$\cos(z + w) = \cos(z) \cos(w) - \sin(z) \sin(w)$ untuk setiap $z,w \in \C$.
 \end{exercise}
 
 \begin{exercise}
-Define $\operatorname{sinc}(z) \coloneqq \frac{\sin(z)}{z}$ for $z \neq 0$ and
+Definisikan $\operatorname{sinc}(z) \coloneqq \frac{\sin(z)}{z}$ untuk $z \neq 0$ dan
 $\operatorname{sinc}(0) \coloneqq 1$.
-Show that sinc is analytic and compute its power series at zero.
+Tunjukkan bahwa fungsi sinc bersifat analitik dan hitung deret pangkatnya di titik asal.
 \end{exercise}
 
 \begin{exnote}
 \pagebreak[2]
-Define the \emph{\myindex{hyperbolic sine}} and
-\emph{\myindex{hyperbolic cosine}} by
+Definisikan \emph{\myindex{sinus hiperbolik}} dan
+\emph{\myindex{kosinus hiperbolik}} melalui
 \begin{equation*}
 \sinh(z) \coloneqq \frac{e^z-e^{-z}}{2}, \qquad
 \cosh(z) \coloneqq \frac{e^z+e^{-z}}{2}.
@@ -2199,53 +2211,52 @@ Define the \emph{\myindex{hyperbolic sine}} and
 \end{exnote}
 
 \begin{exercise}
-Derive the power series at the origin for the hyperbolic sine and cosine.
+Turunkan deret pangkat fungsi sinus hiperbolik dan fungsi kosinus hiperbolik di titik asal.
 \end{exercise}
 
 \begin{exercise}
-Show
+Tunjukkan bahwa
 \begin{enumerate}[a)]
 \item
 $\sinh(0) = 0$, $\cosh(0) = 1$.
 \item
-For $x \in \R$,
-$\frac{d}{dx} \bigl[ \sinh(x) \bigr] = \cosh(x)$ and
+Untuk $x \in \R$,
+$\frac{d}{dx} \bigl[ \sinh(x) \bigr] = \cosh(x)$ dan
 $\frac{d}{dx} \bigl[ \cosh(x) \bigr] = \sinh(x)$.
 \item
-$\cosh(x) > 0$ for all $x \in \R$ and
-$\sinh(x)$ is strictly increasing and bijective
-from $\R$ to $\R$.
+$\cosh(x) > 0$ untuk setiap $x \in \R$ dan
+pemetaan $x \mapsto \sinh(x)$ naik tegas dan bijektif dari $\R$ ke $\R$.
 \item
-${\bigl(\cosh(x)\bigr)}^2 = 1 + {\bigl(\sinh(x)\bigr)}^2$ for all
+${\bigl(\cosh(x)\bigr)}^2 = 1 + {\bigl(\sinh(x)\bigr)}^2$ untuk setiap
 $x$.
 \end{enumerate}
 \end{exercise}
 
 \begin{exercise}
-Define $\tan(x) \coloneqq \frac{\sin(x)}{\cos(x)}$ as usual.
+Definisikan $\tan(x) \coloneqq \frac{\sin(x)}{\cos(x)}$ untuk $x$ dengan $\cos(x) \neq 0$, seperti biasa.
 \begin{enumerate}[a)]
 \item
-Show that for $x \in (\nicefrac{-\pi}{2},\nicefrac{\pi}{2})$,
-both $\sin$ and $\tan$ are strictly increasing, and hence
-the inverses $\arcsin$
-and $\arctan$ exist when we restrict to that interval.
+Tunjukkan bahwa untuk $x \in (\nicefrac{-\pi}{2},\nicefrac{\pi}{2})$,
+baik $\sin$ maupun $\tan$ naik tegas, sehingga
+fungsi invers $\arcsin$
+dan $\arctan$ ada apabila kedua fungsi tersebut dibatasi pada interval tersebut.
 \item
-Show that $\arcsin$ and $\arctan$ are differentiable
-and
-that
-$\frac{d}{dx} \arcsin(x) = \frac{1}{\sqrt{1-x^2}}$ and
-$\frac{d}{dx} \arctan(x) = \frac{1}{1+x^2}$.
+Tunjukkan bahwa $\arcsin$ diferensiabel pada $(-1,1)$ dan $\arctan$
+diferensiabel pada $\R$, serta bahwa
+$\frac{d}{dx} \arcsin(x) = \frac{1}{\sqrt{1-x^2}} \quad (-1<x<1)$ dan
+$\frac{d}{dx} \arctan(x) = \frac{1}{1+x^2} \quad (x \in \R)$.
 \item
-Using the finite geometric sum formula, show
+Dengan menggunakan rumus jumlah geometri berhingga, tunjukkan bahwa deret pada
+ruas kanan persamaan berikut konvergen untuk setiap $-1 \leq x \leq 1$
+(termasuk titik-titik ujung), dan bahwa
 \begin{equation*}
 \arctan(x) = \int_0^x \frac{1}{1+t^2} dt
 =
 \sum_{k=0}^\infty \frac{{(-1)}^k}{2k+1} x^{2k+1}
 \end{equation*}
-converges for all $-1 \leq x \leq 1$ (including the end points).
-Hint: Integrate the finite sum, not the series.
+Petunjuk: Integralkan jumlah berhingga tersebut, bukan deretnya.
 \item
-Use this to show that
+Gunakan hasil ini untuk menunjukkan bahwa
 \begin{equation*}
 1 - \frac{1}{3} + \frac{1}{5} - \cdots
 =
