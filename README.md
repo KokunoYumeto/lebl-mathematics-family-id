@@ -52,7 +52,7 @@ ekstraksi teks, dan inspeksi visual halaman baru.
 - Repositori: <https://github.com/KokunoYumeto/lebl-mathematics-family-id>
 - Rilis U370: <https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id-wip.2026.08.25.u370>
 - Konsep Zenodo stabil: <https://doi.org/10.5281/zenodo.22059779>
-- Item Figshare: <https://doi.org/10.6084/m9.figshare.33314802>
+- Koleksi Figshare Bahasa Indonesia: <https://doi.org/10.6084/m9.figshare.c.8668413>
 
 Setiap checkpoint publik diberi label parsial dengan cakupan dan pengecualian
 yang eksplisit. Tidak ada penulis yang dihubungi selama produksi dan tidak ada
