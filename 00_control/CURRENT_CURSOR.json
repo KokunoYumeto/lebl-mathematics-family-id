@@ -387,7 +387,7 @@
     "public_reader": "output/pdf/Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_11.8.1_Polinom_Trigonometrik.pdf",
     "public_reader_sha256": "40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d",
     "public_github_release_commit": "a35de2ff999291c3414d6ba319f16bb149c7d5f5",
-    "public_github_main_commit": "a35de2ff999291c3414d6ba319f16bb149c7d5f5",
+    "public_github_main_commit": "007128997ddcbd448ff26cd97556b2a3f9de2035",
     "public_github_release": "https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id-wip.2026.08.26.u397",
     "public_zenodo_doi": "10.5281/zenodo.22105195",
     "public_readback": "pass_9_of_9_assets_on_each_provider_12439062_bytes_each_plus_8_release_overlay_files"

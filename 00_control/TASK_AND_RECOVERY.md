@@ -44,7 +44,11 @@ in this historical log. The machine-readable authorities are
   filename, byte count, and SHA-256 on both providers; the Zenodo concept
   latest endpoint resolves to record 22105195. Sanitized receipts are
   `publication/wip-2026.08.26-u397/GITHUB_PUBLICATION_RECEIPT.md` and
-  `publication/wip-2026.08.26-u397/ZENODO_PUBLICATION_RECEIPT.md`.
+  `publication/wip-2026.08.26-u397/ZENODO_PUBLICATION_RECEIPT.md`. Narrow
+  post-publication state commit
+  `007128997ddcbd448ff26cd97556b2a3f9de2035` (tree
+  `7488ae6658145a5e518825064cd455a30e7b59aa`) contains those receipts and all
+  seven bounded controls/receipts; anonymous readback matched all 408.484 bytes.
 - Next resume only R006 at frozen
   source raw line 4363 / live target raw line 4371, the `Fourier series`
   subsection.
