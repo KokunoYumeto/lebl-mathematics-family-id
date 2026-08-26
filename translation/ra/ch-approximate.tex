@@ -4207,86 +4207,86 @@ di $x_1,x_2,\ldots,x_k$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \sectionnewpage
-\section{Fourier series}
+\section{Deret Fourier}
 \label{sec:fourier}
 
 %mbxINTROSUBSECTION
 
-\sectionnotes{3--4 lectures}
+\sectionnotes{3--4 kuliah}
 
-Fourier series\footnote{%
-Named after the French mathematician
+Deret Fourier\footnote{%
+Dinamai menurut matematikawan Prancis
 \href{https://en.wikipedia.org/wiki/Joseph_Fourier}{Jean-Baptiste Joseph Fourier}
-(1768--1830).} is perhaps the most important (and the most difficult)
-of the series that we cover in
-this book.  We saw a few examples already,
-but let us start
-at the beginning.
+(1768--1830).} barangkali merupakan deret yang paling penting (dan paling sulit)
+di antara semua deret yang kita bahas dalam
+buku ini.  Kita telah melihat beberapa contoh,
+namun mari kita mulai
+dari awal.
 
-\subsection{Trigonometric polynomials}
+\subsection{Polinom trigonometri}
 
-A \emph{\myindex{trigonometric polynomial}} is an expression of the form
+Suatu \emph{\myindex{polinom trigonometri}} adalah ekspresi berbentuk
 \begin{equation*}
 a_0 + \sum_{n=1}^N \bigl(a_n \cos(nx) + b_n \sin(nx) \bigr),
 \end{equation*}
-or equivalently, thanks to Euler's formula ($e^{i\theta} = \cos(\theta) + i
+atau, secara ekuivalen, berkat rumus Euler ($e^{i\theta} = \cos(\theta) + i
 \sin(\theta)$):
 \begin{equation*}
 \sum_{n=-N}^N c_n e^{inx} .
 \end{equation*}
-The second form is usually more convenient.  If
-$z \in \C$ with $\sabs{z}=1,$ we write $z = e^{ix}$, and so
+Bentuk kedua biasanya lebih praktis.  Jika
+$z \in \C$ dengan $\sabs{z}=1,$ kita tulis $z = e^{ix}$, sehingga
 \begin{equation*}
 \sum_{n=-N}^N c_n e^{inx} = 
 \sum_{n=-N}^N c_n z^n .
 \end{equation*}
-So a trigonometric polynomial is really a rational function
-of the complex variable $z$
-(we are allowing negative powers) evaluated on the unit circle.  There is
-a wonderful connection between power series
-(actually Laurent series due to the negative powers) and
-Fourier series because of this observation,
-but we will not investigate this further.
+Jadi, polinom trigonometri sebenarnya merupakan fungsi rasional
+dalam variabel kompleks $z$
+(kita mengizinkan pangkat negatif) yang dievaluasi pada lingkaran satuan.
+Pengamatan ini memperlihatkan hubungan yang indah antara deret pangkat
+(sebenarnya deret Laurent karena adanya pangkat negatif) dan
+deret Fourier,
+tetapi hubungan ini tidak akan kita selidiki lebih lanjut.
 
 \medskip
 
-Another reason why Fourier series is important and comes up in so many
-applications is that the functions $e^{inx}$ are eigenfunctions%
-\footnote{An eigenfunction is like an eigenvector for a matrix, but for an
-operator on a vector space of functions.} of various
-differential operators.  For example,
+Alasan lain mengapa deret Fourier penting dan muncul dalam begitu banyak
+penerapan adalah bahwa fungsi-fungsi $e^{inx}$ merupakan fungsi eigen%
+\footnote{Fungsi eigen menyerupai vektor eigen bagi sebuah matriks, tetapi untuk
+operator pada ruang vektor fungsi.} dari berbagai
+operator diferensial.  Sebagai contoh,
 \begin{equation*}
 \frac{d}{dx} \bigl[ e^{inx} \bigr] = (in) e^{inx}, \qquad
 \frac{d^2}{dx^2} \bigl[ e^{inx} \bigr] = (-n^2) e^{inx} .
 \end{equation*}
-That is, they are the functions whose derivative is a scalar (the
-eigenvalue) times themselves.
-Just as eigenvalues and eigenvectors are important in studying matrices,
-eigenvalues and eigenfunctions are important when studying linear
-differential equations.
+Artinya, fungsi-fungsi tersebut adalah fungsi yang turunannya sama dengan
+fungsi itu sendiri dikalikan suatu skalar (nilai eigen).
+Sebagaimana nilai eigen dan vektor eigen penting dalam mempelajari matriks,
+nilai eigen dan fungsi eigen penting ketika mempelajari persamaan
+diferensial linear.
 
 \medskip
 
-The functions $\cos (nx)$, $\sin (nx)$, and $e^{inx}$ are $2\pi$-periodic,
-hence
-trigonometric
-polynomials are also $2\pi$-periodic.
-We could rescale $x$ to make the period different, but the theory is the
-same, so we stick with the period $2\pi$.
-The antiderivative of $e^{inx}$ is $\frac{e^{inx}}{in}$ and
-so
+Fungsi-fungsi $\cos (nx)$, $\sin (nx)$, dan $e^{inx}$ bersifat
+$2\pi$-periodik, sehingga
+polinom
+trigonometri juga bersifat $2\pi$-periodik.
+Kita dapat menskalakan ulang $x$ agar periodenya berbeda, tetapi teorinya
+sama, sehingga kita tetap menggunakan periode $2\pi$.
+Untuk $n \neq 0$, antiturunan dari $e^{inx}$ adalah $\frac{e^{inx}}{in}$,
+sedangkan untuk $n=0$ fungsi tersebut identik dengan 1. Dengan demikian,
 \begin{equation*}
 \int_{-\pi}^\pi e^{inx} \, dx =
 \begin{cases}
-2\pi & \text{if } n=0, \\
-0    & \text{otherwise.}
+2\pi & \text{jika } n=0, \\
+0    & \text{selainnya.}
 \end{cases}
 \end{equation*}
-Consider
+Perhatikan
 \begin{equation*}
 f(x) \coloneqq \sum_{n=-N}^N c_n e^{inx} ,
 \end{equation*}
-and for $m=-N,\ldots,N$ compute
+dan untuk $m=-N,\ldots,N$ kita hitung
 \begin{equation*}
 %mbxlatex \begin{aligned}
 \frac{1}{2\pi} \int_{-\pi}^\pi
@@ -4308,19 +4308,19 @@ e^{i(n-m)x}
 c_m .
 %mbxlatex \end{aligned}
 \end{equation*}
-We just found a way of computing the coefficients $c_m$ using an integral
-of $f$.  If $\sabs{m} > N$, the integral is 0, so we might as
-well have included enough zero coefficients to make $\sabs{m} \leq N$.
+Kita baru saja menemukan cara menghitung koefisien $c_m$ dengan menggunakan integral
+dari $f$. Jika $\sabs{m} > N$, integral tersebut bernilai 0, sehingga kita dapat
+menyertakan cukup banyak koefisien nol agar $\sabs{m} \leq N$.
 
 \begin{prop}
-A trigonometric polynomial
+Suatu polinom trigonometri
 $f(x) = \sum_{n=-N}^N c_n\, e^{inx}$
-is real-valued for real $x$ if
-and only if $c_{-m} = \overline{c_m}$ for all $m=-N,\ldots,N$.
+bernilai real untuk setiap $x$ real jika dan hanya jika
+$c_{-m} = \overline{c_m}$ untuk semua $m=-N,\ldots,N$.
 \end{prop}
 
 \begin{proof}
-If $f(x)$ is real-valued, that is, $\overline{f(x)} = f(x)$, then
+Jika $f(x)$ bernilai real, yakni $\overline{f(x)} = f(x)$, maka
 \begin{equation*}
 \overline{c_m}
 =
@@ -4337,11 +4337,11 @@ f(x) e^{-imx} } \, dx
 f(x) e^{imx} \, dx
 = c_{-m} .
 \end{equation*}
-The complex conjugate goes inside the integral because the integral is
-done on real and imaginary parts separately.
+Konjugat kompleks dapat dibawa ke dalam integral karena integral dihitung
+pada bagian real dan imajiner secara terpisah.
 
-On the other hand, if 
-$c_{-m} = \overline{c_m}$, then
+Sebaliknya, jika
+$c_{-m} = \overline{c_m}$, maka
 \begin{equation*}
 \overline{c_{-m}\, e^{-imx}+ c_{m}\, e^{imx}}
 =
@@ -4349,23 +4349,23 @@ $c_{-m} = \overline{c_m}$, then
 =
 c_{m}\, e^{imx}+ c_{-m}\, e^{-imx} ,
 \end{equation*}
-which is real-valued.  Also $c_0 = \overline{c_0}$, so
-$c_0$ is real.
-By pairing up the terms, we obtain that $f$ has to be real-valued.
+yang bernilai real. Selain itu, $c_0 = \overline{c_0}$, sehingga
+$c_0$ merupakan bilangan real.
+Dengan memasangkan suku-sukunya, kita memperoleh bahwa $f$ harus bernilai real.
 \end{proof}
 
-The functions $e^{inx}$ are also linearly independent.
+Fungsi-fungsi $e^{inx}$ juga bebas linear.
 
 \begin{prop}
-If
+Jika
 \begin{equation*}
 \sum_{n=-N}^N c_n \, e^{inx} = 0
 \end{equation*}
-for all $x \in [-\pi,\pi]$, then $c_n = 0$ for all $n$.
+untuk semua $x \in [-\pi,\pi]$, maka $c_n = 0$ untuk semua $n$.
 \end{prop}
 
 \begin{proof}
-The result follows immediately from the integral formula for $c_n$.
+Hasil tersebut langsung mengikuti rumus integral untuk $c_n$.
 \end{proof}
 
 \subsection{Fourier series}

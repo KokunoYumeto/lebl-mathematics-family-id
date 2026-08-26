@@ -414,9 +414,12 @@ def build(out: Path = OUT_DEFAULT) -> dict:
         role = row["resource_id"]
         if role not in NS:
             raise RuntimeError(f"unknown resource role in manifest: {role}")
-        # The retained v0.3 records already cover the first R006 boundary.
+        # Retained v0.3 units keep their stable identities and content, while
+        # their live-manifest witness metadata is refreshed deterministically.
         if row["unit_id"] in existing_units:
-            live_unit_ids[row["unit_id"]] = existing_units[row["unit_id"]]["id"]
+            retained_unit = existing_units[row["unit_id"]]
+            retained_unit["manifest_binding"] = manifest_binding(row)
+            live_unit_ids[row["unit_id"]] = retained_unit["id"]
             continue
         ns = NS[role]
         source = sources[role]
@@ -533,6 +536,17 @@ def build(out: Path = OUT_DEFAULT) -> dict:
         )
         records.append(qa)
         by_key[qa_key] = qa
+
+    if len(live_unit_ids) != len(live_manifest):
+        raise RuntimeError("live manifest unit coverage is not count-complete")
+    unit_records_by_id = {
+        record["id"]: record for record in records if record["record_type"] == "unit"
+    }
+    for row in live_manifest:
+        unit = unit_records_by_id[live_unit_ids[row["unit_id"]]]
+        if unit.get("manifest_binding") != manifest_binding(row):
+            raise RuntimeError(f"stale live manifest binding: {row['unit_id']}")
+    manifest_binding_checks = len(live_manifest)
 
     # Preserve every retained v0.3 record, then add a count-complete live
     # terminology view.  Changed retained rows receive versioned superseding
@@ -1479,7 +1493,7 @@ def build(out: Path = OUT_DEFAULT) -> dict:
             "dataset_key": "lebl.shared.dataset.production-v0.4-live-2026-08-24",
             "generated_at": STAMP,
             "workflow_id": WORKFLOW,
-            "notice": "Additive mixed-resource live checkpoint for the R006/R007/R008 Lebl family. Retained v0.3 bytes are preserved; newer manifest units are represented with locale-neutral unit, segment, and QA records. The exact runtime provenance is OpenAI Codex gpt-5.6-sol, Ultra.",
+            "notice": "Additive mixed-resource live checkpoint for the R006/R007/R008 Lebl family. Retained v0.3 stable identities and non-binding fields are preserved while live manifest bindings are refreshed from the bundled witness; newer manifest units are represented with locale-neutral unit, segment, and QA records. The exact runtime provenance is OpenAI Codex gpt-5.6-sol, Ultra.",
             "projection_manifest": {"path": "projection_manifest.json", "sha256": sha(projection_bytes)},
             "record_streams": [{"path": "records.jsonl", "bytes": len(record_bytes), "record_count": len(records), "sha256": sha(record_bytes)}],
         }
@@ -1540,7 +1554,8 @@ def build(out: Path = OUT_DEFAULT) -> dict:
             f"(R006/R007/R008), with {added_units} units added beyond retained v0.3.\n\n"
             f"Manifest byte checks: {manifest_component_checks} directly resolvable raw-line components pass; "
             f"{unresolved_legacy_components} early source-relative components remain represented but require "
-            "their edition-root resolver.\n\n"
+            "their edition-root resolver. "
+            f"Live manifest bindings: {manifest_binding_checks} of {len(live_manifest)} exact.\n\n"
             "This is a locale-neutral machine projection; reader-facing TeX remains in the lane's `translation/` directory. "
             "Separate resource, edition, rights, source, target, and provenance identities are preserved.\n\n"
             f"Terminology: {len(term_records)} physical records preserve history; "
@@ -1570,6 +1585,7 @@ def build(out: Path = OUT_DEFAULT) -> dict:
             "schema_validation": "pass",
             "referential_integrity": "pass",
             "live_manifest_rows": len(live_manifest),
+            "manifest_binding_checks": manifest_binding_checks,
             "manifest_component_checks": manifest_component_checks,
             "unresolved_legacy_manifest_components": unresolved_legacy_components,
             "added_unit_rows": added_units,
@@ -1616,6 +1632,7 @@ def build(out: Path = OUT_DEFAULT) -> dict:
     return {
         "output": str(out),
         "live_manifest_rows": len(live_manifest),
+        "manifest_binding_checks": manifest_binding_checks,
         "manifest_component_checks": manifest_component_checks,
         "unresolved_legacy_manifest_components": unresolved_legacy_components,
         "added_units": added_units,

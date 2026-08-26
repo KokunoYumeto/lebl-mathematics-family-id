@@ -2,7 +2,7 @@
 
 Updated: 2026-08-26
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U393 publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted; next R006 unit begins at source raw line 4201
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U393 remains publicly preserved and anonymously verified; local U397 completes the R006 trigonometric-polynomial subsection with deterministic backend PASS and a verified centered 226-page reader; U397 publication is next; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-26
 
@@ -10,25 +10,46 @@ This block supersedes every older progress count or publication pointer later
 in this historical log. The machine-readable authorities are
 `CURRENT_STATE.json`, `CURRENT_CURSOR.json`, and `PUBLICATION_STATE.json`.
 
-- Public and live boundary: U393, manifest 393 (R006 308, R007 35, R008 50),
-  596.621 bytes, SHA-256
-  `500d6c59b57825cbfb53a8767a889c2aef6a25f375fe0a6aa3bdb6cb051a17cb`.
-  GitHub release commit `12b304221fcdf65a5d62a2807bcfc78601a7b6eb`, release
+- Public boundary: U393, manifest 393 (R006 308, R007 35, R008 50),
+  remains unchanged. GitHub release commit
+  `12b304221fcdf65a5d62a2807bcfc78601a7b6eb`, release
   `lebl-family-id-wip.2026.08.26.u393`, and Zenodo DOI
   `10.5281/zenodo.22104149` expose the same nine files / 12.383.839 bytes.
   Every public asset passed anonymous size/SHA-256 readback. The centered
   224-page R006 Volume II reader ends after complete Section 11.7 and all
   fourteen exercises. Its SHA-256 is
   `5a8db6dd8f9b559c578fe31678943e093650019686e2e75cc752d1b2b49bb211`.
-- Backend U393 final E is public: 27 files / 16.690.330 bytes, 3.806 records,
-  760 current logical terms, 256 corrections, 33 assets, 646 relations, and 21
-  O001 gaps. All 15 CSV views pass lossless round-trip. Canonical inventory
-  SHA-256 is
-  `eb022c1d1388f5ef8c84574438f44d8c7ed9a3e05d070d0b2ea20395e9eb781e`.
-  Independent final F replay is byte-identical and remains excluded from the
-  public package as redundant.
-- Resume only R006 at frozen source raw line 4201 / live target raw line 4209,
-  the Fourier-series opening.
+- Live boundary: U397, manifest 397 (R006 312, R007 35, R008 50),
+  605.334 bytes, SHA-256
+  `e69eff9f1ab797ccb1be2865bc95999631d6fd5a374d5250db3b4cfb816db347`.
+  U309–U312 translate the Section 11.8 opening and complete
+  `Polinom trigonometri`, including periodicity, coefficient recovery, the
+  real-valued conjugate criterion, and linear independence. ADV-0257 repairs
+  the source's undefined zero-frequency antiderivative quotient. The live
+  target is 194.506 bytes, SHA-256
+  `3de28aaac5ce08b69e97060ea01fe7f1d0e7b9d1c024e2fad49e9ece3893b839`.
+- Backend U397 A/B is byte-identical: 27 files / 16.839.490 bytes, 3.831
+  records, 794 expressions, 766 current logical terms, 257 corrections, 33
+  assets, 646 relations, and 21 O001 gaps. All 397 live unit bindings are exact,
+  generic validation passes, and all 15 CSV views round-trip losslessly.
+  Canonical inventory SHA-256 is
+  `0b5720512a26fb12282971daf04d45c5db55d8678afe1a35e5cc44de0675302b`.
+  The builder now refreshes retained manifest witnesses deterministically;
+  this repaired the one pre-existing about-book binding drift without changing
+  its stable identity or non-binding fields.
+- Centered U397 reader PASS: 226 pages / 2.292.242 bytes, SHA-256
+  `40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d`.
+  The final nine-pass build has zero TeX/reference failures and zero visible
+  `??` or placeholders; 85/85 font objects are embedded, 1.227/1.227 named
+  destinations and all 644 links are valid, pages 216–217 are centered within
+  three pixels at 144 dpi, and an independent final-byte audit passed. Receipt:
+  `qa/R006_FOURIER_TRIGONOMETRIC_POLYNOMIAL_READER_U397_20260826.md`,
+  5.996 bytes, SHA-256
+  `719330ff435534e81459e82ff46eac736d12ef9734871033e8d120f114338824`.
+- Next publish U397 on the existing GitHub and Zenodo lineages with anonymous
+  public-byte readback. Then resume only R006 at frozen
+  source raw line 4363 / live target raw line 4371, the `Fourier series`
+  subsection.
   R007 remains at
   `ch-first-order-ode.tex` raw line 89; R008 remains at `ca.tex` raw line 1648.
   HP-LEBL-R007-001 is owner-accepted only for complete
