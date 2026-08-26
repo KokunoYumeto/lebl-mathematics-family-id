@@ -1,0 +1,4209 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Fungsi sebagai Limit} \label{approx:chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Bilangan kompleks}
+\label{sec:complexnums}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{setengah kuliah}
+
+\subsection{Bidang kompleks}
+
+Dalam bab ini, kita membahas aproksimasi fungsi, atau dengan kata lain,
+fungsi sebagai limit barisan dan deret.
+Kita akan memperluas beberapa hasil yang telah kita lihat ke suatu
+latar yang sedikit lebih umum, dan akan melihat beberapa hasil yang sama sekali baru.
+Secara khusus, kita membahas fungsi bernilai kompleks.
+Sebelumnya kita telah memberikan bilangan kompleks sebagai contoh, tetapi
+mari kita mulai dari awal dan mendefinisikan lapangan bilangan kompleks secara tepat.
+
+Bilangan kompleks hanyalah pasangan $(x,y) \in \R^2$ yang padanya kita
+mendefinisikan perkalian (lihat di bawah).
+Kita menyebut himpunan ini \emph{bilangan kompleks}\index{bilangan kompleks}
+dan menotasikannya dengan $\C$.
+Kita mengidentifikasi $x \in \R$ dengan $(x,0) \in \C$.
+Sumbu-$x$ kemudian disebut \emph{\myindex{sumbu real}} dan sumbu-$y$ disebut
+\emph{\myindex{sumbu imajiner}}.
+Karena $\C$ hanyalah bidang, kita juga menyebut himpunan $\C$ sebagai
+\emph{\myindex{bidang kompleks}}.
+
+Definisikan:
+\begin{equation*}
+(x,y) + (s,t) \coloneqq (x+s,y+t) , \qquad
+(x,y) (s,t) \coloneqq (xs-yt,xt+ys) .
+\end{equation*}
+Dengan identifikasi di atas, kita memiliki $0 = (0,0)$ dan $1 = (1,0)$.
+Kedua operasi ini menjadikan bidang tersebut sebuah lapangan (latihan).
+Kita menulis bilangan kompleks $(x,y)$ sebagai $x+iy$, dengan
+mendefinisikan\footnote{Perhatikan bahwa para insinyur menggunakan $j$ sebagai pengganti $i$.}
+\glsadd{not:imaginary}
+\begin{equation*}
+i \coloneqq (0,1) .
+\end{equation*}
+Perhatikan bahwa $i^2 = (0,1)(0,1) = (0-1,0+0) = -1$.
+Artinya, $i$ adalah solusi persamaan polinomial
+\begin{equation*}
+z^2+1=0 .
+\end{equation*}
+Mulai sekarang, kita tidak akan menggunakan notasi $(x,y)$ dan hanya menggunakan $x+iy$.
+Lihat \figureref{fig:complexplane}.
+\begin{myfigureht}
+\myincludegraphics{complexplane}{%
+Diagram sebuah bilangan pada bidang kompleks. Bilangan 1 ditandai pada
+sumbu horizontal di sebelah kanan titik asal,
+dan bilangan i ditandai pada sumbu vertikal di atas titik asal.
+Bilangan x ditandai pada sumbu horizontal dan bilangan i y ditandai
+pada sumbu vertikal. Kombinasi x ditambah i y ditandai pada titik
+(x,y).}
+\caption{Titik-titik $1$, $i$, $x$, $iy$, dan $x+iy$ pada bidang
+kompleks.\label{fig:complexplane}}
+\end{myfigureht}
+
+Kita umumnya menggunakan $x,y,r,s,t$ untuk nilai real dan $z,w,\xi,\zeta$
+untuk nilai kompleks, meskipun ini bukan aturan yang kaku. Khususnya,
+$z$ sering digunakan sebagai variabel real ketiga dalam $\R^3$.
+
+\begin{defn}
+Misalkan $z= x+iy$.
+Kita menyebut $x$ 
+sebagai \emph{\myindex{bagian real}} dari $z$, dan 
+menyebut $y$
+sebagai \emph{\myindex{bagian imajiner}} dari $z$. Kita menulis
+\glsadd{not:realpart}\glsadd{not:imagpart}
+\begin{equation*}
+\Re\, z \coloneqq x , \qquad
+\Im\, z \coloneqq y .
+\end{equation*}
+Definisikan
+\glsadd{not:conj}
+\emph{\myindex{konjugat kompleks}} sebagai
+\begin{equation*}
+\bar{z} \coloneqq x-iy ,
+\end{equation*}
+dan definisikan \emph{\myindex{modulus}} sebagai
+\glsadd{not:modulus}
+\begin{equation*}
+\sabs{z} \coloneqq \sqrt{x^2+y^2} .
+\end{equation*}
+\end{defn}
+
+Modulus merupakan analog kompleks dari nilai mutlak dan
+memiliki sifat-sifat serupa.
+Sebagai contoh,
+$\sabs{zw} = \sabs{z} \, \sabs{w}$ (latihan).
+Konjugat kompleks merupakan pencerminan bidang terhadap sumbu real.
+Bilangan real tepatnya adalah bilangan-bilangan yang bagian imajinernya
+$y=0$. Secara khusus, bilangan-bilangan tersebut tepatnya adalah
+bilangan yang memenuhi persamaan
+\begin{equation*}
+z = \bar{z} .
+\end{equation*}
+
+Karena $\C$ sebenarnya adalah $\R^2$, kita gunakan pada $\C$ metrik
+Euklides standar pada $\R^2$.
+Secara khusus,
+\begin{equation*}
+\sabs{z} = d(z,0) , \qquad 
+\text{dan juga} \qquad 
+\sabs{z-w} = d(z,w) .
+\end{equation*}
+Jadi, topologi pada $\C$ sama persis dengan topologi standar pada $\R^2$
+dengan metrik Euklides,
+dan $\sabs{z}$ sama dengan norma Euklides pada $\R^2$.
+Yang penting, karena $\R^2$ merupakan ruang metrik lengkap, maka
+$\C$ juga demikian.
+Karena $\sabs{z}$ merupakan norma Euklides pada $\R^2$, kita memiliki
+\emph{ketaksamaan segitiga}\index{ketaksamaan segitiga!bilangan kompleks}
+dalam kedua bentuk:
+\begin{equation*}
+\sabs{z+w} \leq \sabs{z}+\sabs{w} \qquad \text{dan} \qquad
+\big\lvert \sabs{z}-\sabs{w} \big\rvert \leq \sabs{z-w} .
+\end{equation*}
+
+Konjugat kompleks dan modulus ternyata berkaitan lebih erat:
+\begin{equation*}
+\sabs{z}^2 =
+x^2+y^2 =
+(x+iy)(x-iy) =
+z \bar{z} .
+\end{equation*}
+
+\begin{remark}
+Tidak ada urutan alami pada bilangan kompleks.
+Secara khusus,
+tidak ada urutan yang menjadikan bilangan kompleks sebagai lapangan terurut.
+Pengurutan adalah salah satu hal yang hilang ketika kita beralih dari bilangan real
+ke bilangan kompleks.
+\end{remark}
+
+\subsection{Bilangan kompleks dan limit}
+
+Operasi aljabar pada bilangan kompleks bersifat kontinu karena konvergensi di
+$\R^2$ sama dengan konvergensi pada setiap komponen, dan kita telah mengetahui
+bahwa operasi aljabar real bersifat kontinu. Sebagai contoh,
+tuliskan $z_n = x_n + i\,y_n$ dan
+$w_n = s_n + i\,t_n$, dan misalkan
+$\lim_{n\to\infty} z_n = z = x+i\,y$ serta $\lim_{n\to\infty} w_n = w = s+i\,t$.
+Mari kita tunjukkan
+\begin{equation*}
+\lim_{n\to\infty} z_n w_n = zw .
+\end{equation*}
+Pertama,
+\begin{equation*}
+z_n w_n = (x_ns_n-y_nt_n) + i(x_nt_n+y_ns_n) .
+\end{equation*}
+Topologi pada $\C$ sama dengan topologi pada $\R^2$, sehingga
+$x_n \to x$, $y_n \to y$, $s_n \to s$, dan $t_n \to t$.
+Dengan demikian,
+\begin{equation*}
+\lim_{n\to\infty} (x_ns_n-y_nt_n) = xs-yt \qquad \text{dan} \qquad
+\lim_{n\to\infty} (x_nt_n+y_ns_n) = xt+ys .
+\end{equation*}
+Karena
+$(xs-yt)+i(xt+ys) = zw$,
+\begin{equation*}
+\lim_{n\to\infty} z_n w_n = zw .
+\end{equation*}
+
+Demikian pula, modulus dan konjugat kompleks merupakan fungsi kontinu. Kita
+serahkan sisa pembuktian proposisi berikut sebagai latihan.
+
+\begin{prop} \label{prop:continuityofcomplex}
+Misalkan $\{ z_n \}_{n=1}^\infty$, $\{ w_n \}_{n=1}^\infty$ merupakan barisan bilangan kompleks yang masing-masing konvergen
+ke $z$ dan $w$. Maka
+\begin{enumerate}[(i)]
+\item
+$\displaystyle \lim_{n\to \infty} (z_n + w_n) = z + w$.
+\item
+$\displaystyle \lim_{n\to \infty} z_n w_n = z w$.
+\item
+Andaikan $w_n \neq 0$ untuk semua $n$ dan $w \neq 0$,
+$\displaystyle \lim_{n\to \infty} \frac{z_n}{w_n} = \frac{z}{w}$.
+\item
+$\displaystyle \lim_{n\to \infty} \sabs{z_n} = \sabs{z}$.
+\item
+$\displaystyle \lim_{n\to \infty} \bar{z}_n = \bar{z}$.
+\end{enumerate}
+\end{prop}
+
+Seperti telah kita lihat di atas, konvergensi di $\C$ sama dengan konvergensi di
+$\R^2$. Secara khusus, suatu barisan di $\C$ konvergen jika dan hanya jika
+bagian real dan imajinernya konvergen. Karena itu, silakan terapkan
+semua yang telah Anda pelajari tentang konvergensi di $\R^2$, serta
+terapkan hasil-hasil tentang bilangan real pada bagian real dan imajinernya.
+
+Kita juga memerlukan konvergensi deret kompleks. Misalkan $\{ z_n \}_{n=1}^\infty$ merupakan
+barisan bilangan kompleks. Deret
+\begin{equation*}
+\sum_{n=1}^\infty z_n
+\end{equation*}
+\emph{konvergen}\index{konvergen!deret kompleks} jika barisan jumlah parsialnya konvergen, yaitu jika
+\begin{equation*}
+\lim_{k\to\infty} \sum_{n=1}^k z_n \qquad \text{ada.}
+\avoidbreak
+\end{equation*}
+Suatu deret \emph{konvergen absolut}\index{konvergen absolut!deret kompleks}
+jika $\sum_{n=1}^\infty \sabs{z_n}$ konvergen.
+
+Kita mengatakan suatu deret
+bersifat \emph{Cauchy}\index{Cauchy!deret kompleks}
+jika barisan jumlah parsialnya bersifat Cauchy. Dua
+proposisi berikut pada dasarnya memiliki pembuktian yang sama
+dengan padanannya untuk deret real, dan
+kita serahkan sebagai latihan.
+
+\begin{prop} \label{prop:cachysercomplex}
+Deret kompleks $\sum_{n=1}^\infty z_n$ bersifat Cauchy jika untuk setiap $\epsilon > 0$
+terdapat $M \in \N$ sedemikian sehingga untuk setiap $n \geq M$
+dan setiap $k > n$, berlaku
+\begin{equation*}
+\abs{ \sum_{j={n+1}}^k z_j }
+< \epsilon .
+\end{equation*}
+\end{prop}
+
+\begin{prop} \label{prop:absconvmeansconv}
+Jika suatu deret kompleks $\sum_{n=1}^\infty z_n$ konvergen absolut, maka deret tersebut konvergen.
+\end{prop}
+
+Deret $\sum_{n=1}^\infty \sabs{z_n}$ merupakan deret real. Semua
+uji konvergensi (uji rasio, uji akar, dan sebagainya)\ yang membahas
+konvergensi absolut bekerja pada bilangan $\sabs{z_n}$; artinya, uji-uji tersebut
+sebenarnya membahas konvergensi deret bilangan real nonnegatif.
+Anda dapat langsung menerapkan uji-uji ini
+tanpa perlu membuktikan ulang apa pun untuk deret kompleks.
+
+\subsection{Fungsi bernilai kompleks}
+
+Ketika membahas fungsi bernilai kompleks
+$f \colon X \to \C$, kita sering menulis
+$f = u+i\,v$ untuk fungsi bernilai real $u \colon X \to \R$ dan $v \colon X \to
+\R$.
+
+Misalkan kita ingin mengintegralkan
+$f \colon [a,b] \to \C$. Kita menulis
+$f = u+i\,v$ untuk $u$ dan~$v$ yang bernilai real.
+Kita mengatakan bahwa $f$ \emph{terintegralkan secara Riemann}\index{terintegralkan secara Riemann!
+fungsi bernilai kompleks}
+jika $u$ dan $v$ terintegralkan secara Riemann,
+dan dalam hal ini kita mendefinisikan
+\begin{equation*}
+\int_a^b f \coloneqq \int_a^b u + i \int_a^b v .
+\end{equation*}
+Kita menggunakan definisi yang sama untuk setiap jenis integral lainnya (tak wajar,
+multivariabel, dan sebagainya).
+
+Demikian pula, ketika melakukan diferensiasi, tuliskan $f \colon [a,b] \to \C$ sebagai
+$f = u+i\,v$. Dengan memandang $\C$ sebagai $\R^2$, kita mengatakan bahwa $f$ diferensiabel
+jika $u$ dan $v$ diferensiabel. Untuk fungsi yang bernilai di $\R^2$, turunannya
+direpresentasikan oleh suatu vektor di $\R^2$. Vektor di $\R^2$ tersebut sekarang merupakan bilangan
+kompleks. Dengan kata lain,
+kita menulis
+\emph{turunan}\index{turunan!fungsi bernilai kompleks}
+sebagai
+\glsadd{not:mvder}
+\begin{equation*}
+f'(t) \coloneqq u'(t) + i \, v'(t) .
+\end{equation*}
+Operator linear yang merepresentasikan turunan adalah perkalian dengan
+bilangan kompleks $f'(t)$, sehingga tidak ada yang hilang dalam identifikasi ini.
+
+
+\subsection{Latihan}
+
+\begin{exercise}
+Periksa bahwa $\C$ merupakan lapangan.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa untuk $z,w \in \C$ berlaku
+$\sabs{zw} = \sabs{z} \, \sabs{w}$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan pembuktian \propref{prop:continuityofcomplex}.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{prop:cachysercomplex}.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{prop:absconvmeansconv}.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Untuk $x +iy$, definisikan matriks
+$\left[ \begin{smallmatrix} x & -y \\ y & x \end{smallmatrix} \right]$.
+Buktikan:
+\begin{enumerate}[a)]
+\item
+Aksi matriks ini pada vektor $(s,t)$ sama dengan mengalikan
+$(x+iy)(s+it)$.
+\item
+Mengalikan dua matriks semacam ini sama dengan mengalikan bilangan kompleks
+yang mendasarinya, lalu mencari matriks yang bersesuaian dengan hasil kali tersebut.
+Dengan kata lain, lapangan $\C$ dapat diidentifikasi dengan suatu subhimpunan matriks 2-kali-2.
+\item
+Matriks
+$\left[ \begin{smallmatrix} x & -y \\ y & x \end{smallmatrix} \right]$
+memiliki nilai eigen $x+iy$ dan $x-iy$. Ingat bahwa $\lambda$ adalah
+nilai eigen matriks $A$ jika $A-\lambda I$ (matriks kompleks dalam kasus kita)
+tidak invertibel, yaitu,
+jika baris-barisnya bergantung secara linear: satu baris merupakan kelipatan
+(kompleks) dari baris lainnya.
+\end{enumerate}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Buktikan teorema Bolzano--Weierstrass untuk barisan kompleks.
+Misalkan $\{ z_n \}_{n=1}^\infty$ merupakan barisan bilangan kompleks yang terbatas.
+Artinya, terdapat $M$ sedemikian sehingga $\sabs{z_n} \leq M$ untuk semua $n$.
+Buktikan bahwa terdapat subbarisan $\{ z_{n_k} \}_{k=1}^\infty$
+yang konvergen ke suatu $z \in \C$.
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa tidak ada teorema nilai rata-rata sederhana untuk fungsi bernilai kompleks:
+Temukan fungsi diferensiabel $f \colon [0,1] \to \C$ sedemikian sehingga
+$f(0) = f(1) = 0$, tetapi $f'(t) \neq 0$ untuk semua $t \in [0,1]$.
+\item
+Namun, ada bentuk teorema nilai rata-rata yang lebih lemah sebagaimana untuk fungsi bernilai vektor.
+Buktikan: Jika $f \colon [a,b] \to \C$ kontinu dan diferensiabel pada
+$(a,b)$, dan untuk suatu $M$ berlaku $\babs{f'(x)} \leq M$ untuk semua $x \in (a,b)$, maka
+$\babs{f(b)-f(a)} \leq M \sabs{b-a}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa tidak ada teorema nilai rata-rata sederhana untuk integral
+fungsi bernilai kompleks:
+Temukan fungsi kontinu $f \colon [0,1] \to \C$ sedemikian sehingga
+$\int_0^1 f = 0$ tetapi $f(t) \neq 0$ untuk semua $t \in [0,1]$.
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Pertukaran limit}
+\label{sec:swaplim}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2 kuliah}
+
+\subsection{Kekontinuan}
+
+Mari kita kembali ke pertukaran limit dan memperluas pembahasan
+\volIref{\chapterref*{vI-fs:chapter} dari jilid I}{\chapterref{fs:chapter}}.
+Misalkan $\{ f_n \}_{n=1}^\infty$ suatu barisan
+fungsi $f_n \colon X \to Y$ untuk suatu himpunan $X$ dan ruang metrik $Y$.
+Misalkan $f \colon X \to Y$ suatu
+fungsi dan andaikan untuk setiap $x \in X$ berlaku
+\begin{equation*}
+f(x) = \lim_{n\to \infty} f_n(x) .
+\end{equation*}
+Kita mengatakan barisan $\{ f_n \}_{n=1}^\infty$
+\emph{\myindex{konvergen titik demi titik}}\index{konvergensi titik demi titik} ke $f$.
+
+Untuk $Y=\C$, suatu deret fungsi
+\emph{konvergen titik demi titik}\index{konvergen titik demi titik!deret kompleks}\index{konvergensi titik demi titik!deret kompleks} ke $f$ jika
+untuk setiap $x \in X$, berlaku
+\begin{equation*}
+f(x) = \lim_{n\to \infty} \sum_{k=1}^n f_k(x) =
+\sum_{k=1}^\infty f_k(x) .
+\end{equation*}
+
+\medskip
+
+Pertanyaannya:
+Jika semua $f_n$ kontinu, apakah $f$ kontinu?  Diferensiabel?
+Dapat diintegralkan?  Apa turunan atau integral dari $f$?
+Sebagai contoh, untuk kekontinuan limit titik demi titik dari suatu barisan
+fungsi
+$\{ f_n \}_{n=1}^\infty$, kita menanyakan apakah
+\begin{equation*}
+\lim_{x\to x_0} \lim_{n\to\infty} f_n(x)
+\overset{?}{=}
+\lim_{n\to\infty} \lim_{x\to x_0} f_n(x) .
+\end{equation*}
+Secara apriori, kita bahkan tidak tahu apakah kedua ruas tersebut ada,
+apalagi apakah keduanya sama.
+
+\begin{example}
+Fungsi $f_n \colon \R \to \R$,
+\begin{equation*}
+f_n(x) \coloneqq \frac{1}{1+nx^2},
+\end{equation*}
+kontinu dan konvergen titik demi titik ke fungsi yang tidak kontinu
+\begin{equation*}
+f(x) \coloneqq 
+\begin{cases}
+1 & \text{jika } x=0, \\
+0 & \text{selainnya.}
+\end{cases}
+\end{equation*}
+\end{example}
+
+Jadi, konvergensi titik demi titik tidak cukup untuk mempertahankan kekontinuan
+(bahkan keterbatasan). Untuk itu, kita memerlukan konvergensi seragam.
+Misalkan $f_n \colon X \to Y$ fungsi-fungsi. Maka
+$\{f_n\}_{n=1}^\infty$ \emph{\myindex{konvergen seragam}}\index{konvergensi seragam}
+ke $f$ jika
+untuk setiap $\epsilon > 0$, terdapat suatu $M$ sedemikian sehingga
+untuk semua $n \geq M$ dan semua $x \in X$, berlaku
+\begin{equation*}
+d\bigl(f_n(x),f(x)\bigr) < \epsilon .
+\end{equation*}
+
+Deret $\sum_{n=1}^\infty f_n$ dari fungsi-fungsi bernilai kompleks konvergen seragam
+ke $f$ jika barisan
+jumlah parsialnya konvergen seragam, yaitu, jika untuk setiap $\epsilon > 0$,
+terdapat suatu $M$ sedemikian sehingga
+untuk semua $n \geq M$ dan semua $x \in X$,
+\begin{equation*}
+\abs{\left(\sum_{k=1}^n f_k(x)\right)-f(x)} < \epsilon .
+\end{equation*}
+
+Sifat paling sederhana yang dipertahankan oleh konvergensi seragam adalah
+keterbatasan. Pembuktian proposisi berikut kami serahkan sebagai
+latihan. Pembuktiannya hampir identik dengan pembuktian untuk fungsi bernilai real.
+
+\begin{prop} \label{prop:uniformconvbounded}
+Misalkan $X$ suatu himpunan dan $(Y,d)$ suatu ruang metrik.
+Jika $f_n \colon X \to Y$ adalah fungsi-fungsi terbatas dan konvergen seragam ke $f
+\colon X \to Y$, maka $f$ terbatas.
+\end{prop}
+
+Jika $X$ suatu himpunan dan $(Y,d)$ suatu ruang metrik, maka suatu barisan $f_n \colon X
+\to Y$ disebut \emph{\myindex{Cauchy seragam}} jika untuk setiap $\epsilon > 0$, terdapat suatu $M$ sedemikian sehingga
+untuk semua $n, m \geq M$ dan semua $x \in X$, berlaku
+\begin{equation*}
+d\bigl(f_n(x),f_m(x)\bigr) < \epsilon .
+\end{equation*}
+Gagasan ini sama seperti untuk fungsi bernilai real.
+Pembuktian proposisi berikut
+pada dasarnya juga sama seperti pada kasus tersebut dan
+diserahkan sebagai latihan.
+
+\begin{prop} \label{prop:unifcauchymetric}
+Misalkan $X$ suatu himpunan, $(Y,d)$ suatu ruang metrik, dan
+$f_n \colon X \to Y$ fungsi-fungsi.
+Jika $\{ f_n \}_{n=1}^\infty$ konvergen seragam,
+maka $\{f_n\}_{n=1}^\infty$ bersifat Cauchy seragam. Sebaliknya, jika
+$\{f_n\}_{n=1}^\infty$ bersifat Cauchy seragam dan $(Y,d)$ lengkap secara Cauchy,
+maka $\{f_n\}_{n=1}^\infty$ konvergen seragam.
+\end{prop}
+
+Untuk $f \colon X \to \C$, kita tuliskan\glsadd{not:uniformnorm}
+\begin{equation*}
+\snorm{f}_X \coloneqq \sup_{x \in X} \babs{f(x)} .
+\end{equation*}
+Kita menyebut $\snorm{\cdot}_X$
+sebagai \emph{\myindex{norma supremum}} atau \emph{\myindex{norma seragam}},
+dan subskripnya menunjukkan himpunan tempat supremum diambil.
+Maka suatu barisan fungsi
+$f_n \colon X \to \C$ konvergen seragam ke $f \colon X \to \C$ jika dan hanya jika
+\begin{equation*}
+\lim_{n\to \infty} \snorm{f_n-f}_X = 0 .
+\end{equation*}
+
+Norma supremum memenuhi ketaksamaan segitiga: Untuk setiap $x \in X$,
+\begin{equation*}
+\babs{f(x)+g(x)} \leq
+\babs{f(x)}+\babs{g(x)} \leq
+\snorm{f}_X+\snorm{g}_X .
+\end{equation*}
+Ambil supremum pada ruas kiri untuk memperoleh
+\begin{equation*}
+\snorm{f+g}_X \leq
+\snorm{f}_X+\snorm{g}_X .
+\end{equation*}
+
+Untuk ruang metrik kompak $X$,
+norma seragam merupakan norma pada ruang vektor $C(X,\C)$.
+Kami menyerahkan pembuktiannya sebagai latihan.
+Meskipun kita tidak akan memerlukannya, $C(X,\C)$ sebenarnya merupakan ruang
+vektor kompleks, yaitu, dalam definisi ruang vektor kita dapat mengganti
+$\R$ dengan $\C$.
+Konvergensi dalam ruang metrik $C(X,\C)$ adalah
+konvergensi seragam.
+
+Kita akan mempelajari beberapa jenis deret fungsi, dan
+suatu uji yang berguna untuk konvergensi seragam suatu deret adalah
+\emph{\myindex{uji-$M$ Weierstrass}}.
+
+\begin{thm}[\myindex{uji-$M$ Weierstrass}] \label{thm:weiermtest}
+Misalkan $X$ suatu himpunan.
+Andaikan $f_n \colon X \to \C$ adalah fungsi-fungsi dan $M_n > 0$ adalah bilangan-bilangan sedemikian
+sehingga
+\begin{equation*}
+\babs{f_n(x)}\leq M_n \quad \text{untuk semua } x \in X,
+\qquad \text{dan} \qquad
+\sum_{n=1}^\infty M_n
+\quad \text{konvergen}.
+\end{equation*}
+Maka
+\begin{equation*}
+\sum_{n=1}^\infty f_n(x)
+\quad \text{konvergen seragam}.
+\end{equation*}
+\end{thm}
+
+Cara lain untuk menyatakan teorema tersebut adalah dengan mengatakan bahwa jika
+$\sum_{n=1}^\infty \snorm{f_n}_X$ konvergen, maka $\sum_{n=1}^\infty f_n$ konvergen seragam.
+Perhatikan bahwa kebalikan teorema ini tidak benar.
+Dengan menerapkan teorema tersebut pada $\sum_{n=1}^\infty \babs{f_n(x)}$, kita
+melihat bahwa deret ini juga konvergen seragam. Jadi, deret tersebut konvergen absolut
+sekaligus seragam.
+
+\begin{proof}
+Andaikan $\sum_{n=1}^\infty M_n$ konvergen. Ambil $\epsilon > 0$.
+Jumlah-jumlah parsial deret $\sum_{n=1}^\infty M_n$ bersifat Cauchy, sehingga
+terdapat suatu $N$ sedemikian sehingga untuk semua $m, n \geq N$ dengan $m > n$, berlaku
+\begin{equation*}
+\sum_{k=n+1}^m M_k < \epsilon .
+\end{equation*}
+Kita menaksir selisih Cauchy antara jumlah-jumlah parsial
+fungsi-fungsi tersebut:
+\begin{equation*}
+\abs{\sum_{k=n+1}^m f_k(x)} \leq
+\sum_{k=n+1}^m \babs{f_k(x)} \leq
+\sum_{k=n+1}^m M_k < \epsilon .
+\end{equation*}
+Deret tersebut konvergen berdasarkan \propref{prop:cachysercomplex}.
+Konvergensinya seragam karena $N$ tidak bergantung pada $x$.
+Sesungguhnya, untuk semua $n \geq N$,
+\begin{equation*}
+\abs{\sum_{k=1}^\infty f_k(x) - \sum_{k=1}^n f_k(x)} \leq
+\abs{\sum_{k=n+1}^\infty f_k(x)} \leq \epsilon .
+\qedhere
+\end{equation*}
+\end{proof}
+
+\begin{example} \label{example:sinnsqfourier}
+Deret
+\begin{equation*}
+\sum_{n=1}^\infty \frac{\sin(nx)}{n^2}
+\end{equation*}
+konvergen seragam pada $\R$. Lihat \figureref{fig:fouriersern2}.
+Deret ini merupakan deret Fourier, dan
+kita akan melihat lebih banyak deret semacam ini pada bagian selanjutnya. Pembuktian:
+Deret tersebut konvergen seragam karena
+$\sum_{n=1}^\infty \frac{1}{n^2}$
+konvergen dan
+\begin{equation*}
+\abs{\frac{\sin(nx)}{n^2}} \leq 
+\frac{1}{n^2} .
+\end{equation*}
+\end{example}
+
+\begin{myfigureht}
+\myincludegraphics{fouriersern2}{%
+Grafik suatu fungsi yang digambarkan dengan garis tebal, berbentuk
+gelombang dengan lereng turun yang landai dan lereng naik yang curam.
+Beberapa aproksimasi diperlihatkan dalam berbagai nuansa abu-abu;
+aproksimasi yang lebih gelap (lebih awal) lebih menyerupai gelombang sinus biasa,
+sedangkan yang lebih terang lebih menyerupai garis tebal gelap.}
+\caption{Grafik
+$\sum_{n=1}^\infty \frac{\sin(n x)}{n^2}$ yang mencakup
+8 jumlah parsial pertamanya dalam berbagai nuansa abu-abu.\label{fig:fouriersern2}}
+\end{myfigureht}
+
+\begin{example}
+Deret
+\begin{equation*}
+\sum_{n=0}^\infty \frac{x^n}{n!} 
+\end{equation*}
+konvergen seragam pada setiap interval terbatas.
+Deret ini merupakan deret pangkat yang akan segera kita pelajari.
+Pembuktian: Ambil interval $[-r,r] \subset \R$ (setiap interval terbatas
+termuat dalam suatu $[-r,r]$).
+Deret $\sum_{n=0}^\infty \frac{r^n}{n!}$ konvergen berdasarkan uji rasio,
+sehingga $\sum_{n=0}^\infty \frac{x^n}{n!}$ konvergen seragam pada $[-r,r]$ karena
+\begin{equation*}
+\abs{\frac{x^n}{n!} } \leq 
+\frac{r^n}{n!} .
+\end{equation*}
+\end{example}
+
+Sekarang kita ingin mengetahui sesuatu tentang limit tersebut. Sebagai contoh,
+apakah limit itu kontinu?
+
+
+\begin{prop} \label{prop:uniformswitch}
+Misalkan $(X,d_X)$ dan $(Y,d_Y)$ ruang-ruang metrik, dan andaikan $(Y,d_Y)$
+lengkap secara Cauchy.
+Andaikan $f_n \colon X \to Y$ konvergen seragam ke
+ $f \colon X \to Y$.
+Misalkan $\{ x_k \}_{k=1}^\infty$ suatu barisan dalam $X$ dan $x \coloneqq \lim_{k \to \infty} x_k$. Andaikan
+\begin{equation*}
+a_n \coloneqq \lim_{k \to \infty} f_n(x_k)
+\end{equation*}
+ada untuk semua $n$. Maka
+$\{a_n\}_{n=1}^\infty$ konvergen dan
+\begin{equation*}
+\lim_{k \to \infty} f(x_k) = \lim_{n\to\infty} a_n .
+\end{equation*}
+\end{prop}
+
+Dengan kata lain,
+\begin{equation*}
+\lim_{k \to \infty} \lim_{n\to\infty} f_n(x_k) =
+\lim_{n \to \infty} \lim_{k\to\infty} f_n(x_k) .
+\end{equation*}
+
+\begin{proof}
+Pertama, kita tunjukkan bahwa $\{ a_n \}_{n=1}^\infty$ konvergen. Karena
+$\{ f_n \}_{n=1}^\infty$ konvergen seragam, barisan ini bersifat Cauchy seragam.
+Ambil $\epsilon > 0$. Terdapat
+suatu $M$ sedemikian sehingga untuk semua $m,n \geq M$, berlaku
+\begin{equation*}
+d_Y\bigl(f_n(x_k),f_m(x_k)\bigr) < \epsilon \qquad \text{untuk semua } k .
+\end{equation*}
+Perhatikan bahwa
+$d_Y(a_n,a_m) \leq
+d_Y\bigl(a_n,f_n(x_k)\bigr) +
+d_Y\bigl(f_n(x_k),f_m(x_k)\bigr) +
+d_Y\bigl(f_m(x_k),a_m\bigr)$. Dengan mengambil limit ketika $k \to \infty$, kita memperoleh
+\begin{equation*}
+d_Y(a_n,a_m) \leq \epsilon .
+\end{equation*}
+Karena itu, $\{a_n\}_{n=1}^\infty$ bersifat Cauchy dan konvergen karena $Y$ lengkap. Tuliskan
+$a \coloneqq \lim_{n \to \infty} a_n$.
+
+Pilih suatu $\ell \in \N$ sedemikian sehingga
+\begin{equation*}
+d_Y\bigl(f_\ell(p),f(p)\bigr) < \nicefrac{\epsilon}{3}
+\end{equation*}
+untuk semua $p \in X$. Pastikan pula $\ell$ cukup besar
+sehingga
+\begin{equation*}
+d_Y(a_\ell,a) < \nicefrac{\epsilon}{3}  .
+\end{equation*}
+Pilih suatu $N \in \N$ sedemikian sehingga untuk $m \geq N$,
+\begin{equation*}
+d_Y\bigl(f_\ell(x_m),a_\ell\bigr) < \nicefrac{\epsilon}{3}  .
+\end{equation*}
+Maka untuk
+$m \geq N$,
+\begin{equation*}
+d_Y\bigl(f(x_m),a\bigr)
+\leq
+d_Y\bigl(f(x_m),f_\ell(x_m)\bigr)
++
+d_Y\bigl(f_\ell(x_m),a_\ell\bigr)
++
+d_Y\bigl(a_\ell,a\bigr)
+<
+\nicefrac{\epsilon}{3} +
+\nicefrac{\epsilon}{3} +
+\nicefrac{\epsilon}{3} = \epsilon . \qedhere
+\end{equation*}
+\end{proof}
+
+Kita memperoleh korolari langsung mengenai kekontinuan.
+Jika semua $f_n$ kontinu, maka $a_n = f_n(x)$.
+Karena itu,
+$\{ a_n \}_{n=1}^\infty$ secara otomatis konvergen ke
+$f(x)$ berdasarkan hipotesis, sehingga kita tidak memerlukan kelengkapan $Y$.
+
+\begin{cor} \label{cor:metricuniformcontinuous}
+Misalkan $X$ dan $Y$ ruang-ruang metrik.
+Jika $f_n \colon X \to Y$ fungsi-fungsi kontinu
+sedemikian sehingga
+$\{ f_n \}_{n=1}^\infty$ konvergen seragam ke $f \colon X \to Y$,
+maka $f$ kontinu.
+\end{cor}
+
+Kebalikannya tidak benar. Fakta bahwa limitnya kontinu tidak berarti
+bahwa konvergensinya seragam. Sebagai contoh:
+$f_n \colon (0,1) \to \R$ yang didefinisikan oleh $f_n(x) \coloneqq x^n$ konvergen ke
+fungsi nol, tetapi tidak secara seragam. Namun, jika kita menambahkan syarat-syarat tambahan
+pada barisan tersebut, kita dapat memperoleh kebalikan parsial seperti teorema Dini,
+\volIref{lihat \exerciseref*{vI-exercise:dinisthm} dari jilid I}{lihat \exerciseref{exercise:dinisthm}}.
+
+Dalam \exerciseref{exercise:CXCnormedspace}, pembaca diminta untuk membuktikan
+bahwa untuk $X$ kompak, $C(X,\C)$ merupakan ruang vektor bernorma
+dengan norma seragam dan dengan demikian merupakan ruang metrik. Kita baru saja menunjukkan bahwa
+$C(X,\C)$ lengkap secara Cauchy: \propref{prop:unifcauchymetric} mengatakan bahwa suatu barisan Cauchy
+dalam $C(X,\C)$ konvergen seragam ke suatu fungsi,
+dan \corref{cor:metricuniformcontinuous} menunjukkan bahwa limitnya
+kontinu dan dengan demikian merupakan anggota $C(X,\C)$.
+
+\begin{cor}
+Misalkan $(X,d)$ suatu ruang metrik kompak.
+Maka $C(X,\C)$ merupakan ruang metrik yang lengkap secara Cauchy.
+\end{cor}
+
+\begin{example}
+Berdasarkan \exampleref{example:sinnsqfourier},
+deret Fourier
+\begin{equation*}
+\sum_{n=1}^\infty \frac{\sin(nx)}{n^2}
+\end{equation*}
+konvergen seragam dan karenanya kontinu berdasarkan \corref{cor:metricuniformcontinuous} (seperti yang tampak
+pada \figureref{fig:fouriersern2}).
+\end{example}
+
+\subsection{Integrasi}
+
+\begin{prop} \label{prop:complexlimitswapintegral}
+Misalkan $f_n \colon [a,b] \to \C$
+terintegralkan secara Riemann dan andaikan $\{ f_n \}_{n=1}^\infty$ konvergen
+seragam ke $f \colon [a,b] \to \C$. Maka $f$ terintegralkan secara Riemann
+dan
+\begin{equation*}
+\int_a^b f = \lim_{n\to \infty} \int_a^b f_n .
+\end{equation*}
+\end{prop}
+
+Karena integral suatu fungsi bernilai kompleks hanyalah integral
+bagian real dan imajinernya secara terpisah,
+pembuktiannya langsung mengikuti hasil-hasil dalam
+\volIref{\chapterref*{vI-fs:chapter} dari jilid~I}{\chapterref{fs:chapter}}.
+Rinciannya kita serahkan sebagai latihan.
+
+\begin{cor}
+\pagebreak[2]
+Misalkan $f_n \colon [a,b] \to \C$
+terintegralkan secara Riemann dan andaikan bahwa
+\begin{equation*}
+\sum_{n=1}^\infty f_n(x)
+\end{equation*}
+konvergen seragam. Maka deret tersebut terintegralkan secara Riemann pada $[a,b]$
+dan
+\begin{equation*}
+\int_a^b \sum_{n=1}^\infty f_n(x) \,dx
+=
+\sum_{n=1}^\infty \int_a^b f_n(x) \,dx
+\end{equation*}
+\end{cor}
+
+\begin{example}
+Mari kita tunjukkan cara mengintegralkan suatu deret Fourier.
+\begin{equation*}
+\int_{0}^x \sum_{n=1}^\infty \frac{\cos(nt)}{n^2} \,dt
+=
+\sum_{n=1}^\infty \int_{0}^x \frac{\cos(nt)}{n^2}\,dt
+=
+\sum_{n=1}^\infty \frac{\sin(nx)}{n^3}
+\end{equation*}
+Pertukaran integral dan jumlah dimungkinkan oleh konvergensi seragam,
+yang sebelumnya telah kita buktikan menggunakan uji-$M$ Weierstrass
+(\thmref{thm:weiermtest}).
+\end{example}
+
+Perhatikan bahwa kita dapat mempertukarkan integral dan limit di bawah hipotesis yang jauh lebih lemah,
+tetapi untuk itu kita memerlukan integral yang lebih kuat daripada integral Riemann,
+seperti integral Lebesgue.
+
+\subsection{Diferensiasi}
+
+Ingat bahwa suatu fungsi bernilai kompleks
+$f \colon [a,b] \to \C$, dengan $f(x) = u(x)+i\,v(x)$,
+diferensiabel jika $u$ dan $v$ diferensiabel
+dan turunannya adalah
+\begin{equation*}
+f'(x) = u'(x)+i\,v'(x) .
+\end{equation*}
+
+Pembuktian teorema berikut dilakukan dengan menerapkan teorema yang bersesuaian untuk
+fungsi real pada $u$ dan $v$, dan diserahkan sebagai latihan.
+
+\begin{thm} \label{thm:dersconvergecomplex}
+Misalkan $I \subset \R$ suatu interval terbatas dan misalkan
+$f_n \colon I \to \C$ fungsi-fungsi yang diferensiabel secara kontinu.
+Andaikan $\{ f_n' \}_{n=1}^\infty$ konvergen seragam ke $g \colon I \to \C$,
+dan andaikan $\{ f_n(c) \}_{n=1}^\infty$ merupakan suatu
+barisan konvergen untuk suatu $c \in I$.  Maka $\{ f_n \}_{n=1}^\infty$ konvergen seragam ke 
+suatu fungsi $f \colon I \to \C$ yang diferensiabel secara kontinu, dan $f' = g$.
+\end{thm}
+
+Konvergensi seragam dari fungsi-fungsi itu sendiri tidaklah cukup.
+Turunannya mungkin tidak konvergen dan fungsi limitnya bahkan tidak harus
+diferensiabel.
+Dalam \sectionref{sec:stoneweier}, kita akan membuktikan bahwa
+fungsi-fungsi kontinu merupakan limit seragam dari polinom, tetapi seperti yang ditunjukkan oleh
+contoh berikut, suatu fungsi kontinu tidak harus diferensiabel
+di titik mana pun.
+
+\begin{example}
+Terdapat fungsi kontinu yang tidak diferensiabel di mana pun.
+Fungsi semacam itu sering disebut
+\emph{fungsi Weierstrass}\index{fungsi Weierstrass},
+meskipun fungsi
+khusus ini, yang pada hakikatnya berasal dari
+Takagi\footnote{\href{https://en.wikipedia.org/wiki/Teiji_Takagi}{Teiji
+Takagi} (1875--1960) adalah seorang matematikawan Jepang.}, merupakan contoh yang berbeda dari yang diberikan Weierstrass.
+Definisikan
+\begin{equation*}
+\varphi(x) \coloneqq \sabs{x} \qquad \text{untuk } x \in [-1,1] .
+\end{equation*}
+Perluas $\varphi$ ke seluruh $\R$ dengan menjadikannya
+2-periodik:
+Tetapkan bahwa
+$\varphi(x) = \varphi(x+2)$.  Fungsi $\varphi \colon \R \to \R$
+kontinu; bahkan, $\babs{\varphi(x)-\varphi(y)} \leq \sabs{x-y}$ (mengapa?).
+Lihat \figureref{fig:triangwave}.
+\begin{myfigureht}
+\myincludegraphics{triangwave}{%
+Suatu fungsi yang grafiknya berupa deretan segitiga; yakni,
+fungsi tersebut bernilai 0 pada semua bilangan bulat genap, dan bernilai 1 pada semua bilangan bulat
+ganjil.  Di antaranya, grafik tersebut berupa garis lurus.}
+\caption{Fungsi 2-periodik $\varphi$.\label{fig:triangwave}}
+\end{myfigureht}
+
+Karena $\sum_{n=0}^\infty {\left(\frac{3}{4}\right)}^n$ konvergen dan $\babs{\varphi(x)} \leq
+1$ untuk semua $x$, menurut uji-$M$
+(\thmref{thm:weiermtest}),
+\begin{equation*}
+f(x) \coloneqq \sum_{n=0}^\infty 
+{\left(\frac{3}{4}\right)}^n \varphi(4^n x)
+\end{equation*}
+konvergen seragam sehingga kontinu.
+Lihat \figureref{fig:nowherediff}.
+
+\begin{myfigureht}
+\myincludegraphics{nowherediff}{%
+Grafik suatu fungsi yang sangat liar dengan banyak 
+puncak tinggi yang runcing dan titik minimum yang rendah, seakan-akan digambar dengan menggerakkan pena secara sangat
+cepat naik turun.}
+\caption{Grafik fungsi $f$ yang tidak diferensiabel di mana pun.\label{fig:nowherediff}}
+\end{myfigureht}
+
+Kita mengklaim bahwa $f \colon
+\R \to \R$ tidak diferensiabel di mana pun.
+Ambil sembarang $x$, dan akan kita tunjukkan bahwa $f$ tidak diferensiabel di $x$.
+Definisikan
+\begin{equation*}
+\delta_m \coloneqq \pm \frac{1}{2} 4^{-m} ,
+\avoidbreak
+\end{equation*}
+dengan tanda dipilih sedemikian sehingga tidak ada bilangan bulat
+di antara $4^m x$ dan $4^m(x+\delta_m) = 4^m x \pm \frac{1}{2}$.
+
+Kita akan meninjau hasil bagi selisih
+\begin{equation*}
+\frac{f(x+\delta_m)-f(x)}{\delta_m}
+=
+\sum_{n=0}^\infty 
+{\left(\frac{3}{4}\right)}^n
+\frac{\varphi\bigl(4^n(x+\delta_m)\bigr)-\varphi(4^nx)}{\delta_m} .
+\end{equation*}
+Untuk sementara, tetapkan $m$.  Tinjau ekspresi di dalam deret:
+\begin{equation*}
+\gamma_{n} \coloneqq
+\frac{\varphi\bigl(4^n(x+\delta_m)\bigr)-\varphi(4^nx)}{\delta_m} .
+\end{equation*}
+Jika $n > m$, maka $4^n\delta_m$ merupakan bilangan bulat genap.  Karena $\varphi$
+2-periodik, diperoleh $\gamma_n = 0$.
+
+Karena tidak ada bilangan bulat di antara 
+$4^m(x+\delta_m) = 4^m x\pm\nicefrac{1}{2}$ dan $4^m x$, maka pada interval ini
+$\varphi(t) = \pm t + \ell$ untuk suatu bilangan bulat $\ell$.
+Secara khusus,
+$\abs{\varphi\bigl(4^m(x+ \delta_m)\bigr)-\varphi(4^mx)} =
+\abs{4^mx\pm\nicefrac{1}{2}-4^mx} = \nicefrac{1}{2}$.  Oleh karena itu,
+\begin{equation*}
+\sabs{\gamma_m} =
+\abs{
+\frac{\varphi\bigl(4^m(x+\delta_m)\bigr)-\varphi(4^mx)}{\pm (\nicefrac{1}{2}) 4^{-m}}
+}
+= 4^m .
+\end{equation*}
+Demikian pula, andaikan $n < m$.  Karena $\babs{\varphi(s) -\varphi(t)} \leq
+\sabs{s-t}$,
+\begin{equation*}
+\sabs{\gamma_n} =
+\abs{\frac{\varphi\bigl(4^nx\pm(\nicefrac{1}{2})4^{n-m}\bigr)-\varphi(4^nx)}{\pm
+(\nicefrac{1}{2}) 4^{-m}}}
+\leq
+\abs{\frac{\pm(\nicefrac{1}{2})4^{n-m}}{\pm (\nicefrac{1}{2}) 4^{-m}}} = 4^n
+.
+\end{equation*}
+
+Dengan demikian,
+\begin{equation*}
+\begin{split}
+\abs{
+\frac{f(x+\delta_m)-f(x)}{\delta_m}
+}
+%& =
+%\abs{
+%\sum_{n=0}^\infty 
+%{\left(\frac{3}{4}\right)}^n
+%\frac{\varphi\bigl(4^n(x+\delta_m)\bigr)-\varphi(4^nx)}{\delta_m}
+%}
+=
+\abs{
+\sum_{n=0}^\infty 
+{\left(\frac{3}{4}\right)}^n
+\gamma_n
+}
+& =
+\abs{
+\sum_{n=0}^m 
+{\left(\frac{3}{4}\right)}^n
+\gamma_n
+}
+\\
+& \geq
+\abs{
+{\left(\frac{3}{4}\right)}^m
+\gamma_m}
+-
+\abs{
+\sum_{n=0}^{m-1} 
+{\left(\frac{3}{4}\right)}^n
+\gamma_n
+}
+\\
+& \geq
+3^m
+-
+\sum_{n=0}^{m-1} 
+3^n
+=
+3^m
+-
+\frac{3^{m}-1}{3-1}
+=
+\frac{3^m +1}{2} .
+\end{split}
+\end{equation*}
+Ketika $m \to \infty$, kita memperoleh
+$\delta_m \to 0$, tetapi $\frac{3^m+1}{2}$
+menuju tak hingga.  Jadi $f$ tidak mungkin diferensiabel di~$x$.
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Buktikan \propref{prop:uniformconvbounded}.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{prop:unifcauchymetric}.
+\end{exercise}
+
+\begin{exercise} \label{exercise:CXCnormedspace}
+Misalkan $(X,d)$ adalah ruang metrik kompak.
+Buktikan bahwa norma seragam $\snorm{\cdot}_X$ merupakan norma pada ruang vektor
+fungsi-fungsi kontinu bernilai kompleks $C(X,\C)$.
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa
+$f_n(x) \coloneqq 2^{-n} \sin(2^n x)$
+konvergen seragam ke nol, tetapi terdapat himpunan padat $D \subset \R$
+sedemikian sehingga $\lim_{n\to\infty} f_n'(x) = 1$ untuk setiap $x \in D$.
+\item
+Buktikan bahwa
+$\sum_{n=1}^\infty 2^{-n} \sin(2^n x)$
+konvergen seragam ke suatu fungsi kontinu,
+dan terdapat himpunan padat $D \subset \R$
+sehingga turunan jumlah-jumlah parsial tersebut tidak konvergen di setiap titik himpunan itu.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa $\snorm{f}_{C^1} \coloneqq \snorm{f}_{[a,b]}+\snorm{f'}_{[a,b]}$
+merupakan norma pada ruang vektor fungsi-fungsi bernilai kompleks yang
+diferensiabel secara kontinu $C^1\bigl([a,b],\C\bigr)$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \thmref{thm:dersconvergecomplex}.
+\end{exercise}
+
+\begin{exercise}
+Buktikan \propref{prop:complexlimitswapintegral} dengan mereduksinya ke
+hasil untuk kasus real.
+\end{exercise}
+
+\begin{exercise}
+Kerjakan rincian contoh penyangkal berikut untuk kebalikan
+uji-$M$ Weierstrass (\thmref{thm:weiermtest}).  Definisikan
+$f_n \colon [0,1] \to \R$ melalui
+\begin{equation*}
+f_n(x) \coloneqq
+\begin{cases}
+\frac{1}{n} & \text{jika } \frac{1}{n+1} < x < \frac{1}{n},\\
+0	    & \text{selainnya.}
+\end{cases}
+\end{equation*}
+Buktikan bahwa $\sum_{n=1}^\infty f_n$ konvergen seragam, tetapi
+$\sum_{n=1}^\infty \snorm{f_n}_{[0,1]}$
+tidak konvergen.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f_n \colon [0,1] \to \R$ adalah fungsi-fungsi yang monoton naik dan
+misalkan $\sum_{n=1}^\infty f_n$ konvergen titik demi titik.  Buktikan bahwa
+$\sum_{n=1}^\infty f_n$
+konvergen seragam.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa
+\begin{equation*}
+\sum_{n=1}^\infty e^{-nx}
+\end{equation*}
+konvergen untuk setiap $x > 0$ ke suatu fungsi yang diferensiabel.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Deret pangkat dan fungsi analitik}
+\label{sec:analfuncs}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2--3 kuliah}
+
+\subsection{Fungsi analitik}
+
+Suatu deret pangkat (kompleks) adalah deret berbentuk
+\begin{equation*}
+\sum_{n=0}^\infty c_n {(z-a)}^n
+\end{equation*}
+untuk $c_n, z, a \in \C$.  Kita mengatakan deret tersebut
+\emph{konvergen}\index{konvergen!deret pangkat} jika deret itu konvergen untuk
+suatu $z \neq a$.
+
+Misalkan $U \subset \C$ merupakan himpunan terbuka dan
+$f \colon U \to \C$ suatu fungsi.
+Andaikan untuk setiap $a \in U$ terdapat $\rho > 0$ dan suatu deret
+pangkat yang konvergen ke fungsi tersebut,
+\begin{equation*}
+f(z) = \sum_{n=0}^\infty c_n {(z-a)}^n
+\end{equation*}
+untuk semua $z \in B(a,\rho)$.
+Maka kita mengatakan bahwa $f$ adalah fungsi \emph{\myindex{analitik}}.
+Serupa dengan itu, untuk interval $(a,b) \subset \R$, kita mengatakan bahwa $f \colon (a,b) \to \C$
+bersifat analitik atau dapat pula disebut \emph{\myindex{analitik real}}
+jika untuk setiap titik $c \in
+(a,b)$ terdapat deret pangkat di sekitar $c$ yang konvergen pada suatu
+$(c-\rho,c+\rho)$
+untuk suatu $\rho > 0$.
+Karena kita kadang-kadang akan membahas deret pangkat real dan kadang-kadang
+deret pangkat kompleks, kita akan memakai $z$ untuk menyatakan bilangan kompleks dan $x$ bilangan real.
+Kita akan selalu menyebutkan kasus mana yang sedang dibahas.
+
+Suatu fungsi analitik memiliki pengembangan yang berbeda di sekitar titik-titik yang berbeda.
+Selain itu, konvergensi tidak otomatis terjadi pada seluruh
+domain fungsi.  Sebagai contoh, jika $\sabs{z} < 1$, maka
+\begin{equation*}
+\frac{1}{1-z} = \sum_{n=0}^\infty z^n .
+\end{equation*}
+Walaupun ruas kiri terdefinisi untuk setiap $z \neq 1$, ruas kanan
+ternyata hanya konvergen jika $\sabs{z} < 1$.  Lihat grafik
+sebagian kecil dari $\frac{1}{1-z}$ pada \figureref{fig:1over1mz}.
+Kita tidak dapat menggambar grafik
+fungsi itu sendiri; kita hanya dapat menggambar bagian real atau bagian imajinernya karena
+dimensi alam semesta kita tidak mencukupi.
+
+\begin{myfigureht}
+\myincludepdft{real_imag_1over1mz}{%
+Dua grafik permukaan 3D di atas bidang xy.  Pada kedua grafik, suatu garis vertikal
+ditandai di atas titik (1,0) pada bidang xy.  Grafik-grafik tersebut ditampilkan pada
+petak kecil di sekitar titik asal dan berakhir sebelum mencapai titik (1,0).
+Grafik kiri lebih datar jauh dari garis vertikal dan menanjak
+curam ketika mendekati garis vertikal.  Grafik kanan serupa,
+tetapi menanjak curam ketika mendekati garis vertikal dari
+daerah tempat y bernilai negatif dan menurun curam ketika mendekati
+garis vertikal dari daerah tempat y bernilai positif.}
+\caption{Grafik bagian real dan bagian imajiner dari $z=x+iy \mapsto \frac{1}{1-z}$
+pada persegi $[-0.8,0.8]^2$.  Singularitas di $z=1$ ditandai dengan
+garis vertikal putus-putus.\label{fig:1over1mz}}
+\end{myfigureht}
+
+\subsection{Konvergensi deret pangkat}
+
+Kita telah membuktikan beberapa hasil untuk deret pangkat dengan peubah real dalam
+\volIref{\sectionref*{vI-sec:moreonseries} pada Jilid I}{\sectionref{sec:moreonseries}}.   Sebagian besar sifat
+konvergensi deret pangkat berkaitan dengan deret
+$\sum_{k=0}^\infty \sabs{c_k} \, \sabs{z-a}^k$,
+sehingga kita sebenarnya telah membuktikan banyak hasil mengenai deret pangkat
+kompleks.  Khususnya, kita telah menghitung apa yang disebut
+jari-jari konvergensi suatu deret pangkat.
+
+\begin{prop}
+\pagebreak[2]
+Misalkan $\sum_{n=0}^\infty c_n {(z-a)}^n$ suatu deret pangkat.
+Terdapat $\rho \in [0,\infty]$ sedemikian sehingga
+\begin{enumerate}[(i)]
+\item Jika $\rho = 0$, maka deret tersebut divergen untuk setiap $z \neq a$.
+\item Jika $\rho = \infty$, maka deret tersebut konvergen mutlak untuk semua $z \in \C$.
+\item Jika $0 < \rho < \infty$, maka deret tersebut
+konvergen mutlak pada $B(a,\rho)$,
+dan divergen ketika $\sabs{z-a} > \rho$.
+\end{enumerate}
+Lebih lanjut, jika $0 < r < \rho$, maka
+deret tersebut konvergen secara seragam pada bola tertutup $C(a,r)$.
+\end{prop}
+
+Bilangan $\rho$ disebut \emph{\myindex{jari-jari konvergensi}}.
+Lihat \figureref{fig:radiusconvcomplex}.
+Jari-jari konvergensi menentukan sebuah cakram berpusat di $a$ tempat deret tersebut konvergen.  Suatu deret pangkat
+dikatakan konvergen jika $\rho > 0$.
+\begin{myfigureht}
+\myincludepdft{radiusconvcomplex}{%
+Sebuah lingkaran bertitik-titik berpusat di a dengan jari-jari rho.
+Bagian dalam lingkaran diarsir dan diberi label "deret konvergen".
+Bagian luar lingkaran diberi label "deret tidak konvergen".}
+\caption{Jari-jari konvergensi.\label{fig:radiusconvcomplex}}
+\end{myfigureht}
+
+\begin{proof}
+Kita menggunakan versi real dari proposisi ini,
+\volIref{\propref*{vI-prop:powerserrealradius} pada Jilid I}{\propref{prop:powerserrealradius}}.
+Misalkan
+\begin{equation*}
+R \coloneqq \limsup_{n\to\infty} \sqrt[n]{\sabs{c_n}} .
+\end{equation*}
+Jika $R = 0$, maka
+$\sum_{n=0}^\infty \sabs{c_n} \, \sabs{z-a}^n$ konvergen untuk semua $z$.
+Jika $R = \infty$, maka
+$\sum_{n=0}^\infty \sabs{c_n} \, \sabs{z-a}^n$ hanya konvergen di $z=a$.
+Jika tidak, misalkan $\rho \coloneqq \nicefrac{1}{R}$.
+Maka
+$\sum_{n=0}^\infty \sabs{c_n} \, \sabs{z-a}^n$ konvergen ketika
+$\sabs{z-a} < \rho$, dan divergen (bahkan suku-suku deretnya
+tidak menuju nol) ketika $\sabs{z-a} > \rho$.
+
+Untuk membuktikan pernyataan \myquote{Lebih lanjut,} andaikan
+$0 < r < \rho$ dan $z \in C(a,r)$.  Perhatikan
+jumlah parsial
+\begin{equation*}
+\abs{\sum_{n=0}^k c_n {(z-a)}^n}
+\leq
+\sum_{n=0}^k \sabs{c_n} \sabs{z-a}^n
+\leq
+\sum_{n=0}^k \sabs{c_n} r^n . \qedhere
+\end{equation*}
+\end{proof}
+
+Jika $\sum_{n=0}^\infty c_n {(z-a)}^n$ konvergen untuk suatu $z$, maka
+\begin{equation*}
+\sum_{n=0}^\infty c_n {(w-a)}^n
+\end{equation*}
+konvergen mutlak setiap kali $\sabs{w-a} < \sabs{z-a}$.
+Sebaliknya, jika deret tersebut divergen di $z$, maka deret itu juga harus divergen di $w$
+setiap kali $\sabs{w-a} > \sabs{z-a}$.
+Jadi, untuk menunjukkan
+bahwa jari-jari konvergensinya sekurang-kurangnya sebesar suatu bilangan tertentu, kita hanya perlu
+menunjukkan konvergensi di suatu titik dengan metode apa pun yang kita ketahui.
+
+\begin{example}
+Kita daftarkan beberapa deret yang telah kita kenal:
+\begin{align*}
+& &
+& \sum_{n=0}^\infty z^n
+& & \text{memiliki jari-jari konvergensi } 1.
+& &
+\\
+& &
+& \sum_{n=0}^\infty \frac{1}{n!} z^n
+& & \text{memiliki jari-jari konvergensi } \infty.
+& &
+\\
+& &
+& \sum_{n=0}^\infty n^n z^n
+& & \text{memiliki jari-jari konvergensi } 0.
+& &
+\end{align*}
+\end{example}
+
+\begin{example}
+Perhatikan perbedaan antara $\frac{1}{1-z}$ dan deret pangkatnya.  Mari kita
+kembangkan $\frac{1}{1-z}$ sebagai deret pangkat di sekitar titik $a \neq 1$.
+Misalkan $c \coloneqq \frac{1}{1-a}$, maka
+\begin{equation*}
+\frac{1}{1-z} =
+\frac{c}{1-c(z-a)}
+=
+c
+\sum_{n=0}^\infty c^{n} {(z-a)}^n
+=
+\sum_{n=0}^\infty \left( \frac{1}{{(1-a)}^{n+1}} \right) {(z-a)}^n .
+\end{equation*}
+Deret $\sum_{n=0}^\infty c^n {(z-a)}^n$ konvergen jika dan hanya jika
+deret di ruas kanan konvergen.  Kita hitung,
+\begin{equation*}
+\limsup_{n\to\infty}
+\sqrt[n]{\sabs{c^n}} = \sabs{c}
+= \frac{1}{\sabs{1-a}} .
+\end{equation*}
+Jari-jari konvergensi deret pangkat tersebut adalah $\sabs{1-a}$, yaitu
+jarak dari $1$ ke $a$.  Fungsi $\frac{1}{1-z}$
+memiliki representasi deret pangkat
+di sekitar setiap $a \neq 1$ sehingga bersifat analitik pada $\C \setminus
+\{ 1 \}$.
+Domain fungsi tersebut lebih luas daripada daerah
+konvergensi deret pangkat yang merepresentasikan fungsi itu di sekitar titik mana pun.
+\end{example}
+
+Ternyata,
+jika suatu fungsi memiliki representasi deret pangkat yang konvergen ke fungsi tersebut
+pada suatu bola,
+maka fungsi itu memiliki representasi deret pangkat di sekitar setiap titik dalam bola tersebut.  Kita akan membuktikan
+hasil ini nanti.
+
+\subsection{Sifat-sifat fungsi analitik}
+
+\begin{prop}
+Jika
+\begin{equation*}
+f(z) \coloneqq \sum_{n=0}^\infty c_n {(z-a)}^n
+\end{equation*}
+konvergen pada $B(a,\rho)$ untuk suatu $\rho > 0$, maka
+$f \colon B(a,\rho) \to \C$ kontinu.
+Khususnya, fungsi analitik bersifat kontinu.
+\end{prop}
+
+\begin{proof}
+Untuk $z_0 \in B(a,\rho)$, pilih $r < \rho$ sedemikian sehingga $z_0 \in B(a,r)$.
+Pada $B(a,r)$,
+jumlah parsial (yang kontinu) konvergen secara seragam,
+sehingga limitnya, $f|_{B(a,r)}$, kontinu.
+Setiap barisan yang konvergen ke
+$z_0$ memiliki suatu ekor yang seluruhnya berada dalam bola terbuka $B(a,r)$.
+Jadi, $f$ kontinu di $z_0$.
+\end{proof}
+
+Dalam \volIref{\corref*{vI-cor:differentiatepowerser} pada Jilid
+I}{\corref{cor:differentiatepowerser}}, kita telah membuktikan bahwa kita dapat
+mendiferensialkan deret pangkat real suku demi suku.  Dengan kata lain,
+kita membuktikan bahwa jika
+\begin{equation*}
+f(x) \coloneqq \sum_{n=0}^\infty c_n {(x-a)}^n
+\end{equation*}
+konvergen untuk $x$ real pada suatu interval di sekitar $a \in \R$, maka kita dapat mendiferensialkannya
+suku demi suku dan memperoleh deret
+\begin{equation*}
+f'(x) =
+\sum_{n=1}^\infty n c_n {(x-a)}^{n-1}
+=
+\sum_{n=0}^\infty (n+1)c_{n+1} {(x-a)}^{n} 
+\end{equation*}
+dengan jari-jari konvergensi yang sama.
+Kita hanya membuktikan teorema ini ketika $c_n$ bernilai real.
+Namun, untuk $c_n$ kompleks,
+kita tulis
+$c_n = s_n + i t_n$, dan karena $x$ serta $a$ real,
+\begin{equation*}
+\sum_{n=0}^\infty c_n {(x-a)}^n
+=
+\sum_{n=0}^\infty s_n {(x-a)}^n
++
+i
+\sum_{n=0}^\infty t_n {(x-a)}^n .
+\end{equation*}
+Kita terapkan teorema tersebut pada bagian real dan
+bagian imajiner.
+
+Dengan menerapkan teorema ini berulang kali, kita peroleh bahwa suatu
+fungsi analitik diferensiabel tak berhingga kali:
+\begin{equation*}
+%mbxlatex \begin{aligned}
+f^{(\ell)}(x)
+%mbxlatex &
+=
+\sum_{n=\ell}^\infty n(n-1)\cdots(n-\ell+1)c_n {(x-a)}^{n-\ell}
+%mbxlatex \\
+%mbxlatex &
+=
+\sum_{n=0}^\infty (n+\ell)(n+\ell-1)\cdots (n+1) c_{n+\ell} {(x-a)}^{n} .
+%mbxlatex \end{aligned}
+\end{equation*}
+Khususnya,
+\begin{equation} \label{eq:formulaforpscoeffs}
+f^{(\ell)}(a) = \ell! \, c_\ell .
+\avoidbreak
+\end{equation}
+Koefisien-koefisien tersebut ditentukan secara unik oleh turunan
+fungsi tersebut, dan sebaliknya.
+
+Di sisi lain, adanya fungsi yang diferensiabel tak berhingga kali
+tidak berarti bahwa bilangan $c_n$ yang diperoleh dari
+$c_n = \frac{f^{(n)}(0)}{n!}$ menghasilkan deret pangkat yang konvergen.
+Terdapat sebuah teorema, yang tidak akan kita buktikan,
+yang menyatakan bahwa untuk sebarang barisan $\{ c_n \}_{n=1}^\infty$, terdapat
+fungsi $f$ yang diferensiabel tak berhingga kali sedemikian sehingga
+$c_n = \frac{f^{(n)}(0)}{n!}$.  Selain itu, sekalipun deret yang diperoleh
+konvergen, deret itu belum tentu konvergen ke fungsi semula.
+Sebagai contoh,
+lihat \volIref{\exerciseref*{vI-exercise:nonanalytic} pada Jilid I}{\exerciseref{exercise:nonanalytic}}:  Fungsi
+berikut
+\begin{equation*}
+f(x) \coloneqq
+\begin{cases}
+e^{-1/x} & \text{jika } x > 0,\\
+0        & \text{jika } x \leq 0,
+\end{cases}
+\end{equation*}
+diferensiabel tak berhingga kali, dan semua turunannya di titik asal bernilai nol.
+Jadi,
+deretnya di titik asal hanyalah deret nol; walaupun
+deret tersebut konvergen, deret itu tidak konvergen ke~$f$ untuk $x > 0$.
+
+\medskip
+
+Kita dapat menerapkan transformasi afin $z \mapsto z+a$ yang
+mengubah deret pangkat di sekitar $a$ menjadi deret di sekitar titik asal.
+Artinya, jika
+\begin{equation*}
+f(z) = \sum_{n=0}^\infty c_n {(z-a)}^n,
+\qquad \text{kita tinjau} \qquad
+f(z+a) = \sum_{n=0}^\infty c_n {z}^n.
+\end{equation*}
+Karena itu, biasanya
+cukup untuk membuktikan hasil mengenai deret pangkat di sekitar titik asal.
+Mulai sekarang, demi kesederhanaan, kita sering mengandaikan $a=0$.
+
+\subsection{Deret pangkat sebagai fungsi analitik}
+
+Kita memerlukan teorema tentang pertukaran limit deret, yakni
+teorema Fubini untuk penjumlahan.  Untuk deret real, hasil ini merupakan
+\volIref{\exerciseref*{vI-exercise:tonellifubiniforsums} pada Jilid
+I}{\exerciseref{exercise:tonellifubiniforsums}}, tetapi sekarang kita memiliki
+argumen yang lebih elegan.
+
+\begin{thm}[\myindex{Fubini untuk penjumlahan}] \label{thm:fubiniforsums}
+Misalkan $\{ a_{k,m} \}_{k=1,m=1}^\infty$ suatu barisan ganda
+bilangan kompleks dan andaikan bahwa untuk setiap $k$, deret
+\begin{equation*}
+\sum_{m=1}^\infty \sabs{a_{k,m}} \qquad \text{konvergen}
+\end{equation*}
+dan, lebih lanjut, bahwa
+\begin{equation*}
+\sum_{k=1}^\infty \left( \sum_{m=1}^\infty \sabs{a_{k,m}} \right)
+\qquad \text{konvergen}.
+\end{equation*}
+Maka
+\begin{equation*}
+\sum_{k=1}^\infty \left( \sum_{m=1}^\infty a_{k,m} \right)
+=
+\sum_{m=1}^\infty \left( \sum_{k=1}^\infty a_{k,m} \right) ,
+\end{equation*}
+dan semua deret yang terlibat konvergen.
+\end{thm}
+
+\begin{proof}
+Misalkan $E$ himpunan $\{ \nicefrac{1}{n} : n \in \N \} \cup \{ 0 \}$,
+dan pandang himpunan tersebut sebagai ruang metrik dengan metrik yang diwarisi dari $\R$.
+Definisikan barisan fungsi $f_k \colon E \to \C$
+dengan
+\begin{equation*}
+f_k(\nicefrac{1}{n}) \coloneqq \sum_{m=1}^n a_{k,m}
+\qquad
+\text{dan}
+\qquad
+f_k(0) \coloneqq \sum_{m=1}^\infty a_{k,m} .
+\end{equation*}
+Karena deret tersebut konvergen, setiap $f_k$ kontinu di $0$
+(karena 0 adalah satu-satunya titik akumulasi, fungsi-fungsi tersebut kontinu di setiap titik
+dalam $E$, tetapi kita tidak memerlukan fakta itu).
+Untuk setiap $x \in E$, kita memiliki
+\begin{equation*}
+\babs{f_k(x)} \leq \sum_{m=1}^\infty \sabs{a_{k,m}} .
+\end{equation*}
+Karena $\sum_k \sum_m \sabs{a_{k,m}}$ konvergen (dan tidak bergantung pada
+$x$), kita tahu bahwa
+\begin{equation*}
+\sum_{k=1}^n f_k(x)
+\end{equation*}
+konvergen secara seragam pada $E$.  Definisikan
+\begin{equation*}
+g(x) \coloneqq \sum_{k=1}^\infty f_k(x) ,
+\end{equation*}
+yang karena itu merupakan fungsi kontinu di $0$.
+Dengan demikian,
+\begin{equation*}
+\begin{split}
+\sum_{k=1}^\infty \left( \sum_{m=1}^\infty a_{k,m} \right)
+& =
+\sum_{k=1}^\infty f_k(0)
+= g(0)
+= \lim_{n\to\infty} g(\nicefrac{1}{n}) \\
+&= 
+\lim_{n\to\infty}\sum_{k=1}^\infty f_k(\nicefrac{1}{n})
+= 
+\lim_{n\to\infty}\sum_{k=1}^\infty \sum_{m=1}^n a_{k,m} \\
+&= 
+\lim_{n\to\infty}\sum_{m=1}^n \sum_{k=1}^\infty a_{k,m}
+= 
+\sum_{m=1}^\infty \left( \sum_{k=1}^\infty a_{k,m} \right) . \qedhere
+\end{split}
+\end{equation*}
+\end{proof}
+
+Sekarang kita buktikan bahwa jika suatu deret konvergen ke sebuah fungsi
+pada suatu interval, kita dapat mengembangkan fungsi tersebut di sekitar setiap titik.
+
+\begin{thm}[Teorema Taylor untuk fungsi analitik real]
+\index{Teorema Taylor!analitik real}%
+\label{thm:tayloranal}
+Misalkan
+\begin{equation*}
+f(x) \coloneqq \sum_{k=0}^\infty a_k x^k
+\end{equation*}
+merupakan suatu deret pangkat yang konvergen pada $(-\rho,\rho)$ untuk suatu $\rho > 0$.  Untuk setiap $a \in
+(-\rho,\rho)$
+dan setiap $x$ yang memenuhi $\sabs{x-a} < \rho-\sabs{a}$, berlaku
+\begin{equation*}
+f(x) =
+\sum_{k=0}^\infty \frac{f^{(k)}(a)}{k!} {(x-a)}^{k} .
+\end{equation*}
+\end{thm}
+
+Deret pangkat yang berpusat di $a$ tentu saja dapat konvergen pada interval yang lebih besar, tetapi
+konvergensi pada interval di atas dijamin.  Interval tersebut adalah interval simetris terbesar yang berpusat di
+$a$ dan termuat dalam $(-\rho,\rho)$.
+
+\begin{proof}
+Untuk $a$ dan $x$ sebagaimana dalam teorema,
+tuliskan
+\begin{equation*}
+\begin{split}
+f(x) &= \sum_{k=0}^\infty a_k {\bigl((x-a)+a\bigr)}^k \\
+&= \sum_{k=0}^\infty a_k \sum_{m=0}^k \binom{k}{m} a^{k-m} {(x-a)}^m .
+\end{split}
+\end{equation*}
+Definisikan $c_{k,m} \coloneqq a_k \binom{k}{m} a^{k-m}$ jika $m \leq k$ dan $0$ jika $m >
+k$.  Maka
+\begin{equation} \label{eq:tsproof}
+f(x) = \sum_{k=0}^\infty \, \sum_{m=0}^\infty c_{k,m} {(x-a)}^m .
+\end{equation}
+Mari kita tunjukkan bahwa jumlah ganda tersebut konvergen mutlak.
+\begin{equation*}
+\begin{split}
+\sum_{k=0}^\infty \, \sum_{m=0}^\infty \babs{ c_{k,m} {(x-a)}^m}
+& = \sum_{k=0}^\infty \, \sum_{m=0}^k \abs{ a_k \binom{k}{m} a^{k-m} {(x-a)}^m }
+\\
+& = \sum_{k=0}^\infty \sabs{a_k} \sum_{m=0}^k \binom{k}{m} \sabs{a}^{k-m}
+{\sabs{x-a}}^m  \\
+& = \sum_{k=0}^\infty \sabs{a_k} {\bigl(\sabs{x-a}+\sabs{a}\bigr)}^k ,
+\end{split}
+\end{equation*}
+dan deret ini konvergen selama
+$(\sabs{x-a}+\sabs{a}) < \rho$, atau dengan kata lain jika
+$\sabs{x-a} < \rho-\sabs{a}$.
+
+Dengan menggunakan \thmref{thm:fubiniforsums},
+tukar urutan penjumlahan dalam \eqref{eq:tsproof}; maka
+deret berikut konvergen ketika $\sabs{x-a} < \rho-\sabs{a}$:
+\begin{equation*}
+f(x) =
+\sum_{k=0}^\infty \, \sum_{m=0}^\infty c_{k,m} {(x-a)}^m
+=
+\sum_{m=0}^\infty
+\left( \sum_{k=0}^\infty
+c_{k,m} \right) {(x-a)}^m .
+\end{equation*}
+Rumus yang dinyatakan melalui turunan di $a$ diperoleh dengan
+mendiferensialkan deret tersebut untuk memperoleh \eqref{eq:formulaforpscoeffs}.
+\end{proof}
+
+Perhatikan bahwa jika suatu deret konvergen untuk peubah real $x \in (a-\rho,a+\rho)$, deret itu juga konvergen
+untuk semua bilangan kompleks dalam $B(a,\rho)$.
+Kita memperoleh korolari berikut, yang menyatakan bahwa fungsi yang didefinisikan
+oleh deret pangkat bersifat analitik.
+
+\begin{cor} \label{cor:powerseranalytic}
+Untuk setiap $a \in \C$,
+jika $\sum_{k=0}^\infty c_k {(z-a)}^k$ konvergen ke $f(z)$ dalam $B(a,\rho)$ dan $b \in
+B(a,\rho)$,
+maka terdapat deret pangkat
+$\sum_{k=0}^\infty d_k {(z-b)}^k$ yang konvergen ke $f(z)$ dalam $B(b,\rho-\sabs{b-a})$.
+\end{cor}
+
+\begin{proof}
+Tanpa mengurangi keumuman, andaikan $a=0$ dan $b \neq 0$.  Kita dapat melakukan rotasi sehingga $b$ bernilai real, tetapi
+karena hal itu lebih sulit dibayangkan, mari kita lakukan secara eksplisit.
+Misalkan $\alpha \coloneqq \frac{\bar{b}}{\sabs{b}}$.
+Perhatikan bahwa
+\begin{equation*}
+\abs{\nicefrac{1}{\alpha}} = \sabs{\alpha}
+= 1 .
+\end{equation*}
+Karena itu, deret
+$\sum_{k=0}^\infty c_k {(\nicefrac{z}{\alpha})}^k = 
+\sum_{k=0}^\infty c_k \alpha^{-k} {z}^k$
+konvergen ke $f(\nicefrac{z}{\alpha})$ dalam $B(0,\rho)$.
+Ketika $z=x$ bernilai real,
+kita menerapkan \thmref{thm:tayloranal} pada titik $\sabs{b}$ dan memperoleh
+sebuah deret yang konvergen
+ke $f(\nicefrac{z}{\alpha})$ pada $B(\sabs{b},\rho-\sabs{b})$.
+Artinya, terdapat deret konvergen
+\begin{equation*}
+f(\nicefrac{z}{\alpha}) =
+\sum_{k=0}^\infty a_k {\bigl(z - \sabs{b}\bigr)}^k .
+\end{equation*}
+Dengan menggunakan $\alpha b = \sabs{b}$, kita peroleh
+\begin{equation*}
+f(z) = f(\nicefrac{\alpha z}{\alpha}) =
+\sum_{k=0}^\infty a_k {(\alpha z - \sabs{b})}^k 
+=
+\sum_{k=0}^\infty a_k\alpha^k {\bigl(z - \nicefrac{\sabs{b}}{\alpha}\bigr)}^k
+=
+\sum_{k=0}^\infty a_k\alpha^k {(z - b)}^k ,
+\end{equation*}
+dan deret ini konvergen untuk semua $z$ sedemikian sehingga
+$\bigl\lvert \alpha z-\sabs{b}\bigr\rvert < \rho-\sabs{b}$
+atau $\sabs{z - b} < \rho-\sabs{b}$.
+\end{proof}
+
+Di atas telah kita buktikan bahwa deret pangkat yang konvergen mendefinisikan
+fungsi analitik pada daerah konvergensinya.  Sebelumnya juga telah kita tunjukkan bahwa
+$\frac{1}{1-z}$ bersifat analitik di setiap titik selain $z=1$.
+
+Perhatikan bahwa meskipun suatu fungsi analitik real bersifat analitik pada
+seluruh garis real, hal itu belum tentu berarti fungsi tersebut memiliki representasi deret pangkat
+yang konvergen di semua titik.  Sebagai contoh, fungsi
+\begin{equation*}
+f(x) = \frac{1}{1+x^2}
+\end{equation*}
+merupakan fungsi analitik real pada $\R$ (latihan).  Deret
+pangkat di sekitar titik asal yang konvergen ke $f$
+memiliki jari-jari konvergensi tepat $1$.
+Dapatkah Anda melihat alasannya? (latihan)
+
+\subsection{Teorema identitas untuk fungsi analitik}
+
+\begin{lemma}
+Misalkan $f(z) = \sum_{k=0}^\infty a_k z^k$ adalah deret pangkat konvergen dan
+$\{ z_n \}_{n=1}^\infty$ adalah barisan bilangan kompleks tak nol yang konvergen ke 0,
+sedemikian sehingga $f(z_n) = 0$ untuk semua $n$.  Maka $a_k = 0$ untuk setiap~$k$.
+\end{lemma}
+
+\begin{proof}
+Berdasarkan kekontinuan, kita tahu bahwa $f(0) = 0$, sehingga $a_0 = 0$.
+Misalkan terdapat suatu $a_k$ yang tak nol.
+Ambil $m$ sebagai indeks terkecil sedemikian sehingga $a_m \neq 0$.  Maka
+\begin{equation*}
+f(z) = \sum_{k=m}^\infty a_k z^k = 
+z^m \sum_{k=m}^\infty a_k z^{k-m} =
+z^m \sum_{k=0}^\infty a_{k+m} z^{k} .
+\end{equation*}
+Tuliskan $g(z) = \sum_{k=0}^\infty a_{k+m} z^{k}$ (deret ini konvergen
+pada himpunan yang sama seperti deret untuk $f$).  Fungsi $g$ kontinu dan
+$g(0) = a_m \neq 0$.  Jadi, terdapat suatu $\delta > 0$ sedemikian sehingga
+$g(z) \neq 0$ untuk semua $z \in B(0,\delta)$.  Karena $f(z) = z^m g(z)$,
+satu-satunya titik di $B(0,\delta)$ tempat $f(z) = 0$ adalah $z=0$, tetapi hal
+ini bertentangan dengan asumsi bahwa $f(z_n) = 0$ untuk semua $n$.
+\end{proof}
+
+Ingatlah bahwa dalam ruang metrik $X$, sebuah \emph{titik akumulasi}
+(atau terkadang \emph{titik limit}) dari suatu himpunan
+$E$ adalah titik $p \in X$ sedemikian sehingga
+$B(p,\epsilon) \setminus \{ p \}$ memuat titik-titik dari $E$
+untuk setiap $\epsilon > 0$.
+
+\begin{thm}[Teorema identitas]
+\label{thm:identityanalytic}%
+\index{teorema identitas}%
+Misalkan $U \subset \C$ terbuka dan terhubung.  Jika $f \colon U \to \C$
+dan $g \colon U \to \C$ merupakan fungsi-fungsi analitik yang bernilai
+sama pada suatu himpunan $E \subset U$, dan $E$ memiliki titik akumulasi
+di $U$, maka $f(z) = g(z)$ untuk semua $z \in U$.
+\end{thm}
+
+Dalam penerapan yang paling umum dari teorema ini, $E$ adalah himpunan terbuka
+atau mungkin sebuah kurva.
+
+\begin{proof}
+Dengan mengganti $E$, jika perlu, dengan himpunan semua titik $z \in U$ yang
+memenuhi $g(z)=f(z)$, kita boleh menganggap $E$ adalah himpunan tersebut.
+Perhatikan bahwa $E$ harus tertutup relatif terhadap $U$ karena $f$ dan $g$
+kontinu.
+
+Misalkan $p \in U$ adalah suatu titik akumulasi dari $E$.  Dengan mengganti
+peubah $w=z-p$ serta mentranslasikan domain dan kedua fungsi, kita boleh
+mengambil $p=0$.  Di sekitar $0$, kita memiliki ekspansi
+\begin{equation*}
+f(z) = \sum_{k=0}^\infty a_k {z}^k 
+\qquad
+\text{dan}
+\qquad
+g(z) = \sum_{k=0}^\infty b_k {z}^k ,
+\end{equation*}
+yang konvergen dalam suatu bola $B(0,\rho)$.  Oleh karena itu, deret
+\begin{equation*}
+0 = f(z)-g(z) = 
+\sum_{k=0}^\infty (a_k-b_k) z^k
+\end{equation*}
+konvergen dalam $B(0,\rho)$.  Karena $0$ adalah titik akumulasi dari $E$,
+terdapat barisan titik tak nol $\{ z_n \}_{n=1}^\infty$ yang konvergen ke $0$
+sedemikian sehingga $f(z_n) -g(z_n) = 0$ untuk semua $n$.  Jadi, berdasarkan lema di atas,
+$a_k = b_k$ untuk semua $k$.  Oleh karena itu, $B(0,\rho) \subset E$.
+
+Dengan demikian, himpunan semua titik akumulasi dari $E$ terbuka relatif
+terhadap $U$.  Himpunan itu juga tertutup relatif terhadap $U$: limit di $U$
+dari titik-titik akumulasi $E$ berada di $E$ karena $E$ tertutup relatif
+terhadap $U$, dan jelas merupakan titik akumulasi dari $E$.
+Karena $U$ terhubung, himpunan semua titik akumulasi dari $E$
+sama dengan $U$, atau dengan kata lain $E = U$.
+\end{proof}
+
+Dengan membatasi perhatian kita pada $x$ real, kita memperoleh teorema yang sama
+untuk himpunan bagian terbuka dan terhubung dari $\R$, yaitu interval terbuka.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Misalkan
+\begin{equation*}
+a_{k,m} \coloneqq
+\begin{cases}
+1        & \text{jika } k=m,\\
+-2^{k-m} & \text{jika } k<m,\\
+0        & \text{jika } k>m.
+\end{cases}
+\end{equation*}
+Hitung (atau tunjukkan bahwa limitnya tidak ada):
+\\
+a)~$\displaystyle \sum_{m=1}^\infty \sabs{a_{k,m}}~$ untuk setiap $k$,
+%mbxSTARTIGNORE
+\hspace{\fill}
+%mbxENDIGNORE
+%mbxlatex \qquad
+b)~$\displaystyle \sum_{k=1}^\infty \sabs{a_{k,m}}~$ untuk setiap $m$,
+%mbxSTARTIGNORE
+\hspace{\fill}
+%mbxENDIGNORE
+%mbxlatex \qquad
+c)~$\displaystyle \sum_{k=1}^\infty \sum_{m=1}^\infty \sabs{a_{k,m}}$,
+%mbxSTARTIGNORE
+\hspace{\fill}
+%mbxENDIGNORE
+%mbx <rabr/>
+d)~$\displaystyle \sum_{k=1}^\infty \sum_{m=1}^\infty a_{k,m}$,
+%mbxSTARTIGNORE
+\hspace{\fill}
+%mbxENDIGNORE
+%mbxlatex \qquad
+e)~$\displaystyle \sum_{m=1}^\infty \sum_{k=1}^\infty a_{k,m}$.
+\\
+Petunjuk: Teorema Fubini untuk deret tidak berlaku.
+Bahkan, jawaban untuk d) dan e) berbeda.
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Misalkan $f(x) \coloneqq \frac{1}{1+x^2}$.  Buktikan bahwa
+\begin{enumerate}[a)]
+\item
+$f$ merupakan fungsi analitik pada seluruh $\R$
+dengan menemukan deret pangkat untuk $f$ di setiap $a \in \R$,
+\item
+jari-jari konvergensi dari
+deret pangkat untuk $f$ di titik asal adalah 1.
+\end{enumerate}
+\end{exercise}
+
+
+\begin{exercise}
+\pagebreak[2]
+Misalkan $f \colon \C \to \C$ analitik dan bukan fungsi nol.  Tunjukkan bahwa untuk setiap
+$n$, hanya terdapat berhingga banyak titik nol dari $f$ di $B(0,n)$, yaitu,
+$f^{-1}(0) \cap B(0,n)$ berhingga untuk setiap $n$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $U \subset \C$ terbuka dan terhubung, $0 \in U$, dan $f \colon U
+\to \C$ analitik.  Dengan memandang $f$ sebagai fungsi dari peubah real $x$
+di titik asal, misalkan $f^{(n)}(0) = 0$ untuk semua $n$.  Tunjukkan bahwa $f(z) = 0$
+untuk semua $z \in U$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $U \subset \C$ terbuka dan terhubung, $0 \in U$, dan $f \colon U
+\to \C$ analitik.  Untuk $x$ dan $y$ real yang cukup dekat dengan $0$ sehingga
+$x \in U$ dan $iy \in U$, misalkan $h(x) \coloneqq f(x)$ dan
+$g(y) \coloneqq -i \, f(iy)$.
+Tunjukkan bahwa $h$ dan $g$ diferensiabel tak berhingga kali di titik asal dan
+$h'(0) = g'(0)$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan suatu fungsi $f$ analitik pada suatu lingkungan dari titik asal,
+dan terdapat suatu $M$
+sedemikian sehingga $\sabs{f^{(n)}(0)} \leq M$ untuk semua $n$.
+Buktikan bahwa deret pangkat $f$ di titik asal konvergen untuk semua $z \in \C$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f(z) \coloneqq \sum_{n=0}^\infty c_n z^n$ dengan jari-jari konvergensi 1.  Misalkan $f(0)
+= 0$, tetapi $f$ bukan fungsi nol.
+Tunjukkan bahwa terdapat suatu $k \in \N$ dan suatu
+deret pangkat konvergen $g(z) \coloneqq \sum_{n=0}^\infty d_n z^n$ dengan jari-jari konvergensi 1
+sedemikian sehingga $f(z) = z^k g(z)$ untuk semua $z \in B(0,1)$, dan $g(0) \neq 0$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $U \subset \C$ terbuka dan terhubung.  Misalkan
+$f \colon U \to \C$ analitik, $U \cap \R \neq \emptyset$, dan
+$f(x) = 0$ untuk semua $x \in U \cap \R$.  Tunjukkan bahwa $f(z) = 0$ untuk semua $z \in
+U$.
+\end{exercise}
+
+\begin{exercise}
+Untuk $\alpha \in \C$ dan $k=0,1,2,3\ldots$, definisikan
+\begin{equation*}
+\binom{\alpha}{k} \coloneqq \frac{\alpha(\alpha-1)\cdots(\alpha-k+1)}{k!} .
+\end{equation*}
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa deret
+\begin{equation*}
+f(z) \coloneqq \sum_{k=0}^\infty \binom{\alpha}{k} z^k
+\end{equation*}
+konvergen setiap kali $\sabs{z} < 1$.
+Bahkan, buktikan bahwa untuk $\alpha = 0,1,2,3,\ldots$ jari-jari
+konvergensinya adalah $\infty$, dan untuk semua $\alpha$ lainnya
+jari-jari konvergensinya adalah 1.
+\item
+Tunjukkan bahwa untuk $x \in \R$, $\sabs{x} < 1$, kita mempunyai
+\begin{equation*}
+(1+x) f'(x) = \alpha f(x) ,
+\end{equation*}
+yang berarti bahwa $f(x) = (1+x)^\alpha$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon \C \to \C$ analitik dan misalkan untuk suatu
+interval terbuka $(a,b) \subset \R$, $f$ bernilai real pada $(a,b)$.  Tunjukkan
+bahwa $f$ bernilai real pada $\R$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\D \coloneqq B(0,1)$ adalah cakram satuan.  Misalkan
+$f \colon \D \to \C$ analitik dengan deret pangkat
+$\sum_{n=0}^\infty c_n z^n$.  Misalkan $\sabs{c_n} \leq 1$ untuk semua $n$.  Buktikan bahwa untuk
+semua $z \in \D$, kita mempunyai
+$\babs{f(z)} \leq \frac{1}{1-\sabs{z}}$.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Eksponensial kompleks dan fungsi trigonometri}
+\label{sec:complexexp}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1 kuliah}
+
+\subsection{Eksponensial kompleks}
+
+Definisikan
+\begin{equation*}
+E(z) \coloneqq \sum_{k=0}^\infty \frac{1}{k!} z^k .
+\end{equation*}
+Deret ini konvergen untuk setiap $z \in \C$.
+Jadi, menurut
+\corref{cor:powerseranalytic}, $E$ analitik pada $\C$. Kita perhatikan bahwa $E(0) = 1$
+dan, untuk $z=x \in \R$, berlaku $E(x) \in \R$. Dengan tetap mengambil $x$ real,
+perhitungan langsung menunjukkan
+\begin{equation*}
+\frac{d}{dx} \bigl( E(x) \bigr) = E(x) .
+\end{equation*}
+Dalam \volIref{\sectionref*{vI-sec:logandexp} pada volume I}{\sectionref{sec:logandexp}} (atau dengan Teorema Picard), kita membuktikan bahwa
+satu-satunya fungsi pada garis real yang memenuhi $E' = E$ dan
+$E(0) = 1$ adalah fungsi eksponensial. Dengan kata lain, untuk $x \in \R$, $e^x = E(x)$.
+
+Untuk bilangan kompleks $z$, kita definisikan\glsadd{not:complexexp}
+\begin{equation*}
+e^z \coloneqq E(z) = 
+\sum_{k=0}^\infty \frac{1}{k!} z^k .
+\end{equation*}
+Pada garis real, definisi baru ini sama dengan definisi kita sebelumnya.
+Lihat \figureref{fig:complexexpgraphs}. Perhatikan bahwa pada arah $x$
+(arah real),
+grafik berperilaku seperti eksponensial real, sedangkan pada arah $y$
+(arah imajiner) grafik berosilasi.
+
+\begin{myfigureht}
+\myincludepdft{real_imag_exp}{%
+Grafik permukaan.
+Untuk x tetap, kedua grafik berbentuk sinusoidal pada arah y,
+dengan amplitudo osilasi yang semakin besar ketika x semakin besar.
+Untuk x negatif, grafik bahkan begitu kecil pada skala ini sehingga
+osilasinya tidak dapat terlihat.
+Pada grafik kanan, gelombang sinusoidal digeser. Pada grafik kiri,
+irisan tepat di atas sumbu x naik secara eksponensial, sedangkan pada grafik
+kanan irisan tepat di atas sumbu x selalu bernilai nol; dengan kata lain,
+sumbu x termuat dalam grafik kanan. Irisan grafik di atas sumbu x ditandai
+dengan garis tebal.}
+\caption{Grafik bagian real (kiri) dan bagian imajiner (kanan)
+dari eksponensial kompleks $e^z = e^{x+iy}$. Sumbu $x$ membentang dari $-4$ hingga
+$4$, sumbu $y$ membentang dari $-6$ hingga $6$, dan sumbu vertikal membentang dari
+$-e^{4} \approx -54.6$
+hingga
+$e^{4} \approx 54.6$. Grafik eksponensial real ($y=0$)
+ditandai dengan garis tebal.\label{fig:complexexpgraphs}}
+\end{myfigureht}
+
+\begin{prop}[Hukum eksponen\index{hukum eksponen}]
+Misalkan $z,w \in \C$ adalah bilangan kompleks. Maka
+\begin{equation*}
+e^{z+w} = e^z e^w.
+\end{equation*}
+\end{prop}
+
+\begin{proof}
+Kita sudah mengetahui bahwa kesamaan
+$e^{x+y} = e^x e^y$ berlaku untuk semua
+bilangan real $x$ dan $y$.
+Untuk setiap $y \in \R$ yang tetap, pandang kedua ruas sebagai
+fungsi dari $x$ dan terapkan teorema identitas
+(\thmref{thm:identityanalytic}) untuk memperoleh
+$e^{z+y} = e^ze^y$ bagi setiap $z \in \C$. Dengan menetapkan sembarang $z \in \C$,
+kita memperoleh
+$e^{z+y} = e^ze^y$ bagi setiap $y \in \R$. Sekali lagi menurut teorema identitas,
+$e^{z+w} = e^z e^w$
+bagi setiap $w \in \C$.
+\end{proof}
+
+Konsekuensi langsung dari proposisi ini adalah $e^z \neq 0$ untuk setiap $z \in \C$,
+karena $e^z e^{-z} = e^{z-z} = 1$.
+Perhitungan ini berarti bahwa ${(e^z)}^{-1} = e^{-z}$.
+Dengan menggabungkan fakta tersebut dan hukum eksponen, kita memperoleh
+\begin{equation*}
+{(e^z)}^{n} = e^{nz} \qquad \text{untuk setiap } n \in \Z.
+\end{equation*}
+Konsekuensi lain yang sedikit lebih rumit adalah bahwa kita
+dapat menghitung deret pangkat untuk fungsi eksponensial di sembarang titik $a \in
+\C$:
+\begin{equation*}
+e^z = e^a e^{z-a} = \sum_{k=0}^\infty \frac{e^a}{k!} {(z-a)}^k .
+\end{equation*}
+
+\subsection{Fungsi trigonometri dan $\pi$}
+
+Kini akhirnya kita dapat mendefinisikan \emph{\myindex{fungsi sinus}} dan \emph{\myindex{fungsi kosinus}}
+melalui persamaan
+\begin{equation*}
+e^{x+iy} = e^x \bigl( \cos(y) + i \sin(y) \bigr) .
+\end{equation*}
+Lebih umum, kita mendefinisikan fungsi sinus dan fungsi kosinus untuk setiap bilangan kompleks $z$:
+\glsadd{not:sin}\glsadd{not:cos}
+\begin{equation*}
+\cos(z) \coloneqq \frac{e^{iz} + e^{-iz}}{2}
+\qquad\text{dan}\qquad
+\sin(z) \coloneqq \frac{e^{iz} - e^{-iz}}{2i} .
+\end{equation*}
+
+Mari kita gunakan definisi ini untuk membuktikan sifat-sifat umum
+fungsi sinus dan fungsi kosinus. Dalam prosesnya, kita juga mendefinisikan
+bilangan $\pi$.
+
+\begin{prop}
+Fungsi sinus dan fungsi kosinus memiliki sifat-sifat berikut:
+\begin{enumerate}[(i)]
+\item Untuk setiap $z \in \C$,\index{rumus Euler}
+\begin{equation*}
+e^{iz} = \cos(z) + i\sin(z) \qquad
+\text{(rumus Euler)}.
+\end{equation*}
+\item $\cos(0) = 1$, $\sin(0) = 0$.
+\item Untuk setiap $z \in \C$,
+\begin{equation*}
+\cos(-z) = \cos(z), \qquad
+\sin(-z) = -\sin(z).
+\end{equation*}
+\item Untuk setiap $z \in \C$,
+\begin{equation*}
+\cos(z) = \sum_{k=0}^\infty \frac{{(-1)}^k}{(2k)!} z^{2k} ,
+\qquad
+\sin(z) = \sum_{k=0}^\infty \frac{{(-1)}^k}{(2k+1)!} z^{2k+1} .
+\end{equation*}
+\item Untuk setiap $x \in \R$
+\begin{equation*}
+\cos(x) = \Re (e^{ix})
+\qquad\text{dan}\qquad
+\sin(x) = \Im (e^{ix}) .
+\end{equation*}
+\item Untuk setiap $z \in \C$,
+\begin{equation*}
+{\bigl( \cos(z) \bigr)}^2 + {\bigl( \sin(z) \bigr)}^2 = 1 .
+\end{equation*}
+\item Untuk setiap $x \in \R$,
+\begin{equation*}
+\babs{\sin(x)} \leq 1, \qquad \babs{\cos(x)} \leq 1 .
+\end{equation*}
+\item Untuk setiap $x \in \R$,
+\begin{equation*}
+\frac{d}{dx} \bigl[ \cos(x) \bigr] = -\sin(x)
+\qquad \text{dan} \qquad
+\frac{d}{dx} \bigl[ \sin(x) \bigr] = \cos(x) .
+\end{equation*}
+\item Untuk setiap $x \geq 0$,
+\begin{equation*}
+\sin(x) \leq x .
+\end{equation*}
+\item
+Terdapat $x > 0$ sedemikian sehingga $\cos(x) = 0$. Kita definisikan
+\glsadd{not:pi}
+\begin{equation*}
+\pi \coloneqq 2 \, \inf \{ x > 0 : \cos(x) = 0 \} .
+\end{equation*}
+\item
+Untuk setiap $z \in \C$,
+\begin{equation*}
+e^{2\pi i} = 1 \qquad \text{dan} \qquad e^{z + i 2\pi} = e^z.
+\end{equation*}
+\item
+Fungsi sinus dan fungsi kosinus periodik dengan periode $2\pi$ dan tidak memiliki periode positif
+yang lebih kecil. Artinya, $2\pi$ adalah bilangan positif terkecil sedemikian sehingga untuk setiap $z \in \C$,
+\begin{equation*}
+\sin(z+2\pi) = \sin(z)
+\qquad \text{dan} \qquad
+\cos(z+2\pi) = \cos(z) .
+\end{equation*}
+\item
+Fungsi $x \mapsto e^{ix}$ merupakan pemetaan bijektif dari $[0,2\pi)$
+ke himpunan semua $z \in \C$ sedemikian sehingga $\sabs{z} = 1$.
+\end{enumerate}
+\end{prop}
+
+Proposisi ini langsung menyiratkan bahwa $\sin(x)$ dan $\cos(x)$ bernilai
+real apabila $x$ real.
+
+\begin{proof}
+Tiga butir pertama langsung mengikuti definisi.
+Perhitungan deret pangkat untuk kedua fungsi tersebut diserahkan sebagai latihan.
+Karena pemetaan konjugasi kompleks bersifat kontinu, definisi
+$e^z$ menyiratkan
+$\overline{e^z} = e^{\bar{z}}$. Jika
+$x$ real,
+\begin{equation*}
+\overline{e^{ix}} = e^{-ix} .
+\end{equation*}
+Jadi, untuk $x$ real,
+$\cos(x) =
+\frac{e^{ix}+e^{-ix}}{2} =
+\frac{e^{ix}+\overline{e^{ix}}}{2} =
+\Re (e^{ix})$
+dan, secara serupa, $\sin(x) = \Im (e^{ix})$.
+
+Untuk $x$ real, kita hitung
+\begin{equation*}
+1 =  e^{ix} e^{-ix}
+= e^{ix} \, \overline{e^{ix}}
+= \sabs{e^{ix}}^2
+= \babs{\cos(x) + i \sin(x)}^2
+= {\bigl( \cos(x) \bigr)}^2 + {\bigl( \sin(x) \bigr)}^2 .
+\end{equation*}
+Perhitungan yang sedikit lebih rumit menunjukkan fakta ini untuk
+bilangan kompleks; lihat \exerciseref{exercise:cossinidentity}.
+Khususnya, $e^{ix}$ bersifat \emph{\myindex{bermodulus satu}} untuk $x$ real;
+nilai-nilainya terletak pada lingkaran satuan.
+Kuadrat suatu bilangan real selalu nonnegatif:
+\begin{equation*}
+{\bigl(\sin(x)\bigr)}^2 = 1-{\bigl(\cos(x)\bigr)}^2 \leq 1 .
+\end{equation*}
+Jadi, $\babs{\sin(x)} \leq 1$ dan, secara serupa,
+$\babs{\cos(x)} \leq 1$.
+
+Perhitungan kedua turunan tersebut kita serahkan kepada pembaca sebagai latihan.
+Mari kita buktikan bahwa $\sin(x) \leq x$ untuk $x \geq 0$.
+Pandang
+$f(x) \coloneqq x-\sin(x)$ dan turunkan:
+\begin{equation*}
+f'(x) = \frac{d}{dx} \bigl[ x - \sin(x) \bigr]
+=
+1 -\cos(x) \geq 0 ,
+\end{equation*}
+untuk setiap $x \in \R$ karena $\babs{\cos(x)} \leq 1$.
+Dengan kata lain, $f$ monoton naik dan $f(0) = 0$.
+Jadi, $f$ nonnegatif ketika $x \geq 0$; oleh karena itu, $\sin(x) \leq x$.
+
+Selanjutnya, kita klaim bahwa terdapat $x$ positif sedemikian sehingga $\cos(x) = 0$.
+Karena $\cos(0) = 1 > 0$, berlaku $\cos(x) > 0$
+untuk $x$ yang cukup dekat dengan $0$. Definisikan
+$S \coloneqq \{ t > 0 : \cos(x) > 0 \text{ untuk setiap } x \in [0,t) \}$.
+Himpunan $S$ tak kosong. Pilih $y_0 \in S$ dan $a \in (0,y_0)$.
+Karena $\cos(x) > 0$ pada $[0,y_0)$, fungsi $\sin(x)$ naik tegas
+pada $[0,y_0)$. Karena $\sin(0) = 0$, kita memperoleh $\sin(a) > 0$.
+Sekarang, ambil sembarang $y \in S$ dengan $y > a$. Pada $[0,y)$,
+fungsi $\sin$ naik tegas. Menurut teorema nilai rata-rata,
+terdapat $c \in (a,y)$ sedemikian sehingga
+\begin{equation*}
+2 \geq \cos(a)-\cos(y) = \sin(c)(y-a) \geq \sin(a)(y-a) .
+\end{equation*}
+Karena $\sin(a) > 0$, kita memperoleh
+\begin{equation*}
+y \leq \frac{2}{\sin(a)} + a .
+\end{equation*}
+Batas ini berlaku bagi setiap $y \in S$ dengan $y > a$, sedangkan anggota $S$
+yang memenuhi $y \leq a$ sudah terbatas. Jadi, $S$ terbatas di atas. Definisikan
+$y \coloneqq \sup S$. Dari sifat supremum, $\cos(x) > 0$ untuk setiap $x \in [0,y)$,
+sehingga kekontinuan memberikan $\cos(y) \geq 0$. Jika $\cos(y) > 0$, kekontinuan
+akan memberikan suatu $t > y$ dengan $t \in S$, bertentangan dengan definisi supremum.
+Oleh karena itu, $\cos(y) = 0$. Karena $\cos(x) > 0$ untuk setiap $x \in [0,y)$,
+$y$ adalah nilai positif terkecil sedemikian sehingga $\cos(y) = 0$. Seperti telah disebutkan,
+$\pi$ didefinisikan sebagai $2y$.
+
+Karena $\cos(\nicefrac{\pi}{2}) = 0$, kita peroleh
+${\bigl(\sin(\nicefrac{\pi}{2})\bigr)}^2 = 1$.
+Karena $\sin$ positif pada $(0,\nicefrac{\pi}{2})$, kita mempunyai
+$\sin(\nicefrac{\pi}{2}) = 1$.
+Dengan demikian,
+\begin{equation*}
+e^{i \pi /2} = i ,
+\end{equation*}
+dan, menurut hukum eksponen,
+\begin{equation*}
+e^{i \pi} = -1 ,
+\qquad 
+e^{i 2\pi} = 1 .
+\end{equation*}
+Jadi, $e^{i2\pi} = 1 = e^0$. Hukum eksponen juga menyatakan
+\begin{equation*}
+e^{z+i2\pi} = e^z e^{i2\pi} = e^z
+\end{equation*}
+untuk setiap $z \in \C$. Kita juga langsung memperoleh
+$\cos(z+2\pi) = \cos(z)$ dan $\sin(z+2\pi) = \sin(z)$.
+Jadi, $\sin$ dan $\cos$ periodik dengan periode $2\pi$.
+
+Kita klaim bahwa $\sin$ dan $\cos$ tidak periodik dengan periode positif yang lebih kecil.
+Untuk itu, ambil sembarang $x$ yang memenuhi $0 < x \leq 2\pi$ dan
+$e^{ix} = 1$. Kita akan menunjukkan bahwa $x = 2\pi$.
+Menurut hukum eksponen,
+\begin{equation*}
+{\bigl(e^{ix/4}\bigr)}^4 = 1 .
+\end{equation*}
+Jika $e^{ix/4} = a+ib$, maka
+\begin{equation*}
+{(a+ib)}^4
+=a^4-6a^2b^2+b^4 + i\bigl(4ab(a^2-b^2)\bigr)
+=1 .
+\end{equation*}
+Karena $0 < \nicefrac{x}{4} \leq \nicefrac{\pi}{2}$, kita mempunyai
+$b = \sin(\nicefrac{x}{4}) > 0$.
+Selain itu, $a = \cos(\nicefrac{x}{4}) \geq 0$. Bagian imajiner pada persamaan di atas
+harus nol. Karena $b > 0$, maka $a = 0$ atau $a^2 = b^2$.
+Jika $a^2=b^2$, maka
+$a^4-6a^2b^2+b^4 = -4a^4 < 0$, dan khususnya tidak sama dengan 1.
+Oleh karena itu, $a=0$; dalam hal ini $\nicefrac{x}{4} = \nicefrac{\pi}{2}$.
+Jadi, $x = 2\pi$.
+
+Sekarang, misalkan $T > 0$ merupakan periode fungsi sinus. Maka, untuk setiap $x \in \R$,
+$\sin(x+T)=\sin(x)$. Dengan menurunkan identitas ini terhadap $x$, kita memperoleh
+$\cos(x+T)=\cos(x)$. Jika $T$ merupakan periode fungsi kosinus, penalaran yang sama,
+dengan menurunkan identitas $\cos(x+T)=\cos(x)$ terhadap $x$, menghasilkan
+$\sin(x+T)=\sin(x)$. Dengan demikian, setiap periode positif dari salah satu fungsi
+memberikan, pada $x=0$, $\sin(T)=\sin(0)$ dan $\cos(T)=\cos(0)$.
+Menurut rumus Euler, periode tersebut memenuhi
+$e^{iT}=\cos(T)+i\sin(T)=\cos(0)+i\sin(0)=1$.
+Hasil di atas menunjukkan bahwa tidak ada periode positif yang lebih kecil daripada $2\pi$.
+
+Terakhir, kita ingin menunjukkan bahwa $e^{ix}$ merupakan pemetaan bijektif
+dari himpunan $[0,2\pi)$ ke himpunan semua $z \in \C$ sedemikian sehingga
+$\sabs{z} = 1$. Misalkan $e^{ix} = e^{iy}$ dan
+$x > y$. Maka,
+$0 < x-y < 2\pi$ karena $x,y \in [0,2\pi)$. Akan tetapi, $e^{i(x-y)} = 1$,
+bertentangan dengan hasil di atas. Jadi, pemetaan tersebut injektif.
+Untuk menunjukkan bahwa pemetaan $x \mapsto e^{ix}$ surjektif, ambil $(a,b) \in \R^2$ sedemikian sehingga $a^2+b^2 = 1$.
+Pertama, andaikan $a,b \geq 0$. Menurut teorema nilai antara,
+terdapat $x \in [0,\nicefrac{\pi}{2}]$ sedemikian sehingga
+$\cos(x) = a$, dan akibatnya $b^2 = \bigl(\sin(x)\bigr)^2$. Karena
+$b$ dan $\sin(x)$ nonnegatif, berlaku $b = \sin(x)$.
+Karena $-\sin(x)$ merupakan turunan $\cos(x)$
+dan $\cos(-x) = \cos(x)$,
+kita memperoleh $\sin(x) < 0$ untuk $x \in [\nicefrac{-\pi}{2},0)$.
+Dengan penalaran yang sama, kita memperoleh bahwa
+jika $a > 0$ dan $b < 0$, kita dapat menemukan $x_0$ dalam $(\nicefrac{-\pi}{2},0)$
+sedemikian sehingga $\cos(x_0) = a$ dan $\sin(x_0)=b$. Menurut periodisitas,
+$x \coloneqq x_0+2\pi \in (\nicefrac{3\pi}{2},2\pi)$ juga memenuhi
+$\cos(x) = a$ dan $\sin(x)=b$. Kasus $(a,b)=(0,-1)$ diperoleh dengan $x=\nicefrac{3\pi}{2}$.
+Mengalikan dengan $-1$ sama dengan mengalikan dengan $e^{i\pi}$ atau
+$e^{-i\pi}$. Jadi, kita selalu dapat mengasumsikan bahwa $a \geq 0$ (rincian diserahkan
+sebagai latihan).
+\end{proof}
+
+\subsection{Lingkaran satuan dan koordinat polar}
+
+Jika $\gamma \colon [a,b] \to \C$ merupakan kurva mulus sepotong-sepotong,
+panjang busurnya diberikan oleh
+\begin{equation*}
+\int_a^b \babs{\gamma'(t)} \, dt .
+\end{equation*}
+Pemetaan $t \mapsto e^{it}$, untuk $t \in [0,2\pi)$, merupakan parametrisasi
+bijektif lingkaran satuan. Untuk menghitung keliling, kita gunakan parametrisasi
+satu putaran penuh pada interval tertutup $[0,2\pi]$. Karena
+$\frac{d}{dt} \bigl( e^{it} \bigr) = ie^{it}$, keliling
+lingkaran (panjang busurnya) adalah
+\begin{equation*}
+\int_0^{2\pi} \sabs{i e^{it}}  \,  dt
+=
+\int_0^{2\pi} 1  \,  dt  = 2\pi .
+\end{equation*}
+
+Lebih umum, pemetaan $t \mapsto e^{it}$ merupakan parametrisasi panjang busur bagi lingkaran.
+Artinya, $t$, sebagai ukuran sudut dalam radian, mengukur panjang busur pada
+lingkaran berjari-jari 1. Jadi, definisi $\sin$ dan $\cos$ yang diberikan
+di atas sesuai dengan definisi geometris standar.
+
+Setiap titik pada lingkaran satuan dapat dituliskan sebagai $e^{it}$ untuk suatu $t$.
+Oleh karena itu, setiap bilangan kompleks $z \in \C$ dapat dituliskan dalam
+\emph{\myindex{koordinat polar}} sebagai
+\begin{equation*}
+z = r e^{i\theta}
+\end{equation*}
+untuk suatu $r \geq 0$ dan $\theta \in \R$. Tentu saja, $\theta$
+tidak tunggal karena $\theta$ dan $\theta+2\pi$ menghasilkan bilangan yang sama.
+Hukum eksponen $e^{a+b} = e^a e^b$ menghasilkan rumus yang berguna untuk perpangkatan
+dan hasil kali bilangan kompleks dalam koordinat polar. Rumus perpangkatan berlaku untuk
+$n \in \N$, dan juga untuk $n \in \Z$ apabila $r > 0$:
+\begin{equation*}
+{(r e^{i\theta})}^n
+= r^n e^{i n \theta} ,
+\qquad
+(r e^{i\theta})
+(s e^{i\gamma})
+=
+rs e^{i(\theta+\gamma)} .
+\end{equation*}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Turunkan deret pangkat untuk $\sin(z)$ dan $\cos(z)$ di titik asal.
+\end{exercise}
+
+\begin{exercise}
+Dengan menggunakan deret pangkat, tunjukkan bahwa untuk $x$ real berlaku
+$\frac{d}{dx} \bigl[ \sin(x)\bigr] = \cos(x)$ dan
+$\frac{d}{dx} \bigl[ \cos(x)\bigr] = -\sin(x)$.
+\end{exercise}
+
+\begin{exercise}
+Lengkapi bukti bahwa pemetaan $x \mapsto e^{ix}$ dari
+$[0,2\pi)$ ke lingkaran satuan bersifat surjektif. Secara khusus, andaikan bahwa
+kita telah memperoleh semua titik berbentuk $(a,b)$ dengan $a^2+b^2=1$ dan $a \geq 0$.
+Dengan mengalikan dengan $e^{i\pi}$ atau $e^{-i\pi}$, tunjukkan bahwa kita memperoleh
+semua titik, yakni juga titik-titik dengan $a < 0$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa fungsi eksponensial kompleks $z \mapsto e^z$ surjektif dari $\C$
+ke $\C \setminus \{ 0 \}$, dan bahkan
+bahwa untuk setiap $w$ tak nol, terdapat tak berhingga banyak $z \in \C$ sedemikian sehingga $e^z=w$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa untuk setiap $w \neq 0$ dan setiap $\epsilon > 0$,
+terdapat $z \in \C$ dengan $\sabs{z} < \epsilon$ sedemikian sehingga $e^{1/z} = w$.
+\end{exercise}
+
+\begin{exercise}\label{exercise:cossinidentity}
+Kita telah menunjukkan bahwa
+${\bigl( \cos(x) \bigr)}^2 + {\bigl( \sin(x) \bigr)}^2 = 1$
+untuk setiap $x \in \R$.
+Buktikan bahwa
+${\bigl( \cos(z) \bigr)}^2 + {\bigl( \sin(z) \bigr)}^2 = 1$
+untuk setiap $z \in \C$.
+\end{exercise}
+
+\begin{exercise}
+Buktikan identitas trigonometri
+$\sin(z + w) = \sin(z) \cos(w) + \cos(z) \sin(w)$ dan
+$\cos(z + w) = \cos(z) \cos(w) - \sin(z) \sin(w)$ untuk setiap $z,w \in \C$.
+\end{exercise}
+
+\begin{exercise}
+Definisikan $\operatorname{sinc}(z) \coloneqq \frac{\sin(z)}{z}$ untuk $z \neq 0$ dan
+$\operatorname{sinc}(0) \coloneqq 1$.
+Tunjukkan bahwa fungsi sinc bersifat analitik dan hitung deret pangkatnya di titik asal.
+\end{exercise}
+
+\begin{exnote}
+\pagebreak[2]
+Definisikan \emph{\myindex{sinus hiperbolik}} dan
+\emph{\myindex{kosinus hiperbolik}} melalui
+\begin{equation*}
+\sinh(z) \coloneqq \frac{e^z-e^{-z}}{2}, \qquad
+\cosh(z) \coloneqq \frac{e^z+e^{-z}}{2}.
+\end{equation*}
+\end{exnote}
+
+\begin{exercise}
+Turunkan deret pangkat fungsi sinus hiperbolik dan fungsi kosinus hiperbolik di titik asal.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa
+\begin{enumerate}[a)]
+\item
+$\sinh(0) = 0$, $\cosh(0) = 1$.
+\item
+Untuk $x \in \R$,
+$\frac{d}{dx} \bigl[ \sinh(x) \bigr] = \cosh(x)$ dan
+$\frac{d}{dx} \bigl[ \cosh(x) \bigr] = \sinh(x)$.
+\item
+$\cosh(x) > 0$ untuk setiap $x \in \R$ dan
+pemetaan $x \mapsto \sinh(x)$ naik tegas dan bijektif dari $\R$ ke $\R$.
+\item
+${\bigl(\cosh(x)\bigr)}^2 = 1 + {\bigl(\sinh(x)\bigr)}^2$ untuk setiap
+$x$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Definisikan $\tan(x) \coloneqq \frac{\sin(x)}{\cos(x)}$ untuk $x$ dengan $\cos(x) \neq 0$, seperti biasa.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa untuk $x \in (\nicefrac{-\pi}{2},\nicefrac{\pi}{2})$,
+baik $\sin$ maupun $\tan$ naik tegas, sehingga
+fungsi invers $\arcsin$
+dan $\arctan$ ada apabila kedua fungsi tersebut dibatasi pada interval tersebut.
+\item
+Tunjukkan bahwa $\arcsin$ diferensiabel pada $(-1,1)$ dan $\arctan$
+diferensiabel pada $\R$, serta bahwa
+$\frac{d}{dx} \arcsin(x) = \frac{1}{\sqrt{1-x^2}} \quad (-1<x<1)$ dan
+$\frac{d}{dx} \arctan(x) = \frac{1}{1+x^2} \quad (x \in \R)$.
+\item
+Dengan menggunakan rumus jumlah geometri berhingga, tunjukkan bahwa deret pada
+ruas kanan persamaan berikut konvergen untuk setiap $-1 \leq x \leq 1$
+(termasuk titik-titik ujung), dan bahwa
+\begin{equation*}
+\arctan(x) = \int_0^x \frac{1}{1+t^2} dt
+=
+\sum_{k=0}^\infty \frac{{(-1)}^k}{2k+1} x^{2k+1}
+\end{equation*}
+Petunjuk: Integralkan jumlah berhingga tersebut, bukan deretnya.
+\item
+Gunakan hasil ini untuk menunjukkan bahwa
+\begin{equation*}
+1 - \frac{1}{3} + \frac{1}{5} - \cdots
+=
+\sum_{k=0}^\infty \frac{{(-1)}^k}{2k+1}
+=
+\frac{\pi}{4} .
+\end{equation*}
+\end{enumerate}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section[Prinsip maksimum dan teorema dasar aljabar]{Prinsip maksimum dan teorema dasar aljabar}
+\label{sec:fundalgeb}
+
+\sectionnotes{setengah kuliah, opsional}
+
+Pada bagian ini kita mempelajari perilaku lokal polinom dan,
+secara lebih umum, fungsi analitik,
+serta pertumbuhan polinom ketika $z$ menuju tak hingga.
+Sebagai penerapan, kita membuktikan teorema dasar aljabar:
+Setiap polinom yang tidak konstan memiliki akar kompleks.
+Kita meninjau polinom dalam variabel kompleks $z$,
+sehingga untuk menekankan domainnya kita dapat menyebutnya polinom kompleks.
+
+\begin{lemma} \label{lemma:polyalwaysgetssmaller}
+Misalkan $\epsilon > 0$,
+misalkan $p(z)$ suatu polinom kompleks yang tidak konstan, atau, secara lebih umum,
+suatu deret pangkat yang tidak konstan dan konvergen pada $B(z_0,\epsilon)$,
+dan andaikan $p(z_0) \neq 0$.
+Maka terdapat $w \in B(z_0,\epsilon)$ sedemikian sehingga $\babs{p(w)} < \babs{p(z_0)}$.
+\end{lemma}
+
+\begin{proof}
+Kita membuktikan lema ini untuk polinom; kasus yang lebih umum diserahkan sebagai
+\exerciseref{exercise:minprinciple}.
+Tanpa mengurangi keumuman, andaikan $z_0 = 0$ dan $p(0) = 1$.  Tuliskan
+\begin{equation*}
+p(z) = 1+a_kz^k + a_{k+1}z^{k+1} + \cdots + a_d z^d ,
+\end{equation*}
+dengan $a_k \neq 0$.  Pilih $t$ sedemikian sehingga $a_k e^{ikt} = -\sabs{a_k}$; hal
+ini dapat kita lakukan berdasarkan pembahasan tentang fungsi trigonometri.  Andaikan
+$r > 0$ cukup kecil sehingga
+$1-r^k \sabs{a_k} > 0$.  Kita peroleh
+\begin{equation*}
+p(r e^{it}) =
+1-r^k \sabs{a_k} + r^{k+1}a_{k+1}e^{i(k+1)t} + \cdots + r^{d}a_{d}e^{idt} .
+\end{equation*}
+Jadi,
+\begin{equation*}
+\begin{split}
+%mbxlatex &
+\babs{
+p(r e^{it}) } - \abs{
+r^{k+1}a_{k+1}e^{i(k+1)t} + \cdots + r^{d}a_{d}e^{idt}
+}
+%mbxlatex \\
+&
+%mbxlatex \qquad \qquad \qquad \qquad
+\leq
+\babs{
+p(r e^{it}) 
+- r^{k+1}a_{k+1}e^{i(k+1)t} - \cdots - r^{d}a_{d}e^{idt}
+}
+\\
+&
+%mbxlatex \qquad \qquad \qquad \qquad
+=
+\babs{
+1-r^k \sabs{a_k}
+}
+=
+1-r^k \sabs{a_k} .
+\end{split}
+\end{equation*}
+Dengan kata lain,
+\begin{equation*}
+\babs{
+p(r e^{it}) }
+\leq
+1-r^k \left( \sabs{a_k}
+-
+r
+\abs{
+a_{k+1}e^{i(k+1)t} + \cdots + r^{d-k-1}a_{d}e^{idt}
+}
+\right) .
+\end{equation*}
+Untuk $r$ yang cukup kecil, ekspresi dalam tanda kurung bernilai positif
+karena $\sabs{a_k} > 0$.  Oleh karena itu, $\babs{p(re^{it})} < 1 = p(0)$.
+\end{proof}
+
+Menurut lema tersebut, titik-titik minimum dari modulus suatu fungsi analitik
+tidak lain adalah titik-titik nol fungsi itu.
+Hasil ini kadang disebut \emph{\myindex{prinsip modulus minimum}}.
+Jika $f$ analitik dan tidak nol di suatu titik,
+maka $\nicefrac{1}{f}$ analitik di sekitar titik tersebut.  Dengan menerapkan lema ini dan
+teorema identitas, diperoleh \emph{prinsip modulus maksimum}, atau kadang-kadang
+cukup disebut \emph{prinsip maksimum}.
+
+\begin{thm}[Prinsip modulus maksimum]\index{prinsip modulus maksimum}%
+\index{prinsip maksimum!fungsi analitik}%
+\label{thm:maxprinciple}
+Jika $U \subset \C$ terbuka dan terhubung,
+$f \colon U \to \C$ analitik, dan $\babs{f(z)}$ mencapai suatu
+maksimum relatif di $z_0 \in U$, maka $f$ konstan.
+\end{thm}
+
+Perincian buktinya diserahkan kepada pembaca dalam
+\exerciseref{exercise:maxprinciple}.
+
+\begin{remark}
+Lema tersebut (dan prinsip maksimum) tidak berlaku jika kita membatasi diri pada bilangan real.  Sebagai
+contoh, $x^2+1$ memiliki minimum di $x=0$, tetapi tidak memiliki titik nol di sana.
+Terdapat $w$ yang dapat dipilih sedekat apa pun dengan $0$ sedemikian sehingga $\sabs{w^2+1} < 1$, tetapi
+$w$ ini mesti bukan bilangan real.  Pilihan $w = i\epsilon$ untuk
+$\epsilon > 0$ yang cukup kecil memenuhi sifat tersebut.
+\end{remark}
+
+Intinya adalah bahwa jika $p(0) = 1$, maka pada titik-titik yang sangat dekat dengan 0,
+deret (atau polinom) tersebut
+tampak seperti $1+az^k$, dan $1+az^k$ tidak memiliki minimum di titik asal.  Semua
+pangkat $z$ yang lebih tinggi terlalu kecil untuk memberi pengaruh.  Untuk polinom, kita menemukan perilaku serupa
+di tak hingga.
+
+\begin{lemma}
+Misalkan $p(z)$ suatu polinom kompleks tak konstan.  Maka, untuk setiap $M > 0$, terdapat
+$R > 0$ sedemikian sehingga
+$\babs{p(z)} \geq M$ apabila $\sabs{z} \geq R$.
+\end{lemma}
+
+\begin{proof}
+Tuliskan $p(z) = a_0 + a_1 z + \cdots + a_d z^d$ dan misalkan $d \geq 1$
+serta $a_d \neq 0$.
+Andaikan $\sabs{z} \geq R$ (sehingga juga $\sabs{z}^{-1} \leq R^{-1}$).
+Kita memperoleh taksiran:
+\begin{equation*}
+\begin{split}
+\babs{p(z)}
+& \geq
+\sabs{a_d z^d} -
+\sabs{a_0} - \sabs{a_1 z} - \cdots - \sabs{a_{d-1} z^{d-1} }
+\\
+& =
+\sabs{z}^d \bigl(
+\sabs{a_d} -
+\sabs{a_0} \, \sabs{z}^{-d} -
+\sabs{a_1} \, \sabs{z}^{-d+1} - \cdots - \sabs{a_{d-1}} \, \sabs{z}^{-1}
+\bigr)
+\\
+& \geq
+R^d \bigl(\sabs{a_d} -
+\sabs{a_0}R^{-d} - \sabs{a_1}R^{1-d} - \cdots - \sabs{a_{d-1}}R^{-1} \bigr)
+.
+\end{split}
+\end{equation*}
+Ekspresi dalam tanda kurung tersebut pada akhirnya bernilai positif untuk
+$R$ yang cukup besar.  Secara khusus, untuk $R$ yang cukup besar, ekspresi ini
+lebih besar daripada
+$\frac{\sabs{a_d}}{2}$, sehingga
+\begin{equation*}
+\babs{p(z)}
+\geq
+R^d \frac{\sabs{a_d}}{2} .
+\end{equation*}
+Dengan demikian,
+kita dapat memilih $R$ cukup besar sehingga batas bawah tersebut lebih besar daripada $M$ yang diberikan.
+\end{proof}
+
+Lema kedua ini \emph{tidak} dapat diperumum ke fungsi
+analitik, bahkan ke fungsi yang didefinisikan pada seluruh bidang $\C$.  Fungsi
+$\cos(z)$ merupakan contoh tandingan.
+Kita tadi harus memperhatikan
+suku yang berderajat tertinggi, dan suku semacam itu hanya dimiliki oleh
+polinom.  Bahkan, meskipun tidak akan kita buktikan, setiap fungsi analitik
+yang didefinisikan pada seluruh $\C$ dan memenuhi kesimpulan lema tersebut
+mesti merupakan polinom.
+
+Intinya di sini adalah bahwa ketika $\sabs{z}$ sangat besar (jauh dari
+titik asal), polinom berderajat $d$ benar-benar tampak seperti kelipatan konstan
+dari $z^d$.
+
+\begin{thm}[Teorema dasar aljabar]
+\index{teorema dasar aljabar}%
+Misalkan $p(z)$ suatu polinom kompleks tak konstan.  Maka terdapat $z_0 \in \C$
+sedemikian sehingga $p(z_0) = 0$.
+\end{thm}
+
+\begin{proof}
+Misalkan $\mu \coloneqq \inf \bigl\{ \babs{p(z)} : z \in \C \bigr\}$.  Pilih $R$ sedemikian sehingga
+untuk setiap $z$ dengan $\sabs{z} \geq R$, berlaku $\babs{p(z)} \geq \mu+1$.
+Dengan demikian, setiap $z$ dengan $\babs{p(z)}$ dekat dengan $\mu$ mesti berada di dalam
+bola tertutup $C(0,R) = \bigl\{ z \in \C : \sabs{z} \leq R \bigr\}$.  Karena $\babs{p(z)}$
+merupakan fungsi kontinu bernilai real, fungsi ini mencapai minimumnya
+pada himpunan kompak $C(0,R)$ (tertutup dan terbatas), dan minimum ini mesti
+sama dengan $\mu$.  Jadi, terdapat $z_0 \in C(0,R)$ sedemikian sehingga $\babs{p(z_0)} = \mu$.
+Karena nilai ini merupakan minimum $\babs{p(z)}$ pada $\C$, berdasarkan lema pertama
+di atas diperoleh $\babs{p(z_0)} = 0$.
+\end{proof}
+
+Teorema dasar tersebut juga tidak dapat diperumum ke fungsi analitik.  Fungsi
+eksponensial $e^{z}$ analitik pada $\C$ tetapi tidak memiliki titik nol.
+
+\subsection{Latihan}
+
+\begin{exercise} \label{exercise:minprinciple}
+Buktikan \lemmaref{lemma:polyalwaysgetssmaller} untuk fungsi analitik.  Artinya,
+misalkan $p(z)$ suatu deret pangkat tak konstan yang konvergen dalam
+$B(z_0,\epsilon)$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:maxprinciple}
+Gunakan \lemmaref{lemma:polyalwaysgetssmaller} untuk fungsi analitik guna membuktikan \thmref{thm:maxprinciple}.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $U \subset \C$ terbuka dan $z_0 \in U$.
+Andaikan $f \colon U \to \C$ analitik dan $f(z_0) = 0$.  Tunjukkan bahwa
+terdapat $\epsilon > 0$ sedemikian sehingga salah satu dari dua hal berikut berlaku:
+$f(z) \neq 0$ untuk setiap $z$ dengan $0 < \sabs{z-z_0} < \epsilon$,
+atau $f(z) = 0$ untuk setiap $z \in B(z_0,\epsilon)$.
+Dengan kata lain, titik nol fungsi analitik terisolasi, kecuali jika fungsi tersebut identik
+nol pada suatu lingkungan titik itu.  Secara khusus, semua titik nol polinom yang tidak identik nol bersifat terisolasi.
+\end{exercise}
+
+\begin{exnote}
+\pagebreak[1]
+Suatu \emph{\myindex{fungsi rasional}} adalah fungsi
+$f(z) \coloneqq \frac{p(z)}{q(z)}$
+di mana $p$ dan $q$ merupakan polinom dan $q$ tidak identik nol.
+Titik $z_0 \in \C$ yang memenuhi $f(z_0) = 0$ (dan karena itu $p(z_0) = 0$)
+disebut \emph{titik nol}\index{titik nol fungsi}.
+Titik $z_0 \in \C$ disebut suatu \emph{\myindex{singularitas}} fungsi
+$f$ jika $q(z_0) = 0$.  Karena titik-titik nol polinom bersifat terisolasi,
+singularitas fungsi rasional juga bersifat terisolasi
+dan karena itu disebut
+\emph{singularitas terisolasi}\index{singularitas terisolasi}.
+Suatu singularitas terisolasi disebut
+\emph{dapat dihilangkan}\index{singularitas yang dapat dihilangkan}
+jika $\lim_{z \to z_0} f(z)$ ada.
+Suatu singularitas terisolasi disebut \emph{\myindex{kutub}} jika 
+$\lim_{z \to z_0} \babs{f(z)} = \infty$.
+Kita mengatakan bahwa $f$ memiliki kutub di $\infty$ jika
+\begin{equation*}
+\lim_{z \to \infty} \babs{f(z)} = \infty ,
+\end{equation*}
+yakni jika untuk setiap $M > 0$ terdapat $R > 0$ sedemikian sehingga
+$\babs{f(z)} > M$ untuk setiap $z$ dengan $\sabs{z} > R$.
+\end{exnote}
+
+\begin{exercise}
+Tunjukkan bahwa fungsi rasional yang tidak identik
+nol hanya memiliki berhingga banyak titik nol dan
+singularitas.  Bahkan, tunjukkan bahwa jika $p$ merupakan polinom
+berderajat $n > 0$, maka polinom tersebut memiliki paling banyak $n$ titik nol.
+\\
+Petunjuk: Jika $z_0$ merupakan titik nol $p$, maka tanpa mengurangi keumuman, andaikan $z_0 =
+0$.  Kemudian gunakan induksi.
+\end{exercise}
+
+\begin{exercise}
+Buktikan bahwa jika $z_0$ merupakan singularitas yang dapat dihilangkan dari fungsi
+rasional $f(z) \coloneqq \frac{p(z)}{q(z)}$, maka terdapat
+polinom $\widetilde{p}$ dan $\widetilde{q}$ sedemikian sehingga
+$\widetilde{q}(z_0) \neq 0$ dan $f(z) =
+\frac{\widetilde{p}(z)}{\widetilde{q}(z)}$.
+\\
+Petunjuk: Tanpa mengurangi keumuman, andaikan $z_0 = 0$.
+\end{exercise}
+
+\begin{exercise}
+Diberikan fungsi rasional $f$ dengan singularitas terisolasi di $z_0$,
+tunjukkan bahwa singularitas di $z_0$ tersebut dapat dihilangkan atau merupakan kutub.
+\\
+Petunjuk: Lihat latihan sebelumnya.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f$ suatu fungsi rasional dan $S \subset \C$ merupakan
+himpunan singularitas $f$.
+Buktikan bahwa $f$ sama dengan suatu polinom tak konstan pada $\C \setminus S$
+jika dan hanya jika
+$f$ memiliki kutub di tak hingga dan semua singularitasnya dapat dihilangkan.
+\\
+Petunjuk: Lihat latihan-latihan di atas.
+\end{exercise}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Ekuikontinuitas dan teorema Arzel\`a--Ascoli}
+\label{sec:arzelaascoli}
+
+\sectionnotes{2 kuliah}
+
+Kita menginginkan suatu analog dari Bolzano--Weierstrass.  Kurang lebih berupa
+\myquote{setiap barisan fungsi terbatas (dengan suatu sifat tertentu) memiliki
+subbarisan yang konvergen.}
+Bahkan untuk fungsi kontinu pun persoalannya
+tidak sesederhana itu.
+Tidak setiap barisan terbatas dalam ruang metrik $C\bigl([0,1],\R\bigr)$ memiliki
+subbarisan yang konvergen.
+
+\begin{defn}
+Misalkan $X$ suatu himpunan dan
+$f_n \colon X \to \C$ suatu barisan fungsi.  Kita mengatakan bahwa
+$\{ f_n \}_{n=1}^\infty$
+bersifat \emph{\myindex{terbatas titik demi titik}} jika untuk setiap $x \in X$, terdapat $M_x \in \R$
+sedemikian sehingga
+\begin{equation*}
+\babs{f_n(x)} \leq M_x \qquad \text{untuk setiap } n \in \N .
+\end{equation*}
+Kita mengatakan bahwa
+$\{ f_n \}_{n=1}^\infty$
+bersifat \emph{\myindex{terbatas seragam}} jika terdapat $M \in \R$
+sedemikian sehingga
+\begin{equation*}
+\babs{f_n(x)} \leq M \qquad \text{untuk setiap } n \in \N \text{ dan setiap } x \in X.
+\end{equation*}
+\end{defn}
+
+Jika $X$ suatu ruang metrik kompak, maka suatu barisan dalam $C(X,\C)$
+bersifat terbatas seragam jika barisan tersebut terbatas sebagai suatu himpunan dalam ruang metrik
+$C(X,\C)$ dengan norma seragam.
+
+\begin{example}
+Terdapat barisan
+fungsi kontinu
+pada $[0,1]$ yang terbatas seragam tetapi tidak memuat subbarisan yang konvergen,
+bahkan secara titik demi titik.
+Kita nyatakan tanpa bukti bahwa $f_n(x) \coloneqq \sin (2\pi n x)$ merupakan salah satu
+barisan tersebut.
+Di bawah ini kita akan menunjukkan bahwa selalu ada
+subbarisan yang konvergen pada suatu himpunan titik
+yang terhitung, tetapi $[0,1]$ tak terhitung.
+\end{example}
+
+\begin{example}
+Barisan fungsi kontinu $f_n(x) \coloneqq x^n$ pada $[0,1]$
+bersifat terbatas seragam, tetapi tidak memuat subbarisan yang konvergen
+seragam,
+meskipun barisan tersebut konvergen titik demi titik (ke suatu fungsi diskontinu).
+\end{example}
+
+\begin{example}
+Barisan $\{ f_n \}_{n=1}^\infty$ dari fungsi-fungsi dalam $C\bigl([0,1],\R\bigr)$ yang diberikan oleh
+$f_n(x) \coloneqq \frac{n^3x}{1+n^4x^2}$
+konvergen titik demi titik ke fungsi nol (jelas untuk $x=0$, sedangkan untuk $x > 0$,
+kita mempunyai $\frac{n^3x}{1+n^4x^2} \leq \frac{1}{nx}$).
+Untuk setiap $x$, $\{f_n(x)\}_{n=1}^\infty$ terbatas karena konvergen ke 0.
+Jadi, $\{ f_n \}_{n=1}^\infty$ terbatas titik demi titik.
+
+Dengan kalkulus, kita memperoleh bahwa nilai maksimum
+$f_n$ pada
+$[0,1]$ dicapai di titik kritis
+$x=\nicefrac{1}{n^2}$:
+\begin{equation*}
+\snorm{f_n}_{[0,1]}
+=
+f_n\left(\nicefrac{1}{n^2}\right)
+= \nicefrac{n}{2} .
+\end{equation*}
+Jadi, $\lim_{n\to\infty} \snorm{f_n}_{[0,1]} = \infty$, dan
+barisan ini tidak terbatas seragam.
+\end{example}
+
+Jika domain terhitung, kita dapat menemukan suatu subbarisan
+yang setidaknya konvergen titik demi titik.
+Buktinya menggunakan argumen diagonal yang sangat umum dan berguna.
+
+\begin{prop} \label{prop:subsequenceoncountableX}
+Misalkan $X$ suatu himpunan terhitung dan $f_n \colon X \to \C$ membentuk
+barisan fungsi yang terbatas titik demi titik.  Maka $\{ f_n \}_{n=1}^\infty$ memiliki subbarisan yang konvergen
+titik demi titik.
+\end{prop}
+
+\begin{proof}
+Misalkan $x_1,x_2,x_3,\ldots$ merupakan enumerasi unsur-unsur $X$.
+Barisan $\{ f_n(x_1) \}_{n=1}^\infty$ terbatas, sehingga
+kita memperoleh suatu subbarisan dari $\{ f_n \}_{n=1}^{\infty}$, yang kita nyatakan dengan
+$\{ f_{1,k} \}_{k=1}^\infty$,
+sedemikian sehingga
+$\{ f_{1,k}(x_1) \}_{k=1}^\infty$ konvergen.
+Selanjutnya, $\{ f_{1,k}(x_2) \}_{k=1}^\infty$ terbatas, sehingga
+$\{ f_{1,k} \}_{k=1}^\infty$ memiliki subbarisan
+$\{ f_{2,k} \}_{k=1}^\infty$ sedemikian sehingga
+$\{ f_{2,k}(x_2) \}_{k=1}^\infty$ konvergen.  Perhatikan bahwa
+$\{ f_{2,k}(x_1) \}_{k=1}^\infty$ tetap konvergen.
+
+Secara umum, kita mempunyai barisan $\{ f_{m,k} \}_{k=1}^\infty$,
+yang merupakan subbarisan dari $\{ f_{m-1,k} \}_{k=1}^\infty$,
+sedemikian sehingga $\{ f_{m,k}(x_j) \}_{k=1}^\infty$ konvergen untuk $j=1,2,\ldots, m$.
+Kita ambil $\{ f_{m+1,k} \}_{k=1}^\infty$ sebagai subbarisan dari
+$\{ f_{m,k} \}_{k=1}^\infty$
+sedemikian sehingga
+$\{ f_{m+1,k}(x_{m+1}) \}_{k=1}^\infty$ konvergen (dan karenanya konvergen untuk semua
+$x_j$ dengan $j=1,2,\ldots,m+1$).  Ulangi terus proses ini.
+
+Jika $X$ berhingga, pembuktian selesai karena proses ini berhenti pada suatu tahap.
+Jika $X$ terhitung tak hingga,
+kita pilih barisan
+$\{ f_{k,k} \}_{k=1}^\infty$.
+Barisan ini merupakan subbarisan dari barisan semula $\{ f_n \}_{n=1}^\infty$.
+Untuk setiap $m$, ekor $\{ f_{k,k} \}_{k=m}^\infty$ merupakan subbarisan dari
+$\{ f_{m,k} \}_{k=1}^\infty$
+dan karenanya, untuk setiap $m$, barisan $\{ f_{k,k}(x_m) \}_{k=1}^\infty$ konvergen.
+\end{proof}
+
+Untuk himpunan tak terhitung,
+fungsi-fungsi dalam barisan perlu saling berkaitan.  Ketika kita meninjau
+fungsi kontinu, konsep yang kita perlukan adalah ekuikontinuitas.
+
+\begin{defn}
+Misalkan $(X,d)$ adalah ruang metrik.
+Suatu himpunan $S$ dari fungsi-fungsi
+$f \colon X \to \C$ disebut
+\emph{\myindex{ekuikontinu seragam}}
+jika untuk setiap $\epsilon > 0$, terdapat $\delta > 0$
+sedemikian sehingga jika $x,y \in X$ dengan $d(x,y) < \delta$, maka
+\begin{equation*}
+\babs{f(x)-f(y)} < \epsilon \qquad \text{untuk setiap } f \in S .
+\end{equation*}
+\end{defn}
+
+Perhatikan bahwa semua fungsi dalam barisan yang ekuikontinu seragam
+bersifat kontinu seragam.  Tidak sulit untuk menunjukkan bahwa suatu
+himpunan berhingga dari fungsi-fungsi kontinu seragam merupakan himpunan
+ekuikontinu seragam.  Definisi ini benar-benar menarik jika $S$ tak berhingga.
+
+Sebagaimana pada kekontinuan, kita dapat mendefinisikan ekuikontinuitas di suatu titik.
+Artinya, $S$ \emph{\myindex{ekuikontinu}} di $x \in X$
+jika untuk setiap $\epsilon > 0$, terdapat $\delta > 0$
+sedemikian sehingga untuk $y \in X$ dengan $d(x,y) < \delta$, berlaku
+$\babs{f(x)-f(y)} < \epsilon$ untuk setiap $f \in S$.
+Di sini kita hanya akan membahas $X$ yang kompak, dan
+dapat dibuktikan (latihan) bahwa untuk ruang metrik kompak $X$,
+jika $S$ ekuikontinu di setiap $x \in X$,
+maka himpunan itu ekuikontinu seragam.  Demi kesederhanaan,
+kita hanya menggunakan ekuikontinuitas seragam.
+
+\begin{prop}
+Misalkan $(X,d)$ adalah ruang metrik kompak,
+$f_n \in C(X,\C)$, dan $\{ f_n \}_{n=1}^\infty$
+konvergen seragam.  Maka $\{ f_n \}_{n=1}^\infty$ ekuikontinu seragam.
+\end{prop}
+
+\begin{proof}
+Ambil $\epsilon > 0$.
+Karena $\{ f_n \}_{n=1}^\infty$ konvergen seragam, terdapat $N \in \N$ sedemikian sehingga untuk
+setiap $n \geq N$
+\begin{equation*}
+\babs{f_n(x)-f_N(x)} < \nicefrac{\epsilon}{3} \qquad \text{untuk setiap } x \in X.
+\end{equation*}
+Karena $X$ kompak, setiap fungsi kontinu bersifat kontinu seragam.
+Jadi, $\{ f_1,f_2,\ldots,f_N \}$ adalah himpunan berhingga dari fungsi-fungsi kontinu
+seragam.  Karena itu, sebagaimana disebutkan di atas, himpunan tersebut ekuikontinu seragam.
+Dengan demikian, terdapat $\delta > 0$ sedemikian sehingga
+\begin{equation*}
+\babs{f_j(x)-f_j(y)} < \nicefrac{\epsilon}{3} < \epsilon
+\end{equation*}
+apabila $d(x,y) < \delta$ dan $1 \leq j \leq N$.
+
+Ambil $n > N$.  Untuk $d(x,y) < \delta$, kita peroleh
+\begin{equation*}
+%mbxlatex \begin{aligned}
+\babs{f_n(x)-f_n(y)}
+%mbxlatex &
+\leq
+\babs{f_n(x)-f_N(x)}
++
+\babs{f_N(x)-f_N(y)}
++
+\babs{f_N(y)-f_n(y)}
+%mbxlatex \\
+%mbxlatex &
+<
+\nicefrac{\epsilon}{3}
++
+\nicefrac{\epsilon}{3}
++
+\nicefrac{\epsilon}{3}
+=\epsilon . \qedhere
+%mbxlatex \end{aligned}
+\end{equation*}
+\end{proof}
+
+\begin{prop}
+Ruang metrik kompak $(X,d)$ memuat suatu subhimpunan rapat yang terhitung,
+yakni terdapat himpunan terhitung $D \subset X$ sedemikian sehingga $\widebar{D} = X$.
+\end{prop}
+
+\begin{proof}
+Untuk setiap $n \in \N$, terdapat sejumlah berhingga
+bola berjari-jari $\nicefrac{1}{n}$ yang menutupi $X$ (karena $X$ kompak). Artinya,
+untuk setiap $n$, terdapat
+titik-titik $x_{n,1},x_{n,2},\ldots,x_{n,k_n}$ dalam jumlah berhingga sedemikian sehingga
+\begin{equation*}
+X= \bigcup_{j=1}^{k_n} B(x_{n,j},\nicefrac{1}{n}) .
+\end{equation*}
+Misalkan $D \coloneqq \bigcup_{n=1}^\infty \{ x_{n,1},x_{n,2},\ldots,x_{n,k_n} \}$.
+Himpunan $D$ terhitung karena merupakan gabungan terhitung dari himpunan-himpunan berhingga.
+Untuk setiap $x \in X$
+dan setiap $\epsilon > 0$, terdapat $n$ sedemikian sehingga
+$\nicefrac{1}{n} < \epsilon$ dan terdapat $x_{n,j} \in D$ sedemikian sehingga
+\begin{equation*}
+x \in B(x_{n,j},\nicefrac{1}{n}) \subset B(x_{n,j},\epsilon) .
+\end{equation*}
+Jadi $x \in \widebar{D}$, sehingga $\widebar{D} = X$, dan $D$ rapat.
+\end{proof}
+
+Kini kita siap untuk hasil utama bagian ini,
+teorema Arzel\`a--Ascoli\footnote{%
+Dinamai menurut dua matematikawan Italia,
+\href{https://en.wikipedia.org/wiki/Cesare_Arzel\%C3\%A0}{Cesare Arzel\`a}
+(1847--1912), dan
+\href{https://en.wikipedia.org/wiki/Giulio_Ascoli}{Giulio Ascoli}
+(1843--1896).} mengenai keberadaan subbarisan yang konvergen.
+
+\begin{thm}[Arzel\`a--Ascoli]\index{teorema Arzel\`a--Ascoli}
+\label{thm:arzelaascoli}
+Misalkan $(X,d)$ suatu ruang metrik kompak, dan misalkan $\{ f_n \}_{n=1}^\infty$
+suatu barisan fungsi $f_n \in C(X,\C)$ yang terbatas titik demi titik
+dan ekuikontinu seragam.  Maka
+$\{f_n\}_{n=1}^\infty$ terbatas seragam dan $\{ f_n \}_{n=1}^\infty$ memuat subbarisan yang
+konvergen seragam.
+\end{thm}
+
+Pada dasarnya, barisan yang ekuikontinu seragam dalam ruang metrik
+$C(X,\C)$ dan terbatas titik demi titik
+bersifat terbatas (dalam $C(X,\C)$) dan, lebih lanjut, memuat subbarisan yang
+konvergen dalam $C(X,\C)$.
+
+Seperti telah disebutkan, karena $X$ kompak, cukup
+diasumsikan bahwa $\{ f_n \}_{n=1}^\infty$ ekuikontinu;
+ekuikontinuitas seragam diperoleh secara otomatis melalui suatu latihan.
+
+\begin{proof}
+Pertama-tama kita tunjukkan bahwa barisan tersebut terbatas seragam.
+Berdasarkan ekuikontinuitas seragam,
+terdapat $\delta > 0$
+sedemikian sehingga
+untuk semua $x \in X$ dan semua $n \in \N$,
+\begin{equation*}
+B(x,\delta) \subset f_n^{-1}\bigl(B(f_n(x),1)\bigr) .
+\end{equation*}
+Ruang $X$ kompak, sehingga terdapat $x_1,x_2,\ldots,x_k$
+sedemikian sehingga
+\begin{equation*}
+X = \bigcup_{j=1}^k B(x_j,\delta) .
+\end{equation*}
+Karena $\{ f_n \}_{n=1}^\infty$ terbatas titik demi titik, terdapat $M_1,M_2,\ldots,M_k$
+sedemikian sehingga untuk $j=1,2,\ldots,k$,
+\begin{equation*}
+\babs{f_n(x_j)} \leq M_j \qquad \text{untuk semua } n.
+\end{equation*}
+Misalkan $M \coloneqq 1+ \max \{ M_1,M_2,\ldots,M_k \}$.  Untuk sembarang
+$x \in X$, terdapat $j$ sedemikian sehingga $x \in B(x_j,\delta)$.  Oleh karena itu,
+untuk semua $n$, berlaku
+$x \in f_n^{-1}\bigl(B(f_n(x_j),1)\bigr)$, atau dengan kata lain
+\begin{equation*}
+\babs{f_n(x)-f_n(x_j)} < 1 .
+\end{equation*}
+Berdasarkan ketaksamaan segitiga terbalik,
+\begin{equation*}
+\babs{f_n(x)} < 1+ \babs{f_n(x_j)} \leq 1+M_j \leq M .
+\end{equation*}
+Karena $x$ dipilih sembarang, $\{f_n\}_{n=1}^\infty$ terbatas seragam.
+
+
+Selanjutnya, pilih suatu subhimpunan rapat yang terhitung $D \subset X$.
+Berdasarkan \propref{prop:subsequenceoncountableX}, kita memperoleh
+subbarisan $\{ f_{n_j} \}_{j=1}^\infty$ yang konvergen titik demi titik pada $D$.
+Agar ringkas, tuliskan $g_j \coloneqq f_{n_j}$.
+Barisan $\{ g_n \}_{n=1}^\infty$
+ekuikontinu seragam.
+Ambil $\epsilon > 0$.  Maka terdapat $\delta > 0$
+sedemikian sehingga untuk semua $x \in X$ dan semua $n \in \N$,
+\begin{equation*}
+B(x,\delta) \subset g_n^{-1}\bigl(B(g_n(x),\nicefrac{\epsilon}{3})\bigr).
+\end{equation*}
+Karena $D$ rapat dan $\delta$ tetap, setiap $x \in X$ berada dalam $B(y,\delta)$
+untuk suatu $y \in D$.  Karena $X$ kompak,
+terdapat subhimpunan berhingga $\{ x_1,x_2,\ldots,x_k \} \subset D$
+sedemikian sehingga
+\begin{equation*}
+X = \bigcup_{j=1}^k B(x_j,\delta) .
+\end{equation*}
+Karena $\{ x_1,x_2,\ldots,x_k \}$
+berhingga dan $\{ g_n \}_{n=1}^\infty$
+konvergen titik demi titik pada $D$, terdapat satu $N$ sedemikian sehingga untuk
+semua $n,m \geq N$,
+\begin{equation*}
+\babs{g_n(x_j)-g_m(x_j)} < \nicefrac{\epsilon}{3}
+ \qquad \text{untuk semua } j=1,2,\ldots,k.
+\end{equation*}
+
+Ambil sembarang $x \in X$.  Terdapat $j$ sedemikian sehingga
+$x \in B(x_j,\delta)$, sehingga untuk semua $\ell \in \N$,
+\begin{equation*}
+\babs{g_\ell(x)-g_\ell(x_j)} < \nicefrac{\epsilon}{3}.
+\end{equation*}
+Dengan demikian, untuk $n,m \geq N$,
+\begin{equation*}
+\begin{split}
+\babs{g_n(x)-g_m(x)} & \leq
+\babs{g_n(x)-g_n(x_j)} +
+\babs{g_n(x_j)-g_m(x_j)} +
+\babs{g_m(x_j)-g_m(x)}
+\\
+& <
+\nicefrac{\epsilon}{3} +
+\nicefrac{\epsilon}{3} +
+\nicefrac{\epsilon}{3} = \epsilon .
+\end{split}
+\end{equation*}
+Jadi, $\{ g_n \}_{n=1}^\infty$ adalah Cauchy secara seragam.  Karena $\C$
+lengkap secara Cauchy, \propref{prop:unifcauchymetric} menyatakan bahwa barisan tersebut konvergen seragam.
+% LEBL-ID-ADV-0242: rujukan yang hilang diselesaikan dengan prop:unifcauchymetric.
+\end{proof}
+
+\begin{cor}
+Misalkan $(X,d)$ suatu ruang metrik kompak.
+Misalkan $S \subset C(X,\C)$ suatu himpunan tertutup, terbatas, dan ekuikontinu seragam.
+Maka $S$ kompak.
+\end{cor}
+
+Teorema tersebut menyatakan bahwa $S$
+kompak secara sekuensial, dan dalam ruang metrik hal itu berarti
+kompak.
+Ingat bahwa bola satuan tertutup dalam $C\bigl([0,1],\R\bigr)$, dan karena itu juga dalam
+$C\bigl([0,1],\C\bigr)$, tidak kompak.
+Dengan demikian, himpunan tersebut tidak mungkin ekuikontinu seragam.
+
+\begin{cor}
+Misalkan $\{ f_n \}_{n=1}^\infty$ suatu barisan fungsi diferensiabel pada $[a,b]$,
+$\{ f_n' \}_{n=1}^\infty$ terbatas seragam, dan terdapat
+$x_0 \in [a,b]$ sedemikian sehingga $\{ f_n(x_0) \}_{n=1}^\infty$ terbatas.
+Maka terdapat subbarisan
+$\{ f_{n_j} \}_{j=1}^\infty$ yang konvergen seragam.
+\end{cor}
+
+\begin{proof}
+Kuncinya adalah menggunakan teorema nilai rata-rata.  Jika $M$ merupakan batas seragam bagi
+$\{ f_n' \}_{n=1}^\infty$, maka berdasarkan teorema nilai rata-rata, untuk setiap $n$,
+\begin{equation*}
+% LEBL-ID-ADV-0243: domain X yang tak terdefinisi dikoreksi menjadi [a,b].
+\babs{f_n(x)-f_n(y)} \leq M \sabs{x-y} \qquad \text{untuk semua } x,y \in [a,b].
+\end{equation*}
+Semua $f_n$ bersifat Lipschitz dengan konstanta yang sama, sehingga
+barisan tersebut
+ekuikontinu seragam.
+
+Misalkan $\babs{f_n(x_0)} \leq M_0$ untuk semua $n$.
+Untuk semua $x \in [a,b]$,
+\begin{equation*}
+\babs{f_n(x)} \leq \babs{f_n(x_0)}+ \babs{f_n(x)-f_n(x_0)} \leq M_0+ M \sabs{x-x_0}
+\leq M_0 + M(b-a) .
+\end{equation*}
+Jadi, $\{ f_n \}_{n=1}^\infty$ terbatas seragam.
+Kita menerapkan \hyperref[thm:arzelaascoli]{Arzel\`a--Ascoli} untuk memperoleh subbarisan tersebut.
+\end{proof}
+
+Penerapan klasik korolari Arzel\`a--Ascoli di atas
+dalam teori persamaan
+diferensial adalah pembuktian teorema eksistensi
+Peano, yakni keberadaan solusi bagi persamaan diferensial
+biasa.  Lihat \exerciseref{exercise:peanoexistence} di bawah.
+
+\medskip
+
+Penerapan lain teorema Arzel\`a--Ascoli, dengan menggunakan gagasan yang sama seperti
+korolari di atas, adalah sebagai berikut.
+Ambil fungsi kontinu $k \colon [0,1] \times [0,1] \to \C$.
+Untuk setiap $f \in C\bigl([0,1],\C\bigr)$, definisikan
+\begin{equation*}
+T\bigl(f\bigr)(x) \coloneqq  \int_0^1 f(t) \, k(x,t)\,dt .
+\end{equation*}
+Dalam latihan-latihan pada bagian sebelumnya, Anda telah menunjukkan bahwa
+$T$ merupakan operator linear pada $C\bigl([0,1],\C\bigr)$.
+Melalui teorema Arzel\`a--Ascoli, kita juga memperoleh (latihan) bahwa
+citra bola satuan dalam ruang fungsi,
+\begin{equation*}
+T\bigl( B(0,1) \bigr) = 
+\bigl\{
+Tf \in C\bigl([0,1],\C\bigr) :  
+\snorm{f}_{[0,1]} < 1
+\bigr\}
+\end{equation*}
+memiliki penutupan kompak; himpunan semacam itu biasanya disebut
+\emph{\myindex{relatif kompak}}.
+Operator semacam itu disebut \emph{\myindex{operator kompak}}.
+Operator-operator semacam itu sangat berguna.  Secara umum, operator yang didefinisikan melalui
+integrasi cenderung kompak.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Misalkan $f_n \colon [-1,1] \to \R$ diberikan oleh $f_n(x) \coloneqq \frac{nx}{1+{(nx)}^2}$.
+Buktikan bahwa barisan tersebut terbatas seragam dan konvergen titik demi titik ke 0,
+tetapi tidak ada
+subbarisan yang konvergen seragam.
+Hipotesis mana dari teorema Arzel\`a--Ascoli
+yang tidak dipenuhi?  Buktikan pernyataan Anda.
+\end{exercise}
+
+\begin{exercise}
+Definisikan $f_n \colon \R \to \R$ dengan $f_n(x) \coloneqq \frac{1}{{(x-n)}^2+1}$.  Buktikan bahwa
+barisan ini terbatas seragam dan ekuikontinu seragam, serta
+konvergen titik demi titik ke nol, tetapi tidak ada
+subbarisan yang konvergen seragam.
+Hipotesis mana dari teorema Arzel\`a--Ascoli
+yang tidak dipenuhi?  Buktikan pernyataan Anda.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $(X,d)$ suatu ruang metrik kompak, $C > 0$, $0 < \alpha \leq 1$, dan
+misalkan $f_n \colon X \to \C$ fungsi-fungsi sedemikian sehingga
+$\babs{f_n(x)-f_n(y)} \leq C {d(x,y)}^\alpha$ untuk semua $x,y \in X$ dan
+$n \in \N$.  Misalkan pula terdapat titik $p \in X$ sedemikian sehingga
+$f_n(p) = 0$ untuk semua $n$.
+Tunjukkan bahwa terdapat subbarisan yang konvergen seragam menuju
+suatu $f \colon X \to \C$ yang juga memenuhi $f(p) = 0$ dan
+$\babs{f(x)-f(y)} \leq C {d(x,y)}^\alpha$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $T \colon C\bigl([0,1],\C\bigr) \to C\bigl([0,1],\C\bigr)$ operator yang
+diberikan oleh
+\begin{equation*}
+T\bigl(f\bigr) (x) \coloneqq \int_0^x f(t)\, dt .
+\end{equation*}
+(Bahwa $T$ linear dan $Tf$ kontinu mengikuti dari
+linearitas integral dan
+teorema dasar kalkulus.)
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa $T$ memetakan bola satuan yang berpusat di 0 dalam $C\bigl([0,1],\C\bigr)$ ke suatu
+himpunan relatif kompak (himpunan dengan penutupan kompak).
+Dengan kata lain, $T$ merupakan operator kompak.\\
+Petunjuk: Lihat \volIref{\exerciseref*{vI-exercise:relativelycompactseq} di Jilid I}{\exerciseref{exercise:relativelycompactseq}}.
+\item
+Misalkan $C \subset C\bigl([0,1],\C\bigr)$ adalah bola satuan tertutup;
+% LEBL-ID-ADV-0244: predikat sumber yang hilang dipulihkan.
+buktikan bahwa
+citra $T(C)$ tidak tertutup (meskipun relatif kompak).
+\end{enumerate}
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Diberikan $k \in C\bigl([0,1]\times [0,1],\C\bigr)$,
+definisikan operator
+$T \colon C\bigl([0,1],\C\bigr) \to C\bigl([0,1],\C\bigr)$ dengan
+\begin{equation*}
+T\bigl(f\bigr)(x) \coloneqq  \int_0^1 f(t) \, k(x,t)\,dt .
+\end{equation*}
+Tunjukkan bahwa $T$ memetakan bola satuan yang berpusat di 0 dalam $C\bigl([0,1],\C\bigr)$ ke suatu
+himpunan relatif kompak (himpunan dengan penutupan kompak).
+Dengan kata lain, $T$ merupakan operator kompak.\\
+Petunjuk: Lihat \volIref{\exerciseref*{vI-exercise:relativelycompactseq} di Jilid I}{\exerciseref{exercise:relativelycompactseq}}.
+\\
+Catatan: Bahwa $T$ merupakan operator linear yang terdefinisi dengan baik telah dibuktikan dalam
+\exerciseref{exercise:continuouskernel}.
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Misalkan $S^1 \subset \C$ adalah lingkaran satuan, yakni himpunan semua titik yang memenuhi
+$\sabs{z}=1$.  Misalkan fungsi-fungsi kontinu
+$f_n \colon S^1 \to \C$ terbatas seragam.
+Misalkan $\gamma \colon [0,1] \to S^1$ suatu lintasan mulus sepotong-sepotong yang memparametrisasi $S^1$,
+% LEBL-ID-ADV-0245: hipotesis keteraturan lintasan yang diperlukan ditambahkan.
+dan $g(z,w)$ suatu fungsi kontinu pada $C(0,1) \times S^1$
+(di sini $C(0,1) \subset \C$ adalah bola satuan tertutup).  Definisikan
+fungsi-fungsi $F_n \colon C(0,1) \to \C$ melalui
+integral lintasan (lihat \sectionref{sec:pathintegral})
+\begin{equation*}
+F_n(z) \coloneqq \int_\gamma f_n(w)\, g(z,w) \, ds(w) . 
+\end{equation*}
+Tunjukkan bahwa $\{ F_n \}_{n=1}^\infty$ memiliki subbarisan yang konvergen seragam.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $(X,d)$ suatu ruang metrik kompak dan $\{ f_n \}_{n=1}^\infty$ suatu
+barisan fungsi dalam $C(X,\C)$ yang ekuikontinu seragam.  Misalkan
+$\{ f_n \}_{n=1}^\infty$ konvergen titik demi titik.  Tunjukkan bahwa barisan itu konvergen seragam.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\{ f_n \}_{n=1}^\infty$ suatu barisan fungsi
+$2\pi$-periodik $f_n \colon \R \to \R$ yang ekuikontinu seragam dan terbatas seragam.  Tunjukkan bahwa terdapat
+subbarisan yang konvergen seragam.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan bahwa jika $X$ merupakan ruang metrik kompak, maka
+setiap barisan $\{ f_n \}_{n=1}^\infty$ yang ekuikontinu pada setiap $x \in X$
+bersifat ekuikontinu seragam.
+\end{exercise}
+
+\begin{exercise}
+Definisikan $f_n \colon [0,1] \to \C$ dengan $f_n(t) \coloneqq e^{i(2\pi t + n)}$,
+yang menghasilkan barisan ekuikontinu seragam dan terbatas seragam.
+Buktikan suatu kesimpulan yang lebih kuat daripada kesimpulan teorema Arzel\`a--Ascoli untuk barisan ini.
+Diberikan $\gamma \in \R$,
+definisikan $g(t) \coloneqq e^{i(2\pi t + \gamma)}$.  Tunjukkan bahwa terdapat
+subbarisan dari $\{ f_n \}_{n=1}^\infty$ yang konvergen seragam ke~$g$.
+\\
+Petunjuk: Anda boleh menggunakan \emph{\myindex{teorema kepadatan Kronecker}}\footnote{%
+Dinamai menurut matematikawan Jerman
+\href{https://en.wikipedia.org/wiki/Leopold_Kronecker}{Leopold Kronecker}
+(1823--1891).}:
+Barisan $\{ e^{in} \}_{n=1}^\infty$ rapat dalam lingkaran satuan.
+\end{exercise}
+
+\begin{exercise} \label{exercise:peanoexistence}
+Buktikan \emph{\myindex{teorema eksistensi Peano}} (perhatikan hipotesis yang
+lebih lemah daripada dalam teorema Picard, tetapi juga tidak adanya
+ketunggalan dalam teorema ini):
+
+\textbf{Teorema:} \emph{Misalkan $F \colon I \times J \to \R$ adalah
+fungsi kontinu dengan
+$I, J \subset \R$ berupa interval tertutup dan terbatas,
+misalkan $I^\circ$ dan $J^\circ$ masing-masing bagian dalamnya,
+dan
+misalkan $(x_0,y_0) \in I^\circ \times J^\circ$.
+Maka terdapat $h > 0$ dan fungsi diferensiabel
+$f \colon [x_0 - h, x_0 + h] \to J \subset \R$ sedemikian sehingga}
+\begin{equation*}
+f'(x) = F\bigl(x,f(x)\bigr) \qquad \text{dan} \qquad f(x_0) = y_0.
+\end{equation*}
+
+Teorema ini dapat dibuktikan dengan menerapkan metode Euler
+untuk solusi numerik persamaan diferensial biasa dan menunjukkan bahwa
+terdapat subbarisan dari aproksimasi-aproksimasi ini yang konvergen.
+\begin{enumerate}[a)]
+\item
+Tunjukkan
+bahwa terdapat $h > 0$ sedemikian sehingga fungsi-fungsi
+$f_n$ dan $s_n$ berikut terdefinisi dengan baik pada $[x_0,x_0+h]$
+untuk setiap $n \in \N$.
+Definisikan $f_n(x_0) \coloneqq y_0$ dan $s_n(x_0) \coloneqq F(x_0,y_0)$,
+lalu, secara berurutan untuk setiap $\ell=0,1,\ldots,n-1$,
+untuk $x \in \bigl(x_0+\frac{h\ell}{n},x_0+\frac{h(\ell+1)}{n}\bigr]$
+tetapkan $s_n(x) \coloneqq F\bigl(x_0+\tfrac{h\ell}{n},
+f_n(x_0+\tfrac{h\ell}{n})\bigr)$ dan
+\begin{equation*}
+\begin{split}
+f_n(x) & \coloneqq f_n\bigl(x_0+\tfrac{h\ell}{n}\bigr)
++ \bigl(x-x_0-\tfrac{h\ell}{n}\bigr) F\bigl(x_0+\tfrac{h\ell}{n},
+f_n(x_0+\tfrac{h\ell}{n}) \bigr) \\
+& = f_n\bigl(x_0+\tfrac{h\ell}{n}\bigr)
++ \int_{x_0+\tfrac{h\ell}{n}}^x s_n(t) \, dt \\
+& = y_0
++ \int_{x_0}^x s_n(t) \, dt .
+\end{split}
+\end{equation*}
+\item
+Tunjukkan bahwa $\{ f_n \}_{n=1}^\infty$ ekuikontinu
+(bahkan Lipschitz dengan konstanta yang sama) dan terbatas seragam.
+Teorema Arzel\`a--Ascoli kemudian menyatakan bahwa terdapat
+subbarisan $\{ f_{n_k} \}_{k=1}^\infty$ yang konvergen seragam
+menuju fungsi kontinu $f$ yang terdefinisi pada $[x_0,x_0+h]$.
+\item
+Buktikan bahwa untuk setiap $x \in [x_0,x_0+h]$,
+\begin{equation*}
+\int_{x_0}^x s_{n_k}(t) \, dt
+\quad
+\text{konvergen menuju}
+\quad
+\int_{x_0}^x F\bigl(t,f(t)\bigr) \, dt ,
+\end{equation*}
+dan karena itu, dengan menerapkan teorema dasar kalkulus,
+$f$ diferensiabel pada $[x_0,x_0+h]$ dan $f'(x) = F\bigl(x,f(x)\bigr)$.
+Petunjuk 1: $F$ kontinu seragam.
+Petunjuk 2: Tunjukkan bahwa $s_{n_k}$ konvergen seragam.
+\item
+Gunakan solusi di atas untuk menunjukkan bahwa $f$ juga dapat didefinisikan
+pada $[x_0-h,x_0]$,
+mungkin untuk $h > 0$ yang lebih kecil.
+\end{enumerate}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Teorema Stone--Weierstrass}
+\label{sec:stoneweier}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{3 kuliah}
+
+\subsection{Aproksimasi Weierstrass}
+
+Mungkin mengejutkan bahwa fungsi kontinu yang berperilaku sangat buruk sekalipun
+merupakan limit seragam dari polinom.
+Kita hampir tidak dapat memperoleh fungsi yang lebih \myquote{baik}
+daripada polinom.
+Gagasan pembuktiannya merupakan gagasan aproksimasi atau \myquote{penghalusan}
+yang sangat umum (konvolusi dengan fungsi delta hampiran) dan memiliki penerapan
+jauh di luar matematika murni.
+
+\begin{thm}[Teorema aproksimasi Weierstrass]
+\index{teorema aproksimasi Weierstrass}
+Jika $f \colon [a,b] \to \C$ kontinu, maka terdapat barisan
+$\{ p_n \}_{n=1}^\infty$ polinom yang konvergen seragam ke $f$ pada $[a,b]$.
+Lebih lanjut, jika $f$ bernilai real, kita dapat memilih $p_n$ dengan koefisien real.
+\end{thm}
+
+\begin{proof}
+Untuk $x \in [0,1]$,
+definisikan
+\begin{equation*}
+g(x) \coloneqq f\bigl((b-a)x+a\bigr)-f(a) - x\bigl(f(b)-f(a)\bigr) .
+\end{equation*}
+Jika kita membuktikan teorema ini untuk $g$ dan menemukan barisan
+$\{ p_n \}_{n=1}^\infty$ untuk $g$,
+maka teorema terbukti untuk $f$: fungsi di atas diperoleh dengan
+mengomposisikan $f$ dengan suatu peta afin yang invertibel lalu menambahkan
+suatu fungsi afin.  Kita membalik proses tersebut dengan mengomposisikan $p_n$
+dengan peta afin invers lalu menambahkan kembali fungsi afin yang bersesuaian
+untuk memperoleh polinom-polinom yang mengaproksimasi $f$.
+Fungsi $g$ terdefinisi pada $[0,1]$ dan $g(0)=g(1)=0$.
+Demi kesederhanaan, andaikan
+$g$ didefinisikan pada $\R$ dengan menetapkan
+$g(x) \coloneqq 0$ jika $x < 0$ atau $x > 1$.  Perluasan $g$ ini kontinu.
+
+Definisikan
+\begin{equation*}
+c_n \coloneqq {\left( \int_{-1}^1 {(1-x^2)}^n\,dx \right)}^{-1} ,
+\qquad
+q_n(x) \coloneqq c_n (1-x^2)^n .
+\end{equation*}
+Konstanta $c_n$ dipilih
+agar $\int_{-1}^1 q_n(x)\,dx = 1$.
+Lihat \figureref{fig:weierqn}.
+
+\begin{myfigureht}
+\myincludegraphics{weierqn}{%
+Grafik sejumlah fungsi pada interval dari negatif 1 hingga 1.
+Semuanya berupa "gundukan" simetris di atas sumbu x.  Gundukan
+terendah dan terlebar berwarna gelap, lalu puncak-puncak yang lebih tinggi
+dan lebih sempit tampil dalam nuansa abu-abu yang semakin terang.}
+\caption{Grafik fungsi-fungsi delta hampiran $q_n$ pada $[-1,1]$ untuk
+$n=5,10,15,20,\ldots,100$; nilai $n$ yang lebih besar ditampilkan dalam nuansa
+yang lebih terang.\label{fig:weierqn}}
+\end{myfigureht}
+
+Fungsi-fungsi $q_n$ merupakan puncak di sekitar 0 (dengan mengabaikan apa yang
+terjadi di luar $[-1,1]$) yang semakin sempit dan tinggi ketika $n$ membesar,
+sedangkan luas di bawahnya selalu 1.
+Salah satu gagasan klasik dalam aproksimasi
+adalah melakukan integral \emph{\myindex{konvolusi}} dengan puncak seperti ini:
+Untuk $x \in [0,1]$, misalkan
+\begin{equation*}
+p_n(x) \coloneqq \int_{0}^1 g(t)q_n(x-t) \,dt \quad \left( = \int_{-\infty}^\infty
+g(t)q_n(x-t) \,dt \right) .
+\end{equation*}
+Gagasan konvolusi ini ialah mengambil \myquote{rata-rata berbobot} dari fungsi
+$g$ di sekitar titik $x$ dengan menggunakan $q_n$ sebagai bobot.
+Lihat \figureref{fig:approxdeltaconv}.
+
+\begin{myfigureht}
+\myincludegraphics{approxdeltaconv}{%
+Grafik tiga fungsi pada interval dari negatif 1 hingga 1.
+Terdapat sebuah titik pada sumbu x yang ditandai x.  Simetris terhadap
+titik x, terdapat fungsi positif berwarna abu-abu muda yang grafiknya berupa
+puncak berpusat di x dan turun dengan cepat ketika menjauh dari x.
+Grafik berwarna abu-abu berupa garis bergerigi.
+Grafik berwarna hitam menunjukkan hasil kali kedua grafik; grafik ini hampir nol pada
+sebagian besar daerah tempat garis abu-abu muda bernilai nol, sedangkan di dekat
+puncak bentuk garis abu-abu yang bergerigi diperbesar.}
+\caption{Untuk $x=0.3$, grafik $q_{100}(x-t)$ (puncak abu-abu muda yang berpusat
+di $x$), suatu fungsi kontinu
+$g(t)$ (garis bergerigi), dan hasil kali $g(t)q_{100}(x-t)$ (garis tebal).\label{fig:approxdeltaconv}}
+\end{myfigureht}
+
+Karena $q_n$ merupakan puncak yang sempit, integral tersebut
+terutama menangkap nilai-nilai $g$ yang
+dekat dengan $x$ dan mengambil rata-rata berbobotnya.
+Ketika puncaknya semakin sempit, rata-rata itu semakin tertumpu pada nilai-nilai
+fungsi di titik-titik yang dekat dengan $x$, sehingga kita mengharapkan hasilnya
+semakin mendekati nilai $g(x)$.  Sesungguhnya,
+kita sedang mengaproksimasi apa yang disebut fungsi delta\footnote{Fungsi delta
+sebetulnya bukan fungsi,
+melainkan suatu \myquote{objek} yang seharusnya memberikan
+\myquote{$\int_{-\infty}^\infty g(t) \delta(x-t) \, dt = g(x)$.}}
+(tidak perlu khawatir jika konsep ini belum pernah dijumpai),
+dan fungsi seperti $q_n$ sering disebut
+\emph{fungsi delta hampiran}\index{fungsi delta hampiran}.
+Kita dapat melakukan hal ini dengan sembarang keluarga polinom yang grafiknya
+berupa puncak-puncak yang semakin sempit di sekitar nol.  Polinom di atas kebetulan merupakan
+pilihan yang paling sederhana.
+Kita hanya memerlukan perilaku ini pada $[-1,1]$ karena konvolusi tidak menangkap
+apa pun yang lebih jauh, sebab $g$ bernilai nol di luar $[0,1]$.
+
+Karena $q_n$ merupakan polinom, kita tulis
+\begin{equation*}
+q_n(x-t) = a_0(t) + a_1(t)\,x + \cdots + a_{2n}(t)\, x^{2n} ,
+\end{equation*}
+di mana $a_k(t)$ merupakan polinom dalam $t$, dan karena itu
+merupakan fungsi yang terintegralkan.
+Jadi,
+\begin{equation*}
+\begin{split}
+p_n(x) & =
+\int_{0}^1 g(t)q_n(x-t) \,dt
+\\
+&=
+\left(
+\int_0^1
+g(t)
+a_0(t)\,dt
+\right)
++
+\left(
+\int_0^1
+g(t)
+a_1(t)\,dt
+\right)
+\,
+x
++
+\cdots
++
+\left(
+\int_0^1
+g(t)
+a_{2n}(t)\,dt
+\right)
+\,
+x^{2n} .
+\end{split}
+\end{equation*}
+Dengan kata lain, $p_n$ merupakan polinom%
+\footnote{%
+Perhatikan bahwa fungsi-fungsi $a_j$ bergantung pada $n$, sehingga koefisien $p_n$
+berubah ketika $n$ berubah.}
+ dalam $x$.
+Jika $g(t)$ bernilai real, maka fungsi-fungsi $g(t)a_j(t)$
+bernilai real dan $p_n$ memiliki koefisien real,
+yang membuktikan bagian \myquote{lebih lanjut} dari teorema.
+
+Kita masih perlu membuktikan bahwa $\{ p_n \}_{n=1}^\infty$ konvergen ke $g$.
+Kita mulai dengan menaksir besarnya~$c_n$.
+Untuk $x \in [0,1]$, berlaku $1-x \leq 1-x^2$.  Kita memperoleh taksiran
+\begin{equation*}
+\begin{split}
+c_n^{-1}   = \int_{-1}^1 {(1-x^2)}^n \, dx
+& = 2\int_0^1 {(1-x^2)}^n \, dx \\
+& \geq 2\int_0^{1} {(1-x)}^n \, dx
+= \frac{2}{n+1} .
+\end{split}
+\end{equation*}
+Jadi $c_n \leq \frac{n+1}{2} \leq n$.
+Mari kita lihat seberapa kecil $q_n$ jika suatu interval kecil di sekitar titik asal,
+tempat puncaknya berada, kita abaikan.
+Untuk sembarang $\delta > 0$ dengan $\delta < 1$,
+bagi semua
+$x$ sedemikian sehingga $\delta \leq \sabs{x} \leq 1$, berlaku
+\begin{equation*}
+q_n(x) \leq c_n {(1-\delta^2)}^n \leq  n{(1-\delta^2)}^n ,
+\end{equation*}
+karena $q_n$ naik pada $[-1,0]$ dan turun pada $[0,1]$.
+Berdasarkan uji rasio,
+$n{(1-\delta^2)}^n$ menuju 0 ketika $n$ menuju tak hingga.
+
+Fungsi $q_n$ genap, $q_n(t) = q_n(-t)$, dan $g$
+bernilai nol di luar $[0,1]$.
+Jadi, untuk $x \in [0,1]$,
+\begin{equation*}
+p_n(x) = 
+\int_{0}^1 g(t)q_n(x-t) \, dt
+=
+\int_{-x}^{1-x} g(x+t)q_n(-t) \, dt
+=
+\int_{-1}^{1} g(x+t)q_n(t) \, dt .
+\end{equation*}
+Ambil $\epsilon > 0$.
+Karena $[-1,2]$ kompak dan $g$ kontinu pada $[-1,2]$, fungsi $g$ kontinu seragam.
+Pilih $0 < \delta < 1$ sedemikian sehingga jika
+$\sabs{x-y} < \delta$ (dan $x,y \in [-1,2]$), maka
+\begin{equation*}
+\babs{g(x)-g(y)} < \frac{\epsilon}{2} .
+\end{equation*}
+Ambil $M$ sedemikian sehingga $\babs{g(x)} \leq M$ untuk semua $x$.  Ambil $N$
+sedemikian sehingga untuk semua $n \geq N$,
+\begin{equation*}
+4M n{(1-\delta^2)}^n < \frac{\epsilon}{2} .
+\end{equation*}
+Perhatikan bahwa
+$\int_{-1}^1 q_n(t) \, dt = 1$ dan $q_n(t) \geq 0$ pada $[-1,1]$.  Jadi, untuk $n
+\geq N$ dan setiap $x \in [0,1]$,
+\begin{align*}
+\babs{p_n(x)-g(x)} & =
+\abs{\int_{-1}^1 g(x+t)q_n(t) \, dt
+-g(x)\int_{-1}^1 q_n(t) \, dt} \\
+& =
+\abs{\int_{-1}^1 \bigl(g(x+t)-g(x)\bigr)q_n(t) \, dt}
+\displaybreak[0]\\
+& \leq
+\int_{-1}^1 \babs{g(x+t)-g(x)} q_n(t) \, dt
+\displaybreak[0]\\
+& =
+\int_{-1}^{-\delta} \babs{g(x+t)-g(x)} q_n(t) \, dt
+\quad +
+\int_{-\delta}^{\delta} \babs{g(x+t)-g(x)} q_n(t) \, dt
+\\
+& \phantom{\leq} +
+\int_{\delta}^1 \babs{g(x+t)-g(x)} q_n(t) \, dt
+\displaybreak[0]\\
+& \leq
+2M
+\int_{-1}^{-\delta} q_n(t) \, dt
+\quad
++
+\quad
+\frac{\epsilon}{2}
+\int_{-\delta}^{\delta} q_n(t) \, dt
+\quad
++
+\quad
+2M
+\int_{\delta}^1 q_n(t) \, dt
+\\
+& \leq
+2M n{(1-\delta^2)}^n(1-\delta)
+\quad
++
+\quad
+\frac{\epsilon}{2}
+\quad
++
+\quad
+2M n{(1-\delta^2)}^n(1-\delta) \\
+& <
+4M n{(1-\delta^2)}^n
++
+\frac{\epsilon}{2}
+< \epsilon . \qedhere
+\end{align*}
+\end{proof}
+
+Suatu konvolusi sering mewarisi sifat tertentu dari fungsi-fungsi yang kita
+konvolusikan. Dalam kasus ini, konvolusi $p_n$ mewarisi sifatnya sebagai
+polinom dari $q_n$. Gagasan pembuktian yang sama sering digunakan
+untuk memperoleh sifat-sifat lain. Jika $q_n$ atau $g$ diferensiabel tak
+berhingga kali, demikian pula $p_n$.
+% LEBL-ID-ADV-0246: klaim pewarisan PDL dipersempit ke kasus standar yang sah.
+Dengan hipotesis keteraturan standar, jika $q_n$ atau $g$ merupakan solusi global
+suatu persamaan diferensial linear homogen berkoefisien konstan, maka $p_n$ juga
+merupakan solusi persamaan yang sama. Dan seterusnya.
+
+Mari kita catat suatu penerapan langsung teorema Weierstrass. Kita telah
+melihat bahwa subhimpunan rapat yang terhitung dapat sangat berguna.
+
+\begin{cor}
+Masing-masing ruang metrik $C\bigl([a,b],\R\bigr)$ dan $C\bigl([a,b],\C\bigr)$ memuat suatu subhimpunan rapat yang terhitung.
+\end{cor}
+
+\begin{proof}
+Tanpa mengurangi keumuman, cukup tinjau
+$C\bigl([a,b],\R\bigr)$
+(mengapa?).
+Menurut teorema Weierstrass, polinom real rapat dalam $C\bigl([a,b],\R\bigr)$.
+Jika kita menunjukkan bahwa
+setiap polinom real dapat dihampiri oleh polinom berkoefisien
+rasional, pembuktian selesai.
+Memang, bilangan rasional hanya terhitung banyaknya, sehingga polinom
+berkoefisien rasional juga hanya terhitung banyaknya (gabungan terhitung dari
+himpunan-himpunan terhitung adalah terhitung).
+
+Selanjutnya, tanpa mengurangi keumuman, andaikan $[a,b]=[0,1]$. Misalkan
+\begin{equation*}
+p(x) \coloneqq \sum_{k=0}^n a_k\,  x^k
+\end{equation*}
+merupakan polinom berderajat $n$ dengan $a_k \in \R$. Untuk $\epsilon > 0$
+yang diberikan, pilih $b_k \in \Q$ sedemikian sehingga
+$\sabs{a_k-b_k} < \frac{\epsilon}{n+1}$. Kemudian, jika kita tetapkan
+\begin{equation*}
+q(x) \coloneqq \sum_{k=0}^n b_k \, x^k ,
+\end{equation*}
+diperoleh
+\begin{equation*}
+\babs{p(x)-q(x)}
+=
+\abs{\sum_{k=0}^n (a_k-b_k) x^k}
+\leq
+\sum_{k=0}^n \sabs{a_k-b_k} x^k
+\leq
+\sum_{k=0}^n \sabs{a_k-b_k}
+<
+\sum_{k=0}^n \frac{\epsilon}{n+1} = \epsilon . \qedhere
+\end{equation*}
+\end{proof}
+
+\begin{remark}
+Meskipun kita tidak akan membuktikannya, korolari di atas menyiratkan bahwa
+$C\bigl([a,b],\C\bigr)$ memiliki kardinalitas yang sama dengan $\R$; hal ini
+mungkin agak mengejutkan. Himpunan semua fungsi $[a,b] \to \C$ memiliki
+kardinalitas yang lebih besar secara ketat daripada kardinalitas $\R$, yakni
+kardinalitas himpunan kuasa $\R$. Jadi, himpunan fungsi-fungsi kontinu
+merupakan subhimpunan yang sangat kecil dari himpunan semua fungsi.
+\end{remark}
+
+\textbf{Peringatan!}
+Fakta bahwa setiap fungsi kontinu $f \colon [-1,1] \to \C$ (atau pada sembarang
+interval $[a,b]$) dapat dihampiri secara seragam oleh polinom
+\begin{equation*}
+\sum_{k=0}^n a_k\,  x^k
+\end{equation*}
+tidak berarti bahwa setiap $f$ kontinu bersifat analitik, yaitu sama dengan
+suatu deret pangkat
+\begin{equation*}
+\sum_{k=0}^\infty c_k\,  x^k .
+\end{equation*}
+Fungsi analitik diferensiabel tak berhingga kali. Akan tetapi,
+fungsi $\sabs{x}$ kontinu dan dapat dihampiri oleh polinom di sekitar titik asal,
+sehingga memberikan suatu contoh tandingan.
+
+Perbedaan kuncinya ialah bahwa
+polinom-polinom yang diperoleh dari teorema Weierstrass bukan jumlah parsial
+suatu deret pangkat. Koefisien-koefisien $a_k$ dapat sama sekali berbeda dari
+satu polinom ke polinom lainnya---koefisien tersebut tidak harus berasal dari satu barisan
+$\{ c_k \}_{k=0}^\infty$.
+
+\medskip
+
+Menariknya, untuk menggeneralisasi teorema Weierstrass, kita hanya perlu
+menggunakannya untuk menghampiri fungsi nilai mutlak dengan polinom tanpa
+suku konstan.
+
+\begin{cor}
+Misalkan $[-a,a]$ suatu interval. Maka terdapat barisan polinom real
+$\{ p_n \}_{n=1}^\infty$ yang konvergen seragam ke $\sabs{x}$ pada $[-a,a]$ dan
+memenuhi $p_n(0) = 0$ untuk setiap $n$.
+\end{cor}
+
+\begin{proof}
+Karena $f(x) \coloneqq \sabs{x}$ kontinu dan bernilai real
+pada $[-a,a]$, teorema Weierstrass memberikan barisan
+polinom real $\{ \widetilde{p}_n \}_{n=1}^\infty$ yang konvergen seragam ke $f$
+pada $[-a,a]$. Misalkan
+\begin{equation*}
+p_n(x) \coloneqq \widetilde{p}_n(x) - \widetilde{p}_n(0) .
+\end{equation*}
+Jelas bahwa $p_n(0) = 0$.
+
+Untuk $\epsilon > 0$ yang diberikan, ambil $N$ sedemikian sehingga
+untuk $n \geq N$, berlaku
+$\bigl\lvert\widetilde{p}_n(x)-\sabs{x}\big\rvert <
+\nicefrac{\epsilon}{2}$ untuk setiap $x \in [-a,a]$.
+Khususnya,
+$\babs{\widetilde{p}_n(0)} < \nicefrac{\epsilon}{2}$.
+Jadi, untuk $n \geq N$,
+\begin{equation*}
+\babs{ p_n(x)-\sabs{x} }
+=
+\babs{ \widetilde{p}_n(x) - \widetilde{p}_n(0) - \sabs{x} }
+\leq
+\babs{ \widetilde{p}_n(x) - \sabs{x} } + \babs{\widetilde{p}_n(0)} < 
+\nicefrac{\epsilon}{2} + \nicefrac{\epsilon}{2} = \epsilon . \qedhere
+\end{equation*}
+\end{proof}
+
+Dengan menggeneralisasi korolari ini, kita dapat membuat polinom-polinom dari
+teorema Weierstrass bernilai sama dengan fungsi sasaran kita pada satu titik,
+bukan hanya untuk $\sabs{x}$; tetapi kasus itulah yang kita perlukan. Kita juga
+dapat (lihat
+\exerciseref{exercise:finitelymanyweierequal})
+membuat polinom-polinom bernilai sama dengan fungsi sasaran pada sejumlah
+berhingga titik dengan mengurangkan polinom yang dirancang secara tepat sebagai
+ganti konstanta.
+
+\subsection{Aproksimasi Stone--Weierstrass}
+
+Melalui abstraksi, kita hendak menyisihkan hal-hal yang sebenarnya tidak
+diperlukan dan membuktikan suatu versi umum teorema Weierstrass, yakni teorema
+Stone--Weierstrass\footnote{%
+Dinamai menurut matematikawan Amerika
+\href{https://en.wikipedia.org/wiki/Marshall_Harvey_Stone}{Marshall Harvey Stone}
+(1903--1989) dan matematikawan Jerman
+\href{https://en.wikipedia.org/wiki/Karl_Weierstrass}{Karl Theodor Wilhelm Weierstrass}
+(1815--1897).}.
+Polinom rapat dalam ruang fungsi kontinu pada suatu interval kompak. Keluarga
+fungsi macam apa lagi yang juga rapat? Jika domainnya merupakan ruang metrik
+sebarang, kita bahkan sejak awal tidak mempunyai polinom.
+
+\begin{defn}
+\pagebreak[2]
+Suatu himpunan $\sA$ yang terdiri atas fungsi bernilai kompleks
+$f \colon X \to \C$ disebut \emph{\myindex{aljabar}} (kadang-kadang
+\emph{\myindex{aljabar kompleks}} atau \emph{aljabar atas $\C$}) jika untuk
+setiap $f,
+g \in \sA$ dan $c \in \C$, berlaku
+\begin{enumerate}[(i)]
+\item $f+g \in \sA$.
+\item $fg \in \sA$.
+\item $cg \in \sA$.
+\end{enumerate}
+Suatu \emph{\myindex{aljabar real}} atau \emph{aljabar atas $\R$} adalah
+himpunan fungsi bernilai real yang memenuhi ketiga sifat di atas untuk
+$c \in \R$.
+\end{defn}
+
+Kita tertarik pada kasus ketika $X$ merupakan ruang metrik kompak. Dalam kasus
+ini, $C(X,\C)$ dan $C(X,\R)$ merupakan ruang metrik. Untuk suatu himpunan
+$\sA \subset C(X,\C)$, himpunan semua limit seragam adalah penutupan
+$\widebar{\sA}$ dalam ruang metrik tersebut. Mulai sekarang, ketika membicarakan
+penutupan suatu aljabar, yang kita maksud adalah penutupan di dalam $C(X,\C)$
+sebagai ruang metrik. Demikian pula untuk $C(X,\R)$.
+
+Himpunan $\sP$ dari semua polinom merupakan aljabar di dalam
+$C\bigl([a,b],\C\bigr)$, dan kita telah membuktikan bahwa penutupannya
+$\widebar{\sP} = C\bigl([a,b],\C\bigr)$. Dengan kata lain, himpunan itu rapat.
+Hasil semacam inilah yang hendak kita buktikan.
+
+Proposisi berikut kita serahkan sebagai latihan.
+
+\begin{prop} \label{prop:closureofalgebra}
+Misalkan $X$ suatu ruang metrik kompak. Jika $\sA \subset C(X,\C)$ merupakan
+aljabar, maka penutupan $\widebar{\sA}$ juga merupakan aljabar. Pernyataan
+serupa berlaku bagi aljabar real di dalam $C(X,\R)$.
+\end{prop}
+
+Kita menyarikan sifat-sifat polinom yang memadai bagi suatu teorema
+aproksimasi.
+
+\begin{defn}
+Misalkan $\sA$ suatu himpunan fungsi bernilai kompleks yang didefinisikan pada
+suatu himpunan $X$.
+\begin{enumerate}[(i)]
+\item $\sA$ \emph{\myindex{memisah titik}} jika untuk setiap $x,y \in X$
+dengan $x \neq y$, terdapat $f \in \sA$ sedemikian sehingga
+$f(x) \neq f(y)$.
+\item 
+$\sA$ \emph{\myindex{tidak nol di setiap titik}} jika untuk setiap $x \in X$
+terdapat $f \in \sA$ sedemikian sehingga $f(x) \neq 0$.
+\end{enumerate}
+\end{defn}
+
+\begin{example}
+Untuk sembarang $X \subset \R$ (atau $X \subset \C$), himpunan $\sP$ dari
+polinom satu variabel memisah titik dan tidak nol di setiap titik pada $X$.
+Karena $1 \in \sP$, himpunan itu tidak nol di setiap titik. Untuk
+$x,y \in X$ dengan $x \neq y$, pilih $f(t) \coloneqq t$, sehingga
+$f(x) = x \neq y = f(y)$. Jadi, $\sP$ memisah titik.
+\end{example}
+
+\begin{example}
+Himpunan fungsi berbentuk
+\begin{equation*}
+f(t) = a_0 + \sum_{n=1}^k a_n \cos(nt)
+\end{equation*}
+merupakan suatu aljabar; hal ini mengikuti dari identitas
+$\cos(mt)\cos(nt) = 
+\frac{\cos((n+m) t)}{2}+
+\frac{\cos((n-m) t)}{2}$.
+Aljabar ini tidak nol di setiap titik karena memuat fungsi konstan yang tidak
+nol. Aljabar ini tidak memisah titik jika domainnya interval $[-a,a]$, sebab
+$f(-t) = f(t)$ untuk setiap~$t$. Aljabar ini memisah titik jika domainnya
+$[0,\pi]$; fungsi $\cos(t)$ injektif pada $[0,\pi]$.
+\end{example}
+
+\begin{example}
+Himpunan $\sP$ dari polinom real tanpa suku konstan merupakan aljabar yang nol
+di titik asal. Jelas bahwa setiap fungsi dalam penutupan $\sP$ juga nol di
+titik asal, sehingga penutupan $\sP$ tidak mungkin sama dengan
+$C\bigl([0,1],\R\bigr)$.
+
+Demikian pula, himpunan fungsi konstan merupakan aljabar yang tidak memisah
+titik. Limit seragam fungsi-fungsi konstan tetap merupakan fungsi konstan,
+sehingga kita juga tidak memperoleh semua fungsi kontinu.
+\end{example}
+
+Menarik bahwa kedua sifat ini,
+\myquote{tidak nol di setiap titik} dan
+\myquote{memisah titik}, cukup untuk mengaproksimasi setiap fungsi
+kontinu bernilai real. Sebelum membuktikan teorema ini, kita mencatat bahwa
+aljabar demikian dapat menginterpolasi sejumlah berhingga nilai secara eksak.
+Kita akan menyatakan hasil ini hanya untuk dua titik karena hanya itulah yang
+kita perlukan.
+
+\begin{prop} \label{prop:SWinterpolate}
+Misalkan $\sA$ suatu aljabar fungsi bernilai kompleks pada himpunan $X$ yang
+memisah titik dan tidak nol di setiap titik. Misalkan $x,y$ merupakan dua titik
+berbeda di $X$, dan $c,d \in \C$. Maka terdapat $f \in \sA$ sedemikian sehingga
+\begin{equation*}
+f(x) = c, \qquad f(y) = d .
+\avoidbreak
+\end{equation*}
+Jika $\sA$ merupakan aljabar real, kesimpulan tersebut berlaku untuk
+$c,d \in \R$.
+\end{prop}
+
+\begin{proof}
+Harus terdapat $g,h,k \in \sA$
+sedemikian sehingga
+$g(x) \neq g(y)$, $h(x) \neq 0$, $k(y) \neq 0$.
+Definisikan
+\begin{equation*}
+\begin{split}
+f & \coloneqq 
+c
+\frac{\bigl(g - g(y)\bigr)h}{\bigl(g(x)-g(y)\bigr)h(x) } + 
+d
+\frac{\bigl(g - g(x)\bigr)k}{\bigl(g(y)-g(x)\bigr)k(y)}
+\\
+& =
+c
+\frac{gh - g(y)h}{g(x)h(x)-g(y)h(x) } + 
+d
+\frac{gk - g(x)k}{g(y)k(y)-g(x)k(y)} .
+\end{split}
+\end{equation*}
+Kita tidak melakukan pembagian dengan nol (hal ini jelas dari rumus pertama).
+Dari rumus pertama pula, $f(x) = c$ dan $f(y) = d$.
+Dari rumus kedua, $f \in \sA$ (karena $\sA$ merupakan aljabar).
+\end{proof}
+
+\begin{thm}[Stone--Weierstrass, versi real]
+\label{thm:SWreal}%
+\index{Stone--Weierstrass!versi real}%
+Misalkan $X$ suatu ruang metrik kompak dan $\sA$ suatu aljabar real yang terdiri
+atas fungsi kontinu bernilai real pada $X$, sedemikian sehingga $\sA$ memisah
+titik dan tidak nol di setiap titik. Maka penutupannya
+$\widebar{\sA} = C(X,\R)$.
+\end{thm}
+
+Pembuktian dibagi menjadi beberapa klaim.
+
+\medskip
+
+\noindent
+\textbf{Klaim 1:} \emph{Jika $f \in \widebar{\sA}$, maka $\sabs{f} \in
+\widebar{\sA}$.}
+
+\begin{proof}
+Fungsi $f$ terbatas (karena kontinu pada himpunan kompak), sehingga terdapat
+$M$ sedemikian sehingga $\babs{f(x)} \leq M$ untuk setiap $x \in X$.
+Ambil $\epsilon > 0$. Berdasarkan korolari teorema Weierstrass, terdapat
+polinom real $c_1 y + c_2 y^2 + \cdots+ c_n y^n$ (yang nol pada $y=0$)
+sedemikian sehingga
+\begin{equation*}
+\abs{\sabs{y} - \sum_{k=1}^n c_k y^k} < \epsilon
+\end{equation*}
+untuk setiap $y \in [-M,M]$. Karena $\widebar{\sA}$ merupakan aljabar dan
+polinom tersebut tidak memiliki suku konstan,
+\begin{equation*}
+\sum_{k=1}^n c_k f^k \in \widebar{\sA} .
+\end{equation*}
+Karena $\babs{f(x)} \leq M$, untuk setiap $x \in X$ berlaku
+\begin{equation*}
+\abs{\babs{f(x)} - \sum_{k=1}^n c_k {\bigl(f(x)\bigr)}^k}
+< \epsilon .
+\end{equation*}
+Jadi, $\sabs{f}$ berada dalam penutupan himpunan $\widebar{\sA}$, yang sendiri tertutup.
+Dengan kata lain, $\sabs{f} \in \widebar{\sA}$.
+\end{proof}
+
+\medskip
+
+\noindent
+\textbf{Klaim 2:} \emph{Jika $f \in \widebar{\sA}$ dan $g \in \widebar{\sA}$, maka
+$\max(f,g) \in \widebar{\sA}$ dan
+$\min(f,g) \in \widebar{\sA}$, dengan
+}
+\begin{equation*}
+\bigl(\max(f,g)\bigr) (x) \coloneqq \max \bigl\{ f(x), g(x) \bigr\} , \qquad
+\text{dan} \qquad
+\bigl(\min(f,g)\bigr) (x) \coloneqq \min \bigl\{ f(x), g(x) \bigr\} .
+\end{equation*}
+
+\begin{proof}
+Tuliskan:
+\begin{equation*}
+\max(f,g) = \frac{f+g}{2} + \frac{\sabs{f-g}}{2} ,
+\qquad\text{dan}\qquad
+\min(f,g) = \frac{f+g}{2} - \frac{\sabs{f-g}}{2} .
+\end{equation*}
+Karena $\widebar{\sA}$ merupakan aljabar, pembuktian selesai.
+\end{proof}
+
+Dengan induksi, klaim ini juga berlaku untuk minimum atau maksimum dari suatu
+keluarga fungsi yang berhingga.
+
+\medskip
+
+\noindent
+\textbf{Klaim 3:} \emph{Untuk $f \in C(X,\R)$, $x \in X$, dan $\epsilon > 0$,
+terdapat $g_x \in \widebar{\sA}$ yang memenuhi $g_x(x) = f(x)$ dan
+}
+\begin{equation*}
+g_x(t) > f(t)-\epsilon \qquad \text{untuk setiap } t \in X.
+\end{equation*}
+
+\begin{proof}
+Tetapkan $f$, $x$, dan $\epsilon$.
+Berdasarkan \propref{prop:SWinterpolate}, untuk setiap $y \in X$ dengan
+$y \neq x$, pilih $h_y \in
+\sA$ sedemikian sehingga
+\begin{equation*}
+h_y(x) = f(x), \qquad h_y(y)=f(y) .
+\end{equation*}
+Untuk $y=x$, sifat tidak nol di setiap titik menjamin adanya $q \in \sA$
+dengan $q(x) \neq 0$; tetapkan $h_x \coloneqq f(x)q/q(x)$. Dengan demikian,
+kedua persamaan di atas berlaku untuk setiap $y \in X$.
+Karena $h_y$ dan $f$ kontinu, fungsi $h_y-f$ juga kontinu,
+dan himpunan
+\begin{equation*}
+U_y \coloneqq
+\bigl\{ t \in X : h_y(t) > f(t) -\epsilon \bigr\}
+=
+{(h_y-f)}^{-1} \bigl( (-\epsilon,\infty) \bigr)
+\end{equation*}
+terbuka (himpunan itu merupakan prapeta suatu himpunan terbuka oleh fungsi
+kontinu). Selain itu, $y \in U_y$. Jadi, himpunan-himpunan $U_y$ menutupi
+$X$. Karena ruang $X$ kompak, terdapat sejumlah berhingga titik
+$y_1,y_2,\ldots,y_n$ di $X$ sedemikian sehingga
+\begin{equation*}
+X = \bigcup_{k=1}^n U_{y_k}  .
+\end{equation*}
+Tetapkan
+\begin{equation*}
+g_x \coloneqq \max(h_{y_1},h_{y_2},\ldots,h_{y_n}) .
+\end{equation*}
+Berdasarkan Klaim 2, $g_x \in \widebar{\sA}$. Lihat \figureref{fig:stonegx}.
+Selain itu,
+\begin{equation*}
+g_x(t) > f(t) -\epsilon
+\end{equation*}
+untuk setiap $t \in X$, karena untuk setiap $t$ terdapat $y_k$ sedemikian
+sehingga $t \in U_{y_k}$, dan oleh karena itu
+$h_{y_k}(t) > f(t) -\epsilon$.
+Terakhir, $h_y(x) = f(x)$ untuk setiap $y \in X$, sehingga
+$g_x(x) = f(x)$.
+\end{proof}
+
+\begin{myfigureht}
+\myincludepdft{stonegx}{%
+Grafik beberapa fungsi dalam dua dimensi. Pada sumbu horizontal, tiga titik
+dari kiri ke kanan ditandai sebagai y subskrip 1, y subskrip 2, dan x. Grafik
+fungsi f digambar dengan garis gelap tebal. Grafik f dikurangi epsilon digambar
+di bawahnya dengan garis titik-titik. Grafik h subskrip y subskrip 1 digambar
+dengan garis putus-putus panjang dan bermula di atas f di sebelah kiri,
+memotong grafik f di y subskrip 1, lalu untuk sementara turun bahkan di bawah
+f dikurangi epsilon, khususnya di sekitar y subskrip 2, kemudian naik dan
+kembali memotong grafik f di x. Grafik h subskrip y subskrip 2 bermula di
+bawah f dikurangi epsilon, lalu naik, memotong grafik f di y subskrip 2,
+kemudian kembali memotongnya ke arah bawah di x. Di setiap titik, grafik h
+subskrip y subskrip 1 atau h subskrip y subskrip 2 berada di atas f dikurangi
+epsilon. Nilai yang lebih besar dari keduanya disorot dengan garis abu-abu
+tebal dan diberi label g subskrip x; khususnya, grafik g subskrip x berada di
+atas f dikurangi epsilon dan berimpit dengan f di x.}
+\caption{Konstruksi $g_x$ dari dua fungsi $h_{y_1}$ (garis putus-putus lebih
+panjang) dan $h_{y_2}$ (garis putus-putus lebih pendek).\label{fig:stonegx}}
+\end{myfigureht}
+
+Yang telah kita peroleh ialah, untuk setiap $x$, sebuah fungsi
+$g_x \in \widebar{\sA}$ yang mempunyai galat kurang dari $\epsilon$ terhadap
+$f$ di sekitar $x$ (karena kontinu), tetapi juga $g_x$ mempunyai galat
+satu-sisi kurang dari $\epsilon$ terhadap $f$ di semua titik.
+Jika kita menutupi $X$ dengan lingkungan-lingkungan tempat $g_x$ merupakan
+aproksimasi yang baik, gagasan argumen tersebut dapat diulangi dengan minimum
+untuk memperoleh fungsi dengan galat kurang dari $\epsilon$ pada kedua sisi.
+
+\medskip
+\pagebreak[2]
+
+\noindent
+\textbf{Klaim 4:} \emph{Jika diberikan $f \in C(X,\R)$ dan $\epsilon > 0$, maka
+terdapat $\varphi \in \widebar{\sA}$ sedemikian sehingga}
+\begin{equation*}
+\babs{f(x) - \varphi(x)} < \epsilon
+\qquad \text{untuk setiap } x \in X .
+\end{equation*}
+
+\begin{proof}
+Untuk setiap $x \in X$, pilih fungsi $g_x$ seperti dalam Klaim 3.
+Tetapkan
+\begin{equation*}
+V_x \coloneqq \bigl\{ t \in X : g_x(t) < f(t) + \epsilon \bigr\}.
+\end{equation*}
+Himpunan-himpunan $V_x$ terbuka karena $g_x$ dan $f$ kontinu.
+Karena $g_x(x) = f(x)$, kita peroleh $x \in V_x$. Jadi, himpunan-himpunan
+$V_x$ menutupi $X$. Berdasarkan kekompakan $X$, terdapat sejumlah berhingga
+titik $x_1,x_2,\ldots,x_n$ sedemikian sehingga
+\begin{equation*}
+X = \bigcup_{k=1}^n V_{x_k} .
+\end{equation*}
+Tetapkan
+\begin{equation*}
+\varphi \coloneqq \min(g_{x_1},g_{x_2},\ldots,g_{x_n}) .
+\end{equation*}
+Berdasarkan Klaim 2, $\varphi \in \widebar{\sA}$. Dengan argumen yang sama
+seperti dalam Klaim 3, untuk setiap $t \in X$,
+\begin{equation*}
+\varphi(t) < f(t) + \epsilon .
+\end{equation*}
+Karena semua $g_x$ memenuhi $g_x(t) > f(t) - \epsilon$ untuk setiap $t \in X$,
+$\varphi(t) > f(t) - \epsilon$ juga berlaku.
+Oleh karena itu, untuk setiap $t$,
+\begin{equation*}
+-\epsilon < \varphi(t) - f(t) < \epsilon ,
+\end{equation*}
+yang merupakan kesimpulan yang diinginkan.
+\end{proof}
+
+Pembuktian teorema mengikuti dari Klaim 4. Klaim tersebut menyatakan bahwa
+sebarang fungsi kontinu berada dalam penutupan $\widebar{\sA}$, yang sudah
+tertutup. Dengan demikian, teorema terbukti.
+
+\begin{example}
+Fungsi-fungsi berbentuk
+\begin{equation*}
+f(t) = \sum_{k=1}^n c_k \, e^{kt},
+\end{equation*}
+untuk $c_k \in \R$,
+rapat dalam $C\bigl([a,b],\R\bigr)$. Fungsi-fungsi demikian membentuk aljabar
+real, yang mengikuti dari $e^{kt} e^{\ell t} = e^{(k+\ell)t}$. Fungsi-fungsi
+tersebut memisah titik karena $e^t$ injektif.
+Karena $e^t > 0$ untuk setiap $t$, aljabar tersebut
+tidak nol di setiap titik.
+\end{example}
+
+Secara umum, jika diberikan suatu himpunan fungsi yang memisah titik dan tidak
+nol di setiap titik, kita membentuk aljabar yang
+\emph{dibangkitkan}\index{membangkitkan aljabar}
+oleh fungsi-fungsi tersebut dengan mempertimbangkan semua kombinasi linear
+dari hasil kali sebarang banyak fungsi tersebut. Dengan kata lain, kita mempertimbangkan semua
+polinom real tanpa suku konstan dalam fungsi-fungsi tersebut. Pada contoh di
+atas, aljabar itu dibangkitkan oleh $e^t$. Kita
+mempertimbangkan polinom dalam $e^t$ tanpa suku konstan.
+
+\begin{example}
+Kita telah menyebutkan bahwa himpunan semua fungsi berbentuk
+\begin{equation*}
+a_0 +
+\sum_{n=1}^N a_n \cos(nt)
+\end{equation*}
+merupakan suatu aljabar.
+Jika dipandang pada $[0,\pi]$,
+aljabar ini memisah titik dan tidak nol di setiap titik, sehingga
+\hyperref[thm:SWreal]{Stone--Weierstrass} dapat diterapkan.
+Seperti pada kasus polinom, kita \emph{tidak boleh} menyimpulkan bahwa setiap fungsi
+kontinu pada $[0,\pi]$ memiliki deret kosinus Fourier yang konvergen seragam,
+yaitu bahwa setiap fungsi kontinu dapat dituliskan sebagai
+\begin{equation*}
+a_0 +
+\sum_{n=1}^\infty a_n \cos(nt) .
+\end{equation*}
+Hal itu \emph{tidak benar}!
+Terdapat fungsi kontinu yang deret Fouriernya bahkan tidak konvergen secara
+titik demi titik, apalagi secara seragam. Lihat \sectionref{sec:fourier}.
+\end{example}
+
+Untuk memperoleh teorema Stone--Weierstrass bagi aljabar kompleks, kita harus
+menambahkan satu asumsi.
+
+\begin{defn}
+Suatu aljabar $\sA$ disebut \emph{\myindex{self-adjoint}} jika untuk setiap $f \in \sA$,
+fungsi $\bar{f}$ yang didefinisikan oleh $\bar{f}(x) \coloneqq \overline{f(x)}$
+berada dalam $\sA$, dengan garis atas menyatakan konjugat kompleks.
+\end{defn}
+
+\begin{thm}[Stone--Weierstrass, versi kompleks]
+\label{thm:SWcomplex}%
+\index{Stone--Weierstrass!versi kompleks}%
+Misalkan $X$ suatu ruang metrik kompak dan $\sA$ suatu aljabar fungsi kontinu
+bernilai kompleks pada $X$, sedemikian sehingga $\sA$ memisah titik, tidak nol
+di setiap titik, dan self-adjoint. Maka penutupannya
+$\widebar{\sA} = C(X,\C)$.
+\end{thm}
+
+\begin{proof}
+Andaikan $\sA_\R \subset \sA$ merupakan himpunan unsur-unsur bernilai real
+dari $\sA$.
+Untuk $f \in \sA$, tuliskan $f = u+iv$, dengan $u$ dan $v$ bernilai real.
+Maka
+\begin{equation*}
+u = \frac{f+\bar{f}}{2}, \qquad
+v = \frac{f-\bar{f}}{2i} .
+\end{equation*}
+Jadi, $u, v \in \sA$ karena $\sA$ merupakan aljabar self-adjoint, dan karena
+keduanya bernilai real, $u, v \in \sA_\R$.
+
+Jika $x \neq y$, ambillah $f \in \sA$ sedemikian sehingga $f(x) \neq f(y)$.
+Jika $f = u+iv$, jelas bahwa $u(x) \neq u(y)$ atau $v(x) \neq v(y)$.
+Jadi, $\sA_\R$ memisah titik.
+%
+Demikian pula, untuk setiap $x$, ambillah $f \in \sA$ sedemikian sehingga
+$f(x) \neq 0$. Jika $f = u+iv$, maka $u(x) \neq 0$ atau $v(x) \neq 0$.
+Jadi, $\sA_\R$ tidak nol di setiap titik.
+%
+Himpunan $\sA_\R$ merupakan aljabar real dan memenuhi hipotesis
+\hyperref[thm:SWreal]{teorema Stone--Weierstrass versi real}.
+Untuk sebarang $f = u+iv \in C(X,\C)$ dan setiap $\epsilon>0$, kita
+memperoleh $g,h \in \sA_\R$ sedemikian sehingga
+$\babs{u(t)-g(t)} < \nicefrac{\epsilon}{2}$ dan
+$\babs{v(t)-h(t)} < \nicefrac{\epsilon}{2}$ untuk setiap $t \in X$.
+Selanjutnya, $g+i h \in \sA$, dan
+\begin{multline*}
+\abs{f(t) - \bigl(g(t)+ih(t)\bigr)} = 
+\abs{u(t)+iv(t) - \bigl(g(t)+ih(t)\bigr)} \\
+\leq
+\babs{u(t)-g(t)}+\babs{v(t)-h(t)} < \nicefrac{\epsilon}{2} +
+\nicefrac{\epsilon}{2} = \epsilon
+\end{multline*}
+untuk setiap $t \in X$.
+Jadi, $\widebar{\sA} = C(X,\C)$.
+\end{proof}
+
+Syarat self-adjoint diperlukan, meskipun hal ini tidak begitu mudah terlihat.
+Sebagai contoh, lihat \exerciseref{exercise:selfadjointSW}.
+
+Kita berikan suatu penerapan yang menarik.
+Ketika menangani fungsi dua variabel, mungkin berguna untuk bekerja dengan
+fungsi berbentuk $f(x)g(y)$ alih-alih $F(x,y)$. Sebagai contoh, fungsi berbentuk
+demikian lebih mudah diintegralkan. Kita memperoleh hasil berikut.
+
+\begin{example}
+Setiap fungsi kontinu $F \colon [0,1] \times [0,1] \to \C$ dapat dihampiri
+secara seragam oleh fungsi-fungsi berbentuk
+\begin{equation*}
+\sum_{j=1}^n f_j(x) g_j(y) ,
+\end{equation*}
+dengan $f_j \colon [0,1] \to \C$ dan $g_j \colon [0,1] \to \C$ kontinu.
+
+Bukti:
+Tidak sulit melihat bahwa fungsi-fungsi berbentuk di atas membentuk suatu
+aljabar kompleks. Sama mudahnya menunjukkan bahwa aljabar itu tidak nol di
+setiap titik, memisah titik, dan self-adjoint. Karena $[0,1] \times [0,1]$
+kompak, \hyperref[thm:SWcomplex]{Stone--Weierstrass} memberikan hasil tersebut.
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Buktikan \propref{prop:closureofalgebra}.
+Petunjuk: Jika $\{ f_n \}_{n=1}^\infty$ merupakan barisan dalam $C(X,\R)$
+yang konvergen ke $f$, maka karena $f$ terbatas, tunjukkan bahwa $f_n$
+terbatas seragam, yaitu terdapat satu batas yang berlaku untuk semua $f_n$
+(dan $f$).
+\end{exercise}
+
+\begin{exercise}
+Misalkan $X \coloneqq \R$ (khususnya tidak kompak).
+Tunjukkan bahwa $f(t) \coloneqq e^t$ tidak mungkin dihampiri secara seragam
+oleh polinom pada $X$. Petunjuk: Perhatikan $\babs{\frac{e^t}{t^n}}$
+ketika $t \to \infty$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon [0,1] \to \C$ merupakan limit seragam dari suatu barisan
+polinom berderajat paling tinggi $d$. Tunjukkan bahwa limit tersebut merupakan
+polinom berderajat paling tinggi $d$. Simpulkan bahwa untuk menghampiri fungsi
+yang bukan polinom, derajat para penghampir harus menuju tak hingga.\\
+Petunjuk: Pertama, buktikan bahwa jika suatu barisan polinom berderajat $d$
+konvergen seragam ke fungsi nol, maka koefisien-koefisiennya konvergen ke nol.
+Salah satu caranya adalah menggunakan aljabar linear: Pandang evaluasi polinom $p$
+pada $d+1$ titik sebagai operator linear yang memetakan koefisien-koefisien
+$p$ ke nilai-nilai $p$ (sebuah operator dalam $L(\C^{d+1})$).
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f \colon [0,1] \to \R$ kontinu dan
+$\int_0^1 f(x) x^n \, dx = 0$ untuk setiap $n = 0,1,2,\ldots$.
+Tunjukkan bahwa $f(x) = 0$ untuk setiap $x \in [0,1]$.
+Petunjuk: Gunakan aproksimasi polinomial untuk menunjukkan bahwa
+$\int_0^1 {\bigl( f(x) \bigr)}^2 \, dx = 0$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $I \colon C\bigl([0,1],\R\bigr) \to \R$ merupakan
+fungsional linear kontinu sedemikian sehingga
+$I(x^n) = \frac{1}{n+1}$
+untuk setiap $n=0,1,2,3,\ldots$.
+Buktikan bahwa $I(f) = \int_0^1 f$ untuk setiap
+$f \in C\bigl([0,1],\R\bigr)$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\sA$ adalah himpunan polinom real dalam $x^2$,
+yakni polinom berbentuk
+$c_0 + c_1 x^2 + c_2 x^4 + \cdots + c_d x^{2d}$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa setiap $f \in C\bigl([0,1],\R\bigr)$ merupakan limit seragam
+dari polinom dalam $\sA$.
+\item
+Temukan suatu $f \in  C\bigl([-1,1],\R\bigr)$ yang bukan merupakan
+limit seragam dari polinom dalam $\sA$.
+\item
+Hipotesis mana dari teorema Stone--Weierstrass versi real yang tidak dipenuhi
+untuk domain $[-1,1]$?
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[3]
+Misalkan $\sabs{z}=1$ mendefinisikan lingkaran satuan $S^1 \subset \C$.
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa fungsi-fungsi berbentuk
+\begin{equation*}
+\sum_{k=-n}^n c_k\, z^k
+\end{equation*}
+rapat dalam $C(S^1,\C)$.  Perhatikan adanya pangkat negatif.
+\item 
+Tunjukkan bahwa fungsi-fungsi berbentuk
+\begin{equation*}
+c_0
++
+\sum_{k=1}^n c_k \, z^k
++
+\sum_{k=1}^n c_{-k}\, \bar{z}^k
+\end{equation*}
+rapat dalam $C(S^1,\C)$.
+Fungsi-fungsi ini disebut \emph{\myindex{polinom harmonik}},
+dan aproksimasi ini, misalnya, mengarah pada penyelesaian
+masalah panas keadaan tunak.
+\end{enumerate}
+Petunjuk: Salah satu cara yang baik untuk menuliskan persamaan bagi $S^1$
+adalah $z \bar{z} = 1$.
+\end{exercise}
+
+\begin{exercise} \label{exercise:trigpolydense}
+Tunjukkan bahwa setiap fungsi kontinu $f \colon [-\pi,\pi] \to \C$
+yang memenuhi $f(-\pi)=f(\pi)$ dapat didekati secara seragam oleh
+fungsi-fungsi berbentuk
+\begin{equation*}
+\sum_{k=-n}^n c_k \, e^{ik x}
+\end{equation*}
+dengan $c_k$ berupa bilangan kompleks.
+\end{exercise}
+
+\begin{exercise} \label{exercise:selfadjointSW}
+Misalkan $S^1 \subset \C$ adalah lingkaran satuan, yaitu himpunan semua
+titik yang memenuhi $\sabs{z} = 1$.  Orientasikan himpunan ini berlawanan arah jarum jam.
+Misalkan $\gamma(t) \coloneqq e^{it}$.
+Untuk bentuk-1 $f(z)\,dz$, kita tulis\footnote{%
+Sebagai alternatif, kita dapat mendefinisikan $dz \coloneqq dx + i \, dy$ dan
+memperluas integral lintasan dari \chapterref{path:chapter} ke
+bentuk-1 bernilai kompleks.}
+\begin{equation*}
+\int_{S^1} f(z) \,dz \coloneqq \int_0^{2\pi} f(e^{it}) \, i e^{it} \, dt . 
+\end{equation*}
+\begin{enumerate}[a)]
+\item
+Buktikan bahwa untuk setiap bilangan bulat taknegatif $k = 0,1,2,3,\ldots$, berlaku
+$\int_{S^1} z^k \, dz = 0$.
+\item
+Buktikan bahwa jika
+$P(z) = \sum_{k=0}^n c_k z^k$ merupakan
+polinom dalam $z$, maka
+$\int_{S^1} P(z) \, dz = 0$.
+\item
+Buktikan bahwa
+$\int_{S^1} \bar{z} \, dz \neq 0$.
+\item
+Simpulkan bahwa polinom dalam $z$ (aljabar fungsi ini
+tidak self-adjoint) tidak rapat dalam $C(S^1,\C)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $(X,d)$ merupakan ruang metrik kompak dan
+andaikan $\sA \subset C(X,\R)$ adalah aljabar real yang memisahkan titik-titik, tetapi
+semua fungsinya bernilai nol secara serentak tepat di satu titik $x_0 \in X$.
+Artinya, $f(x_0) = 0$ untuk setiap $f \in \sA$,
+tetapi untuk setiap $y \in X \setminus \{ x_0 \}$ terdapat
+suatu $\varphi \in \sA$ sedemikian sehingga $\varphi(y) \neq 0$.  Buktikan bahwa
+setiap fungsi $g \in C(X,\R)$ yang memenuhi $g(x_0) = 0$ merupakan limit seragam
+dari fungsi-fungsi dalam $\sA$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $(X,d)$ merupakan ruang metrik kompak dengan sekurang-kurangnya dua titik dan
+andaikan $\sA \subset C(X,\R)$ adalah aljabar real.
+Andaikan bahwa untuk setiap $y \in X$, penutupan $\widebar{\sA}$
+memuat fungsi jarak $\varphi_y(x) \coloneqq d(y,x)$.
+Tunjukkan bahwa $\widebar{\sA} = C(X,\R)$.
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Andaikan $f \colon [a,b] \to \C$ diferensiabel secara kontinu.
+Tunjukkan bahwa terdapat suatu barisan polinom
+$\{ p_n \}_{n=1}^\infty$
+yang konvergen dalam norma $C^1$ ke $f$, yaitu,
+$\snorm{f - p_n}_{[a,b]} + \snorm{f'-p_n'}_{[a,b]} \to 0$ ketika $n \to \infty$.
+\item
+Andaikan $f \colon [a,b] \to \C$ diferensiabel secara kontinu hingga orde $k$.
+Tunjukkan bahwa terdapat suatu barisan polinom
+$\{ p_n \}_{n=1}^\infty$
+yang konvergen dalam norma $C^k$ ke $f$, yaitu,
+\begin{equation*}
+\sum_{j=0}^k \norm{f^{(j)} - p_n^{(j)}}_{[a,b]} \to 0 \qquad \text{ketika} \qquad
+n \to \infty.
+\end{equation*}
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+\leavevmode
+\begin{enumerate}[a)]
+\item
+Tunjukkan bahwa fungsi genap $f \colon [-1,1] \to \R$ merupakan limit seragam
+dari polinom yang hanya memuat pangkat genap, yaitu, polinom
+berbentuk $a_0 + a_1 x^2 + a_2 x^4 + \cdots + a_k x^{2k}$.
+\item
+Tunjukkan bahwa fungsi ganjil $f \colon [-1,1] \to \R$ merupakan limit seragam
+dari polinom yang hanya memuat pangkat ganjil, yaitu, polinom
+berbentuk $b_1 x + b_2 x^3 + b_3 x^5 + \cdots + b_k x^{2k-1}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise} \label{exercise:finitelymanyweierequal}
+\pagebreak[2]
+Misalkan $f \colon [a,b] \to \R$ kontinu.
+\begin{enumerate}[a)]
+\item
+Diberikan dua titik $x_1,x_2 \in [a,b]$, tunjukkan bahwa
+terdapat suatu barisan polinom real $\{ p_n \}_{n=1}^\infty$
+sedemikian sehingga $p_n(x_1) = f(x_1)$ dan $p_n(x_2) = f(x_2)$ untuk setiap $n$.
+\item
+Generalisasikan bagian sebelumnya ke $k$ titik:
+Diberikan titik-titik $x_1,x_2,\ldots,x_k \in [a,b]$, tunjukkan bahwa
+terdapat suatu barisan polinom real $\{ p_n \}_{n=1}^\infty$
+sedemikian sehingga untuk setiap $n$, $p_n(x_j) = f(x_j)$ untuk $j=1,2,\ldots,k$.
+\\
+Setelah membuang titik-titik yang berulang, andaikan $x_1,x_2,\ldots,x_k$ berbeda sepasang-sepasang.
+Petunjuk: Polinom $(x-x_1)(x-x_2)\cdots(x-x_{\ell-1})(x-x_{\ell+1})
+\cdots(x-x_k)$ bernilai nol di $x_j$ untuk $j \neq \ell$, tetapi tidak nol di
+$x_\ell$.  Gunakan polinom ini untuk membangun polinom yang mengambil nilai-nilai yang ditentukan
+di $x_1,x_2,\ldots,x_k$.
+\end{enumerate}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Deterministic reader cutoff after the admitted Stone--Weierstrass section.

@@ -60,7 +60,7 @@ audit matematika serta bahasa independen. Istilah `norma C^k` ditambahkan
 sebagai `LEBL-TERM-0760`.
 
 Pembaca Jilid II lulus converter tanpa error, sembilan pass TeX dengan tujuh
-produk bantu byte-stabil, 80/80 font tertanam, 638 tautan, 13 entri outline,
+produk bantu byte-stabil, 85/85 objek font tertanam, 638 tautan, 13 entri outline,
 ekstraksi teks, serta render halaman 1–2 dan 193–224. Halaman 201–215 berisi
 Bagian 11.7 lengkap. Blok isi terpusat dalam lima piksel, memakai sekitar
 76,5% lebar halaman, dan tidak terpotong. Berkas akhir adalah 2.281.400 byte

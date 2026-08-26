@@ -25,7 +25,7 @@ Runtime provenance: `OpenAI Codex gpt-5.6-sol, Ultra`
 
 - Strict `pypdf` reopen passed: 224 pages, not encrypted, metadata title exact, 862 annotations, 638 link annotations, and 13 top-level outline entries.
 - `pdfinfo` reports uniform US-letter pages (612 × 792 pt), zero rotation, and no suspect objects, forms, JavaScript, or encryption.
-- `pdffonts` enumerated 80 font objects; every font is embedded. The expected mathematical Type 1 subsets and the localized DejaVu Serif object are present.
+- An independent `pdffonts` recount of the final packaged PDF enumerated 85 font-object rows; every row is embedded. The expected mathematical Type 1 subsets and the localized DejaVu Serif object are present.
 - Full-document text extraction contains no literal `??`, undefined marker, TODO, or placeholder. Tail pages 193–224 contain no English theorem/exercise/figure scaffolding.
 
 ## Visual and reflow QA
