@@ -2,7 +2,7 @@
 
 Updated: 2026-08-26
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U397 is publicly preserved and anonymously verified on GitHub and Zenodo; R006 continues from the Fourier-series subsection; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U397 is publicly preserved and anonymously verified on GitHub and Zenodo; local U402 reaches the Fourier coefficient-decay and higher-regularity criteria; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-26
 
@@ -10,24 +10,28 @@ This block supersedes every older progress count or publication pointer later
 in this historical log. The machine-readable authorities are
 `CURRENT_STATE.json`, `CURRENT_CURSOR.json`, and `PUBLICATION_STATE.json`.
 
-- Public and live boundary: U397, manifest 397 (R006 312, R007 35, R008 50),
+- Public boundary: U397, manifest 397 (R006 312, R007 35, R008 50),
   605.334 bytes, SHA-256
   `e69eff9f1ab797ccb1be2865bc95999631d6fd5a374d5250db3b4cfb816db347`.
   U309–U312 translate the Section 11.8 opening and complete
   `Polinom trigonometri`, including periodicity, coefficient recovery, the
   real-valued conjugate criterion, and linear independence. ADV-0257 repairs
-  the source's undefined zero-frequency antiderivative quotient. The live
-  target is 194.506 bytes, SHA-256
+  the source's undefined zero-frequency antiderivative quotient. The public
+  U397 target is 194.506 bytes, SHA-256
   `3de28aaac5ce08b69e97060ea01fe7f1d0e7b9d1c024e2fad49e9ece3893b839`.
-- Backend U397 A/B is byte-identical: 27 files / 16.839.490 bytes, 3.831
-  records, 794 expressions, 766 current logical terms, 257 corrections, 33
-  assets, 646 relations, and 21 O001 gaps. All 397 live unit bindings are exact,
+- Live boundary: U402, manifest 402 (R006 317, R007 35, R008 50), 616.116
+  bytes, SHA-256
+  `a5feefbebb43ae71592e6719bba8b68e2f10956377e9c313442b7f507c7754f0`.
+  U313–U317 translate the `Deret Fourier` opening through coefficients, the
+  step and absolute-value examples, and the coefficient-decay continuity and
+  higher-regularity criteria. The full live target is 195.484 bytes, SHA-256
+  `9a8dc615527f68311fa93bb06b590d09625c0f255b5f621bbafea343d1a047d7`.
+- Backend U402 A/B is byte-identical: 27 files / 17.027.975 bytes, 3.865
+  records, 804 expressions, 775 current logical terms, 258 corrections, 33
+  assets, 646 relations, and 21 O001 gaps. All 402 live unit bindings are exact,
   generic validation passes, and all 15 CSV views round-trip losslessly.
   Canonical inventory SHA-256 is
-  `0b5720512a26fb12282971daf04d45c5db55d8678afe1a35e5cc44de0675302b`.
-  The builder now refreshes retained manifest witnesses deterministically;
-  this repaired the one pre-existing about-book binding drift without changing
-  its stable identity or non-binding fields.
+  `264c369360bb245742ca5f108ade5c2a62997a85461601a6c27cb9e8b21d787e`.
 - Centered U397 reader PASS: 226 pages / 2.292.242 bytes, SHA-256
   `40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d`.
   The final nine-pass build has zero TeX/reference failures and zero visible
@@ -49,9 +53,12 @@ in this historical log. The machine-readable authorities are
   `007128997ddcbd448ff26cd97556b2a3f9de2035` (tree
   `7488ae6658145a5e518825064cd455a30e7b59aa`) contains those receipts and all
   seven bounded controls/receipts; anonymous readback matched all 408.484 bytes.
-- Next resume only R006 at frozen
-  source raw line 4363 / live target raw line 4371, the `Fourier series`
-  subsection.
+  Final pointer commit `57211953210933e7bcaf6165b2d04587fcd00200`
+  (tree `4d845894ee625231d4c2357cc3f567ff15a87009`) also passed anonymous
+  readback for all seven files / 409.835 bytes. Neither commit changed the U397
+  release tag or Zenodo record.
+- Next resume only R006 at frozen source raw line 4612 / live target raw line
+  4620, the `Orthonormal systems` / `Sistem ortonormal` subsection.
   R007 remains at
   `ch-first-order-ode.tex` raw line 89; R008 remains at `ca.tex` raw line 1648.
   HP-LEBL-R007-001 is owner-accepted only for complete

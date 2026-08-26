@@ -4368,35 +4368,35 @@ untuk semua $x \in [-\pi,\pi]$, maka $c_n = 0$ untuk semua $n$.
 Hasil tersebut langsung mengikuti rumus integral untuk $c_n$.
 \end{proof}
 
-\subsection{Fourier series}
+\subsection{Deret Fourier}
 
-We now take limits.  The series
+Sekarang kita mengambil limit. Deret
 \begin{equation*}
 \sum_{n=-\infty}^\infty c_n \, e^{inx}
 \end{equation*}
-is called
-the \emph{\myindex{Fourier series}} and the numbers $c_n$
-the \emph{\myindex{Fourier coefficients}}.  Using
-Euler's formula $e^{i\theta} = \cos(\theta) + i \sin (\theta)$,
-we could also develop everything with
-sines and cosines, that is, as the series
+dinamakan
+\emph{\myindex{deret Fourier}}, dan bilangan-bilangan $c_n$
+dinamakan \emph{\myindex{koefisien Fourier}}. Dengan menggunakan
+rumus Euler $e^{i\theta} = \cos(\theta) + i \sin (\theta)$,
+kita juga dapat mengembangkan seluruh pembahasan dengan
+sinus dan kosinus, yaitu sebagai deret
 $a_0 + \sum_{n=1}^\infty a_n \cos(nx) + b_n \sin(nx)$.
-It is equivalent, but slightly messier.
+Bentuk tersebut ekuivalen, tetapi sedikit lebih rumit.
 
-Several questions arise.  What functions are expressible as 
-Fourier series?  Obviously, they have to be $2\pi$-periodic, but not every
-periodic function is expressible with the series.  Furthermore, if we do have
-a Fourier series, where does it converge (where and if at all)?  Does it converge
-absolutely?  Uniformly?  Also note that the series has two
-limits.  When talking about Fourier series convergence, we often
-talk about the following limit:
+Muncul beberapa pertanyaan. Fungsi-fungsi apa saja yang dapat dinyatakan sebagai
+deret Fourier? Jelas bahwa fungsi-fungsi tersebut harus $2\pi$-periodik, tetapi tidak setiap
+fungsi periodik dapat dinyatakan dengan deret tersebut. Selanjutnya, jika kita memang memiliki
+deret Fourier, di mana deret itu konvergen (atau apakah ia konvergen sama sekali)? Apakah deret itu konvergen
+secara mutlak? Secara seragam? Perhatikan pula bahwa indeks deret tersebut menuju tak hingga
+dalam dua arah. Ketika membahas konvergensi deret Fourier, kita sering
+membicarakan limit berikut:
 \begin{equation*}
 \lim_{N\to\infty} 
 \sum_{n=-N}^N c_n e^{inx} .
 \end{equation*}
-There are other ways we can sum the series to get convergence in more
-situations, but we refrain from discussing those.  In light of this,
-define the \emph{\myindex{symmetric partial sums}}
+Ada cara-cara lain untuk menjumlahkan deret tersebut yang menghasilkan konvergensi dalam lebih banyak
+keadaan, tetapi kita tidak akan membahasnya. Dengan mempertimbangkan hal ini,
+kita definisikan \emph{\myindex{jumlah parsial simetris}}
 \glsadd{not:FSsympartsum}
 \begin{equation*}
 s_N(f;x) \coloneqq 
@@ -4405,35 +4405,35 @@ s_N(f;x) \coloneqq
 
 \medskip
 
-Conversely, for an integrable function $f \colon [-\pi,\pi] \to
-\C$, call the numbers
+Sebaliknya, untuk suatu fungsi terintegralkan $f \colon [-\pi,\pi] \to
+\C$, bilangan-bilangan
 \begin{equation*}
 c_n \coloneqq 
 \frac{1}{2\pi} \int_{-\pi}^\pi
 f(x) e^{-inx} \, dx
 \end{equation*}
-its \emph{Fourier coefficients}.  To emphasize the function
-the coefficients belong to,
-we write $\hat{f}(n)$.\footnote{The notation should seem similar
-to Fourier transform to those readers that have seen it.
-The similarity is not just
-coincidental, we are taking a type of Fourier transform here.}
-We then formally write down a Fourier series:\glsadd{not:FS}
+disebut \emph{koefisien Fourier} dari fungsi tersebut. Untuk menegaskan fungsi
+yang memiliki koefisien-koefisien itu,
+kita menulis $\hat{f}(n)$.\footnote{Bagi pembaca yang pernah mengenal
+transformasi Fourier, notasi ini semestinya tampak serupa.
+Keserupaan tersebut bukan sekadar
+kebetulan; di sini kita mengambil suatu jenis transformasi Fourier.}
+Kemudian kita menuliskan secara formal sebuah deret Fourier:\glsadd{not:FS}
 \begin{equation*}
 f(x) \sim
 \sum_{n=-\infty}^\infty c_n \, e^{inx} .
 \end{equation*}
-As you might imagine such a series might not even converge.
-The $\sim$ doesn't imply anything about the two sides being equal
-in any way.  It is simply that we created a formal series using the formula
-for the coefficients.  We will see that when the functions are
-\myquote{nice enough,} we do get convergence.
+Seperti yang dapat dibayangkan, deret semacam itu bahkan mungkin tidak konvergen.
+Tanda $\sim$ sama sekali tidak menyiratkan bahwa kedua ruas tersebut sama
+dalam arti apa pun. Tanda itu hanya menunjukkan bahwa kita membentuk sebuah deret formal dengan menggunakan rumus
+bagi koefisien-koefisiennya. Kita akan melihat bahwa untuk fungsi yang
+\myquote{cukup baik,} kita memang memperoleh konvergensi.
 
 \begin{example}
-Consider the step function $h(x)$ so that $h(x) \coloneqq 1$
-on $[0,\pi]$ and $h(x) \coloneqq -1$ on $(-\pi,0)$, extended periodically to a
-$2\pi$-periodic function.  With a little bit of calculus,
-we compute the coefficients:
+Perhatikan fungsi tangga $h(x)$ sedemikian sehingga $h(x) \coloneqq 1$
+pada $[0,\pi]$ dan $h(x) \coloneqq -1$ pada $(-\pi,0)$, lalu diperluas secara periodik menjadi
+fungsi $2\pi$-periodik. Dengan sedikit kalkulus,
+kita menghitung koefisien-koefisiennya:
 \begin{equation*}
 %mbxlatex \begin{aligned}
 \hat{h}(0)
@@ -4449,10 +4449,10 @@ we compute the coefficients:
 =
 \frac{1}{2\pi} \int_{-\pi}^\pi h(x) e^{-inx} \, dx
 =
-\frac{i\bigl( (-1)^n-1 \bigr)}{\pi n} \quad \text{for } n \neq 0 .
+\frac{i\bigl( (-1)^n-1 \bigr)}{\pi n} \quad \text{untuk } n \neq 0 .
 %mbxlatex \end{aligned}
 \end{equation*}
-A little bit of simplification leads to
+Sedikit penyederhanaan menghasilkan
 \begin{equation*}
 s_N(h;x) =
 \sum_{n=-N}^N \hat{h}(n) \,e^{inx} 
@@ -4460,12 +4460,12 @@ s_N(h;x) =
 \sum_{n=1}^N \frac{2\bigl(1-(-1)^n\bigr)}{\pi n} \sin(n x) .
 \avoidbreak
 \end{equation*}
-See the left hand graph in \figureref{fig:fourierheavicsaw}
-for a graph of $h$ and several symmetric partial sums.
+Untuk grafik $h$ dan beberapa jumlah parsial simetris, lihat grafik sebelah kiri
+pada \figureref{fig:fourierheavicsaw}.
 
-For a second example, consider the function $g(x) \coloneqq \sabs{x}$
-on $[-\pi,\pi]$ and then extended to a $2\pi$-periodic function.
-Computing the coefficients, we find
+Sebagai contoh kedua, perhatikan fungsi $g(x) \coloneqq \sabs{x}$
+pada $[-\pi,\pi]$, lalu perluas menjadi fungsi $2\pi$-periodik.
+Dengan menghitung koefisien-koefisiennya, kita peroleh
 \begin{equation*}
 %mbxlatex \begin{aligned}
 \hat{g}(0)
@@ -4481,10 +4481,10 @@ Computing the coefficients, we find
 =
 \frac{1}{2\pi} \int_{-\pi}^\pi g(x) e^{-inx} \, dx
 =
-\frac{(-1)^n-1}{\pi n^2} \quad \text{for } n \neq 0 .
+\frac{(-1)^n-1}{\pi n^2} \quad \text{untuk } n \neq 0 .
 %mbxlatex \end{aligned}
 \end{equation*}
-A little simplification yields
+Sedikit penyederhanaan memberikan
 \begin{equation*}
 s_N(g;x) =
 \sum_{n=-N}^N \hat{g}(n) \,e^{inx} 
@@ -4492,130 +4492,130 @@ s_N(g;x) =
 \frac{\pi}{2} + 
 \sum_{n=1}^N \frac{2\bigl((-1)^n-1\bigr)}{\pi n^2} \cos(n x) .
 \end{equation*}
-See the right hand graph in \figureref{fig:fourierheavicsaw}.
+Lihat grafik sebelah kanan pada \figureref{fig:fourierheavicsaw}.
 
 \begin{myfigureht}
 \myincludepdft{fourierheavi_csaw}{%
-Two graphs of 2 pi periodic functions shown over an interval
-slightly larger than from minus pi to pi.  On the left,
-the rectangular wave is shown which starts at value 1 when x is
-less than minus pi, then becomes minus 1 from minus pi to 0, then
-becomes 1 from 0 to pi, then becomes minus 1 again.
-On the right, a triangular (in particular continuous) wave is shown
-that is an upward sloping straight line hitting pi at minus pi, then a
-downward sloping straight line hitting 0 at 0, then going
-up again to pi at pi, then down again.
-Several partial sum approximations of the Fourier series are graphed
-in lighter shades of gray
-approximating the two functions.  Notably on the left the approximations
-are visibly worse with lots of wiggles around the straight segments, while
-on the right the approximations quickly seem to approximate only
-approaching slowly near the corners of the graph.}
-\caption{The functions $h$ and $g$ in bold, with several
-symmetric partial sums in gray.\label{fig:fourierheavicsaw}}
+Dua grafik fungsi berperiode 2 pi ditampilkan pada interval
+yang sedikit lebih lebar daripada interval dari minus pi hingga pi. Di sebelah kiri,
+diperlihatkan gelombang persegi panjang yang dimulai pada nilai 1 ketika x
+lebih kecil daripada minus pi, lalu menjadi minus 1 pada interval terbuka dari minus pi hingga 0, kemudian
+menjadi 1 dari 0 hingga pi, lalu kembali menjadi minus 1.
+Di sebelah kanan, diperlihatkan gelombang segitiga (khususnya kontinu)
+berupa garis lurus menanjak yang mencapai pi pada minus pi, lalu
+garis lurus menurun yang mencapai 0 pada 0, kemudian
+naik kembali menuju pi pada pi, lalu turun kembali.
+Beberapa aproksimasi jumlah parsial dari deret Fourier digambarkan
+dengan corak abu-abu yang lebih muda
+untuk mengaproksimasi kedua fungsi tersebut. Yang mencolok, di sebelah kiri aproksimasinya
+tampak lebih buruk dengan banyak riak di sekitar ruas-ruas lurus, sedangkan
+di sebelah kanan aproksimasinya tampak cepat mendekati fungsi, kecuali
+di dekat sudut-sudut grafik, tempat pendekatannya lebih lambat.}
+\caption{Fungsi $h$ dan $g$ dengan garis tebal, disertai beberapa
+jumlah parsial simetris berwarna abu-abu.\label{fig:fourierheavicsaw}}
 \end{myfigureht}
 
-Note that for both $h$ and $g$, the even coefficients (except $\hat{g}(0)$)
-happen to vanish, but that is not really important.
-What is important is convergence.
-First, at the discontinuity at $x=0$, we find $s_N(h;0) = 0$
-for all $N$, so $s_N(h;0)$ converges
-to a different number from $h(0)$ (at a nice enough jump discontinuity, the
-limit is the average of the two-sided limits, see the exercises).
-That should not be surprising;
-the coefficients are computed by an integral, and integration
-does not notice if the value of a function changes at a single point.
-We should remark, however, that we are not guaranteed that in general
-the Fourier series converges to the function even at a point where
-the function is continuous.
-We will prove convergence if the function is at least Lipschitz.
+Perhatikan bahwa untuk $h$ maupun $g$, koefisien genapnya (kecuali $\hat{g}(0)$)
+ternyata nol, tetapi hal itu tidak terlalu penting.
+Yang penting adalah konvergensi.
+Pertama, pada diskontinuitas di $x=0$, kita memperoleh $s_N(h;0) = 0$
+untuk setiap $N$, sehingga $s_N(h;0)$ konvergen
+ke bilangan yang berbeda dari $h(0)$ (pada diskontinuitas lompatan yang cukup baik,
+limitnya adalah rata-rata dari kedua limit sepihak; lihat latihan).
+Hal itu tidak semestinya mengejutkan;
+koefisien-koefisien tersebut dihitung dengan integral, sedangkan integrasi
+tidak mendeteksi perubahan nilai fungsi pada satu titik saja.
+Namun, perlu kita tegaskan bahwa secara umum tidak ada jaminan
+deret Fourier konvergen ke fungsinya, bahkan pada titik tempat
+fungsi tersebut kontinu.
+Kita akan membuktikan konvergensi jika fungsi tersebut setidaknya kontinu Lipschitz.
 
-What is really important is how fast the coefficients go to zero.  For the
-discontinuous $h$, the coefficients $\hat{h}(n)$ go to zero approximately like
-$\nicefrac{1}{n}$.  On the other hand, for the continuous $g$,
-the coefficients $\hat{g}(n)$ go to zero approximately like
+Yang benar-benar penting adalah seberapa cepat koefisien menuju nol. Untuk
+$h$ yang diskontinu, koefisien $\hat{h}(n)$ menuju nol kira-kira seperti
+$\nicefrac{1}{n}$. Di sisi lain, untuk $g$ yang kontinu,
+koefisien $\hat{g}(n)$ menuju nol kira-kira seperti
 $\nicefrac{1}{n^2}$.
-The Fourier coefficients \myquote{see}
-the discontinuity in some sense.
+Dalam arti tertentu, koefisien Fourier \myquote{melihat}
+diskontinuitas tersebut.
 
-Do note that continuity in this setting is the continuity of the
-periodic extension, that is, we include the endpoints $\pm \pi$.
-So the function $f(x) = x$ defined on $(-\pi,\pi]$
-and extended periodically would be discontinuous at the endpoints $\pm\pi$.
+Perhatikan bahwa kekontinuan dalam konteks ini adalah kekontinuan
+perluasan periodik; artinya, kita menyertakan titik-titik ujung $\pm \pi$.
+Jadi, fungsi $f(x) = x$ yang didefinisikan pada $(-\pi,\pi]$
+dan diperluas secara periodik akan diskontinu pada titik-titik ujung $\pm\pi$.
 \end{example}
 
-In general, the relationship between regularity of the function and
-the rate of decay of the coefficients is somewhat more complicated
-than the example above
-might make it seem, but there are some quick conclusions we can make.
-We forget about finding a series for a function for a moment,
-and we consider simply the limit of some given series.
-A few sections ago, we proved that the Fourier series 
+Secara umum, hubungan antara regularitas fungsi dan
+laju peluruhan koefisien agak lebih rumit
+daripada kesan yang mungkin ditimbulkan oleh contoh di atas,
+tetapi ada beberapa kesimpulan yang dapat segera kita tarik.
+Untuk sementara, kita lupakan pencarian deret bagi suatu fungsi,
+dan cukup meninjau limit suatu deret yang diberikan.
+Beberapa bagian sebelumnya, kita telah membuktikan bahwa deret Fourier
 \begin{equation*}
 \sum_{n=1}^\infty \frac{\sin(nx)}{n^2}
 \end{equation*}
-converges uniformly and hence converges to a continuous function.  This 
-example and its proof can be extended to a more general criterion.
+konvergen secara seragam dan karenanya konvergen ke suatu fungsi kontinu. Contoh
+beserta buktinya dapat diperluas menjadi kriteria yang lebih umum.
 
 \begin{prop}
-Let $\sum_{n=-\infty}^\infty c_n\, e^{inx}$ be a Fourier series,
-and $C$, $\alpha > 1$ constants such that
+Misalkan $\sum_{n=-\infty}^\infty c_n\, e^{inx}$ suatu deret Fourier,
+dan misalkan $C$ serta $\alpha > 1$ adalah konstanta sedemikian sehingga
 \begin{equation*}
 \sabs{c_n} \leq \frac{C}{\sabs{n}^\alpha}
-\qquad \text{for all } n \in \Z \setminus \{ 0 \}.
+\qquad \text{untuk setiap } n \in \Z \setminus \{ 0 \}.
 \avoidbreak
 \end{equation*}
-Then the series converges (absolutely and uniformly) to a continuous function on $\R$.
+Maka deret tersebut konvergen (secara mutlak dan seragam) ke suatu fungsi kontinu pada $\R$.
 \end{prop}
 
-The proof is to apply the Weierstrass $M$-test (\thmref{thm:weiermtest}) and
-the $p$-series test to find that the series converges uniformly and hence
-to a continuous function (\corref{cor:metricuniformcontinuous}).
-We can also take derivatives.
+Buktinya dilakukan dengan menerapkan uji $M$ Weierstrass (\thmref{thm:weiermtest}) dan
+uji deret-$p$ untuk memperoleh bahwa deret tersebut konvergen secara seragam dan karenanya
+konvergen ke suatu fungsi kontinu (\corref{cor:metricuniformcontinuous}).
+Kita juga dapat mengambil turunan.
 
 \begin{prop}
-Let $\sum_{n=-\infty}^\infty c_n\, e^{inx}$ be a Fourier series,
-and $C$, $\alpha > 2$ constants such that
+Misalkan $\sum_{n=-\infty}^\infty c_n\, e^{inx}$ suatu deret Fourier,
+dan misalkan $C$ serta $\alpha > 2$ adalah konstanta sedemikian sehingga
 \begin{equation*}
 \sabs{c_n} \leq \frac{C}{\sabs{n}^\alpha}
-\qquad \text{for all } n \in \Z \setminus \{ 0 \}.
+\qquad \text{untuk setiap } n \in \Z \setminus \{ 0 \}.
 \avoidbreak
 \end{equation*}
-Then the series converges to a continuously differentiable function on $\R$.
+Maka deret tersebut konvergen ke suatu fungsi yang diferensiabel secara kontinu pada $\R$.
 \end{prop}
 
-The proof is to note that the series converges to a continuous
-function by the previous proposition.
-In particular, it converges at some point.
-Then differentiate the partial sums,
+Buktinya dimulai dengan memperhatikan bahwa berdasarkan proposisi sebelumnya
+deret tersebut konvergen ke suatu fungsi kontinu.
+Khususnya, deret tersebut konvergen di suatu titik.
+Kemudian diferensialkan jumlah-jumlah parsialnya,
 \begin{equation*}
 \sum_{n=-N}^{N}
 i n c_n \,e^{inx}
 \end{equation*}
-and notice that for all nonzero $n$
+dan perhatikan bahwa untuk setiap $n$ tak nol
 \begin{equation*}
 \sabs{i n c_n} \leq \frac{C}{\sabs{n}^{\alpha-1}} .
 \end{equation*}
-The differentiated series converges uniformly by the $M$-test again.  Since
-the differentiated series
-converges uniformly, we find that the original series
+Deret hasil diferensiasi kembali konvergen secara seragam berdasarkan uji $M$. Karena
+deret hasil diferensiasi tersebut
+konvergen secara seragam, kita memperoleh bahwa deret semula
 $\sum_{n=-\infty}^\infty c_n\,e^{inx}$
-converges 
-to a continuously differentiable function, whose derivative is
-the differentiated series (see \thmref{thm:dersconvergecomplex}).
+konvergen
+ke suatu fungsi yang diferensiabel secara kontinu, yang turunannya adalah
+deret hasil diferensiasi tersebut (lihat \thmref{thm:dersconvergecomplex}).
 
-We can iterate this reasoning.
-Suppose there is
-some $C$ and $\alpha > k+1$ ($k \in \N$) such that
-for all nonzero integers $n$,
+Kita dapat mengiterasikan penalaran ini.
+Misalkan terdapat
+suatu $C$ dan $\alpha > k+1$ ($k \in \N$) sedemikian sehingga
+untuk setiap bilangan bulat $n$ tak nol,
 \begin{equation*}
 \sabs{c_n} 
 \leq \frac{C}{\sabs{n}^\alpha} .
 \end{equation*}
-Then 
-the Fourier series converges to a $k$-times continuously differentiable
-function.  Therefore, the faster the coefficients go to zero, the more
-regular the function is.
+Maka
+deret Fourier tersebut konvergen ke suatu fungsi yang diferensiabel secara kontinu
+hingga orde $k$. Karena itu, semakin cepat koefisien-koefisien menuju nol, semakin tinggi
+regularitas fungsi tersebut.
 
 \subsection{Orthonormal systems}
 

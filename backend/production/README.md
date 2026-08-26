@@ -1,41 +1,49 @@
 # Production backend checkpoints
 
-## Local release-ready checkpoint U397
+## Current local checkpoint U402
 
-`v0.4-live-2026.08.26-u397-a/` is the authoritative local checkpoint for the
-next nonduplicative release. It binds the 397-row translation manifest,
-766-row live terminology ledger, 257-event adverse ledger, and 21-entry O001
-solution-gap ledger.
+`v0.4-live-2026.08.26-u402-a/` is the authoritative local checkpoint. It binds
+the 402-row translation manifest, 775-row live terminology ledger, 258-event
+adverse ledger, and 21-entry O001 solution-gap ledger.
 
-- 3,831 canonical records, 397 manifest segments, 428 units, 754 concepts,
-  794 expressions, and exactly 766 current logical terms;
+- 3,865 canonical records, 402 manifest segments, 433 units, 763 concepts,
+  804 expressions, and exactly 775 current logical terms;
 - 21 O001 exercise gaps, ten source hints, eleven no-hint states, and no
   invented answers or solutions;
 - 15 deterministic CSV projections;
-- 27 files / 16,839,490 bytes;
+- 27 files / 17,027,975 bytes;
 - `records.jsonl` SHA-256
-  `06cbd8385c8187482eeb9e1f1bcd55fd5278ccaa509a0573143ab4df17ae42ee`;
+  `e13b5971336ad1e204701c23754f3b08300651fe5d96bd732ff1620178900904`;
 - canonical inventory SHA-256
-  `0b5720512a26fb12282971daf04d45c5db55d8678afe1a35e5cc44de0675302b`.
+  `264c369360bb245742ca5f108ade5c2a62997a85461601a6c27cb9e8b21d787e`.
 
-All schemas, referential checks, all 397 live manifest bindings, 308 directly
-resolved component bindings, 15 CSV views, and lossless round trips pass.
-Independent replay `-u397-b` produced the identical path/byte/hash inventory
-and is intentionally omitted from the public package. Public U393 remains
-current until the U397 publication and anonymous byte-readback transaction
-finishes.
+All schemas, referential checks, all 402 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u402-b` produced the
+identical path/byte/hash inventory. U402 extends the public U397 checkpoint
+through Fourier coefficients, the step and absolute-value examples, and the
+coefficient-decay regularity criteria. It has not replaced the U397 public
+release.
 
-## Current public checkpoint U393
+## Current public checkpoint U397
 
-`v0.4-live-2026.08.26-u393-final-e/` is the public checkpoint represented by
-GitHub release `lebl-family-id-wip.2026.08.26.u393` and Zenodo record
-`22104149`. It binds 393 admitted units and 3,806 canonical records. Its
-27-file backend tree totals 16,690,330 bytes and has canonical inventory
+`v0.4-live-2026.08.26-u397-a/` is the public checkpoint represented by GitHub
+release `lebl-family-id-wip.2026.08.26.u397` and Zenodo record `22105195`. It
+binds 397 admitted units and 3,831 canonical records. Its 27-file backend tree
+totals 16,839,490 bytes and has canonical inventory
 SHA-256
-`eb022c1d1388f5ef8c84574438f44d8c7ed9a3e05d070d0b2ea20395e9eb781e`.
+`0b5720512a26fb12282971daf04d45c5db55d8678afe1a35e5cc44de0675302b`.
 
-The release contains one canonical backend replay; its public assets were
-anonymously read back and verified after publication.
+The release contains one canonical backend replay. All nine GitHub assets and
+all nine Zenodo assets, totaling 12,439,062 bytes per provider, plus the
+bounded repository overlays were anonymously read back and verified.
+
+## Preserved public checkpoint U393
+
+`v0.4-live-2026.08.26-u393-final-e/` remains historical evidence for GitHub
+release `lebl-family-id-wip.2026.08.26.u393` and Zenodo record `22104149`.
+It binds 393 admitted units and 3,806 canonical records. Its 27-file backend
+tree totals 16,690,330 bytes and has canonical inventory SHA-256
+`eb022c1d1388f5ef8c84574438f44d8c7ed9a3e05d070d0b2ea20395e9eb781e`.
 
 ## Preserved public checkpoint U370
 

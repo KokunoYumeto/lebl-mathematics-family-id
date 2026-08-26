@@ -17,7 +17,7 @@ OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna. Jiří Lebl tetap
 merupakan penulis karya sumber; semua kredit sumber dan kontributor manusia
 dipertahankan. Edisi ini independen dan tidak menyiratkan dukungan penulis.
 
-## Status checkpoint U397
+## Status publik U397 dan sumber hidup U402
 
 Ini masih *work in progress*, bukan klaim bahwa ketiga buku sudah selesai.
 
@@ -37,6 +37,15 @@ v0.4-live U397 memuat 3.831 rekaman, termasuk 397 segmen manifes, 428 unit,
 sumber yang tercatat, serta 21 pemetaan kekosongan solusi O001. Lima belas
 proyeksi CSV berputar balik tepat ke seluruh rekaman, dan dua build independen
 identik pada path, ukuran, dan SHA-256.
+
+Cabang utama sudah berlanjut ke checkpoint sumber U402: 402 unit unik
+(R006 317, R007 35, R008 50). Empat unit baru sesudah pembuka deret Fourier
+mencakup definisi koefisien Fourier, contoh fungsi tangga dan nilai mutlak,
+serta kriteria peluruhan koefisien untuk kekontinuan dan regularitas lebih
+tinggi. Backend U402 memuat 3.865 rekaman dan 804 ekspresi; dua build 27 berkas
+identik byte demi byte dan seluruh 15 proyeksi CSV lulus putar balik. PDF
+pembaca publik tetap U397 sampai batas pembaca berikutnya selesai dibangun dan
+diverifikasi; rilis maupun DOI U397 tidak diubah oleh checkpoint sumber ini.
 
 ## Pembaca utama
 
