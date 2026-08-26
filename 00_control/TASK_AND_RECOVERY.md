@@ -2,7 +2,7 @@
 
 Updated: 2026-08-26
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U393 remains publicly preserved and anonymously verified; local U397 completes the R006 trigonometric-polynomial subsection with deterministic backend PASS and a verified centered 226-page reader; U397 publication is next; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U397 is publicly preserved and anonymously verified on GitHub and Zenodo; R006 continues from the Fourier-series subsection; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-26
 
@@ -10,16 +10,7 @@ This block supersedes every older progress count or publication pointer later
 in this historical log. The machine-readable authorities are
 `CURRENT_STATE.json`, `CURRENT_CURSOR.json`, and `PUBLICATION_STATE.json`.
 
-- Public boundary: U393, manifest 393 (R006 308, R007 35, R008 50),
-  remains unchanged. GitHub release commit
-  `12b304221fcdf65a5d62a2807bcfc78601a7b6eb`, release
-  `lebl-family-id-wip.2026.08.26.u393`, and Zenodo DOI
-  `10.5281/zenodo.22104149` expose the same nine files / 12.383.839 bytes.
-  Every public asset passed anonymous size/SHA-256 readback. The centered
-  224-page R006 Volume II reader ends after complete Section 11.7 and all
-  fourteen exercises. Its SHA-256 is
-  `5a8db6dd8f9b559c578fe31678943e093650019686e2e75cc752d1b2b49bb211`.
-- Live boundary: U397, manifest 397 (R006 312, R007 35, R008 50),
+- Public and live boundary: U397, manifest 397 (R006 312, R007 35, R008 50),
   605.334 bytes, SHA-256
   `e69eff9f1ab797ccb1be2865bc95999631d6fd5a374d5250db3b4cfb816db347`.
   U309–U312 translate the Section 11.8 opening and complete
@@ -46,8 +37,15 @@ in this historical log. The machine-readable authorities are
   `qa/R006_FOURIER_TRIGONOMETRIC_POLYNOMIAL_READER_U397_20260826.md`,
   5.996 bytes, SHA-256
   `719330ff435534e81459e82ff46eac736d12ef9734871033e8d120f114338824`.
-- Next publish U397 on the existing GitHub and Zenodo lineages with anonymous
-  public-byte readback. Then resume only R006 at frozen
+- GitHub release
+  `https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id-wip.2026.08.26.u397`
+  and Zenodo DOI `10.5281/zenodo.22105195` expose the identical nine-file /
+  12.439.062-byte U397 payload. Anonymous downloads matched every local
+  filename, byte count, and SHA-256 on both providers; the Zenodo concept
+  latest endpoint resolves to record 22105195. Sanitized receipts are
+  `publication/wip-2026.08.26-u397/GITHUB_PUBLICATION_RECEIPT.md` and
+  `publication/wip-2026.08.26-u397/ZENODO_PUBLICATION_RECEIPT.md`.
+- Next resume only R006 at frozen
   source raw line 4363 / live target raw line 4371, the `Fourier series`
   subsection.
   R007 remains at
@@ -88,13 +86,13 @@ this Lebl-family lane are allowed when they become an ordinary release step.
 Current workspace rules and the user's direct correction supersede stale
 conversational confirmation gates. The user explicitly directed that the
 public repositories remain maintained even while the corpus is incomplete, so
-clean, explicitly labeled, nonduplicative WIP checkpoints are published after
-their bounded gates and public-byte readback. The current Zenodo version is
-`10.5281/zenodo.22104149` in concept lineage
-`10.5281/zenodo.22059779`; the latest-version endpoint resolves record
-`22104149`. GitHub access is healthy; release commit
-`12b304221fcdf65a5d62a2807bcfc78601a7b6eb` and U393 were published and
-anonymously verified. The exact authorized Figshare credential path was absent
+  clean, explicitly labeled, nonduplicative WIP checkpoints are published after
+  their bounded gates and public-byte readback. The current Zenodo version is
+  `10.5281/zenodo.22105195` in concept lineage
+  `10.5281/zenodo.22059779`; the latest-version endpoint resolves record
+  `22105195`. GitHub access is healthy; release commit
+  `a35de2ff999291c3414d6ba319f16bb149c7d5f5` and U397 were published and
+  anonymously verified. The exact authorized Figshare credential path was absent
 on 2026-08-26, so no account call, mutation, or duplicate was made. Every
 current or future
 reader, repository description, release payload, and preservation record must
@@ -102,13 +100,14 @@ identify the runtime generically as acting on the user's instruction; it must
 not publish the user's personal first name. Historical immutable releases are
 evidence, not inputs to a new payload.
 
-The public repository `main` and the U393 release bind the same 393-row
-manifest: R006 U001–U308, R007 U001–U035, and R008 U001–U050. The release
-contains nine anonymously verified assets totaling 12.383.839 bytes. The
-primary current reader is the centered 224-page Volume II PDF through all
-fourteen exercises closing Section 11.7. GitHub, Zenodo, and the bounded
-Figshare-attempt receipts are under `publication/wip-2026.08.26-u393/`.
-Earlier versions remain public evidence.
+The public repository `main` at the U397 release checkpoint and the U397 release
+bind the same 397-row manifest: R006 U001–U312, R007 U001–U035, and R008
+U001–U050. The release contains nine anonymously verified assets totaling
+12.439.062 bytes. The primary current reader is the centered 226-page Volume II
+PDF through complete Subsection 11.8.1, `Polinom trigonometri`. GitHub and
+Zenodo receipts are under `publication/wip-2026.08.26-u397/`; the last bounded
+Figshare-attempt receipt remains historical evidence under
+`publication/wip-2026.08.26-u393/`. Earlier versions remain public evidence.
 
 ## Production requirements
 
@@ -145,12 +144,12 @@ Exports must be schema-versioned, UTF-8, deterministic, and round-trip tested.
 Maintain the individual Lebl-family mirror/fork and a future central-hub
 handoff. The corpus remains incomplete. The verified source mirror and WIP
 prerelease are public at
-<https://github.com/KokunoYumeto/lebl-mathematics-family-id>; the current
-preservation version is <https://zenodo.org/records/22104149>. The public
+  <https://github.com/KokunoYumeto/lebl-mathematics-family-id>; the current
+  preservation version is <https://zenodo.org/records/22105195>. The public
 Figshare collection remains `10.6084/m9.figshare.c.8668413.v43`, but its
 account route was not called at U393 because its exact authorized credential
-path was absent; do not create a duplicate to bypass that failure. See
-`PUBLICATION_STATE.json` and the U393 publication receipts. Do not contact
+  path was absent; do not create a duplicate to bypass that failure. See
+  `PUBLICATION_STATE.json` and the U397 GitHub/Zenodo publication receipts. Do not contact
 authors during production. Only after the
 full three-book corpus is complete may at most one concise, high-confidence,
 deduplicated upstream issue be sent if the tracker permits it. It must disclose

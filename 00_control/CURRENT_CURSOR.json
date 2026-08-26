@@ -341,7 +341,7 @@
     "ra.v2.fourier-series.trigonometric-polynomials.periodicity-and-coefficient-recovery",
     "ra.v2.fourier-series.trigonometric-polynomials.real-valued-criterion-and-linear-independence"
   ],
-  "next_action": "publish the verified nonduplicative U397 checkpoint through the existing GitHub and Zenodo lineages with anonymous byte readback, then continue contiguous translation at source/ra-v6.3/ch-approximate.tex raw line 4363 and translation/ra/ch-approximate.tex raw line 4371 with the Fourier-series subsection; R007 HP-LEBL-R007-001 remains accepted and must not be recopied",
+  "next_action": "continue contiguous translation at source/ra-v6.3/ch-approximate.tex raw line 4363 and translation/ra/ch-approximate.tex raw line 4371 with the Fourier-series subsection, then admit the next coherent unit and rebuild the modular backend; U397 is already public and anonymously verified on GitHub and Zenodo and must not be republished; R007 HP-LEBL-R007-001 remains accepted and must not be recopied",
   "last_completed_unit": "ra.v2.fourier-series.trigonometric-polynomials.real-valued-criterion-and-linear-independence",
   "last_completed_target_sha256": "3ba524f76f9108be2dd3043dd314aa01eb4e7a58152eb9d017c129f3142a28dc",
   "last_completed_source": "source/ra-v6.3/ch-approximate.tex raw lines 4307-4361; 1308 bytes; SHA-256 1f1df63e3dbaf654c6f1a55a4b27075aec4081ef69a0e866c2dc26a84db35634",
@@ -368,7 +368,7 @@
     "backend_manifest_binding_checks": 397,
     "backend_receipt": "qa/BACKEND_V0_4_LIVE_U397_20260826.md",
     "backend_receipt_sha256": "c2c2aba7594b89c7821ab0072b381bea64ba8baa328a6962763538ac59b897a4",
-    "reader_status": "pass_centered_226_page_U397_reader_zero_unresolved_references_zero_visible_question_mark_placeholders_85_of_85_fonts_embedded_independent_final_byte_audit_pass_publication_pending",
+    "reader_status": "pass_centered_226_page_U397_reader_zero_unresolved_references_zero_visible_question_mark_placeholders_85_of_85_fonts_embedded_independent_final_byte_audit_pass_published_github_and_zenodo_anonymous_9_of_9_each",
     "reader_path": "output/pdf/Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_11.8.1_Polinom_Trigonometrik.pdf",
     "reader_pages": 226,
     "reader_bytes": 2292242,
@@ -383,13 +383,14 @@
       "owner_target_sha256": "adee2f44b4a570b8f89f01c529d9bb9ebc38c0999ceb949360f4c075390003a1",
       "owner_receipt": "qa/R007_NONLINEAR_SYSTEMS_HP001_OWNER_THREE_WAY_QA_20260825.md"
     },
-    "public_boundary": "U393",
-    "public_reader": "output/pdf/Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_11.7_Latihan.pdf",
-    "public_reader_sha256": "5a8db6dd8f9b559c578fe31678943e093650019686e2e75cc752d1b2b49bb211",
-    "public_github_release_commit": "12b304221fcdf65a5d62a2807bcfc78601a7b6eb",
-    "public_github_main_commit": "e333c481e3e0436f5f9438a73dcc48aff6a17853",
-    "public_github_release": "https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id-wip.2026.08.26.u393",
-    "public_zenodo_doi": "10.5281/zenodo.22104149"
+    "public_boundary": "U397",
+    "public_reader": "output/pdf/Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_11.8.1_Polinom_Trigonometrik.pdf",
+    "public_reader_sha256": "40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d",
+    "public_github_release_commit": "a35de2ff999291c3414d6ba319f16bb149c7d5f5",
+    "public_github_main_commit": "a35de2ff999291c3414d6ba319f16bb149c7d5f5",
+    "public_github_release": "https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id-wip.2026.08.26.u397",
+    "public_zenodo_doi": "10.5281/zenodo.22105195",
+    "public_readback": "pass_9_of_9_assets_on_each_provider_12439062_bytes_each_plus_8_release_overlay_files"
   },
   "parallel_cursors": {
     "R007": {
