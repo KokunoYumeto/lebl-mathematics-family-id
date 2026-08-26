@@ -148,7 +148,10 @@ def hint_selector(relative_path: str, exercise_selector: str, marker: str) -> st
     lines = path.read_text(encoding="utf-8").splitlines()
     first, last = selector_bounds(exercise_selector)
     selected = lines[first - 1 : last]
-    starts = [index for index, line in enumerate(selected) if line.lstrip().startswith(marker)]
+    # Some frozen exercises introduce the hint after the problem statement on
+    # the same physical line (for example, ``... on X.  Hint: Consider ...``).
+    # Bind that whole line instead of rejecting a valid inline hint.
+    starts = [index for index, line in enumerate(selected) if marker in line]
     if len(starts) != 1:
         raise RuntimeError(
             f"expected one {marker!r} in {relative_path}:{exercise_selector}, found {len(starts)}"
@@ -320,6 +323,31 @@ def build(out: Path = OUT_DEFAULT) -> dict:
     if out.exists():
         raise RuntimeError(f"refusing existing output path: {out}")
     live_manifest, manifest_bytes = load_jsonl(LANE / "translation" / "TRANSLATION_MANIFEST.jsonl")
+    manifest_component_checks = 0
+    unresolved_legacy_components = 0
+    stale_manifest_components: list[str] = []
+    for row in live_manifest:
+        for side in ("source_components", "target_components"):
+            for component in row[side]:
+                path = lane_path(component["path"])
+                if not path.is_file() or not re.search(r"\braw lines?\s+\d+", component["selector"]):
+                    # Early imported manifest rows retain source-relative paths
+                    # that require their edition root.  They remain represented,
+                    # but only directly resolvable live paths are byte-checked.
+                    unresolved_legacy_components += 1
+                    continue
+                actual = hashlib.sha256(selected_bytes(component["path"], component["selector"])).hexdigest()
+                manifest_component_checks += 1
+                if actual != component["sha256"]:
+                    stale_manifest_components.append(
+                        f"{row['unit_id']}:{side}:{component['path']}:{component['selector']} "
+                        f"expected {component['sha256']} actual {actual}"
+                    )
+    if stale_manifest_components:
+        raise RuntimeError(
+            "stale directly resolvable live-manifest components:\n"
+            + "\n".join(stale_manifest_components[:30])
+        )
     # Terminology is CSV, not JSONL; retain it byte-for-byte as an input witness.
     terminology_path = LANE / "00_control" / "TERMINOLOGY.csv"
     terminology_bytes = terminology_path.read_bytes()
@@ -367,6 +395,7 @@ def build(out: Path = OUT_DEFAULT) -> dict:
             "segment",
             "qa_event",
             "artifact",
+            "asset",
             "concept",
             "term",
             "correction",
@@ -544,6 +573,268 @@ def build(out: Path = OUT_DEFAULT) -> dict:
         records.append(record)
         by_key[record["semantic_key"]] = record
         by_id[record["id"]] = record
+
+    # Bind the complete direct dependency closure of the accepted R007
+    # nonlinear-systems chapter.  The former live backend represented all 20
+    # stable text units but omitted their 28 figure files, the one localized
+    # overlay, and the two cited bibliography spans.  Derive the bindings from
+    # the frozen source and live manifest so that future source drift fails
+    # closed instead of silently producing stale asset metadata.
+    r007_chapter_path = "source/diffyqs-v6.11/ch-nonlin-systems.tex"
+    r007_source_lines = lane_path(r007_chapter_path).read_text(encoding="utf-8").splitlines()
+    r007_rows = [
+        row
+        for row in live_manifest
+        if row["resource_id"] == "R007"
+        and any(component["path"] == r007_chapter_path for component in row["source_components"])
+    ]
+    if len(r007_rows) != 20:
+        raise RuntimeError(f"expected 20 nonlinear-systems manifest units, found {len(r007_rows)}")
+
+    def r007_unit_at(line_number: int) -> str:
+        matches = []
+        for row in r007_rows:
+            for component in row["source_components"]:
+                if component["path"] != r007_chapter_path:
+                    continue
+                first, last = selector_bounds(component["selector"])
+                if first <= line_number <= last:
+                    matches.append(row["unit_id"])
+        matches = list(dict.fromkeys(matches))
+        if len(matches) != 1:
+            raise RuntimeError(f"R007 source line {line_number} maps to {len(matches)} units: {matches}")
+        return matches[0]
+
+    figure_patterns = (
+        ("inputpdft", re.compile(r"\\inputpdft\{([^{}]+)\}")),
+        (
+            "diffyincludegraphics",
+            re.compile(r"\\diffyincludegraphics\{[^{}]*\}\{[^{}]*\}\{([^{}]+)\}"),
+        ),
+    )
+    figure_occurrences: list[tuple[int, str, str, str]] = []
+    for line_number, line in enumerate(r007_source_lines, 1):
+        for command, pattern in figure_patterns:
+            for match in pattern.finditer(line):
+                figure_occurrences.append((line_number, command, match.group(1), r007_unit_at(line_number)))
+    figure_pairs = {(command, base) for _, command, base, _ in figure_occurrences}
+    if len(figure_occurrences) != 26 or len(figure_pairs) != 25:
+        raise RuntimeError(
+            "R007 nonlinear figure closure mismatch: "
+            f"{len(figure_occurrences)} occurrences / {len(figure_pairs)} command-base pairs"
+        )
+    if sum(command == "inputpdft" for command, _ in figure_pairs) != 3:
+        raise RuntimeError("R007 nonlinear inputpdft closure mismatch")
+    if sum(command == "diffyincludegraphics" for command, _ in figure_pairs) != 22:
+        raise RuntimeError("R007 nonlinear diffyincludegraphics closure mismatch")
+
+    pair_units: dict[tuple[str, str], set[str]] = {}
+    for _, command, base, unit_id in figure_occurrences:
+        pair_units.setdefault((command, base), set()).add(unit_id)
+
+    source_asset_specs: list[dict] = []
+    for command, base in sorted(figure_pairs):
+        extensions = (".pdf", ".pdf_t") if command == "inputpdft" else (".pdf",)
+        for extension in extensions:
+            relative_path = f"source/diffyqs-v6.11/figures/{base}{extension}"
+            if not lane_path(relative_path).is_file():
+                raise RuntimeError(f"missing R007 nonlinear figure dependency: {relative_path}")
+            source_asset_specs.append(
+                {
+                    "base": base,
+                    "extension": extension,
+                    "path": relative_path,
+                    "unit_ids": sorted(pair_units[(command, base)]),
+                }
+            )
+    if len(source_asset_specs) != 28 or len({spec["path"] for spec in source_asset_specs}) != 28:
+        raise RuntimeError("R007 nonlinear figure file closure is not exactly 28 unique files")
+
+    source_asset_ids = {
+        spec["path"]: bt.record_uuid(
+            "asset",
+            "lebl.diffyqs.asset.nonlinear-systems.figure."
+            + slug(spec["base"])
+            + (".pdf-t.en" if spec["extension"] == ".pdf_t" else ".pdf.en"),
+        )
+        for spec in source_asset_specs
+    }
+    added_r007_asset_rows = 0
+    added_r007_asset_relation_rows = 0
+    r007_relation_order = 0
+
+    def append_r007_relation(subject_id: str, predicate: str, object_id: str, suffix: str) -> None:
+        nonlocal added_r007_asset_relation_rows, r007_relation_order
+        r007_relation_order += 1
+        relation_key = f"lebl.diffyqs.relation.nonlinear-systems.asset.{slug(suffix)}"
+        relation = copy.deepcopy(templates["relation"])
+        relation.update(
+            {
+                "id": bt.record_uuid("relation", relation_key),
+                "semantic_key": relation_key,
+                "recorded_at": STAMP,
+                "workflow_id": WORKFLOW,
+                "subject_id": subject_id,
+                "predicate": predicate,
+                "object_id": object_id,
+                "order_key": f"0900.{r007_relation_order:04d}",
+                "rights_id": rights["R007"]["id"],
+            }
+        )
+        append_unique(relation)
+        added_r007_asset_relation_rows += 1
+
+    for spec in source_asset_specs:
+        data = lane_path(spec["path"]).read_bytes()
+        asset_key = (
+            "lebl.diffyqs.asset.nonlinear-systems.figure."
+            + slug(spec["base"])
+            + (".pdf-t.en" if spec["extension"] == ".pdf_t" else ".pdf.en")
+        )
+        dependencies = []
+        if spec["extension"] == ".pdf_t":
+            dependencies = [source_asset_ids[spec["path"].removesuffix("_t")]]
+        asset = copy.deepcopy(templates["asset"])
+        asset.update(
+            {
+                "id": source_asset_ids[spec["path"]],
+                "semantic_key": asset_key,
+                "recorded_at": STAMP,
+                "workflow_id": WORKFLOW,
+                "resource_id": resources["R007"]["id"],
+                "edition_id": sources["R007"]["id"],
+                "asset_kind": "figure",
+                "path": spec["path"],
+                "mime_type": (
+                    "application/x-fig-overlay" if spec["extension"] == ".pdf_t" else "application/pdf"
+                ),
+                "sha256": sha(data),
+                "source_binding": {
+                    "content_sha256": sha(data),
+                    "edition_id": sources["R007"]["id"],
+                    "locator": "entire file",
+                    "source_path": spec["path"],
+                },
+                "dependencies": dependencies,
+                "rights_id": rights["R007"]["id"],
+            }
+        )
+        append_unique(asset)
+        added_r007_asset_rows += 1
+        for unit_id in spec["unit_ids"]:
+            append_r007_relation(
+                live_unit_ids[unit_id],
+                "illustrates",
+                asset["id"],
+                f"{unit_id}-illustrates-{Path(spec['path']).name}-en",
+            )
+
+    source_pend_pdf_path = "source/diffyqs-v6.11/figures/nlin-pend.pdf"
+    source_pend_overlay_path = "source/diffyqs-v6.11/figures/nlin-pend.pdf_t"
+    target_pend_overlay_path = "translation/diffyqs/figures/nlin-pend.pdf_t"
+    source_pend_overlay = lane_path(source_pend_overlay_path).read_bytes()
+    target_pend_overlay = lane_path(target_pend_overlay_path).read_bytes()
+    if source_pend_overlay == target_pend_overlay:
+        raise RuntimeError("localized nlin-pend overlay unexpectedly equals its English source")
+    target_asset_key = "lebl.diffyqs.asset.nonlinear-systems.figure.nlin-pend.pdf-t.id-id"
+    target_asset = copy.deepcopy(templates["asset"])
+    target_asset.update(
+        {
+            "id": bt.record_uuid("asset", target_asset_key),
+            "semantic_key": target_asset_key,
+            "recorded_at": STAMP,
+            "workflow_id": WORKFLOW,
+            "resource_id": resources["R007"]["id"],
+            "edition_id": targets["R007"]["id"],
+            "asset_kind": "figure",
+            "path": target_pend_overlay_path,
+            "mime_type": "application/x-fig-overlay",
+            "sha256": sha(target_pend_overlay),
+            "source_binding": {
+                "content_sha256": sha(source_pend_overlay),
+                "edition_id": sources["R007"]["id"],
+                "locator": "entire source overlay; geometry and TeX commands preserved",
+                "source_path": source_pend_overlay_path,
+            },
+            "dependencies": [
+                source_asset_ids[source_pend_pdf_path],
+                source_asset_ids[source_pend_overlay_path],
+            ],
+            "rights_id": rights["R007"]["id"],
+        }
+    )
+    append_unique(target_asset)
+    added_r007_asset_rows += 1
+    pendulum_units = sorted(pair_units[("inputpdft", "nlin-pend")])
+    if pendulum_units != ["diffyqs.v6.11.nonlinear-systems.applications.pendulum"]:
+        raise RuntimeError(f"unexpected nlin-pend unit binding: {pendulum_units}")
+    append_r007_relation(
+        target_asset["id"],
+        "adapts",
+        source_asset_ids[source_pend_overlay_path],
+        "nlin-pend-pdf-t-id-id-adapts-en",
+    )
+    append_r007_relation(
+        live_unit_ids[pendulum_units[0]],
+        "illustrates",
+        target_asset["id"],
+        f"{pendulum_units[0]}-illustrates-nlin-pend-pdf-t-id-id",
+    )
+
+    bibliography_specs = {
+        "BD": ("raw lines 377-386", "Boyce-DiPrima-Meade"),
+        "EP": ("raw lines 387-394", "Edwards-Penney"),
+    }
+    bibliography_path = "source/diffyqs-v6.11/diffyqs.tex"
+    bibliography_assets: dict[str, dict] = {}
+    for key, (selector, label) in bibliography_specs.items():
+        data = selected_bytes(bibliography_path, selector)
+        asset_key = f"lebl.diffyqs.asset.bibliography.{slug(key)}.{slug(label)}.en"
+        asset = copy.deepcopy(templates["asset"])
+        asset.update(
+            {
+                "id": bt.record_uuid("asset", asset_key),
+                "semantic_key": asset_key,
+                "recorded_at": STAMP,
+                "workflow_id": WORKFLOW,
+                "resource_id": resources["R007"]["id"],
+                "edition_id": sources["R007"]["id"],
+                "asset_kind": "build_dependency",
+                "path": bibliography_path,
+                "mime_type": "application/x-tex",
+                "sha256": sha(data),
+                "source_binding": {
+                    "content_sha256": sha(data),
+                    "edition_id": sources["R007"]["id"],
+                    "locator": selector,
+                    "source_path": bibliography_path,
+                },
+                "dependencies": [],
+                "rights_id": rights["R007"]["id"],
+            }
+        )
+        append_unique(asset)
+        bibliography_assets[key] = asset
+        added_r007_asset_rows += 1
+
+    citation_occurrences: list[tuple[int, str, str]] = []
+    for line_number, line in enumerate(r007_source_lines, 1):
+        for match in re.finditer(r"\\cite\{([^{}]+)\}", line):
+            for key in (part.strip() for part in match.group(1).split(",")):
+                if key in bibliography_assets:
+                    citation_occurrences.append((line_number, key, r007_unit_at(line_number)))
+    if len(citation_occurrences) != 10:
+        raise RuntimeError(f"expected 10 R007 nonlinear bibliography citations, found {len(citation_occurrences)}")
+    for key in bibliography_assets:
+        if sum(citation_key == key for _, citation_key, _ in citation_occurrences) != 5:
+            raise RuntimeError(f"expected five R007 nonlinear citations for {key}")
+    for occurrence, (_, key, unit_id) in enumerate(citation_occurrences, 1):
+        append_r007_relation(
+            live_unit_ids[unit_id],
+            "depends-on",
+            bibliography_assets[key]["id"],
+            f"{unit_id}-depends-on-{key}-{occurrence:02d}",
+        )
 
     for row in terminology_rows:
         roles = terminology_roles(row["resource_scope"])
@@ -1238,10 +1529,18 @@ def build(out: Path = OUT_DEFAULT) -> dict:
         roundtrip = bt.roundtrip_csvs(projection, records, stage / "csv")
         if roundtrip.get("roundtrip") != "pass" or roundtrip.get("recovered_records") != len(records):
             raise RuntimeError(f"CSV round-trip failed: {roundtrip}")
+        _validated_projection, _validated_records, full_validation = bt.validate_dataset(
+            stage, stage / "dataset.json"
+        )
+        if full_validation.get("record_count") != len(records):
+            raise RuntimeError("full backend validator record count mismatch")
         readme = (
             "# Lebl modular backend v0.4 live checkpoint\n\n"
             f"Generated at {STAMP}. Scope: {len(live_manifest)} live translation units "
             f"(R006/R007/R008), with {added_units} units added beyond retained v0.3.\n\n"
+            f"Manifest byte checks: {manifest_component_checks} directly resolvable raw-line components pass; "
+            f"{unresolved_legacy_components} early source-relative components remain represented but require "
+            "their edition-root resolver.\n\n"
             "This is a locale-neutral machine projection; reader-facing TeX remains in the lane's `translation/` directory. "
             "Separate resource, edition, rights, source, target, and provenance identities are preserved.\n\n"
             f"Terminology: {len(term_records)} physical records preserve history; "
@@ -1255,6 +1554,10 @@ def build(out: Path = OUT_DEFAULT) -> dict:
             f"O001 solution-gap mapping: {len(o001_rows)} ledger rows, "
             f"{added_o001_exercises} exercise units, {added_o001_hints} hint units, and "
             f"{added_o001_relations} `hints` relations. No answer or solution is invented.\n\n"
+            f"R007 nonlinear-systems dependencies: {added_r007_asset_rows} asset records "
+            f"(28 frozen figure files, one localized overlay, and two cited bibliography spans) "
+            f"with {added_r007_asset_relation_rows} unit/dependency relations derived from "
+            f"{len(figure_occurrences)} figure calls and {len(citation_occurrences)} citations.\n\n"
             "Terminology QA evidence: `authority/terminology_evidence/2026-08-22-indonesian-field-usage-qa/TERMINOLOGY_QA_REPORT.md`.\n"
             "Translation/runtime provenance: `OpenAI Codex gpt-5.6-sol, Ultra`, acting on the user's request.\n"
         ).encode("utf-8")
@@ -1267,6 +1570,8 @@ def build(out: Path = OUT_DEFAULT) -> dict:
             "schema_validation": "pass",
             "referential_integrity": "pass",
             "live_manifest_rows": len(live_manifest),
+            "manifest_component_checks": manifest_component_checks,
+            "unresolved_legacy_manifest_components": unresolved_legacy_components,
             "added_unit_rows": added_units,
             "record_count": len(records),
             "added_concept_rows": added_concepts,
@@ -1289,6 +1594,16 @@ def build(out: Path = OUT_DEFAULT) -> dict:
             "added_o001_exercise_rows": added_o001_exercises,
             "added_o001_hint_rows": added_o001_hints,
             "added_o001_relation_rows": added_o001_relations,
+            "r007_nonlinear_dependencies": {
+                "figure_occurrences": len(figure_occurrences),
+                "figure_command_base_pairs": len(figure_pairs),
+                "source_figure_files": len(source_asset_specs),
+                "localized_overlay_files": 1,
+                "bibliography_spans": len(bibliography_assets),
+                "citation_occurrences": len(citation_occurrences),
+                "added_asset_rows": added_r007_asset_rows,
+                "added_relation_rows": added_r007_asset_relation_rows,
+            },
             "record_stream": {"bytes": len(record_bytes), "sha256": sha(record_bytes)},
             "manifest": {"bytes": len(manifest_bytes), "sha256": sha(manifest_bytes)},
             "csv_projection": {"receipts": receipts, "roundtrip": roundtrip},
@@ -1301,6 +1616,8 @@ def build(out: Path = OUT_DEFAULT) -> dict:
     return {
         "output": str(out),
         "live_manifest_rows": len(live_manifest),
+        "manifest_component_checks": manifest_component_checks,
+        "unresolved_legacy_manifest_components": unresolved_legacy_components,
         "added_units": added_units,
         "added_concepts": added_concepts,
         "added_terms": added_terms,
@@ -1317,6 +1634,8 @@ def build(out: Path = OUT_DEFAULT) -> dict:
         "added_o001_exercises": added_o001_exercises,
         "added_o001_hints": added_o001_hints,
         "added_o001_relations": added_o001_relations,
+        "added_r007_asset_rows": added_r007_asset_rows,
+        "added_r007_asset_relations": added_r007_asset_relation_rows,
         "record_count": len(records),
         "record_stream_sha256": sha(record_bytes),
     }

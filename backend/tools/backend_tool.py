@@ -526,8 +526,24 @@ def validate_records(
                 raise BackendError(f"{record_id}: resource/edition type mismatch")
             if edition["resource_id"] != resource["id"]:
                 raise BackendError(f"{record_id}: edition belongs to another resource")
-            if record["source_binding"]["edition_id"] != edition["id"]:
+            binding_edition = by_id[record["source_binding"]["edition_id"]]
+            if binding_edition["record_type"] != "edition":
+                raise BackendError(f"{record_id}: source_binding must target an edition")
+            if binding_edition["resource_id"] != resource["id"]:
+                raise BackendError(f"{record_id}: source_binding edition belongs to another resource")
+            if record_type == "unit" and binding_edition["id"] != edition["id"]:
                 raise BackendError(f"{record_id}: source_binding edition mismatch")
+            if record_type == "asset" and binding_edition["id"] != edition["id"]:
+                ancestor_id = edition.get("derivative_of_id")
+                visited: set[str] = set()
+                while ancestor_id and ancestor_id not in visited and ancestor_id != binding_edition["id"]:
+                    visited.add(ancestor_id)
+                    ancestor = by_id[ancestor_id]
+                    if ancestor["record_type"] != "edition" or ancestor["resource_id"] != resource["id"]:
+                        raise BackendError(f"{record_id}: invalid derivative edition lineage")
+                    ancestor_id = ancestor.get("derivative_of_id")
+                if ancestor_id != binding_edition["id"]:
+                    raise BackendError(f"{record_id}: source_binding edition is not an ancestor")
             if record_type == "unit":
                 locales: set[str] = set()
                 for state in record["locale_states"]:
@@ -575,6 +591,7 @@ def validate_records(
                 if by_id[course_id]["record_type"] != "course":
                     raise BackendError(f"{record['id']}: prerequisite_course_ids must target courses")
 
+    validate_edition_derivative_graph(records, by_id)
     validate_parent_cycles(records, by_id)
     coverage = validate_exercise_support(records, by_id)
     return {
@@ -597,6 +614,32 @@ def validate_parent_cycles(records: list[dict[str, Any]], by_id: dict[str, dict[
                 raise BackendError(f"{unit_id}: cycle in unit parent chain")
             seen.add(cursor)
             cursor = parents.get(cursor)
+
+
+def validate_edition_derivative_graph(
+    records: list[dict[str, Any]], by_id: dict[str, dict[str, Any]]
+) -> None:
+    editions = {
+        record["id"]: record for record in records if record["record_type"] == "edition"
+    }
+    for edition_id, edition in editions.items():
+        derivative_id = edition["derivative_of_id"]
+        if derivative_id is None:
+            continue
+        derivative = by_id[derivative_id]
+        if derivative["record_type"] != "edition":
+            raise BackendError(f"{edition_id}: derivative_of_id must target an edition")
+        if derivative["resource_id"] != edition["resource_id"]:
+            raise BackendError(f"{edition_id}: derivative_of_id belongs to another resource")
+
+    for edition_id in editions:
+        seen: set[str] = set()
+        cursor: str | None = edition_id
+        while cursor is not None:
+            if cursor in seen:
+                raise BackendError(f"{edition_id}: cycle in edition derivative chain")
+            seen.add(cursor)
+            cursor = editions[cursor]["derivative_of_id"]
 
 
 def build_support(records: Iterable[dict[str, Any]]) -> dict[str, dict[str, list[str]]]:

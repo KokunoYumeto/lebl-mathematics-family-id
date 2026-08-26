@@ -3146,121 +3146,124 @@ mungkin untuk $h > 0$ yang lebih kecil.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \sectionnewpage
-\section{The Stone--Weierstrass theorem}
+\section{Teorema Stone--Weierstrass}
 \label{sec:stoneweier}
 
 %mbxINTROSUBSECTION
 
-\sectionnotes{3 lectures}
+\sectionnotes{3 kuliah}
 
-\subsection{Weierstrass approximation}
+\subsection{Aproksimasi Weierstrass}
 
-Perhaps surprisingly, even a very badly behaved continuous function is
-a uniform limit of polynomials.
-We cannot really get any \myquote{nicer}
-functions than polynomials.
-The idea of the proof is a very common approximation or \myquote{smoothing} idea
-(convolution with an approximate delta function) that has applications
-far beyond pure mathematics.
+Mungkin mengejutkan bahwa fungsi kontinu yang berperilaku sangat buruk sekalipun
+merupakan limit seragam dari polinom.
+Kita hampir tidak dapat memperoleh fungsi yang lebih \myquote{baik}
+daripada polinom.
+Gagasan pembuktiannya merupakan gagasan aproksimasi atau \myquote{penghalusan}
+yang sangat umum (konvolusi dengan fungsi delta hampiran) dan memiliki penerapan
+jauh di luar matematika murni.
 
-\begin{thm}[Weierstrass approximation theorem]
-\index{Weierstrass approximation theorem}
-If $f \colon [a,b] \to \C$ is continuous, then there exists a sequence
-$\{ p_n \}_{n=1}^\infty$ of polynomials converging to $f$ uniformly on $[a,b]$.
-Furthermore, if $f$ is real-valued, we can find $p_n$ with real coefficients.
+\begin{thm}[Teorema aproksimasi Weierstrass]
+\index{teorema aproksimasi Weierstrass}
+Jika $f \colon [a,b] \to \C$ kontinu, maka terdapat barisan
+$\{ p_n \}_{n=1}^\infty$ polinom yang konvergen seragam ke $f$ pada $[a,b]$.
+Lebih lanjut, jika $f$ bernilai real, kita dapat memilih $p_n$ dengan koefisien real.
 \end{thm}
 
 \begin{proof}
-For $x \in [0,1]$,
-define
+Untuk $x \in [0,1]$,
+definisikan
 \begin{equation*}
 g(x) \coloneqq f\bigl((b-a)x+a\bigr)-f(a) - x\bigl(f(b)-f(a)\bigr) .
 \end{equation*}
-If we prove the theorem for $g$ and find the sequence
-$\{ p_n \}_{n=1}^\infty$ for $g$,
-it is proved for $f$ as we simply
-composed with an invertible affine function and added an affine
-function to $f$.  We reverse the process and apply that to our
-$p_n$, to obtain polynomials approximating $f$.
-The function $g$ is defined on $[0,1]$ and $g(0)=g(1)=0$.
-For simplicity, assume that
-$g$ is defined on $\R$ by letting
-$g(x) \coloneqq 0$ if $x < 0$ or $x > 1$.  This extended $g$ is continuous.
+Jika kita membuktikan teorema ini untuk $g$ dan menemukan barisan
+$\{ p_n \}_{n=1}^\infty$ untuk $g$,
+maka teorema terbukti untuk $f$: fungsi di atas diperoleh dengan
+mengomposisikan $f$ dengan suatu peta afin yang invertibel lalu menambahkan
+suatu fungsi afin.  Kita membalik proses tersebut dengan mengomposisikan $p_n$
+dengan peta afin invers lalu menambahkan kembali fungsi afin yang bersesuaian
+untuk memperoleh polinom-polinom yang mengaproksimasi $f$.
+Fungsi $g$ terdefinisi pada $[0,1]$ dan $g(0)=g(1)=0$.
+Demi kesederhanaan, andaikan
+$g$ didefinisikan pada $\R$ dengan menetapkan
+$g(x) \coloneqq 0$ jika $x < 0$ atau $x > 1$.  Perluasan $g$ ini kontinu.
 
-Define
+Definisikan
 \begin{equation*}
 c_n \coloneqq {\left( \int_{-1}^1 {(1-x^2)}^n\,dx \right)}^{-1} ,
 \qquad
 q_n(x) \coloneqq c_n (1-x^2)^n .
 \end{equation*}
-The choice of $c_n$ is
-so that $\int_{-1}^1 q_n(x)\,dx = 1$.
-See \figureref{fig:weierqn}.
+Konstanta $c_n$ dipilih
+agar $\int_{-1}^1 q_n(x)\,dx = 1$.
+Lihat \figureref{fig:weierqn}.
 
 \begin{myfigureht}
 \myincludegraphics{weierqn}{%
-Graphs of many functions on the interval minus 1 to 1.
-They are all a symmetric "bump" above the x-axis.  The lowest
-and widest bump is in dark color, and then taller and thinner peaks
-are in increasingly lighter shade of gray.}
-\caption{Plot of the approximate delta functions $q_n$ on $[-1,1]$ for
-$n=5,10,15,20,\ldots,100$ with higher $n$ in lighter shade.\label{fig:weierqn}}
+Grafik sejumlah fungsi pada interval dari negatif 1 hingga 1.
+Semuanya berupa "gundukan" simetris di atas sumbu x.  Gundukan
+terendah dan terlebar berwarna gelap, lalu puncak-puncak yang lebih tinggi
+dan lebih sempit tampil dalam nuansa abu-abu yang semakin terang.}
+\caption{Grafik fungsi-fungsi delta hampiran $q_n$ pada $[-1,1]$ untuk
+$n=5,10,15,20,\ldots,100$; nilai $n$ yang lebih besar ditampilkan dalam nuansa
+yang lebih terang.\label{fig:weierqn}}
 \end{myfigureht}
 
-The functions $q_n$ are peaks around 0 (ignoring what happens outside
-of $[-1,1]$) that get narrower and taller as $n$ increases,
-while the area underneath is always 1.
-A classic approximation idea
-is to do a \emph{\myindex{convolution}} integral with peaks like this:
-For $x \in [0,1]$, let
+Fungsi-fungsi $q_n$ merupakan puncak di sekitar 0 (dengan mengabaikan apa yang
+terjadi di luar $[-1,1]$) yang semakin sempit dan tinggi ketika $n$ membesar,
+sedangkan luas di bawahnya selalu 1.
+Salah satu gagasan klasik dalam aproksimasi
+adalah melakukan integral \emph{\myindex{konvolusi}} dengan puncak seperti ini:
+Untuk $x \in [0,1]$, misalkan
 \begin{equation*}
 p_n(x) \coloneqq \int_{0}^1 g(t)q_n(x-t) \,dt \quad \left( = \int_{-\infty}^\infty
 g(t)q_n(x-t) \,dt \right) .
 \end{equation*}
-The idea of this convolution is that we do a \myquote{weighted average} of the
-function $g$ around the point $x$ using $q_n$ as the weight.
-See \figureref{fig:approxdeltaconv}.
+Gagasan konvolusi ini ialah mengambil \myquote{rata-rata berbobot} dari fungsi
+$g$ di sekitar titik $x$ dengan menggunakan $q_n$ sebagai bobot.
+Lihat \figureref{fig:approxdeltaconv}.
 
 \begin{myfigureht}
 \myincludegraphics{approxdeltaconv}{%
-Graphs of three functions on the interval minus 1 to 1.
-There is a point on the x-axis marked simply x.  Symmetric about the
-point x, there is a light gray positive function whose graph is a peak
-centered at x and decaying rapidly as we get further away from x.
-In gray, there is a graph of a function that is simply a jagged line.
-In black is the product of the two graphs which is mostly almost zero where
-the light gray line is zero, and near the peak the shape of the jagged
-gray line is magnified.}
-\caption{For $x=0.3$, the plot of $q_{100}(x-t)$ (light gray peak centered
-at $x$), some continuous function
-$g(t)$ (the jagged line) and the product $g(t)q_{100}(x-t)$ (the bold line).\label{fig:approxdeltaconv}}
+Grafik tiga fungsi pada interval dari negatif 1 hingga 1.
+Terdapat sebuah titik pada sumbu x yang ditandai x.  Simetris terhadap
+titik x, terdapat fungsi positif berwarna abu-abu muda yang grafiknya berupa
+puncak berpusat di x dan turun dengan cepat ketika menjauh dari x.
+Grafik berwarna abu-abu berupa garis bergerigi.
+Grafik berwarna hitam menunjukkan hasil kali kedua grafik; grafik ini hampir nol pada
+sebagian besar daerah tempat garis abu-abu muda bernilai nol, sedangkan di dekat
+puncak bentuk garis abu-abu yang bergerigi diperbesar.}
+\caption{Untuk $x=0.3$, grafik $q_{100}(x-t)$ (puncak abu-abu muda yang berpusat
+di $x$), suatu fungsi kontinu
+$g(t)$ (garis bergerigi), dan hasil kali $g(t)q_{100}(x-t)$ (garis tebal).\label{fig:approxdeltaconv}}
 \end{myfigureht}
 
-As $q_n$ is a narrow peak, the integral
-mostly sees the values of $g$ that are
-close to $x$ and it does the weighted average of them.
-When the peak gets narrower, we compute this average closer to $x$
-and we expect the result to get closer to the value of $g(x)$.  Really, we are
-approximating what is called a delta function\footnote{The delta function
-is not actually a function,
-it is a \myquote{thing} that should give
+Karena $q_n$ merupakan puncak yang sempit, integral tersebut
+terutama menangkap nilai-nilai $g$ yang
+dekat dengan $x$ dan mengambil rata-rata berbobotnya.
+Ketika puncaknya semakin sempit, rata-rata itu semakin tertumpu pada nilai-nilai
+fungsi di titik-titik yang dekat dengan $x$, sehingga kita mengharapkan hasilnya
+semakin mendekati nilai $g(x)$.  Sesungguhnya,
+kita sedang mengaproksimasi apa yang disebut fungsi delta\footnote{Fungsi delta
+sebetulnya bukan fungsi,
+melainkan suatu \myquote{objek} yang seharusnya memberikan
 \myquote{$\int_{-\infty}^\infty g(t) \delta(x-t) \, dt = g(x)$.}}
-(don't worry if you have not
-heard of this concept),
-and functions like $q_n$ are often called
-\emph{approximate delta functions}\index{approximate delta function}.
-We could do this with any set of polynomials that look like narrower
-and narrower peaks near zero.  These just happen to be the simplest ones.
-We only need this behavior on $[-1,1]$ as the convolution sees nothing
-further than this as $g$ is zero outside $[0,1]$.
+(tidak perlu khawatir jika konsep ini belum pernah dijumpai),
+dan fungsi seperti $q_n$ sering disebut
+\emph{fungsi delta hampiran}\index{fungsi delta hampiran}.
+Kita dapat melakukan hal ini dengan sembarang keluarga polinom yang grafiknya
+berupa puncak-puncak yang semakin sempit di sekitar nol.  Polinom di atas kebetulan merupakan
+pilihan yang paling sederhana.
+Kita hanya memerlukan perilaku ini pada $[-1,1]$ karena konvolusi tidak menangkap
+apa pun yang lebih jauh, sebab $g$ bernilai nol di luar $[0,1]$.
 
-Because $q_n$ is a polynomial, we write
+Karena $q_n$ merupakan polinom, kita tulis
 \begin{equation*}
 q_n(x-t) = a_0(t) + a_1(t)\,x + \cdots + a_{2n}(t)\, x^{2n} ,
 \end{equation*}
-where $a_k(t)$ are polynomials in $t$, and hence
-integrable functions.
-So
+di mana $a_k(t)$ merupakan polinom dalam $t$, dan karena itu
+merupakan fungsi yang terintegralkan.
+Jadi,
 \begin{equation*}
 \begin{split}
 p_n(x) & =
@@ -3292,18 +3295,18 @@ a_{2n}(t)\,dt
 x^{2n} .
 \end{split}
 \end{equation*}
-In other words, $p_n$ is a polynomial%
+Dengan kata lain, $p_n$ merupakan polinom%
 \footnote{%
-Do note that the functions $a_j$ depend on $n$, so the coefficients of $p_n$
-change as $n$ changes.}
- in $x$.
-If $g(t)$ is real-valued, then the functions $g(t)a_j(t)$ are
-real-valued and $p_n$ has real coefficients,
-proving the \myquote{furthermore} part of the theorem.
+Perhatikan bahwa fungsi-fungsi $a_j$ bergantung pada $n$, sehingga koefisien $p_n$
+berubah ketika $n$ berubah.}
+ dalam $x$.
+Jika $g(t)$ bernilai real, maka fungsi-fungsi $g(t)a_j(t)$
+bernilai real dan $p_n$ memiliki koefisien real,
+yang membuktikan bagian \myquote{lebih lanjut} dari teorema.
 
-We still need to prove that $\{ p_n \}_{n=1}^\infty$ converges to $g$.
-We start with estimating the size of~$c_n$.
-For $x \in [0,1]$, we have that $1-x \leq 1-x^2$.  We estimate
+Kita masih perlu membuktikan bahwa $\{ p_n \}_{n=1}^\infty$ konvergen ke $g$.
+Kita mulai dengan menaksir besarnya~$c_n$.
+Untuk $x \in [0,1]$, berlaku $1-x \leq 1-x^2$.  Kita memperoleh taksiran
 \begin{equation*}
 \begin{split}
 c_n^{-1}   = \int_{-1}^1 {(1-x^2)}^n \, dx
@@ -3312,22 +3315,22 @@ c_n^{-1}   = \int_{-1}^1 {(1-x^2)}^n \, dx
 = \frac{2}{n+1} .
 \end{split}
 \end{equation*}
-So $c_n \leq \frac{n+1}{2} \leq n$.
-Let us see how small $q_n$ is if we ignore some small interval around the origin,
-where the peak is.
-Given any $\delta > 0$, $\delta < 1$,
-we have that for all
-$x$ such that $\delta \leq \sabs{x} \leq 1$,
+Jadi $c_n \leq \frac{n+1}{2} \leq n$.
+Mari kita lihat seberapa kecil $q_n$ jika suatu interval kecil di sekitar titik asal,
+tempat puncaknya berada, kita abaikan.
+Untuk sembarang $\delta > 0$ dengan $\delta < 1$,
+bagi semua
+$x$ sedemikian sehingga $\delta \leq \sabs{x} \leq 1$, berlaku
 \begin{equation*}
 q_n(x) \leq c_n {(1-\delta^2)}^n \leq  n{(1-\delta^2)}^n ,
 \end{equation*}
-because $q_n$ is increasing on $[-1,0]$ and decreasing on $[0,1]$.
-By the ratio test, 
-$n{(1-\delta^2)}^n$ goes to 0 as $n$ goes to infinity.
+karena $q_n$ naik pada $[-1,0]$ dan turun pada $[0,1]$.
+Berdasarkan uji rasio,
+$n{(1-\delta^2)}^n$ menuju 0 ketika $n$ menuju tak hingga.
 
-The function $q_n$ is even, $q_n(t) = q_n(-t)$, and $g$
-is zero outside of $[0,1]$.
-So for $x \in [0,1]$,
+Fungsi $q_n$ genap, $q_n(t) = q_n(-t)$, dan $g$
+bernilai nol di luar $[0,1]$.
+Jadi, untuk $x \in [0,1]$,
 \begin{equation*}
 p_n(x) = 
 \int_{0}^1 g(t)q_n(x-t) \, dt
@@ -3336,21 +3339,21 @@ p_n(x) =
 =
 \int_{-1}^{1} g(x+t)q_n(t) \, dt .
 \end{equation*}
-Let $\epsilon > 0$ be given.
-As $[-1,2]$ is compact and $g$ is continuous on $[-1,2]$, we have that $g$ is uniformly continuous.
-Pick $0 < \delta < 1$ such that if
-$\sabs{x-y} < \delta$ (and $x,y \in [-1,2]$), then
+Ambil $\epsilon > 0$.
+Karena $[-1,2]$ kompak dan $g$ kontinu pada $[-1,2]$, fungsi $g$ kontinu seragam.
+Pilih $0 < \delta < 1$ sedemikian sehingga jika
+$\sabs{x-y} < \delta$ (dan $x,y \in [-1,2]$), maka
 \begin{equation*}
 \babs{g(x)-g(y)} < \frac{\epsilon}{2} .
 \end{equation*}
-Let $M$ be such that $\babs{g(x)} \leq M$ for all $x$.  Let $N$ be
-such that for all $n \geq N$,
+Ambil $M$ sedemikian sehingga $\babs{g(x)} \leq M$ untuk semua $x$.  Ambil $N$
+sedemikian sehingga untuk semua $n \geq N$,
 \begin{equation*}
 4M n{(1-\delta^2)}^n < \frac{\epsilon}{2} .
 \end{equation*}
-Note that 
-$\int_{-1}^1 q_n(t) \, dt = 1$ and $q_n(t) \geq 0$ on $[-1,1]$.  So for $n
-\geq N$ and every $x \in [0,1]$,
+Perhatikan bahwa
+$\int_{-1}^1 q_n(t) \, dt = 1$ dan $q_n(t) \geq 0$ pada $[-1,1]$.  Jadi, untuk $n
+\geq N$ dan setiap $x \in [0,1]$,
 \begin{align*}
 \babs{p_n(x)-g(x)} & =
 \abs{\int_{-1}^1 g(x+t)q_n(t) \, dt
@@ -3401,43 +3404,46 @@ $\int_{-1}^1 q_n(t) \, dt = 1$ and $q_n(t) \geq 0$ on $[-1,1]$.  So for $n
 \end{align*}
 \end{proof}
 
-A convolution often inherits some property of the functions we are convolving.
-In our case the convolution $p_n$ inherited the property of being a
-polynomial from $q_n$.  The same idea of the proof is often used 
-to get other properties.  If $q_n$ or $g$ is infinitely differentiable, so is $p_n$.
-If $q_n$ or $g$ is a solution to a linear differential equation, so is $p_n$.
-Etc.
+Suatu konvolusi sering mewarisi sifat tertentu dari fungsi-fungsi yang kita
+konvolusikan. Dalam kasus ini, konvolusi $p_n$ mewarisi sifatnya sebagai
+polinom dari $q_n$. Gagasan pembuktian yang sama sering digunakan
+untuk memperoleh sifat-sifat lain. Jika $q_n$ atau $g$ diferensiabel tak
+berhingga kali, demikian pula $p_n$.
+% LEBL-ID-ADV-0246: klaim pewarisan PDL dipersempit ke kasus standar yang sah.
+Dengan hipotesis keteraturan standar, jika $q_n$ atau $g$ merupakan solusi global
+suatu persamaan diferensial linear homogen berkoefisien konstan, maka $p_n$ juga
+merupakan solusi persamaan yang sama. Dan seterusnya.
 
-Let us note an immediate application of the Weierstrass theorem.  We have
-already seen that countable dense subsets can be very useful.
+Mari kita catat suatu penerapan langsung teorema Weierstrass. Kita telah
+melihat bahwa subhimpunan rapat yang terhitung dapat sangat berguna.
 
 \begin{cor}
-The metric spaces $C\bigl([a,b],\R\bigr)$ and $C\bigl([a,b],\C\bigr)$ each contain a countable dense subset.
+Masing-masing ruang metrik $C\bigl([a,b],\R\bigr)$ dan $C\bigl([a,b],\C\bigr)$ memuat suatu subhimpunan rapat yang terhitung.
 \end{cor}
 
 \begin{proof}
-Without loss of generality, consider only
+Tanpa mengurangi keumuman, cukup tinjau
 $C\bigl([a,b],\R\bigr)$
-(why?).
-Real polynomials are dense in $C\bigl([a,b],\R\bigr)$ by Weierstrass.
-If we show that
-every real polynomial can be approximated by polynomials with rational
-coefficients, we are done.
-Indeed, there are only countably many
-rational numbers and so there are only countably many polynomials with
-rational coefficients (a countable union of countable sets is countable).
+(mengapa?).
+Menurut teorema Weierstrass, polinom real rapat dalam $C\bigl([a,b],\R\bigr)$.
+Jika kita menunjukkan bahwa
+setiap polinom real dapat dihampiri oleh polinom berkoefisien
+rasional, pembuktian selesai.
+Memang, bilangan rasional hanya terhitung banyaknya, sehingga polinom
+berkoefisien rasional juga hanya terhitung banyaknya (gabungan terhitung dari
+himpunan-himpunan terhitung adalah terhitung).
 
-Further without loss of generality, suppose $[a,b]=[0,1]$.  Let
+Selanjutnya, tanpa mengurangi keumuman, andaikan $[a,b]=[0,1]$. Misalkan
 \begin{equation*}
 p(x) \coloneqq \sum_{k=0}^n a_k\,  x^k
 \end{equation*}
-be a polynomial of degree $n$ where $a_k \in \R$.  Given $\epsilon > 0$, pick $b_k \in \Q$
-such that $\sabs{a_k-b_k} < \frac{\epsilon}{n+1}$.  Then
-if we let
+merupakan polinom berderajat $n$ dengan $a_k \in \R$. Untuk $\epsilon > 0$
+yang diberikan, pilih $b_k \in \Q$ sedemikian sehingga
+$\sabs{a_k-b_k} < \frac{\epsilon}{n+1}$. Kemudian, jika kita tetapkan
 \begin{equation*}
 q(x) \coloneqq \sum_{k=0}^n b_k \, x^k ,
 \end{equation*}
-we have
+diperoleh
 \begin{equation*}
 \babs{p(x)-q(x)}
 =
@@ -3452,69 +3458,64 @@ we have
 \end{proof}
 
 \begin{remark}
-While we will not prove so, the corollary above implies that
-$C\bigl([a,b],\C\bigr)$ has the same cardinality as $\R$, which may be a
-bit surprising.  The set of all functions $[a,b] \to \C$ has
-cardinality strictly greater than the cardinality of $\R$, it has the
-cardinality of the power set of $\R$.  So the
-set of continuous functions is a very tiny subset of the set of all
-functions.
+Meskipun kita tidak akan membuktikannya, korolari di atas menyiratkan bahwa
+$C\bigl([a,b],\C\bigr)$ memiliki kardinalitas yang sama dengan $\R$; hal ini
+mungkin agak mengejutkan. Himpunan semua fungsi $[a,b] \to \C$ memiliki
+kardinalitas yang lebih besar secara ketat daripada kardinalitas $\R$, yakni
+kardinalitas himpunan kuasa $\R$. Jadi, himpunan fungsi-fungsi kontinu
+merupakan subhimpunan yang sangat kecil dari himpunan semua fungsi.
 \end{remark}
 
-\textbf{Warning!}
-The fact that every continuous function $f \colon [-1,1] \to \C$ (or any
-interval $[a,b]$) can be uniformly
-approximated by polynomials
+\textbf{Peringatan!}
+Fakta bahwa setiap fungsi kontinu $f \colon [-1,1] \to \C$ (atau pada sembarang
+interval $[a,b]$) dapat dihampiri secara seragam oleh polinom
 \begin{equation*}
 \sum_{k=0}^n a_k\,  x^k
 \end{equation*}
-does not mean that every continuous $f$ is analytic, that is, equal to a
-power series
+tidak berarti bahwa setiap $f$ kontinu bersifat analitik, yaitu sama dengan
+suatu deret pangkat
 \begin{equation*}
 \sum_{k=0}^\infty c_k\,  x^k .
 \end{equation*}
-An analytic function is infinitely differentiable,
-however,
-the function $\sabs{x}$ is continuous and near the origin
-approximable by polynomials,
-and so provides a counterexample.
+Fungsi analitik diferensiabel tak berhingga kali. Akan tetapi,
+fungsi $\sabs{x}$ kontinu dan dapat dihampiri oleh polinom di sekitar titik asal,
+sehingga memberikan suatu contoh tandingan.
 
-The key distinction is that
-the polynomials coming from the Weierstrass theorem are not the partial
-sums of a power series.  For each one, the coefficients $a_k$ above can be
-completely different---they do not need to come from a single sequence
-$\{ c_k \}_{k=1}^\infty$.
+Perbedaan kuncinya ialah bahwa
+polinom-polinom yang diperoleh dari teorema Weierstrass bukan jumlah parsial
+suatu deret pangkat. Koefisien-koefisien $a_k$ dapat sama sekali berbeda dari
+satu polinom ke polinom lainnya---koefisien tersebut tidak harus berasal dari satu barisan
+$\{ c_k \}_{k=0}^\infty$.
 
 \medskip
 
-Interestingly, to generalize Weierstrass, we will only need to use it to
-approximate the absolute value function by polynomials without
-a constant term.
+Menariknya, untuk menggeneralisasi teorema Weierstrass, kita hanya perlu
+menggunakannya untuk menghampiri fungsi nilai mutlak dengan polinom tanpa
+suku konstan.
 
 \begin{cor}
-Let $[-a,a]$ be an interval.  Then there is a sequence of real polynomials
-$\{ p_n \}_{n=1}^\infty$ that converges uniformly to $\sabs{x}$ on $[-a,a]$ and such that
-$p_n(0) = 0$ for all $n$.
+Misalkan $[-a,a]$ suatu interval. Maka terdapat barisan polinom real
+$\{ p_n \}_{n=1}^\infty$ yang konvergen seragam ke $\sabs{x}$ pada $[-a,a]$ dan
+memenuhi $p_n(0) = 0$ untuk setiap $n$.
 \end{cor}
 
 \begin{proof}
-As $f(x) \coloneqq \sabs{x}$ is continuous and real-valued
-on $[-a,a]$, the Weierstrass theorem gives a sequence of
-real polynomials $\{ \widetilde{p}_n \}_{n=1}^\infty$ that converges to $f$
-uniformly on $[-a,a]$.
-Let
+Karena $f(x) \coloneqq \sabs{x}$ kontinu dan bernilai real
+pada $[-a,a]$, teorema Weierstrass memberikan barisan
+polinom real $\{ \widetilde{p}_n \}_{n=1}^\infty$ yang konvergen seragam ke $f$
+pada $[-a,a]$. Misalkan
 \begin{equation*}
 p_n(x) \coloneqq \widetilde{p}_n(x) - \widetilde{p}_n(0) .
 \end{equation*}
-Obviously $p_n(0) = 0$.
+Jelas bahwa $p_n(0) = 0$.
 
-Given $\epsilon > 0$, let $N$ be such that
-for $n \geq N$, we have
+Untuk $\epsilon > 0$ yang diberikan, ambil $N$ sedemikian sehingga
+untuk $n \geq N$, berlaku
 $\bigl\lvert\widetilde{p}_n(x)-\sabs{x}\big\rvert <
-\nicefrac{\epsilon}{2}$ for all $x \in [-a,a]$.
-In particular,
+\nicefrac{\epsilon}{2}$ untuk setiap $x \in [-a,a]$.
+Khususnya,
 $\babs{\widetilde{p}_n(0)} < \nicefrac{\epsilon}{2}$.
-Then for $n \geq N$,
+Jadi, untuk $n \geq N$,
 \begin{equation*}
 \babs{ p_n(x)-\sabs{x} }
 =
@@ -3525,142 +3526,141 @@ Then for $n \geq N$,
 \end{equation*}
 \end{proof}
 
-Generalizing the corollary,
-we can make the polynomials from the Weierstrass theorem
-be equal to our target function at one point, not just for $\sabs{x}$, but
-that's the one we will need.  It is also possible (see
+Dengan menggeneralisasi korolari ini, kita dapat membuat polinom-polinom dari
+teorema Weierstrass bernilai sama dengan fungsi sasaran kita pada satu titik,
+bukan hanya untuk $\sabs{x}$; tetapi kasus itulah yang kita perlukan. Kita juga
+dapat (lihat
 \exerciseref{exercise:finitelymanyweierequal})
-to make the polynomials
-equal at finitely many points by subtracting not a constant but a properly
-crafted polynomial.
+membuat polinom-polinom bernilai sama dengan fungsi sasaran pada sejumlah
+berhingga titik dengan mengurangkan polinom yang dirancang secara tepat sebagai
+ganti konstanta.
 
-\subsection{Stone--Weierstrass approximation}
+\subsection{Aproksimasi Stone--Weierstrass}
 
-We want to abstract away what is not really
-necessary and prove a general version of the Weierstrass theorem,
-the Stone--Weierstrass theorem\footnote{%
-Named after the American mathematician
+Melalui abstraksi, kita hendak menyisihkan hal-hal yang sebenarnya tidak
+diperlukan dan membuktikan suatu versi umum teorema Weierstrass, yakni teorema
+Stone--Weierstrass\footnote{%
+Dinamai menurut matematikawan Amerika
 \href{https://en.wikipedia.org/wiki/Marshall_Harvey_Stone}{Marshall Harvey Stone}
-(1903--1989), and the German mathematician
+(1903--1989) dan matematikawan Jerman
 \href{https://en.wikipedia.org/wiki/Karl_Weierstrass}{Karl Theodor Wilhelm Weierstrass}
 (1815--1897).}.
-Polynomials are dense in the space of continuous
-functions on a compact interval.  What other kinds of families of
-functions are also dense?  And if the domain is an
-arbitrary metric space, then we no longer have polynomials
-to begin with.
+Polinom rapat dalam ruang fungsi kontinu pada suatu interval kompak. Keluarga
+fungsi macam apa lagi yang juga rapat? Jika domainnya merupakan ruang metrik
+sebarang, kita bahkan sejak awal tidak mempunyai polinom.
 
 \begin{defn}
 \pagebreak[2]
-A set $\sA$ of complex-valued functions $f \colon X \to \C$ is said to be an 
-\emph{\myindex{algebra}} (sometimes
-\emph{\myindex{complex algebra}} or \emph{algebra over $\C$}) if for all $f,
-g \in \sA$ and $c \in \C$, we have
+Suatu himpunan $\sA$ yang terdiri atas fungsi bernilai kompleks
+$f \colon X \to \C$ disebut \emph{\myindex{aljabar}} (kadang-kadang
+\emph{\myindex{aljabar kompleks}} atau \emph{aljabar atas $\C$}) jika untuk
+setiap $f,
+g \in \sA$ dan $c \in \C$, berlaku
 \begin{enumerate}[(i)]
 \item $f+g \in \sA$.
 \item $fg \in \sA$.
 \item $cg \in \sA$.
 \end{enumerate}
-A \emph{\myindex{real algebra}} or an
-\emph{algebra over $\R$} is a set of real-valued
-functions that satisfies the three properties above for $c \in \R$.
+Suatu \emph{\myindex{aljabar real}} atau \emph{aljabar atas $\R$} adalah
+himpunan fungsi bernilai real yang memenuhi ketiga sifat di atas untuk
+$c \in \R$.
 \end{defn}
 
-We are interested in the case when
-$X$ is a compact metric space.  Then
-$C(X,\C)$ and $C(X,\R)$ are metric spaces.
-Given a set $\sA \subset C(X,\C)$, the set of all uniform
-limits is the metric space closure $\widebar{\sA}$.
-When we talk about closure of an algebra
-from now on we mean the closure in $C(X,\C)$
-as a metric space.  Same for $C(X,\R)$.
+Kita tertarik pada kasus ketika $X$ merupakan ruang metrik kompak. Dalam kasus
+ini, $C(X,\C)$ dan $C(X,\R)$ merupakan ruang metrik. Untuk suatu himpunan
+$\sA \subset C(X,\C)$, himpunan semua limit seragam adalah penutupan
+$\widebar{\sA}$ dalam ruang metrik tersebut. Mulai sekarang, ketika membicarakan
+penutupan suatu aljabar, yang kita maksud adalah penutupan di dalam $C(X,\C)$
+sebagai ruang metrik. Demikian pula untuk $C(X,\R)$.
 
-The set $\sP$ of all polynomials is an algebra in
-$C\bigl([a,b],\C\bigr)$, and we
-have shown that its closure $\widebar{\sP} = C\bigl([a,b],\C\bigr)$.
-That is, it is dense.  That is the sort of result that we wish to prove.
+Himpunan $\sP$ dari semua polinom merupakan aljabar di dalam
+$C\bigl([a,b],\C\bigr)$, dan kita telah membuktikan bahwa penutupannya
+$\widebar{\sP} = C\bigl([a,b],\C\bigr)$. Dengan kata lain, himpunan itu rapat.
+Hasil semacam inilah yang hendak kita buktikan.
 
-We leave the following proposition as an exercise.
+Proposisi berikut kita serahkan sebagai latihan.
 
 \begin{prop} \label{prop:closureofalgebra}
-Suppose $X$ is a compact metric space.
-If $\sA \subset C(X,\C)$ is an algebra, then the closure $\widebar{\sA}$ is also an algebra.
-Similarly for a real algebra in $C(X,\R)$.
+Misalkan $X$ suatu ruang metrik kompak. Jika $\sA \subset C(X,\C)$ merupakan
+aljabar, maka penutupan $\widebar{\sA}$ juga merupakan aljabar. Pernyataan
+serupa berlaku bagi aljabar real di dalam $C(X,\R)$.
 \end{prop}
 
-We distill the properties of polynomials that are sufficient
-for an approximation theorem.
+Kita menyarikan sifat-sifat polinom yang memadai bagi suatu teorema
+aproksimasi.
 
 \begin{defn}
-Let $\sA$ be a set of complex-valued functions defined on a set $X$.
+Misalkan $\sA$ suatu himpunan fungsi bernilai kompleks yang didefinisikan pada
+suatu himpunan $X$.
 \begin{enumerate}[(i)]
-\item $\sA$ \emph{\myindex{separates points}}
-if for every $x,y \in X$ with $x \neq y$, there is an $f \in \sA$ such that
+\item $\sA$ \emph{\myindex{memisah titik}} jika untuk setiap $x,y \in X$
+dengan $x \neq y$, terdapat $f \in \sA$ sedemikian sehingga
 $f(x) \neq f(y)$.
 \item 
-$\sA$ \emph{\myindex{vanishes at no point}} if for every $x \in X$
-there is an $f \in \sA$ such that $f(x) \neq 0$.
+$\sA$ \emph{\myindex{tidak nol di setiap titik}} jika untuk setiap $x \in X$
+terdapat $f \in \sA$ sedemikian sehingga $f(x) \neq 0$.
 \end{enumerate}
 \end{defn}
 
 \begin{example}
-Given any $X \subset \R$ (or $X \subset \C$),
-the set $\sP$ of polynomials in one variable separates points and vanishes at no point
-on $X$.  That is, $1 \in \sP$, so it vanishes at no point.
-For $x,y \in X$, $x \neq y$, take $f(t) \coloneqq t$, to get $f(x) = x \neq y = f(y)$.
-So $\sP$ separates points.
+Untuk sembarang $X \subset \R$ (atau $X \subset \C$), himpunan $\sP$ dari
+polinom satu variabel memisah titik dan tidak nol di setiap titik pada $X$.
+Karena $1 \in \sP$, himpunan itu tidak nol di setiap titik. Untuk
+$x,y \in X$ dengan $x \neq y$, pilih $f(t) \coloneqq t$, sehingga
+$f(x) = x \neq y = f(y)$. Jadi, $\sP$ memisah titik.
 \end{example}
 
 \begin{example}
-The set of functions of the form
+Himpunan fungsi berbentuk
 \begin{equation*}
 f(t) = a_0 + \sum_{n=1}^k a_n \cos(nt)
 \end{equation*}
-is an algebra,
-which follows by the identity $\cos(mt)\cos(nt) = 
+merupakan suatu aljabar; hal ini mengikuti dari identitas
+$\cos(mt)\cos(nt) = 
 \frac{\cos((n+m) t)}{2}+
 \frac{\cos((n-m) t)}{2}$.
-The algebra vanishes at no point as it contains a constant function.
-It does not separate points if the domain is an interval
-$[-a,a]$, as $f(-t) = f(t)$ for all~$t$.
-It does separate points if the domain is $[0,\pi]$; $\cos(t)$
-is one-to-one on $[0,\pi]$.
+Aljabar ini tidak nol di setiap titik karena memuat fungsi konstan yang tidak
+nol. Aljabar ini tidak memisah titik jika domainnya interval $[-a,a]$, sebab
+$f(-t) = f(t)$ untuk setiap~$t$. Aljabar ini memisah titik jika domainnya
+$[0,\pi]$; fungsi $\cos(t)$ injektif pada $[0,\pi]$.
 \end{example}
 
 \begin{example}
-The set $\sP$ of real polynomials with no constant term is an algebra that vanishes at the origin.
-Clearly, any function in the closure of $\sP$ also vanishes at the origin,
-so the closure of $\sP$ cannot be $C\bigl([0,1],\R\bigr)$.
+Himpunan $\sP$ dari polinom real tanpa suku konstan merupakan aljabar yang nol
+di titik asal. Jelas bahwa setiap fungsi dalam penutupan $\sP$ juga nol di
+titik asal, sehingga penutupan $\sP$ tidak mungkin sama dengan
+$C\bigl([0,1],\R\bigr)$.
 
-Similarly, the set of constant functions is an algebra that does not
-separate points.  Uniform limits of constants are constants, so we also do
-not obtain all continuous functions.
+Demikian pula, himpunan fungsi konstan merupakan aljabar yang tidak memisah
+titik. Limit seragam fungsi-fungsi konstan tetap merupakan fungsi konstan,
+sehingga kita juga tidak memperoleh semua fungsi kontinu.
 \end{example}
 
-It is interesting that these two properties,
-\myquote{vanishes at no point} and
-\myquote{separates points,} are sufficient to obtain approximation of any
-real-valued continuous function.
-Before we prove this theorem, we note that such an algebra can interpolate
-a finite number of values exactly.  We will state this result
-only for two points as that is all that we will require.
+Menarik bahwa kedua sifat ini,
+\myquote{tidak nol di setiap titik} dan
+\myquote{memisah titik}, cukup untuk mengaproksimasi setiap fungsi
+kontinu bernilai real. Sebelum membuktikan teorema ini, kita mencatat bahwa
+aljabar demikian dapat menginterpolasi sejumlah berhingga nilai secara eksak.
+Kita akan menyatakan hasil ini hanya untuk dua titik karena hanya itulah yang
+kita perlukan.
 
 \begin{prop} \label{prop:SWinterpolate}
-Suppose $\sA$ is an algebra of complex-valued functions on a set $X$ that separates points
-and vanishes at no point.  Suppose $x,y$ are distinct points of $X$, and
-$c,d \in \C$.  Then there is an $f \in \sA$ such that
+Misalkan $\sA$ suatu aljabar fungsi bernilai kompleks pada himpunan $X$ yang
+memisah titik dan tidak nol di setiap titik. Misalkan $x,y$ merupakan dua titik
+berbeda di $X$, dan $c,d \in \C$. Maka terdapat $f \in \sA$ sedemikian sehingga
 \begin{equation*}
 f(x) = c, \qquad f(y) = d .
 \avoidbreak
 \end{equation*}
-If $\sA$ is a real algebra, the conclusion holds for $c,d \in \R$.
+Jika $\sA$ merupakan aljabar real, kesimpulan tersebut berlaku untuk
+$c,d \in \R$.
 \end{prop}
 
 \begin{proof}
-There must exist an $g,h,k \in \sA$
-such that 
+Harus terdapat $g,h,k \in \sA$
+sedemikian sehingga
 $g(x) \neq g(y)$, $h(x) \neq 0$, $k(y) \neq 0$.
-Let
+Definisikan
 \begin{equation*}
 \begin{split}
 f & \coloneqq 
@@ -3676,293 +3676,292 @@ d
 \frac{gk - g(x)k}{g(y)k(y)-g(x)k(y)} .
 \end{split}
 \end{equation*}
-We are not dividing by zero (clear from the first formula).
-Also by the first formula, $f(x) = c$ and $f(y) = d$.
-By the second formula, $f \in \sA$ (as $\sA$ is an algebra).
+Kita tidak melakukan pembagian dengan nol (hal ini jelas dari rumus pertama).
+Dari rumus pertama pula, $f(x) = c$ dan $f(y) = d$.
+Dari rumus kedua, $f \in \sA$ (karena $\sA$ merupakan aljabar).
 \end{proof}
 
-\begin{thm}[Stone--Weierstrass, real version]
+\begin{thm}[Stone--Weierstrass, versi real]
 \label{thm:SWreal}%
-\index{Stone--Weierstrass!real version}%
-Let $X$ be a compact metric space and $\sA$ a real algebra of real-valued
-continuous functions on $X$, such that $\sA$ separates points and vanishes at
-no point.  Then the closure $\widebar{\sA} = C(X,\R)$.
+\index{Stone--Weierstrass!versi real}%
+Misalkan $X$ suatu ruang metrik kompak dan $\sA$ suatu aljabar real yang terdiri
+atas fungsi kontinu bernilai real pada $X$, sedemikian sehingga $\sA$ memisah
+titik dan tidak nol di setiap titik. Maka penutupannya
+$\widebar{\sA} = C(X,\R)$.
 \end{thm}
 
-The proof is divided into several claims.
+Pembuktian dibagi menjadi beberapa klaim.
 
 \medskip
 
 \noindent
-\textbf{Claim 1:} \emph{If $f \in \widebar{\sA}$, then $\sabs{f} \in
+\textbf{Klaim 1:} \emph{Jika $f \in \widebar{\sA}$, maka $\sabs{f} \in
 \widebar{\sA}$.}
 
 \begin{proof}
-The function $f$ is bounded (continuous on a compact set), so there is an $M$
-such that $\babs{f(x)} \leq M$ for all $x \in X$.
-Let $\epsilon > 0$ be given.  By the corollary to the Weierstrass theorem,
-there exists a real polynomial $c_1 y + c_2 y^2 + \cdots+ c_n y^n$
-(vanishing at $y=0$) such that
+Fungsi $f$ terbatas (karena kontinu pada himpunan kompak), sehingga terdapat
+$M$ sedemikian sehingga $\babs{f(x)} \leq M$ untuk setiap $x \in X$.
+Ambil $\epsilon > 0$. Berdasarkan korolari teorema Weierstrass, terdapat
+polinom real $c_1 y + c_2 y^2 + \cdots+ c_n y^n$ (yang nol pada $y=0$)
+sedemikian sehingga
 \begin{equation*}
 \abs{\sabs{y} - \sum_{k=1}^n c_k y^k} < \epsilon
 \end{equation*}
-for all $y \in [-M,M]$.
-Because $\widebar{\sA}$ is an algebra and because there is no constant term in the
-polynomial,
+untuk setiap $y \in [-M,M]$. Karena $\widebar{\sA}$ merupakan aljabar dan
+polinom tersebut tidak memiliki suku konstan,
 \begin{equation*}
 \sum_{k=1}^n c_k f^k \in \widebar{\sA} .
 \end{equation*}
-As $\babs{f(x)} \leq M$, we have that for all $x \in X$,
+Karena $\babs{f(x)} \leq M$, untuk setiap $x \in X$ berlaku
 \begin{equation*}
 \abs{\babs{f(x)} - \sum_{k=1}^n c_k {\bigl(f(x)\bigr)}^k}
 < \epsilon .
 \end{equation*}
-So $\sabs{f}$ is in the closure of $\widebar{\sA}$, which is itself closed.
-In other words, $\sabs{f} \in \widebar{\sA}$.
+Jadi, $\sabs{f}$ berada dalam penutupan himpunan $\widebar{\sA}$, yang sendiri tertutup.
+Dengan kata lain, $\sabs{f} \in \widebar{\sA}$.
 \end{proof}
 
 \medskip
 
 \noindent
-\textbf{Claim 2:} \emph{If $f \in \widebar{\sA}$ and $g \in \widebar{\sA}$, then
-$\max(f,g) \in \widebar{\sA}$ and
-$\min(f,g) \in \widebar{\sA}$, where
+\textbf{Klaim 2:} \emph{Jika $f \in \widebar{\sA}$ dan $g \in \widebar{\sA}$, maka
+$\max(f,g) \in \widebar{\sA}$ dan
+$\min(f,g) \in \widebar{\sA}$, dengan
 }
 \begin{equation*}
 \bigl(\max(f,g)\bigr) (x) \coloneqq \max \bigl\{ f(x), g(x) \bigr\} , \qquad
-\text{and} \qquad
+\text{dan} \qquad
 \bigl(\min(f,g)\bigr) (x) \coloneqq \min \bigl\{ f(x), g(x) \bigr\} .
 \end{equation*}
 
 \begin{proof}
-Write:
+Tuliskan:
 \begin{equation*}
 \max(f,g) = \frac{f+g}{2} + \frac{\sabs{f-g}}{2} ,
-\qquad\text{and}\qquad
+\qquad\text{dan}\qquad
 \min(f,g) = \frac{f+g}{2} - \frac{\sabs{f-g}}{2} .
 \end{equation*}
-As $\widebar{\sA}$ is an algebra we are done.
+Karena $\widebar{\sA}$ merupakan aljabar, pembuktian selesai.
 \end{proof}
 
-By induction, the claim is also true for the minimum or maximum of a finite
-collection of functions.
+Dengan induksi, klaim ini juga berlaku untuk minimum atau maksimum dari suatu
+keluarga fungsi yang berhingga.
 
 \medskip
 
 \noindent
-\textbf{Claim 3:} \emph{Given $f \in C(X,\R)$, $x \in X$, and $\epsilon > 0$,
-there exists a $g_x \in \widebar{\sA}$ with $g_x(x) = f(x)$ and
+\textbf{Klaim 3:} \emph{Untuk $f \in C(X,\R)$, $x \in X$, dan $\epsilon > 0$,
+terdapat $g_x \in \widebar{\sA}$ yang memenuhi $g_x(x) = f(x)$ dan
 }
 \begin{equation*}
-g_x(t) > f(t)-\epsilon \qquad \text{for all } t \in X.
+g_x(t) > f(t)-\epsilon \qquad \text{untuk setiap } t \in X.
 \end{equation*}
 
 \begin{proof}
-Fix $f$, $x$, and $\epsilon$.
-By \propref{prop:SWinterpolate}, for every $y \in X$, find an $h_y \in
-\sA$ such that
+Tetapkan $f$, $x$, dan $\epsilon$.
+Berdasarkan \propref{prop:SWinterpolate}, untuk setiap $y \in X$ dengan
+$y \neq x$, pilih $h_y \in
+\sA$ sedemikian sehingga
 \begin{equation*}
 h_y(x) = f(x), \qquad h_y(y)=f(y) .
 \end{equation*}
-As $h_y$ and $f$ are continuous, the function $h_y-f$ is continuous,
-and the set
+Untuk $y=x$, sifat tidak nol di setiap titik menjamin adanya $q \in \sA$
+dengan $q(x) \neq 0$; tetapkan $h_x \coloneqq f(x)q/q(x)$. Dengan demikian,
+kedua persamaan di atas berlaku untuk setiap $y \in X$.
+Karena $h_y$ dan $f$ kontinu, fungsi $h_y-f$ juga kontinu,
+dan himpunan
 \begin{equation*}
 U_y \coloneqq
 \bigl\{ t \in X : h_y(t) > f(t) -\epsilon \bigr\}
 =
 {(h_y-f)}^{-1} \bigl( (-\epsilon,\infty) \bigr)
 \end{equation*}
-is open (it is the inverse image of an open set by a continuous function).
-Furthermore $y \in U_y$.  So the sets $U_y$ cover $X$.
-The space $X$ is compact,
-so there exist finitely many
-points $y_1,y_2,\ldots,y_n$ in $X$ such
-that
+terbuka (himpunan itu merupakan prapeta suatu himpunan terbuka oleh fungsi
+kontinu). Selain itu, $y \in U_y$. Jadi, himpunan-himpunan $U_y$ menutupi
+$X$. Karena ruang $X$ kompak, terdapat sejumlah berhingga titik
+$y_1,y_2,\ldots,y_n$ di $X$ sedemikian sehingga
 \begin{equation*}
 X = \bigcup_{k=1}^n U_{y_k}  .
 \end{equation*}
-Let 
+Tetapkan
 \begin{equation*}
 g_x \coloneqq \max(h_{y_1},h_{y_2},\ldots,h_{y_n}) .
 \end{equation*}
-By Claim 2, $g_x \in \widebar{\sA}$.  See \figureref{fig:stonegx}.
-Moreover,
+Berdasarkan Klaim 2, $g_x \in \widebar{\sA}$. Lihat \figureref{fig:stonegx}.
+Selain itu,
 \begin{equation*}
 g_x(t) > f(t) -\epsilon
 \end{equation*}
-for all $t \in X$, since for every $t$, there is a $y_k$ such that 
-$t \in U_{y_k}$, and so 
+untuk setiap $t \in X$, karena untuk setiap $t$ terdapat $y_k$ sedemikian
+sehingga $t \in U_{y_k}$, dan oleh karena itu
 $h_{y_k}(t) > f(t) -\epsilon$.
-Finally, $h_y(x) = f(x)$ for all $y \in X$, so
+Terakhir, $h_y(x) = f(x)$ untuk setiap $y \in X$, sehingga
 $g_x(x) = f(x)$.
 \end{proof}
 
 \begin{myfigureht}
 \myincludepdft{stonegx}{%
-A graph of several functions in two dimensions.  On the horizontal
-axis three points from left to right are marked, y sub 1, y sub 2,
-and x.  A graph of a function f is given in dark bold line.
-A graph of f minus epsilon is given underneath in a dotted line.
-A graph of h sub y sub 1 is given in long dashes and starts above
-f on the left, crosses the graph of f at y sub 1, then goes below
-even f minus epsilon for a while in particular around y sub 2,
-then goes up through the graph of f again at x.
-A graph of h sub y sub 2 starts below f minus epsilon, then goes up,
-crosses the graph of f at y sub 2, then crosses it
-back down at x.  Notably at every point either the graph of h sub y sub 1
-or h sub y sub 2 is above f minus epsilon, and the higher value of these two
-is highlighted in a thick gray line and marked g sub x, again
-in particular the graph of g sub x notably lies above f minus epsilon
-and agrees with f at x.}
-\caption{Construction of $g_x$ out of two $h_{y_1}$ (longer dashes) and
-$h_{y_2}$ (shorter dashes).\label{fig:stonegx}}
+Grafik beberapa fungsi dalam dua dimensi. Pada sumbu horizontal, tiga titik
+dari kiri ke kanan ditandai sebagai y subskrip 1, y subskrip 2, dan x. Grafik
+fungsi f digambar dengan garis gelap tebal. Grafik f dikurangi epsilon digambar
+di bawahnya dengan garis titik-titik. Grafik h subskrip y subskrip 1 digambar
+dengan garis putus-putus panjang dan bermula di atas f di sebelah kiri,
+memotong grafik f di y subskrip 1, lalu untuk sementara turun bahkan di bawah
+f dikurangi epsilon, khususnya di sekitar y subskrip 2, kemudian naik dan
+kembali memotong grafik f di x. Grafik h subskrip y subskrip 2 bermula di
+bawah f dikurangi epsilon, lalu naik, memotong grafik f di y subskrip 2,
+kemudian kembali memotongnya ke arah bawah di x. Di setiap titik, grafik h
+subskrip y subskrip 1 atau h subskrip y subskrip 2 berada di atas f dikurangi
+epsilon. Nilai yang lebih besar dari keduanya disorot dengan garis abu-abu
+tebal dan diberi label g subskrip x; khususnya, grafik g subskrip x berada di
+atas f dikurangi epsilon dan berimpit dengan f di x.}
+\caption{Konstruksi $g_x$ dari dua fungsi $h_{y_1}$ (garis putus-putus lebih
+panjang) dan $h_{y_2}$ (garis putus-putus lebih pendek).\label{fig:stonegx}}
 \end{myfigureht}
 
-What we have now is for each $x$ a function $g_x \in \widebar{\sA}$
-that is within $\epsilon$ of $f$ near $x$ (being continuous),
-but also $g_x$ is within $\epsilon$ of $f$ from at least one side at
-all points.
-If we cover $X$ with neighborhoods where $g_x$ is a good approximation,
-we can repeat the idea of the argument with a minimum to get
-a function that is within $\epsilon$ from both sides.
+Yang telah kita peroleh ialah, untuk setiap $x$, sebuah fungsi
+$g_x \in \widebar{\sA}$ yang mempunyai galat kurang dari $\epsilon$ terhadap
+$f$ di sekitar $x$ (karena kontinu), tetapi juga $g_x$ mempunyai galat
+satu-sisi kurang dari $\epsilon$ terhadap $f$ di semua titik.
+Jika kita menutupi $X$ dengan lingkungan-lingkungan tempat $g_x$ merupakan
+aproksimasi yang baik, gagasan argumen tersebut dapat diulangi dengan minimum
+untuk memperoleh fungsi dengan galat kurang dari $\epsilon$ pada kedua sisi.
 
 \medskip
 \pagebreak[2]
 
 \noindent
-\textbf{Claim 4:} \emph{If $f \in C(X,\R)$ and $\epsilon > 0$ is given, then there
-exists an $\varphi \in \widebar{\sA}$ such that}
+\textbf{Klaim 4:} \emph{Jika diberikan $f \in C(X,\R)$ dan $\epsilon > 0$, maka
+terdapat $\varphi \in \widebar{\sA}$ sedemikian sehingga}
 \begin{equation*}
-\babs{f(x) - \varphi(x)} < \epsilon .
+\babs{f(x) - \varphi(x)} < \epsilon
+\qquad \text{untuk setiap } x \in X .
 \end{equation*}
 
 \begin{proof}
-For every $x \in X$, find the function $g_x$ as in Claim 3.
-Let
+Untuk setiap $x \in X$, pilih fungsi $g_x$ seperti dalam Klaim 3.
+Tetapkan
 \begin{equation*}
 V_x \coloneqq \bigl\{ t \in X : g_x(t) < f(t) + \epsilon \bigr\}.
 \end{equation*}
-The sets $V_x$ are open as $g_x$ and $f$ are continuous.
-As $g_x(x) = f(x)$, we have $x \in V_x$.  So the sets $V_x$ cover $X$.
-By compactness of $X$,
-there
-are finitely many points $x_1,x_2,\ldots,x_n$ such that
+Himpunan-himpunan $V_x$ terbuka karena $g_x$ dan $f$ kontinu.
+Karena $g_x(x) = f(x)$, kita peroleh $x \in V_x$. Jadi, himpunan-himpunan
+$V_x$ menutupi $X$. Berdasarkan kekompakan $X$, terdapat sejumlah berhingga
+titik $x_1,x_2,\ldots,x_n$ sedemikian sehingga
 \begin{equation*}
 X = \bigcup_{k=1}^n V_{x_k} .
 \end{equation*}
-Let
+Tetapkan
 \begin{equation*}
 \varphi \coloneqq \min(g_{x_1},g_{x_2},\ldots,g_{x_n}) .
 \end{equation*}
-By Claim 2, $\varphi \in \widebar{\sA}$.  Similarly as before (same argument as in
-Claim 3), for all $t \in X$,
+Berdasarkan Klaim 2, $\varphi \in \widebar{\sA}$. Dengan argumen yang sama
+seperti dalam Klaim 3, untuk setiap $t \in X$,
 \begin{equation*}
 \varphi(t) < f(t) + \epsilon .
 \end{equation*}
-Since all the $g_x$ satisfy $g_x(t) > f(t) - \epsilon$ for all $t \in X$,
-$\varphi(t) > f(t) - \epsilon$ as well.
-Hence, for all $t$,
+Karena semua $g_x$ memenuhi $g_x(t) > f(t) - \epsilon$ untuk setiap $t \in X$,
+$\varphi(t) > f(t) - \epsilon$ juga berlaku.
+Oleh karena itu, untuk setiap $t$,
 \begin{equation*}
 -\epsilon < \varphi(t) - f(t) < \epsilon ,
 \end{equation*}
-which is the desired conclusion.
+yang merupakan kesimpulan yang diinginkan.
 \end{proof}
 
-The proof of the theorem follows from Claim 4.  The claim states that an
-arbitrary continuous function is in the closure of $\widebar{\sA}$,
-which is already closed.  The theorem is proved.
+Pembuktian teorema mengikuti dari Klaim 4. Klaim tersebut menyatakan bahwa
+sebarang fungsi kontinu berada dalam penutupan $\widebar{\sA}$, yang sudah
+tertutup. Dengan demikian, teorema terbukti.
 
 \begin{example}
-The functions of the form
+Fungsi-fungsi berbentuk
 \begin{equation*}
 f(t) = \sum_{k=1}^n c_k \, e^{kt},
 \end{equation*}
-for $c_k \in \R$,
-are dense in $C\bigl([a,b],\R\bigr)$.  Such functions are a real
-algebra, which follows from $e^{kt} e^{\ell t} = e^{(k+\ell)t}$.  They separate
-points as $e^t$ is one-to-one.
-As $e^t > 0$ for all $t$, the algebra
-does not vanish at any point.
+untuk $c_k \in \R$,
+rapat dalam $C\bigl([a,b],\R\bigr)$. Fungsi-fungsi demikian membentuk aljabar
+real, yang mengikuti dari $e^{kt} e^{\ell t} = e^{(k+\ell)t}$. Fungsi-fungsi
+tersebut memisah titik karena $e^t$ injektif.
+Karena $e^t > 0$ untuk setiap $t$, aljabar tersebut
+tidak nol di setiap titik.
 \end{example}
 
-In general, given a set of functions that separates points and does
-not vanish at any point, we let these functions
-\emph{generate}\index{generate an algebra}
-an algebra
-by considering all the linear combinations of arbitrary multiples of such
-functions.  That is, we consider all real polynomials without constant term
-of such functions.  In the example above,
-the algebra is generated by $e^t$.  We 
-consider polynomials in $e^t$ without constant term.
+Secara umum, jika diberikan suatu himpunan fungsi yang memisah titik dan tidak
+nol di setiap titik, kita membentuk aljabar yang
+\emph{dibangkitkan}\index{membangkitkan aljabar}
+oleh fungsi-fungsi tersebut dengan mempertimbangkan semua kombinasi linear
+dari hasil kali sebarang banyak fungsi tersebut. Dengan kata lain, kita mempertimbangkan semua
+polinom real tanpa suku konstan dalam fungsi-fungsi tersebut. Pada contoh di
+atas, aljabar itu dibangkitkan oleh $e^t$. Kita
+mempertimbangkan polinom dalam $e^t$ tanpa suku konstan.
 
 \begin{example}
-We mentioned that the set of all functions of the form
+Kita telah menyebutkan bahwa himpunan semua fungsi berbentuk
 \begin{equation*}
 a_0 +
 \sum_{n=1}^N a_n \cos(nt)
 \end{equation*}
-is an algebra.
-When considered on $[0,\pi]$, 
-it separates points and vanishes nowhere so
-\hyperref[thm:SWreal]{Stone--Weierstrass} applies.
-As for polynomials, you \emph{do not} want to conclude that every continuous
-function on $[0,\pi]$ has a uniformly convergent
-Fourier cosine series, that is, that every continuous
-function can be written as
+merupakan suatu aljabar.
+Jika dipandang pada $[0,\pi]$,
+aljabar ini memisah titik dan tidak nol di setiap titik, sehingga
+\hyperref[thm:SWreal]{Stone--Weierstrass} dapat diterapkan.
+Seperti pada kasus polinom, kita \emph{tidak boleh} menyimpulkan bahwa setiap fungsi
+kontinu pada $[0,\pi]$ memiliki deret kosinus Fourier yang konvergen seragam,
+yaitu bahwa setiap fungsi kontinu dapat dituliskan sebagai
 \begin{equation*}
 a_0 +
 \sum_{n=1}^\infty a_n \cos(nt) .
 \end{equation*}
-That is \emph{not true}!
-There exist continuous functions
-whose Fourier series does not converge even pointwise
-let alone uniformly.  See \sectionref{sec:fourier}.
+Hal itu \emph{tidak benar}!
+Terdapat fungsi kontinu yang deret Fouriernya bahkan tidak konvergen secara
+titik demi titik, apalagi secara seragam. Lihat \sectionref{sec:fourier}.
 \end{example}
 
-To obtain Stone--Weierstrass for complex algebras, we must
-make an extra assumption.
+Untuk memperoleh teorema Stone--Weierstrass bagi aljabar kompleks, kita harus
+menambahkan satu asumsi.
 
 \begin{defn}
-An algebra $\sA$ is \emph{\myindex{self-adjoint}} if for all $f \in \sA$, the function
-$\bar{f}$ defined by $\bar{f}(x) \coloneqq \overline{f(x)}$ is in $\sA$, where by the
-bar we mean the complex conjugate.
+Suatu aljabar $\sA$ disebut \emph{\myindex{self-adjoint}} jika untuk setiap $f \in \sA$,
+fungsi $\bar{f}$ yang didefinisikan oleh $\bar{f}(x) \coloneqq \overline{f(x)}$
+berada dalam $\sA$, dengan garis atas menyatakan konjugat kompleks.
 \end{defn}
 
-\begin{thm}[Stone--Weierstrass, complex version]
+\begin{thm}[Stone--Weierstrass, versi kompleks]
 \label{thm:SWcomplex}%
-\index{Stone--Weierstrass!complex version}%
-Let $X$ be a compact metric space and $\sA$ an algebra of complex-valued
-continuous functions on $X$, such that $\sA$ separates points, vanishes at
-no point, and is self-adjoint.  Then the closure $\widebar{\sA} = C(X,\C)$.
+\index{Stone--Weierstrass!versi kompleks}%
+Misalkan $X$ suatu ruang metrik kompak dan $\sA$ suatu aljabar fungsi kontinu
+bernilai kompleks pada $X$, sedemikian sehingga $\sA$ memisah titik, tidak nol
+di setiap titik, dan self-adjoint. Maka penutupannya
+$\widebar{\sA} = C(X,\C)$.
 \end{thm}
 
 \begin{proof}
-Suppose $\sA_\R \subset \sA$ is the set of the real-valued elements of
-$\sA$.
-For $f \in \sA$, write $f = u+iv$ where $u$ and $v$ are real-valued.
-Then
+Andaikan $\sA_\R \subset \sA$ merupakan himpunan unsur-unsur bernilai real
+dari $\sA$.
+Untuk $f \in \sA$, tuliskan $f = u+iv$, dengan $u$ dan $v$ bernilai real.
+Maka
 \begin{equation*}
 u = \frac{f+\bar{f}}{2}, \qquad
 v = \frac{f-\bar{f}}{2i} .
 \end{equation*}
-So $u, v \in \sA$ as $\sA$ is a self-adjoint algebra, and since they are
-real-valued $u, v \in \sA_\R$.
+Jadi, $u, v \in \sA$ karena $\sA$ merupakan aljabar self-adjoint, dan karena
+keduanya bernilai real, $u, v \in \sA_\R$.
 
-If $x \neq y$, then find an $f \in \sA$ such that $f(x) \neq f(y)$.  If $f
-= u+iv$, then it is obvious that either $u(x) \neq u(y)$ or
-$v(x) \neq v(y)$.  So $\sA_\R$ separates points.
+Jika $x \neq y$, ambillah $f \in \sA$ sedemikian sehingga $f(x) \neq f(y)$.
+Jika $f = u+iv$, jelas bahwa $u(x) \neq u(y)$ atau $v(x) \neq v(y)$.
+Jadi, $\sA_\R$ memisah titik.
 %
-Similarly, for every $x$ find $f \in \sA$ such that $f(x) \neq 0$.  If $f
-= u+iv$, then either $u(x) \neq 0$ or $v(x) \neq 0$.
-So $\sA_\R$ vanishes at no point.
+Demikian pula, untuk setiap $x$, ambillah $f \in \sA$ sedemikian sehingga
+$f(x) \neq 0$. Jika $f = u+iv$, maka $u(x) \neq 0$ atau $v(x) \neq 0$.
+Jadi, $\sA_\R$ tidak nol di setiap titik.
 %
-The set $\sA_\R$ is a real algebra, and satisfies the hypotheses of the
-\hyperref[thm:SWreal]{real Stone--Weierstrass theorem}.
-Given any $f = u+iv \in C(X,\C)$,
-we find $g,h \in \sA_\R$ such that
-$\babs{u(t)-g(t)} < \nicefrac{\epsilon}{2}$ and
-$\babs{v(t)-h(t)} < \nicefrac{\epsilon}{2}$ for all $t \in X$.
-Next, $g+i h \in \sA$, and
+Himpunan $\sA_\R$ merupakan aljabar real dan memenuhi hipotesis
+\hyperref[thm:SWreal]{teorema Stone--Weierstrass versi real}.
+Untuk sebarang $f = u+iv \in C(X,\C)$ dan setiap $\epsilon>0$, kita
+memperoleh $g,h \in \sA_\R$ sedemikian sehingga
+$\babs{u(t)-g(t)} < \nicefrac{\epsilon}{2}$ dan
+$\babs{v(t)-h(t)} < \nicefrac{\epsilon}{2}$ untuk setiap $t \in X$.
+Selanjutnya, $g+i h \in \sA$, dan
 \begin{multline*}
 \abs{f(t) - \bigl(g(t)+ih(t)\bigr)} = 
 \abs{u(t)+iv(t) - \bigl(g(t)+ih(t)\bigr)} \\
@@ -3970,113 +3969,108 @@ Next, $g+i h \in \sA$, and
 \babs{u(t)-g(t)}+\babs{v(t)-h(t)} < \nicefrac{\epsilon}{2} +
 \nicefrac{\epsilon}{2} = \epsilon
 \end{multline*}
-for all $t \in X$.
-So $\widebar{\sA} = C(X,\C)$.
+untuk setiap $t \in X$.
+Jadi, $\widebar{\sA} = C(X,\C)$.
 \end{proof}
 
-The self-adjoint requirement is necessary, although it is not so obvious to
-see it.  For an example, see \exerciseref{exercise:selfadjointSW}.
+Syarat self-adjoint diperlukan, meskipun hal ini tidak begitu mudah terlihat.
+Sebagai contoh, lihat \exerciseref{exercise:selfadjointSW}.
 
-We give an interesting application.
-When working
-with functions of two variables, it may be useful to work with functions
-of the form $f(x)g(y)$ rather than $F(x,y)$.  For example, they are easier
-to integrate.  We have the following.
+Kita berikan suatu penerapan yang menarik.
+Ketika menangani fungsi dua variabel, mungkin berguna untuk bekerja dengan
+fungsi berbentuk $f(x)g(y)$ alih-alih $F(x,y)$. Sebagai contoh, fungsi berbentuk
+demikian lebih mudah diintegralkan. Kita memperoleh hasil berikut.
 
 \begin{example}
-Any continuous $F \colon [0,1] \times [0,1] \to \C$ can be
-approximated uniformly by functions of the form
+Setiap fungsi kontinu $F \colon [0,1] \times [0,1] \to \C$ dapat dihampiri
+secara seragam oleh fungsi-fungsi berbentuk
 \begin{equation*}
 \sum_{j=1}^n f_j(x) g_j(y) ,
 \end{equation*}
-where $f_j \colon [0,1] \to \C$ and $g_j \colon [0,1] \to \C$ are continuous.
+dengan $f_j \colon [0,1] \to \C$ dan $g_j \colon [0,1] \to \C$ kontinu.
 
-Proof:
-It is not hard to see that the functions of the above form are a complex
-algebra.  It is equally easy to show that they vanish nowhere, separate
-points, and the algebra is self-adjoint.  As $[0,1] \times [0,1]$ is
-compact,
-\hyperref[thm:SWcomplex]{Stone--Weierstrass} obtains the result.
+Bukti:
+Tidak sulit melihat bahwa fungsi-fungsi berbentuk di atas membentuk suatu
+aljabar kompleks. Sama mudahnya menunjukkan bahwa aljabar itu tidak nol di
+setiap titik, memisah titik, dan self-adjoint. Karena $[0,1] \times [0,1]$
+kompak, \hyperref[thm:SWcomplex]{Stone--Weierstrass} memberikan hasil tersebut.
 \end{example}
 
-\subsection{Exercises}
+\subsection{Latihan}
 
 \begin{exercise}
-Prove \propref{prop:closureofalgebra}.
-Hint: If $\{ f_n \}_{n=1}^\infty$ is a sequence in $C(X,\R)$
-converging to $f$, then as $f$ is bounded, show
-that $f_n$ is uniformly bounded, that is, there exists a
-single bound for all $f_n$ (and $f$).
+Buktikan \propref{prop:closureofalgebra}.
+Petunjuk: Jika $\{ f_n \}_{n=1}^\infty$ merupakan barisan dalam $C(X,\R)$
+yang konvergen ke $f$, maka karena $f$ terbatas, tunjukkan bahwa $f_n$
+terbatas seragam, yaitu terdapat satu batas yang berlaku untuk semua $f_n$
+(dan $f$).
 \end{exercise}
 
 \begin{exercise}
-Suppose $X \coloneqq \R$ (not compact in particular).
-Show that $f(t) \coloneqq e^t$ is not possible to uniformly approximate
-by polynomials on $X$.  Hint: Consider $\babs{\frac{e^t}{t^n}}$
-as $t \to \infty$.
+Misalkan $X \coloneqq \R$ (khususnya tidak kompak).
+Tunjukkan bahwa $f(t) \coloneqq e^t$ tidak mungkin dihampiri secara seragam
+oleh polinom pada $X$. Petunjuk: Perhatikan $\babs{\frac{e^t}{t^n}}$
+ketika $t \to \infty$.
 \end{exercise}
 
 \begin{exercise}
-Suppose $f \colon [0,1] \to \C$ is a uniform limit of a sequence of polynomials
-of degree at most $d$.  Show that the limit is a polynomial of degree at most $d$.
-Conclude that to approximate a function which is not a polynomial, we
-need the degree of the approximations to go to infinity.\\
-Hint: First prove that if a sequence of polynomials of degree $d$
-converges uniformly to the zero function, then 
-the coefficients converge to zero.
-One way to do this is linear algebra: Consider a polynomial $p$
-evaluated at $d+1$ points
-to be a linear operator taking the
-coefficients of $p$ to the values of $p$
-(an operator in $L(\R^{d+1})$).
+Misalkan $f \colon [0,1] \to \C$ merupakan limit seragam dari suatu barisan
+polinom berderajat paling tinggi $d$. Tunjukkan bahwa limit tersebut merupakan
+polinom berderajat paling tinggi $d$. Simpulkan bahwa untuk menghampiri fungsi
+yang bukan polinom, derajat para penghampir harus menuju tak hingga.\\
+Petunjuk: Pertama, buktikan bahwa jika suatu barisan polinom berderajat $d$
+konvergen seragam ke fungsi nol, maka koefisien-koefisiennya konvergen ke nol.
+Salah satu caranya adalah menggunakan aljabar linear: Pandang evaluasi polinom $p$
+pada $d+1$ titik sebagai operator linear yang memetakan koefisien-koefisien
+$p$ ke nilai-nilai $p$ (sebuah operator dalam $L(\C^{d+1})$).
 \end{exercise}
 
 \begin{exercise}
-Suppose $f \colon [0,1] \to \R$ is continuous and
-$\int_0^1 f(x) x^n \, dx = 0$ for all $n = 0,1,2,\ldots$.
-Show that $f(x) = 0$ for all $x \in [0,1]$.
-Hint: Approximate by polynomials to show that $\int_0^1 {\bigl( f(x)
-\bigr)}^2 \, dx = 0$.
+Misalkan $f \colon [0,1] \to \R$ kontinu dan
+$\int_0^1 f(x) x^n \, dx = 0$ untuk setiap $n = 0,1,2,\ldots$.
+Tunjukkan bahwa $f(x) = 0$ untuk setiap $x \in [0,1]$.
+Petunjuk: Gunakan aproksimasi polinomial untuk menunjukkan bahwa
+$\int_0^1 {\bigl( f(x) \bigr)}^2 \, dx = 0$.
 \end{exercise}
 
 \begin{exercise}
-Suppose $I \colon C\bigl([0,1],\R\bigr) \to \R$ is 
-a linear continuous function such that
+Misalkan $I \colon C\bigl([0,1],\R\bigr) \to \R$ merupakan
+fungsional linear kontinu sedemikian sehingga
 $I(x^n) = \frac{1}{n+1}$
-for all $n=0,1,2,3,\ldots$.
-Prove that $I(f) = \int_0^1 f$ for all $f \in C\bigl([0,1],\R\bigr)$.
+untuk setiap $n=0,1,2,3,\ldots$.
+Buktikan bahwa $I(f) = \int_0^1 f$ untuk setiap
+$f \in C\bigl([0,1],\R\bigr)$.
 \end{exercise}
 
 \begin{exercise}
-Let $\sA$ be the collection of real polynomials in $x^2$,
-that is, polynomials of the form
+Misalkan $\sA$ adalah himpunan polinom real dalam $x^2$,
+yakni polinom berbentuk
 $c_0 + c_1 x^2 + c_2 x^4 + \cdots + c_d x^{2d}$.
 \begin{enumerate}[a)]
 \item
-Show that every $f \in C\bigl([0,1],\R\bigr)$ is a uniform limit of
-polynomials from $\sA$.
+Tunjukkan bahwa setiap $f \in C\bigl([0,1],\R\bigr)$ merupakan limit seragam
+dari polinom dalam $\sA$.
 \item
-Find an $f \in  C\bigl([-1,1],\R\bigr)$ that is not a
-uniform limit of
-polynomials from $\sA$.
+Temukan suatu $f \in  C\bigl([-1,1],\R\bigr)$ yang bukan merupakan
+limit seragam dari polinom dalam $\sA$.
 \item
-Which hypothesis of the real Stone--Weierstrass is not satisfied
-for the domain $[-1,1]$?
+Hipotesis mana dari teorema Stone--Weierstrass versi real yang tidak dipenuhi
+untuk domain $[-1,1]$?
 \end{enumerate}
 \end{exercise}
 
 \begin{exercise}
 \pagebreak[3]
-Let $\sabs{z}=1$ define the unit circle $S^1 \subset \C$.
+Misalkan $\sabs{z}=1$ mendefinisikan lingkaran satuan $S^1 \subset \C$.
 \begin{enumerate}[a)]
 \item
-Show that functions of the form
+Tunjukkan bahwa fungsi-fungsi berbentuk
 \begin{equation*}
 \sum_{k=-n}^n c_k\, z^k
 \end{equation*}
-are dense in $C(S^1,\C)$.  Notice the negative powers.
+rapat dalam $C(S^1,\C)$.  Perhatikan adanya pangkat negatif.
 \item 
-Show that functions of the form
+Tunjukkan bahwa fungsi-fungsi berbentuk
 \begin{equation*}
 c_0
 +
@@ -4084,70 +4078,71 @@ c_0
 +
 \sum_{k=1}^n c_{-k}\, \bar{z}^k
 \end{equation*}
-are dense in $C(S^1,\C)$.
-These functions are called \emph{\myindex{harmonic polynomials}},
-and this approximation leads to, for example, the solution of the
-steady state heat problem.
+rapat dalam $C(S^1,\C)$.
+Fungsi-fungsi ini disebut \emph{\myindex{polinom harmonik}},
+dan aproksimasi ini, misalnya, mengarah pada penyelesaian
+masalah panas keadaan tunak.
 \end{enumerate}
-Hint: A good way to write the equation for $S^1$ is $z \bar{z} = 1$.
+Petunjuk: Salah satu cara yang baik untuk menuliskan persamaan bagi $S^1$
+adalah $z \bar{z} = 1$.
 \end{exercise}
 
 \begin{exercise} \label{exercise:trigpolydense}
-Show that any continuous function $f \colon [-\pi,\pi] \to \C$
-with $f(-\pi)=f(\pi)$ can be approximated uniformly by
-functions of the form
+Tunjukkan bahwa setiap fungsi kontinu $f \colon [-\pi,\pi] \to \C$
+yang memenuhi $f(-\pi)=f(\pi)$ dapat didekati secara seragam oleh
+fungsi-fungsi berbentuk
 \begin{equation*}
 \sum_{k=-n}^n c_k \, e^{ik x}
 \end{equation*}
-for complex numbers $c_k$.
+dengan $c_k$ berupa bilangan kompleks.
 \end{exercise}
 
 \begin{exercise} \label{exercise:selfadjointSW}
-Let $S^1 \subset \C$ be the unit circle, that is, the set where
-$\sabs{z} = 1$.  Orient this set counterclockwise.
-Let $\gamma(t) \coloneqq e^{it}$.
-For the one-form $f(z)\,dz$ we write\footnote{%
-Alternatively, one could define $dz \coloneqq dx + i \, dy$ and
-extend the path integral from \chapterref{path:chapter} to complex-valued
-one-forms.}
+Misalkan $S^1 \subset \C$ adalah lingkaran satuan, yaitu himpunan semua
+titik yang memenuhi $\sabs{z} = 1$.  Orientasikan himpunan ini berlawanan arah jarum jam.
+Misalkan $\gamma(t) \coloneqq e^{it}$.
+Untuk bentuk-1 $f(z)\,dz$, kita tulis\footnote{%
+Sebagai alternatif, kita dapat mendefinisikan $dz \coloneqq dx + i \, dy$ dan
+memperluas integral lintasan dari \chapterref{path:chapter} ke
+bentuk-1 bernilai kompleks.}
 \begin{equation*}
 \int_{S^1} f(z) \,dz \coloneqq \int_0^{2\pi} f(e^{it}) \, i e^{it} \, dt . 
 \end{equation*}
 \begin{enumerate}[a)]
 \item
-Prove that for all nonnegative integers $k = 0,1,2,3,\ldots$, we have
+Buktikan bahwa untuk setiap bilangan bulat taknegatif $k = 0,1,2,3,\ldots$, berlaku
 $\int_{S^1} z^k \, dz = 0$.
 \item
-Prove that if
-$P(z) = \sum_{k=0}^n c_k z^k$ is a
-polynomial in $z$, then
+Buktikan bahwa jika
+$P(z) = \sum_{k=0}^n c_k z^k$ merupakan
+polinom dalam $z$, maka
 $\int_{S^1} P(z) \, dz = 0$.
 \item
-Prove
+Buktikan bahwa
 $\int_{S^1} \bar{z} \, dz \neq 0$.
 \item
-Conclude that polynomials in $z$ (this algebra of functions is
-not self-adjoint) are not dense in $C(S^1,\C)$.
+Simpulkan bahwa polinom dalam $z$ (aljabar fungsi ini
+tidak self-adjoint) tidak rapat dalam $C(S^1,\C)$.
 \end{enumerate}
 \end{exercise}
 
 \begin{exercise}
-Let $(X,d)$ be a compact metric space and
-suppose $\sA \subset C(X,\R)$ is a real algebra that separates points, but
-vanishes at exactly one point $x_0 \in X$.
-That is, $f(x_0) = 0$ for all $f \in \sA$,
-but for every $y \in X \setminus \{ x_0 \}$ there is
-a $\varphi \in \sA$ such that $\varphi(y) \neq 0$.  Prove that
-every function $g \in C(X,\R)$ such that $g(x_0) = 0$ is a uniform limit
-of functions from $\sA$.
+Misalkan $(X,d)$ merupakan ruang metrik kompak dan
+andaikan $\sA \subset C(X,\R)$ adalah aljabar real yang memisahkan titik-titik, tetapi
+semua fungsinya bernilai nol secara serentak tepat di satu titik $x_0 \in X$.
+Artinya, $f(x_0) = 0$ untuk setiap $f \in \sA$,
+tetapi untuk setiap $y \in X \setminus \{ x_0 \}$ terdapat
+suatu $\varphi \in \sA$ sedemikian sehingga $\varphi(y) \neq 0$.  Buktikan bahwa
+setiap fungsi $g \in C(X,\R)$ yang memenuhi $g(x_0) = 0$ merupakan limit seragam
+dari fungsi-fungsi dalam $\sA$.
 \end{exercise}
 
 \begin{exercise}
-Let $(X,d)$ be a compact metric space with at least two points and
-suppose $\sA \subset C(X,\R)$ is a real algebra.
-Suppose that for each $y \in X$ the closure $\widebar{\sA}$
-contains the function $\varphi_y(x) \coloneqq d(y,x)$.
-Show that $\widebar{\sA} = C(X,\R)$.
+Misalkan $(X,d)$ merupakan ruang metrik kompak dengan sekurang-kurangnya dua titik dan
+andaikan $\sA \subset C(X,\R)$ adalah aljabar real.
+Andaikan bahwa untuk setiap $y \in X$, penutupan $\widebar{\sA}$
+memuat fungsi jarak $\varphi_y(x) \coloneqq d(y,x)$.
+Tunjukkan bahwa $\widebar{\sA} = C(X,\R)$.
 \end{exercise}
 
 \begin{exercise}
@@ -4155,18 +4150,18 @@ Show that $\widebar{\sA} = C(X,\R)$.
 \leavevmode
 \begin{enumerate}[a)]
 \item
-Suppose $f \colon [a,b] \to \C$ is continuously 
-differentiable.  Show that there exists a sequence of polynomials
+Andaikan $f \colon [a,b] \to \C$ diferensiabel secara kontinu.
+Tunjukkan bahwa terdapat suatu barisan polinom
 $\{ p_n \}_{n=1}^\infty$
-that converges in the $C^1$ norm to $f$, that is,
-$\snorm{f - p_n}_{[a,b]} + \snorm{f'-p_n'}_{[a,b]} \to 0$ as $n \to \infty$.
+yang konvergen dalam norma $C^1$ ke $f$, yaitu,
+$\snorm{f - p_n}_{[a,b]} + \snorm{f'-p_n'}_{[a,b]} \to 0$ ketika $n \to \infty$.
 \item
-Suppose $f \colon [a,b] \to \C$ is $k$ times continuously 
-differentiable.  Show that there exists a sequence of polynomials
+Andaikan $f \colon [a,b] \to \C$ diferensiabel secara kontinu hingga orde $k$.
+Tunjukkan bahwa terdapat suatu barisan polinom
 $\{ p_n \}_{n=1}^\infty$
-that converges in the $C^k$ norm to $f$, that is,
+yang konvergen dalam norma $C^k$ ke $f$, yaitu,
 \begin{equation*}
-\sum_{j=0}^k \norm{f^{(j)} - p_n^{(j)}}_{[a,b]} \to 0 \qquad \text{as} \qquad
+\sum_{j=0}^k \norm{f^{(j)} - p_n^{(j)}}_{[a,b]} \to 0 \qquad \text{ketika} \qquad
 n \to \infty.
 \end{equation*}
 \end{enumerate}
@@ -4177,34 +4172,35 @@ n \to \infty.
 \leavevmode
 \begin{enumerate}[a)]
 \item
-Show that an even function $f \colon [-1,1] \to \R$ is a uniform
-limit of polynomials with even powers only, that is, polynomials
-of the form $a_0 + a_1 x^2 + a_2 x^4 + \cdots + a_k x^{2k}$.
+Tunjukkan bahwa fungsi genap $f \colon [-1,1] \to \R$ merupakan limit seragam
+dari polinom yang hanya memuat pangkat genap, yaitu, polinom
+berbentuk $a_0 + a_1 x^2 + a_2 x^4 + \cdots + a_k x^{2k}$.
 \item
-Show that an odd function $f \colon [-1,1] \to \R$ is a uniform
-limit of polynomials with odd powers only, that is, polynomials
-of the form $b_1 x + b_2 x^3 + b_3 x^5 + \cdots + b_k x^{2k-1}$.
+Tunjukkan bahwa fungsi ganjil $f \colon [-1,1] \to \R$ merupakan limit seragam
+dari polinom yang hanya memuat pangkat ganjil, yaitu, polinom
+berbentuk $b_1 x + b_2 x^3 + b_3 x^5 + \cdots + b_k x^{2k-1}$.
 \end{enumerate}
 \end{exercise}
 
 \begin{exercise} \label{exercise:finitelymanyweierequal}
 \pagebreak[2]
-Let $f \colon [a,b] \to \R$ be continuous.
+Misalkan $f \colon [a,b] \to \R$ kontinu.
 \begin{enumerate}[a)]
 \item
-Given two points $x_1,x_2 \in [a,b]$, show that
-there exists a sequence of real polynomials $\{ p_n \}_{n=1}^\infty$
-such that $p_n(x_1) = f(x_1)$ and $p_n(x_2) = f(x_2)$ for all $n$.
+Diberikan dua titik $x_1,x_2 \in [a,b]$, tunjukkan bahwa
+terdapat suatu barisan polinom real $\{ p_n \}_{n=1}^\infty$
+sedemikian sehingga $p_n(x_1) = f(x_1)$ dan $p_n(x_2) = f(x_2)$ untuk setiap $n$.
 \item
-Generalize the previous part to $k$ points:
-Given the points $x_1,x_2,\ldots,x_k \in [a,b]$, show that
-there exists a sequence of real polynomials $\{ p_n \}_{n=1}^\infty$
-so that for all $n$, $p_n(x_j) = f(x_j)$ for $j=1,2,\ldots,k$.
+Generalisasikan bagian sebelumnya ke $k$ titik:
+Diberikan titik-titik $x_1,x_2,\ldots,x_k \in [a,b]$, tunjukkan bahwa
+terdapat suatu barisan polinom real $\{ p_n \}_{n=1}^\infty$
+sedemikian sehingga untuk setiap $n$, $p_n(x_j) = f(x_j)$ untuk $j=1,2,\ldots,k$.
 \\
-Hint: The polynomial $(x-x_1)(x-x_2)\cdots(x-x_{\ell-1})(x-x_{\ell+1})
-\cdots(x-x_k)$ is zero at $x_j$ for $j \neq \ell$ but nonzero at
-$x_\ell$.  Use it to construct a polynomial that takes prescribed values
-at $x_1,x_2,\ldots,x_k$.
+Setelah membuang titik-titik yang berulang, andaikan $x_1,x_2,\ldots,x_k$ berbeda sepasang-sepasang.
+Petunjuk: Polinom $(x-x_1)(x-x_2)\cdots(x-x_{\ell-1})(x-x_{\ell+1})
+\cdots(x-x_k)$ bernilai nol di $x_j$ untuk $j \neq \ell$, tetapi tidak nol di
+$x_\ell$.  Gunakan polinom ini untuk membangun polinom yang mengambil nilai-nilai yang ditentukan
+di $x_1,x_2,\ldots,x_k$.
 \end{enumerate}
 \end{exercise}
 
