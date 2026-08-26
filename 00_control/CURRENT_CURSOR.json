@@ -377,13 +377,13 @@
       "owner_target_sha256": "adee2f44b4a570b8f89f01c529d9bb9ebc38c0999ceb949360f4c075390003a1",
       "owner_receipt": "qa/R007_NONLINEAR_SYSTEMS_HP001_OWNER_THREE_WAY_QA_20260825.md"
     },
-    "public_boundary": "U370",
-    "public_reader": "output/pdf/Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_11.6_Latihan.pdf",
-    "public_reader_sha256": "00fde02788a34292a44f38fed3146df2dbb4db8d942672e59fd54c9e362b51b7",
-    "public_github_release_commit": "309e37fbb2a5362e00e01e2a404d4d9fc303ce84",
-    "public_github_main_commit": "142db6c354e10f9116c07bb2d5bb6ea71e4dd1f4",
-    "public_github_release": "https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id-wip.2026.08.25.u370",
-    "public_zenodo_doi": "10.5281/zenodo.22088826"
+    "public_boundary": "U393",
+    "public_reader": "output/pdf/Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_11.7_Latihan.pdf",
+    "public_reader_sha256": "5a8db6dd8f9b559c578fe31678943e093650019686e2e75cc752d1b2b49bb211",
+    "public_github_release_commit": "12b304221fcdf65a5d62a2807bcfc78601a7b6eb",
+    "public_github_main_commit": "12b304221fcdf65a5d62a2807bcfc78601a7b6eb",
+    "public_github_release": "https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id-wip.2026.08.26.u393",
+    "public_zenodo_doi": "10.5281/zenodo.22104149"
   },
   "parallel_cursors": {
     "R007": {

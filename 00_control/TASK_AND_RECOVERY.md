@@ -2,7 +2,7 @@
 
 Updated: 2026-08-26
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U370 publicly preserved and anonymously verified; local U388 includes owner-accepted HP-LEBL-R007-001 and R006 U303; next R006 unit begins at source raw line 4122
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U393 publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted; next R006 unit begins at source raw line 4201
 
 ## Current authoritative recovery snapshot — 2026-08-26
 
@@ -10,32 +10,25 @@ This block supersedes every older progress count or publication pointer later
 in this historical log. The machine-readable authorities are
 `CURRENT_STATE.json`, `CURRENT_CURSOR.json`, and `PUBLICATION_STATE.json`.
 
-- Public boundary: U370, manifest 370 (R006 285, R007 35, R008 50),
-  545.833 bytes, SHA-256
-  `4f937735e3416439f7e82ae3ed3be2978d5cf5b7844987066c64c01a56186789`.
-  GitHub release commit `309e37fbb2a5362e00e01e2a404d4d9fc303ce84`, release
-  `lebl-family-id-wip.2026.08.25.u370`, and Zenodo DOI
-  `10.5281/zenodo.22088826` expose the same nine files / 22.589.918 bytes.
-  Every public asset passed anonymous size/SHA-256 readback. A README-only
-  GitHub follow-up at `142db6c354e10f9116c07bb2d5bb6ea71e4dd1f4` replaces a
-  defunct Figshare item link with the stable collection DOI; no release byte
-  changed. The 208-page R006 Volume II reader ends after complete Section 11.6
-  and all eleven exercises.
-- Live boundary: U388, manifest 388 (R006 303, R007 35, R008 50),
-  586.197 bytes, SHA-256
-  `6bc62a1c7c991fc74a3619cdf6df66da233fb983b0eb9df2113bbc20e3d027bb`.
-  R006 U303 completes the unit-circle integral obstruction to density of the
-  non-self-adjoint polynomial algebra at source raw lines 4093--4120 / target
-  raw lines 4100--4127. The full live R006 target is 193.912 bytes, SHA-256
-  `40a3370eaae9bfe65180c3de0c5697b50bb2c97b43f7241230784e622efc03dc`.
-- Backend U388: two byte-identical 27-file / 16.457.998-byte trees; canonical
-  inventory SHA-256
-  `544276dc6ad9b966b238d9a58c31a038031fd1de271fe67149ef40219b8257c5`;
-  3.781 records, 781 physical terms / 759 current logical terms, 255
-  corrections, 33 assets, 645 relations, 16 O001 gaps, and all 15 CSV views
-  pass lossless round-trip.
-- Resume only R006 at frozen source raw line 4122 / live target raw line 4129,
-  the one-point-vanishing algebra exercise.
+- Public and live boundary: U393, manifest 393 (R006 308, R007 35, R008 50),
+  596.621 bytes, SHA-256
+  `500d6c59b57825cbfb53a8767a889c2aef6a25f375fe0a6aa3bdb6cb051a17cb`.
+  GitHub release commit `12b304221fcdf65a5d62a2807bcfc78601a7b6eb`, release
+  `lebl-family-id-wip.2026.08.26.u393`, and Zenodo DOI
+  `10.5281/zenodo.22104149` expose the same nine files / 12.383.839 bytes.
+  Every public asset passed anonymous size/SHA-256 readback. The centered
+  224-page R006 Volume II reader ends after complete Section 11.7 and all
+  fourteen exercises. Its SHA-256 is
+  `5a8db6dd8f9b559c578fe31678943e093650019686e2e75cc752d1b2b49bb211`.
+- Backend U393 final E is public: 27 files / 16.690.330 bytes, 3.806 records,
+  760 current logical terms, 256 corrections, 33 assets, 646 relations, and 21
+  O001 gaps. All 15 CSV views pass lossless round-trip. Canonical inventory
+  SHA-256 is
+  `eb022c1d1388f5ef8c84574438f44d8c7ed9a3e05d070d0b2ea20395e9eb781e`.
+  Independent final F replay is byte-identical and remains excluded from the
+  public package as redundant.
+- Resume only R006 at frozen source raw line 4201 / live target raw line 4209,
+  the Fourier-series opening.
   R007 remains at
   `ch-first-order-ode.tex` raw line 89; R008 remains at `ca.tex` raw line 1648.
   HP-LEBL-R007-001 is owner-accepted only for complete
@@ -76,25 +69,24 @@ conversational confirmation gates. The user explicitly directed that the
 public repositories remain maintained even while the corpus is incomplete, so
 clean, explicitly labeled, nonduplicative WIP checkpoints are published after
 their bounded gates and public-byte readback. The current Zenodo version is
-`10.5281/zenodo.22088826` in concept lineage
-`10.5281/zenodo.22059779`; the concept DOI and latest-version endpoint both
-resolve record `22088826`. GitHub access is healthy; release commit
-`309e37fbb2a5362e00e01e2a404d4d9fc303ce84`, U370, and README-only main
-follow-up `142db6c354e10f9116c07bb2d5bb6ea71e4dd1f4` were published and
-anonymously verified. Figshare account access returns `InactiveAccount` and
-the former article ID `33314802` returns public HTTP 404; no mutation or
-duplicate was created. Every current or future
+`10.5281/zenodo.22104149` in concept lineage
+`10.5281/zenodo.22059779`; the latest-version endpoint resolves record
+`22104149`. GitHub access is healthy; release commit
+`12b304221fcdf65a5d62a2807bcfc78601a7b6eb` and U393 were published and
+anonymously verified. The exact authorized Figshare credential path was absent
+on 2026-08-26, so no account call, mutation, or duplicate was made. Every
+current or future
 reader, repository description, release payload, and preservation record must
 identify the runtime generically as acting on the user's instruction; it must
 not publish the user's personal first name. Historical immutable releases are
 evidence, not inputs to a new payload.
 
-The public repository `main` and the U370 release bind the same 370-row
-manifest: R006 U001–U285, R007 U001–U035, and R008 U001–U050. The release
-contains nine anonymously verified assets totaling 22.589.918 bytes. The
-primary current reader is the centered 208-page Volume II PDF through all
-eleven exercises closing Section 11.6. GitHub, Zenodo, and the bounded
-Figshare-attempt receipts are under `publication/wip-2026.08.25-u370/`.
+The public repository `main` and the U393 release bind the same 393-row
+manifest: R006 U001–U308, R007 U001–U035, and R008 U001–U050. The release
+contains nine anonymously verified assets totaling 12.383.839 bytes. The
+primary current reader is the centered 224-page Volume II PDF through all
+fourteen exercises closing Section 11.7. GitHub, Zenodo, and the bounded
+Figshare-attempt receipts are under `publication/wip-2026.08.26-u393/`.
 Earlier versions remain public evidence.
 
 ## Production requirements
@@ -133,11 +125,11 @@ Maintain the individual Lebl-family mirror/fork and a future central-hub
 handoff. The corpus remains incomplete. The verified source mirror and WIP
 prerelease are public at
 <https://github.com/KokunoYumeto/lebl-mathematics-family-id>; the current
-preservation version is <https://zenodo.org/records/22088826>. The public
+preservation version is <https://zenodo.org/records/22104149>. The public
 Figshare collection remains `10.6084/m9.figshare.c.8668413.v43`, but its
-account API currently returns `InactiveAccount` and the former work-item ID
-returns 404; do not create a duplicate to bypass that failure. See
-`PUBLICATION_STATE.json` and the U370 publication receipts. Do not contact
+account route was not called at U393 because its exact authorized credential
+path was absent; do not create a duplicate to bypass that failure. See
+`PUBLICATION_STATE.json` and the U393 publication receipts. Do not contact
 authors during production. Only after the
 full three-book corpus is complete may at most one concise, high-confidence,
 deduplicated upstream issue be sent if the tracker permits it. It must disclose
@@ -921,10 +913,13 @@ count and SHA-256. Zenodo's IIIF thumbnail selects the corrected 188-page R006
       `5a8db6dd8f9b559c578fe31678943e093650019686e2e75cc752d1b2b49bb211`;
       receipt is
       `qa/R006_STONE_WEIERSTRASS_SECTION_COMPLETE_READER_U393_20260826.md`.
-- [ ] Publish U393 through the existing GitHub and Zenodo lineages with exact
+- [x] Publish U393 through the existing GitHub and Zenodo lineages with exact
       files, manifest, hashes, provenance, partial-status labeling, and
-      anonymous public-byte readback. Then continue R006 Section 11.8 at
-      frozen source raw line 4201 / live target raw line 4209.
+      anonymous public-byte readback. GitHub release ID `376831420`, commit
+      `12b304221fcdf65a5d62a2807bcfc78601a7b6eb`, and Zenodo record `22104149`
+      expose the same nine files / 12.383.839 bytes. The independent font
+      recount correction is included. Continue R006 Section 11.8 at frozen
+      source raw line 4201 / live target raw line 4209.
 - [x] Revalidate the one-time Indonesian field-usage terminology audit against
       an actual field-specific source. The bounded arXiv search again found no
       suitable Indonesian TeX source; direct extraction and visual inspection

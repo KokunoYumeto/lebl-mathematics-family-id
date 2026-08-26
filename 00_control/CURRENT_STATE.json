@@ -33,7 +33,7 @@
     "R007_nonlinear_systems_HP001_owner_acceptance_checkpoint": "accepted_by_20_stable_units_after_67_file_packet_hash_verification_three_independent_math_language_backend_reviews_owner_terminology_reconciliation_current_target_sha256_adee2f44b4a570b8f89f01c529d9bb9ebc38c0999ceb949360f4c075390003a1_integrated_472_page_build_sha256_d822e3b8fb47968ba7bb747af50293a569e4716c93fac6518d28e8a525b48fec_visual_pages_366_369_374_382_pass_and_helper_target_not_recopied",
     "R008_source_baseline": "proved_v1.9_304_page_authority_and_U001_introduction_translation"
   },
-  "backend_schema_status": "v0.1_19-unit_checkpoint_retained; v0.2_frozen_26-unit_checkpoint_526-records_validated; v0.3_frozen_167-unit_checkpoint_2193-records-schema-valid; public_v0.4-live_u370 retained_pending_U393_publication; local_v0.4-live_u393_final_E_F_393-unit-manifest_3806-records_760-current-terms_256-corrections_21-O001-gaps_33-assets_including_complete_R007_nonlinear_dependency_closure_full-generic-schema-and-reference-validation_15-view-roundtrip_300-direct-component-bindings_and_byte-deterministic_E_F; validator rejects cross-resource_unrelated_and_cyclic_edition_lineage",
+  "backend_schema_status": "v0.1_19-unit_checkpoint_retained; v0.2_frozen_26-unit_checkpoint_526-records_validated; v0.3_frozen_167-unit_checkpoint_2193-records-schema-valid; public_v0.4-live_u393_final_E_393-unit-manifest_3806-records_760-current-terms_256-corrections_21-O001-gaps_33-assets_including_complete_R007_nonlinear_dependency_closure_full-generic-schema-and-reference-validation_15-view-roundtrip_300-direct-component-bindings; byte-identical final_F replay retained locally but excluded from release; validator rejects cross-resource_unrelated_and_cyclic_edition_lineage",
   "translation_progress": {
     "R006_units_admitted": 308,
     "R006_content_units_admitted": 298,
@@ -54,12 +54,12 @@
     "R008_next": "Complex Analysis / Linear fractional transformations at source raw line 1648"
   },
   "resource_status": {
-    "R006": "v6.3_authority_bound_312_page_source_build_proved_volume_I_translation_complete_334_page_full_converter_PDF_and_visual_gate_proved_volume_II_translation_active_through_complete_Section_11_7_all_14_exercises; local_U393_final_E_F_backend_and_centered_224_page_reader_pass; public_U370_retained_until_U393_release_transaction",
+    "R006": "v6.3_authority_bound_312_page_source_build_proved_volume_I_translation_complete_334_page_full_converter_PDF_and_visual_gate_proved_volume_II_translation_active_through_complete_Section_11_7_all_14_exercises; U393_final_E_backend_and_centered_224_page_reader_public_on_GitHub_and_Zenodo_with_anonymous_byte_readback",
     "R007": "v6.11_release_authority_bound_intro_chapter_complete_first_order_chapter_active_through_U015_source_frozen_complete_nonlinear_systems_chapter_owner_admitted_as_20_disjoint_units_with_current_owner_target_accepted_after_HP_LEBL_R007_001_three_way_QA",
     "R008": "v1.9_release_authority_bound_translation_active_through_U050_Riemann_sphere_section_complete_source_frozen",
     "R007_helper_packet_HP_LEBL_R007_001": "accepted_by_canonical_owner_after_66_of_66_checksum_entries_67_physical_files_65_declared_outputs_20_stable_units_dependency_closure_three_way_math_language_backend_QA_current_owner_target_adee2f44_and_integrated_472_page_build_pass; helper_target_not_recopied; active_ch_first_order_ode_cursor_and_all_R006_R008_work remain excluded; receipt qa/R007_NONLINEAR_SYSTEMS_HP001_OWNER_THREE_WAY_QA_20260825.md"
   },
-  "current_public_checkpoint": {
+  "previous_public_checkpoint_u370": {
     "manifest_rows": 370,
     "manifest_distribution": {"R006":285,"R007":35,"R008":50},
     "manifest_bytes": 545833,
@@ -129,6 +129,18 @@
     "full_r006_target_sha256": "8207bf35bf21bdcb65ac1947c92c51951b65e4faad5c348ac40796663bd36ac2",
     "backend_checkpoint": {"name":"U370","records":3573,"expressions":740,"physical_terms":755,"current_logical_terms":733,"files_per_tree":27,"bytes_per_tree":15377121,"inventory_sha256":"f317d2add54525af1680678b181a86315340c1e06db8cf72dc9c1793f3e62e75","a_b_mismatches":0,"validation":"pass","csv_roundtrip":"pass_15_views_3573_records"},
     "public_boundary": "U370 is published and anonymously byte-verified on GitHub and as Zenodo record 22088826 in the existing concept lineage. It completes R006 Section 11.6 with all eleven exercises and publishes the centered 208-page reader. Live translation has advanced through the ninth Stone--Weierstrass exercise at local U388; R007 HP-LEBL-R007-001 is accepted without moving its first-order cursor, and the R008 cursor is unchanged."
+  },
+  "current_public_checkpoint": {
+    "name": "U393",
+    "manifest_rows": 393,
+    "manifest_distribution": {"R006":308,"R007":35,"R008":50},
+    "manifest_bytes": 596621,
+    "manifest_sha256": "500d6c59b57825cbfb53a8767a889c2aef6a25f375fe0a6aa3bdb6cb051a17cb",
+    "latest_unit": "ra.v2.stone-weierstrass.exercises.finite-point-interpolation",
+    "backend_checkpoint": {"name":"v0.4-live-2026.08.26-u393-final-e","records":3806,"expressions":786,"current_logical_terms":760,"files":27,"bytes":16690330,"inventory_sha256":"eb022c1d1388f5ef8c84574438f44d8c7ed9a3e05d070d0b2ea20395e9eb781e","validation":"pass","csv_roundtrip":"pass_15_views_3806_records"},
+    "reader": {"path":"output/pdf/Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_11.7_Latihan.pdf","pages":224,"bytes":2281400,"sha256":"5a8db6dd8f9b559c578fe31678943e093650019686e2e75cc752d1b2b49bb211","font_objects_embedded":"85_of_85"},
+    "github": {"release_commit":"12b304221fcdf65a5d62a2807bcfc78601a7b6eb","tag":"lebl-family-id-wip.2026.08.26.u393","release_id":376831420,"public_readback":"pass_9_of_9_12383839_bytes"},
+    "zenodo": {"record_id":22104149,"version_doi":"10.5281/zenodo.22104149","concept_doi":"10.5281/zenodo.22059779","public_readback":"pass_9_of_9_12383839_bytes_and_latest_endpoint"}
   },
   "current_live_checkpoint": {
     "name": "U393",
@@ -202,46 +214,45 @@
     "build_receipt": {"path":"qa/R006_COMPLEX_TRIG_SECTION_READER_U336_20260824.md","bytes":3824,"sha256":"dcd2454ffe1dca9554d83828e6f9049f49c7b627a9214daabebf622fe339e9f5"}
   },
   "publication": {
-    "scope_status": "active_partial_u370_published_and_public_bytes_verified",
-    "scope": "PUBLIC U370 BOUNDARY: 370 admitted units (R006 285, R007 35, R008 50). R006 Volume I is complete; its centered 208-page Volume II reader ends after complete Section 11.6 and all eleven exercises. R007 includes the complete translated nonlinear-systems chapter and centered 40-page reader; its active first-order-ODE cursor remains raw line 89. R008 completes the Riemann-sphere section. All three books remain active until the corpus is complete.",
+    "scope_status": "active_partial_u393_published_and_public_bytes_verified",
+    "scope": "PUBLIC U393 BOUNDARY: 393 admitted units (R006 308, R007 35, R008 50). R006 Volume I is complete; its centered 224-page Volume II reader ends after complete Section 11.7 and all fourteen exercises. R007 includes the complete translated nonlinear-systems chapter and centered 40-page reader; its active first-order-ODE cursor remains raw line 89. R008 completes the Riemann-sphere section. All three books remain active until the corpus is complete.",
     "github": {
       "repository_url": "https://github.com/KokunoYumeto/lebl-mathematics-family-id",
       "default_branch": "main",
-      "commit": "142db6c354e10f9116c07bb2d5bb6ea71e4dd1f4",
-      "tree": "e080f3b4b769c50da9ce3bd41e51d9ebbb23417d",
-      "release_target_commit": "309e37fbb2a5362e00e01e2a404d4d9fc303ce84",
-      "tracked_files": 915,
-      "main_head_scope": "PUBLIC U370 HEAD: R006 U001-U285, R007 U001-U035, and R008 U001-U050; 370 manifest rows.",
-      "release_id": 376104251,
-      "release_tag": "lebl-family-id-wip.2026.08.25.u370",
-      "release_url": "https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id-wip.2026.08.25.u370",
+      "commit": "12b304221fcdf65a5d62a2807bcfc78601a7b6eb",
+      "tree": "7e98530a6bad9da1543f0e796e4d0c3e37e0cd17",
+      "content_commit": "3dcbcbde8bc3f589e8572b0096126f4e67b68d78",
+      "release_target_commit": "12b304221fcdf65a5d62a2807bcfc78601a7b6eb",
+      "tracked_files": 964,
+      "main_head_scope": "PUBLIC U393 HEAD: R006 U001-U308, R007 U001-U035, and R008 U001-U050; 393 manifest rows.",
+      "release_id": 376831420,
+      "release_tag": "lebl-family-id-wip.2026.08.26.u393",
+      "release_url": "https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id-wip.2026.08.26.u393",
       "published": true,
       "prerelease": false,
-      "public_source_readback": "pass_release_commit_tree_and_6_representative_raw_files_5826466_bytes_plus_readme_only_followup_commit_tree_and_3205_raw_bytes",
-      "public_asset_readback": "pass_9_of_9_anonymous_22589918_bytes_sha256_and_bytes",
-      "receipt": {"path":"publication/wip-2026.08.25-u370/GITHUB_PUBLICATION_RECEIPT.md","bytes":2638,"sha256":"e18fb8673faa2ecc3487be3c1636fa96e7a2265c30c95a0e7c41a08bbf491988"},
-      "documentation_followup_receipt": {"path":"publication/wip-2026.08.25-u370/GITHUB_POST_RELEASE_DOC_FIX_RECEIPT.md","bytes":900,"sha256":"5b90da3f662a606531cbab4399f24f2bec54dd2293ba456253b665a8873d1ab3"}
+      "public_source_readback": "pass_main_commit_and_7_bounded_raw_release_control_overlay_files_anonymous_sha256_and_bytes",
+      "public_asset_readback": "pass_9_of_9_anonymous_12383839_bytes_sha256_and_bytes",
+      "receipt": {"path":"publication/wip-2026.08.26-u393/GITHUB_PUBLICATION_RECEIPT.md","bytes":2493,"sha256":"0865ed5adf22dac4e2814023657a1c5a258952e9c78ab1c955ee17244327ca21"}
     },
     "zenodo": {
       "concept_doi": "10.5281/zenodo.22059779",
-      "version_doi": "10.5281/zenodo.22088826",
-      "record_id": 22088826,
-      "record_url": "https://zenodo.org/records/22088826",
-      "release_tag": "6.3-id-wip.2026.08.25.u370",
+      "version_doi": "10.5281/zenodo.22104149",
+      "record_id": 22104149,
+      "record_url": "https://zenodo.org/records/22104149",
+      "release_tag": "6.3-id-wip.2026.08.26.u393",
       "published": true,
-      "primary_reader_pdf": "Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_11.6_Latihan.pdf",
-      "public_byte_readback": "pass_9_of_9_anonymous_22589918_bytes_sha256_and_concept_latest_resolves_22088826",
-      "receipt": {"path":"publication/wip-2026.08.25-u370/ZENODO_PUBLICATION_RECEIPT.md","bytes":2612,"sha256":"cc0bce8936ac3c8c8bb11afac131c3f30d706fc5027698bde8f4e0fce9d5252d"}
+      "primary_reader_pdf": "Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_11.7_Latihan.pdf",
+      "public_byte_readback": "pass_9_of_9_anonymous_12383839_bytes_sha256_and_concept_latest_resolves_22104149",
+      "receipt": {"path":"publication/wip-2026.08.26-u393/ZENODO_PUBLICATION_RECEIPT.md","bytes":2270,"sha256":"12f8ff24d0611cfe6a2bb777d1a0bd68575ba2fe5d8b0a81798933bf604fd907"}
     },
     "figshare": {
       "former_article_id": 33314802,
-      "former_article_public_api": "HTTP_404_on_2026-08-25",
       "project_id": 280296,
       "collection_doi": "10.6084/m9.figshare.c.8668413.v43",
-      "update_status": "authenticated_InactiveAccount_403_on_2026-08-25; no mutation and no duplicate created",
-      "receipt": {"path":"publication/wip-2026.08.25-u370/FIGSHARE_UPDATE_ATTEMPT_20260825.md","bytes":899,"sha256":"7d9e9a542256111e7e41dfc25d27219dc588c6c0333c0db97b214de2e4675bc2"}
+      "update_status": "exact_authorized_credential_path_absent_on_2026-08-26; no account call, mutation, or duplicate",
+      "receipt": {"path":"publication/wip-2026.08.26-u393/FIGSHARE_UPDATE_ATTEMPT_20260826.md","bytes":620,"sha256":"6bc09e1f5bccd66171f12a1fe825c95ebe110e95c185ff9abcb1239badb01532"}
     },
-    "previous_publication": {"github_tag":"lebl-family-id-wip.2026.08.25.u361","github_commit":"5123f592f7721f82af5c6367bc391bbc064bc988","zenodo_version_doi":"10.5281/zenodo.22087498","state":"preserved_public_unchanged"}
+    "previous_publication": {"github_tag":"lebl-family-id-wip.2026.08.25.u370","github_commit":"142db6c354e10f9116c07bb2d5bb6ea71e4dd1f4","github_release_commit":"309e37fbb2a5362e00e01e2a404d4d9fc303ce84","zenodo_version_doi":"10.5281/zenodo.22088826","state":"preserved_public_unchanged"}
   },
   "checkpoint_evidence": {
     "local_u388_after_r006_u302_u303_20260826": {
