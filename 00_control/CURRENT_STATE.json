@@ -5,7 +5,7 @@
   "locale": "id-ID",
   "scope": ["R006", "R007", "R008"],
   "root": "04_mirrors/id/lebl-mathematics-family-id",
-  "status": "contiguous_R006_translation_active_at_local_U402_through_fourier_coefficient_decay_and_higher_regularity_with_public_U397_preserved_and_verified",
+  "status": "contiguous_R006_translation_active_at_U402_through_fourier_coefficient_decay_and_higher_regularity_published_on_github_main_with_public_U397_reader_release_preserved_and_verified",
   "translation_dominant": true,
   "source_mutation_started": true,
   "translation_admitted": true,
@@ -177,6 +177,7 @@
     "full_r006_target_bytes": 195484,
     "full_r006_target_sha256": "9a8dc615527f68311fa93bb06b590d09625c0f255b5f621bbafea343d1a047d7",
     "backend_checkpoint": {"records":3865,"expressions":804,"physical_terms":797,"current_logical_terms":775,"corrections":258,"assets":33,"relations":646,"files_per_tree":27,"bytes_per_tree":17027975,"inventory_sha256":"264c369360bb245742ca5f108ade5c2a62997a85461601a6c27cb9e8b21d787e","a_b_mismatches":0,"validation":"pass_full_generic_402_of_402_manifest_bindings","referential_integrity":"pass","csv_roundtrip":"pass_15_views_3865_records","manifest_component_checks":"318_pass_509_edition-root-relative","r007_nonlinear_assets":"31_assets_42_relations","o001":"21_exercises_10_hints_11_none_zero_solutions","adv0258":"exact_U315_accessibility_correction_binding_and_completed_QA"},
+    "github_main_source_checkpoint": {"commit":"cba69304165b14ae1b700bf0d0fcf24c12c6aad7","tree":"788ea614029ae672ff96d4da5d3a0272145521ff","files":45,"bytes":18640330,"inventory_sha256":"75e152ae6348faf3fde7ba3cd7dc9debce10e32a01ed7f944e9ff57a2bc3d2c4","anonymous_readback":"pass_45_of_45","release_changed":false,"zenodo_changed":false,"receipt":"publication/live-2026.08.26-u402/GITHUB_MAIN_U402_RECEIPT.md"},
     "accepted_helper_packet": {"packet_id":"HP-LEBL-R007-001","state":"accepted","handoff_sha256":"5f51bda4f2a64c6e0777dbcb51435a0f403bec7ff585878106f471103523cba4","checksums_sha256":"7bc509b0a277d5323a72b910e45a06d8620bf628cd16f5cb9ce3c399b937ab47","owner_target_sha256":"adee2f44b4a570b8f89f01c529d9bb9ebc38c0999ceb949360f4c075390003a1","receipt":"qa/R007_NONLINEAR_SYSTEMS_HP001_OWNER_THREE_WAY_QA_20260825.md","helper_target_recopied":false},
     "next": "continue R006 source raw line 4612 / target raw line 4620 with the orthonormal-systems subsection; do not republish U397; keep R007 first-order and R008 cursors unchanged"
   },

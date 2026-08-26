@@ -32,6 +32,13 @@ in this historical log. The machine-readable authorities are
   generic validation passes, and all 15 CSV views round-trip losslessly.
   Canonical inventory SHA-256 is
   `264c369360bb245742ca5f108ade5c2a62997a85461601a6c27cb9e8b21d787e`.
+- GitHub main preserves the complete U402 live source/backend checkpoint at
+  immutable commit `cba69304165b14ae1b700bf0d0fcf24c12c6aad7`, tree
+  `788ea614029ae672ff96d4da5d3a0272145521ff`. Anonymous readback matched all
+  45 bounded paths / 18.640.330 bytes. Receipt:
+  `publication/live-2026.08.26-u402/GITHUB_MAIN_U402_RECEIPT.md`. This source
+  checkpoint did not create or alter a GitHub release and did not mutate the
+  U397 Zenodo record.
 - Centered U397 reader PASS: 226 pages / 2.292.242 bytes, SHA-256
   `40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d`.
   The final nine-pass build has zero TeX/reference failures and zero visible
