@@ -7,9 +7,9 @@ type: book
 authors:
   - family-names: Lebl
     given-names: Jiří
-version: 6.3-id-wip.2026.08.25.u370
-date-released: 2026-08-25
-doi: 10.5281/zenodo.22088826
+version: 6.3-id-wip.2026.08.26.u393
+date-released: 2026-08-26
+doi: 10.5281/zenodo.22104149
 repository-code: "https://github.com/KokunoYumeto/lebl-mathematics-family-id"
 url: "https://doi.org/10.5281/zenodo.22059779"
 license: CC-BY-SA-4.0
@@ -23,8 +23,8 @@ keywords:
   - backend terjemahan modular
 abstract: >-
   Edisi Bahasa Indonesia independen untuk keluarga buku matematika Jiří Lebl.
-  Checkpoint parsial U370 memuat Analisis Dasar I lengkap; pembaca Analisis
-  Dasar II sampai akhir Bagian 11.6 beserta seluruh sebelas latihan; Notes on
-  Diffy Qs sampai rumus integral tentu untuk kondisi awal serta Bab 8 Sistem
+  Checkpoint parsial U393 memuat Analisis Dasar I lengkap; pembaca Analisis
+  Dasar II sampai akhir Bagian 11.7 beserta seluruh empat belas latihan; Notes
+  on Diffy Qs sampai rumus integral tentu untuk kondisi awal serta Bab 8 Sistem
   nonlinear lengkap sebagai pembaca 40 halaman; dan Guide to Cultivating
   Complex Analysis sampai akhir bagian bola Riemann.
