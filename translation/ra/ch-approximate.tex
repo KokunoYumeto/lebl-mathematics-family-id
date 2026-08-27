@@ -4617,27 +4617,27 @@ deret Fourier tersebut konvergen ke suatu fungsi yang diferensiabel secara konti
 hingga orde $k$. Karena itu, semakin cepat koefisien-koefisien menuju nol, semakin tinggi
 regularitas fungsi tersebut.
 
-\subsection{Orthonormal systems}
+\subsection{Sistem ortonormal}
 
-Let us abstract away the exponentials and
-study a more general series for a function.
-One fundamental property of the exponentials that makes Fourier series work
-is that the exponentials are what we call an \emph{orthonormal system}.
-Fix an interval $[a,b]$.  We define an
-\emph{\myindex{inner product}} for the space of functions.  We restrict our attention
-to Riemann integrable functions as we do not have the Lebesgue
-integral, which
-would be the natural choice.  Let $f$ and~$g$ be complex-valued 
-Riemann integrable functions on $[a,b]$ and define the inner product
+Kita sisihkan bentuk khusus fungsi-fungsi eksponensial dan
+pelajari deret yang lebih umum bagi suatu fungsi.
+Salah satu sifat mendasar fungsi-fungsi eksponensial yang membuat deret Fourier bekerja
+adalah bahwa fungsi-fungsi itu membentuk apa yang kita sebut \emph{sistem ortonormal}.
+Tetapkan suatu interval $[a,b]$. Kita definisikan suatu
+\emph{\myindex{hasil kali dalam}} pada ruang fungsi. Kita membatasi perhatian
+pada fungsi yang terintegralkan secara Riemann karena kita belum memiliki integral
+Lebesgue, padahal integral itulah
+pilihan yang alami. Misalkan $f$ dan~$g$ adalah fungsi bernilai kompleks
+yang terintegralkan secara Riemann pada $[a,b]$, dan definisikan hasil kali dalam
 \glsadd{not:L2innprod}
 \begin{equation*}
 \langle f , g \rangle \coloneqq
 \int_a^b f(x) \overline{g(x)} \, dx .
 \end{equation*}
-If you have seen Hermitian inner products in linear algebra, this
-is precisely such a product.  We must include the conjugate as we are
-working with complex numbers.  We then have the \myquote{size} of $f$, that
-is, the $L^2$ norm $\snorm{f}_2$, by (defining the square)
+Jika Anda pernah menjumpai hasil kali dalam Hermitian dalam aljabar linear,
+inilah tepatnya hasil kali semacam itu. Konjugat harus disertakan karena kita
+bekerja dengan bilangan kompleks. Selanjutnya kita memperoleh \myquote{ukuran} $f$,
+yaitu norma $L^2$, $\snorm{f}_2$, dengan mendefinisikan kuadratnya sebagai
 \glsadd{not:L2norm}
 \begin{equation*}
 \snorm{f}_2^2 \coloneqq
@@ -4646,104 +4646,110 @@ is, the $L^2$ norm $\snorm{f}_2$, by (defining the square)
 \end{equation*}
 
 \begin{remark}
-Note the similarity to finite dimensions.
-For $z = (z_1,z_2,\ldots,z_d) \in \C^d$, one defines
+Secara tepat, pada fungsi-fungsi yang terintegralkan secara Riemann sebagaimana adanya,
+rumus ini hanya menghasilkan seminorma: fungsi yang tidak nol di satu titik saja dapat memiliki seminorma nol.
+Rumus-rumus di atas menjadi hasil kali dalam dan norma setelah fungsi-fungsi yang sama hampir di mana-mana diidentifikasi.
+\end{remark}
+
+\begin{remark}
+Perhatikan kemiripannya dengan kasus berdimensi hingga.
+Untuk $z = (z_1,z_2,\ldots,z_d) \in \C^d$, didefinisikan
 \begin{equation*}
 \langle z , w \rangle \coloneqq
 \sum_{n=1}^d z_n \overline{w_n} .
 \end{equation*}
-Then the norm is (usually denoted simply by $\snorm{z}$ in $\C^d$
-rather than by $\snorm{z}_2$)
+Normanya kemudian adalah (biasanya cukup dinotasikan dengan $\snorm{z}$ di $\C^d$
+alih-alih dengan $\snorm{z}_2$)
 \begin{equation*}
 \snorm{z}^2 = 
 \langle z , z \rangle =
 \sum_{n=1}^d \sabs{z_n}^2 .
 \avoidbreak
 \end{equation*}
-This is just the euclidean distance to the origin in $\C^d$ (same as
-$\R^{2d}$).
+Ini tidak lain adalah jarak Euklides dari titik asal di $\C^d$ (sama seperti
+di $\R^{2d}$).
 \end{remark}
 
-%Let us get back to function spaces.
-In what follows, we will
-assume all functions are Riemann integrable.
+%Mari kita kembali ke ruang fungsi.
+Dalam uraian berikutnya, kita akan
+menganggap semua fungsi terintegralkan secara Riemann.
 
 \begin{defn}
-Let $\{ \varphi_n \}_{n=1}^\infty$ be a sequence of integrable complex-valued
-functions on $[a,b]$.  We say that this is an
-\emph{\myindex{orthonormal system}} if
+Misalkan $\{ \varphi_n \}_{n=1}^\infty$ suatu barisan fungsi bernilai kompleks
+yang terintegralkan pada $[a,b]$. Barisan ini disebut
+\emph{\myindex{sistem ortonormal}} jika
 \begin{equation*}
 \langle \varphi_n , \varphi_m \rangle
 =
 \int_a^b \varphi_n(x) \, \overline{\varphi_m(x)} \, dx
 = 
 \begin{cases}
-1 & \text{if } n=m, \\
-0 & \text{otherwise.}
+1 & \text{jika } n=m, \\
+0 & \text{selain itu.}
 \end{cases}
 \end{equation*}
-In particular, $\snorm{\varphi_n}_2 = 1$ for all $n$.  If we
-only require that 
-$\langle \varphi_n , \varphi_m \rangle = 0$ for $m \neq n$, then
-the system would be called an \emph{\myindex{orthogonal system}}.
+Khususnya, $\snorm{\varphi_n}_2 = 1$ untuk setiap $n$. Jika hanya
+disyaratkan bahwa
+$\langle \varphi_n , \varphi_m \rangle = 0$ untuk $m \neq n$, maka
+sistem tersebut disebut \emph{\myindex{sistem ortogonal}}.
 \end{defn}
 
-We noticed above that
+Kita telah melihat di atas bahwa
 \begin{equation*}
 {\left\{ \frac{1}{\sqrt{2\pi}} \, e^{inx} \right\}}_{n=1}^\infty
 \avoidbreak
 \end{equation*}
-is an orthonormal system on $[-\pi,\pi]$.
-The factor out in front is to make the norm be 1.
+merupakan sistem ortonormal pada $[-\pi,\pi]$.
+Faktor di depan memastikan normanya sama dengan 1.
 
-Having an orthonormal system $\{ \varphi_n \}_{n=1}^\infty$ on $[a,b]$ and an integrable function $f$
-on $[a,b]$, we can write
-a Fourier series relative to $\{ \varphi_n \}_{n=1}^\infty$.  Let
+Jika diberikan suatu sistem ortonormal $\{ \varphi_n \}_{n=1}^\infty$ pada $[a,b]$ dan suatu fungsi $f$
+yang terintegralkan pada $[a,b]$, kita dapat menuliskan
+deret Fourier relatif terhadap $\{ \varphi_n \}_{n=1}^\infty$. Misalkan
 \begin{equation*}
 c_n \coloneqq
 \langle f , \varphi_n \rangle
 =
 \int_a^b f(x) \overline{\varphi_n(x)} \, dx ,
 \end{equation*}
-and write
+dan tuliskan
 \begin{equation*}
 f(x) \sim \sum_{n=1}^\infty c_n \varphi_n .
 \end{equation*}
 
-In other words, the series is
+Dengan kata lain, deret tersebut adalah
 \begin{equation*}
 \sum_{n=1}^\infty \langle f , \varphi_n \rangle \varphi_n(x) .
 \end{equation*}
-Notice the similarity to the expression for the orthogonal
-projection of a vector onto a subspace from linear algebra.  We are
-in fact doing just that, but in a space of functions.
+Perhatikan kemiripannya dengan rumus proyeksi ortogonal
+suatu vektor pada subruang dalam aljabar linear. Sesungguhnya,
+itulah tepatnya yang sedang kita lakukan, tetapi dalam ruang fungsi.
 
 \begin{thm} \label{thm:l2bestapprox}
-Suppose $f$ is a Riemann integrable function on $[a,b]$.
-Let $\{ \varphi_n \}_{n=1}^\infty$ be an orthonormal system on $[a,b]$ and
-suppose
+Misalkan $f$ adalah fungsi yang terintegralkan secara Riemann pada $[a,b]$.
+Misalkan $\{ \varphi_n \}_{n=1}^\infty$ adalah sistem ortonormal pada $[a,b]$ dan
+misalkan
 \begin{equation*}
 f(x) \sim \sum_{n=1}^\infty c_n \varphi_n(x) .
 \end{equation*}
-If
+Jika
 \begin{equation*}
 s_k (x) \coloneqq \sum_{n=1}^k c_n \varphi_n(x)
-\quad\text{and}\quad
+\quad\text{dan}\quad
 p_k (x) \coloneqq \sum_{n=1}^k d_n \varphi_n(x)
 \end{equation*}
-for some other sequence $\{ d_n \}_{n=1}^\infty$, then
+untuk suatu barisan lain $\{ d_n \}_{n=1}^\infty$, maka
 \begin{equation*}
 \int_a^b \babs{f(x)-s_k(x)}^2 \, dx = \snorm{f-s_k}_2^2 \leq
 \snorm{f-p_k}_2^2 = \int_a^b \sabs{f(x)-p_k(x)}^2 \, dx
 \end{equation*}
-with equality only if $d_n = c_n$ for all $n=1,2,\ldots,k$.
+dan kesamaan berlaku hanya jika $d_n = c_n$ untuk setiap $n=1,2,\ldots,k$.
 \end{thm}
 
-In other words, the partial sums of the Fourier series are the best approximation with respect to the
-$L^2$ norm.
+Dengan kata lain, jumlah-jumlah parsial deret Fourier merupakan aproksimasi terbaik terhadap
+norma $L^2$.
 
 \begin{proof}
-Let us write
+Kita tuliskan
 \begin{equation*}
 \int_a^b \sabs{f-p_k}^2
 =
@@ -4755,7 +4761,7 @@ Let us write
 +
 \int_a^b \sabs{p_k}^2 .
 \end{equation*}
-Now
+Sekarang,
 \begin{equation*}
 \int_a^b f \widebar{p_k}
 =
@@ -4765,7 +4771,7 @@ Now
 =
  \sum_{n=1}^k \overline{d_n} c_n ,
 \end{equation*}
-and
+dan
 \begin{equation*}
 \int_a^b \sabs{p_k}^2
 =
@@ -4784,7 +4790,7 @@ d_n
 \sum_{n=1}^k
 \sabs{d_n}^2 .
 \end{equation*}
-So
+Dengan demikian,
 \begin{equation*}
 \begin{split}
 \int_a^b \sabs{f-p_k}^2
@@ -4807,7 +4813,7 @@ So
 \sabs{d_n-c_n}^2 .
 \end{split}
 \end{equation*}
-This is minimized precisely when $d_n = c_n$.
+Besaran ini mencapai nilai minimum tepat ketika $d_n = c_n$.
 \end{proof}
 
 When we do plug in $d_n = c_n$, then
