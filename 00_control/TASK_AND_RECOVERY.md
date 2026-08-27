@@ -2,7 +2,7 @@
 
 Updated: 2026-08-27
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U397 is publicly preserved and anonymously verified on GitHub and Zenodo; GitHub main preserves U402 pending the bounded U404 source checkpoint; local U404 reaches the best-`L^2`-approximation theorem and proof; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U397 is publicly preserved and anonymously verified on GitHub and Zenodo; GitHub main preserves and anonymously verifies U404 source/backend through the best-`L^2`-approximation theorem and proof; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-27
 
@@ -33,17 +33,14 @@ in this historical log. The machine-readable authorities are
   generic validation passes, and all 15 CSV views round-trip losslessly.
   Canonical inventory SHA-256 is
   `bc871499ed0d4f5c6c3c80a929647ca2f8263161da895a2a650c7ff08ede3fbb`.
-- GitHub main preserves the complete U402 live source/backend checkpoint at
-  immutable commit `cba69304165b14ae1b700bf0d0fcf24c12c6aad7`, tree
-  `788ea614029ae672ff96d4da5d3a0272145521ff`. Anonymous readback matched all
-  45 bounded paths / 18.640.330 bytes. Receipt:
-  `publication/live-2026.08.26-u402/GITHUB_MAIN_U402_RECEIPT.md`. This source
+- GitHub main preserves the complete U404 live source/backend checkpoint at
+  immutable commit `396fa49d0ac6f0d30fc2fc5c22ed12b9f6f070ff`, tree
+  `587ad5002c175e75072e63545996f55edb7c9de7`. Anonymous readback matched all
+  42 bounded paths / 18.766.173 bytes. Receipt:
+  `publication/live-2026.08.27-u404/GITHUB_MAIN_U404_RECEIPT.md`. This source
   checkpoint did not create or alter a GitHub release and did not mutate the
-  U397 Zenodo record. Controls commit
-  `5876d70f0374a964df80d7ea627f525c92dbf227`, tree
-  `25dd659e66bdb1f2fa42f88e2762ff1cc83a91fa`, subsequently preserved that
-  receipt and five current controls; anonymous readback matched all six files /
-  416.481 bytes.
+  U397 Zenodo record. The sanitized receipt and five current controls are the
+  exact bounded payload for the immediate non-release follow-up commit.
 - Centered U397 reader PASS: 226 pages / 2.292.242 bytes, SHA-256
   `40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d`.
   The final nine-pass build has zero TeX/reference failures and zero visible
