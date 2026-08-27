@@ -4816,7 +4816,7 @@ Dengan demikian,
 Besaran ini mencapai nilai minimum tepat ketika $d_n = c_n$.
 \end{proof}
 
-When we do plug in $d_n = c_n$, then
+Ketika kita menyubstitusikan $d_n = c_n$, diperoleh
 \begin{equation*}
 \int_a^b \sabs{f-s_k}^2
 =
@@ -4824,31 +4824,31 @@ When we do plug in $d_n = c_n$, then
 -
 \sum_{n=1}^k \sabs{c_n}^2 ,
 \end{equation*}
-and so for all $k$,
+sehingga untuk setiap $k$,
 \begin{equation*}
 \sum_{n=1}^k \sabs{c_n}^2
 \leq
 \int_a^b \sabs{f}^2 .
 \end{equation*}
-Note that
+Perhatikan bahwa
 \begin{equation*}
 \sum_{n=1}^k \sabs{c_n}^2 = \snorm{s_k}_2^2
 \end{equation*}
-by the calculation above.
-We take a limit to obtain
-\emph{\myindex{Bessel's inequality}}.
+berdasarkan perhitungan di atas.
+Dengan mengambil limit, kita memperoleh
+\emph{\myindex{ketaksamaan Bessel}}.
 
-\begin{thm}[Bessel's inequality\footnote{%
-Named after the German astronomer, mathematician, physicist, and geodesist
+\begin{thm}[Ketaksamaan Bessel\footnote{%
+Dinamai menurut astronom, matematikawan, fisikawan, dan ahli geodesi asal Jerman
 \href{https://en.wikipedia.org/wiki/Friedrich_Bessel}{Friedrich Wilhelm Bessel}
 (1784--1846).}] \label{thm:bessels}
-Suppose $f$ is a Riemann integrable function on $[a,b]$.
-Let $\{ \varphi_n \}_{n=1}^\infty$ be an orthonormal system on $[a,b]$ and
-suppose
+Misalkan $f$ adalah fungsi yang terintegralkan secara Riemann pada $[a,b]$.
+Misalkan $\{ \varphi_n \}_{n=1}^\infty$ adalah sistem ortonormal pada $[a,b]$ dan
+misalkan
 \begin{equation*}
 f(x) \sim \sum_{n=1}^\infty c_n \varphi_n(x) .
 \end{equation*}
-Then
+Maka
 \begin{equation*}
 \sum_{n=1}^\infty \sabs{c_n}^2
 \leq
@@ -4857,8 +4857,8 @@ Then
 \end{equation*}
 \end{thm}
 
-In particular, $\int_a^b \sabs{f}^2 < \infty$ implies the series
-converges and hence
+Secara khusus, $\int_a^b \sabs{f}^2 < \infty$ mengakibatkan deret tersebut
+konvergen, sehingga
 \begin{equation*}
 \lim_{k \to \infty} c_k = 0 .
 \end{equation*}

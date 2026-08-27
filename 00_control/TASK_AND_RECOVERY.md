@@ -2,7 +2,7 @@
 
 Updated: 2026-08-27
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U397 is publicly preserved and anonymously verified on GitHub and Zenodo; GitHub main preserves and anonymously verifies U404 source/backend through the best-`L^2`-approximation theorem and proof; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U397 is publicly preserved and anonymously verified on GitHub and Zenodo; GitHub main preserves and anonymously verifies U404 source/backend; local U405 completes the orthonormal-systems subsection through Bessel's inequality; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-27
 
@@ -19,28 +19,37 @@ in this historical log. The machine-readable authorities are
   the source's undefined zero-frequency antiderivative quotient. The public
   U397 target is 194.506 bytes, SHA-256
   `3de28aaac5ce08b69e97060ea01fe7f1d0e7b9d1c024e2fad49e9ece3893b839`.
-- Live boundary: U404, manifest 404 (R006 319, R007 35, R008 50), 620.464
+- Live boundary: U405, manifest 405 (R006 320, R007 35, R008 50), 622.540
   bytes, SHA-256
-  `c1c7d3a8eae8b91a60b0e5448ca4b54fc44cc8b5880a6c2ae3a9681f64ee2517`.
-  U319 adds the best-`L^2`-approximation theorem and complete squared-error
-  proof. TERM-0784 binds `best approximation` to `aproksimasi terbaik`; the
-  earlier ADV-0259 seminorm/quotient qualification remains in force. The full
-  live target is 196.220 bytes, SHA-256
-  `fee5eec4f67c6f2bd9ff434afb7165cbae05f98c5d27d1fd55b4ac9d5f052491`.
-- Backend U404 A/B is byte-identical: 27 files / 17.141.560 bytes, 3.890
-  records, 808 expressions, 784 current logical terms, 259 corrections, 33
-  assets, 646 relations, and 21 O001 gaps. All 404 live unit bindings are exact,
+  `bc8fbaea7e0abd3792f24217e3e9680976efc6fd969dfeada94e84e608b5c979`.
+  U320 closes the orthonormal-systems subsection with the finite-sum estimate,
+  Bessel's inequality, and the coefficient-limit consequence. TERM-0785 binds
+  the named inequality to `ketaksamaan Bessel`; ADV-0259 remains in force. The
+  full live target is 196.311 bytes, SHA-256
+  `f878c2862a574a3544ed740cafbdbd30faa1cd76cdd459b4984f4ba387a5bd67`.
+- Backend U405 A/B is byte-identical: 27 files / 17.171.651 bytes, 3.895
+  records, 810 expressions, 785 current logical terms, 259 corrections, 33
+  assets, 646 relations, and 21 O001 gaps. All 405 live unit bindings are exact,
   generic validation passes, and all 15 CSV views round-trip losslessly.
   Canonical inventory SHA-256 is
-  `bc871499ed0d4f5c6c3c80a929647ca2f8263161da895a2a650c7ff08ede3fbb`.
+  `e37315ce3653a371f0292b3fa0aaf60717357c8b814d637f6220c71587fbb6c1`.
 - GitHub main preserves the complete U404 live source/backend checkpoint at
   immutable commit `396fa49d0ac6f0d30fc2fc5c22ed12b9f6f070ff`, tree
   `587ad5002c175e75072e63545996f55edb7c9de7`. Anonymous readback matched all
   42 bounded paths / 18.766.173 bytes. Receipt:
   `publication/live-2026.08.27-u404/GITHUB_MAIN_U404_RECEIPT.md`. This source
   checkpoint did not create or alter a GitHub release and did not mutate the
-  U397 Zenodo record. The sanitized receipt and five current controls are the
-  exact bounded payload for the immediate non-release follow-up commit.
+  U397 Zenodo record. Follow-up commit
+  `e8d89ccc614c49f280b02e71c403a494ee4aef03`, tree
+  `c2825f2dff320562e6f46dc6b323e203b49d5d33`, preserved the sanitized receipt
+  and five current controls; anonymous readback matched all six paths / 424.011
+  bytes. The local receipt now records that commit and will be carried with the
+  next substantive checkpoint rather than causing a pointer-only loop.
+  Independent control audit then found and corrected three stale U397-era
+  values in the legacy `CURRENT_STATE.json` publication subtree. Audit overlay
+  commit `ce796a7e3efe43f42f4011a6cc4b59bb50d8a932`, tree
+  `1925afe2ed4d86ffb063a04b996c1cce97b0c1cf`, changes only that state file and
+  DEC-0154; anonymous readback matched both files / 323.914 bytes.
 - Centered U397 reader PASS: 226 pages / 2.292.242 bytes, SHA-256
   `40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d`.
   The final nine-pass build has zero TeX/reference failures and zero visible
@@ -66,9 +75,8 @@ in this historical log. The machine-readable authorities are
   (tree `4d845894ee625231d4c2357cc3f567ff15a87009`) also passed anonymous
   readback for all seven files / 409.835 bytes. Neither commit changed the U397
   release tag or Zenodo record.
-- Next resume only R006 at frozen source raw line 4805 / live target raw line
-  4819, the finite-sum estimate, Bessel's inequality theorem, and immediate
-  coefficient-limit consequence.
+- Next resume only R006 at frozen source raw line 4852 / live target raw line
+  4866, the Dirichlet-kernel and approximate-delta-functions subsection.
   R007 remains at
   `ch-first-order-ode.tex` raw line 89; R008 remains at `ca.tex` raw line 1648.
   HP-LEBL-R007-001 is owner-accepted only for complete

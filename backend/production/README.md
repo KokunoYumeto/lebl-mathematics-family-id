@@ -1,27 +1,27 @@
 # Production backend checkpoints
 
-## Current local checkpoint U404
+## Current local checkpoint U405
 
-`v0.4-live-2026.08.27-u404-a/` is the authoritative local checkpoint. It binds
-the 404-row translation manifest, 784-row live terminology ledger, 259-event
+`v0.4-live-2026.08.27-u405-a/` is the authoritative local checkpoint. It binds
+the 405-row translation manifest, 785-row live terminology ledger, 259-event
 adverse ledger, and 21-entry O001 solution-gap ledger.
 
-- 3,890 canonical records, 404 manifest segments, 435 units, 772 concepts,
-  808 expressions, and exactly 784 current logical terms;
+- 3,895 canonical records, 405 manifest segments, 436 units, 773 concepts,
+  810 expressions, and exactly 785 current logical terms;
 - 21 O001 exercise gaps, ten source hints, eleven no-hint states, and no
   invented answers or solutions;
 - 15 deterministic CSV projections;
-- 27 files / 17,141,560 bytes;
+- 27 files / 17,171,651 bytes;
 - `records.jsonl` SHA-256
-  `2145f4254ef7ae42c4e46e753be63948d739a207b38b3b1a611c8c81769492a9`;
+  `8abde22c1473cb8901121aba609dad7c91390c66f63b409438d0192e884a4bed`;
 - canonical inventory SHA-256
-  `bc871499ed0d4f5c6c3c80a929647ca2f8263161da895a2a650c7ff08ede3fbb`.
+  `e37315ce3653a371f0292b3fa0aaf60717357c8b814d637f6220c71587fbb6c1`.
 
-All schemas, referential checks, all 404 live manifest bindings, 15 CSV views,
-and lossless round trips pass. Independent replay `-u404-b` produced the
-identical path/byte/hash inventory. U404 adds the best-`L^2`-approximation
-theorem and proof over the public GitHub-main U402 source checkpoint. It has
-not replaced the U397 reader release.
+All schemas, referential checks, all 405 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u405-b` produced the
+identical path/byte/hash inventory. U405 adds the Bessel-inequality derivation,
+theorem, and coefficient-limit consequence over the public GitHub-main U404
+source checkpoint. It has not replaced the U397 reader release.
 
 ## Current public checkpoint U397
 

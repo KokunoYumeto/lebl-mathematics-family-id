@@ -55,3 +55,31 @@ U404. The public reader remains the already verified U397 GitHub release and
 Zenodo record 22105195 / DOI `10.5281/zenodo.22105195`. A bounded follow-up
 commit preserves this sanitized receipt and current controls; it does not
 change release or Zenodo bytes.
+
+## Receipt/control preservation
+
+The bounded follow-up completed at commit
+`e8d89ccc614c49f280b02e71c403a494ee4aef03`, tree
+`c2825f2dff320562e6f46dc6b323e203b49d5d33`, with source commit
+`396fa49d0ac6f0d30fc2fc5c22ed12b9f6f070ff` as its sole parent. It changed
+exactly this receipt and five current controls: six files / 424,011 bytes.
+Anonymous immutable-commit readback matched all six paths, byte counts, and
+SHA-256 values. The public receipt snapshot in that commit is 2,447 bytes,
+SHA-256
+`ec51c5017ad42f20383d238968ad6d48e27dc723dea0a218ea51a6f9cd04dfb3`.
+
+This local post-transaction section records the commit that contains its prior
+snapshot. It is intentionally carried with the next substantive checkpoint
+rather than creating an infinite chain of self-referential pointer-only
+commits.
+
+## Independent control-audit correction
+
+An independent audit found three stale U397-era values in the legacy
+`CURRENT_STATE.json` publication subtree, while every authoritative U404 field
+and public artifact passed. Commit
+`ce796a7e3efe43f42f4011a6cc4b59bb50d8a932`, tree
+`1925afe2ed4d86ffb063a04b996c1cce97b0c1cf`, corrects only that state file and
+records decision DEC-0154: two files / 323,914 bytes. Anonymous immutable-
+commit readback matched both files exactly. The GitHub release, tag, and Zenodo
+record remain unchanged.
