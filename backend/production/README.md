@@ -1,6 +1,30 @@
 # Production backend checkpoints
 
-## Current production checkpoint U415
+## Current production checkpoint U416
+
+`v0.4-live-2026.08.28-u416-a/` is the authoritative production checkpoint. It
+binds the 416-row translation manifest, 795-row live terminology ledger,
+265-event adverse ledger, and 21-entry O001 solution-gap ledger.
+
+- 3,954 canonical records, 416 manifest segments, 447 units, 783 concepts,
+  832 embedded expressions, and exactly 795 current logical terms;
+- 21 O001 exercise gaps, ten source hints, eleven no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 17,569,205 bytes;
+- `records.jsonl` SHA-256
+  `b0c459a4aca91381a5bbc0cdb4a42e3009264c4e5b32f3987fe599cf0b24f897`;
+- canonical inventory SHA-256
+  `c4ab72e0c178748410c3d77c5af94b987c4853b2bae86c8bd54a0534f9538bc4`.
+
+All schemas, referential checks, all 416 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u416-b` and two fresh
+task-local admission replays produced the identical path/byte/hash inventory.
+Relative to U415, U416 adds exactly one unit, one segment, and one QA event and
+removes nothing. It admits the complete proof of Parseval's theorem. It has
+not replaced the U397 reader release.
+
+## Preserved production checkpoint U415
 
 `v0.4-live-2026.08.28-u415-a/` is the authoritative production checkpoint. It
 binds the 415-row translation manifest, 795-row live terminology ledger,

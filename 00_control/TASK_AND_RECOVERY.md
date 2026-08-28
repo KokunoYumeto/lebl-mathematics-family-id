@@ -2,7 +2,7 @@
 
 Updated: 2026-08-28
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local and public GitHub-main U415 includes the Parseval opening and complete theorem statement with clean integration build, visual QA, deterministic A/B backend proof, and exact 41-path source/backend readback; its bounded receipt/current-controls overlay is pending; U397 remains publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local U416 includes the complete Parseval proof with clean integration build, visual QA, deterministic A/B backend proof, and two matching fresh replays and is ready for bounded publication; public GitHub main remains byte-verified U415 until that transaction completes; U397 remains publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-28
 
@@ -19,25 +19,25 @@ in this historical log. The machine-readable authorities are
   the source's undefined zero-frequency antiderivative quotient. The public
   U397 target is 194.506 bytes, SHA-256
   `3de28aaac5ce08b69e97060ea01fe7f1d0e7b9d1c024e2fad49e9ece3893b839`.
-- Live boundary: U415, manifest 415 (R006 330, R007 35, R008 50), 642.759
+- Live boundary: U416, manifest 416 (R006 331, R007 35, R008 50), 644.620
   bytes, SHA-256
-  `c78d16199bf50d75d79be6e1683aa93bb23a216441456a0e9d5dd2995d69622d`.
-  U415 adds the Parseval opening and complete theorem statement, including
-  convergence in the `L^2` sense. TERM-0794 binds `teorema Parseval` and
-  TERM-0795 binds `konvergensi L^2`; the adverse ledger remains unchanged at
-  265 events. The full live target is 197.479 bytes, SHA-256
-  `8fd73d3e7d9fd746e16f9a3da26d799833eddfe7d9436a3fba4d8af075db92cc`.
-- Backend U415 A/B is byte-identical: 27 files / 17.546.055 bytes, 3.951
-  records, 830 embedded expressions, 795 current logical terms, 265
-  corrections, 33 assets, 646 relations, and 21 O001 gaps. All 415 live unit
-  bindings are exact, 14.652 record-field references resolve, generic
-  validation passes, and all 15 CSV views round-trip losslessly.
-  The same unchanged collector counts 14.608 references in U413 and 14.628 in
-  U414;
-  `LEBL-ID-DEC-0169` supersedes only the earlier erroneous 14.838 historical
-  metric.
+  `14bb894f686222d47c38dd19a3ec27f64fdc49eefe54f8541160e348c19d76a3`.
+  U416 adds the complete Parseval proof through source raw line 5288 / target
+  raw line 5302. All 19 inline payloads, 135 ordered control sequences, 20
+  environment events, 80 brace pairs, 38 dollar signs, both source comments,
+  and six references are structurally exact. The adverse, terminology, asset,
+  exercise, and O001 ledgers remain unchanged. The full live target is 197.633
+  bytes, SHA-256
+  `9854b5dbd54879fe072ec502f4062d5b3dbe3220978daa681f87aa07ba7ec08c`.
+- Backend U416 A/B is byte-identical: 27 files / 17.569.205 bytes, 3.954
+  records, 832 embedded expressions, 795 current logical terms, 265
+  corrections, 33 assets, 646 relations, and 21 O001 gaps. All 416 live unit
+  bindings are exact, generic validation passes, and all 15 CSV views
+  round-trip losslessly. Two fresh task-local replays produced zero path,
+  byte-count, or SHA-256 differences from retained tree A and were removed
+  after validation.
   Canonical inventory SHA-256 is
-  `89eeec626092d0ec1ac92bebab9a977b3d2ee00c97866993903f145ebba5646c`.
+  `c4ab72e0c178748410c3d77c5af94b987c4853b2bae86c8bd54a0534f9538bc4`.
 - GitHub main preserves the complete U415 live source/backend checkpoint at
   immutable commit `b59fa16fddfdad15943b5fab384fcefe2ab2545b`, tree
   `8bf2df12558c8c33c5ed314aafb9445d3655d46c`. Anonymous immutable-commit
@@ -51,8 +51,16 @@ in this historical log. The machine-readable authorities are
   `d43aa8cf3252bc986f366d99677560ba6f844169` as its sole parent and carried
   the finalized local U414 receipt. Authenticated blob, branch, parent, and
   non-truncated recursive-tree checks also passed. No release, tag, or Zenodo
-  object changed. The bounded sanitized-receipt/current-controls overlay from
-  the U415 source commit is the next executable publication action.
+  object changed. The bounded sanitized-receipt/current-controls overlay is
+  public at commit `deea5e238ffef867b756c51a5bab73ffc377a027`, tree
+  `5f0baabf136bb2cd7c37e2807c6fa27eb945003e`, with the source commit as its
+  sole parent. Anonymous and authenticated readback matched all six paths /
+  468.597 bytes; its 826-byte canonical inventory has SHA-256
+  `a643662d2919f26369016f9eaf1e698c59c65a92439abb78db239f814df63d3c`.
+  The finalized local receipt is 4.189 bytes, SHA-256
+  `b05d45ffbd25b8fcca185c2a90bdc1275a6ba1c40672dab51f62db6ff24f34c5`,
+  and its self-pointer update must travel with the next substantive checkpoint
+  rather than create a pointer-only loop.
 - Centered U397 reader PASS: 226 pages / 2.292.242 bytes, SHA-256
   `40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d`.
   The final nine-pass build has zero TeX/reference failures and zero visible
@@ -78,12 +86,11 @@ in this historical log. The machine-readable authorities are
   (tree `4d845894ee625231d4c2357cc3f567ff15a87009`) also passed anonymous
   readback for all seven files / 409.835 bytes. Neither commit changed the U397
   release tag or Zenodo record.
-- Next preserve the U415 sanitized receipt and current controls in a bounded
-  six-path overlay from source commit `b59fa16fddfdad15943b5fab384fcefe2ab2545b`,
-  complete authenticated and anonymous byte readback, then resume only R006 at frozen
-  source raw line 5187 / live target raw line 5201 with the complete Parseval
-  theorem proof. Carry the finalized U414 receipt; do not change the U397
-  release.
+- Next publish and anonymously verify the bounded U416 source/backend
+  checkpoint from verified public U415 controls commit
+  `deea5e238ffef867b756c51a5bab73ffc377a027`; then resume only R006 with the
+  first Fourier-series exercise at frozen source raw lines 5290–5315 / live
+  target from raw line 5304. Do not change the U397 release.
   R007 remains at
   `ch-first-order-ode.tex` raw line 89; R008 remains at `ca.tex` raw line 1648.
   HP-LEBL-R007-001 is owner-accepted only for complete
@@ -136,10 +143,10 @@ identify the runtime generically as acting on the user's instruction; it must
 not publish the user's personal first name. Historical immutable releases are
 evidence, not inputs to a new payload.
 
-The local authoritative checkpoint is U415: R006 U001–U330, R007 U001–U035,
-and R008 U001–U050. The public repository `main` presently binds the same U415
-source/backend manifest; its bounded source/backend payload is anonymously
-byte-verified and its receipt/current-controls overlay is pending. The separate
+The local authoritative checkpoint is U416: R006 U001–U331, R007 U001–U035,
+and R008 U001–U050. The public repository `main` presently binds U415 while
+the bounded U416 transaction is prepared; the U415 source/backend payload and
+receipt/current-controls overlay are anonymously byte-verified. The separate
 U397 reader release
 binds its 397-row manifest: R006 U001–U312, R007 U001–U035, and R008 U001–U050,
 and contains nine anonymously verified assets totaling 12.439.062 bytes. The
