@@ -2,7 +2,7 @@
 
 Updated: 2026-08-28
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local and public GitHub-main U414 includes the locality corollary and remarks with clean integration build, visual QA, deterministic A/B backend proof, and exact 41-path anonymous source/backend readback; the bounded U414 receipt/current-controls overlay is pending; U397 remains publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local U415 includes the Parseval opening and complete theorem statement with clean integration build, visual QA, and deterministic A/B backend proof; public GitHub-main U414 retains exact source/backend and receipt/control readback; U397 remains publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-28
 
@@ -19,24 +19,25 @@ in this historical log. The machine-readable authorities are
   the source's undefined zero-frequency antiderivative quotient. The public
   U397 target is 194.506 bytes, SHA-256
   `3de28aaac5ce08b69e97060ea01fe7f1d0e7b9d1c024e2fad49e9ece3893b839`.
-- Live boundary: U414, manifest 414 (R006 329, R007 35, R008 50), 640.776
+- Live boundary: U415, manifest 415 (R006 330, R007 35, R008 50), 642.759
   bytes, SHA-256
-  `c964597b83d42fb8492ad18f8dda28df0ee224b750f53bcdf3a1b37ce57c8c66`.
-  U414 adds the locality consequence, the open-interval corollary, the
-  convergence-rate remarks, and the Stone--Weierstrass comparison. TERM-0793
-  binds `laju konvergensi`; the adverse ledger remains unchanged at 265
-  events. The full live target is 197.416 bytes, SHA-256
-  `5f85aa1a7902c516573ddfede0801eea2319a746f9237a5c7d6c6cda480b6289`.
-- Backend U414 A/B is byte-identical: 27 files / 17.511.006 bytes, 3.944
-  records, 828 embedded expressions, 793 current logical terms, 265
-  corrections, 33 assets, 646 relations, and 21 O001 gaps. All 414 live unit
-  bindings are exact, 14.628 record-field references resolve, generic
+  `c78d16199bf50d75d79be6e1683aa93bb23a216441456a0e9d5dd2995d69622d`.
+  U415 adds the Parseval opening and complete theorem statement, including
+  convergence in the `L^2` sense. TERM-0794 binds `teorema Parseval` and
+  TERM-0795 binds `konvergensi L^2`; the adverse ledger remains unchanged at
+  265 events. The full live target is 197.479 bytes, SHA-256
+  `8fd73d3e7d9fd746e16f9a3da26d799833eddfe7d9436a3fba4d8af075db92cc`.
+- Backend U415 A/B is byte-identical: 27 files / 17.546.055 bytes, 3.951
+  records, 830 embedded expressions, 795 current logical terms, 265
+  corrections, 33 assets, 646 relations, and 21 O001 gaps. All 415 live unit
+  bindings are exact, 14.652 record-field references resolve, generic
   validation passes, and all 15 CSV views round-trip losslessly.
-  The same unchanged collector counts 14.608 references in U413;
+  The same unchanged collector counts 14.608 references in U413 and 14.628 in
+  U414;
   `LEBL-ID-DEC-0169` supersedes only the earlier erroneous 14.838 historical
   metric.
   Canonical inventory SHA-256 is
-  `c3c2de27a4afba87315cb6cf9a5fb7a0f18202f06336dea0e531da00ce4e549a`.
+  `89eeec626092d0ec1ac92bebab9a977b3d2ee00c97866993903f145ebba5646c`.
 - GitHub main preserves the complete U414 live source/backend checkpoint at
   immutable commit `6469a47e1944b2dc7eaeda308659400c6d417219`, tree
   `92eedaaaedc261b4d51b827c8cee363da7dcd8f0`. Anonymous immutable-commit
@@ -51,8 +52,15 @@ in this historical log. The machine-readable authorities are
   the finalized local U413 receipt. Authenticated blob, branch, parent, and
   non-truncated recursive-tree checks also passed. No release, tag, or Zenodo
   object changed. The bounded sanitized-receipt/current-controls overlay is
-  the next exact publication transaction and must use the U414 source commit
-  as its sole parent.
+  public at commit `d43aa8cf3252bc986f366d99677560ba6f844169`, tree
+  `6d5fa587ec67d1ca72be9e05ae171f2dfb60d873`, with the source commit as its
+  sole parent. Anonymous and authenticated readback matched all six paths /
+  461.817 bytes; its 826-byte canonical inventory has SHA-256
+  `a9ae7eb502acc034546f612cc7f73503e18738c55b10eab3749c6b014c78e144`.
+  The finalized local receipt is 4.250 bytes, SHA-256
+  `8883f35c4a13f728b081b153038cee1d96dc28891842b30e851a533c36a29b04`,
+  and its self-pointer update must travel with the next substantive checkpoint
+  rather than create a pointer-only loop.
 - Centered U397 reader PASS: 226 pages / 2.292.242 bytes, SHA-256
   `40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d`.
   The final nine-pass build has zero TeX/reference failures and zero visible
@@ -78,10 +86,12 @@ in this historical log. The machine-readable authorities are
   (tree `4d845894ee625231d4c2357cc3f567ff15a87009`) also passed anonymous
   readback for all seven files / 409.835 bytes. Neither commit changed the U397
   release tag or Zenodo record.
-- Next preserve and anonymously verify the bounded U414 receipt/current-controls
-  overlay from source commit `6469a47e1944b2dc7eaeda308659400c6d417219`;
-  then resume only R006 at frozen source raw line 5132 / live target raw line
-  5146 with the Parseval-theorem subsection. Do not change the U397 release.
+- Next publish the bounded U415 source/backend checkpoint from verified public
+  U414 controls commit `d43aa8cf3252bc986f366d99677560ba6f844169`, complete
+  authenticated and anonymous byte readback, then resume only R006 at frozen
+  source raw line 5187 / live target raw line 5201 with the complete Parseval
+  theorem proof. Carry the finalized U414 receipt; do not change the U397
+  release.
   R007 remains at
   `ch-first-order-ode.tex` raw line 89; R008 remains at `ca.tex` raw line 1648.
   HP-LEBL-R007-001 is owner-accepted only for complete
@@ -134,10 +144,10 @@ identify the runtime generically as acting on the user's instruction; it must
 not publish the user's personal first name. Historical immutable releases are
 evidence, not inputs to a new payload.
 
-The local authoritative checkpoint is U414: R006 U001–U329, R007 U001–U035,
-and R008 U001–U050. The public repository `main` presently binds the same U414
-source/backend manifest and its bounded source/backend payload is anonymously
-byte-verified; its receipt/current-controls overlay is pending. The separate
+The local authoritative checkpoint is U415: R006 U001–U330, R007 U001–U035,
+and R008 U001–U050. The public repository `main` presently binds U414: R006
+U001–U329, R007 U001–U035, and R008 U001–U050; its bounded source/backend payload and
+receipt/current-controls overlay are anonymously byte-verified. The separate
 U397 reader release
 binds its 397-row manifest: R006 U001–U312, R007 U001–U035, and R008 U001–U050,
 and contains nine anonymously verified assets totaling 12.439.062 bytes. The

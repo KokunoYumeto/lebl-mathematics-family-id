@@ -5143,31 +5143,31 @@ dapat dihampiri secara seragam
 oleh polinom-polinom trigonometri, tetapi polinom-polinom trigonometri tersebut tidak harus
 merupakan jumlah parsial $s_N$.
 
-\subsection{Parseval's theorem}
+\subsection{Teorema Parseval}
 
-Finally,
-convergence always happens in the $L^2$ sense and
-operations on the (infinite) vectors of
-Fourier coefficients are the same as the operations using the integral
-inner product.
+Akhirnya,
+konvergensi selalu terjadi dalam pengertian $L^2$, dan
+operasi pada vektor-vektor koefisien Fourier
+(dengan tak berhingga banyak komponen) sama dengan operasi yang menggunakan
+hasil kali dalam integral.
 
 \begin{samepage}
 \begin{thm}[Parseval\footnote{%
-Named after the French mathematician
+Dinamai menurut matematikawan Prancis
 \href{https://en.wikipedia.org/wiki/Marc-Antoine_Parseval}{Marc-Antoine
 Parseval}
-(1755--1836).}] \index{Parseval's theorem}
-Let $f$ and $g$ be $2\pi$-periodic functions, Riemann integrable 
-on $[-\pi,\pi]$
-with
+(1755--1836).}] \index{teorema Parseval}
+Misalkan $f$ dan $g$ adalah fungsi-fungsi $2\pi$-periodik yang terintegralkan secara Riemann
+pada $[-\pi,\pi]$
+dengan
 \begin{equation*}
 f(x) \sim
 \sum_{n=-\infty}^\infty c_n \,e^{inx}
-\qquad \text{and} \qquad
+\qquad \text{dan} \qquad
 g(x) \sim
 \sum_{n=-\infty}^\infty d_n \,e^{inx} .
 \end{equation*}
-Then
+Maka
 \begin{equation*}
 \lim_{N\to\infty} \bnorm{f-s_N(f)}_2^2 = 
 \lim_{N\to\infty}
@@ -5176,7 +5176,7 @@ Then
 \babs{f(x)-s_N(f;x)}^2 \, dx
 =0 .
 \end{equation*}
-Also
+Selain itu,
 \begin{equation*}
 \langle f , g \rangle =
 \frac{1}{2\pi}
@@ -5185,7 +5185,7 @@ f(x) \overline{g(x)}\, dx
 =
 \sum_{n=-\infty}^\infty c_n \overline{d_n} ,
 \end{equation*}
-and
+dan
 \begin{equation*}
 \snorm{f}_2^2
 =
