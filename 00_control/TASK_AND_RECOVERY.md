@@ -2,7 +2,7 @@
 
 Updated: 2026-08-28
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local and public GitHub-main U417 includes the first Fourier-series exercise after the complete Parseval proof with clean integration build, visual QA, deterministic A/B backend proof, TERM-0796, ADV-0266, O001 gap 0022, and exact 41-path source/backend readback; the bounded U417 receipt/current-controls overlay is pending; U397 remains publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local U418 includes the local Fourier-convergence exercise with clean integration build, visual QA, deterministic A/B backend proof, ADV-0267, and O001 gap 0023; public GitHub-main U417 source/backend and controls remain exactly verified until the bounded U418 transaction; U397 remains publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-28
 
@@ -19,25 +19,24 @@ in this historical log. The machine-readable authorities are
   the source's undefined zero-frequency antiderivative quotient. The public
   U397 target is 194.506 bytes, SHA-256
   `3de28aaac5ce08b69e97060ea01fe7f1d0e7b9d1c024e2fad49e9ece3893b839`.
-- Live boundary: U417, manifest 417 (R006 332, R007 35, R008 50), 646.817
+- Live boundary: U418, manifest 418 (R006 333, R007 35, R008 50), 648.801
   bytes, SHA-256
-  `35fedd7654f5b35fcc03ff14573c034ead7cbf033f2893ec03d4fe9fdd9fbb08`.
-  U417 adds the complete first Fourier-series exercise through source raw line
-  5315 / target raw line 5329. All five inline payloads, 29 ordered control
-  sequences, six environment events, 26 brace pairs, ten dollar signs, both
-  percent tokens, label, figure reference, asset base, and caption structure
-  are exact. ADV-0266 clarifies that the stated 1/n value is the sine
-  coefficient under the chapter's complex Fourier convention; TERM-0796 and
-  O001 gap LEBL-O001-R006-0022 are bound. The full live target is 197.736
+  `64b3bda88dd3aa9533e71ef4c55fc5c37a3aef67ef7537cbf5f83d413069ee1c`.
+  U418 adds the complete local Fourier-convergence exercise through source raw
+  line 5322 / target raw line 5336. All six inline payloads, ten ordered TeX
+  commands, both environment events, twelve dollar signs, and three brace
+  pairs are exact. ADV-0267 records the source sentence fragment and missing
+  function-to-f binding; the Indonesian derivative repairs only the grammar.
+  O001 gap LEBL-O001-R006-0023 is bound. The full live target is 197.790
   bytes, SHA-256
-  `5556d4a54f83b736e42b72a9a273238913673e0cedf6fb43755aee4e09576696`.
-- Backend U417 A/B is byte-identical: 27 files / 17.628.427 bytes, 3.961
-  records, 834 embedded expressions, 796 current logical terms, 266
-  corrections, 33 assets, 646 relations, and 22 O001 gaps. All 417 live unit
-  bindings and 348 direct component checks pass, generic validation passes,
+  `e97e19de0a3004bc83910e7245aea3a3ba728029f56a1544843e49944e3a8a65`.
+- Backend U418 A/B is byte-identical: 27 files / 17.679.288 bytes, 3.966
+  records, 836 embedded expressions, 796 current logical terms, 267
+  corrections, 33 assets, 646 relations, and 23 O001 gaps. All 418 live unit
+  bindings and 350 direct component checks pass, generic validation passes,
   and all 15 CSV views round-trip losslessly. Canonical inventory SHA-256 is
-  `fe0edd56faa1e4183c010002903a0af14f17a5ce3afe56a47b0d561300485424`.
-- GitHub main preserves the complete U417 live source/backend checkpoint at
+  `f7520356545f2460bf8b76d7455d8d1d3c67ca3e5e5fcb9eb740e2014e90032c`.
+- GitHub main currently preserves the complete U417 source/backend checkpoint at
   immutable commit `8a87e4c6dfc9b1576e684bd909ac6570834726af`, tree
   `96a1dc4c1afaf32863a365722a02c51fbdf9c9ef`. Anonymous immutable-commit
   readback matched all 41 bounded paths / 19.357.500 bytes. The canonical
@@ -50,9 +49,15 @@ in this historical log. The machine-readable authorities are
   `9296ab4e6b75266881cd5ea857ca83ecfa933118` as its sole parent and carried
   the finalized local U416 receipt. Authenticated blob, branch, parent, and
   non-truncated recursive-tree checks also passed. No release, tag, or Zenodo
-  object changed. Preserve the sanitized receipt and current recovery controls
-  in one bounded six-file overlay before continuing translation; record the
-  resulting pointer locally rather than creating a third pointer-only commit.
+  object changed. The bounded overlay advanced `main` non-forcibly to controls
+  commit `aa7aabda7c923d54837457a8b40169ac57b4a9eb`, tree
+  `665ec8e021d04e6c65986bd1c56df140a38f11a6`, and anonymously verified all
+  six paths / 481.443 bytes. Its 826-byte canonical inventory has SHA-256
+  `1490a45cf2cf7eabafc54f61af091a4f674d7ea697f2816e0de37187b8c0ce62`.
+  The finalized local receipt is 4.248 bytes, SHA-256
+  `348113f5be6d3c77c6b3f7e52a6da20e46b489f71611a8811745a72dc0d89cb0`,
+  and will be carried by the next substantive checkpoint rather than a third
+  pointer-only commit.
 - Centered U397 reader PASS: 226 pages / 2.292.242 bytes, SHA-256
   `40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d`.
   The final nine-pass build has zero TeX/reference failures and zero visible
@@ -78,10 +83,11 @@ in this historical log. The machine-readable authorities are
   (tree `4d845894ee625231d4c2357cc3f567ff15a87009`) also passed anonymous
   readback for all seven files / 409.835 bytes. Neither commit changed the U397
   release tag or Zenodo record.
-- Next resume only R006 with the local Fourier-convergence exercise at frozen
-  source raw lines 5317–5322 / live target raw lines 5331–5336. Publish U417
-  in the existing GitHub-main source/backend lineage, carrying the finalized
-  U416 receipt, but do not change the U397 release.
+- Next publish the bounded U418 source/backend checkpoint in the existing
+  GitHub-main lineage, carrying the finalized local U417 receipt. Then resume
+  only R006 with the piecewise-smooth convergence exercise at frozen source
+  raw lines 5324–5329 / live target raw lines 5338–5343. Do not change the U397
+  release.
   R007 remains at
   `ch-first-order-ode.tex` raw line 89; R008 remains at `ca.tex` raw line 1648.
   HP-LEBL-R007-001 is owner-accepted only for complete

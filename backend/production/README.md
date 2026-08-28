@@ -1,6 +1,31 @@
 # Production backend checkpoints
 
-## Current production checkpoint U417
+## Current production checkpoint U418
+
+`v0.4-live-2026.08.28-u418-a/` is the authoritative production checkpoint. It
+binds the 418-row translation manifest, 796-row live terminology ledger,
+267-event adverse ledger, and 23-entry O001 solution-gap ledger.
+
+- 3,966 canonical records, 418 manifest segments, 451 units, 784 concepts,
+  836 embedded expressions, and exactly 796 current logical terms;
+- 23 O001 exercise gaps, ten source hints, thirteen no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 17,679,288 bytes;
+- `records.jsonl` SHA-256
+  `de284519dd9ab6c1ff89573c1cf17ac08d1ad68674bd8a3ddc06da47dea9038e`;
+- canonical inventory SHA-256
+  `f7520356545f2460bf8b76d7455d8d1d3c67ca3e5e5fcb9eb740e2014e90032c`.
+
+All schemas, referential checks, all 418 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u418-b` produced the
+identical path/byte/hash inventory. Relative to U417, U418 adds exactly one
+manifest unit, one segment, one QA event, one declared source correction, and
+one O001 exercise unit, while removing nothing; only the manifest-artifact
+record is refreshed. It admits the local Fourier-convergence exercise and has
+not replaced the U397 reader release.
+
+## Preserved production checkpoint U417
 
 `v0.4-live-2026.08.28-u417-a/` is the authoritative production checkpoint. It
 binds the 417-row translation manifest, 796-row live terminology ledger,
