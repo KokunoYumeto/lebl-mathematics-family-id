@@ -1,6 +1,31 @@
 # Production backend checkpoints
 
-## Current production checkpoint U416
+## Current production checkpoint U417
+
+`v0.4-live-2026.08.28-u417-a/` is the authoritative production checkpoint. It
+binds the 417-row translation manifest, 796-row live terminology ledger,
+266-event adverse ledger, and 22-entry O001 solution-gap ledger.
+
+- 3,961 canonical records, 417 manifest segments, 449 units, 784 concepts,
+  834 embedded expressions, and exactly 796 current logical terms;
+- 22 O001 exercise gaps, ten source hints, twelve no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 17,628,427 bytes;
+- `records.jsonl` SHA-256
+  `59a5537b6a96a2d6485e5d12331ae1b53a63477cee911d0125925ceed78fd88f`;
+- canonical inventory SHA-256
+  `fe0edd56faa1e4183c010002903a0af14f17a5ce3afe56a47b0d561300485424`.
+
+All schemas, referential checks, all 417 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u417-b` produced the
+identical path/byte/hash inventory. Relative to U416, U417 adds one manifest
+unit, one segment, one QA event, one concept, one term, one declared source
+correction, and one O001 exercise unit, while removing nothing. It admits the
+first Fourier-series exercise and its Weierstrass figure binding. It has not
+replaced the U397 reader release.
+
+## Preserved production checkpoint U416
 
 `v0.4-live-2026.08.28-u416-a/` is the authoritative production checkpoint. It
 binds the 416-row translation manifest, 795-row live terminology ledger,

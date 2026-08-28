@@ -17,7 +17,7 @@ OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna. Jiří Lebl tetap
 merupakan penulis karya sumber; semua kredit sumber dan kontributor manusia
 dipertahankan. Edisi ini independen dan tidak menyiratkan dukungan penulis.
 
-## Status pembaca publik U397 dan checkpoint sumber U416
+## Status pembaca publik U397 dan checkpoint sumber U417
 
 Ini masih *work in progress*, bukan klaim bahwa ketiga buku sudah selesai.
 
@@ -38,11 +38,13 @@ sumber yang tercatat, serta 21 pemetaan kekosongan solusi O001. Lima belas
 proyeksi CSV berputar balik tepat ke seluruh rekaman, dan dua build independen
 identik pada path, ukuran, dan SHA-256.
 
-Checkpoint sumber U416 memuat 416 unit (R006 331, R007 35, R008 50) dan
-menambahkan pembukaan, pernyataan lengkap, serta bukti lengkap teorema
-Parseval. Backend U416 memuat 3.954 rekaman dan 832 ekspresi tertanam; dua
-build 27 berkas identik byte demi byte, dua replay bersih menghasilkan byte
-yang sama, dan seluruh 15 proyeksi CSV lulus putar balik. PDF
+Checkpoint sumber U417 memuat 417 unit (R006 332, R007 35, R008 50) dan
+menambahkan latihan pertama deret Fourier setelah bukti lengkap teorema
+Parseval. Catatan koefisien sumber diklarifikasi secara transparan sebagai
+koefisien sinus, istilah fungsi yang tidak diferensiabel di mana pun diindeks,
+dan kekosongan solusi O001 dipetakan tanpa menciptakan solusi. Backend U417
+memuat 3.961 rekaman dan 834 ekspresi tertanam; dua build 27 berkas identik
+byte demi byte dan seluruh 15 proyeksi CSV lulus putar balik. PDF
 pembaca publik tetap U397 sampai batas pembaca berikutnya selesai dibangun dan
 diverifikasi; rilis maupun DOI U397 tidak diubah oleh checkpoint sumber ini.
 
