@@ -17,7 +17,7 @@ OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna. Jiří Lebl tetap
 merupakan penulis karya sumber; semua kredit sumber dan kontributor manusia
 dipertahankan. Edisi ini independen dan tidak menyiratkan dukungan penulis.
 
-## Status pembaca publik U397 dan checkpoint sumber lokal U419
+## Status pembaca publik U397 dan checkpoint sumber U420
 
 Ini masih *work in progress*, bukan klaim bahwa ketiga buku sudah selesai.
 
@@ -38,17 +38,15 @@ sumber yang tercatat, serta 21 pemetaan kekosongan solusi O001. Lima belas
 proyeksi CSV berputar balik tepat ke seluruh rekaman, dan dua build independen
 identik pada path, ukuran, dan SHA-256.
 
-Checkpoint sumber lokal U419 memuat 419 unit (R006 334, R007 35, R008 50) dan
-menambahkan latihan konvergensi Fourier untuk fungsi kontinu dan mulus
-sepotong-sepotong. Restatement sumber diperbaiki secara transparan dengan
-mengikat fungsi sebagai `f` dan memulihkan hipotesis keterintegralan Riemann
-dari akibat yang dirujuk; rumus dan petunjuk asli dipertahankan. Kekosongan
-solusi O001 dipetakan tanpa menciptakan jawaban atau solusi. Backend U419
-memuat 3.973 rekaman dan 838 ekspresi tertanam; dua build 27 berkas identik
-byte demi byte dan seluruh 15 proyeksi CSV lulus putar balik. Checkpoint publik
-GitHub-main tetap U418 sampai transaksi U419 dan pembacaan balik selesai. PDF
-pembaca publik tetap U397 sampai batas pembaca berikutnya selesai dibangun dan
-diverifikasi; rilis maupun DOI U397 tidak diubah oleh checkpoint sumber ini.
+Checkpoint sumber U420 memuat 420 unit (R006 335, R007 35, R008 50) dan
+menambahkan latihan aproksimasi `L^2` oleh fungsi kontinu periodik. Label,
+ketujuh muatan matematika, dan seluruh perintah TeX dipertahankan tepat; sumber
+tidak memerlukan koreksi. Kekosongan solusi O001 dipetakan tanpa menciptakan
+petunjuk, jawaban, atau solusi. Backend U420 memuat 3.977 rekaman dan 840
+ekspresi tertanam; dua build 27 berkas identik byte demi byte dan seluruh 15
+proyeksi CSV lulus putar balik. PDF pembaca publik tetap U397 sampai batas
+pembaca berikutnya selesai dibangun dan diverifikasi; rilis maupun DOI U397
+tidak diubah oleh checkpoint sumber ini.
 
 ## Pembaca utama
 

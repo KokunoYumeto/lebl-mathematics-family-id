@@ -1,6 +1,31 @@
 # Production backend checkpoints
 
-## Current production checkpoint U419
+## Current production checkpoint U420
+
+`v0.4-live-2026.08.29-u420-a/` is the authoritative production checkpoint. It
+binds the 420-row translation manifest, 796-row live terminology ledger,
+268-event adverse ledger, and 25-entry O001 solution-gap ledger.
+
+- 3,977 canonical records, 420 manifest segments, 456 units, 784 concepts,
+  840 embedded expressions, and exactly 796 current logical terms;
+- 25 O001 exercise gaps, eleven source hints, fourteen no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 17,788,134 bytes;
+- `records.jsonl` SHA-256
+  `ed314431074be9cea12eb2ebd43aa0256baecafd1d5f1212e29361023c9b0efc`;
+- canonical inventory SHA-256
+  `b858ba6dfac9b631f698f9f09734a9a6a59c63a1d4a23938f49a13019ea3b23b`.
+
+All schemas, referential checks, all 420 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u420-b` produced the
+identical path/byte/hash inventory. Relative to U419, U420 adds exactly one
+manifest unit, one segment, one QA event, and one O001 exercise unit while
+removing nothing; only the manifest-artifact record is refreshed. It admits
+the continuous-periodic `L^2`-approximation exercise and has not replaced the
+U397 reader release.
+
+## Preserved production checkpoint U419
 
 `v0.4-live-2026.08.28-u419-a/` is the authoritative production checkpoint. It
 binds the 419-row translation manifest, 796-row live terminology ledger,
