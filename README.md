@@ -17,7 +17,7 @@ OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna. Jiří Lebl tetap
 merupakan penulis karya sumber; semua kredit sumber dan kontributor manusia
 dipertahankan. Edisi ini independen dan tidak menyiratkan dukungan penulis.
 
-## Status publik U397 dan sumber hidup U413
+## Status publik U397, sumber publik U413, dan sumber hidup U414
 
 Ini masih *work in progress*, bukan klaim bahwa ketiga buku sudah selesai.
 
@@ -38,11 +38,13 @@ sumber yang tercatat, serta 21 pemetaan kekosongan solusi O001. Lima belas
 proyeksi CSV berputar balik tepat ke seluruh rekaman, dan dua build independen
 identik pada path, ukuran, dan SHA-256.
 
-Checkpoint sumber U413 memuat 413 unit unik (R006 328, R007 35, R008 50).
-Unit terbaru melengkapi bukti teorema lokalisasi di bawah syarat Lipschitz,
-termasuk dekomposisi trigonometri dan argumen ketaksamaan Bessel. Backend U413
-memuat 3.939 rekaman dan 826 ekspresi tertanam; dua build 27 berkas identik byte
-demi byte dan seluruh 15 proyeksi CSV lulus putar balik. PDF
+Checkpoint sumber publik U413 memuat 413 unit unik (R006 328, R007 35, R008
+50) sampai bukti lengkap teorema lokalisasi Lipschitz. Checkpoint sumber hidup
+U414 memuat 414 unit (R006 329, R007 35, R008 50) dan menambahkan konsekuensi
+lokalitas, akibat pada interval terbuka, ulasan laju konvergensi, serta
+perbandingan Stone--Weierstrass. Backend U414 memuat 3.944 rekaman dan 828
+ekspresi tertanam; dua build 27 berkas identik byte demi byte dan seluruh 15
+proyeksi CSV lulus putar balik. PDF
 pembaca publik tetap U397 sampai batas pembaca berikutnya selesai dibangun dan
 diverifikasi; rilis maupun DOI U397 tidak diubah oleh checkpoint sumber ini.
 

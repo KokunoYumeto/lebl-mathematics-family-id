@@ -5109,39 +5109,39 @@ dengan norma konstan terhadap hasil kali dalam yang sama dan menjadi ortonormal 
 Dengan demikian, $s_N(f;x)-f(x)$ menuju 0, yaitu $s_N(f;x)$ menuju $f(x)$.
 \end{proof}
 
-The theorem also says that convergence depends only on local behavior.
-That is, to understand convergence of $s_N(f;x)$ we only need to know
-$f$ in some neighborhood of $x$.
+Teorema tersebut juga menyatakan bahwa konvergensi hanya bergantung pada perilaku lokal.
+Artinya, untuk memahami konvergensi $s_N(f;x)$ kita hanya perlu mengetahui
+$f$ pada suatu lingkungan dari $x$.
 
 \begin{cor}
-Suppose $f$ is a $2\pi$-periodic function, Riemann integrable on $[-\pi,\pi]$.
-If $J$ is an open interval and $f(x) = 0$ for all $x \in J$,
-then $\lim\limits_{N\to\infty} s_N(f;x) = 0$ for all $x \in J$.
+Misalkan $f$ adalah fungsi $2\pi$-periodik yang terintegralkan secara Riemann pada $[-\pi,\pi]$.
+Jika $J$ adalah interval terbuka dan $f(x) = 0$ untuk setiap $x \in J$,
+maka $\lim\limits_{N\to\infty} s_N(f;x) = 0$ untuk setiap $x \in J$.
 
-In particular, if $f$ and $g$ are $2\pi$-periodic functions,
-Riemann integrable on $[-\pi,\pi]$, $J$ an open interval, and $f(x) = g(x)$
-for all $x \in J$, then for all $x \in J$,
-the sequence
-$\bigl\{ s_N(f;x) \bigr\}_{N=1}^\infty$ converges if and only if
-$\bigl\{ s_N(g;x) \bigr\}_{N=1}^\infty$ converges.
+Secara khusus, jika $f$ dan $g$ adalah fungsi $2\pi$-periodik
+yang terintegralkan secara Riemann pada $[-\pi,\pi]$, $J$ adalah interval terbuka, dan $f(x) = g(x)$
+untuk setiap $x \in J$, maka untuk setiap $x \in J$,
+barisan
+$\bigl\{ s_N(f;x) \bigr\}_{N=1}^\infty$ konvergen jika dan hanya jika
+$\bigl\{ s_N(g;x) \bigr\}_{N=1}^\infty$ konvergen.
 \end{cor}
 
-The first claim follows by taking $M=0$ in the theorem.
-The \myquote{In particular} follows by considering $f-g$, which
-is zero on $J$ and $s_N(f-g) = s_N(f) - s_N(g)$.
-So convergence at $x$ depends only on the values of the function
-near $x$.
-However, we saw that the rate of convergence,
-that is, how fast does $s_N(f)$
-converge to $f$, depends on global behavior of $f$.
+Pernyataan pertama diperoleh dengan mengambil $M=0$ dalam teorema.
+Pernyataan \myquote{Secara khusus} diperoleh dengan meninjau $f-g$, yang
+bernilai nol pada $J$ dan memenuhi $s_N(f-g) = s_N(f) - s_N(g)$.
+Jadi, konvergensi di $x$ hanya bergantung pada nilai-nilai fungsi
+di dekat $x$.
+Namun, kita telah melihat bahwa laju konvergensi,
+yaitu seberapa cepat $s_N(f)$
+konvergen ke $f$, bergantung pada perilaku global $f$.
 
-Note a subtle difference between the results above and what 
-\hyperref[thm:SWcomplex]{Stone--Weierstrass theorem} gives.
-%By Stone--Weierstrass, 
-Any continuous function on $[-\pi,\pi]$ equal at the endpoints
-can be uniformly approximated
-by trigonometric polynomials, but these trigonometric polynomials may
-not be the partial sums $s_N$.
+Perhatikan perbedaan halus antara hasil-hasil di atas dan hasil yang diberikan oleh
+\hyperref[thm:SWcomplex]{teorema Stone--Weierstrass}.
+%Dengan Stone--Weierstrass,
+Setiap fungsi kontinu pada $[-\pi,\pi]$ yang bernilai sama di kedua titik ujung
+dapat dihampiri secara seragam
+oleh polinom-polinom trigonometri, tetapi polinom-polinom trigonometri tersebut tidak harus
+merupakan jumlah parsial $s_N$.
 
 \subsection{Parseval's theorem}
 

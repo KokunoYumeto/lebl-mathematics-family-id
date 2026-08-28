@@ -1,29 +1,35 @@
 # Production backend checkpoints
 
-## Current production checkpoint U413
+## Current production checkpoint U414
 
-`v0.4-live-2026.08.28-u413-a/` is the authoritative production checkpoint. It
-binds the 413-row translation manifest, 792-row live terminology ledger,
+`v0.4-live-2026.08.28-u414-a/` is the authoritative production checkpoint. It
+binds the 414-row translation manifest, 793-row live terminology ledger,
 265-event adverse ledger, and 21-entry O001 solution-gap ledger.
 
-- 3,939 canonical records, 413 manifest segments, 444 units, 780 concepts,
-  826 embedded expressions, and exactly 792 current logical terms;
+- 3,944 canonical records, 414 manifest segments, 445 units, 781 concepts,
+  828 embedded expressions, and exactly 793 current logical terms;
 - 21 O001 exercise gaps, ten source hints, eleven no-hint states, and no
   invented answers or solutions;
 - 15 deterministic CSV projections;
-- 27 files / 17,480,735 bytes;
+- 27 files / 17,511,006 bytes;
 - `records.jsonl` SHA-256
-  `3297457ed2e39b3fca718951dd8b87b02d40d0ae79278d6b297c026e218ff2a0`;
+  `452cb24ec28b4c5f60aef8c39985027419de018844428eba605a02a3f1415694`;
 - canonical inventory SHA-256
-  `928ed5553cb822f33ffbc55abdc9198d4ecbd710c879066712958e13d1d3063f`.
+  `c3c2de27a4afba87315cb6cf9a5fb7a0f18202f06336dea0e531da00ce4e549a`.
 
-All schemas, referential checks, all 413 live manifest bindings, 15 CSV views,
-and lossless round trips pass. Independent replay `-u413-b` produced the
-identical path/byte/hash inventory. Relative to U412, U413 adds exactly one
-unit, segment, QA event, concept, and term plus three correction records and
-removes nothing. It admits the complete Lipschitz-localization proof with its
-three declared source precision repairs. It has not replaced the U397 reader
-release.
+All schemas, referential checks, all 414 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u414-b` produced the
+identical path/byte/hash inventory. Relative to U413, U414 adds exactly one
+unit, segment, QA event, concept, and term and removes nothing. It admits the
+locality consequence, corollary, convergence-rate remark, and
+Stone--Weierstrass comparison. It has not replaced the U397 reader release.
+
+## Preserved production checkpoint U413
+
+`v0.4-live-2026.08.28-u413-a/` preserves the byte-verified predecessor with
+3,939 records and 413 admitted units. Its 27-file tree totals 17,480,735 bytes
+and has canonical inventory SHA-256
+`928ed5553cb822f33ffbc55abdc9198d4ecbd710c879066712958e13d1d3063f`.
 
 ## Preserved production checkpoint U412
 

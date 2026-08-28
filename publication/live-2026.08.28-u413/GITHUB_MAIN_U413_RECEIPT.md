@@ -58,3 +58,25 @@ release and Zenodo record `22105195` / DOI `10.5281/zenodo.22105195`.
 A bounded follow-up commit will preserve this sanitized receipt and the current
 recovery controls. Its resulting commit pointer will be recorded locally and
 carried with the next substantive checkpoint, avoiding a pointer-only loop.
+
+## Receipt and recovery-controls overlay
+
+The bounded follow-up transaction advanced `main` non-forcibly from the U413
+source/backend commit to controls commit
+`d196897b114c86cd4316220ba08d63a8a8122dd0`, tree
+`f5087bd4bd2cb32083083a44e6a110e1ebaa4b14`. Its sole parent is
+`97e750330eeabae9b6d6845f5da157479a0fb832`.
+
+The overlay preserved exactly six regular paths / 452,972 bytes: the public
+receipt snapshot, `CURRENT_CURSOR.json`, `CURRENT_STATE.json`,
+`PUBLICATION_STATE.json`, `TASK_AND_RECOVERY.md`, and `DECISION_LOG.jsonl`.
+Authenticated immutable-blob and anonymous immutable-commit readback matched
+all six frozen byte strings. The canonical sorted compact inventory is 826
+bytes, SHA-256
+`6e0342ffeaeb0b1df0338f41df308d3893524ab60d5b894af6fa77a065b564fc`.
+Authenticated `main`, commit-tree, and sole-parent checks also passed.
+
+This local receipt now records the overlay pointer. Its final-byte identity is
+carried with the next substantive source/backend checkpoint rather than by a
+third pointer-only commit. The U397 GitHub release, release assets, tag, Zenodo
+record, DOI, and public-access state remain unchanged.
