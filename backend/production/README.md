@@ -1,28 +1,36 @@
 # Production backend checkpoints
 
-## Current production checkpoint U412
+## Current production checkpoint U413
 
-`v0.4-live-2026.08.28-u412-a/` is the authoritative production checkpoint. It
-binds the 412-row translation manifest, 791-row live terminology ledger,
-262-event adverse ledger, and 21-entry O001 solution-gap ledger.
+`v0.4-live-2026.08.28-u413-a/` is the authoritative production checkpoint. It
+binds the 413-row translation manifest, 792-row live terminology ledger,
+265-event adverse ledger, and 21-entry O001 solution-gap ledger.
 
-- 3,931 canonical records, 412 manifest segments, 443 units, 779 concepts,
-  824 embedded expressions, and exactly 791 current logical terms;
+- 3,939 canonical records, 413 manifest segments, 444 units, 780 concepts,
+  826 embedded expressions, and exactly 792 current logical terms;
 - 21 O001 exercise gaps, ten source hints, eleven no-hint states, and no
   invented answers or solutions;
 - 15 deterministic CSV projections;
-- 27 files / 17,413,205 bytes;
+- 27 files / 17,480,735 bytes;
 - `records.jsonl` SHA-256
-  `dac68ce0104e49e67dba320ab06981a096e164504bcf615a9ea216b23521b194`;
+  `3297457ed2e39b3fca718951dd8b87b02d40d0ae79278d6b297c026e218ff2a0`;
 - canonical inventory SHA-256
-  `92a73394f6ad19b80c64f777f60abb500cf1976fa1eee01aac057298cd490b01`.
+  `928ed5553cb822f33ffbc55abdc9198d4ecbd710c879066712958e13d1d3063f`.
 
-All schemas, referential checks, all 412 live manifest bindings, 15 CSV views,
-and lossless round trips pass. Independent replay `-u412-b` produced the
-identical path/byte/hash inventory. Relative to U409, U412 adds the Localization
-opening, pointwise Lipschitz theorem, and continuous piecewise-smooth
-corollary, plus the declared finite-partition index repair ADV-0262. It has not
-replaced the U397 reader release.
+All schemas, referential checks, all 413 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u413-b` produced the
+identical path/byte/hash inventory. Relative to U412, U413 adds exactly one
+unit, segment, QA event, concept, and term plus three correction records and
+removes nothing. It admits the complete Lipschitz-localization proof with its
+three declared source precision repairs. It has not replaced the U397 reader
+release.
+
+## Preserved production checkpoint U412
+
+`v0.4-live-2026.08.28-u412-a/` preserves the byte-verified predecessor with
+3,931 records and 412 admitted units. Its 27-file tree totals 17,413,205 bytes
+and has canonical inventory SHA-256
+`92a73394f6ad19b80c64f777f60abb500cf1976fa1eee01aac057298cd490b01`.
 
 ## Current public checkpoint U397
 

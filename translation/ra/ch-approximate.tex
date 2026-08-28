@@ -5036,12 +5036,12 @@ sepotong-sepotong pada $[x-\delta,x+\delta]$. Maka
 Bukti akibat ini diserahkan sebagai latihan.  Mari kita buktikan
 teoremanya.
 
-\begin{proof}[Proof of \thmref{thm:fourierlocalization}]
-For all $N$,
+\begin{proof}[Bukti \thmref{thm:fourierlocalization}]
+Untuk setiap $N$,
 \begin{equation*}
 \frac{1}{2\pi} \int_{-\pi}^\pi D_N = 1 .
 \end{equation*}
-Write
+Tuliskan
 \begin{equation*}
 \begin{split}
 s_N(f;x)-f(x) & =
@@ -5058,34 +5058,34 @@ f(x)
 (N+\nicefrac{1}{2})t \bigr) \, dt .
 \end{split}
 \end{equation*}
-By the hypotheses,
-for small nonzero $t$,
+Berdasarkan hipotesis,
+untuk $t$ tak nol yang cukup kecil,
 \begin{equation*}
 \abs{ \frac{f(x-t) - f(x)}{\sin(\nicefrac{t}{2})} }
 \leq
 \frac{M\sabs{t}}{\babs{\sin(\nicefrac{t}{2})}} .
 \end{equation*}
-As $\sin(\theta) = \theta + h(\theta)$ where $\frac{h(\theta)}{\theta} \to
-0$ as $\theta \to 0$,
-we notice that
-$\frac{M\sabs{t}}{\sabs{\sin(\nicefrac{t}{2})}}$ is continuous at the
-origin.
-Hence,
-$\frac{f(x-t) - f(x)}{\sin(\nicefrac{t}{2})}$, as a function of $t$,
-is bounded near the origin.
-As $t=0$ is the only place on $[-\pi,\pi]$ where the denominator vanishes,
-it is the only place where there could be a problem.
-So, the function is bounded near $t=0$ and clearly
-Riemann integrable on any interval not including $0$, and thus
-it is Riemann integrable on $[-\pi,\pi]$.
-We use the trigonometric identity
+Karena $\sin(\theta) = \theta + h(\theta)$ dengan $\frac{h(\theta)}{\theta} \to
+0$ ketika $\theta \to 0$,
+kita melihat bahwa
+$\frac{M\sabs{t}}{\sabs{\sin(\nicefrac{t}{2})}}$ memiliki limit berhingga dan dapat diperluas secara kontinu ke
+titik asal.
+Dengan demikian,
+$\frac{f(x-t) - f(x)}{\sin(\nicefrac{t}{2})}$, sebagai fungsi terhadap $t$,
+terbatas di sekitar titik asal.
+Karena $t=0$ merupakan satu-satunya titik pada $[-\pi,\pi]$ tempat penyebut bernilai nol,
+hanya di titik itulah persoalan dapat muncul.
+Jadi, setelah nilainya di titik tersebut ditetapkan secara sembarang, fungsi ini terbatas di sekitar $t=0$ dan jelas
+terintegralkan secara Riemann pada setiap interval yang tidak memuat $0$, sehingga
+fungsi ini terintegralkan secara Riemann pada $[-\pi,\pi]$.
+Kita menggunakan identitas trigonometri
 \begin{equation*}
 \sin\bigl( (N+\nicefrac{1}{2})t \bigr)
 =
 \cos(\nicefrac{t}{2}) \sin(Nt) + 
 \sin(\nicefrac{t}{2}) \cos(Nt) ,
 \end{equation*}
-to compute
+untuk memperoleh
 \begin{multline*}
 \frac{1}{2\pi} \int_{-\pi}^\pi \frac{f(x-t) - f(x)}{\sin(\nicefrac{t}{2})} \sin\bigl(
 (N+\nicefrac{1}{2})t \bigr) \, dt 
@@ -5097,16 +5097,16 @@ to compute
 \frac{1}{2\pi} \int_{-\pi}^\pi \bigl( f(x-t) - f(x) \bigr)
 \cos (Nt) \, dt .
 \end{multline*}
-As functions of $t$, 
+Sebagai fungsi terhadap $t$, 
 $\frac{f(x-t) - f(x)}{\sin(\nicefrac{t}{2})} \cos (\nicefrac{t}{2})$
-and
-$\bigl( f(x-t) - f(x) \bigr)$ are bounded Riemann integrable functions
-and so their Fourier coefficients go to zero by \thmref{thm:bessels}.  So the two
-integrals on the right-hand side, which compute the Fourier coefficients
-for the real version of the Fourier series go to 0 as $N$ goes to infinity.
-This is because $\sin(Nt)$ and $\cos(Nt)$ are also orthonormal systems
-with respect to the same inner product.
-Hence $s_N(f;x)-f(x)$ goes to 0, that is, $s_N(f;x)$ goes to $f(x)$.
+dan
+$\bigl( f(x-t) - f(x) \bigr)$ merupakan fungsi-fungsi terbatas yang terintegralkan secara Riemann.
+Setelah sistem sinus dan kosinus dinormalisasi, \thmref{thm:bessels} menunjukkan bahwa koefisien Fourier kedua fungsi tersebut menuju nol. Oleh karena itu, kedua
+integral di ruas kanan, yang merupakan kelipatan konstan dari koefisien Fourier
+untuk bentuk real deret Fourier, menuju 0 ketika $N$ menuju tak hingga.
+Hal ini karena $\sin(Nt)$ dan $\cos(Nt)$ masing-masing membentuk sistem ortogonal
+dengan norma konstan terhadap hasil kali dalam yang sama dan menjadi ortonormal setelah dinormalisasi.
+Dengan demikian, $s_N(f;x)-f(x)$ menuju 0, yaitu $s_N(f;x)$ menuju $f(x)$.
 \end{proof}
 
 The theorem also says that convergence depends only on local behavior.

@@ -62,3 +62,29 @@ release and Zenodo record `22105195` / DOI `10.5281/zenodo.22105195`.
 A bounded follow-up commit will preserve this sanitized receipt and the current
 recovery controls. Its resulting commit pointer will be recorded locally and
 carried with the next substantive checkpoint, avoiding a pointer-only loop.
+
+## Bounded receipt/current-controls overlay
+
+Status: **PASS; public bytes verified**
+
+- Verified source/backend parent:
+  `3e759645f4b24d2e08adf116a859351aebf6db7e`
+- Verified parent tree: `e572647f44f2145bb4ec8f813db7a7d1218ccd62`
+- Controls commit: `c07607310682436fc9c0f01f42e436b2db547b71`
+- Controls tree: `32974f59ebbe54413693ddd4e87c09a6300405a0`
+- Commit message: `Preserve U412 publication receipt and recovery controls`
+- Update: non-forced; authenticated readback proved the source commit was the
+  controls commit's sole parent and that `main` resolved to the controls commit.
+- Exact overlay: six regular non-symlink paths / 447,000 bytes.
+- Canonical explicit-order compact UTF-8 JSON inventory: 826 bytes, SHA-256
+  `db3f01e1b67324c41776ebbee1c239eab4f8e6cd869b00c07dd9f776686d5dd2`.
+- Authenticated immutable-blob readback: PASS, 6/6 files / 447,000 bytes.
+- Anonymous immutable-commit readback: PASS, 6/6 files / 447,000 bytes.
+- The public overlay contains this receipt's 3,082-byte source-publication
+  snapshot, SHA-256
+  `d92dd50ff6aaa830f0cbd6d125359a6eca6e9353891055106b0d847f3948e203`.
+
+No GitHub release, release asset, tag, Zenodo record, DOI, or public-access
+state changed. This finalized local receipt and the post-transaction control
+pointers will travel with the next substantive source/backend checkpoint;
+there is intentionally no pointer-only third commit.
