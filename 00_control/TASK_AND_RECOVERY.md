@@ -2,7 +2,7 @@
 
 Updated: 2026-08-28
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local U417 includes the first Fourier-series exercise after the complete Parseval proof with clean integration build, visual QA, deterministic A/B backend proof, TERM-0796, ADV-0266, and O001 gap 0022; public GitHub main remains verified at U416 source/backend and controls until the bounded U417 publication transaction completes; U397 remains publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local and public GitHub-main U417 includes the first Fourier-series exercise after the complete Parseval proof with clean integration build, visual QA, deterministic A/B backend proof, TERM-0796, ADV-0266, O001 gap 0022, and exact 41-path source/backend readback; the bounded U417 receipt/current-controls overlay is pending; U397 remains publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-28
 
@@ -37,29 +37,22 @@ in this historical log. The machine-readable authorities are
   bindings and 348 direct component checks pass, generic validation passes,
   and all 15 CSV views round-trip losslessly. Canonical inventory SHA-256 is
   `fe0edd56faa1e4183c010002903a0af14f17a5ce3afe56a47b0d561300485424`.
-- GitHub main preserves the complete U416 live source/backend checkpoint at
-  immutable commit `264a8ad907a73ce05c663cb508dac59972b2794b`, tree
-  `21bba7ec7c5f9aa47d33280c3122322346b3308d`. Anonymous immutable-commit
-  readback matched all 41 bounded paths / 19.285.093 bytes. The canonical
-  explicit-order inventory is 6.450 bytes, SHA-256
-  `57fe8a41a44d41ed8c6d49a889b8695a4fc2cd7fcddd33ef399064bb9aacc236`.
-  Receipt: `publication/live-2026.08.28-u416/GITHUB_MAIN_U416_RECEIPT.md`,
-  public snapshot 3.014 bytes, SHA-256
-  `66f67a292c7c26dd9ed93b4a70571c27bdd3700226d93da11c0a107658091e87`.
-  The commit has verified U415 controls commit
-  `deea5e238ffef867b756c51a5bab73ffc377a027` as its sole parent and carried
-  the finalized local U415 receipt. Authenticated blob, branch, parent, and
+- GitHub main preserves the complete U417 live source/backend checkpoint at
+  immutable commit `8a87e4c6dfc9b1576e684bd909ac6570834726af`, tree
+  `96a1dc4c1afaf32863a365722a02c51fbdf9c9ef`. Anonymous immutable-commit
+  readback matched all 41 bounded paths / 19.357.500 bytes. The canonical
+  explicit-order inventory is 6.456 bytes, SHA-256
+  `6d04ccf3fe30eefd1ea1880ba6bfd56b7cc9b0da8562ada233742009e3977d29`.
+  Receipt: `publication/live-2026.08.28-u417/GITHUB_MAIN_U417_RECEIPT.md`,
+  public snapshot 3.117 bytes, SHA-256
+  `c0eb594c8cc52c527c522d542810cbeeed02602b43a2852da7778a887d1be5a7`.
+  The commit has verified U416 controls commit
+  `9296ab4e6b75266881cd5ea857ca83ecfa933118` as its sole parent and carried
+  the finalized local U416 receipt. Authenticated blob, branch, parent, and
   non-truncated recursive-tree checks also passed. No release, tag, or Zenodo
-  object changed. The bounded sanitized-receipt/current-controls overlay is
-  public at commit `9296ab4e6b75266881cd5ea857ca83ecfa933118`, tree
-  `5d0e3516b6a6b299ce75f28014944a93b3916860`, with the source commit as its
-  sole parent. Anonymous and authenticated readback matched all six paths /
-  474.718 bytes; its 826-byte canonical inventory has SHA-256
-  `5f475c6701b6e1b6a8cdcca07be17a7860a5bf4da1833a3d156e9207878f5ece`.
-  The finalized local receipt is 4.145 bytes, SHA-256
-  `a8584d14e1196ad4dde626ab40985f81367b4a20d4115d0da0404d3bb3e1229b`,
-  and its self-pointer update must travel with the next substantive checkpoint
-  rather than create a pointer-only loop.
+  object changed. Preserve the sanitized receipt and current recovery controls
+  in one bounded six-file overlay before continuing translation; record the
+  resulting pointer locally rather than creating a third pointer-only commit.
 - Centered U397 reader PASS: 226 pages / 2.292.242 bytes, SHA-256
   `40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d`.
   The final nine-pass build has zero TeX/reference failures and zero visible
