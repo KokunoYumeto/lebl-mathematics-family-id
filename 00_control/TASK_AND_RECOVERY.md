@@ -2,7 +2,7 @@
 
 Updated: 2026-08-28
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local U418 includes the local Fourier-convergence exercise with clean integration build, visual QA, deterministic A/B backend proof, ADV-0267, and O001 gap 0023; public GitHub-main U417 source/backend and controls remain exactly verified until the bounded U418 transaction; U397 remains publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local and public GitHub-main U418 includes the local Fourier-convergence exercise with clean integration build, visual QA, deterministic A/B backend proof, ADV-0267, O001 gap 0023, and exact 41-path source/backend readback; the bounded U418 receipt/current-controls overlay is pending; U397 remains publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-28
 
@@ -36,28 +36,22 @@ in this historical log. The machine-readable authorities are
   bindings and 350 direct component checks pass, generic validation passes,
   and all 15 CSV views round-trip losslessly. Canonical inventory SHA-256 is
   `f7520356545f2460bf8b76d7455d8d1d3c67ca3e5e5fcb9eb740e2014e90032c`.
-- GitHub main currently preserves the complete U417 source/backend checkpoint at
-  immutable commit `8a87e4c6dfc9b1576e684bd909ac6570834726af`, tree
-  `96a1dc4c1afaf32863a365722a02c51fbdf9c9ef`. Anonymous immutable-commit
-  readback matched all 41 bounded paths / 19.357.500 bytes. The canonical
-  explicit-order inventory is 6.456 bytes, SHA-256
-  `6d04ccf3fe30eefd1ea1880ba6bfd56b7cc9b0da8562ada233742009e3977d29`.
-  Receipt: `publication/live-2026.08.28-u417/GITHUB_MAIN_U417_RECEIPT.md`,
-  public snapshot 3.117 bytes, SHA-256
-  `c0eb594c8cc52c527c522d542810cbeeed02602b43a2852da7778a887d1be5a7`.
-  The commit has verified U416 controls commit
-  `9296ab4e6b75266881cd5ea857ca83ecfa933118` as its sole parent and carried
-  the finalized local U416 receipt. Authenticated blob, branch, parent, and
+- GitHub main preserves the complete U418 live source/backend checkpoint at
+  immutable commit `6795b0deac4929a787b41e62b24d5dc7c0a66540`, tree
+  `38362acfc9482ded7e16e18337a986b97e5d1e4b`. Anonymous immutable-commit
+  readback matched all 41 bounded paths / 19.417.080 bytes. The canonical
+  explicit-order inventory is 6.462 bytes, SHA-256
+  `055f03bb6fa0fcd534bf384676128c00c0cbdc630ede67fef3d0cb6e862f535a`.
+  Receipt: `publication/live-2026.08.28-u418/GITHUB_MAIN_U418_RECEIPT.md`,
+  public snapshot 3.174 bytes, SHA-256
+  `81c5f4bf61669c7c48656d79f97c2edf928b8274507102c097235249feb64350`.
+  The commit has verified U417 controls commit
+  `aa7aabda7c923d54837457a8b40169ac57b4a9eb` as its sole parent and carried
+  the finalized local U417 receipt. Authenticated blob, branch, parent, and
   non-truncated recursive-tree checks also passed. No release, tag, or Zenodo
-  object changed. The bounded overlay advanced `main` non-forcibly to controls
-  commit `aa7aabda7c923d54837457a8b40169ac57b4a9eb`, tree
-  `665ec8e021d04e6c65986bd1c56df140a38f11a6`, and anonymously verified all
-  six paths / 481.443 bytes. Its 826-byte canonical inventory has SHA-256
-  `1490a45cf2cf7eabafc54f61af091a4f674d7ea697f2816e0de37187b8c0ce62`.
-  The finalized local receipt is 4.248 bytes, SHA-256
-  `348113f5be6d3c77c6b3f7e52a6da20e46b489f71611a8811745a72dc0d89cb0`,
-  and will be carried by the next substantive checkpoint rather than a third
-  pointer-only commit.
+  object changed. Preserve the sanitized receipt and current recovery controls
+  in one bounded six-file overlay before continuing translation; record the
+  resulting pointer locally rather than creating a third pointer-only commit.
 - Centered U397 reader PASS: 226 pages / 2.292.242 bytes, SHA-256
   `40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d`.
   The final nine-pass build has zero TeX/reference failures and zero visible
@@ -83,11 +77,10 @@ in this historical log. The machine-readable authorities are
   (tree `4d845894ee625231d4c2357cc3f567ff15a87009`) also passed anonymous
   readback for all seven files / 409.835 bytes. Neither commit changed the U397
   release tag or Zenodo record.
-- Next publish the bounded U418 source/backend checkpoint in the existing
-  GitHub-main lineage, carrying the finalized local U417 receipt. Then resume
-  only R006 with the piecewise-smooth convergence exercise at frozen source
-  raw lines 5324–5329 / live target raw lines 5338–5343. Do not change the U397
-  release.
+- Next preserve the U418 receipt and current recovery controls in one bounded
+  overlay. Then resume only R006 with the piecewise-smooth convergence exercise
+  at frozen source raw lines 5324–5329 / live target raw lines 5338–5343. Do
+  not change the U397 release.
   R007 remains at
   `ch-first-order-ode.tex` raw line 89; R008 remains at `ca.tex` raw line 1648.
   HP-LEBL-R007-001 is owner-accepted only for complete
