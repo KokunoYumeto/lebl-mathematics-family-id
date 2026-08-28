@@ -4993,48 +4993,48 @@ Kita dapat memandang bahwa $D_N(x)$, dalam arti tertentu, konvergen ke $2 \pi\, 
 Namun, kita belum mendefinisikan (dan tidak akan mendefinisikan) apa itu fungsi delta,
 maupun apa artinya ia menjadi limit $D_N$ atau memiliki deret Fourier.
 
-\subsection{Localization}
+\subsection{Lokalisasi}
 
-If $f$ satisfies a Lipschitz condition at a point, then
-the Fourier series converges at that point.
+Jika $f$ memenuhi syarat Lipschitz di suatu titik, maka
+deret Fourier konvergen di titik tersebut.
 
 \begin{thm} \label{thm:fourierlocalization}
-Let $x$ be fixed and let $f$ be a $2\pi$-periodic function
-Riemann integrable on $[-\pi,\pi]$.  Suppose
-there exist $\delta > 0$ and $M$ such that
+Misalkan $x$ tetap dan $f$ merupakan fungsi periodik $2\pi$
+yang terintegralkan secara Riemann pada $[-\pi,\pi]$.  Andaikan
+terdapat $\delta > 0$ dan $M$ sedemikian sehingga
 \begin{equation*}
 \babs{f(x+t)-f(x)} \leq M \sabs{t}
 \end{equation*}
-for all $t \in (-\delta,\delta)$, then
+untuk setiap $t \in (-\delta,\delta)$. Maka
 \begin{equation*}
 \lim_{N \to \infty} s_N(f;x) = f(x) .
 \end{equation*}
 \end{thm}
 
-In particular,
-if $f$ is continuously
-differentiable at $x$,
-then we obtain convergence at $x$ (exercise).
+Secara khusus,
+jika $f$ diferensiabel secara
+kontinu di $x$,
+maka diperoleh konvergensi di $x$ (latihan).
 %We state an often-used version of this corollary.
-A function $f \colon [a,b] \to \C$ is
-\emph{\myindex{continuous piecewise smooth}}\index{piecewise smooth}
-if it is continuous and there exist points
+Suatu fungsi $f \colon [a,b] \to \C$ disebut
+\emph{\myindex{kontinu dan mulus sepotong-sepotong}}\index{mulus sepotong-sepotong}
+jika fungsi tersebut kontinu dan terdapat titik-titik
 $x_0 = a < x_1 < x_2 < \cdots < x_k = b$
-such that for every $j$, $f$ restricted to $[x_j,x_{j+1}]$
-is continuously differentiable (up to the endpoints).
+sedemikian sehingga untuk setiap $j=0,1,\ldots,k-1$, pembatasan $f$ pada $[x_j,x_{j+1}]$
+diferensiabel secara kontinu (hingga titik-titik ujungnya).
 
 \begin{cor} \label{cor:fourierpiecewisesmooth}
-Let $f$ be a $2\pi$-periodic function
-Riemann integrable on $[-\pi,\pi]$.  Suppose
-there exist $x\in \R$ and $\delta > 0$ such that $f$ is continuous piecewise
-smooth on $[x-\delta,x+\delta]$, then
+Misalkan $f$ merupakan fungsi periodik $2\pi$
+yang terintegralkan secara Riemann pada $[-\pi,\pi]$.  Andaikan
+terdapat $x\in \R$ dan $\delta > 0$ sedemikian sehingga $f$ kontinu dan mulus
+sepotong-sepotong pada $[x-\delta,x+\delta]$. Maka
 \begin{equation*}
 \lim_{N \to \infty} s_N(f;x) = f(x) .
 \end{equation*}
 \end{cor}
 
-The proof of the corollary is left as an exercise.  Let us prove the
-theorem.
+Bukti akibat ini diserahkan sebagai latihan.  Mari kita buktikan
+teoremanya.
 
 \begin{proof}[Proof of \thmref{thm:fourierlocalization}]
 For all $N$,

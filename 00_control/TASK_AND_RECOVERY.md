@@ -2,7 +2,7 @@
 
 Updated: 2026-08-28
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U409 completes the Dirichlet-kernel and approximate-delta-functions subsection and its 41-path source/backend checkpoint is publicly preserved and anonymously verified on GitHub main; the sanitized receipt/current-controls overlay is pending; U397 remains publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local U412 completes the Localization opening, pointwise Lipschitz theorem, and continuous piecewise-smooth corollary with deterministic A/B backend proof; GitHub main independently verifies U409 while the bounded U412 transaction is prepared; U397 remains publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-28
 
@@ -19,21 +19,21 @@ in this historical log. The machine-readable authorities are
   the source's undefined zero-frequency antiderivative quotient. The public
   U397 target is 194.506 bytes, SHA-256
   `3de28aaac5ce08b69e97060ea01fe7f1d0e7b9d1c024e2fad49e9ece3893b839`.
-- Live boundary: U409, manifest 409 (R006 324, R007 35, R008 50), 631.004
+- Live boundary: U412, manifest 412 (R006 327, R007 35, R008 50), 636.585
   bytes, SHA-256
-  `ac416d4f845ce410aec13a9da3293eed1e4465129fe99cd56643284351d90fc6`.
-  U321–U324 complete the Dirichlet-kernel opening, closed form, convolution
-  identity, and approximate-delta-functions discussion. TERM-0786–TERM-0788
-  bind `kernel Dirichlet`, `fungsi delta`, and `deret Fourier trigonometri`;
-  ADV-0260 and ADV-0261 record the declared source-witness corrections. The
-  full live target is 196.651 bytes, SHA-256
-  `5cfac7475255872ad5b08b9fedbe8d8387289d60f1777d5b2f4c8ed2e65d4807`.
-- Backend U409 A/B is byte-identical: 27 files / 17.313.331 bytes, 3.915
-  records, 818 embedded expressions, 788 current logical terms, 261
-  corrections, 33 assets, 646 relations, and 21 O001 gaps. All 409 live unit bindings are exact,
+  `4b178cac4de347fc90b387c0429fc474dd7e68a2227269191396c07798d75e73`.
+  U410–U412 complete the Localization opening, pointwise Lipschitz theorem,
+  and continuous piecewise-smooth definition/corollary. TERM-0789–TERM-0791
+  bind `lokalisasi`, `syarat Lipschitz`, and `kontinu dan mulus
+  sepotong-sepotong`; ADV-0262 records the source's omitted finite-partition
+  index range. The full live target is 196.788 bytes, SHA-256
+  `ea1aaae66fc5d19826392aebfea0bac8cb0ca29e94a7c384d21d605fd82106b4`.
+- Backend U412 A/B is byte-identical: 27 files / 17.413.205 bytes, 3.931
+  records, 824 embedded expressions, 791 current logical terms, 262
+  corrections, 33 assets, 646 relations, and 21 O001 gaps. All 412 live unit bindings are exact,
   generic validation passes, and all 15 CSV views round-trip losslessly.
   Canonical inventory SHA-256 is
-  `fa4ed8cc0579c2eec3a8dc34cde7afdc7ae7c16629a9a4d0ab6d06026c7d27bc`.
+  `92a73394f6ad19b80c64f777f60abb500cf1976fa1eee01aac057298cd490b01`.
 - GitHub main preserves the complete U409 live source/backend checkpoint at
   immutable commit `d3421380ca7161c2bbc9de51cc20a1384f14cbc0`, tree
   `2ba52e5aec58a29931778722000f641e2a6bdf31`. Anonymous readback matched all
@@ -47,9 +47,18 @@ in this historical log. The machine-readable authorities are
   `87b172deca6284600d28f82c5937458c61519cc0` as its sole parent. The U409
   transaction carried the finalized 3.399-byte U405 receipt, SHA-256
   `56408210a03dc3938183c0ca99ce302126e6576838a1d4aaa1afe684e3fcf540`.
-  No release, tag, or Zenodo object changed. Preserve the U409 receipt plus five
-  current controls in one bounded overlay, then carry that overlay pointer with
-  the next substantive checkpoint rather than create a pointer-only loop.
+  No release, tag, or Zenodo object changed. The bounded overlay is public at
+  commit `46dff7ff4a18ea8d0e4b6c43e0e38328af4880c7`, tree
+  `68514b675135b680e1741c8d6f0917f08db76edd`, with the source commit as its
+  sole parent. Anonymous readback matched all six paths / 439.951 bytes; its
+  826-byte canonical inventory has SHA-256
+  `d1faf751abe621443fc3059c0b194485890e44d2270368ed049f6afa85ef00aa`.
+  The public receipt snapshot is 2.773 bytes, SHA-256
+  `9a6b0212eb59e481c25958e6fbea89247bc880ac3bddfcfeb7d17acc9904c45e`;
+  the finalized local receipt is 3.945 bytes, SHA-256
+  `6ee9d76e75da3b9c83ce3c58c630b089db28dae3bba56eec79f230b7be52e251`,
+  and must travel with the next substantive checkpoint rather than create a
+  pointer-only loop.
 - Centered U397 reader PASS: 226 pages / 2.292.242 bytes, SHA-256
   `40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d`.
   The final nine-pass build has zero TeX/reference failures and zero visible
@@ -75,9 +84,10 @@ in this historical log. The machine-readable authorities are
   (tree `4d845894ee625231d4c2357cc3f567ff15a87009`) also passed anonymous
   readback for all seven files / 409.835 bytes. Neither commit changed the U397
   release tag or Zenodo record.
-- Next resume only R006 at frozen source raw line 4982 / live target raw line
-  4996, the Localization subsection. First complete the bounded U409
-  source/backend publication to GitHub main; do not change the U397 release.
+- Next resume only R006 at frozen source raw line 5025 / live target raw line
+  5039, the proof of the Lipschitz localization theorem. First publish and
+  anonymously read back the bounded U412 source/backend checkpoint on GitHub
+  main. Do not change the U397 release.
   R007 remains at
   `ch-first-order-ode.tex` raw line 89; R008 remains at `ca.tex` raw line 1648.
   HP-LEBL-R007-001 is owner-accepted only for complete
@@ -130,10 +140,11 @@ identify the runtime generically as acting on the user's instruction; it must
 not publish the user's personal first name. Historical immutable releases are
 evidence, not inputs to a new payload.
 
-The public repository `main` at the U397 release checkpoint and the U397 release
-bind the same 397-row manifest: R006 U001–U312, R007 U001–U035, and R008
-U001–U050. The release contains nine anonymously verified assets totaling
-12.439.062 bytes. The primary current reader is the centered 226-page Volume II
+The public repository `main` binds the U409 source/backend manifest: R006
+U001–U324, R007 U001–U035, and R008 U001–U050. The separate U397 reader release
+binds its 397-row manifest: R006 U001–U312, R007 U001–U035, and R008 U001–U050,
+and contains nine anonymously verified assets totaling 12.439.062 bytes. The
+primary current reader is the centered 226-page Volume II
 PDF through complete Subsection 11.8.1, `Polinom trigonometri`. GitHub and
 Zenodo receipts are under `publication/wip-2026.08.26-u397/`; the last bounded
 Figshare-attempt receipt remains historical evidence under

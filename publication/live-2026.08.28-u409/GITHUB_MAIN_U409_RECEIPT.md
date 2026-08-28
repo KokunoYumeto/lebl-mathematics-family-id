@@ -60,3 +60,25 @@ subsection boundary. The public reader remains the verified U397 GitHub
 release and Zenodo record 22105195 / DOI `10.5281/zenodo.22105195`. A bounded
 follow-up commit preserves this sanitized receipt and current controls; it does
 not change release or Zenodo bytes.
+
+## Receipt/control preservation
+
+The bounded follow-up completed at commit
+`46dff7ff4a18ea8d0e4b6c43e0e38328af4880c7`, tree
+`68514b675135b680e1741c8d6f0917f08db76edd`, with source commit
+`d3421380ca7161c2bbc9de51cc20a1384f14cbc0` as its sole parent. It changed
+exactly this receipt and five current controls: six files / 439,951 bytes.
+Anonymous immutable-commit readback matched all six paths, byte counts, and
+SHA-256 values. Their canonical explicit-order inventory is 826 bytes,
+SHA-256
+`d1faf751abe621443fc3059c0b194485890e44d2270368ed049f6afa85ef00aa`.
+The public receipt snapshot in that commit is 2,773 bytes, SHA-256
+`9a6b0212eb59e481c25958e6fbea89247bc880ac3bddfcfeb7d17acc9904c45e`.
+
+An authenticated post-transaction read resolved `main` to the controls commit,
+and the direct U397 release remained public with nine assets, `draft=false`,
+and `prerelease=false`. This local post-transaction section records the commit
+that contains its prior snapshot. It is intentionally carried with the next
+substantive checkpoint rather than creating an infinite chain of
+self-referential pointer-only commits. The GitHub release, tag, and Zenodo
+record remain unchanged.

@@ -1,28 +1,28 @@
 # Production backend checkpoints
 
-## Current local checkpoint U409
+## Current production checkpoint U412
 
-`v0.4-live-2026.08.28-u409-a/` is the authoritative local checkpoint. It binds
-the 409-row translation manifest, 788-row live terminology ledger, 261-event
-adverse ledger, and 21-entry O001 solution-gap ledger.
+`v0.4-live-2026.08.28-u412-a/` is the authoritative production checkpoint. It
+binds the 412-row translation manifest, 791-row live terminology ledger,
+262-event adverse ledger, and 21-entry O001 solution-gap ledger.
 
-- 3,915 canonical records, 409 manifest segments, 440 units, 776 concepts,
-  818 embedded expressions, and exactly 788 current logical terms;
+- 3,931 canonical records, 412 manifest segments, 443 units, 779 concepts,
+  824 embedded expressions, and exactly 791 current logical terms;
 - 21 O001 exercise gaps, ten source hints, eleven no-hint states, and no
   invented answers or solutions;
 - 15 deterministic CSV projections;
-- 27 files / 17,313,331 bytes;
+- 27 files / 17,413,205 bytes;
 - `records.jsonl` SHA-256
-  `18a8f43c5f92c5622ca127ce94e8ea80ce0e442ed209398c14c01a15ca355c2d`;
+  `dac68ce0104e49e67dba320ab06981a096e164504bcf615a9ea216b23521b194`;
 - canonical inventory SHA-256
-  `fa4ed8cc0579c2eec3a8dc34cde7afdc7ae7c16629a9a4d0ab6d06026c7d27bc`.
+  `92a73394f6ad19b80c64f777f60abb500cf1976fa1eee01aac057298cd490b01`.
 
-All schemas, referential checks, all 409 live manifest bindings, 15 CSV views,
-and lossless round trips pass. Independent replay `-u409-b` produced the
-identical path/byte/hash inventory. U409 adds the Dirichlet-kernel opening,
-closed form, convolution identity, and approximate-delta-functions discussion
-over the public GitHub-main U405 source checkpoint. It has not replaced the
-U397 reader release.
+All schemas, referential checks, all 412 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u412-b` produced the
+identical path/byte/hash inventory. Relative to U409, U412 adds the Localization
+opening, pointwise Lipschitz theorem, and continuous piecewise-smooth
+corollary, plus the declared finite-partition index repair ADV-0262. It has not
+replaced the U397 reader release.
 
 ## Current public checkpoint U397
 
