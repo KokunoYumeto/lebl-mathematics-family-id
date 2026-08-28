@@ -2,7 +2,7 @@
 
 Updated: 2026-08-28
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local U412 completes the Localization opening, pointwise Lipschitz theorem, and continuous piecewise-smooth corollary with deterministic A/B backend proof; GitHub main independently verifies U409 while the bounded U412 transaction is prepared; U397 remains publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local and public GitHub-main U412 completes the Localization opening, pointwise Lipschitz theorem, and continuous piecewise-smooth corollary with deterministic A/B backend proof and exact anonymous source-byte readback; the bounded U412 receipt/current-controls overlay remains pending; U397 remains publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-28
 
@@ -34,31 +34,23 @@ in this historical log. The machine-readable authorities are
   generic validation passes, and all 15 CSV views round-trip losslessly.
   Canonical inventory SHA-256 is
   `92a73394f6ad19b80c64f777f60abb500cf1976fa1eee01aac057298cd490b01`.
-- GitHub main preserves the complete U409 live source/backend checkpoint at
-  immutable commit `d3421380ca7161c2bbc9de51cc20a1384f14cbc0`, tree
-  `2ba52e5aec58a29931778722000f641e2a6bdf31`. Anonymous readback matched all
-  41 bounded paths / 18.966.796 bytes. The canonical explicit-order inventory
-  is 6.447 bytes, SHA-256
-  `dfc8c19ffc1d79836f749f3a71824daa5ef1052f8e217cd6d686b741d70279b3`.
-  Receipt: `publication/live-2026.08.28-u409/GITHUB_MAIN_U409_RECEIPT.md`,
-  initial snapshot 2.773 bytes, SHA-256
-  `9a6b0212eb59e481c25958e6fbea89247bc880ac3bddfcfeb7d17acc9904c45e`.
-  The commit has verified U405 controls commit
-  `87b172deca6284600d28f82c5937458c61519cc0` as its sole parent. The U409
-  transaction carried the finalized 3.399-byte U405 receipt, SHA-256
-  `56408210a03dc3938183c0ca99ce302126e6576838a1d4aaa1afe684e3fcf540`.
-  No release, tag, or Zenodo object changed. The bounded overlay is public at
-  commit `46dff7ff4a18ea8d0e4b6c43e0e38328af4880c7`, tree
-  `68514b675135b680e1741c8d6f0917f08db76edd`, with the source commit as its
-  sole parent. Anonymous readback matched all six paths / 439.951 bytes; its
-  826-byte canonical inventory has SHA-256
-  `d1faf751abe621443fc3059c0b194485890e44d2270368ed049f6afa85ef00aa`.
-  The public receipt snapshot is 2.773 bytes, SHA-256
-  `9a6b0212eb59e481c25958e6fbea89247bc880ac3bddfcfeb7d17acc9904c45e`;
-  the finalized local receipt is 3.945 bytes, SHA-256
-  `6ee9d76e75da3b9c83ce3c58c630b089db28dae3bba56eec79f230b7be52e251`,
-  and must travel with the next substantive checkpoint rather than create a
-  pointer-only loop.
+- GitHub main preserves the complete U412 live source/backend checkpoint at
+  immutable commit `3e759645f4b24d2e08adf116a859351aebf6db7e`, tree
+  `e572647f44f2145bb4ec8f813db7a7d1218ccd62`. Anonymous immutable-commit
+  readback matched all 41 bounded paths / 19.083.153 bytes. The canonical
+  explicit-order inventory is 6.451 bytes, SHA-256
+  `1e3cdd934032469bde2db682a7811ba485112f70ec0213f747e988191c6d5e05`.
+  Receipt: `publication/live-2026.08.28-u412/GITHUB_MAIN_U412_RECEIPT.md`,
+  public snapshot 3.082 bytes, SHA-256
+  `d92dd50ff6aaa830f0cbd6d125359a6eca6e9353891055106b0d847f3948e203`.
+  The commit has verified U409 controls commit
+  `46dff7ff4a18ea8d0e4b6c43e0e38328af4880c7` as its sole parent and carried
+  the finalized local U409 receipt. Authenticated blob, branch, parent, and
+  non-truncated recursive-tree checks also passed. No release, tag, or Zenodo
+  object changed. The bounded sanitized-receipt/current-controls overlay is
+  the only pending U412 publication step; after it is public, its self-pointer
+  update must travel with the next substantive checkpoint rather than create
+  a pointer-only loop.
 - Centered U397 reader PASS: 226 pages / 2.292.242 bytes, SHA-256
   `40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d`.
   The final nine-pass build has zero TeX/reference failures and zero visible
@@ -84,10 +76,11 @@ in this historical log. The machine-readable authorities are
   (tree `4d845894ee625231d4c2357cc3f567ff15a87009`) also passed anonymous
   readback for all seven files / 409.835 bytes. Neither commit changed the U397
   release tag or Zenodo record.
-- Next resume only R006 at frozen source raw line 5025 / live target raw line
-  5039, the proof of the Lipschitz localization theorem. First publish and
-  anonymously read back the bounded U412 source/backend checkpoint on GitHub
-  main. Do not change the U397 release.
+- Next publish and anonymously read back only the bounded U412 sanitized
+  receipt/current-controls overlay from source commit
+  `3e759645f4b24d2e08adf116a859351aebf6db7e`, then resume only R006 at frozen
+  source raw line 5025 / live target raw line 5039, the proof of the Lipschitz
+  localization theorem. Do not change the U397 release.
   R007 remains at
   `ch-first-order-ode.tex` raw line 89; R008 remains at `ca.tex` raw line 1648.
   HP-LEBL-R007-001 is owner-accepted only for complete
@@ -140,8 +133,9 @@ identify the runtime generically as acting on the user's instruction; it must
 not publish the user's personal first name. Historical immutable releases are
 evidence, not inputs to a new payload.
 
-The public repository `main` binds the U409 source/backend manifest: R006
-U001–U324, R007 U001–U035, and R008 U001–U050. The separate U397 reader release
+The public repository `main` binds the U412 source/backend manifest: R006
+U001–U327, R007 U001–U035, and R008 U001–U050. Its bounded receipt/current-
+controls overlay remains pending. The separate U397 reader release
 binds its 397-row manifest: R006 U001–U312, R007 U001–U035, and R008 U001–U050,
 and contains nine anonymously verified assets totaling 12.439.062 bytes. The
 primary current reader is the centered 226-page Volume II
