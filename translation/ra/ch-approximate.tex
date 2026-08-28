@@ -4863,43 +4863,43 @@ konvergen, sehingga
 \lim_{k \to \infty} c_k = 0 .
 \end{equation*}
 
-\subsection{The Dirichlet kernel and approximate delta functions}
+\subsection{Kernel Dirichlet dan fungsi-fungsi delta hampiran}
 
-We return to the trigonometric Fourier series.
-The system $\{ e^{inx} \}_{n=1}^\infty$ is orthogonal, but not orthonormal if we simply
-integrate over $[-\pi,\pi]$.  We can rescale the integral
-and hence the inner product to make 
-$\{ e^{inx} \}_{n=1}^\infty$ orthonormal.  That is, if we replace
+Kita kembali ke deret Fourier trigonometri.
+Sistem $\{ e^{inx} \}_{n \in \Z}$ bersifat ortogonal, tetapi tidak ortonormal jika kita sekadar
+mengintegralkan pada $[-\pi,\pi]$. Kita dapat mengubah skala integral
+dan dengan demikian juga hasil kali dalamnya agar
+$\{ e^{inx} \}_{n \in \Z}$ menjadi ortonormal. Artinya, jika kita mengganti
 \begin{equation*}
-\int_a^b \qquad \text{with} \qquad
+\int_a^b \qquad \text{dengan} \qquad
 \frac{1}{2\pi} \int_{-\pi}^\pi,
 \end{equation*}
-(we are just rescaling the $dx$ really)\footnote{%
-Mathematicians in this field sometimes simplify matters with
-a tongue-in-cheek definition that $1=2\pi$.},
-then everything works and we obtain that the system
-$\{ e^{inx} \}_{n=1}^\infty$
-is orthonormal with respect to the inner product
+(sebenarnya kita hanya mengubah skala $dx$)\footnote{%
+Para matematikawan di bidang ini terkadang menyederhanakan persoalan dengan
+definisi berseloroh bahwa $1=2\pi$.},
+maka semuanya berjalan sebagaimana mestinya dan kita memperoleh bahwa sistem
+$\{ e^{inx} \}_{n \in \Z}$
+bersifat ortonormal terhadap hasil kali dalam
 \begin{equation*}
 \langle f , g \rangle =
 \frac{1}{2\pi} \int_{-\pi}^\pi f(x) \, \overline{g(x)} \, dx .
 \end{equation*}
 
-Suppose $f \colon \R \to \C$ is $2\pi$-periodic and integrable
-on $[-\pi,\pi]$.
-Write
+Misalkan $f \colon \R \to \C$ bersifat $2\pi$-periodik dan terintegralkan
+pada $[-\pi,\pi]$.
+Tuliskan
 \begin{equation*}
 f(x) \sim
 \sum_{n=-\infty}^\infty c_n \,e^{inx} ,
-\qquad \text{where} \quad
+\qquad \text{dengan} \quad
 c_n \coloneqq 
 \frac{1}{2\pi} \int_{-\pi}^\pi
 f(x) e^{-inx} \, dx .
 \end{equation*}
-Recall the notation for the symmetric partial sums,
+Ingat notasi untuk jumlah parsial simetris,
 $s_N(f;x) \coloneqq 
 \sum_{n=-N}^N c_n \,e^{inx}$.
-The inequality leading up to Bessel now reads:
+Ketaksamaan yang mengantar ke ketaksamaan Bessel kini berbentuk:
 \begin{equation*}
 \frac{1}{2\pi} \int_{-\pi}^\pi
 \babs{s_N(f;x)}^2 \, dx =
@@ -4910,34 +4910,34 @@ The inequality leading up to Bessel now reads:
 \, dx .
 \end{equation*}
 
-Let the \emph{\myindex{Dirichlet kernel}} be
+Definisikan \emph{\myindex{kernel Dirichlet}} sebagai
 \begin{equation*}
 D_N(x) \coloneqq \sum_{n=-N}^N e^{inx} .
 \end{equation*}
-We claim that
+Kita mengklaim bahwa
 \begin{equation*}
 D_N(x) =
 %\sum_{n=-N}^N e^{inx}
 %=
 \frac{\sin\bigl( (N+\nicefrac{1}{2})x \bigr)}{\sin(\nicefrac{x}{2})} ,
 \end{equation*}
-for $x$ such that $\sin(\nicefrac{x}{2}) \neq 0$.  The left-hand
-side is continuous on $\R$, and hence the right-hand side extends continuously to
-all of $\R$.
-To show the claim,
-we use a familiar trick:
+untuk $x$ sedemikian sehingga $\sin(\nicefrac{x}{2}) \neq 0$. Ruas kiri
+kontinu pada $\R$, sehingga ruas kanan dapat diperluas secara kontinu ke
+seluruh $\R$.
+Untuk membuktikan klaim tersebut,
+kita menggunakan trik yang sudah dikenal:
 \begin{equation*}
 (e^{ix}-1) D_N(x) = e^{i(N+1)x} - e^{-iNx} .
 \end{equation*}
-Multiply by $e^{-ix/2}$
+Kalikan dengan $e^{-ix/2}$
 \begin{equation*}
 (e^{ix/2}-e^{-ix/2}) D_N(x) = e^{i(N+\nicefrac{1}{2})x} -
 e^{-i(N+\nicefrac{1}{2})x} .
 \avoidbreak
 \end{equation*}
-The claim follows.
+Klaim tersebut pun terbukti.
 
-Expand the definition of $s_N$
+Jabarkan definisi $s_N$
 \begin{multline*}
 s_N(f;x) = 
 \sum_{n=-N}^N \frac{1}{2\pi} \int_{-\pi}^\pi f(t) e^{-int}  \,  dt ~ e^{inx}
@@ -4947,51 +4947,51 @@ s_N(f;x) =
 =
 \frac{1}{2\pi} \int_{-\pi}^\pi f(t) D_N(x-t) \, dt .
 \end{multline*}
-Convolution strikes again!
-As $D_N$ and $f$ are $2\pi$-periodic, we may also change variables and write 
+Konvolusi muncul lagi!
+Karena $D_N$ dan $f$ bersifat $2\pi$-periodik, kita juga dapat melakukan perubahan variabel dan menuliskan
 \begin{equation*}
 s_N(f;x) = 
 \frac{1}{2\pi} \int_{x-\pi}^{x+\pi} f(x-t) D_N(t) \, dt
 =
 \frac{1}{2\pi} \int_{-\pi}^\pi f(x-t) D_N(t) \, dt .
 \end{equation*}
-See \figureref{fig:approxdeltas} for a plot of $D_N$ for $N=5$ and $N=20$.
+Lihat \figureref{fig:approxdeltas} untuk grafik $D_N$ ketika $N=5$ dan $N=20$.
 
 \begin{myfigureht}
 \myincludegraphics{approxdeltas}{%
-A plot of two functions for x within mius pi to pi.
-In gray there is a function that starts with small-amplitude slow oscillation
-on the left, becomes a sizable bump in the middle and then becomes
-a small-amplitude slow oscillation on the right.
-In black, it is a function with similar pattern
-except the frequency is much higher and instead of a bump in the middle it
-becomes a tall peak.  The oscillations go both above and below the
-x-axis.}
-\caption{Plot of $D_N(x)$ for $N=5$ (gray) and $N=20$
-(black).\label{fig:approxdeltas}}
+Grafik dua fungsi untuk x dari minus pi hingga pi.
+Dalam warna abu-abu terdapat fungsi yang diawali oleh osilasi lambat beramplitudo kecil
+di sebelah kiri, membentuk tonjolan cukup besar di tengah, lalu kembali menjadi
+osilasi lambat beramplitudo kecil di sebelah kanan.
+Dalam warna hitam terdapat fungsi dengan pola serupa,
+tetapi frekuensinya jauh lebih tinggi dan tonjolan di tengahnya
+menjadi puncak yang tinggi. Osilasinya berlangsung di atas maupun di bawah
+sumbu x.}
+\caption{Grafik $D_N(x)$ untuk $N=5$ (abu-abu) dan $N=20$
+(hitam).\label{fig:approxdeltas}}
 \end{myfigureht}
 
-The central peak gets taller and taller as $N$ gets larger,
-and the side peaks stay small.
-We are convolving (again) with
-\emph{approximate delta functions}\index{approximate delta function},
-although these functions have
-all these oscillations away from zero.  The oscillations on the side do not go away
-but they are eventually so fast that we expect the integral to just sort of
-cancel itself out there.
-Overall, we expect that
-$s_N(f)$ goes to $f$.  Things are not always simple,
-but under some conditions on $f$, such a conclusion holds.  For this reason
-people write
+Puncak tengah semakin tinggi seiring $N$ membesar,
+sedangkan puncak-puncak samping tetap rendah.
+Kita (lagi-lagi) melakukan konvolusi dengan
+\emph{fungsi-fungsi delta hampiran}\index{fungsi delta hampiran},
+walaupun fungsi-fungsi ini memiliki
+semua osilasi tersebut jauh dari nol. Osilasi di samping tidak menghilang,
+tetapi akhirnya menjadi begitu cepat sehingga kita memperkirakan
+osilasi-osilasi itu kurang-lebih saling meniadakan dalam integral di sana.
+Secara keseluruhan, kita mengharapkan bahwa
+$s_N(f)$ menuju $f$. Keadaannya tidak selalu sederhana,
+tetapi dengan syarat-syarat tertentu pada $f$, kesimpulan seperti ini berlaku. Karena alasan ini,
+orang menuliskan
 \begin{equation*}
 2\pi \, \delta(x) \sim \sum_{n=-\infty}^\infty e^{inx} ,
 \end{equation*}
-where $\delta$ is the \myquote{delta function} (not really a function),
-which is an object that will give something like
+di mana $\delta$ adalah \myquote{fungsi delta} (sebenarnya bukan fungsi),
+yakni suatu objek yang menghasilkan sesuatu seperti
 \myquote{$\int_{-\pi}^{\pi} f(x-t) \delta(t) \, dt = f(x)$.}
-We can think of $D_N(x)$ converging in some sense to $2 \pi\, \delta(x)$.
-However, we have not defined (and will not define) what the delta function
-is, nor what it means for it to be a limit of $D_N$ or have a Fourier series.
+Kita dapat memandang bahwa $D_N(x)$, dalam arti tertentu, konvergen ke $2 \pi\, \delta(x)$.
+Namun, kita belum mendefinisikan (dan tidak akan mendefinisikan) apa itu fungsi delta,
+maupun apa artinya ia menjadi limit $D_N$ atau memiliki deret Fourier.
 
 \subsection{Localization}
 

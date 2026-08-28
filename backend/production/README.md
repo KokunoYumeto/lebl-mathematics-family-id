@@ -1,27 +1,28 @@
 # Production backend checkpoints
 
-## Current local checkpoint U405
+## Current local checkpoint U409
 
-`v0.4-live-2026.08.27-u405-a/` is the authoritative local checkpoint. It binds
-the 405-row translation manifest, 785-row live terminology ledger, 259-event
+`v0.4-live-2026.08.28-u409-a/` is the authoritative local checkpoint. It binds
+the 409-row translation manifest, 788-row live terminology ledger, 261-event
 adverse ledger, and 21-entry O001 solution-gap ledger.
 
-- 3,895 canonical records, 405 manifest segments, 436 units, 773 concepts,
-  810 expressions, and exactly 785 current logical terms;
+- 3,915 canonical records, 409 manifest segments, 440 units, 776 concepts,
+  818 embedded expressions, and exactly 788 current logical terms;
 - 21 O001 exercise gaps, ten source hints, eleven no-hint states, and no
   invented answers or solutions;
 - 15 deterministic CSV projections;
-- 27 files / 17,171,651 bytes;
+- 27 files / 17,313,331 bytes;
 - `records.jsonl` SHA-256
-  `8abde22c1473cb8901121aba609dad7c91390c66f63b409438d0192e884a4bed`;
+  `18a8f43c5f92c5622ca127ce94e8ea80ce0e442ed209398c14c01a15ca355c2d`;
 - canonical inventory SHA-256
-  `e37315ce3653a371f0292b3fa0aaf60717357c8b814d637f6220c71587fbb6c1`.
+  `fa4ed8cc0579c2eec3a8dc34cde7afdc7ae7c16629a9a4d0ab6d06026c7d27bc`.
 
-All schemas, referential checks, all 405 live manifest bindings, 15 CSV views,
-and lossless round trips pass. Independent replay `-u405-b` produced the
-identical path/byte/hash inventory. U405 adds the Bessel-inequality derivation,
-theorem, and coefficient-limit consequence over the public GitHub-main U404
-source checkpoint. It has not replaced the U397 reader release.
+All schemas, referential checks, all 409 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u409-b` produced the
+identical path/byte/hash inventory. U409 adds the Dirichlet-kernel opening,
+closed form, convolution identity, and approximate-delta-functions discussion
+over the public GitHub-main U405 source checkpoint. It has not replaced the
+U397 reader release.
 
 ## Current public checkpoint U397
 

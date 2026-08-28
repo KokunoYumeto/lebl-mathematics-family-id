@@ -1,10 +1,10 @@
 # Durable Task and Recovery Handoff — Lebl Family id-ID
 
-Updated: 2026-08-27
+Updated: 2026-08-28
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U397 is publicly preserved and anonymously verified on GitHub and Zenodo; GitHub main preserves and anonymously verifies U405 source/backend through Bessel's inequality; the bounded U405 controls overlay is pending; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local U409 completes the Dirichlet-kernel and approximate-delta-functions subsection; U397 is publicly preserved and anonymously verified on GitHub and Zenodo; GitHub main currently preserves and anonymously verifies U405 source/backend and its controls pending the bounded U409 source/backend publication; HP-LEBL-R007-001 remains owner-accepted
 
-## Current authoritative recovery snapshot — 2026-08-27
+## Current authoritative recovery snapshot — 2026-08-28
 
 This block supersedes every older progress count or publication pointer later
 in this historical log. The machine-readable authorities are
@@ -19,20 +19,21 @@ in this historical log. The machine-readable authorities are
   the source's undefined zero-frequency antiderivative quotient. The public
   U397 target is 194.506 bytes, SHA-256
   `3de28aaac5ce08b69e97060ea01fe7f1d0e7b9d1c024e2fad49e9ece3893b839`.
-- Live boundary: U405, manifest 405 (R006 320, R007 35, R008 50), 622.540
+- Live boundary: U409, manifest 409 (R006 324, R007 35, R008 50), 631.004
   bytes, SHA-256
-  `bc8fbaea7e0abd3792f24217e3e9680976efc6fd969dfeada94e84e608b5c979`.
-  U320 closes the orthonormal-systems subsection with the finite-sum estimate,
-  Bessel's inequality, and the coefficient-limit consequence. TERM-0785 binds
-  the named inequality to `ketaksamaan Bessel`; ADV-0259 remains in force. The
-  full live target is 196.311 bytes, SHA-256
-  `f878c2862a574a3544ed740cafbdbd30faa1cd76cdd459b4984f4ba387a5bd67`.
-- Backend U405 A/B is byte-identical: 27 files / 17.171.651 bytes, 3.895
-  records, 810 expressions, 785 current logical terms, 259 corrections, 33
-  assets, 646 relations, and 21 O001 gaps. All 405 live unit bindings are exact,
+  `ac416d4f845ce410aec13a9da3293eed1e4465129fe99cd56643284351d90fc6`.
+  U321–U324 complete the Dirichlet-kernel opening, closed form, convolution
+  identity, and approximate-delta-functions discussion. TERM-0786–TERM-0788
+  bind `kernel Dirichlet`, `fungsi delta`, and `deret Fourier trigonometri`;
+  ADV-0260 and ADV-0261 record the declared source-witness corrections. The
+  full live target is 196.651 bytes, SHA-256
+  `5cfac7475255872ad5b08b9fedbe8d8387289d60f1777d5b2f4c8ed2e65d4807`.
+- Backend U409 A/B is byte-identical: 27 files / 17.313.331 bytes, 3.915
+  records, 818 embedded expressions, 788 current logical terms, 261
+  corrections, 33 assets, 646 relations, and 21 O001 gaps. All 409 live unit bindings are exact,
   generic validation passes, and all 15 CSV views round-trip losslessly.
   Canonical inventory SHA-256 is
-  `e37315ce3653a371f0292b3fa0aaf60717357c8b814d637f6220c71587fbb6c1`.
+  `fa4ed8cc0579c2eec3a8dc34cde7afdc7ae7c16629a9a4d0ab6d06026c7d27bc`.
 - GitHub main preserves the complete U405 live source/backend checkpoint at
   immutable commit `49f35c4d2a9d3ebe5269eb37a456b2424d2a74fb`, tree
   `e265383cb3ecb4cecc8d5629f01ca78804bdb163`. Anonymous readback matched all
@@ -40,9 +41,18 @@ in this historical log. The machine-readable authorities are
   is 6.309 bytes, SHA-256
   `2d1008ce5ccb6a08cea371440cf12c5f34e7113f719f906b406cecc666412596`.
   Receipt: `publication/live-2026.08.27-u405/GITHUB_MAIN_U405_RECEIPT.md`.
+  Its published source-commit snapshot is 2.538 bytes, SHA-256
+  `1f1d60c254a6118249a3807fdb63c8c7b2b2ac3b7d9fa51a39f663803420e79c`;
+  the finalized local receipt carrying the controls-overlay result is 3.399
+  bytes, SHA-256
+  `56408210a03dc3938183c0ca99ce302126e6576838a1d4aaa1afe684e3fcf540`,
+  and must travel with the substantive U409 checkpoint rather than cause a
+  pointer-only publication loop.
   This checkpoint did not create or alter a GitHub release and did not mutate
-  the U397 Zenodo record. A bounded six-file controls overlay remains the next
-  publication action. The preceding U404 audit-correction commit
+  the U397 Zenodo record. Its bounded six-file controls overlay is public at
+  commit `87b172deca6284600d28f82c5937458c61519cc0`, tree
+  `77edf16cef6ddb9165dd7f4ed3f46996a8e8a11e`; anonymous readback matched all
+  six paths / 431.921 bytes. The preceding U404 audit-correction commit
   `ce796a7e3efe43f42f4011a6cc4b59bb50d8a932`, tree
   `1925afe2ed4d86ffb063a04b996c1cce97b0c1cf`, remains the verified parent.
 - Centered U397 reader PASS: 226 pages / 2.292.242 bytes, SHA-256
@@ -70,8 +80,9 @@ in this historical log. The machine-readable authorities are
   (tree `4d845894ee625231d4c2357cc3f567ff15a87009`) also passed anonymous
   readback for all seven files / 409.835 bytes. Neither commit changed the U397
   release tag or Zenodo record.
-- Next resume only R006 at frozen source raw line 4852 / live target raw line
-  4866, the Dirichlet-kernel and approximate-delta-functions subsection.
+- Next resume only R006 at frozen source raw line 4982 / live target raw line
+  4996, the Localization subsection. First complete the bounded U409
+  source/backend publication to GitHub main; do not change the U397 release.
   R007 remains at
   `ch-first-order-ode.tex` raw line 89; R008 remains at `ca.tex` raw line 1648.
   HP-LEBL-R007-001 is owner-accepted only for complete

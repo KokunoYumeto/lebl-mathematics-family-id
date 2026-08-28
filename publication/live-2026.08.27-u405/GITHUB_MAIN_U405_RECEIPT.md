@@ -56,3 +56,20 @@ U405 at a complete orthonormal-systems subsection boundary. The public reader
 remains the verified U397 GitHub release and Zenodo record 22105195 / DOI
 `10.5281/zenodo.22105195`. A bounded follow-up commit preserves this sanitized
 receipt and current controls; it does not change release or Zenodo bytes.
+
+## Receipt/control preservation
+
+The bounded follow-up completed at commit
+`87b172deca6284600d28f82c5937458c61519cc0`, tree
+`77edf16cef6ddb9165dd7f4ed3f46996a8e8a11e`, with source commit
+`49f35c4d2a9d3ebe5269eb37a456b2424d2a74fb` as its sole parent. It changed
+exactly this receipt and five current controls: six files / 431,921 bytes.
+Anonymous immutable-commit readback matched all six paths, byte counts, and
+SHA-256 values. The public receipt snapshot in that commit is 2,538 bytes,
+SHA-256
+`1f1d60c254a6118249a3807fdb63c8c7b2b2ac3b7d9fa51a39f663803420e79c`.
+
+This local post-transaction section records the commit that contains its prior
+snapshot. It is intentionally carried with the next substantive checkpoint
+rather than creating an infinite chain of self-referential pointer-only
+commits. The GitHub release, tag, and Zenodo record remain unchanged.
