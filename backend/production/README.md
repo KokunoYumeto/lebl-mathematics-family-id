@@ -1,6 +1,34 @@
 # Production backend checkpoints
 
-## Current production checkpoint U420
+## Current production checkpoint U421
+
+`v0.4-live-2026.08.29-u421-a/` is the authoritative production checkpoint. It
+binds the 421-row translation manifest, 796-row live terminology ledger,
+268-event adverse ledger, and 26-entry O001 solution-gap ledger.
+
+- 3,983 canonical records, 421 manifest segments, 459 units, 784 concepts,
+  842 embedded expressions, and exactly 796 current logical terms;
+- 26 O001 exercise gaps, twelve source hints, fourteen no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 17,845,762 bytes;
+- `records.jsonl` SHA-256
+  `72c9f47f52d86f04241ee7e6a6fd098ce5628c68e8ab85908aa01dbabd7117f8`;
+- canonical inventory SHA-256
+  `79464099c69827526036f7a28349afa3e7fac9517531d501dd21c9eab3babecd`.
+
+All schemas, referential checks, all 421 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u421-b` produced the
+identical path/byte/hash inventory. Relative to U420, U421 adds exactly one
+manifest unit, one segment, one QA event, one O001 exercise unit, one
+contextual-hint unit, and one hint relation while removing nothing; only the
+manifest-artifact record is refreshed. It admits the
+Cauchy--Bunyakovsky--Schwarz exercise, binds its contextual preceding-proof
+hint without inventing a solution, and has not replaced the U397 reader
+release. The live builder now validates optional contextual source/target hint
+selectors and hashes while retaining inline-hint detection as a fallback.
+
+## Preserved production checkpoint U420
 
 `v0.4-live-2026.08.29-u420-a/` is the authoritative production checkpoint. It
 binds the 420-row translation manifest, 796-row live terminology ledger,

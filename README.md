@@ -17,7 +17,7 @@ OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna. Jiří Lebl tetap
 merupakan penulis karya sumber; semua kredit sumber dan kontributor manusia
 dipertahankan. Edisi ini independen dan tidak menyiratkan dukungan penulis.
 
-## Status pembaca publik U397 dan checkpoint sumber U420
+## Status pembaca publik U397, sumber publik U420, dan sumber lokal U421
 
 Ini masih *work in progress*, bukan klaim bahwa ketiga buku sudah selesai.
 
@@ -38,15 +38,16 @@ sumber yang tercatat, serta 21 pemetaan kekosongan solusi O001. Lima belas
 proyeksi CSV berputar balik tepat ke seluruh rekaman, dan dua build independen
 identik pada path, ukuran, dan SHA-256.
 
-Checkpoint sumber U420 memuat 420 unit (R006 335, R007 35, R008 50) dan
-menambahkan latihan aproksimasi `L^2` oleh fungsi kontinu periodik. Label,
-ketujuh muatan matematika, dan seluruh perintah TeX dipertahankan tepat; sumber
-tidak memerlukan koreksi. Kekosongan solusi O001 dipetakan tanpa menciptakan
-petunjuk, jawaban, atau solusi. Backend U420 memuat 3.977 rekaman dan 840
-ekspresi tertanam; dua build 27 berkas identik byte demi byte dan seluruh 15
-proyeksi CSV lulus putar balik. PDF pembaca publik tetap U397 sampai batas
-pembaca berikutnya selesai dibangun dan diverifikasi; rilis maupun DOI U397
-tidak diubah oleh checkpoint sumber ini.
+Checkpoint lokal U421 memuat 421 unit (R006 336, R007 35, R008 50) dan
+menambahkan latihan ketaksamaan Cauchy--Bunyakovsky--Schwarz. Label, tampilan
+rumus, 17 perintah TeX berurutan, dan seluruh struktur dipertahankan tepat;
+sumber tidak memerlukan koreksi. Kekosongan solusi O001 mengikat petunjuk
+kontekstual yang benar-benar terdapat dalam bukti Parseval sebelumnya, tanpa
+menciptakan jawaban, bukti, atau solusi. Backend U421 memuat 3.983 rekaman dan
+842 ekspresi tertanam; dua build 27 berkas identik byte demi byte dan seluruh
+15 proyeksi CSV lulus putar balik. GitHub main masih terverifikasi pada U420
+sampai transaksi U421 selesai. PDF pembaca publik tetap U397; rilis maupun DOI
+U397 tidak diubah oleh checkpoint sumber ini.
 
 ## Pembaca utama
 

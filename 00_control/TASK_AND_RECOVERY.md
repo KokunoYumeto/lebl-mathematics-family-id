@@ -2,7 +2,7 @@
 
 Updated: 2026-08-29
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U420 includes the continuous-periodic L2-approximation exercise with clean byte-stable integration build, visual QA, deterministic A/B backend proof, and O001 gap 0025 and is public on GitHub main after exact authenticated and anonymous 41-path readback; its bounded receipt-and-recovery-controls overlay remains pending; U397 remains publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local U421 includes the Cauchy--Bunyakovsky--Schwarz exercise with clean byte-stable integration build, visual QA, deterministic A/B backend proof, and O001 gap 0026 with an exact contextual preceding-proof hint binding; verified public GitHub main remains U420 pending the bounded U421 source/backend transaction; U397 remains publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-29
 
@@ -19,23 +19,27 @@ in this historical log. The machine-readable authorities are
   the source's undefined zero-frequency antiderivative quotient. The public
   U397 target is 194.506 bytes, SHA-256
   `3de28aaac5ce08b69e97060ea01fe7f1d0e7b9d1c024e2fad49e9ece3893b839`.
-- Live boundary: U420, manifest 420 (R006 335, R007 35, R008 50), 653.063
+- Live boundary: U421, manifest 421 (R006 336, R007 35, R008 50), 655.160
   bytes, SHA-256
-  `e3d79eeb7b3f7d2ecd916b65621159023d5ed69eab664fa69617e6f8afa53102`.
-  U420 adds the complete labeled continuous-periodic `L^2`-approximation
-  exercise through source raw line 5337 / target raw line 5351. All seven
-  inline-math payloads, 18 TeX commands, the label, environments, and braces
-  are exact. No source correction or new term is needed. O001 gap
-  LEBL-O001-R006-0025 records no hint and no solution. The full live target is
-  197.901 bytes, SHA-256
-  `c0d3310ba9e8eaf4e5cbb25be6fd901b9a64c142905bfec9bbb7a11fd288a045`.
-- Backend U420 A/B is byte-identical: 27 files / 17.788.134 bytes, 3.977
-  records, 840 embedded expressions, 796 current logical terms, 268
-  corrections, 33 assets, 647 relations, and 25 O001 gaps. All 420 live unit
-  bindings and 354 direct component checks pass, generic validation passes,
+  `7e8dd0ceea45068e93d4e527264bfb01374d9aef83fd76954eb8d31bd096c739`.
+  U421 adds the complete labeled Cauchy--Bunyakovsky--Schwarz exercise through
+  source raw line 5348 / target raw line 5362. Its display, 17 ordered TeX
+  commands, four environment events, label, and braces are exact. No source
+  correction or new term is needed. O001 gap LEBL-O001-R006-0026 binds the
+  explicit contextual hint in the preceding Parseval proof but records no
+  source solution. The full live target is 197.923 bytes, SHA-256
+  `cebfa8f8e595391551175380f82cb3d63bc7e430c39b5201d5ac4b3c6706df88`.
+- Backend U421 A/B is byte-identical: 27 files / 17.845.762 bytes, 3.983
+  records, 842 embedded expressions, 796 current logical terms, 268
+  corrections, 33 assets, 648 relations, and 26 O001 gaps. All 421 live unit
+  bindings and 356 direct component checks pass, generic validation passes,
   and all 15 CSV views round-trip losslessly. Canonical inventory SHA-256 is
-  `b858ba6dfac9b631f698f9f09734a9a6a59c63a1d4a23938f49a13019ea3b23b`.
-- GitHub main preserves the complete U420 live source/backend checkpoint at
+  `79464099c69827526036f7a28349afa3e7fac9517531d501dd21c9eab3babecd`.
+  The live builder is 78.347 bytes, SHA-256
+  `77522ade28f62fc94110dc870917f91a21b0720905a9b73a51f328e0aa159bbb`,
+  and now validates optional contextual source/target hint selectors and
+  hashes fail closed while preserving inline-hint detection as a fallback.
+- GitHub main currently preserves the complete U420 live source/backend checkpoint at
   immutable commit `563e8c484ce8f46e1f0f05b1844c1344d1cf5468`, tree
   `cba8ad89b1948c4d34e5883491131cc30a496b9d`. Anonymous immutable-commit
   and authenticated immutable-blob readback matched all 41 bounded paths /
@@ -45,12 +49,20 @@ in this historical log. The machine-readable authorities are
   Receipt: `publication/live-2026.08.29-u420/GITHUB_MAIN_U420_RECEIPT.md`,
   public snapshot 3.176 bytes, SHA-256
   `1ce1cc973c36c8a01eef37239b9f1bac416c89de23aa3919199288d43188ed65`.
-  The commit has verified U419 controls commit
+  The source/backend commit has verified U419 controls commit
   `9d562d5636e5fe99a2c69945cfc7f7ab11202fe2` as its sole parent and carried
   the finalized local U419 receipt. Authenticated branch, parent, tree, and
   non-truncated 1.557-entry recursive-tree checks also passed. A bounded
-  six-file overlay must now preserve the public receipt snapshot plus the five
-  recovery controls. No release, tag, or Zenodo object changed.
+  six-file overlay then advanced `main` non-forcibly to commit
+  `9c716e970ad1f4a2c62d9c3e8409ed5a4b8e5c30`, tree
+  `18927990a43e2a10c5c09389e9b91106b573a425`, with the U420 source commit as
+  its sole parent. Authenticated and anonymous readback matched all six files /
+  500.815 bytes; the 826-byte canonical inventory has SHA-256
+  `470184d5e9715250c3d1582f77f80d1b612a5a7dd293b956591f0e6c0d70d7a1`.
+  The finalized local receipt is 4.379 bytes, SHA-256
+  `63396687312de53d7a36afa2240a130f3d8670d1da61afbf51229da712aa8694`,
+  and must be carried with the next substantive source/backend checkpoint. No
+  release, tag, or Zenodo object changed.
 - Centered U397 reader PASS: 226 pages / 2.292.242 bytes, SHA-256
   `40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d`.
   The final nine-pass build has zero TeX/reference failures and zero visible
@@ -76,11 +88,12 @@ in this historical log. The machine-readable authorities are
   (tree `4d845894ee625231d4c2357cc3f567ff15a87009`) also passed anonymous
   readback for all seven files / 409.835 bytes. Neither commit changed the U397
   release tag or Zenodo record.
-- Next preserve and anonymously verify the bounded U420 receipt-and-recovery-
-  controls overlay from source/backend commit
-  `563e8c484ce8f46e1f0f05b1844c1344d1cf5468`. Then resume only R006 with the labeled
-  Cauchy--Bunyakovsky--Schwarz exercise at frozen source raw lines 5339–5348 /
-  live target raw lines 5353–5362. Do not change the U397 release.
+- First preserve the admitted U421 source/backend checkpoint non-forcibly on
+  GitHub main from verified U420 controls commit
+  `9c716e970ad1f4a2c62d9c3e8409ed5a4b8e5c30`, with exact authenticated and
+  anonymous byte readback and a bounded controls overlay. Then resume only R006
+  with the labeled `L^2` triangle-inequality exercise at frozen source raw lines
+  5350–5356 / live target raw lines 5364–5370. Do not change the U397 release.
   R007 remains at
   `ch-first-order-ode.tex` raw line 89; R008 remains at `ca.tex` raw line 1648.
   HP-LEBL-R007-001 is owner-accepted only for complete

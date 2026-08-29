@@ -1343,10 +1343,40 @@ def build(out: Path = OUT_DEFAULT) -> dict:
 
         if not gap["hint_present"]:
             continue
-        source_hint_selector = hint_selector(gap["source_path"], gap["source_selector"], "Hint:")
-        target_hint_selector = hint_selector(gap["target_path"], gap["target_selector"], "Petunjuk:")
+        declared_source_hint_selector = gap.get("source_hint_selector")
+        declared_target_hint_selector = gap.get("target_hint_selector")
+        if (declared_source_hint_selector is None) != (declared_target_hint_selector is None):
+            raise RuntimeError(
+                f"incomplete contextual hint selector pair: {gap.get('gap_id')}"
+            )
+        if declared_source_hint_selector is None:
+            source_hint_selector = hint_selector(
+                gap["source_path"], gap["source_selector"], "Hint:"
+            )
+            target_hint_selector = hint_selector(
+                gap["target_path"], gap["target_selector"], "Petunjuk:"
+            )
+        else:
+            if not all(
+                isinstance(value, str) and value
+                for value in (declared_source_hint_selector, declared_target_hint_selector)
+            ):
+                raise RuntimeError(
+                    f"invalid contextual hint selectors: {gap.get('gap_id')}"
+                )
+            source_hint_selector = declared_source_hint_selector
+            target_hint_selector = declared_target_hint_selector
         source_hint_content = selected_bytes(gap["source_path"], source_hint_selector)
         target_hint_content = selected_bytes(gap["target_path"], target_hint_selector)
+        for key, content in (
+            ("source_hint_sha256", source_hint_content),
+            ("target_hint_sha256", target_hint_content),
+        ):
+            declared_hash = gap.get(key)
+            if declared_hash is not None and declared_hash != hashlib.sha256(content).hexdigest():
+                raise RuntimeError(
+                    f"contextual hint hash mismatch for {gap.get('gap_id')}:{key}"
+                )
         hint_key = f"lebl.{NS[role]}.unit.o001.{slug(gap['exercise_id'])}.hint"
         hint = copy.deepcopy(templates["unit"])
         hint.pop("exercise_metadata", None)
