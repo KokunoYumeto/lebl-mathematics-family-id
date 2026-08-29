@@ -1,8 +1,8 @@
 # Durable Task and Recovery Handoff — Lebl Family id-ID
 
-Updated: 2026-08-29
+Updated: 2026-08-30
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local U427 includes the integral-representation Fourier-coefficient inverse-linear-decay exercise, fixed-epoch byte-stable integration build, visual QA, deterministic A/B backend proof, and O001 gap 0032; public U426 source/backend and controls overlay are independently byte-verified; the U397 reader remains public and unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U427 includes the integral-representation Fourier-coefficient inverse-linear-decay exercise, fixed-epoch byte-stable integration build, visual QA, deterministic A/B backend proof, and O001 gap 0032; its public source/backend commit is byte-verified while the bounded controls overlay is pending; the U397 reader remains public and unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-29 U427
 
@@ -40,27 +40,25 @@ in this historical log. The machine-readable authorities are
   `qa/R006_FOURIER_COEFFICIENT_INVERSE_LINEAR_DECAY_EXERCISE_U427_20260829.md`,
   4,553 bytes, SHA-256
   `af0c5ae5151f21aec6920170cdbdf0a6ec5182552fc75b76aed92e31d32e89db`.
-- Verified public source boundary: U426 source commit
-  `e084868c37179d8cc08f4105103c7d93faae912b`, tree
-  `c3b72c4478c9c3f7f652fd9164ecddfad1f5ca8b`, followed by controls commit
-  `b3902ea81953493873c8c5cf7ecf4617c0e2c136`, tree
-  `24b463229a6a5025927b09217bc0e9f40d45dc6a`. The exact 42-path source payload
-  is 19,993,559 bytes with 6,604-byte inventory SHA-256
-  `1e21ec85b89e294901bdba2dfec2d66bd5c4638beed83df4881117b50d185806`;
-  the exact six-path controls payload is 569,833 bytes with 827-byte inventory
-  SHA-256
-  `2e5ec161c2c72b32083e6ac88158770ebc4e35ce0c77db7d430ee77303835268`.
-  Both immutable commits passed authenticated, anonymous, and independent byte
-  readback. The finalized local U426 receipt is 5,857 bytes, SHA-256
-  `51f991700d5c2167dcede970db4078fe58bed297c37154f890c9ceb76f0970df`.
+- Verified public source boundary: U427 source commit
+  `89d415893405d413bc344112a36bfe497bf2e2bd`, tree
+  `ef2186c2d65a98acf9835d7560fc5ca57be34fd2`, with verified U426 controls
+  commit `b3902ea81953493873c8c5cf7ecf4617c0e2c136` as its sole parent. The exact
+  42-path / 20,048,428-byte source/backend payload passed authenticated and
+  anonymous immutable readback; its 6,617-byte inventory has SHA-256
+  `59bb0972b85e7b3ea8bed0bba6731f535257aace66f5feec55e5240ac6e2d899`.
+  The bounded U427 receipt/recovery-controls overlay is pending. Receipt
+  snapshot: `publication/live-2026.08.29-u427/GITHUB_MAIN_U427_RECEIPT.md`,
+  4,063 bytes, SHA-256
+  `6cdb60014632143b431039365265ff782681010dd201a252bf2db14274063659`.
 - The public reader remains U397 on GitHub and Zenodo record 22105195; all nine
   files / 12,439,062 bytes remain public and unchanged. U427 is a source/backend
   checkpoint and does not alter that reader release.
-- Next executable action: publish the bounded U427 source/backend checkpoint
-  from verified U426 controls head `b3902ea…`, anonymously read back every
-  exact payload byte, then publish its bounded receipt/recovery-controls overlay.
-  Continue with the complete two-part R006 exercise at source raw lines
-  5428–5458 / target raw lines 5442–5472; keep R007/R008 cursors unchanged.
+- Next executable action: publish the bounded U427 six-path
+  receipt/recovery-controls overlay from source commit `89d41589…`, anonymously
+  read back every exact payload byte, then continue the complete two-part R006
+  exercise at source raw lines 5428–5458 / target raw lines 5442–5472. Carry
+  the finalized U427 receipt with U428 and keep R007/R008 cursors unchanged.
 
 ## Historical authoritative recovery snapshot — 2026-08-29 U426
 
