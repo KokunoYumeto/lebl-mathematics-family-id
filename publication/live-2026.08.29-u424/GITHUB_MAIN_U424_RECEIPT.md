@@ -1,6 +1,6 @@
 # GitHub main U424 source/backend publication receipt
 
-Status: **PASS; public source bytes verified; controls overlay pending**  
+Status: **PASS; public bytes verified**  
 Date: 2026-08-29  
 Runtime provenance: `OpenAI Codex gpt-5.6-sol, Ultra`
 
@@ -78,3 +78,33 @@ the current recovery controls. Its resulting commit pointer will be recorded
 locally and carried with the next substantive checkpoint, avoiding a
 pointer-only loop. Until that overlay completes, this receipt is a local
 post-source-transaction record; the source commit itself is already public.
+
+## Receipt and recovery-controls overlay
+
+The bounded follow-up transaction advanced `main` non-forcibly from the U424
+source/backend commit to controls commit
+`c7951cc776924ebad27d544e4208d749a941b5de`, tree
+`63ef7c3281509c4317b09f4a256ce5a136c2ea7b`. Its sole parent is
+`51426054b71910557f3d2a9d166248d65a987258`.
+
+The overlay preserved exactly six regular paths / 543,054 bytes: the public
+3,996-byte receipt snapshot, `CURRENT_CURSOR.json`, `CURRENT_STATE.json`,
+`PUBLICATION_STATE.json`, `TASK_AND_RECOVERY.md`, and `DECISION_LOG.jsonl`.
+Authenticated immutable-blob and anonymous immutable-commit readback matched
+all six frozen byte strings. The canonical compact inventory is 827 bytes,
+SHA-256
+`cb24fcae9999f05ab3761ef0af9d63db9a885f7797f1ee5c991074d03340133b`.
+Authenticated `main`, commit-tree, sole-parent, and untruncated 1,699-entry
+recursive-tree checks also passed.
+
+An independent second audit reverified the frozen public six-file inventory,
+commit graph, source parent, and all U397 GitHub and Zenodo assets. Its only
+comparison difference against the later local working tree is this receipt
+itself, because this local final form now records the overlay pointer; the
+public 3,996-byte receipt snapshot and all five public recovery controls remain
+exactly as frozen.
+
+This local receipt now records the overlay pointer. Its final-byte identity is
+carried with the next substantive source/backend checkpoint rather than by a
+third pointer-only commit. The U397 GitHub release, release assets, tag, Zenodo
+record, DOI, and public-access state remain unchanged.

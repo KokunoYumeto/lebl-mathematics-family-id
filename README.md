@@ -99,7 +99,7 @@ sudah publik pada commit `d3cd90ffd11d1b9c193768b041b4ee947d318d0b` dan
 diverifikasi ulang secara independen. Rilis pembaca U397 dan Zenodo DOI tetap
 tidak berubah.
 
-## Checkpoint lokal U424 (siap dipublikasi)
+## Checkpoint sumber/backend publik U424
 
 Latihan Parseval berikutnya sudah diterjemahkan lengkap sampai sumber raw
 5394 / target raw 5408. Manifes lokal kini memiliki 424 unit (R006 339,
@@ -111,6 +111,27 @@ Build pembaca integrasi epoch-tetap menghasilkan 241 halaman / 2.427.693 byte,
 SHA-256
 `e6bb4b925793e0fc27cd3b69b01c126712ebf40d5e4e1bed64dbdd392e90fe8e`;
 halaman 232 memuat Latihan 11.8.8 dalam Bahasa Indonesia dan langsung
-menunjukkan batas latihan Inggris berikutnya. Checkpoint publik tetap U423
-sampai transaksi sumber/backend U424 dan overlay kontrolnya selesai. Rilis
-pembaca U397 serta DOI Zenodo tidak berubah.
+menunjukkan batas latihan Inggris berikutnya. Checkpoint sumber/backend U424
+sudah publik pada commit `51426054b71910557f3d2a9d166248d65a987258`;
+seluruh 42 berkas / 19.866.836 byte dibaca kembali secara anonim dan diaudit
+ulang secara independen. Overlay enam berkas kontrol pemulihannya juga sudah
+publik pada commit `c7951cc776924ebad27d544e4208d749a941b5de` dan telah
+diverifikasi ulang secara anonim dan independen. Rilis pembaca U397 serta DOI
+Zenodo tidak berubah.
+
+## Checkpoint lokal U425
+
+Latihan berikutnya tentang deret satu sisi yang dapat dijumlahkan mutlak dan
+perluasan analitik ke cakram satuan sudah diterjemahkan lengkap, termasuk
+`Petunjuk` sumbernya. Manifes lokal kini memiliki 425 unit (R006 340, R007 35,
+R008 50), sedangkan O001 mencatat secara terpisah bahwa sumber tidak
+menyediakan solusi. Dua build backend U425 identik pada seluruh 27 berkas /
+18.027.168 byte, dengan 4.003 rekaman dan inventaris POSIX SHA-256
+`729587820f9ea940bb7f25377705ceb3ed37015e15c3b86d557d541823e3b9e2`.
+Build pembaca integrasi epoch-tetap menghasilkan 241 halaman / 2.427.763 byte,
+SHA-256
+`2166d72eaedfb0bece00d2df99902694c39a0151eb2e8243f568e68587623ba7`;
+halaman 232 memuat U425 lengkap dalam Bahasa Indonesia lalu menunjukkan batas
+latihan Inggris berikutnya. Seluruh gerbang lokal U425 lulus; transaksi
+sumber/backend U425 dan overlay kontrolnya adalah langkah publikasi berikutnya.
+Rilis pembaca dan DOI tetap U397.

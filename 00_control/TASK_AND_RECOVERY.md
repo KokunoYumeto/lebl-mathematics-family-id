@@ -2,13 +2,55 @@
 
 Updated: 2026-08-29
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U424 includes the Parseval inverse-square-sum exercise with fixed-epoch byte-stable clean integration build, visual QA, deterministic A/B backend proof, and O001 gap 0029 with neither detachable source hint nor solution; its 42-path GitHub source/backend commit is public and independently byte-verified and its bounded receipt/recovery-controls overlay is pending; U397 remains publicly preserved and independently reverified unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local U425 includes the one-sided absolutely summable series / analytic closed-unit-disc extension exercise with its explicit hint, fixed-epoch byte-stable integration build, visual QA, deterministic A/B backend proof, and O001 gap 0030; verified public preservation is U424 source commit plus its completed receipt/recovery-controls overlay; U425 awaits its bounded source and controls transactions; U397 remains publicly preserved and independently reverified unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
 
-## Current authoritative recovery snapshot — 2026-08-29
+## Current authoritative recovery snapshot — 2026-08-29 U425
 
 This block supersedes every older progress count or publication pointer later
 in this historical log. The machine-readable authorities are
 `CURRENT_STATE.json`, `CURRENT_CURSOR.json`, and `PUBLICATION_STATE.json`.
+
+- Local boundary: U425, manifest 425 (R006 340, R007 35, R008 50), 662.792
+  bytes, SHA-256
+  `d689bac08ef5909b8edb2730dbedfa6ea1910d5ed6b50221fe09fc1293dd2ffe`.
+  U425 is the complete one-sided absolutely summable series / analytic
+  closed-unit-disc extension exercise through source raw line 5405 / target raw
+  line 5419. Its explicit hint is preserved, no solution is invented, and O001
+  gap `LEBL-O001-R006-0030` records the source support exactly. The live target
+  is 198.123 bytes, SHA-256
+  `1c51b2b3490f84c2016ff0e2ac4e347f268fb4568f187773147b3c9703151157`.
+- Backend U425 A/B is byte-identical: 27 files / 18.027.168 bytes, 4.003
+  records, 850 embedded expressions, 425 manifest bindings, 364 direct checks,
+  and 15 lossless CSV round trips. Its canonical ordinal-POSIX inventory is
+  3.292 bytes, SHA-256
+  `729587820f9ea940bb7f25377705ceb3ed37015e15c3b86d557d541823e3b9e2`.
+- The U425 fixed-epoch integration build passes at 241 pages / 2.427.763 bytes,
+  PDF SHA-256
+  `2166d72eaedfb0bece00d2df99902694c39a0151eb2e8243f568e68587623ba7`.
+  Passes 10–11 are byte-identical across the PDF and seven auxiliaries; links,
+  outlines, embedded fonts, text extraction, and rendered pages 230–233 pass.
+- Verified public boundary: U424 source commit
+  `51426054b71910557f3d2a9d166248d65a987258`, tree
+  `33c12752c1acb39622367e79304e8b9dbb46e4ab`, followed by controls commit
+  `c7951cc776924ebad27d544e4208d749a941b5de`, tree
+  `63ef7c3281509c4317b09f4a256ce5a136c2ea7b`. Both bounded transactions and
+  their sole-parent chain passed authenticated, anonymous, and independent
+  byte readback. The finalized U424 receipt is 5.542 bytes, SHA-256
+  `722dde31b78e8134cc04006bbbf447ce1768c8cbf990f91ff651337adc639b76`,
+  and must be carried in U425.
+- The public reader remains U397 on GitHub and Zenodo record 22105195; all nine
+  files / 12.439.062 bytes remain public and byte-identical. U425 is a source
+  and backend checkpoint only and does not alter that release.
+- Next executable action: publish the bounded U425 source/backend checkpoint
+  non-forcibly from the verified U424 controls commit, read it back, publish
+  the bounded receipt/recovery-controls overlay, and read that back. Then
+  continue R006 at source raw lines 5407–5413 / target raw lines 5421–5427,
+  `ra.v2.fourier-series.exercises.exponentially-decaying-sine-series-smoothness`.
+
+## Historical authoritative recovery snapshot — U422
+
+This block is retained as historical evidence only and is superseded by the
+U425 snapshot above.
 
 - Public boundary: U397, manifest 397 (R006 312, R007 35, R008 50),
   605.334 bytes, SHA-256
@@ -1112,20 +1154,77 @@ before all three assigned books are complete.
       `2c541ead34653c2ce19e47aaba710d9932e4962ee494218ba3fe488e05b3df2f`.
       Authenticated, anonymous, and independent readback all pass; U397 GitHub
       and Zenodo inventories remain byte-identical.
-- [ ] Publish one bounded six-path U424 receipt/recovery-controls overlay from
-      the verified U424 source commit, then independently read it back. Do
-      not alter the U397 release or Zenodo record and do not create a third
-      pointer-only commit.
+- [x] Publish one bounded six-path U424 receipt/recovery-controls overlay from
+      the verified U424 source commit. Public controls commit
+      `c7951cc776924ebad27d544e4208d749a941b5de`, tree
+      `63ef7c3281509c4317b09f4a256ce5a136c2ea7b`, has the U424 source commit as
+      its sole parent. All six paths / 543054 bytes pass authenticated,
+      anonymous, and independent readback; the canonical 827-byte inventory
+      has SHA-256
+      `cb24fcae9999f05ab3761ef0af9d63db9a885f7797f1ee5c991074d03340133b`.
+      The public receipt snapshot is 3996 bytes, SHA-256
+      `b28552854338498bc4eaeb732d4768935870a66d37127924f815048e85b3d759`;
+      the finalized local receipt is 5542 bytes, SHA-256
+      `722dde31b78e8134cc04006bbbf447ce1768c8cbf990f91ff651337adc639b76`.
+      It must be carried with U425. The U397 release and Zenodo record did not
+      change, and no third pointer-only commit was created.
 - [x] Set the next translation boundary to source raw lines 5396–5405 / target
       raw lines 5410–5419, the one-sided absolutely summable series / analytic
       closed-unit-disc extension exercise. Preserve its explicit hint at
       source raw line 5404 and map the missing solution to O001.
 
-Recovery rule: read this U424 section, `CURRENT_CURSOR.json`,
-`CURRENT_STATE.json`, `PUBLICATION_STATE.json`, the two U424 QA receipts,
-`publication/live-2026.08.29-u424/GITHUB_MAIN_U424_RECEIPT.md`, and the U424
-publisher wrappers. Public preservation is U424 source commit
-`51426054b71910557f3d2a9d166248d65a987258`; the next executable action is its
-bounded six-path controls overlay, followed immediately by the source raw
-5396–5405 exercise. No author contact or upstream issue is allowed before all
-three assigned books are complete.
+Recovery rule: this U424 transaction is complete. Public preservation is U424
+source commit `51426054b71910557f3d2a9d166248d65a987258` plus controls commit
+`c7951cc776924ebad27d544e4208d749a941b5de`; use the U425 section below for
+the current executable action. No author contact or upstream issue is allowed
+before all three assigned books are complete.
+
+## U425 recovery checkpoint (2026-08-29)
+
+- [x] Admit
+      `ra.v2.fourier-series.exercises.one-sided-series-analytic-unit-disc-extension`
+      from `source/ra-v6.3/ch-approximate.tex` raw lines 5396–5405 (490 bytes,
+      SHA-256
+      `22c9a47d6e095ebf12acd7a5d6562712eee872d5a569093bcc676419202adeea`)
+      into `translation/ra/ch-approximate.tex` raw lines 5410–5419 (520 bytes,
+      SHA-256
+      `7e6d0f5b214f350d6a143b38b518198944fa56cac9e7089c8d38a4e1459d3dc5`).
+      The explicit `Petunjuk` is preserved; no source solution exists. The
+      full target is 198123 bytes, SHA-256
+      `1c51b2b3490f84c2016ff0e2ac4e347f268fb4568f187773147b3c9703151157`.
+      Receipt:
+      `qa/R006_ONE_SIDED_SERIES_ANALYTIC_UNIT_DISC_EXERCISE_U425_20260829.md`
+      (7968 bytes, SHA-256
+      `9666de83f2c9733ba6d017c907296fc2854a5547ea0448e1c3a2e47084810f34`).
+- [x] U425 backend A/B replay passed: 27 files / 18027168 bytes per tree,
+      canonical ordinal-POSIX inventory 3292 bytes, SHA-256
+      `729587820f9ea940bb7f25377705ceb3ed37015e15c3b86d557d541823e3b9e2`,
+      4003 records / 850 expressions / 425 manifest bindings / 364 direct
+      checks / 15 lossless CSV round trips. Receipt:
+      `qa/BACKEND_V0_4_LIVE_U425_20260829.md` (3670 bytes, SHA-256
+      `592b8e75350029cd73123010c8986d3f6a70e6df2a153683aacf5b8d266f5877`).
+- [x] Fixed-epoch integration build at `tmp/r006-u425-build-20260829`
+      passed: 241 pages / 2427763 bytes, PDF SHA-256
+      `2166d72eaedfb0bece00d2df99902694c39a0151eb2e8243f568e68587623ba7`.
+      Passes 10–11 are byte-identical across the PDF and seven auxiliaries;
+      pages 230–233 pass visual inspection. Page 232 contains complete
+      Indonesian U425 including its hint and begins the untouched English
+      U426 exercise at the exact boundary. This is not a reader release.
+- [ ] Publish one bounded non-forced U425 source/backend checkpoint from
+      verified U424 controls commit
+      `c7951cc776924ebad27d544e4208d749a941b5de`; anonymously read back its
+      exact inventory. Then publish and read back the bounded U425
+      receipt/recovery-controls overlay. Keep the U397 reader release and
+      Zenodo record 22105195 unchanged.
+- [ ] Continue R006 at source raw lines 5407–5413 / target raw lines
+      5421–5427:
+      `ra.v2.fourier-series.exercises.exponentially-decaying-sine-series-smoothness`.
+      Do not alter the R007/R008 cursors or recopy HP-LEBL-R007-001.
+
+Recovery rule: read this U425 section, `CURRENT_CURSOR.json`,
+`CURRENT_STATE.json`, `PUBLICATION_STATE.json`, the two U425 QA receipts, and
+the eventual U425 publication receipt/wrappers. Current public preservation is
+verified U424 source plus controls; local U425 is admitted and awaits its
+bounded source and controls transactions; the public reader remains U397. No
+author contact or upstream issue is allowed before all three assigned books are
+complete.
