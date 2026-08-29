@@ -1034,17 +1034,34 @@ count and SHA-256. Zenodo's IIIF thumbnail selects the corrected 188-page R006
       `fd0830a19e94eaed0b53106adac197bec3665daf3e7a0b408a4018ac155ea504`;
       auxiliary products stable across passes 9–10 and pages 230–233 visually
       pass. This is a non-release build; public reader U397 is retained.
-- [ ] Publish one non-forced 42-path U423 source/backend checkpoint from public
+- [x] Publish one non-forced 42-path U423 source/backend checkpoint from public
       U422 controls commit `219d65a5d81a07c86509421df147c8875939bb2f` using
-      `publication/live-2026.08.29-u423/publish_github_main_u423.py`; then
-      perform anonymous immutable-byte readback and a six-path controls overlay.
-      Do not alter the U397 release or Zenodo record. After publication, set
-      `CURRENT_CURSOR.json` next action to source raw lines 5387–5394 / target
-      raw lines 5401–5408 (Parseval inverse-square-sum exercise), and preserve
-      all resulting commit/tree/receipt hashes here.
+      `publication/live-2026.08.29-u423/publish_github_main_u423.py`. Public
+      source commit `65b5a7950d1e6d89918603548b1663122f57cdf5`, tree
+      `af701a99504cdfb04823d7343f84fb30aeb893d7`, has sole parent U422 controls.
+      The exact 42-path payload totals 19810210 bytes; its 6601-byte canonical
+      inventory has SHA-256
+      `66c7960381bd0a16b8a78a83a877f662d695558889a24a7a611302971277cb52`.
+      Authenticated immutable blobs, anonymous immutable raw bytes, branch,
+      parent, tree, and untruncated 1662-entry recursive tree all pass; an
+      independent audit repeated all 42 comparisons and also reverified the
+      unchanged nine-file U397 GitHub release and Zenodo record 22105195.
+- [ ] Publish the one bounded six-path U423 receipt/recovery-controls overlay
+      from source commit `65b5a7950d1e6d89918603548b1663122f57cdf5` using
+      `publication/live-2026.08.29-u423/publish_github_u423_controls.py`. The
+      frozen receipt snapshot is
+      `publication/live-2026.08.29-u423/GITHUB_MAIN_U423_RECEIPT.md`, 3929
+      bytes, SHA-256
+      `6f790530f396e97128c2f2de9fd85f45557db76cb4727e153feeec372725e1db`;
+      `LEBL-ID-DEC-0197` must be the decision-log tail. After overlay readback,
+      record its commit/tree/inventory in the local receipt and controls and
+      carry those finalized local bytes with the next substantive checkpoint;
+      do not create a third pointer-only commit.
+- [x] Set `CURRENT_CURSOR.json` next action to source raw lines 5387–5394 /
+      target raw lines 5401–5408 (Parseval inverse-square-sum exercise).
 
 Recovery rule: read this section, `CURRENT_CURSOR.json`, `CURRENT_STATE.json`,
-`PUBLICATION_STATE.json`, the two U423 QA receipts, and the U423 publisher
-wrapper. The public source/controls base is U422 until the source transaction
-completes; no author contact or upstream issue is allowed before all three
-assigned books are complete.
+`PUBLICATION_STATE.json`, the two U423 QA receipts, and both U423 publisher
+wrappers. The U423 source transaction is complete and public; only its bounded
+six-path controls overlay remains. No author contact or upstream issue is
+allowed before all three assigned books are complete.
