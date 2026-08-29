@@ -2,7 +2,7 @@
 
 Updated: 2026-08-29
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U426 includes the exponentially decaying sine-series smoothness exercise, fixed-epoch byte-stable integration build, visual QA, deterministic A/B backend proof, O001 gap 0031, and local source/backend checkpoint ready for the bounded publication transaction; public U425 source plus controls and U397 remain independently reverified unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U426 includes the exponentially decaying sine-series smoothness exercise, fixed-epoch byte-stable integration build, visual QA, deterministic A/B backend proof, and O001 gap 0031; its bounded 42-path source/backend checkpoint is public and byte-verified while the six-path receipt/recovery-controls overlay is pending; the U397 reader remains public and unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-29 U426
 
@@ -30,21 +30,21 @@ in this historical log. The machine-readable authorities are
   links, 33 outline items, 98 embedded font rows, text extraction, and rendered
   pages 230–233 pass. Page 232 contains the complete Indonesian U426 exercise
   followed by the exact untouched English boundary.
-- Verified public boundary: U425 source commit
-  `7ffd500b2bd48c7bac13664f86e0eb04498cae97`, tree
-  `640cd66666877c9ba88390e592734b207ea07c18`, followed by controls commit
-  `23835b0329a6397d74889aaf62fc993d02945e0e`, tree
-  `f8fef281c8dee4463d31db8cb963691268c6ebad`. Both bounded transactions and
-  their sole-parent chain passed authenticated, anonymous, and independent
-  byte readback. The finalized U425 receipt is 5,447 bytes, SHA-256
-  `5ae84b10cb2e10d33389ead81951c1a8d64448f08b19f637c023cfde1532b792`, and is
-  carried in the U426 source payload.
+- Verified public source boundary: U426 source commit
+  `e084868c37179d8cc08f4105103c7d93faae912b`, tree
+  `c3b72c4478c9c3f7f652fd9164ecddfad1f5ca8b`, with the verified U425 controls
+  commit `23835b0329a6397d74889aaf62fc993d02945e0e` as its sole parent. The exact
+  42-path / 19,993,559-byte payload passed authenticated and anonymous readback;
+  its 6,604-byte inventory has SHA-256
+  `1e21ec85b89e294901bdba2dfec2d66bd5c4638beed83df4881117b50d185806`.
+  The independently audited U426 receipt snapshot is 4,586 bytes, SHA-256
+  `f2bfab515002f5a3ceb8478444457a50b0fbc899e906b5c4908d05db4826afca`.
 - The public reader remains U397 on GitHub and Zenodo record 22105195; all nine
-  files / 12,439,062 bytes remain public and byte-identical. U426 is a local
-  source/backend checkpoint until its bounded source and controls transactions.
-- Next executable action: publish the bounded U426 source checkpoint from the
-  verified U425 controls head, then publish its six-path controls overlay and
-  complete anonymous readback. After closure, continue R006 at source raw lines
+  files / 12,439,062 bytes remain public and unchanged. U426 is public as a
+  source/backend checkpoint and does not alter that reader release.
+- Next executable action: publish the bounded U426 six-path controls overlay
+  from the verified U426 source head and complete anonymous readback. After
+  closure, continue R006 at source raw lines
   5415–5426 / target raw lines 5429–5440 (`exercise:fsdiffmindecay`).
 
 ## Historical authoritative recovery snapshot — 2026-08-29 U425
