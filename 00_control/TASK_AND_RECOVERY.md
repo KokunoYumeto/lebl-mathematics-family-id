@@ -2,7 +2,7 @@
 
 Updated: 2026-08-29
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U422 includes the labeled L2 triangle-inequality exercise with fixed-epoch byte-stable clean integration build, visual QA, deterministic A/B backend proof, and O001 gap 0027 with neither source hint nor solution; its 42-path GitHub source/backend commit and six-path receipt/recovery-controls overlay are public and independently byte-verified; U397 remains publicly preserved and independently reverified unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U424 includes the Parseval inverse-square-sum exercise with fixed-epoch byte-stable clean integration build, visual QA, deterministic A/B backend proof, and O001 gap 0029 with neither detachable source hint nor solution; its 42-path GitHub source/backend commit is public and independently byte-verified and its bounded receipt/recovery-controls overlay is pending; U397 remains publicly preserved and independently reverified unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-29
 
@@ -1103,10 +1103,17 @@ before all three assigned books are complete.
       `e6bb4b925793e0fc27cd3b69b01c126712ebf40d5e4e1bed64dbdd392e90fe8e`.
       Page 232 contains complete Indonesian U424 and begins the untouched next
       English exercise at the exact boundary. This is not a reader release.
-- [ ] Publish one non-forced 42-path U424 source/backend checkpoint from public
+- [x] Publish one non-forced 42-path U424 source/backend checkpoint from public
       U423 controls commit `d3cd90ffd11d1b9c193768b041b4ee947d318d0b`, carrying the finalized local
-      U423 receipt; anonymously and independently read back all bytes; then
-      publish one bounded six-path U424 receipt/recovery-controls overlay. Do
+      U423 receipt. Public source commit
+      `51426054b71910557f3d2a9d166248d65a987258`, tree
+      `33c12752c1acb39622367e79304e8b9dbb46e4ab`, has exactly 42 paths /
+      19866836 bytes and a canonical 6604-byte inventory SHA-256
+      `2c541ead34653c2ce19e47aaba710d9932e4962ee494218ba3fe488e05b3df2f`.
+      Authenticated, anonymous, and independent readback all pass; U397 GitHub
+      and Zenodo inventories remain byte-identical.
+- [ ] Publish one bounded six-path U424 receipt/recovery-controls overlay from
+      the verified U424 source commit, then independently read it back. Do
       not alter the U397 release or Zenodo record and do not create a third
       pointer-only commit.
 - [x] Set the next translation boundary to source raw lines 5396–5405 / target
@@ -1115,7 +1122,10 @@ before all three assigned books are complete.
       source raw line 5404 and map the missing solution to O001.
 
 Recovery rule: read this U424 section, `CURRENT_CURSOR.json`,
-`CURRENT_STATE.json`, `PUBLICATION_STATE.json`, the two U424 QA receipts, and
-the eventual U424 publisher wrappers. Public preservation remains U423 source
-plus controls until U424 publication completes. No author contact or upstream
-issue is allowed before all three assigned books are complete.
+`CURRENT_STATE.json`, `PUBLICATION_STATE.json`, the two U424 QA receipts,
+`publication/live-2026.08.29-u424/GITHUB_MAIN_U424_RECEIPT.md`, and the U424
+publisher wrappers. Public preservation is U424 source commit
+`51426054b71910557f3d2a9d166248d65a987258`; the next executable action is its
+bounded six-path controls overlay, followed immediately by the source raw
+5396–5405 exercise. No author contact or upstream issue is allowed before all
+three assigned books are complete.
