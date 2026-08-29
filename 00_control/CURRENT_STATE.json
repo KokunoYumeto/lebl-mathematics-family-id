@@ -5,7 +5,7 @@
   "locale": "id-ID",
   "scope": ["R006", "R007", "R008"],
   "root": "04_mirrors/id/lebl-mathematics-family-id",
-  "status": "contiguous_R006_translation_u425_backend_and_reader_admitted_pending_bounded_publication_at_public_U424_source_and_controls_verified_public_U397_reader_preserved_verified",
+  "status": "contiguous_R006_translation_u425_backend_and_reader_admitted_public_u425_source_verified_controls_overlay_pending_public_U397_reader_preserved_verified",
   "translation_dominant": true,
   "source_mutation_started": true,
   "translation_admitted": true,
@@ -49,7 +49,7 @@
     "R007_nonlinear_systems_HP001_owner_acceptance_checkpoint": "accepted_by_20_stable_units_after_67_file_packet_hash_verification_three_independent_math_language_backend_reviews_owner_terminology_reconciliation_current_target_sha256_adee2f44b4a570b8f89f01c529d9bb9ebc38c0999ceb949360f4c075390003a1_integrated_472_page_build_sha256_d822e3b8fb47968ba7bb747af50293a569e4716c93fac6518d28e8a525b48fec_visual_pages_366_369_374_382_pass_and_helper_target_not_recopied",
     "R008_source_baseline": "proved_v1.9_304_page_authority_and_U001_introduction_translation"
   },
-  "backend_schema_status": "public_reader_v0.4-live_U397_preserved; public_github_source_U424_verified_42_of_42_19866836_bytes_inventory_2c541ead34653c2ce19e47aaba710d9932e4962ee494218ba3fe488e05b3df2f_plus_controls_6_of_6_543054_bytes_inventory_cb24fcae9999f05ab3761ef0af9d63db9a885f7797f1ee5c991074d03340133b_both_independently_reverified; local v0.4-live_U425_A_B_byte_identical_425-unit-manifest_4003-records_850-embedded-expressions_797-current-logical-terms_268-corrections_30-O001-gaps_33-assets_649-relations_425-of-425-exact-live-manifest-bindings_full-generic_schema_and_15-view_roundtrip_validation_364-direct-component-bindings; U425 source publication pending from public U424 controls base",
+  "backend_schema_status": "public_reader_v0.4-live_U397_preserved; public_github_source_U425_verified_42_of_42_19941579_bytes_inventory_eb335d7b0c964c0836b3d3f0b16aaa7f4fd96a1eb20498641eebbb62b7310f5a_independently_reverified; U425 controls overlay pending; local v0.4-live_U425_A_B_byte_identical_425-unit-manifest_4003-records_850-embedded-expressions_797-current-logical-terms_268-corrections_30-O001-gaps_33-assets_649-relations_425-of-425-exact-live-manifest-bindings_full-generic_schema_and_15-view_roundtrip_validation_364-direct-component-bindings",
   "translation_progress": {
     "R006_units_admitted": 340,
     "R006_content_units_admitted": 330,
@@ -212,9 +212,9 @@
     "full_r006_target_bytes": 198123,
     "full_r006_target_sha256": "1c51b2b3490f84c2016ff0e2ac4e347f268fb4568f187773147b3c9703151157",
     "backend_checkpoint": {"records":4003,"expressions":850,"physical_terms":819,"current_logical_terms":797,"corrections":268,"assets":33,"relations":649,"files_per_tree":27,"bytes_per_tree":18027168,"inventory_sha256":"729587820f9ea940bb7f25377705ceb3ed37015e15c3b86d557d541823e3b9e2","inventory_order":"ordinal_posix_relative_path","a_b_mismatches":0,"validation":"pass_full_generic_425_of_425_manifest_bindings","referential_integrity":"pass_zero_unresolved","csv_roundtrip":"pass_15_views_4003_records","manifest_component_checks":"364_pass_509_edition-root-relative","r007_nonlinear_assets":"31_assets_42_relations","o001":"30_exercises_13_hints_17_none_zero_solutions","o001_0030":"exact_active_explicit_hint_no_solution_binding_completed_QA"},
-    "latest_public_github_main_source_checkpoint": {"name":"U424","commit":"51426054b71910557f3d2a9d166248d65a987258","tree":"33c12752c1acb39622367e79304e8b9dbb46e4ab","files":42,"bytes":19866836,"inventory_sha256":"2c541ead34653c2ce19e47aaba710d9932e4962ee494218ba3fe488e05b3df2f","anonymous_readback":"pass_42_of_42_independently_reverified","controls_commit":"c7951cc776924ebad27d544e4208d749a941b5de","controls_tree":"63ef7c3281509c4317b09f4a256ce5a136c2ea7b","controls_readback":"pass_6_of_6_paths_543054_bytes_inventory_cb24fcae9999f05ab3761ef0af9d63db9a885f7797f1ee5c991074d03340133b_independently_reverified","release_changed":false,"zenodo_changed":false,"receipt":"publication/live-2026.08.29-u424/GITHUB_MAIN_U424_RECEIPT.md","public_receipt_snapshot":{"bytes":3996,"sha256":"b28552854338498bc4eaeb732d4768935870a66d37127924f815048e85b3d759"},"final_local_receipt":{"bytes":5542,"sha256":"722dde31b78e8134cc04006bbbf447ce1768c8cbf990f91ff651337adc639b76","publication":"carry_with_U425_substantive_checkpoint"}},
+    "latest_public_github_main_source_checkpoint": {"name":"U425","commit":"7ffd500b2bd48c7bac13664f86e0eb04498cae97","tree":"640cd66666877c9ba88390e592734b207ea07c18","files":42,"bytes":19941579,"inventory_sha256":"eb335d7b0c964c0836b3d3f0b16aaa7f4fd96a1eb20498641eebbb62b7310f5a","anonymous_readback":"pass_42_of_42_independently_reverified","controls_commit":null,"controls_tree":null,"controls_readback":"pending_bounded_six_path_overlay_from_verified_U425_source_commit","release_changed":false,"zenodo_changed":false,"receipt":"publication/live-2026.08.29-u425/GITHUB_MAIN_U425_RECEIPT.md","public_receipt_snapshot":{"bytes":4150,"sha256":"0d4ccaaa78ad350a6b2c0284e99fe015ae1979bdf60a8a3949dce73c24274204"},"final_local_receipt":{"status":"pending_controls_overlay_pointer","publication":"carry_with_U426_substantive_checkpoint_after_overlay"}},
     "accepted_helper_packet": {"packet_id":"HP-LEBL-R007-001","state":"accepted","handoff_sha256":"5f51bda4f2a64c6e0777dbcb51435a0f403bec7ff585878106f471103523cba4","checksums_sha256":"7bc509b0a277d5323a72b910e45a06d8620bf628cd16f5cb9ce3c399b937ab47","owner_target_sha256":"adee2f44b4a570b8f89f01c529d9bb9ebc38c0999ceb949360f4c075390003a1","receipt":"qa/R007_NONLINEAR_SYSTEMS_HP001_OWNER_THREE_WAY_QA_20260825.md","helper_target_recopied":false},
-    "next": "publish the bounded U425 source/backend checkpoint and controls overlay, then continue R006 with the next unlabeled exponentially decaying sine-series smoothness exercise at source raw lines 5407-5413 / target raw lines 5421-5427; keep verified U424 source and controls, U397 release, and R007/R008 cursors unchanged"
+    "next": "publish the bounded six-path U425 receipt/recovery-controls overlay from verified U425 source commit 7ffd500b2bd48c7bac13664f86e0eb04498cae97, then continue R006 with the next unlabeled exponentially decaying sine-series smoothness exercise at source raw lines 5407-5413 / target raw lines 5421-5427; keep U397 release and R007/R008 cursors unchanged"
   },
   "terminology_qa_20260824": {
     "status": "pass_no_preferred_term_or_reader_text_change_required",
@@ -261,8 +261,8 @@
     "build_receipt": {"path":"qa/R006_COMPLEX_TRIG_SECTION_READER_U336_20260824.md","bytes":3824,"sha256":"dcd2454ffe1dca9554d83828e6f9049f49c7b627a9214daabebf622fe339e9f5"}
   },
   "publication": {
-    "scope_status": "active_partial_local_u425_backend_and_reader_admitted_pending_public_u425_source_controls_with_public_u424_source_backend_and_controls_verified_and_u397_reader_public_verified",
-    "scope": "LOCAL U425 has 425 admitted units (R006 340, R007 35, R008 50) through the one-sided-series analytic-unit-disc exercise, with exact source/target, build, visual, explicit-hint/no-solution O001, deterministic-backend, schema, round-trip, and builder-reproducibility gates. PUBLIC GITHUB-MAIN remains verified U424 source plus controls until the bounded U425 source and controls transactions complete. PUBLIC READER BOUNDARY U397 remains the centered 226-page R006 Volume II reader after complete Subsection 11.8.1, plus complete R006 Volume I and centered R007 nonlinear-systems readers. All three books remain active until the corpus is complete.",
+    "scope_status": "active_partial_local_u425_backend_and_reader_admitted_public_u425_source_verified_controls_overlay_pending_with_public_U397_reader_verified",
+    "scope": "LOCAL and PUBLIC GITHUB-MAIN U425 contain 425 admitted units (R006 340, R007 35, R008 50) through the one-sided-series analytic-unit-disc exercise, with exact source/target, build, visual, explicit-hint/no-solution O001, deterministic-backend, schema, round-trip, and builder-reproducibility gates. The six-path U425 receipt/recovery-controls overlay is pending. PUBLIC READER BOUNDARY U397 remains the centered 226-page R006 Volume II reader after complete Subsection 11.8.1, plus complete R006 Volume I and centered R007 nonlinear-systems readers. All three books remain active until the corpus is complete.",
     "github": {
       "repository_url": "https://github.com/KokunoYumeto/lebl-mathematics-family-id",
       "default_branch": "main",
@@ -275,14 +275,14 @@
       "post_publication_pointer_tree": "4d845894ee625231d4c2357cc3f567ff15a87009",
       "release_target_commit": "a35de2ff999291c3414d6ba319f16bb149c7d5f5",
       "tracked_files": 1135,
-      "main_head_scope": "PUBLIC U397 READER RELEASE CONTENT remains preserved; current main is verified U424 controls commit c7951cc776924ebad27d544e4208d749a941b5de over source/backend commit 51426054b71910557f3d2a9d166248d65a987258 through the Parseval inverse-square-sum exercise; local U425 source/backend and controls are ready for bounded publication.",
+      "main_head_scope": "PUBLIC U397 READER RELEASE CONTENT remains preserved; current main is verified U425 source/backend commit 7ffd500b2bd48c7bac13664f86e0eb04498cae97 over U424 controls commit c7951cc776924ebad27d544e4208d749a941b5de through the one-sided-series analytic-unit-disc exercise; the bounded U425 controls overlay is pending.",
       "release_id": 376866909,
       "release_tag": "lebl-family-id-wip.2026.08.26.u397",
       "release_tag_object": "c83c92a89880a042df6fef31c8aa37fe639528c9",
       "release_url": "https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id-wip.2026.08.26.u397",
       "published": true,
       "prerelease": false,
-      "public_source_readback": "pass_live_U424_source_commit_51426054b71910557f3d2a9d166248d65a987258_42_of_42_paths_19866836_bytes_inventory_2c541ead34653c2ce19e47aaba710d9932e4962ee494218ba3fe488e05b3df2f_plus_controls_commit_c7951cc776924ebad27d544e4208d749a941b5de_6_of_6_paths_543054_bytes_inventory_cb24fcae9999f05ab3761ef0af9d63db9a885f7797f1ee5c991074d03340133b_both_independently_reverified_plus_preserved_U397_release",
+      "public_source_readback": "pass_live_U425_source_commit_7ffd500b2bd48c7bac13664f86e0eb04498cae97_42_of_42_paths_19941579_bytes_inventory_eb335d7b0c964c0836b3d3f0b16aaa7f4fd96a1eb20498641eebbb62b7310f5a_independently_reverified_controls_overlay_pending_plus_preserved_U397_release",
       "public_asset_readback": "pass_9_of_9_anonymous_12439062_bytes_sha256_and_bytes",
       "receipt": {"path":"publication/wip-2026.08.26-u397/GITHUB_PUBLICATION_RECEIPT.md","bytes":2794,"sha256":"880e2e5cc22417a462a1864be6056da57efd69cc8d5607db3a234b68c85ffd00"}
     },
@@ -1769,7 +1769,7 @@
     "mathematical_review_complete": false,
     "build_complete": false,
     "public": true,
-    "public_scope": "PUBLIC GITHUB MAIN U424: verified 424-unit source/backend checkpoint through the R006 Parseval inverse-square-sum exercise at source commit 51426054b71910557f3d2a9d166248d65a987258 with exact independent 42-path public-byte readback plus independently verified six-path receipt-and-recovery-controls commit c7951cc776924ebad27d544e4208d749a941b5de. PUBLIC READER U397: GitHub release and Zenodo record 22105195 preserve the centered 226-page R006 Volume II reader through Subsection 11.8.1, complete 334-page R006 Volume I reader, centered 40-page R007 nonlinear-systems reader, and deterministic 3831-record release backend. Full R006/R007/R008 corpus remains incomplete",
+    "public_scope": "PUBLIC GITHUB MAIN U425: verified 425-unit source/backend checkpoint through the R006 one-sided-series analytic-unit-disc exercise at source commit 7ffd500b2bd48c7bac13664f86e0eb04498cae97 with exact independent 42-path public-byte readback; the bounded six-path receipt-and-recovery-controls overlay is pending. PUBLIC READER U397: GitHub release and Zenodo record 22105195 preserve the centered 226-page R006 Volume II reader through Subsection 11.8.1, complete 334-page R006 Volume I reader, centered 40-page R007 nonlinear-systems reader, and deterministic 3831-record release backend. Full R006/R007/R008 corpus remains incomplete",
     "official_or_endorsed": false
   }
 }
