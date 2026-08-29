@@ -2,7 +2,7 @@
 
 Updated: 2026-08-29
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local U421 includes the Cauchy--Bunyakovsky--Schwarz exercise with clean byte-stable integration build, visual QA, deterministic A/B backend proof, and O001 gap 0026 with an exact contextual preceding-proof hint binding; verified public GitHub main remains U420 pending the bounded U421 source/backend transaction; U397 remains publicly preserved and anonymously verified on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U421 includes the Cauchy--Bunyakovsky--Schwarz exercise with clean byte-stable integration build, visual QA, deterministic A/B backend proof, and O001 gap 0026 with an exact contextual preceding-proof hint binding and is public on GitHub main after exact authenticated and anonymous 42-path readback; its bounded receipt-and-controls overlay is pending; U397 remains publicly preserved and independently reverified unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-29
 
@@ -39,30 +39,23 @@ in this historical log. The machine-readable authorities are
   `77522ade28f62fc94110dc870917f91a21b0720905a9b73a51f328e0aa159bbb`,
   and now validates optional contextual source/target hint selectors and
   hashes fail closed while preserving inline-hint detection as a fallback.
-- GitHub main currently preserves the complete U420 live source/backend checkpoint at
-  immutable commit `563e8c484ce8f46e1f0f05b1844c1344d1cf5468`, tree
-  `cba8ad89b1948c4d34e5883491131cc30a496b9d`. Anonymous immutable-commit
-  and authenticated immutable-blob readback matched all 41 bounded paths /
-  19.548.741 bytes. The canonical explicit-order inventory is 6.473 bytes,
+- GitHub main preserves the complete U421 live source/backend checkpoint at
+  immutable commit `e6cfb7b8e483bb86730533823ff5f865e59ee5b2`, tree
+  `91ca360e74942bb0a53fdbafeae31a25658edd2b`. Anonymous immutable-commit
+  and authenticated immutable-blob readback matched all 42 bounded paths /
+  19.698.077 bytes. The canonical explicit-order inventory is 6.603 bytes,
   SHA-256
-  `c899ef362c014786e8e771d6af2cf5c62f2afec57f85a0b25b28f7f6bb330010`.
-  Receipt: `publication/live-2026.08.29-u420/GITHUB_MAIN_U420_RECEIPT.md`,
-  public snapshot 3.176 bytes, SHA-256
-  `1ce1cc973c36c8a01eef37239b9f1bac416c89de23aa3919199288d43188ed65`.
-  The source/backend commit has verified U419 controls commit
-  `9d562d5636e5fe99a2c69945cfc7f7ab11202fe2` as its sole parent and carried
-  the finalized local U419 receipt. Authenticated branch, parent, tree, and
-  non-truncated 1.557-entry recursive-tree checks also passed. A bounded
-  six-file overlay then advanced `main` non-forcibly to commit
-  `9c716e970ad1f4a2c62d9c3e8409ed5a4b8e5c30`, tree
-  `18927990a43e2a10c5c09389e9b91106b573a425`, with the U420 source commit as
-  its sole parent. Authenticated and anonymous readback matched all six files /
-  500.815 bytes; the 826-byte canonical inventory has SHA-256
-  `470184d5e9715250c3d1582f77f80d1b612a5a7dd293b956591f0e6c0d70d7a1`.
-  The finalized local receipt is 4.379 bytes, SHA-256
-  `63396687312de53d7a36afa2240a130f3d8670d1da61afbf51229da712aa8694`,
-  and must be carried with the next substantive source/backend checkpoint. No
-  release, tag, or Zenodo object changed.
+  `74afc0e6e75894cc7a9493f1f1e5a3c0e18a10da549cac5f9af6cf045a5b770d`.
+  Receipt: `publication/live-2026.08.29-u421/GITHUB_MAIN_U421_RECEIPT.md`,
+  public snapshot 3.507 bytes, SHA-256
+  `a27c30c6c626336cb3a6f71e66bd6d86f0d325643188ca40551f3273bddedd2a`.
+  The source/backend commit has verified U420 controls commit
+  `9c716e970ad1f4a2c62d9c3e8409ed5a4b8e5c30` as its sole parent and carries
+  the finalized local U420 receipt plus the exact live builder. Authenticated
+  branch, parent, tree, and non-truncated 1.592-entry recursive-tree checks
+  passed, and an independent second raw-public audit matched all 42 paths.
+  Preserve the receipt and current recovery controls next in one bounded
+  six-file overlay. No release, tag, or Zenodo object changed.
 - Centered U397 reader PASS: 226 pages / 2.292.242 bytes, SHA-256
   `40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d`.
   The final nine-pass build has zero TeX/reference failures and zero visible
