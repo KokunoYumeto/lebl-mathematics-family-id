@@ -78,7 +78,7 @@ Untuk batas isi, reproduksi build, dan hash checkpoint publik, lihat
 [`RELEASE_NOTES.md`](RELEASE_NOTES.md) dan
 [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md).
 
-## Checkpoint lokal U423 (siap dipublikasi)
+## Checkpoint sumber/backend publik U423
 
 Unit berikutnya yang sudah selesai adalah latihan tanpa label tentang deret
 sinus dengan koefisien meluruh dan persamaan diferensial paksa (sumber raw
@@ -91,6 +91,26 @@ build 27-berkas yang identik (17.931.910 byte; inventaris POSIX SHA-256
 lima belas tampilan CSV lulus putar balik. Build pembaca lengkap lokal pada
 epoch tetap 1787961600 menghasilkan 241 halaman / 2.427.666 byte dengan SHA-256
 `fd0830a19e94eaed0b53106adac197bec3665daf3e7a0b408a4018ac155ea504`; halaman
-230–233 terpusat dan terbaca. U422 adalah sumber publik saat ini; satu
-transaksi non-forced U423 yang membawa kontrol dan tanda terima U422 akan
-dipublikasi berikutnya. Rilis pembaca U397 dan Zenodo DOI tetap tidak berubah.
+230–233 terpusat dan terbaca. Checkpoint sumber/backend U423 sudah publik pada
+commit `65b5a7950d1e6d89918603548b1663122f57cdf5`; seluruh 42 berkas /
+19.810.210 byte dibaca kembali secara anonim dan diaudit ulang secara
+independen. Overlay enam berkas untuk tanda terima dan kontrol pemulihan juga
+sudah publik pada commit `d3cd90ffd11d1b9c193768b041b4ee947d318d0b` dan
+diverifikasi ulang secara independen. Rilis pembaca U397 dan Zenodo DOI tetap
+tidak berubah.
+
+## Checkpoint lokal U424 (siap dipublikasi)
+
+Latihan Parseval berikutnya sudah diterjemahkan lengkap sampai sumber raw
+5394 / target raw 5408. Manifes lokal kini memiliki 424 unit (R006 339,
+R007 35, R008 50), dan O001 mencatat latihan ini tanpa petunjuk terpisah
+ataupun solusi sumber. Dua build backend U424 identik pada seluruh 27 berkas /
+17.971.333 byte, dengan 3.997 rekaman dan inventaris POSIX SHA-256
+`fa1c2d90fdafed7e5042e027d95d7d1cb104e7ecf3c9d74b744ca559516de63a`.
+Build pembaca integrasi epoch-tetap menghasilkan 241 halaman / 2.427.693 byte,
+SHA-256
+`e6bb4b925793e0fc27cd3b69b01c126712ebf40d5e4e1bed64dbdd392e90fe8e`;
+halaman 232 memuat Latihan 11.8.8 dalam Bahasa Indonesia dan langsung
+menunjukkan batas latihan Inggris berikutnya. Checkpoint publik tetap U423
+sampai transaksi sumber/backend U424 dan overlay kontrolnya selesai. Rilis
+pembaca U397 serta DOI Zenodo tidak berubah.

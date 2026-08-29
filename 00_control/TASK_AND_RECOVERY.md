@@ -1046,22 +1046,76 @@ count and SHA-256. Zenodo's IIIF thumbnail selects the corrected 188-page R006
       parent, tree, and untruncated 1662-entry recursive tree all pass; an
       independent audit repeated all 42 comparisons and also reverified the
       unchanged nine-file U397 GitHub release and Zenodo record 22105195.
-- [ ] Publish the one bounded six-path U423 receipt/recovery-controls overlay
+- [x] Publish the one bounded six-path U423 receipt/recovery-controls overlay
       from source commit `65b5a7950d1e6d89918603548b1663122f57cdf5` using
       `publication/live-2026.08.29-u423/publish_github_u423_controls.py`. The
       frozen receipt snapshot is
       `publication/live-2026.08.29-u423/GITHUB_MAIN_U423_RECEIPT.md`, 3929
       bytes, SHA-256
       `6f790530f396e97128c2f2de9fd85f45557db76cb4727e153feeec372725e1db`;
-      `LEBL-ID-DEC-0197` must be the decision-log tail. After overlay readback,
-      record its commit/tree/inventory in the local receipt and controls and
-      carry those finalized local bytes with the next substantive checkpoint;
-      do not create a third pointer-only commit.
+      `LEBL-ID-DEC-0197` was the decision-log tail. The overlay is public at
+      commit `d3cd90ffd11d1b9c193768b041b4ee947d318d0b`, tree
+      `4f1815a4c11e0cc2827679c09872f085fac3fc87`, with the U423 source commit
+      as sole parent. All six paths / 530792 bytes pass authenticated,
+      anonymous, and independent readback; the 827-byte canonical inventory
+      has SHA-256
+      `78bd2c8cbaa9411a0aca85bc937563947a7c8562b1e92072def595c4c457beb6`,
+      and the recursive tree has 1664 entries with `truncated=false`. The
+      finalized local receipt is 5292 bytes, SHA-256
+      `da71a50f4ff6a200dab24fc201b687164c99fc884b0a82a795a823430241a324`;
+      carry it with the next substantive checkpoint and do not create a third
+      pointer-only commit.
 - [x] Set `CURRENT_CURSOR.json` next action to source raw lines 5387–5394 /
       target raw lines 5401–5408 (Parseval inverse-square-sum exercise).
 
 Recovery rule: read this section, `CURRENT_CURSOR.json`, `CURRENT_STATE.json`,
 `PUBLICATION_STATE.json`, the two U423 QA receipts, and both U423 publisher
-wrappers. The U423 source transaction is complete and public; only its bounded
-six-path controls overlay remains. No author contact or upstream issue is
-allowed before all three assigned books are complete.
+wrappers. The U423 source and controls transactions are complete, public, and
+independently verified. Resume the Parseval inverse-square-sum exercise at the
+recorded source/target lines. No author contact or upstream issue is allowed
+before all three assigned books are complete.
+
+## U424 recovery checkpoint (2026-08-29)
+
+- [x] R006 contiguous unit admitted:
+      `ra.v2.fourier-series.exercises.parseval-inverse-square-sum`, source raw
+      lines 5387–5394 (229 bytes, SHA-256
+      `432d8ce695cfacd212eb6af3f8d81dd32a2eef7b51b1fb476f1659dd1012f314`),
+      target raw lines 5401–5408 (256 bytes, SHA-256
+      `2b9a298bc2c7f9c28df47872b7f7b106fb3450545af8dca5e7477b1a4eebe0c7`).
+      Full target is 198093 bytes, SHA-256
+      `955e4fd2b360096266939f1b6ada5a493eb6c30af6ffba894086d8d4c518c55b`.
+      Independent language/mathematical/topology/O001 review passed. Receipt:
+      `qa/R006_PARSEVAL_INVERSE_SQUARE_SUM_EXERCISE_U424_20260829.md` (6694
+      bytes, SHA-256
+      `4b6af69aea832633800cef236c7512b5aab196fbb95e3bd884e90d6548a62834`).
+- [x] U424 backend A/B replay passed: 27 files / 17971333 bytes per tree,
+      canonical ordinal-POSIX inventory 3292 bytes, SHA-256
+      `fa1c2d90fdafed7e5042e027d95d7d1cb104e7ecf3c9d74b744ca559516de63a`,
+      3997 records / 848 expressions / 797 logical terms / 424 manifest
+      bindings / 362 direct checks / 15 lossless CSV round trips. Receipt:
+      `qa/BACKEND_V0_4_LIVE_U424_20260829.md` (4263 bytes, SHA-256
+      `580dfe415274a5cef9518377a97a01f7173f912fe9fe20f3a660029f16ecc77b`).
+- [x] Isolated fixed-epoch reader build at `tmp/r006-u424-build-20260829`
+      passed converter, index/glossary, `pdflatex` 1–9 plus independent pass
+      10, byte stability, links, outlines, fonts, text extraction, and visual
+      pages 230–233. PDF: 241 pages / 2427693 bytes, SHA-256
+      `e6bb4b925793e0fc27cd3b69b01c126712ebf40d5e4e1bed64dbdd392e90fe8e`.
+      Page 232 contains complete Indonesian U424 and begins the untouched next
+      English exercise at the exact boundary. This is not a reader release.
+- [ ] Publish one non-forced 42-path U424 source/backend checkpoint from public
+      U423 controls commit `d3cd90ffd11d1b9c193768b041b4ee947d318d0b`, carrying the finalized local
+      U423 receipt; anonymously and independently read back all bytes; then
+      publish one bounded six-path U424 receipt/recovery-controls overlay. Do
+      not alter the U397 release or Zenodo record and do not create a third
+      pointer-only commit.
+- [x] Set the next translation boundary to source raw lines 5396–5405 / target
+      raw lines 5410–5419, the one-sided absolutely summable series / analytic
+      closed-unit-disc extension exercise. Preserve its explicit hint at
+      source raw line 5404 and map the missing solution to O001.
+
+Recovery rule: read this U424 section, `CURRENT_CURSOR.json`,
+`CURRENT_STATE.json`, `PUBLICATION_STATE.json`, the two U424 QA receipts, and
+the eventual U424 publisher wrappers. Public preservation remains U423 source
+plus controls until U424 publication completes. No author contact or upstream
+issue is allowed before all three assigned books are complete.

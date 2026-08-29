@@ -77,3 +77,27 @@ locally and carried with the next substantive checkpoint, avoiding a
 pointer-only loop. Until that overlay completes, this receipt is a local
 post-source-transaction record; the source commit itself is already public.
 
+## Receipt and recovery-controls overlay
+
+The bounded follow-up transaction advanced `main` non-forcibly from the U423
+source/backend commit to controls commit
+`d3cd90ffd11d1b9c193768b041b4ee947d318d0b`, tree
+`4f1815a4c11e0cc2827679c09872f085fac3fc87`. Its sole parent is
+`65b5a7950d1e6d89918603548b1663122f57cdf5`.
+
+The overlay preserved exactly six regular paths / 530,792 bytes: the public
+3,929-byte receipt snapshot, `CURRENT_CURSOR.json`, `CURRENT_STATE.json`,
+`PUBLICATION_STATE.json`, `TASK_AND_RECOVERY.md`, and `DECISION_LOG.jsonl`.
+Authenticated immutable-blob and anonymous immutable-commit readback matched
+all six frozen byte strings. The canonical compact inventory is 827 bytes,
+SHA-256
+`78bd2c8cbaa9411a0aca85bc937563947a7c8562b1e92072def595c4c457beb6`.
+Authenticated `main`, commit-tree, and sole-parent checks also passed. An
+independent second audit repeated all six blob and anonymous-byte comparisons,
+confirmed the untruncated 1,664-entry tree, and reconfirmed the immutable U423
+source commit and all nine U397 GitHub and Zenodo assets unchanged.
+
+This local receipt now records the overlay pointer. Its final-byte identity is
+carried with the next substantive source/backend checkpoint rather than by a
+third pointer-only commit. The U397 GitHub release, release assets, tag, Zenodo
+record, DOI, and public-access state remain unchanged.
