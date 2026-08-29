@@ -2,7 +2,7 @@
 
 Updated: 2026-08-29
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U421 includes the Cauchy--Bunyakovsky--Schwarz exercise with clean byte-stable integration build, visual QA, deterministic A/B backend proof, and O001 gap 0026 with an exact contextual preceding-proof hint binding and is public on GitHub main after exact authenticated and anonymous 42-path readback; its bounded receipt-and-controls overlay is pending; U397 remains publicly preserved and independently reverified unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local U422 includes the labeled L2 triangle-inequality exercise with fixed-epoch byte-stable clean integration build, visual QA, deterministic A/B backend proof, and O001 gap 0027 with neither source hint nor solution; public GitHub main remains the independently verified U421 source-and-controls checkpoint pending bounded U422 preservation; U397 remains publicly preserved and independently reverified unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-29
 
@@ -19,22 +19,27 @@ in this historical log. The machine-readable authorities are
   the source's undefined zero-frequency antiderivative quotient. The public
   U397 target is 194.506 bytes, SHA-256
   `3de28aaac5ce08b69e97060ea01fe7f1d0e7b9d1c024e2fad49e9ece3893b839`.
-- Live boundary: U421, manifest 421 (R006 336, R007 35, R008 50), 655.160
+- Live boundary: U422, manifest 422 (R006 337, R007 35, R008 50), 657.135
   bytes, SHA-256
-  `7e8dd0ceea45068e93d4e527264bfb01374d9aef83fd76954eb8d31bd096c739`.
-  U421 adds the complete labeled Cauchy--Bunyakovsky--Schwarz exercise through
-  source raw line 5348 / target raw line 5362. Its display, 17 ordered TeX
-  commands, four environment events, label, and braces are exact. No source
-  correction or new term is needed. O001 gap LEBL-O001-R006-0026 binds the
-  explicit contextual hint in the preceding Parseval proof but records no
-  source solution. The full live target is 197.923 bytes, SHA-256
-  `cebfa8f8e595391551175380f82cb3d63bc7e430c39b5201d5ac4b3c6706df88`.
-- Backend U421 A/B is byte-identical: 27 files / 17.845.762 bytes, 3.983
-  records, 842 embedded expressions, 796 current logical terms, 268
-  corrections, 33 assets, 648 relations, and 26 O001 gaps. All 421 live unit
-  bindings and 356 direct component checks pass, generic validation passes,
-  and all 15 CSV views round-trip losslessly. Canonical inventory SHA-256 is
-  `79464099c69827526036f7a28349afa3e7fac9517531d501dd21c9eab3babecd`.
+  `c0265e1b312b35023764de041f2b122f8b1bb57e0b4ea52099a48535754b2a3b`.
+  U422 adds the complete labeled `L^2` triangle-inequality exercise through
+  source raw line 5356 / target raw line 5370. Its display, 11 ordered TeX
+  commands, four environment events, label, eight brace pairs, and four dollar
+  delimiters are exact. No source correction or new term is needed. O001 gap
+  LEBL-O001-R006-0027 records neither source hint nor solution. The full live
+  target is 197.967 bytes, SHA-256
+  `30a7ef6c6675cae45949b3de4e325d0934289238e6789ebcc3c99be431059f2d`.
+  Fixed-epoch integration passes 20–21 are byte-identical at 241 pages /
+  2.427.736 bytes, SHA-256
+  `a45a0e4e7b4cf7fad3c6cc9a7c112eb486ef8a5391567cb4a7239a8bd75436ef`;
+  pages 230–231 pass visual inspection.
+- Backend U422 A/B is byte-identical: 27 files / 17.886.457 bytes, 3.987
+  records, 844 embedded expressions, 796 current logical terms, 268
+  corrections, 33 assets, 648 relations, and 27 O001 gaps. All 422 live unit
+  bindings and 358 direct component checks pass, generic validation passes,
+  and all 15 CSV views round-trip losslessly. The platform-neutral canonical
+  inventory uses ordinal POSIX-relative-path ordering; its SHA-256 is
+  `312fb8f903cb19492d2dd6194c09fc69c49e9fd265e39c18d52c9b2a3368ecbf`.
   The live builder is 78.347 bytes, SHA-256
   `77522ade28f62fc94110dc870917f91a21b0720905a9b73a51f328e0aa159bbb`,
   and now validates optional contextual source/target hint selectors and
@@ -54,8 +59,17 @@ in this historical log. The machine-readable authorities are
   the finalized local U420 receipt plus the exact live builder. Authenticated
   branch, parent, tree, and non-truncated 1.592-entry recursive-tree checks
   passed, and an independent second raw-public audit matched all 42 paths.
-  Preserve the receipt and current recovery controls next in one bounded
-  six-file overlay. No release, tag, or Zenodo object changed.
+  The bounded follow-up controls commit is
+  `e76a90911c7966f7fdd12987359e73cc0929526b`, tree
+  `36305f5028b9622460352313d5f85835ad80e887`, with the source commit as its
+  sole parent. Authenticated and anonymous immutable readback matched all six
+  paths / 509.287 bytes; the 827-byte canonical inventory has SHA-256
+  `c47873b61f3d60a17744b7163c354f4eb7c857de74b6024fd185139641024126`,
+  and an independent second audit passed. The finalized local receipt is 4.750
+  bytes, SHA-256
+  `df7ed30eee2d3d585a12af4e3f9637baa369e74de67bfb37f9ee7b3adceabc64`,
+  and must be carried by the next substantive checkpoint. No release, tag, or
+  Zenodo object changed.
 - Centered U397 reader PASS: 226 pages / 2.292.242 bytes, SHA-256
   `40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d`.
   The final nine-pass build has zero TeX/reference failures and zero visible
@@ -81,12 +95,10 @@ in this historical log. The machine-readable authorities are
   (tree `4d845894ee625231d4c2357cc3f567ff15a87009`) also passed anonymous
   readback for all seven files / 409.835 bytes. Neither commit changed the U397
   release tag or Zenodo record.
-- First preserve the admitted U421 source/backend checkpoint non-forcibly on
-  GitHub main from verified U420 controls commit
-  `9c716e970ad1f4a2c62d9c3e8409ed5a4b8e5c30`, with exact authenticated and
-  anonymous byte readback and a bounded controls overlay. Then resume only R006
-  with the labeled `L^2` triangle-inequality exercise at frozen source raw lines
-  5350–5356 / live target raw lines 5364–5370. Do not change the U397 release.
+- Preserve U422 non-forcibly on GitHub main from the verified U421 controls
+  commit, carrying the finalized U421 receipt, then resume only R006 with the
+  complete unlabeled decaying-sine-series and forced-ODE exercise at source raw
+  lines 5358–5385 / target raw lines 5372–5399. Do not change the U397 release.
   R007 remains at
   `ch-first-order-ode.tex` raw line 89; R008 remains at `ca.tex` raw line 1648.
   HP-LEBL-R007-001 is owner-accepted only for complete

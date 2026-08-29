@@ -17,7 +17,7 @@ OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna. Jiří Lebl tetap
 merupakan penulis karya sumber; semua kredit sumber dan kontributor manusia
 dipertahankan. Edisi ini independen dan tidak menyiratkan dukungan penulis.
 
-## Status pembaca publik U397, sumber publik U420, dan sumber lokal U421
+## Status pembaca publik U397, sumber publik U421, dan sumber lokal U422
 
 Ini masih *work in progress*, bukan klaim bahwa ketiga buku sudah selesai.
 
@@ -38,16 +38,17 @@ sumber yang tercatat, serta 21 pemetaan kekosongan solusi O001. Lima belas
 proyeksi CSV berputar balik tepat ke seluruh rekaman, dan dua build independen
 identik pada path, ukuran, dan SHA-256.
 
-Checkpoint lokal U421 memuat 421 unit (R006 336, R007 35, R008 50) dan
-menambahkan latihan ketaksamaan Cauchy--Bunyakovsky--Schwarz. Label, tampilan
-rumus, 17 perintah TeX berurutan, dan seluruh struktur dipertahankan tepat;
-sumber tidak memerlukan koreksi. Kekosongan solusi O001 mengikat petunjuk
-kontekstual yang benar-benar terdapat dalam bukti Parseval sebelumnya, tanpa
-menciptakan jawaban, bukti, atau solusi. Backend U421 memuat 3.983 rekaman dan
-842 ekspresi tertanam; dua build 27 berkas identik byte demi byte dan seluruh
-15 proyeksi CSV lulus putar balik. GitHub main masih terverifikasi pada U420
-sampai transaksi U421 selesai. PDF pembaca publik tetap U397; rilis maupun DOI
-U397 tidak diubah oleh checkpoint sumber ini.
+Checkpoint lokal U422 memuat 422 unit (R006 337, R007 35, R008 50) dan
+menambahkan latihan ketaksamaan segitiga norma $L^2$. Label, tampilan rumus,
+11 perintah TeX berurutan, dan seluruh struktur dipertahankan tepat; sumber
+tidak memerlukan koreksi. Kekosongan solusi O001 mencatat secara eksplisit
+bahwa sumber tidak menyediakan petunjuk ataupun solusi, tanpa menciptakan
+jawaban, bukti, atau dukungan. Backend U422 memuat 3.987 rekaman dan 844
+ekspresi tertanam; dua build 27 berkas identik byte demi byte dan seluruh 15
+proyeksi CSV lulus putar balik. GitHub main memuat checkpoint sumber/backend
+U421 beserta kontrol pemulihannya, yang sudah dibaca kembali secara anonim dan
+independen. PDF pembaca publik tetap U397; rilis maupun DOI U397 tidak diubah
+oleh checkpoint sumber ini.
 
 ## Pembaca utama
 

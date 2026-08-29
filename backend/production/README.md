@@ -1,6 +1,32 @@
 # Production backend checkpoints
 
-## Current production checkpoint U421
+## Current production checkpoint U422
+
+`v0.4-live-2026.08.29-u422-a/` is the authoritative production checkpoint. It
+binds the 422-row translation manifest, 796-row live terminology ledger,
+268-event adverse ledger, and 27-entry O001 solution-gap ledger.
+
+- 3,987 canonical records, 422 manifest segments, 461 units, 784 concepts,
+  844 embedded expressions, and exactly 796 current logical terms;
+- 27 O001 exercise gaps, twelve source hints, fifteen no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 17,886,457 bytes;
+- `records.jsonl` SHA-256
+  `04d935e68cf14ac785fbe43c5d7f129aeff791ba4a00ce5e869695b9f5fd4ce5`;
+- canonical inventory SHA-256
+  `312fb8f903cb19492d2dd6194c09fc69c49e9fd265e39c18d52c9b2a3368ecbf`
+  using ordinal POSIX-relative-path ordering.
+
+All schemas, referential checks, all 422 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u422-b` produced the
+identical path/byte/hash inventory. Relative to U421, U422 adds exactly one
+manifest unit, one segment with two title expressions, one QA event, and one
+O001 exercise unit while removing nothing; only the manifest-artifact record
+is refreshed. It admits the labeled `L^2` triangle-inequality exercise with no
+source hint or solution and has not replaced the U397 reader release.
+
+## Preserved production checkpoint U421
 
 `v0.4-live-2026.08.29-u421-a/` is the authoritative production checkpoint. It
 binds the 421-row translation manifest, 796-row live terminology ledger,
