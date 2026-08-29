@@ -17,7 +17,7 @@ OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna. Jiří Lebl tetap
 merupakan penulis karya sumber; semua kredit sumber dan kontributor manusia
 dipertahankan. Edisi ini independen dan tidak menyiratkan dukungan penulis.
 
-## Status pembaca publik U397, sumber publik U421, dan sumber lokal U422
+## Status pembaca publik U397 dan sumber publik U422
 
 Ini masih *work in progress*, bukan klaim bahwa ketiga buku sudah selesai.
 
@@ -38,17 +38,19 @@ sumber yang tercatat, serta 21 pemetaan kekosongan solusi O001. Lima belas
 proyeksi CSV berputar balik tepat ke seluruh rekaman, dan dua build independen
 identik pada path, ukuran, dan SHA-256.
 
-Checkpoint lokal U422 memuat 422 unit (R006 337, R007 35, R008 50) dan
+Checkpoint sumber/backend publik U422 memuat 422 unit (R006 337, R007 35,
+R008 50) dan
 menambahkan latihan ketaksamaan segitiga norma $L^2$. Label, tampilan rumus,
 11 perintah TeX berurutan, dan seluruh struktur dipertahankan tepat; sumber
 tidak memerlukan koreksi. Kekosongan solusi O001 mencatat secara eksplisit
 bahwa sumber tidak menyediakan petunjuk ataupun solusi, tanpa menciptakan
 jawaban, bukti, atau dukungan. Backend U422 memuat 3.987 rekaman dan 844
 ekspresi tertanam; dua build 27 berkas identik byte demi byte dan seluruh 15
-proyeksi CSV lulus putar balik. GitHub main memuat checkpoint sumber/backend
-U421 beserta kontrol pemulihannya, yang sudah dibaca kembali secara anonim dan
-independen. PDF pembaca publik tetap U397; rilis maupun DOI U397 tidak diubah
-oleh checkpoint sumber ini.
+proyeksi CSV lulus putar balik. Commit sumber U422 sudah dibaca kembali byte
+demi byte secara anonim dan independen untuk seluruh 42 berkas; overlay enam
+berkas yang menyimpan tanda terima dan kontrol pemulihan juga sudah dipublikasi
+dan diverifikasi secara independen. PDF pembaca publik tetap U397; rilis maupun
+DOI U397 tidak diubah oleh checkpoint sumber ini.
 
 ## Pembaca utama
 
@@ -75,3 +77,20 @@ isu upstream baru yang dibuka.
 Untuk batas isi, reproduksi build, dan hash checkpoint publik, lihat
 [`RELEASE_NOTES.md`](RELEASE_NOTES.md) dan
 [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md).
+
+## Checkpoint lokal U423 (siap dipublikasi)
+
+Unit berikutnya yang sudah selesai adalah latihan tanpa label tentang deret
+sinus dengan koefisien meluruh dan persamaan diferensial paksa (sumber raw
+5358–5385; target raw 5372–5399). Terjemahan Bahasa Indonesia, struktur TeX,
+matematika, dan pemetaan O001 `LEBL-O001-R006-0028` (tanpa petunjuk maupun
+solusi sumber) telah diaudit. Manifes lokal memiliki 423 unit (R006 338,
+R007 35, R008 50). Backend v0.4-live U423 berisi 3.993 rekaman dalam dua
+build 27-berkas yang identik (17.931.910 byte; inventaris POSIX SHA-256
+`1436fbd7a7b6c351d8d333713d6505310e0378330dfe7a95bf99c625c8f3c91e`), dan
+lima belas tampilan CSV lulus putar balik. Build pembaca lengkap lokal pada
+epoch tetap 1787961600 menghasilkan 241 halaman / 2.427.666 byte dengan SHA-256
+`fd0830a19e94eaed0b53106adac197bec3665daf3e7a0b408a4018ac155ea504`; halaman
+230–233 terpusat dan terbaca. U422 adalah sumber publik saat ini; satu
+transaksi non-forced U423 yang membawa kontrol dan tanda terima U422 akan
+dipublikasi berikutnya. Rilis pembaca U397 dan Zenodo DOI tetap tidak berubah.

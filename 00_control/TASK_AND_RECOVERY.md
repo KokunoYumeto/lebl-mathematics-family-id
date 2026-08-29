@@ -2,7 +2,7 @@
 
 Updated: 2026-08-29
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U422 includes the labeled L2 triangle-inequality exercise with fixed-epoch byte-stable clean integration build, visual QA, deterministic A/B backend proof, and O001 gap 0027 with neither source hint nor solution; its 42-path GitHub source/backend commit is public and independently byte-verified, with the six-path receipt/recovery-controls overlay pending; U397 remains publicly preserved and independently reverified unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U422 includes the labeled L2 triangle-inequality exercise with fixed-epoch byte-stable clean integration build, visual QA, deterministic A/B backend proof, and O001 gap 0027 with neither source hint nor solution; its 42-path GitHub source/backend commit and six-path receipt/recovery-controls overlay are public and independently byte-verified; U397 remains publicly preserved and independently reverified unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-29
 
@@ -56,10 +56,18 @@ in this historical log. The machine-readable authorities are
   `publication/live-2026.08.29-u422/GITHUB_MAIN_U422_RECEIPT.md`, 3.779 bytes,
   SHA-256
   `3cfab748096faf41f9c7d04e7f29973c90550b57a8297bff2ea65abd1f1111dc`.
-  The bounded six-path receipt/recovery-controls overlay is pending from this
-  exact source commit. No release, tag, or Zenodo object changed; an independent
-  preservation audit reconfirmed all nine U397 release assets / 12.439.062
-  bytes.
+  The bounded follow-up controls commit is
+  `219d65a5d81a07c86509421df147c8875939bb2f`, tree
+  `8250513929d898d38523b2ff30a8103e980ab00c`, with the source commit as its
+  sole parent. Authenticated and anonymous immutable readback matched all six
+  paths / 517.185 bytes; the 827-byte canonical inventory has SHA-256
+  `026a6f0b6c74f056a9627e8a49fab8694e86cdcbbbf6e016967e820c037a6754`,
+  and an independent second audit passed. The finalized local receipt is 5.133
+  bytes, SHA-256
+  `dc111dc126653ffc60b1086aa05e02d318573efc95444f3c7618c74a3c8cfa4e`,
+  and must be carried by the next substantive checkpoint. No release, tag, or
+  Zenodo object changed; an independent preservation audit reconfirmed all nine
+  U397 release assets / 12.439.062 bytes.
 - Centered U397 reader PASS: 226 pages / 2.292.242 bytes, SHA-256
   `40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d`.
   The final nine-pass build has zero TeX/reference failures and zero visible
@@ -85,11 +93,10 @@ in this historical log. The machine-readable authorities are
   (tree `4d845894ee625231d4c2357cc3f567ff15a87009`) also passed anonymous
   readback for all seven files / 409.835 bytes. Neither commit changed the U397
   release tag or Zenodo record.
-- Preserve the six-path U422 receipt/recovery-controls overlay non-forcibly
-  from source commit `390716d4701fa450e65e93c7ab9c7dc6c7752e6b`, then resume
-  only R006 with the complete unlabeled decaying-sine-series and forced-ODE
-  exercise at source raw lines 5358–5385 / target raw lines 5372–5399. Do not
-  change the U397 release.
+- Resume only R006 with the complete unlabeled decaying-sine-series and
+  forced-ODE exercise at source raw lines 5358–5385 / target raw lines
+  5372–5399. Preserve the verified U422 source and controls checkpoints and do
+  not change the U397 release.
   R007 remains at
   `ch-first-order-ode.tex` raw line 89; R008 remains at `ca.tex` raw line 1648.
   HP-LEBL-R007-001 is owner-accepted only for complete
@@ -1001,3 +1008,43 @@ count and SHA-256. Zenodo's IIIF thumbnail selects the corrected 188-page R006
       redundant confirmation.
 - [ ] After all three books, deduplicate and disposition at most one upstream
       issue.
+
+## U423 recovery checkpoint (2026-08-29)
+
+- [x] R006 contiguous unit admitted: `ra.v2.fourier-series.exercises.decaying-sine-series-forced-ode`, source raw lines 5358–5385 (774 bytes, SHA-256
+      `9d34b8d673c7983231eca78947006519e71b5bdfb65a1f37672dcc5c0e602ded`),
+      target raw lines 5372–5399 (873 bytes, SHA-256
+      `fe3e35c58f96b3e14c29e23a820479792e524545e581e01aac11989820af2934`).
+      Full target is 198066 bytes, SHA-256
+      `434495045cbfd83b0d0b0ff265339d94710b7a8eea592f9f010b743108a5bab4`.
+      Receipt: `qa/R006_DECAYING_SINE_FORCED_ODE_EXERCISE_U423_20260829.md`
+      (5723 bytes, SHA-256
+      `92765f81daa1fcbcaf09f4f93bc72024f6428951e88e98a2c7766c6f54f75da8`).
+- [x] U423 backend A/B replay passed: 27 files and 17931910 bytes per tree,
+      canonical ordinal-POSIX inventory 3292 bytes, SHA-256
+      `1436fbd7a7b6c351d8d333713d6505310e0378330dfe7a95bf99c625c8f3c91e`,
+      3993 records / 846 expressions / 797 logical terms / 423 manifest
+      bindings / 360 direct checks / 15 lossless CSV round trips. Receipt:
+      `qa/BACKEND_V0_4_LIVE_U423_20260829.md` (3871 bytes, SHA-256
+      `099fb1ca2ca4e58c45f34301ce2a3c90da949670ca38075da8e1b07ec53790e8`).
+- [x] Isolated complete-volume reader build passed at
+      `tmp/r006-u423-build-20260829` with `SOURCE_DATE_EPOCH=1787961600` and
+      `TZ=UTC`: converter and pdflatex/index/glossary passes 1–10 exit 0,
+      241 pages / 2427666 bytes, PDF SHA-256
+      `fd0830a19e94eaed0b53106adac197bec3665daf3e7a0b408a4018ac155ea504`;
+      auxiliary products stable across passes 9–10 and pages 230–233 visually
+      pass. This is a non-release build; public reader U397 is retained.
+- [ ] Publish one non-forced 42-path U423 source/backend checkpoint from public
+      U422 controls commit `219d65a5d81a07c86509421df147c8875939bb2f` using
+      `publication/live-2026.08.29-u423/publish_github_main_u423.py`; then
+      perform anonymous immutable-byte readback and a six-path controls overlay.
+      Do not alter the U397 release or Zenodo record. After publication, set
+      `CURRENT_CURSOR.json` next action to source raw lines 5387–5394 / target
+      raw lines 5401–5408 (Parseval inverse-square-sum exercise), and preserve
+      all resulting commit/tree/receipt hashes here.
+
+Recovery rule: read this section, `CURRENT_CURSOR.json`, `CURRENT_STATE.json`,
+`PUBLICATION_STATE.json`, the two U423 QA receipts, and the U423 publisher
+wrapper. The public source/controls base is U422 until the source transaction
+completes; no author contact or upstream issue is allowed before all three
+assigned books are complete.
