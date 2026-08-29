@@ -1,5 +1,33 @@
 # Production backend checkpoints
 
+## Current production checkpoint U426
+
+`v0.4-live-2026.08.29-u426-a/` is the authoritative local production
+checkpoint for the next publication transaction. It binds the 426-row
+translation manifest, 797-row live terminology ledger, 268-event adverse
+ledger, and 31-entry O001 solution-gap ledger.
+
+- 4,007 canonical records, 426 manifest segments, 470 units, 785 concepts,
+  850 embedded expressions, and exactly 797 current logical terms;
+- 31 O001 exercise gaps, thirteen source hints, eighteen no-hint states, and
+  no invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 18,066,968 bytes;
+- `records.jsonl` SHA-256
+  `38ec4f57d5faa23932548dfdae8e27c1f87a6ac7250296f9342b85d94d9cb32f`;
+- canonical inventory SHA-256
+  `19a50c7e70392608126019e0d75309cd8fd46652cf3dbd7b230bce02a9d296e2`
+  using ordinal POSIX-relative-path ordering.
+
+Both fresh builds (`-u426-a` and `-u426-b`) are byte-identical across all 27
+files and pass schema, referential-integrity, 426 manifest-binding, 366 direct
+component, 15-view round-trip, and 509 legacy-locator checks. Relative to
+U425, U426 adds one translation unit, one bilingual title segment, one QA
+event, and one O001 exercise unit while removing nothing; only the manifest
+artifact record is refreshed. It admits the exponentially decaying sine-series
+smoothness exercise, preserves the source's absence of a hint and solution,
+and does not replace the U397 reader release.
+
 ## Current production checkpoint U425
 
 `v0.4-live-2026.08.29-u425-a/` is the authoritative production checkpoint. It

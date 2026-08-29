@@ -17,7 +17,28 @@ OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna. Jiří Lebl tetap
 merupakan penulis karya sumber; semua kredit sumber dan kontributor manusia
 dipertahankan. Edisi ini independen dan tidak menyiratkan dukungan penulis.
 
-## Status pembaca publik U397 dan sumber publik U422
+## Checkpoint lokal U426 dan batas publik U425
+
+Checkpoint lokal terbaru memuat 426 unit (R006 341, R007 35, R008 50) sampai
+latihan deret sinus dengan peluruhan eksponensial dan diferensiabilitas tak
+hingga. Dua build backend U426 identik pada 27 berkas / 18.066.968 byte,
+dengan 4.007 rekaman, 850 ekspresi, 797 istilah logis, dan 31 pemetaan O001;
+inventaris POSIX SHA-256-nya
+`19a50c7e70392608126019e0d75309cd8fd46652cf3dbd7b230bce02a9d296e2`.
+Build pembaca integrasi epoch-tetap menghasilkan 241 halaman / 2.427.800
+byte, SHA-256
+`9e7f88e73350124a50479b5e1eaea0fc1beb0f183be1417f79488abb841abc91`;
+halaman 230–233 lulus inspeksi visual, dan halaman 232 memuat U426 lengkap
+sebelum batas Inggris berikutnya. U426 siap untuk transaksi sumber GitHub
+berikutnya; rilis pembaca dan DOI Zenodo U397 tetap tidak berubah.
+
+Checkpoint sumber/backend publik terakhir adalah U425: commit sumber
+`7ffd500b2bd48c7bac13664f86e0eb04498cae97` dan overlay kontrol
+`23835b0329a6397d74889aaf62fc993d02945e0e`, keduanya telah dibaca kembali
+secara anonim dan independen. Tanda terima U425 final 5.447 byte dibawa ke
+checkpoint U426.
+
+## Status historis pembaca publik U397 dan sumber publik U422
 
 Ini masih *work in progress*, bukan klaim bahwa ketiga buku sudah selesai.
 
@@ -119,7 +140,7 @@ publik pada commit `c7951cc776924ebad27d544e4208d749a941b5de` dan telah
 diverifikasi ulang secara anonim dan independen. Rilis pembaca U397 serta DOI
 Zenodo tidak berubah.
 
-## Checkpoint lokal U425
+## Checkpoint sumber/backend publik U425
 
 Latihan berikutnya tentang deret satu sisi yang dapat dijumlahkan mutlak dan
 perluasan analitik ke cakram satuan sudah diterjemahkan lengkap, termasuk
@@ -132,6 +153,10 @@ Build pembaca integrasi epoch-tetap menghasilkan 241 halaman / 2.427.763 byte,
 SHA-256
 `2166d72eaedfb0bece00d2df99902694c39a0151eb2e8243f568e68587623ba7`;
 halaman 232 memuat U425 lengkap dalam Bahasa Indonesia lalu menunjukkan batas
-latihan Inggris berikutnya. Seluruh gerbang lokal U425 lulus; transaksi
-sumber/backend U425 dan overlay kontrolnya adalah langkah publikasi berikutnya.
-Rilis pembaca dan DOI tetap U397.
+latihan Inggris berikutnya. Seluruh gerbang U425 lulus. Checkpoint
+sumber/backend U425 sudah publik pada commit
+`7ffd500b2bd48c7bac13664f86e0eb04498cae97`; seluruh 42 berkas / 19.941.579
+byte dibaca kembali secara anonim dan diaudit ulang secara independen. Overlay
+enam berkas kontrol pemulihan juga sudah publik pada commit
+`23835b0329a6397d74889aaf62fc993d02945e0e` dan telah diverifikasi ulang secara
+anonim serta independen. Rilis pembaca dan DOI tetap U397.
