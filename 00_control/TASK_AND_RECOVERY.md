@@ -2,13 +2,70 @@
 
 Updated: 2026-08-29
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U426 includes the exponentially decaying sine-series smoothness exercise, fixed-epoch byte-stable integration build, visual QA, deterministic A/B backend proof, and O001 gap 0031; its bounded 42-path source/backend checkpoint is public and byte-verified while the six-path receipt/recovery-controls overlay is pending; the U397 reader remains public and unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local U427 includes the integral-representation Fourier-coefficient inverse-linear-decay exercise, fixed-epoch byte-stable integration build, visual QA, deterministic A/B backend proof, and O001 gap 0032; public U426 source/backend and controls overlay are independently byte-verified; the U397 reader remains public and unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
 
-## Current authoritative recovery snapshot — 2026-08-29 U426
+## Current authoritative recovery snapshot — 2026-08-29 U427
 
 This block supersedes every older progress count or publication pointer later
 in this historical log. The machine-readable authorities are
 `CURRENT_STATE.json`, `CURRENT_CURSOR.json`, and `PUBLICATION_STATE.json`.
+
+- Local boundary: U427, manifest 427 (R006 342, R007 35, R008 50), 666,844
+  bytes, SHA-256
+  `b405f3978aaffaebc0a2344cfdae032a02199daa70c1d54204354e99b63771f2`.
+  U427 is the complete integral-representation Fourier-coefficient
+  inverse-linear-decay exercise at source raw lines 5415–5426 / target raw
+  lines 5429–5440, stable ID
+  `ra.v2.fourier-series.exercises.integral-representation-fourier-coefficient-inverse-linear-decay`.
+  Its exact target block is 464 bytes, SHA-256
+  `25e7b22f29911161b05f50d2f5d6436e38ab3d683323bf08e421217b9bae3d68`;
+  the complete target file is 198,209 bytes, SHA-256
+  `39bf28512e7f98a00b2cbdbc4fb7824794168c7ceca041052a469d36958d407e`.
+  No source hint or solution exists; neither is invented, and O001 gap
+  `LEBL-O001-R006-0032` records that state.
+- Backend U427 A/B is byte-identical: 27 files / 18,108,960 bytes, 4,011
+  records, 854 embedded expressions, 427 manifest bindings, 368 direct checks,
+  and 15 lossless CSV round trips. Its 3,292-byte canonical ordinal-POSIX
+  inventory has SHA-256
+  `48132a45901e66eb0216d2df08b5e2ea03d3e6897a48a865dd2446238c6386a1`.
+  Receipt: `qa/BACKEND_V0_4_LIVE_U427_20260829.md`, 2,820 bytes, SHA-256
+  `8dcd2deba2c64f1bbb9db6014f847c66b9b1f86242b79564338b816b6367f7d0`.
+- The U427 fixed-epoch integration build passes at 241 pages / 2,427,815
+  bytes, PDF SHA-256
+  `3161b210f7654b1ae6abb7b9c2c8387ebdf9af2e6a4164eef9029aa0236864a2`.
+  Its final two passes are byte-identical across the PDF and seven auxiliaries;
+  text, links, outline, all 98 embedded font rows, and rendered pages 231–233
+  pass. Page 232 contains complete Indonesian U427 followed by the exact
+  untouched English U428 boundary. Unit receipt:
+  `qa/R006_FOURIER_COEFFICIENT_INVERSE_LINEAR_DECAY_EXERCISE_U427_20260829.md`,
+  4,553 bytes, SHA-256
+  `af0c5ae5151f21aec6920170cdbdf0a6ec5182552fc75b76aed92e31d32e89db`.
+- Verified public source boundary: U426 source commit
+  `e084868c37179d8cc08f4105103c7d93faae912b`, tree
+  `c3b72c4478c9c3f7f652fd9164ecddfad1f5ca8b`, followed by controls commit
+  `b3902ea81953493873c8c5cf7ecf4617c0e2c136`, tree
+  `24b463229a6a5025927b09217bc0e9f40d45dc6a`. The exact 42-path source payload
+  is 19,993,559 bytes with 6,604-byte inventory SHA-256
+  `1e21ec85b89e294901bdba2dfec2d66bd5c4638beed83df4881117b50d185806`;
+  the exact six-path controls payload is 569,833 bytes with 827-byte inventory
+  SHA-256
+  `2e5ec161c2c72b32083e6ac88158770ebc4e35ce0c77db7d430ee77303835268`.
+  Both immutable commits passed authenticated, anonymous, and independent byte
+  readback. The finalized local U426 receipt is 5,857 bytes, SHA-256
+  `51f991700d5c2167dcede970db4078fe58bed297c37154f890c9ceb76f0970df`.
+- The public reader remains U397 on GitHub and Zenodo record 22105195; all nine
+  files / 12,439,062 bytes remain public and unchanged. U427 is a source/backend
+  checkpoint and does not alter that reader release.
+- Next executable action: publish the bounded U427 source/backend checkpoint
+  from verified U426 controls head `b3902ea…`, anonymously read back every
+  exact payload byte, then publish its bounded receipt/recovery-controls overlay.
+  Continue with the complete two-part R006 exercise at source raw lines
+  5428–5458 / target raw lines 5442–5472; keep R007/R008 cursors unchanged.
+
+## Historical authoritative recovery snapshot — 2026-08-29 U426
+
+This block is retained as historical evidence and is superseded by the U427
+snapshot above.
 
 - Local boundary: U426, manifest 426 (R006 341, R007 35, R008 50), 664,696
   bytes, SHA-256

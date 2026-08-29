@@ -17,26 +17,26 @@ OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna. Jiří Lebl tetap
 merupakan penulis karya sumber; semua kredit sumber dan kontributor manusia
 dipertahankan. Edisi ini independen dan tidak menyiratkan dukungan penulis.
 
-## Checkpoint lokal U426 dan batas publik U425
+## Checkpoint lokal U427 dan batas publik U426
 
-Checkpoint lokal terbaru memuat 426 unit (R006 341, R007 35, R008 50) sampai
-latihan deret sinus dengan peluruhan eksponensial dan diferensiabilitas tak
-hingga. Dua build backend U426 identik pada 27 berkas / 18.066.968 byte,
-dengan 4.007 rekaman, 850 ekspresi, 797 istilah logis, dan 31 pemetaan O001;
+Checkpoint lokal terbaru memuat 427 unit (R006 342, R007 35, R008 50) sampai
+latihan representasi integral dan peluruhan koefisien Fourier dengan laju
+$1/|n|$. Dua build backend U427 identik pada 27 berkas / 18.108.960 byte,
+dengan 4.011 rekaman, 854 ekspresi, 797 istilah logis, dan 32 pemetaan O001;
 inventaris POSIX SHA-256-nya
-`19a50c7e70392608126019e0d75309cd8fd46652cf3dbd7b230bce02a9d296e2`.
-Build pembaca integrasi epoch-tetap menghasilkan 241 halaman / 2.427.800
+`48132a45901e66eb0216d2df08b5e2ea03d3e6897a48a865dd2446238c6386a1`.
+Build pembaca integrasi epoch-tetap menghasilkan 241 halaman / 2.427.815
 byte, SHA-256
-`9e7f88e73350124a50479b5e1eaea0fc1beb0f183be1417f79488abb841abc91`;
-halaman 230–233 lulus inspeksi visual, dan halaman 232 memuat U426 lengkap
-sebelum batas Inggris berikutnya. U426 siap untuk transaksi sumber GitHub
-berikutnya; rilis pembaca dan DOI Zenodo U397 tetap tidak berubah.
+`3161b210f7654b1ae6abb7b9c2c8387ebdf9af2e6a4164eef9029aa0236864a2`;
+halaman 231–233 lulus inspeksi visual, dan halaman 232 memuat U427 lengkap
+sebelum batas Inggris U428 yang masih utuh.
 
-Checkpoint sumber/backend publik terakhir adalah U425: commit sumber
-`7ffd500b2bd48c7bac13664f86e0eb04498cae97` dan overlay kontrol
-`23835b0329a6397d74889aaf62fc993d02945e0e`, keduanya telah dibaca kembali
-secara anonim dan independen. Tanda terima U425 final 5.447 byte dibawa ke
-checkpoint U426.
+Batas publik saat ini adalah U426: commit sumber
+`e084868c37179d8cc08f4105103c7d93faae912b` dan overlay kontrol
+`b3902ea81953493873c8c5cf7ecf4617c0e2c136`, keduanya telah dibaca kembali
+byte demi byte secara anonim dan diaudit ulang secara independen. U427 siap
+untuk transaksi sumber/backend terbatas berikutnya. Rilis pembaca dan DOI
+Zenodo U397 tetap tidak berubah.
 
 ## Status historis pembaca publik U397 dan sumber publik U422
 

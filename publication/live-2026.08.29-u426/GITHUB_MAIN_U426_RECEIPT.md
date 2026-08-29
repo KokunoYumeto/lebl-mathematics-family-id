@@ -86,3 +86,27 @@ the current recovery controls. Its resulting commit pointer will be recorded
 locally and carried by the next substantive checkpoint, avoiding a third
 pointer-only publication. Until that overlay completes, this receipt is a
 local post-source-transaction record; the U426 source commit is already public.
+
+## Receipt and recovery-controls overlay
+
+The bounded follow-up transaction advanced `main` non-forcibly from the U426
+source/backend commit to controls commit
+`b3902ea81953493873c8c5cf7ecf4617c0e2c136`, tree
+`24b463229a6a5025927b09217bc0e9f40d45dc6a`. Its sole parent is
+`e084868c37179d8cc08f4105103c7d93faae912b`.
+
+The overlay preserved exactly six regular paths / 569,833 bytes: this
+4,586-byte public receipt snapshot, `CURRENT_CURSOR.json`, `CURRENT_STATE.json`,
+`PUBLICATION_STATE.json`, `TASK_AND_RECOVERY.md`, and `DECISION_LOG.jsonl`.
+Authenticated immutable-blob and anonymous immutable-commit readback matched
+all six frozen byte strings. The canonical compact inventory is 827 bytes,
+SHA-256
+`2e5ec161c2c72b32083e6ac88158770ebc4e35ce0c77db7d430ee77303835268`.
+Authenticated `main`, commit-tree, and sole-parent checks passed. The U397
+release and Zenodo record 22105195 remained unchanged and public.
+
+This final local receipt records the overlay pointer and is intentionally
+carried with the next substantive U427 source/backend checkpoint rather than
+published in a third pointer-only commit. The public 4,586-byte receipt
+snapshot above remains the immutable overlay payload; this locally finalized
+form is the recovery authority for the next checkpoint.
