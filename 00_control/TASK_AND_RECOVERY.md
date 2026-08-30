@@ -2,7 +2,7 @@
 
 Updated: 2026-08-30
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local U428 includes the complete two-part symmetric Fourier-partial-sum jump-midpoint convergence exercise, fixed-epoch byte-stable integration build, visual QA, deterministic A/B backend proof, and O001 gap 0033; public U427 source/backend and controls remain independently byte-verified while the bounded U428 transaction is prepared; the U397 reader remains public and unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U428 includes the complete two-part symmetric Fourier-partial-sum jump-midpoint convergence exercise, fixed-epoch byte-stable integration build, visual QA, deterministic A/B backend proof, and O001 gap 0033; its public source/backend commit is byte-verified and the bounded receipt/recovery-controls overlay is pending; the U397 reader remains public and unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-30 U428
 
@@ -42,29 +42,32 @@ in this historical log. The machine-readable authorities are
   `qa/R006_FOURIER_JUMP_MIDPOINT_CONVERGENCE_EXERCISE_U428_20260830.md`,
   4,784 bytes, SHA-256
   `b92e9de3c5701590ed5b61315575375ac3c697b0816ce4054e7a9535af764a10`.
-- Verified public boundary remains U427 source commit
-  `89d415893405d413bc344112a36bfe497bf2e2bd`, tree
-  `ef2186c2d65a98acf9835d7560fc5ca57be34fd2`, followed by bounded controls
-  commit `b7a8341fd6f23575c269f7c24a415966227877cc`, tree
-  `907cfe0eeb0e68cecd35fc15e2e63b06baf51b7c`. Both transactions passed
-  authenticated and anonymous immutable-byte readback. The finalized U427
-  receipt is 6,191 bytes, SHA-256
-  `ade7c8ddcf7898a1237b4236aefd2d4a3eddb2b6fbeba40817f04bce5a9da09a`,
-  and is carried with the bounded U428 source/backend publication.
+- Verified public source boundary: U428 commit
+  `0916d113a5ce9d826d3c03fe0c869830c6e37070`, tree
+  `3451309d24bd92242a6c0d121614cf57a9827cbc`, with verified U427 controls
+  commit `b7a8341fd6f23575c269f7c24a415966227877cc` as its sole parent. The exact
+  42-path / 20,107,366-byte payload passed authenticated and anonymous
+  immutable-byte readback; its 6,611-byte canonical inventory has SHA-256
+  `88c805be563229c26070b48d7dad2f1f8f9c04570ac7771369d96fb4c95ff4df`.
+  The finalized U427 receipt was carried exactly. The bounded U428 receipt and
+  recovery-controls overlay remains the next publication transaction. Its
+  independently audited public receipt snapshot is 5,032 bytes, SHA-256
+  `fc0f22ea196b869f25f0f42d42b548aa460fea4633080f7c7a4a58579cee7361`.
 - The public reader remains U397 on GitHub and Zenodo record 22105195; all nine
   files / 12,439,062 bytes remain public and unchanged. U428 is a
   source/backend checkpoint and does not alter that reader release.
-- Next executable action: finish the independent U428 audits, publish and
-  anonymously read back one bounded non-forced U428 source/backend transaction
-  plus its bounded controls overlay, then translate the complete exercise with
+- Next executable action: publish and anonymously read back the one bounded
+  non-forced U428 receipt/recovery-controls overlay from the verified U428
+  source commit, then translate the complete exercise with
   remark and explicit hint at source raw lines 5460–5473 / target raw lines
   5474–5487. Keep R007/R008 cursors unchanged.
 
 Recovery rule: begin with this block and the three machine-readable control
-files. If U428 is not yet public, execute only its audited bounded publisher
-from verified public U427 controls; after closure resume U429 at the exact
-recorded lines. Do not change the U397 reader release and do not contact an
-upstream author before the full assigned three-book corpus is complete.
+files. U428 source commit `0916d113a5ce9d826d3c03fe0c869830c6e37070`
+is already public; do not repeat it. Close only its audited bounded controls
+overlay, then resume U429 at the exact recorded lines. Do not change the U397
+reader release and do not contact an upstream author before the full assigned
+three-book corpus is complete.
 
 ## Historical authoritative recovery snapshot — 2026-08-29 U427
 
