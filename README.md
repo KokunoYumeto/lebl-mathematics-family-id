@@ -34,6 +34,13 @@ Dua pass final identik byte demi byte pada PDF dan tujuh produk bantu; 98 dari
 halaman 1-2 dan 231-241 lulus inspeksi visual. Rilis U429 mempertahankan status
 keluarga *parsial* karena R007 dan R008 belum selesai.
 
+Checkpoint sumber/backend U429 telah dipublikasikan pada commit
+`e55907983ca54bb2c94d90230eb949b64a6ee7ff`, tree
+`97cc963dc211728a20be1c18f9c8890f01790ae9`, dan seluruh 42 berkas /
+20.178.050 byte telah dibaca kembali secara anonim. Inventaris kanonik
+publisher memiliki SHA-256
+`d9fdbc0921be59836e5c1447720711fd040d682574eac148acf2c723d7402118`.
+
 ## Checkpoint sumber/backend publik U428 (historis)
 
 Checkpoint substantif terbaru memuat 428 unit (R006 343, R007 35, R008 50) sampai
@@ -129,8 +136,10 @@ ekstraksi teks, validasi tautan/kerangka, dan inspeksi visual halaman akhir.
 ## Publikasi
 
 - Repositori: <https://github.com/KokunoYumeto/lebl-mathematics-family-id>
-- Rilis U397: <https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id-wip.2026.08.26.u397>
-- DOI versi U397: <https://doi.org/10.5281/zenodo.22105195>
+- Rilis U429: <https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id-wip.2026.08.30.u429>
+- DOI versi U429: <https://doi.org/10.5281/zenodo.22172396>
+- Rilis historis U397: <https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id-wip.2026.08.26.u397>
+- DOI versi historis U397: <https://doi.org/10.5281/zenodo.22105195>
 - Konsep Zenodo stabil: <https://doi.org/10.5281/zenodo.22059779>
 - Koleksi Figshare Bahasa Indonesia: <https://doi.org/10.6084/m9.figshare.c.8668413>
 

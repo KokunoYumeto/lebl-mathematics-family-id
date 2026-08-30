@@ -1,68 +1,86 @@
-# Keluarga Matematika Lebl — cuplikan kerja U397 — 2026-08-26
+# Keluarga Matematika Lebl — R006 lengkap, keluarga parsial U429 — 2026-08-30
 
-Ini adalah cuplikan pelestarian publik yang jujur dan dapat direproduksi,
-bukan klaim bahwa seluruh korpus tiga buku telah selesai.
+Ini adalah cuplikan pelestarian publik yang dapat direproduksi. Kedua jilid
+R006 *Analisis Dasar* kini lengkap dalam Bahasa Indonesia, tetapi keluarga
+tiga buku secara keseluruhan tetap parsial karena R007 dan R008 belum selesai.
 
 ## Isi pembaca
 
-- `Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_11.8.1_Polinom_Trigonometrik.pdf`:
-  pembaca R006 Jilid II terbaru, 226 halaman, sampai akhir Subbagian 11.8.1
-  `Polinom trigonometri`.
+- `Analisis_Dasar_II_Bahasa_Indonesia_v6.3.pdf`: edisi R006 Jilid II lengkap,
+  241 halaman, 2.427.379 byte, SHA-256
+  `e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3`.
 - `Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf`: edisi R006 Jilid I lengkap,
-  334 halaman, dipertahankan tanpa perubahan.
+  334 halaman, dipertahankan byte-identik dari rilis U397.
 - `Notes_on_Diffy_Qs_Bab_8_Sistem_Nonlinear_Bahasa_Indonesia_v6.11_PARSIAL.pdf`:
-  pembaca mandiri 40 halaman untuk Bab 8 R007 yang lengkap dan telah melalui
-  QA pemilik lane.
-- `lebl-mathematics-family-id-source-backend-wip-u397-20260826.zip`: sumber
-  LaTeX, manifes, istilah, ledger koreksi dan O001, bukti QA, overlay pembaca,
-  serta backend modular netral-bahasa.
+  pembaca mandiri 40 halaman untuk Bab 8 R007 yang lengkap, dipertahankan
+  byte-identik dari rilis U397.
+- `lebl-mathematics-family-id-source-backend-wip-u429-20260830.zip`: sumber LaTeX, manifes, istilah, ledger koreksi
+  dan O001, bukti QA, overlay reproduksi pembaca, serta backend modular
+  netral-bahasa U429.
 
 Foto sampul ritel yang haknya tidak termasuk dalam lisensi buku tetap
-dikecualikan. Proof campuran yang memuat bab belum diterjemahkan tidak
+dikecualikan. Proof campuran yang memuat bagian belum diterjemahkan tidak
 dipublikasikan sebagai pembaca Indonesia.
 
 ## Cakupan terjemahan
 
-Manifes memuat 397 unit unik: R006 312, R007 35, dan R008 50. R006 Jilid I
-lengkap; Jilid II kini mencapai akhir Subbagian 11.8.1. Empat unit baru sejak
-U393 mencakup pembukaan deret Fourier dan representasi Laurent, motivasi
-fungsi eigen, periodisitas dan pemulihan koefisien, kriteria bernilai real,
-serta kebebasan linear. R007 dan R008 mempertahankan batas publik sebelumnya.
+Manifes memuat 429 unit unik: R006 344, R007 35, dan R008 50. R006 Jilid I dan
+Jilid II lengkap. Unit terakhir R006 adalah latihan tentang peluruhan koefisien
+Fourier yang dapat lambat secara sembarang, beserta remark penjelas dan hint
+sumber eksplisit. R007 mempertahankan cursor kanonik pada raw line 89
+`ch-first-order-ode.tex` dan pembaca Bab 8 lengkap; R008 mempertahankan cursor
+pada raw line 1648 sumber analisis kompleks.
 
-Manifes adalah 605.334 byte dengan SHA-256
-`e69eff9f1ab797ccb1be2865bc95999631d6fd5a374d5250db3b4cfb816db347`.
-Seluruh rumus, label, rujukan, dan struktur dipertahankan. Dua puluh satu
-latihan tanpa solusi tetap dipetakan ke O001; tidak ada jawaban atau solusi
-yang diciptakan.
+Manifes adalah 671.315 byte dengan SHA-256
+`b493ed47379b99c8cd5cae0d123063702082c27e654b4e64ea59d2faa6cca52e`.
+Seluruh 429 binding manifes hidup lulus. Tiga puluh empat latihan tanpa solusi
+sumber tetap dipetakan ke O001; tidak ada jawaban atau solusi yang diciptakan.
 
 ## Backend modular v0.4-live
 
-Checkpoint `v0.4-live-2026.08.26-u397-a` memuat 3.831 rekaman, 397 segmen
-manifes, 428 unit, 754 konsep, 794 ekspresi, 766 istilah logis kini, 257
-koreksi, dan 21 kekosongan solusi O001. Lima belas proyeksi CSV berputar balik
-tepat ke seluruh rekaman.
+Checkpoint `v0.4-live-2026.08.30-u429-a` memuat 4.021 rekaman, 858 ekspresi,
+797 istilah logis kini, 268 koreksi aktif, 33 aset, 650 relasi, 429 segmen
+manifes, 785 konsep, dan 477 unit. Lima belas proyeksi CSV berputar balik tepat
+ke seluruh 4.021 rekaman.
 
-Dua build independen masing-masing menghasilkan 27 berkas dan 16.839.490
+Dua build independen masing-masing menghasilkan 27 berkas dan 18.208.054
 byte, dengan nol perbedaan path, ukuran, atau hash. Hash inventaris kanonik:
-`0b5720512a26fb12282971daf04d45c5db55d8678afe1a35e5cc44de0675302b`.
-Validasi generik, integritas referensial, 397 binding manifes hidup, dan
-putar-balik CSV semuanya lulus. Replay B tidak disertakan karena byte-identik.
+`e6ab83c87774c191ba28b4efa1d0cef3ac551d74482c52b6c968816e51c76057`.
+Validasi skema, integritas referensial, 429 binding manifes, 372 pemeriksaan
+komponen langsung, dan putar-balik CSV semuanya lulus. Replay B tidak
+disertakan karena byte-identik.
 
-## QA matematika, istilah, dan layout
+## QA matematika dan pembaca lengkap
 
-ADV-0257 memperbaiki pernyataan antiturunan frekuensi nol: $e^{inx}/(in)$
-hanya digunakan untuk $n \ne 0$, sedangkan integran untuk $n=0$ identik dengan
-1. Koreksi ini tidak mengubah nilai integral atau rumus pemulihan koefisien
-dan telah melalui audit matematika serta bahasa independen. Enam istilah baru
-ditambahkan sebagai `LEBL-TERM-0761` sampai `LEBL-TERM-0766`.
+Unit U429 mempertahankan semua kuantor, sembilan payload matematika, kedua
+rujukan silang, remark, dan hint eksplisit sumber. Tidak ada syarat tambahan,
+bukti, atau solusi yang disisipkan.
 
-Pembaca Jilid II lulus converter tanpa error, sembilan pass TeX dengan tujuh
-produk bantu byte-stabil, 85/85 objek font tertanam, 1.227 destinasi bernama,
-644 tautan, ekstraksi teks tanpa `??` atau placeholder, serta render halaman
-1-2 dan 212-226. Halaman baru 216-217 terpusat dalam tiga piksel dan memakai
-sekitar 77% lebar halaman, tanpa potongan, tumpang tindih, atau glif rusak.
-Berkas akhir adalah 2.292.242 byte dengan SHA-256
-`40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d`.
+Build pembaca final memakai epoch tetap. PDF dan tujuh produk bantu identik
+antara pass 5 dan 6. Log final tidak memuat error fatal, LaTeX, kontrol tak
+terdefinisi, glif hilang, rujukan tak terdefinisi, permintaan rerun, label
+ganda, tujuan tak sah, atau outline buruk. Seluruh 687 tautan, 33 entri outline,
+dan 98 baris font lulus; seluruh font tertanam. Halaman 1–2 dan 231–241 lulus
+inspeksi visual deterministik.
+
+## Identitas sumber dan publikasi
+
+Checkpoint sumber/backend publik U429 terikat pada commit
+`e55907983ca54bb2c94d90230eb949b64a6ee7ff` dan tree
+`97cc963dc211728a20be1c18f9c8890f01790ae9`. Transaksi sumber memublikasikan
+tepat 42 path reguler / 20.178.050 byte dengan inventaris kanonik SHA-256
+`d9fdbc0921be59836e5c1447720711fd040d682574eac148acf2c723d7402118`.
+
+Identitas rilis:
+
+- tag GitHub: `lebl-family-id-wip.2026.08.30.u429`;
+- DOI versi Zenodo: `10.5281/zenodo.22172396`;
+- arsip sumber/backend:
+  `lebl-mathematics-family-id-source-backend-wip-u429-20260830.zip`.
+
+Concept DOI tetap `10.5281/zenodo.22059779`; versi U397 dan seluruh checkpoint
+historis tetap dipertahankan. GitHub dan Zenodo harus memuat sembilan aset
+dalam urutan serta kebijakan byte yang dibekukan oleh `ASSET_POLICY.json`.
 
 ## Otoritas, provenance, dan lisensi
 
@@ -76,7 +94,3 @@ Penerjemahan, penyuntingan, QA istilah, metadata aksesibilitas, dan integrasi
 backend dilakukan oleh **OpenAI Codex gpt-5.6-sol, Ultra** atas instruksi
 pengguna. Seluruh kredit sumber dan kontributor manusia dipertahankan. Tidak
 ada penulis yang dihubungi dan tidak ada isu upstream yang dibuka.
-
-Zenodo mempertahankan concept DOI `10.5281/zenodo.22059779`; versi U397 adalah
-`10.5281/zenodo.22105195`. Tag GitHub:
-`lebl-family-id-wip.2026.08.26.u397`.
