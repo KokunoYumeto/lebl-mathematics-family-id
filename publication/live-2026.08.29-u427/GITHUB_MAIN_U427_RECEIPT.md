@@ -79,3 +79,41 @@ the current recovery controls. Its resulting commit pointer will be recorded
 locally and carried by the next substantive checkpoint, avoiding a third
 pointer-only publication. Until that overlay completes, this receipt is a
 local post-source-transaction record; the U427 source commit is already public.
+
+An independent read-only audit reconstructed the exact 42-path closure from
+the hash-bound publisher and repeated the immutable commit, sole-parent,
+recursive-tree, blob-ID, and anonymous raw-byte checks. It found 1,802 tree
+entries, `truncated=false`, 20,048,428 public bytes, and canonical inventory
+SHA-256
+`59bb0972b85e7b3ea8bed0bba6731f535257aace66f5feec55e5240ac6e2d899`.
+The expected two live controls changed locally only after the frozen source
+payload had been published, as required for the subsequent overlay. The same
+audit anonymously streamed all nine U397 GitHub-release assets and all nine
+Zenodo files: both public inventories remain 12,439,062 bytes, identical by
+filename, byte count, and SHA-256; the release is public, non-draft, and
+non-prerelease, and Zenodo record 22105195 remains published, open, and the
+latest concept version.
+
+## Receipt and recovery-controls overlay
+
+The bounded follow-up transaction advanced `main` non-forcibly from the U427
+source/backend commit to controls commit
+`b7a8341fd6f23575c269f7c24a415966227877cc`, tree
+`907cfe0eeb0e68cecd35fc15e2e63b06baf51b7c`. Its sole parent is
+`89d415893405d413bc344112a36bfe497bf2e2bd`.
+
+The overlay preserved exactly six regular paths / 577,053 bytes: this
+4,063-byte public receipt snapshot, `CURRENT_CURSOR.json`, `CURRENT_STATE.json`,
+`PUBLICATION_STATE.json`, `TASK_AND_RECOVERY.md`, and `DECISION_LOG.jsonl`.
+Authenticated immutable-blob and anonymous immutable-commit readback matched
+all six frozen byte strings. The canonical compact inventory is 827 bytes,
+SHA-256
+`4f90527ec10f505ac531431d62fcc54fc5c14f67d5eb2e5ca66ab22aede9f573`.
+Authenticated `main`, commit-tree, and sole-parent checks passed. The U397
+release and Zenodo record 22105195 remained unchanged and public.
+
+This final local receipt records the overlay pointer and is intentionally
+carried with the next substantive U428 source/backend checkpoint rather than
+published in a third pointer-only commit. The public 4,063-byte receipt
+snapshot above remains the immutable overlay payload; this locally finalized
+form is the recovery authority for the next checkpoint.

@@ -17,9 +17,31 @@ OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna. Jiří Lebl tetap
 merupakan penulis karya sumber; semua kredit sumber dan kontributor manusia
 dipertahankan. Edisi ini independen dan tidak menyiratkan dukungan penulis.
 
-## Checkpoint lokal U427 dan batas publik U426
+## Checkpoint sumber/backend U428
 
-Checkpoint lokal terbaru memuat 427 unit (R006 342, R007 35, R008 50) sampai
+Checkpoint substantif terbaru memuat 428 unit (R006 343, R007 35, R008 50) sampai
+latihan dua bagian tentang konvergensi jumlah parsial Fourier simetris pada
+lompatan ke rata-rata limit sepihak. Dua build backend U428 identik pada 27
+berkas / 18.151.570 byte, dengan 4.015 rekaman, 856 ekspresi, 797 istilah
+logis, dan 33 pemetaan O001; inventaris POSIX SHA-256-nya
+`77e1b2128513b78305740126ff974949efe6e220c720b66e65b8a09521802275`.
+Build integrasi epoch-tetap menghasilkan 241 halaman / 2.427.826 byte,
+SHA-256
+`b566883b66b32b84edd186a97ae643d7371b4474c3b543b6a6ed0df7f128329f`;
+halaman 231–233 lulus inspeksi visual, dan halaman 232 memuat U428 lengkap
+sebelum batas Inggris U429 yang masih utuh.
+
+U428 adalah transaksi sumber/backend terbatas berikutnya dengan U427 sebagai
+induk publik yang sudah diverifikasi; identitas commit U428 dan hasil pembacaan
+kembali dicatat dalam kontrol mesin transaksi. Commit sumber U427 adalah
+`89d415893405d413bc344112a36bfe497bf2e2bd` dan overlay kontrolnya adalah
+`b7a8341fd6f23575c269f7c24a415966227877cc`; keduanya sudah dibaca kembali
+byte demi byte secara anonim. Rilis pembaca dan DOI Zenodo U397 tetap tidak
+berubah.
+
+## Checkpoint sumber/backend publik U427 (historis)
+
+Checkpoint terbaru memuat 427 unit (R006 342, R007 35, R008 50) sampai
 latihan representasi integral dan peluruhan koefisien Fourier dengan laju
 $1/|n|$. Dua build backend U427 identik pada 27 berkas / 18.108.960 byte,
 dengan 4.011 rekaman, 854 ekspresi, 797 istilah logis, dan 32 pemetaan O001;
@@ -31,12 +53,18 @@ byte, SHA-256
 halaman 231–233 lulus inspeksi visual, dan halaman 232 memuat U427 lengkap
 sebelum batas Inggris U428 yang masih utuh.
 
-Batas publik saat ini adalah U426: commit sumber
-`e084868c37179d8cc08f4105103c7d93faae912b` dan overlay kontrol
-`b3902ea81953493873c8c5cf7ecf4617c0e2c136`, keduanya telah dibaca kembali
-byte demi byte secara anonim dan diaudit ulang secara independen. U427 siap
-untuk transaksi sumber/backend terbatas berikutnya. Rilis pembaca dan DOI
-Zenodo U397 tetap tidak berubah.
+Checkpoint sumber/backend U427 sudah publik pada commit
+`89d415893405d413bc344112a36bfe497bf2e2bd`, tree
+`ef2186c2d65a98acf9835d7560fc5ca57be34fd2`, dan seluruh 42 berkas /
+20.048.428 byte telah dibaca kembali byte demi byte secara anonim. Inventaris
+kanoniknya memiliki SHA-256
+`59bb0972b85e7b3ea8bed0bba6731f535257aace66f5feec55e5240ac6e2d899`.
+Overlay kontrol pemulihan juga sudah publik pada commit
+`b7a8341fd6f23575c269f7c24a415966227877cc`, tree
+`907cfe0eeb0e68cecd35fc15e2e63b06baf51b7c`; seluruh enam berkas / 577.053
+byte telah dibaca kembali secara anonim dan inventarisnya memiliki SHA-256
+`4f90527ec10f505ac531431d62fcc54fc5c14f67d5eb2e5ca66ab22aede9f573`.
+Rilis pembaca dan DOI Zenodo U397 tetap tidak berubah.
 
 ## Status historis pembaca publik U397 dan sumber publik U422
 

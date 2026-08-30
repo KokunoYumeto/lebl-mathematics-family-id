@@ -1,6 +1,34 @@
 # Production backend checkpoints
 
-## Current production checkpoint U427
+## Current production checkpoint U428
+
+`v0.4-live-2026.08.30-u428-a/` is the authoritative local production
+checkpoint. It binds the 428-row translation manifest, 797-row live
+terminology ledger, 268-event adverse ledger, and 33-entry O001 solution-gap
+ledger.
+
+- 4,015 canonical records, 428 manifest segments, 474 units, 785 concepts,
+  856 embedded expressions, and exactly 797 current logical terms;
+- 33 O001 exercise gaps, thirteen source hints, twenty no-hint states, and
+  no invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 18,151,570 bytes;
+- `records.jsonl` SHA-256
+  `c3fcfb273128c25524ab046a5e365c1676819b2fc14ef7d0010edee2ce9f4cd5`;
+- canonical inventory SHA-256
+  `77e1b2128513b78305740126ff974949efe6e220c720b66e65b8a09521802275`
+  using ordinal POSIX-relative-path ordering.
+
+Both fresh builds (`-u428-a` and `-u428-b`) are byte-identical across all 27
+files and pass schema, referential-integrity, 428 manifest-binding, 370 direct
+component, 15-view round-trip, and 509 legacy-locator checks. Relative to
+U427, U428 adds one translation unit, one bilingual title segment, one QA
+event, and one O001 exercise unit while removing nothing; only the manifest
+artifact record is refreshed. It admits the complete two-part symmetric
+Fourier-partial-sum jump-midpoint exercise, preserves the source's absence of
+a hint and solution, and does not replace the U397 reader release.
+
+## Previous production checkpoint U427
 
 `v0.4-live-2026.08.29-u427-a/` is the authoritative local production
 checkpoint. It binds the 427-row translation manifest, 797-row live

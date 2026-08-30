@@ -1,0 +1,281 @@
+{
+  "added_concept_rows": 353,
+  "added_correction_rows": 174,
+  "added_o001_exercise_rows": 33,
+  "added_o001_hint_rows": 13,
+  "added_o001_relation_rows": 13,
+  "added_term_rows": 379,
+  "added_unit_rows": 261,
+  "adverse_ledger_rows": 268,
+  "csv_projection": {
+    "receipts": [
+      {
+        "bytes": 103,
+        "file": "programs.csv",
+        "rows": 0,
+        "sha256": "sha256:1b1cb8dc71acfe61ea818f10e2382551196f38cb7007ed889db2e251544a7a17"
+      },
+      {
+        "bytes": 145,
+        "file": "courses.csv",
+        "rows": 0,
+        "sha256": "sha256:684ee1b8dd6537342147c95acf7838aed6de43bc5eb42a92ad5c7bf5561d7577"
+      },
+      {
+        "bytes": 3488,
+        "file": "resources.csv",
+        "rows": 3,
+        "sha256": "sha256:9b2437fff73e4d3c34498680ff66e3fe60fc1559f791ae22231b80e72412119f"
+      },
+      {
+        "bytes": 11825,
+        "file": "editions.csv",
+        "rows": 7,
+        "sha256": "sha256:dc6f3db75db93a36bbd073297ee0c5c2f10b10a01faf0393abd5eb724f783f11"
+      },
+      {
+        "bytes": 3201775,
+        "file": "units.csv",
+        "rows": 474,
+        "sha256": "sha256:149f3e071270615769b1d6bd3fc2320b9163d4e41aae2f423f4022f642bd476b"
+      },
+      {
+        "bytes": 598583,
+        "file": "concepts.csv",
+        "rows": 785,
+        "sha256": "sha256:465e8ab8453f91aad7d6f168f3c125317cf35892be0ae6c9c32c4479034a615c"
+      },
+      {
+        "bytes": 2088174,
+        "file": "segments.csv",
+        "rows": 428,
+        "sha256": "sha256:82497fc192d567282d8a79ecd161e19bf4ca4556df83c4d409fdf2f3eab828e1"
+      },
+      {
+        "bytes": 1813524,
+        "file": "terms.csv",
+        "rows": 819,
+        "sha256": "sha256:574d28c912698794a0f790a8f1487692b537a5d95399b05592e9877a123f3784"
+      },
+      {
+        "bytes": 52548,
+        "file": "assets.csv",
+        "rows": 33,
+        "sha256": "sha256:d1d49b646f6d2859bdacf12a360928aa4a6be3200e33cae7712e761283b82332"
+      },
+      {
+        "bytes": 669992,
+        "file": "relations.csv",
+        "rows": 649,
+        "sha256": "sha256:94663481a939938cb1ebf31fbfa0e0a6caa67328f073fb2d3f960cd653fccf49"
+      },
+      {
+        "bytes": 5879,
+        "file": "rights.csv",
+        "rows": 4,
+        "sha256": "sha256:b845583864329fcad6fc7bad790232af0a1ef1d0b5489d93c4c2812a38b76884"
+      },
+      {
+        "bytes": 1014487,
+        "file": "qa_events.csv",
+        "rows": 530,
+        "sha256": "sha256:79b01bfe3a18151c5e0e5dc3f521ed73e8acab3952a53bbd5b75c95925553127"
+      },
+      {
+        "bytes": 132997,
+        "file": "artifacts.csv",
+        "rows": 15,
+        "sha256": "sha256:8b9d853a9f212d032f5d7ddc791291184372ad3df15330a589d91fbfe6df9783"
+      },
+      {
+        "bytes": 1462527,
+        "file": "corrections.csv",
+        "rows": 268,
+        "sha256": "sha256:5de283325889f46c92cd96780acee4272754d193128a2f11626be00caa09ca9d"
+      },
+      {
+        "bytes": 129816,
+        "file": "exercise_support.csv",
+        "rows": 33,
+        "sha256": "sha256:c9d235dca34f6f5cf3f72b24a892f951da1e06403cf4165216760160c46a5a35"
+      }
+    ],
+    "roundtrip": {
+      "checked_files": 15,
+      "recovered_records": 4015,
+      "roundtrip": "pass"
+    }
+  },
+  "current_active_correction_rows": 268,
+  "current_logical_term_rows": 797,
+  "fallback_correction_rows": 34,
+  "inventory": [
+    {
+      "bytes": 132997,
+      "path": "csv/artifacts.csv",
+      "sha256": "sha256:8b9d853a9f212d032f5d7ddc791291184372ad3df15330a589d91fbfe6df9783"
+    },
+    {
+      "bytes": 52548,
+      "path": "csv/assets.csv",
+      "sha256": "sha256:d1d49b646f6d2859bdacf12a360928aa4a6be3200e33cae7712e761283b82332"
+    },
+    {
+      "bytes": 598583,
+      "path": "csv/concepts.csv",
+      "sha256": "sha256:465e8ab8453f91aad7d6f168f3c125317cf35892be0ae6c9c32c4479034a615c"
+    },
+    {
+      "bytes": 1462527,
+      "path": "csv/corrections.csv",
+      "sha256": "sha256:5de283325889f46c92cd96780acee4272754d193128a2f11626be00caa09ca9d"
+    },
+    {
+      "bytes": 145,
+      "path": "csv/courses.csv",
+      "sha256": "sha256:684ee1b8dd6537342147c95acf7838aed6de43bc5eb42a92ad5c7bf5561d7577"
+    },
+    {
+      "bytes": 11825,
+      "path": "csv/editions.csv",
+      "sha256": "sha256:dc6f3db75db93a36bbd073297ee0c5c2f10b10a01faf0393abd5eb724f783f11"
+    },
+    {
+      "bytes": 129816,
+      "path": "csv/exercise_support.csv",
+      "sha256": "sha256:c9d235dca34f6f5cf3f72b24a892f951da1e06403cf4165216760160c46a5a35"
+    },
+    {
+      "bytes": 103,
+      "path": "csv/programs.csv",
+      "sha256": "sha256:1b1cb8dc71acfe61ea818f10e2382551196f38cb7007ed889db2e251544a7a17"
+    },
+    {
+      "bytes": 1014487,
+      "path": "csv/qa_events.csv",
+      "sha256": "sha256:79b01bfe3a18151c5e0e5dc3f521ed73e8acab3952a53bbd5b75c95925553127"
+    },
+    {
+      "bytes": 669992,
+      "path": "csv/relations.csv",
+      "sha256": "sha256:94663481a939938cb1ebf31fbfa0e0a6caa67328f073fb2d3f960cd653fccf49"
+    },
+    {
+      "bytes": 3488,
+      "path": "csv/resources.csv",
+      "sha256": "sha256:9b2437fff73e4d3c34498680ff66e3fe60fc1559f791ae22231b80e72412119f"
+    },
+    {
+      "bytes": 5879,
+      "path": "csv/rights.csv",
+      "sha256": "sha256:b845583864329fcad6fc7bad790232af0a1ef1d0b5489d93c4c2812a38b76884"
+    },
+    {
+      "bytes": 2088174,
+      "path": "csv/segments.csv",
+      "sha256": "sha256:82497fc192d567282d8a79ecd161e19bf4ca4556df83c4d409fdf2f3eab828e1"
+    },
+    {
+      "bytes": 1813524,
+      "path": "csv/terms.csv",
+      "sha256": "sha256:574d28c912698794a0f790a8f1487692b537a5d95399b05592e9877a123f3784"
+    },
+    {
+      "bytes": 3201775,
+      "path": "csv/units.csv",
+      "sha256": "sha256:149f3e071270615769b1d6bd3fc2320b9163d4e41aae2f423f4022f642bd476b"
+    },
+    {
+      "bytes": 1896,
+      "path": "dataset.json",
+      "sha256": "sha256:39fa9d10b8f50ac55a0a430247db8a482957f02600d8d737dab199da9b7e98f4"
+    },
+    {
+      "bytes": 250881,
+      "path": "inputs/ADVERSE_LEDGER.jsonl",
+      "sha256": "sha256:97574309b30de27a14b388c6ef06bab7d9a09a8f2af7c8613ccfcbe405609f6b"
+    },
+    {
+      "bytes": 25473,
+      "path": "inputs/O001_SOLUTION_GAP_LEDGER.jsonl",
+      "sha256": "sha256:d22a94c62df1acfb18dd6e772aa5871f0baa7c83d2548b0d8fcc26eee030eecf"
+    },
+    {
+      "bytes": 128552,
+      "path": "inputs/TERMINOLOGY.csv",
+      "sha256": "sha256:4c965c8a7d39320a3b59f7aea3fa8342c5499ef364ee9aff38de86b58743b9a9"
+    },
+    {
+      "bytes": 668974,
+      "path": "inputs/TRANSLATION_MANIFEST.jsonl",
+      "sha256": "sha256:5fc464cc5d3db1fd858ba28d0525cd35a7ee7792b2b6a59c0596a24206b0a844"
+    },
+    {
+      "bytes": 29090,
+      "path": "projection_manifest.json",
+      "sha256": "sha256:92242ee65f6f18bf702b0a1b4fce888c03fdb78492ff30a8f8cc97dca9f320c7"
+    },
+    {
+      "bytes": 1656,
+      "path": "README.md",
+      "sha256": "sha256:ce34cf370ad1f99f91a0c61cc31a6a1ed3b90a1a21eb89cf128e1a9450811614"
+    },
+    {
+      "bytes": 5801692,
+      "path": "records.jsonl",
+      "sha256": "sha256:c3fcfb273128c25524ab046a5e365c1676819b2fc14ef7d0010edee2ce9f4cd5"
+    },
+    {
+      "bytes": 3502,
+      "path": "schemas/dataset.schema.json",
+      "sha256": "sha256:df3e9c4c95480988556a344e1753641e2df6c4de12771a35c6f107677a763c74"
+    },
+    {
+      "bytes": 2744,
+      "path": "schemas/projection-manifest.schema.json",
+      "sha256": "sha256:883a72cccbae6c0b92cdb947f180b7d4d3bf31e81b55251284344250a4c22e8f"
+    },
+    {
+      "bytes": 42447,
+      "path": "schemas/record.schema.json",
+      "sha256": "sha256:de2b8e01f98310054b441897d307f28315970296934f429f588e4f91e198431c"
+    }
+  ],
+  "live_manifest_rows": 428,
+  "manifest": {
+    "bytes": 668974,
+    "sha256": "sha256:5fc464cc5d3db1fd858ba28d0525cd35a7ee7792b2b6a59c0596a24206b0a844"
+  },
+  "manifest_binding_checks": 428,
+  "manifest_component_checks": 370,
+  "o001_ledger": {
+    "bytes": 25473,
+    "present": true,
+    "rows": 33,
+    "sha256": "sha256:d22a94c62df1acfb18dd6e772aa5871f0baa7c83d2548b0d8fcc26eee030eecf"
+  },
+  "physical_term_rows": 819,
+  "r007_nonlinear_dependencies": {
+    "added_asset_rows": 31,
+    "added_relation_rows": 42,
+    "bibliography_spans": 2,
+    "citation_occurrences": 10,
+    "figure_command_base_pairs": 25,
+    "figure_occurrences": 26,
+    "localized_overlay_files": 1,
+    "source_figure_files": 28
+  },
+  "record_count": 4015,
+  "record_stream": {
+    "bytes": 5801692,
+    "sha256": "sha256:c3fcfb273128c25524ab046a5e365c1676819b2fc14ef7d0010edee2ce9f4cd5"
+  },
+  "referential_integrity": "pass",
+  "removed_correction_rows": 0,
+  "revised_correction_rows": 0,
+  "schema_validation": "pass",
+  "superseding_term_rows": 22,
+  "translation_runtime": "OpenAI Codex gpt-5.6-sol, Ultra",
+  "unresolved_legacy_manifest_components": 509,
+  "workflow_id": "01a01f57-a34b-7740-9717-596b8116910c/backend-production-v0.4-live"
+}

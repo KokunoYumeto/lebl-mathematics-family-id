@@ -2,13 +2,74 @@
 
 Updated: 2026-08-30
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U427 includes the integral-representation Fourier-coefficient inverse-linear-decay exercise, fixed-epoch byte-stable integration build, visual QA, deterministic A/B backend proof, and O001 gap 0032; its public source/backend commit is byte-verified while the bounded controls overlay is pending; the U397 reader remains public and unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; local U428 includes the complete two-part symmetric Fourier-partial-sum jump-midpoint convergence exercise, fixed-epoch byte-stable integration build, visual QA, deterministic A/B backend proof, and O001 gap 0033; public U427 source/backend and controls remain independently byte-verified while the bounded U428 transaction is prepared; the U397 reader remains public and unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
 
-## Current authoritative recovery snapshot — 2026-08-29 U427
+## Current authoritative recovery snapshot — 2026-08-30 U428
 
 This block supersedes every older progress count or publication pointer later
 in this historical log. The machine-readable authorities are
 `CURRENT_STATE.json`, `CURRENT_CURSOR.json`, and `PUBLICATION_STATE.json`.
+
+- Local boundary: U428, manifest 428 (R006 343, R007 35, R008 50), 668,974
+  bytes, SHA-256
+  `5fc464cc5d3db1fd858ba28d0525cd35a7ee7792b2b6a59c0596a24206b0a844`.
+  U428 is the complete two-part symmetric Fourier-partial-sum jump-midpoint
+  convergence exercise at source raw lines 5428–5458 / target raw lines
+  5442–5472, stable ID
+  `ra.v2.fourier-series.exercises.symmetric-partial-sums-jump-one-sided-limit-average`.
+  Its exact source block is 910 bytes, SHA-256
+  `322b590d17072290cb02092c8b14e840523f24bb6f02560a8de4e75b5ad95c2f`;
+  its exact Indonesian block is 1,007 bytes, SHA-256
+  `e39ce52a989ffee0660f9ff67b7897ac5d4e384fb7155caed2920b3c7d3a47d8`.
+  The complete target is 198,306 bytes, SHA-256
+  `0ea422821552511f443ac628af80d41020fa1cc99d879bbd302f1bdcc75ee90e`.
+  The source supplies neither hint nor solution for either part; neither is
+  invented, and O001 gap `LEBL-O001-R006-0033` records that exact state.
+- Backend U428 A/B is byte-identical: 27 files / 18,151,570 bytes, 4,015
+  records, 856 embedded expressions, 428 manifest bindings, 370 direct checks,
+  and 15 lossless CSV round trips. Its 3,292-byte canonical ordinal-POSIX
+  inventory has SHA-256
+  `77e1b2128513b78305740126ff974949efe6e220c720b66e65b8a09521802275`.
+  Receipt: `qa/BACKEND_V0_4_LIVE_U428_20260830.md`, 2,860 bytes, SHA-256
+  `f2c945eb6292e943be5587fe7e5f090b31965eddf7bb92c2ccb663a96d0949b7`.
+- The U428 fixed-epoch integration build passes at 241 pages / 2,427,826
+  bytes, PDF SHA-256
+  `b566883b66b32b84edd186a97ae643d7371b4474c3b543b6a6ed0df7f128329f`.
+  Passes 3 and 4 are byte-identical across the PDF and seven auxiliaries;
+  text, 687 links, 33 outline entries, all 98 embedded font rows, and rendered
+  pages 231–233 pass. Page 232 contains complete Indonesian U428 followed by
+  the exact untouched English U429 boundary. Unit receipt:
+  `qa/R006_FOURIER_JUMP_MIDPOINT_CONVERGENCE_EXERCISE_U428_20260830.md`,
+  4,784 bytes, SHA-256
+  `b92e9de3c5701590ed5b61315575375ac3c697b0816ce4054e7a9535af764a10`.
+- Verified public boundary remains U427 source commit
+  `89d415893405d413bc344112a36bfe497bf2e2bd`, tree
+  `ef2186c2d65a98acf9835d7560fc5ca57be34fd2`, followed by bounded controls
+  commit `b7a8341fd6f23575c269f7c24a415966227877cc`, tree
+  `907cfe0eeb0e68cecd35fc15e2e63b06baf51b7c`. Both transactions passed
+  authenticated and anonymous immutable-byte readback. The finalized U427
+  receipt is 6,191 bytes, SHA-256
+  `ade7c8ddcf7898a1237b4236aefd2d4a3eddb2b6fbeba40817f04bce5a9da09a`,
+  and is carried with the bounded U428 source/backend publication.
+- The public reader remains U397 on GitHub and Zenodo record 22105195; all nine
+  files / 12,439,062 bytes remain public and unchanged. U428 is a
+  source/backend checkpoint and does not alter that reader release.
+- Next executable action: finish the independent U428 audits, publish and
+  anonymously read back one bounded non-forced U428 source/backend transaction
+  plus its bounded controls overlay, then translate the complete exercise with
+  remark and explicit hint at source raw lines 5460–5473 / target raw lines
+  5474–5487. Keep R007/R008 cursors unchanged.
+
+Recovery rule: begin with this block and the three machine-readable control
+files. If U428 is not yet public, execute only its audited bounded publisher
+from verified public U427 controls; after closure resume U429 at the exact
+recorded lines. Do not change the U397 reader release and do not contact an
+upstream author before the full assigned three-book corpus is complete.
+
+## Historical authoritative recovery snapshot — 2026-08-29 U427
+
+This block is retained as historical evidence and is superseded by the U428
+snapshot above.
 
 - Local boundary: U427, manifest 427 (R006 342, R007 35, R008 50), 666,844
   bytes, SHA-256
@@ -40,25 +101,30 @@ in this historical log. The machine-readable authorities are
   `qa/R006_FOURIER_COEFFICIENT_INVERSE_LINEAR_DECAY_EXERCISE_U427_20260829.md`,
   4,553 bytes, SHA-256
   `af0c5ae5151f21aec6920170cdbdf0a6ec5182552fc75b76aed92e31d32e89db`.
-- Verified public source boundary: U427 source commit
+- Verified public boundary: U427 source commit
   `89d415893405d413bc344112a36bfe497bf2e2bd`, tree
   `ef2186c2d65a98acf9835d7560fc5ca57be34fd2`, with verified U426 controls
   commit `b3902ea81953493873c8c5cf7ecf4617c0e2c136` as its sole parent. The exact
   42-path / 20,048,428-byte source/backend payload passed authenticated and
   anonymous immutable readback; its 6,617-byte inventory has SHA-256
   `59bb0972b85e7b3ea8bed0bba6731f535257aace66f5feec55e5240ac6e2d899`.
-  The bounded U427 receipt/recovery-controls overlay is pending. Receipt
-  snapshot: `publication/live-2026.08.29-u427/GITHUB_MAIN_U427_RECEIPT.md`,
-  4,063 bytes, SHA-256
-  `6cdb60014632143b431039365265ff782681010dd201a252bf2db14274063659`.
+  The bounded U427 controls commit is
+  `b7a8341fd6f23575c269f7c24a415966227877cc`, tree
+  `907cfe0eeb0e68cecd35fc15e2e63b06baf51b7c`, with the source commit as sole
+  parent. Its exact six-path / 577,053-byte payload has 827-byte inventory
+  SHA-256
+  `4f90527ec10f505ac531431d62fcc54fc5c14f67d5eb2e5ca66ab22aede9f573`.
+  Authenticated and anonymous byte readback passed for both transactions. The
+  public receipt snapshot is 4,063 bytes, SHA-256
+  `6cdb60014632143b431039365265ff782681010dd201a252bf2db14274063659`;
+  the finalized local receipt is 6,191 bytes, SHA-256
+  `ade7c8ddcf7898a1237b4236aefd2d4a3eddb2b6fbeba40817f04bce5a9da09a`.
 - The public reader remains U397 on GitHub and Zenodo record 22105195; all nine
   files / 12,439,062 bytes remain public and unchanged. U427 is a source/backend
   checkpoint and does not alter that reader release.
-- Next executable action: publish the bounded U427 six-path
-  receipt/recovery-controls overlay from source commit `89d41589…`, anonymously
-  read back every exact payload byte, then continue the complete two-part R006
-  exercise at source raw lines 5428–5458 / target raw lines 5442–5472. Carry
-  the finalized U427 receipt with U428 and keep R007/R008 cursors unchanged.
+- Next executable action: continue the complete two-part R006 exercise at
+  source raw lines 5428–5458 / target raw lines 5442–5472. Carry the finalized
+  U427 receipt with U428 and keep R007/R008 cursors unchanged.
 
 ## Historical authoritative recovery snapshot — 2026-08-29 U426
 
