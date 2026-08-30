@@ -17,7 +17,24 @@ OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna. Jiří Lebl tetap
 merupakan penulis karya sumber; semua kredit sumber dan kontributor manusia
 dipertahankan. Edisi ini independen dan tidak menyiratkan dukungan penulis.
 
-## Checkpoint sumber/backend U428
+## Checkpoint U429 - R006 lengkap
+
+R006 *Basic Analysis* Jilid I-II kini lengkap. U429 memuat 429 unit (R006
+344, R007 35, R008 50) dan menutup latihan terakhir Jilid II tentang fungsi
+kontinu dengan peluruhan koefisien Fourier yang lambat secara sebarang,
+termasuk catatan dan petunjuk sumber. Dua build backend U429 identik pada 27
+berkas / 18.208.054 byte, dengan 4.021 rekaman, 858 ekspresi, 797 istilah
+logis, dan 34 pemetaan O001; inventaris POSIX SHA-256-nya
+`e6ab83c87774c191ba28b4efa1d0cef3ac551d74482c52b6c968816e51c76057`.
+
+Pembaca final Jilid II memiliki 241 halaman / 2.427.379 byte, SHA-256
+`e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3`.
+Dua pass final identik byte demi byte pada PDF dan tujuh produk bantu; 98 dari
+98 baris font tertanam, seluruh 687 tautan dan 33 entri kerangka valid, serta
+halaman 1-2 dan 231-241 lulus inspeksi visual. Rilis U429 mempertahankan status
+keluarga *parsial* karena R007 dan R008 belum selesai.
+
+## Checkpoint sumber/backend publik U428 (historis)
 
 Checkpoint substantif terbaru memuat 428 unit (R006 343, R007 35, R008 50) sampai
 latihan dua bagian tentang konvergensi jumlah parsial Fourier simetris pada
@@ -31,13 +48,11 @@ SHA-256
 halaman 231–233 lulus inspeksi visual, dan halaman 232 memuat U428 lengkap
 sebelum batas Inggris U429 yang masih utuh.
 
-U428 adalah transaksi sumber/backend terbatas berikutnya dengan U427 sebagai
-induk publik yang sudah diverifikasi; identitas commit U428 dan hasil pembacaan
-kembali dicatat dalam kontrol mesin transaksi. Commit sumber U427 adalah
-`89d415893405d413bc344112a36bfe497bf2e2bd` dan overlay kontrolnya adalah
-`b7a8341fd6f23575c269f7c24a415966227877cc`; keduanya sudah dibaca kembali
+Checkpoint sumber/backend U428 sudah publik pada commit
+`0916d113a5ce9d826d3c03fe0c869830c6e37070` dan overlay kontrol
+`daa1c9dee22bfcec459d3b54e9f1ab575f6b25be`; keduanya sudah dibaca kembali
 byte demi byte secara anonim. Rilis pembaca dan DOI Zenodo U397 tetap tidak
-berubah.
+berubah pada checkpoint sumber tersebut.
 
 ## Checkpoint sumber/backend publik U427 (historis)
 
@@ -104,12 +119,12 @@ DOI U397 tidak diubah oleh checkpoint sumber ini.
 ## Pembaca utama
 
 - `output/pdf/Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf`
-- `output/pdf/Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_11.8.1_Polinom_Trigonometrik.pdf`
+- `output/pdf/Analisis_Dasar_II_Bahasa_Indonesia_v6.3.pdf`
 - `output/pdf/Notes_on_Diffy_Qs_Bab_8_Sistem_Nonlinear_Bahasa_Indonesia_v6.11_PARSIAL.pdf`
 
-Pembaca Jilid II terbaru menggunakan blok halaman penuh dan terpusat, memiliki
-semua font tertanam, serta lulus sembilan pass TeX, pemeriksaan referensi,
-ekstraksi teks, dan inspeksi visual halaman baru.
+Pembaca final Jilid II menggunakan blok halaman penuh dan terpusat, memiliki
+semua font tertanam, serta lulus build TeX konvergen, pemeriksaan referensi,
+ekstraksi teks, validasi tautan/kerangka, dan inspeksi visual halaman akhir.
 
 ## Publikasi
 

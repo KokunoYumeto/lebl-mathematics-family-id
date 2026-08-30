@@ -94,3 +94,27 @@ published, open, and the latest concept version. GitHub's separate
 `/releases/latest` convenience selector resolves to the older U393 release;
 that unchanged selector behavior is not part of the U397 preservation claim
 and does not alter U397's public access or byte identity.
+
+## Receipt and recovery-controls overlay
+
+The bounded follow-up transaction advanced `main` non-forcibly from the U428
+source/backend commit to controls commit
+`daa1c9dee22bfcec459d3b54e9f1ab575f6b25be`, tree
+`c928e03799ed2eb10d4c13b4cd589454a20f1755`. Its sole parent is
+`0916d113a5ce9d826d3c03fe0c869830c6e37070`.
+
+The overlay preserved exactly six regular paths / 588,985 bytes: this
+5,032-byte public receipt snapshot, `CURRENT_CURSOR.json`, `CURRENT_STATE.json`,
+`PUBLICATION_STATE.json`, `TASK_AND_RECOVERY.md`, and `DECISION_LOG.jsonl`.
+Authenticated immutable-blob and anonymous immutable-commit readback matched
+all six frozen byte strings. The canonical compact inventory is 827 bytes,
+SHA-256
+`dae6178deae219c0d1779b9bd3b07548f8550d092698e376582b53bc418d27d7`.
+Authenticated `main`, commit-tree, and sole-parent checks passed. The U397
+release and Zenodo record 22105195 remained unchanged and public.
+
+This final local receipt records the overlay pointer and is intentionally
+carried with the next substantive U429 source/backend checkpoint rather than
+published in a third pointer-only commit. The public 5,032-byte receipt
+snapshot above remains the immutable overlay payload; this locally finalized
+form is the recovery authority for the next checkpoint.

@@ -2,9 +2,66 @@
 
 Updated: 2026-08-30
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006/R007/R008 translation admitted and active; U428 includes the complete two-part symmetric Fourier-partial-sum jump-midpoint convergence exercise, fixed-epoch byte-stable integration build, visual QA, deterministic A/B backend proof, and O001 gap 0033; its public source/backend commit is byte-verified and the bounded receipt/recovery-controls overlay is pending; the U397 reader remains public and unchanged on GitHub and Zenodo; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006 Volumes I-II are complete; U429 includes the final Fourier-coefficient-decay exercise, explicit source hint, O001 gap 0034, byte-stable complete 241-page Volume II reader, and deterministic A/B backend proof; U429 publication in the existing GitHub and Zenodo lineages is in progress while public U428 source/controls and the U397 reader remain preserved; R007 resumes at `ch-first-order-ode.tex` raw line 89; HP-LEBL-R007-001 remains owner-accepted
 
-## Current authoritative recovery snapshot — 2026-08-30 U428
+## Current authoritative recovery snapshot - 2026-08-30 U429
+
+This block supersedes every older progress count or publication pointer later
+in this historical log. The machine-readable authorities are
+`CURRENT_STATE.json`, `CURRENT_CURSOR.json`, and `PUBLICATION_STATE.json`.
+
+- Local boundary: U429, manifest 429 (R006 344, R007 35, R008 50), 671,315
+  bytes, SHA-256
+  `b493ed47379b99c8cd5cae0d123063702082c27e654b4e64ea59d2faa6cca52e`.
+  U429 is the complete final R006 exercise at source raw lines 5460-5473 /
+  target raw lines 5474-5487, stable ID
+  `ra.v2.fourier-series.exercises.continuous-function-arbitrarily-slow-fourier-coefficient-decay`.
+  Its source block is 525 bytes, SHA-256
+  `7231ef00ce5acbdf3da710ffac7de7e4af1fbacbe6669f71b2b62a7c520ae25a`;
+  its Indonesian block is 581 bytes, SHA-256
+  `232f2d069038044e6a9058f3fa25ccf28376e95bf29ae005f30471a6c269824d`.
+  The complete target is 198,362 bytes, SHA-256
+  `cfaa1339706c31f16255642adcccb33903343808bc2d1bf195d70d3f25004133`.
+  The source's explanatory remark and explicit hint are preserved; no source
+  solution exists, and O001 gap `LEBL-O001-R006-0034` records that exact state.
+- Backend U429 A/B is byte-identical: 27 files / 18,208,054 bytes, 4,021
+  records, 858 embedded expressions, 429 manifest bindings, 372 direct checks,
+  and 15 lossless CSV round trips. Its 3,292-byte canonical ordinal-POSIX
+  inventory has SHA-256
+  `e6ab83c87774c191ba28b4efa1d0cef3ac551d74482c52b6c968816e51c76057`.
+  Receipt: `qa/BACKEND_V0_4_LIVE_U429_20260830.md`, 3,134 bytes, SHA-256
+  `4713c21f6827b69cced04a8530dfd5fadd0ce428795d5f5c7bfb0a71744b1183`.
+- The final R006 Volume II reader is
+  `output/pdf/Analisis_Dasar_II_Bahasa_Indonesia_v6.3.pdf`: 241 pages /
+  2,427,379 bytes, SHA-256
+  `e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3`.
+  Final passes 5 and 6 are byte-identical across the PDF and seven auxiliaries;
+  zero hard/reference errors, 98/98 embedded font rows, 687 valid links, 33
+  valid outlines, zero replacement characters, and visual pages 1-2 and
+  231-241 pass. Independent final QA proved page 232 pixel-identical after the
+  convergence reruns. Unit/reader receipt:
+  `qa/R006_FOURIER_ARBITRARILY_SLOW_COEFFICIENT_DECAY_EXERCISE_U429_20260830.md`,
+  4,235 bytes, SHA-256
+  `22312ba06b801f720278584b9f577d9414bb01017288923697788a1538c45e8e`.
+- R006 Volumes I-II are complete. The full three-book family remains partial
+  because R007 and R008 are unfinished.
+- Verified public source boundary remains U428 commit
+  `0916d113a5ce9d826d3c03fe0c869830c6e37070` plus controls commit
+  `daa1c9dee22bfcec459d3b54e9f1ab575f6b25be`; do not repeat them. The public
+  reader remains U397 on GitHub and Zenodo record 22105195 until the authorized
+  U429 transaction completes. Preserve that historical release unchanged.
+- Next executable sequence: publish U429 source/backend and the completed
+  Volume II reader in the existing GitHub repository and Zenodo concept
+  `10.5281/zenodo.22059779`, perform anonymous byte readback, update controls,
+  then translate R007 source raw lines 89-98 into the target beginning at raw
+  line 89. Preserve the R008 cursor at source raw line 1648.
+
+Recovery rule: begin with this U429 block and the three machine-readable
+controls. Do not retranslate R006, do not re-copy HP-LEBL-R007-001, do not
+create a competing Zenodo concept, and do not contact an upstream author before
+the full assigned three-book corpus is complete.
+
+## Historical authoritative recovery snapshot - 2026-08-30 U428
 
 This block supersedes every older progress count or publication pointer later
 in this historical log. The machine-readable authorities are
@@ -49,25 +106,31 @@ in this historical log. The machine-readable authorities are
   42-path / 20,107,366-byte payload passed authenticated and anonymous
   immutable-byte readback; its 6,611-byte canonical inventory has SHA-256
   `88c805be563229c26070b48d7dad2f1f8f9c04570ac7771369d96fb4c95ff4df`.
-  The finalized U427 receipt was carried exactly. The bounded U428 receipt and
-  recovery-controls overlay remains the next publication transaction. Its
-  independently audited public receipt snapshot is 5,032 bytes, SHA-256
-  `fc0f22ea196b869f25f0f42d42b548aa460fea4633080f7c7a4a58579cee7361`.
+  The finalized U427 receipt was carried exactly. The bounded U428 controls
+  overlay is public at commit
+  `daa1c9dee22bfcec459d3b54e9f1ab575f6b25be`, tree
+  `c928e03799ed2eb10d4c13b4cd589454a20f1755`, with the U428 source commit as
+  sole parent. Its exact six paths / 588,985 bytes passed authenticated and
+  anonymous readback; canonical inventory SHA-256 is
+  `dae6178deae219c0d1779b9bd3b07548f8550d092698e376582b53bc418d27d7`.
+  The public receipt snapshot is 5,032 bytes, SHA-256
+  `fc0f22ea196b869f25f0f42d42b548aa460fea4633080f7c7a4a58579cee7361`;
+  the finalized local receipt is 6,303 bytes, SHA-256
+  `fafe5cbc3dabc838fee25e148fe921fc8338028fc5eed39d8ab8296a4e66140f`.
 - The public reader remains U397 on GitHub and Zenodo record 22105195; all nine
   files / 12,439,062 bytes remain public and unchanged. U428 is a
   source/backend checkpoint and does not alter that reader release.
-- Next executable action: publish and anonymously read back the one bounded
-  non-forced U428 receipt/recovery-controls overlay from the verified U428
-  source commit, then translate the complete exercise with
+- Next executable action: translate the complete exercise with
   remark and explicit hint at source raw lines 5460–5473 / target raw lines
   5474–5487. Keep R007/R008 cursors unchanged.
 
 Recovery rule: begin with this block and the three machine-readable control
 files. U428 source commit `0916d113a5ce9d826d3c03fe0c869830c6e37070`
-is already public; do not repeat it. Close only its audited bounded controls
-overlay, then resume U429 at the exact recorded lines. Do not change the U397
-reader release and do not contact an upstream author before the full assigned
-three-book corpus is complete.
+and controls commit `daa1c9dee22bfcec459d3b54e9f1ab575f6b25be`
+are already public; do not repeat them. Resume U429 at the exact recorded
+lines and carry the finalized U428 receipt with its next substantive
+checkpoint. Do not change the U397 reader release and do not contact an
+upstream author before the full assigned three-book corpus is complete.
 
 ## Historical authoritative recovery snapshot — 2026-08-29 U427
 
