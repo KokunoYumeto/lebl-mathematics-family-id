@@ -2,7 +2,43 @@
 
 Updated: 2026-08-30
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006 Volumes I-II are complete; U429 includes the final Fourier-coefficient-decay exercise, explicit source hint, O001 gap 0034, byte-stable complete 241-page Volume II reader, and deterministic A/B backend proof; U429 publication in the existing GitHub and Zenodo lineages is in progress while public U428 source/controls and the U397 reader remain preserved; R007 resumes at `ch-first-order-ode.tex` raw line 89; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006 Volumes I-II are complete and publicly released at U429; GitHub and Zenodo expose the same verified nine-asset payload including the complete 241-page Volume II reader and deterministic backend/source package; U397 remains public; R007 resumes at `ch-first-order-ode.tex` raw line 89; HP-LEBL-R007-001 remains owner-accepted
+
+## Publication closure — 2026-08-30 U429
+
+This block supersedes every older statement below that calls the U429 release
+pending or identifies U397 as the current reader boundary.
+
+- GitHub source/backend commit:
+  `e55907983ca54bb2c94d90230eb949b64a6ee7ff`, tree
+  `97cc963dc211728a20be1c18f9c8890f01790ae9`; independent audit passes all
+  42 paths / 20,178,050 bytes. The corrected local receipt is
+  `publication/live-2026.08.30-u429/GITHUB_MAIN_U429_RECEIPT.md`.
+- GitHub release checkpoint:
+  `0ea0e44992addc811552d6fd37689e59385272d5`, tree
+  `4c88e2a011d7229643059c2924460b04242272fc`; annotated tag object
+  `1a0348e4cf0a0cdeead623574d0e3ad563d98cc7`; release ID `379250341` at
+  `lebl-family-id-wip.2026.08.30.u429`.
+- Zenodo version: record `22172396`, DOI `10.5281/zenodo.22172396`, in the
+  existing concept `10.5281/zenodo.22059779`; status published and open;
+  concept-latest resolves to this record.
+- Both providers expose exactly nine assets / 12,943,707 bytes, and every
+  filename, byte count, and SHA-256 is cross-provider identical. The complete
+  Volume II reader is 2,427,379 bytes, SHA-256
+  `e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3`.
+  The deterministic source/backend archive is 6,106,435 bytes, SHA-256
+  `b721834dff25b7e2017d53baa228fb44b20f49fc02aa55e7fd43cfec0849da34`.
+- Sanitized receipts:
+  `publication/wip-2026.08.30-u429/GITHUB_PUBLICATION_RECEIPT.md`,
+  `ZENODO_PUBLICATION_RECEIPT.md`, and
+  `CROSS_PROVIDER_PUBLIC_READBACK_U429.md`.
+- Historical U397 remains public and unchanged. The full family remains
+  partial because R007 and R008 are unfinished.
+- Next executable action: translate R007
+  `source/diffyqs-v6.11/ch-first-order-ode.tex` raw lines 89–98 into the target
+  at raw line 89, admit stable unit
+  `diffyqs.v6.11.first-order.integrals-as-solutions.definite-vs-indefinite-and-closed-form`,
+  rebuild the deterministic backend, and keep the R008 cursor at raw line 1648.
 
 ## Current authoritative recovery snapshot - 2026-08-30 U429
 

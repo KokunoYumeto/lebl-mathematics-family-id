@@ -5,7 +5,7 @@
   "locale": "id-ID",
   "scope": ["R006", "R007", "R008"],
   "root": "04_mirrors/id/lebl-mathematics-family-id",
-  "status": "R006_volumes_I_II_complete_u429_backend_and_reader_pass_publication_in_progress_R007_cursor_raw_89",
+  "status": "R006_volumes_I_II_complete_u429_backend_reader_and_public_release_verified_R007_cursor_raw_89",
   "translation_dominant": true,
   "source_mutation_started": true,
   "translation_admitted": true,
@@ -47,13 +47,13 @@
     "R006_volume_II_fourier_coefficient_inverse_linear_decay_exercise_u427_integration_checkpoint": "proved_isolated_build_tmp_r006-u427-build-20260829_fixed_epoch_1787961600_incremental_pdflatex_plus_index_glossary_regeneration_followed_by_two_byte_stable_passes_241_pages_2427815_bytes_sha256_3161b210f7654b1ae6abb7b9c2c8387ebdf9af2e6a4164eef9029aa0236864a2_zero_fatal_latex_undefined-reference_missing-character_invalid-link_and_bad-outline-errors_98_of_98_fonts_embedded_visual_pages_231_to_233_pass_page_232_complete_U427_and_exact_English_U428_boundary_non_release_build",
     "R006_volume_II_fourier_jump_midpoint_convergence_exercise_u428_integration_checkpoint": "proved_isolated_build_tmp_r006-u428-build-20260830_fixed_epoch_1787961600_incremental_pdflatex_plus_index_glossary_regeneration_passes_3_to_4_pdf_and_seven_auxiliary_products_byte_stable_241_pages_2427826_bytes_sha256_b566883b66b32b84edd186a97ae643d7371b4474c3b543b6a6ed0df7f128329f_zero_fatal_latex_undefined-reference_missing-character_invalid-link_and_bad-outline-errors_98_of_98_fonts_embedded_687_links_valid_33_outline_entries_valid_visual_pages_231_to_233_pass_page_232_complete_U428_and_exact_English_U429_boundary_non_release_build",
     "R006_volume_II_final_exercise_u429_reader_checkpoint": "proved_complete_241_page_reader_fixed_epoch_final_passes_5_6_pdf_and_seven_auxiliaries_byte_stable_2427379_bytes_sha256_e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3_zero_hard_or_reference_errors_98_of_98_font_rows_embedded_687_links_33_outlines_valid_visual_pages_1_2_and_231_to_241_pass",
-    "R006_complete_id_edition": "proved_volume_I_334_pages_and_volume_II_241_pages_all_reader_facing_mathematical_content_complete_final_release_publication_in_progress",
+    "R006_complete_id_edition": "proved_volume_I_334_pages_and_volume_II_241_pages_all_reader_facing_mathematical_content_complete_public_U429_release_verified_on_GitHub_and_Zenodo",
     "R007_source_baseline": "proved_v6.11_466_page_authority_and_U001_intro_translation",
     "R007_nonlinear_systems_u357_reader_checkpoint": "proved_complete_20_unit_chapter_owner_QA_40_page_centered_reader_zero_English_scaffold_labels_integrated_472_page_build_zero_errors_zero_unresolved_references_sha256_8d392ef36104027fd680d1bfd73a153ea3e69ead1d4c6867143ab9d2f8f6c3ad",
     "R007_nonlinear_systems_HP001_owner_acceptance_checkpoint": "accepted_by_20_stable_units_after_67_file_packet_hash_verification_three_independent_math_language_backend_reviews_owner_terminology_reconciliation_current_target_sha256_adee2f44b4a570b8f89f01c529d9bb9ebc38c0999ceb949360f4c075390003a1_integrated_472_page_build_sha256_d822e3b8fb47968ba7bb747af50293a569e4716c93fac6518d28e8a525b48fec_visual_pages_366_369_374_382_pass_and_helper_target_not_recopied",
     "R008_source_baseline": "proved_v1.9_304_page_authority_and_U001_introduction_translation"
   },
-  "backend_schema_status": "public_reader_v0.4-live_U397_preserved; public_github_source_U427_and_controls_verified_42_of_42_20048428_bytes_inventory_59bb0972b85e7b3ea8bed0bba6731f535257aace66f5feec55e5240ac6e2d899_plus_controls_6_of_6_577053_bytes_inventory_4f90527ec10f505ac531431d62fcc54fc5c14f67d5eb2e5ca66ab22aede9f573; local v0.4-live_U428_A_B_byte_identical_428-unit-manifest_4015-records_856-embedded-expressions_797-current-logical-terms_268-corrections_33-O001-gaps_33-assets_649-relations_428-of-428-exact-live-manifest-bindings_full-generic_schema_and_15-view_roundtrip_validation_370-direct-component-bindings",
+  "backend_schema_status": "public v0.4-live_U429_A with deterministic byte-identical A_B proof: 429-unit manifest, 4021 records, 858 embedded expressions, 797 current logical terms, 268 corrections, 34 O001 gaps, 33 assets, 650 relations, 429 of 429 exact live manifest bindings, full generic schema and referential validation, 372 direct component checks, and 15-view lossless roundtrip; source commit and GitHub/Zenodo release bytes independently verified",
   "translation_progress": {
     "R006_units_admitted": 344,
     "R006_content_units_admitted": 334,
@@ -151,16 +151,16 @@
     "public_boundary": "U370 is published and anonymously byte-verified on GitHub and as Zenodo record 22088826 in the existing concept lineage. It completes R006 Section 11.6 with all eleven exercises and publishes the centered 208-page reader. Live translation has advanced through the ninth Stone--Weierstrass exercise at local U388; R007 HP-LEBL-R007-001 is accepted without moving its first-order cursor, and the R008 cursor is unchanged."
   },
   "current_public_checkpoint": {
-    "name": "U397",
-    "manifest_rows": 397,
-    "manifest_distribution": {"R006":312,"R007":35,"R008":50},
-    "manifest_bytes": 605334,
-    "manifest_sha256": "e69eff9f1ab797ccb1be2865bc95999631d6fd5a374d5250db3b4cfb816db347",
-    "latest_unit": "ra.v2.fourier-series.trigonometric-polynomials.real-valued-criterion-and-linear-independence",
-    "backend_checkpoint": {"name":"v0.4-live-2026.08.26-u397-a","records":3831,"expressions":794,"current_logical_terms":766,"files":27,"bytes":16839490,"inventory_sha256":"0b5720512a26fb12282971daf04d45c5db55d8678afe1a35e5cc44de0675302b","validation":"pass_full_generic_397_of_397_manifest_bindings","csv_roundtrip":"pass_15_views_3831_records"},
-    "reader": {"path":"output/pdf/Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_11.8.1_Polinom_Trigonometrik.pdf","pages":226,"bytes":2292242,"sha256":"40b2e2cb27dd59d288ef76453ae293558fcd1ae8efb96e1e87a646f8f0b8f73d","font_objects_embedded":"85_of_85","named_destinations":"1227_of_1227_valid","links":"644_valid"},
-    "github": {"content_commit":"1f4af23981dae23328b2539ee3f623c15879aa89","release_commit":"a35de2ff999291c3414d6ba319f16bb149c7d5f5","tag":"lebl-family-id-wip.2026.08.26.u397","tag_object":"c83c92a89880a042df6fef31c8aa37fe639528c9","release_id":376866909,"public_readback":"pass_9_of_9_12439062_bytes_plus_8_repository_overlays"},
-    "zenodo": {"record_id":22105195,"version_doi":"10.5281/zenodo.22105195","concept_doi":"10.5281/zenodo.22059779","public_readback":"pass_9_of_9_12439062_bytes_and_latest_endpoint_resolves_22105195"}
+    "name": "U429",
+    "manifest_rows": 429,
+    "manifest_distribution": {"R006":344,"R007":35,"R008":50},
+    "manifest_bytes": 671315,
+    "manifest_sha256": "b493ed47379b99c8cd5cae0d123063702082c27e654b4e64ea59d2faa6cca52e",
+    "latest_unit": "ra.v2.fourier-series.exercises.continuous-function-arbitrarily-slow-fourier-coefficient-decay",
+    "backend_checkpoint": {"name":"v0.4-live-2026.08.30-u429-a","records":4021,"expressions":858,"current_logical_terms":797,"files":27,"bytes":18208054,"inventory_sha256":"e6ab83c87774c191ba28b4efa1d0cef3ac551d74482c52b6c968816e51c76057","validation":"pass_full_generic_429_of_429_manifest_bindings_372_direct_components","csv_roundtrip":"pass_15_views_4021_records"},
+    "reader": {"path":"output/pdf/Analisis_Dasar_II_Bahasa_Indonesia_v6.3.pdf","pages":241,"bytes":2427379,"sha256":"e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3","font_rows_embedded":"98_of_98","named_destinations":"1290_valid","links":"687_valid","outlines":"33_valid"},
+    "github": {"content_commit":"e55907983ca54bb2c94d90230eb949b64a6ee7ff","release_commit":"0ea0e44992addc811552d6fd37689e59385272d5","release_tree":"4c88e2a011d7229643059c2924460b04242272fc","tag":"lebl-family-id-wip.2026.08.30.u429","tag_object":"1a0348e4cf0a0cdeead623574d0e3ad563d98cc7","release_id":379250341,"public_readback":"pass_9_of_9_12943707_bytes_plus_8_repository_overlays"},
+    "zenodo": {"record_id":22172396,"version_doi":"10.5281/zenodo.22172396","concept_doi":"10.5281/zenodo.22059779","public_readback":"pass_9_of_9_12943707_bytes_cross_provider_exact_and_latest_endpoint_resolves_22172396"}
   },
   "current_live_checkpoint": {
     "name": "U429",
@@ -202,7 +202,7 @@
       {"path":"qa/R006_FOURIER_JUMP_MIDPOINT_CONVERGENCE_EXERCISE_U428_20260830.md","bytes":4784,"sha256":"b92e9de3c5701590ed5b61315575375ac3c697b0816ce4054e7a9535af764a10"},
       {"path":"qa/R006_FOURIER_ARBITRARILY_SLOW_COEFFICIENT_DECAY_EXERCISE_U429_20260830.md","bytes":4235,"sha256":"22312ba06b801f720278584b9f577d9414bb01017288923697788a1538c45e8e"}
     ],
-    "reader_status": "pass_complete_R006_volume_II_release_reader_publication_pending_with_public_U397_preserved",
+    "reader_status": "pass_complete_R006_volume_II_release_reader_public_on_GitHub_and_Zenodo_with_cross_provider_byte_identity_and_U397_preserved",
     "reader": {"path":"output/pdf/Analisis_Dasar_II_Bahasa_Indonesia_v6.3.pdf","pages":241,"bytes":2427379,"sha256":"e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3","font_rows_embedded":"98_of_98","named_destinations":"1290_valid","links":"687_valid","outline_entries":"33_valid","replacement_characters":0,"independent_final_byte_audit":"pass_pixel_identical_page_232_after_final_convergence_passes"},
     "integration_build": {"path":"tmp/r006-u429-build-20260830/realanal2.pdf","pages":241,"bytes":2427379,"sha256":"e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3","epoch":1787961600,"passes":"incremental pdflatex plus index and glossary regeneration followed by final passes 5-6; PDF and seven auxiliaries byte-stable","visual_pages":"1-2 and 231-241 pass at 144 dpi; independent 180-dpi page-232 pixel comparison pass","status":"pass_complete_R006_volume_II_release_reader"},
     "reader_receipt": {"path":"qa/R006_FOURIER_ARBITRARILY_SLOW_COEFFICIENT_DECAY_EXERCISE_U429_20260830.md","bytes":4235,"sha256":"22312ba06b801f720278584b9f577d9414bb01017288923697788a1538c45e8e"},
@@ -220,9 +220,9 @@
     "full_r006_target_bytes": 198362,
     "full_r006_target_sha256": "cfaa1339706c31f16255642adcccb33903343808bc2d1bf195d70d3f25004133",
     "backend_checkpoint": {"records":4021,"expressions":858,"physical_terms":819,"current_logical_terms":797,"corrections":268,"assets":33,"relations":650,"segments":429,"units":477,"concepts":785,"files_per_tree":27,"bytes_per_tree":18208054,"inventory_sha256":"e6ab83c87774c191ba28b4efa1d0cef3ac551d74482c52b6c968816e51c76057","inventory_order":"ordinal_posix_relative_path","a_b_mismatches":0,"validation":"pass_full_generic_429_of_429_manifest_bindings","referential_integrity":"pass_zero_unresolved","csv_roundtrip":"pass_15_views_4021_records","manifest_component_checks":"372_pass_509_edition-root-relative","r007_nonlinear_assets":"31_assets_42_relations","o001":"34_exercises_14_hints_20_none_zero_solutions","o001_0034":"exact_final_R006_exercise_source_target_binding_explicit_hint_no_solution_completed_QA"},
-    "latest_public_github_main_source_checkpoint": {"name":"U428","commit":"0916d113a5ce9d826d3c03fe0c869830c6e37070","tree":"3451309d24bd92242a6c0d121614cf57a9827cbc","files":42,"bytes":20107366,"inventory_sha256":"88c805be563229c26070b48d7dad2f1f8f9c04570ac7771369d96fb4c95ff4df","anonymous_readback":"pass_42_of_42_paths_independently_reverified","controls_commit":"daa1c9dee22bfcec459d3b54e9f1ab575f6b25be","controls_tree":"c928e03799ed2eb10d4c13b4cd589454a20f1755","controls_readback":"pass_6_of_6_paths_588985_bytes_inventory_dae6178deae219c0d1779b9bd3b07548f8550d092698e376582b53bc418d27d7","release_changed":false,"zenodo_changed":false,"receipt":"publication/live-2026.08.30-u428/GITHUB_MAIN_U428_RECEIPT.md","public_receipt_snapshot":{"bytes":5032,"sha256":"fc0f22ea196b869f25f0f42d42b548aa460fea4633080f7c7a4a58579cee7361"},"final_local_receipt":{"bytes":6303,"sha256":"fafe5cbc3dabc838fee25e148fe921fc8338028fc5eed39d8ab8296a4e66140f","publication":"carry_with_U429_substantive_checkpoint"}},
+    "latest_public_github_main_source_checkpoint": {"name":"U429","commit":"e55907983ca54bb2c94d90230eb949b64a6ee7ff","tree":"97cc963dc211728a20be1c18f9c8890f01790ae9","files":42,"bytes":20178050,"inventory_sha256":"d9fdbc0921be59836e5c1447720711fd040d682574eac148acf2c723d7402118","anonymous_readback":"pass_42_of_42_paths_publisher_and_independent_reaudit","controls_commit":"daa1c9dee22bfcec459d3b54e9f1ab575f6b25be","controls_tree":"c928e03799ed2eb10d4c13b4cd589454a20f1755","controls_readback":"pass_base_6_of_6_paths_588985_bytes_inventory_dae6178deae219c0d1779b9bd3b07548f8550d092698e376582b53bc418d27d7","release_changed":true,"zenodo_changed":true,"release_commit":"0ea0e44992addc811552d6fd37689e59385272d5","release_tree":"4c88e2a011d7229643059c2924460b04242272fc","release_id":379250341,"zenodo_record":22172396,"receipt":"publication/live-2026.08.30-u429/GITHUB_MAIN_U429_RECEIPT.md","source_receipt":{"bytes":2938,"sha256":"0423c2a8fb1f8209192448d7c0c5155b9b79448b4a6fba120f4c0fd3b28e890e"}},
     "accepted_helper_packet": {"packet_id":"HP-LEBL-R007-001","state":"accepted","handoff_sha256":"5f51bda4f2a64c6e0777dbcb51435a0f403bec7ff585878106f471103523cba4","checksums_sha256":"7bc509b0a277d5323a72b910e45a06d8620bf628cd16f5cb9ce3c399b937ab47","owner_target_sha256":"adee2f44b4a570b8f89f01c529d9bb9ebc38c0999ceb949360f4c075390003a1","receipt":"qa/R007_NONLINEAR_SYSTEMS_HP001_OWNER_THREE_WAY_QA_20260825.md","helper_target_recopied":false},
-    "next": "publish the completed R006 Volume II reader and U429 source/backend checkpoint in the existing GitHub and Zenodo lineages, then continue R007 ch-first-order-ode.tex at raw lines 89-98; keep the R008 cursor at raw line 1648"
+    "next": "continue R007 ch-first-order-ode.tex at raw lines 89-98, admit the definite-versus-indefinite-integral and closed-form unit, and rebuild the deterministic backend; keep the R008 cursor at raw line 1648"
   },
   "terminology_qa_20260824": {
     "status": "pass_no_preferred_term_or_reader_text_change_required",
@@ -269,41 +269,41 @@
     "build_receipt": {"path":"qa/R006_COMPLEX_TRIG_SECTION_READER_U336_20260824.md","bytes":3824,"sha256":"dcd2454ffe1dca9554d83828e6f9049f49c7b627a9214daabebf622fe339e9f5"}
   },
   "publication": {
-    "scope_status": "active_partial_public_u428_source_and_controls_verified_with_public_U397_reader_verified",
-    "scope": "PUBLIC GITHUB-MAIN U428 contains 428 admitted units (R006 343, R007 35, R008 50) through the two-part symmetric Fourier-partial-sum jump-midpoint convergence exercise at source/backend commit 0916d113a5ce9d826d3c03fe0c869830c6e37070 followed by controls commit daa1c9dee22bfcec459d3b54e9f1ab575f6b25be; all 42 source paths / 20,107,366 bytes and six control paths / 588,985 bytes passed authenticated and anonymous immutable readback. PUBLIC READER BOUNDARY U397 remains the centered 226-page R006 Volume II reader after complete Subsection 11.8.1, plus complete R006 Volume I and centered R007 nonlinear-systems readers. All three books remain active until the corpus is complete.",
+    "scope_status": "active_partial_public_u429_source_backend_and_complete_R006_reader_release_verified_with_U397_preserved",
+    "scope": "PUBLIC U429 contains 429 admitted units (R006 344, R007 35, R008 50), completes R006 Volumes I-II, and exposes a deterministic 4021-record backend. GitHub source commit e55907983ca54bb2c94d90230eb949b64a6ee7ff, release commit 0ea0e44992addc811552d6fd37689e59385272d5, release 379250341, and Zenodo record 22172396 pass anonymous byte verification. GitHub and Zenodo each expose the same nine assets / 12943707 bytes; the Zenodo concept-latest endpoint resolves to U429. U397 remains public and unchanged. The family remains partial because R007 and R008 are unfinished.",
     "github": {
       "repository_url": "https://github.com/KokunoYumeto/lebl-mathematics-family-id",
       "default_branch": "main",
-      "release_checkpoint_commit": "a35de2ff999291c3414d6ba319f16bb149c7d5f5",
-      "tree": "89ade8981ad9848173da6fa8fdd1eb69341d0aad",
-      "content_commit": "1f4af23981dae23328b2539ee3f623c15879aa89",
-      "post_publication_state_commit": "007128997ddcbd448ff26cd97556b2a3f9de2035",
-      "post_publication_state_tree": "7488ae6658145a5e518825064cd455a30e7b59aa",
-      "post_publication_pointer_commit": "57211953210933e7bcaf6165b2d04587fcd00200",
-      "post_publication_pointer_tree": "4d845894ee625231d4c2357cc3f567ff15a87009",
-      "release_target_commit": "a35de2ff999291c3414d6ba319f16bb149c7d5f5",
-      "tracked_files": 1135,
-      "main_head_scope": "PUBLIC U397 READER RELEASE CONTENT remains preserved; current main is verified U428 source/backend commit 0916d113a5ce9d826d3c03fe0c869830c6e37070 followed by controls commit daa1c9dee22bfcec459d3b54e9f1ab575f6b25be through the two-part symmetric Fourier-partial-sum jump-midpoint convergence exercise.",
-      "release_id": 376866909,
-      "release_tag": "lebl-family-id-wip.2026.08.26.u397",
-      "release_tag_object": "c83c92a89880a042df6fef31c8aa37fe639528c9",
-      "release_url": "https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id-wip.2026.08.26.u397",
+      "release_checkpoint_commit": "0ea0e44992addc811552d6fd37689e59385272d5",
+      "tree": "4c88e2a011d7229643059c2924460b04242272fc",
+      "content_commit": "e55907983ca54bb2c94d90230eb949b64a6ee7ff",
+      "post_publication_state_commit": null,
+      "post_publication_state_tree": null,
+      "post_publication_pointer_commit": null,
+      "post_publication_pointer_tree": null,
+      "release_target_commit": "0ea0e44992addc811552d6fd37689e59385272d5",
+      "tracked_files": 1679,
+      "main_head_scope": "Current main is U429 release checkpoint 0ea0e44992addc811552d6fd37689e59385272d5 over verified source commit e55907983ca54bb2c94d90230eb949b64a6ee7ff. The eight-file release overlay and nine release assets are public and anonymously byte-verified; U397 remains preserved.",
+      "release_id": 379250341,
+      "release_tag": "lebl-family-id-wip.2026.08.30.u429",
+      "release_tag_object": "1a0348e4cf0a0cdeead623574d0e3ad563d98cc7",
+      "release_url": "https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id-wip.2026.08.30.u429",
       "published": true,
       "prerelease": false,
-      "public_source_readback": "pass_live_U428_source_commit_0916d113a5ce9d826d3c03fe0c869830c6e37070_42_of_42_paths_20107366_bytes_inventory_88c805be563229c26070b48d7dad2f1f8f9c04570ac7771369d96fb4c95ff4df_plus_controls_commit_daa1c9dee22bfcec459d3b54e9f1ab575f6b25be_6_of_6_paths_588985_bytes_inventory_dae6178deae219c0d1779b9bd3b07548f8550d092698e376582b53bc418d27d7_plus_preserved_U397_release",
-      "public_asset_readback": "pass_9_of_9_anonymous_12439062_bytes_sha256_and_bytes",
-      "receipt": {"path":"publication/wip-2026.08.26-u397/GITHUB_PUBLICATION_RECEIPT.md","bytes":2794,"sha256":"880e2e5cc22417a462a1864be6056da57efd69cc8d5607db3a234b68c85ffd00"}
+      "public_source_readback": "pass_U429_source_42_of_42_paths_20178050_bytes_plus_release_overlay_8_of_8_files",
+      "public_asset_readback": "pass_9_of_9_anonymous_12943707_bytes_sha256_and_cross_provider_identity",
+      "receipt": {"path":"publication/wip-2026.08.30-u429/GITHUB_PUBLICATION_RECEIPT.md","bytes":2858,"sha256":"084d2b3ee662f255640b90e8a7ee47ff11ffe43fc7b60474f4bb6769bbe26e4c"}
     },
     "zenodo": {
       "concept_doi": "10.5281/zenodo.22059779",
-      "version_doi": "10.5281/zenodo.22105195",
-      "record_id": 22105195,
-      "record_url": "https://zenodo.org/records/22105195",
-      "release_tag": "6.3-id-wip.2026.08.26.u397",
+      "version_doi": "10.5281/zenodo.22172396",
+      "record_id": 22172396,
+      "record_url": "https://zenodo.org/records/22172396",
+      "release_tag": "6.3-id-wip.2026.08.30.u429",
       "published": true,
-      "primary_reader_pdf": "Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_11.8.1_Polinom_Trigonometrik.pdf",
-      "public_byte_readback": "pass_9_of_9_anonymous_12439062_bytes_sha256_and_concept_latest_resolves_22105195",
-      "receipt": {"path":"publication/wip-2026.08.26-u397/ZENODO_PUBLICATION_RECEIPT.md","bytes":2706,"sha256":"22a5da1bbf00d7588f3e95eeaca3949d7abddc507377600e8a3dfe95a91536c6"}
+      "primary_reader_pdf": "Analisis_Dasar_II_Bahasa_Indonesia_v6.3.pdf",
+      "public_byte_readback": "pass_9_of_9_anonymous_12943707_bytes_sha256_cross_provider_exact_and_concept_latest_resolves_22172396",
+      "receipt": {"path":"publication/wip-2026.08.30-u429/ZENODO_PUBLICATION_RECEIPT.md","bytes":2660,"sha256":"117e20efea64bc7a7a25c9a8993f2cccba706339e871b6462baaa31e6f12cf06"}
     },
     "figshare": {
       "former_article_id": 33314802,
@@ -312,7 +312,7 @@
       "update_status": "exact_authorized_credential_path_absent_on_2026-08-26; no account call, mutation, or duplicate",
       "receipt": {"path":"publication/wip-2026.08.26-u393/FIGSHARE_UPDATE_ATTEMPT_20260826.md","bytes":620,"sha256":"6bc09e1f5bccd66171f12a1fe825c95ebe110e95c185ff9abcb1239badb01532"}
     },
-    "previous_publication": {"github_tag":"lebl-family-id-wip.2026.08.26.u393","github_commit":"e333c481e3e0436f5f9438a73dcc48aff6a17853","github_release_commit":"12b304221fcdf65a5d62a2807bcfc78601a7b6eb","zenodo_version_doi":"10.5281/zenodo.22104149","state":"preserved_public_unchanged"}
+    "previous_publication": {"github_tag":"lebl-family-id-wip.2026.08.26.u397","github_commit":"1f4af23981dae23328b2539ee3f623c15879aa89","github_release_commit":"a35de2ff999291c3414d6ba319f16bb149c7d5f5","zenodo_version_doi":"10.5281/zenodo.22105195","state":"preserved_public_unchanged"}
   },
   "checkpoint_evidence": {
     "local_u388_after_r006_u302_u303_20260826": {
@@ -1777,7 +1777,7 @@
     "mathematical_review_complete": false,
     "build_complete": false,
     "public": true,
-    "public_scope": "PUBLIC GITHUB MAIN U428: verified 428-unit source/backend checkpoint through the R006 two-part symmetric Fourier-partial-sum jump-midpoint convergence exercise at source commit 0916d113a5ce9d826d3c03fe0c869830c6e37070, tree 3451309d24bd92242a6c0d121614cf57a9827cbc, followed by controls commit daa1c9dee22bfcec459d3b54e9f1ab575f6b25be, tree c928e03799ed2eb10d4c13b4cd589454a20f1755. PUBLIC READER U397: GitHub release and Zenodo record 22105195 preserve the centered 226-page R006 Volume II reader through Subsection 11.8.1, complete 334-page R006 Volume I reader, centered 40-page R007 nonlinear-systems reader, and deterministic 3831-record release backend. Full R006/R007/R008 corpus remains incomplete",
+    "public_scope": "PUBLIC GITHUB MAIN U429: verified 429-unit source/backend checkpoint completing R006 Volumes I-II at source commit e55907983ca54bb2c94d90230eb949b64a6ee7ff, tree 97cc963dc211728a20be1c18f9c8890f01790ae9, with base controls commit daa1c9dee22bfcec459d3b54e9f1ab575f6b25be. PUBLIC READER U397 remains preserved while the completed 241-page R006 Volume II reader is published as U429 in the existing GitHub and Zenodo lineages. Full R006/R007/R008 corpus remains incomplete because R007 and R008 are unfinished",
     "official_or_endorsed": false
   }
 }
