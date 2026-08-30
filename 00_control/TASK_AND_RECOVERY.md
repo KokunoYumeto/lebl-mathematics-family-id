@@ -2,13 +2,13 @@
 
 Updated: 2026-08-30
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006 Volumes I-II are complete and publicly released at U429; local U430 adds one verified R007 unit through `ch-first-order-ode.tex` raw line 98 and a deterministic 4,026-record backend; publish U430 source/backend from the verified U429 controls head, then resume R007 at raw line 100; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006 Volumes I-II are complete and publicly released at U429; public GitHub U430 adds one verified R007 unit through `ch-first-order-ode.tex` raw line 98 and a deterministic 4,026-record backend; publish its bounded controls overlay, then resume R007 at raw line 100; HP-LEBL-R007-001 remains owner-accepted
 
 ## Current authoritative recovery snapshot — 2026-08-30 U430
 
 This block supersedes older local-progress and next-action statements below.
-The public reader boundary remains U429; U430 is the next substantive
-source/backend checkpoint.
+The public reader boundary remains U429; the U430 source/backend checkpoint is
+public and byte-verified, with only its bounded controls overlay pending.
 
 - Stable unit:
   `diffyqs.v6.11.first-order.integrals-as-solutions.definite-vs-indefinite-and-closed-form`.
@@ -31,16 +31,20 @@ source/backend checkpoint.
   Inventory SHA-256:
   `bba7789a35d3d5b6db5c90a65a0cdbff6ed1330eba893e07018ba2adbf6c508f`.
   Receipt: `qa/BACKEND_V0_4_LIVE_U430_20260830.md`.
-- Verified public base: GitHub main commit
-  `4d7f767a564243cad0ada9cdde8a5a6a868482ce`, tree
-  `438366f04913fc18fe026f48b7a6bf4b8b28c222`; its nine-file U429 controls
-  overlay passes fresh anonymous byte comparison. The U429 GitHub release and
-  Zenodo DOI `10.5281/zenodo.22172396` remain unchanged by U430.
-- Next executable sequence: publish U430 source/backend non-forced from that
-  exact base, anonymously read back every bounded path, update the publication
-  controls, then translate the complete R007 example at source raw lines
-  100–119 into the target beginning at raw line 100. Preserve the R008 cursor
-  at raw line 1648 and do not recopy HP-LEBL-R007-001.
+- Public U430 source/backend: GitHub main commit
+  `69697bb19ac259da87f0803abee5cf64b1ad6a71`, tree
+  `05e083ddb2d5c82e7bbf1609701d0136457edea1`, sole parent
+  `4d7f767a564243cad0ada9cdde8a5a6a868482ce`. Authenticated and anonymous
+  readback pass all 42 paths / 20,027,522 bytes; canonical inventory SHA-256
+  is `e5f188ba407b5c6fff5e82ba74e051f7e104d0efda557fc13e584c529b71400f`.
+  Receipt: `publication/live-2026.08.30-u430/GITHUB_MAIN_U430_RECEIPT.md`.
+  The U429 GitHub release and Zenodo DOI `10.5281/zenodo.22172396` remain
+  unchanged by U430.
+- Next executable sequence: publish the bounded U430 six-path controls overlay
+  from that exact source commit, anonymously read back every path, then
+  translate the complete R007 example at source raw lines 100–119 into the
+  target beginning at raw line 100. Preserve the R008 cursor at raw line 1648
+  and do not recopy HP-LEBL-R007-001.
 
 ## Publication closure — 2026-08-30 U429
 
