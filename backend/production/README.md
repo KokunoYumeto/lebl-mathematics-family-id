@@ -1,5 +1,33 @@
 # Production backend checkpoints
 
+## Current production checkpoint U430
+
+`v0.4-live-2026.08.30-u430-a/` is the authoritative local production
+checkpoint. It binds the 430-row translation manifest, 798-row live
+terminology ledger, 268-event adverse ledger, and unchanged 34-entry O001
+solution-gap ledger.
+
+- 4,026 canonical records, 430 manifest segments, 478 units, 786 concepts,
+  860 embedded expressions, and exactly 798 current logical terms;
+- 34 O001 exercise gaps, fourteen source hints, twenty no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 18,239,374 bytes;
+- `records.jsonl` SHA-256
+  `23dcbe87514f5877ac2b9af10a9dd1374295a0561dd0e782c6e92d9deca546da`;
+- canonical inventory SHA-256
+  `bba7789a35d3d5b6db5c90a65a0cdbff6ed1330eba893e07018ba2adbf6c508f`
+  using ordinal POSIX-relative-path ordering.
+
+Both fresh builds (`-u430-a` and `-u430-b`) are byte-identical across all 27
+files and pass schema, referential-integrity, 430 manifest-binding, 374 direct
+component, 15-view round-trip, and 509 legacy-locator checks. Relative to
+U429, U430 adds one translation unit, one bilingual title segment, one QA
+event, one concept, and one term while removing nothing; only the manifest
+artifact record is refreshed. It admits the R007 definite-versus-indefinite
+integral and closed-form discussion and does not replace the U429 reader
+release.
+
 ## Current production checkpoint U429
 
 `v0.4-live-2026.08.30-u429-a/` is the authoritative local production

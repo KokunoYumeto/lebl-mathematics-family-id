@@ -2,7 +2,45 @@
 
 Updated: 2026-08-30
 Lane: sister lane `[5]`
-Status: all three release authorities frozen; R006 Volumes I-II are complete and publicly released at U429; GitHub and Zenodo expose the same verified nine-asset payload including the complete 241-page Volume II reader and deterministic backend/source package; U397 remains public; R007 resumes at `ch-first-order-ode.tex` raw line 89; HP-LEBL-R007-001 remains owner-accepted
+Status: all three release authorities frozen; R006 Volumes I-II are complete and publicly released at U429; local U430 adds one verified R007 unit through `ch-first-order-ode.tex` raw line 98 and a deterministic 4,026-record backend; publish U430 source/backend from the verified U429 controls head, then resume R007 at raw line 100; HP-LEBL-R007-001 remains owner-accepted
+
+## Current authoritative recovery snapshot — 2026-08-30 U430
+
+This block supersedes older local-progress and next-action statements below.
+The public reader boundary remains U429; U430 is the next substantive
+source/backend checkpoint.
+
+- Stable unit:
+  `diffyqs.v6.11.first-order.integrals-as-solutions.definite-vs-indefinite-and-closed-form`.
+  Source raw lines 89–98 are 601 normalized UTF-8/LF bytes, SHA-256
+  `ef332a9ff33ceacb440cb57ef6275302f14ba5b2c517d67e2fc0722f6c0658e1`;
+  target raw lines 89–98 are 680 bytes, SHA-256
+  `f6919302a02ca3aeb96c904e2a8de6f9eb18d7dd25393e8510beaf6da2c44c84`.
+  Full target: 4,158 bytes, SHA-256
+  `dd10809f0a5714c8dc050e3878de7156dbaa138ca541dc35349261a245304451`.
+  Receipt: `qa/R007_FIRST_ORDER_DEFINITE_VS_INDEFINITE_CLOSED_FORM_U430_20260830.md`.
+- Manifest: 430 unique rows (R006 344, R007 36, R008 50), 673,396
+  bytes, SHA-256
+  `2dcf7104439fb9d83db6b291b00153f38807935fcb99dc90362635058978ed42`.
+  `LEBL-TERM-0798` binds `closed form` → `bentuk tertutup`; the 798-row
+  terminology ledger is 128,991 bytes, SHA-256
+  `c281609be2e2a3c47df7c8ebffb7fe5ddf34a848a9ef7ac7916947854704b9d8`.
+- Backend builds `v0.4-live-2026.08.30-u430-a` and `-b` are byte-identical:
+  27 files / 18,239,374 bytes, 4,026 records, 860 expressions, 430/430
+  manifest bindings, 374 direct checks, and 15 lossless CSV round trips.
+  Inventory SHA-256:
+  `bba7789a35d3d5b6db5c90a65a0cdbff6ed1330eba893e07018ba2adbf6c508f`.
+  Receipt: `qa/BACKEND_V0_4_LIVE_U430_20260830.md`.
+- Verified public base: GitHub main commit
+  `4d7f767a564243cad0ada9cdde8a5a6a868482ce`, tree
+  `438366f04913fc18fe026f48b7a6bf4b8b28c222`; its nine-file U429 controls
+  overlay passes fresh anonymous byte comparison. The U429 GitHub release and
+  Zenodo DOI `10.5281/zenodo.22172396` remain unchanged by U430.
+- Next executable sequence: publish U430 source/backend non-forced from that
+  exact base, anonymously read back every bounded path, update the publication
+  controls, then translate the complete R007 example at source raw lines
+  100–119 into the target beginning at raw line 100. Preserve the R008 cursor
+  at raw line 1648 and do not recopy HP-LEBL-R007-001.
 
 ## Publication closure — 2026-08-30 U429
 
@@ -32,6 +70,13 @@ pending or identifies U397 as the current reader boundary.
   `publication/wip-2026.08.30-u429/GITHUB_PUBLICATION_RECEIPT.md`,
   `ZENODO_PUBLICATION_RECEIPT.md`, and
   `CROSS_PROVIDER_PUBLIC_READBACK_U429.md`.
+- GitHub main now points to the non-forced post-publication controls commit
+  `4d7f767a564243cad0ada9cdde8a5a6a868482ce`, tree
+  `438366f04913fc18fe026f48b7a6bf4b8b28c222`, whose sole parent is the U429
+  release checkpoint. Fresh anonymous readback passes all 9 controls/receipt
+  files / 606,492 bytes; canonical inventory SHA-256 is
+  `449b506ca0559d20a1974ece46a5299def0af98cd0bdd85bce58cf2ba081500f`.
+  Local receipt: `publication/live-2026.08.30-u429/GITHUB_POST_PUBLICATION_CONTROLS_U429_RECEIPT.md`.
 - Historical U397 remains public and unchanged. The full family remains
   partial because R007 and R008 are unfinished.
 - Next executable action: translate R007

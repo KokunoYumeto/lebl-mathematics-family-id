@@ -17,6 +17,22 @@ OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna. Jiří Lebl tetap
 merupakan penulis karya sumber; semua kredit sumber dan kontributor manusia
 dipertahankan. Edisi ini independen dan tidak menyiratkan dukungan penulis.
 
+## Checkpoint sumber/backend U430
+
+R007 kini berlanjut melalui pembahasan perbedaan integral tentu dan integral
+tak tentu, kegunaan rumus integral tentu untuk perhitungan dan penggambaran
+grafik, serta definisi lokal *bentuk tertutup*. U430 memuat 430 unit (R006
+344, R007 36, R008 50), dengan istilah `closed form` → `bentuk tertutup`
+terikat secara eksplisit sebagai `LEBL-TERM-0798`.
+
+Dua build backend U430 identik pada 27 berkas / 18.239.374 byte, dengan 4.026
+rekaman, 860 ekspresi, 798 istilah logis, 430 ikatan manifes, dan 374
+pemeriksaan komponen langsung. Seluruh skema, integritas referensial, dan 15
+putar balik CSV lulus; inventaris POSIX SHA-256-nya
+`bba7789a35d3d5b6db5c90a65a0cdbff6ed1330eba893e07018ba2adbf6c508f`.
+Checkpoint ini hanya memperbarui sumber/backend; rilis pembaca U429 dan DOI
+Zenodo `10.5281/zenodo.22172396` tetap menjadi batas pembaca terkini.
+
 ## Checkpoint U429 - R006 lengkap
 
 R006 *Basic Analysis* Jilid I-II kini lengkap. U429 memuat 429 unit (R006
