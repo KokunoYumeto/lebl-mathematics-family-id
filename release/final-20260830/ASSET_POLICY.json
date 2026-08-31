@@ -1,0 +1,66 @@
+{
+  "ordered_assets": [
+    {
+      "bytes": 2870909,
+      "disposition": "replace",
+      "filename": "Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf",
+      "sha256": "38743ea0e7ce52bdadf5233fc9d6e79e00717f9ba55a393f2bf46ea21c65ef56"
+    },
+    {
+      "bytes": 2427379,
+      "disposition": "replace",
+      "filename": "Analisis_Dasar_II_Bahasa_Indonesia_v6.3.pdf",
+      "sha256": "e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3"
+    },
+    {
+      "bytes": 5135134,
+      "disposition": "replace",
+      "filename": "Catatan_tentang_Diffy_Qs_Bahasa_Indonesia_v6.11.pdf",
+      "sha256": "1c18dfc1572d22ef7fc5d8ad25be18f3b91f1bffea5b9f9d521ff4e56ca969d4"
+    },
+    {
+      "bytes": 2822132,
+      "disposition": "replace",
+      "filename": "Panduan_Mengolah_Analisis_Kompleks_Bahasa_Indonesia_v1.9.pdf",
+      "sha256": "87e4810abdedbdd8121995a8e53936891135037f03054dce76a06beebc3cfaae"
+    },
+    {
+      "bytes": 18076597,
+      "disposition": "replace",
+      "filename": "lebl-mathematics-family-id-source-backend-complete-20260830.zip",
+      "sha256": "baeea18043520f1b47825df0c9b1343f203bc1ec67119266953e19133381ab92"
+    },
+    {
+      "bytes": 2963,
+      "disposition": "replace",
+      "filename": "LICENSE.md",
+      "sha256": "50cd1a865cab721eb28584a37cf8451ed2ebfe61f97f319bb50ff60348dea040"
+    },
+    {
+      "bytes": 5992,
+      "disposition": "replace",
+      "filename": "RELEASE_MANIFEST.json",
+      "sha256": "864196a75450d560e94c8b883126014abc3564936af10cf9235f7c9ba58859bf"
+    },
+    {
+      "bytes": 2368,
+      "disposition": "replace",
+      "filename": "RELEASE_NOTES.md",
+      "sha256": "3bf5f2cf305473dd88a1bb699ddcafd912875fc0e4c7295cf609cc455ac33b01"
+    },
+    {
+      "bytes": 929,
+      "disposition": "replace",
+      "filename": "SHA256SUMS.txt",
+      "sha256": "f3f90b34f733ab94477dea4711bde27ef07c9f3fb6869005cd68c9065b38de89"
+    },
+    {
+      "bytes": 2197,
+      "disposition": "replace",
+      "filename": "ZENODO_METADATA.json",
+      "sha256": "65d841f3672cff6b77a2fc2d93ce82101f9c055ff1261f62e233c258a93e9a06"
+    }
+  ],
+  "release_id": "lebl-family-id.2026.08.30.complete",
+  "schema_version": "1.0"
+}

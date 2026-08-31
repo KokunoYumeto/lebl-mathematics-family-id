@@ -3146,121 +3146,124 @@ mungkin untuk $h > 0$ yang lebih kecil.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \sectionnewpage
-\section{The Stone--Weierstrass theorem}
+\section{Teorema Stone--Weierstrass}
 \label{sec:stoneweier}
 
 %mbxINTROSUBSECTION
 
-\sectionnotes{3 lectures}
+\sectionnotes{3 kuliah}
 
-\subsection{Weierstrass approximation}
+\subsection{Aproksimasi Weierstrass}
 
-Perhaps surprisingly, even a very badly behaved continuous function is
-a uniform limit of polynomials.
-We cannot really get any \myquote{nicer}
-functions than polynomials.
-The idea of the proof is a very common approximation or \myquote{smoothing} idea
-(convolution with an approximate delta function) that has applications
-far beyond pure mathematics.
+Mungkin mengejutkan bahwa fungsi kontinu yang berperilaku sangat buruk sekalipun
+merupakan limit seragam dari polinom.
+Kita hampir tidak dapat memperoleh fungsi yang lebih \myquote{baik}
+daripada polinom.
+Gagasan pembuktiannya merupakan gagasan aproksimasi atau \myquote{penghalusan}
+yang sangat umum (konvolusi dengan fungsi delta hampiran) dan memiliki penerapan
+jauh di luar matematika murni.
 
-\begin{thm}[Weierstrass approximation theorem]
-\index{Weierstrass approximation theorem}
-If $f \colon [a,b] \to \C$ is continuous, then there exists a sequence
-$\{ p_n \}_{n=1}^\infty$ of polynomials converging to $f$ uniformly on $[a,b]$.
-Furthermore, if $f$ is real-valued, we can find $p_n$ with real coefficients.
+\begin{thm}[Teorema aproksimasi Weierstrass]
+\index{teorema aproksimasi Weierstrass}
+Jika $f \colon [a,b] \to \C$ kontinu, maka terdapat barisan
+$\{ p_n \}_{n=1}^\infty$ polinom yang konvergen seragam ke $f$ pada $[a,b]$.
+Lebih lanjut, jika $f$ bernilai real, kita dapat memilih $p_n$ dengan koefisien real.
 \end{thm}
 
 \begin{proof}
-For $x \in [0,1]$,
-define
+Untuk $x \in [0,1]$,
+definisikan
 \begin{equation*}
 g(x) \coloneqq f\bigl((b-a)x+a\bigr)-f(a) - x\bigl(f(b)-f(a)\bigr) .
 \end{equation*}
-If we prove the theorem for $g$ and find the sequence
-$\{ p_n \}_{n=1}^\infty$ for $g$,
-it is proved for $f$ as we simply
-composed with an invertible affine function and added an affine
-function to $f$.  We reverse the process and apply that to our
-$p_n$, to obtain polynomials approximating $f$.
-The function $g$ is defined on $[0,1]$ and $g(0)=g(1)=0$.
-For simplicity, assume that
-$g$ is defined on $\R$ by letting
-$g(x) \coloneqq 0$ if $x < 0$ or $x > 1$.  This extended $g$ is continuous.
+Jika kita membuktikan teorema ini untuk $g$ dan menemukan barisan
+$\{ p_n \}_{n=1}^\infty$ untuk $g$,
+maka teorema terbukti untuk $f$: fungsi di atas diperoleh dengan
+mengomposisikan $f$ dengan suatu peta afin yang invertibel lalu menambahkan
+suatu fungsi afin.  Kita membalik proses tersebut dengan mengomposisikan $p_n$
+dengan peta afin invers lalu menambahkan kembali fungsi afin yang bersesuaian
+untuk memperoleh polinom-polinom yang mengaproksimasi $f$.
+Fungsi $g$ terdefinisi pada $[0,1]$ dan $g(0)=g(1)=0$.
+Demi kesederhanaan, andaikan
+$g$ didefinisikan pada $\R$ dengan menetapkan
+$g(x) \coloneqq 0$ jika $x < 0$ atau $x > 1$.  Perluasan $g$ ini kontinu.
 
-Define
+Definisikan
 \begin{equation*}
 c_n \coloneqq {\left( \int_{-1}^1 {(1-x^2)}^n\,dx \right)}^{-1} ,
 \qquad
 q_n(x) \coloneqq c_n (1-x^2)^n .
 \end{equation*}
-The choice of $c_n$ is
-so that $\int_{-1}^1 q_n(x)\,dx = 1$.
-See \figureref{fig:weierqn}.
+Konstanta $c_n$ dipilih
+agar $\int_{-1}^1 q_n(x)\,dx = 1$.
+Lihat \figureref{fig:weierqn}.
 
 \begin{myfigureht}
 \myincludegraphics{weierqn}{%
-Graphs of many functions on the interval minus 1 to 1.
-They are all a symmetric "bump" above the x-axis.  The lowest
-and widest bump is in dark color, and then taller and thinner peaks
-are in increasingly lighter shade of gray.}
-\caption{Plot of the approximate delta functions $q_n$ on $[-1,1]$ for
-$n=5,10,15,20,\ldots,100$ with higher $n$ in lighter shade.\label{fig:weierqn}}
+Grafik sejumlah fungsi pada interval dari negatif 1 hingga 1.
+Semuanya berupa "gundukan" simetris di atas sumbu x.  Gundukan
+terendah dan terlebar berwarna gelap, lalu puncak-puncak yang lebih tinggi
+dan lebih sempit tampil dalam nuansa abu-abu yang semakin terang.}
+\caption{Grafik fungsi-fungsi delta hampiran $q_n$ pada $[-1,1]$ untuk
+$n=5,10,15,20,\ldots,100$; nilai $n$ yang lebih besar ditampilkan dalam nuansa
+yang lebih terang.\label{fig:weierqn}}
 \end{myfigureht}
 
-The functions $q_n$ are peaks around 0 (ignoring what happens outside
-of $[-1,1]$) that get narrower and taller as $n$ increases,
-while the area underneath is always 1.
-A classic approximation idea
-is to do a \emph{\myindex{convolution}} integral with peaks like this:
-For $x \in [0,1]$, let
+Fungsi-fungsi $q_n$ merupakan puncak di sekitar 0 (dengan mengabaikan apa yang
+terjadi di luar $[-1,1]$) yang semakin sempit dan tinggi ketika $n$ membesar,
+sedangkan luas di bawahnya selalu 1.
+Salah satu gagasan klasik dalam aproksimasi
+adalah melakukan integral \emph{\myindex{konvolusi}} dengan puncak seperti ini:
+Untuk $x \in [0,1]$, misalkan
 \begin{equation*}
 p_n(x) \coloneqq \int_{0}^1 g(t)q_n(x-t) \,dt \quad \left( = \int_{-\infty}^\infty
 g(t)q_n(x-t) \,dt \right) .
 \end{equation*}
-The idea of this convolution is that we do a \myquote{weighted average} of the
-function $g$ around the point $x$ using $q_n$ as the weight.
-See \figureref{fig:approxdeltaconv}.
+Gagasan konvolusi ini ialah mengambil \myquote{rata-rata berbobot} dari fungsi
+$g$ di sekitar titik $x$ dengan menggunakan $q_n$ sebagai bobot.
+Lihat \figureref{fig:approxdeltaconv}.
 
 \begin{myfigureht}
 \myincludegraphics{approxdeltaconv}{%
-Graphs of three functions on the interval minus 1 to 1.
-There is a point on the x-axis marked simply x.  Symmetric about the
-point x, there is a light gray positive function whose graph is a peak
-centered at x and decaying rapidly as we get further away from x.
-In gray, there is a graph of a function that is simply a jagged line.
-In black is the product of the two graphs which is mostly almost zero where
-the light gray line is zero, and near the peak the shape of the jagged
-gray line is magnified.}
-\caption{For $x=0.3$, the plot of $q_{100}(x-t)$ (light gray peak centered
-at $x$), some continuous function
-$g(t)$ (the jagged line) and the product $g(t)q_{100}(x-t)$ (the bold line).\label{fig:approxdeltaconv}}
+Grafik tiga fungsi pada interval dari negatif 1 hingga 1.
+Terdapat sebuah titik pada sumbu x yang ditandai x.  Simetris terhadap
+titik x, terdapat fungsi positif berwarna abu-abu muda yang grafiknya berupa
+puncak berpusat di x dan turun dengan cepat ketika menjauh dari x.
+Grafik berwarna abu-abu berupa garis bergerigi.
+Grafik berwarna hitam menunjukkan hasil kali kedua grafik; grafik ini hampir nol pada
+sebagian besar daerah tempat garis abu-abu muda bernilai nol, sedangkan di dekat
+puncak bentuk garis abu-abu yang bergerigi diperbesar.}
+\caption{Untuk $x=0.3$, grafik $q_{100}(x-t)$ (puncak abu-abu muda yang berpusat
+di $x$), suatu fungsi kontinu
+$g(t)$ (garis bergerigi), dan hasil kali $g(t)q_{100}(x-t)$ (garis tebal).\label{fig:approxdeltaconv}}
 \end{myfigureht}
 
-As $q_n$ is a narrow peak, the integral
-mostly sees the values of $g$ that are
-close to $x$ and it does the weighted average of them.
-When the peak gets narrower, we compute this average closer to $x$
-and we expect the result to get closer to the value of $g(x)$.  Really, we are
-approximating what is called a delta function\footnote{The delta function
-is not actually a function,
-it is a \myquote{thing} that should give
+Karena $q_n$ merupakan puncak yang sempit, integral tersebut
+terutama menangkap nilai-nilai $g$ yang
+dekat dengan $x$ dan mengambil rata-rata berbobotnya.
+Ketika puncaknya semakin sempit, rata-rata itu semakin tertumpu pada nilai-nilai
+fungsi di titik-titik yang dekat dengan $x$, sehingga kita mengharapkan hasilnya
+semakin mendekati nilai $g(x)$.  Sesungguhnya,
+kita sedang mengaproksimasi apa yang disebut fungsi delta\footnote{Fungsi delta
+sebetulnya bukan fungsi,
+melainkan suatu \myquote{objek} yang seharusnya memberikan
 \myquote{$\int_{-\infty}^\infty g(t) \delta(x-t) \, dt = g(x)$.}}
-(don't worry if you have not
-heard of this concept),
-and functions like $q_n$ are often called
-\emph{approximate delta functions}\index{approximate delta function}.
-We could do this with any set of polynomials that look like narrower
-and narrower peaks near zero.  These just happen to be the simplest ones.
-We only need this behavior on $[-1,1]$ as the convolution sees nothing
-further than this as $g$ is zero outside $[0,1]$.
+(tidak perlu khawatir jika konsep ini belum pernah dijumpai),
+dan fungsi seperti $q_n$ sering disebut
+\emph{fungsi delta hampiran}\index{fungsi delta hampiran}.
+Kita dapat melakukan hal ini dengan sembarang keluarga polinom yang grafiknya
+berupa puncak-puncak yang semakin sempit di sekitar nol.  Polinom di atas kebetulan merupakan
+pilihan yang paling sederhana.
+Kita hanya memerlukan perilaku ini pada $[-1,1]$ karena konvolusi tidak menangkap
+apa pun yang lebih jauh, sebab $g$ bernilai nol di luar $[0,1]$.
 
-Because $q_n$ is a polynomial, we write
+Karena $q_n$ merupakan polinom, kita tulis
 \begin{equation*}
 q_n(x-t) = a_0(t) + a_1(t)\,x + \cdots + a_{2n}(t)\, x^{2n} ,
 \end{equation*}
-where $a_k(t)$ are polynomials in $t$, and hence
-integrable functions.
-So
+di mana $a_k(t)$ merupakan polinom dalam $t$, dan karena itu
+merupakan fungsi yang terintegralkan.
+Jadi,
 \begin{equation*}
 \begin{split}
 p_n(x) & =
@@ -3292,18 +3295,18 @@ a_{2n}(t)\,dt
 x^{2n} .
 \end{split}
 \end{equation*}
-In other words, $p_n$ is a polynomial%
+Dengan kata lain, $p_n$ merupakan polinom%
 \footnote{%
-Do note that the functions $a_j$ depend on $n$, so the coefficients of $p_n$
-change as $n$ changes.}
- in $x$.
-If $g(t)$ is real-valued, then the functions $g(t)a_j(t)$ are
-real-valued and $p_n$ has real coefficients,
-proving the \myquote{furthermore} part of the theorem.
+Perhatikan bahwa fungsi-fungsi $a_j$ bergantung pada $n$, sehingga koefisien $p_n$
+berubah ketika $n$ berubah.}
+ dalam $x$.
+Jika $g(t)$ bernilai real, maka fungsi-fungsi $g(t)a_j(t)$
+bernilai real dan $p_n$ memiliki koefisien real,
+yang membuktikan bagian \myquote{lebih lanjut} dari teorema.
 
-We still need to prove that $\{ p_n \}_{n=1}^\infty$ converges to $g$.
-We start with estimating the size of~$c_n$.
-For $x \in [0,1]$, we have that $1-x \leq 1-x^2$.  We estimate
+Kita masih perlu membuktikan bahwa $\{ p_n \}_{n=1}^\infty$ konvergen ke $g$.
+Kita mulai dengan menaksir besarnya~$c_n$.
+Untuk $x \in [0,1]$, berlaku $1-x \leq 1-x^2$.  Kita memperoleh taksiran
 \begin{equation*}
 \begin{split}
 c_n^{-1}   = \int_{-1}^1 {(1-x^2)}^n \, dx
@@ -3312,22 +3315,22 @@ c_n^{-1}   = \int_{-1}^1 {(1-x^2)}^n \, dx
 = \frac{2}{n+1} .
 \end{split}
 \end{equation*}
-So $c_n \leq \frac{n+1}{2} \leq n$.
-Let us see how small $q_n$ is if we ignore some small interval around the origin,
-where the peak is.
-Given any $\delta > 0$, $\delta < 1$,
-we have that for all
-$x$ such that $\delta \leq \sabs{x} \leq 1$,
+Jadi $c_n \leq \frac{n+1}{2} \leq n$.
+Mari kita lihat seberapa kecil $q_n$ jika suatu interval kecil di sekitar titik asal,
+tempat puncaknya berada, kita abaikan.
+Untuk sembarang $\delta > 0$ dengan $\delta < 1$,
+bagi semua
+$x$ sedemikian sehingga $\delta \leq \sabs{x} \leq 1$, berlaku
 \begin{equation*}
 q_n(x) \leq c_n {(1-\delta^2)}^n \leq  n{(1-\delta^2)}^n ,
 \end{equation*}
-because $q_n$ is increasing on $[-1,0]$ and decreasing on $[0,1]$.
-By the ratio test, 
-$n{(1-\delta^2)}^n$ goes to 0 as $n$ goes to infinity.
+karena $q_n$ naik pada $[-1,0]$ dan turun pada $[0,1]$.
+Berdasarkan uji rasio,
+$n{(1-\delta^2)}^n$ menuju 0 ketika $n$ menuju tak hingga.
 
-The function $q_n$ is even, $q_n(t) = q_n(-t)$, and $g$
-is zero outside of $[0,1]$.
-So for $x \in [0,1]$,
+Fungsi $q_n$ genap, $q_n(t) = q_n(-t)$, dan $g$
+bernilai nol di luar $[0,1]$.
+Jadi, untuk $x \in [0,1]$,
 \begin{equation*}
 p_n(x) = 
 \int_{0}^1 g(t)q_n(x-t) \, dt
@@ -3336,21 +3339,21 @@ p_n(x) =
 =
 \int_{-1}^{1} g(x+t)q_n(t) \, dt .
 \end{equation*}
-Let $\epsilon > 0$ be given.
-As $[-1,2]$ is compact and $g$ is continuous on $[-1,2]$, we have that $g$ is uniformly continuous.
-Pick $0 < \delta < 1$ such that if
-$\sabs{x-y} < \delta$ (and $x,y \in [-1,2]$), then
+Ambil $\epsilon > 0$.
+Karena $[-1,2]$ kompak dan $g$ kontinu pada $[-1,2]$, fungsi $g$ kontinu seragam.
+Pilih $0 < \delta < 1$ sedemikian sehingga jika
+$\sabs{x-y} < \delta$ (dan $x,y \in [-1,2]$), maka
 \begin{equation*}
 \babs{g(x)-g(y)} < \frac{\epsilon}{2} .
 \end{equation*}
-Let $M$ be such that $\babs{g(x)} \leq M$ for all $x$.  Let $N$ be
-such that for all $n \geq N$,
+Ambil $M$ sedemikian sehingga $\babs{g(x)} \leq M$ untuk semua $x$.  Ambil $N$
+sedemikian sehingga untuk semua $n \geq N$,
 \begin{equation*}
 4M n{(1-\delta^2)}^n < \frac{\epsilon}{2} .
 \end{equation*}
-Note that 
-$\int_{-1}^1 q_n(t) \, dt = 1$ and $q_n(t) \geq 0$ on $[-1,1]$.  So for $n
-\geq N$ and every $x \in [0,1]$,
+Perhatikan bahwa
+$\int_{-1}^1 q_n(t) \, dt = 1$ dan $q_n(t) \geq 0$ pada $[-1,1]$.  Jadi, untuk $n
+\geq N$ dan setiap $x \in [0,1]$,
 \begin{align*}
 \babs{p_n(x)-g(x)} & =
 \abs{\int_{-1}^1 g(x+t)q_n(t) \, dt
@@ -3401,43 +3404,46 @@ $\int_{-1}^1 q_n(t) \, dt = 1$ and $q_n(t) \geq 0$ on $[-1,1]$.  So for $n
 \end{align*}
 \end{proof}
 
-A convolution often inherits some property of the functions we are convolving.
-In our case the convolution $p_n$ inherited the property of being a
-polynomial from $q_n$.  The same idea of the proof is often used 
-to get other properties.  If $q_n$ or $g$ is infinitely differentiable, so is $p_n$.
-If $q_n$ or $g$ is a solution to a linear differential equation, so is $p_n$.
-Etc.
+Suatu konvolusi sering mewarisi sifat tertentu dari fungsi-fungsi yang kita
+konvolusikan. Dalam kasus ini, konvolusi $p_n$ mewarisi sifatnya sebagai
+polinom dari $q_n$. Gagasan pembuktian yang sama sering digunakan
+untuk memperoleh sifat-sifat lain. Jika $q_n$ atau $g$ diferensiabel tak
+berhingga kali, demikian pula $p_n$.
+% LEBL-ID-ADV-0246: klaim pewarisan PDL dipersempit ke kasus standar yang sah.
+Dengan hipotesis keteraturan standar, jika $q_n$ atau $g$ merupakan solusi global
+suatu persamaan diferensial linear homogen berkoefisien konstan, maka $p_n$ juga
+merupakan solusi persamaan yang sama. Dan seterusnya.
 
-Let us note an immediate application of the Weierstrass theorem.  We have
-already seen that countable dense subsets can be very useful.
+Mari kita catat suatu penerapan langsung teorema Weierstrass. Kita telah
+melihat bahwa subhimpunan rapat yang terhitung dapat sangat berguna.
 
 \begin{cor}
-The metric spaces $C\bigl([a,b],\R\bigr)$ and $C\bigl([a,b],\C\bigr)$ each contain a countable dense subset.
+Masing-masing ruang metrik $C\bigl([a,b],\R\bigr)$ dan $C\bigl([a,b],\C\bigr)$ memuat suatu subhimpunan rapat yang terhitung.
 \end{cor}
 
 \begin{proof}
-Without loss of generality, consider only
+Tanpa mengurangi keumuman, cukup tinjau
 $C\bigl([a,b],\R\bigr)$
-(why?).
-Real polynomials are dense in $C\bigl([a,b],\R\bigr)$ by Weierstrass.
-If we show that
-every real polynomial can be approximated by polynomials with rational
-coefficients, we are done.
-Indeed, there are only countably many
-rational numbers and so there are only countably many polynomials with
-rational coefficients (a countable union of countable sets is countable).
+(mengapa?).
+Menurut teorema Weierstrass, polinom real rapat dalam $C\bigl([a,b],\R\bigr)$.
+Jika kita menunjukkan bahwa
+setiap polinom real dapat dihampiri oleh polinom berkoefisien
+rasional, pembuktian selesai.
+Memang, bilangan rasional hanya terhitung banyaknya, sehingga polinom
+berkoefisien rasional juga hanya terhitung banyaknya (gabungan terhitung dari
+himpunan-himpunan terhitung adalah terhitung).
 
-Further without loss of generality, suppose $[a,b]=[0,1]$.  Let
+Selanjutnya, tanpa mengurangi keumuman, andaikan $[a,b]=[0,1]$. Misalkan
 \begin{equation*}
 p(x) \coloneqq \sum_{k=0}^n a_k\,  x^k
 \end{equation*}
-be a polynomial of degree $n$ where $a_k \in \R$.  Given $\epsilon > 0$, pick $b_k \in \Q$
-such that $\sabs{a_k-b_k} < \frac{\epsilon}{n+1}$.  Then
-if we let
+merupakan polinom berderajat $n$ dengan $a_k \in \R$. Untuk $\epsilon > 0$
+yang diberikan, pilih $b_k \in \Q$ sedemikian sehingga
+$\sabs{a_k-b_k} < \frac{\epsilon}{n+1}$. Kemudian, jika kita tetapkan
 \begin{equation*}
 q(x) \coloneqq \sum_{k=0}^n b_k \, x^k ,
 \end{equation*}
-we have
+diperoleh
 \begin{equation*}
 \babs{p(x)-q(x)}
 =
@@ -3452,69 +3458,64 @@ we have
 \end{proof}
 
 \begin{remark}
-While we will not prove so, the corollary above implies that
-$C\bigl([a,b],\C\bigr)$ has the same cardinality as $\R$, which may be a
-bit surprising.  The set of all functions $[a,b] \to \C$ has
-cardinality strictly greater than the cardinality of $\R$, it has the
-cardinality of the power set of $\R$.  So the
-set of continuous functions is a very tiny subset of the set of all
-functions.
+Meskipun kita tidak akan membuktikannya, korolari di atas menyiratkan bahwa
+$C\bigl([a,b],\C\bigr)$ memiliki kardinalitas yang sama dengan $\R$; hal ini
+mungkin agak mengejutkan. Himpunan semua fungsi $[a,b] \to \C$ memiliki
+kardinalitas yang lebih besar secara ketat daripada kardinalitas $\R$, yakni
+kardinalitas himpunan kuasa $\R$. Jadi, himpunan fungsi-fungsi kontinu
+merupakan subhimpunan yang sangat kecil dari himpunan semua fungsi.
 \end{remark}
 
-\textbf{Warning!}
-The fact that every continuous function $f \colon [-1,1] \to \C$ (or any
-interval $[a,b]$) can be uniformly
-approximated by polynomials
+\textbf{Peringatan!}
+Fakta bahwa setiap fungsi kontinu $f \colon [-1,1] \to \C$ (atau pada sembarang
+interval $[a,b]$) dapat dihampiri secara seragam oleh polinom
 \begin{equation*}
 \sum_{k=0}^n a_k\,  x^k
 \end{equation*}
-does not mean that every continuous $f$ is analytic, that is, equal to a
-power series
+tidak berarti bahwa setiap $f$ kontinu bersifat analitik, yaitu sama dengan
+suatu deret pangkat
 \begin{equation*}
 \sum_{k=0}^\infty c_k\,  x^k .
 \end{equation*}
-An analytic function is infinitely differentiable,
-however,
-the function $\sabs{x}$ is continuous and near the origin
-approximable by polynomials,
-and so provides a counterexample.
+Fungsi analitik diferensiabel tak berhingga kali. Akan tetapi,
+fungsi $\sabs{x}$ kontinu dan dapat dihampiri oleh polinom di sekitar titik asal,
+sehingga memberikan suatu contoh tandingan.
 
-The key distinction is that
-the polynomials coming from the Weierstrass theorem are not the partial
-sums of a power series.  For each one, the coefficients $a_k$ above can be
-completely different---they do not need to come from a single sequence
-$\{ c_k \}_{k=1}^\infty$.
+Perbedaan kuncinya ialah bahwa
+polinom-polinom yang diperoleh dari teorema Weierstrass bukan jumlah parsial
+suatu deret pangkat. Koefisien-koefisien $a_k$ dapat sama sekali berbeda dari
+satu polinom ke polinom lainnya---koefisien tersebut tidak harus berasal dari satu barisan
+$\{ c_k \}_{k=0}^\infty$.
 
 \medskip
 
-Interestingly, to generalize Weierstrass, we will only need to use it to
-approximate the absolute value function by polynomials without
-a constant term.
+Menariknya, untuk menggeneralisasi teorema Weierstrass, kita hanya perlu
+menggunakannya untuk menghampiri fungsi nilai mutlak dengan polinom tanpa
+suku konstan.
 
 \begin{cor}
-Let $[-a,a]$ be an interval.  Then there is a sequence of real polynomials
-$\{ p_n \}_{n=1}^\infty$ that converges uniformly to $\sabs{x}$ on $[-a,a]$ and such that
-$p_n(0) = 0$ for all $n$.
+Misalkan $[-a,a]$ suatu interval. Maka terdapat barisan polinom real
+$\{ p_n \}_{n=1}^\infty$ yang konvergen seragam ke $\sabs{x}$ pada $[-a,a]$ dan
+memenuhi $p_n(0) = 0$ untuk setiap $n$.
 \end{cor}
 
 \begin{proof}
-As $f(x) \coloneqq \sabs{x}$ is continuous and real-valued
-on $[-a,a]$, the Weierstrass theorem gives a sequence of
-real polynomials $\{ \widetilde{p}_n \}_{n=1}^\infty$ that converges to $f$
-uniformly on $[-a,a]$.
-Let
+Karena $f(x) \coloneqq \sabs{x}$ kontinu dan bernilai real
+pada $[-a,a]$, teorema Weierstrass memberikan barisan
+polinom real $\{ \widetilde{p}_n \}_{n=1}^\infty$ yang konvergen seragam ke $f$
+pada $[-a,a]$. Misalkan
 \begin{equation*}
 p_n(x) \coloneqq \widetilde{p}_n(x) - \widetilde{p}_n(0) .
 \end{equation*}
-Obviously $p_n(0) = 0$.
+Jelas bahwa $p_n(0) = 0$.
 
-Given $\epsilon > 0$, let $N$ be such that
-for $n \geq N$, we have
+Untuk $\epsilon > 0$ yang diberikan, ambil $N$ sedemikian sehingga
+untuk $n \geq N$, berlaku
 $\bigl\lvert\widetilde{p}_n(x)-\sabs{x}\big\rvert <
-\nicefrac{\epsilon}{2}$ for all $x \in [-a,a]$.
-In particular,
+\nicefrac{\epsilon}{2}$ untuk setiap $x \in [-a,a]$.
+Khususnya,
 $\babs{\widetilde{p}_n(0)} < \nicefrac{\epsilon}{2}$.
-Then for $n \geq N$,
+Jadi, untuk $n \geq N$,
 \begin{equation*}
 \babs{ p_n(x)-\sabs{x} }
 =
@@ -3525,142 +3526,141 @@ Then for $n \geq N$,
 \end{equation*}
 \end{proof}
 
-Generalizing the corollary,
-we can make the polynomials from the Weierstrass theorem
-be equal to our target function at one point, not just for $\sabs{x}$, but
-that's the one we will need.  It is also possible (see
+Dengan menggeneralisasi korolari ini, kita dapat membuat polinom-polinom dari
+teorema Weierstrass bernilai sama dengan fungsi sasaran kita pada satu titik,
+bukan hanya untuk $\sabs{x}$; tetapi kasus itulah yang kita perlukan. Kita juga
+dapat (lihat
 \exerciseref{exercise:finitelymanyweierequal})
-to make the polynomials
-equal at finitely many points by subtracting not a constant but a properly
-crafted polynomial.
+membuat polinom-polinom bernilai sama dengan fungsi sasaran pada sejumlah
+berhingga titik dengan mengurangkan polinom yang dirancang secara tepat sebagai
+ganti konstanta.
 
-\subsection{Stone--Weierstrass approximation}
+\subsection{Aproksimasi Stone--Weierstrass}
 
-We want to abstract away what is not really
-necessary and prove a general version of the Weierstrass theorem,
-the Stone--Weierstrass theorem\footnote{%
-Named after the American mathematician
+Melalui abstraksi, kita hendak menyisihkan hal-hal yang sebenarnya tidak
+diperlukan dan membuktikan suatu versi umum teorema Weierstrass, yakni teorema
+Stone--Weierstrass\footnote{%
+Dinamai menurut matematikawan Amerika
 \href{https://en.wikipedia.org/wiki/Marshall_Harvey_Stone}{Marshall Harvey Stone}
-(1903--1989), and the German mathematician
+(1903--1989) dan matematikawan Jerman
 \href{https://en.wikipedia.org/wiki/Karl_Weierstrass}{Karl Theodor Wilhelm Weierstrass}
 (1815--1897).}.
-Polynomials are dense in the space of continuous
-functions on a compact interval.  What other kinds of families of
-functions are also dense?  And if the domain is an
-arbitrary metric space, then we no longer have polynomials
-to begin with.
+Polinom rapat dalam ruang fungsi kontinu pada suatu interval kompak. Keluarga
+fungsi macam apa lagi yang juga rapat? Jika domainnya merupakan ruang metrik
+sebarang, kita bahkan sejak awal tidak mempunyai polinom.
 
 \begin{defn}
 \pagebreak[2]
-A set $\sA$ of complex-valued functions $f \colon X \to \C$ is said to be an 
-\emph{\myindex{algebra}} (sometimes
-\emph{\myindex{complex algebra}} or \emph{algebra over $\C$}) if for all $f,
-g \in \sA$ and $c \in \C$, we have
+Suatu himpunan $\sA$ yang terdiri atas fungsi bernilai kompleks
+$f \colon X \to \C$ disebut \emph{\myindex{aljabar}} (kadang-kadang
+\emph{\myindex{aljabar kompleks}} atau \emph{aljabar atas $\C$}) jika untuk
+setiap $f,
+g \in \sA$ dan $c \in \C$, berlaku
 \begin{enumerate}[(i)]
 \item $f+g \in \sA$.
 \item $fg \in \sA$.
 \item $cg \in \sA$.
 \end{enumerate}
-A \emph{\myindex{real algebra}} or an
-\emph{algebra over $\R$} is a set of real-valued
-functions that satisfies the three properties above for $c \in \R$.
+Suatu \emph{\myindex{aljabar real}} atau \emph{aljabar atas $\R$} adalah
+himpunan fungsi bernilai real yang memenuhi ketiga sifat di atas untuk
+$c \in \R$.
 \end{defn}
 
-We are interested in the case when
-$X$ is a compact metric space.  Then
-$C(X,\C)$ and $C(X,\R)$ are metric spaces.
-Given a set $\sA \subset C(X,\C)$, the set of all uniform
-limits is the metric space closure $\widebar{\sA}$.
-When we talk about closure of an algebra
-from now on we mean the closure in $C(X,\C)$
-as a metric space.  Same for $C(X,\R)$.
+Kita tertarik pada kasus ketika $X$ merupakan ruang metrik kompak. Dalam kasus
+ini, $C(X,\C)$ dan $C(X,\R)$ merupakan ruang metrik. Untuk suatu himpunan
+$\sA \subset C(X,\C)$, himpunan semua limit seragam adalah penutupan
+$\widebar{\sA}$ dalam ruang metrik tersebut. Mulai sekarang, ketika membicarakan
+penutupan suatu aljabar, yang kita maksud adalah penutupan di dalam $C(X,\C)$
+sebagai ruang metrik. Demikian pula untuk $C(X,\R)$.
 
-The set $\sP$ of all polynomials is an algebra in
-$C\bigl([a,b],\C\bigr)$, and we
-have shown that its closure $\widebar{\sP} = C\bigl([a,b],\C\bigr)$.
-That is, it is dense.  That is the sort of result that we wish to prove.
+Himpunan $\sP$ dari semua polinom merupakan aljabar di dalam
+$C\bigl([a,b],\C\bigr)$, dan kita telah membuktikan bahwa penutupannya
+$\widebar{\sP} = C\bigl([a,b],\C\bigr)$. Dengan kata lain, himpunan itu rapat.
+Hasil semacam inilah yang hendak kita buktikan.
 
-We leave the following proposition as an exercise.
+Proposisi berikut kita serahkan sebagai latihan.
 
 \begin{prop} \label{prop:closureofalgebra}
-Suppose $X$ is a compact metric space.
-If $\sA \subset C(X,\C)$ is an algebra, then the closure $\widebar{\sA}$ is also an algebra.
-Similarly for a real algebra in $C(X,\R)$.
+Misalkan $X$ suatu ruang metrik kompak. Jika $\sA \subset C(X,\C)$ merupakan
+aljabar, maka penutupan $\widebar{\sA}$ juga merupakan aljabar. Pernyataan
+serupa berlaku bagi aljabar real di dalam $C(X,\R)$.
 \end{prop}
 
-We distill the properties of polynomials that are sufficient
-for an approximation theorem.
+Kita menyarikan sifat-sifat polinom yang memadai bagi suatu teorema
+aproksimasi.
 
 \begin{defn}
-Let $\sA$ be a set of complex-valued functions defined on a set $X$.
+Misalkan $\sA$ suatu himpunan fungsi bernilai kompleks yang didefinisikan pada
+suatu himpunan $X$.
 \begin{enumerate}[(i)]
-\item $\sA$ \emph{\myindex{separates points}}
-if for every $x,y \in X$ with $x \neq y$, there is an $f \in \sA$ such that
+\item $\sA$ \emph{\myindex{memisah titik}} jika untuk setiap $x,y \in X$
+dengan $x \neq y$, terdapat $f \in \sA$ sedemikian sehingga
 $f(x) \neq f(y)$.
 \item 
-$\sA$ \emph{\myindex{vanishes at no point}} if for every $x \in X$
-there is an $f \in \sA$ such that $f(x) \neq 0$.
+$\sA$ \emph{\myindex{tidak nol di setiap titik}} jika untuk setiap $x \in X$
+terdapat $f \in \sA$ sedemikian sehingga $f(x) \neq 0$.
 \end{enumerate}
 \end{defn}
 
 \begin{example}
-Given any $X \subset \R$ (or $X \subset \C$),
-the set $\sP$ of polynomials in one variable separates points and vanishes at no point
-on $X$.  That is, $1 \in \sP$, so it vanishes at no point.
-For $x,y \in X$, $x \neq y$, take $f(t) \coloneqq t$, to get $f(x) = x \neq y = f(y)$.
-So $\sP$ separates points.
+Untuk sembarang $X \subset \R$ (atau $X \subset \C$), himpunan $\sP$ dari
+polinom satu variabel memisah titik dan tidak nol di setiap titik pada $X$.
+Karena $1 \in \sP$, himpunan itu tidak nol di setiap titik. Untuk
+$x,y \in X$ dengan $x \neq y$, pilih $f(t) \coloneqq t$, sehingga
+$f(x) = x \neq y = f(y)$. Jadi, $\sP$ memisah titik.
 \end{example}
 
 \begin{example}
-The set of functions of the form
+Himpunan fungsi berbentuk
 \begin{equation*}
 f(t) = a_0 + \sum_{n=1}^k a_n \cos(nt)
 \end{equation*}
-is an algebra,
-which follows by the identity $\cos(mt)\cos(nt) = 
+merupakan suatu aljabar; hal ini mengikuti dari identitas
+$\cos(mt)\cos(nt) = 
 \frac{\cos((n+m) t)}{2}+
 \frac{\cos((n-m) t)}{2}$.
-The algebra vanishes at no point as it contains a constant function.
-It does not separate points if the domain is an interval
-$[-a,a]$, as $f(-t) = f(t)$ for all~$t$.
-It does separate points if the domain is $[0,\pi]$; $\cos(t)$
-is one-to-one on $[0,\pi]$.
+Aljabar ini tidak nol di setiap titik karena memuat fungsi konstan yang tidak
+nol. Aljabar ini tidak memisah titik jika domainnya interval $[-a,a]$, sebab
+$f(-t) = f(t)$ untuk setiap~$t$. Aljabar ini memisah titik jika domainnya
+$[0,\pi]$; fungsi $\cos(t)$ injektif pada $[0,\pi]$.
 \end{example}
 
 \begin{example}
-The set $\sP$ of real polynomials with no constant term is an algebra that vanishes at the origin.
-Clearly, any function in the closure of $\sP$ also vanishes at the origin,
-so the closure of $\sP$ cannot be $C\bigl([0,1],\R\bigr)$.
+Himpunan $\sP$ dari polinom real tanpa suku konstan merupakan aljabar yang nol
+di titik asal. Jelas bahwa setiap fungsi dalam penutupan $\sP$ juga nol di
+titik asal, sehingga penutupan $\sP$ tidak mungkin sama dengan
+$C\bigl([0,1],\R\bigr)$.
 
-Similarly, the set of constant functions is an algebra that does not
-separate points.  Uniform limits of constants are constants, so we also do
-not obtain all continuous functions.
+Demikian pula, himpunan fungsi konstan merupakan aljabar yang tidak memisah
+titik. Limit seragam fungsi-fungsi konstan tetap merupakan fungsi konstan,
+sehingga kita juga tidak memperoleh semua fungsi kontinu.
 \end{example}
 
-It is interesting that these two properties,
-\myquote{vanishes at no point} and
-\myquote{separates points,} are sufficient to obtain approximation of any
-real-valued continuous function.
-Before we prove this theorem, we note that such an algebra can interpolate
-a finite number of values exactly.  We will state this result
-only for two points as that is all that we will require.
+Menarik bahwa kedua sifat ini,
+\myquote{tidak nol di setiap titik} dan
+\myquote{memisah titik}, cukup untuk mengaproksimasi setiap fungsi
+kontinu bernilai real. Sebelum membuktikan teorema ini, kita mencatat bahwa
+aljabar demikian dapat menginterpolasi sejumlah berhingga nilai secara eksak.
+Kita akan menyatakan hasil ini hanya untuk dua titik karena hanya itulah yang
+kita perlukan.
 
 \begin{prop} \label{prop:SWinterpolate}
-Suppose $\sA$ is an algebra of complex-valued functions on a set $X$ that separates points
-and vanishes at no point.  Suppose $x,y$ are distinct points of $X$, and
-$c,d \in \C$.  Then there is an $f \in \sA$ such that
+Misalkan $\sA$ suatu aljabar fungsi bernilai kompleks pada himpunan $X$ yang
+memisah titik dan tidak nol di setiap titik. Misalkan $x,y$ merupakan dua titik
+berbeda di $X$, dan $c,d \in \C$. Maka terdapat $f \in \sA$ sedemikian sehingga
 \begin{equation*}
 f(x) = c, \qquad f(y) = d .
 \avoidbreak
 \end{equation*}
-If $\sA$ is a real algebra, the conclusion holds for $c,d \in \R$.
+Jika $\sA$ merupakan aljabar real, kesimpulan tersebut berlaku untuk
+$c,d \in \R$.
 \end{prop}
 
 \begin{proof}
-There must exist an $g,h,k \in \sA$
-such that 
+Harus terdapat $g,h,k \in \sA$
+sedemikian sehingga
 $g(x) \neq g(y)$, $h(x) \neq 0$, $k(y) \neq 0$.
-Let
+Definisikan
 \begin{equation*}
 \begin{split}
 f & \coloneqq 
@@ -3676,293 +3676,292 @@ d
 \frac{gk - g(x)k}{g(y)k(y)-g(x)k(y)} .
 \end{split}
 \end{equation*}
-We are not dividing by zero (clear from the first formula).
-Also by the first formula, $f(x) = c$ and $f(y) = d$.
-By the second formula, $f \in \sA$ (as $\sA$ is an algebra).
+Kita tidak melakukan pembagian dengan nol (hal ini jelas dari rumus pertama).
+Dari rumus pertama pula, $f(x) = c$ dan $f(y) = d$.
+Dari rumus kedua, $f \in \sA$ (karena $\sA$ merupakan aljabar).
 \end{proof}
 
-\begin{thm}[Stone--Weierstrass, real version]
+\begin{thm}[Stone--Weierstrass, versi real]
 \label{thm:SWreal}%
-\index{Stone--Weierstrass!real version}%
-Let $X$ be a compact metric space and $\sA$ a real algebra of real-valued
-continuous functions on $X$, such that $\sA$ separates points and vanishes at
-no point.  Then the closure $\widebar{\sA} = C(X,\R)$.
+\index{Stone--Weierstrass!versi real}%
+Misalkan $X$ suatu ruang metrik kompak dan $\sA$ suatu aljabar real yang terdiri
+atas fungsi kontinu bernilai real pada $X$, sedemikian sehingga $\sA$ memisah
+titik dan tidak nol di setiap titik. Maka penutupannya
+$\widebar{\sA} = C(X,\R)$.
 \end{thm}
 
-The proof is divided into several claims.
+Pembuktian dibagi menjadi beberapa klaim.
 
 \medskip
 
 \noindent
-\textbf{Claim 1:} \emph{If $f \in \widebar{\sA}$, then $\sabs{f} \in
+\textbf{Klaim 1:} \emph{Jika $f \in \widebar{\sA}$, maka $\sabs{f} \in
 \widebar{\sA}$.}
 
 \begin{proof}
-The function $f$ is bounded (continuous on a compact set), so there is an $M$
-such that $\babs{f(x)} \leq M$ for all $x \in X$.
-Let $\epsilon > 0$ be given.  By the corollary to the Weierstrass theorem,
-there exists a real polynomial $c_1 y + c_2 y^2 + \cdots+ c_n y^n$
-(vanishing at $y=0$) such that
+Fungsi $f$ terbatas (karena kontinu pada himpunan kompak), sehingga terdapat
+$M$ sedemikian sehingga $\babs{f(x)} \leq M$ untuk setiap $x \in X$.
+Ambil $\epsilon > 0$. Berdasarkan korolari teorema Weierstrass, terdapat
+polinom real $c_1 y + c_2 y^2 + \cdots+ c_n y^n$ (yang nol pada $y=0$)
+sedemikian sehingga
 \begin{equation*}
 \abs{\sabs{y} - \sum_{k=1}^n c_k y^k} < \epsilon
 \end{equation*}
-for all $y \in [-M,M]$.
-Because $\widebar{\sA}$ is an algebra and because there is no constant term in the
-polynomial,
+untuk setiap $y \in [-M,M]$. Karena $\widebar{\sA}$ merupakan aljabar dan
+polinom tersebut tidak memiliki suku konstan,
 \begin{equation*}
 \sum_{k=1}^n c_k f^k \in \widebar{\sA} .
 \end{equation*}
-As $\babs{f(x)} \leq M$, we have that for all $x \in X$,
+Karena $\babs{f(x)} \leq M$, untuk setiap $x \in X$ berlaku
 \begin{equation*}
 \abs{\babs{f(x)} - \sum_{k=1}^n c_k {\bigl(f(x)\bigr)}^k}
 < \epsilon .
 \end{equation*}
-So $\sabs{f}$ is in the closure of $\widebar{\sA}$, which is itself closed.
-In other words, $\sabs{f} \in \widebar{\sA}$.
+Jadi, $\sabs{f}$ berada dalam penutupan himpunan $\widebar{\sA}$, yang sendiri tertutup.
+Dengan kata lain, $\sabs{f} \in \widebar{\sA}$.
 \end{proof}
 
 \medskip
 
 \noindent
-\textbf{Claim 2:} \emph{If $f \in \widebar{\sA}$ and $g \in \widebar{\sA}$, then
-$\max(f,g) \in \widebar{\sA}$ and
-$\min(f,g) \in \widebar{\sA}$, where
+\textbf{Klaim 2:} \emph{Jika $f \in \widebar{\sA}$ dan $g \in \widebar{\sA}$, maka
+$\max(f,g) \in \widebar{\sA}$ dan
+$\min(f,g) \in \widebar{\sA}$, dengan
 }
 \begin{equation*}
 \bigl(\max(f,g)\bigr) (x) \coloneqq \max \bigl\{ f(x), g(x) \bigr\} , \qquad
-\text{and} \qquad
+\text{dan} \qquad
 \bigl(\min(f,g)\bigr) (x) \coloneqq \min \bigl\{ f(x), g(x) \bigr\} .
 \end{equation*}
 
 \begin{proof}
-Write:
+Tuliskan:
 \begin{equation*}
 \max(f,g) = \frac{f+g}{2} + \frac{\sabs{f-g}}{2} ,
-\qquad\text{and}\qquad
+\qquad\text{dan}\qquad
 \min(f,g) = \frac{f+g}{2} - \frac{\sabs{f-g}}{2} .
 \end{equation*}
-As $\widebar{\sA}$ is an algebra we are done.
+Karena $\widebar{\sA}$ merupakan aljabar, pembuktian selesai.
 \end{proof}
 
-By induction, the claim is also true for the minimum or maximum of a finite
-collection of functions.
+Dengan induksi, klaim ini juga berlaku untuk minimum atau maksimum dari suatu
+keluarga fungsi yang berhingga.
 
 \medskip
 
 \noindent
-\textbf{Claim 3:} \emph{Given $f \in C(X,\R)$, $x \in X$, and $\epsilon > 0$,
-there exists a $g_x \in \widebar{\sA}$ with $g_x(x) = f(x)$ and
+\textbf{Klaim 3:} \emph{Untuk $f \in C(X,\R)$, $x \in X$, dan $\epsilon > 0$,
+terdapat $g_x \in \widebar{\sA}$ yang memenuhi $g_x(x) = f(x)$ dan
 }
 \begin{equation*}
-g_x(t) > f(t)-\epsilon \qquad \text{for all } t \in X.
+g_x(t) > f(t)-\epsilon \qquad \text{untuk setiap } t \in X.
 \end{equation*}
 
 \begin{proof}
-Fix $f$, $x$, and $\epsilon$.
-By \propref{prop:SWinterpolate}, for every $y \in X$, find an $h_y \in
-\sA$ such that
+Tetapkan $f$, $x$, dan $\epsilon$.
+Berdasarkan \propref{prop:SWinterpolate}, untuk setiap $y \in X$ dengan
+$y \neq x$, pilih $h_y \in
+\sA$ sedemikian sehingga
 \begin{equation*}
 h_y(x) = f(x), \qquad h_y(y)=f(y) .
 \end{equation*}
-As $h_y$ and $f$ are continuous, the function $h_y-f$ is continuous,
-and the set
+Untuk $y=x$, sifat tidak nol di setiap titik menjamin adanya $q \in \sA$
+dengan $q(x) \neq 0$; tetapkan $h_x \coloneqq f(x)q/q(x)$. Dengan demikian,
+kedua persamaan di atas berlaku untuk setiap $y \in X$.
+Karena $h_y$ dan $f$ kontinu, fungsi $h_y-f$ juga kontinu,
+dan himpunan
 \begin{equation*}
 U_y \coloneqq
 \bigl\{ t \in X : h_y(t) > f(t) -\epsilon \bigr\}
 =
 {(h_y-f)}^{-1} \bigl( (-\epsilon,\infty) \bigr)
 \end{equation*}
-is open (it is the inverse image of an open set by a continuous function).
-Furthermore $y \in U_y$.  So the sets $U_y$ cover $X$.
-The space $X$ is compact,
-so there exist finitely many
-points $y_1,y_2,\ldots,y_n$ in $X$ such
-that
+terbuka (himpunan itu merupakan prapeta suatu himpunan terbuka oleh fungsi
+kontinu). Selain itu, $y \in U_y$. Jadi, himpunan-himpunan $U_y$ menutupi
+$X$. Karena ruang $X$ kompak, terdapat sejumlah berhingga titik
+$y_1,y_2,\ldots,y_n$ di $X$ sedemikian sehingga
 \begin{equation*}
 X = \bigcup_{k=1}^n U_{y_k}  .
 \end{equation*}
-Let 
+Tetapkan
 \begin{equation*}
 g_x \coloneqq \max(h_{y_1},h_{y_2},\ldots,h_{y_n}) .
 \end{equation*}
-By Claim 2, $g_x \in \widebar{\sA}$.  See \figureref{fig:stonegx}.
-Moreover,
+Berdasarkan Klaim 2, $g_x \in \widebar{\sA}$. Lihat \figureref{fig:stonegx}.
+Selain itu,
 \begin{equation*}
 g_x(t) > f(t) -\epsilon
 \end{equation*}
-for all $t \in X$, since for every $t$, there is a $y_k$ such that 
-$t \in U_{y_k}$, and so 
+untuk setiap $t \in X$, karena untuk setiap $t$ terdapat $y_k$ sedemikian
+sehingga $t \in U_{y_k}$, dan oleh karena itu
 $h_{y_k}(t) > f(t) -\epsilon$.
-Finally, $h_y(x) = f(x)$ for all $y \in X$, so
+Terakhir, $h_y(x) = f(x)$ untuk setiap $y \in X$, sehingga
 $g_x(x) = f(x)$.
 \end{proof}
 
 \begin{myfigureht}
 \myincludepdft{stonegx}{%
-A graph of several functions in two dimensions.  On the horizontal
-axis three points from left to right are marked, y sub 1, y sub 2,
-and x.  A graph of a function f is given in dark bold line.
-A graph of f minus epsilon is given underneath in a dotted line.
-A graph of h sub y sub 1 is given in long dashes and starts above
-f on the left, crosses the graph of f at y sub 1, then goes below
-even f minus epsilon for a while in particular around y sub 2,
-then goes up through the graph of f again at x.
-A graph of h sub y sub 2 starts below f minus epsilon, then goes up,
-crosses the graph of f at y sub 2, then crosses it
-back down at x.  Notably at every point either the graph of h sub y sub 1
-or h sub y sub 2 is above f minus epsilon, and the higher value of these two
-is highlighted in a thick gray line and marked g sub x, again
-in particular the graph of g sub x notably lies above f minus epsilon
-and agrees with f at x.}
-\caption{Construction of $g_x$ out of two $h_{y_1}$ (longer dashes) and
-$h_{y_2}$ (shorter dashes).\label{fig:stonegx}}
+Grafik beberapa fungsi dalam dua dimensi. Pada sumbu horizontal, tiga titik
+dari kiri ke kanan ditandai sebagai y subskrip 1, y subskrip 2, dan x. Grafik
+fungsi f digambar dengan garis gelap tebal. Grafik f dikurangi epsilon digambar
+di bawahnya dengan garis titik-titik. Grafik h subskrip y subskrip 1 digambar
+dengan garis putus-putus panjang dan bermula di atas f di sebelah kiri,
+memotong grafik f di y subskrip 1, lalu untuk sementara turun bahkan di bawah
+f dikurangi epsilon, khususnya di sekitar y subskrip 2, kemudian naik dan
+kembali memotong grafik f di x. Grafik h subskrip y subskrip 2 bermula di
+bawah f dikurangi epsilon, lalu naik, memotong grafik f di y subskrip 2,
+kemudian kembali memotongnya ke arah bawah di x. Di setiap titik, grafik h
+subskrip y subskrip 1 atau h subskrip y subskrip 2 berada di atas f dikurangi
+epsilon. Nilai yang lebih besar dari keduanya disorot dengan garis abu-abu
+tebal dan diberi label g subskrip x; khususnya, grafik g subskrip x berada di
+atas f dikurangi epsilon dan berimpit dengan f di x.}
+\caption{Konstruksi $g_x$ dari dua fungsi $h_{y_1}$ (garis putus-putus lebih
+panjang) dan $h_{y_2}$ (garis putus-putus lebih pendek).\label{fig:stonegx}}
 \end{myfigureht}
 
-What we have now is for each $x$ a function $g_x \in \widebar{\sA}$
-that is within $\epsilon$ of $f$ near $x$ (being continuous),
-but also $g_x$ is within $\epsilon$ of $f$ from at least one side at
-all points.
-If we cover $X$ with neighborhoods where $g_x$ is a good approximation,
-we can repeat the idea of the argument with a minimum to get
-a function that is within $\epsilon$ from both sides.
+Yang telah kita peroleh ialah, untuk setiap $x$, sebuah fungsi
+$g_x \in \widebar{\sA}$ yang mempunyai galat kurang dari $\epsilon$ terhadap
+$f$ di sekitar $x$ (karena kontinu), tetapi juga $g_x$ mempunyai galat
+satu-sisi kurang dari $\epsilon$ terhadap $f$ di semua titik.
+Jika kita menutupi $X$ dengan lingkungan-lingkungan tempat $g_x$ merupakan
+aproksimasi yang baik, gagasan argumen tersebut dapat diulangi dengan minimum
+untuk memperoleh fungsi dengan galat kurang dari $\epsilon$ pada kedua sisi.
 
 \medskip
 \pagebreak[2]
 
 \noindent
-\textbf{Claim 4:} \emph{If $f \in C(X,\R)$ and $\epsilon > 0$ is given, then there
-exists an $\varphi \in \widebar{\sA}$ such that}
+\textbf{Klaim 4:} \emph{Jika diberikan $f \in C(X,\R)$ dan $\epsilon > 0$, maka
+terdapat $\varphi \in \widebar{\sA}$ sedemikian sehingga}
 \begin{equation*}
-\babs{f(x) - \varphi(x)} < \epsilon .
+\babs{f(x) - \varphi(x)} < \epsilon
+\qquad \text{untuk setiap } x \in X .
 \end{equation*}
 
 \begin{proof}
-For every $x \in X$, find the function $g_x$ as in Claim 3.
-Let
+Untuk setiap $x \in X$, pilih fungsi $g_x$ seperti dalam Klaim 3.
+Tetapkan
 \begin{equation*}
 V_x \coloneqq \bigl\{ t \in X : g_x(t) < f(t) + \epsilon \bigr\}.
 \end{equation*}
-The sets $V_x$ are open as $g_x$ and $f$ are continuous.
-As $g_x(x) = f(x)$, we have $x \in V_x$.  So the sets $V_x$ cover $X$.
-By compactness of $X$,
-there
-are finitely many points $x_1,x_2,\ldots,x_n$ such that
+Himpunan-himpunan $V_x$ terbuka karena $g_x$ dan $f$ kontinu.
+Karena $g_x(x) = f(x)$, kita peroleh $x \in V_x$. Jadi, himpunan-himpunan
+$V_x$ menutupi $X$. Berdasarkan kekompakan $X$, terdapat sejumlah berhingga
+titik $x_1,x_2,\ldots,x_n$ sedemikian sehingga
 \begin{equation*}
 X = \bigcup_{k=1}^n V_{x_k} .
 \end{equation*}
-Let
+Tetapkan
 \begin{equation*}
 \varphi \coloneqq \min(g_{x_1},g_{x_2},\ldots,g_{x_n}) .
 \end{equation*}
-By Claim 2, $\varphi \in \widebar{\sA}$.  Similarly as before (same argument as in
-Claim 3), for all $t \in X$,
+Berdasarkan Klaim 2, $\varphi \in \widebar{\sA}$. Dengan argumen yang sama
+seperti dalam Klaim 3, untuk setiap $t \in X$,
 \begin{equation*}
 \varphi(t) < f(t) + \epsilon .
 \end{equation*}
-Since all the $g_x$ satisfy $g_x(t) > f(t) - \epsilon$ for all $t \in X$,
-$\varphi(t) > f(t) - \epsilon$ as well.
-Hence, for all $t$,
+Karena semua $g_x$ memenuhi $g_x(t) > f(t) - \epsilon$ untuk setiap $t \in X$,
+$\varphi(t) > f(t) - \epsilon$ juga berlaku.
+Oleh karena itu, untuk setiap $t$,
 \begin{equation*}
 -\epsilon < \varphi(t) - f(t) < \epsilon ,
 \end{equation*}
-which is the desired conclusion.
+yang merupakan kesimpulan yang diinginkan.
 \end{proof}
 
-The proof of the theorem follows from Claim 4.  The claim states that an
-arbitrary continuous function is in the closure of $\widebar{\sA}$,
-which is already closed.  The theorem is proved.
+Pembuktian teorema mengikuti dari Klaim 4. Klaim tersebut menyatakan bahwa
+sebarang fungsi kontinu berada dalam penutupan $\widebar{\sA}$, yang sudah
+tertutup. Dengan demikian, teorema terbukti.
 
 \begin{example}
-The functions of the form
+Fungsi-fungsi berbentuk
 \begin{equation*}
 f(t) = \sum_{k=1}^n c_k \, e^{kt},
 \end{equation*}
-for $c_k \in \R$,
-are dense in $C\bigl([a,b],\R\bigr)$.  Such functions are a real
-algebra, which follows from $e^{kt} e^{\ell t} = e^{(k+\ell)t}$.  They separate
-points as $e^t$ is one-to-one.
-As $e^t > 0$ for all $t$, the algebra
-does not vanish at any point.
+untuk $c_k \in \R$,
+rapat dalam $C\bigl([a,b],\R\bigr)$. Fungsi-fungsi demikian membentuk aljabar
+real, yang mengikuti dari $e^{kt} e^{\ell t} = e^{(k+\ell)t}$. Fungsi-fungsi
+tersebut memisah titik karena $e^t$ injektif.
+Karena $e^t > 0$ untuk setiap $t$, aljabar tersebut
+tidak nol di setiap titik.
 \end{example}
 
-In general, given a set of functions that separates points and does
-not vanish at any point, we let these functions
-\emph{generate}\index{generate an algebra}
-an algebra
-by considering all the linear combinations of arbitrary multiples of such
-functions.  That is, we consider all real polynomials without constant term
-of such functions.  In the example above,
-the algebra is generated by $e^t$.  We 
-consider polynomials in $e^t$ without constant term.
+Secara umum, jika diberikan suatu himpunan fungsi yang memisah titik dan tidak
+nol di setiap titik, kita membentuk aljabar yang
+\emph{dibangkitkan}\index{membangkitkan aljabar}
+oleh fungsi-fungsi tersebut dengan mempertimbangkan semua kombinasi linear
+dari hasil kali sebarang banyak fungsi tersebut. Dengan kata lain, kita mempertimbangkan semua
+polinom real tanpa suku konstan dalam fungsi-fungsi tersebut. Pada contoh di
+atas, aljabar itu dibangkitkan oleh $e^t$. Kita
+mempertimbangkan polinom dalam $e^t$ tanpa suku konstan.
 
 \begin{example}
-We mentioned that the set of all functions of the form
+Kita telah menyebutkan bahwa himpunan semua fungsi berbentuk
 \begin{equation*}
 a_0 +
 \sum_{n=1}^N a_n \cos(nt)
 \end{equation*}
-is an algebra.
-When considered on $[0,\pi]$, 
-it separates points and vanishes nowhere so
-\hyperref[thm:SWreal]{Stone--Weierstrass} applies.
-As for polynomials, you \emph{do not} want to conclude that every continuous
-function on $[0,\pi]$ has a uniformly convergent
-Fourier cosine series, that is, that every continuous
-function can be written as
+merupakan suatu aljabar.
+Jika dipandang pada $[0,\pi]$,
+aljabar ini memisah titik dan tidak nol di setiap titik, sehingga
+\hyperref[thm:SWreal]{Stone--Weierstrass} dapat diterapkan.
+Seperti pada kasus polinom, kita \emph{tidak boleh} menyimpulkan bahwa setiap fungsi
+kontinu pada $[0,\pi]$ memiliki deret kosinus Fourier yang konvergen seragam,
+yaitu bahwa setiap fungsi kontinu dapat dituliskan sebagai
 \begin{equation*}
 a_0 +
 \sum_{n=1}^\infty a_n \cos(nt) .
 \end{equation*}
-That is \emph{not true}!
-There exist continuous functions
-whose Fourier series does not converge even pointwise
-let alone uniformly.  See \sectionref{sec:fourier}.
+Hal itu \emph{tidak benar}!
+Terdapat fungsi kontinu yang deret Fouriernya bahkan tidak konvergen secara
+titik demi titik, apalagi secara seragam. Lihat \sectionref{sec:fourier}.
 \end{example}
 
-To obtain Stone--Weierstrass for complex algebras, we must
-make an extra assumption.
+Untuk memperoleh teorema Stone--Weierstrass bagi aljabar kompleks, kita harus
+menambahkan satu asumsi.
 
 \begin{defn}
-An algebra $\sA$ is \emph{\myindex{self-adjoint}} if for all $f \in \sA$, the function
-$\bar{f}$ defined by $\bar{f}(x) \coloneqq \overline{f(x)}$ is in $\sA$, where by the
-bar we mean the complex conjugate.
+Suatu aljabar $\sA$ disebut \emph{\myindex{self-adjoint}} jika untuk setiap $f \in \sA$,
+fungsi $\bar{f}$ yang didefinisikan oleh $\bar{f}(x) \coloneqq \overline{f(x)}$
+berada dalam $\sA$, dengan garis atas menyatakan konjugat kompleks.
 \end{defn}
 
-\begin{thm}[Stone--Weierstrass, complex version]
+\begin{thm}[Stone--Weierstrass, versi kompleks]
 \label{thm:SWcomplex}%
-\index{Stone--Weierstrass!complex version}%
-Let $X$ be a compact metric space and $\sA$ an algebra of complex-valued
-continuous functions on $X$, such that $\sA$ separates points, vanishes at
-no point, and is self-adjoint.  Then the closure $\widebar{\sA} = C(X,\C)$.
+\index{Stone--Weierstrass!versi kompleks}%
+Misalkan $X$ suatu ruang metrik kompak dan $\sA$ suatu aljabar fungsi kontinu
+bernilai kompleks pada $X$, sedemikian sehingga $\sA$ memisah titik, tidak nol
+di setiap titik, dan self-adjoint. Maka penutupannya
+$\widebar{\sA} = C(X,\C)$.
 \end{thm}
 
 \begin{proof}
-Suppose $\sA_\R \subset \sA$ is the set of the real-valued elements of
-$\sA$.
-For $f \in \sA$, write $f = u+iv$ where $u$ and $v$ are real-valued.
-Then
+Andaikan $\sA_\R \subset \sA$ merupakan himpunan unsur-unsur bernilai real
+dari $\sA$.
+Untuk $f \in \sA$, tuliskan $f = u+iv$, dengan $u$ dan $v$ bernilai real.
+Maka
 \begin{equation*}
 u = \frac{f+\bar{f}}{2}, \qquad
 v = \frac{f-\bar{f}}{2i} .
 \end{equation*}
-So $u, v \in \sA$ as $\sA$ is a self-adjoint algebra, and since they are
-real-valued $u, v \in \sA_\R$.
+Jadi, $u, v \in \sA$ karena $\sA$ merupakan aljabar self-adjoint, dan karena
+keduanya bernilai real, $u, v \in \sA_\R$.
 
-If $x \neq y$, then find an $f \in \sA$ such that $f(x) \neq f(y)$.  If $f
-= u+iv$, then it is obvious that either $u(x) \neq u(y)$ or
-$v(x) \neq v(y)$.  So $\sA_\R$ separates points.
+Jika $x \neq y$, ambillah $f \in \sA$ sedemikian sehingga $f(x) \neq f(y)$.
+Jika $f = u+iv$, jelas bahwa $u(x) \neq u(y)$ atau $v(x) \neq v(y)$.
+Jadi, $\sA_\R$ memisah titik.
 %
-Similarly, for every $x$ find $f \in \sA$ such that $f(x) \neq 0$.  If $f
-= u+iv$, then either $u(x) \neq 0$ or $v(x) \neq 0$.
-So $\sA_\R$ vanishes at no point.
+Demikian pula, untuk setiap $x$, ambillah $f \in \sA$ sedemikian sehingga
+$f(x) \neq 0$. Jika $f = u+iv$, maka $u(x) \neq 0$ atau $v(x) \neq 0$.
+Jadi, $\sA_\R$ tidak nol di setiap titik.
 %
-The set $\sA_\R$ is a real algebra, and satisfies the hypotheses of the
-\hyperref[thm:SWreal]{real Stone--Weierstrass theorem}.
-Given any $f = u+iv \in C(X,\C)$,
-we find $g,h \in \sA_\R$ such that
-$\babs{u(t)-g(t)} < \nicefrac{\epsilon}{2}$ and
-$\babs{v(t)-h(t)} < \nicefrac{\epsilon}{2}$ for all $t \in X$.
-Next, $g+i h \in \sA$, and
+Himpunan $\sA_\R$ merupakan aljabar real dan memenuhi hipotesis
+\hyperref[thm:SWreal]{teorema Stone--Weierstrass versi real}.
+Untuk sebarang $f = u+iv \in C(X,\C)$ dan setiap $\epsilon>0$, kita
+memperoleh $g,h \in \sA_\R$ sedemikian sehingga
+$\babs{u(t)-g(t)} < \nicefrac{\epsilon}{2}$ dan
+$\babs{v(t)-h(t)} < \nicefrac{\epsilon}{2}$ untuk setiap $t \in X$.
+Selanjutnya, $g+i h \in \sA$, dan
 \begin{multline*}
 \abs{f(t) - \bigl(g(t)+ih(t)\bigr)} = 
 \abs{u(t)+iv(t) - \bigl(g(t)+ih(t)\bigr)} \\
@@ -3970,113 +3969,108 @@ Next, $g+i h \in \sA$, and
 \babs{u(t)-g(t)}+\babs{v(t)-h(t)} < \nicefrac{\epsilon}{2} +
 \nicefrac{\epsilon}{2} = \epsilon
 \end{multline*}
-for all $t \in X$.
-So $\widebar{\sA} = C(X,\C)$.
+untuk setiap $t \in X$.
+Jadi, $\widebar{\sA} = C(X,\C)$.
 \end{proof}
 
-The self-adjoint requirement is necessary, although it is not so obvious to
-see it.  For an example, see \exerciseref{exercise:selfadjointSW}.
+Syarat self-adjoint diperlukan, meskipun hal ini tidak begitu mudah terlihat.
+Sebagai contoh, lihat \exerciseref{exercise:selfadjointSW}.
 
-We give an interesting application.
-When working
-with functions of two variables, it may be useful to work with functions
-of the form $f(x)g(y)$ rather than $F(x,y)$.  For example, they are easier
-to integrate.  We have the following.
+Kita berikan suatu penerapan yang menarik.
+Ketika menangani fungsi dua variabel, mungkin berguna untuk bekerja dengan
+fungsi berbentuk $f(x)g(y)$ alih-alih $F(x,y)$. Sebagai contoh, fungsi berbentuk
+demikian lebih mudah diintegralkan. Kita memperoleh hasil berikut.
 
 \begin{example}
-Any continuous $F \colon [0,1] \times [0,1] \to \C$ can be
-approximated uniformly by functions of the form
+Setiap fungsi kontinu $F \colon [0,1] \times [0,1] \to \C$ dapat dihampiri
+secara seragam oleh fungsi-fungsi berbentuk
 \begin{equation*}
 \sum_{j=1}^n f_j(x) g_j(y) ,
 \end{equation*}
-where $f_j \colon [0,1] \to \C$ and $g_j \colon [0,1] \to \C$ are continuous.
+dengan $f_j \colon [0,1] \to \C$ dan $g_j \colon [0,1] \to \C$ kontinu.
 
-Proof:
-It is not hard to see that the functions of the above form are a complex
-algebra.  It is equally easy to show that they vanish nowhere, separate
-points, and the algebra is self-adjoint.  As $[0,1] \times [0,1]$ is
-compact,
-\hyperref[thm:SWcomplex]{Stone--Weierstrass} obtains the result.
+Bukti:
+Tidak sulit melihat bahwa fungsi-fungsi berbentuk di atas membentuk suatu
+aljabar kompleks. Sama mudahnya menunjukkan bahwa aljabar itu tidak nol di
+setiap titik, memisah titik, dan self-adjoint. Karena $[0,1] \times [0,1]$
+kompak, \hyperref[thm:SWcomplex]{Stone--Weierstrass} memberikan hasil tersebut.
 \end{example}
 
-\subsection{Exercises}
+\subsection{Latihan}
 
 \begin{exercise}
-Prove \propref{prop:closureofalgebra}.
-Hint: If $\{ f_n \}_{n=1}^\infty$ is a sequence in $C(X,\R)$
-converging to $f$, then as $f$ is bounded, show
-that $f_n$ is uniformly bounded, that is, there exists a
-single bound for all $f_n$ (and $f$).
+Buktikan \propref{prop:closureofalgebra}.
+Petunjuk: Jika $\{ f_n \}_{n=1}^\infty$ merupakan barisan dalam $C(X,\R)$
+yang konvergen ke $f$, maka karena $f$ terbatas, tunjukkan bahwa $f_n$
+terbatas seragam, yaitu terdapat satu batas yang berlaku untuk semua $f_n$
+(dan $f$).
 \end{exercise}
 
 \begin{exercise}
-Suppose $X \coloneqq \R$ (not compact in particular).
-Show that $f(t) \coloneqq e^t$ is not possible to uniformly approximate
-by polynomials on $X$.  Hint: Consider $\babs{\frac{e^t}{t^n}}$
-as $t \to \infty$.
+Misalkan $X \coloneqq \R$ (khususnya tidak kompak).
+Tunjukkan bahwa $f(t) \coloneqq e^t$ tidak mungkin dihampiri secara seragam
+oleh polinom pada $X$. Petunjuk: Perhatikan $\babs{\frac{e^t}{t^n}}$
+ketika $t \to \infty$.
 \end{exercise}
 
 \begin{exercise}
-Suppose $f \colon [0,1] \to \C$ is a uniform limit of a sequence of polynomials
-of degree at most $d$.  Show that the limit is a polynomial of degree at most $d$.
-Conclude that to approximate a function which is not a polynomial, we
-need the degree of the approximations to go to infinity.\\
-Hint: First prove that if a sequence of polynomials of degree $d$
-converges uniformly to the zero function, then 
-the coefficients converge to zero.
-One way to do this is linear algebra: Consider a polynomial $p$
-evaluated at $d+1$ points
-to be a linear operator taking the
-coefficients of $p$ to the values of $p$
-(an operator in $L(\R^{d+1})$).
+Misalkan $f \colon [0,1] \to \C$ merupakan limit seragam dari suatu barisan
+polinom berderajat paling tinggi $d$. Tunjukkan bahwa limit tersebut merupakan
+polinom berderajat paling tinggi $d$. Simpulkan bahwa untuk menghampiri fungsi
+yang bukan polinom, derajat para penghampir harus menuju tak hingga.\\
+Petunjuk: Pertama, buktikan bahwa jika suatu barisan polinom berderajat $d$
+konvergen seragam ke fungsi nol, maka koefisien-koefisiennya konvergen ke nol.
+Salah satu caranya adalah menggunakan aljabar linear: Pandang evaluasi polinom $p$
+pada $d+1$ titik sebagai operator linear yang memetakan koefisien-koefisien
+$p$ ke nilai-nilai $p$ (sebuah operator dalam $L(\C^{d+1})$).
 \end{exercise}
 
 \begin{exercise}
-Suppose $f \colon [0,1] \to \R$ is continuous and
-$\int_0^1 f(x) x^n \, dx = 0$ for all $n = 0,1,2,\ldots$.
-Show that $f(x) = 0$ for all $x \in [0,1]$.
-Hint: Approximate by polynomials to show that $\int_0^1 {\bigl( f(x)
-\bigr)}^2 \, dx = 0$.
+Misalkan $f \colon [0,1] \to \R$ kontinu dan
+$\int_0^1 f(x) x^n \, dx = 0$ untuk setiap $n = 0,1,2,\ldots$.
+Tunjukkan bahwa $f(x) = 0$ untuk setiap $x \in [0,1]$.
+Petunjuk: Gunakan aproksimasi polinomial untuk menunjukkan bahwa
+$\int_0^1 {\bigl( f(x) \bigr)}^2 \, dx = 0$.
 \end{exercise}
 
 \begin{exercise}
-Suppose $I \colon C\bigl([0,1],\R\bigr) \to \R$ is 
-a linear continuous function such that
+Misalkan $I \colon C\bigl([0,1],\R\bigr) \to \R$ merupakan
+fungsional linear kontinu sedemikian sehingga
 $I(x^n) = \frac{1}{n+1}$
-for all $n=0,1,2,3,\ldots$.
-Prove that $I(f) = \int_0^1 f$ for all $f \in C\bigl([0,1],\R\bigr)$.
+untuk setiap $n=0,1,2,3,\ldots$.
+Buktikan bahwa $I(f) = \int_0^1 f$ untuk setiap
+$f \in C\bigl([0,1],\R\bigr)$.
 \end{exercise}
 
 \begin{exercise}
-Let $\sA$ be the collection of real polynomials in $x^2$,
-that is, polynomials of the form
+Misalkan $\sA$ adalah himpunan polinom real dalam $x^2$,
+yakni polinom berbentuk
 $c_0 + c_1 x^2 + c_2 x^4 + \cdots + c_d x^{2d}$.
 \begin{enumerate}[a)]
 \item
-Show that every $f \in C\bigl([0,1],\R\bigr)$ is a uniform limit of
-polynomials from $\sA$.
+Tunjukkan bahwa setiap $f \in C\bigl([0,1],\R\bigr)$ merupakan limit seragam
+dari polinom dalam $\sA$.
 \item
-Find an $f \in  C\bigl([-1,1],\R\bigr)$ that is not a
-uniform limit of
-polynomials from $\sA$.
+Temukan suatu $f \in  C\bigl([-1,1],\R\bigr)$ yang bukan merupakan
+limit seragam dari polinom dalam $\sA$.
 \item
-Which hypothesis of the real Stone--Weierstrass is not satisfied
-for the domain $[-1,1]$?
+Hipotesis mana dari teorema Stone--Weierstrass versi real yang tidak dipenuhi
+untuk domain $[-1,1]$?
 \end{enumerate}
 \end{exercise}
 
 \begin{exercise}
 \pagebreak[3]
-Let $\sabs{z}=1$ define the unit circle $S^1 \subset \C$.
+Misalkan $\sabs{z}=1$ mendefinisikan lingkaran satuan $S^1 \subset \C$.
 \begin{enumerate}[a)]
 \item
-Show that functions of the form
+Tunjukkan bahwa fungsi-fungsi berbentuk
 \begin{equation*}
 \sum_{k=-n}^n c_k\, z^k
 \end{equation*}
-are dense in $C(S^1,\C)$.  Notice the negative powers.
+rapat dalam $C(S^1,\C)$.  Perhatikan adanya pangkat negatif.
 \item 
-Show that functions of the form
+Tunjukkan bahwa fungsi-fungsi berbentuk
 \begin{equation*}
 c_0
 +
@@ -4084,70 +4078,71 @@ c_0
 +
 \sum_{k=1}^n c_{-k}\, \bar{z}^k
 \end{equation*}
-are dense in $C(S^1,\C)$.
-These functions are called \emph{\myindex{harmonic polynomials}},
-and this approximation leads to, for example, the solution of the
-steady state heat problem.
+rapat dalam $C(S^1,\C)$.
+Fungsi-fungsi ini disebut \emph{\myindex{polinom harmonik}},
+dan aproksimasi ini, misalnya, mengarah pada penyelesaian
+masalah panas keadaan tunak.
 \end{enumerate}
-Hint: A good way to write the equation for $S^1$ is $z \bar{z} = 1$.
+Petunjuk: Salah satu cara yang baik untuk menuliskan persamaan bagi $S^1$
+adalah $z \bar{z} = 1$.
 \end{exercise}
 
 \begin{exercise} \label{exercise:trigpolydense}
-Show that any continuous function $f \colon [-\pi,\pi] \to \C$
-with $f(-\pi)=f(\pi)$ can be approximated uniformly by
-functions of the form
+Tunjukkan bahwa setiap fungsi kontinu $f \colon [-\pi,\pi] \to \C$
+yang memenuhi $f(-\pi)=f(\pi)$ dapat didekati secara seragam oleh
+fungsi-fungsi berbentuk
 \begin{equation*}
 \sum_{k=-n}^n c_k \, e^{ik x}
 \end{equation*}
-for complex numbers $c_k$.
+dengan $c_k$ berupa bilangan kompleks.
 \end{exercise}
 
 \begin{exercise} \label{exercise:selfadjointSW}
-Let $S^1 \subset \C$ be the unit circle, that is, the set where
-$\sabs{z} = 1$.  Orient this set counterclockwise.
-Let $\gamma(t) \coloneqq e^{it}$.
-For the one-form $f(z)\,dz$ we write\footnote{%
-Alternatively, one could define $dz \coloneqq dx + i \, dy$ and
-extend the path integral from \chapterref{path:chapter} to complex-valued
-one-forms.}
+Misalkan $S^1 \subset \C$ adalah lingkaran satuan, yaitu himpunan semua
+titik yang memenuhi $\sabs{z} = 1$.  Orientasikan himpunan ini berlawanan arah jarum jam.
+Misalkan $\gamma(t) \coloneqq e^{it}$.
+Untuk bentuk-1 $f(z)\,dz$, kita tulis\footnote{%
+Sebagai alternatif, kita dapat mendefinisikan $dz \coloneqq dx + i \, dy$ dan
+memperluas integral lintasan dari \chapterref{path:chapter} ke
+bentuk-1 bernilai kompleks.}
 \begin{equation*}
 \int_{S^1} f(z) \,dz \coloneqq \int_0^{2\pi} f(e^{it}) \, i e^{it} \, dt . 
 \end{equation*}
 \begin{enumerate}[a)]
 \item
-Prove that for all nonnegative integers $k = 0,1,2,3,\ldots$, we have
+Buktikan bahwa untuk setiap bilangan bulat taknegatif $k = 0,1,2,3,\ldots$, berlaku
 $\int_{S^1} z^k \, dz = 0$.
 \item
-Prove that if
-$P(z) = \sum_{k=0}^n c_k z^k$ is a
-polynomial in $z$, then
+Buktikan bahwa jika
+$P(z) = \sum_{k=0}^n c_k z^k$ merupakan
+polinom dalam $z$, maka
 $\int_{S^1} P(z) \, dz = 0$.
 \item
-Prove
+Buktikan bahwa
 $\int_{S^1} \bar{z} \, dz \neq 0$.
 \item
-Conclude that polynomials in $z$ (this algebra of functions is
-not self-adjoint) are not dense in $C(S^1,\C)$.
+Simpulkan bahwa polinom dalam $z$ (aljabar fungsi ini
+tidak self-adjoint) tidak rapat dalam $C(S^1,\C)$.
 \end{enumerate}
 \end{exercise}
 
 \begin{exercise}
-Let $(X,d)$ be a compact metric space and
-suppose $\sA \subset C(X,\R)$ is a real algebra that separates points, but
-vanishes at exactly one point $x_0 \in X$.
-That is, $f(x_0) = 0$ for all $f \in \sA$,
-but for every $y \in X \setminus \{ x_0 \}$ there is
-a $\varphi \in \sA$ such that $\varphi(y) \neq 0$.  Prove that
-every function $g \in C(X,\R)$ such that $g(x_0) = 0$ is a uniform limit
-of functions from $\sA$.
+Misalkan $(X,d)$ merupakan ruang metrik kompak dan
+andaikan $\sA \subset C(X,\R)$ adalah aljabar real yang memisahkan titik-titik, tetapi
+semua fungsinya bernilai nol secara serentak tepat di satu titik $x_0 \in X$.
+Artinya, $f(x_0) = 0$ untuk setiap $f \in \sA$,
+tetapi untuk setiap $y \in X \setminus \{ x_0 \}$ terdapat
+suatu $\varphi \in \sA$ sedemikian sehingga $\varphi(y) \neq 0$.  Buktikan bahwa
+setiap fungsi $g \in C(X,\R)$ yang memenuhi $g(x_0) = 0$ merupakan limit seragam
+dari fungsi-fungsi dalam $\sA$.
 \end{exercise}
 
 \begin{exercise}
-Let $(X,d)$ be a compact metric space with at least two points and
-suppose $\sA \subset C(X,\R)$ is a real algebra.
-Suppose that for each $y \in X$ the closure $\widebar{\sA}$
-contains the function $\varphi_y(x) \coloneqq d(y,x)$.
-Show that $\widebar{\sA} = C(X,\R)$.
+Misalkan $(X,d)$ merupakan ruang metrik kompak dengan sekurang-kurangnya dua titik dan
+andaikan $\sA \subset C(X,\R)$ adalah aljabar real.
+Andaikan bahwa untuk setiap $y \in X$, penutupan $\widebar{\sA}$
+memuat fungsi jarak $\varphi_y(x) \coloneqq d(y,x)$.
+Tunjukkan bahwa $\widebar{\sA} = C(X,\R)$.
 \end{exercise}
 
 \begin{exercise}
@@ -4155,18 +4150,18 @@ Show that $\widebar{\sA} = C(X,\R)$.
 \leavevmode
 \begin{enumerate}[a)]
 \item
-Suppose $f \colon [a,b] \to \C$ is continuously 
-differentiable.  Show that there exists a sequence of polynomials
+Andaikan $f \colon [a,b] \to \C$ diferensiabel secara kontinu.
+Tunjukkan bahwa terdapat suatu barisan polinom
 $\{ p_n \}_{n=1}^\infty$
-that converges in the $C^1$ norm to $f$, that is,
-$\snorm{f - p_n}_{[a,b]} + \snorm{f'-p_n'}_{[a,b]} \to 0$ as $n \to \infty$.
+yang konvergen dalam norma $C^1$ ke $f$, yaitu,
+$\snorm{f - p_n}_{[a,b]} + \snorm{f'-p_n'}_{[a,b]} \to 0$ ketika $n \to \infty$.
 \item
-Suppose $f \colon [a,b] \to \C$ is $k$ times continuously 
-differentiable.  Show that there exists a sequence of polynomials
+Andaikan $f \colon [a,b] \to \C$ diferensiabel secara kontinu hingga orde $k$.
+Tunjukkan bahwa terdapat suatu barisan polinom
 $\{ p_n \}_{n=1}^\infty$
-that converges in the $C^k$ norm to $f$, that is,
+yang konvergen dalam norma $C^k$ ke $f$, yaitu,
 \begin{equation*}
-\sum_{j=0}^k \norm{f^{(j)} - p_n^{(j)}}_{[a,b]} \to 0 \qquad \text{as} \qquad
+\sum_{j=0}^k \norm{f^{(j)} - p_n^{(j)}}_{[a,b]} \to 0 \qquad \text{ketika} \qquad
 n \to \infty.
 \end{equation*}
 \end{enumerate}
@@ -4177,120 +4172,121 @@ n \to \infty.
 \leavevmode
 \begin{enumerate}[a)]
 \item
-Show that an even function $f \colon [-1,1] \to \R$ is a uniform
-limit of polynomials with even powers only, that is, polynomials
-of the form $a_0 + a_1 x^2 + a_2 x^4 + \cdots + a_k x^{2k}$.
+Tunjukkan bahwa fungsi genap $f \colon [-1,1] \to \R$ merupakan limit seragam
+dari polinom yang hanya memuat pangkat genap, yaitu, polinom
+berbentuk $a_0 + a_1 x^2 + a_2 x^4 + \cdots + a_k x^{2k}$.
 \item
-Show that an odd function $f \colon [-1,1] \to \R$ is a uniform
-limit of polynomials with odd powers only, that is, polynomials
-of the form $b_1 x + b_2 x^3 + b_3 x^5 + \cdots + b_k x^{2k-1}$.
+Tunjukkan bahwa fungsi ganjil $f \colon [-1,1] \to \R$ merupakan limit seragam
+dari polinom yang hanya memuat pangkat ganjil, yaitu, polinom
+berbentuk $b_1 x + b_2 x^3 + b_3 x^5 + \cdots + b_k x^{2k-1}$.
 \end{enumerate}
 \end{exercise}
 
 \begin{exercise} \label{exercise:finitelymanyweierequal}
 \pagebreak[2]
-Let $f \colon [a,b] \to \R$ be continuous.
+Misalkan $f \colon [a,b] \to \R$ kontinu.
 \begin{enumerate}[a)]
 \item
-Given two points $x_1,x_2 \in [a,b]$, show that
-there exists a sequence of real polynomials $\{ p_n \}_{n=1}^\infty$
-such that $p_n(x_1) = f(x_1)$ and $p_n(x_2) = f(x_2)$ for all $n$.
+Diberikan dua titik $x_1,x_2 \in [a,b]$, tunjukkan bahwa
+terdapat suatu barisan polinom real $\{ p_n \}_{n=1}^\infty$
+sedemikian sehingga $p_n(x_1) = f(x_1)$ dan $p_n(x_2) = f(x_2)$ untuk setiap $n$.
 \item
-Generalize the previous part to $k$ points:
-Given the points $x_1,x_2,\ldots,x_k \in [a,b]$, show that
-there exists a sequence of real polynomials $\{ p_n \}_{n=1}^\infty$
-so that for all $n$, $p_n(x_j) = f(x_j)$ for $j=1,2,\ldots,k$.
+Generalisasikan bagian sebelumnya ke $k$ titik:
+Diberikan titik-titik $x_1,x_2,\ldots,x_k \in [a,b]$, tunjukkan bahwa
+terdapat suatu barisan polinom real $\{ p_n \}_{n=1}^\infty$
+sedemikian sehingga untuk setiap $n$, $p_n(x_j) = f(x_j)$ untuk $j=1,2,\ldots,k$.
 \\
-Hint: The polynomial $(x-x_1)(x-x_2)\cdots(x-x_{\ell-1})(x-x_{\ell+1})
-\cdots(x-x_k)$ is zero at $x_j$ for $j \neq \ell$ but nonzero at
-$x_\ell$.  Use it to construct a polynomial that takes prescribed values
-at $x_1,x_2,\ldots,x_k$.
+Setelah membuang titik-titik yang berulang, andaikan $x_1,x_2,\ldots,x_k$ berbeda sepasang-sepasang.
+Petunjuk: Polinom $(x-x_1)(x-x_2)\cdots(x-x_{\ell-1})(x-x_{\ell+1})
+\cdots(x-x_k)$ bernilai nol di $x_j$ untuk $j \neq \ell$, tetapi tidak nol di
+$x_\ell$.  Gunakan polinom ini untuk membangun polinom yang mengambil nilai-nilai yang ditentukan
+di $x_1,x_2,\ldots,x_k$.
 \end{enumerate}
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \sectionnewpage
-\section{Fourier series}
+\section{Deret Fourier}
 \label{sec:fourier}
 
 %mbxINTROSUBSECTION
 
-\sectionnotes{3--4 lectures}
+\sectionnotes{3--4 kuliah}
 
-Fourier series\footnote{%
-Named after the French mathematician
+Deret Fourier\footnote{%
+Dinamai menurut matematikawan Prancis
 \href{https://en.wikipedia.org/wiki/Joseph_Fourier}{Jean-Baptiste Joseph Fourier}
-(1768--1830).} is perhaps the most important (and the most difficult)
-of the series that we cover in
-this book.  We saw a few examples already,
-but let us start
-at the beginning.
+(1768--1830).} barangkali merupakan deret yang paling penting (dan paling sulit)
+di antara semua deret yang kita bahas dalam
+buku ini.  Kita telah melihat beberapa contoh,
+namun mari kita mulai
+dari awal.
 
-\subsection{Trigonometric polynomials}
+\subsection{Polinom trigonometri}
 
-A \emph{\myindex{trigonometric polynomial}} is an expression of the form
+Suatu \emph{\myindex{polinom trigonometri}} adalah ekspresi berbentuk
 \begin{equation*}
 a_0 + \sum_{n=1}^N \bigl(a_n \cos(nx) + b_n \sin(nx) \bigr),
 \end{equation*}
-or equivalently, thanks to Euler's formula ($e^{i\theta} = \cos(\theta) + i
+atau, secara ekuivalen, berkat rumus Euler ($e^{i\theta} = \cos(\theta) + i
 \sin(\theta)$):
 \begin{equation*}
 \sum_{n=-N}^N c_n e^{inx} .
 \end{equation*}
-The second form is usually more convenient.  If
-$z \in \C$ with $\sabs{z}=1,$ we write $z = e^{ix}$, and so
+Bentuk kedua biasanya lebih praktis.  Jika
+$z \in \C$ dengan $\sabs{z}=1,$ kita tulis $z = e^{ix}$, sehingga
 \begin{equation*}
 \sum_{n=-N}^N c_n e^{inx} = 
 \sum_{n=-N}^N c_n z^n .
 \end{equation*}
-So a trigonometric polynomial is really a rational function
-of the complex variable $z$
-(we are allowing negative powers) evaluated on the unit circle.  There is
-a wonderful connection between power series
-(actually Laurent series due to the negative powers) and
-Fourier series because of this observation,
-but we will not investigate this further.
+Jadi, polinom trigonometri sebenarnya merupakan fungsi rasional
+dalam variabel kompleks $z$
+(kita mengizinkan pangkat negatif) yang dievaluasi pada lingkaran satuan.
+Pengamatan ini memperlihatkan hubungan yang indah antara deret pangkat
+(sebenarnya deret Laurent karena adanya pangkat negatif) dan
+deret Fourier,
+tetapi hubungan ini tidak akan kita selidiki lebih lanjut.
 
 \medskip
 
-Another reason why Fourier series is important and comes up in so many
-applications is that the functions $e^{inx}$ are eigenfunctions%
-\footnote{An eigenfunction is like an eigenvector for a matrix, but for an
-operator on a vector space of functions.} of various
-differential operators.  For example,
+Alasan lain mengapa deret Fourier penting dan muncul dalam begitu banyak
+penerapan adalah bahwa fungsi-fungsi $e^{inx}$ merupakan fungsi eigen%
+\footnote{Fungsi eigen menyerupai vektor eigen bagi sebuah matriks, tetapi untuk
+operator pada ruang vektor fungsi.} dari berbagai
+operator diferensial.  Sebagai contoh,
 \begin{equation*}
 \frac{d}{dx} \bigl[ e^{inx} \bigr] = (in) e^{inx}, \qquad
 \frac{d^2}{dx^2} \bigl[ e^{inx} \bigr] = (-n^2) e^{inx} .
 \end{equation*}
-That is, they are the functions whose derivative is a scalar (the
-eigenvalue) times themselves.
-Just as eigenvalues and eigenvectors are important in studying matrices,
-eigenvalues and eigenfunctions are important when studying linear
-differential equations.
+Artinya, fungsi-fungsi tersebut adalah fungsi yang turunannya sama dengan
+fungsi itu sendiri dikalikan suatu skalar (nilai eigen).
+Sebagaimana nilai eigen dan vektor eigen penting dalam mempelajari matriks,
+nilai eigen dan fungsi eigen penting ketika mempelajari persamaan
+diferensial linear.
 
 \medskip
 
-The functions $\cos (nx)$, $\sin (nx)$, and $e^{inx}$ are $2\pi$-periodic,
-hence
-trigonometric
-polynomials are also $2\pi$-periodic.
-We could rescale $x$ to make the period different, but the theory is the
-same, so we stick with the period $2\pi$.
-The antiderivative of $e^{inx}$ is $\frac{e^{inx}}{in}$ and
-so
+Fungsi-fungsi $\cos (nx)$, $\sin (nx)$, dan $e^{inx}$ bersifat
+$2\pi$-periodik, sehingga
+polinom
+trigonometri juga bersifat $2\pi$-periodik.
+Kita dapat menskalakan ulang $x$ agar periodenya berbeda, tetapi teorinya
+sama, sehingga kita tetap menggunakan periode $2\pi$.
+Untuk $n \neq 0$, antiturunan dari $e^{inx}$ adalah $\frac{e^{inx}}{in}$,
+sedangkan untuk $n=0$ fungsi tersebut identik dengan 1. Dengan demikian,
 \begin{equation*}
 \int_{-\pi}^\pi e^{inx} \, dx =
 \begin{cases}
-2\pi & \text{if } n=0, \\
-0    & \text{otherwise.}
+2\pi & \text{jika } n=0, \\
+0    & \text{selainnya.}
 \end{cases}
 \end{equation*}
-Consider
+Perhatikan
 \begin{equation*}
 f(x) \coloneqq \sum_{n=-N}^N c_n e^{inx} ,
 \end{equation*}
-and for $m=-N,\ldots,N$ compute
+dan untuk $m=-N,\ldots,N$ kita hitung
 \begin{equation*}
 %mbxlatex \begin{aligned}
 \frac{1}{2\pi} \int_{-\pi}^\pi
@@ -4312,19 +4308,19 @@ e^{i(n-m)x}
 c_m .
 %mbxlatex \end{aligned}
 \end{equation*}
-We just found a way of computing the coefficients $c_m$ using an integral
-of $f$.  If $\sabs{m} > N$, the integral is 0, so we might as
-well have included enough zero coefficients to make $\sabs{m} \leq N$.
+Kita baru saja menemukan cara menghitung koefisien $c_m$ dengan menggunakan integral
+dari $f$. Jika $\sabs{m} > N$, integral tersebut bernilai 0, sehingga kita dapat
+menyertakan cukup banyak koefisien nol agar $\sabs{m} \leq N$.
 
 \begin{prop}
-A trigonometric polynomial
+Suatu polinom trigonometri
 $f(x) = \sum_{n=-N}^N c_n\, e^{inx}$
-is real-valued for real $x$ if
-and only if $c_{-m} = \overline{c_m}$ for all $m=-N,\ldots,N$.
+bernilai real untuk setiap $x$ real jika dan hanya jika
+$c_{-m} = \overline{c_m}$ untuk semua $m=-N,\ldots,N$.
 \end{prop}
 
 \begin{proof}
-If $f(x)$ is real-valued, that is, $\overline{f(x)} = f(x)$, then
+Jika $f(x)$ bernilai real, yakni $\overline{f(x)} = f(x)$, maka
 \begin{equation*}
 \overline{c_m}
 =
@@ -4341,11 +4337,11 @@ f(x) e^{-imx} } \, dx
 f(x) e^{imx} \, dx
 = c_{-m} .
 \end{equation*}
-The complex conjugate goes inside the integral because the integral is
-done on real and imaginary parts separately.
+Konjugat kompleks dapat dibawa ke dalam integral karena integral dihitung
+pada bagian real dan imajiner secara terpisah.
 
-On the other hand, if 
-$c_{-m} = \overline{c_m}$, then
+Sebaliknya, jika
+$c_{-m} = \overline{c_m}$, maka
 \begin{equation*}
 \overline{c_{-m}\, e^{-imx}+ c_{m}\, e^{imx}}
 =
@@ -4353,54 +4349,54 @@ $c_{-m} = \overline{c_m}$, then
 =
 c_{m}\, e^{imx}+ c_{-m}\, e^{-imx} ,
 \end{equation*}
-which is real-valued.  Also $c_0 = \overline{c_0}$, so
-$c_0$ is real.
-By pairing up the terms, we obtain that $f$ has to be real-valued.
+yang bernilai real. Selain itu, $c_0 = \overline{c_0}$, sehingga
+$c_0$ merupakan bilangan real.
+Dengan memasangkan suku-sukunya, kita memperoleh bahwa $f$ harus bernilai real.
 \end{proof}
 
-The functions $e^{inx}$ are also linearly independent.
+Fungsi-fungsi $e^{inx}$ juga bebas linear.
 
 \begin{prop}
-If
+Jika
 \begin{equation*}
 \sum_{n=-N}^N c_n \, e^{inx} = 0
 \end{equation*}
-for all $x \in [-\pi,\pi]$, then $c_n = 0$ for all $n$.
+untuk semua $x \in [-\pi,\pi]$, maka $c_n = 0$ untuk semua $n$.
 \end{prop}
 
 \begin{proof}
-The result follows immediately from the integral formula for $c_n$.
+Hasil tersebut langsung mengikuti rumus integral untuk $c_n$.
 \end{proof}
 
-\subsection{Fourier series}
+\subsection{Deret Fourier}
 
-We now take limits.  The series
+Sekarang kita mengambil limit. Deret
 \begin{equation*}
 \sum_{n=-\infty}^\infty c_n \, e^{inx}
 \end{equation*}
-is called
-the \emph{\myindex{Fourier series}} and the numbers $c_n$
-the \emph{\myindex{Fourier coefficients}}.  Using
-Euler's formula $e^{i\theta} = \cos(\theta) + i \sin (\theta)$,
-we could also develop everything with
-sines and cosines, that is, as the series
+dinamakan
+\emph{\myindex{deret Fourier}}, dan bilangan-bilangan $c_n$
+dinamakan \emph{\myindex{koefisien Fourier}}. Dengan menggunakan
+rumus Euler $e^{i\theta} = \cos(\theta) + i \sin (\theta)$,
+kita juga dapat mengembangkan seluruh pembahasan dengan
+sinus dan kosinus, yaitu sebagai deret
 $a_0 + \sum_{n=1}^\infty a_n \cos(nx) + b_n \sin(nx)$.
-It is equivalent, but slightly messier.
+Bentuk tersebut ekuivalen, tetapi sedikit lebih rumit.
 
-Several questions arise.  What functions are expressible as 
-Fourier series?  Obviously, they have to be $2\pi$-periodic, but not every
-periodic function is expressible with the series.  Furthermore, if we do have
-a Fourier series, where does it converge (where and if at all)?  Does it converge
-absolutely?  Uniformly?  Also note that the series has two
-limits.  When talking about Fourier series convergence, we often
-talk about the following limit:
+Muncul beberapa pertanyaan. Fungsi-fungsi apa saja yang dapat dinyatakan sebagai
+deret Fourier? Jelas bahwa fungsi-fungsi tersebut harus $2\pi$-periodik, tetapi tidak setiap
+fungsi periodik dapat dinyatakan dengan deret tersebut. Selanjutnya, jika kita memang memiliki
+deret Fourier, di mana deret itu konvergen (atau apakah ia konvergen sama sekali)? Apakah deret itu konvergen
+secara mutlak? Secara seragam? Perhatikan pula bahwa indeks deret tersebut menuju tak hingga
+dalam dua arah. Ketika membahas konvergensi deret Fourier, kita sering
+membicarakan limit berikut:
 \begin{equation*}
 \lim_{N\to\infty} 
 \sum_{n=-N}^N c_n e^{inx} .
 \end{equation*}
-There are other ways we can sum the series to get convergence in more
-situations, but we refrain from discussing those.  In light of this,
-define the \emph{\myindex{symmetric partial sums}}
+Ada cara-cara lain untuk menjumlahkan deret tersebut yang menghasilkan konvergensi dalam lebih banyak
+keadaan, tetapi kita tidak akan membahasnya. Dengan mempertimbangkan hal ini,
+kita definisikan \emph{\myindex{jumlah parsial simetris}}
 \glsadd{not:FSsympartsum}
 \begin{equation*}
 s_N(f;x) \coloneqq 
@@ -4409,35 +4405,35 @@ s_N(f;x) \coloneqq
 
 \medskip
 
-Conversely, for an integrable function $f \colon [-\pi,\pi] \to
-\C$, call the numbers
+Sebaliknya, untuk suatu fungsi terintegralkan $f \colon [-\pi,\pi] \to
+\C$, bilangan-bilangan
 \begin{equation*}
 c_n \coloneqq 
 \frac{1}{2\pi} \int_{-\pi}^\pi
 f(x) e^{-inx} \, dx
 \end{equation*}
-its \emph{Fourier coefficients}.  To emphasize the function
-the coefficients belong to,
-we write $\hat{f}(n)$.\footnote{The notation should seem similar
-to Fourier transform to those readers that have seen it.
-The similarity is not just
-coincidental, we are taking a type of Fourier transform here.}
-We then formally write down a Fourier series:\glsadd{not:FS}
+disebut \emph{koefisien Fourier} dari fungsi tersebut. Untuk menegaskan fungsi
+yang memiliki koefisien-koefisien itu,
+kita menulis $\hat{f}(n)$.\footnote{Bagi pembaca yang pernah mengenal
+transformasi Fourier, notasi ini semestinya tampak serupa.
+Keserupaan tersebut bukan sekadar
+kebetulan; di sini kita mengambil suatu jenis transformasi Fourier.}
+Kemudian kita menuliskan secara formal sebuah deret Fourier:\glsadd{not:FS}
 \begin{equation*}
 f(x) \sim
 \sum_{n=-\infty}^\infty c_n \, e^{inx} .
 \end{equation*}
-As you might imagine such a series might not even converge.
-The $\sim$ doesn't imply anything about the two sides being equal
-in any way.  It is simply that we created a formal series using the formula
-for the coefficients.  We will see that when the functions are
-\myquote{nice enough,} we do get convergence.
+Seperti yang dapat dibayangkan, deret semacam itu bahkan mungkin tidak konvergen.
+Tanda $\sim$ sama sekali tidak menyiratkan bahwa kedua ruas tersebut sama
+dalam arti apa pun. Tanda itu hanya menunjukkan bahwa kita membentuk sebuah deret formal dengan menggunakan rumus
+bagi koefisien-koefisiennya. Kita akan melihat bahwa untuk fungsi yang
+\myquote{cukup baik,} kita memang memperoleh konvergensi.
 
 \begin{example}
-Consider the step function $h(x)$ so that $h(x) \coloneqq 1$
-on $[0,\pi]$ and $h(x) \coloneqq -1$ on $(-\pi,0)$, extended periodically to a
-$2\pi$-periodic function.  With a little bit of calculus,
-we compute the coefficients:
+Perhatikan fungsi tangga $h(x)$ sedemikian sehingga $h(x) \coloneqq 1$
+pada $[0,\pi]$ dan $h(x) \coloneqq -1$ pada $(-\pi,0)$, lalu diperluas secara periodik menjadi
+fungsi $2\pi$-periodik. Dengan sedikit kalkulus,
+kita menghitung koefisien-koefisiennya:
 \begin{equation*}
 %mbxlatex \begin{aligned}
 \hat{h}(0)
@@ -4453,10 +4449,10 @@ we compute the coefficients:
 =
 \frac{1}{2\pi} \int_{-\pi}^\pi h(x) e^{-inx} \, dx
 =
-\frac{i\bigl( (-1)^n-1 \bigr)}{\pi n} \quad \text{for } n \neq 0 .
+\frac{i\bigl( (-1)^n-1 \bigr)}{\pi n} \quad \text{untuk } n \neq 0 .
 %mbxlatex \end{aligned}
 \end{equation*}
-A little bit of simplification leads to
+Sedikit penyederhanaan menghasilkan
 \begin{equation*}
 s_N(h;x) =
 \sum_{n=-N}^N \hat{h}(n) \,e^{inx} 
@@ -4464,12 +4460,12 @@ s_N(h;x) =
 \sum_{n=1}^N \frac{2\bigl(1-(-1)^n\bigr)}{\pi n} \sin(n x) .
 \avoidbreak
 \end{equation*}
-See the left hand graph in \figureref{fig:fourierheavicsaw}
-for a graph of $h$ and several symmetric partial sums.
+Untuk grafik $h$ dan beberapa jumlah parsial simetris, lihat grafik sebelah kiri
+pada \figureref{fig:fourierheavicsaw}.
 
-For a second example, consider the function $g(x) \coloneqq \sabs{x}$
-on $[-\pi,\pi]$ and then extended to a $2\pi$-periodic function.
-Computing the coefficients, we find
+Sebagai contoh kedua, perhatikan fungsi $g(x) \coloneqq \sabs{x}$
+pada $[-\pi,\pi]$, lalu perluas menjadi fungsi $2\pi$-periodik.
+Dengan menghitung koefisien-koefisiennya, kita peroleh
 \begin{equation*}
 %mbxlatex \begin{aligned}
 \hat{g}(0)
@@ -4485,10 +4481,10 @@ Computing the coefficients, we find
 =
 \frac{1}{2\pi} \int_{-\pi}^\pi g(x) e^{-inx} \, dx
 =
-\frac{(-1)^n-1}{\pi n^2} \quad \text{for } n \neq 0 .
+\frac{(-1)^n-1}{\pi n^2} \quad \text{untuk } n \neq 0 .
 %mbxlatex \end{aligned}
 \end{equation*}
-A little simplification yields
+Sedikit penyederhanaan memberikan
 \begin{equation*}
 s_N(g;x) =
 \sum_{n=-N}^N \hat{g}(n) \,e^{inx} 
@@ -4496,152 +4492,152 @@ s_N(g;x) =
 \frac{\pi}{2} + 
 \sum_{n=1}^N \frac{2\bigl((-1)^n-1\bigr)}{\pi n^2} \cos(n x) .
 \end{equation*}
-See the right hand graph in \figureref{fig:fourierheavicsaw}.
+Lihat grafik sebelah kanan pada \figureref{fig:fourierheavicsaw}.
 
 \begin{myfigureht}
 \myincludepdft{fourierheavi_csaw}{%
-Two graphs of 2 pi periodic functions shown over an interval
-slightly larger than from minus pi to pi.  On the left,
-the rectangular wave is shown which starts at value 1 when x is
-less than minus pi, then becomes minus 1 from minus pi to 0, then
-becomes 1 from 0 to pi, then becomes minus 1 again.
-On the right, a triangular (in particular continuous) wave is shown
-that is an upward sloping straight line hitting pi at minus pi, then a
-downward sloping straight line hitting 0 at 0, then going
-up again to pi at pi, then down again.
-Several partial sum approximations of the Fourier series are graphed
-in lighter shades of gray
-approximating the two functions.  Notably on the left the approximations
-are visibly worse with lots of wiggles around the straight segments, while
-on the right the approximations quickly seem to approximate only
-approaching slowly near the corners of the graph.}
-\caption{The functions $h$ and $g$ in bold, with several
-symmetric partial sums in gray.\label{fig:fourierheavicsaw}}
+Dua grafik fungsi berperiode 2 pi ditampilkan pada interval
+yang sedikit lebih lebar daripada interval dari minus pi hingga pi. Di sebelah kiri,
+diperlihatkan gelombang persegi panjang yang dimulai pada nilai 1 ketika x
+lebih kecil daripada minus pi, lalu menjadi minus 1 pada interval terbuka dari minus pi hingga 0, kemudian
+menjadi 1 dari 0 hingga pi, lalu kembali menjadi minus 1.
+Di sebelah kanan, diperlihatkan gelombang segitiga (khususnya kontinu)
+berupa garis lurus menanjak yang mencapai pi pada minus pi, lalu
+garis lurus menurun yang mencapai 0 pada 0, kemudian
+naik kembali menuju pi pada pi, lalu turun kembali.
+Beberapa aproksimasi jumlah parsial dari deret Fourier digambarkan
+dengan corak abu-abu yang lebih muda
+untuk mengaproksimasi kedua fungsi tersebut. Yang mencolok, di sebelah kiri aproksimasinya
+tampak lebih buruk dengan banyak riak di sekitar ruas-ruas lurus, sedangkan
+di sebelah kanan aproksimasinya tampak cepat mendekati fungsi, kecuali
+di dekat sudut-sudut grafik, tempat pendekatannya lebih lambat.}
+\caption{Fungsi $h$ dan $g$ dengan garis tebal, disertai beberapa
+jumlah parsial simetris berwarna abu-abu.\label{fig:fourierheavicsaw}}
 \end{myfigureht}
 
-Note that for both $h$ and $g$, the even coefficients (except $\hat{g}(0)$)
-happen to vanish, but that is not really important.
-What is important is convergence.
-First, at the discontinuity at $x=0$, we find $s_N(h;0) = 0$
-for all $N$, so $s_N(h;0)$ converges
-to a different number from $h(0)$ (at a nice enough jump discontinuity, the
-limit is the average of the two-sided limits, see the exercises).
-That should not be surprising;
-the coefficients are computed by an integral, and integration
-does not notice if the value of a function changes at a single point.
-We should remark, however, that we are not guaranteed that in general
-the Fourier series converges to the function even at a point where
-the function is continuous.
-We will prove convergence if the function is at least Lipschitz.
+Perhatikan bahwa untuk $h$ maupun $g$, koefisien genapnya (kecuali $\hat{g}(0)$)
+ternyata nol, tetapi hal itu tidak terlalu penting.
+Yang penting adalah konvergensi.
+Pertama, pada diskontinuitas di $x=0$, kita memperoleh $s_N(h;0) = 0$
+untuk setiap $N$, sehingga $s_N(h;0)$ konvergen
+ke bilangan yang berbeda dari $h(0)$ (pada diskontinuitas lompatan yang cukup baik,
+limitnya adalah rata-rata dari kedua limit sepihak; lihat latihan).
+Hal itu tidak semestinya mengejutkan;
+koefisien-koefisien tersebut dihitung dengan integral, sedangkan integrasi
+tidak mendeteksi perubahan nilai fungsi pada satu titik saja.
+Namun, perlu kita tegaskan bahwa secara umum tidak ada jaminan
+deret Fourier konvergen ke fungsinya, bahkan pada titik tempat
+fungsi tersebut kontinu.
+Kita akan membuktikan konvergensi jika fungsi tersebut setidaknya kontinu Lipschitz.
 
-What is really important is how fast the coefficients go to zero.  For the
-discontinuous $h$, the coefficients $\hat{h}(n)$ go to zero approximately like
-$\nicefrac{1}{n}$.  On the other hand, for the continuous $g$,
-the coefficients $\hat{g}(n)$ go to zero approximately like
+Yang benar-benar penting adalah seberapa cepat koefisien menuju nol. Untuk
+$h$ yang diskontinu, koefisien $\hat{h}(n)$ menuju nol kira-kira seperti
+$\nicefrac{1}{n}$. Di sisi lain, untuk $g$ yang kontinu,
+koefisien $\hat{g}(n)$ menuju nol kira-kira seperti
 $\nicefrac{1}{n^2}$.
-The Fourier coefficients \myquote{see}
-the discontinuity in some sense.
+Dalam arti tertentu, koefisien Fourier \myquote{melihat}
+diskontinuitas tersebut.
 
-Do note that continuity in this setting is the continuity of the
-periodic extension, that is, we include the endpoints $\pm \pi$.
-So the function $f(x) = x$ defined on $(-\pi,\pi]$
-and extended periodically would be discontinuous at the endpoints $\pm\pi$.
+Perhatikan bahwa kekontinuan dalam konteks ini adalah kekontinuan
+perluasan periodik; artinya, kita menyertakan titik-titik ujung $\pm \pi$.
+Jadi, fungsi $f(x) = x$ yang didefinisikan pada $(-\pi,\pi]$
+dan diperluas secara periodik akan diskontinu pada titik-titik ujung $\pm\pi$.
 \end{example}
 
-In general, the relationship between regularity of the function and
-the rate of decay of the coefficients is somewhat more complicated
-than the example above
-might make it seem, but there are some quick conclusions we can make.
-We forget about finding a series for a function for a moment,
-and we consider simply the limit of some given series.
-A few sections ago, we proved that the Fourier series 
+Secara umum, hubungan antara regularitas fungsi dan
+laju peluruhan koefisien agak lebih rumit
+daripada kesan yang mungkin ditimbulkan oleh contoh di atas,
+tetapi ada beberapa kesimpulan yang dapat segera kita tarik.
+Untuk sementara, kita lupakan pencarian deret bagi suatu fungsi,
+dan cukup meninjau limit suatu deret yang diberikan.
+Beberapa bagian sebelumnya, kita telah membuktikan bahwa deret Fourier
 \begin{equation*}
 \sum_{n=1}^\infty \frac{\sin(nx)}{n^2}
 \end{equation*}
-converges uniformly and hence converges to a continuous function.  This 
-example and its proof can be extended to a more general criterion.
+konvergen secara seragam dan karenanya konvergen ke suatu fungsi kontinu. Contoh
+beserta buktinya dapat diperluas menjadi kriteria yang lebih umum.
 
 \begin{prop}
-Let $\sum_{n=-\infty}^\infty c_n\, e^{inx}$ be a Fourier series,
-and $C$, $\alpha > 1$ constants such that
+Misalkan $\sum_{n=-\infty}^\infty c_n\, e^{inx}$ suatu deret Fourier,
+dan misalkan $C$ serta $\alpha > 1$ adalah konstanta sedemikian sehingga
 \begin{equation*}
 \sabs{c_n} \leq \frac{C}{\sabs{n}^\alpha}
-\qquad \text{for all } n \in \Z \setminus \{ 0 \}.
+\qquad \text{untuk setiap } n \in \Z \setminus \{ 0 \}.
 \avoidbreak
 \end{equation*}
-Then the series converges (absolutely and uniformly) to a continuous function on $\R$.
+Maka deret tersebut konvergen (secara mutlak dan seragam) ke suatu fungsi kontinu pada $\R$.
 \end{prop}
 
-The proof is to apply the Weierstrass $M$-test (\thmref{thm:weiermtest}) and
-the $p$-series test to find that the series converges uniformly and hence
-to a continuous function (\corref{cor:metricuniformcontinuous}).
-We can also take derivatives.
+Buktinya dilakukan dengan menerapkan uji $M$ Weierstrass (\thmref{thm:weiermtest}) dan
+uji deret-$p$ untuk memperoleh bahwa deret tersebut konvergen secara seragam dan karenanya
+konvergen ke suatu fungsi kontinu (\corref{cor:metricuniformcontinuous}).
+Kita juga dapat mengambil turunan.
 
 \begin{prop}
-Let $\sum_{n=-\infty}^\infty c_n\, e^{inx}$ be a Fourier series,
-and $C$, $\alpha > 2$ constants such that
+Misalkan $\sum_{n=-\infty}^\infty c_n\, e^{inx}$ suatu deret Fourier,
+dan misalkan $C$ serta $\alpha > 2$ adalah konstanta sedemikian sehingga
 \begin{equation*}
 \sabs{c_n} \leq \frac{C}{\sabs{n}^\alpha}
-\qquad \text{for all } n \in \Z \setminus \{ 0 \}.
+\qquad \text{untuk setiap } n \in \Z \setminus \{ 0 \}.
 \avoidbreak
 \end{equation*}
-Then the series converges to a continuously differentiable function on $\R$.
+Maka deret tersebut konvergen ke suatu fungsi yang diferensiabel secara kontinu pada $\R$.
 \end{prop}
 
-The proof is to note that the series converges to a continuous
-function by the previous proposition.
-In particular, it converges at some point.
-Then differentiate the partial sums,
+Buktinya dimulai dengan memperhatikan bahwa berdasarkan proposisi sebelumnya
+deret tersebut konvergen ke suatu fungsi kontinu.
+Khususnya, deret tersebut konvergen di suatu titik.
+Kemudian diferensialkan jumlah-jumlah parsialnya,
 \begin{equation*}
 \sum_{n=-N}^{N}
 i n c_n \,e^{inx}
 \end{equation*}
-and notice that for all nonzero $n$
+dan perhatikan bahwa untuk setiap $n$ tak nol
 \begin{equation*}
 \sabs{i n c_n} \leq \frac{C}{\sabs{n}^{\alpha-1}} .
 \end{equation*}
-The differentiated series converges uniformly by the $M$-test again.  Since
-the differentiated series
-converges uniformly, we find that the original series
+Deret hasil diferensiasi kembali konvergen secara seragam berdasarkan uji $M$. Karena
+deret hasil diferensiasi tersebut
+konvergen secara seragam, kita memperoleh bahwa deret semula
 $\sum_{n=-\infty}^\infty c_n\,e^{inx}$
-converges 
-to a continuously differentiable function, whose derivative is
-the differentiated series (see \thmref{thm:dersconvergecomplex}).
+konvergen
+ke suatu fungsi yang diferensiabel secara kontinu, yang turunannya adalah
+deret hasil diferensiasi tersebut (lihat \thmref{thm:dersconvergecomplex}).
 
-We can iterate this reasoning.
-Suppose there is
-some $C$ and $\alpha > k+1$ ($k \in \N$) such that
-for all nonzero integers $n$,
+Kita dapat mengiterasikan penalaran ini.
+Misalkan terdapat
+suatu $C$ dan $\alpha > k+1$ ($k \in \N$) sedemikian sehingga
+untuk setiap bilangan bulat $n$ tak nol,
 \begin{equation*}
 \sabs{c_n} 
 \leq \frac{C}{\sabs{n}^\alpha} .
 \end{equation*}
-Then 
-the Fourier series converges to a $k$-times continuously differentiable
-function.  Therefore, the faster the coefficients go to zero, the more
-regular the function is.
+Maka
+deret Fourier tersebut konvergen ke suatu fungsi yang diferensiabel secara kontinu
+hingga orde $k$. Karena itu, semakin cepat koefisien-koefisien menuju nol, semakin tinggi
+regularitas fungsi tersebut.
 
-\subsection{Orthonormal systems}
+\subsection{Sistem ortonormal}
 
-Let us abstract away the exponentials and
-study a more general series for a function.
-One fundamental property of the exponentials that makes Fourier series work
-is that the exponentials are what we call an \emph{orthonormal system}.
-Fix an interval $[a,b]$.  We define an
-\emph{\myindex{inner product}} for the space of functions.  We restrict our attention
-to Riemann integrable functions as we do not have the Lebesgue
-integral, which
-would be the natural choice.  Let $f$ and~$g$ be complex-valued 
-Riemann integrable functions on $[a,b]$ and define the inner product
+Kita sisihkan bentuk khusus fungsi-fungsi eksponensial dan
+pelajari deret yang lebih umum bagi suatu fungsi.
+Salah satu sifat mendasar fungsi-fungsi eksponensial yang membuat deret Fourier bekerja
+adalah bahwa fungsi-fungsi itu membentuk apa yang kita sebut \emph{sistem ortonormal}.
+Tetapkan suatu interval $[a,b]$. Kita definisikan suatu
+\emph{\myindex{hasil kali dalam}} pada ruang fungsi. Kita membatasi perhatian
+pada fungsi yang terintegralkan secara Riemann karena kita belum memiliki integral
+Lebesgue, padahal integral itulah
+pilihan yang alami. Misalkan $f$ dan~$g$ adalah fungsi bernilai kompleks
+yang terintegralkan secara Riemann pada $[a,b]$, dan definisikan hasil kali dalam
 \glsadd{not:L2innprod}
 \begin{equation*}
 \langle f , g \rangle \coloneqq
 \int_a^b f(x) \overline{g(x)} \, dx .
 \end{equation*}
-If you have seen Hermitian inner products in linear algebra, this
-is precisely such a product.  We must include the conjugate as we are
-working with complex numbers.  We then have the \myquote{size} of $f$, that
-is, the $L^2$ norm $\snorm{f}_2$, by (defining the square)
+Jika Anda pernah menjumpai hasil kali dalam Hermitian dalam aljabar linear,
+inilah tepatnya hasil kali semacam itu. Konjugat harus disertakan karena kita
+bekerja dengan bilangan kompleks. Selanjutnya kita memperoleh \myquote{ukuran} $f$,
+yaitu norma $L^2$, $\snorm{f}_2$, dengan mendefinisikan kuadratnya sebagai
 \glsadd{not:L2norm}
 \begin{equation*}
 \snorm{f}_2^2 \coloneqq
@@ -4650,104 +4646,110 @@ is, the $L^2$ norm $\snorm{f}_2$, by (defining the square)
 \end{equation*}
 
 \begin{remark}
-Note the similarity to finite dimensions.
-For $z = (z_1,z_2,\ldots,z_d) \in \C^d$, one defines
+Secara tepat, pada fungsi-fungsi yang terintegralkan secara Riemann sebagaimana adanya,
+rumus ini hanya menghasilkan seminorma: fungsi yang tidak nol di satu titik saja dapat memiliki seminorma nol.
+Rumus-rumus di atas menjadi hasil kali dalam dan norma setelah fungsi-fungsi yang sama hampir di mana-mana diidentifikasi.
+\end{remark}
+
+\begin{remark}
+Perhatikan kemiripannya dengan kasus berdimensi hingga.
+Untuk $z = (z_1,z_2,\ldots,z_d) \in \C^d$, didefinisikan
 \begin{equation*}
 \langle z , w \rangle \coloneqq
 \sum_{n=1}^d z_n \overline{w_n} .
 \end{equation*}
-Then the norm is (usually denoted simply by $\snorm{z}$ in $\C^d$
-rather than by $\snorm{z}_2$)
+Normanya kemudian adalah (biasanya cukup dinotasikan dengan $\snorm{z}$ di $\C^d$
+alih-alih dengan $\snorm{z}_2$)
 \begin{equation*}
 \snorm{z}^2 = 
 \langle z , z \rangle =
 \sum_{n=1}^d \sabs{z_n}^2 .
 \avoidbreak
 \end{equation*}
-This is just the euclidean distance to the origin in $\C^d$ (same as
-$\R^{2d}$).
+Ini tidak lain adalah jarak Euklides dari titik asal di $\C^d$ (sama seperti
+di $\R^{2d}$).
 \end{remark}
 
-%Let us get back to function spaces.
-In what follows, we will
-assume all functions are Riemann integrable.
+%Mari kita kembali ke ruang fungsi.
+Dalam uraian berikutnya, kita akan
+menganggap semua fungsi terintegralkan secara Riemann.
 
 \begin{defn}
-Let $\{ \varphi_n \}_{n=1}^\infty$ be a sequence of integrable complex-valued
-functions on $[a,b]$.  We say that this is an
-\emph{\myindex{orthonormal system}} if
+Misalkan $\{ \varphi_n \}_{n=1}^\infty$ suatu barisan fungsi bernilai kompleks
+yang terintegralkan pada $[a,b]$. Barisan ini disebut
+\emph{\myindex{sistem ortonormal}} jika
 \begin{equation*}
 \langle \varphi_n , \varphi_m \rangle
 =
 \int_a^b \varphi_n(x) \, \overline{\varphi_m(x)} \, dx
 = 
 \begin{cases}
-1 & \text{if } n=m, \\
-0 & \text{otherwise.}
+1 & \text{jika } n=m, \\
+0 & \text{selain itu.}
 \end{cases}
 \end{equation*}
-In particular, $\snorm{\varphi_n}_2 = 1$ for all $n$.  If we
-only require that 
-$\langle \varphi_n , \varphi_m \rangle = 0$ for $m \neq n$, then
-the system would be called an \emph{\myindex{orthogonal system}}.
+Khususnya, $\snorm{\varphi_n}_2 = 1$ untuk setiap $n$. Jika hanya
+disyaratkan bahwa
+$\langle \varphi_n , \varphi_m \rangle = 0$ untuk $m \neq n$, maka
+sistem tersebut disebut \emph{\myindex{sistem ortogonal}}.
 \end{defn}
 
-We noticed above that
+Kita telah melihat di atas bahwa
 \begin{equation*}
 {\left\{ \frac{1}{\sqrt{2\pi}} \, e^{inx} \right\}}_{n=1}^\infty
 \avoidbreak
 \end{equation*}
-is an orthonormal system on $[-\pi,\pi]$.
-The factor out in front is to make the norm be 1.
+merupakan sistem ortonormal pada $[-\pi,\pi]$.
+Faktor di depan memastikan normanya sama dengan 1.
 
-Having an orthonormal system $\{ \varphi_n \}_{n=1}^\infty$ on $[a,b]$ and an integrable function $f$
-on $[a,b]$, we can write
-a Fourier series relative to $\{ \varphi_n \}_{n=1}^\infty$.  Let
+Jika diberikan suatu sistem ortonormal $\{ \varphi_n \}_{n=1}^\infty$ pada $[a,b]$ dan suatu fungsi $f$
+yang terintegralkan pada $[a,b]$, kita dapat menuliskan
+deret Fourier relatif terhadap $\{ \varphi_n \}_{n=1}^\infty$. Misalkan
 \begin{equation*}
 c_n \coloneqq
 \langle f , \varphi_n \rangle
 =
 \int_a^b f(x) \overline{\varphi_n(x)} \, dx ,
 \end{equation*}
-and write
+dan tuliskan
 \begin{equation*}
 f(x) \sim \sum_{n=1}^\infty c_n \varphi_n .
 \end{equation*}
 
-In other words, the series is
+Dengan kata lain, deret tersebut adalah
 \begin{equation*}
 \sum_{n=1}^\infty \langle f , \varphi_n \rangle \varphi_n(x) .
 \end{equation*}
-Notice the similarity to the expression for the orthogonal
-projection of a vector onto a subspace from linear algebra.  We are
-in fact doing just that, but in a space of functions.
+Perhatikan kemiripannya dengan rumus proyeksi ortogonal
+suatu vektor pada subruang dalam aljabar linear. Sesungguhnya,
+itulah tepatnya yang sedang kita lakukan, tetapi dalam ruang fungsi.
 
 \begin{thm} \label{thm:l2bestapprox}
-Suppose $f$ is a Riemann integrable function on $[a,b]$.
-Let $\{ \varphi_n \}_{n=1}^\infty$ be an orthonormal system on $[a,b]$ and
-suppose
+Misalkan $f$ adalah fungsi yang terintegralkan secara Riemann pada $[a,b]$.
+Misalkan $\{ \varphi_n \}_{n=1}^\infty$ adalah sistem ortonormal pada $[a,b]$ dan
+misalkan
 \begin{equation*}
 f(x) \sim \sum_{n=1}^\infty c_n \varphi_n(x) .
 \end{equation*}
-If
+Jika
 \begin{equation*}
 s_k (x) \coloneqq \sum_{n=1}^k c_n \varphi_n(x)
-\quad\text{and}\quad
+\quad\text{dan}\quad
 p_k (x) \coloneqq \sum_{n=1}^k d_n \varphi_n(x)
 \end{equation*}
-for some other sequence $\{ d_n \}_{n=1}^\infty$, then
+untuk suatu barisan lain $\{ d_n \}_{n=1}^\infty$, maka
 \begin{equation*}
 \int_a^b \babs{f(x)-s_k(x)}^2 \, dx = \snorm{f-s_k}_2^2 \leq
 \snorm{f-p_k}_2^2 = \int_a^b \sabs{f(x)-p_k(x)}^2 \, dx
 \end{equation*}
-with equality only if $d_n = c_n$ for all $n=1,2,\ldots,k$.
+dan kesamaan berlaku hanya jika $d_n = c_n$ untuk setiap $n=1,2,\ldots,k$.
 \end{thm}
 
-In other words, the partial sums of the Fourier series are the best approximation with respect to the
-$L^2$ norm.
+Dengan kata lain, jumlah-jumlah parsial deret Fourier merupakan aproksimasi terbaik terhadap
+norma $L^2$.
 
 \begin{proof}
-Let us write
+Kita tuliskan
 \begin{equation*}
 \int_a^b \sabs{f-p_k}^2
 =
@@ -4759,7 +4761,7 @@ Let us write
 +
 \int_a^b \sabs{p_k}^2 .
 \end{equation*}
-Now
+Sekarang,
 \begin{equation*}
 \int_a^b f \widebar{p_k}
 =
@@ -4769,7 +4771,7 @@ Now
 =
  \sum_{n=1}^k \overline{d_n} c_n ,
 \end{equation*}
-and
+dan
 \begin{equation*}
 \int_a^b \sabs{p_k}^2
 =
@@ -4788,7 +4790,7 @@ d_n
 \sum_{n=1}^k
 \sabs{d_n}^2 .
 \end{equation*}
-So
+Dengan demikian,
 \begin{equation*}
 \begin{split}
 \int_a^b \sabs{f-p_k}^2
@@ -4811,10 +4813,10 @@ So
 \sabs{d_n-c_n}^2 .
 \end{split}
 \end{equation*}
-This is minimized precisely when $d_n = c_n$.
+Besaran ini mencapai nilai minimum tepat ketika $d_n = c_n$.
 \end{proof}
 
-When we do plug in $d_n = c_n$, then
+Ketika kita menyubstitusikan $d_n = c_n$, diperoleh
 \begin{equation*}
 \int_a^b \sabs{f-s_k}^2
 =
@@ -4822,31 +4824,31 @@ When we do plug in $d_n = c_n$, then
 -
 \sum_{n=1}^k \sabs{c_n}^2 ,
 \end{equation*}
-and so for all $k$,
+sehingga untuk setiap $k$,
 \begin{equation*}
 \sum_{n=1}^k \sabs{c_n}^2
 \leq
 \int_a^b \sabs{f}^2 .
 \end{equation*}
-Note that
+Perhatikan bahwa
 \begin{equation*}
 \sum_{n=1}^k \sabs{c_n}^2 = \snorm{s_k}_2^2
 \end{equation*}
-by the calculation above.
-We take a limit to obtain
-\emph{\myindex{Bessel's inequality}}.
+berdasarkan perhitungan di atas.
+Dengan mengambil limit, kita memperoleh
+\emph{\myindex{ketaksamaan Bessel}}.
 
-\begin{thm}[Bessel's inequality\footnote{%
-Named after the German astronomer, mathematician, physicist, and geodesist
+\begin{thm}[Ketaksamaan Bessel\footnote{%
+Dinamai menurut astronom, matematikawan, fisikawan, dan ahli geodesi asal Jerman
 \href{https://en.wikipedia.org/wiki/Friedrich_Bessel}{Friedrich Wilhelm Bessel}
 (1784--1846).}] \label{thm:bessels}
-Suppose $f$ is a Riemann integrable function on $[a,b]$.
-Let $\{ \varphi_n \}_{n=1}^\infty$ be an orthonormal system on $[a,b]$ and
-suppose
+Misalkan $f$ adalah fungsi yang terintegralkan secara Riemann pada $[a,b]$.
+Misalkan $\{ \varphi_n \}_{n=1}^\infty$ adalah sistem ortonormal pada $[a,b]$ dan
+misalkan
 \begin{equation*}
 f(x) \sim \sum_{n=1}^\infty c_n \varphi_n(x) .
 \end{equation*}
-Then
+Maka
 \begin{equation*}
 \sum_{n=1}^\infty \sabs{c_n}^2
 \leq
@@ -4855,49 +4857,49 @@ Then
 \end{equation*}
 \end{thm}
 
-In particular, $\int_a^b \sabs{f}^2 < \infty$ implies the series
-converges and hence
+Secara khusus, $\int_a^b \sabs{f}^2 < \infty$ mengakibatkan deret tersebut
+konvergen, sehingga
 \begin{equation*}
 \lim_{k \to \infty} c_k = 0 .
 \end{equation*}
 
-\subsection{The Dirichlet kernel and approximate delta functions}
+\subsection{Kernel Dirichlet dan fungsi-fungsi delta hampiran}
 
-We return to the trigonometric Fourier series.
-The system $\{ e^{inx} \}_{n=1}^\infty$ is orthogonal, but not orthonormal if we simply
-integrate over $[-\pi,\pi]$.  We can rescale the integral
-and hence the inner product to make 
-$\{ e^{inx} \}_{n=1}^\infty$ orthonormal.  That is, if we replace
+Kita kembali ke deret Fourier trigonometri.
+Sistem $\{ e^{inx} \}_{n \in \Z}$ bersifat ortogonal, tetapi tidak ortonormal jika kita sekadar
+mengintegralkan pada $[-\pi,\pi]$. Kita dapat mengubah skala integral
+dan dengan demikian juga hasil kali dalamnya agar
+$\{ e^{inx} \}_{n \in \Z}$ menjadi ortonormal. Artinya, jika kita mengganti
 \begin{equation*}
-\int_a^b \qquad \text{with} \qquad
+\int_a^b \qquad \text{dengan} \qquad
 \frac{1}{2\pi} \int_{-\pi}^\pi,
 \end{equation*}
-(we are just rescaling the $dx$ really)\footnote{%
-Mathematicians in this field sometimes simplify matters with
-a tongue-in-cheek definition that $1=2\pi$.},
-then everything works and we obtain that the system
-$\{ e^{inx} \}_{n=1}^\infty$
-is orthonormal with respect to the inner product
+(sebenarnya kita hanya mengubah skala $dx$)\footnote{%
+Para matematikawan di bidang ini terkadang menyederhanakan persoalan dengan
+definisi berseloroh bahwa $1=2\pi$.},
+maka semuanya berjalan sebagaimana mestinya dan kita memperoleh bahwa sistem
+$\{ e^{inx} \}_{n \in \Z}$
+bersifat ortonormal terhadap hasil kali dalam
 \begin{equation*}
 \langle f , g \rangle =
 \frac{1}{2\pi} \int_{-\pi}^\pi f(x) \, \overline{g(x)} \, dx .
 \end{equation*}
 
-Suppose $f \colon \R \to \C$ is $2\pi$-periodic and integrable
-on $[-\pi,\pi]$.
-Write
+Misalkan $f \colon \R \to \C$ bersifat $2\pi$-periodik dan terintegralkan
+pada $[-\pi,\pi]$.
+Tuliskan
 \begin{equation*}
 f(x) \sim
 \sum_{n=-\infty}^\infty c_n \,e^{inx} ,
-\qquad \text{where} \quad
+\qquad \text{dengan} \quad
 c_n \coloneqq 
 \frac{1}{2\pi} \int_{-\pi}^\pi
 f(x) e^{-inx} \, dx .
 \end{equation*}
-Recall the notation for the symmetric partial sums,
+Ingat notasi untuk jumlah parsial simetris,
 $s_N(f;x) \coloneqq 
 \sum_{n=-N}^N c_n \,e^{inx}$.
-The inequality leading up to Bessel now reads:
+Ketaksamaan yang mengantar ke ketaksamaan Bessel kini berbentuk:
 \begin{equation*}
 \frac{1}{2\pi} \int_{-\pi}^\pi
 \babs{s_N(f;x)}^2 \, dx =
@@ -4908,34 +4910,34 @@ The inequality leading up to Bessel now reads:
 \, dx .
 \end{equation*}
 
-Let the \emph{\myindex{Dirichlet kernel}} be
+Definisikan \emph{\myindex{kernel Dirichlet}} sebagai
 \begin{equation*}
 D_N(x) \coloneqq \sum_{n=-N}^N e^{inx} .
 \end{equation*}
-We claim that
+Kita mengklaim bahwa
 \begin{equation*}
 D_N(x) =
 %\sum_{n=-N}^N e^{inx}
 %=
 \frac{\sin\bigl( (N+\nicefrac{1}{2})x \bigr)}{\sin(\nicefrac{x}{2})} ,
 \end{equation*}
-for $x$ such that $\sin(\nicefrac{x}{2}) \neq 0$.  The left-hand
-side is continuous on $\R$, and hence the right-hand side extends continuously to
-all of $\R$.
-To show the claim,
-we use a familiar trick:
+untuk $x$ sedemikian sehingga $\sin(\nicefrac{x}{2}) \neq 0$. Ruas kiri
+kontinu pada $\R$, sehingga ruas kanan dapat diperluas secara kontinu ke
+seluruh $\R$.
+Untuk membuktikan klaim tersebut,
+kita menggunakan trik yang sudah dikenal:
 \begin{equation*}
 (e^{ix}-1) D_N(x) = e^{i(N+1)x} - e^{-iNx} .
 \end{equation*}
-Multiply by $e^{-ix/2}$
+Kalikan dengan $e^{-ix/2}$
 \begin{equation*}
 (e^{ix/2}-e^{-ix/2}) D_N(x) = e^{i(N+\nicefrac{1}{2})x} -
 e^{-i(N+\nicefrac{1}{2})x} .
 \avoidbreak
 \end{equation*}
-The claim follows.
+Klaim tersebut pun terbukti.
 
-Expand the definition of $s_N$
+Jabarkan definisi $s_N$
 \begin{multline*}
 s_N(f;x) = 
 \sum_{n=-N}^N \frac{1}{2\pi} \int_{-\pi}^\pi f(t) e^{-int}  \,  dt ~ e^{inx}
@@ -4945,101 +4947,101 @@ s_N(f;x) =
 =
 \frac{1}{2\pi} \int_{-\pi}^\pi f(t) D_N(x-t) \, dt .
 \end{multline*}
-Convolution strikes again!
-As $D_N$ and $f$ are $2\pi$-periodic, we may also change variables and write 
+Konvolusi muncul lagi!
+Karena $D_N$ dan $f$ bersifat $2\pi$-periodik, kita juga dapat melakukan perubahan variabel dan menuliskan
 \begin{equation*}
 s_N(f;x) = 
 \frac{1}{2\pi} \int_{x-\pi}^{x+\pi} f(x-t) D_N(t) \, dt
 =
 \frac{1}{2\pi} \int_{-\pi}^\pi f(x-t) D_N(t) \, dt .
 \end{equation*}
-See \figureref{fig:approxdeltas} for a plot of $D_N$ for $N=5$ and $N=20$.
+Lihat \figureref{fig:approxdeltas} untuk grafik $D_N$ ketika $N=5$ dan $N=20$.
 
 \begin{myfigureht}
 \myincludegraphics{approxdeltas}{%
-A plot of two functions for x within mius pi to pi.
-In gray there is a function that starts with small-amplitude slow oscillation
-on the left, becomes a sizable bump in the middle and then becomes
-a small-amplitude slow oscillation on the right.
-In black, it is a function with similar pattern
-except the frequency is much higher and instead of a bump in the middle it
-becomes a tall peak.  The oscillations go both above and below the
-x-axis.}
-\caption{Plot of $D_N(x)$ for $N=5$ (gray) and $N=20$
-(black).\label{fig:approxdeltas}}
+Grafik dua fungsi untuk x dari minus pi hingga pi.
+Dalam warna abu-abu terdapat fungsi yang diawali oleh osilasi lambat beramplitudo kecil
+di sebelah kiri, membentuk tonjolan cukup besar di tengah, lalu kembali menjadi
+osilasi lambat beramplitudo kecil di sebelah kanan.
+Dalam warna hitam terdapat fungsi dengan pola serupa,
+tetapi frekuensinya jauh lebih tinggi dan tonjolan di tengahnya
+menjadi puncak yang tinggi. Osilasinya berlangsung di atas maupun di bawah
+sumbu x.}
+\caption{Grafik $D_N(x)$ untuk $N=5$ (abu-abu) dan $N=20$
+(hitam).\label{fig:approxdeltas}}
 \end{myfigureht}
 
-The central peak gets taller and taller as $N$ gets larger,
-and the side peaks stay small.
-We are convolving (again) with
-\emph{approximate delta functions}\index{approximate delta function},
-although these functions have
-all these oscillations away from zero.  The oscillations on the side do not go away
-but they are eventually so fast that we expect the integral to just sort of
-cancel itself out there.
-Overall, we expect that
-$s_N(f)$ goes to $f$.  Things are not always simple,
-but under some conditions on $f$, such a conclusion holds.  For this reason
-people write
+Puncak tengah semakin tinggi seiring $N$ membesar,
+sedangkan puncak-puncak samping tetap rendah.
+Kita (lagi-lagi) melakukan konvolusi dengan
+\emph{fungsi-fungsi delta hampiran}\index{fungsi delta hampiran},
+walaupun fungsi-fungsi ini memiliki
+semua osilasi tersebut jauh dari nol. Osilasi di samping tidak menghilang,
+tetapi akhirnya menjadi begitu cepat sehingga kita memperkirakan
+osilasi-osilasi itu kurang-lebih saling meniadakan dalam integral di sana.
+Secara keseluruhan, kita mengharapkan bahwa
+$s_N(f)$ menuju $f$. Keadaannya tidak selalu sederhana,
+tetapi dengan syarat-syarat tertentu pada $f$, kesimpulan seperti ini berlaku. Karena alasan ini,
+orang menuliskan
 \begin{equation*}
 2\pi \, \delta(x) \sim \sum_{n=-\infty}^\infty e^{inx} ,
 \end{equation*}
-where $\delta$ is the \myquote{delta function} (not really a function),
-which is an object that will give something like
+di mana $\delta$ adalah \myquote{fungsi delta} (sebenarnya bukan fungsi),
+yakni suatu objek yang menghasilkan sesuatu seperti
 \myquote{$\int_{-\pi}^{\pi} f(x-t) \delta(t) \, dt = f(x)$.}
-We can think of $D_N(x)$ converging in some sense to $2 \pi\, \delta(x)$.
-However, we have not defined (and will not define) what the delta function
-is, nor what it means for it to be a limit of $D_N$ or have a Fourier series.
+Kita dapat memandang bahwa $D_N(x)$, dalam arti tertentu, konvergen ke $2 \pi\, \delta(x)$.
+Namun, kita belum mendefinisikan (dan tidak akan mendefinisikan) apa itu fungsi delta,
+maupun apa artinya ia menjadi limit $D_N$ atau memiliki deret Fourier.
 
-\subsection{Localization}
+\subsection{Lokalisasi}
 
-If $f$ satisfies a Lipschitz condition at a point, then
-the Fourier series converges at that point.
+Jika $f$ memenuhi syarat Lipschitz di suatu titik, maka
+deret Fourier konvergen di titik tersebut.
 
 \begin{thm} \label{thm:fourierlocalization}
-Let $x$ be fixed and let $f$ be a $2\pi$-periodic function
-Riemann integrable on $[-\pi,\pi]$.  Suppose
-there exist $\delta > 0$ and $M$ such that
+Misalkan $x$ tetap dan $f$ merupakan fungsi periodik $2\pi$
+yang terintegralkan secara Riemann pada $[-\pi,\pi]$.  Andaikan
+terdapat $\delta > 0$ dan $M$ sedemikian sehingga
 \begin{equation*}
 \babs{f(x+t)-f(x)} \leq M \sabs{t}
 \end{equation*}
-for all $t \in (-\delta,\delta)$, then
+untuk setiap $t \in (-\delta,\delta)$. Maka
 \begin{equation*}
 \lim_{N \to \infty} s_N(f;x) = f(x) .
 \end{equation*}
 \end{thm}
 
-In particular,
-if $f$ is continuously
-differentiable at $x$,
-then we obtain convergence at $x$ (exercise).
+Secara khusus,
+jika $f$ diferensiabel secara
+kontinu di $x$,
+maka diperoleh konvergensi di $x$ (latihan).
 %We state an often-used version of this corollary.
-A function $f \colon [a,b] \to \C$ is
-\emph{\myindex{continuous piecewise smooth}}\index{piecewise smooth}
-if it is continuous and there exist points
+Suatu fungsi $f \colon [a,b] \to \C$ disebut
+\emph{\myindex{kontinu dan mulus sepotong-sepotong}}\index{mulus sepotong-sepotong}
+jika fungsi tersebut kontinu dan terdapat titik-titik
 $x_0 = a < x_1 < x_2 < \cdots < x_k = b$
-such that for every $j$, $f$ restricted to $[x_j,x_{j+1}]$
-is continuously differentiable (up to the endpoints).
+sedemikian sehingga untuk setiap $j=0,1,\ldots,k-1$, pembatasan $f$ pada $[x_j,x_{j+1}]$
+diferensiabel secara kontinu (hingga titik-titik ujungnya).
 
 \begin{cor} \label{cor:fourierpiecewisesmooth}
-Let $f$ be a $2\pi$-periodic function
-Riemann integrable on $[-\pi,\pi]$.  Suppose
-there exist $x\in \R$ and $\delta > 0$ such that $f$ is continuous piecewise
-smooth on $[x-\delta,x+\delta]$, then
+Misalkan $f$ merupakan fungsi periodik $2\pi$
+yang terintegralkan secara Riemann pada $[-\pi,\pi]$.  Andaikan
+terdapat $x\in \R$ dan $\delta > 0$ sedemikian sehingga $f$ kontinu dan mulus
+sepotong-sepotong pada $[x-\delta,x+\delta]$. Maka
 \begin{equation*}
 \lim_{N \to \infty} s_N(f;x) = f(x) .
 \end{equation*}
 \end{cor}
 
-The proof of the corollary is left as an exercise.  Let us prove the
-theorem.
+Bukti akibat ini diserahkan sebagai latihan.  Mari kita buktikan
+teoremanya.
 
-\begin{proof}[Proof of \thmref{thm:fourierlocalization}]
-For all $N$,
+\begin{proof}[Bukti \thmref{thm:fourierlocalization}]
+Untuk setiap $N$,
 \begin{equation*}
 \frac{1}{2\pi} \int_{-\pi}^\pi D_N = 1 .
 \end{equation*}
-Write
+Tuliskan
 \begin{equation*}
 \begin{split}
 s_N(f;x)-f(x) & =
@@ -5056,34 +5058,34 @@ f(x)
 (N+\nicefrac{1}{2})t \bigr) \, dt .
 \end{split}
 \end{equation*}
-By the hypotheses,
-for small nonzero $t$,
+Berdasarkan hipotesis,
+untuk $t$ tak nol yang cukup kecil,
 \begin{equation*}
 \abs{ \frac{f(x-t) - f(x)}{\sin(\nicefrac{t}{2})} }
 \leq
 \frac{M\sabs{t}}{\babs{\sin(\nicefrac{t}{2})}} .
 \end{equation*}
-As $\sin(\theta) = \theta + h(\theta)$ where $\frac{h(\theta)}{\theta} \to
-0$ as $\theta \to 0$,
-we notice that
-$\frac{M\sabs{t}}{\sabs{\sin(\nicefrac{t}{2})}}$ is continuous at the
-origin.
-Hence,
-$\frac{f(x-t) - f(x)}{\sin(\nicefrac{t}{2})}$, as a function of $t$,
-is bounded near the origin.
-As $t=0$ is the only place on $[-\pi,\pi]$ where the denominator vanishes,
-it is the only place where there could be a problem.
-So, the function is bounded near $t=0$ and clearly
-Riemann integrable on any interval not including $0$, and thus
-it is Riemann integrable on $[-\pi,\pi]$.
-We use the trigonometric identity
+Karena $\sin(\theta) = \theta + h(\theta)$ dengan $\frac{h(\theta)}{\theta} \to
+0$ ketika $\theta \to 0$,
+kita melihat bahwa
+$\frac{M\sabs{t}}{\sabs{\sin(\nicefrac{t}{2})}}$ memiliki limit berhingga dan dapat diperluas secara kontinu ke
+titik asal.
+Dengan demikian,
+$\frac{f(x-t) - f(x)}{\sin(\nicefrac{t}{2})}$, sebagai fungsi terhadap $t$,
+terbatas di sekitar titik asal.
+Karena $t=0$ merupakan satu-satunya titik pada $[-\pi,\pi]$ tempat penyebut bernilai nol,
+hanya di titik itulah persoalan dapat muncul.
+Jadi, setelah nilainya di titik tersebut ditetapkan secara sembarang, fungsi ini terbatas di sekitar $t=0$ dan jelas
+terintegralkan secara Riemann pada setiap interval yang tidak memuat $0$, sehingga
+fungsi ini terintegralkan secara Riemann pada $[-\pi,\pi]$.
+Kita menggunakan identitas trigonometri
 \begin{equation*}
 \sin\bigl( (N+\nicefrac{1}{2})t \bigr)
 =
 \cos(\nicefrac{t}{2}) \sin(Nt) + 
 \sin(\nicefrac{t}{2}) \cos(Nt) ,
 \end{equation*}
-to compute
+untuk memperoleh
 \begin{multline*}
 \frac{1}{2\pi} \int_{-\pi}^\pi \frac{f(x-t) - f(x)}{\sin(\nicefrac{t}{2})} \sin\bigl(
 (N+\nicefrac{1}{2})t \bigr) \, dt 
@@ -5095,77 +5097,77 @@ to compute
 \frac{1}{2\pi} \int_{-\pi}^\pi \bigl( f(x-t) - f(x) \bigr)
 \cos (Nt) \, dt .
 \end{multline*}
-As functions of $t$, 
+Sebagai fungsi terhadap $t$, 
 $\frac{f(x-t) - f(x)}{\sin(\nicefrac{t}{2})} \cos (\nicefrac{t}{2})$
-and
-$\bigl( f(x-t) - f(x) \bigr)$ are bounded Riemann integrable functions
-and so their Fourier coefficients go to zero by \thmref{thm:bessels}.  So the two
-integrals on the right-hand side, which compute the Fourier coefficients
-for the real version of the Fourier series go to 0 as $N$ goes to infinity.
-This is because $\sin(Nt)$ and $\cos(Nt)$ are also orthonormal systems
-with respect to the same inner product.
-Hence $s_N(f;x)-f(x)$ goes to 0, that is, $s_N(f;x)$ goes to $f(x)$.
+dan
+$\bigl( f(x-t) - f(x) \bigr)$ merupakan fungsi-fungsi terbatas yang terintegralkan secara Riemann.
+Setelah sistem sinus dan kosinus dinormalisasi, \thmref{thm:bessels} menunjukkan bahwa koefisien Fourier kedua fungsi tersebut menuju nol. Oleh karena itu, kedua
+integral di ruas kanan, yang merupakan kelipatan konstan dari koefisien Fourier
+untuk bentuk real deret Fourier, menuju 0 ketika $N$ menuju tak hingga.
+Hal ini karena $\sin(Nt)$ dan $\cos(Nt)$ masing-masing membentuk sistem ortogonal
+dengan norma konstan terhadap hasil kali dalam yang sama dan menjadi ortonormal setelah dinormalisasi.
+Dengan demikian, $s_N(f;x)-f(x)$ menuju 0, yaitu $s_N(f;x)$ menuju $f(x)$.
 \end{proof}
 
-The theorem also says that convergence depends only on local behavior.
-That is, to understand convergence of $s_N(f;x)$ we only need to know
-$f$ in some neighborhood of $x$.
+Teorema tersebut juga menyatakan bahwa konvergensi hanya bergantung pada perilaku lokal.
+Artinya, untuk memahami konvergensi $s_N(f;x)$ kita hanya perlu mengetahui
+$f$ pada suatu lingkungan dari $x$.
 
 \begin{cor}
-Suppose $f$ is a $2\pi$-periodic function, Riemann integrable on $[-\pi,\pi]$.
-If $J$ is an open interval and $f(x) = 0$ for all $x \in J$,
-then $\lim\limits_{N\to\infty} s_N(f;x) = 0$ for all $x \in J$.
+Misalkan $f$ adalah fungsi $2\pi$-periodik yang terintegralkan secara Riemann pada $[-\pi,\pi]$.
+Jika $J$ adalah interval terbuka dan $f(x) = 0$ untuk setiap $x \in J$,
+maka $\lim\limits_{N\to\infty} s_N(f;x) = 0$ untuk setiap $x \in J$.
 
-In particular, if $f$ and $g$ are $2\pi$-periodic functions,
-Riemann integrable on $[-\pi,\pi]$, $J$ an open interval, and $f(x) = g(x)$
-for all $x \in J$, then for all $x \in J$,
-the sequence
-$\bigl\{ s_N(f;x) \bigr\}_{N=1}^\infty$ converges if and only if
-$\bigl\{ s_N(g;x) \bigr\}_{N=1}^\infty$ converges.
+Secara khusus, jika $f$ dan $g$ adalah fungsi $2\pi$-periodik
+yang terintegralkan secara Riemann pada $[-\pi,\pi]$, $J$ adalah interval terbuka, dan $f(x) = g(x)$
+untuk setiap $x \in J$, maka untuk setiap $x \in J$,
+barisan
+$\bigl\{ s_N(f;x) \bigr\}_{N=1}^\infty$ konvergen jika dan hanya jika
+$\bigl\{ s_N(g;x) \bigr\}_{N=1}^\infty$ konvergen.
 \end{cor}
 
-The first claim follows by taking $M=0$ in the theorem.
-The \myquote{In particular} follows by considering $f-g$, which
-is zero on $J$ and $s_N(f-g) = s_N(f) - s_N(g)$.
-So convergence at $x$ depends only on the values of the function
-near $x$.
-However, we saw that the rate of convergence,
-that is, how fast does $s_N(f)$
-converge to $f$, depends on global behavior of $f$.
+Pernyataan pertama diperoleh dengan mengambil $M=0$ dalam teorema.
+Pernyataan \myquote{Secara khusus} diperoleh dengan meninjau $f-g$, yang
+bernilai nol pada $J$ dan memenuhi $s_N(f-g) = s_N(f) - s_N(g)$.
+Jadi, konvergensi di $x$ hanya bergantung pada nilai-nilai fungsi
+di dekat $x$.
+Namun, kita telah melihat bahwa laju konvergensi,
+yaitu seberapa cepat $s_N(f)$
+konvergen ke $f$, bergantung pada perilaku global $f$.
 
-Note a subtle difference between the results above and what 
-\hyperref[thm:SWcomplex]{Stone--Weierstrass theorem} gives.
-%By Stone--Weierstrass, 
-Any continuous function on $[-\pi,\pi]$ equal at the endpoints
-can be uniformly approximated
-by trigonometric polynomials, but these trigonometric polynomials may
-not be the partial sums $s_N$.
+Perhatikan perbedaan halus antara hasil-hasil di atas dan hasil yang diberikan oleh
+\hyperref[thm:SWcomplex]{teorema Stone--Weierstrass}.
+%Dengan Stone--Weierstrass,
+Setiap fungsi kontinu pada $[-\pi,\pi]$ yang bernilai sama di kedua titik ujung
+dapat dihampiri secara seragam
+oleh polinom-polinom trigonometri, tetapi polinom-polinom trigonometri tersebut tidak harus
+merupakan jumlah parsial $s_N$.
 
-\subsection{Parseval's theorem}
+\subsection{Teorema Parseval}
 
-Finally,
-convergence always happens in the $L^2$ sense and
-operations on the (infinite) vectors of
-Fourier coefficients are the same as the operations using the integral
-inner product.
+Akhirnya,
+konvergensi selalu terjadi dalam pengertian $L^2$, dan
+operasi pada vektor-vektor koefisien Fourier
+(dengan tak berhingga banyak komponen) sama dengan operasi yang menggunakan
+hasil kali dalam integral.
 
 \begin{samepage}
 \begin{thm}[Parseval\footnote{%
-Named after the French mathematician
+Dinamai menurut matematikawan Prancis
 \href{https://en.wikipedia.org/wiki/Marc-Antoine_Parseval}{Marc-Antoine
 Parseval}
-(1755--1836).}] \index{Parseval's theorem}
-Let $f$ and $g$ be $2\pi$-periodic functions, Riemann integrable 
-on $[-\pi,\pi]$
-with
+(1755--1836).}] \index{teorema Parseval}
+Misalkan $f$ dan $g$ adalah fungsi-fungsi $2\pi$-periodik yang terintegralkan secara Riemann
+pada $[-\pi,\pi]$
+dengan
 \begin{equation*}
 f(x) \sim
 \sum_{n=-\infty}^\infty c_n \,e^{inx}
-\qquad \text{and} \qquad
+\qquad \text{dan} \qquad
 g(x) \sim
 \sum_{n=-\infty}^\infty d_n \,e^{inx} .
 \end{equation*}
-Then
+Maka
 \begin{equation*}
 \lim_{N\to\infty} \bnorm{f-s_N(f)}_2^2 = 
 \lim_{N\to\infty}
@@ -5174,7 +5176,7 @@ Then
 \babs{f(x)-s_N(f;x)}^2 \, dx
 =0 .
 \end{equation*}
-Also
+Selain itu,
 \begin{equation*}
 \langle f , g \rangle =
 \frac{1}{2\pi}
@@ -5183,7 +5185,7 @@ f(x) \overline{g(x)}\, dx
 =
 \sum_{n=-\infty}^\infty c_n \overline{d_n} ,
 \end{equation*}
-and
+dan
 \begin{equation*}
 \snorm{f}_2^2
 =
@@ -5197,17 +5199,17 @@ and
 \end{samepage}
 
 \begin{proof}
-There exists (\exerciseref{exercise:contL2close})
-a continuous $2\pi$-periodic function $h$ such that
+Terdapat (\exerciseref{exercise:contL2close})
+suatu fungsi kontinu $2\pi$-periodik $h$ sedemikian sehingga
 \begin{equation*}
 \snorm{f-h}_2 < \epsilon .
 \end{equation*}
-Via \hyperref[thm:SWcomplex]{Stone--Weierstrass}
-(namely \exerciseref{exercise:trigpolydense}),
-there is a trigonometric polynomial $P(x)$
-such that
-$\babs{h(x) - P(x)} < \epsilon$ for all $x$.
-Hence,
+Berdasarkan \hyperref[thm:SWcomplex]{Stone--Weierstrass}
+(yakni \exerciseref{exercise:trigpolydense}),
+terdapat suatu polinom trigonometri $P(x)$
+sedemikian sehingga
+$\babs{h(x) - P(x)} < \epsilon$ untuk setiap $x$.
+Oleh karena itu,
 \begin{equation*}
 \snorm{h-P}_2
 =
@@ -5220,12 +5222,12 @@ dx
 }
 \leq \epsilon.
 \end{equation*}
-If $P$ is of degree $N_0$, then for all $N \geq N_0$ ,
+Jika $P$ berderajat $N_0$, maka untuk setiap $N \geq N_0$,
 \begin{equation*}
 \bnorm{h-s_N(h)}_2 \leq \snorm{h-P}_2 \leq \epsilon ,
 \end{equation*}
-as $s_N(h)$ is the best approximation for $h$ in $L^2$ (\thmref{thm:l2bestapprox}).
-By the inequality leading up to Bessel,
+karena $s_N(h)$ merupakan aproksimasi terbaik bagi $h$ dalam $L^2$ (\thmref{thm:l2bestapprox}).
+Berdasarkan ketaksamaan yang digunakan untuk memperoleh ketaksamaan Bessel,
 \begin{equation*}
 \bnorm{s_N(h)-s_N(f)}_2
 =
@@ -5233,9 +5235,9 @@ By the inequality leading up to Bessel,
 \leq
 \snorm{h-f}_2 \leq \epsilon .
 \end{equation*}
-The $L^2$ norm satisfies the triangle inequality
+Norma $L^2$ memenuhi ketaksamaan segitiga
 (\exerciseref{exercise:L2triangleineq}).
-Thus, for all $N \geq N_0$,
+Dengan demikian, untuk setiap $N \geq N_0$,
 \begin{equation*}
 \bnorm{f-s_N(f)}_2
 \leq
@@ -5246,9 +5248,9 @@ Thus, for all $N \geq N_0$,
 \bnorm{s_N(h)-s_N(f)}_2
 \leq 3\epsilon .
 \end{equation*}
-The first claim follows.
+Pernyataan pertama terbukti.
 
-Next,
+Selanjutnya,
 \begin{equation*}
 \langle s_N(f) , g \rangle
 =
@@ -5267,18 +5269,18 @@ e^{inx}
 c_n 
 \overline{d_n} .
 \end{equation*}
-We need the Schwarz (or Cauchy--Schwarz or Cauchy--Bunyakovsky--Schwarz)
-inequality for $L^2$, that is,
+Kita memerlukan ketaksamaan Schwarz (atau Cauchy--Schwarz atau Cauchy--Bunyakovsky--Schwarz)
+untuk $L^2$, yaitu,
 \begin{equation*}
 {\abs{\int_a^b f\bar{g}}}^2
 \leq
 \left( \int_a^b \sabs{f}^2 \right)
 \left( \int_a^b \sabs{g}^2 \right) .
 \end{equation*}
-Its proof is left as \exerciseref{exercise:L2cauchyschwarz};
-it is not much
-different from the finite-dimensional version.
-So
+Buktinya diserahkan sebagai \exerciseref{exercise:L2cauchyschwarz};
+bukti tersebut tidak jauh
+berbeda dari versi berdimensi hingga.
+Jadi,
 \begin{equation*}
 \begin{split}
 \abs{\int_{-\pi}^\pi f\bar{g} - \int_{-\pi}^\pi s_N(f)\bar{g}}
@@ -5291,66 +5293,66 @@ So
 {\left( \int_{-\pi}^\pi \sabs{g}^2 \right)}^{1/2} .
 \end{split}
 \end{equation*}
-The right-hand side goes to 0 as $N$ goes to infinity by the first
-claim of the theorem.
-That is, as $N$ goes to infinity, $\langle s_N(f),g \rangle$
-goes to $\langle f,g \rangle$, and
-the second claim is proved.  The last claim in the theorem follows by using
+Ruas kanan menuju 0 ketika $N$ menuju tak hingga berdasarkan pernyataan pertama
+teorema.
+Artinya, ketika $N$ menuju tak hingga, $\langle s_N(f),g \rangle$
+menuju $\langle f,g \rangle$, sehingga
+pernyataan kedua terbukti.  Pernyataan terakhir dalam teorema diperoleh dengan menggunakan
 $g=f$.
 \end{proof}
 
-\subsection{Exercises}
+\subsection{Latihan}
 
 \begin{exercise} \label{exercise:fsweierser}
-Consider the Fourier series
+Perhatikan deret Fourier
 \begin{equation*}
 \sum_{k=1}^\infty \frac{1}{2^k} \sin(2^k x) .
 \end{equation*}
-Show that the series converges uniformly and absolutely to a continuous
-function.  Remark: This is another example of a nowhere differentiable
-function (you do not have to prove that)\footnote{%
-See
+Tunjukkan bahwa deret tersebut konvergen secara seragam dan mutlak ke suatu
+fungsi kontinu.  Catatan: Ini adalah contoh lain dari fungsi yang tidak
+diferensiabel di mana pun (Anda tidak perlu membuktikan hal itu)\footnote{%
+Lihat
 G.\ H.\ Hardy, \emph{Weierstrass's Non-Differentiable Function},
 Transactions of the American Mathematical Society,
 \textbf{17}, No.\ 3 (Jul., 1916), pp.\ 301--325.
-A thing to notice here is the $n$th Fourier coefficient is $\nicefrac{1}{n}$
-if $n=2^k$ and zero otherwise, so the coefficients go to zero like
-$\nicefrac{1}{n}$.}.
-See \figureref{fig:fourierserweier}.
+Hal yang perlu diperhatikan di sini adalah bahwa koefisien sinus ke-$n$
+bernilai $\nicefrac{1}{n}$ jika $n=2^k$ dan nol selain itu, sehingga
+koefisien-koefisiennya menuju nol seperti $\nicefrac{1}{n}$.}.
+Lihat \figureref{fig:fourierserweier}.
 \begin{myfigureht}
 \myincludegraphics{fourierserweier}{%
-A plot of a very rough periodic function.  It seems to have lots of small
-sharp peaks all over.}
-\caption{Plot of 
+Grafik sebuah fungsi periodik yang sangat kasar.  Tampaknya fungsi ini memiliki
+banyak puncak kecil yang tajam di seluruh grafiknya.}
+\caption{Grafik 
 $\sum_{n=1}^\infty \frac{1}{2^n} \sin(2^n x)$.\label{fig:fourierserweier}}
 \end{myfigureht}
 \end{exercise}
 
 \begin{exercise}
-Suppose that a $2\pi$-periodic function that is Riemann integrable
-on $[-\pi,\pi]$, and such that $f$ is continuously differentiable
-on some open interval $(a,b)$.  Prove that
-for every $x \in (a,b)$, we have $\lim\limits_{N\to\infty} s_N(f;x) = f(x)$.
+Misalkan suatu fungsi $2\pi$-periodik yang terintegralkan secara Riemann
+pada $[-\pi,\pi]$ dilambangkan dengan $f$, dan andaikan fungsi tersebut diferensiabel secara kontinu
+pada suatu interval terbuka $(a,b)$.  Buktikan bahwa
+untuk setiap $x \in (a,b)$, berlaku $\lim\limits_{N\to\infty} s_N(f;x) = f(x)$.
 \end{exercise}
 
 \begin{exercise}
-Prove \corref{cor:fourierpiecewisesmooth}, that is,
-suppose a $2\pi$-periodic function is continuous piecewise
-smooth near a point $x$, then $\lim\limits_{N\to\infty} s_N(f;x) = f(x)$.  Hint: See the previous
-exercise.
+Buktikan \corref{cor:fourierpiecewisesmooth}; yaitu, misalkan $f$ suatu fungsi
+$2\pi$-periodik yang terintegralkan secara Riemann pada $[-\pi,\pi]$ serta kontinu dan mulus
+sepotong-sepotong di sekitar titik $x$, maka $\lim\limits_{N\to\infty} s_N(f;x) = f(x)$.
+Petunjuk: Lihat latihan sebelumnya.
 \end{exercise}
 
 \begin{exercise} \label{exercise:contL2close}
-Given a $2\pi$-periodic function $f \colon \R \to \C$, Riemann integrable on
+Diberikan suatu fungsi $2\pi$-periodik $f \colon \R \to \C$ yang terintegralkan secara Riemann pada
 $[-\pi,\pi]$,
-and $\epsilon > 0$,
-show that there exists a continuous $2\pi$-periodic function $g \colon \R
-\to \C$ such that $\snorm{f-g}_2 < \epsilon$.
+dan $\epsilon > 0$,
+buktikan bahwa terdapat suatu fungsi kontinu $2\pi$-periodik $g \colon \R
+\to \C$ sedemikian sehingga $\snorm{f-g}_2 < \epsilon$.
 \end{exercise}
 
 \begin{exercise} \label{exercise:L2cauchyschwarz}
-Prove the Cauchy--Bunyakovsky--Schwarz inequality
-for Riemann integrable functions:
+Buktikan ketaksamaan Cauchy--Bunyakovsky--Schwarz
+untuk fungsi-fungsi yang terintegralkan secara Riemann:
 \begin{equation*}
 {\abs{\int_a^b f\bar{g}}}^2
 \leq
@@ -5360,8 +5362,8 @@ for Riemann integrable functions:
 \end{exercise}
 
 \begin{exercise} \label{exercise:L2triangleineq}
-Prove the $L^2$ triangle inequality 
-for Riemann integrable functions on $[-\pi,\pi]$:
+Buktikan bahwa norma $L^2$ memenuhi ketaksamaan segitiga
+untuk fungsi-fungsi yang terintegralkan secara Riemann pada $[-\pi,\pi]$:
 \begin{equation*}
 \snorm{f+g}_2 \leq \snorm{f}_2 + \snorm{g}_2 .
 \end{equation*}
@@ -5369,95 +5371,95 @@ for Riemann integrable functions on $[-\pi,\pi]$:
 
 \begin{exercise}
 \pagebreak[3]
-Suppose for some $C$ and $\alpha > 1$, we have
-a real sequence $\{ a_n \}_{n=1}^\infty$ with
-$\sabs{a_n} \leq \frac{C}{n^\alpha}$ for all $n$.
-Let
+Misalkan, untuk suatu $C$ dan $\alpha > 1$, terdapat
+barisan bilangan real $\{ a_n \}_{n=1}^\infty$ yang memenuhi
+$\sabs{a_n} \leq \frac{C}{n^\alpha}$ untuk setiap $n$.
+Definisikan
 \begin{equation*}
 g(x) \coloneqq \sum_{n=1}^\infty a_n \sin(n x) .
 \end{equation*}
 \begin{enumerate}[a)]
 \item
-Show that $g$ is continuous.
+Tunjukkan bahwa $g$ kontinu.
 \item
-Formally (that is, suppose you can differentiate under the sum)
-find a solution (formal solution, that is, do not yet worry about convergence)
-to the differential equation
+Secara formal (yakni, andaikan kita dapat mendiferensialkan deret tersebut suku demi suku),
+carilah suatu solusi (solusi formal, yakni, tanpa terlebih dahulu mempersoalkan konvergensi)
+bagi persamaan diferensial
 \begin{equation*}
 y''+ 2 y = g(x)
 \end{equation*}
-of the form
+yang berbentuk
 \begin{equation*}
 y(x) = \sum_{n=1}^\infty b_n \sin(n x) .
 \end{equation*}
 \item
-Then show that this solution $y$ is twice continuously differentiable,
-and in fact solves the equation.
+Kemudian tunjukkan bahwa solusi $y$ ini diferensiabel secara kontinu hingga orde dua,
+dan memang memenuhi persamaan tersebut.
 \end{enumerate}
 \end{exercise}
 
 \begin{exercise}
-Let $f$ be a $2\pi$-periodic  function such
-that $f(x) = x$ for $0 < x < 2\pi$.
-Use Parseval's theorem to find
+Misalkan $f$ adalah fungsi $2\pi$-periodik sedemikian sehingga
+$f(x) = x$ untuk $0 < x < 2\pi$.
+Gunakan teorema Parseval untuk memperoleh
 \begin{equation*}
 \sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6} .
 \end{equation*}
 \end{exercise}
 
 \begin{exercise}
-Suppose that $c_n = 0$ for all $n < 0$ and $\sum_{n=0}^\infty \sabs{c_n}$
-converges.  Let $\D \coloneqq B(0,1) \subset \C$ be the unit disc,
-and $\overline{\D} = C(0,1)$ be the closed unit disc.
-Show that there exists a continuous function
-$f \colon \overline{\D} \to \C$ that is analytic on $\D$
-and such that on the boundary of $\D$ we have
+Andaikan bahwa $c_n = 0$ untuk setiap $n < 0$ dan $\sum_{n=0}^\infty \sabs{c_n}$
+konvergen.  Misalkan $\D \coloneqq B(0,1) \subset \C$ adalah cakram satuan,
+dan $\overline{\D} = C(0,1)$ adalah cakram satuan tertutup.
+Tunjukkan bahwa terdapat suatu fungsi kontinu
+$f \colon \overline{\D} \to \C$ yang analitik pada $\D$
+dan sedemikian sehingga pada batas $\D$ berlaku
 $f(e^{i\theta}) = \sum_{n=0}^\infty c_n e^{in\theta}$.\\
-Hint: If $z=re^{i\theta}$, then $z^n = r^n e^{in\theta}$.
+Petunjuk: Jika $z=re^{i\theta}$, maka $z^n = r^n e^{in\theta}$.
 \end{exercise}
 
 \begin{exercise}
-Show that
+Tunjukkan bahwa
 \begin{equation*}
 \sum_{n=1}^\infty e^{-n} \sin(n x)
 \end{equation*}
-converges to an infinitely differentiable function.
+konvergen ke suatu fungsi yang diferensiabel tak berhingga kali.
 \end{exercise}
 
 \begin{exercise} \label{exercise:fsdiffmindecay}
-Let $f$ be a $2\pi$-periodic function
-such that $f(x) = f(0) + \int_0^x g$
-for a function $g$ that is Riemann integrable on every interval.
-Suppose
+Misalkan $f$ adalah suatu fungsi periodik dengan periode $2\pi$
+sedemikian sehingga $f(x) = f(0) + \int_0^x g$
+untuk suatu fungsi $g$ yang terintegralkan secara Riemann pada setiap interval.
+Andaikan
 \begin{equation*}
 f(x) \sim
 \sum_{n=-\infty}^\infty c_n \,e^{inx} .
 \end{equation*}
-Show that there exists a $C > 0$ such that
-$\sabs{c_n} \leq \frac{C}{\sabs{n}}$ for all nonzero $n$.
+Tunjukkan bahwa terdapat $C > 0$ sedemikian sehingga
+$\sabs{c_n} \leq \frac{C}{\sabs{n}}$ untuk setiap $n$ tak nol.
 \end{exercise}
 
 \begin{exercise}
 \leavevmode
 \begin{enumerate}[a)]
 \item
-Let $\varphi$ be the $2\pi$-periodic function 
-defined by $\varphi(x) \coloneqq 0$ if $x \in (-\pi,0)$,
-and $\varphi(x) \coloneqq 1$ if $x \in (0,\pi)$,
-letting $\varphi(0)$ and $\varphi(\pi)$ be arbitrary.  Show
-that $\lim\limits_{N \to \infty} s_N(\varphi;0) = \nicefrac{1}{2}$.
+Misalkan $\varphi$ adalah fungsi $2\pi$-periodik
+yang didefinisikan oleh $\varphi(x) \coloneqq 0$ jika $x \in (-\pi,0)$,
+dan $\varphi(x) \coloneqq 1$ jika $x \in (0,\pi)$,
+dengan nilai $\varphi(0)$ dan $\varphi(\pi)$ sebarang. Tunjukkan
+bahwa $\lim\limits_{N \to \infty} s_N(\varphi;0) = \nicefrac{1}{2}$.
 \item
-Let $f$ be a $2\pi$-periodic function
-Riemann integrable on $[-\pi,\pi]$, 
-$x \in \R$, $\delta > 0$, and
-there are continuously differentiable
+Misalkan $f$ adalah fungsi $2\pi$-periodik yang
+terintegralkan secara Riemann pada $[-\pi,\pi]$.
+Andaikan $x \in \R$, $\delta > 0$, dan terdapat fungsi-fungsi
+yang diferensiabel secara kontinu
 $g \colon [x-\delta,x] \to \C$
-and $h \colon [x,x+\delta] \to \C$
-where $f(t) = g(t)$ for all $t \in [x-\delta,x)$
-and
-where $f(t) = h(t)$ for all $t \in (x,x+\delta]$.
-Then
-$\lim\limits_{N\to\infty} s_N(f;x) = \frac{g(x)+h(x)}{2}$, or in other words,
+dan $h \colon [x,x+\delta] \to \C$
+sedemikian sehingga $f(t) = g(t)$ untuk setiap $t \in [x-\delta,x)$
+dan
+$f(t) = h(t)$ untuk setiap $t \in (x,x+\delta]$.
+Maka
+$\lim\limits_{N\to\infty} s_N(f;x) = \frac{g(x)+h(x)}{2}$, atau dengan kata lain,
 \begin{equation*}
 \lim_{N \to \infty} s_N(f;x) =
 \frac{1}{2}
@@ -5470,16 +5472,16 @@ $\lim\limits_{N\to\infty} s_N(f;x) = \frac{g(x)+h(x)}{2}$, or in other words,
 \end{exercise}
 
 \begin{exercise}
-Let
-$\{ a_n \}_{n=1}^\infty$ be such that 
-$\lim_{n\to \infty} a_n = 0$.  Show that there is a continuous
-$2\pi$-periodic function $f$ whose Fourier coefficients
+Misalkan
+$\{ a_n \}_{n=1}^\infty$ sedemikian sehingga
+$\lim_{n\to \infty} a_n = 0$.  Tunjukkan bahwa terdapat fungsi kontinu
+$2\pi$-periodik $f$ dengan koefisien-koefisien Fourier
 $c_{n}$
-satisfy that for each $N$ there is a $k \geq N$ where $\sabs{c_k} \geq
+sedemikian sehingga untuk setiap $N$ terdapat $k \geq N$ yang memenuhi $\sabs{c_k} \geq
 a_k$.\\
-Remark: The exercise says that if $f$ is only continuous, there is
-no \myquote{minimum rate of decay} of the coefficients.  Compare with
+Catatan: Latihan ini menyatakan bahwa jika $f$ hanya kontinu, tidak ada
+\myquote{laju peluruhan minimum} untuk koefisien-koefisiennya.  Bandingkan dengan
 \exerciseref{exercise:fsdiffmindecay}.
 \\
-Hint: Look at \exerciseref{exercise:fsweierser} for inspiration.
+Petunjuk: Lihat \exerciseref{exercise:fsweierser} sebagai inspirasi.
 \end{exercise}

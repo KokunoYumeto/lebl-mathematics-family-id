@@ -1135,7 +1135,7 @@ Kita menghitung matriks Jacobian:
 \end{equation*}
 Nilai eigen matriks ini adalah
 $\lambda = \pm \sqrt{-\frac{g}{L}\cos \theta}$.
-Nilai eigennya bernilai real ketika $\cos \theta < 0$. Hal ini terjadi pada
+Nilai eigennya real ketika $\cos \theta < 0$. Hal ini terjadi pada
 kelipatan ganjil $\pi$. Nilai eigennya murni imajiner ketika
 $\cos \theta > 0$. Hal ini terjadi pada kelipatan genap $\pi$. Oleh karena
 itu, sistem memiliki pusat stabil di titik-titik $\ldots (-2\pi,0), (0,0),
@@ -1278,7 +1278,7 @@ Kita memplot $T$, $T_{\text{linear}}$, dan galat relatif
 $\frac{T-T_{\text{linear}}}{T}$ pada \figurevref{fig:TvsT0}. Galat relatif
 menyatakan, dalam persentase, seberapa jauh hampiran kita dari periode
 sebenarnya. Perhatikan bahwa $T_{\text{linear}}$ hanyalah sebuah konstanta.
-Nilainya tidak berubah bersama sudut awal $\theta_0$. Periode sebenarnya $T$
+Nilainya tidak bergantung pada sudut awal $\theta_0$. Periode sebenarnya $T$
 semakin besar ketika $\theta_0$ semakin besar.
 Perhatikan bahwa galat relatif kecil ketika $\theta_0$ kecil. Galatnya masih
 hanya $15\%$ ketika $\theta_0 = \nicefrac{\pi}{2}$, yaitu sudut 90 derajat.
@@ -1614,7 +1614,7 @@ bandul untuk melakukan satu putaran penuh.
 Ambil bandul dan misalkan posisi awalnya adalah $\theta = 0$.
 \begin{tasks}
 \task
-Tentukan rumus $\omega$ yang memberikan lintasan dengan syarat
+Tentukan rumus $\omega$ yang memberikan lintasan dengan kondisi
 awal $(0,\omega_0)$. Petunjuk: Cari tahu bagaimana $C$ harus dinyatakan dalam
 $\omega_0$.
 \task
@@ -2170,14 +2170,14 @@ balik apa yang tampak.  Semuanya tetap deterministik.  Namun, sistem kaotik
 sangat peka terhadap kondisi awal.  Ini juga berarti bahwa galat kecil yang
 ditimbulkan oleh hampiran numerik akan dengan sangat cepat menjadi galat
 besar, sehingga penghampiran numerik untuk jangka waktu panjang hampir tidak
-mungkin dilakukan.  Hal ini menjadi bagian besar dari kesulitannya karena,
-secara umum, sistem kaotik tidak dapat diselesaikan secara analitik.
+mungkin dilakukan.  Inilah salah satu sumber utama kesulitannya, sebab
+secara umum sistem kaotik tidak dapat diselesaikan secara analitik.
 
 Ambillah cuaca sebagai contoh, mungkin sistem kaotik yang paling dikenal.
 Perubahan kecil pada kondisi awal
 (misalnya suhu di setiap titik atmosfer) menghasilkan prediksi yang sangat
 berbeda dalam waktu relatif singkat, sehingga kita tidak dapat meramalkan
-cuaca dengan akurat.  Lagi pula, kita sebenarnya tidak mengetahui syarat
+cuaca dengan akurat.  Lagi pula, kita sebenarnya tidak mengetahui kondisi
 awalnya secara tepat.  Kita mengukur suhu di beberapa titik dengan sejumlah
 galat, lalu memperkirakan entah bagaimana keadaan di antara titik-titik itu.
 Tidak mungkin kita dapat mengukur secara akurat pengaruh setiap kepakan sayap

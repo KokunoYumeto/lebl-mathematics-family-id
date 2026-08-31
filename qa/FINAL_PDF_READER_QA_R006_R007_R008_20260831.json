@@ -1,0 +1,148 @@
+{
+  "schema": "lebl-id-final-pdf-reader-qa-v1",
+  "status": "pass",
+  "scope": "Complete R006/R007/R008 Bahasa Indonesia reader PDFs; every physical page inspected",
+  "generated_at": "2026-08-31T00:00:00Z",
+  "total_pages": 1415,
+  "readers": [
+    {
+      "resource_id": "R006-volume-1",
+      "filename": "Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf",
+      "pages": 334,
+      "bytes": 2870909,
+      "sha256": "38743ea0e7ce52bdadf5233fc9d6e79e00717f9ba55a393f2bf46ea21c65ef56",
+      "status": "pass"
+    },
+    {
+      "resource_id": "R006-volume-2",
+      "filename": "Analisis_Dasar_II_Bahasa_Indonesia_v6.3.pdf",
+      "pages": 241,
+      "bytes": 2427379,
+      "sha256": "e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3",
+      "status": "pass"
+    },
+    {
+      "resource_id": "R007",
+      "filename": "Catatan_tentang_Diffy_Qs_Bahasa_Indonesia_v6.11.pdf",
+      "pages": 502,
+      "bytes": 5135134,
+      "sha256": "1c18dfc1572d22ef7fc5d8ad25be18f3b91f1bffea5b9f9d521ff4e56ca969d4",
+      "status": "pass"
+    },
+    {
+      "resource_id": "R008",
+      "filename": "Panduan_Mengolah_Analisis_Kompleks_Bahasa_Indonesia_v1.9.pdf",
+      "pages": 338,
+      "bytes": 2822132,
+      "sha256": "87e4810abdedbdd8121995a8e53936891135037f03054dce76a06beebc3cfaae",
+      "status": "pass"
+    }
+  ],
+  "visual_reports": [
+    {
+      "path": "qa/visual/R006_volumes_I_II_final.md",
+      "sha256": "89db6f4f890fc912e64f6220b34f95cda7777db2c95ec8cbf3b084fa7f95cc14",
+      "scope": "R006 Volumes I–II, pages 1–575"
+    },
+    {
+      "path": "qa/visual/R007_pages_001_125.md",
+      "sha256": "8a5e6b407c43242f17fe8196d32060cff76bece806fb77018314a47bacc948b0",
+      "scope": "R007 pages 1–125"
+    },
+    {
+      "path": "qa/visual/R007_pages_126_250.md",
+      "sha256": "31253c0d5e7b8dde1917fd74ef057e7b60405c88d0b372ad334952d9397ac97f",
+      "scope": "R007 pages 126–250"
+    },
+    {
+      "path": "qa/visual/R007_pages_251_375.md",
+      "sha256": "52929bfc9a467676c367cfe781cf8672f81b9bd4759a1fe5da50b77211e7da69",
+      "scope": "R007 pages 251–375"
+    },
+    {
+      "path": "qa/visual/R007_pages_376_500.md",
+      "sha256": "62b7a6ae2f70332171ef6c9e71b370f8456fbf3946d7389aa1c3e90565978983",
+      "scope": "R007 pages 376–502"
+    },
+    {
+      "path": "qa/visual/R008_pages_001_113.md",
+      "sha256": "255f3b355b4b2cc0a78d5ba26fbaf6b8a0111813a87251cd90ee0723e39df17c",
+      "scope": "R008 pages 1–113"
+    },
+    {
+      "path": "qa/visual/R008_pages_114_226.md",
+      "sha256": "6444da9ad9fd2f714a84f9da729fe8f3a0dc7f9859677999751042a85e6f0ae1",
+      "scope": "R008 pages 114–226"
+    },
+    {
+      "path": "qa/visual/R008_pages_227_338.md",
+      "sha256": "8455b109ed48a4ea6d13cd148bf15629416ba3413058cda55e72e16674a1ef83",
+      "scope": "R008 pages 227–338"
+    }
+  ],
+  "deterministic_builds": [
+    {
+      "resource_id": "R006-volume-1",
+      "page_count": 334,
+      "bytes": 2870909,
+      "sha256": "38743ea0e7ce52bdadf5233fc9d6e79e00717f9ba55a393f2bf46ea21c65ef56",
+      "status": "pass"
+    },
+    {
+      "resource_id": "R006-volume-2",
+      "page_count": 241,
+      "bytes": 2427379,
+      "sha256": "e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3",
+      "status": "pass"
+    },
+    {
+      "resource_id": "R007",
+      "build_logs": [
+        "tmp/pdfs/r007-complete-20260830/deterministic-36.out",
+        "tmp/pdfs/r007-complete-20260830/deterministic-37.out"
+      ],
+      "page_count": 502,
+      "bytes": 5135134,
+      "sha256": "1c18dfc1572d22ef7fc5d8ad25be18f3b91f1bffea5b9f9d521ff4e56ca969d4",
+      "critical_warnings": 0,
+      "status": "pass"
+    },
+    {
+      "resource_id": "R008",
+      "build_logs": [
+        "tmp/pdfs/r008-complete-20260830/deterministic-30.out",
+        "tmp/pdfs/r008-complete-20260830/deterministic-31.out"
+      ],
+      "page_count": 338,
+      "bytes": 2822132,
+      "sha256": "87e4810abdedbdd8121995a8e53936891135037f03054dce76a06beebc3cfaae",
+      "critical_warnings": 0,
+      "status": "pass"
+    }
+  ],
+  "checks": {
+    "pypdf_open_and_extract_all_pages_pass": true,
+    "embedded_fonts_checked_pass": true,
+    "text_residue_scan_zero_pass": true,
+    "visual_page_raster_review_pass": true,
+    "edge_margin_scan_all_575_pages_pass": true,
+    "deterministic_rebuild_identity_pass": true,
+    "metadata_and_provenance_pass": true,
+    "asset_closure_pass": true,
+    "integrity_gate_path": "qa/FINAL_RELEASE_INTEGRITY_20260830.json",
+    "integrity_gate_sha256": "d9fe70a7557920a1987e63a00101bdae9083f09111cd439ece3f8713b44e3fbb"
+  },
+  "coverage": {
+    "R006_units": 2625,
+    "R007_units": 1732,
+    "R008_units": 1527,
+    "translation_manifest_rows": 5884,
+    "backend_records": 20396
+  },
+  "provenance": "OpenAI Codex gpt-5.6-sol, Ultra acting on the user's request; original authors, licenses, and human-contributor credits preserved.",
+  "notes": [
+    "The two R006 volumes are reviewed as one 575-page reader family while retaining separate source identities and rights.",
+    "All visual reports bind to the exact final PDF byte identities listed above.",
+    "No author contact or upstream conversation was initiated during production."
+  ]
+}

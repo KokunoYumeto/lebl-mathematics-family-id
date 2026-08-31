@@ -1,0 +1,1418 @@
+\chapter{Lebih lanjut tentang masalah nilai eigen} \label{SL:chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Masalah Sturm--Liouville}
+\label{slproblems:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2 kuliah\EPref{, \S10.1 dalam \cite{EP}}\BDref{,
+\S11.2 dalam \cite{BD}}}
+
+\subsection{Masalah nilai batas}
+
+Dalam \chapterref{FS:chapter},
+kita menjumpai beberapa masalah nilai eigen yang berbeda, seperti:
+\begin{equation*}
+X''(x) + \lambda X(x) = 0 ,
+\end{equation*}
+dengan syarat batas yang berbeda
+\index{syarat batas Dirichlet}%
+\index{syarat batas Neumann}%
+\index{syarat batas campuran}
+\begin{equation*}
+\begin{array}{rrl}
+X(0) = 0 & ~~X(L) = 0 & ~~\text{(Dirichlet), atau} \\
+X'(0) = 0 & ~~X'(L) = 0 & ~~\text{(Neumann), atau} \\
+X'(0) = 0 & ~~X(L) = 0 & ~~\text{(Campuran), atau} \\
+X(0) = 0 & ~~X'(L) = 0 & ~~\text{(Campuran)}, \ldots
+\end{array}
+\end{equation*}
+Masalah-masalah batas ini muncul dalam kajian persamaan panas $u_t =
+k u_{xx}$ ketika kita mencoba menyelesaikan persamaan tersebut dengan metode
+pemisahan variabel dalam \sectionref{heateq:section}.
+Syarat Dirichlet berkaitan dengan penerapan
+suhu nol pada ujung-ujungnya, Neumann berarti mengisolasi ujung-ujungnya, dan seterusnya.
+Jenis syarat titik ujung lainnya juga muncul secara alami, seperti
+\emph{\myindex{syarat batas Robin}}
+\begin{equation*}
+hX(0) - X'(0) = 0, \qquad hX(L) + X'(L) = 0 ,
+\end{equation*}
+untuk suatu konstanta $h$.  Syarat-syarat ini muncul ketika ujung-ujung tersebut dicelupkan
+ke dalam suatu medium.
+
+Dalam perhitungan pemisahan variabel,
+kita menjumpai suatu masalah nilai eigen dan menemukan
+fungsi-fungsi eigen
+$X_n(x)$.  Kemudian kita menemukan \emph{\myindex{dekomposisi fungsi eigen}} dari
+suhu awal
+$f(x) = u(x,0)$,
+\begin{equation*}
+f(x) = \sum_{n=1}^\infty c_n X_n(x) .
+\end{equation*}
+Setelah memiliki dekomposisi ini
+dan menemukan $T_n(t)$ yang sesuai sedemikian sehingga $T_n(0) = 1$
+dan $T_n(t)X_n(x)$ merupakan solusi persamaan panas,
+kita menuliskan solusi masalah semula, termasuk syarat
+awalnya, sebagai
+\begin{equation*}
+u(x,t) = \sum_{n=1}^\infty c_n T_n(t) X_n(x) .
+\end{equation*}
+
+\medskip
+
+Untuk mengkaji masalah yang lebih umum dengan metode ini, kita harus mengkaji
+masalah nilai eigen yang lebih umum.
+Pertama, kita mempelajari 
+persamaan linear orde dua berbentuk
+\begin{equation} \label{SL:eq}
+\frac{d}{dx} \left( p(x) \frac{dy}{dx} \right)
+- q(x) y + \lambda r(x) y = 0 .
+\end{equation}
+Pada dasarnya,
+sebarang persamaan linear orde dua
+berbentuk $a(x) y'' + b(x) y' + c(x) y + \lambda d(x) y = 0$
+dapat dituliskan sebagai \eqref{SL:eq}
+setelah dikalikan dengan faktor yang tepat.
+
+\begin{example}[Bessel]
+Ubahlah persamaan berikut ke dalam bentuk \eqref{SL:eq}:
+\begin{equation*}
+x^2 y'' + xy' + \left(\lambda x^2 - n^2\right)y = 0 .
+\end{equation*}
+Kalikan kedua ruas dengan $\frac{1}{x}$ untuk memperoleh
+\begin{equation*}
+\begin{split}
+\frac{1}{x} \left( x^2 y'' + xy' + \left(\lambda x^2 - n^2\right)y \right)
+& =
+x y'' + y' + \left(\lambda x - \frac{n^2}{x}\right)y 
+\\
+& =
+\frac{d}{dx} \left( x \frac{dy}{dx} \right)
+- \frac{n^2}{x} y + \lambda x y  = 0.
+\end{split}
+\end{equation*}
+Persamaan Bessel muncul, misalnya, dalam penyelesaian
+persamaan gelombang dua dimensi.
+Jika Anda ingin melihat cara menyelesaikan persamaan tersebut,
+Anda dapat melihat \subsectionref{bessel:subsection}.
+\end{example}
+
+Apa yang disebut 
+\emph{\myindex{masalah Sturm--Liouville}}%
+\footnote{Dinamai menurut matematikawan Prancis
+\href{https://en.wikipedia.org/wiki/Jacques_Charles_Fran\%C3\%A7ois_Sturm}{Jacques Charles Fran\c{c}ois Sturm}
+(1803--1855) dan
+\href{https://en.wikipedia.org/wiki/Liouville}{Joseph Liouville}
+(1809--1882).} adalah mencari
+solusi taktrivial dari
+\begin{equation} \label{sl:slprob}
+\mybxbg{~~
+\begin{aligned}
+&\frac{d}{dx} \left( p(x) \frac{dy}{dx} \right)
+- q(x) y + \lambda r(x) y = 0, \qquad a < x < b, \\
+&\alpha_1 y(a) - \alpha_2 y'(a) = 0, \\
+&\beta_1 y(b) + \beta_2 y'(b) = 0.
+\end{aligned}
+~~}
+\end{equation}
+Dengan taktrivial, sekali lagi kita memaksudkan suatu $y$ yang bukan sekadar
+konstanta nol (yang selalu merupakan solusi).
+Secara khusus, kita menanyakan nilai-nilai $\lambda$ mana
+yang memungkinkan solusi taktrivial tersebut.
+Nilai-nilai $\lambda$ yang mengizinkan solusi taktrivial
+disebut \emph{nilai eigen\index{nilai eigen}},
+dan solusi taktrivial yang bersesuaian
+disebut
+\emph{fungsi eigen\index{fungsi eigen}}.
+Konstanta $\alpha_1$ dan $\alpha_2$
+tidak boleh keduanya nol;
+hal yang sama berlaku untuk
+$\beta_1$ dan $\beta_2$.
+
+\begin{theorem} \label{sl:slregthm}
+Misalkan $p(x)$, $p'(x)$, $q(x)$, dan $r(x)$ kontinu pada $[a,b]$
+dan misalkan $p(x) > 0$ serta $r(x) > 0$ untuk semua $x$ dalam $[a,b]$.
+Maka masalah Sturm--Liouville \eqref{sl:slprob}
+memiliki suatu barisan nilai eigen yang meningkat
+\begin{equation*}
+\lambda_1 < \lambda_2 < \lambda_3 < \cdots 
+\end{equation*}
+sedemikian sehingga
+\begin{equation*}
+\lim_{n \to \infty} \lambda_n = +\infty
+\end{equation*}
+dan sedemikian sehingga untuk setiap $\lambda_n$ terdapat (hingga suatu kelipatan konstanta)
+satu fungsi eigen $y_n(x)$. 
+
+Selain itu, jika $q(x) \geq 0$ dan $\alpha_1, \alpha_2, \beta_1, \beta_2 \geq 0$,
+maka $\lambda_n \geq 0$ untuk semua $n$.
+\end{theorem}
+
+Masalah yang memenuhi hipotesis teorema tersebut
+(termasuk bagian \myquote{Selain itu})
+disebut
+\emph{masalah Sturm--Liouville reguler\index{masalah Sturm--Liouville reguler}}%
+\index{masalah Sturm--Liouville!reguler},
+dan kita hanya akan membahas masalah seperti itu di sini.
+Artinya, masalah reguler adalah masalah dengan
+$p(x)$, $p'(x)$, $q(x)$, dan $r(x)$ kontinu, $p(x) > 0$, $r(x) > 0$,
+$q(x) \geq 0$, dan $\alpha_1, \alpha_2, \beta_1, \beta_2 \geq 0$,
+dengan tidak berlaku $\alpha_1=\alpha_2=0$
+maupun
+$\beta_1=\beta_2=0$.
+Catatan: Berhati-hatilah terhadap tanda-tandanya.  Berhati-hatilah pula terhadap pertidaksamaan
+untuk $r$ dan $p$.
+Pertidaksamaan tersebut
+harus tegas untuk semua $x$ dalam interval $[a,b]$, termasuk titik-titik ujungnya!
+
+Ketika nol
+merupakan suatu nilai eigen, demi kemudahan biasanya kita
+mulai memberi label nilai-nilai eigen dari 0, bukan dari 1.
+Artinya, kita memberi label nilai-nilai eigen $\lambda_0 < \lambda_1 < \lambda_2 < \cdots$.
+
+\begin{example}
+Masalah $y''+\lambda y=0$, $0 < x < L$, $y(0) = 0$, dan $y(L) = 0$
+adalah masalah Sturm--Liouville reguler: $p(x) = 1$, $q(x) = 0$, $r(x) = 1$,
+dan kita memiliki $p(x) = 1 > 0$ serta $r(x) = 1 > 0$.  Kita juga memiliki
+$a=0$, $b=L$, $\alpha_1 = \beta_1 = 1$, $\alpha_2 = \beta_2 = 0$.
+Nilai-nilai eigennya adalah $\lambda_n = \frac{n^2 \pi^2}{L^2}$ dan fungsi-fungsi eigennya
+adalah $y_n(x) = \sin\bigl(\frac{n\pi}{L} x\bigr)$.  Semua nilai eigen nonnegatif sebagaimana
+diprediksi oleh teorema tersebut.
+\end{example}
+
+\begin{exercise}
+Carilah nilai eigen dan fungsi eigen untuk
+\begin{equation*}
+y'' + \lambda y = 0, \quad y'(0) = 0, \quad y'(1) = 0.
+\end{equation*}
+Identifikasikan
+$p, q, r, \alpha_j, \beta_j$.
+Dapatkah Anda menggunakan teorema di atas untuk mempermudah pencarian nilai eigen?
+Petunjuk: Perhatikan syarat $-y'(0)=0$.
+\end{exercise}
+
+\begin{example}
+Carilah nilai eigen dan fungsi eigen dari masalah
+\begin{align*}
+& y''+\lambda y = 0, \quad 0 < x < 1 , \\
+& hy(0)- y'(0) = 0, \quad y'(1)  = 0, \quad h > 0.
+\end{align*}
+
+Persamaan-persamaan ini memberikan suatu masalah Sturm--Liouville reguler.
+
+\begin{exercise}
+Identifikasikan $p, q, r, \alpha_j, \beta_j$ dalam contoh di atas.
+\end{exercise}
+
+Menurut \thmref{sl:slregthm},
+$\lambda \geq 0$.
+Jadi solusi umumnya (tanpa syarat batas) adalah
+\begin{equation*}
+\begin{aligned}
+ & y(x) = A \cos \bigl( \sqrt{\lambda}\, x\bigr)
++ B \sin \bigl( \sqrt{\lambda}\, x\bigr) & & \qquad \text{jika } \; \lambda > 0 , \\
+& y(x) = A x + B & & \qquad \text{jika } \; \lambda = 0 .
+\end{aligned}
+\end{equation*}
+
+Mari kita lihat apakah $\lambda = 0$ merupakan nilai eigen:
+Kita harus memenuhi $0 = hB - A$ dan $A = 0$, sehingga $B=0$ (karena $h > 0$).
+Oleh karena itu, 0 bukanlah nilai eigen (tidak ada solusi taknol, sehingga tidak ada fungsi eigen).
+
+Sekarang kita
+mencoba $\lambda > 0$.  Kita substitusikan syarat-syarat batasnya:
+\begin{align*}
+& 0 = h A - \sqrt{\lambda}\, B , \\
+& 0 = -A \sqrt{\lambda}\, \sin \bigl(\sqrt{\lambda}\bigr)
++ B \sqrt{\lambda}\, \cos \bigl(\sqrt{\lambda}\bigr) .
+\end{align*}
+Jika $A=0$, maka $B=0$ dan sebaliknya; oleh karena itu, keduanya taknol.
+Jadi $B = \frac{hA}{\sqrt{\lambda}}$, dan
+$0 = -A \sqrt{\lambda}\, \sin \bigl( \sqrt{\lambda}\bigr) + \frac{hA}{\sqrt{\lambda}}
+\sqrt{\lambda}\, \cos \bigl( \sqrt{\lambda}\bigr)$.  Karena $A \neq 0$, kita memperoleh
+\begin{equation*}
+0 = 
+- \sqrt{\lambda}\, \sin \bigl( \sqrt{\lambda}\bigr)
++ h \cos \bigl( \sqrt{\lambda}\bigr) ,
+\end{equation*}
+atau
+\begin{equation*}
+\frac{h}{\sqrt{\lambda}} = \tan \sqrt{\lambda} .
+\end{equation*}
+
+Kita menggunakan komputer untuk mencari $\lambda_n$.  Tabel-tabel tersedia,
+meskipun saat ini penggunaan komputer atau kalkulator grafik
+jauh lebih praktis.
+Metode termudah adalah menggambar grafik fungsi 
+$\nicefrac{h}{x}$ dan $\tan x$, lalu melihat nilai $x$ tempat keduanya berpotongan.
+Terdapat takhingga banyak titik potong.  Nyatakan
+titik potong pertama
+dengan $\sqrt{\lambda_1}$,
+titik potong kedua dengan $\sqrt{\lambda_2}$, dan seterusnya.
+Sebagai contoh, ketika
+$h=1$, kita memperoleh $\sqrt{\lambda_1} \approx 0.86$, 
+$\sqrt{\lambda_2} \approx 3.43$, \ldots.
+Artinya, $\lambda_1 \approx 0.74$, $\lambda_2 \approx 11.73$, \ldots.
+Grafik untuk $h=1$ diberikan dalam \figurevref{sl:tanx1overxfig}.
+Fungsi eigen yang sesuai
+(ambil $A = 1$ demi kemudahan, maka
+$B=\nicefrac{h}{\sqrt{\lambda}}$) adalah
+\begin{equation*}
+y_n(x) = \cos \bigl( \sqrt{\lambda_n}\, x \bigr) + \frac{h}{\sqrt{\lambda_n}}
+\sin \bigl(\sqrt{\lambda_n} \, x \bigr) .
+\end{equation*}
+Ketika $h=1$, kita memperoleh (secara hampiran)
+\begin{equation*}
+y_1(x) \approx \cos (0.86\, x ) + \frac{1}{0.86}
+\sin (0.86 \, x ) , \qquad
+y_2(x) \approx \cos (3.43\, x ) + \frac{1}{3.43}
+\sin (3.43 \, x ) , \qquad \ldots .
+\end{equation*}
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{sl-tanx1overx}{%
+Pada bidang xy, terdapat grafik dua fungsi di atas interval 0 hingga 7.
+Fungsi pertama, 1 per x,
+turun dari bagian atas gambar di sebelah kiri,
+merosot sangat cepat menuju sumbu x, lalu terus mendekatinya secara perlahan tetapi
+tidak pernah memotongnya ketika x membesar.  Fungsi kedua adalah tangen, yang
+dimulai dari nol ketika x sama dengan 0, lalu melengkung cepat ke atas dan keluar dari gambar
+sebelum pi per 2, sembari memotong grafik 1 per x untuk pertama kalinya.  Setelah pi
+per 2,
+tangen muncul kembali dari bagian bawah gambar, melengkung ke kanan lalu
+ke kiri sebelum kembali keluar dari gambar sebelum 3 pi per 2.  Grafik tersebut memotong grafik
+1 per x untuk kedua kalinya dalam interval itu.  Setelah 3 pi per 2, grafik tersebut muncul kembali dari
+bagian bawah dan kembali bergerak naik serta memotong grafik 1 per x untuk ketiga kalinya.}
+\caption{Grafik $\frac{1}{x}$ dan $\tan x$.%
+\label{sl:tanx1overxfig}}
+\end{myfig}
+\end{example}
+
+\subsection{Keortogonalan}
+
+Kita telah melihat konsep keortogonalan sebelumnya.  Sebagai contoh,
+kita telah menunjukkan bahwa $\sin (nx)$ saling ortogonal untuk $n$ yang berbeda pada $[0,\pi]$.
+Untuk masalah Sturm--Liouville umum, kita memerlukan kerangka yang lebih umum.
+Misalkan $r(x)$
+merupakan suatu \emph{\myindex{fungsi bobot}} (sebarang fungsi, meskipun secara umum kita
+mengasumsikannya positif) pada $[a,b]$.  Dua fungsi $f(x)$ dan $g(x)$
+dikatakan
+\emph{ortogonal\index{ortogonal!terhadap suatu bobot}} 
+terhadap fungsi bobot
+$r(x)$ jika
+\begin{equation*}
+\int_a^b f(x) \, g(x) \, r(x) \,dx = 0 .
+\end{equation*}
+Dalam kerangka ini,
+kita mendefinisikan \emph{hasil kali dalam\index{hasil kali dalam fungsi}} sebagai
+\begin{equation*}
+\langle f , g \rangle \overset{\text{def}}{=} \int_a^b f(x) \, g(x) \, r(x)
+\,dx ,
+\end{equation*}
+dan kemudian mengatakan $f$ dan $g$ ortogonal setiap kali $\langle f , g \rangle = 0$.
+Hasil dan konsepnya kembali analog dengan 
+aljabar linear berdimensi hingga.
+
+Gagasan dari hasil kali dalam yang diberikan adalah bahwa nilai-nilai $x$ tempat $r(x)$
+lebih besar memiliki bobot lebih besar.
+Fungsi taktrivial (takkonstan)
+$r(x)$ muncul secara alami, misalnya dari suatu perubahan variabel.
+Oleh karena itu, Anda dapat
+membayangkan suatu perubahan variabel sedemikian sehingga $d\xi = r(x)\, dx$.
+
+Fungsi eigen dari suatu
+masalah Sturm--Liouville reguler memenuhi sifat keortogonalan, sama seperti
+fungsi eigen dalam \sectionref{bvp:section}.
+Buktinya sangat serupa dengan bukti 
+\thmvref{bvp:orthogonaleigen} yang analog.
+
+\begin{theorem}
+Misalkan kita memiliki suatu masalah Sturm--Liouville reguler
+\begin{align*}
+&\frac{d}{dx} \left( p(x) \frac{dy}{dx} \right)
+- q(x) y + \lambda r(x) y = 0 , \\
+&\alpha_1 y(a) - \alpha_2 y'(a) = 0 , \\
+&\beta_1 y(b) + \beta_2 y'(b) = 0 .
+\end{align*}
+Misalkan $y_j$ dan $y_k$ merupakan dua fungsi eigen berbeda untuk dua
+nilai eigen berbeda $\lambda_j$ dan $\lambda_k$.  Maka
+\begin{equation*}
+\int_a^b y_j(x) \, y_k(x) \, r(x) \,dx = 0,
+\end{equation*}
+artinya, $y_j$ dan $y_k$ ortogonal terhadap fungsi bobot
+$r$.
+\end{theorem}
+
+
+\subsection{Alternatif Fredholm}
+
+Teorema \emph{alternatif Fredholm} yang telah kita bicarakan sebelumnya
+(\thmvref{thm:fredholmsimple})
+berlaku untuk semua masalah Sturm--Liouville reguler.
+Kita menyatakannya di sini demi kelengkapan.
+
+\begin{theorem}[Alternatif Fredholm]%
+\index{alternatif Fredholm!masalah Sturm--Liouville}
+Misalkan kita memiliki suatu masalah Sturm--Liouville reguler.
+Maka salah satu dari hal berikut berlaku:
+\begin{align*}
+&\frac{d}{dx} \left( p(x) \frac{dy}{dx} \right)
+- q(x) y + \lambda r(x) y = 0 , \\
+&\alpha_1 y(a) - \alpha_2 y'(a) = 0 , \\
+&\beta_1 y(b) + \beta_2 y'(b) = 0 ,
+\end{align*}
+memiliki suatu solusi taknol ($\lambda$ merupakan nilai eigen), atau
+\begin{align*}
+&\frac{d}{dx} \left( p(x) \frac{dy}{dx} \right)
+- q(x) y + \lambda r(x) y = f(x) , \\
+&\alpha_1 y(a) - \alpha_2 y'(a) = 0 , \\
+&\beta_1 y(b) + \beta_2 y'(b) = 0 ,
+\end{align*}
+memiliki solusi tunggal untuk setiap $f(x)$ yang kontinu pada $[a,b]$.
+\end{theorem}
+
+Teorema ini digunakan dengan cara yang hampir sama seperti sebelumnya dalam
+\sectionref{sec:scs}.  Teorema ini digunakan ketika menyelesaikan masalah nilai batas
+nonhomogen yang lebih umum.  Teorema tersebut tidak membantu kita menyelesaikan masalahnya.
+Teorema itu memberi tahu kita kapan solusi tunggal ada, sehingga
+kita mengetahui kapan perlu meluangkan waktu untuk mencarinya.  Untuk menyelesaikan masalah tersebut,
+kita mendekomposisi $f(x)$ dan $y(x)$ dalam fungsi-fungsi eigen dari masalah
+homogen,
+kemudian menentukan koefisien deret untuk $y(x)$.
+
+\subsection{Deret fungsi eigen}
+
+Yang ingin kita lakukan dengan fungsi eigen setelah memperolehnya adalah
+menghitung \emph{\myindex{dekomposisi fungsi eigen}} dari suatu fungsi sebarang
+$f(x)$.  Artinya, kita ingin menuliskan
+\begin{equation} \label{sl:fdecomp}
+f(x) = \sum_{n=1}^\infty c_n y_n(x) ,
+\end{equation}
+dengan $y_n(x)$ merupakan fungsi-fungsi eigen.
+Kita ingin mengetahui apakah kita dapat merepresentasikan
+sebarang fungsi $f(x)$ dengan cara ini,
+dan jika demikian, kita ingin menghitung $c_n$ (dan tentu saja kita ingin mengetahui apakah
+jumlahnya konvergen).  Baiklah\@, bayangkan
+kita dapat menuliskan $f(x)$ sebagai \eqref{sl:fdecomp}.  Kita akan mengasumsikan kekonvergenan dan
+kemampuan untuk mengintegralkan deret suku demi suku.
+Karena keortogonalan, kita mempunyai
+\begin{equation*}
+\begin{split}
+\langle f , y_m \rangle
+ = \int_a^b f(x) \, y_m (x) \, r(x) \, dx
+& = \int_a^b \left( \sum_{n=1}^\infty c_n y_n(x) \right) \, y_m (x) \, r(x)
+\, dx\\
+&= \sum_{n=1}^\infty c_n \int_a^b y_n(x) \, y_m (x) \, r(x) \, dx\\
+&= c_m \int_a^b y_m(x) \, y_m (x) \, r(x) \, dx = c_m \langle y_m , y_m \rangle
+.
+\end{split}
+\end{equation*}
+Oleh karena itu,
+\begin{equation} \label{sl:cm}
+\mybxbg{~~
+c_m = \frac{\langle f , y_m \rangle}{\langle y_m , y_m \rangle}
+=
+\frac{\int_a^b f(x) \, y_m (x)\, r(x) \, dx}%
+{\int_a^b {\bigl(y_m(x)\bigr)}^2 \, r(x) \,dx} .
+~~}
+\end{equation}
+
+Perhatikan bahwa $y_m$ diketahui hingga suatu kelipatan konstanta, sehingga kita dapat memilih
+kelipatan skalar suatu fungsi eigen sedemikian sehingga
+$\langle y_m , y_m \rangle = 1$ (jika kita memiliki suatu fungsi eigen sebarang
+$\tilde{y}_m$, bagilah fungsi tersebut
+dengan $\sqrt{\langle \tilde{y}_m , \tilde{y}_m \rangle}$).
+Ketika
+$\langle y_m , y_m \rangle = 1$,
+kita memperoleh bentuk yang
+lebih sederhana $c_m = \langle f, y_m \rangle$.
+% seperti yang kita lakukan untuk deret Fourier.
+Teorema berikut berlaku
+secara lebih umum, tetapi pernyataan yang diberikan memadai untuk keperluan kita.
+
+\begin{theorem}
+Misalkan $f$ merupakan fungsi kontinu mulus sepotong-sepotong pada $[a,b]$.  Jika $y_1,
+y_2, \ldots$ merupakan fungsi-fungsi eigen dari suatu masalah Sturm--Liouville reguler,
+masing-masing satu untuk setiap nilai eigen,
+maka terdapat konstanta-konstanta real $c_1, c_2, \ldots$ yang diberikan oleh \eqref{sl:cm}
+sedemikian sehingga
+\eqref{sl:fdecomp} konvergen dan berlaku untuk $a < x < b$.
+\end{theorem}
+
+\begin{example}
+Perhatikan
+\begin{align*}
+& y'' + \lambda y = 0, \quad 0 < x < \nicefrac{\pi}{2} , \\
+& y(0) =0, \quad y'(\nicefrac{\pi}{2}) = 0 .
+\end{align*}
+Masalah di atas adalah suatu masalah Sturm--Liouville reguler, dan
+\thmvref{sl:slregthm}
+menyatakan bahwa jika $\lambda$ merupakan nilai eigen, maka
+$\lambda \geq 0$.
+
+Misalkan $\lambda = 0$.  Solusi umumnya adalah $y(x) = Ax + B$.
+Kita substitusikan
+syarat-syarat awal untuk memperoleh $0=y(0) = B$, dan $0 = y'(\nicefrac{\pi}{2}) = A$.
+Oleh karena itu, $\lambda = 0$ bukanlah nilai eigen.
+
+Jadi, mari kita perhatikan $\lambda > 0$, dengan
+solusi umum
+\begin{equation*}
+y(x) = A \cos \bigl( \sqrt{\lambda} \, x \bigr)
++ B \sin \bigl( \sqrt{\lambda} \, x \bigr) .
+\end{equation*}
+Dengan menyubstitusikan syarat-syarat batas, kita memperoleh
+$0 = y(0) = A$ dan $0 = y'(\nicefrac{\pi}{2})
+= \sqrt{\lambda} \, B \cos \bigl(\sqrt{\lambda} \, \frac{\pi}{2}\bigr)$.
+Karena $A$ nol,
+$B$ tidak boleh nol.  Oleh karena itu, $\cos \bigl( \sqrt{\lambda} \,
+\frac{\pi}{2}\bigr) = 0$.
+Ini berarti bahwa
+$\sqrt{\lambda} \,\frac{\pi}{2}$ merupakan kelipatan bilangan bulat ganjil dari
+$\nicefrac{\pi}{2}$,
+yaitu $(2n-1)\frac{\pi}{2} = \sqrt{\lambda_n} \,\frac{\pi}{2}$.
+Dengan menyelesaikannya untuk $\lambda_n$, kita memperoleh
+\begin{equation*}
+\lambda_n = {(2n-1)}^2 .
+\end{equation*}
+Kita dapat mengambil $B = 1$.  Fungsi-fungsi eigen kita adalah
+\begin{equation*}
+y_n(x) = \sin \bigl( (2n-1)x \bigr) .
+\end{equation*}
+Sedikit kalkulus menunjukkan
+\begin{equation*}
+\int_0^{\frac{\pi}{2}} {\Bigl( \sin \bigl( (2n-1)x \bigr) \Bigr)}^2 \, dx
+= \frac{\pi}{4} .
+\end{equation*}
+
+Jadi, sebarang fungsi mulus sepotong-sepotong $f(x)$ pada $[0,\nicefrac{\pi}{2}]$ dapat dituliskan sebagai
+\begin{equation*}
+f(x) = \sum_{n=1}^\infty c_n \sin \bigl( (2n-1)x \bigr) ,
+\end{equation*}
+dengan
+\begin{equation*}
+c_n = \frac{\langle f , y_n \rangle}{\langle y_n , y_n \rangle}
+= \frac{\int_0^{\frac{\pi}{2}} f(x) \, \sin \bigl( (2n-1)x \bigr) \, dx
+}{\int_0^{\frac{\pi}{2}} {\Bigl(\sin \bigl((2n-1)x\bigr)\Bigr)}^2 \, dx}
+= \frac{4}{\pi} \int_0^{\frac{\pi}{2}} f(x) \,\sin \bigl( (2n-1)x \bigr) \, dx .
+\end{equation*}
+
+Perhatikan bahwa deret tersebut konvergen ke perluasan ganjil yang periodik-$2\pi$
+dari $f(x)$.  Dengan deret sinus reguler, kita akan mengharapkan
+fungsi berperiode $2 \, \frac{\pi}{2} = \pi$.
+
+\begin{exercise}[menantang]
+Dalam contoh di atas, fungsi tersebut didefinisikan pada $0 < x < \nicefrac{\pi}{2}$,
+namun deret terhadap fungsi-fungsi eigen
+$\sin \bigl( (2n-1)x \bigr)$ konvergen ke perluasan ganjil yang periodik-$2\pi$ dari $f(x)$.
+Tentukan bagaimana perluasan tersebut didefinisikan untuk $\nicefrac{\pi}{2} < x < \pi$.
+\end{exercise}
+
+Mari kita hitung suatu contoh.
+Perhatikan $f(x) = x$ untuk $0 < x <  \nicefrac{\pi}{2}$.  Setelah beberapa
+perhitungan kalkulus, kita memperoleh
+\begin{equation*}
+c_n = 
+\frac{4}{\pi} \int_0^{\frac{\pi}{2}} f(x) \,\sin \bigl( (2n-1)x \bigr) \, dx 
+=
+\frac{4{(-1)}^{n+1}}{\pi {(2n-1)}^2} ,
+\end{equation*}
+sehingga untuk $x$ dalam $[0,\nicefrac{\pi}{2}]$,
+\begin{equation*}
+f(x) = \sum_{n=1}^\infty \frac{4{(-1)}^{n+1}}{\pi {(2n-1)}^2}
+\sin \bigl( (2n-1)x \bigr) .
+\end{equation*}
+Deret ini berbeda dari deret sinus reguler periodik-$\pi$ yang dapat
+dihitung sebagai
+\begin{equation*}
+f(x) = \sum_{n=1}^\infty \frac{{(-1)}^{n+1}}{n}  \sin ( 2nx ) .
+\end{equation*}
+Kedua deret konvergen ke $f(x)$ untuk $0 < x < \nicefrac{\pi}{2}$, tetapi
+fungsi-fungsi eigen yang terlibat berasal dari masalah nilai eigen yang berbeda.
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Carilah nilai eigen dan fungsi eigen dari
+\begin{equation*}
+y''+\lambda y = 0, \quad y(0)- y'(0) = 0, \quad y(1) = 0 .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Kembangkan fungsi $f(x) = x$ pada $0 \leq x \leq 1$ dengan menggunakan fungsi-fungsi eigen
+dari sistem
+\begin{equation*}
+y'' + \lambda y = 0, \quad y'(0) = 0, \quad y(1) = 0 .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Misalkan Anda memiliki suatu masalah Sturm--Liouville pada interval
+$[0,1]$ dan memperoleh
+$y_n(x) = \sin (\gamma n x)$, dengan $\gamma > 0$ suatu konstanta.
+Dekomposisikan $f(x) = x$, $0 < x < 1$, dalam fungsi-fungsi eigen tersebut.
+\end{exercise}
+
+\begin{exercise}
+Carilah nilai eigen dan fungsi eigen dari
+\begin{equation*}
+y^{(4)}+\lambda y = 0, \quad y(0) = 0, \quad y'(0) = 0, \quad y(1) = 0, \quad
+y'(1) = 0 .
+\end{equation*}
+Masalah ini bukan masalah Sturm--Liouville, tetapi gagasannya sama.
+\end{exercise}
+
+\begin{exercise}[lebih menantang]
+Carilah nilai eigen dan fungsi eigen untuk
+\begin{equation*}
+\frac{d}{dx} (e^x y') + \lambda e^x y = 0, \quad y(0) = 0, \quad y(1) = 0 .
+\end{equation*}
+%Atau setidaknya susunlah integral-integral yang perlu diselesaikan.
+Petunjuk: Pertama, tuliskan sistem tersebut sebagai sistem berkoefisien konstan untuk mencari
+solusi umum.  Perhatikan bahwa \thmvref{sl:slregthm} menjamin $\lambda \geq 0$.
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Carilah nilai eigen dan fungsi eigen dari
+\begin{equation*}
+y'' + \lambda y = 0, \quad y(-1) = 0, \quad y(1) = 0 .
+\end{equation*}
+\end{exercise}
+\exsol{%
+$\lambda_n = \frac{n^2\pi^2}{4}$, $n=1,2,3,\ldots$.
+Untuk $n$ ganjil,
+$y_n = \cos\left(\frac{n\pi}{2} x \right)$,
+untuk $n$ genap,
+$y_n = \sin\left(\frac{n\pi}{2} x \right)$.
+}
+
+\begin{exercise}
+Ubahlah masalah-masalah berikut ke dalam bentuk standar untuk masalah
+Sturm--Liouville, yaitu carilah $p(x)$, $q(x)$, $r(x)$,
+$\alpha_1$,
+$\alpha_2$,
+$\beta_1$, dan
+$\beta_2$,
+serta tentukan apakah masalah-masalah tersebut reguler atau tidak.
+\begin{tasks}
+\task $x y'' + \lambda y = 0$
+\enspace untuk $0 < x < 1$,
+\enspace $y(0) = 0$,
+\enspace $y(1) = 0$.
+\task
+$(1+x^2) y'' + 2xy' + (\lambda-x^2) y = 0$
+\enspace untuk $-1 < x < 1$,
+\enspace $y(-1) = 0$,
+\enspace $y(1)+y'(1) = 0$.\footnote{%
+Dalam versi sebelumnya dari buku ini, suatu salah ketik membuat persamaannya
+menjadi $(1+x^2) y'' - 2xy' + (\lambda-x^2) y = 0$, yang menghasilkan sesuatu
+yang lebih sulit daripada yang dimaksudkan.  Cobalah persamaan ini sebagai tantangan tambahan.}
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$p(x) = 1$, $q(x) = 0$, $r(x) = \frac{1}{x}$, $\alpha_1 = 1$, $\alpha_2 =
+0$, $\beta_1 = 1$, $\beta_2 = 0$.  Masalah tersebut tidak reguler.
+b)~$p(x) = 1+x^2$, $q(x) = x^2$, $r(x) = 1$, $\alpha_1 = 1$, $\alpha_2 =
+0$, $\beta_1 = 1$, $\beta_2 = 1$.  Masalah tersebut reguler.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Masalah nilai eigen orde tinggi}
+\label{sec:appeig}
+
+\sectionnotes{1 kuliah\EPref{, \S10.2 dalam \cite{EP}}\BDref{,
+latihan dalam \S11.2 dari \cite{BD}}}
+
+Deret fungsi eigen dapat muncul bahkan dari persamaan orde tinggi.
+Perhatikan suatu balok elastis (misalnya terbuat dari baja).  Kita akan mengkaji
+\emph{\myindex{getaran transversal}}
+(getaran dengan balok tersebut \myquote{melentur})
+dari balok tersebut.
+Misalkan balok terletak sepanjang
+sumbu-$x$ dan misalkan $y(x,t)$ mengukur simpangan titik $x$
+pada balok pada waktu $t$.  Lihat \figurevref{appeig:transbeamfig}.
+
+\begin{myfig}
+\capstart
+\inputpdft{trans-beam}{%
+Diagram sebuah balok kaku yang diletakkan sepanjang sumbu x pada bidang xy, dengan salah satu
+ujungnya di titik asal dan ujung kedua di suatu tempat pada bagian positif
+sumbu x.  Balok tersebut melentur ke atas ke arah y, yang menunjukkan bahwa
+grafik y memberikan bentuk balok yang melentur.}
+\caption{Getaran transversal suatu balok.\label{appeig:transbeamfig}}
+\end{myfig}
+
+Persamaan yang mengatur keadaan ini adalah
+\begin{equation*}
+a^4 \frac{\partial^4 y}{\partial x^4} + \frac{\partial^2 y}{\partial t^2} = 0,
+\end{equation*}
+untuk suatu konstanta $a > 0$.
+Kita tidak perlu mengkhawatirkan fisikanya\footnote{Jika
+Anda tertarik, $a^4 = \frac{EI}{\rho}$, dengan $E$ merupakan modulus
+elastisitas, $I$ merupakan momen luas kedua dari penampang,
+dan $\rho$ merupakan kerapatan linear.}.
+
+Misalkan balok tersebut memiliki panjang 1 dan ditumpu sederhana (bersendi) pada kedua ujungnya.
+Balok tersebut disimpangkan menurut suatu fungsi $f(x)$ pada waktu $t=0$, kemudian
+dilepaskan (kecepatan awalnya 0).  Maka $y$ memenuhi:
+\begin{equation} \label{appeig:beameq}
+\begin{aligned}
+& a^4 y_{xxxx} + y_{tt} = 0 \qquad (0 < x < 1, \enspace t > 0), \\
+& y(0,t) = y_{xx}(0,t) = 0 , \\
+& y(1,t) = y_{xx}(1,t) = 0 , \\
+& y(x,0) = f(x), \qquad y_{t}(x,0) = 0 .
+\end{aligned}
+\end{equation}
+
+Sekali lagi, kita mencoba $y(x,t) = X(x)T(t)$ dan menyubstitusikannya untuk memperoleh
+$a^4 X^{(4)}T + XT'' = 0$ atau 
+\begin{equation*}
+\frac{X^{(4)}}{X} = \frac{- T''}{a^4T} = \lambda .
+\end{equation*}
+Persamaan-persamaannya adalah
+\begin{equation*}
+T'' + \lambda a^4 T = 0
+\qquad \text{dan} \qquad
+X^{(4)} - \lambda X = 0 .
+\end{equation*}
+Syarat-syarat batas
+$y(0,t) = y_{xx}(0,t) = 0$ dan $y(1,t) = y_{xx}(1,t) = 0$ mengimplikasikan
+\begin{equation*}
+X(0) =  X''(0) = 0
+\qquad \text{dan} \qquad
+X(1) =  X''(1) = 0 .
+\end{equation*}
+Syarat homogen awal $y_t(x,0) = 0$ mengimplikasikan
+\begin{equation*}
+T'(0) = 0 .
+\end{equation*}
+Seperti biasa, kita menunda syarat nonhomogen $y(x,0) = f(x)$ hingga nanti.
+
+Dengan memperhatikan persamaan untuk $T$, yaitu
+$T'' + \lambda a^4 T = 0$, intuisi fisik membawa kita
+pada fakta bahwa jika $\lambda$ merupakan nilai eigen, maka $\lambda > 0$:
+Kita mengharapkan getaran, bukan pertumbuhan atau
+peluruhan eksponensial dalam arah $t$ (misalnya, tidak ada gesekan dalam model kita).
+Jadi, tidak ada nilai eigen negatif.
+Demikian pula, $\lambda = 0$ bukanlah nilai eigen.
+
+\begin{exercise}
+Benarkan $\lambda > 0$ hanya dari persamaan untuk $X$ dan syarat-syarat
+batas.
+\end{exercise}
+
+Misalkan $\omega = \sqrt[4]{\lambda}$, yaitu $\omega^4 = \lambda$,
+agar kita tidak perlu terus-menerus menuliskan akar pangkat empat.
+Perhatikan bahwa $\omega > 0$.
+Solusi umum untuk
+$X^{(4)} - \omega^4 X = 0$ adalah
+\begin{equation*}
+X(x) = A e^{\omega x} + B e^{-\omega x} + C \sin (\omega x) +
+D \cos (\omega x) .
+\end{equation*}
+Sekarang $0 = X(0) = A+B+D$, $0 = X''(0) = \omega^2 (A + B - D)$.
+Dengan menyelesaikannya, kita memperoleh
+$D = 0$ dan $B = -A$.
+Jadi
+\begin{equation*}
+X(x) = A e^{\omega x} - A e^{-\omega x} + C \sin (\omega x) .
+\end{equation*}
+Selain itu, $0 = X(1) = A (e^{\omega} - e^{-\omega}) + C \sin \omega$, dan
+$0 = X''(1) = A \omega^2 (e^{\omega} - e^{-\omega}) - C \omega^2 \sin \omega$.
+Ini berarti $C \sin \omega  = 0$ dan 
+$A (e^{\omega} - e^{-\omega}) = 2 A \sinh \omega = 0$.  Jika $\omega > 0$, maka
+$\sinh \omega \neq 0$, sehingga $A = 0$.  Jadi $C \neq 0$; jika tidak,
+$\lambda$ bukan
+nilai eigen.  Selain itu, $\omega$ harus merupakan kelipatan bilangan bulat dari
+$\pi$.  Oleh karena itu, $\omega = n \pi$ dan $n \geq 1$ (karena $\omega > 0$).  Kita dapat mengambil
+$C=1$.  Jadi nilai-nilai eigennya adalah $\lambda_n = n^4 \pi^4$, dan fungsi-fungsi eigen yang bersesuaian
+adalah $\sin (n \pi x)$.
+
+Sekarang 
+$T'' + n^4 \pi^4 a^4 T = 0$.  Solusi umumnya adalah $T(t) =
+A \sin (n^2 \pi^2 a^2 t) + B \cos (n^2 \pi^2 a^2 t)$.  Namun $T'(0) = 0$, sehingga
+$A=0$.  Kita mengambil $B=1$ agar $T(0) = 1$ demi kemudahan.
+Jadi solusi kita adalah $T_n(t) = \cos (n^2 \pi^2 a^2 t)$.
+
+Fungsi-fungsi eigennya hanyalah sinus, sehingga kita mendekomposisi fungsi $f(x)$
+menggunakan deret sinus.  Artinya,
+kita mencari bilangan-bilangan $b_n$ sedemikian sehingga untuk
+$0 < x < 1$,
+\begin{equation*}
+f(x) = \sum_{n=1}^\infty b_n \sin (n \pi x) .
+\end{equation*}
+Kemudian solusi untuk \eqref{appeig:beameq} adalah
+\begin{equation*}
+y(x,t) = \sum_{n=1}^\infty b_n
+X_n(x) T_n(t)
+= \sum_{n=1}^\infty b_n
+\sin (n \pi x)  \cos ( n^2 \pi^2 a^2 t ) .
+\end{equation*}
+Pokoknya adalah bahwa $X_nT_n$ merupakan suatu solusi yang memenuhi semua syarat
+homogen (semua syarat kecuali posisi awal).  Dan karena
+$T_n(0) = 1$,
+\begin{equation*}
+y(x,0) = \sum_{n=1}^\infty b_n X_n(x) T_n(0) = 
+\sum_{n=1}^\infty b_n X_n(x) =
+\sum_{n=1}^\infty b_n
+\sin (n \pi x) = f(x) .
+\avoidbreak
+\end{equation*}
+Jadi $y(x,t)$ menyelesaikan \eqref{appeig:beameq}.
+
+Frekuensi alami (sudut) sistem tersebut adalah $n^2 \pi^2 a^2$.
+Semua frekuensi ini merupakan kelipatan bilangan bulat dari frekuensi dasar
+$\pi^2 a^2$, sehingga kita memperoleh nada musik yang merdu.  Frekuensi yang tepat
+beserta amplitudonya
+adalah apa yang disebut para musisi sebagai \emph{\myindex{timbre}} nada tersebut (di luar
+musik, hal itu disebut spektrum).
+
+Timbre suatu balok yang ditumpu sederhana
+berbeda dari timbre dawai yang bergetar, karena pada dawai kita memperoleh \myquote{lebih banyak}
+frekuensi rendah sebab kita memperoleh semua kelipatan bilangan bulat,
+$1,2,3,4,5,\ldots$.  Untuk balok yang ditumpu sederhana, kita memperoleh
+hanya kelipatan kuadrat $1,4,9,16,25,\ldots$, sehingga
+kita memperoleh sesuatu yang jauh lebih dekat dengan bunyi murni.
+Oleh karena itu, bunyi xilofon atau vibrafon sangat berbeda dari
+bunyi gitar atau piano.
+
+\begin{example}
+Perhatikan $f(x) = \frac{x(x-1)}{10}$.  
+Pada $0 < x < 1$ (sekarang Anda sudah mengetahui cara melakukannya),
+\begin{equation*}
+f(x) = \sum_{\substack{n=1\\n \text{~ganjil}}}^\infty \frac{-4}{5\pi^3 n^3}
+\sin (n \pi x) .
+\end{equation*}
+Oleh karena itu, solusi untuk \eqref{appeig:beameq} dengan posisi awal
+$f(x)$ yang diberikan adalah
+\begin{equation*}
+y(x,t) = \sum_{\substack{n=1\\n \text{~ganjil}}}^\infty \frac{-4}{5\pi^3 n^3}
+\sin (n \pi x) \cos ( n^2 \pi^2 a^2 t ) .
+\end{equation*}
+\end{example}
+
+Terdapat syarat batas lain selain ujung-ujung bersendi.  Ada
+tiga kemungkinan dasar: bersendi, bebas, atau tetap.  Perhatikan
+ujung di $x=0$.  Untuk ujung lainnya, gagasannya sama.
+Jika ujung tersebut \emph{bersendi}\index{ujung bersendi pada balok}, maka
+\begin{equation*}
+y(0,t) = y_{xx}(0,t) = 0 .
+\end{equation*}
+Jika ujung tersebut \emph{bebas}\index{ujung bebas pada balok}, yaitu ujung tersebut sekadar
+melayang di udara, maka
+\begin{equation*}
+y_{xx}(0,t) = y_{xxx}(0,t) = 0 .
+\end{equation*}
+Dan akhirnya, jika ujung tersebut
+\emph{dijepit}\index{ujung dijepit pada balok}
+atau  
+\emph{tetap}\index{ujung tetap pada balok}, misalnya ujung tersebut dilas pada suatu
+dinding,
+maka
+\begin{equation*}
+y(0,t) = y_{x}(0,t) = 0 .
+\end{equation*}
+
+
+\subsection{Latihan}
+
+\begin{exercise}
+Misalkan Anda memiliki suatu balok dengan panjang 5 dan kedua ujungnya bebas.  Misalkan $y$ adalah
+simpangan transversal balok pada posisi $x$ di sepanjang balok ($0 < x < 5$).
+Anda mengetahui bahwa
+konstanta-konstantanya sedemikian sehingga fungsi ini memenuhi persamaan $y_{tt} + 4 y_{xxxx} =
+0$.  Misalkan Anda mengetahui bahwa bentuk awal balok adalah grafik
+$x(5-x)$, dan kecepatan awalnya secara seragam sama dengan 2 (sama untuk setiap $x$)
+dalam arah $y$ positif.  Susunlah persamaan beserta
+syarat batas dan syarat awalnya.  Cukup susun, jangan selesaikan.
+\end{exercise}
+
+\begin{exercise}
+Misalkan Anda memiliki suatu balok dengan panjang 5, dengan satu ujung bebas dan satu ujung tetap
+(ujung tetap berada di $x=5$).
+Misalkan $u$ adalah
+simpangan longitudinal balok pada posisi $x$ di sepanjang balok ($0 < x < 5$).
+Anda mengetahui bahwa
+konstanta-konstantanya sedemikian sehingga fungsi ini memenuhi persamaan $u_{tt} = 4 u_{xx}$.
+Misalkan Anda mengetahui bahwa simpangan awal balok
+adalah $\frac{x-5}{50}$, dan kecepatan awalnya $\frac{-(x-5)}{100}$
+dalam arah $u$ positif.  Susunlah persamaan beserta
+syarat batas dan syarat awalnya.  Cukup susun, jangan selesaikan.
+\end{exercise}
+
+\begin{exercise}
+Misalkan panjang balok adalah $L$ satuan, sementara segala hal lainnya tetap sama
+seperti dalam \eqref{appeig:beameq}.  Apakah persamaan dan
+solusi deretnya?
+\end{exercise}
+
+\begin{exercise}
+Misalkan Anda memiliki 
+\begin{equation*}
+\begin{aligned}
+& a^4 y_{xxxx} + y_{tt} = 0 \quad (0 < x < 1, t > 0) , \\
+& y(0,t) = y_{xx}(0,t) = 0,\\
+& y(1,t) = y_{xx}(1,t) = 0 ,\\
+& y(x,0) = f(x), \quad y_{t}(x,0) = g(x) .
+\end{aligned}
+\end{equation*}
+Artinya, Anda juga memiliki kecepatan awal.  Carilah suatu solusi deret.  Petunjuk:
+Gunakan gagasan yang sama seperti yang kita gunakan untuk persamaan gelombang.
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Misalkan Anda memiliki suatu balok dengan panjang 1 dan kedua ujungnya bersendi.  Misalkan $y$ adalah
+simpangan transversal balok pada posisi $x$ di sepanjang balok ($0 < x < 1$).
+Anda mengetahui bahwa
+konstanta-konstantanya sedemikian sehingga fungsi ini memenuhi persamaan $y_{tt} + 4 y_{xxxx} =
+0$.  Misalkan Anda mengetahui bahwa bentuk awal balok adalah grafik
+$\sin (\pi x)$, dan kecepatan awalnya 0.  Tentukan $y$.
+\end{exercise}
+\exsol{%
+$y(x,t) = \sin(\pi x) \cos (2 \pi^2 t)$
+}
+
+\begin{exercise}
+Misalkan Anda memiliki suatu balok dengan panjang 10 dan kedua ujungnya tetap.  Misalkan $y$ adalah
+simpangan transversal balok pada posisi $x$ di sepanjang balok ($0 < x < 10$).
+Anda mengetahui bahwa
+konstanta-konstantanya sedemikian sehingga fungsi ini memenuhi persamaan $y_{tt} + 9 y_{xxxx} =
+0$.  Misalkan Anda mengetahui bahwa bentuk awal balok adalah grafik
+$\sin^2(\pi x)$, dan kecepatan awalnya sama dengan $x(10-x)$.
+Susunlah persamaan beserta
+syarat batas dan syarat awalnya.  Cukup susun, jangan selesaikan.
+\end{exercise}
+\exsol{%
+$9 y_{xxxx} + y_{tt} = 0 \quad (0 < x < 10, t > 0)$, \quad
+$y(0,t) = y_{x}(0,t) = 0$, \quad
+$y(10,t) = y_{x}(10,t) = 0$, \quad
+$y(x,0) = \sin^2(\pi x), \quad y_{t}(x,0) = x(10-x)$.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Solusi periodik tunak}
+\label{sps:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1--2 kuliah\EPref{, \S10.3 dalam \cite{EP}}\BDref{,
+tidak terdapat dalam \cite{BD}}}
+
+\subsection{Dawai bergetar paksa}
+
+Perhatikan suatu dawai gitar dengan panjang $L$.  Kita telah mengkaji 
+keadaan ini dalam \sectionref{we:section}.
+Misalkan $x$ adalah posisi pada dawai, $t$ adalah waktu, dan $y$ adalah simpangan dawai.  Lihat
+\figurevref{sps:vibstrfig}.
+
+\begin{myfig}
+\capstart
+\inputpdft{sps-vibstr}{%
+%perhatikan bahwa diagram ini muncul lebih dari sekali dalam buku
+Diagram sebuah dawai gitar (sebuah gitar berarsir berada di latar belakang),
+penghubung gitar berada di x sama dengan 0 pada sumbu x, dan nut gitar berada di
+x sama dengan L.  Dawai tersebut ditetapkan pada sumbu x di kedua titik ini.
+Dawai tampak dipetik ke atas di bagian tengah sehingga membentuk suatu
+segitiga lebar.  Sumbu vertikal diberi label y, dan sebuah panah menunjukkan bahwa
+y memberikan simpangan dawai pada setiap x tertentu, yaitu
+grafik y merupakan bentuk dawai tersebut.}
+\caption{Dawai bergetar.\label{sps:vibstrfig}}
+\end{myfig}
+
+Masalah tersebut diatur oleh persamaan gelombang
+\begin{equation} \label{sps:freevib}
+\begin{array}{ll}
+y_{tt} = a^2 y_{xx} , & \\
+\noalign{\smallskip}
+y(0,t) = 0 , & y(L,t) = 0 , \\
+y(x,0) = f(x) , & y_t(x,0) = g(x) .
+\end{array}
+\end{equation}
+Kita menemukan bahwa solusinya berbentuk
+\begin{equation*}
+y = 
+\sum_{n=1}^\infty \left( A_n \cos \left( \frac{n\pi a}{L} t \right) +
+B_n \sin \left( \frac{n\pi a}{L} t \right) \right)
+\sin \left( \frac{n\pi}{L} x \right) ,
+\end{equation*}
+dengan $A_n$ dan $B_n$ ditentukan oleh syarat-syarat awal.  Frekuensi alami
+dari sistem tersebut adalah frekuensi (sudut) $\frac{n \pi a}{L}$
+untuk bilangan bulat $n \geq 1$.
+
+Akan tetapi, ini adalah getaran bebas.  Bagaimana jika ada gaya luar yang bekerja pada
+dawai?  Misalkan, sebagai contoh, terdapat getaran udara (kebisingan), misalnya dari dawai
+kedua.  Atau mungkin dari mesin jet.  Demi kesederhanaan, asumsikan bunyi murni yang baik
+dan asumsikan gaya tersebut seragam pada setiap posisi di dawai:
+Gaya luar sebagai fungsi waktu $t$ diberikan oleh
+$F_0 \cos (\omega t)$ sebagai gaya per satuan massa.
+Kita akan menyebutnya fungsi pemaksa.  Maka persamaan
+gelombang kita menjadi (ingat bahwa gaya sama dengan massa dikalikan percepatan)
+\begin{equation} \label{sps:forcedeq}
+y_{tt} = a^2 y_{xx} + F_0 \cos ( \omega t) ,
+\end{equation}
+tentu saja dengan syarat batas yang sama.
+
+Misalkan kita ingin mencari solusi di sini yang memenuhi persamaan
+\eqref{sps:forcedeq} dan
+\begin{equation} \label{sps:forcedinitcond}
+y(0,t) = 0, \qquad y(L,t) = 0, \qquad
+y(x,0) = 0, \qquad y_t(x,0) = 0.
+\end{equation}
+Artinya, dawai tersebut mula-mula diam.  Pertama, kita mencari suatu solusi khusus
+$y_p$ dari \eqref{sps:forcedeq} yang hanya memenuhi
+syarat-syarat
+$y(0,t) = y(L,t) = 0$.  Kita mendefinisikan fungsi $f$ dan $g$ sebagai
+\begin{equation*}
+f(x) = -y_p(x,0), \qquad g(x) = -\frac{\partial y_p}{\partial t} (x,0) .
+\end{equation*}
+Kemudian kita mencari suatu solusi $y_c$ dari \eqref{sps:freevib}.  Jika kita menjumlahkan kedua
+solusi tersebut, kita memperoleh bahwa $y = y_c + y_p$ menyelesaikan \eqref{sps:forcedeq} dengan
+syarat-syarat awal tersebut.
+
+\begin{exercise}
+Periksa bahwa $y = y_c + y_p$ menyelesaikan \eqref{sps:forcedeq} dan
+syarat-syarat samping \eqref{sps:forcedinitcond}.
+\end{exercise}
+
+Jadi, persoalan utama di sini adalah mencari solusi khusus $y_p$.
+Kita memperhatikan persamaannya dan membuat tebakan yang beralasan
+\begin{equation*}
+y_p(x,t) = X(x) \cos (\omega t) .
+\end{equation*}
+Kita menyubstitusikannya untuk memperoleh
+\begin{equation*}
+-\omega^2 X \cos ( \omega t) = a^2 X'' \cos ( \omega t) +
+F_0 \cos ( \omega t ) ,
+\end{equation*}
+atau
+$-\omega^2 X = a^2 X'' + F_0$ setelah mencoret kosinus.
+Kita mengetahui cara mencari solusi umum persamaan ini (persamaan ini adalah
+persamaan nonhomogen berkoefisien konstan).
+Solusi umumnya adalah
+\begin{equation*}
+X(x) = A \cos \left( \frac{\omega}{a} x \right)
++ B \sin \left( \frac{\omega}{a} x \right) -
+\frac{F_0}{\omega^2} .
+\end{equation*}
+Syarat-syarat titik ujung mengimplikasikan $X(0) = X(L) = 0$.  Jadi
+\begin{equation*}
+0 = X(0) = A - \frac{F_0}{\omega^2} ,
+\end{equation*}
+atau $A = \frac{F_0}{\omega^2}$, dan juga
+\begin{equation*}
+0 = X(L)
+= \frac{F_0}{\omega^2} \cos \left( \frac{\omega L}{a} \right)
++ B \sin \left( \frac{\omega L}{a} \right) -
+\frac{F_0}{\omega^2} .
+\end{equation*}
+Dengan mengasumsikan bahwa $\sin ( \frac{\omega L}{a} )$ tidak nol, kita dapat menyelesaikannya untuk $B$ dan
+memperoleh
+\begin{equation} \label{natfreq:Beq}
+B = 
+\frac{-F_0 \left( \cos \left( \frac{\omega L}{a} \right) - 1 \right)}%
+{\omega^2 \sin \left( \frac{\omega L}{a} \right)}.
+\end{equation}
+Oleh karena itu,
+\begin{equation*}
+X(x) =
+\frac{F_0}{\omega^2} \left(
+\cos \left(  \frac{\omega}{a} x \right) -
+\frac{\cos \left( \frac{\omega L}{a} \right) - 1}%
+{\sin \left( \frac{\omega L}{a} \right)}
+\sin \left( \frac{\omega}{a} x \right)
+- 1
+\right) .
+\end{equation*}
+Solusi khusus $y_p$ yang kita cari adalah
+\begin{equation*}
+\mybxbg{~~
+y_p(x,t) =
+\frac{F_0}{\omega^2} \left(
+\cos \left( \frac{\omega}{a} x \right) -
+\frac{\cos \left( \frac{\omega L}{a} \right) - 1}%
+{\sin \left( \frac{\omega L}{a}\right)}
+\sin \left( \frac{\omega}{a} x \right)
+-1
+\right)
+\cos ( \omega t) .
+~~}
+\end{equation*}
+
+\begin{exercise}
+Periksa bahwa $y_p$ bekerja.
+\end{exercise}
+
+Kita sampai pada pokok yang sebelumnya kita lewatkan.  Misalkan 
+$\sin ( \frac{\omega L}{a} ) = 0$.  Ini berarti bahwa
+$\omega$ sama dengan salah satu frekuensi alami sistem,
+yaitu suatu kelipatan frekuensi dasar $\frac{\pi a}{L}$.
+Jika $\omega$
+tidak sama dengan suatu kelipatan $\frac{\pi a}{L}$,
+tetapi sangat dekat,
+maka koefisien $B$ dalam \eqref{natfreq:Beq} tampaknya
+menjadi sangat besar ketika penyebutnya menuju nol.
+Namun, janganlah kita tergesa-gesa menarik kesimpulan
+karena pembilangnya juga mungkin menuju nol.
+Ketika $\omega = \frac{n \pi a}{L}$
+untuk $n$ genap, maka $\cos (\frac{\omega L}{a}) = 1$.
+Kita dapat mengambil
+$B=0$ untuk memperoleh solusi terbatas yang baik dengan bentuk yang sama,
+$y_p = 
+\frac{F_0}{\omega^2}
+\bigl(
+ \cos\bigl(\frac{\omega}{a} x\bigr) -  1 \bigr)
+\cos(\omega t)$, sehingga tidak terjadi resonansi.
+Resonansi hanya terjadi ketika 
+baik $\cos (\frac{\omega L}{a}) = -1$ maupun
+$\sin (\frac{\omega L}{a}) = 0$,
+yaitu ketika $\omega = \frac{n \pi a }{L}$
+untuk $n$ \emph{ganjil}.
+Ketika $n$ ganjil, jika kita mengambil $\omega$ yang mendekati
+$\frac{n \pi a }{L}$, maka pembilang dalam koefisien
+$B$ tidak menuju nol, tetapi penyebutnya menuju nol, sehingga $B$ benar-benar
+\myquote{meledak.}
+Kita dapat kembali mencoba menyelesaikan secara eksplisit solusi resonansinya jika menginginkannya, tetapi dalam pengertian yang tepat, solusi tersebut adalah limit solusi-solusi ketika $\omega$
+mendekati suatu frekuensi resonansi.
+Dalam kehidupan nyata, resonansi murni bagaimanapun tidak pernah terjadi.
+%Anda akan memperoleh solusi khusus yang memuat suatu suku
+%seperti $t \cos (\omega t)$ (meskipun lebih sulit, tetapi masih mungkin,
+%untuk mencari solusinya dengan metode di atas).
+
+Perhitungan frekuensi resonansi di atas menjelaskan mengapa suatu dawai mulai
+bergetar jika
+dawai yang identik dipetik di dekatnya.  Tanpa adanya gesekan, getaran ini
+akan semakin keras seiring berjalannya waktu.
+Di sisi lain, kecil kemungkinan Anda memperoleh getaran besar jika frekuensi pemaksa 
+tidak dekat dengan frekuensi resonansi, bahkan jika terdapat mesin jet yang
+berjalan di dekat
+dawai tersebut.  Artinya, amplitudo tidak terus
+meningkat kecuali Anda menyetelnya tepat pada frekuensi yang sesuai.
+
+Fenomena resonansi serupa terjadi ketika Anda memecahkan gelas anggur dengan suara manusia
+(ya,
+hal ini mungkin dilakukan, tetapi tidak mudah%
+\footnote{\emph{Mythbusters}, episode 31, Discovery Channel, pertama kali ditayangkan
+18 Mei 2005.}) jika Anda kebetulan mencapai frekuensi yang tepat.
+Namun, gelas memiliki bunyi yang jauh lebih murni, yaitu lebih menyerupai
+vibrafon, sehingga jauh lebih sedikit frekuensi resonansi yang dapat dicapai.
+
+Ketika fungsi pemaksa lebih rumit, Anda mendekomposisinya dalam
+deret Fourier dan menerapkan hasil di atas.  Anda mungkin juga perlu menyelesaikan
+masalah di atas jika fungsi pemaksanya berupa sinus alih-alih kosinus,
+tetapi jika dipikirkan, solusinya hampir sama.
+%  Artinya,
+%solusi khususnya memuat $\sin$ alih-alih kosinus dan selebihnya identik.
+%Solusi komplemennya akan sedikit berbeda karena $f$ dan $g$
+%akan berbeda.
+
+\begin{example}
+%Mari lakukan perhitungannya untuk nilai-nilai tertentu.
+Misalkan $F_0 = 1$, $\omega = 1$, $L=1$, dan $a=1$.
+Mari kita cari suatu solusi $y$ untuk \eqref{sps:forcedeq}
+yang memenuhi syarat batas nol
+\eqref{sps:forcedinitcond}.  Pertama, kita memperoleh
+\begin{equation*}
+y_p(x,t) =
+\left(
+\cos (x) -
+\frac{\cos (1) - 1}{\sin (1)}
+\sin (x)
+-1
+\right)
+\cos (t) .
+\end{equation*}
+Tuliskan $B = \frac{\cos (1) - 1}{\sin (1)}$ demi kesederhanaan.
+
+Substitusikan $t=0$ ke dalam $y_p$ untuk memperoleh
+\begin{equation*}
+f(x) =- y_p(x,0) = 
+- \cos x +
+B \sin x
++1 ,
+\end{equation*}
+dan setelah menurunkan $y_p$ terhadap $t$, kita melihat bahwa 
+$g(x) = -\frac{\partial y_p}{\partial t}(x,0) = 0$.
+
+Oleh karena itu, untuk mencari $y_c$, kita perlu menyelesaikan masalah
+\begin{align*}
+& w_{tt} = w_{xx} , \\
+& w(0,t) = 0 , \quad w(1,t) = 0 , \\
+& w(x,0) = f(x) = - \cos x + B \sin x +1 , \\
+& w_t(x,0) = g(x) = 0 ,
+\end{align*}
+dan menetapkan $y_c=w$.
+Jika kita menggunakan d'Alembert, kita perhatikan bahwa
+rumus yang digunakan untuk mendefinisikan $w(x,0)$ tidak ganjil,
+sehingga tidak cukup sekadar menyubstitusikan ekspresi $w(x,0)$
+langsung ke dalam rumus
+d'Alembert!  Anda harus mendefinisikan $F$ sebagai perluasan ganjil yang periodik-2
+dari $w(x,0)$.  Kemudian solusi kita $y = y_p+y_c$ untuk
+\eqref{sps:forcedeq} yang tunduk pada \eqref{sps:forcedinitcond}
+adalah
+\begin{equation} \label{natfreq:exsol}
+y(x,t) = 
+\frac{F(x+t) + F(x-t)}{2} + 
+\left(
+\cos (x) -
+\frac{\cos (1) - 1}{\sin (1)}
+\sin (x)
+-1
+\right)
+\cos (t) .
+\end{equation}
+
+Tidaklah sulit untuk menghitung nilai-nilai tertentu
+bagi perluasan periodik ganjil suatu fungsi, sehingga
+\eqref{natfreq:exsol} merupakan solusi yang sangat baik untuk masalah tersebut.
+Sebagai contoh, sangat mudah meminta komputer melakukannya, tidak seperti solusi deret.
+Suatu grafik diberikan dalam \figurevref{natfreq:forcedvibfig}.
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=5in}{width=7.5in}{natfreq-forcedvib}{%
+Grafik suatu permukaan di atas bidang xt, dengan x berkisar dari 0 hingga 1 dan t
+berkisar dari 0 hingga 5.  Fungsi y bernilai nol pada 3 sisi, yaitu pada t sama dengan 0
+dan ketika x sama dengan 0 atau x sama dengan 1.  Di bagian dalam domainnya, ketika t membesar, terdapat suatu tonjolan yang naik
+hingga sedikit di atas 0,2, lalu terdapat dua tonjolan yang turun ke bawah bidang xt,
+dengan tonjolan kedua tampak sedikit lebih menonjol.
+Kemudian fungsi mulai membentuk tonjolan lain ke atas.}
+\caption{Grafik $y(x,t) = \frac{F(x+t) + F(x-t)}{2} + \left( \cos (x) -
+\frac{\cos (1) - 1}{\sin (1)} \sin (x) -1 \right) \cos (t)$.%
+\label{natfreq:forcedvibfig}}
+\end{myfig}
+\end{example}
+
+\subsection{Osilasi suhu bawah tanah}
+
+Misalkan $u(x,t)$ adalah suhu di suatu lokasi pada kedalaman $x$
+di bawah tanah pada waktu $t$.  Lihat \figurevref{sps:groundtempfig}.
+
+\begin{mywrapfig}{2.65in}
+\capstart
+\inputpdft{sps-groundtemp}{%
+Diagram permukaan tanah dengan seseorang berdiri di atasnya, dan sebuah panah
+ke bawah yang ditandai dengan `kedalaman x' menunjukkan bahwa x berarti kedalaman di bawah
+permukaan tanah.}
+\caption{Suhu bawah tanah.\label{sps:groundtempfig}}
+\end{mywrapfig}
+
+Suhu $u$ memenuhi persamaan panas $u_t = ku_{xx}$, dengan $k$
+merupakan difusivitas tanah.
+Kita mengetahui suhu di permukaan $u(0,t)$ dari catatan
+cuaca.  Demi kesederhanaan, mari kita asumsikan bahwa
+\begin{equation*}
+u(0,t) = T_0 + A_0 \cos (\omega t) ,
+\end{equation*}
+dengan $T_0$ merupakan suhu rata-rata
+tahunan, dan
+$t=0$ merupakan pertengahan musim panas (tambahkan
+tanda negatif di atas untuk menjadikannya pertengahan musim dingin jika Anda menginginkannya).
+Konstanta $A_0$ memberikan 
+variasi khas sepanjang tahun:
+Suhu terpanas adalah $T_0 + A_0$ dan suhu terdingin adalah $T_0 - A_0$.
+Demi kesederhanaan, kita mengasumsikan bahwa $T_0 = 0$.
+Frekuensi $\omega$ dipilih bergantung pada satuan $t$, sedemikian sehingga
+ketika $t=\unit[1]{tahun}$, maka $\omega t = 2 \pi$.  Sebagai contoh, jika $t$
+dinyatakan dalam tahun, maka $\omega = 2\pi$.
+
+Tampaknya masuk akal bahwa suhu pada kedalaman $x$ juga berosilasi
+dengan frekuensi yang sama.  Hal ini sebenarnya merupakan solusi periodik
+tunak, yaitu solusi yang tidak bergantung pada syarat-syarat awal.
+Jadi, kita mencari solusi berbentuk
+\begin{equation*}
+u(x,t) = V(x) \cos (\omega t) + W (x) \sin ( \omega t)
+\end{equation*}
+untuk masalah
+\begin{equation} \label{sps:ueq}
+u_t = k u_{xx}, \qquad u(0,t) = A_0 \cos ( \omega t) .
+\end{equation}
+
+Kita menggunakan eksponensial kompleks di sini untuk menyederhanakan perhitungan.
+Misalkan kita memiliki suatu fungsi bernilai kompleks
+\begin{equation*}
+h(x,t) = X(x)\, e^{i\omega t} .
+\end{equation*}
+Kita mencari $h$ sedemikian sehingga $\operatorname{Re} h = u$.
+Untuk mencari $h$ yang bagian realnya memenuhi \eqref{sps:ueq}, kita mencari
+$h$ sedemikian sehingga
+\begin{equation} \label{sps:heq}
+h_t = k h_{xx}, \qquad h(0,t) = A_0 e^{i\omega t} .
+\end{equation}
+
+\begin{exercise}
+Misalkan $h$ memenuhi \eqref{sps:heq}.
+Gunakan \hyperref[eulersformula]{rumus Euler} untuk eksponensial kompleks guna
+memeriksa bahwa $u = \operatorname{Re} h$ memenuhi \eqref{sps:ueq}.
+\end{exercise}
+
+Substitusikan $h$ ke dalam \eqref{sps:heq}.
+\begin{equation*}
+i\omega X e^{i\omega t} = k X'' e^{i \omega t} .
+\end{equation*}
+Oleh karena itu,
+\begin{equation*}
+k X''  - i \omega X = 0 ,
+\end{equation*}
+atau 
+\begin{equation*}
+X''  - \alpha^2 X = 0 ,
+\end{equation*}
+dengan $\alpha = \pm \sqrt{\frac{i\omega}{k}}$.  Perhatikan bahwa $\pm \sqrt{i} = \pm
+\frac{1+i}{\sqrt{2}}$, sehingga Anda dapat menyederhanakannya menjadi
+$\alpha = \pm (1+i)\sqrt{\frac{\omega}{2k}}$.
+Oleh karena itu, solusi umumnya adalah
+\begin{equation*}
+X(x) = A e^{-(1+i)\sqrt{\frac{\omega}{2k}} \, x}
++ B e^{(1+i)\sqrt{\frac{\omega}{2k}} \, x} .
+\end{equation*}
+Kita mengasumsikan bahwa suatu $X(x)$ yang menyelesaikan masalah tersebut harus terbatas ketika $x \to
+\infty$, karena $u(x,t)$ seharusnya terbatas
+(kita tidak sedang memikirkan inti Bumi!).
+Jika Anda menggunakan \hyperref[eulersformula]{rumus Euler} untuk mengembangkan eksponensial kompleks, 
+perhatikan bahwa suku kedua takterbatas (jika $B \neq 0$),
+sedangkan suku pertama selalu terbatas.  Oleh karena itu, $B=0$.
+
+\begin{exercise}
+Gunakan \hyperref[eulersformula]{rumus Euler} untuk menunjukkan bahwa
+$e^{(1+i)\sqrt{\frac{\omega}{2k}} \, x}$ takterbatas ketika $x \to \infty$,
+sedangkan $e^{-(1+i)\sqrt{\frac{\omega}{2k}} \, x}$ terbatas
+ketika $x \to \infty$.
+\end{exercise}
+
+Selain itu, $X(0) = A_0$ karena $h(0,t) = A_0 e^{i \omega t}$.
+Dengan demikian, $A=A_0$.  Ini berarti bahwa
+\begin{equation*}
+h(x,t) = A_0 e^{-(1+i)\sqrt{\frac{\omega}{2k}} \, x} e^{i \omega t}
+=
+A_0 e^{-(1+i)\sqrt{\frac{\omega}{2k}} \, x + i \omega t}
+=
+A_0 e^{-\sqrt{\frac{\omega}{2k}} \, x}
+e^{i(\omega t - \sqrt{\frac{\omega}{2k}} \, x)} .
+\end{equation*}
+Kita perlu mengambil bagian real dari $h$, sehingga
+kita menerapkan \hyperref[eulersformula]{rumus Euler} untuk memperoleh
+\begin{equation*}
+h(x,t) =
+A_0 e^{-\sqrt{\frac{\omega}{2k}} \, x}
+\left(\cos \left(\omega t - \sqrt{\frac{\omega}{2k}}\, x\right) + 
+i \sin \left(\omega t - \sqrt{\frac{\omega}{2k}}\, x\right) \right) .
+\end{equation*}
+Kemudian, akhirnya,
+\begin{equation*}
+u(x,t) = \operatorname{Re} h(x,t) =
+A_0 e^{-\sqrt{\frac{\omega}{2k}}\, x}
+\cos \left(\omega t - \sqrt{\frac{\omega}{2k}}\, x\right) .
+\end{equation*}
+Berhasil!
+
+Perhatikan bahwa fasenya berbeda pada kedalaman yang berbeda.  Pada kedalaman $x$,
+fasenya tertunda sebesar $x \sqrt{\frac{\omega}{2k}}$.
+Sebagai contoh, dalam satuan cgs (sentimeter-gram-detik)\index{satuan cgs},
+kita memiliki $k=0.005$ (nilai khas untuk tanah),
+$\omega = \frac{2\pi}{\text{detik dalam setahun}}
+= \frac{2\pi}{31,557,341} \approx 1.99 \times {10}^{-7}$.   Kemudian,
+jika kita menghitung tempat pergeseran fase $x \sqrt{\frac{\omega}{2k}} = \pi$,
+kita menemukan kedalaman dalam sentimeter tempat musim-musim terbalik.  Artinya,
+kita memperoleh kedalaman tempat musim panas menjadi yang terdingin dan musim dingin menjadi yang terhangat.
+Kita memperoleh
+sekitar 700 sentimeter, yaitu sekitar 23 kaki di bawah permukaan tanah.
+
+Berhati-hatilah agar tidak tergesa-gesa menarik kesimpulan.  Ayunan suhu meluruh dengan cepat saat Anda menggali lebih dalam.  Amplitudo
+ayunan suhu adalah
+$A_0 e^{-\sqrt{\frac{\omega}{2k}} x}$.  Fungsi ini meluruh \emph{sangat}
+cepat ketika $x$ (kedalaman) bertambah.
+Mari kita kembali mengambil
+parameter khas seperti di atas.  Kita juga mengasumsikan bahwa
+ayunan suhu permukaan kita adalah $\pm {15}^\circ$ Celsius, yaitu
+$A_0 = 15$.  Maka variasi suhu maksimum pada kedalaman 700 sentimeter
+hanya $\pm {0.66}^\circ$ Celsius.
+
+Anda tidak perlu menggali sangat dalam untuk memperoleh
+\myquote{lemari pendingin} yang efektif, dengan suhu hampir konstan.  Itulah sebabnya anggur disimpan di ruang bawah tanah; Anda memerlukan
+suhu yang konsisten.
+Perbedaan suhu juga dapat dimanfaatkan sebagai energi.  Sebuah rumah dapat
+dipanaskan atau didinginkan dengan memanfaatkan fakta di atas.
+Bahkan tanpa inti Bumi, Anda dapat memanaskan rumah pada musim dingin dan mendinginkannya
+pada musim panas.  Inti Bumi membuat
+suhu semakin tinggi semakin dalam Anda menggali, meskipun Anda perlu menggali cukup
+dalam untuk merasakan perbedaannya.
+Kita tidak memperhitungkan hal itu di atas.
+
+\subsection{Latihan}
+
+\begin{exercise} \label{sps:sinforceexr}
+Misalkan fungsi pemaksa untuk dawai bergetar
+adalah $F_0 \sin (\omega t)$.  Turunkan solusi khusus $y_p$.
+\end{exercise}
+
+\begin{exercise}
+Perhatikan dawai bergetar paksa.
+Misalkan $L=1$, $a=1$.  Misalkan fungsi pemaksanya
+adalah gelombang persegi yang bernilai 1 pada interval $0 < t < \pi$ dan
+$-1$ pada interval $-\pi < t < 0$.
+Carilah solusi khususnya.  Petunjuk: Anda mungkin ingin menggunakan hasil
+dari \exerciseref{sps:sinforceexr}.
+\end{exercise}
+
+\begin{exercise}
+Satuannya adalah cgs (sentimeter-gram-detik)\index{satuan cgs}.
+Untuk $k=0.005$, $\omega = 1.991 \times {10}^{-7}$, $A_0 = 20$.
+Carilah kedalaman tempat variasi suhu menjadi setengah ($\pm 10$
+derajat) dari variasinya di permukaan.
+\end{exercise}
+
+\begin{exercise}
+Turunkan solusi untuk osilasi suhu bawah tanah tanpa mengasumsikan
+bahwa $T_0 = 0$.
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Perhatikan dawai bergetar paksa.
+Misalkan $L=1$, $a=1$.  Misalkan fungsi pemaksanya
+merupakan gelombang segitiga, $\lvert t \rvert -\frac{\pi}{2}$
+pada $-\pi < t < \pi$ yang diperluas secara periodik.
+Carilah solusi khususnya.
+\end{exercise}
+\exsol{%
+%Deret Fourier fungsi pemaksanya adalah:
+%\sum\limits_{\substack{n=1 \\ n \text{ ganjil}}}^\infty
+%\frac{-4}{\pi n^2}
+%\cos (n t)
+$y_p(x,t) =
+\sum\limits_{\substack{n=1 \\ n \text{ ganjil}}}^\infty
+\frac{-4}{\pi n^4}
+\left(
+\cos(n x ) -
+\frac{\cos ( n ) - 1}%
+{\sin( n )}
+\sin( n x)
+-1
+\right)
+\cos (n t) .
+$
+}
+
+\begin{exercise}
+Satuannya adalah cgs (sentimeter-gram-detik)\index{satuan cgs}.
+Untuk $k=0.01$, $\omega = 1.991 \times {10}^{-7}$, $A_0 = 25$.
+Carilah kedalaman tempat musim panas kembali menjadi titik terpanas.
+\end{exercise}
+\exsol{%
+%$x \sqrt{\frac{\omega}{2k}} = 2\pi$
+%$x = 2\pi\sqrt{\frac{2k}{\omega}}$
+%$x = 2\pi\sqrt{\frac{0.02}{1.991 x 10^-7}}$
+Sekitar 1991 sentimeter
+}

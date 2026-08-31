@@ -1,0 +1,12 @@
+\begin{picture}(0,0)%
+\includegraphics{rayjordan.pdf}%
+\end{picture}%
+\setlength{\unitlength}{3947sp}%
+\begin{picture}(3777,1169)(-311,-2626)
+\put(3451,-2011){\makebox(0,0)[lb]{\smash{\fontsize{12}{14.4}\normalfont {\color[rgb]{0,0,0}$\gamma$}%
+}}}
+\put(1126,-1861){\makebox(0,0)[lb]{\smash{\fontsize{12}{14.4}\normalfont {\color[rgb]{0,0,0}$q$}%
+}}}
+\put(376,-1711){\makebox(0,0)[lb]{\smash{\fontsize{12}{14.4}\normalfont {\color[rgb]{0,0,0}$R$}%
+}}}
+\end{picture}%

@@ -1,0 +1,174 @@
+{
+  "backend": {
+    "path": "backend/production/v0.4-complete-2026.08.31-a"
+  },
+  "component_rights": [
+    {
+      "license_election": "CC BY-SA 4.0",
+      "resource_id": "R006",
+      "source_version": "v6.3"
+    },
+    {
+      "license_election": "CC BY-SA 4.0",
+      "resource_id": "R007",
+      "source_version": "v6.11"
+    },
+    {
+      "license_election": "CC BY-SA 4.0",
+      "resource_id": "R008",
+      "source_version": "v1.9"
+    }
+  ],
+  "coverage": {
+    "R006_units": 2625,
+    "R007_units": 1732,
+    "R008_units": 1527,
+    "manifest_units": 5884,
+    "status": "complete-family"
+  },
+  "coverage_binding": {
+    "R006_units": 2625,
+    "R007_units": 1732,
+    "R008_units": 1527,
+    "manifest_units": 5884
+  },
+  "primary_assets": [
+    {
+      "bytes": 2870909,
+      "filename": "Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf",
+      "pages": 334,
+      "sha256": "38743ea0e7ce52bdadf5233fc9d6e79e00717f9ba55a393f2bf46ea21c65ef56"
+    },
+    {
+      "bytes": 2427379,
+      "filename": "Analisis_Dasar_II_Bahasa_Indonesia_v6.3.pdf",
+      "pages": 241,
+      "sha256": "e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3"
+    },
+    {
+      "bytes": 5135134,
+      "filename": "Catatan_tentang_Diffy_Qs_Bahasa_Indonesia_v6.11.pdf",
+      "pages": 502,
+      "sha256": "1c18dfc1572d22ef7fc5d8ad25be18f3b91f1bffea5b9f9d521ff4e56ca969d4"
+    },
+    {
+      "bytes": 2822132,
+      "filename": "Panduan_Mengolah_Analisis_Kompleks_Bahasa_Indonesia_v1.9.pdf",
+      "pages": 338,
+      "sha256": "87e4810abdedbdd8121995a8e53936891135037f03054dce76a06beebc3cfaae"
+    },
+    {
+      "bytes": 18076597,
+      "filename": "lebl-mathematics-family-id-source-backend-complete-20260830.zip",
+      "sha256": "baeea18043520f1b47825df0c9b1343f203bc1ec67119266953e19133381ab92"
+    },
+    {
+      "bytes": 2963,
+      "filename": "LICENSE.md",
+      "sha256": "50cd1a865cab721eb28584a37cf8451ed2ebfe61f97f319bb50ff60348dea040"
+    },
+    {
+      "bytes": 2368,
+      "filename": "RELEASE_NOTES.md",
+      "sha256": "3bf5f2cf305473dd88a1bb699ddcafd912875fc0e4c7295cf609cc455ac33b01"
+    },
+    {
+      "bytes": 2197,
+      "filename": "ZENODO_METADATA.json",
+      "sha256": "65d841f3672cff6b77a2fc2d93ce82101f9c055ff1261f62e233c258a93e9a06"
+    }
+  ],
+  "publication_date": "2026-08-30",
+  "qa_reports": [
+    {
+      "bytes": 127390,
+      "path": "qa/FINAL_RELEASE_INTEGRITY_20260830.json",
+      "sha256": "d9fe70a7557920a1987e63a00101bdae9083f09111cd439ece3f8713b44e3fbb"
+    },
+    {
+      "bytes": 5212,
+      "path": "qa/FINAL_PDF_READER_QA_R006_R007_R008_20260831.json",
+      "sha256": "61c8d535c34063b5316a02ceb98aed386d121e18cc7b815e992c1be134ba53c3"
+    },
+    {
+      "bytes": 4581,
+      "path": "qa/parallel_qa_20260830/BACKEND_COMPLETE_R006_R007_R008_20260831.md",
+      "sha256": "f024531a0a2c45ae6f7823b4ef6b18134167ce386af75f1f1964717e5044bc7a"
+    }
+  ],
+  "readers": [
+    {
+      "bytes": 2870909,
+      "fallback_source_path": "publication/wip-2026.08.30-u429/Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf",
+      "filename": "Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf",
+      "pages": 334,
+      "resource_id": "R006-volume-1",
+      "sha256": "38743ea0e7ce52bdadf5233fc9d6e79e00717f9ba55a393f2bf46ea21c65ef56",
+      "source_path": "output/pdf/Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf",
+      "source_title": "Basic Analysis: Introduction to Real Analysis, Volume I",
+      "source_version": "v6.3",
+      "status": "complete"
+    },
+    {
+      "bytes": 2427379,
+      "filename": "Analisis_Dasar_II_Bahasa_Indonesia_v6.3.pdf",
+      "pages": 241,
+      "resource_id": "R006-volume-2",
+      "sha256": "e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3",
+      "source_path": "output/pdf/Analisis_Dasar_II_Bahasa_Indonesia_v6.3.pdf",
+      "source_title": "Basic Analysis: Introduction to Real Analysis, Volume II",
+      "source_version": "v6.3",
+      "status": "complete"
+    },
+    {
+      "bytes": 5135134,
+      "filename": "Catatan_tentang_Diffy_Qs_Bahasa_Indonesia_v6.11.pdf",
+      "pages": 502,
+      "resource_id": "R007",
+      "sha256": "1c18dfc1572d22ef7fc5d8ad25be18f3b91f1bffea5b9f9d521ff4e56ca969d4",
+      "source_path": "output/pdf/Catatan_tentang_Diffy_Qs_Bahasa_Indonesia_v6.11.pdf",
+      "source_title": "Notes on Diffy Qs: Differential Equations for Engineers",
+      "source_version": "v6.11",
+      "status": "complete"
+    },
+    {
+      "bytes": 2822132,
+      "filename": "Panduan_Mengolah_Analisis_Kompleks_Bahasa_Indonesia_v1.9.pdf",
+      "pages": 338,
+      "resource_id": "R008",
+      "sha256": "87e4810abdedbdd8121995a8e53936891135037f03054dce76a06beebc3cfaae",
+      "source_path": "output/pdf/Panduan_Mengolah_Analisis_Kompleks_Bahasa_Indonesia_v1.9.pdf",
+      "source_title": "Guide to Cultivating Complex Analysis: Working the Complex Field",
+      "source_version": "v1.9",
+      "status": "complete"
+    }
+  ],
+  "release_id": "lebl-family-id.2026.08.30.complete",
+  "repository": "https://github.com/KokunoYumeto/lebl-mathematics-family-id",
+  "rights_ledger": {
+    "bytes": 2988,
+    "path": "00_control/RIGHTS_COMPONENTS.csv",
+    "rows": 9,
+    "sha256": "78937cb85f83f114d6c69f4fa0d54fd5a85c03a822acadb39755ab70e23bef5d"
+  },
+  "schema_version": "1.0",
+  "source_archive": {
+    "directory_entries": 18,
+    "entries": 1022,
+    "file_entries": 1004,
+    "filename": "lebl-mathematics-family-id-source-backend-complete-20260830.zip",
+    "inventory_bytes": 192034,
+    "inventory_sha256": "7ca7425e20bfce53e71048d0bb1157cbd32035c040fca0633a9c1152f1b13a6f",
+    "uncompressed_bytes": 140585717,
+    "zip_bytes": 18076597,
+    "zip_sha256": "baeea18043520f1b47825df0c9b1343f203bc1ec67119266953e19133381ab92"
+  },
+  "status": "complete-family",
+  "tag": "lebl-family-id.2026.08.30.complete",
+  "version": "lebl-family-id-complete.2026.08.30",
+  "zenodo": {
+    "concept_doi": "10.5281/zenodo.22059779",
+    "record_id": 22182427,
+    "version_doi": "10.5281/zenodo.22182427"
+  }
+}

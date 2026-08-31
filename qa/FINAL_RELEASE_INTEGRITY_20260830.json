@@ -1,0 +1,3097 @@
+{
+  "schema": "lebl-id-final-release-integrity-v1",
+  "gate_revision": "semantic-integrity-v3",
+  "status": "PASS",
+  "pairs": 17,
+  "hard_pass_pairs": 17,
+  "scope": {
+    "manifest_bound_pairs": 14,
+    "explicit_support_pairs": 3
+  },
+  "gate_program": {
+    "path": "qa/final_release_integrity.py",
+    "bytes": 70653,
+    "sha256": "012a0dc7f7a7b6f781aaaebcf01460f334b956143fe2366caec7a1b45dd300b2"
+  },
+  "policy": {
+    "release_gate": [
+      "live source/target hashes match canonical manifest bindings and remain stable during the run",
+      "active labels preserve exact identity/order without target duplicates",
+      "semantic references preserve identity/order and introduce no unresolved target",
+      "environment streams preserve order after enumerated adaptations and stacks match source cleanliness",
+      "active TeX braces balance; support-style executable prefixes are source-equivalent and never go negative",
+      "asset-call identities match after one enumerated width adaptation, concrete calls resolve, and inventories close",
+      "display formulas match after neutralizing only localized text-bearing arguments",
+      "every source inline formula remains except one enumerated ordinal-prose omission; target-only math and prose-order reflows match frozen semantic policies",
+      "all six approved layout/reference adaptations match exact structural signatures",
+      "two consecutive final build logs and PDFs are byte-identical, warning-clean, and match release hashes"
+    ],
+    "explicit_non_gates": [
+      "raw named-command count equality",
+      "raw dollar-delimiter count equality",
+      "physical line-count equality",
+      "source/translated-prose byte-count equality"
+    ],
+    "approved_adaptation_classes": [
+      "localized hyperref display prose and text-bearing math prose",
+      "R007 introduction workflow and graph centered reflows with asset identity retained",
+      "two enumerated figure-reference macro aliases with identical label targets",
+      "one enumerated English ordinal-only inline span rendered as Indonesian prose",
+      "one enumerated adjacent x_0/x_1 prose-order swap preserving formula multiset",
+      "frozen target-only atomic variable typesetting in two documented chapters",
+      "localized .pdf_t overlays with identical inventory, structure, formulas, and binary companions",
+      "R008 cycle-integral shortstack with identical formula sequence",
+      "R008 notation-table widths and localized headers",
+      "R008 one-chapter suppression of a redundant automatic clearpage"
+    ]
+  },
+  "checks": {
+    "source_target_mapping_and_evidence": {
+      "status": "PASS",
+      "manifest": {
+        "path": "translation/TRANSLATION_MANIFEST.jsonl",
+        "bytes": 7243891,
+        "sha256": "5e7b4805fa96115b60e52c5f602633985d3464ce2faed9b0eadf2edfcc98f7be",
+        "rows": 5884,
+        "canonical_bindings_required": 14,
+        "canonical_bindings_verified": 14
+      },
+      "explicit_support_pairs": [
+        {
+          "source": "source/diffyqs-v6.11/diffyqssetup.sty",
+          "target": "translation/diffyqs/diffyqssetup.sty"
+        },
+        {
+          "source": "source/diffyqs-v6.11/mywrapfig.sty",
+          "target": "translation/diffyqs/mywrapfig.sty"
+        },
+        {
+          "source": "source/ca-v1.9/vogtwidebar.sty",
+          "target": "translation/complex-analysis/vogtwidebar.sty"
+        }
+      ],
+      "problems": [],
+      "evidence": [
+        {
+          "path": "qa/parallel_qa_20260830/BACKEND_COMPLETE_R006_R007_R008_20260831.md",
+          "role": "frozen source-target manifest and documented structural adaptations",
+          "bytes": 4581,
+          "sha256": "f024531a0a2c45ae6f7823b4ef6b18134167ce386af75f1f1964717e5044bc7a"
+        },
+        {
+          "path": "qa/parallel_qa_20260830/ch-first-order-ode-repaired.md",
+          "role": "source order, structure, and target-only atomic math typesetting",
+          "bytes": 3548,
+          "sha256": "7b30f4c3b14643303af7200176c782ec70d555fd692d38d3f0d2d727e1f4b532"
+        },
+        {
+          "path": "qa/parallel_qa_20260830/ch-higher-order-ode-final.md",
+          "role": "localized ordinal forms and formula preservation",
+          "bytes": 3736,
+          "sha256": "69671c20b67d6e01b0259677ead5961dc0936525a4a0f5047b29025cdd9c10d5"
+        },
+        {
+          "path": "qa/parallel_qa_20260830/ch-eigenvalue-probs-repaired.md",
+          "role": "localized unit text and formula preservation",
+          "bytes": 3089,
+          "sha256": "0d4f59c0a859de6456339747f11cdf68ecd7481fa9582a600381db45043c5da7"
+        },
+        {
+          "path": "qa/parallel_qa_20260830/ch-fourier-and-pde-repaired.md",
+          "role": "source order, display formula preservation, and asset identity",
+          "bytes": 3005,
+          "sha256": "f8f539f237ea16e9b4f886a0f51d4668c425ac528088bd45a00eb32815bfd8d9"
+        },
+        {
+          "path": "qa/parallel_qa_20260830/ch-nonlin-systems.md",
+          "role": "structure, inline/display formulas, and asset identity",
+          "bytes": 3337,
+          "sha256": "e86a4360359a8e39b28e3628dbb2be848d9d67999bb1b1c3442da0ef81324749"
+        },
+        {
+          "path": "qa/parallel_qa_20260830/ch-power-ser.md",
+          "role": "approved inline-math prose reordering",
+          "bytes": 3695,
+          "sha256": "ef59f7929d64141eb887ef4f9c3001f9b5df5f27c7fc4253f458cd0a618ff08d"
+        },
+        {
+          "path": "qa/parallel_qa_20260830/ca-repaired.md",
+          "role": "R008 reconstructed scaffold and formula-preservation baseline",
+          "bytes": 2867,
+          "sha256": "5bd43618bbaaf73bba53081a68dccd7937b8b0e0071029122b554196e21bad71"
+        },
+        {
+          "path": "qa/parallel_qa_20260830/r007-support-final.md",
+          "role": "narrow executable-prefix/support comparison; its pre-overlay release verdict is superseded",
+          "bytes": 11225,
+          "sha256": "3019272cef08a7b3b7d04be99701733c54972916ef09c6fbba1d104f8c09fd00"
+        },
+        {
+          "path": "qa/parallel_qa_20260830/r008-support-final.md",
+          "role": "R008 support-file and localized-overlay comparison",
+          "bytes": 10059,
+          "sha256": "5bf8a47fbc1e97e0b2accf322b4fa4735b572c66c55143bc6e055deb53cd8701"
+        }
+      ],
+      "evidence_missing": []
+    },
+    "labels": {
+      "status": "PASS",
+      "failed_targets": []
+    },
+    "references": {
+      "status": "PASS",
+      "failed_targets": []
+    },
+    "environments": {
+      "status": "PASS",
+      "failed_targets": []
+    },
+    "braces": {
+      "status": "PASS",
+      "failed_targets": []
+    },
+    "asset_calls": {
+      "status": "PASS",
+      "failed_targets": []
+    },
+    "asset_inventory": {
+      "status": "PASS",
+      "inventories": [
+        {
+          "status": "PASS",
+          "source_root": "source/diffyqs-v6.11/figures",
+          "target_root": "translation/diffyqs/figures",
+          "source_files": 283,
+          "target_files": 283,
+          "relative_path_inventory_equal": true,
+          "missing": [],
+          "extra": [],
+          "non_overlay_hash_mismatches": [],
+          "approved_localized_overlays": [
+            {
+              "path": "1-1-fig.pdf_t",
+              "status": "PASS",
+              "source_sha256": "a55f30fde28d1387e9a640b939b03591d0a3008b4f2e07cabd19cc6acaa34128",
+              "target_sha256": "482427dbd88f940a890b7eb91cf193cc0830e53ee8e2948200dbea99548debb7",
+              "classification": "approved localized TeX figure overlay",
+              "formula_status": "PASS"
+            },
+            {
+              "path": "2-2-ph-class.pdf_t",
+              "status": "PASS",
+              "source_sha256": "0dcd791308496da6f2101bc999dc74daa9acfd3f4c398a2b4508dd8fe1e73bb0",
+              "target_sha256": "bf3349802b2a3cefeb9f30447da36b59b3f9b6a855cb225efe2fcd882789be47",
+              "classification": "approved localized TeX figure overlay",
+              "formula_status": "PASS"
+            },
+            {
+              "path": "char-curve-curvy.pdf_t",
+              "status": "PASS",
+              "source_sha256": "a57571d1b0c39c6cb7ee105d64cd61cc72b4d7bfcc933e1808007cffefd97482",
+              "target_sha256": "57ad4eedd46b9e6fc390cc2925b2e7f032d473e0763c4328008ee726a37bb58b",
+              "classification": "approved localized TeX figure overlay",
+              "formula_status": "PASS"
+            },
+            {
+              "path": "dirichdiscsetup.pdf_t",
+              "status": "PASS",
+              "source_sha256": "8cf6f59cdd8b8b13a615d53d73d6e4f88b4111293aca8005e34a1095e43aa0ab",
+              "target_sha256": "1eb401e21c10637a5e410f1368aba65466fb97ff239ce076ec4c357d58f17403",
+              "classification": "approved localized TeX figure overlay",
+              "formula_status": "PASS"
+            },
+            {
+              "path": "half-infinite-goo-river-wavefront.pdf_t",
+              "status": "PASS",
+              "source_sha256": "8cc56dd9ae06bcc8be5c76e1dc7da7c702d98ef498352f024c163e5dbb54f317",
+              "target_sha256": "ef5707a274eb157af3cfee2fbccae08d93e5668c837e446915bfea613a165475",
+              "classification": "approved localized TeX figure overlay",
+              "formula_status": "PASS"
+            },
+            {
+              "path": "half-infinite-ill-posed.pdf_t",
+              "status": "PASS",
+              "source_sha256": "e30ea147010a027ddb6b4880c62a09a5416e7f4578da3949ed6f57469837832c",
+              "target_sha256": "ee332e2ea4083aa4c501d448d8d050e9656c045c50667918a120a315c9f88aaa",
+              "classification": "approved localized TeX figure overlay",
+              "formula_status": "PASS"
+            },
+            {
+              "path": "heat-wire.pdf_t",
+              "status": "PASS",
+              "source_sha256": "0072d6bcf9a7dff1a80b0d295cc5c5b7cd36d7afb55df9cdca14ef9bfb8b44c9",
+              "target_sha256": "ce39d06b8be8ed7f609d0644495ccf3e970e0c391e7ea4b3727635575216ff55",
+              "classification": "approved localized TeX figure overlay",
+              "formula_status": "PASS"
+            },
+            {
+              "path": "heateqregion.pdf_t",
+              "status": "PASS",
+              "source_sha256": "ab533e882ddbfe3f1cb474af43b5117f5fef7dfaac233b68b7eb0bddccbde0d2",
+              "target_sha256": "615091339048a261244b471c5433bebcec16f5b77912806779f793c82d45033a",
+              "classification": "approved localized TeX figure overlay",
+              "formula_status": "PASS"
+            },
+            {
+              "path": "lin-tank.pdf_t",
+              "status": "PASS",
+              "source_sha256": "dd2aec94e5986de09cbd8de6ba77981927922f5eb27a7f6c067610ebb9f22d36",
+              "target_sha256": "8947815498432d6307b524126398dcb99a132d1de1bfb3ffb82cf0bf50b09d8c",
+              "classification": "approved localized TeX figure overlay",
+              "formula_status": "PASS"
+            },
+            {
+              "path": "massfigforce.pdf_t",
+              "status": "PASS",
+              "source_sha256": "4aa476e841c9dd2bbd092adf04344c901a0e7e58e7f853cef8e11537d96c56af",
+              "target_sha256": "ec3acfff6631f5e087759f99cf14145d81e07aade19b9d5fbee22cd4ec5451be",
+              "classification": "approved localized TeX figure overlay",
+              "formula_status": "PASS"
+            },
+            {
+              "path": "nlin-pend.pdf_t",
+              "status": "PASS",
+              "source_sha256": "4788f5bfb541ffda60135d2c0d92d28c014c00e54238dd6cd6b1de30ff4d10ec",
+              "target_sha256": "01bc3cdb0d660cc9f4b53eccc5eb714c2f479bd773caf059c51370f739a789ad",
+              "classification": "approved localized TeX figure overlay",
+              "formula_status": "PASS"
+            },
+            {
+              "path": "ps-conv.pdf_t",
+              "status": "PASS",
+              "source_sha256": "c6b232ab426cc72cb3f65716bdf9ccc2fe7ea44242a34d884a1f97be82dc3bbc",
+              "target_sha256": "8118acb961d031ca1d8b5d5f783b5c3c56ac22e56a7df383b3ff52b8386ba2cb",
+              "classification": "approved localized TeX figure overlay",
+              "formula_status": "PASS"
+            },
+            {
+              "path": "railcarscrash.pdf_t",
+              "status": "PASS",
+              "source_sha256": "4985506bc1327b1617e4114b87f7b9104fe353796f82f26b8d39f972c227450b",
+              "target_sha256": "4058c0e678c8b99d7332a1c68e03892c6f38fe8f131d1940fcb2968b5106ae35",
+              "classification": "approved localized TeX figure overlay",
+              "formula_status": "PASS"
+            },
+            {
+              "path": "sps-groundtemp.pdf_t",
+              "status": "PASS",
+              "source_sha256": "609dcb0b7355e086ccd9ed2f1f28caac8a84a7b737277f644ea0fa843f8e44b6",
+              "target_sha256": "c7050bb90e1dc07efe0fca64166de772c6804b532d2f956dc81f3673d68434fa",
+              "classification": "approved localized TeX figure overlay",
+              "formula_status": "PASS"
+            }
+          ],
+          "overlay_failures": []
+        },
+        {
+          "status": "PASS",
+          "source_root": "source/ca-v1.9/figures",
+          "target_root": "translation/complex-analysis/figures",
+          "source_files": 204,
+          "target_files": 204,
+          "relative_path_inventory_equal": true,
+          "missing": [],
+          "extra": [],
+          "non_overlay_hash_mismatches": [],
+          "approved_localized_overlays": [
+            {
+              "path": "indexconstant.pdf_t",
+              "status": "PASS",
+              "source_sha256": "39b65b3e54da3a6b0d6dde6a046217db4f7d946ccbe4a6c5ef3a9599fbb9dd69",
+              "target_sha256": "4d898fdbf8adb33cbd88063b939983b5f7a693781fb1ddc1cc4fc3e43ccf1075",
+              "classification": "approved localized TeX figure overlay",
+              "formula_status": "PASS"
+            },
+            {
+              "path": "ms-triang.pdf_t",
+              "status": "PASS",
+              "source_sha256": "080b27b4d880686f0ab5e05f8349971791f899e43ddb0e9762b668fa44e885fa",
+              "target_sha256": "795ea3169c09e89ea9eb96ec81d39b01be5073d03fb0830edd6d3ba7fb9c8343",
+              "classification": "approved localized TeX figure overlay",
+              "formula_status": "PASS"
+            },
+            {
+              "path": "proofofdirichlet.pdf_t",
+              "status": "PASS",
+              "source_sha256": "9cfee79d310f3417895419834090200087a7ffe82791b47e5bf8d3bd7727a885",
+              "target_sha256": "e3c946bf99f3f97f01b3e541f6ac78341176b7bc88d440f39d92084cb6940829",
+              "classification": "approved localized TeX figure overlay",
+              "formula_status": "PASS"
+            },
+            {
+              "path": "radiusconvcomplex.pdf_t",
+              "status": "PASS",
+              "source_sha256": "2a91763830ec578021f2dff3f1f64413dd8265579c0d99452be4e823ace9777e",
+              "target_sha256": "7477484f3a214108a1ce225a7a08991153c9c26efe0e900268f5525e4f81b039",
+              "classification": "approved localized TeX figure overlay",
+              "formula_status": "PASS"
+            }
+          ],
+          "overlay_failures": []
+        }
+      ]
+    },
+    "formulas": {
+      "status": "PASS",
+      "failed_targets": []
+    },
+    "placeholders": {
+      "status": "PASS",
+      "failed_targets": []
+    },
+    "approved_adaptations": {
+      "status": "PASS",
+      "adaptations": [
+        {
+          "name": "R007 intro workflow centered reflow",
+          "status": "PASS",
+          "source_blocks": 1,
+          "target_blocks": 1,
+          "source_block_sha256": "dc3aab686ba14ba4f517552ab1ae443fe68442898bc131c090b70a7c8a2d3496",
+          "target_block_sha256": "bc94e77f48c1edf97b65dbc0da5325f3b5659177f7b2e552ff4ea6b21364633b",
+          "invariant": "inputpdft asset 1-1-fig retained exactly once"
+        },
+        {
+          "name": "R007 intro graph centered reflow",
+          "status": "PASS",
+          "source_blocks": 1,
+          "target_blocks": 1,
+          "approved_asset_argument_adaptations": [
+            {
+              "index": 0,
+              "source": [
+                "diffyincludegraphics",
+                "",
+                "intro-plotbact",
+                [
+                  "width=3in",
+                  "width=4.5in"
+                ]
+              ],
+              "target": [
+                "diffyincludegraphics",
+                "",
+                "intro-plotbact",
+                [
+                  "width=4.5in",
+                  "width=4.5in"
+                ]
+              ],
+              "approved": true,
+              "classification": "R007 intro graph centered reflow"
+            }
+          ],
+          "invariant": "intro-plotbact identity and caption formula retained"
+        },
+        {
+          "name": "two immediate-figure figurevref to figureref aliases",
+          "status": "PASS",
+          "aliases": [
+            {
+              "source_command": "figurevref",
+              "target_command": "figureref",
+              "key": "fopde:charcurvecurvy"
+            },
+            {
+              "source_command": "figurevref",
+              "target_command": "figureref",
+              "key": "fopde:surfaceplot"
+            }
+          ]
+        },
+        {
+          "name": "R008 cycle-integral shortstack",
+          "status": "PASS",
+          "source_formula_sequence_sha256": "928ac1caaf1ae54196041f238f3e22a8b7d6e3903c1506639cb0fca84c617608",
+          "target_formula_sequence_sha256": "928ac1caaf1ae54196041f238f3e22a8b7d6e3903c1506639cb0fca84c617608",
+          "formula_count": 2
+        },
+        {
+          "name": "R008 notation table width and header localization",
+          "status": "PASS",
+          "source_column_spec": "\\begin{longtable}{Sl @{\\extracolsep{\\fill}} Sl @{\\extracolsep{\\fill}} Sl}",
+          "target_column_spec": "\\begin{longtable}{@{}p{0.34\\textwidth} @{\\hspace{1em}} p{0.38\\textwidth} @{\\hspace{1em}} p{0.12\\textwidth}@{}}}",
+          "localized_headers": [
+            "\\renewcommand{\\entryname}{Notasi}",
+            "\\renewcommand{\\descriptionname}{Deskripsi}",
+            "\\renewcommand{\\pagelistname}{Halaman}"
+          ]
+        },
+        {
+          "name": "R008 suppression of one redundant clearpage",
+          "status": "PASS",
+          "exact_wrapped_chapter_blocks": 1,
+          "chapter_label": "ch:weier"
+        }
+      ]
+    },
+    "final_repeated_builds_and_pdfs": {
+      "status": "PASS",
+      "releases": [
+        {
+          "release": "R007",
+          "status": "PASS",
+          "expected": {
+            "pdf_name": "diffyqs.pdf",
+            "pages": 502,
+            "bytes": 5135134,
+            "sha256": "1c18dfc1572d22ef7fc5d8ad25be18f3b91f1bffea5b9f9d521ff4e56ca969d4"
+          },
+          "repeated_log_bytes_identical": true,
+          "repeated_pdf_bytes_identical": true,
+          "logs": [
+            {
+              "path": "tmp/pdfs/r007-complete-20260830/deterministic-36.out",
+              "bytes": 32352,
+              "sha256": "1570580efab0962f7f8d144b5615750346a240df1464283ced2101408cbbb075",
+              "critical_warning_classes": [],
+              "expected_output_line_present": true
+            },
+            {
+              "path": "tmp/pdfs/r007-complete-20260830/deterministic-37.out",
+              "bytes": 32352,
+              "sha256": "1570580efab0962f7f8d144b5615750346a240df1464283ced2101408cbbb075",
+              "critical_warning_classes": [],
+              "expected_output_line_present": true
+            }
+          ],
+          "pdfs": [
+            {
+              "path": "tmp/pdfs/r007-complete-20260830/diffyqs-deterministic-36.pdf",
+              "bytes": 5135134,
+              "sha256": "1c18dfc1572d22ef7fc5d8ad25be18f3b91f1bffea5b9f9d521ff4e56ca969d4",
+              "expected_bytes_match": true,
+              "expected_sha256_match": true
+            },
+            {
+              "path": "tmp/pdfs/r007-complete-20260830/diffyqs.pdf",
+              "bytes": 5135134,
+              "sha256": "1c18dfc1572d22ef7fc5d8ad25be18f3b91f1bffea5b9f9d521ff4e56ca969d4",
+              "expected_bytes_match": true,
+              "expected_sha256_match": true
+            }
+          ]
+        },
+        {
+          "release": "R008",
+          "status": "PASS",
+          "expected": {
+            "pdf_name": "ca.pdf",
+            "pages": 338,
+            "bytes": 2822132,
+            "sha256": "87e4810abdedbdd8121995a8e53936891135037f03054dce76a06beebc3cfaae"
+          },
+          "repeated_log_bytes_identical": true,
+          "repeated_pdf_bytes_identical": true,
+          "logs": [
+            {
+              "path": "tmp/pdfs/r008-complete-20260830/deterministic-30.out",
+              "bytes": 39111,
+              "sha256": "ded6363444b6da5bbe33a8e45342e77215f21e01d8cfa5dbd70e9ab72618c3a5",
+              "critical_warning_classes": [],
+              "expected_output_line_present": true
+            },
+            {
+              "path": "tmp/pdfs/r008-complete-20260830/deterministic-31.out",
+              "bytes": 39111,
+              "sha256": "ded6363444b6da5bbe33a8e45342e77215f21e01d8cfa5dbd70e9ab72618c3a5",
+              "critical_warning_classes": [],
+              "expected_output_line_present": true
+            }
+          ],
+          "pdfs": [
+            {
+              "path": "tmp/pdfs/r008-complete-20260830/ca-deterministic-30.pdf",
+              "bytes": 2822132,
+              "sha256": "87e4810abdedbdd8121995a8e53936891135037f03054dce76a06beebc3cfaae",
+              "expected_bytes_match": true,
+              "expected_sha256_match": true
+            },
+            {
+              "path": "tmp/pdfs/r008-complete-20260830/ca.pdf",
+              "bytes": 2822132,
+              "sha256": "87e4810abdedbdd8121995a8e53936891135037f03054dce76a06beebc3cfaae",
+              "expected_bytes_match": true,
+              "expected_sha256_match": true
+            }
+          ]
+        }
+      ]
+    },
+    "input_stability": {
+      "status": "PASS",
+      "files_rechecked": 1028,
+      "directories_reinventoried": 4,
+      "changed": [],
+      "missing": [],
+      "inventory_changes": [],
+      "binding": {
+        "files": 1028,
+        "directories": 4,
+        "file_path_and_sha256_aggregate": "98c7859edba5644f85dbfdb65ee79618fc5a9c224aa963d8d6680bf75f3e31cd",
+        "directory_inventory_aggregate": "a46977d93fcd17bdea8a7ab980524675bc5430a2bb3765678984583579f1acfa",
+        "directory_inventories": [
+          {
+            "directory": "source/ca-v1.9/figures",
+            "files": 204,
+            "relative_path_sequence_sha256": "6f4837496f432f0569412c3bc1f806d350e6f84fb5aa3d2d9402e6b340fa8c97"
+          },
+          {
+            "directory": "source/diffyqs-v6.11/figures",
+            "files": 283,
+            "relative_path_sequence_sha256": "a28b131cddcc0d757d531ae669f01a75b2586ae4010b44f683fd1d5d588378f4"
+          },
+          {
+            "directory": "translation/complex-analysis/figures",
+            "files": 204,
+            "relative_path_sequence_sha256": "6f4837496f432f0569412c3bc1f806d350e6f84fb5aa3d2d9402e6b340fa8c97"
+          },
+          {
+            "directory": "translation/diffyqs/figures",
+            "files": 283,
+            "relative_path_sequence_sha256": "a28b131cddcc0d757d531ae669f01a75b2586ae4010b44f683fd1d5d588378f4"
+          }
+        ]
+      }
+    }
+  },
+  "manifest_bindings": {
+    "translation/diffyqs/diffyqs.tex": {
+      "unit_id": "diffyqs.v6.11.canonical-file.diffyqs-tex",
+      "source_component": {
+        "path": "source/diffyqs-v6.11/diffyqs.tex",
+        "selector": "raw lines 1-506 inclusive; complete canonical TeX file",
+        "sha256": "d8a77c408fac7d67d0450a41d8bb18afc479e476d573eeeb1227bc448f4ab4e5"
+      },
+      "target_component": {
+        "path": "translation/diffyqs/diffyqs.tex",
+        "selector": "raw lines 1-542 inclusive; complete canonical TeX file",
+        "sha256": "565c3261c2bd6a83c3f54953b2443a215fd102f0a903bc610a623fc8007f01ae"
+      },
+      "qa": "qa/parallel_qa_20260830/BACKEND_COMPLETE_R006_R007_R008_20260830.md",
+      "live_source_sha256": "d8a77c408fac7d67d0450a41d8bb18afc479e476d573eeeb1227bc448f4ab4e5",
+      "live_target_sha256": "565c3261c2bd6a83c3f54953b2443a215fd102f0a903bc610a623fc8007f01ae",
+      "status": "PASS"
+    },
+    "translation/diffyqs/ch-intro.tex": {
+      "unit_id": "diffyqs.v6.11.canonical-file.ch-intro-tex",
+      "source_component": {
+        "path": "source/diffyqs-v6.11/ch-intro.tex",
+        "selector": "raw lines 1-1208 inclusive; complete canonical TeX file",
+        "sha256": "c690f51ad02e77124727162df6c4895ba932b5f10d03643d2f227bcb65b61029"
+      },
+      "target_component": {
+        "path": "translation/diffyqs/ch-intro.tex",
+        "selector": "raw lines 1-1162 inclusive; complete canonical TeX file",
+        "sha256": "b07545cc653d3729163d0d9170a02dcb467c4657fc7afaa19ed6f7a752d31b09"
+      },
+      "qa": "qa/parallel_qa_20260830/BACKEND_COMPLETE_R006_R007_R008_20260830.md",
+      "live_source_sha256": "c690f51ad02e77124727162df6c4895ba932b5f10d03643d2f227bcb65b61029",
+      "live_target_sha256": "b07545cc653d3729163d0d9170a02dcb467c4657fc7afaa19ed6f7a752d31b09",
+      "status": "PASS"
+    },
+    "translation/diffyqs/ch-first-order-ode.tex": {
+      "unit_id": "diffyqs.v6.11.canonical-file.ch-first-order-ode-tex",
+      "source_component": {
+        "path": "source/diffyqs-v6.11/ch-first-order-ode.tex",
+        "selector": "raw lines 1-4180 inclusive; complete canonical TeX file",
+        "sha256": "ff4ce0721f080eaf4c6211e83e47814b1ab1b1272030eb4789b88532172aea45"
+      },
+      "target_component": {
+        "path": "translation/diffyqs/ch-first-order-ode.tex",
+        "selector": "raw lines 1-4178 inclusive; complete canonical TeX file",
+        "sha256": "a5ca8df9afcae2390ce9e0ae70941b2c950c4b2e2a990bc9e53a06acb7a0b71a"
+      },
+      "qa": "qa/parallel_qa_20260830/BACKEND_COMPLETE_R006_R007_R008_20260830.md",
+      "live_source_sha256": "ff4ce0721f080eaf4c6211e83e47814b1ab1b1272030eb4789b88532172aea45",
+      "live_target_sha256": "a5ca8df9afcae2390ce9e0ae70941b2c950c4b2e2a990bc9e53a06acb7a0b71a",
+      "status": "PASS"
+    },
+    "translation/diffyqs/ch-higher-order-ode.tex": {
+      "unit_id": "diffyqs.v6.11.canonical-file.ch-higher-order-ode-tex",
+      "source_component": {
+        "path": "source/diffyqs-v6.11/ch-higher-order-ode.tex",
+        "selector": "raw lines 1-3237 inclusive; complete canonical TeX file",
+        "sha256": "20d3ab8372c7f02a61b095ba6ac39c076bce83665146c6ad69700b4aa846f142"
+      },
+      "target_component": {
+        "path": "translation/diffyqs/ch-higher-order-ode.tex",
+        "selector": "raw lines 1-2155 inclusive; complete canonical TeX file",
+        "sha256": "e8852fc4b4728d34e384826092f5c26cb0a0476b90abe9360f3dd49fe87d6020"
+      },
+      "qa": "qa/parallel_qa_20260830/BACKEND_COMPLETE_R006_R007_R008_20260830.md",
+      "live_source_sha256": "20d3ab8372c7f02a61b095ba6ac39c076bce83665146c6ad69700b4aa846f142",
+      "live_target_sha256": "e8852fc4b4728d34e384826092f5c26cb0a0476b90abe9360f3dd49fe87d6020",
+      "status": "PASS"
+    },
+    "translation/diffyqs/ch-systems.tex": {
+      "unit_id": "diffyqs.v6.11.canonical-file.ch-systems-tex",
+      "source_component": {
+        "path": "source/diffyqs-v6.11/ch-systems.tex",
+        "selector": "raw lines 1-7513 inclusive; complete canonical TeX file",
+        "sha256": "f17c157d134a85637d48496d379141d285a7f3ede051827c5b828be0b3fefe64"
+      },
+      "target_component": {
+        "path": "translation/diffyqs/ch-systems.tex",
+        "selector": "raw lines 1-7507 inclusive; complete canonical TeX file",
+        "sha256": "e760733fe9c82b38441f6bc60e71a42da9117ad0dd08fe0420f963ff85e3f749"
+      },
+      "qa": "qa/parallel_qa_20260830/BACKEND_COMPLETE_R006_R007_R008_20260830.md",
+      "live_source_sha256": "f17c157d134a85637d48496d379141d285a7f3ede051827c5b828be0b3fefe64",
+      "live_target_sha256": "e760733fe9c82b38441f6bc60e71a42da9117ad0dd08fe0420f963ff85e3f749",
+      "status": "PASS"
+    },
+    "translation/diffyqs/ch-eigenvalue-probs.tex": {
+      "unit_id": "diffyqs.v6.11.canonical-file.ch-eigenvalue-probs-tex",
+      "source_component": {
+        "path": "source/diffyqs-v6.11/ch-eigenvalue-probs.tex",
+        "selector": "raw lines 1-1418 inclusive; complete canonical TeX file",
+        "sha256": "b8085bcb7c855faa43eaae6cdc73a3d2091060715bf1db47ae7c0d047ae58858"
+      },
+      "target_component": {
+        "path": "translation/diffyqs/ch-eigenvalue-probs.tex",
+        "selector": "raw lines 1-1418 inclusive; complete canonical TeX file",
+        "sha256": "d99a10dfdd36d4a806407233879c268763a069b1a99d8262a914929cf8a58e2a"
+      },
+      "qa": "qa/parallel_qa_20260830/BACKEND_COMPLETE_R006_R007_R008_20260830.md",
+      "live_source_sha256": "b8085bcb7c855faa43eaae6cdc73a3d2091060715bf1db47ae7c0d047ae58858",
+      "live_target_sha256": "d99a10dfdd36d4a806407233879c268763a069b1a99d8262a914929cf8a58e2a",
+      "status": "PASS"
+    },
+    "translation/diffyqs/ch-laplace.tex": {
+      "unit_id": "diffyqs.v6.11.canonical-file.ch-laplace-tex",
+      "source_component": {
+        "path": "source/diffyqs-v6.11/ch-laplace.tex",
+        "selector": "raw lines 1-2685 inclusive; complete canonical TeX file",
+        "sha256": "df5ac427b05b3ebb0fa677e8a25aedd5231e52ce23790e3d52ac6e88add9db33"
+      },
+      "target_component": {
+        "path": "translation/diffyqs/ch-laplace.tex",
+        "selector": "raw lines 1-2685 inclusive; complete canonical TeX file",
+        "sha256": "5c309da01fd954876375363ef226bef3d274cf3f8ac35803df261cd8563c9466"
+      },
+      "qa": "qa/parallel_qa_20260830/BACKEND_COMPLETE_R006_R007_R008_20260830.md",
+      "live_source_sha256": "df5ac427b05b3ebb0fa677e8a25aedd5231e52ce23790e3d52ac6e88add9db33",
+      "live_target_sha256": "5c309da01fd954876375363ef226bef3d274cf3f8ac35803df261cd8563c9466",
+      "status": "PASS"
+    },
+    "translation/diffyqs/ch-power-ser.tex": {
+      "unit_id": "diffyqs.v6.11.canonical-file.ch-power-ser-tex",
+      "source_component": {
+        "path": "source/diffyqs-v6.11/ch-power-ser.tex",
+        "selector": "raw lines 1-1958 inclusive; complete canonical TeX file",
+        "sha256": "6eaef484f034bbc2fb887060464b24763e76a62eb4e4c57f87b6e6b36f287abf"
+      },
+      "target_component": {
+        "path": "translation/diffyqs/ch-power-ser.tex",
+        "selector": "raw lines 1-1955 inclusive; complete canonical TeX file",
+        "sha256": "6daa06012fd2f2cc2f10d52565259e1bc3049e889eca5da552c386ee1f653770"
+      },
+      "qa": "qa/parallel_qa_20260830/BACKEND_COMPLETE_R006_R007_R008_20260830.md",
+      "live_source_sha256": "6eaef484f034bbc2fb887060464b24763e76a62eb4e4c57f87b6e6b36f287abf",
+      "live_target_sha256": "6daa06012fd2f2cc2f10d52565259e1bc3049e889eca5da552c386ee1f653770",
+      "status": "PASS"
+    },
+    "translation/diffyqs/ch-fourier-and-pde.tex": {
+      "unit_id": "diffyqs.v6.11.canonical-file.ch-fourier-and-pde-tex",
+      "source_component": {
+        "path": "source/diffyqs-v6.11/ch-fourier-and-pde.tex",
+        "selector": "raw lines 1-6724 inclusive; complete canonical TeX file",
+        "sha256": "a0d6bef05fbf00f191f29ab6f177359c91c33715bf94267ef7542df6049033ae"
+      },
+      "target_component": {
+        "path": "translation/diffyqs/ch-fourier-and-pde.tex",
+        "selector": "raw lines 1-6718 inclusive; complete canonical TeX file",
+        "sha256": "c375692f2b5535717aeceeb956d2538b146b68239bdbc06b266b069653079d9d"
+      },
+      "qa": "qa/parallel_qa_20260830/BACKEND_COMPLETE_R006_R007_R008_20260830.md",
+      "live_source_sha256": "a0d6bef05fbf00f191f29ab6f177359c91c33715bf94267ef7542df6049033ae",
+      "live_target_sha256": "c375692f2b5535717aeceeb956d2538b146b68239bdbc06b266b069653079d9d",
+      "status": "PASS"
+    },
+    "translation/diffyqs/ch-nonlin-systems.tex": {
+      "unit_id": "diffyqs.v6.11.canonical-file.ch-nonlin-systems-tex",
+      "source_component": {
+        "path": "source/diffyqs-v6.11/ch-nonlin-systems.tex",
+        "selector": "raw lines 1-2629 inclusive; complete canonical TeX file",
+        "sha256": "9af714bde1b6d84f45c7812829e1d5ad099a0866bd0f7d6588f5d2277edc7d22"
+      },
+      "target_component": {
+        "path": "translation/diffyqs/ch-nonlin-systems.tex",
+        "selector": "raw lines 1-2553 inclusive; complete canonical TeX file",
+        "sha256": "adee2f44b4a570b8f89f01c529d9bb9ebc38c0999ceb949360f4c075390003a1"
+      },
+      "qa": "qa/parallel_qa_20260830/BACKEND_COMPLETE_R006_R007_R008_20260830.md",
+      "live_source_sha256": "9af714bde1b6d84f45c7812829e1d5ad099a0866bd0f7d6588f5d2277edc7d22",
+      "live_target_sha256": "adee2f44b4a570b8f89f01c529d9bb9ebc38c0999ceb949360f4c075390003a1",
+      "status": "PASS"
+    },
+    "translation/diffyqs/ap-linear-algebra.tex": {
+      "unit_id": "diffyqs.v6.11.canonical-file.ap-linear-algebra-tex",
+      "source_component": {
+        "path": "source/diffyqs-v6.11/ap-linear-algebra.tex",
+        "selector": "raw lines 1-6925 inclusive; complete canonical TeX file",
+        "sha256": "0e631eb103c1762578e1b0f150d5c414c89177d155716d41b61b8b46642b6992"
+      },
+      "target_component": {
+        "path": "translation/diffyqs/ap-linear-algebra.tex",
+        "selector": "raw lines 1-6917 inclusive; complete canonical TeX file",
+        "sha256": "10b967e197369361166e7c0dcdfb97beb636b3c2db185abef8d70ea41e5d03a6"
+      },
+      "qa": "qa/parallel_qa_20260830/BACKEND_COMPLETE_R006_R007_R008_20260830.md",
+      "live_source_sha256": "0e631eb103c1762578e1b0f150d5c414c89177d155716d41b61b8b46642b6992",
+      "live_target_sha256": "10b967e197369361166e7c0dcdfb97beb636b3c2db185abef8d70ea41e5d03a6",
+      "status": "PASS"
+    },
+    "translation/diffyqs/ap-laplace-list.tex": {
+      "unit_id": "diffyqs.v6.11.canonical-file.ap-laplace-list-tex",
+      "source_component": {
+        "path": "source/diffyqs-v6.11/ap-laplace-list.tex",
+        "selector": "raw lines 1-148 inclusive; complete canonical TeX file",
+        "sha256": "cb122a8fb7a265d0f2482e6fc2c6ab82800727c00e843b63fdce86288c652632"
+      },
+      "target_component": {
+        "path": "translation/diffyqs/ap-laplace-list.tex",
+        "selector": "raw lines 1-148 inclusive; complete canonical TeX file",
+        "sha256": "dcd93b078941fec7e27e28d726589b768798c3a5e086457355a5a78e324844ef"
+      },
+      "qa": "qa/parallel_qa_20260830/BACKEND_COMPLETE_R006_R007_R008_20260830.md",
+      "live_source_sha256": "cb122a8fb7a265d0f2482e6fc2c6ab82800727c00e843b63fdce86288c652632",
+      "live_target_sha256": "dcd93b078941fec7e27e28d726589b768798c3a5e086457355a5a78e324844ef",
+      "status": "PASS"
+    },
+    "translation/complex-analysis/ca.tex": {
+      "unit_id": "ca.v1.9.canonical-file.ca-tex",
+      "source_component": {
+        "path": "source/ca-v1.9/ca.tex",
+        "selector": "raw lines 1-24197 inclusive; complete canonical TeX file",
+        "sha256": "a99ed1bfceca960f98abd08e7d3c4f20d907b2fa392c211b522c06283ac61935"
+      },
+      "target_component": {
+        "path": "translation/complex-analysis/ca.tex",
+        "selector": "raw lines 1-24210 inclusive; complete canonical TeX file",
+        "sha256": "99c46e59be5b319e72520290e8d3db9b6e260f8d147aa7b69adb06ac0779852e"
+      },
+      "qa": "qa/parallel_qa_20260830/BACKEND_COMPLETE_R006_R007_R008_20260830.md",
+      "live_source_sha256": "a99ed1bfceca960f98abd08e7d3c4f20d907b2fa392c211b522c06283ac61935",
+      "live_target_sha256": "99c46e59be5b319e72520290e8d3db9b6e260f8d147aa7b69adb06ac0779852e",
+      "status": "PASS"
+    },
+    "translation/complex-analysis/notations.tex": {
+      "unit_id": "ca.v1.9.canonical-file.notations-tex",
+      "source_component": {
+        "path": "source/ca-v1.9/notations.tex",
+        "selector": "raw lines 1-395 inclusive; complete canonical TeX file",
+        "sha256": "9a5758be3d15bac6f554c6dff5b8fc741c74cec342ac70889e4c0439a8ce8aec"
+      },
+      "target_component": {
+        "path": "translation/complex-analysis/notations.tex",
+        "selector": "raw lines 1-395 inclusive; complete canonical TeX file",
+        "sha256": "cac1ed0716b89016e51f9a0110fbfc58b6eee2e6a6ff875a3df62ef342e1aac3"
+      },
+      "qa": "qa/parallel_qa_20260830/BACKEND_COMPLETE_R006_R007_R008_20260830.md",
+      "live_source_sha256": "9a5758be3d15bac6f554c6dff5b8fc741c74cec342ac70889e4c0439a8ce8aec",
+      "live_target_sha256": "cac1ed0716b89016e51f9a0110fbfc58b6eee2e6a6ff875a3df62ef342e1aac3",
+      "status": "PASS"
+    }
+  },
+  "results": [
+    {
+      "hard_pass": true,
+      "status": "PASS",
+      "source": "source/diffyqs-v6.11/diffyqs.tex",
+      "target": "translation/diffyqs/diffyqs.tex",
+      "mapping": "translation_manifest",
+      "source_bytes": 15733,
+      "target_bytes": 17577,
+      "source_sha256": "d8a77c408fac7d67d0450a41d8bb18afc479e476d573eeeb1227bc448f4ab4e5",
+      "target_sha256": "565c3261c2bd6a83c3f54953b2443a215fd102f0a903bc610a623fc8007f01ae",
+      "labels": {
+        "status": "PASS",
+        "source_count": 1,
+        "target_count": 1,
+        "sequence_equal": true,
+        "target_duplicates": []
+      },
+      "references": {
+        "status": "PASS",
+        "source_count": 0,
+        "target_count": 0,
+        "semantic_identity_sequence_equal": true,
+        "approved_command_aliases": [],
+        "approved_hyperref_display_localizations": [],
+        "source_unresolved_in_scope": [],
+        "target_unresolved_in_scope": [],
+        "translation_introduced_unresolved": []
+      },
+      "environments": {
+        "status": "PASS",
+        "source_events": 6,
+        "target_events": 6,
+        "normalized_sequence_equal": true,
+        "source_stack_errors": [],
+        "target_stack_errors": [],
+        "approved_adaptations": []
+      },
+      "braces": {
+        "status": "PASS",
+        "mode": "independently_balanced",
+        "source_final_depth_minimum": [
+          0,
+          0
+        ],
+        "target_final_depth_minimum": [
+          0,
+          0
+        ]
+      },
+      "assets": {
+        "status": "PASS",
+        "source_calls": 2,
+        "target_calls": 2,
+        "semantic_call_sequence_equal_after_approved_adaptations": true,
+        "approved_argument_adaptations": [],
+        "target_resolved_concrete_calls": 2,
+        "target_dynamic_macro_calls": 0,
+        "target_unresolved": []
+      },
+      "formulas": {
+        "status": "PASS",
+        "delimiters": {
+          "status": "PASS",
+          "source_errors": [],
+          "target_errors": []
+        },
+        "display": {
+          "status": "PASS",
+          "source_count": 0,
+          "target_count": 0,
+          "source_sequence_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "target_sequence_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "inline": {
+          "status": "PASS",
+          "mode": "exact_after_localized_text_normalization",
+          "source_count_raw": 0,
+          "source_count_after_approved_prose_omissions": 0,
+          "target_count": 0,
+          "source_sequence_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "target_sequence_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "target_counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_formula_missing_count": 0,
+          "source_formula_missing_values": {},
+          "source_sequence_is_target_subsequence": true,
+          "localized_text_or_ordinal_differences": 0,
+          "approved_source_prose_omissions": [],
+          "approved_order_adaptation": null,
+          "target_only_atomic_typesetting": {
+            "status": "PASS",
+            "count": 0,
+            "all_atomic": true,
+            "counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "ordered_sequence_sha256_when_subsequence": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "values": {},
+            "reason": null
+          }
+        }
+      },
+      "placeholders": {
+        "status": "PASS",
+        "hits": []
+      },
+      "diagnostics_not_used_as_gates": {
+        "source_unescaped_dollars": 0,
+        "target_unescaped_dollars": 0,
+        "reason": "localized prose reflow and approved atomic-variable typesetting can change raw counts"
+      }
+    },
+    {
+      "hard_pass": true,
+      "status": "PASS",
+      "source": "source/diffyqs-v6.11/ch-intro.tex",
+      "target": "translation/diffyqs/ch-intro.tex",
+      "mapping": "translation_manifest",
+      "source_bytes": 41918,
+      "target_bytes": 43834,
+      "source_sha256": "c690f51ad02e77124727162df6c4895ba932b5f10d03643d2f227bcb65b61029",
+      "target_sha256": "b07545cc653d3729163d0d9170a02dcb467c4657fc7afaa19ed6f7a752d31b09",
+      "labels": {
+        "status": "PASS",
+        "source_count": 12,
+        "target_count": 12,
+        "sequence_equal": true,
+        "target_duplicates": []
+      },
+      "references": {
+        "status": "PASS",
+        "source_count": 101,
+        "target_count": 101,
+        "semantic_identity_sequence_equal": true,
+        "approved_command_aliases": [],
+        "approved_hyperref_display_localizations": [
+          {
+            "key": "furtherreading:chapter",
+            "source_display_sha256": "bd2e42f237b39fc195116b8e1606b7af14daf25b36e918b2341817bf4ddf2fd2",
+            "target_display_sha256": "a03595559603aea4edadc1099ee39b28cec724446861cb42d7178042b174e01a"
+          },
+          {
+            "key": "intro:chapter",
+            "source_display_sha256": "b605350bc00209520b7cd8f546322663356ba630708f71bbf30aead6b3dd608e",
+            "target_display_sha256": "2f7a11cf99b50ee3162cf02fad543a14853a9683e3de28aec79dddce8b6ca770"
+          },
+          {
+            "key": "intro:chapter",
+            "source_display_sha256": "b605350bc00209520b7cd8f546322663356ba630708f71bbf30aead6b3dd608e",
+            "target_display_sha256": "2f7a11cf99b50ee3162cf02fad543a14853a9683e3de28aec79dddce8b6ca770"
+          },
+          {
+            "key": "intro:chapter",
+            "source_display_sha256": "b605350bc00209520b7cd8f546322663356ba630708f71bbf30aead6b3dd608e",
+            "target_display_sha256": "2f7a11cf99b50ee3162cf02fad543a14853a9683e3de28aec79dddce8b6ca770"
+          },
+          {
+            "key": "intro:chapter",
+            "source_display_sha256": "b605350bc00209520b7cd8f546322663356ba630708f71bbf30aead6b3dd608e",
+            "target_display_sha256": "2f7a11cf99b50ee3162cf02fad543a14853a9683e3de28aec79dddce8b6ca770"
+          },
+          {
+            "key": "intro:chapter",
+            "source_display_sha256": "b605350bc00209520b7cd8f546322663356ba630708f71bbf30aead6b3dd608e",
+            "target_display_sha256": "2f7a11cf99b50ee3162cf02fad543a14853a9683e3de28aec79dddce8b6ca770"
+          }
+        ],
+        "source_unresolved_in_scope": [],
+        "target_unresolved_in_scope": [],
+        "translation_introduced_unresolved": []
+      },
+      "environments": {
+        "status": "PASS",
+        "source_events": 156,
+        "target_events": 156,
+        "normalized_sequence_equal": true,
+        "source_stack_errors": [],
+        "target_stack_errors": [],
+        "approved_adaptations": [
+          {
+            "source": [
+              "begin",
+              "mywrapfigsimp"
+            ],
+            "target": [
+              "begin",
+              "center"
+            ],
+            "approved": true
+          },
+          {
+            "source": [
+              "end",
+              "mywrapfigsimp"
+            ],
+            "target": [
+              "end",
+              "center"
+            ],
+            "approved": true
+          },
+          {
+            "source": [
+              "begin",
+              "mywrapfig"
+            ],
+            "target": [
+              "begin",
+              "myfig"
+            ],
+            "approved": true
+          },
+          {
+            "source": [
+              "end",
+              "mywrapfig"
+            ],
+            "target": [
+              "end",
+              "myfig"
+            ],
+            "approved": true
+          }
+        ]
+      },
+      "braces": {
+        "status": "PASS",
+        "mode": "independently_balanced",
+        "source_final_depth_minimum": [
+          0,
+          0
+        ],
+        "target_final_depth_minimum": [
+          0,
+          0
+        ]
+      },
+      "assets": {
+        "status": "PASS",
+        "source_calls": 3,
+        "target_calls": 3,
+        "semantic_call_sequence_equal_after_approved_adaptations": true,
+        "approved_argument_adaptations": [
+          {
+            "index": 2,
+            "source": [
+              "diffyincludegraphics",
+              "",
+              "intro-plotbact",
+              [
+                "width=3in",
+                "width=4.5in"
+              ]
+            ],
+            "target": [
+              "diffyincludegraphics",
+              "",
+              "intro-plotbact",
+              [
+                "width=4.5in",
+                "width=4.5in"
+              ]
+            ],
+            "approved": true,
+            "classification": "R007 intro graph centered reflow"
+          }
+        ],
+        "target_resolved_concrete_calls": 3,
+        "target_dynamic_macro_calls": 0,
+        "target_unresolved": []
+      },
+      "formulas": {
+        "status": "PASS",
+        "delimiters": {
+          "status": "PASS",
+          "source_errors": [],
+          "target_errors": []
+        },
+        "display": {
+          "status": "PASS",
+          "source_count": 38,
+          "target_count": 38,
+          "source_sequence_sha256": "d7e27a9b33813cb7b3bb17096a1197b28be6be93f3782f780188e6184da70402",
+          "target_sequence_sha256": "d7e27a9b33813cb7b3bb17096a1197b28be6be93f3782f780188e6184da70402"
+        },
+        "inline": {
+          "status": "PASS",
+          "mode": "exact_after_localized_text_normalization",
+          "source_count_raw": 195,
+          "source_count_after_approved_prose_omissions": 195,
+          "target_count": 195,
+          "source_sequence_sha256": "7379b9544adce1043d9b1fce74552bfb547987baf2cb0ee37b2b678b6f6e37e1",
+          "target_sequence_sha256": "7379b9544adce1043d9b1fce74552bfb547987baf2cb0ee37b2b678b6f6e37e1",
+          "source_counter_sha256": "9eef7445907984a45378015cfd73ba71a25317c99f46985cfca437032721846a",
+          "target_counter_sha256": "9eef7445907984a45378015cfd73ba71a25317c99f46985cfca437032721846a",
+          "source_formula_missing_count": 0,
+          "source_formula_missing_values": {},
+          "source_sequence_is_target_subsequence": true,
+          "localized_text_or_ordinal_differences": 0,
+          "approved_source_prose_omissions": [],
+          "approved_order_adaptation": null,
+          "target_only_atomic_typesetting": {
+            "status": "PASS",
+            "count": 0,
+            "all_atomic": true,
+            "counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "ordered_sequence_sha256_when_subsequence": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "values": {},
+            "reason": null
+          }
+        }
+      },
+      "placeholders": {
+        "status": "PASS",
+        "hits": []
+      },
+      "diagnostics_not_used_as_gates": {
+        "source_unescaped_dollars": 390,
+        "target_unescaped_dollars": 390,
+        "reason": "localized prose reflow and approved atomic-variable typesetting can change raw counts"
+      }
+    },
+    {
+      "hard_pass": true,
+      "status": "PASS",
+      "source": "source/diffyqs-v6.11/ch-first-order-ode.tex",
+      "target": "translation/diffyqs/ch-first-order-ode.tex",
+      "mapping": "translation_manifest",
+      "source_bytes": 139339,
+      "target_bytes": 149111,
+      "source_sha256": "ff4ce0721f080eaf4c6211e83e47814b1ab1b1272030eb4789b88532172aea45",
+      "target_sha256": "a5ca8df9afcae2390ce9e0ae70941b2c950c4b2e2a990bc9e53a06acb7a0b71a",
+      "labels": {
+        "status": "PASS",
+        "source_count": 48,
+        "target_count": 48,
+        "sequence_equal": true,
+        "target_duplicates": []
+      },
+      "references": {
+        "status": "PASS",
+        "source_count": 65,
+        "target_count": 65,
+        "semantic_identity_sequence_equal": true,
+        "approved_command_aliases": [
+          {
+            "source_command": "figurevref",
+            "target_command": "figureref",
+            "key": "fopde:charcurvecurvy"
+          },
+          {
+            "source_command": "figurevref",
+            "target_command": "figureref",
+            "key": "fopde:surfaceplot"
+          }
+        ],
+        "approved_hyperref_display_localizations": [],
+        "source_unresolved_in_scope": [],
+        "target_unresolved_in_scope": [],
+        "translation_introduced_unresolved": []
+      },
+      "environments": {
+        "status": "PASS",
+        "source_events": 894,
+        "target_events": 894,
+        "normalized_sequence_equal": true,
+        "source_stack_errors": [],
+        "target_stack_errors": [],
+        "approved_adaptations": []
+      },
+      "braces": {
+        "status": "PASS",
+        "mode": "independently_balanced",
+        "source_final_depth_minimum": [
+          0,
+          0
+        ],
+        "target_final_depth_minimum": [
+          0,
+          0
+        ]
+      },
+      "assets": {
+        "status": "PASS",
+        "source_calls": 33,
+        "target_calls": 33,
+        "semantic_call_sequence_equal_after_approved_adaptations": true,
+        "approved_argument_adaptations": [],
+        "target_resolved_concrete_calls": 33,
+        "target_dynamic_macro_calls": 0,
+        "target_unresolved": []
+      },
+      "formulas": {
+        "status": "PASS",
+        "delimiters": {
+          "status": "PASS",
+          "source_errors": [],
+          "target_errors": []
+        },
+        "display": {
+          "status": "PASS",
+          "source_count": 204,
+          "target_count": 204,
+          "source_sequence_sha256": "5b964f81ef756be14190a2ff65d0b99b865fbaaad0cfc30408a0c889fb2722fb",
+          "target_sequence_sha256": "5b964f81ef756be14190a2ff65d0b99b865fbaaad0cfc30408a0c889fb2722fb"
+        },
+        "inline": {
+          "status": "PASS",
+          "mode": "source_multiset_plus_frozen_atomic_prose_typesetting",
+          "source_count_raw": 1369,
+          "source_count_after_approved_prose_omissions": 1369,
+          "target_count": 1440,
+          "source_sequence_sha256": "b9b1a51d49428b5b6e12d72061e1d95061952623b38df2aed5e515d76bdb9a71",
+          "target_sequence_sha256": "44ec02bea4f0d75752f6ffdc078ebd52284621337ba5e92b5b13a73321cfe18c",
+          "source_counter_sha256": "eedaea3f04f778ffca452120061fc4da435c5fbd174e8f3f89422c3ca32416cd",
+          "target_counter_sha256": "0643223d0f2309f5078d3ff9c190491f3c40056908fcafb71e215f39ac4074e5",
+          "source_formula_missing_count": 0,
+          "source_formula_missing_values": {},
+          "source_sequence_is_target_subsequence": true,
+          "localized_text_or_ordinal_differences": 0,
+          "approved_source_prose_omissions": [],
+          "approved_order_adaptation": null,
+          "target_only_atomic_typesetting": {
+            "status": "PASS",
+            "count": 71,
+            "all_atomic": true,
+            "counter_sha256": "e2116c28021404e24b220f2805a483218beb09e503328debcfa1447879a0236a",
+            "ordered_sequence_sha256_when_subsequence": "619629511fcb46bb88e3abc135675c85f5e7ab3761b1291654ec075bce3706b2",
+            "values": {
+              "(0,0)": 1,
+              "(1,2)": 1,
+              "(5,10)": 1,
+              "(x": 1,
+              "(x,t)": 1,
+              "s": 1,
+              "s)": 1,
+              "s,t": 1,
+              "t": 8,
+              "u": 1,
+              "x": 35,
+              "xt": 2,
+              "xy": 3,
+              "y": 14
+            },
+            "reason": "variables typeset as math in translated prose and figure descriptions"
+          }
+        }
+      },
+      "placeholders": {
+        "status": "PASS",
+        "hits": []
+      },
+      "diagnostics_not_used_as_gates": {
+        "source_unescaped_dollars": 2742,
+        "target_unescaped_dollars": 2884,
+        "reason": "localized prose reflow and approved atomic-variable typesetting can change raw counts"
+      }
+    },
+    {
+      "hard_pass": true,
+      "status": "PASS",
+      "source": "source/diffyqs-v6.11/ch-higher-order-ode.tex",
+      "target": "translation/diffyqs/ch-higher-order-ode.tex",
+      "mapping": "translation_manifest",
+      "source_bytes": 110152,
+      "target_bytes": 107740,
+      "source_sha256": "20d3ab8372c7f02a61b095ba6ac39c076bce83665146c6ad69700b4aa846f142",
+      "target_sha256": "e8852fc4b4728d34e384826092f5c26cb0a0476b90abe9360f3dd49fe87d6020",
+      "labels": {
+        "status": "PASS",
+        "source_count": 33,
+        "target_count": 33,
+        "sequence_equal": true,
+        "target_duplicates": []
+      },
+      "references": {
+        "status": "PASS",
+        "source_count": 59,
+        "target_count": 59,
+        "semantic_identity_sequence_equal": true,
+        "approved_command_aliases": [],
+        "approved_hyperref_display_localizations": [
+          {
+            "key": "eulersformula",
+            "source_display_sha256": "cc413953954117eb965f1ff48fc6c5195d85496a3a7c0370f3a0bc9018fbce15",
+            "target_display_sha256": "8c0a31a873e8f71f4017e0469107ac9466582f26041d1294e8780471bc9f917b"
+          }
+        ],
+        "source_unresolved_in_scope": [],
+        "target_unresolved_in_scope": [],
+        "translation_introduced_unresolved": []
+      },
+      "environments": {
+        "status": "PASS",
+        "source_events": 676,
+        "target_events": 676,
+        "normalized_sequence_equal": true,
+        "source_stack_errors": [],
+        "target_stack_errors": [],
+        "approved_adaptations": []
+      },
+      "braces": {
+        "status": "PASS",
+        "mode": "independently_balanced",
+        "source_final_depth_minimum": [
+          0,
+          0
+        ],
+        "target_final_depth_minimum": [
+          0,
+          0
+        ]
+      },
+      "assets": {
+        "status": "PASS",
+        "source_calls": 12,
+        "target_calls": 12,
+        "semantic_call_sequence_equal_after_approved_adaptations": true,
+        "approved_argument_adaptations": [],
+        "target_resolved_concrete_calls": 12,
+        "target_dynamic_macro_calls": 0,
+        "target_unresolved": []
+      },
+      "formulas": {
+        "status": "PASS",
+        "delimiters": {
+          "status": "PASS",
+          "source_errors": [],
+          "target_errors": []
+        },
+        "display": {
+          "status": "PASS",
+          "source_count": 179,
+          "target_count": 179,
+          "source_sequence_sha256": "fef068ad8962137012b74d5ca87eac4d13cfba3b1bd513f32bf9702dd707a2ca",
+          "target_sequence_sha256": "fef068ad8962137012b74d5ca87eac4d13cfba3b1bd513f32bf9702dd707a2ca"
+        },
+        "inline": {
+          "status": "PASS",
+          "mode": "exact_after_localized_text_normalization",
+          "source_count_raw": 1075,
+          "source_count_after_approved_prose_omissions": 1075,
+          "target_count": 1075,
+          "source_sequence_sha256": "afb15e6ff7c900a30d084101fbc698de21d8ba39c358e5c0b935a2b72b164de1",
+          "target_sequence_sha256": "afb15e6ff7c900a30d084101fbc698de21d8ba39c358e5c0b935a2b72b164de1",
+          "source_counter_sha256": "834c6e537d4662cc2290ed44b53e2051f218a9b61104c39b12b66111481bd5f0",
+          "target_counter_sha256": "834c6e537d4662cc2290ed44b53e2051f218a9b61104c39b12b66111481bd5f0",
+          "source_formula_missing_count": 0,
+          "source_formula_missing_values": {},
+          "source_sequence_is_target_subsequence": true,
+          "localized_text_or_ordinal_differences": 2,
+          "approved_source_prose_omissions": [],
+          "approved_order_adaptation": null,
+          "target_only_atomic_typesetting": {
+            "status": "PASS",
+            "count": 0,
+            "all_atomic": true,
+            "counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "ordered_sequence_sha256_when_subsequence": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "values": {},
+            "reason": null
+          }
+        }
+      },
+      "placeholders": {
+        "status": "PASS",
+        "hits": []
+      },
+      "diagnostics_not_used_as_gates": {
+        "source_unescaped_dollars": 2150,
+        "target_unescaped_dollars": 2150,
+        "reason": "localized prose reflow and approved atomic-variable typesetting can change raw counts"
+      }
+    },
+    {
+      "hard_pass": true,
+      "status": "PASS",
+      "source": "source/diffyqs-v6.11/ch-systems.tex",
+      "target": "translation/diffyqs/ch-systems.tex",
+      "mapping": "translation_manifest",
+      "source_bytes": 206722,
+      "target_bytes": 223415,
+      "source_sha256": "f17c157d134a85637d48496d379141d285a7f3ede051827c5b828be0b3fefe64",
+      "target_sha256": "e760733fe9c82b38441f6bc60e71a42da9117ad0dd08fe0420f963ff85e3f749",
+      "labels": {
+        "status": "PASS",
+        "source_count": 46,
+        "target_count": 46,
+        "sequence_equal": true,
+        "target_duplicates": []
+      },
+      "references": {
+        "status": "PASS",
+        "source_count": 86,
+        "target_count": 86,
+        "semantic_identity_sequence_equal": true,
+        "approved_command_aliases": [],
+        "approved_hyperref_display_localizations": [
+          {
+            "key": "eulersformula",
+            "source_display_sha256": "cc413953954117eb965f1ff48fc6c5195d85496a3a7c0370f3a0bc9018fbce15",
+            "target_display_sha256": "261f34b408545d9c20423515455d68780c76e4b5021e8ec1f409224a29249b3c"
+          },
+          {
+            "key": "eulersformula",
+            "source_display_sha256": "cc413953954117eb965f1ff48fc6c5195d85496a3a7c0370f3a0bc9018fbce15",
+            "target_display_sha256": "8c0a31a873e8f71f4017e0469107ac9466582f26041d1294e8780471bc9f917b"
+          },
+          {
+            "key": "eulersformula",
+            "source_display_sha256": "cc413953954117eb965f1ff48fc6c5195d85496a3a7c0370f3a0bc9018fbce15",
+            "target_display_sha256": "261f34b408545d9c20423515455d68780c76e4b5021e8ec1f409224a29249b3c"
+          },
+          {
+            "key": "eulersformula",
+            "source_display_sha256": "cc413953954117eb965f1ff48fc6c5195d85496a3a7c0370f3a0bc9018fbce15",
+            "target_display_sha256": "261f34b408545d9c20423515455d68780c76e4b5021e8ec1f409224a29249b3c"
+          }
+        ],
+        "source_unresolved_in_scope": [],
+        "target_unresolved_in_scope": [],
+        "translation_introduced_unresolved": []
+      },
+      "environments": {
+        "status": "PASS",
+        "source_events": 2192,
+        "target_events": 2192,
+        "normalized_sequence_equal": true,
+        "source_stack_errors": [],
+        "target_stack_errors": [],
+        "approved_adaptations": []
+      },
+      "braces": {
+        "status": "PASS",
+        "mode": "independently_balanced",
+        "source_final_depth_minimum": [
+          0,
+          0
+        ],
+        "target_final_depth_minimum": [
+          0,
+          0
+        ]
+      },
+      "assets": {
+        "status": "PASS",
+        "source_calls": 19,
+        "target_calls": 19,
+        "semantic_call_sequence_equal_after_approved_adaptations": true,
+        "approved_argument_adaptations": [],
+        "target_resolved_concrete_calls": 19,
+        "target_dynamic_macro_calls": 0,
+        "target_unresolved": []
+      },
+      "formulas": {
+        "status": "PASS",
+        "delimiters": {
+          "status": "PASS",
+          "source_errors": [],
+          "target_errors": []
+        },
+        "display": {
+          "status": "PASS",
+          "source_count": 282,
+          "target_count": 282,
+          "source_sequence_sha256": "635ba575c5dbcd24dd2266f3d20f484cb4daf5614d543268d59828892a36b697",
+          "target_sequence_sha256": "635ba575c5dbcd24dd2266f3d20f484cb4daf5614d543268d59828892a36b697"
+        },
+        "inline": {
+          "status": "PASS",
+          "mode": "exact_after_localized_text_normalization",
+          "source_count_raw": 1681,
+          "source_count_after_approved_prose_omissions": 1681,
+          "target_count": 1681,
+          "source_sequence_sha256": "b3f706b0cee1c6b307688a5c804abd51426fb4541ee2755723510dfa6d6410d9",
+          "target_sequence_sha256": "b3f706b0cee1c6b307688a5c804abd51426fb4541ee2755723510dfa6d6410d9",
+          "source_counter_sha256": "026b5b87de1f7e4aa238d644d993b4cd195662078658462b1d9fe412b633216d",
+          "target_counter_sha256": "026b5b87de1f7e4aa238d644d993b4cd195662078658462b1d9fe412b633216d",
+          "source_formula_missing_count": 0,
+          "source_formula_missing_values": {},
+          "source_sequence_is_target_subsequence": true,
+          "localized_text_or_ordinal_differences": 0,
+          "approved_source_prose_omissions": [],
+          "approved_order_adaptation": null,
+          "target_only_atomic_typesetting": {
+            "status": "PASS",
+            "count": 0,
+            "all_atomic": true,
+            "counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "ordered_sequence_sha256_when_subsequence": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "values": {},
+            "reason": null
+          }
+        }
+      },
+      "placeholders": {
+        "status": "PASS",
+        "hits": []
+      },
+      "diagnostics_not_used_as_gates": {
+        "source_unescaped_dollars": 3362,
+        "target_unescaped_dollars": 3362,
+        "reason": "localized prose reflow and approved atomic-variable typesetting can change raw counts"
+      }
+    },
+    {
+      "hard_pass": true,
+      "status": "PASS",
+      "source": "source/diffyqs-v6.11/ch-eigenvalue-probs.tex",
+      "target": "translation/diffyqs/ch-eigenvalue-probs.tex",
+      "mapping": "translation_manifest",
+      "source_bytes": 50598,
+      "target_bytes": 54255,
+      "source_sha256": "b8085bcb7c855faa43eaae6cdc73a3d2091060715bf1db47ae7c0d047ae58858",
+      "target_sha256": "d99a10dfdd36d4a806407233879c268763a069b1a99d8262a914929cf8a58e2a",
+      "labels": {
+        "status": "PASS",
+        "source_count": 23,
+        "target_count": 23,
+        "sequence_equal": true,
+        "target_duplicates": []
+      },
+      "references": {
+        "status": "PASS",
+        "source_count": 49,
+        "target_count": 49,
+        "semantic_identity_sequence_equal": true,
+        "approved_command_aliases": [],
+        "approved_hyperref_display_localizations": [
+          {
+            "key": "eulersformula",
+            "source_display_sha256": "cc413953954117eb965f1ff48fc6c5195d85496a3a7c0370f3a0bc9018fbce15",
+            "target_display_sha256": "261f34b408545d9c20423515455d68780c76e4b5021e8ec1f409224a29249b3c"
+          },
+          {
+            "key": "eulersformula",
+            "source_display_sha256": "cc413953954117eb965f1ff48fc6c5195d85496a3a7c0370f3a0bc9018fbce15",
+            "target_display_sha256": "261f34b408545d9c20423515455d68780c76e4b5021e8ec1f409224a29249b3c"
+          },
+          {
+            "key": "eulersformula",
+            "source_display_sha256": "cc413953954117eb965f1ff48fc6c5195d85496a3a7c0370f3a0bc9018fbce15",
+            "target_display_sha256": "261f34b408545d9c20423515455d68780c76e4b5021e8ec1f409224a29249b3c"
+          },
+          {
+            "key": "eulersformula",
+            "source_display_sha256": "cc413953954117eb965f1ff48fc6c5195d85496a3a7c0370f3a0bc9018fbce15",
+            "target_display_sha256": "261f34b408545d9c20423515455d68780c76e4b5021e8ec1f409224a29249b3c"
+          }
+        ],
+        "source_unresolved_in_scope": [],
+        "target_unresolved_in_scope": [],
+        "translation_introduced_unresolved": []
+      },
+      "environments": {
+        "status": "PASS",
+        "source_events": 280,
+        "target_events": 280,
+        "normalized_sequence_equal": true,
+        "source_stack_errors": [],
+        "target_stack_errors": [],
+        "approved_adaptations": []
+      },
+      "braces": {
+        "status": "PASS",
+        "mode": "independently_balanced",
+        "source_final_depth_minimum": [
+          0,
+          0
+        ],
+        "target_final_depth_minimum": [
+          0,
+          0
+        ]
+      },
+      "assets": {
+        "status": "PASS",
+        "source_calls": 5,
+        "target_calls": 5,
+        "semantic_call_sequence_equal_after_approved_adaptations": true,
+        "approved_argument_adaptations": [],
+        "target_resolved_concrete_calls": 5,
+        "target_dynamic_macro_calls": 0,
+        "target_unresolved": []
+      },
+      "formulas": {
+        "status": "PASS",
+        "delimiters": {
+          "status": "PASS",
+          "source_errors": [],
+          "target_errors": []
+        },
+        "display": {
+          "status": "PASS",
+          "source_count": 89,
+          "target_count": 89,
+          "source_sequence_sha256": "66a159524099440369a065a117497696d84b2940b5b400992db31adb6400468e",
+          "target_sequence_sha256": "66a159524099440369a065a117497696d84b2940b5b400992db31adb6400468e"
+        },
+        "inline": {
+          "status": "PASS",
+          "mode": "exact_after_localized_text_normalization",
+          "source_count_raw": 459,
+          "source_count_after_approved_prose_omissions": 459,
+          "target_count": 459,
+          "source_sequence_sha256": "e3c74210360206ec067ebce3a16716e875540cfc412ebb5a4b932bfcc26aeda7",
+          "target_sequence_sha256": "e3c74210360206ec067ebce3a16716e875540cfc412ebb5a4b932bfcc26aeda7",
+          "source_counter_sha256": "4ba618a044550bd65a65d209b5649931b58980ae6f8deed60d5292bcd9ed5191",
+          "target_counter_sha256": "4ba618a044550bd65a65d209b5649931b58980ae6f8deed60d5292bcd9ed5191",
+          "source_formula_missing_count": 0,
+          "source_formula_missing_values": {},
+          "source_sequence_is_target_subsequence": true,
+          "localized_text_or_ordinal_differences": 3,
+          "approved_source_prose_omissions": [],
+          "approved_order_adaptation": null,
+          "target_only_atomic_typesetting": {
+            "status": "PASS",
+            "count": 0,
+            "all_atomic": true,
+            "counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "ordered_sequence_sha256_when_subsequence": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "values": {},
+            "reason": null
+          }
+        }
+      },
+      "placeholders": {
+        "status": "PASS",
+        "hits": []
+      },
+      "diagnostics_not_used_as_gates": {
+        "source_unescaped_dollars": 918,
+        "target_unescaped_dollars": 918,
+        "reason": "localized prose reflow and approved atomic-variable typesetting can change raw counts"
+      }
+    },
+    {
+      "hard_pass": true,
+      "status": "PASS",
+      "source": "source/diffyqs-v6.11/ch-laplace.tex",
+      "target": "translation/diffyqs/ch-laplace.tex",
+      "mapping": "translation_manifest",
+      "source_bytes": 79258,
+      "target_bytes": 85747,
+      "source_sha256": "df5ac427b05b3ebb0fa677e8a25aedd5231e52ce23790e3d52ac6e88add9db33",
+      "target_sha256": "5c309da01fd954876375363ef226bef3d274cf3f8ac35803df261cd8563c9466",
+      "labels": {
+        "status": "PASS",
+        "source_count": 24,
+        "target_count": 24,
+        "sequence_equal": true,
+        "target_duplicates": []
+      },
+      "references": {
+        "status": "PASS",
+        "source_count": 30,
+        "target_count": 30,
+        "semantic_identity_sequence_equal": true,
+        "approved_command_aliases": [],
+        "approved_hyperref_display_localizations": [],
+        "source_unresolved_in_scope": [],
+        "target_unresolved_in_scope": [],
+        "translation_introduced_unresolved": []
+      },
+      "environments": {
+        "status": "PASS",
+        "source_events": 632,
+        "target_events": 632,
+        "normalized_sequence_equal": true,
+        "source_stack_errors": [],
+        "target_stack_errors": [],
+        "approved_adaptations": []
+      },
+      "braces": {
+        "status": "PASS",
+        "mode": "independently_balanced",
+        "source_final_depth_minimum": [
+          0,
+          0
+        ],
+        "target_final_depth_minimum": [
+          0,
+          0
+        ]
+      },
+      "assets": {
+        "status": "PASS",
+        "source_calls": 7,
+        "target_calls": 7,
+        "semantic_call_sequence_equal_after_approved_adaptations": true,
+        "approved_argument_adaptations": [],
+        "target_resolved_concrete_calls": 7,
+        "target_dynamic_macro_calls": 0,
+        "target_unresolved": []
+      },
+      "formulas": {
+        "status": "PASS",
+        "delimiters": {
+          "status": "PASS",
+          "source_errors": [],
+          "target_errors": []
+        },
+        "display": {
+          "status": "PASS",
+          "source_count": 181,
+          "target_count": 181,
+          "source_sequence_sha256": "575d74f689bbc108000fa4aec129e955f7ee2a7a9101dcd66cc67d8f6c34bcd5",
+          "target_sequence_sha256": "575d74f689bbc108000fa4aec129e955f7ee2a7a9101dcd66cc67d8f6c34bcd5"
+        },
+        "inline": {
+          "status": "PASS",
+          "mode": "exact_after_localized_text_normalization",
+          "source_count_raw": 698,
+          "source_count_after_approved_prose_omissions": 698,
+          "target_count": 698,
+          "source_sequence_sha256": "9ad82bcf726dc993bf5a4e8744239fa882ffcd80b071f35200fa8f123ec5e6ad",
+          "target_sequence_sha256": "9ad82bcf726dc993bf5a4e8744239fa882ffcd80b071f35200fa8f123ec5e6ad",
+          "source_counter_sha256": "ef8aaa1a054ca3a60c1ad4d10f74417b44e3d13d475a3fde9adfb2fb5d3db144",
+          "target_counter_sha256": "ef8aaa1a054ca3a60c1ad4d10f74417b44e3d13d475a3fde9adfb2fb5d3db144",
+          "source_formula_missing_count": 0,
+          "source_formula_missing_values": {},
+          "source_sequence_is_target_subsequence": true,
+          "localized_text_or_ordinal_differences": 1,
+          "approved_source_prose_omissions": [],
+          "approved_order_adaptation": null,
+          "target_only_atomic_typesetting": {
+            "status": "PASS",
+            "count": 0,
+            "all_atomic": true,
+            "counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "ordered_sequence_sha256_when_subsequence": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "values": {},
+            "reason": null
+          }
+        }
+      },
+      "placeholders": {
+        "status": "PASS",
+        "hits": []
+      },
+      "diagnostics_not_used_as_gates": {
+        "source_unescaped_dollars": 1402,
+        "target_unescaped_dollars": 1402,
+        "reason": "localized prose reflow and approved atomic-variable typesetting can change raw counts"
+      }
+    },
+    {
+      "hard_pass": true,
+      "status": "PASS",
+      "source": "source/diffyqs-v6.11/ch-power-ser.tex",
+      "target": "translation/diffyqs/ch-power-ser.tex",
+      "mapping": "translation_manifest",
+      "source_bytes": 57870,
+      "target_bytes": 61169,
+      "source_sha256": "6eaef484f034bbc2fb887060464b24763e76a62eb4e4c57f87b6e6b36f287abf",
+      "target_sha256": "6daa06012fd2f2cc2f10d52565259e1bc3049e889eca5da552c386ee1f653770",
+      "labels": {
+        "status": "PASS",
+        "source_count": 14,
+        "target_count": 14,
+        "sequence_equal": true,
+        "target_duplicates": []
+      },
+      "references": {
+        "status": "PASS",
+        "source_count": 26,
+        "target_count": 26,
+        "semantic_identity_sequence_equal": true,
+        "approved_command_aliases": [],
+        "approved_hyperref_display_localizations": [],
+        "source_unresolved_in_scope": [],
+        "target_unresolved_in_scope": [],
+        "translation_introduced_unresolved": []
+      },
+      "environments": {
+        "status": "PASS",
+        "source_events": 394,
+        "target_events": 394,
+        "normalized_sequence_equal": true,
+        "source_stack_errors": [],
+        "target_stack_errors": [],
+        "approved_adaptations": []
+      },
+      "braces": {
+        "status": "PASS",
+        "mode": "independently_balanced",
+        "source_final_depth_minimum": [
+          0,
+          0
+        ],
+        "target_final_depth_minimum": [
+          0,
+          0
+        ]
+      },
+      "assets": {
+        "status": "PASS",
+        "source_calls": 4,
+        "target_calls": 4,
+        "semantic_call_sequence_equal_after_approved_adaptations": true,
+        "approved_argument_adaptations": [],
+        "target_resolved_concrete_calls": 4,
+        "target_dynamic_macro_calls": 0,
+        "target_unresolved": []
+      },
+      "formulas": {
+        "status": "PASS",
+        "delimiters": {
+          "status": "PASS",
+          "source_errors": [],
+          "target_errors": []
+        },
+        "display": {
+          "status": "PASS",
+          "source_count": 121,
+          "target_count": 121,
+          "source_sequence_sha256": "aa2040b87bbbea90738eca461d639cdeff31f31ddef38369b12154a399d96938",
+          "target_sequence_sha256": "aa2040b87bbbea90738eca461d639cdeff31f31ddef38369b12154a399d96938"
+        },
+        "inline": {
+          "status": "PASS",
+          "mode": "approved_localized_prose_order",
+          "source_count_raw": 498,
+          "source_count_after_approved_prose_omissions": 498,
+          "target_count": 498,
+          "source_sequence_sha256": "6dbd9a326ecd708891583977fed8a2a2b7e9289a368d3cd74c409dcc501658a3",
+          "target_sequence_sha256": "531a1cef6b1141b08f6fae72a852565150cf6af4baa5475264e997fe85c8cdcc",
+          "source_counter_sha256": "e9128c95ac1bdec4919609e63549e3e60888a79cb14e990b316956da572783bb",
+          "target_counter_sha256": "e9128c95ac1bdec4919609e63549e3e60888a79cb14e990b316956da572783bb",
+          "source_formula_missing_count": 0,
+          "source_formula_missing_values": {},
+          "source_sequence_is_target_subsequence": false,
+          "localized_text_or_ordinal_differences": 0,
+          "approved_source_prose_omissions": [],
+          "approved_order_adaptation": {
+            "kind": "adjacent_prose_order_swap",
+            "source_index": 28,
+            "source": [
+              "x_1",
+              "x_0"
+            ],
+            "target": [
+              "x_0",
+              "x_1"
+            ]
+          },
+          "target_only_atomic_typesetting": {
+            "status": "PASS",
+            "count": 0,
+            "all_atomic": true,
+            "counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "ordered_sequence_sha256_when_subsequence": null,
+            "values": {},
+            "reason": null
+          }
+        }
+      },
+      "placeholders": {
+        "status": "PASS",
+        "hits": []
+      },
+      "diagnostics_not_used_as_gates": {
+        "source_unescaped_dollars": 996,
+        "target_unescaped_dollars": 996,
+        "reason": "localized prose reflow and approved atomic-variable typesetting can change raw counts"
+      }
+    },
+    {
+      "hard_pass": true,
+      "status": "PASS",
+      "source": "source/diffyqs-v6.11/ch-fourier-and-pde.tex",
+      "target": "translation/diffyqs/ch-fourier-and-pde.tex",
+      "mapping": "translation_manifest",
+      "source_bytes": 214850,
+      "target_bytes": 225593,
+      "source_sha256": "a0d6bef05fbf00f191f29ab6f177359c91c33715bf94267ef7542df6049033ae",
+      "target_sha256": "c375692f2b5535717aeceeb956d2538b146b68239bdbc06b266b069653079d9d",
+      "labels": {
+        "status": "PASS",
+        "source_count": 75,
+        "target_count": 75,
+        "sequence_equal": true,
+        "target_duplicates": []
+      },
+      "references": {
+        "status": "PASS",
+        "source_count": 122,
+        "target_count": 122,
+        "semantic_identity_sequence_equal": true,
+        "approved_command_aliases": [],
+        "approved_hyperref_display_localizations": [
+          {
+            "key": "subsection:fourfundamental",
+            "source_display_sha256": "5fd40cc866828b40cbb0a7a3fe5893f7c99f1542c42020169e79efbcf7654510",
+            "target_display_sha256": "8d0eca87b9e2caf0355e6749bdf17ac5ac537cf5c94b5020c88c0093c3a8b38b"
+          }
+        ],
+        "source_unresolved_in_scope": [],
+        "target_unresolved_in_scope": [],
+        "translation_introduced_unresolved": []
+      },
+      "environments": {
+        "status": "PASS",
+        "source_events": 1332,
+        "target_events": 1332,
+        "normalized_sequence_equal": true,
+        "source_stack_errors": [],
+        "target_stack_errors": [],
+        "approved_adaptations": []
+      },
+      "braces": {
+        "status": "PASS",
+        "mode": "independently_balanced",
+        "source_final_depth_minimum": [
+          0,
+          0
+        ],
+        "target_final_depth_minimum": [
+          0,
+          0
+        ]
+      },
+      "assets": {
+        "status": "PASS",
+        "source_calls": 35,
+        "target_calls": 35,
+        "semantic_call_sequence_equal_after_approved_adaptations": true,
+        "approved_argument_adaptations": [],
+        "target_resolved_concrete_calls": 35,
+        "target_dynamic_macro_calls": 0,
+        "target_unresolved": []
+      },
+      "formulas": {
+        "status": "PASS",
+        "delimiters": {
+          "status": "PASS",
+          "source_errors": [],
+          "target_errors": []
+        },
+        "display": {
+          "status": "PASS",
+          "source_count": 353,
+          "target_count": 353,
+          "source_sequence_sha256": "4cc9f58063fd1c946c72a1c7d6d766f81d1fe6e6f430ba75d0a1ac7303ff2348",
+          "target_sequence_sha256": "4cc9f58063fd1c946c72a1c7d6d766f81d1fe6e6f430ba75d0a1ac7303ff2348"
+        },
+        "inline": {
+          "status": "PASS",
+          "mode": "source_multiset_plus_frozen_atomic_prose_typesetting",
+          "source_count_raw": 1747,
+          "source_count_after_approved_prose_omissions": 1746,
+          "target_count": 1836,
+          "source_sequence_sha256": "732c19133733313564a40941ebd423d4bbd8941ac5d3f425b3361c54aa2f9827",
+          "target_sequence_sha256": "3d3f9eb5e37a292dcce1ce605ffc79af428581e6b9c646580a0ebee4bc3aa7b9",
+          "source_counter_sha256": "cbc2f7ed88d1de34d4c7abc8c43dd45b405420fb16606144f7d730660d71009d",
+          "target_counter_sha256": "cdd98756f2a2a32da777a61b91f03dcacb905b065f612849ea3a07c1dca93ea0",
+          "source_formula_missing_count": 0,
+          "source_formula_missing_values": {},
+          "source_sequence_is_target_subsequence": false,
+          "localized_text_or_ordinal_differences": 14,
+          "approved_source_prose_omissions": [
+            {
+              "raw": "3^\\text{rd}",
+              "canonical": "3",
+              "source_index": 907,
+              "status": "PASS",
+              "reason": "English ordinal-only math localized as Indonesian prose"
+            }
+          ],
+          "approved_order_adaptation": null,
+          "target_only_atomic_typesetting": {
+            "status": "PASS",
+            "count": 90,
+            "all_atomic": true,
+            "counter_sha256": "2141257fa5baae640ea51ab610eeb0f59b04a353742b42a4441b8ca24b097a1b",
+            "ordered_sequence_sha256_when_subsequence": null,
+            "values": {
+              "(0,0)": 1,
+              "(0,h)": 1,
+              "(1,\\alpha)": 3,
+              "(1,\\theta)": 1,
+              "(r,\\theta)": 3,
+              "(r,\\theta),": 1,
+              "(w,0)": 1,
+              "(w,h)": 1,
+              "(x,t)": 1,
+              "(x,y)": 4,
+              "\\Deltau": 2,
+              "\\theta": 2,
+              "f": 1,
+              "g": 1,
+              "r": 3,
+              "s": 1,
+              "t": 18,
+              "u": 6,
+              "x": 16,
+              "xt": 1,
+              "xy": 10,
+              "y": 12
+            },
+            "reason": "variables typeset as math in translated prose and figure descriptions"
+          }
+        }
+      },
+      "placeholders": {
+        "status": "PASS",
+        "hits": []
+      },
+      "diagnostics_not_used_as_gates": {
+        "source_unescaped_dollars": 3496,
+        "target_unescaped_dollars": 3674,
+        "reason": "localized prose reflow and approved atomic-variable typesetting can change raw counts"
+      }
+    },
+    {
+      "hard_pass": true,
+      "status": "PASS",
+      "source": "source/diffyqs-v6.11/ch-nonlin-systems.tex",
+      "target": "translation/diffyqs/ch-nonlin-systems.tex",
+      "mapping": "translation_manifest",
+      "source_bytes": 108130,
+      "target_bytes": 112643,
+      "source_sha256": "9af714bde1b6d84f45c7812829e1d5ad099a0866bd0f7d6588f5d2277edc7d22",
+      "target_sha256": "adee2f44b4a570b8f89f01c529d9bb9ebc38c0999ceb949360f4c075390003a1",
+      "labels": {
+        "status": "PASS",
+        "source_count": 31,
+        "target_count": 31,
+        "sequence_equal": true,
+        "target_duplicates": []
+      },
+      "references": {
+        "status": "PASS",
+        "source_count": 62,
+        "target_count": 62,
+        "semantic_identity_sequence_equal": true,
+        "approved_command_aliases": [],
+        "approved_hyperref_display_localizations": [],
+        "source_unresolved_in_scope": [],
+        "target_unresolved_in_scope": [],
+        "translation_introduced_unresolved": []
+      },
+      "environments": {
+        "status": "PASS",
+        "source_events": 444,
+        "target_events": 444,
+        "normalized_sequence_equal": true,
+        "source_stack_errors": [],
+        "target_stack_errors": [],
+        "approved_adaptations": []
+      },
+      "braces": {
+        "status": "PASS",
+        "mode": "independently_balanced",
+        "source_final_depth_minimum": [
+          0,
+          0
+        ],
+        "target_final_depth_minimum": [
+          0,
+          0
+        ]
+      },
+      "assets": {
+        "status": "PASS",
+        "source_calls": 26,
+        "target_calls": 26,
+        "semantic_call_sequence_equal_after_approved_adaptations": true,
+        "approved_argument_adaptations": [],
+        "target_resolved_concrete_calls": 26,
+        "target_dynamic_macro_calls": 0,
+        "target_unresolved": []
+      },
+      "formulas": {
+        "status": "PASS",
+        "delimiters": {
+          "status": "PASS",
+          "source_errors": [],
+          "target_errors": []
+        },
+        "display": {
+          "status": "PASS",
+          "source_count": 70,
+          "target_count": 70,
+          "source_sequence_sha256": "d45e83968c3325d77be59a4a72b466818b28daac6d544c47367a9f9140f6103d",
+          "target_sequence_sha256": "d45e83968c3325d77be59a4a72b466818b28daac6d544c47367a9f9140f6103d"
+        },
+        "inline": {
+          "status": "PASS",
+          "mode": "exact_after_localized_text_normalization",
+          "source_count_raw": 735,
+          "source_count_after_approved_prose_omissions": 735,
+          "target_count": 735,
+          "source_sequence_sha256": "503f4d635a103b46e2ad2b951857ec2e1a58758548dfbe8a33b06c455d8c13d2",
+          "target_sequence_sha256": "503f4d635a103b46e2ad2b951857ec2e1a58758548dfbe8a33b06c455d8c13d2",
+          "source_counter_sha256": "e9502122273e1dca755ffecca59b89b2ef9ecd10da89e69d99255cdf3b5ce2a7",
+          "target_counter_sha256": "e9502122273e1dca755ffecca59b89b2ef9ecd10da89e69d99255cdf3b5ce2a7",
+          "source_formula_missing_count": 0,
+          "source_formula_missing_values": {},
+          "source_sequence_is_target_subsequence": true,
+          "localized_text_or_ordinal_differences": 0,
+          "approved_source_prose_omissions": [],
+          "approved_order_adaptation": null,
+          "target_only_atomic_typesetting": {
+            "status": "PASS",
+            "count": 0,
+            "all_atomic": true,
+            "counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "ordered_sequence_sha256_when_subsequence": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "values": {},
+            "reason": null
+          }
+        }
+      },
+      "placeholders": {
+        "status": "PASS",
+        "hits": []
+      },
+      "diagnostics_not_used_as_gates": {
+        "source_unescaped_dollars": 1470,
+        "target_unescaped_dollars": 1470,
+        "reason": "localized prose reflow and approved atomic-variable typesetting can change raw counts"
+      }
+    },
+    {
+      "hard_pass": true,
+      "status": "PASS",
+      "source": "source/diffyqs-v6.11/ap-linear-algebra.tex",
+      "target": "translation/diffyqs/ap-linear-algebra.tex",
+      "mapping": "translation_manifest",
+      "source_bytes": 160503,
+      "target_bytes": 169327,
+      "source_sha256": "0e631eb103c1762578e1b0f150d5c414c89177d155716d41b61b8b46642b6992",
+      "target_sha256": "10b967e197369361166e7c0dcdfb97beb636b3c2db185abef8d70ea41e5d03a6",
+      "labels": {
+        "status": "PASS",
+        "source_count": 19,
+        "target_count": 19,
+        "sequence_equal": true,
+        "target_duplicates": []
+      },
+      "references": {
+        "status": "PASS",
+        "source_count": 25,
+        "target_count": 25,
+        "semantic_identity_sequence_equal": true,
+        "approved_command_aliases": [],
+        "approved_hyperref_display_localizations": [],
+        "source_unresolved_in_scope": [],
+        "target_unresolved_in_scope": [],
+        "translation_introduced_unresolved": []
+      },
+      "environments": {
+        "status": "PASS",
+        "source_events": 2094,
+        "target_events": 2094,
+        "normalized_sequence_equal": true,
+        "source_stack_errors": [],
+        "target_stack_errors": [],
+        "approved_adaptations": []
+      },
+      "braces": {
+        "status": "PASS",
+        "mode": "independently_balanced",
+        "source_final_depth_minimum": [
+          0,
+          0
+        ],
+        "target_final_depth_minimum": [
+          0,
+          0
+        ]
+      },
+      "assets": {
+        "status": "PASS",
+        "source_calls": 7,
+        "target_calls": 7,
+        "semantic_call_sequence_equal_after_approved_adaptations": true,
+        "approved_argument_adaptations": [],
+        "target_resolved_concrete_calls": 7,
+        "target_dynamic_macro_calls": 0,
+        "target_unresolved": []
+      },
+      "formulas": {
+        "status": "PASS",
+        "delimiters": {
+          "status": "PASS",
+          "source_errors": [],
+          "target_errors": []
+        },
+        "display": {
+          "status": "PASS",
+          "source_count": 230,
+          "target_count": 230,
+          "source_sequence_sha256": "3f03b6ab7a2029c1b620092e9e2aa7123feea3973f2a530827c873265c51251f",
+          "target_sequence_sha256": "3f03b6ab7a2029c1b620092e9e2aa7123feea3973f2a530827c873265c51251f"
+        },
+        "inline": {
+          "status": "PASS",
+          "mode": "approved_localized_prose_order",
+          "source_count_raw": 1290,
+          "source_count_after_approved_prose_omissions": 1290,
+          "target_count": 1290,
+          "source_sequence_sha256": "6933e2adc46527b42323f3544b0a663bbce395fbad169c1d57c74d4a479692ff",
+          "target_sequence_sha256": "6807d400d965482d8f142a3b5c677479d7f544f2c5e366b84b2b58c2323a715b",
+          "source_counter_sha256": "ec530d480a73b9390c82f652d3896fe69172ed99c023b22319b23921b25b866f",
+          "target_counter_sha256": "ec530d480a73b9390c82f652d3896fe69172ed99c023b22319b23921b25b866f",
+          "source_formula_missing_count": 0,
+          "source_formula_missing_values": {},
+          "source_sequence_is_target_subsequence": false,
+          "localized_text_or_ordinal_differences": 1,
+          "approved_source_prose_omissions": [],
+          "approved_order_adaptation": {
+            "kind": "frozen_localized_prose_order",
+            "reason": "formula multiset retained across translated prose reflow"
+          },
+          "target_only_atomic_typesetting": {
+            "status": "PASS",
+            "count": 0,
+            "all_atomic": true,
+            "counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "ordered_sequence_sha256_when_subsequence": null,
+            "values": {},
+            "reason": null
+          }
+        }
+      },
+      "placeholders": {
+        "status": "PASS",
+        "hits": []
+      },
+      "diagnostics_not_used_as_gates": {
+        "source_unescaped_dollars": 2590,
+        "target_unescaped_dollars": 2590,
+        "reason": "localized prose reflow and approved atomic-variable typesetting can change raw counts"
+      }
+    },
+    {
+      "hard_pass": true,
+      "status": "PASS",
+      "source": "source/diffyqs-v6.11/ap-laplace-list.tex",
+      "target": "translation/diffyqs/ap-laplace-list.tex",
+      "mapping": "translation_manifest",
+      "source_bytes": 3785,
+      "target_bytes": 3777,
+      "source_sha256": "cb122a8fb7a265d0f2482e6fc2c6ab82800727c00e843b63fdce86288c652632",
+      "target_sha256": "dcd93b078941fec7e27e28d726589b768798c3a5e086457355a5a78e324844ef",
+      "labels": {
+        "status": "PASS",
+        "source_count": 1,
+        "target_count": 1,
+        "sequence_equal": true,
+        "target_duplicates": []
+      },
+      "references": {
+        "status": "PASS",
+        "source_count": 0,
+        "target_count": 0,
+        "semantic_identity_sequence_equal": true,
+        "approved_command_aliases": [],
+        "approved_hyperref_display_localizations": [],
+        "source_unresolved_in_scope": [],
+        "target_unresolved_in_scope": [],
+        "translation_introduced_unresolved": []
+      },
+      "environments": {
+        "status": "PASS",
+        "source_events": 10,
+        "target_events": 10,
+        "normalized_sequence_equal": true,
+        "source_stack_errors": [],
+        "target_stack_errors": [],
+        "approved_adaptations": []
+      },
+      "braces": {
+        "status": "PASS",
+        "mode": "independently_balanced",
+        "source_final_depth_minimum": [
+          0,
+          0
+        ],
+        "target_final_depth_minimum": [
+          0,
+          0
+        ]
+      },
+      "assets": {
+        "status": "PASS",
+        "source_calls": 0,
+        "target_calls": 0,
+        "semantic_call_sequence_equal_after_approved_adaptations": true,
+        "approved_argument_adaptations": [],
+        "target_resolved_concrete_calls": 0,
+        "target_dynamic_macro_calls": 0,
+        "target_unresolved": []
+      },
+      "formulas": {
+        "status": "PASS",
+        "delimiters": {
+          "status": "PASS",
+          "source_errors": [],
+          "target_errors": []
+        },
+        "display": {
+          "status": "PASS",
+          "source_count": 1,
+          "target_count": 1,
+          "source_sequence_sha256": "d5ea9d32236bd5fefec70e56107f7f1d5cb999fdf1d797b637047d9d64efa099",
+          "target_sequence_sha256": "d5ea9d32236bd5fefec70e56107f7f1d5cb999fdf1d797b637047d9d64efa099"
+        },
+        "inline": {
+          "status": "PASS",
+          "mode": "exact_after_localized_text_normalization",
+          "source_count_raw": 93,
+          "source_count_after_approved_prose_omissions": 93,
+          "target_count": 93,
+          "source_sequence_sha256": "6687e72e983f6a2b52f0c57ac57847bde3d6da48a25a1af0d6be5750465c7352",
+          "target_sequence_sha256": "6687e72e983f6a2b52f0c57ac57847bde3d6da48a25a1af0d6be5750465c7352",
+          "source_counter_sha256": "07d6067c611e40d5163d14bf3818ae0cc3c0460a8861eb7037558ae83c292507",
+          "target_counter_sha256": "07d6067c611e40d5163d14bf3818ae0cc3c0460a8861eb7037558ae83c292507",
+          "source_formula_missing_count": 0,
+          "source_formula_missing_values": {},
+          "source_sequence_is_target_subsequence": true,
+          "localized_text_or_ordinal_differences": 0,
+          "approved_source_prose_omissions": [],
+          "approved_order_adaptation": null,
+          "target_only_atomic_typesetting": {
+            "status": "PASS",
+            "count": 0,
+            "all_atomic": true,
+            "counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "ordered_sequence_sha256_when_subsequence": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "values": {},
+            "reason": null
+          }
+        }
+      },
+      "placeholders": {
+        "status": "PASS",
+        "hits": []
+      },
+      "diagnostics_not_used_as_gates": {
+        "source_unescaped_dollars": 186,
+        "target_unescaped_dollars": 186,
+        "reason": "localized prose reflow and approved atomic-variable typesetting can change raw counts"
+      }
+    },
+    {
+      "hard_pass": true,
+      "status": "PASS",
+      "source": "source/diffyqs-v6.11/diffyqssetup.sty",
+      "target": "translation/diffyqs/diffyqssetup.sty",
+      "mapping": "explicit_support_pair",
+      "source_bytes": 11033,
+      "target_bytes": 11160,
+      "source_sha256": "b1d0aa3e66a015dd0a45b1abc12b155661105c9735e1e13f5bdabf0b735916fa",
+      "target_sha256": "746e3a75b48f9acafe3c84819a7574eb2a14519bf9c65cfb688c54c5fb4f25eb",
+      "labels": {
+        "status": "PASS",
+        "source_count": 0,
+        "target_count": 0,
+        "sequence_equal": true,
+        "target_duplicates": []
+      },
+      "references": {
+        "status": "PASS",
+        "source_count": 0,
+        "target_count": 0,
+        "semantic_identity_sequence_equal": true,
+        "approved_command_aliases": [],
+        "approved_hyperref_display_localizations": [],
+        "source_unresolved_in_scope": [],
+        "target_unresolved_in_scope": [],
+        "translation_introduced_unresolved": []
+      },
+      "environments": {
+        "status": "PASS",
+        "source_events": 8,
+        "target_events": 8,
+        "normalized_sequence_equal": true,
+        "source_stack_errors": [],
+        "target_stack_errors": [],
+        "approved_adaptations": []
+      },
+      "braces": {
+        "status": "PASS",
+        "mode": "source_equivalent_executable_prefix",
+        "source_final_depth_minimum": [
+          0,
+          0
+        ],
+        "target_final_depth_minimum": [
+          0,
+          0
+        ]
+      },
+      "assets": {
+        "status": "PASS",
+        "source_calls": 2,
+        "target_calls": 2,
+        "semantic_call_sequence_equal_after_approved_adaptations": true,
+        "approved_argument_adaptations": [],
+        "target_resolved_concrete_calls": 0,
+        "target_dynamic_macro_calls": 2,
+        "target_unresolved": []
+      },
+      "formulas": {
+        "status": "PASS",
+        "delimiters": {
+          "status": "PASS",
+          "source_errors": [],
+          "target_errors": []
+        },
+        "display": {
+          "status": "PASS",
+          "source_count": 0,
+          "target_count": 0,
+          "source_sequence_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "target_sequence_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "inline": {
+          "status": "PASS",
+          "mode": "exact_after_localized_text_normalization",
+          "source_count_raw": 0,
+          "source_count_after_approved_prose_omissions": 0,
+          "target_count": 0,
+          "source_sequence_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "target_sequence_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "target_counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_formula_missing_count": 0,
+          "source_formula_missing_values": {},
+          "source_sequence_is_target_subsequence": true,
+          "localized_text_or_ordinal_differences": 0,
+          "approved_source_prose_omissions": [],
+          "approved_order_adaptation": null,
+          "target_only_atomic_typesetting": {
+            "status": "PASS",
+            "count": 0,
+            "all_atomic": true,
+            "counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "ordered_sequence_sha256_when_subsequence": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "values": {},
+            "reason": null
+          }
+        }
+      },
+      "placeholders": {
+        "status": "PASS",
+        "hits": []
+      },
+      "diagnostics_not_used_as_gates": {
+        "source_unescaped_dollars": 0,
+        "target_unescaped_dollars": 0,
+        "reason": "localized prose reflow and approved atomic-variable typesetting can change raw counts"
+      }
+    },
+    {
+      "hard_pass": true,
+      "status": "PASS",
+      "source": "source/diffyqs-v6.11/mywrapfig.sty",
+      "target": "translation/diffyqs/mywrapfig.sty",
+      "mapping": "explicit_support_pair",
+      "source_bytes": 26428,
+      "target_bytes": 28290,
+      "source_sha256": "c4f3480dfe62a6076aa7ba1115f77f02f8397d848de73db0211f2bec2f19da39",
+      "target_sha256": "b91f1d5a99c154c6a1b3b65ef5d2207a9479b8deb026bec2b8f68382eed8ee80",
+      "labels": {
+        "status": "PASS",
+        "source_count": 0,
+        "target_count": 0,
+        "sequence_equal": true,
+        "target_duplicates": []
+      },
+      "references": {
+        "status": "PASS",
+        "source_count": 0,
+        "target_count": 0,
+        "semantic_identity_sequence_equal": true,
+        "approved_command_aliases": [],
+        "approved_hyperref_display_localizations": [],
+        "source_unresolved_in_scope": [],
+        "target_unresolved_in_scope": [],
+        "translation_introduced_unresolved": []
+      },
+      "environments": {
+        "status": "PASS",
+        "source_events": 0,
+        "target_events": 0,
+        "normalized_sequence_equal": true,
+        "source_stack_errors": [],
+        "target_stack_errors": [],
+        "approved_adaptations": []
+      },
+      "braces": {
+        "status": "PASS",
+        "mode": "source_equivalent_executable_prefix",
+        "source_final_depth_minimum": [
+          1,
+          0
+        ],
+        "target_final_depth_minimum": [
+          1,
+          0
+        ]
+      },
+      "assets": {
+        "status": "PASS",
+        "source_calls": 0,
+        "target_calls": 0,
+        "semantic_call_sequence_equal_after_approved_adaptations": true,
+        "approved_argument_adaptations": [],
+        "target_resolved_concrete_calls": 0,
+        "target_dynamic_macro_calls": 0,
+        "target_unresolved": []
+      },
+      "formulas": {
+        "status": "PASS",
+        "delimiters": {
+          "status": "PASS",
+          "source_errors": [],
+          "target_errors": []
+        },
+        "display": {
+          "status": "PASS",
+          "source_count": 0,
+          "target_count": 0,
+          "source_sequence_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "target_sequence_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "inline": {
+          "status": "PASS",
+          "mode": "exact_after_localized_text_normalization",
+          "source_count_raw": 0,
+          "source_count_after_approved_prose_omissions": 0,
+          "target_count": 0,
+          "source_sequence_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "target_sequence_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "target_counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_formula_missing_count": 0,
+          "source_formula_missing_values": {},
+          "source_sequence_is_target_subsequence": true,
+          "localized_text_or_ordinal_differences": 0,
+          "approved_source_prose_omissions": [],
+          "approved_order_adaptation": null,
+          "target_only_atomic_typesetting": {
+            "status": "PASS",
+            "count": 0,
+            "all_atomic": true,
+            "counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "ordered_sequence_sha256_when_subsequence": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "values": {},
+            "reason": null
+          }
+        }
+      },
+      "placeholders": {
+        "status": "PASS",
+        "hits": []
+      },
+      "diagnostics_not_used_as_gates": {
+        "source_unescaped_dollars": 0,
+        "target_unescaped_dollars": 0,
+        "reason": "localized prose reflow and approved atomic-variable typesetting can change raw counts"
+      }
+    },
+    {
+      "hard_pass": true,
+      "status": "PASS",
+      "source": "source/ca-v1.9/ca.tex",
+      "target": "translation/complex-analysis/ca.tex",
+      "mapping": "translation_manifest",
+      "source_bytes": 820988,
+      "target_bytes": 887597,
+      "source_sha256": "a99ed1bfceca960f98abd08e7d3c4f20d907b2fa392c211b522c06283ac61935",
+      "target_sha256": "99c46e59be5b319e72520290e8d3db9b6e260f8d147aa7b69adb06ac0779852e",
+      "labels": {
+        "status": "PASS",
+        "source_count": 383,
+        "target_count": 383,
+        "sequence_equal": true,
+        "target_duplicates": []
+      },
+      "references": {
+        "status": "PASS",
+        "source_count": 526,
+        "target_count": 526,
+        "semantic_identity_sequence_equal": true,
+        "approved_command_aliases": [],
+        "approved_hyperref_display_localizations": [
+          {
+            "key": "#1",
+            "source_display_sha256": "d1e1975f800476713870f0b3c92fc94ebf28078ca5eb5d46117880ed392315d0",
+            "target_display_sha256": "7d64a84ffbf9af3fb2cb9e65f46e7c6d5ea65f4fa668e816a7515db385570e60"
+          },
+          {
+            "key": "#1",
+            "source_display_sha256": "d40baa3808bf4d00943e845ecbf374c9ef5971410929d94737bb5c0d203e6d5c",
+            "target_display_sha256": "5c5067a0c0a030972ede898df5ab4b7e36f218b3343c5c3b2977cc0db2143a62"
+          },
+          {
+            "key": "#1",
+            "source_display_sha256": "770488cf209f153da69a8aaa6ee53883d39e63d53d619f9fca9858fe6c812529",
+            "target_display_sha256": "64eca98ddc5521624b2736215edd8e394b3ca132b71934d2af76bb399b354403"
+          },
+          {
+            "key": "#1",
+            "source_display_sha256": "452b90aca894d29f3f4feec76b5d829fede7acb54bc751f2e6e84c2cd7b6510e",
+            "target_display_sha256": "b0f03036a89db54cb379c620f3d120a3b61d6a3bc4cdf2236278054f226b2685"
+          },
+          {
+            "key": "#1",
+            "source_display_sha256": "e3fd5a3d1f8f82fdd2a14a981c046f14b1067b8a09f8f82750739517f40c9c54",
+            "target_display_sha256": "b0f03036a89db54cb379c620f3d120a3b61d6a3bc4cdf2236278054f226b2685"
+          },
+          {
+            "key": "#1",
+            "source_display_sha256": "3fd6c2fcf25391046eff32bc1cdcba843996225d2a13e6d6db32c56d9c5109bd",
+            "target_display_sha256": "57243486dd6b84a64bb4d12edab793f64396cf0fcdc3fa1752bf852b76a45048"
+          },
+          {
+            "key": "#1",
+            "source_display_sha256": "017c5706c127a4b862aa2f49af8799b67d67fe5df6d64f8612b65e9b4bd4c7b5",
+            "target_display_sha256": "3b23faa5883b8bb643ab7263e04797e0ace874b617f5e6233094e9abd8d8b96c"
+          },
+          {
+            "key": "#1",
+            "source_display_sha256": "6a1634952610f93208d3a1c4f5dd955943f9c1ae94ef1fea8e523630415fd59f",
+            "target_display_sha256": "06b0db352259320bd08db6de9fc3e88e7e31aa2ec502aed89e10c9fe3ce867ea"
+          },
+          {
+            "key": "#1",
+            "source_display_sha256": "0e67e190b003d266bf6d4b61a3938ccf8fbc551ac7c8e77fd3bfbf29dd5db089",
+            "target_display_sha256": "47e15afb4e1c2688877cbbc0d6850c374f701678c5c1bc35feb337ec03d0c6ed"
+          },
+          {
+            "key": "#1",
+            "source_display_sha256": "33f64f033ff7898805931073fb7669eda3395fc8234327df42448d4b32de0b00",
+            "target_display_sha256": "c9b4830788003f0ba563a06db08ae50a58a96e000be2f363da4d5f2a28d49124"
+          },
+          {
+            "key": "#1",
+            "source_display_sha256": "a2d40f2682fa744a84b943d5673ced984fe1530cb9af78bba6b2c670724a8008",
+            "target_display_sha256": "b8018dd13aa55b5b92f9803513080ec887f7f9c7b8689c53cd60744aa2c17478"
+          },
+          {
+            "key": "#1",
+            "source_display_sha256": "d813fecaddcc19012e233ea64b95e7aae7a8534cb84be4a31f39082bfc87d587",
+            "target_display_sha256": "c9bf452690b10f68c97a1518bd8ea9d2847925df26b1c96dfda9f7a0117c2005"
+          },
+          {
+            "key": "#1",
+            "source_display_sha256": "70b9bf8fc27e28379c613d66ca7b5f646ea5b72ab8d215c99a426a3a68e92670",
+            "target_display_sha256": "2f7252721737712109743e6b2b5e1f44a6d330e75a76344158cb2c98366af0a9"
+          },
+          {
+            "key": "#1",
+            "source_display_sha256": "7e5c85a57afa9b5331a28599ae6ae2f408db3f1403f6c1119f0022a5a973d3e5",
+            "target_display_sha256": "c453b2200449e774859d4998a35154b56165104de2f4ffaddaa7428abc3a3761"
+          },
+          {
+            "key": "#1",
+            "source_display_sha256": "7599c8795a95eabd9573f5f6a9d92b70039253abf9d1345f39340d6f3e81c184",
+            "target_display_sha256": "5be9e95faf03b5d6cd6ce936d4035376e368d38ccc047a5e129a27f2c042eb95"
+          },
+          {
+            "key": "#1",
+            "source_display_sha256": "28569e0a9bd48e2d1fd600d3cfd5945fa5db6593c70d718f679a7a4fb7079903",
+            "target_display_sha256": "f9b34ff070fbe2cb6e5fb0f44da30b72df2ffd6ec7c6e08362336138011d59ae"
+          },
+          {
+            "key": "ch:furtherreading",
+            "source_display_sha256": "bd2e42f237b39fc195116b8e1606b7af14daf25b36e918b2341817bf4ddf2fd2",
+            "target_display_sha256": "a03595559603aea4edadc1099ee39b28cec724446861cb42d7178042b174e01a"
+          },
+          {
+            "key": "cor:cauchyforpoly",
+            "source_display_sha256": "aa5cdd6464bcb58692b2b8b9935607f0f371030938130bbda59c690b73352fb6",
+            "target_display_sha256": "d5fb0dbd47e001b96ac5a8ef44cdab8004a40763a9a62627da88d86f9804b3ac"
+          },
+          {
+            "key": "thm:riemannext",
+            "source_display_sha256": "5d3edc3d30d695930071f9d99aed373d48962205f302a261c36d3e209668b710",
+            "target_display_sha256": "be5cf8a2e2997bc127f9ed491f2a9c6006caefbd390c31c102aa5e4674e4bb62"
+          },
+          {
+            "key": "thm:rouche2",
+            "source_display_sha256": "28a21ad67ef2fcb66b3f2c4c0b2f49bf397c16a55b5b67f51c0e3e592c691be1",
+            "target_display_sha256": "027d2b9b55b7927ea5bf28fb0f1c002d57a15c3e1a0cb09b8a9c79a7e9a3fe53"
+          },
+          {
+            "key": "thm:residue",
+            "source_display_sha256": "4168cdfd775d4fc5917cb87bc41f4120dd89324d769c9e97e4ea6fed22602244",
+            "target_display_sha256": "100f022df0fe17aa4a6ecba8b68d7ef8356cf839df208e31918f5498e314d345"
+          },
+          {
+            "key": "thm:argprinc",
+            "source_display_sha256": "8e14249387620863ffa9ffdd5838ad1c27dc1467aef5ba89981e34c6128a2e7b",
+            "target_display_sha256": "3da1947791be7fec7af1f4cce76aa187f8136201f649d7c2ed04325948501a9c"
+          },
+          {
+            "key": "thm:OMT",
+            "source_display_sha256": "3e90de348e583464408475c28cfccdf64104d9c4e255917fbd4a09e1078cff73",
+            "target_display_sha256": "428f824358f0ab959c2cadaec8b9e9930ee18f58a377f1c80543543ee270dbd8"
+          },
+          {
+            "key": "thm:OMT",
+            "source_display_sha256": "3e90de348e583464408475c28cfccdf64104d9c4e255917fbd4a09e1078cff73",
+            "target_display_sha256": "428f824358f0ab959c2cadaec8b9e9930ee18f58a377f1c80543543ee270dbd8"
+          },
+          {
+            "key": "thm:OMT",
+            "source_display_sha256": "3e90de348e583464408475c28cfccdf64104d9c4e255917fbd4a09e1078cff73",
+            "target_display_sha256": "428f824358f0ab959c2cadaec8b9e9930ee18f58a377f1c80543543ee270dbd8"
+          },
+          {
+            "key": "thm:RMT",
+            "source_display_sha256": "f54cf170541c289f9ed4e84bf81e8effbdb7f6e4138f4514aa697115b365ee19",
+            "target_display_sha256": "fcb6cc559aefe09a3ab3d4a1facec1286a1c5a0bf0397331b78c9f341ef9fe8b"
+          },
+          {
+            "key": "thm:RMT",
+            "source_display_sha256": "f54cf170541c289f9ed4e84bf81e8effbdb7f6e4138f4514aa697115b365ee19",
+            "target_display_sha256": "fcb6cc559aefe09a3ab3d4a1facec1286a1c5a0bf0397331b78c9f341ef9fe8b"
+          },
+          {
+            "key": "thm:residue",
+            "source_display_sha256": "4168cdfd775d4fc5917cb87bc41f4120dd89324d769c9e97e4ea6fed22602244",
+            "target_display_sha256": "100f022df0fe17aa4a6ecba8b68d7ef8356cf839df208e31918f5498e314d345"
+          },
+          {
+            "key": "thm:identity",
+            "source_display_sha256": "1d29e92250fa0e320fa0c71d78bab8d337ab388a31e03cc47efec0d1fa4a2932",
+            "target_display_sha256": "84a648192ddb8cd1119aabc5bd9f7b750a107d0b38cd2f845823314d1f120465"
+          },
+          {
+            "key": "lemma:schwarz",
+            "source_display_sha256": "e48e1962fce0024900f266d5944a5ccc94cc5ace341c82c42314fc14f1e867c0",
+            "target_display_sha256": "fd8ef7c60351a2aeef5f85e567ddba10b6edf6d743c62d00a5675166f1359e65"
+          },
+          {
+            "key": "thm:riemannext",
+            "source_display_sha256": "746d4e77cbb463f0ae1b140b1f9e9f8f64bf8ac39623be7a788be2d590fc9021",
+            "target_display_sha256": "655d94beb41d45dcc05c9b5343cb116b75bc0e5e7cd82e68ceeff0757555db48"
+          },
+          {
+            "key": "thm:CIFhomology",
+            "source_display_sha256": "7cbe84faf3612883151858a55e9d3342ddf668f2cd4bed4c3446a43fa3ccb977",
+            "target_display_sha256": "5214a0ebed3a2889d2e9d4ba327efe8424028368e869786477dd87f96e6c0bfb"
+          },
+          {
+            "key": "defn:principalpart",
+            "source_display_sha256": "1523a45ed3031daa7bae63749133c71618c20b856215d124031ba38076cca6cb",
+            "target_display_sha256": "902150e3321433770b53529cc43376cef573bae867eea8f3cd88bec9b7f1d501"
+          },
+          {
+            "key": "cor:rungeseq",
+            "source_display_sha256": "85de8bccf749409291c1f048714287d3b6f56e9f26701211f376558360d30061",
+            "target_display_sha256": "9995ba6194b73e4d39770481929e0ec58c6a16e5668d01478fe6e5de6b3e1d98"
+          },
+          {
+            "key": "cor:rungeseq",
+            "source_display_sha256": "85de8bccf749409291c1f048714287d3b6f56e9f26701211f376558360d30061",
+            "target_display_sha256": "b1aa2082dd0743796b6863ae4c6223c43ed7fb8b949ce6404591b5158553539c"
+          },
+          {
+            "key": "thm:weierprod",
+            "source_display_sha256": "a8e5f4fd607681fcc9e03a283df2d615a522d76b051560d4d84c15dc294e5dbf",
+            "target_display_sha256": "df0b29180e64df7e48579398c4b247190e809ae72a38902f3e4dd575f092fca2"
+          },
+          {
+            "key": "thm:weierprod",
+            "source_display_sha256": "a8e5f4fd607681fcc9e03a283df2d615a522d76b051560d4d84c15dc294e5dbf",
+            "target_display_sha256": "df0b29180e64df7e48579398c4b247190e809ae72a38902f3e4dd575f092fca2"
+          },
+          {
+            "key": "thm:RMT",
+            "source_display_sha256": "f54cf170541c289f9ed4e84bf81e8effbdb7f6e4138f4514aa697115b365ee19",
+            "target_display_sha256": "fcb6cc559aefe09a3ab3d4a1facec1286a1c5a0bf0397331b78c9f341ef9fe8b"
+          },
+          {
+            "key": "thm:RMT",
+            "source_display_sha256": "f54cf170541c289f9ed4e84bf81e8effbdb7f6e4138f4514aa697115b365ee19",
+            "target_display_sha256": "fcb6cc559aefe09a3ab3d4a1facec1286a1c5a0bf0397331b78c9f341ef9fe8b"
+          },
+          {
+            "key": "ms:lebesgue",
+            "source_display_sha256": "97429789ed4c502a6cb2bd70ac4527781bd772eee4201e3ea6462d6e932d8825",
+            "target_display_sha256": "3fc2aac4a795b84fb4ff12ee7e6fcd4a5c2e72787adbba5620916589df3c1540"
+          }
+        ],
+        "source_unresolved_in_scope": [],
+        "target_unresolved_in_scope": [],
+        "translation_introduced_unresolved": []
+      },
+      "environments": {
+        "status": "PASS",
+        "source_events": 4942,
+        "target_events": 4942,
+        "normalized_sequence_equal": true,
+        "source_stack_errors": [],
+        "target_stack_errors": [],
+        "approved_adaptations": []
+      },
+      "braces": {
+        "status": "PASS",
+        "mode": "independently_balanced",
+        "source_final_depth_minimum": [
+          0,
+          0
+        ],
+        "target_final_depth_minimum": [
+          0,
+          0
+        ]
+      },
+      "assets": {
+        "status": "PASS",
+        "source_calls": 77,
+        "target_calls": 77,
+        "semantic_call_sequence_equal_after_approved_adaptations": true,
+        "approved_argument_adaptations": [],
+        "target_resolved_concrete_calls": 77,
+        "target_dynamic_macro_calls": 0,
+        "target_unresolved": []
+      },
+      "formulas": {
+        "status": "PASS",
+        "delimiters": {
+          "status": "PASS",
+          "source_errors": [],
+          "target_errors": []
+        },
+        "display": {
+          "status": "PASS",
+          "source_count": 806,
+          "target_count": 806,
+          "source_sequence_sha256": "acef41609e4214623909d377b9b93eaf8f7d083222718c8b2571d8e42f4c9880",
+          "target_sequence_sha256": "acef41609e4214623909d377b9b93eaf8f7d083222718c8b2571d8e42f4c9880"
+        },
+        "inline": {
+          "status": "PASS",
+          "mode": "exact_after_localized_text_normalization",
+          "source_count_raw": 11711,
+          "source_count_after_approved_prose_omissions": 11711,
+          "target_count": 11711,
+          "source_sequence_sha256": "b69a333d40207c4ebc8703787e9d5e86962b8a21f09a5aeb3f7610540d1eaafe",
+          "target_sequence_sha256": "b69a333d40207c4ebc8703787e9d5e86962b8a21f09a5aeb3f7610540d1eaafe",
+          "source_counter_sha256": "05ef373fb23c63fd168afd8f18562dfc0e9c7028285191cdc00bec9d024b38b0",
+          "target_counter_sha256": "05ef373fb23c63fd168afd8f18562dfc0e9c7028285191cdc00bec9d024b38b0",
+          "source_formula_missing_count": 0,
+          "source_formula_missing_values": {},
+          "source_sequence_is_target_subsequence": true,
+          "localized_text_or_ordinal_differences": 8,
+          "approved_source_prose_omissions": [],
+          "approved_order_adaptation": null,
+          "target_only_atomic_typesetting": {
+            "status": "PASS",
+            "count": 0,
+            "all_atomic": true,
+            "counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "ordered_sequence_sha256_when_subsequence": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "values": {},
+            "reason": null
+          }
+        }
+      },
+      "placeholders": {
+        "status": "PASS",
+        "hits": []
+      },
+      "diagnostics_not_used_as_gates": {
+        "source_unescaped_dollars": 23454,
+        "target_unescaped_dollars": 23454,
+        "reason": "localized prose reflow and approved atomic-variable typesetting can change raw counts"
+      }
+    },
+    {
+      "hard_pass": true,
+      "status": "PASS",
+      "source": "source/ca-v1.9/notations.tex",
+      "target": "translation/complex-analysis/notations.tex",
+      "mapping": "translation_manifest",
+      "source_bytes": 8157,
+      "target_bytes": 8174,
+      "source_sha256": "9a5758be3d15bac6f554c6dff5b8fc741c74cec342ac70889e4c0439a8ce8aec",
+      "target_sha256": "cac1ed0716b89016e51f9a0110fbfc58b6eee2e6a6ff875a3df62ef342e1aac3",
+      "labels": {
+        "status": "PASS",
+        "source_count": 0,
+        "target_count": 0,
+        "sequence_equal": true,
+        "target_duplicates": []
+      },
+      "references": {
+        "status": "PASS",
+        "source_count": 0,
+        "target_count": 0,
+        "semantic_identity_sequence_equal": true,
+        "approved_command_aliases": [],
+        "approved_hyperref_display_localizations": [],
+        "source_unresolved_in_scope": [],
+        "target_unresolved_in_scope": [],
+        "translation_introduced_unresolved": []
+      },
+      "environments": {
+        "status": "PASS",
+        "source_events": 0,
+        "target_events": 0,
+        "normalized_sequence_equal": true,
+        "source_stack_errors": [],
+        "target_stack_errors": [],
+        "approved_adaptations": []
+      },
+      "braces": {
+        "status": "PASS",
+        "mode": "independently_balanced",
+        "source_final_depth_minimum": [
+          0,
+          0
+        ],
+        "target_final_depth_minimum": [
+          0,
+          0
+        ]
+      },
+      "assets": {
+        "status": "PASS",
+        "source_calls": 0,
+        "target_calls": 0,
+        "semantic_call_sequence_equal_after_approved_adaptations": true,
+        "approved_argument_adaptations": [],
+        "target_resolved_concrete_calls": 0,
+        "target_dynamic_macro_calls": 0,
+        "target_unresolved": []
+      },
+      "formulas": {
+        "status": "PASS",
+        "delimiters": {
+          "status": "PASS",
+          "source_errors": [],
+          "target_errors": []
+        },
+        "display": {
+          "status": "PASS",
+          "source_count": 0,
+          "target_count": 0,
+          "source_sequence_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "target_sequence_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "inline": {
+          "status": "PASS",
+          "mode": "exact_after_localized_text_normalization",
+          "source_count_raw": 130,
+          "source_count_after_approved_prose_omissions": 130,
+          "target_count": 130,
+          "source_sequence_sha256": "060359966f1de35038907c015d3ca72b85c4c3b94386282442bbdce0f4f234a9",
+          "target_sequence_sha256": "060359966f1de35038907c015d3ca72b85c4c3b94386282442bbdce0f4f234a9",
+          "source_counter_sha256": "67586bbd5c6a110256220f1e7c062c6ccf5c9754fca4336b85c64277a9fb9358",
+          "target_counter_sha256": "67586bbd5c6a110256220f1e7c062c6ccf5c9754fca4336b85c64277a9fb9358",
+          "source_formula_missing_count": 0,
+          "source_formula_missing_values": {},
+          "source_sequence_is_target_subsequence": true,
+          "localized_text_or_ordinal_differences": 0,
+          "approved_source_prose_omissions": [],
+          "approved_order_adaptation": null,
+          "target_only_atomic_typesetting": {
+            "status": "PASS",
+            "count": 0,
+            "all_atomic": true,
+            "counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "ordered_sequence_sha256_when_subsequence": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "values": {},
+            "reason": null
+          }
+        }
+      },
+      "placeholders": {
+        "status": "PASS",
+        "hits": []
+      },
+      "diagnostics_not_used_as_gates": {
+        "source_unescaped_dollars": 260,
+        "target_unescaped_dollars": 260,
+        "reason": "localized prose reflow and approved atomic-variable typesetting can change raw counts"
+      }
+    },
+    {
+      "hard_pass": true,
+      "status": "PASS",
+      "source": "source/ca-v1.9/vogtwidebar.sty",
+      "target": "translation/complex-analysis/vogtwidebar.sty",
+      "mapping": "explicit_support_pair",
+      "source_bytes": 2831,
+      "target_bytes": 2864,
+      "source_sha256": "6fdae10440c1c3ba81a27572a2a40ab4a63bbf2cd8b33e432be72d460f403ad1",
+      "target_sha256": "b5c5fa1ba9c5965c7e9e5b249f4205831f7e97d5514d1771e00649f2df2f9ce5",
+      "labels": {
+        "status": "PASS",
+        "source_count": 0,
+        "target_count": 0,
+        "sequence_equal": true,
+        "target_duplicates": []
+      },
+      "references": {
+        "status": "PASS",
+        "source_count": 0,
+        "target_count": 0,
+        "semantic_identity_sequence_equal": true,
+        "approved_command_aliases": [],
+        "approved_hyperref_display_localizations": [],
+        "source_unresolved_in_scope": [],
+        "target_unresolved_in_scope": [],
+        "translation_introduced_unresolved": []
+      },
+      "environments": {
+        "status": "PASS",
+        "source_events": 0,
+        "target_events": 0,
+        "normalized_sequence_equal": true,
+        "source_stack_errors": [],
+        "target_stack_errors": [],
+        "approved_adaptations": []
+      },
+      "braces": {
+        "status": "PASS",
+        "mode": "source_equivalent_executable_prefix",
+        "source_final_depth_minimum": [
+          0,
+          0
+        ],
+        "target_final_depth_minimum": [
+          0,
+          0
+        ]
+      },
+      "assets": {
+        "status": "PASS",
+        "source_calls": 0,
+        "target_calls": 0,
+        "semantic_call_sequence_equal_after_approved_adaptations": true,
+        "approved_argument_adaptations": [],
+        "target_resolved_concrete_calls": 0,
+        "target_dynamic_macro_calls": 0,
+        "target_unresolved": []
+      },
+      "formulas": {
+        "status": "PASS",
+        "delimiters": {
+          "status": "PASS",
+          "source_errors": [],
+          "target_errors": []
+        },
+        "display": {
+          "status": "PASS",
+          "source_count": 0,
+          "target_count": 0,
+          "source_sequence_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "target_sequence_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "inline": {
+          "status": "PASS",
+          "mode": "exact_after_localized_text_normalization",
+          "source_count_raw": 4,
+          "source_count_after_approved_prose_omissions": 4,
+          "target_count": 4,
+          "source_sequence_sha256": "52dae9a1ab78b2b12bc38fa79eaa627121eac7d3e69beccf9ac4fefc0bfd8e99",
+          "target_sequence_sha256": "52dae9a1ab78b2b12bc38fa79eaa627121eac7d3e69beccf9ac4fefc0bfd8e99",
+          "source_counter_sha256": "ce8245998bfaf91ad1e0c3346f5de6a13137611e71ef085641456565c4659c04",
+          "target_counter_sha256": "ce8245998bfaf91ad1e0c3346f5de6a13137611e71ef085641456565c4659c04",
+          "source_formula_missing_count": 0,
+          "source_formula_missing_values": {},
+          "source_sequence_is_target_subsequence": true,
+          "localized_text_or_ordinal_differences": 0,
+          "approved_source_prose_omissions": [],
+          "approved_order_adaptation": null,
+          "target_only_atomic_typesetting": {
+            "status": "PASS",
+            "count": 0,
+            "all_atomic": true,
+            "counter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "ordered_sequence_sha256_when_subsequence": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "values": {},
+            "reason": null
+          }
+        }
+      },
+      "placeholders": {
+        "status": "PASS",
+        "hits": []
+      },
+      "diagnostics_not_used_as_gates": {
+        "source_unescaped_dollars": 8,
+        "target_unescaped_dollars": 8,
+        "reason": "localized prose reflow and approved atomic-variable typesetting can change raw counts"
+      }
+    }
+  ]
+}

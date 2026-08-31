@@ -1,0 +1,20 @@
+Mata kuliah pengantar analisis kompleks bagi mahasiswa baru pascasarjana. Disusun untuk mengajar Math 5283 di Oklahoma State University. Buku ini memuat materi yang agak lebih banyak daripada yang dapat dicakup dalam mata kuliah satu semester sehingga tersedia beberapa pilihan. Terdapat pula lampiran tentang ruang metrik dan sejumlah latar belakang analisis dasar agar dapat digunakan sebagai mata kuliah yang lebih panjang dan lebih lengkap bagi mereka yang baru pernah mengikuti pengantar analisis dasar pada garis real.
+
+Daftar isi:
+
+Pendahuluan
+1. Bidang Kompleks
+2. Fungsi Holomorfik dan Analitik
+3. Integral Garis dan Teorema-Teorema Dasar Cauchy
+4. Logaritma dan Cauchy
+5. Menghitung Nol dan Singularitas
+6. Montel dan Riemann
+7. Fungsi Harmonik
+8. Faktorisasi Weierstrass
+9. Aproksimasi Rasional
+10. Kelanjutan Analitik
+Lampiran A. Ruang Metrik
+Lampiran B. Hasil-Hasil dari Analisis Dasar
+Lampiran C. Notasi dan Terminologi Dasar
+
+Jiří Lebl adalah Profesor Matematika di Oklahoma State University.

@@ -1,63 +1,44 @@
-# Keluarga Matematika Lebl — Edisi Bahasa Indonesia
+# Keluarga Matematika Lebl — Edisi Bahasa Indonesia Lengkap
 
-Repositori ini memuat edisi turunan Bahasa Indonesia untuk tiga buku terbuka
-karya Jiří Lebl:
+Status: **lengkap**. Repositori ini memuat edisi Bahasa Indonesia lengkap dari tiga
+karya matematika terbuka Jiří Lebl. R006 disajikan dalam dua jilid, sehingga rilis
+pembaca terdiri dari empat PDF.
 
-- *Basic Analysis: Introduction to Real Analysis, Volumes I–II* (R006),
-- *Notes on Diffy Qs: Differential Equations for Engineers* (R007), dan
-- *Guide to Cultivating Complex Analysis: Working the Complex Field* (R008).
+## Pembaca
 
-Tujuannya adalah pembaca yang nyaman digunakan, sumber LaTeX yang dapat
-dibangun ulang, serta backend modular netral-bahasa. Setiap buku tetap memiliki
-identitas edisi, otoritas, dan lisensi tersendiri. Edisi turunan ini memilih
-jalur CC BY-SA 4.0 yang tersedia pada masing-masing sumber.
+| ID | Berkas | Halaman | Byte | SHA-256 | Sumber |
+|---|---|---:|---:|---|---|
+| R006-volume-1 | `Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf` | 334 | 2870909 | `38743ea0e7ce52bdadf5233fc9d6e79e00717f9ba55a393f2bf46ea21c65ef56` | Basic Analysis: Introduction to Real Analysis, Volume I v6.3 |
+| R006-volume-2 | `Analisis_Dasar_II_Bahasa_Indonesia_v6.3.pdf` | 241 | 2427379 | `e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3` | Basic Analysis: Introduction to Real Analysis, Volume II v6.3 |
+| R007 | `Catatan_tentang_Diffy_Qs_Bahasa_Indonesia_v6.11.pdf` | 502 | 5135134 | `1c18dfc1572d22ef7fc5d8ad25be18f3b91f1bffea5b9f9d521ff4e56ca969d4` | Notes on Diffy Qs: Differential Equations for Engineers v6.11 |
+| R008 | `Panduan_Mengolah_Analisis_Kompleks_Bahasa_Indonesia_v1.9.pdf` | 338 | 2822132 | `87e4810abdedbdd8121995a8e53936891135037f03054dce76a06beebc3cfaae` | Guide to Cultivating Complex Analysis: Working the Complex Field v1.9 |
 
-Terjemahan, penyuntingan, QA istilah, dan integrasi backend dilakukan oleh
-OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna. Jiří Lebl tetap
-merupakan penulis karya sumber; semua kredit sumber dan kontributor manusia
-dipertahankan. Edisi ini independen dan tidak menyiratkan dukungan penulis.
+## Cakupan dan backend modular
 
-## Status checkpoint U370
+Manifes final memuat **5884 unit**: R006 2625, R007 1732, dan R008 1527. Status keluarga dan ketiga sumber adalah lengkap.
 
-Ini masih *work in progress*, bukan klaim bahwa ketiga buku sudah selesai.
+Backend netral-bahasa final berada di `backend/production/v0.4-complete-2026.08.31-a` dan memuat 27 berkas (122843339 byte). SHA-256 inventaris kanoniknya adalah `4223a618b201cdc41db050c8bf929fd8b5b5628dc253fce2c5a8eef39ca18b9e`.
 
-- R006: Jilid I lengkap (334 halaman). Jilid II memiliki pembaca 208 halaman
-  yang berakhir bersih setelah Bagian 11.6, termasuk teorema
-  Arzelà--Ascoli, kedua korolari, penerapan operator kompak, dan seluruh sebelas
-  latihan hingga pembuktian teorema eksistensi Peano melalui metode Euler.
-- R007: pendahuluan lengkap; Bab 1 berlanjut sampai solusi integral tentu untuk
-  kondisi awal; Bab 8, *Sistem nonlinear*, lengkap sebagai 20 unit dan pembaca
-  mandiri 40 halaman.
-- R008: terjemahan berurutan mencapai akhir bagian bola Riemann.
+Paket sumber/backend `lebl-mathematics-family-id-source-backend-complete-20260830.zip` memuat 1004 berkas, 140585717 byte tak terkompresi, dan 18076597 byte ZIP; SHA-256 `baeea18043520f1b47825df0c9b1343f203bc1ec67119266953e19133381ab92`.
 
-Manifes hidup memuat 370 unit unik: R006 285, R007 35, dan R008 50. Backend
-v0.4-live U370 memuat 3.573 rekaman, termasuk 370 segmen manifes, 381 unit,
-721 konsep, 740 ekspresi, tepat 733 istilah logis kini, seluruh 245 koreksi
-sumber yang tercatat, serta tujuh pemetaan kekosongan solusi O001. Lima belas
-proyeksi CSV berputar balik tepat ke seluruh rekaman, dan dua build independen
-identik pada path, ukuran, dan SHA-256.
+## Sumber, hak, dan provenance
 
-## Pembaca utama
+Jiří Lebl tetap penulis karya sumber. R006 menggunakan Basic Analysis v6.3, R007
+menggunakan Notes on Diffy Qs v6.11, dan R008 menggunakan Guide to Cultivating
+Complex Analysis v1.9. Untuk masing-masing karya, edisi turunan ini memilih cabang
+lisensi CC BY-SA 4.0 yang tersedia pada sumber; rincian komponen pihak ketiga berada
+di ledger hak dalam paket sumber.
 
-- `output/pdf/Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf`
-- `output/pdf/Analisis_Dasar_II_Bahasa_Indonesia_v6.3_WIP_sampai_11.6_Latihan.pdf`
-- `output/pdf/Notes_on_Diffy_Qs_Bab_8_Sistem_Nonlinear_Bahasa_Indonesia_v6.11_PARSIAL.pdf`
+Penerjemahan, penyuntingan, QA istilah dan matematika, penataan pembaca, dan integrasi
+backend dilakukan oleh **OpenAI Codex gpt-5.6-sol, Ultra** atas instruksi pengguna.
+Edisi ini independen dan tidak menyiratkan dukungan penulis.
 
-Pembaca Jilid II terbaru menggunakan blok halaman penuh dan terpusat, memiliki
-semua font tertanam, serta lulus sembilan pass TeX, pemeriksaan referensi,
-ekstraksi teks, dan inspeksi visual halaman baru.
+## Rilis publik
 
-## Publikasi
+- Repositori: https://github.com/KokunoYumeto/lebl-mathematics-family-id
+- Rilis GitHub: https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id.2026.08.30.complete
+- DOI versi Zenodo: https://doi.org/10.5281/zenodo.22182427
+- DOI konsep Zenodo: https://doi.org/10.5281/zenodo.22059779
 
-- Repositori: <https://github.com/KokunoYumeto/lebl-mathematics-family-id>
-- Rilis U370: <https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id-wip.2026.08.25.u370>
-- Konsep Zenodo stabil: <https://doi.org/10.5281/zenodo.22059779>
-- Koleksi Figshare Bahasa Indonesia: <https://doi.org/10.6084/m9.figshare.c.8668413>
-
-Setiap checkpoint publik diberi label parsial dengan cakupan dan pengecualian
-yang eksplisit. Tidak ada penulis yang dihubungi selama produksi dan tidak ada
-isu upstream baru yang dibuka.
-
-Untuk batas isi, reproduksi build, dan hash checkpoint publik, lihat
-[`RELEASE_NOTES.md`](RELEASE_NOTES.md) dan
-[`REPRODUCIBILITY.md`](REPRODUCIBILITY.md).
+Gunakan DOI versi untuk mengutip byte rilis ini dan DOI konsep untuk mengikuti revisi
+berikutnya dalam garis keturunan yang sama.

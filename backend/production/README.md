@@ -1,6 +1,490 @@
 # Production backend checkpoints
 
-## Public checkpoint U370
+## Current complete checkpoint 2026-08-31
+
+`v0.4-complete-2026.08.31-a/` is the authoritative complete local checkpoint;
+`v0.4-complete-2026.08.31-b/` is its independent byte-identical replay. The
+5,884-row manifest contains 5,420 dense logical units plus 32 exact whole-file
+coverage records for every canonical R006/R007/R008 TeX reader/support file.
+It indexes all 2,169 exercises and the 251 structured R007 solution blocks
+while preserving separate resource, edition, and rights identities.
+
+- 20,396 canonical records and 15 deterministic CSV projections;
+- 11,282 directly verified source/target component hashes;
+- schema, referential-integrity, typed-parent, projection, and lossless
+  round-trip validation pass;
+- 27 files / 122,843,339 bytes in each replay;
+- `records.jsonl` SHA-256
+  `46678e2b6c7e1ed8c0ebdd391cffd5a8648e66a088404ef14b7c7920e78d4c68`;
+- canonical inventory SHA-256
+  `e9c7901c216b854aac7a87e432461838fb59e36136b924c172b24db237e6f32e`.
+
+The deterministic evidence is
+`qa/parallel_qa_20260830/BACKEND_COMPLETE_R006_R007_R008_20260831.md`.
+Use `validate_complete_backend.py` for the complete lossless CSV replay; it
+raises only Python's CSV field-size ceiling and does not relax validation.
+
+## Current production checkpoint U432
+
+`v0.4-live-2026.08.30-u432-a/` is the authoritative local production
+checkpoint. It binds the 432-row translation manifest, 802-row live
+terminology ledger, 268-event adverse ledger, and unchanged 34-entry O001
+solution-gap ledger.
+
+- 4,040 canonical records, 432 manifest segments, 480 units, 790 concepts,
+  864 embedded expressions, and exactly 802 current logical terms;
+- 34 O001 exercise gaps, fourteen source hints, twenty no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 18,314,418 bytes;
+- `records.jsonl` SHA-256
+  `455989b04f3e5fae27fbc49bbd0e6a2749bbf41173263664cde4d97ab4e427a0`;
+- canonical inventory SHA-256
+  `569ae1321de93bf60f0bc5aa27224f681439943f7cc8dfcbd0d1aa8c8164b5c1`
+  using ordinal POSIX-relative-path ordering.
+
+Both fresh builds (`-u432-a` and `-u432-b`) are byte-identical across all 27
+files and pass schema, referential-integrity, 432 manifest-binding, 378 direct
+component, 15-view round-trip, and 509 legacy-locator checks. Relative to
+U431, U432 adds one translation unit, one bilingual title segment, one QA
+event, four concepts, and four term records while removing nothing; only the
+manifest artifact record is refreshed. It admits the complete R007
+autonomous-equation inverse-function method and does not replace the U429
+reader release.
+
+## Current production checkpoint U431
+
+`v0.4-live-2026.08.30-u431-a/` is the authoritative local production
+checkpoint. It binds the 431-row translation manifest, 798-row live
+terminology ledger, 268-event adverse ledger, and unchanged 34-entry O001
+solution-gap ledger.
+
+- 4,029 canonical records, 431 manifest segments, 479 units, 786 concepts,
+  862 embedded expressions, and exactly 798 current logical terms;
+- 34 O001 exercise gaps, fourteen source hints, twenty no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 18,265,811 bytes;
+- `records.jsonl` SHA-256
+  `6696e8a2865b3d00cf358098c8cc8886267ccff3b7fa67d101ef68e35b31c41b`;
+- canonical inventory SHA-256
+  `7dd067f171b62ff5b680c7ce85f0736a4b9bcccc3f6284d3421db7aec0ee34fb`
+  using ordinal POSIX-relative-path ordering.
+
+Both fresh builds (`-u431-a` and `-u431-b`) are byte-identical across all 27
+files and pass schema, referential-integrity, 431 manifest-binding, 376 direct
+component, 15-view round-trip, and 509 legacy-locator checks. Relative to
+U430, U431 adds one translation unit, one bilingual title segment, and one QA
+event while removing nothing; only the manifest artifact record is refreshed.
+It admits the complete R007 Gaussian definite-integral example and does not
+replace the U429 reader release.
+
+## Current production checkpoint U430
+
+`v0.4-live-2026.08.30-u430-a/` is the authoritative local production
+checkpoint. It binds the 430-row translation manifest, 798-row live
+terminology ledger, 268-event adverse ledger, and unchanged 34-entry O001
+solution-gap ledger.
+
+- 4,026 canonical records, 430 manifest segments, 478 units, 786 concepts,
+  860 embedded expressions, and exactly 798 current logical terms;
+- 34 O001 exercise gaps, fourteen source hints, twenty no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 18,239,374 bytes;
+- `records.jsonl` SHA-256
+  `23dcbe87514f5877ac2b9af10a9dd1374295a0561dd0e782c6e92d9deca546da`;
+- canonical inventory SHA-256
+  `bba7789a35d3d5b6db5c90a65a0cdbff6ed1330eba893e07018ba2adbf6c508f`
+  using ordinal POSIX-relative-path ordering.
+
+Both fresh builds (`-u430-a` and `-u430-b`) are byte-identical across all 27
+files and pass schema, referential-integrity, 430 manifest-binding, 374 direct
+component, 15-view round-trip, and 509 legacy-locator checks. Relative to
+U429, U430 adds one translation unit, one bilingual title segment, one QA
+event, one concept, and one term while removing nothing; only the manifest
+artifact record is refreshed. It admits the R007 definite-versus-indefinite
+integral and closed-form discussion and does not replace the U429 reader
+release.
+
+## Current production checkpoint U429
+
+`v0.4-live-2026.08.30-u429-a/` is the authoritative local production
+checkpoint. It binds the 429-row translation manifest, 797-row live
+terminology ledger, 268-event adverse ledger, and 34-entry O001 solution-gap
+ledger.
+
+- 4,021 canonical records, 429 manifest segments, 477 units, 785 concepts,
+  858 embedded expressions, and exactly 797 current logical terms;
+- 34 O001 exercise gaps, fourteen source hints, twenty no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 18,208,054 bytes;
+- `records.jsonl` SHA-256
+  `669d33603b5b70e602233130411fe2ddbcafecde3e5fb2071c88dc7f7feb2d32`;
+- canonical inventory SHA-256
+  `e6ab83c87774c191ba28b4efa1d0cef3ac551d74482c52b6c968816e51c76057`
+  using ordinal POSIX-relative-path ordering.
+
+Both fresh builds (`-u429-a` and `-u429-b`) are byte-identical across all 27
+files and pass schema, referential-integrity, 429 manifest-binding, 372 direct
+component, 15-view round-trip, and 509 legacy-locator checks. Relative to
+U428, U429 adds one translation unit, one bilingual title segment, one QA
+event, one O001 exercise unit, one explicit-hint unit, and one hint relation
+while removing nothing; only the manifest artifact record is refreshed. It
+admits the final R006 exercise and completes the R006 two-volume reader-facing
+corpus.
+
+## Current production checkpoint U428
+
+`v0.4-live-2026.08.30-u428-a/` is the authoritative local production
+checkpoint. It binds the 428-row translation manifest, 797-row live
+terminology ledger, 268-event adverse ledger, and 33-entry O001 solution-gap
+ledger.
+
+- 4,015 canonical records, 428 manifest segments, 474 units, 785 concepts,
+  856 embedded expressions, and exactly 797 current logical terms;
+- 33 O001 exercise gaps, thirteen source hints, twenty no-hint states, and
+  no invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 18,151,570 bytes;
+- `records.jsonl` SHA-256
+  `c3fcfb273128c25524ab046a5e365c1676819b2fc14ef7d0010edee2ce9f4cd5`;
+- canonical inventory SHA-256
+  `77e1b2128513b78305740126ff974949efe6e220c720b66e65b8a09521802275`
+  using ordinal POSIX-relative-path ordering.
+
+Both fresh builds (`-u428-a` and `-u428-b`) are byte-identical across all 27
+files and pass schema, referential-integrity, 428 manifest-binding, 370 direct
+component, 15-view round-trip, and 509 legacy-locator checks. Relative to
+U427, U428 adds one translation unit, one bilingual title segment, one QA
+event, and one O001 exercise unit while removing nothing; only the manifest
+artifact record is refreshed. It admits the complete two-part symmetric
+Fourier-partial-sum jump-midpoint exercise, preserves the source's absence of
+a hint and solution, and does not replace the U397 reader release.
+
+## Previous production checkpoint U427
+
+`v0.4-live-2026.08.29-u427-a/` is the authoritative local production
+checkpoint. It binds the 427-row translation manifest, 797-row live
+terminology ledger, 268-event adverse ledger, and 32-entry O001 solution-gap
+ledger.
+
+- 4,011 canonical records, 427 manifest segments, 472 units, 785 concepts,
+  854 embedded expressions, and exactly 797 current logical terms;
+- 32 O001 exercise gaps, thirteen source hints, nineteen no-hint states, and
+  no invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 18,108,960 bytes;
+- `records.jsonl` SHA-256
+  `a345b9e8c8a65faa41e76044c4842dce342bab5e5c7298aa518610e06deaf938`;
+- canonical inventory SHA-256
+  `48132a45901e66eb0216d2df08b5e2ea03d3e6897a48a865dd2446238c6386a1`
+  using ordinal POSIX-relative-path ordering.
+
+Both fresh builds (`-u427-a` and `-u427-b`) are byte-identical across all 27
+files and pass schema, referential-integrity, 427 manifest-binding, 368 direct
+component, 15-view round-trip, and 509 legacy-locator checks. Relative to
+U426, U427 adds one translation unit, one bilingual title segment, one QA
+event, and one O001 exercise unit while removing nothing; only the manifest
+artifact record is refreshed. It admits the labeled integral-representation /
+inverse-linear Fourier-coefficient-decay exercise, preserves the source's
+absence of a hint and solution, and does not replace the U397 reader release.
+
+## Current production checkpoint U426
+
+`v0.4-live-2026.08.29-u426-a/` is the authoritative local production
+checkpoint for the next publication transaction. It binds the 426-row
+translation manifest, 797-row live terminology ledger, 268-event adverse
+ledger, and 31-entry O001 solution-gap ledger.
+
+- 4,007 canonical records, 426 manifest segments, 470 units, 785 concepts,
+  850 embedded expressions, and exactly 797 current logical terms;
+- 31 O001 exercise gaps, thirteen source hints, eighteen no-hint states, and
+  no invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 18,066,968 bytes;
+- `records.jsonl` SHA-256
+  `38ec4f57d5faa23932548dfdae8e27c1f87a6ac7250296f9342b85d94d9cb32f`;
+- canonical inventory SHA-256
+  `19a50c7e70392608126019e0d75309cd8fd46652cf3dbd7b230bce02a9d296e2`
+  using ordinal POSIX-relative-path ordering.
+
+Both fresh builds (`-u426-a` and `-u426-b`) are byte-identical across all 27
+files and pass schema, referential-integrity, 426 manifest-binding, 366 direct
+component, 15-view round-trip, and 509 legacy-locator checks. Relative to
+U425, U426 adds one translation unit, one bilingual title segment, one QA
+event, and one O001 exercise unit while removing nothing; only the manifest
+artifact record is refreshed. It admits the exponentially decaying sine-series
+smoothness exercise, preserves the source's absence of a hint and solution,
+and does not replace the U397 reader release.
+
+## Current production checkpoint U425
+
+`v0.4-live-2026.08.29-u425-a/` is the authoritative production checkpoint. It
+binds the 425-row translation manifest, 797-row live terminology ledger,
+268-event adverse ledger, and 30-entry O001 solution-gap ledger.
+
+- 4,003 canonical records, 425 manifest segments, 468 units, 785 concepts,
+  850 embedded expressions, and exactly 797 current logical terms;
+- 30 O001 exercise gaps, thirteen source hints, seventeen no-hint states, and
+  no invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 18,027,168 bytes;
+- `records.jsonl` SHA-256
+  `7a501666aa2f4053bb42daa4b275b2e9e480fe356bfd376f934fca16955da83c`;
+- canonical inventory SHA-256
+  `729587820f9ea940bb7f25377705ceb3ed37015e15c3b86d557d541823e3b9e2`
+  using ordinal POSIX-relative-path ordering.
+
+All schemas, referential checks, all 425 live manifest bindings, 364 direct
+component checks, 15 CSV views, and lossless round trips pass. Independent
+replay `-u425-b` produced the identical path/byte/hash inventory. Relative to
+U424, U425 adds exactly one manifest unit, one bilingual title segment, one QA
+event, one O001 exercise unit, one explicit-hint unit, and one hint relation
+while removing nothing; only the manifest-artifact record is refreshed. It
+admits the one-sided-series analytic-unit-disc exercise, preserves its explicit
+source hint, records that no source solution exists, and does not replace the
+U397 reader release.
+
+## Preserved production checkpoint U421
+
+`v0.4-live-2026.08.29-u421-a/` is the authoritative production checkpoint. It
+binds the 421-row translation manifest, 796-row live terminology ledger,
+268-event adverse ledger, and 26-entry O001 solution-gap ledger.
+
+- 3,983 canonical records, 421 manifest segments, 459 units, 784 concepts,
+  842 embedded expressions, and exactly 796 current logical terms;
+- 26 O001 exercise gaps, twelve source hints, fourteen no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 17,845,762 bytes;
+- `records.jsonl` SHA-256
+  `72c9f47f52d86f04241ee7e6a6fd098ce5628c68e8ab85908aa01dbabd7117f8`;
+- canonical inventory SHA-256
+  `79464099c69827526036f7a28349afa3e7fac9517531d501dd21c9eab3babecd`.
+
+All schemas, referential checks, all 421 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u421-b` produced the
+identical path/byte/hash inventory. Relative to U420, U421 adds exactly one
+manifest unit, one segment, one QA event, one O001 exercise unit, one
+contextual-hint unit, and one hint relation while removing nothing; only the
+manifest-artifact record is refreshed. It admits the
+Cauchy--Bunyakovsky--Schwarz exercise, binds its contextual preceding-proof
+hint without inventing a solution, and has not replaced the U397 reader
+release. The live builder now validates optional contextual source/target hint
+selectors and hashes while retaining inline-hint detection as a fallback.
+
+## Preserved production checkpoint U420
+
+`v0.4-live-2026.08.29-u420-a/` is the authoritative production checkpoint. It
+binds the 420-row translation manifest, 796-row live terminology ledger,
+268-event adverse ledger, and 25-entry O001 solution-gap ledger.
+
+- 3,977 canonical records, 420 manifest segments, 456 units, 784 concepts,
+  840 embedded expressions, and exactly 796 current logical terms;
+- 25 O001 exercise gaps, eleven source hints, fourteen no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 17,788,134 bytes;
+- `records.jsonl` SHA-256
+  `ed314431074be9cea12eb2ebd43aa0256baecafd1d5f1212e29361023c9b0efc`;
+- canonical inventory SHA-256
+  `b858ba6dfac9b631f698f9f09734a9a6a59c63a1d4a23938f49a13019ea3b23b`.
+
+All schemas, referential checks, all 420 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u420-b` produced the
+identical path/byte/hash inventory. Relative to U419, U420 adds exactly one
+manifest unit, one segment, one QA event, and one O001 exercise unit while
+removing nothing; only the manifest-artifact record is refreshed. It admits
+the continuous-periodic `L^2`-approximation exercise and has not replaced the
+U397 reader release.
+
+## Preserved production checkpoint U419
+
+`v0.4-live-2026.08.28-u419-a/` is the authoritative production checkpoint. It
+binds the 419-row translation manifest, 796-row live terminology ledger,
+268-event adverse ledger, and 24-entry O001 solution-gap ledger.
+
+- 3,973 canonical records, 419 manifest segments, 454 units, 784 concepts,
+  838 embedded expressions, and exactly 796 current logical terms;
+- 24 O001 exercise gaps, eleven source hints, thirteen no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 17,747,335 bytes;
+- `records.jsonl` SHA-256
+  `22a810bbc69da8548431259399152c4c12887e54c873886e30b7d38e7b61c58d`;
+- canonical inventory SHA-256
+  `e812c22f35b602950a0f0759072aed56273f5440d85221e3b12add295391de60`.
+
+All schemas, referential checks, all 419 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u419-b` produced the
+identical path/byte/hash inventory. Relative to U418, U419 adds exactly one
+manifest unit, one segment, one QA event, one declared source correction, one
+O001 exercise unit, its source-hint unit, and their relation, while removing
+nothing; only the manifest-artifact record is refreshed. It admits the
+piecewise-smooth Fourier-convergence exercise and has not replaced the U397
+reader release.
+
+## Preserved production checkpoint U418
+
+`v0.4-live-2026.08.28-u418-a/` is the authoritative production checkpoint. It
+binds the 418-row translation manifest, 796-row live terminology ledger,
+267-event adverse ledger, and 23-entry O001 solution-gap ledger.
+
+- 3,966 canonical records, 418 manifest segments, 451 units, 784 concepts,
+  836 embedded expressions, and exactly 796 current logical terms;
+- 23 O001 exercise gaps, ten source hints, thirteen no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 17,679,288 bytes;
+- `records.jsonl` SHA-256
+  `de284519dd9ab6c1ff89573c1cf17ac08d1ad68674bd8a3ddc06da47dea9038e`;
+- canonical inventory SHA-256
+  `f7520356545f2460bf8b76d7455d8d1d3c67ca3e5e5fcb9eb740e2014e90032c`.
+
+All schemas, referential checks, all 418 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u418-b` produced the
+identical path/byte/hash inventory. Relative to U417, U418 adds exactly one
+manifest unit, one segment, one QA event, one declared source correction, and
+one O001 exercise unit, while removing nothing; only the manifest-artifact
+record is refreshed. It admits the local Fourier-convergence exercise and has
+not replaced the U397 reader release.
+
+## Preserved production checkpoint U417
+
+`v0.4-live-2026.08.28-u417-a/` is the authoritative production checkpoint. It
+binds the 417-row translation manifest, 796-row live terminology ledger,
+266-event adverse ledger, and 22-entry O001 solution-gap ledger.
+
+- 3,961 canonical records, 417 manifest segments, 449 units, 784 concepts,
+  834 embedded expressions, and exactly 796 current logical terms;
+- 22 O001 exercise gaps, ten source hints, twelve no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 17,628,427 bytes;
+- `records.jsonl` SHA-256
+  `59a5537b6a96a2d6485e5d12331ae1b53a63477cee911d0125925ceed78fd88f`;
+- canonical inventory SHA-256
+  `fe0edd56faa1e4183c010002903a0af14f17a5ce3afe56a47b0d561300485424`.
+
+All schemas, referential checks, all 417 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u417-b` produced the
+identical path/byte/hash inventory. Relative to U416, U417 adds one manifest
+unit, one segment, one QA event, one concept, one term, one declared source
+correction, and one O001 exercise unit, while removing nothing. It admits the
+first Fourier-series exercise and its Weierstrass figure binding. It has not
+replaced the U397 reader release.
+
+## Preserved production checkpoint U416
+
+`v0.4-live-2026.08.28-u416-a/` is the authoritative production checkpoint. It
+binds the 416-row translation manifest, 795-row live terminology ledger,
+265-event adverse ledger, and 21-entry O001 solution-gap ledger.
+
+- 3,954 canonical records, 416 manifest segments, 447 units, 783 concepts,
+  832 embedded expressions, and exactly 795 current logical terms;
+- 21 O001 exercise gaps, ten source hints, eleven no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 17,569,205 bytes;
+- `records.jsonl` SHA-256
+  `b0c459a4aca91381a5bbc0cdb4a42e3009264c4e5b32f3987fe599cf0b24f897`;
+- canonical inventory SHA-256
+  `c4ab72e0c178748410c3d77c5af94b987c4853b2bae86c8bd54a0534f9538bc4`.
+
+All schemas, referential checks, all 416 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u416-b` and two fresh
+task-local admission replays produced the identical path/byte/hash inventory.
+Relative to U415, U416 adds exactly one unit, one segment, and one QA event and
+removes nothing. It admits the complete proof of Parseval's theorem. It has
+not replaced the U397 reader release.
+
+## Preserved production checkpoint U415
+
+`v0.4-live-2026.08.28-u415-a/` is the authoritative production checkpoint. It
+binds the 415-row translation manifest, 795-row live terminology ledger,
+265-event adverse ledger, and 21-entry O001 solution-gap ledger.
+
+- 3,951 canonical records, 415 manifest segments, 446 units, 783 concepts,
+  830 embedded expressions, and exactly 795 current logical terms;
+- 21 O001 exercise gaps, ten source hints, eleven no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 17,546,055 bytes;
+- `records.jsonl` SHA-256
+  `dea4bef0c68b6bf7bb3a35c4c422a2f3ef1fb71eb5f8b1d005199cfc347b557b`;
+- canonical inventory SHA-256
+  `89eeec626092d0ec1ac92bebab9a977b3d2ee00c97866993903f145ebba5646c`.
+
+All schemas, referential checks, all 415 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u415-b` produced the
+identical path/byte/hash inventory. Relative to U414, U415 adds exactly one
+unit, one segment, one QA event, two concepts, and two terms and removes
+nothing. It admits the Parseval opening and complete theorem statement,
+including convergence in the `L^2` sense. It has not replaced the U397 reader
+release.
+
+## Preserved production checkpoint U414
+
+`v0.4-live-2026.08.28-u414-a/` is the authoritative production checkpoint. It
+binds the 414-row translation manifest, 793-row live terminology ledger,
+265-event adverse ledger, and 21-entry O001 solution-gap ledger.
+
+- 3,944 canonical records, 414 manifest segments, 445 units, 781 concepts,
+  828 embedded expressions, and exactly 793 current logical terms;
+- 21 O001 exercise gaps, ten source hints, eleven no-hint states, and no
+  invented answers or solutions;
+- 15 deterministic CSV projections;
+- 27 files / 17,511,006 bytes;
+- `records.jsonl` SHA-256
+  `452cb24ec28b4c5f60aef8c39985027419de018844428eba605a02a3f1415694`;
+- canonical inventory SHA-256
+  `c3c2de27a4afba87315cb6cf9a5fb7a0f18202f06336dea0e531da00ce4e549a`.
+
+All schemas, referential checks, all 414 live manifest bindings, 15 CSV views,
+and lossless round trips pass. Independent replay `-u414-b` produced the
+identical path/byte/hash inventory. Relative to U413, U414 adds exactly one
+unit, segment, QA event, concept, and term and removes nothing. It admits the
+locality consequence, corollary, convergence-rate remark, and
+Stone--Weierstrass comparison. It has not replaced the U397 reader release.
+
+## Preserved production checkpoint U413
+
+`v0.4-live-2026.08.28-u413-a/` preserves the byte-verified predecessor with
+3,939 records and 413 admitted units. Its 27-file tree totals 17,480,735 bytes
+and has canonical inventory SHA-256
+`928ed5553cb822f33ffbc55abdc9198d4ecbd710c879066712958e13d1d3063f`.
+
+## Preserved production checkpoint U412
+
+`v0.4-live-2026.08.28-u412-a/` preserves the byte-verified predecessor with
+3,931 records and 412 admitted units. Its 27-file tree totals 17,413,205 bytes
+and has canonical inventory SHA-256
+`92a73394f6ad19b80c64f777f60abb500cf1976fa1eee01aac057298cd490b01`.
+
+## Current public checkpoint U397
+
+`v0.4-live-2026.08.26-u397-a/` is the public checkpoint represented by GitHub
+release `lebl-family-id-wip.2026.08.26.u397` and Zenodo record `22105195`. It
+binds 397 admitted units and 3,831 canonical records. Its 27-file backend tree
+totals 16,839,490 bytes and has canonical inventory
+SHA-256
+`0b5720512a26fb12282971daf04d45c5db55d8678afe1a35e5cc44de0675302b`.
+
+The release contains one canonical backend replay. All nine GitHub assets and
+all nine Zenodo assets, totaling 12,439,062 bytes per provider, plus the
+bounded repository overlays were anonymously read back and verified.
+
+## Preserved public checkpoint U393
+
+`v0.4-live-2026.08.26-u393-final-e/` remains historical evidence for GitHub
+release `lebl-family-id-wip.2026.08.26.u393` and Zenodo record `22104149`.
+It binds 393 admitted units and 3,806 canonical records. Its 27-file backend
+tree totals 16,690,330 bytes and has canonical inventory SHA-256
+`eb022c1d1388f5ef8c84574438f44d8c7ed9a3e05d070d0b2ea20395e9eb781e`.
+
+## Preserved public checkpoint U370
 
 `v0.4-live-2026.08.25-u370-a/` is the authoritative checkpoint for release
 U370. It binds the 370-row translation manifest, 733-row live terminology

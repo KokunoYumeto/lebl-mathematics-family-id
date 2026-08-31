@@ -1,0 +1,73 @@
+%
+% \widebar dari Stackexchange oleh Hendrik Vogt
+% https://tex.stackexchange.com/questions/16337/can-i-get-a-widebar-without-using-the-mathabx-package
+%
+\makeatletter
+\let\save@mathaccent\mathaccent
+\newcommand*\if@single[3]{%
+  \setbox0\hbox{${\mathaccent"0362{#1}}^H$}%
+  \setbox2\hbox{${\mathaccent"0362{\kern0pt#1}}^H$}%
+  \ifdim\ht0=\ht2 #3\else #2\fi
+  }
+%Garis akan digeser ke kanan sejauh setengah dari \macc@kerna, yang dihitung oleh amsmath:
+\newcommand*\rel@kern[1]{\kern#1\dimexpr\macc@kerna}
+%Jika terdapat superskrip setelah garis, tidak boleh ada kern negatif setelah garis;
+%tambahan {} memastikan bahwa superskrip cukup tinggi dalam kasus ini:
+\newcommand*\widebar[1]{\@ifnextchar^{{\wide@bar{#1}{0}}}{\wide@bar{#1}{1}}}
+%Gunakan algoritme terpisah untuk simbol tunggal:
+\newcommand*\wide@bar[2]{\if@single{#1}{\wide@bar@{#1}{#2}{1}}{\wide@bar@{#1}{#2}{2}}}
+\newcommand*\wide@bar@[3]{%
+  \begingroup
+  \def\mathaccent##1##2{%
+%Aktifkan penyarangan aksen:
+    \let\mathaccent\save@mathaccent
+%Jika terdapat lebih dari satu simbol, gunakan karakter pertama sebagai gantinya (lihat di bawah):
+    \if#32 \let\macc@nucleus\first@char \fi
+%Tentukan koreksi miring:
+    \setbox\z@\hbox{$\macc@style{\macc@nucleus}_{}$}%
+    \setbox\tw@\hbox{$\macc@style{\macc@nucleus}{}_{}$}%
+    \dimen@\wd\tw@
+    \advance\dimen@-\wd\z@
+%Sekarang \dimen@ adalah koreksi miring simbol tersebut.
+    \divide\dimen@ 3
+    \@tempdima\wd\tw@
+    \advance\@tempdima-\scriptspace
+%Sekarang \@tempdima adalah lebar simbol tersebut.
+    \divide\@tempdima 10
+    \advance\dimen@-\@tempdima
+%Sekarang \dimen@ = (koreksi miring / 3) - (lebar / 10)
+    \ifdim\dimen@>\z@ \dimen@0pt\fi
+%Garis akan diperpendek dalam kasus \dimen@<0 !
+    \rel@kern{0.6}\kern-\dimen@
+    \if#31
+      \overline{\rel@kern{-0.6}\kern\dimen@\macc@nucleus\rel@kern{0.4}\kern\dimen@}%
+      \advance\dimen@0.4\dimexpr\macc@kerna
+%Tempatkan kern akhir gabungan (-\dimen@) jika nilainya >0 atau jika diikuti superskrip:
+      \let\final@kern#2%
+      \ifdim\dimen@<\z@ \let\final@kern1\fi
+      \if\final@kern1 \kern-\dimen@\fi
+    \else
+      \overline{\rel@kern{-0.6}\kern\dimen@#1}%
+    \fi
+  }%
+  \macc@depth\@ne
+  \let\math@bgroup\@empty \let\math@egroup\macc@set@skewchar
+  \mathsurround\z@ \frozen@everymath{\mathgroup\macc@group\relax}%
+  \macc@set@skewchar\relax
+  \let\mathaccentV\macc@nested@a
+%Bagian berikut menginisialisasi \macc@kerna dan memanggil \mathaccent:
+  \if#31
+    \macc@nested@a\relax111{#1}%
+  \else
+%Jika argumen terdiri atas lebih dari satu simbol, dan jika token pertama adalah
+%huruf, gunakan huruf tersebut untuk perhitungan:
+    \def\gobble@till@marker##1\endmarker{}%
+    \futurelet\first@char\gobble@till@marker#1\endmarker
+    \ifcat\noexpand\first@char A\else
+      \def\first@char{}%
+    \fi
+    \macc@nested@a\relax111{\first@char}%
+  \fi
+  \endgroup
+}
+\makeatother

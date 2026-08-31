@@ -1,73 +1,55 @@
-# Reproduksi cuplikan kerja U370
+# Reproducibility — rilis keluarga Lebl lengkap
 
-Paket ini mempertahankan pekerjaan publik pada 25 Agustus 2026. Statusnya
-parsial sampai seluruh korpus tiga buku selesai.
+Dokumen ini mengikat input pembaca, sumber, backend, dan metadata rilis lengkap
+secara deterministik. Jalankan perintah dari akar repositori dengan Python 3.
 
-Identitas checkpoint: tag GitHub `lebl-family-id-wip.2026.08.25.u370`, DOI
-versi Zenodo `10.5281/zenodo.22088826`, dan concept DOI
-`10.5281/zenodo.22059779`.
+## Input pembaca beku
 
-## Batas isi
+| ID | Jalur input | Berkas rilis | Halaman | Byte | SHA-256 |
+|---|---|---|---:|---:|---|
+| R006-volume-1 | `output/pdf/Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf` | `Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf` | 334 | 2870909 | `38743ea0e7ce52bdadf5233fc9d6e79e00717f9ba55a393f2bf46ea21c65ef56` |
+| R006-volume-2 | `output/pdf/Analisis_Dasar_II_Bahasa_Indonesia_v6.3.pdf` | `Analisis_Dasar_II_Bahasa_Indonesia_v6.3.pdf` | 241 | 2427379 | `e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3` |
+| R007 | `output/pdf/Catatan_tentang_Diffy_Qs_Bahasa_Indonesia_v6.11.pdf` | `Catatan_tentang_Diffy_Qs_Bahasa_Indonesia_v6.11.pdf` | 502 | 5135134 | `1c18dfc1572d22ef7fc5d8ad25be18f3b91f1bffea5b9f9d521ff4e56ca969d4` |
+| R008 | `output/pdf/Panduan_Mengolah_Analisis_Kompleks_Bahasa_Indonesia_v1.9.pdf` | `Panduan_Mengolah_Analisis_Kompleks_Bahasa_Indonesia_v1.9.pdf` | 338 | 2822132 | `87e4810abdedbdd8121995a8e53936891135037f03054dce76a06beebc3cfaae` |
 
-- `translation/ra/`: R006 Jilid I lengkap; Jilid II hidup sampai seluruh
-  latihan Bagian 11.6. Cursor berikutnya adalah source raw line 3137 / target
-  raw line 3149, *The Stone--Weierstrass theorem*.
-- `translation/diffyqs/`: R007 kontigu sampai raw line 87
-  `ch-first-order-ode.tex`, ditambah Bab 8 `ch-nonlin-systems.tex` lengkap.
-  Cursor aktif tetap raw line 89; paket helper Bab 8 tidak mengubahnya.
-- `translation/complex-analysis/`: R008 sampai akhir bagian bola Riemann pada
-  raw line 1644 sumber `ca.tex`.
-- `translation/TRANSLATION_MANIFEST.jsonl`: 370 unit (R006 285, R007 35,
-  R008 50), 545.833 byte, SHA-256
-  `4f937735e3416439f7e82ae3ed3be2978d5cf5b7844987066c64c01a56186789`.
+Keempat input di atas harus cocok byte demi byte. Preparasi rilis memeriksa framing
+PDF, jumlah halaman, marker profil privat, ukuran, dan SHA-256 sebelum menyalin byte.
 
-Setiap baris manifes adalah JSON sah yang mengikat identitas unit, irisan
-sumber/sasaran, dan hash komponennya. Tidak ada ID unit duplikat.
+## Sumber dan lisensi
 
-## Membangun pembaca R006 Jilid II U370
+- R006 — Basic Analysis: Introduction to Real Analysis, Volume I–II, v6.3; cabang lisensi CC BY-SA 4.0.
+- R007 — Notes on Diffy Qs: Differential Equations for Engineers, v6.11; cabang lisensi CC BY-SA 4.0.
+- R008 — Guide to Cultivating Complex Analysis: Working the Complex Field, v1.9; cabang lisensi CC BY-SA 4.0.
 
-Overlay reproduksi ada di `release/u370/`.
+Jiří Lebl tetap penulis ketiga karya sumber. Penerjemahan, penyuntingan, QA istilah
+dan matematika, penataan pembaca, serta integrasi backend dilakukan oleh OpenAI
+Codex gpt-5.6-sol, Ultra atas instruksi pengguna. Ledger hak mempertahankan atribusi
+dan lisensi komponen pihak ketiga secara terpisah.
 
-1. Salin pohon `translation/ra/` ke direktori build baru.
-2. Ganti `realanal2.tex` dan `ch-approximate.tex` dengan berkas overlay.
-3. Bangun Jilid I agar `realanal.aux` tersedia.
-4. Jalankan `build_u370.ps1`, atau reproduksi converter, empat pass indeks dan
-   glosarium, serta sembilan pass `pdflatex` untuk Jilid II.
+## Cakupan final dan backend
 
-Overlay membekukan prefiks target line 1–3147. Hasil acuan harus 208 halaman,
-2.161.063 byte, SHA-256
-`00fde02788a34292a44f38fed3146df2dbb4db8d942672e59fd54c9e362b51b7`.
-Tujuh produk bantu harus identik antara pass 8 dan 9. Receipt:
-`qa/R006_ARZELA_ASCOLI_SECTION_READER_U370_20260825.md`.
+- Manifes: 5884 unit; R006 2625, R007 1732, R008 1527; status lengkap.
+- Backend: `backend/production/v0.4-complete-2026.08.31-a`; 27 berkas; 122843339 byte; SHA-256 inventaris `4223a618b201cdc41db050c8bf929fd8b5b5628dc253fce2c5a8eef39ca18b9e`.
+- Arsip: `lebl-mathematics-family-id-source-backend-complete-20260830.zip`; 1004 berkas; 140585717 byte tak terkompresi; 18076597 byte ZIP; SHA-256 `baeea18043520f1b47825df0c9b1343f203bc1ec67119266953e19133381ab92`.
 
-## Membangun dan memvalidasi backend
+Arsip ZIP dibuat dengan urutan nama kanonik, timestamp anggota tetap 2026-08-30
+00:00:00, mode POSIX tetap, UTF-8, dan kompresi DEFLATE level 9. Inventaris backend
+dihash dari JSON kanonik berisi jalur relatif, ukuran, dan SHA-256 setiap berkas.
 
-Checkpoint kanonik ada di
-`backend/production/v0.4-live-2026.08.25-u370-a/`. Ia memuat 3.573 rekaman,
-370 segmen manifes, 740 ekspresi, 15 proyeksi CSV, 27 berkas, dan 15.377.121
-byte. Hash inventaris kanonik:
-`f317d2add54525af1680678b181a86315340c1e06db8cf72dc9c1793f3e62e75`.
+## Perintah deterministik
 
-`backend/production/build_live_v04.py` membangun checkpoint secara
-deterministik. Validasi harus menegakkan skema, ID unik, referensi utuh,
-binding ledger O001 tanpa alias jalur, 15 proyeksi CSV, dan putar-balik tepat
-3.573 rekaman. Replay `-u370-b` terbukti identik tetapi dikecualikan dari paket
-untuk menghindari duplikasi byte.
+```text
+python -B publication/final-2026.08.30/prepare_release.py
+python -B publication/final-2026.08.30/validate_release.py
+```
 
-## Istilah, koreksi, dan pengecualian
+Preparasi gagal tertutup jika DOI versi belum dicadangkan, QA/ledger hak tidak lulus,
+identitas input berubah, arsip sumber tidak deterministik, atau metadata rilis tidak
+sesuai konfigurasi final.
 
-`control/TERMINOLOGY.csv` memuat 733 istilah kini dan SHA-256
-`580653f43e23e73ff95b9dea299f9e1e636c9db65b1dac4a9508d4531e5c0148`.
-`control/ADVERSE_LEDGER.jsonl` memuat 245 peristiwa dan SHA-256
-`9559996396d2b90c34e446e9c90de9268f7433c39c810135322cd7ca0c354f3f`.
-`control/O001_SOLUTION_GAP_LEDGER.jsonl` memuat tujuh kekosongan latihan dan
-SHA-256
-`06d3cb8a5616f3f2009c36336e19a05f429e9336257f451ea33adb117166da4e`.
+## Identitas publik
 
-Paket mengecualikan cache, render sementara, proof campuran, replay backend,
-raw provenance dump, arsip otoritas mentah, dan gambar sampul ritel yang
-haknya tidak termasuk dalam lisensi buku.
-
-Penerjemahan, penataan, QA istilah, dan backend dilakukan oleh
-**OpenAI Codex gpt-5.6-sol, Ultra** atas instruksi pengguna, dengan seluruh
-kredit sumber dan kontributor manusia dipertahankan.
+- Repositori: https://github.com/KokunoYumeto/lebl-mathematics-family-id
+- Rilis GitHub: https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id.2026.08.30.complete
+- DOI versi Zenodo: https://doi.org/10.5281/zenodo.22182427
+- DOI konsep Zenodo: https://doi.org/10.5281/zenodo.22059779

@@ -1,0 +1,6917 @@
+\chapter{Aljabar linear} \label{linalg:appendix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Vektor, pemetaan, dan matriks}
+\label{vecsandmaps:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2 kuliah}
+
+Dalam kehidupan nyata, paling sering terdapat lebih dari satu variabel.
+Kita ingin menata penanganan banyak variabel secara konsisten,
+dan khususnya menata penanganan persamaan linear dan pemetaan
+linear, karena keduanya sangat berguna dan cukup mudah ditangani.
+Para matematikawan bergurau bahwa
+\myquote{bagi seorang insinyur, setiap masalah itu linear, dan segala sesuatu adalah
+matriks.}
+Dan memang, mereka (para insinyur) tidak keliru.
+Cukup sering, menyelesaikan suatu masalah rekayasa berarti menentukan
+masalah linear berdimensi hingga yang tepat untuk diselesaikan, yang kemudian
+diselesaikan melalui sejumlah manipulasi matriks.
+Yang paling penting, masalah linear adalah masalah yang kita ketahui cara menyelesaikannya,
+dan kita memiliki banyak alat untuk menyelesaikannya.
+Bagi insinyur, matematikawan, fisikawan, dan siapa pun dalam bidang teknis,
+mempelajari aljabar linear mutlak sangat penting.
+
+Sebagai motivasi, andaikan kita ingin menyelesaikan
+\begin{equation*}
+\begin{aligned}
+& x-y = 2 , \\
+& 2x+y = 4 ,
+\end{aligned}
+\end{equation*}
+untuk $x$ dan $y$.
+Artinya, kita menginginkan bilangan $x$ dan $y$ sedemikian sehingga kedua
+persamaan tersebut dipenuhi.
+Kita dapat memulai dengan menjumlahkan kedua persamaan untuk memperoleh
+\begin{equation*}
+x+2x-y+y = 2+4, \qquad \text{atau} \qquad 3x = 6 .
+\end{equation*}
+Dengan kata lain, $x=2$. Setelah memperolehnya, kita substitusikan $x=2$ ke dalam
+persamaan pertama untuk mendapatkan $2-y=2$, sehingga $y=0$. Baiklah\@, itu mudah. Mengapa
+persamaan linear begitu diributkan? Nah, coba lakukan ini jika Anda memiliki
+5000 peubah\footnote{Salah satu kelemahan membuat segala sesuatu tampak seperti
+masalah linear ialah jumlah variabel cenderung menjadi sangat besar.}.
+Selain itu, kita mungkin memiliki persamaan semacam itu bukan hanya untuk bilangan,
+tetapi juga untuk fungsi dan turunan fungsi dalam persamaan diferensial.
+Jelas kita memerlukan cara yang sistematis untuk mengerjakannya.
+Akibat yang menyenangkan dari membuat segala sesuatu sistematis dan lebih sederhana untuk dituliskan
+adalah bahwa komputer menjadi lebih mudah melakukan pekerjaan itu untuk kita.
+Komputer sangat mahir mengerjakan banyak tugas berulang
+secara tepat, asalkan kita menemukan cara sistematis bagi komputer untuk
+melaksanakan tugas-tugas tersebut.
+
+\subsection{Vektor dan operasi pada vektor}
+
+Pandang $n$ bilangan real sebagai suatu tupel-$n$:
+\begin{equation*}
+(x_1,x_2,\ldots,x_n).
+\end{equation*}
+Himpunan tupel-$n$ semacam itu adalah apa yang disebut
+\emph{ruang berdimensi $n$}\index{ruang berdimensi $n$},
+yang sering dinotasikan dengan ${\mathbb R}^n$.
+Kadang-kadang kita menyebutnya
+\emph{\myindex{ruang Euclid}} berdimensi $n$%
+\footnote{Dinamai menurut matematikawan Yunani kuno
+\href{https://en.wikipedia.org/wiki/Euclid}{Euclid dari Aleksandria}
+(sekitar 300 SM), mungkin matematikawan yang paling terkenal; bahkan
+kota-kota kecil sering memiliki Jalan Euclid atau Adimarga Euclid.}.
+Dalam dua dimensi, ${\mathbb R}^2$ disebut
+\emph{\myindex{bidang Kartesius}}%
+\footnote{Dinamai menurut matematikawan Prancis
+\href{https://en.wikipedia.org/wiki/Descartes}{Ren\'e Descartes}
+(1596--1650). Bidang itu disebut \myquote{Kartesius} karena namanya dalam bahasa Latin adalah Renatus
+Cartesius.}.
+Setiap tupel-$n$ semacam itu merepresentasikan suatu titik dalam ruang berdimensi $n$.
+Sebagai contoh, titik
+$(1,2)$ dalam bidang ${\mathbb R}^2$
+berada satu satuan ke kanan dan dua satuan ke atas dari
+titik asal.
+
+Ketika kita melakukan aljabar dengan tupel-$n$ bilangan ini, kita menyebutnya
+\emph{vektor}\index{vektor}\footnote{%
+Notasi yang lazim untuk membedakan vektor dari titik adalah menulis $(1,2)$
+untuk titik dan $\langle 1,2 \rangle$ untuk vektor. Kita menulis keduanya sebagai
+$(1,2)$.}. Para matematikawan suka membedakan
+apa yang merupakan vektor dan apa yang merupakan titik dalam ruang atau bidang,
+dan ternyata
+pembedaan itu penting; namun, untuk keperluan aljabar linear,
+kita dapat memandang segala sesuatu direpresentasikan oleh suatu vektor.
+Salah satu cara memandang vektor, yang sangat berguna dalam kalkulus
+dan persamaan diferensial, adalah sebagai anak panah. Vektor adalah objek yang memiliki
+\emph{\myindex{arah}} dan \emph{besar}.
+Sebagai contoh, vektor $(1,2)$
+adalah anak panah dari titik asal ke titik $(1,2)$ dalam bidang.
+Besarnya adalah panjang anak panah tersebut.
+Lihat \figurevref{linalg-vecarrow:fig}.
+Jika kita memandang vektor sebagai anak panah,
+anak panahnya tidak harus selalu berawal di titik asal. Namun, jika kita
+memindahkannya, anak panah itu harus selalu mempertahankan arah dan besar yang sama.
+
+\begin{myfig}
+\capstart
+\inputpdft{linalg-vecarrow}{%
+Diagram bidang x sub 1 x sub 2, dengan sebuah anak panah digambar dari titik
+(0,0) ke titik (1,2).}
+\caption{Vektor $(1,2)$ digambar sebagai anak panah dari titik asal ke titik
+$(1,2)$.\label{linalg-vecarrow:fig}}
+\end{myfig}
+
+Karena vektor merupakan anak panah, ketika hendak memberi nama suatu vektor,
+kita menggambar anak panah kecil di atasnya:
+\begin{equation*}
+\vec{x}
+\end{equation*}
+Notasi populer lainnya adalah $\mathbf{x}$ bercetak tebal, walaupun kita akan menggunakan anak panah
+kecil. Menulis huruf tebal dalam buku mungkin mudah, tetapi tidak begitu
+mudah menuliskannya dengan tangan di atas kertas atau papan tulis.
+Para matematikawan bahkan sering tidak menulis anak panahnya. Seorang matematikawan akan
+menulis $x$ dan mengingat bahwa $x$ adalah vektor, bukan bilangan.
+Sama seperti Anda mengingat bahwa Bob adalah paman Anda dan tidak perlu
+terus-menerus mengulang \myquote{Paman Bob}. Anda cukup mengatakan \myquote{Bob.}
+Namun, dalam buku ini kita akan memanggil Bob \myquote{Paman Bob}
+dan menuliskan vektor dengan anak panah kecil.
+
+\emph{\myindex{Besar}} dapat dihitung menggunakan Teorema Pythagoras.
+Vektor $(1,2)$ yang digambar dalam gambar memiliki besar $\sqrt{1^2+2^2} =
+\sqrt{5}$. Besar tersebut dinotasikan dengan $\lVert \vec{x} \rVert$,
+dan, dalam berapa pun jumlah dimensinya, dapat dihitung dengan cara yang sama:
+\begin{equation*}
+\lVert \vec{x} \rVert
+=
+\lVert (x_1,x_2,\ldots,x_n) \rVert
+=
+\sqrt{x_1^2+x_2^2+\cdots+x_n^2} .
+\end{equation*}
+
+Untuk alasan yang akan menjadi jelas dalam bagian berikutnya, kita sering
+menuliskan vektor sebagai apa yang disebut
+\emph{vektor kolom}\index{vektor kolom}:
+\begin{equation*}
+\vec{x} =
+\begin{bmatrix}
+x_{1} \\ x_2 \\ \vdots \\ x_n
+\end{bmatrix} .
+\end{equation*}
+Jangan khawatir. Itu hanya cara lain untuk menuliskan hal yang sama.
+Sebagai contoh, vektor $(1,2)$ dapat ditulis sebagai
+\begin{equation*}
+\begin{bmatrix}
+1 \\ 2
+\end{bmatrix} .
+\end{equation*}
+
+Fakta bahwa kita menuliskan anak panah di atas vektor memungkinkan kita menulis beberapa
+vektor $\vec{x}_1$, $\vec{x}_2$, dan seterusnya, tanpa mengacaukannya dengan
+komponen-komponen suatu vektor lain $\vec{x}$.
+
+Lalu, di manakah \emph{aljabar} dalam \emph{aljabar linear}?
+Nah, anak panah dapat dijumlahkan, dikurangkan,
+dan dikalikan dengan bilangan.
+Pertama-tama kita membahas \emph{penjumlahan}\index{menjumlahkan vektor}.
+Jika kita memiliki dua anak panah, kita cukup
+bergerak sepanjang yang satu, lalu sepanjang yang lain. Lihat
+\figurevref{linalg-vecadd:fig}.
+
+\begin{myfig}
+\capstart
+\inputpdft{linalg-vecadd}{%
+Diagram bidang x sub 1 x sub 2. Sebuah anak panah bertitik-titik digambar dari
+titik (0,0) ke titik (1,2). Sebuah anak panah putus-putus
+digambar dari titik (1,2) ke titik (3, minus 1), yakni berawal dari
+ujung anak panah bertitik-titik. Sebuah anak panah utuh digambar dari (0,0)
+ke titik (3, minus 1), yakni berawal di titik asal dan berakhir di
+ujung anak panah putus-putus.}
+\caption{Menjumlahkan vektor $(1,2)$, yang digambar bertitik-titik, dan $(2,-3)$, yang digambar putus-putus.
+Hasilnya, $(3,-1)$, digambar sebagai anak panah utuh.\label{linalg-vecadd:fig}}
+\end{myfig}
+
+Cukup mudah melihat pengaruhnya terhadap bilangan-bilangan yang merepresentasikan
+vektor. Andaikan kita ingin menjumlahkan $(1,2)$ dengan $(2,-3)$ seperti pada gambar.
+Kita bergerak sepanjang $(1,2)$
+dan kemudian bergerak sepanjang $(2,-3)$.
+Yang kita lakukan adalah bergerak satu satuan ke kanan, dua satuan ke atas, lalu
+bergerak dua satuan ke kanan dan tiga satuan ke bawah (minus tiga). Ini
+berarti kita berakhir di $\bigl(1+2,2+(-3)\bigr) = (3,-1)$.
+Begitulah penjumlahan selalu bekerja:
+\begin{equation*}
+\begin{bmatrix}
+x_{1} \\ x_2 \\ \vdots \\ x_n
+\end{bmatrix} +
+\begin{bmatrix}
+y_{1} \\ y_2 \\ \vdots \\ y_n
+\end{bmatrix} =
+\begin{bmatrix}
+x_1 + y_{1} \\ x_2+ y_2 \\ \vdots \\ x_n + y_n
+\end{bmatrix} .
+\end{equation*}
+
+\emph{Pengurangan}\index{mengurangkan vektor} bekerja secara serupa.
+Makna visual dari $\vec{x}- \vec{y}$ adalah bahwa
+mula-mula kita bergerak sepanjang $\vec{x}$, kemudian bergerak
+mundur sepanjang $\vec{y}$.
+Lihat \figurevref{linalg-vecsub:fig}.
+Ini seperti menjumlahkan
+$\vec{x}+ (- \vec{y})$, dengan $-\vec{y}$
+adalah anak panah yang kita peroleh dengan menghapus kepala anak panah
+dari satu sisi dan menggambarnya di sisi lain.
+Artinya, kita membalik
+arahnya. Ditinjau dari bilangannya, kita cukup bergerak mundur baik
+secara horizontal maupun vertikal,
+sehingga kita menegatifkan kedua bilangan. Misalnya, jika $\vec{y}$ adalah $(-2,1)$,
+maka $-\vec{y}$ adalah $(2,-1)$.
+
+\begin{myfig}
+\capstart
+\inputpdft{linalg-vecsub}{%
+Diagram bidang x sub 1 x sub 2. Sebuah anak panah bertitik-titik digambar dari
+titik (0,0) ke titik (1,2). Sebuah anak panah putus-putus
+digambar dari titik (3,1) ke titik (1,2), yakni berawal dari
+titik (3,1) dan berakhir di ujung anak panah bertitik-titik.
+Sebuah anak panah utuh digambar dari (0,0)
+ke titik (3,1), yakni berawal di titik asal dan berakhir di
+ekor anak panah putus-putus.}
+\caption{Pengurangan: vektor $(1,2)$, yang digambar bertitik-titik, dikurangi $(-2,1)$,
+yang digambar putus-putus. Hasilnya,
+$(3,1)$, digambar sebagai anak panah utuh.\label{linalg-vecsub:fig}}
+\end{myfig}
+
+Hal intuitif lain yang dapat dilakukan terhadap vektor adalah
+\emph{menskalakannya}\index{menskalakan vektor}.
+Kita merepresentasikan ini dengan perkalian suatu bilangan dengan vektor.
+Karena itu, ketika ingin membedakan antara vektor dan bilangan, kita
+menyebut bilangan sebagai \emph{skalar}\index{skalar}.
+Sebagai contoh,
+andaikan kita ingin bergerak tiga kali lebih jauh. Jika vektornya $(1,2)$,
+bergerak 3 kali lebih jauh berarti bergerak 3 satuan ke kanan dan 6 satuan ke atas,
+sehingga kita memperoleh vektor $(3,6)$.
+Kita cukup mengalikan setiap bilangan dalam vektor dengan 3.
+Jika $\alpha$ adalah suatu bilangan, maka
+\begin{equation*}
+\alpha
+\begin{bmatrix}
+x_{1} \\ x_2 \\ \vdots \\ x_n
+\end{bmatrix} =
+\begin{bmatrix}
+\alpha x_{1} \\ \alpha x_2 \\ \vdots \\ \alpha x_n
+\end{bmatrix} .
+\end{equation*}
+Penskalaan (dengan bilangan positif) mengalikan besarnya
+dan tidak mengubah arahnya.
+Besar $(1,2)$
+adalah $\sqrt{5}$. Besar 3 kali $(1,2)$, yakni besar $(3,6)$, adalah
+$3\sqrt{5}$.
+
+Jika kita mengalikan suatu vektor dengan skalar negatif,
+vektor tersebut tidak hanya diskalakan, tetapi juga berbalik arah.
+Mengalikan $(1,2)$ dengan $-3$ berarti kita harus bergerak 3 kali lebih jauh tetapi dalam
+arah yang berlawanan, jadi 3 satuan ke kiri dan 6 satuan ke bawah, atau dengan kata
+lain, $(-3,-6)$. Seperti telah disebutkan di atas, $-\vec{y}$ adalah kebalikan dari
+$\vec{y}$, dan ini sama dengan $(-1)\vec{y}$.
+
+Dalam \figurevref{linalg-vecscale:fig}, Anda dapat melihat beberapa contoh
+makna visual penskalaan suatu vektor.
+
+\begin{myfig}
+\capstart
+\inputpdft{linalg-vecscale}{%
+Tiga diagram.
+Pertama, vektor x digambar sebagai anak panah.
+Berikutnya, vektor 2 x digambar
+sebagai anak panah yang dua kali lebih panjang, dengan dua versi acuan x digambar
+di sampingnya sebagai pembanding skala. Terakhir, vektor minus 1.5 x digambar;
+vektor ini mengarah ke arah yang berlawanan dan panjangnya 1.5 kali panjang
+x. Sekali lagi, dua versi acuan x digambar di sampingnya sebagai pembanding skala.}
+\caption{Suatu vektor $\vec{x}$, vektor $2\vec{x}$ (arah sama,
+besar dua kali lipat), dan vektor $-1.5\vec{x}$ (arah berlawanan,
+besar 1.5 kali lipat).\label{linalg-vecscale:fig}}
+\end{myfig}
+
+Kita menggabungkan semua operasi ini untuk mengerjakan ungkapan yang lebih rumit.
+Mari kita hitung sebuah contoh kecil:
+\begin{equation*}
+3
+\begin{bmatrix}
+1 \\ 2
+\end{bmatrix}
++
+2
+\begin{bmatrix}
+-4 \\ -1
+\end{bmatrix}
+-
+3
+\begin{bmatrix}
+-2 \\ 2
+\end{bmatrix}
+=
+\begin{bmatrix}
+3(1)+2(-4)-3(-2) \\ 3(2)+2(-1)-3(2)
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 \\ -2
+\end{bmatrix}
+.
+\end{equation*}
+
+\medskip
+
+Kita mengatakan bahwa vektor memiliki arah dan besar. Besar mudah
+direpresentasikan---hanyalah suatu bilangan. \emph{\myindex{Arah}} biasanya
+diberikan oleh vektor dengan besar satu. Vektor semacam itu kita sebut
+\emph{\myindex{vektor satuan}}. Artinya, $\vec{u}$ adalah vektor satuan ketika
+$\lVert \vec{u} \rVert = 1$. Sebagai contoh, vektor $(1,0)$,
+$(\nicefrac{1}{\sqrt{2}},\nicefrac{1}{\sqrt{2}})$, dan $(0,-1)$ semuanya merupakan
+vektor satuan.
+
+Untuk merepresentasikan arah suatu vektor $\vec{x}$, kita perlu mencari
+vektor satuan dalam arah yang sama. Untuk melakukannya, kita cukup menskalakan ulang
+$\vec{x}$ dengan kebalikan besarnya:
+$\frac{1}{\lVert \vec{x} \rVert} \vec{x}$, atau secara lebih ringkas,
+$\frac{\vec{x}}{\lVert \vec{x} \rVert}$.
+
+Sebagai contoh, vektor satuan searah dengan $(1,2)$ adalah
+\begin{equation*}
+\frac{1}{\sqrt{1^2+2^2}} (1,2)
+=
+\left( \frac{1}{\sqrt{5}}, \frac{2}{\sqrt{5}} \right) .
+\end{equation*}
+
+\subsection{Pemetaan linear dan matriks}
+
+Suatu \emph{\myindex{fungsi bernilai vektor}}
+$F$ adalah aturan yang menerima vektor $\vec{x}$ dan menghasilkan vektor lain
+$\vec{y}$. Sebagai contoh, $F$ dapat berupa penskalaan yang menggandakan ukuran
+vektor:
+\begin{equation*}
+F(\vec{x}) = 2 \vec{x} .
+\end{equation*}
+Jika diterapkan, misalnya, pada $(1,3)$, kita memperoleh
+\begin{equation*}
+F
+\left( \begin{bmatrix} 1 \\ 3 \end{bmatrix} \right)
+=
+2
+\begin{bmatrix} 1 \\ 3 \end{bmatrix}
+=
+\begin{bmatrix} 2 \\ 6 \end{bmatrix} .
+\end{equation*}
+Jika $F$ adalah pemetaan yang membawa vektor dalam
+${\mathbb R}^2$ ke
+${\mathbb R}^2$ (seperti di atas), kita menulis
+\begin{equation*}
+F \colon {\mathbb R}^2 \to {\mathbb R}^2 .
+\end{equation*}
+Kata \emph{fungsi} dan \emph{pemetaan} digunakan secara kurang lebih saling menggantikan,
+meskipun lebih sering \emph{pemetaan} digunakan ketika membicarakan
+fungsi bernilai vektor, dan kata \emph{fungsi} sering digunakan ketika
+fungsi tersebut bernilai skalar.
+
+Mahasiswa matematika pemula (dan banyak matematikawan berpengalaman)
+yang melihat ungkapan seperti
+\begin{equation*}
+f(3x+8y)
+\end{equation*}
+sangat ingin menulis
+\begin{equation*}
+3f(x)+8f(y) .
+\end{equation*}
+Lagi pula, siapa yang tidak pernah ingin menulis $\sqrt{x+y} = \sqrt{x} + \sqrt{y}$ atau
+sesuatu semacam itu pada suatu saat dalam kehidupan matematisnya?
+Bukankah hidup akan sederhana jika kita dapat melakukannya?
+Tentu saja kita tidak selalu dapat melakukannya (misalnya, tidak untuk akar
+kuadrat!).
+Namun, terdapat banyak fungsi lain yang memungkinkan kita melakukan persis seperti di atas.
+Fungsi-fungsi semacam itu disebut \emph{linear}.
+
+Suatu pemetaan $F \colon {\mathbb R}^n \to {\mathbb R}^m$
+disebut \emph{linear}\index{pemetaan linear} jika
+\begin{equation*}
+F(\vec{x}+\vec{y}) = F(\vec{x})+F(\vec{y}),
+\end{equation*}
+untuk sebarang vektor $\vec{x}$ dan $\vec{y}$,
+dan juga
+\begin{equation*}
+F(\alpha \vec{x}) = \alpha F(\vec{x}) ,
+\end{equation*}
+untuk sebarang skalar $\alpha$.
+Fungsi $F$ yang kita definisikan di atas, yang menggandakan ukuran semua vektor, bersifat linear. Mari
+kita periksa:
+\begin{equation*}
+F(\vec{x}+\vec{y})
+=
+2(\vec{x}+\vec{y})
+=
+2\vec{x}+2\vec{y}
+=
+F(\vec{x})+F(\vec{y}) ,
+\end{equation*}
+dan juga
+\begin{equation*}
+F(\alpha \vec{x}) = 2 \alpha \vec{x} = \alpha 2 \vec{x} = \alpha F(\vec{x}) .
+\end{equation*}
+
+Kita juga menyebut fungsi linear sebagai
+\emph{transformasi linear}\index{transformasi}.
+Jika ingin benar-benar bergaya dan membuat teman-teman Anda terkesan, Anda dapat menyebutnya
+\emph{operator linear}\index{operator}.
+Ketika suatu pemetaan bersifat linear, kita sering tidak menuliskan tanda kurung. Kita cukup menulis
+\begin{equation*}
+F \vec{x}
+\end{equation*}
+sebagai pengganti $F(\vec{x})$. Kita melakukan ini karena linearitas berarti bahwa
+pemetaan $F$
+berperilaku seperti mengalikan $\vec{x}$ dengan \myquote{sesuatu.}
+Sesuatu itu adalah matriks.
+
+Suatu \emph{\myindex{matriks}}
+adalah susunan bilangan berukuran $m
+\times n$ ($m$ baris dan $n$ kolom). Suatu matriks
+$3 \times 5$ adalah
+\begin{equation*}
+A =
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} & a_{14} & a_{15} \\
+a_{21} & a_{22} & a_{23} & a_{24} & a_{25} \\
+a_{31} & a_{32} & a_{33} & a_{34} & a_{35}
+\end{bmatrix} .
+\end{equation*}
+Bilangan-bilangan $a_{ij}$ disebut \emph{elemen}\index{elemen suatu matriks}
+atau \emph{entri}\index{entri suatu matriks}.
+
+Vektor kolom hanyalah matriks berukuran $m \times 1$. Serupa dengan
+vektor kolom, terdapat pula
+\emph{\myindex{vektor baris}}, yaitu matriks berukuran $1 \times n$.
+Jika kita memiliki matriks $n \times n$, kita mengatakan bahwa matriks itu adalah
+\emph{\myindex{matriks persegi}}.
+
+Bagaimana matriks $A$ berkaitan dengan suatu pemetaan linear?
+Matriks memberi tahu kita ke mana
+vektor-vektor khusus tertentu dipetakan. Kita memberikan nama kepada vektor-vektor tersebut.
+\emph{\myindex{Vektor basis standar}} dari ${\mathbb R}^n$ adalah
+\begin{equation*}
+\vec{e}_1 =
+\begin{bmatrix}
+1 \\ 0 \\ 0 \\ \vdots \\ 0
+\end{bmatrix} ,
+\qquad
+\vec{e}_2 =
+\begin{bmatrix}
+0 \\ 1 \\ 0 \\ \vdots \\ 0
+\end{bmatrix} ,
+\qquad
+\vec{e}_3 =
+\begin{bmatrix}
+0 \\ 0 \\ 1 \\ \vdots \\ 0
+\end{bmatrix} ,
+\qquad
+\cdots ,
+\qquad
+\vec{e}_n =
+\begin{bmatrix}
+0 \\ 0 \\ 0 \\ \vdots \\ 1
+\end{bmatrix} .
+\end{equation*}
+Dalam ${\mathbb R}^3$, vektor-vektor ini adalah
+\begin{equation*}
+\vec{e}_1 =
+\begin{bmatrix}
+1 \\ 0 \\ 0
+\end{bmatrix} ,
+\qquad
+\vec{e}_2 =
+\begin{bmatrix}
+0 \\ 1 \\ 0
+\end{bmatrix} ,
+\qquad
+\vec{e}_3 =
+\begin{bmatrix}
+0 \\ 0 \\ 1
+\end{bmatrix} .
+\end{equation*}
+Anda mungkin ingat dari kalkulus beberapa variabel bahwa vektor-vektor ini
+kadang-kadang disebut $\vec{\imath}$, $\vec{\jmath}$, $\vec{k}$.
+Alasan vektor-vektor ini disebut suatu \emph{\myindex{basis}} adalah karena setiap
+vektor dapat ditulis sebagai \emph{\myindex{kombinasi linear}} tunggal dari vektor-vektor tersebut.
+Sebagai contoh, dalam ${\mathbb R}^3$, vektor $(4,5,6)$ dapat ditulis sebagai
+\begin{equation*}
+4 \vec{e}_1 +
+5 \vec{e}_2 +
+6 \vec{e}_3
+=
+4
+\begin{bmatrix}
+1 \\ 0 \\ 0
+\end{bmatrix}
++
+5
+\begin{bmatrix}
+0 \\ 1 \\ 0
+\end{bmatrix}
++
+6
+\begin{bmatrix}
+0 \\ 0 \\ 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+4 \\ 5 \\ 6
+\end{bmatrix} .
+\end{equation*}
+
+Jadi, bagaimana suatu matriks merepresentasikan pemetaan linear?
+Kolom-kolom matriks adalah vektor-vektor yang menjadi citra $\vec{e}_1$,
+$\vec{e}_2$, dan seterusnya, oleh matriks tersebut sebagai suatu pemetaan
+linear.
+Sebagai contoh, perhatikan
+\begin{equation*}
+M =
+\begin{bmatrix}
+1 & 2 \\ 3 & 4
+\end{bmatrix} .
+\end{equation*}
+Sebagai pemetaan linear, $M \colon {\mathbb R}^2 \to {\mathbb R}^2$ membawa
+$\vec{e}_1 = \left[ \begin{smallmatrix} 1 \\ 0 \end{smallmatrix} \right]$ ke
+$\left[ \begin{smallmatrix} 1 \\ 3 \end{smallmatrix} \right]$
+dan
+$\vec{e}_2 = \left[ \begin{smallmatrix} 0 \\ 1 \end{smallmatrix} \right]$ ke
+$\left[ \begin{smallmatrix} 2 \\ 4 \end{smallmatrix} \right]$. Dengan kata
+lain,
+\begin{equation*}
+M \vec{e}_1 =
+\begin{bmatrix}
+1 & 2 \\ 3 & 4
+\end{bmatrix}
+\begin{bmatrix}
+1 \\ 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 \\ 3
+\end{bmatrix},
+\qquad
+\text{dan}
+\qquad
+M \vec{e}_2 =
+\begin{bmatrix}
+1 & 2 \\ 3 & 4
+\end{bmatrix}
+\begin{bmatrix}
+0 \\ 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+2 \\ 4
+\end{bmatrix}.
+\end{equation*}
+
+Secara lebih umum, jika kita memiliki matriks $n \times m$, yaitu $n$ baris
+dan $m$ kolom, maka pemetaan $A \colon {\mathbb R}^m \to {\mathbb R}^n$
+membawa $\vec{e}_j$ ke kolom ke-$j$ dari $A$.
+Sebagai contoh,
+\begin{equation*}
+A =
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} & a_{14} & a_{15} \\
+a_{21} & a_{22} & a_{23} & a_{24} & a_{25} \\
+a_{31} & a_{32} & a_{33} & a_{34} & a_{35}
+\end{bmatrix}
+\end{equation*}
+merepresentasikan pemetaan dari ${\mathbb R}^5$ ke ${\mathbb R}^3$ yang melakukan
+\begin{equation*}
+A \vec{e}_1 =
+\begin{bmatrix}
+a_{11} \\ a_{21} \\ a_{31}
+\end{bmatrix} ,
+\qquad
+A \vec{e}_2 =
+\begin{bmatrix}
+a_{12} \\ a_{22} \\ a_{32}
+\end{bmatrix} ,
+\qquad
+A \vec{e}_3 =
+\begin{bmatrix}
+a_{13} \\ a_{23} \\ a_{33}
+\end{bmatrix} ,
+\qquad
+A \vec{e}_4 =
+\begin{bmatrix}
+a_{14} \\ a_{24} \\ a_{34}
+\end{bmatrix} ,
+\qquad
+A \vec{e}_5 =
+\begin{bmatrix}
+a_{15} \\ a_{25} \\ a_{35}
+\end{bmatrix} .
+\end{equation*}
+
+Bagaimana dengan vektor lain $\vec{x}$ yang bukan vektor basis standar?
+Ke mana vektor itu dipetakan? Kita menggunakan
+linearitas. Pertama-tama, kita menuliskan vektor sebagai kombinasi linear dari vektor-vektor
+basis standar:
+\begin{equation*}
+\vec{x} =
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5
+\end{bmatrix}
+=
+x_1
+\begin{bmatrix}
+1 \\ 0 \\ 0 \\ 0 \\ 0
+\end{bmatrix}
++
+x_2
+\begin{bmatrix}
+0 \\ 1 \\ 0 \\ 0 \\ 0
+\end{bmatrix}
++
+x_3
+\begin{bmatrix}
+0 \\ 0 \\ 1 \\ 0 \\ 0
+\end{bmatrix}
++
+x_4
+\begin{bmatrix}
+0 \\ 0 \\ 0 \\ 1 \\ 0
+\end{bmatrix}
++
+x_5
+\begin{bmatrix}
+0 \\ 0 \\ 0 \\ 0 \\ 1
+\end{bmatrix}
+=
+x_1 \vec{e}_1 +
+x_2 \vec{e}_2 +
+x_3 \vec{e}_3 +
+x_4 \vec{e}_4 +
+x_5 \vec{e}_5 .
+\end{equation*}
+Kemudian,
+\begin{equation*}
+A \vec{x}
+=
+A (
+x_1 \vec{e}_1 +
+x_2 \vec{e}_2 +
+x_3 \vec{e}_3 +
+x_4 \vec{e}_4 +
+x_5 \vec{e}_5
+)
+=
+x_1 A\vec{e}_1 +
+x_2 A\vec{e}_2 +
+x_3 A\vec{e}_3 +
+x_4 A\vec{e}_4 +
+x_5 A\vec{e}_5 .
+\end{equation*}
+Jika kita mengetahui ke mana $A$ membawa semua vektor basis, kita mengetahui ke mana ia membawa
+semua vektor.
+
+Andaikan $M$ adalah matriks $2 \times 2$ dari atas,
+maka
+\begin{equation*}
+M
+\begin{bmatrix}
+-2 \\ 0.1
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix}
+\begin{bmatrix}
+-2 \\ 0.1
+\end{bmatrix}
+=
+-2
+\begin{bmatrix}
+1 \\ 3
+\end{bmatrix}
++
+0.1
+\begin{bmatrix}
+2 \\ 4
+\end{bmatrix}
+=
+\begin{bmatrix}
+-1.8 \\ -5.6
+\end{bmatrix} .
+\end{equation*}
+
+Setiap pemetaan linear dari ${\mathbb R}^m$ ke ${\mathbb R}^n$ dapat
+direpresentasikan oleh matriks $n \times m$. Anda hanya perlu menentukan ke mana pemetaan itu
+membawa vektor-vektor basis standar. Sebaliknya, setiap matriks $n \times m$
+merepresentasikan pemetaan linear. Oleh karena itu, kita dapat memandang matriks sebagai
+pemetaan linear, dan pemetaan linear sebagai matriks.
+
+Atau benarkah demikian? Dalam buku ini kita terutama mempelajari operator diferensial
+linear, dan operator diferensial linear adalah pemetaan linear, walaupun tidak bekerja pada
+${\mathbb R}^n$, tetapi pada
+ruang fungsi berdimensi tak hingga:
+\begin{equation*}
+L f = g .
+\end{equation*}
+Untuk suatu fungsi $f$, kita memperoleh fungsi $g$, dan $L$ linear dalam arti bahwa
+\begin{equation*}
+L ( f + h) = Lf + Lh, \qquad \text{dan} \qquad
+L (\alpha f) = \alpha Lf .
+\end{equation*}
+untuk sebarang bilangan (skalar) $\alpha$ dan semua fungsi $f$ serta $h$.
+
+Jadi, jawabannya sebenarnya tidak. Namun, jika kita memperhatikan vektor dalam
+ruang berdimensi hingga ${\mathbb R}^n$, maka ya, setiap pemetaan linear adalah suatu
+matriks.
+Pada awal bagian ini kita menyebutkan bahwa kita dapat
+\myquote{membuat segala sesuatu menjadi vektor.} Hal itu tidak sepenuhnya benar, tetapi
+benar
+secara hampiran. Ruang fungsi \myquote{berdimensi tak hingga} itu dapat
+dihampiri oleh ruang berdimensi hingga, dan kemudian operator linear
+hanyalah matriks. Jadi, secara hampiran, hal ini benar. Dan sejauh menyangkut perhitungan nyata
+yang dapat kita lakukan pada komputer, kita memang hanya dapat bekerja dengan
+berhingga banyak dimensi. Jika Anda meminta komputer atau kalkulator Anda
+menggambar grafik suatu fungsi,
+alat itu mengambil sampel fungsi pada berhingga banyak titik lalu
+menghubungkan titik-titik tersebut\footnote{Jika Anda pernah menggunakan Matlab, Anda mungkin
+memperhatikan bahwa untuk menggambar grafik fungsi, kita mengambil suatu vektor masukan, meminta Matlab
+menghitung vektor nilai fungsi yang bersesuaian, lalu meminta
+Matlab menggambar hasilnya.}.
+Alat itu sebenarnya tidak memberikan tak hingga banyak nilai.
+Cara Anda menggunakan komputer atau kalkulator sejauh ini
+sudah merupakan suatu penghampiran tertentu dari ruang fungsi oleh suatu
+ruang berdimensi hingga.
+
+\medskip
+
+Untuk mengakhiri bagian ini, kita perhatikan bagaimana $A \vec{x}$ dapat dituliskan dengan lebih ringkas.
+Andaikan
+\begin{equation*}
+A =
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23}
+\end{bmatrix}
+\qquad \text{dan} \qquad
+\vec{x} =
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix} .
+\end{equation*}
+Maka
+\begin{equation*}
+A \vec{x} =
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23}
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+a_{11} x_1 + a_{12} x_2 + a_{13} x_3 \\
+a_{21} x_1 + a_{22} x_2 + a_{23} x_3
+\end{bmatrix}  .
+\end{equation*}
+Sebagai contoh,
+\begin{equation*}
+\begin{bmatrix}
+1 & 2 \\ 3 & 4
+\end{bmatrix}
+\begin{bmatrix}
+2 \\ -1
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 \cdot 2 + 2 \cdot (-1) \\
+3 \cdot 2 + 4 \cdot (-1)
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\ 2
+\end{bmatrix}  .
+\end{equation*}
+Artinya, Anda mengambil entri-entri dalam suatu baris matriks, mengalikannya dengan
+entri-entri dalam vektor, menjumlahkan semuanya, dan hasilnya adalah entri yang bersesuaian
+dalam vektor hasil.
+
+
+\subsection{Latihan}
+
+\begin{exercise}
+Pada selembar kertas grafik, gambarlah vektor-vektor berikut:
+\begin{tasks}(3)
+\task
+$\begin{bmatrix}
+2 \\
+5
+\end{bmatrix}
+$
+\task
+$\begin{bmatrix}
+-2 \\
+-4
+\end{bmatrix}
+$
+\task
+$(3,-4)$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Pada selembar kertas grafik, gambarlah vektor $(1,2)$ yang berawal di (berpangkal di)
+titik yang diberikan:
+\begin{tasks}(3)
+\task
+berpangkal di $(0,0)$
+\task
+berpangkal di $(1,2)$
+\task
+berpangkal di $(0,-1)$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Pada selembar kertas grafik, gambarlah operasi-operasi berikut.
+Gambar dan beri label pada vektor-vektor yang terlibat dalam operasi
+serta hasilnya:
+\begin{tasks}(3)
+\task
+$\begin{bmatrix}
+1 \\
+-4
+\end{bmatrix}
++
+\begin{bmatrix}
+2 \\
+3
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+-3 \\
+2
+\end{bmatrix}
+-
+\begin{bmatrix}
+1 \\
+3
+\end{bmatrix}$
+\task
+$3\begin{bmatrix}
+2 \\
+1
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Hitunglah besar dari
+\begin{tasks}(3)
+\task
+$\begin{bmatrix}
+7 \\
+2
+\end{bmatrix}
+$
+\task
+$\begin{bmatrix}
+-2 \\
+3 \\
+1
+\end{bmatrix}
+$
+\task
+$(1,3,-4)$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Hitunglah
+\begin{tasks}(3)
+\task
+$\begin{bmatrix}
+2 \\
+3
+\end{bmatrix}
++
+\begin{bmatrix}
+7 \\
+-8
+\end{bmatrix}
+$
+\task
+$\begin{bmatrix}
+-2 \\
+3
+\end{bmatrix}
+-
+\begin{bmatrix}
+6 \\
+-4
+\end{bmatrix}
+$
+\task
+$
+-\begin{bmatrix}
+-3 \\
+2
+\end{bmatrix}
+$
+\task
+$
+4\begin{bmatrix}
+-1 \\
+5
+\end{bmatrix}
+$
+\task
+$
+5\begin{bmatrix}
+1 \\
+0
+\end{bmatrix}
++
+9
+\begin{bmatrix}
+0 \\
+1
+\end{bmatrix}
+$
+\task
+$
+3\begin{bmatrix}
+1 \\
+-8
+\end{bmatrix}
+-
+2
+\begin{bmatrix}
+3 \\
+-1
+\end{bmatrix}
+$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Carilah vektor satuan yang searah dengan vektor yang diberikan
+\begin{tasks}(3)
+\task
+$\begin{bmatrix}
+1 \\
+-3
+\end{bmatrix}
+$
+\task
+$\begin{bmatrix}
+2 \\
+1 \\
+-1
+\end{bmatrix}
+$
+\task
+$(3,1,-2)$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Jika $\vec{x} = (1,2)$ dan $\vec{y}$ dijumlahkan, kita memperoleh
+$\vec{x}+\vec{y} = (0,2)$. Berapakah $\vec{y}$?
+\end{exercise}
+
+\begin{exercise}
+Tuliskan $(1,2,3)$ sebagai kombinasi linear dari vektor-vektor basis standar
+$\vec{e}_1$, $\vec{e}_2$, dan $\vec{e}_3$.
+\end{exercise}
+
+\begin{exercise}
+Jika besar $\vec{x}$ adalah 4, berapakah besar dari
+\begin{tasks}(6)
+\task
+$0\vec{x}$
+\task
+$3\vec{x}$
+\task
+$-\vec{x}$
+\task
+$-4\vec{x}$
+\task
+$\vec{x}+\vec{x}$
+\task
+$\vec{x}-\vec{x}$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Misalkan suatu pemetaan linear $F \colon {\mathbb R}^2 \to {\mathbb R}^2$
+membawa $(1,0)$ ke $(2,-1)$ dan membawa $(0,1)$ ke $(3,3)$.
+Ke manakah pemetaan itu membawa
+\begin{tasks}(3)
+\task
+$(1,1)$
+\task
+$(2,0)$
+\task
+$(2,-1)$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Misalkan suatu pemetaan linear $F \colon {\mathbb R}^3 \to {\mathbb R}^2$
+membawa $(1,0,0)$ ke $(2,1)$, membawa $(0,1,0)$ ke $(3,4)$, dan
+membawa $(0,0,1)$ ke $(5,6)$. Tuliskan matriks yang merepresentasikan
+pemetaan $F$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan suatu pemetaan $F \colon {\mathbb R}^2 \to \mathbb{R}^2$ membawa
+$(1,0)$ ke $(1,2)$, $(0,1)$ ke $(3,4)$, dan $(1,1)$ ke $(0,-1)$.
+Jelaskan mengapa $F$ tidak linear.
+\end{exercise}
+
+\begin{exercise}[menantang]
+Misalkan ${\mathbb R}^3$ merepresentasikan ruang polinomial kuadrat
+dalam $t$: Suatu titik $(a_0,a_1,a_2)$ dalam ${\mathbb R}^3$ merepresentasikan
+polinomial $a_0 + a_1 t + a_2 t^2$.
+Pandang turunan $\frac{d}{dt}$ sebagai pemetaan dari ${\mathbb R}^3$ ke
+${\mathbb R}^3$,
+dan perhatikan bahwa $\frac{d}{dt}$ linear.
+Tuliskan $\frac{d}{dt}$ sebagai matriks $3 \times 3$.
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Hitunglah besar dari
+\begin{tasks}(3)
+\task
+$\begin{bmatrix}
+1 \\
+3
+\end{bmatrix}
+$
+\task
+$\begin{bmatrix}
+2 \\
+3 \\
+-1
+\end{bmatrix}
+$
+\task
+$(-2,1,-2)$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$\sqrt{10}$
+\quad b)~$\sqrt{14}$
+\quad c)~$3$
+}
+
+\begin{exercise}
+Carilah vektor satuan yang searah dengan vektor yang diberikan
+\begin{tasks}(3)
+\task
+$\begin{bmatrix}
+-1 \\
+1
+\end{bmatrix}
+$
+\task
+$\begin{bmatrix}
+1 \\
+-1 \\
+2
+\end{bmatrix}
+$
+\task
+$(2,-5,2)$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~
+$\begin{bmatrix}
+\frac{-1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}}
+\end{bmatrix}$
+\quad
+b)~$\begin{bmatrix}
+\frac{1}{\sqrt{6}} \\
+\frac{-1}{\sqrt{6}} \\
+\frac{2}{\sqrt{6}}
+\end{bmatrix}$
+\quad
+c)~$\left( \frac{2}{\sqrt{33}},\frac{-5}{\sqrt{33}},\frac{2}{\sqrt{33}} \right)$
+}
+
+\begin{exercise}
+\pagebreak[2]
+Hitunglah
+\begin{tasks}(3)
+\task
+$\begin{bmatrix}
+3 \\
+1
+\end{bmatrix}
++
+\begin{bmatrix}
+6 \\
+-3
+\end{bmatrix}
+$
+\task
+$\begin{bmatrix}
+-1 \\
+2
+\end{bmatrix}
+-
+\begin{bmatrix}
+2 \\
+-1
+\end{bmatrix}
+$
+\task
+$
+-\begin{bmatrix}
+-5 \\
+3
+\end{bmatrix}
+$
+\task
+$
+2\begin{bmatrix}
+-2 \\
+4
+\end{bmatrix}
+$
+\task
+$
+3\begin{bmatrix}
+1 \\
+0
+\end{bmatrix}
++
+7
+\begin{bmatrix}
+0 \\
+1
+\end{bmatrix}
+$
+\task
+$
+2\begin{bmatrix}
+2 \\
+-3
+\end{bmatrix}
+-
+6
+\begin{bmatrix}
+2 \\
+-1
+\end{bmatrix}
+$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$\begin{bmatrix}
+9 \\
+-2
+\end{bmatrix}$
+\quad b)~$\begin{bmatrix}
+-3 \\
+3
+\end{bmatrix}$
+\quad c)~$\begin{bmatrix}
+5 \\
+-3
+\end{bmatrix}$
+\quad d)~$\begin{bmatrix}
+-4 \\
+8
+\end{bmatrix}$
+\quad e)~$\begin{bmatrix}
+3 \\
+7
+\end{bmatrix}$
+\quad f)~$\begin{bmatrix}
+-8 \\
+0
+\end{bmatrix}$
+}
+
+\begin{exercise}
+Jika besar $\vec{x}$ adalah 5, berapakah besar dari
+\begin{tasks}(3)
+\task
+$4\vec{x}$
+\task
+$-2\vec{x}$
+\task
+$-4\vec{x}$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$20$
+\quad b)~$10$
+\quad c)~$20$
+}
+
+\begin{exercise}
+Misalkan suatu pemetaan linear $F \colon {\mathbb R}^2 \to {\mathbb R}^2$
+membawa $(1,0)$ ke $(1,-1)$ dan membawa $(0,1)$ ke $(2,0)$.
+Ke manakah pemetaan itu membawa
+\begin{tasks}(3)
+\task
+$(1,1)$
+\task
+$(0,2)$
+\task
+$(1,-1)$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$(3,-1)$ \quad b)~$(4,0)$ \quad c)~$(-1,-1)$
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Aljabar matriks}
+\label{matalg:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2--3 kuliah}
+
+\subsection{Matriks satu-kali-satu}
+
+Mari kita berikan motivasi bagi apa yang ingin kita capai dengan matriks.
+Pemetaan linear bernilai real pada garis real, yaitu fungsi linear
+yang menerima bilangan dan menghasilkan bilangan, hanyalah perkalian dengan suatu
+bilangan. Perhatikan suatu pemetaan yang didefinisikan dengan mengalikan suatu
+bilangan. Mari kita sebut bilangan ini $\alpha$. Pemetaan tersebut membawa $x$ ke
+$\alpha x$. Kita dapat
+\emph{menjumlahkan} pemetaan-pemetaan semacam itu:
+Jika kita memiliki pemetaan lain $\beta$, maka
+\begin{equation*}
+\alpha x + \beta x = (\alpha + \beta) x .
+\end{equation*}
+Kita memperoleh pemetaan baru $\alpha+\beta$ yang mengalikan $x$ dengan, tentu saja,
+$\alpha+\beta$. Jika $D$ adalah pemetaan yang menggandakan masukannya,
+$Dx = 2x$, dan $T$ adalah pemetaan yang melipat-tigakan, $Tx = 3x$, maka
+$D+T$ adalah pemetaan yang mengalikan dengan $5$, $(D+T)x = 5x$.
+
+Secara serupa, kita dapat \emph{mengomposisikan} pemetaan semacam itu.
+Artinya, kita dapat menerapkan yang satu lalu yang lain.
+Kita mengambil $x$, memasukkannya ke
+pemetaan pertama $\alpha$ untuk memperoleh $\alpha$ kali $x$, lalu memasukkan
+$\alpha x$ ke pemetaan kedua $\beta$. Dengan kata lain,
+\begin{equation*}
+\beta ( \alpha x ) = (\beta \alpha) x .
+\end{equation*}
+Kita cukup mengalikan kedua bilangan tersebut. Dengan menggunakan pemetaan
+penggandaan dan pelipat-tigaan kita, jika kita menggandakan lalu melipat-tigakan,
+yakni $T(Dx)$, maka
+kita memperoleh $3(2x) = 6x$. Komposisi $TD$ adalah pemetaan yang mengalikan
+dengan $6$. Untuk matriks yang lebih besar, komposisi juga menjadi sejenis
+perkalian.
+
+\subsection{Penjumlahan matriks dan perkalian skalar}
+
+Pemetaan yang mengalikan bilangan dengan bilangan hanyalah matriks $1 \times 1$.
+Bilangan $\alpha$ di atas dapat ditulis sebagai matriks $[\alpha]$.
+Barangkali kita ingin melakukan hal yang sama pada semua matriks seperti yang
+kita lakukan pada matriks $1 \times 1$ pada awal bagian ini.
+Pertama, mari kita jumlahkan matriks.
+Jika kita memiliki matriks $A$ dan matriks $B$ yang berukuran sama,
+misalnya $m \times n$, maka keduanya merupakan pemetaan dari
+${\mathbb{R}}^n$ ke ${\mathbb{R}}^m$. Pemetaan $A+B$ juga harus merupakan pemetaan dari
+${\mathbb{R}}^n$ ke ${\mathbb{R}}^m$, dan harus melakukan hal berikut terhadap
+vektor:
+\begin{equation*}
+(A+B) \vec{x} = A\vec{x} + B \vec{x} .
+\end{equation*}
+Ternyata kita cukup menjumlahkan matriks-matriks itu elemen demi elemen: Jika
+entri ke-$ij$ dari $A$ adalah $a_{ij}$, dan
+entri ke-$ij$ dari $B$ adalah $b_{ij}$, maka
+entri ke-$ij$ dari $A+B$ adalah $a_{ij} + b_{ij}$. Jika
+\begin{equation*}
+A =
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13}  \\
+a_{21} & a_{22} & a_{23}
+\end{bmatrix}
+\qquad \text{dan} \qquad
+B =
+\begin{bmatrix}
+b_{11} & b_{12} & b_{13}  \\
+b_{21} & b_{22} & b_{23}
+\end{bmatrix} ,
+\end{equation*}
+maka
+\begin{equation*}
+A+B =
+\begin{bmatrix}
+a_{11} + b_{11} & a_{12} + b_{12} & a_{13} + b_{13}  \\
+a_{21} + b_{21} & a_{22} + b_{22} & a_{23} + b_{23}
+\end{bmatrix} .
+\end{equation*}
+Kita ilustrasikan dengan contoh yang lebih konkret:
+\begin{equation*}
+\begin{bmatrix}
+1 & 2 \\
+3 & 4 \\
+5 & 6
+\end{bmatrix}
++
+\begin{bmatrix}
+7 & 8 \\
+9 & 10 \\
+11 & -1
+\end{bmatrix}
+=
+\begin{bmatrix}
+1+7 & 2+8 \\
+3+9 & 4+10 \\
+5+11 & 6-1
+\end{bmatrix}
+=
+\begin{bmatrix}
+8 & 10 \\
+12 & 14 \\
+16 & 5
+\end{bmatrix} .
+\end{equation*}
+Mari kita periksa bahwa ini memberikan hasil yang tepat pada suatu vektor. Kita menggunakan sebagian
+aljabar vektor yang telah kita ketahui, dan
+mengelompokkan ulang suku-sukunya:
+\begin{equation*}
+\begin{split}
+\begin{bmatrix}
+1 & 2 \\
+3 & 4 \\
+5 & 6
+\end{bmatrix}
+\begin{bmatrix}
+2 \\ -1
+\end{bmatrix}
++
+\begin{bmatrix}
+7 & 8 \\
+9 & 10 \\
+11 & -1
+\end{bmatrix}
+\begin{bmatrix}
+2 \\ -1
+\end{bmatrix}
+& =
+\left(
+2
+\begin{bmatrix}
+1 \\
+3 \\
+5
+\end{bmatrix}
+-
+\begin{bmatrix}
+2 \\
+4 \\
+6
+\end{bmatrix}
+\right)
++
+\left(
+2
+\begin{bmatrix}
+7 \\
+9 \\
+11
+\end{bmatrix}
+-
+\begin{bmatrix}
+8 \\
+10 \\
+-1
+\end{bmatrix}
+\right)
+\\
+& =
+2
+\left(
+\begin{bmatrix}
+1 \\
+3 \\
+5
+\end{bmatrix}
++
+\begin{bmatrix}
+7 \\
+9 \\
+11
+\end{bmatrix}
+\right)
+-
+\left(
+\begin{bmatrix}
+2 \\
+4 \\
+6
+\end{bmatrix}
++
+\begin{bmatrix}
+8 \\
+10 \\
+-1
+\end{bmatrix}
+\right)
+\\
+& =
+2
+\begin{bmatrix}
+1+7 \\
+3+9 \\
+5+11
+\end{bmatrix}
+-
+\begin{bmatrix}
+2+8 \\
+4+10 \\
+6-1
+\end{bmatrix}
+=
+2
+\begin{bmatrix}
+8 \\
+12 \\
+16
+\end{bmatrix}
+-
+\begin{bmatrix}
+10 \\
+14 \\
+5
+\end{bmatrix}
+\\
+& =
+\begin{bmatrix}
+8 & 10 \\
+12 & 14 \\
+16 & 5
+\end{bmatrix}
+\begin{bmatrix}
+2 \\
+-1
+\end{bmatrix}
+\quad
+\left(
+=
+\begin{bmatrix}
+2(8)- 10 \\
+2(12) - 14 \\
+2(16) - 5
+\end{bmatrix}
+=
+\begin{bmatrix}
+6 \\
+10 \\
+27
+\end{bmatrix}
+\right) .
+\end{split}
+\end{equation*}
+Jika bilangan-bilangan tersebut kita ganti dengan huruf, hal itu akan menjadi sebuah bukti!
+Perhatikan bahwa sebenarnya kita tidak harus menghitung
+hasilnya untuk meyakinkan diri bahwa kedua ungkapan tersebut sama.
+
+Jika ukuran matriks tidak cocok, penjumlahan tidak terdefinisi.
+Jika $A$ berukuran $3 \times 2$ dan $B$ berukuran $2 \times 5$, kita tidak dapat menjumlahkan
+kedua matriks. Kita tidak tahu apa yang mungkin dimaksud oleh penjumlahan itu.
+
+\medskip
+
+Berguna pula untuk memiliki matriks yang, ketika dijumlahkan dengan sebarang matriks lain,
+tidak mengubah apa pun. Inilah matriks nol, matriks yang semua entrinya nol:
+\begin{equation*}
+\begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix}
++
+\begin{bmatrix}
+0 & 0 \\
+0 & 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix} .
+\end{equation*}
+Kita sering menotasikan matriks nol
+dengan $0$ tanpa menyebutkan ukurannya. Kita kemudian cukup menulis $A + 0$, dengan
+mengasumsikan bahwa $0$ adalah matriks nol yang berukuran sama dengan $A$.
+
+\medskip
+
+Sebenarnya terdapat dua hal yang dapat kita gunakan untuk mengalikan matriks. Kita dapat mengalikan
+matriks dengan skalar atau dengan matriks lain. Mula-mula mari kita
+perhatikan perkalian dengan skalar.
+Untuk suatu matriks $A$ dan skalar $\alpha$, kita ingin $\alpha A$ menjadi matriks
+yang memenuhi
+\begin{equation*}
+(\alpha A) \vec{x} = \alpha (A \vec{x}) .
+\end{equation*}
+Artinya, hasilnya cukup diskalakan dengan $\alpha$. Jika Anda memikirkannya,
+menskalakan setiap suku dalam $A$ dengan $\alpha$ menghasilkan tepat hal itu:
+Jika
+\begin{equation*}
+A =
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13}  \\
+a_{21} & a_{22} & a_{23}
+\end{bmatrix},
+\qquad\text{maka} \qquad
+\alpha A =
+\begin{bmatrix}
+\alpha a_{11} & \alpha a_{12} & \alpha a_{13}  \\
+\alpha a_{21} & \alpha a_{22} & \alpha a_{23}
+\end{bmatrix} .
+\end{equation*}
+Sebagai contoh,
+\begin{equation*}
+2
+\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6
+\end{bmatrix} =
+\begin{bmatrix}
+2 & 4 & 6 \\
+8 & 10 & 12
+\end{bmatrix} .
+\end{equation*}
+
+Mari kita daftarkan beberapa sifat penjumlahan matriks dan perkalian skalar.
+Nyatakan matriks nol dengan $0$,
+skalar dengan $\alpha$, $\beta$, dan matriks dengan $A$, $B$, $C$. Maka:
+\begin{align*}
+A + 0 & = A = 0 + A , \\
+A + B & = B + A , \\
+(A + B) + C & = A + (B + C) , \\
+\alpha(A+B) & = \alpha A+\alpha B, \\
+(\alpha+\beta)A & = \alpha A + \beta A.
+\end{align*}
+Aturan-aturan ini semestinya tampak sangat familier.
+
+\subsection{Perkalian matriks}
+
+Seperti disebutkan di atas, komposisi pemetaan linear juga merupakan suatu
+perkalian matriks. Misalkan $A$ adalah matriks $m \times n$,
+yakni $A$ membawa
+${\mathbb R}^n$ ke
+${\mathbb R}^m$,
+dan $B$ adalah matriks $n \times p$, yakni $B$ membawa
+${\mathbb R}^p$ ke
+${\mathbb R}^n$. Komposisi $AB$ harus bekerja sebagai berikut
+\begin{equation*}
+AB\vec{x} = A(B\vec{x}) .
+\end{equation*}
+Pertama, suatu vektor $\vec{x}$ dalam ${\mathbb R}^p$ dibawa ke
+vektor $B\vec{x}$ dalam
+${\mathbb R}^n$. Kemudian pemetaan $A$ membawanya ke vektor $A(B\vec{x})$
+dalam ${\mathbb R}^m$. Dengan kata lain, komposisi $AB$ harus berupa matriks $m
+\times p$. Ditinjau dari ukurannya, kita harus memperoleh
+\begin{equation*}
+%mbxSTARTIGNORE
+\text{``}
+%mbxENDIGNORE
+%mbxlatex \text{"}
+\quad
+[ m \times n ]
+\,
+[ n \times p ]
+=
+[ m \times p ] . \quad
+%mbxSTARTIGNORE
+\text{''}
+%mbxENDIGNORE
+%mbxlatex \text{"}
+\end{equation*}
+Perhatikan bahwa ukuran di tengah harus cocok.
+
+Baiklah\@, sekarang kita mengetahui ukuran matriks yang seharusnya dapat kita kalikan
+dan ukuran hasil kalinya.
+Mari kita lihat cara benar-benar menghitung perkalian matriks.
+Kita mulai dengan apa yang disebut
+\emph{\myindex{hasil kali titik}} (atau \emph{\myindex{hasil kali dalam}}) dari dua vektor.
+Biasanya, ini berupa vektor baris yang dikalikan
+dengan vektor kolom berukuran sama. Hasil kali titik mengalikan
+setiap pasangan entri dari vektor pertama dan kedua, lalu menjumlahkan
+hasil kali tersebut. Hasil akhirnya adalah satu bilangan.
+Sebagai contoh,
+\begin{equation*}
+\begin{bmatrix}
+a_1 & a_2 & a_3
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+b_1 \\
+b_2 \\
+b_3
+\end{bmatrix}
+= a_1 b_1 + a_2 b_2 + a_3 b_3 .
+\end{equation*}
+Demikian pula untuk vektor yang lebih besar (atau lebih kecil).
+Hasil kali titik sebenarnya merupakan hasil kali dua matriks: matriks $1 \times n$
+dan matriks $n \times 1$ yang menghasilkan
+matriks $1 \times 1$---suatu bilangan.
+
+Dengan berbekal hasil kali titik, kita mendefinisikan
+\emph{\myindex{hasil kali matriks}}\index{hasil kali matriks}.
+Kita menyatakan baris ke-$i$ dari $A$ dengan $\operatorname{row}_i(A)$
+dan kolom ke-$j$ dari $A$ dengan
+$\operatorname{column}_j(A)$.
+Untuk matriks $m \times n$ $A$ dan matriks $n \times p$ $B$,
+kita dapat menghitung hasil kali $AB$: Matriks $AB$ adalah matriks $m \times p$
+yang entri ke-$ij$-nya merupakan hasil kali titik
+\begin{equation*}
+\operatorname{row}_i(A) \cdot
+\operatorname{column}_j(B) .
+\end{equation*}
+Sebagai contoh, jika diberikan matriks $2 \times 3$ dan matriks $3 \times 2$,
+kita harus memperoleh matriks $2 \times 2$:
+\begin{equation} \label{linalg:eqmatrixmulex}
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23}
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} & b_{12} \\
+b_{21} & b_{22} \\
+b_{31} & b_{32}
+\end{bmatrix}
+=
+\begin{bmatrix}
+a_{11} b_{11} +
+a_{12} b_{21} +
+a_{13} b_{31} & ~~
+a_{11} b_{12} +
+a_{12} b_{22} +
+a_{13} b_{32} \\
+a_{21} b_{11} +
+a_{22} b_{21} +
+a_{23} b_{31} & ~~
+a_{21} b_{12} +
+a_{22} b_{22} +
+a_{23} b_{32}
+\end{bmatrix} ,
+\end{equation}
+atau dengan sejumlah bilangan:
+\begin{equation*}
+\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6
+\end{bmatrix}
+\begin{bmatrix}
+-1 & 2 \\
+-7 & 0 \\
+1 & -1
+\end{bmatrix}
+=
+\begin{bmatrix}
+1\cdot (-1) + 2\cdot (-7) + 3 \cdot 1 & ~~
+1\cdot 2 + 2\cdot 0 + 3 \cdot (-1) \\
+4\cdot (-1) + 5\cdot (-7) + 6 \cdot 1 & ~~
+4\cdot 2 + 5\cdot 0 + 6 \cdot (-1)
+\end{bmatrix}
+=
+\begin{bmatrix}
+-12 & -1 \\
+-33 & 2
+\end{bmatrix} .
+\end{equation*}
+
+Akibat yang berguna dari definisi tersebut ialah bahwa evaluasi
+$A \vec{x}$ untuk suatu matriks $A$
+dan suatu vektor (kolom) $\vec{x}$ juga merupakan perkalian matriks.
+Itulah sebenarnya alasan kita memandang
+vektor sebagai vektor kolom, atau matriks $n \times 1$.
+Sebagai contoh,
+\begin{equation*}
+\begin{bmatrix}
+1 & 2 \\ 3 & 4
+\end{bmatrix}
+\begin{bmatrix}
+2 \\ -1
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 \cdot 2 + 2 \cdot (-1) \\
+3 \cdot 2 + 4 \cdot (-1)
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\ 2
+\end{bmatrix}  .
+\end{equation*}
+Jika Anda melihat bagian sebelumnya, itulah persis contoh terakhir
+yang kita berikan.
+
+Luangkan sejenak untuk mencermati perhitungan perkalian matriks $AB$
+dan
+definisi sebelumnya tentang $A\vec{y}$ sebagai suatu pemetaan.
+Yang kita lakukan dalam perkalian matriks adalah menerapkan
+pemetaan $A$ pada kolom-kolom $B$. Hal ini biasanya dituliskan sebagai berikut.
+Andaikan kita menulis matriks $n \times p$
+$B = [ \vec{b}_1 ~ \vec{b}_2 ~ \cdots ~ \vec{b}_p ]$, dengan
+$\vec{b}_1, \vec{b}_2, \ldots, \vec{b}_p$ adalah kolom-kolom $B$. Maka
+untuk matriks $m \times n$ $A$,
+\begin{equation*}
+AB =
+A [ \vec{b}_1 ~ \vec{b}_2 ~ \cdots ~ \vec{b}_p ]
+=
+[ A\vec{b}_1 ~ A\vec{b}_2 ~ \cdots ~ A\vec{b}_p ] .
+\end{equation*}
+Kolom-kolom matriks $m \times p$ $AB$
+adalah
+vektor-vektor $A\vec{b}_1, A\vec{b}_2, \ldots, A\vec{b}_p$.
+Sebagai contoh, dalam \eqref{linalg:eqmatrixmulex},
+kolom-kolom dari
+\begin{equation*}
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23}
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} & b_{12} \\
+b_{21} & b_{22} \\
+b_{31} & b_{32}
+\end{bmatrix}
+\end{equation*}
+adalah
+\begin{equation*}
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23}
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} \\
+b_{21} \\
+b_{31}
+\end{bmatrix}
+\qquad
+\text{dan}
+\qquad
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23}
+\end{bmatrix}
+\begin{bmatrix}
+b_{12} \\
+b_{22} \\
+b_{32}
+\end{bmatrix} .
+\end{equation*}
+Ini merupakan cara yang sangat berguna untuk memahami perkalian matriks.
+Cara ini juga semestinya mempermudah mengingat cara melakukan perkalian matriks.
+
+\subsection{Beberapa aturan aljabar matriks}
+
+Untuk perkalian, kita menginginkan analog dari 1. Artinya,
+kita menginginkan matriks yang membiarkan segala sesuatu tetap seperti semula.
+Analog ini adalah apa yang disebut
+\emph{\myindex{matriks identitas}}.
+Matriks identitas adalah matriks persegi dengan 1 pada
+diagonal utama dan nol di semua tempat lain. Matriks ini biasanya dinotasikan dengan $I$.
+Untuk setiap ukuran, kita memiliki matriks identitas yang berbeda, sehingga kadang-kadang kita menyatakan
+ukurannya sebagai subskrip. Sebagai contoh, $I_3$ adalah matriks identitas
+$3 \times 3$
+\begin{equation*}
+I = I_3 =
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix} .
+\end{equation*}
+Mari kita lihat cara matriks itu bekerja pada contoh yang lebih kecil,
+\begin{equation*}
+\begin{bmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix} =
+\begin{bmatrix}
+a_{11} \cdot 1 + a_{12} \cdot 0
+& ~~
+a_{11} \cdot 0 + a_{12} \cdot 1
+\\
+a_{21} \cdot 1 + a_{22} \cdot 0
+& ~~
+a_{21} \cdot 0 + a_{22} \cdot 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{bmatrix} .
+\end{equation*}
+Perkalian dengan identitas dari sebelah kiri tampak serupa, dan juga
+tidak mengubah apa pun.
+
+\medskip
+
+Kita memiliki aturan-aturan berikut untuk perkalian matriks. Andaikan
+$A$, $B$, $C$ adalah matriks dengan ukuran yang tepat sehingga semua yang berikut
+bermakna. Misalkan $\alpha$ menyatakan suatu skalar (bilangan). Maka
+\begin{align*}
+A(BC) & = (AB)C & & \text{(\myindex{hukum asosiatif})} , \\
+A(B+C) & = AB + AC & & \text{(\myindex{hukum distributif})} , \\
+(B+C)A & = BA + CA & & \text{(hukum distributif)} , \\
+\alpha(AB) & = (\alpha A)B = A(\alpha B) , & &  \\
+IA & = A = AI & & \text{(identitas)}.
+\end{align*}
+
+\begin{example}
+Mari kita demonstrasikan beberapa aturan ini. Sebagai contoh, hukum asosiatif:
+\begin{equation*}
+\underbrace{
+\begin{bmatrix}
+-3 & 3 \\ 2 & -2
+\end{bmatrix}
+}_A
+\biggl(
+\underbrace{
+\begin{bmatrix}
+4 & 4 \\ 1 & -3
+\end{bmatrix}
+}_B
+\underbrace{
+\begin{bmatrix}
+-1 & 4 \\ 5 & 2
+\end{bmatrix}
+}_C
+\biggr)
+=
+\underbrace{
+\begin{bmatrix}
+-3 & 3 \\ 2 & -2
+\end{bmatrix}
+}_A
+\underbrace{
+\begin{bmatrix}
+16 & 24 \\ -16 & -2
+\end{bmatrix}
+}_{BC}
+=
+\underbrace{
+\begin{bmatrix}
+-96 & -78 \\ 64 & 52
+\end{bmatrix}
+}_{A(BC)} ,
+\end{equation*}
+dan
+\begin{equation*}
+\biggl(
+\underbrace{
+\begin{bmatrix}
+-3 & 3 \\ 2 & -2
+\end{bmatrix}
+}_A
+\underbrace{
+\begin{bmatrix}
+4 & 4 \\ 1 & -3
+\end{bmatrix}
+}_B
+\biggr)
+\underbrace{
+\begin{bmatrix}
+-1 & 4 \\ 5 & 2
+\end{bmatrix}
+}_C
+=
+\underbrace{
+\begin{bmatrix}
+-9 & -21 \\ 6 & 14
+\end{bmatrix}
+}_{AB}
+\underbrace{
+\begin{bmatrix}
+-1 & 4 \\ 5 & 2
+\end{bmatrix}
+}_C
+=
+\underbrace{
+\begin{bmatrix}
+-96 & -78 \\ 64 & 52
+\end{bmatrix}
+}_{(AB)C} .
+\end{equation*}
+Atau bagaimana dengan perkalian oleh skalar:
+\begin{equation*}
+10
+\biggl(
+\underbrace{
+\begin{bmatrix}
+-3 & 3 \\ 2 & -2
+\end{bmatrix}
+}_A
+\underbrace{
+\begin{bmatrix}
+4 & 4 \\ 1 & -3
+\end{bmatrix}
+}_B
+\biggr)
+=
+10
+\underbrace{
+\begin{bmatrix}
+-9 & -21 \\ 6 & 14
+\end{bmatrix}
+}_{A B}
+=
+\underbrace{
+\begin{bmatrix}
+-90 & -210 \\ 60 & 140
+\end{bmatrix}
+}_{10 (AB)} ,
+\end{equation*}
+\begin{equation*}
+\biggl(
+10
+\underbrace{
+\begin{bmatrix}
+-3 & 3 \\ 2 & -2
+\end{bmatrix}
+}_A
+\biggr)
+\underbrace{
+\begin{bmatrix}
+4 & 4 \\ 1 & -3
+\end{bmatrix}
+}_B
+=
+\underbrace{
+\begin{bmatrix}
+-30 & 30 \\ 20 & -20
+\end{bmatrix}
+}_{10 A}
+\underbrace{
+\begin{bmatrix}
+4 & 4 \\ 1 & -3
+\end{bmatrix}
+}_B
+=
+\underbrace{
+\begin{bmatrix}
+-90 & -210 \\ 60 & 140
+\end{bmatrix}
+}_{(10 A)B} ,
+\end{equation*}
+dan
+\begin{equation*}
+\underbrace{
+\begin{bmatrix}
+-3 & 3 \\ 2 & -2
+\end{bmatrix}
+}_A
+\biggl(
+10
+\underbrace{
+\begin{bmatrix}
+4 & 4 \\ 1 & -3
+\end{bmatrix}
+}_B
+\biggr)
+=
+\underbrace{
+\begin{bmatrix}
+-3 & 3 \\ 2 & -2
+\end{bmatrix}
+}_{A}
+\underbrace{
+\begin{bmatrix}
+40 & 40 \\ 10 & -30
+\end{bmatrix}
+}_{10B}
+=
+\underbrace{
+\begin{bmatrix}
+-90 & -210 \\ 60 & 140
+\end{bmatrix}
+}_{A(10B)} .
+\end{equation*}
+\end{example}
+
+Satu aturan perkalian yang telah Anda gunakan sejak sekolah dasar untuk bilangan
+sangat mencolok tidak ada untuk matriks.
+Artinya, perkalian matriks
+tidak komutatif. Pertama, hanya karena $AB$ bermakna, mungkin saja
+$BA$ bahkan tidak terdefinisi. Sebagai contoh, jika $A$ berukuran $2 \times 3$, dan
+$B$ berukuran $3 \times 4$, kita dapat mengalikan $AB$ tetapi tidak $BA$.
+
+Bahkan jika $AB$ dan $BA$ keduanya terdefinisi, hal itu tidak berarti keduanya sama.
+Sebagai contoh, ambillah
+$A = \left[ \begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix} \right]$
+dan
+$B = \left[ \begin{smallmatrix} 1 & 0 \\ 0 & 2 \end{smallmatrix} \right]$:
+\begin{equation*}
+AB =
+\begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix}
+\begin{bmatrix} 1 & 0 \\ 0 & 2 \end{bmatrix}
+=
+\begin{bmatrix} 1 & 2 \\ 1 & 2 \end{bmatrix}
+\qquad
+\neq
+\qquad
+\begin{bmatrix} 1 & 1 \\ 2 & 2 \end{bmatrix}
+=
+\begin{bmatrix} 1 & 0 \\ 0 & 2 \end{bmatrix}
+\begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix}
+=
+BA .
+\end{equation*}
+
+\subsection{Invers}
+
+Beberapa aturan aljabar lain yang Anda ketahui untuk bilangan tidak sepenuhnya
+berlaku pada matriks:
+\begin{enumerate}[(i)]
+\item $AB = AC$ tidak selalu mengakibatkan $B=C$, bahkan jika $A$ bukan 0.
+\item $AB = 0$ tidak selalu berarti bahwa $A=0$ atau $B=0$.
+\end{enumerate}
+Sebagai contoh:
+\begin{equation*}
+\begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}
+\begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}
+=
+\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}
+=
+\begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}
+\begin{bmatrix} 0 & 2 \\ 0 & 0 \end{bmatrix} .
+\end{equation*}
+
+Agar aturan-aturan ini berlaku, kita tidak sekadar memerlukan salah satu matriks tidak nol,
+kita perlu \myquote{membagi} dengan
+suatu matriks. Di sinilah \emph{\myindex{invers matriks}} berperan.
+Andaikan $A$ dan $B$ adalah matriks $n \times n$ sedemikian sehingga
+\begin{equation*}
+AB = I = BA .
+\end{equation*}
+Kita menyebut $B$ sebagai invers dari $A$ dan menotasikan $B$ dengan $A^{-1}$.
+Barangkali tidak mengejutkan bahwa ${(A^{-1})}^{-1} = A$, sebab jika invers $A$
+adalah $B$, maka invers $B$ adalah $A$.
+Jika invers $A$ ada, kita mengatakan bahwa $A$
+\emph{invertibel\index{matriks invertibel}}.
+Jika $A$ tidak invertibel, kita mengatakan bahwa $A$
+\emph{singular\index{matriks singular}}.
+
+Jika $A = [a]$ adalah matriks $1 \times 1$, maka $A^{-1}$ adalah $a^{-1} =
+\frac{1}{a}$. Dari situlah notasinya berasal. Perhitungannya jauh tidak sesederhana ini ketika $A$
+lebih besar.
+
+Perumusan aturan pencoretan yang tepat adalah:
+\begin{center}
+\emph{Jika $A$ invertibel,
+maka
+$AB = AC$ mengakibatkan $B=C$.}
+\end{center}
+Perhitungannya sama dengan yang Anda lakukan dalam aljabar biasa dengan bilangan,
+tetapi Anda harus
+berhati-hati agar tidak pernah mempertukarkan urutan matriks:
+\begin{align*}
+AB & = AC , \\
+A^{-1}AB & = A^{-1}AC , \\
+IB & = IC , \\
+B & = C .
+\end{align*}
+Demikian pula untuk pencoretan dari sebelah kanan:
+\begin{center}
+\emph{Jika $A$ invertibel,
+maka $BA = CA$ mengakibatkan $B=C$.}
+\end{center}
+Aturan tersebut antara lain menyatakan bahwa
+invers suatu matriks tunggal jika ada: Jika $AB = I = AC$, maka $A$
+invertibel dan $B=C$.
+
+Nanti kita akan melihat cara menghitung invers suatu matriks
+secara umum. Untuk sekarang,
+perhatikan bahwa terdapat rumus sederhana untuk invers
+matriks $2 \times 2$
+\begin{equation*}
+\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}^{-1}
+=
+\frac{1}{ad-bc}
+\begin{bmatrix}
+d & -b \\
+-c & a
+\end{bmatrix} .
+\end{equation*}
+
+Sebagai contoh:
+\begin{equation*}
+\begin{bmatrix}
+1 & 1 \\
+2 & 4
+\end{bmatrix}^{-1}
+=
+\frac{1}{1\cdot 4-1 \cdot 2}
+\begin{bmatrix}
+4 & -1 \\
+-2 & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+2 & \nicefrac{-1}{2} \\
+-1 & \nicefrac{1}{2}
+\end{bmatrix} .
+\end{equation*}
+Mari kita coba:
+\begin{equation*}
+\begin{bmatrix}
+1 & 1 \\
+2 & 4
+\end{bmatrix}
+\begin{bmatrix}
+2 & \nicefrac{-1}{2} \\
+-1 & \nicefrac{1}{2}
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}
+\qquad
+\text{dan}
+\qquad
+\begin{bmatrix}
+2 & \nicefrac{-1}{2} \\
+-1 & \nicefrac{1}{2}
+\end{bmatrix}
+\begin{bmatrix}
+1 & 1 \\
+2 & 4
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix} .
+\end{equation*}
+Sebagaimana kita tidak dapat membagi dengan setiap bilangan, tidak setiap matriks
+invertibel. Namun, dalam kasus matriks, kita dapat memiliki matriks
+singular yang tidak nol. Sebagai contoh,
+\begin{equation*}
+\begin{bmatrix}
+1 & 1 \\
+2 & 2
+\end{bmatrix}
+\end{equation*}
+adalah matriks singular. Namun, bukankah kita baru saja memberikan rumus untuk invers?
+Mari kita coba:
+\begin{equation*}
+\begin{bmatrix}
+1 & 1 \\
+2 & 2
+\end{bmatrix}^{-1}
+=
+\frac{1}{1\cdot 2-1 \cdot 2}
+\begin{bmatrix}
+2 & -1 \\
+-2 & 1
+\end{bmatrix}
+=
+%mbxSTARTIGNORE
+\text{\Huge ?}
+%mbxENDIGNORE
+%mbxlatex \text{???}
+\end{equation*}
+Kita mengalami sedikit masalah:
+Kita mencoba membagi dengan nol.
+
+Jadi, matriks $2 \times 2$ $A$ invertibel apabila
+\begin{equation*}
+ad - bc \neq 0
+\end{equation*}
+dan jika tidak, matriks tersebut singular. Ungkapan $ad-bc$ disebut
+\emph{determinan}, dan kita akan membahasnya
+secara lebih cermat dalam bagian selanjutnya.
+Terdapat ungkapan serupa untuk matriks persegi
+berukuran sebarang.
+
+\subsection{Matriks diagonal}
+
+Jenis matriks persegi yang sederhana (dan secara mengejutkan berguna) adalah apa yang disebut
+\emph{\myindex{matriks diagonal}}. Matriks ini memiliki entri yang semuanya nol
+kecuali entri pada diagonal utama dari kiri atas ke kanan bawah. Sebagai
+contoh, matriks diagonal $4 \times 4$ berbentuk
+\begin{equation*}
+\begin{bmatrix}
+d_1 & 0 & 0 & 0 \\
+0 & d_2 & 0 & 0 \\
+0 & 0 & d_3 & 0 \\
+0 & 0 & 0 & d_4
+\end{bmatrix} .
+\end{equation*}
+Matriks semacam itu memiliki sifat-sifat yang baik ketika kita mengalikan dengannya. Jika kita mengalikan
+matriks tersebut dengan suatu vektor, matriks itu mengalikan entri ke-$k$ dengan $d_k$. Sebagai
+contoh,
+\begin{equation*}
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 2 & 0 \\
+0 & 0 & 3
+\end{bmatrix}
+\begin{bmatrix}
+4 \\ 5 \\ 6
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 \cdot 4 \\ 2 \cdot 5 \\ 3 \cdot 6
+\end{bmatrix}
+=
+\begin{bmatrix}
+4 \\ 10 \\ 18
+\end{bmatrix} .
+\end{equation*}
+Secara serupa, ketika mengalikan matriks lain dari sebelah kiri, matriks diagonal mengalikan
+baris ke-$k$ dengan $d_k$. Sebagai contoh,
+\begin{equation*}
+\begin{bmatrix}
+2 & 0 & 0 \\
+0 & 3 & 0 \\
+0 & 0 & -1
+\end{bmatrix}
+\begin{bmatrix}
+1 & 1 & 1 \\
+1 & 1 & 1 \\
+1 & 1 & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+2 & 2 & 2 \\
+3 & 3 & 3 \\
+-1 & -1 & -1
+\end{bmatrix} .
+\end{equation*}
+Di sisi lain, jika dikalikan dari sebelah kanan, matriks diagonal mengalikan kolom-kolom:
+\begin{equation*}
+\begin{bmatrix}
+1 & 1 & 1 \\
+1 & 1 & 1 \\
+1 & 1 & 1
+\end{bmatrix}
+\begin{bmatrix}
+2 & 0 & 0 \\
+0 & 3 & 0 \\
+0 & 0 & -1
+\end{bmatrix}
+=
+\begin{bmatrix}
+2 & 3 & -1 \\
+2 & 3 & -1 \\
+2 & 3 & -1
+\end{bmatrix} .
+\end{equation*}
+Dan sangat mudah mengalikan dua matriks diagonal---kita
+mengalikan entri-entrinya:
+\begin{equation*}
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 2 & 0 \\
+0 & 0 & 3
+\end{bmatrix}
+\begin{bmatrix}
+2 & 0 & 0 \\
+0 & 3 & 0 \\
+0 & 0 & -1
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 \cdot 2 & 0 & 0 \\
+0 & 2 \cdot 3 & 0 \\
+0 & 0 & 3 \cdot (-1)
+\end{bmatrix}
+=
+\begin{bmatrix}
+2 & 0 & 0 \\
+0 & 6 & 0 \\
+0 & 0 & -3
+\end{bmatrix} .
+\end{equation*}
+
+Untuk alasan terakhir ini, matriks diagonal mudah diinverskan---Anda cukup menginverskan setiap elemen diagonal:
+\begin{equation*}
+\begin{bmatrix}
+d_1 & 0 & 0 \\
+0 & d_2 & 0 \\
+0 & 0 & d_3
+\end{bmatrix}^{-1}
+=
+\begin{bmatrix}
+d_1^{-1} & 0 & 0 \\
+0 & d_2^{-1} & 0 \\
+0 & 0 & d_3^{-1}
+\end{bmatrix} .
+\end{equation*}
+Mari kita periksa sebuah contoh
+\begin{equation*}
+\underbrace{
+\begin{bmatrix}
+2 & 0 & 0 \\
+0 & 3 & 0 \\
+0 & 0 & 4
+\end{bmatrix}^{-1}
+}_{A^{-1}}
+\underbrace{
+\begin{bmatrix}
+2 & 0 & 0 \\
+0 & 3 & 0 \\
+0 & 0 & 4
+\end{bmatrix}
+}_{A}
+=
+\underbrace{
+\begin{bmatrix}
+\frac{1}{2} & 0 & 0 \\
+0 & \frac{1}{3} & 0 \\
+0 & 0 & \frac{1}{4}
+\end{bmatrix}
+}_{A^{-1}}
+\underbrace{
+\begin{bmatrix}
+2 & 0 & 0 \\
+0 & 3 & 0 \\
+0 & 0 & 4
+\end{bmatrix}
+}_{A}
+=
+\underbrace{
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+}_{I} .
+\end{equation*}
+Tidak mengherankan bahwa cara kita menyelesaikan banyak masalah dalam aljabar linear
+(dan dalam persamaan diferensial) adalah mencoba mereduksi masalah ke
+kasus matriks diagonal.
+
+\subsection{Transpos}
+
+Vektor tidak harus selalu berupa vektor kolom.
+Itu hanyalah suatu konvensi.
+Dari waktu ke waktu,
+menukar baris dan kolom diperlukan.
+Operasi yang menukar baris dan kolom adalah apa yang disebut
+\emph{\myindex{transpos}}.
+Transpos dari $A$ dinotasikan dengan $A^T$. Contoh:
+\begin{equation*}
+\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6
+\end{bmatrix}^T =
+\begin{bmatrix}
+1 & 4 \\
+2 & 5 \\
+3 & 6
+\end{bmatrix} .
+\end{equation*}
+Transpos membawa matriks $m \times n$ menjadi matriks $n \times m$.
+
+Fitur utama transpos adalah bahwa jika hasil kali $AB$ bermakna,
+maka $B^TA^T$ juga bermakna, setidaknya ditinjau dari ukurannya.
+Kenyataannya, kita memperoleh tepat transpos dari $AB$. Artinya:
+\begin{equation*}
+{(AB)}^T = B^TA^T .
+\end{equation*}
+Sebagai contoh,
+\begin{equation*}
+{\left(
+\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6
+\end{bmatrix}
+\begin{bmatrix}
+0 & 1 \\
+1 & 0 \\
+2 & -2
+\end{bmatrix}
+\right)}^T =
+\begin{bmatrix}
+0 & 1 & 2 \\
+1 & 0 & -2
+\end{bmatrix}
+\begin{bmatrix}
+1 & 4 \\
+2 & 5 \\
+3 & 6
+\end{bmatrix} .
+\end{equation*}
+Diserahkan kepada pembaca untuk memverifikasi bahwa menghitung hasil kali matriks di
+sebelah kiri lalu mentransposkannya sama dengan menghitung hasil kali matriks di
+sebelah kanan.
+
+Jika kita memiliki vektor kolom $\vec{x}$ yang dikenai matriks $A$
+dan kita mentransposkan hasilnya,
+maka vektor baris $\vec{x}^T$ diterapkan pada $A^T$ dari sebelah kiri:
+\begin{equation*}
+{(A\vec{x})}^T = \vec{x}^TA^T .
+\end{equation*}
+
+Tempat lain yang membuat transpos berguna adalah ketika kita ingin menerapkan hasil kali
+titik\footnote{Sebagai catatan sampingan, matematikawan
+menulis $\vec{y}^T\vec{x}$ dan fisikawan
+menulis $\vec{x}^T\vec{y}$. Ssst\ldots jangan beri tahu siapa pun, tetapi para fisikawan
+mungkin benar dalam hal ini.}
+pada dua vektor kolom:
+\begin{equation*}
+\vec{x} \cdot \vec{y} = \vec{y}^T \vec{x} .
+\end{equation*}
+Begitulah hasil kali titik sering dituliskan dalam perangkat lunak.
+
+Kita mengatakan suatu matriks $A$ \emph{simetris}\index{matriks simetris}
+jika $A = A^T$. Sebagai contoh,
+\begin{equation*}
+\begin{bmatrix}
+1 & 2 & 3 \\
+2 & 4 & 5 \\
+3 & 5 & 6
+\end{bmatrix}
+\end{equation*}
+adalah matriks simetris. Perhatikan bahwa matriks simetris selalu
+persegi, yakni $n \times n$. Matriks simetris
+memiliki banyak sifat yang baik\footnote{Walaupun sejauh ini kita belum mempelajari
+cukup banyak tentang matriks untuk benar-benar menghargainya.},
+dan cukup sering muncul dalam penerapan.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Jumlahkan matriks-matriks berikut
+\begin{tasks}(2)
+\task
+$\begin{bmatrix}
+-1 & 2 & 2 \\
+5 & 8 & -1
+\end{bmatrix}
++
+\begin{bmatrix}
+3 & 2 & 3 \\
+8 & 3 & 5
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+1 & 2 & 4 \\
+2 & 3 & 1 \\
+0 & 5 & 1
+\end{bmatrix}
++
+\begin{bmatrix}
+2 & -8 & -3 \\
+3 & 1 & 0 \\
+6 & -4 & 1
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Hitunglah
+\begin{tasks}(2)
+\task
+$3\begin{bmatrix}
+0 & 3 \\
+-2 & 2
+\end{bmatrix}
++
+6
+\begin{bmatrix}
+1 & 5 \\
+-1 & 5
+\end{bmatrix}$
+\task
+$2\begin{bmatrix}
+-3 & 1 \\
+2 & 2
+\end{bmatrix}
+-
+3
+\begin{bmatrix}
+2 & -1 \\
+3 & 2
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Kalikan matriks-matriks berikut
+\begin{tasks}(2)
+\task
+$\begin{bmatrix}
+-1 & 2 \\
+3 & 1 \\
+5 & 8
+\end{bmatrix}
+\begin{bmatrix}
+3 & -1 & 3 & 1 \\
+8 & 3 & 2 & -3
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+1 & 2 & 3 \\
+3 & 1 & 1 \\
+1 & 0 & 3
+\end{bmatrix}
+\begin{bmatrix}
+2 & 3 & 1 & 7 \\
+1 & 2 & 3 & -1 \\
+1 & -1 & 3 & 0
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+4 & 1 & 6 & 3 \\
+5 & 6 & 5 & 0 \\
+4 & 6 & 6 & 0
+\end{bmatrix}
+\begin{bmatrix}
+2 & 5 \\
+1 & 2 \\
+3 & 5 \\
+5 & 6
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+1 & 1 & 4 \\
+0 & 5 & 1
+\end{bmatrix}
+\begin{bmatrix}
+2 & 2 \\
+1 & 0 \\
+6 & 4
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Hitunglah invers matriks-matriks yang diberikan
+\begin{tasks}(4)
+\task
+$\begin{bmatrix}
+-3
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+0 & -1 \\
+1 & 0
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+1 & 4 \\
+1 & 3
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+2 & 2 \\
+1 & 4
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Hitunglah invers matriks-matriks yang diberikan
+\begin{tasks}(3)
+\task
+$\begin{bmatrix}
+-2 & 0 \\
+0 & 1
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+3 & 0 & 0 \\
+0 & -2 & 0 \\
+0 & 0 & 1
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & -1 & 0 & 0 \\
+0 & 0 & 0.01 & 0 \\
+0 & 0 & 0 & -5
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Jumlahkan matriks-matriks berikut
+\begin{tasks}(2)
+\task
+$\begin{bmatrix}
+2 & 1 & 0 \\
+1 & 1 & -1
+\end{bmatrix}
++
+\begin{bmatrix}
+5 & 3 & 4 \\
+1 & 2 & 5
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+6 & -2 & 3 \\
+7 & 3 & 3 \\
+8 & -1 & 2
+\end{bmatrix}
++
+\begin{bmatrix}
+-1 & -1 & -3 \\
+6 & 7 & 3 \\
+-9 & 4 & -1
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$\begin{bmatrix}
+7 & 4 & 4 \\
+2 & 3 & 4
+\end{bmatrix}$
+\quad
+b)~$\begin{bmatrix}
+5 & -3 & 0 \\
+13 & 10 & 6 \\
+-1 & 3 & 1
+\end{bmatrix}$
+}
+
+\begin{exercise}
+Hitunglah
+\begin{tasks}(2)
+\task
+$2\begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix}
++
+3
+\begin{bmatrix}
+-1 & 3 \\
+1 & 2
+\end{bmatrix}$
+\task
+$3\begin{bmatrix}
+2 & -1 \\
+1 & 3
+\end{bmatrix}
+-
+2
+\begin{bmatrix}
+2 & 1 \\
+-1 & 2
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$\begin{bmatrix}
+-1 & 13 \\
+9 & 14
+\end{bmatrix}$
+\quad
+b)~$\begin{bmatrix}
+2 & -5 \\
+5 & 5
+\end{bmatrix}$
+}
+
+\begin{exercise}
+\pagebreak[2]
+Kalikan matriks-matriks berikut
+\begin{tasks}(2)
+\task
+$\begin{bmatrix}
+2 & 1 & 4 \\
+3 & 4 & 4
+\end{bmatrix}
+\begin{bmatrix}
+2 & 4 \\
+6 & 3 \\
+3 & 5
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+0 & 3 & 3 \\
+2 & -2 & 1 \\
+3 & 5 & -2
+\end{bmatrix}
+\begin{bmatrix}
+6 & 6 & 2 \\
+4 & 6 & 0 \\
+2 & 0 & 4
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+3 & 4 & 1 \\
+2 & -1 & 0 \\
+4 & -1 & 5
+\end{bmatrix}
+\begin{bmatrix}
+0 & 2 & 5 & 0 \\
+2 & 0 & 5 & 2 \\
+3 & 6 & 1 & 6
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+-2 & -2 \\
+5 & 3 \\
+2 & 1
+\end{bmatrix}
+\begin{bmatrix}
+0 & 3 \\
+1 & 3
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$\begin{bmatrix}
+22 & 31 \\
+42 & 44
+\end{bmatrix}$
+\quad
+b)~$\begin{bmatrix}
+18 & 18 & 12 \\
+6 & 0 & 8 \\
+34 & 48 & -2
+\end{bmatrix}$
+\quad
+c)~$\begin{bmatrix}
+11 & 12 & 36 & 14 \\
+-2 & 4 & 5 & -2 \\
+13 & 38 & 20 & 28
+\end{bmatrix}$
+\quad
+d)~$\begin{bmatrix}
+-2 & -12 \\
+3 & 24 \\
+1 & 9
+\end{bmatrix}$
+}
+
+\begin{exercise}
+Hitunglah invers matriks-matriks yang diberikan
+\begin{tasks}(4)
+\task
+$\begin{bmatrix}
+2
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+1 & 2 \\
+3 & 5
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+4 & 2 \\
+4 & 4
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)
+$\begin{bmatrix}
+\nicefrac{1}{2}
+\end{bmatrix}$
+\quad b)
+$\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}$
+\quad c)
+$\begin{bmatrix}
+-5 & 2 \\
+3 & -1
+\end{bmatrix}$
+\quad d)
+$\begin{bmatrix}
+\nicefrac{1}{2} & \nicefrac{-1}{4} \\
+\nicefrac{-1}{2} & \nicefrac{1}{2}
+\end{bmatrix}$
+}
+
+\begin{exercise}
+Hitunglah invers matriks-matriks yang diberikan
+\begin{tasks}(3)
+\task
+$\begin{bmatrix}
+2 & 0 \\
+0 & 3
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+4 & 0 & 0 \\
+0 & 5 & 0 \\
+0 & 0 & -1
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+-1 & 0 & 0 & 0 \\
+0 & 2 & 0 & 0 \\
+0 & 0 & 3 & 0 \\
+0 & 0 & 0 & 0.1
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$\begin{bmatrix}
+\nicefrac{1}{2} & 0 \\
+0 & \nicefrac{1}{3}
+\end{bmatrix}$
+\quad
+b)~$\begin{bmatrix}
+\nicefrac{1}{4} & 0 & 0 \\
+0 & \nicefrac{1}{5} & 0 \\
+0 & 0 & -1
+\end{bmatrix}$
+\quad
+c)~$\begin{bmatrix}
+-1 & 0 & 0 & 0 \\
+0 & \nicefrac{1}{2} & 0 & 0 \\
+0 & 0 & \nicefrac{1}{3} & 0 \\
+0 & 0 & 0 & 10
+\end{bmatrix}$
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Eliminasi}
+\label{elim:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2--3 kuliah}
+
+\subsection{Sistem persamaan linear}
+
+Salah satu penerapan matriks adalah menyelesaikan sistem
+persamaan linear\footnote{Walaupun mungkin kita memandangnya secara terbalik;
+cukup sering kita menyelesaikan sistem persamaan linear
+untuk mengetahui sesuatu tentang matriks, bukan sebaliknya.}.
+Perhatikan sistem persamaan linear berikut
+\begin{equation} \label{linalg:elim:eq}
+\begin{aligned}
+          2 x_1 +           2 x_2 +           2 x_3 & = 2 , \\
+\phantom{9} x_1 + \phantom{9} x_2 +           3 x_3 & = 5 , \\
+\phantom{9} x_1 +           4 x_2 + \phantom{9} x_3 & = 10 .
+\end{aligned}
+\end{equation}
+
+Terdapat prosedur sistematis
+yang disebut \emph{\myindex{eliminasi}} untuk menyelesaikan sistem semacam itu.
+Dalam prosedur ini,
+kita berusaha mengeliminasi setiap variabel dari semua persamaan kecuali satu.
+Kita ingin berakhir dengan persamaan
+seperti $x_3 = 2$, yang jawabannya dapat langsung kita baca.
+
+Kita menuliskan suatu sistem persamaan linear sebagai persamaan matriks:
+\begin{equation*}
+A \vec{x} = \vec{b} .
+\end{equation*}
+Sistem \eqref{linalg:elim:eq} ditulis sebagai
+\begin{equation*}
+\underbrace{
+\begin{bmatrix}
+2 & 2 & 2 \\
+1 & 1 & 3 \\
+1 & 4 & 1
+\end{bmatrix}
+}_{A}
+\underbrace{
+\begin{bmatrix}
+x_1 \\
+x_2 \\
+x_3
+\end{bmatrix}
+}_{\vec{x}}
+=
+\underbrace{
+\begin{bmatrix}
+2 \\
+5 \\
+10
+\end{bmatrix}
+}_{\vec{b}} .
+\end{equation*}
+Jika kita mengetahui invers $A$, pekerjaan kita selesai.
+Kita cukup menyelesaikan
+persamaan tersebut:
+\begin{equation*}
+\vec{x} = A^{-1} A \vec{x} = A^{-1} \vec{b} .
+\end{equation*}
+Namun, justru itulah sebagian dari masalahnya.
+Kita belum mengetahui cara menghitung
+invers untuk matriks yang lebih besar daripada $2 \times 2$.
+Nanti kita akan melihat bahwa untuk menghitung invers, sebenarnya kita menyelesaikan
+$A \vec{x} = \vec{b}$ untuk beberapa $\vec{b}$ yang berbeda. Dengan kata lain,
+kita perlu melakukan eliminasi untuk mencari $A^{-1}$.
+Selain itu, kita mungkin ingin menyelesaikan $A \vec{x} = \vec{b}$
+jika $A$ tidak invertibel, atau mungkin bahkan tidak persegi.
+
+\medskip
+
+Mari kita kembali ke persamaan-persamaannya dan melihat cara memanipulasinya.
+Terdapat beberapa operasi yang dapat kita lakukan pada persamaan tanpa mengubah
+solusinya. Pertama, mungkin suatu operasi yang tampak bodoh, kita dapat menukar
+dua persamaan dalam \eqref{linalg:elim:eq}:
+\begin{equation*}
+\begin{aligned}
+\phantom{9} x_1 + \phantom{9} x_2 +           3 x_3 & = 5 , \\
+          2 x_1 +           2 x_2 +           2 x_3 & = 2 , \\
+\phantom{9} x_1 +           4 x_2 + \phantom{9} x_3 & = 10 .
+\end{aligned}
+\end{equation*}
+Jelas persamaan-persamaan baru ini memiliki solusi $x_1,x_2,x_3$ yang sama.
+Operasi kedua adalah mengalikan suatu persamaan dengan bilangan tak nol. Sebagai
+contoh, kita mengalikan persamaan ketiga dalam \eqref{linalg:elim:eq}
+dengan 3:
+\begin{equation*}
+\begin{aligned}
+          2 x_1 + \phantom{9}  2 x_2 + 2 x_3 & = 2 , \\
+\phantom{9} x_1 + \phantom{99}   x_2 + 3 x_3 & = 5 , \\
+          3 x_1 +             12 x_2 + 3 x_3 & = 30 .
+\end{aligned}
+\end{equation*}
+Terakhir, kita dapat menambahkan kelipatan suatu persamaan ke persamaan lain.
+Misalnya, kita menambahkan 3 kali persamaan ketiga dalam \eqref{linalg:elim:eq}
+ke persamaan kedua:
+\begin{equation*}
+\begin{aligned}
+\phantom{(1+3)} 2 x_1 + \phantom{(1+12)}  2 x_2 + \phantom{(3+3)} 2 x_3 & = 2 , \\
+\phantom{2} (1+3) x_1 + \phantom{2}(1+12)   x_2 + \phantom{2} (3+3) x_3 & = 5+30 , \\
+\phantom{2 (1+3)} x_1 + \phantom{(1+12)}  4 x_2 + \phantom{(3+3) 2} x_3 & = 10 .
+\end{aligned}
+\end{equation*}
+$x_1,x_2,x_3$ yang sama seharusnya tetap menjadi solusi
+persamaan-persamaan baru.
+Ini hanyalah contoh; kita belum semakin dekat pada solusinya.
+Kita harus melakukan ketiga operasi ini dengan cara yang lebih logis,
+tetapi ternyata
+ketiga operasi ini cukup untuk menyelesaikan setiap persamaan linear.
+
+Hal pertama adalah menuliskan persamaan secara lebih ringkas. Diberikan
+\begin{equation*}
+A \vec{x} = \vec{b} ,
+\end{equation*}
+kita menuliskan apa yang disebut \emph{\myindex{matriks diperbesar}}
+\begin{equation*}
+[ A ~|~ \vec{b} ] ,
+\end{equation*}
+dengan garis vertikal hanyalah penanda agar kita mengetahui tempat
+\myquote{ruas kanan} persamaan dimulai.
+Untuk sistem \eqref{linalg:elim:eq}, matriks diperbesarnya adalah
+\begin{equation*}
+\left[
+\begin{array}{ccc|c}
+2 & 2 & 2 & 2 \\
+1 & 1 & 3 & 5 \\
+1 & 4 & 1 & 10
+\end{array}
+\right] .
+\end{equation*}
+Seluruh proses eliminasi, yang akan kita uraikan,
+sering diterapkan pada sebarang jenis matriks,
+bukan hanya
+matriks diperbesar.
+Cukup pandang matriks tersebut sebagai matriks $3 \times 4$
+\begin{equation*}
+\begin{bmatrix}
+2 & 2 & 2 & 2 \\
+1 & 1 & 3 & 5 \\
+1 & 4 & 1 & 10
+\end{bmatrix} .
+\end{equation*}
+
+\subsection{Bentuk eselon baris dan operasi elementer}
+
+Kita menerapkan ketiga operasi di atas pada matriks. Kita menyebutnya
+\emph{\myindex{operasi elementer}} atau
+\emph{\myindex{operasi baris elementer}}\index{operasi baris}.
+Dengan menerjemahkan operasi-operasi tersebut ke dalam konteks matriks,
+operasinya menjadi:
+\begin{enumerate}[(i)]
+\item Tukarkan dua baris.
+\item Kalikan suatu baris dengan bilangan tak nol.
+\item Tambahkan kelipatan suatu baris ke baris lain.
+\end{enumerate}
+\pagebreak[2]
+Kita menjalankan operasi-operasi ini sampai
+mencapai keadaan yang jawabannya mudah dibaca,
+atau sampai mencapai kontradiksi yang menunjukkan tidak adanya solusi.
+
+Secara lebih khusus, kita menjalankan operasi-operasi tersebut sampai memperoleh apa yang disebut
+\emph{\myindex{bentuk eselon baris}}\index{bentuk eselon}.
+Mari kita sebut
+entri tak nol pertama (dari kiri) dalam setiap baris sebagai
+\emph{\myindex{entri utama}}.
+Suatu matriks berada dalam \emph{bentuk eselon baris} jika
+syarat-syarat berikut dipenuhi:
+\begin{enumerate}[(i)]
+\item Entri utama pada sebarang baris terletak tepat di sebelah kanan
+entri utama pada baris di atasnya.
+\item Setiap baris nol berada di bawah semua baris tak nol.
+\item Semua entri utama adalah 1.
+\end{enumerate}
+Suatu matriks berada dalam \emph{\myindex{bentuk eselon baris tereduksi}}
+jika, lebih lanjut, syarat berikut dipenuhi.
+\begin{enumerate}[(i),resume]
+\item Semua entri di atas suatu entri utama bernilai nol.
+\end{enumerate}
+
+Perhatikan bahwa definisi ini berlaku untuk matriks berukuran sebarang.
+
+\begin{example}
+Matriks-matriks berikut berada dalam bentuk eselon baris. Entri-entri
+utamanya ditandai:
+\begin{equation*}
+\begin{bmatrix}
+\mybxsm{1} & 2 & 9 & 3 \\
+0 & 0 & \mybxsm{1} & 5 \\
+0 & 0 & 0 & \mybxsm{1}
+\end{bmatrix}
+\qquad
+\begin{bmatrix}
+\mybxsm{1} & -1 & -3  \\
+0 & \mybxsm{1} & 5  \\
+0 & 0 & \mybxsm{1}
+\end{bmatrix}
+\qquad
+\begin{bmatrix}
+\mybxsm{1} & 2 & 1 \\
+0 & \mybxsm{1} & 2 \\
+0 & 0 & 0
+\end{bmatrix}
+\qquad
+\begin{bmatrix}
+0 & \mybxsm{1} & -5 & 2 \\
+0 & 0 & 0 & \mybxsm{1} \\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\end{equation*}
+Tidak satu pun matriks di atas berada dalam bentuk eselon baris
+\emph{tereduksi}. Sebagai
+contoh, dalam matriks pertama, entri-entri di atas entri utama kedua dan ketiga
+tidak bernilai nol; entri-entri itu adalah 9, 3, dan 5.
+Matriks-matriks berikut berada dalam bentuk eselon baris tereduksi. Entri-entri
+utamanya ditandai:
+\begin{equation*}
+\begin{bmatrix}
+\mybxsm{1} & 3 & 0 & 8 \\
+0 & 0 & \mybxsm{1} & 6 \\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\qquad
+\begin{bmatrix}
+\mybxsm{1} & 0 & 2 &  0  \\
+0 & \mybxsm{1} & 3 & 0  \\
+0 & 0 & 0 & \mybxsm{1}
+\end{bmatrix}
+\qquad
+\begin{bmatrix}
+\mybxsm{1} & 0 & 3 \\
+0 & \mybxsm{1} & -2 \\
+0 & 0 & 0
+\end{bmatrix}
+\qquad
+\begin{bmatrix}
+0 & \mybxsm{1} & 2 & 0 \\
+0 & 0 & 0 & \mybxsm{1} \\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\end{equation*}
+\end{example}
+
+Prosedur yang akan kita uraikan untuk mencari bentuk eselon baris tereduksi
+dari suatu matriks
+disebut \emph{\myindex{eliminasi Gauss--Jordan}}.
+Bagian pertamanya, yang menghasilkan bentuk eselon baris, disebut
+\emph{\myindex{eliminasi Gauss}} atau
+\emph{\myindex{reduksi baris}}. Untuk beberapa masalah, bentuk eselon
+baris sudah memadai, dan melakukan bagian pertama ini saja memerlukan sedikit lebih sedikit pekerjaan.
+
+Untuk mencapai bentuk eselon baris, kita bekerja secara sistematis.
+Kita bergerak kolom demi kolom, dimulai dari kolom pertama. Kita mencari
+entri paling atas pada kolom pertama yang tidak nol, dan menyebutnya
+\emph{\myindex{pivot}}. Jika tidak terdapat entri tak nol,
+kita beralih ke kolom berikutnya. Kita menukar baris untuk menempatkan baris dengan
+pivot sebagai baris pertama. Kita membagi baris pertama
+dengan pivot agar entri pivot menjadi 1. Sekarang perhatikan semua baris di bawahnya
+dan kurangkan kelipatan yang tepat dari baris pivot sehingga semua entri
+di bawah pivot menjadi nol.
+
+Setelah prosedur ini, kita melupakan bahwa kita memiliki baris pertama (baris itu kini sudah tetap),
+dan melupakan kolom yang memuat pivot serta semua kolom nol yang mendahuluinya.
+Di bawah baris pivot, semua entri pada kolom-kolom ini hanyalah
+nol. Kemudian kita berfokus pada matriks yang lebih kecil dan mengulangi langkah-langkah
+di atas.
+
+Cara terbaik untuk menunjukkannya adalah dengan contoh, jadi mari kita kembali ke
+contoh dari awal bagian ini.
+Kita mempertahankan garis vertikal dalam matriks,
+walaupun prosedur ini berlaku pada sebarang matriks, bukan hanya
+matriks diperbesar.
+Kita mulai dengan kolom pertama dan menemukan pivot, yang dalam
+kasus ini adalah entri pertama pada kolom pertama.
+\begin{equation*}
+\left[
+\begin{array}{ccc|c}
+\mybxsm{2} & 2 & 2 & 2 \\
+1 & 1 & 3 & 5 \\
+1 & 4 & 1 & 10
+\end{array}
+\right]
+\end{equation*}
+Kita mengalikan baris pertama dengan
+$\nicefrac{1}{2}$.
+\begin{equation*}
+\left[
+\begin{array}{ccc|c}
+\mybxsm{1} & 1 & 1 & 1 \\
+1 & 1 & 3 & 5 \\
+1 & 4 & 1 & 10
+\end{array}
+\right]
+\end{equation*}
+Kita mengurangkan baris pertama dari baris kedua dan ketiga (dua operasi
+elementer).
+\begin{equation*}
+\left[
+\begin{array}{ccc|c}
+1 & 1 & 1 & 1 \\
+0 & 0 & 2 & 4 \\
+0 & 3 & 0 & 9
+\end{array}
+\right]
+\end{equation*}
+Untuk sementara, kita sudah selesai dengan kolom pertama dan baris pertama. Kita hampir
+berpura-pura bahwa matriks tersebut tidak memiliki kolom pertama dan baris pertama.
+\begin{equation*}
+\left[
+\begin{array}{ccc|c}
+* & * & * & * \\
+* & 0 & 2 & 4 \\
+* & 3 & 0 & 9
+\end{array}
+\right]
+\end{equation*}
+Baiklah\@, perhatikan kolom kedua, dan perhatikan bahwa sekarang pivot berada pada
+baris ketiga.
+\begin{equation*}
+\left[
+\begin{array}{ccc|c}
+1 & 1 & 1 & 1 \\
+0 & 0 & 2 & 4 \\
+0 & \mybxsm{3} & 0 & 9
+\end{array}
+\right]
+\end{equation*}
+Kita menukar baris.
+\begin{equation*}
+\left[
+\begin{array}{ccc|c}
+1 & 1 & 1 & 1 \\
+0 & \mybxsm{3} & 0 & 9 \\
+0 & 0 & 2 & 4
+\end{array}
+\right]
+\end{equation*}
+Lalu kita membagi baris pivot dengan 3.
+\begin{equation*}
+\left[
+\begin{array}{ccc|c}
+1 & 1 & 1 & 1 \\
+0 & \mybxsm{1} & 0 & 3 \\
+0 & 0 & 2 & 4
+\end{array}
+\right]
+\end{equation*}
+Kita tidak perlu mengurangkan apa pun karena semua yang berada di bawah pivot sudah
+nol. Kita melanjutkan. Sekali lagi kita mulai mengabaikan baris kedua dan kolom
+kedua, lalu berfokus pada
+\begin{equation*}
+\left[
+\begin{array}{ccc|c}
+* & * & * & * \\
+* & * & * & * \\
+* & * & 2 & 4
+\end{array}
+\right] .
+\end{equation*}
+Kita menemukan pivot, lalu membagi baris tersebut dengan 2:
+\begin{equation*}
+\left[
+\begin{array}{ccc|c}
+1 & 1 & 1 & 1 \\
+0 & 1 & 0 & 3 \\
+0 & 0 & \mybxsm{2} & 4
+\end{array}
+\right]
+\qquad \to \qquad
+\left[
+\begin{array}{ccc|c}
+1 & 1 & 1 & 1 \\
+0 & 1 & 0 & 3 \\
+0 & 0 & 1 & 2
+\end{array}
+\right] .
+\end{equation*}
+Matriks tersebut kini berada dalam bentuk eselon baris.
+
+Persamaan yang bersesuaian dengan baris terakhir adalah $x_3 = 2$.
+Kita mengetahui $x_3$ dan dapat
+menyubstitusikannya ke dalam dua persamaan pertama untuk memperoleh persamaan bagi
+$x_1$ dan $x_2$. Kemudian kita dapat melakukan hal yang sama dengan $x_2$, sampai kita menyelesaikan
+ketiga variabel. Prosedur ini disebut
+\emph{\myindex{substitusi balik}}, dan kita dapat melakukannya melalui operasi
+elementer.
+Kita mulai dari pivot paling bawah (entri utama dalam bentuk
+eselon baris) dan mengurangkan kelipatan yang tepat dari baris di atasnya untuk
+membuat semua entri di atas pivot ini menjadi nol.
+Kemudian kita beralih ke pivot berikutnya, dan seterusnya.
+Setelah selesai, kita akan memperoleh matriks dalam bentuk eselon baris tereduksi.
+
+Kita lanjutkan contoh kita.
+Kurangkan baris terakhir dari baris pertama untuk memperoleh
+\begin{equation*}
+\left[
+\begin{array}{ccc|c}
+1 & 1 & 0 & -1 \\
+0 & 1 & 0 & 3 \\
+0 & 0 & 1 & 2
+\end{array}
+\right] .
+\end{equation*}
+Entri di atas pivot pada baris kedua sudah nol.
+Jadi, kita beralih ke pivot berikutnya, yaitu pivot pada baris kedua. Kita mengurangkan
+baris ini dari baris teratas untuk memperoleh
+\begin{equation*}
+\left[
+\begin{array}{ccc|c}
+1 & 0 & 0 & -4 \\
+0 & 1 & 0 & 3 \\
+0 & 0 & 1 & 2
+\end{array}
+\right] .
+\end{equation*}
+Matriks tersebut berada dalam bentuk eselon baris tereduksi.
+
+Jika sekarang kita menuliskan persamaan untuk $x_1,x_2,x_3$, kita memperoleh
+\begin{equation*}
+x_1 = -4, \qquad x_2 = 3, \qquad x_3 = 2 .
+\end{equation*}
+Dengan kata lain, kita telah menyelesaikan sistem tersebut.
+
+\subsection{Solusi tak tunggal dan sistem tak konsisten}
+
+Mungkin saja
+solusi suatu sistem persamaan linear
+tidak tunggal, atau tidak ada solusi. Andaikan sejenak
+bahwa bentuk eselon baris yang kita peroleh adalah
+\begin{equation*}
+\left[
+\begin{array}{ccc|c}
+1 & 2 & 3 & 4 \\
+0 & 0 & 1 & 3 \\
+0 & 0 & 0 & 1
+\end{array}
+\right] .
+\end{equation*}
+Maka kita memiliki persamaan $0=1$ yang berasal dari baris terakhir. Hal itu
+mustahil,
+dan persamaan-persamaan tersebut disebut \emph{\myindex{tak konsisten}}. Tidak terdapat solusi
+untuk $A \vec{x} = \vec{b}$.
+
+
+Di sisi lain, jika kita memperoleh bentuk eselon baris
+\begin{equation*}
+\left[
+\begin{array}{ccc|c}
+1 & 2 & 3 & 4 \\
+0 & 0 & 1 & 3 \\
+0 & 0 & 0 & 0
+\end{array}
+\right] ,
+\end{equation*}
+maka tidak ada masalah dalam mencari solusi. Bahkan, kita akan menemukan terlalu
+banyak solusi. Mari kita lanjutkan dengan substitusi balik (mengurangkan 3 kali baris ketiga
+dari baris pertama) untuk mencari bentuk eselon baris tereduksi, dan mari kita tandai
+pivot-pivotnya.
+\begin{equation*}
+\left[
+\begin{array}{ccc|c}
+\mybxsm{1} & 2 & 0 & -5 \\
+0 & 0 & \mybxsm{1} & 3 \\
+0 & 0 & 0 & 0
+\end{array}
+\right]
+\end{equation*}
+Baris terakhir semuanya nol; baris itu hanya menyatakan $0=0$ dan kita mengabaikannya.
+Dua persamaan yang tersisa adalah
+\begin{equation*}
+x_1 + 2 x_2 = -5 , \qquad
+x_3 = 3 .
+\end{equation*}
+Mari kita selesaikan variabel-variabel yang bersesuaian dengan
+pivot, yakni $x_1$ dan $x_3$, karena terdapat pivot pada kolom pertama
+dan kolom ketiga:
+\begin{align*}
+& x_1 = - 2 x_2 -5 , \\
+& x_3 = 3 .
+\end{align*}
+Variabel $x_2$ dapat bernilai apa pun yang Anda inginkan, dan kita tetap memperoleh solusi.
+$x_2$ disebut \emph{\myindex{variabel bebas}}.
+Terdapat tak hingga banyak solusi, satu untuk setiap pilihan $x_2$.
+Jika kita memilih $x_2=0$,
+maka $x_1 = -5$ dan $x_3 = 3$ memberikan suatu solusi. Namun, kita juga memperoleh solusi
+dengan memilih, misalnya, $x_2 = 1$, yang dalam hal ini $x_1 = -7$ dan $x_3 = 3$,
+atau dengan memilih $x_2 = -5$, yang dalam hal ini $x_1 = 5$ dan $x_3 = 3$.
+
+\medskip
+
+Gagasan umumnya adalah bahwa
+jika suatu baris semuanya nol pada kolom-kolom yang bersesuaian dengan
+variabel, tetapi memiliki entri tak nol pada kolom yang bersesuaian dengan
+ruas kanan $\vec{b}$, maka sistem tersebut tak konsisten dan tidak memiliki solusi.
+Dengan kata lain, sistem itu tak konsisten jika Anda menemukan pivot pada
+sebelah kanan garis vertikal yang digambar dalam matriks diperbesar. Jika tidak, sistem
+tersebut \emph{\myindex{konsisten}}, dan setidaknya terdapat satu solusi.
+\pagebreak[2]
+
+Andaikan sistem tersebut konsisten (setidaknya terdapat satu solusi):
+\begin{enumerate}[(i)]
+\item Jika setiap kolom yang bersesuaian dengan suatu variabel memiliki elemen pivot,
+maka solusinya tunggal.
+\item Jika terdapat kolom-kolom yang bersesuaian dengan variabel tanpa pivot,
+maka variabel-variabel tersebut adalah \emph{variabel bebas} yang dapat dipilih
+secara sebarang, dan terdapat tak hingga banyak solusi.
+\end{enumerate}
+
+\medskip
+
+Ketika $\vec{b} = \vec{0}$, kita memiliki apa yang disebut
+\emph{\myindex{persamaan matriks homogen}}
+\begin{equation*}
+A \vec{x} = \vec{0} .
+\end{equation*}
+Tidak perlu menuliskan matriks diperbesar dalam
+kasus ini. Karena operasi elementer tidak mengubah kolom nol,
+kolom tersebut selalu tetap menjadi kolom nol. Lebih lanjut, $A \vec{x} = \vec{0}$ selalu memiliki
+setidaknya satu solusi, yakni $\vec{x} = \vec{0}$. Sistem semacam itu
+selalu konsisten. Sistem tersebut mungkin memiliki solusi lain: Jika kita menemukan
+variabel bebas apa pun, kita memperoleh tak hingga banyak solusi.
+
+Himpunan solusi $A \vec{x} = \vec{0}$ cukup sering muncul,
+sehingga orang memberinya nama. Himpunan itu disebut
+\emph{\myindex{ruang nol}} atau
+\emph{\myindex{kernel}} dari $A$.
+Salah satu tempat kernel muncul adalah invertibilitas suatu matriks persegi $A$.
+Jika kernel $A$ memuat suatu vektor tak nol, maka kernel tersebut memuat
+tak hingga banyak vektor (terdapat variabel bebas). Namun, kemudian
+mustahil membalik $\vec{0}$, karena tak hingga banyak vektor dipetakan ke
+$\vec{0}$, sehingga tidak ada vektor tunggal yang dibawa $A$ ke $\vec{0}$.
+Jadi, jika kernel tak trivial, yaitu jika terdapat vektor tak nol apa pun dalam
+kernel,
+dengan kata lain, jika terdapat variabel bebas apa pun, atau dengan kata lain lagi,
+jika bentuk eselon baris $A$ memiliki kolom tanpa pivot,
+maka $A$ tidak invertibel. Kita akan kembali pada gagasan ini nanti.
+
+\subsection{Kebebasan linear dan peringkat}
+
+Jika baris-baris suatu matriks bersesuaian dengan persamaan, mungkin baik untuk mengetahui
+berapa banyak persamaan yang sebenarnya kita perlukan untuk memperoleh himpunan solusi yang sama.
+Secara serupa, jika kita menemukan sejumlah solusi bagi persamaan linear
+$A \vec{x} = \vec{0}$, kita dapat bertanya apakah kita telah menemukan cukup banyak
+sehingga semua solusi lain dapat dibentuk dari himpunan yang diberikan.
+Konsep yang kita inginkan adalah kebebasan linear.
+Konsep yang sama berguna untuk persamaan diferensial, misalnya
+dalam \chapterref{ho:chapter}.
+
+Diberikan vektor baris atau kolom $\vec{y}_1, \vec{y}_2, \ldots, \vec{y}_n$,
+suatu \emph{\myindex{kombinasi linear}} adalah ungkapan berbentuk
+\begin{equation*}
+\alpha_1 \vec{y}_1 +
+\alpha_2 \vec{y}_2 +
+\cdots +
+\alpha_n \vec{y}_n ,
+\end{equation*}
+dengan $\alpha_1, \alpha_2, \ldots, \alpha_n$ semuanya skalar.
+Sebagai contoh,
+$3 \vec{y}_1 + \vec{y}_2 - 5 \vec{y}_3$ adalah kombinasi linear
+dari $\vec{y}_1$, $\vec{y}_2$, dan $\vec{y}_3$.
+
+Kita telah melihat kombinasi linear sebelumnya. Ungkapan
+\begin{equation*}
+A \vec{x}
+\end{equation*}
+adalah kombinasi linear dari kolom-kolom $A$, sedangkan
+\begin{equation*}
+\vec{x}^T A = (A^T \vec{x})^T
+\avoidbreak
+\end{equation*}
+adalah kombinasi linear dari baris-baris $A$.
+
+Cara kombinasi linear muncul dalam kajian kita tentang persamaan
+diferensial serupa dengan perhitungan berikut. Andaikan
+$\vec{x}_1$, $\vec{x}_2$, \ldots, $\vec{x}_n$ adalah solusi
+dari $A \vec{x}_1 = \vec{0}$,
+$A \vec{x}_2 = \vec{0}$, \ldots,
+$A \vec{x}_n = \vec{0}$.
+Maka kombinasi linear
+\begin{equation*}
+\vec{y} = \alpha_1 \vec{x}_1 +
+\alpha_2 \vec{x}_2 +
+\cdots +
+\alpha_n \vec{x}_n
+\end{equation*}
+adalah solusi dari $A \vec{y} = \vec{0}$:
+\begin{multline*}
+A \vec{y} =
+A (\alpha_1 \vec{x}_1 +
+\alpha_2 \vec{x}_2 +
+\cdots +
+\alpha_n \vec{x}_n )
+=
+\\
+=
+\alpha_1 A \vec{x}_1 +
+\alpha_2 A \vec{x}_2 +
+\cdots +
+\alpha_n A \vec{x}_n
+=
+\alpha_1 \vec{0} +
+\alpha_2 \vec{0} +
+\cdots +
+\alpha_n \vec{0} = \vec{0} .
+\end{multline*}
+
+Jadi jika kita menemukan cukup banyak solusi, kita telah memperoleh semua solusi. Pertanyaannya,
+kapan kita telah menemukan cukup banyak solusi?
+
+Kita mengatakan vektor-vektor $\vec{y}_1$, $\vec{y}_2$, \ldots, $\vec{y}_n$
+\emph{\myindex{bebas linear}} jika satu-satunya solusi dari
+\begin{equation*}
+\alpha_1 \vec{x}_1 +
+\alpha_2 \vec{x}_2 +
+\cdots +
+\alpha_n \vec{x}_n
+=
+\vec{0}
+\end{equation*}
+adalah $\alpha_1 = \alpha_2 = \cdots = \alpha_n = 0$.
+Jika tidak, kita mengatakan vektor-vektor tersebut \emph{\myindex{bergantung linear}}.
+
+Sebagai contoh, vektor-vektor
+$\left[ \begin{smallmatrix} 1 \\ 2 \end{smallmatrix} \right]$
+dan
+$\left[ \begin{smallmatrix} 0 \\ 1 \end{smallmatrix} \right]$
+bebas linear. Mari kita coba:
+\begin{equation*}
+\alpha_1
+\begin{bmatrix} 1 \\ 2 \end{bmatrix}
++
+\alpha_2
+\begin{bmatrix} 0 \\ 1 \end{bmatrix}
+=
+\begin{bmatrix} \alpha_1 \\ 2 \alpha_1 + \alpha_2 \end{bmatrix}
+=
+\vec{0} =
+\begin{bmatrix} 0 \\ 0 \end{bmatrix} .
+\end{equation*}
+Jadi $\alpha_1 = 0$, dan kemudian jelas bahwa $\alpha_2 = 0$ juga. Dengan
+kata lain, kedua vektor itu bebas linear.
+
+Jika suatu himpunan vektor bergantung linear, yakni, beberapa $\alpha_j$
+tidak nol, maka kita dapat menyatakan satu vektor dalam vektor-vektor lainnya.
+Misalkan $\alpha_1 \neq 0$. Karena
+$\alpha_1 \vec{x}_1 +
+\alpha_2 \vec{x}_2 +
+\cdots +
+\alpha_n \vec{x}_n
+=
+\vec{0}$, maka
+\begin{equation*}
+\vec{x}_1
+=
+\frac{-\alpha_2}{\alpha_1}
+\vec{x}_2 -
+\frac{-\alpha_3}{\alpha_1}
+\vec{x}_3 +
+\cdots +
+\frac{-\alpha_n}{\alpha_1}
+\vec{x}_n .
+\end{equation*}
+Sebagai contoh,
+\begin{equation*}
+2
+\begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}
+-4
+\begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}
++
+2 \begin{bmatrix} 1 \\ 0 \\ -1 \end{bmatrix}
+=
+\begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix} ,
+\end{equation*}
+sehingga
+\begin{equation*}
+\begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}
+=
+2
+\begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}
+-
+\begin{bmatrix} 1 \\ 0 \\ -1 \end{bmatrix} .
+\end{equation*}
+
+Anda mungkin telah memperhatikan bahwa menentukan $\alpha_j$ tersebut hanyalah menyelesaikan
+persamaan linear, sehingga mungkin tidak mengherankan bahwa untuk memeriksa
+apakah suatu himpunan vektor bebas linear kita menggunakan reduksi baris.
+
+Diberikan suatu himpunan vektor, kita mungkin bukan hanya ingin mengetahui apakah
+vektor-vektor itu bebas linear atau tidak; kita mungkin ingin menemukan suatu subhimpunan yang bebas
+linear. Atau mungkin kita ingin menemukan vektor-vektor lain yang
+menghasilkan kombinasi linear yang sama dan bebas linear.
+Cara menentukannya ialah membentuk suatu matriks dari vektor-vektor kita. Jika kita
+mempunyai vektor baris, kita menjadikannya baris-baris suatu matriks. Jika kita mempunyai
+vektor kolom, kita menjadikannya kolom-kolom suatu matriks.
+Himpunan semua kombinasi linear dari suatu himpunan vektor disebut
+\emph{\myindex{rentang}} vektor-vektor tersebut.
+\begin{equation*}
+\operatorname{span} \bigl\{ \vec{x}_1, \vec{x}_2 , \ldots , \vec{x}_n \bigr\}
+=
+\bigl\{
+\text{Himpunan semua kombinasi linear dari
+$\vec{x}_1, \vec{x}_2 , \ldots , \vec{x}_n$}
+\bigr\} .
+\end{equation*}
+
+
+Diberikan suatu matriks $A$, jumlah maksimum baris yang bebas linear disebut
+\emph{\myindex{peringkat}} dari $A$, dan kita menulis
+\myquote{$\operatorname{rank} A$} untuk peringkat tersebut.
+Sebagai contoh,
+\begin{equation*}
+\operatorname{rank}
+\begin{bmatrix}
+1 & 1 & 1 \\
+2 & 2 & 2 \\
+-1 & -1 & -1
+\end{bmatrix}
+=
+1 .
+\end{equation*}
+Baris kedua dan ketiga
+merupakan kelipatan dari baris pertama. Kita tidak dapat memilih lebih dari satu baris sambil
+tetap mempunyai himpunan yang bebas linear. Namun, berapakah
+\begin{equation*}
+\operatorname{rank}
+\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{bmatrix} \quad = \quad ?
+\end{equation*}
+Pertanyaan itu tampaknya lebih sulit dijawab. Dua baris
+pertama bebas linear (yang satu bukan kelipatan yang lain),
+sehingga peringkatnya setidaknya
+dua. Jika kita menyusun persamaan untuk $\alpha_1$, $\alpha_2$, dan
+$\alpha_3$, kita akan memperoleh suatu sistem dengan takhingga banyak solusi. Salah satu
+solusinya ialah
+\begin{equation*}
+\begin{bmatrix}
+1 & 2 & 3
+\end{bmatrix} -2
+\begin{bmatrix}
+4 & 5 & 6
+\end{bmatrix} +
+\begin{bmatrix}
+7 & 8 & 9
+\end{bmatrix} =
+\begin{bmatrix}
+0 & 0 & 0
+\end{bmatrix} .
+\end{equation*}
+Jadi himpunan yang terdiri atas ketiga baris tersebut bergantung linear; peringkatnya tidak mungkin
+3. Oleh karena itu, peringkatnya adalah 2.
+
+Namun, bagaimana kita dapat melakukannya secara lebih sistematis? Kita cari bentuk eselon
+barisnya!
+\begin{equation*}
+\text{Bentuk eselon baris dari}
+\quad
+\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6  \\
+7 & 8 & 9
+\end{bmatrix}
+\quad
+\text{adalah}
+\quad
+\begin{bmatrix}
+1 & 2 & 3 \\
+0 & 1 & 2  \\
+0 & 0 & 0
+\end{bmatrix} .
+\end{equation*}
+Operasi baris elementer tidak mengubah himpunan kombinasi linear dari
+baris-baris tersebut (itulah salah satu alasan utama operasi ini didefinisikan demikian).
+Dengan kata lain, rentang baris-baris dari $A$ sama
+dengan rentang baris-baris dari bentuk eselon baris $A$.
+Secara khusus, jumlah baris yang bebas linear tetap sama.
+Dan pada bentuk eselon baris, semua baris taknol bebas linear.
+Hal ini tidak sulit dilihat.
+Pertimbangkan kedua baris taknol dalam contoh di atas.
+Misalkan kita
+mencoba menentukan $\alpha_1$ dan $\alpha_2$
+dalam
+\begin{equation*}
+\alpha_1
+\begin{bmatrix}
+1 & 2 & 3
+\end{bmatrix}
++
+\alpha_2
+\begin{bmatrix}
+0 & 1 & 2
+\end{bmatrix} =
+\begin{bmatrix}
+0 & 0 & 0
+\end{bmatrix} .
+\end{equation*}
+Karena kolom pertama
+dari matriks eselon baris bernilai nol kecuali pada baris pertama, diperoleh
+$\alpha_1 = 0$. Dengan menggunakan $\alpha_1=0$ dan melihat kolom
+kedua, kita memperoleh $\alpha_2=0$.
+Kita hanya mempunyai dua baris taknol,
+dan keduanya bebas linear, jadi peringkat matriks tersebut adalah 2.
+
+Rentang baris disebut \emph{\myindex{ruang baris}}.
+Ruang baris dari $A$ dan dari bentuk eselon baris $A$ adalah sama.
+Dalam contoh tersebut,
+\begin{equation*}
+\begin{split}
+\text{ruang baris dari }
+\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{bmatrix}
+& =
+\operatorname{span}
+\left\{
+\begin{bmatrix}
+1 & 2 & 3
+\end{bmatrix}
+,
+\begin{bmatrix}
+4 & 5 & 6
+\end{bmatrix}
+,
+\begin{bmatrix}
+7 & 8 & 9
+\end{bmatrix}
+\right\}
+\\
+& =
+\operatorname{span}
+\left\{
+\begin{bmatrix}
+1 & 2 & 3
+\end{bmatrix}
+,
+\begin{bmatrix}
+0 & 1 & 2
+\end{bmatrix}
+\right\} .
+\end{split}
+\end{equation*}
+
+\medskip
+
+Serupa dengan ruang baris, rentang kolom disebut
+\emph{\myindex{ruang kolom}}.
+\begin{equation*}
+\text{ruang kolom dari }
+\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{bmatrix}
+=
+\operatorname{span}
+\left\{
+\begin{bmatrix}
+1 \\ 4 \\ 7
+\end{bmatrix}
+,
+\begin{bmatrix}
+2 \\ 5 \\ 8
+\end{bmatrix}
+,
+\begin{bmatrix}
+3 \\ 6 \\ 9
+\end{bmatrix}
+\right\} .
+\end{equation*}
+
+Jadi mungkin berguna pula untuk menemukan jumlah kolom yang bebas linear
+dari $A$. Salah satu caranya ialah menemukan jumlah baris yang bebas linear
+dari $A^T$. Fakta yang sangat berguna ialah bahwa jumlah
+kolom yang bebas linear
+selalu sama dengan jumlah baris yang bebas linear:
+
+\begin{theorem}
+$\operatorname{rank} A = \operatorname{rank} A^T$
+\end{theorem}
+
+Secara khusus, untuk menemukan suatu himpunan kolom yang bebas linear kita perlu
+melihat tempat pivot berada. Jika Anda mengingat pembahasan di atas, ketika menyelesaikan $A \vec{x}
+= \vec{0}$, kuncinya adalah menemukan pivot.
+Setiap kolom nonpivot bersesuaian dengan
+variabel bebas. Artinya, kita dapat menyatakan kolom-kolom nonpivot dalam
+kolom-kolom pivot. Mari kita lihat suatu contoh. Pertama-tama kita mereduksi suatu
+matriks sebarang:
+\begin{equation*}
+\begin{bmatrix}
+1 & 2 & 3 & 4 \\
+2 & 4 & 5 & 6 \\
+3 & 6 & 7 & 8
+\end{bmatrix} .
+\end{equation*}
+Kita menemukan suatu pivot dan mereduksi baris-baris di bawahnya:
+\begin{equation*}
+\begin{bmatrix}
+\mybxsm{1} & 2 & 3 & 4 \\
+2 & 4 & 5 & 6 \\
+3 & 6 & 7 & 8
+\end{bmatrix}
+\to
+\begin{bmatrix}
+\mybxsm{1} & 2 & 3 & 4 \\
+0 & 0 & -1 & -2 \\
+3 & 6 & 7 & 8
+\end{bmatrix}
+\to
+\begin{bmatrix}
+\mybxsm{1} & 2 & 3 & 4 \\
+0 & 0 & -1 & -2 \\
+0 & 0 & -2 & -4
+\end{bmatrix} .
+\end{equation*}
+Kita menemukan pivot berikutnya, menjadikannya satu, lalu mengulangi prosesnya:
+\begin{equation*}
+\begin{bmatrix}
+\mybxsm{1} & 2 & 3 & 4 \\
+0 & 0 & \mybxsm{-1} & -2 \\
+0 & 0 & -2 & -4
+\end{bmatrix}
+\to
+\begin{bmatrix}
+\mybxsm{1} & 2 & 3 & 4 \\
+0 & 0 & \mybxsm{1} & 2 \\
+0 & 0 & -2 & -4
+\end{bmatrix}
+\to
+\begin{bmatrix}
+\mybxsm{1} & 2 & 3 & 4 \\
+0 & 0 & \mybxsm{1} & 2 \\
+0 & 0 & 0 & 0
+\end{bmatrix} .
+\end{equation*}
+Matriks terakhir adalah bentuk eselon baris dari matriks tersebut.
+Pertimbangkan pivot-pivot yang kita tandai.
+Kolom pivot adalah kolom pertama dan ketiga.
+Semua kolom lain bersesuaian dengan variabel bebas ketika menyelesaikan
+$A \vec{x} = \vec{0}$, sehingga semua kolom lain dapat dinyatakan dalam kolom pertama dan
+ketiga. Dengan kata lain,
+\begin{equation*}
+\text{ruang kolom dari }
+\begin{bmatrix}
+1 & 2 & 3 & 4 \\
+2 & 4 & 5 & 6 \\
+3 & 6 & 7 & 8
+\end{bmatrix}
+=
+\operatorname{span}
+\left\{
+\begin{bmatrix}
+1 \\
+2 \\
+3
+\end{bmatrix}
+,
+\begin{bmatrix}
+2 \\
+4 \\
+6
+\end{bmatrix}
+,
+\begin{bmatrix}
+3 \\
+5 \\
+7
+\end{bmatrix}
+,
+\begin{bmatrix}
+4 \\
+6 \\
+8
+\end{bmatrix}
+\right\}
+=
+\operatorname{span}
+\left\{
+\begin{bmatrix}
+1 \\
+2 \\
+3
+\end{bmatrix}
+,
+\begin{bmatrix}
+3 \\
+5 \\
+7
+\end{bmatrix}
+\right\} .
+\end{equation*}
+Kita mungkin dapat menggunakan pasangan kolom lain untuk memperoleh rentang yang sama, tetapi kolom
+pertama dan ketiga dijamin berhasil karena keduanya merupakan kolom pivot.
+
+Pembahasan di atas dapat dikembangkan menjadi bukti teorema tersebut jika
+kita menginginkannya.
+Karena setiap baris taknol
+dalam bentuk eselon baris memuat suatu pivot, peringkatnya adalah jumlah
+pivot, yang sama dengan jumlah maksimum kolom yang bebas
+linear.
+
+\medskip
+
+Gagasan itu juga berlaku dalam arah sebaliknya. Misalkan kita mempunyai sekumpulan vektor kolom
+dan kita hanya perlu menemukan suatu himpunan yang bebas linear. Sebagai contoh, misalkan
+kita mulai dengan vektor-vektor
+\begin{equation*}
+\vec{v}_1 =
+\begin{bmatrix}
+1 \\
+2 \\
+3
+\end{bmatrix}
+,
+\quad
+\vec{v}_2 =
+\begin{bmatrix}
+2 \\
+4 \\
+6
+\end{bmatrix}
+,
+\quad
+\vec{v}_3 =
+\begin{bmatrix}
+3 \\
+5 \\
+7
+\end{bmatrix}
+,
+\quad
+\vec{v}_4 =
+\begin{bmatrix}
+4 \\
+6 \\
+8
+\end{bmatrix} .
+\end{equation*}
+Vektor-vektor ini tidak bebas linear seperti yang kita lihat di atas. Secara khusus,
+rentang $\vec{v}_1$ dan $\vec{v}_3$ sama dengan
+rentang keempat vektor tersebut. Jadi $\vec{v}_2$ dan $\vec{v}_4$
+keduanya dapat ditulis sebagai kombinasi linear dari $\vec{v}_1$ dan $\vec{v}_3$.
+Hal yang sering muncul dalam praktik ialah kita memperoleh suatu himpunan vektor
+yang rentangnya merupakan himpunan solusi suatu persoalan. Namun mungkin kita memperoleh terlalu
+banyak vektor, dan ingin menyederhanakannya. Sebagai contoh di atas, semua vektor dalam
+rentang
+$\vec{v}_1, \vec{v}_2, \vec{v}_3, \vec{v}_4$ dapat ditulis sebagai
+$\alpha_1 \vec{v}_1 + \alpha_2 \vec{v}_2 + \alpha_3 \vec{v}_3 + \alpha_4
+\vec{v}_4$ untuk beberapa bilangan $\alpha_1,\alpha_2,\alpha_3,\alpha_4$. Namun,
+setiap vektor tersebut juga dapat ditulis sebagai
+$a \vec{v}_1 + b \vec{v}_3$ untuk dua bilangan $a$ dan $b$. Harus
+diakui bahwa bentuk itu jauh lebih sederhana. Lebih lanjut, bilangan $a$ dan $b$ ini
+unik. Hal ini akan dibahas lebih lanjut dalam bagian berikutnya.
+
+Untuk menemukan himpunan bebas linear ini, kita cukup mengambil vektor-vektor kita
+dan membentuk matriks $[ \vec{v}_1 ~ \vec{v}_2 ~ \vec{v}_3 ~ \vec{v}_4 ]$,
+yakni matriks
+\begin{equation*}
+\begin{bmatrix}
+1 & 2 & 3 & 4 \\
+2 & 4 & 5 & 6 \\
+3 & 6 & 7 & 8
+\end{bmatrix} .
+\end{equation*}
+Kita jalankan mesin reduksi baris, masukkan matriks ini ke dalamnya, temukan
+kolom-kolom pivot, lalu pilih kolom-kolom tersebut. Dalam kasus ini, $\vec{v}_1$ dan
+$\vec{v}_3$.
+
+\subsection{Menghitung invers}
+
+Jika matriks $A$ persegi dan terdapat solusi tunggal
+$\vec{x}$ bagi $A \vec{x} = \vec{b}$ untuk setiap $\vec{b}$ (tidak ada variabel
+bebas), maka $A$ dapat diinverskan.
+Hal ini ekuivalen dengan matriks $n \times n$ berupa $A$ mempunyai peringkat $n$.
+
+Secara khusus, jika $A \vec{x} = \vec{b}$ maka $\vec{x} = A^{-1} \vec{b}$.
+Sekarang kita hanya perlu menghitung $A^{-1}$. Kita tentu dapat
+melakukan eliminasi setiap kali ingin menemukan $A^{-1} \vec{b}$, tetapi itu
+tidak masuk akal. Pemetaan $A^{-1}$ bersifat linear dan
+karena itu diberikan oleh suatu matriks, dan kita telah melihat bahwa untuk menentukan matriks tersebut
+kita hanya perlu menemukan ke mana $A^{-1}$ memetakan vektor-vektor basis baku
+$\vec{e}_1$,
+$\vec{e}_2$, \ldots,
+$\vec{e}_n$.
+
+Artinya, untuk menemukan kolom pertama $A^{-1}$, kita menyelesaikan
+$A \vec{x} = \vec{e}_1$, karena kemudian $A^{-1} \vec{e}_1 = \vec{x}$.
+Untuk menemukan kolom kedua $A^{-1}$, kita menyelesaikan
+$A \vec{x} = \vec{e}_2$. Demikian seterusnya. Sebenarnya kita hanya perlu melakukan $n$
+eliminasi. Namun, prosesnya dapat dibuat lebih mudah lagi.
+Jika dipikirkan, eliminasinya sama untuk
+semua yang berada di sisi kiri matriks diperbesar. Dengan melakukan
+$n$ eliminasi secara terpisah, kita akan mengulangi sebagian besar perhitungan.
+Sebaiknya kerjakan semuanya sekaligus.
+
+Oleh karena itu, untuk menemukan invers $A$, kita menulis suatu matriks diperbesar berukuran $n
+\times 2n$, yaitu $[ \,A ~|~ I\, ]$, dengan $I$ matriks identitas
+yang kolom-kolomnya tepat merupakan vektor-vektor basis baku.
+Kemudian kita melakukan reduksi baris hingga mencapai bentuk eselon baris
+tereduksi. Jika $A$ dapat diinverskan, maka pivot dapat ditemukan di setiap kolom $A$,
+sehingga
+bentuk eselon baris tereduksi dari $[ \,A ~|~ I\, ]$
+berbentuk $[ \,I ~|~ A^{-1}\, ]$.
+Lalu kita tinggal membaca invers $A^{-1}$.
+Jika Anda tidak menemukan pivot di setiap
+satu dari $n$ kolom pertama matriks diperbesar tersebut, maka
+$A$ tidak dapat diinverskan.
+
+Hal ini paling baik dilihat melalui contoh. Misalkan kita ingin menginverskan matriks
+\begin{equation*}
+\begin{bmatrix}
+1 & 2 & 3 \\
+2 & 0 & 1 \\
+3 & 1 & 0
+\end{bmatrix} .
+\end{equation*}
+Kita menulis matriks diperbesar dan mulai mereduksinya:
+\begin{align*}
+& \left[
+\begin{array}{ccc|ccc}
+\mybxsm{1} & 2 & 3 & 1 & 0 & 0\\
+2 & 0 & 1 & 0 & 1 & 0 \\
+3 & 1 & 0 & 0 & 0 & 1
+\end{array}
+\right]
+\to
+& &
+\left[
+\begin{array}{ccc|ccc}
+\mybxsm{1} & 2 & 3 & 1 & 0 & 0\\
+0 & -4 & -5 & -2 & 1 & 0 \\
+0 & -5 & -9 & -3 & 0 & 1
+\end{array}
+\right]
+\to
+\\
+\to
+& \left[
+\begin{array}{ccc|ccc}
+\mybxsm{1} & 2 & 3 & 1 & 0 & 0\\
+0 & \mybxsm{1} & \nicefrac{5}{4} & \nicefrac{1}{2} & \nicefrac{-1}{4} & 0 \\
+0 & -5 & -9 & -3 & 0 & 1
+\end{array}
+\right]
+\to
+& &
+\left[
+\begin{array}{ccc|ccc}
+\mybxsm{1} & 2 & 3 & 1 & 0 & 0\\
+0 & \mybxsm{1} & \nicefrac{5}{4} & \nicefrac{1}{2} & \nicefrac{-1}{4} & 0 \\
+0 & 0 & \nicefrac{-11}{4} & \nicefrac{-1}{2} & \nicefrac{-5}{4} & 1
+\end{array}
+\right]
+\to
+\\
+\to
+& \left[
+\begin{array}{ccc|ccc}
+\mybxsm{1} & 2 & 3 & 1 & 0 & 0\\
+0 & \mybxsm{1} & \nicefrac{5}{4} & \nicefrac{1}{2} & \nicefrac{-1}{4} & 0 \\
+0 & 0 & \mybxsm{1} & \nicefrac{2}{11} & \nicefrac{5}{11} & \nicefrac{-4}{11}
+\end{array}
+\right]
+\to
+& &
+\left[
+\begin{array}{ccc|ccc}
+\mybxsm{1} & 2 & 0 & \nicefrac{5}{11} & \nicefrac{-15}{11} & \nicefrac{12}{11} \\
+0 & \mybxsm{1} & 0 & \nicefrac{3}{11} & \nicefrac{-9}{11} & \nicefrac{5}{11} \\
+0 & 0 & \mybxsm{1} & \nicefrac{2}{11} & \nicefrac{5}{11} & \nicefrac{-4}{11}
+\end{array}
+\right]
+\to
+\\
+\to
+& \left[
+\begin{array}{ccc|ccc}
+\mybxsm{1} & 0 & 0 & \nicefrac{-1}{11} & \nicefrac{3}{11} & \nicefrac{2}{11} \\
+0 & \mybxsm{1} & 0 & \nicefrac{3}{11} & \nicefrac{-9}{11} & \nicefrac{5}{11} \\
+0 & 0 & \mybxsm{1} & \nicefrac{2}{11} & \nicefrac{5}{11} & \nicefrac{-4}{11}
+\end{array}
+\right] .
+\end{align*}
+Jadi
+\begin{equation*}
+{\begin{bmatrix}
+1 & 2 & 3 \\
+2 & 0 & 1 \\
+3 & 1 & 0
+\end{bmatrix}}^{-1}
+=
+\begin{bmatrix}
+\nicefrac{-1}{11} & \nicefrac{3}{11} & \nicefrac{2}{11} \\
+\nicefrac{3}{11} & \nicefrac{-9}{11} & \nicefrac{5}{11} \\
+\nicefrac{2}{11} & \nicefrac{5}{11} & \nicefrac{-4}{11}
+\end{bmatrix} .
+\end{equation*}
+Tidak terlalu buruk, bukan? Mungkin lebih sulit daripada menginverskan matriks $2 \times 2$
+yang mempunyai rumus sederhana, tetapi tidak terlalu buruk. Dalam praktik, hal ini
+dilakukan secara efisien oleh komputer.
+
+\subsection{Latihan}
+
+\begin{samepage}
+\begin{exercise}
+Hitung bentuk eselon baris tereduksi untuk matriks-matriks berikut:
+\begin{tasks}(4)
+\task
+$\begin{bmatrix}
+1 & 3 & 1 \\
+0 & 1 & 1
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+3 & 3 \\
+6 & -3
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+3 & 6 \\
+-2 & -3
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+6 & 6 & 7 & 7 \\
+1 & 1 & 0 & 1
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+9 & 3 & 0 & 2 \\
+8 & 6 & 3 & 6 \\
+7 & 9 & 7 & 9
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+2 & 1 & 3 & -3 \\
+6 & 0 & 0 & -1 \\
+-2 & 4 & 4 & 3
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+6 & 6 & 5 \\
+0 & -2 & 2 \\
+6 & 5 & 6
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+0 & 2 & 0 & -1 \\
+6 & 6 & -3 & 3 \\
+6 & 2 & -3 & 5
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Hitung invers dari matriks-matriks yang diberikan
+\begin{tasks}(3)
+\task
+$\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+1 & 1 & 1 \\
+0 & 2 & 1 \\
+0 & 0 & 1
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+1 & 2 & 3 \\
+2 & 0 & 1 \\
+0 & 2 & 1
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Selesaikan (temukan semua solusi), atau tunjukkan bahwa tidak ada solusi
+\begin{tasks}(2)
+\task
+$\begin{aligned}
+ 4x_1+3x_2 & = -2 \\
+ -x_1+\phantom{3} x_2 & = 4
+\end{aligned}$
+\task
+$\begin{aligned}
+  x_1+5x_2+3x_3 & = 7 \\
+ 8x_1+7x_2+8x_3 & = 8 \\
+ 4x_1+8x_2+6x_3 & = 4
+\end{aligned}$
+\task
+$\begin{aligned}
+ 4x_1+8x_2+2x_3 & = 3 \\
+ -x_1-2x_2+3x_3 & = 1 \\
+ 4x_1+8x_2 \phantom{{}+3x_3} & = 2
+\end{aligned}$
+\task
+$\begin{aligned}
+  x+2y+3z & = 4 \\
+2  x-\phantom{2} y+3z & = 1 \\
+3  x+\phantom{2} y+6z & = 6
+\end{aligned}$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Dengan menghitung invers,
+selesaikan sistem-sistem berikut untuk $\vec{x}$.
+\begin{tasks}(2)
+\task
+$\begin{bmatrix}
+4 & 1 \\
+-1 & 3
+\end{bmatrix} \vec{x} =
+\begin{bmatrix} 13 \\ 26 \end{bmatrix}$
+\task
+$\begin{bmatrix}
+3 & 3 \\
+3 & 4
+\end{bmatrix} \vec{x} =
+\begin{bmatrix} 2 \\ -1 \end{bmatrix}$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise} \label{exercise:rankmatrix}
+Hitung peringkat matriks-matriks yang diberikan
+\begin{tasks}(3)
+\task
+$\begin{bmatrix}
+6 & 3 & 5 \\
+1 & 4 & 1 \\
+7 & 7 & 6
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+5 & -2 & -1 \\
+3 & 0 & 6 \\
+2 & 4 & 5
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+1 & 2 & 3 \\
+-1 & -2 & -3 \\
+2 & 4 & 6
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Untuk matriks-matriks dalam \exerciseref{exercise:rankmatrix}, temukan
+suatu himpunan bebas linear dari vektor baris yang merentang ruang baris
+(vektor-vektor itu tidak harus berupa baris matriks tersebut).
+\end{exercise}
+
+\begin{exercise}
+Untuk matriks-matriks dalam \exerciseref{exercise:rankmatrix}, temukan
+suatu himpunan bebas linear dari kolom-kolom yang merentang ruang kolom.
+Artinya, temukan kolom-kolom pivot matriks tersebut.
+\end{exercise}
+
+\begin{exercise}
+Temukan suatu subhimpunan bebas linear dari vektor-vektor berikut yang mempunyai
+rentang yang sama.
+\begin{equation*}
+\begin{bmatrix}
+-1 \\ 1 \\ 2
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+2 \\ -2 \\ -4
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+-2 \\ 4 \\ 1
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+-1 \\ 3 \\ -2
+\end{bmatrix}
+\end{equation*}
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Hitung bentuk eselon baris tereduksi untuk matriks-matriks berikut:
+\begin{tasks}(4)
+\task
+$\begin{bmatrix}
+1 & 0 & 1 \\
+0 & 1 & 0
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+1 & 1 \\
+-2 & -2
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+1 & -3 & 1 \\
+4 & 6 & -2 \\
+-2 & 6 & -2
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+2 & 2 & 5 & 2 \\
+1 & -2 & 4 & -1 \\
+0 & 3 & 1 & -2
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+-2 & 6 & 4 & 3 \\
+6 & 0 & -3 & 0 \\
+4 & 2 & -1 & 1
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+1 & 2 & 3 & 3 \\
+1 & 2 & 3 & 5
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$\begin{bmatrix}
+1 & 0 & 1 \\
+0 & 1 & 0
+\end{bmatrix}$
+\quad b)~$\begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}$
+\quad c)~$\begin{bmatrix}
+1 & 1 \\
+0 & 0
+\end{bmatrix}$
+\quad d)~$\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & -1/3 \\
+0 & 0 & 0
+\end{bmatrix}$
+\quad e)~$\begin{bmatrix}
+1 & 0 & 0 & 77/15 \\
+0 & 1 & 0 & -2/15 \\
+0 & 0 & 1 & -8/5
+\end{bmatrix}$
+\quad f)~$\begin{bmatrix}
+1 & 0 & -1/2 & 0 \\
+0 & 1 & 1/2 & 1/2 \\
+0 & 0 & 0 & 0
+\end{bmatrix}$
+\quad g)~$\begin{bmatrix}
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{bmatrix}$
+\quad h)~$\begin{bmatrix}
+1 & 2 & 3 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}$
+}
+
+\begin{exercise}
+Hitung invers dari matriks-matriks yang diberikan
+\begin{tasks}(3)
+\task
+$\begin{bmatrix}
+0 & 1 & 0 \\
+-1 & 0 & 0 \\
+0 & 0 & 1
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+1 & 1 & 1 \\
+1 & 1 & 0 \\
+1 & 0 & 0
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+2 & 4 & 0 \\
+2 & 2 & 3 \\
+2 & 4 & 1
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$\begin{bmatrix}
+0 & -1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1
+\end{bmatrix}$
+\quad
+b)~$\begin{bmatrix}
+0 & 0 & 1 \\
+0 & 1 & -1 \\
+1 & -1 & 0
+\end{bmatrix}$
+\quad
+c)~$\begin{bmatrix}
+\nicefrac{5}{2} & 1 & -3 \\
+-1 & \nicefrac{-1}{2} & \nicefrac{3}{2} \\
+-1 & 0 & 1
+\end{bmatrix}$
+}
+
+\begin{exercise}
+Selesaikan (temukan semua solusi), atau tunjukkan bahwa tidak ada solusi
+\begin{tasks}(2)
+\task
+$\begin{aligned}
+4x_1+3x_2 & = -1 \\
+5x_1+6x_2 & = 4
+\end{aligned}$
+\task
+$\begin{aligned}
+ 5x+6y+5z & = 7 \\
+ 6x+8y+6z & = -1 \\
+ 5x+2y+5z & = 2
+\end{aligned}$
+\task
+$\begin{aligned}
+a+\phantom{5}b+\phantom{6}c & = -1 \\
+a+5b+6c & = -1 \\
+-2a+5b+6c & = 8
+\end{aligned}$
+\task
+$\begin{aligned}
+-2 x_1+2x_2+8x_3 & = 6 \\
+x_2+\phantom{8}x_3 & = 2 \\
+x_1+4x_2+\phantom{8}x_3 & = 7
+\end{aligned}$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a) $x_1=-2$, $x_2 = \nicefrac{7}{3}$
+\quad
+b)~tidak ada solusi
+\quad
+c)~$a = -3$, $b=10$, $c=-8$
+\quad
+d)~$x_3$ bebas, $x_1 = -1+3x_3$, $x_2 = 2-x_3$
+}
+
+\begin{exercise}
+Dengan menghitung invers,
+selesaikan sistem-sistem berikut untuk $\vec{x}$.
+\begin{tasks}(2)
+\task
+$\begin{bmatrix}
+-1 & 1 \\
+3 & 3
+\end{bmatrix} \vec{x} =
+\begin{bmatrix} 4 \\ 6 \end{bmatrix}$
+\task
+$\begin{bmatrix}
+2 & 7 \\
+1 & 6
+\end{bmatrix} \vec{x} =
+\begin{bmatrix} 1 \\ 3 \end{bmatrix}$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$\begin{bmatrix} -1 \\ 3 \end{bmatrix}$ \quad
+b)~$\begin{bmatrix} -3 \\ 1 \end{bmatrix}$
+}
+
+\begin{exercise} \label{exercise:rankmatrixans}
+Hitung peringkat matriks-matriks yang diberikan
+\begin{tasks}(3)
+\task
+$\begin{bmatrix}
+7 & -1 & 6 \\
+7 & 7 & 7 \\
+7 & 6 & 2
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+1 & 1 & 1 \\
+1 & 1 & 1 \\
+2 & 2 & 2
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+0 & 3 & -1 \\
+6 & 3 & 1 \\
+4 & 7 & -1
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a) 3 \quad b) 1 \quad c) 2
+}
+
+\begin{exercise}
+Untuk matriks-matriks dalam \exerciseref{exercise:rankmatrixans}, temukan
+suatu himpunan bebas linear dari vektor baris yang merentang ruang baris
+(vektor-vektor itu tidak harus berupa baris matriks tersebut).
+\end{exercise}
+\exsol{%
+a)~$\begin{bmatrix} 1 & 0 & 0\end{bmatrix}$,
+$\begin{bmatrix} 0 & 1 & 0\end{bmatrix}$,
+$\begin{bmatrix} 0 & 0 & 1\end{bmatrix}$
+\quad
+b)~$\begin{bmatrix} 1 & 1 & 1\end{bmatrix}$
+\quad
+c)~$\begin{bmatrix} 1 & 0 & \nicefrac{1}{3}\end{bmatrix}$,
+$\begin{bmatrix} 0 & 1 & \nicefrac{-1}{3}\end{bmatrix}$
+}
+
+\begin{exercise}
+Untuk matriks-matriks dalam \exerciseref{exercise:rankmatrixans}, temukan
+suatu himpunan bebas linear dari kolom-kolom yang merentang ruang kolom.
+Artinya, temukan kolom-kolom pivot matriks tersebut.
+\end{exercise}
+\exsol{%
+a)~$\begin{bmatrix} 7 \\ 7 \\ 7\end{bmatrix}$,
+$\begin{bmatrix} -1 \\ 7 \\ 6\end{bmatrix}$,
+$\begin{bmatrix} 7 \\ 6 \\ 2\end{bmatrix}$
+\quad
+b)~$\begin{bmatrix} 1 \\ 1 \\ 2\end{bmatrix}$
+\quad
+c)~$\begin{bmatrix} 0 \\ 6 \\ 4\end{bmatrix}$,
+$\begin{bmatrix} 3 \\ 3 \\ 7\end{bmatrix}$
+}
+
+\begin{exercise}
+Temukan suatu subhimpunan bebas linear dari vektor-vektor berikut yang mempunyai
+rentang yang sama.
+\begin{equation*}
+\begin{bmatrix}
+0 \\ 0 \\ 0
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+3 \\ 1 \\ -5
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+0 \\ 3 \\ -1
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+-3 \\ 2 \\ 4
+\end{bmatrix}
+\end{equation*}
+\end{exercise}
+\exsol{%
+$\begin{bmatrix}
+3 \\ 1 \\ -5
+\end{bmatrix}
+,
+\begin{bmatrix}
+0 \\ 3 \\ -1
+\end{bmatrix}$
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Subruang, dimensi, dan kernel}
+\label{subspaces:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1 kuliah}
+
+\subsection{Subruang, basis, dan dimensi}
+
+Kita sering mendapati diri sedang memperhatikan himpunan
+solusi suatu persamaan linear $L\vec{x} = \vec{0}$ untuk suatu matriks $L$.
+Artinya, kita tertarik pada kernel $L$.
+Himpunan semua solusi tersebut mempunyai struktur yang baik: Himpunan itu tampak dan
+berperilaku sangat mirip dengan suatu ruang Euklides ${\mathbb R}^k$.
+
+Kita mengatakan bahwa suatu himpunan $S$ dari vektor-vektor di ${\mathbb R}^n$ adalah
+\emph{\myindex{subruang}} jika
+kapan pun $\vec{x}$ dan $\vec{y}$ merupakan anggota $S$ dan
+$\alpha$ suatu skalar, maka
+\begin{equation*}
+\vec{x} + \vec{y}, \qquad \text{dan} \qquad \alpha \vec{x}
+\end{equation*}
+juga merupakan anggota $S$. Artinya, kita dapat menjumlahkan dan mengalikan dengan skalar
+dan tetap berada di $S$. Jadi setiap kombinasi linear vektor-vektor dari
+$S$ tetap berada di $S$. Itulah hakikat suatu subruang. Subruang adalah suatu subhimpunan
+tempat kita dapat mengambil kombinasi linear dan tetap berakhir di dalam subhimpunan tersebut.
+Akibatnya, rentang dari sejumlah vektor secara otomatis merupakan suatu subruang.
+
+\begin{example} \label{example:simplesubspaces}
+\begin{enumerate}[(i)]
+\item
+Jika kita mengambil $S = {\mathbb R}^n$, maka $S$ ini merupakan subruang dari
+${\mathbb R}^n$. Menjumlahkan dua vektor mana pun dalam ${\mathbb R}^n$ menghasilkan vektor dalam
+${\mathbb R}^n$, demikian pula perkalian dengan skalar.
+\item
+Himpunan $S' = \{ \vec{0} \}$, yakni,
+himpunan yang hanya terdiri atas vektor nol, juga
+merupakan subruang dari ${\mathbb R}^n$. Hanya ada satu vektor dalam
+subruang ini, jadi kita hanya perlu memeriksa definisi untuk vektor itu, dan semuanya terpenuhi:
+$\vec{0}+\vec{0} = \vec{0}$ dan $\alpha \vec{0} = \vec{0}$.
+\item
+Himpunan $S''$ dari semua vektor berbentuk
+$(a,a)$ untuk setiap bilangan real $a$, misalnya $(1,1)$, $(3,3)$, atau $(-0.5,-0.5)$,
+merupakan subruang dari ${\mathbb R}^2$. Menjumlahkan dua vektor semacam itu, misalnya
+$(1,1)+(3,3) = (4,4)$, kembali menghasilkan vektor dengan bentuk yang sama; demikian pula
+perkalian dengan suatu skalar, misalnya $8(1,1) = (8,8)$.
+\end{enumerate}
+\end{example}
+
+Jika $S$ suatu subruang dan kita dapat menemukan $k$ vektor bebas linear dalam $S$,
+\begin{equation*}
+\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_k ,
+\end{equation*}
+sedemikian sehingga setiap vektor lain dalam $S$ merupakan kombinasi linear dari $\vec{v}_1,
+\vec{v}_2,\ldots, \vec{v}_k$,
+maka himpunan
+$\{ \vec{v}_1, \vec{v}_2, \ldots, \vec{v}_k \}$ disebut suatu
+\emph{\myindex{basis}} dari $S$. Dengan kata lain, $S$
+adalah rentang dari
+$\{ \vec{v}_1, \vec{v}_2, \ldots, \vec{v}_k \}$
+dan tidak ada subhimpunan yang lebih kecil dari vektor-vektor ini yang merentang $S$.
+Kita mengatakan bahwa $S$ berdimensi $k$,
+dan kita menulis
+\begin{equation*}
+\dim S = k .
+\end{equation*}
+Kita mempunyai teorema berikut.
+
+\begin{theorem}
+\pagebreak[2]
+Jika $S \subset {\mathbb R}^n$ suatu subruang dan $S$ bukan subruang
+trivial $\{ \vec{0} \}$, maka terdapat suatu bilangan bulat positif tunggal
+$k$ (dimensinya) dan suatu basis (yang tidak tunggal)
+$\{ \vec{v}_1, \vec{v}_2, \ldots, \vec{v}_k \}$, sedemikian sehingga setiap
+$\vec{w}$ dalam $S$ dapat direpresentasikan secara tunggal oleh
+\begin{equation*}
+\vec{w} =
+\alpha_1 \vec{v}_1 +
+\alpha_2 \vec{v}_2 +
+\cdots
++
+\alpha_k \vec{v}_k ,
+\avoidbreak
+\end{equation*}
+untuk beberapa skalar $\alpha_1$, $\alpha_2$, \ldots, $\alpha_k$.
+Dengan \myquote{direpresentasikan secara tunggal} kita bermaksud bahwa
+skalar-skalar $\alpha_1$, $\alpha_2$, \ldots, $\alpha_k$ ini tunggal.
+\end{theorem}
+
+Sebagaimana suatu vektor dalam ${\mathbb R}^k$ direpresentasikan oleh suatu $k$-tupel
+bilangan, demikian pula suatu vektor dalam subruang berdimensi $k$ dari ${\mathbb R}^n$
+direpresentasikan oleh suatu $k$-tupel bilangan yang tunggal, setidaknya setelah kita menetapkan suatu basis.
+Basis yang berbeda akan memberikan $k$-tupel bilangan berbeda untuk vektor yang sama.
+
+Perlu kita tegaskan kembali bahwa meskipun $k$ tunggal
+(suatu subruang tidak mungkin mempunyai dua dimensi berbeda---setiap
+basis mempunyai jumlah vektor yang sama),
+himpunan vektor basis sama sekali tidak tunggal. Terdapat banyak
+basis berbeda untuk setiap subruang tertentu. Menemukan basis yang tepat bagi
+suatu subruang merupakan bagian besar dari apa yang dikerjakan dalam aljabar linear. Bahkan,
+itulah yang banyak kita kerjakan dalam
+persamaan diferensial linear, meskipun pada pandangan pertama
+mungkin tidak tampak demikian.
+
+\begin{example}
+\begin{enumerate}[(i)]
+\item
+Basis baku
+\begin{equation*}
+\vec{e}_1, \vec{e}_2, \ldots, \vec{e}_n ,
+\end{equation*}
+merupakan suatu basis dari ${\mathbb R}^n$ (karena itu namanya).
+Jadi seperti yang diharapkan,
+\begin{equation*}
+\dim {\mathbb R}^n = n .
+\end{equation*}
+\item
+Kedua himpunan $\bigl\{ (1,0) , (0,1) \bigr\}$ dan
+$\bigl\{ (1,1), (1,-1) \bigr\}$ merupakan
+basis dari ${\mathbb{R}}^2$. Suatu vektor $(3,7)$ dapat
+ditulis sebagai
+$(3,7)=3 (1,0) + 7 (0,1)$
+(dan tidak dengan cara lain menggunakan basis pertama),
+dan dapat ditulis sebagai
+$(3,7)=5 (1,1) - 2(1,-1)$
+(dan tidak dengan cara lain menggunakan basis kedua).
+\item
+Subruang $\{ \vec{0} \}$ berdimensi $0$.
+Basisnya hanyalah himpunan vektor kosong.
+\item
+Subruang $S''$ dari \exampleref{example:simplesubspaces}, yakni himpunan
+vektor $(a,a)$, berdimensi~1. Salah satu basis yang mungkin hanyalah
+$\bigl\{ (1,1) \bigr\}$, yaitu vektor tunggal
+$(1,1)$: Setiap vektor dalam $S''$ dapat direpresentasikan oleh $a (1,1) =
+(a,a)$. Demikian pula, basis lain yang mungkin adalah
+$\bigl\{ (-1,-1) \bigr\}$. Maka
+vektor $(a,a)$ akan direpresentasikan sebagai $(-a) (-1,-1)$.
+\item
+Himpunan $\bigl\{ (1,1) , (-1,-1) \bigr\}$ memang
+merentang $S''$, tetapi bukan basis karena bukan himpunan bebas linear.
+Akibatnya, suatu vektor seperti $(2,2)$ dapat ditulis dengan beberapa
+cara menggunakan himpunan vektor ini:
+$(2,2) = 2(1,1) + 0 (-1,-1)$,
+atau
+$(2,2) = 5(1,1) + 3 (-1,-1)$, dan seterusnya.
+\end{enumerate}
+\end{example}
+
+Ruang baris dan ruang kolom suatu matriks juga merupakan contoh
+subruang,
+karena keduanya diberikan sebagai rentang vektor.
+Kita dapat menggunakan
+apa yang kita ketahui tentang peringkat, ruang baris, dan ruang kolom
+dari bagian sebelumnya untuk menemukan suatu basis.
+
+\begin{example}
+Dalam bagian sebelumnya, kita mempertimbangkan matriks
+\begin{equation*}
+A =
+\begin{bmatrix}
+1 & 2 & 3 & 4 \\
+2 & 4 & 5 & 6 \\
+3 & 6 & 7 & 8
+\end{bmatrix} .
+\end{equation*}
+Dengan menggunakan reduksi baris untuk menemukan kolom-kolom pivot, kita memperoleh
+\begin{equation*}
+\text{ruang kolom dari $A$} \left(
+\begin{bmatrix}
+1 & 2 & 3 & 4 \\
+2 & 4 & 5 & 6 \\
+3 & 6 & 7 & 8
+\end{bmatrix}
+\right)
+=
+\operatorname{span}
+\left\{
+\begin{bmatrix}
+1 \\
+2 \\
+3
+\end{bmatrix}
+,
+\begin{bmatrix}
+3 \\
+5 \\
+7
+\end{bmatrix}
+\right\} .
+\end{equation*}
+Yang kita lakukan ialah menemukan suatu basis dari ruang kolom.
+Basis ini mempunyai dua elemen, sehingga ruang kolom dari $A$ berdimensi dua.
+Perhatikan bahwa peringkat $A$ adalah dua.
+\end{example}
+
+Kita akan mengikuti prosedur yang sama jika ingin menemukan suatu basis dari
+subruang $X$ yang direntang oleh
+\begin{equation*}
+\begin{bmatrix}
+1 \\
+2 \\
+3
+\end{bmatrix}
+,
+\begin{bmatrix}
+2 \\
+4 \\
+6
+\end{bmatrix}
+,
+\begin{bmatrix}
+3 \\
+5 \\
+7
+\end{bmatrix}
+,
+\begin{bmatrix}
+4 \\
+6 \\
+8
+\end{bmatrix}
+.
+\end{equation*}
+Kita cukup membentuk matriks $A$ dengan vektor-vektor ini sebagai kolom
+dan mengulangi perhitungan di atas. Subruang $X$ kemudian merupakan ruang kolom dari
+$A$.
+
+\begin{example}
+Pertimbangkan matriks
+\begin{equation*}
+L =
+\begin{bmatrix}
+{1} & 2 & 0 & 0 & 3 \\
+0 & 0 & {1} & 0 & 4 \\
+0 & 0 & 0 & {1} & 5
+\end{bmatrix} .
+\end{equation*}
+Matriks tersebut sudah berada dalam bentuk eselon baris tereduksi.
+Matriks itu berperingkat 3.
+Ruang kolom adalah rentang dari kolom-kolom pivot.
+Ruang tersebut adalah ruang berdimensi 3
+\begin{equation*}
+\text{ruang kolom dari $L$} =
+\operatorname{span} \left\{
+\begin{bmatrix}
+1 \\
+0 \\
+0
+\end{bmatrix}
+,
+\begin{bmatrix}
+0 \\
+1 \\
+0
+\end{bmatrix}
+,
+\begin{bmatrix}
+0 \\
+0 \\
+1
+\end{bmatrix}
+\right\}
+= {\mathbb{R}}^3 .
+\end{equation*}
+Ruang baris adalah ruang berdimensi 3
+\begin{equation*}
+\text{ruang baris dari $L$} =
+\operatorname{span} \left\{
+\begin{bmatrix}
+1 & 2 & 0 & 0 & 3
+\end{bmatrix}
+,
+\begin{bmatrix}
+0 & 0 & 1 & 0 & 4
+\end{bmatrix}
+,
+\begin{bmatrix}
+0 & 0 & 0 & 1 & 5
+\end{bmatrix}
+\right\} .
+\end{equation*}
+Karena vektor-vektor ini mempunyai 5 komponen, kita memandang ruang baris dari $L$
+sebagai suatu subruang dari ${\mathbb{R}}^5$.
+\end{example}
+
+Cara dimensi-dimensi tersebut muncul dalam contoh bukanlah
+kebetulan. Karena jumlah vektor yang perlu kita ambil
+selalu sama dengan jumlah pivot, dan jumlah pivot
+adalah peringkat, kita memperoleh hasil berikut.
+
+\begin{theorem}[Peringkat]
+Dimensi ruang kolom dan dimensi ruang baris
+dari suatu matriks $A$ sama-sama setara dengan peringkat $A$.
+\end{theorem}
+
+\subsection{Kernel}
+
+Himpunan solusi dari suatu persamaan linear $L\vec{x} = \vec{0}$,
+yaitu kernel dari $L$, merupakan suatu subruang:
+Jika $\vec{x}$ dan $\vec{y}$ adalah solusi,
+maka
+\begin{equation*}
+L(\vec{x}+\vec{y}) =
+L\vec{x}+L\vec{y} =
+\vec{0}+\vec{0} = \vec{0} ,
+\qquad \text{dan} \qquad
+L(\alpha \vec{x}) =
+\alpha L \vec{x} =
+\alpha \vec{0} = \vec{0}.
+\end{equation*}
+Jadi $\vec{x}+\vec{y}$ dan $\alpha \vec{x}$ merupakan solusi.
+Dimensi kernel disebut \emph{\myindex{nulitas}} dari
+matriks tersebut.
+
+Gagasan yang sama mengatur solusi persamaan diferensial
+linear. Kita mencoba mendeskripsikan kernel dari suatu operator diferensial
+linear, dan karena kernel itu merupakan subruang, kita mencari suatu basis dari
+kernel ini. Sebagian besar buku ini dikhususkan untuk menemukan basis-basis semacam itu.
+
+Kernel suatu matriks sama dengan kernel dari bentuk eselon baris
+tereduksinya. Untuk matriks dalam bentuk eselon baris tereduksi, kernel cukup mudah
+ditemukan. Jika kita mengambil hasil kali suatu matriks $L$ dan suatu vektor $\vec{x}$,
+maka setiap entri dalam
+$\vec{x}$ bersesuaian dengan suatu kolom dari $L$, yakni kolom yang dikalikan oleh entri tersebut.
+Untuk menemukan kernel,
+pilih suatu
+kolom nonpivot dan buat suatu vektor yang mempunyai $-1$ pada entri
+yang bersesuaian dengan kolom nonpivot ini serta nol pada semua entri lain
+yang bersesuaian dengan kolom-kolom nonpivot lainnya.
+Kemudian, untuk semua entri
+yang bersesuaian dengan kolom pivot, masukkan tepat nilai pada
+baris yang bersesuaian dari kolom nonpivot agar vektor itu menjadi
+solusi dari $L \vec{x} = \vec{0}$.
+Prosedur ini paling baik dipahami melalui contoh.
+
+\begin{example}
+Pertimbangkan
+\begin{equation*}
+L =
+\begin{bmatrix}
+\mybxsm{1} & 2 & 0 & 0 & 3 \\
+0 & 0 & \mybxsm{1} & 0 & 4 \\
+0 & 0 & 0 & \mybxsm{1} & 5
+\end{bmatrix} .
+\end{equation*}
+Matriks ini berada dalam bentuk eselon baris tereduksi; pivot-pivotnya ditandai.
+Terdapat dua kolom nonpivot, sehingga kernel berdimensi 2, yakni,
+kernel itu merupakan rentang dari 2 vektor. Mari kita temukan vektor pertama.
+Kita melihat kolom nonpivot pertama, yaitu kolom ke-$2$,
+dan menempatkan $-1$ pada
+entri ke-$2$ dari vektor kita. Kita menempatkan $0$ pada entri ke-$5$
+karena kolom ke-$5$ juga merupakan kolom nonpivot:
+\begin{equation*}
+\begin{bmatrix}
+? \\ -1 \\ ? \\ ? \\ 0
+\end{bmatrix} .
+\end{equation*}
+Mari kita isi sisanya. Ketika vektor ini mengenai baris pertama dari $L$, kita memperoleh
+$-2$ ditambah $1$ kali apa pun yang menggantikan tanda tanya pertama. Kita
+ingin memperoleh
+nol ketika mengenai baris pertama,
+jadi ganti tanda tanya pertama dengan $2$.
+Untuk memperoleh nol ketika mengenai baris kedua dan ketiga, cukup dengan mengganti
+tanda tanya yang tersisa dengan $0$. Sebenarnya kita sedang mengisikan kolom nonpivot
+ke dalam entri-entri yang tersisa. Mari kita periksa sambil menandai bilangan mana ditempatkan
+di mana:
+\begin{equation*}
+\begin{bmatrix}
+1 & \mybxsm{2} & 0 & 0 & 3 \\
+0 & \mybxsm{0} & 1 & 0 & 4 \\
+0 & \mybxsm{0} & 0 & 1 & 5
+\end{bmatrix}
+\begin{bmatrix}
+\mybxsm{2} \\ -1 \\ \mybxsm{0} \\ \mybxsm{0} \\ 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\ 0 \\ 0
+\end{bmatrix}
+.
+\end{equation*}
+Berhasil! Bagaimana dengan vektor kedua? Kita mulai dengan
+\begin{equation*}
+\begin{bmatrix}
+? \\ 0 \\ ? \\ ? \\ -1 .
+\end{bmatrix}
+\end{equation*}
+Kita mengganti tanda tanya pertama dengan 3, tanda tanya kedua dengan 4, dan
+tanda tanya ketiga dengan 5. Mari kita periksa, dengan menandai unsur-unsurnya seperti sebelumnya,
+\begin{equation*}
+\begin{bmatrix}
+1 & 2 & 0 & 0 & \mybxsm{3} \\
+0 & 0 & 1 & 0 & \mybxsm{4} \\
+0 & 0 & 0 & 1 & \mybxsm{5}
+\end{bmatrix}
+\begin{bmatrix}
+\mybxsm{3} \\ 0 \\ \mybxsm{4} \\ \mybxsm{5} \\ -1
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\ 0 \\ 0
+\end{bmatrix}
+.
+\end{equation*}
+Terdapat dua kolom nonpivot, jadi kita hanya memerlukan dua vektor.
+Kita telah menemukan suatu basis dari kernel. Jadi,
+\begin{equation*}
+\text{kernel dari $L$} =
+\operatorname{span} \left\{
+\begin{bmatrix}
+2 \\ -1 \\ 0 \\ 0 \\ 0
+\end{bmatrix}
+,
+\begin{bmatrix}
+3 \\ 0 \\ 4 \\ 5 \\ -1
+\end{bmatrix}
+\right\}
+\end{equation*}
+\end{example}
+
+Dalam menemukan suatu basis dari kernel, yang kita lakukan ialah menyatakan semua
+solusi dari
+$L \vec{x} = \vec{0}$ sebagai kombinasi linear dari beberapa vektor yang diberikan.
+
+\pagebreak[2]
+Prosedur untuk menemukan suatu basis dari kernel suatu matriks $L$:
+\begin{enumerate}[(i)]
+\item Temukan bentuk eselon baris tereduksi dari $L$.
+\item Tuliskan suatu basis dari kernel seperti di atas, satu vektor untuk setiap
+kolom nonpivot.
+\end{enumerate}
+
+
+Peringkat suatu matriks adalah dimensi ruang kolom, dan ruang itu
+merupakan rentang dari kolom-kolom pivot, sedangkan kernel merupakan rentang dari vektor-vektor tertentu,
+satu untuk setiap kolom nonpivot. Jadi jumlah kedua bilangan itu harus sama dengan jumlah
+kolom.
+
+\begin{theorem}[Peringkat--Nulitas]
+Jika suatu matriks $A$ mempunyai $n$ kolom, peringkat $r$, dan nulitas $k$ (dimensi
+kernel), maka
+\begin{equation*}
+n = r+k .
+\end{equation*}
+\end{theorem}
+
+Teorema tersebut sangat berguna dalam penerapan. Teorema itu memungkinkan kita menghitung
+peringkat $r$ jika nulitas $k$ diketahui dan sebaliknya, tanpa melakukan
+pekerjaan tambahan.
+Salah satu contoh penerapannya ialah versi sederhana dari apa yang disebut
+\emph{\myindex{alternatif Fredholm}}. Hasil serupa berlaku untuk
+persamaan diferensial. Pertimbangkan
+\begin{equation*}
+A \vec{x} = \vec{b} ,
+\end{equation*}
+dengan $A$ suatu matriks persegi $n \times n$.
+Kemudian terdapat dua kemungkinan yang saling mengecualikan:
+\begin{enumerate}[(i)]
+\item
+Terdapat suatu solusi taknol $\vec{x}$ bagi $A \vec{x} = \vec{0}$.
+\item
+Persamaan $A \vec{x} = \vec{b}$ mempunyai suatu solusi tunggal $\vec{x}$ untuk setiap
+$\vec{b}$.
+\end{enumerate}
+Bagaimana teorema Peringkat--Nulitas berperan di sini? Jika $A$ mempunyai
+suatu solusi taknol $\vec{x}$ bagi $A \vec{x} = \vec{0}$, maka nulitas $k$
+positif. Namun, peringkat $r = n-k$ harus lebih kecil dari $n$.
+Artinya, ruang kolom dari $A$ berdimensi kurang dari $n$, sehingga ruang itu
+merupakan subruang yang tidak mencakup seluruh ${\mathbb{R}}^n$.
+Jadi ${\mathbb{R}}^n$ harus
+memuat suatu vektor $\vec{b}$ yang tidak berada dalam ruang kolom dari $A$. Bahkan, sebagian besar
+vektor dalam ${\mathbb{R}}^n$ tidak berada dalam ruang kolom dari $A$.
+
+
+
+\subsection{Latihan}
+
+\begin{exercise}
+Untuk himpunan-himpunan vektor berikut, temukan suatu basis bagi subruang yang direntang oleh
+vektor-vektor tersebut, dan temukan dimensi subruangnya.
+\begin{tasks}(3)
+\task
+$
+\begin{bmatrix}
+1 \\ 1 \\ 1
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+-1 \\ -1 \\ -1
+\end{bmatrix}
+$
+\task
+$
+\begin{bmatrix}
+1 \\ 0 \\ 5
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+0 \\ 1 \\ 0
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+0 \\ -1 \\ 0
+\end{bmatrix}
+$
+\task
+$
+\begin{bmatrix}
+-4 \\ -3 \\ 5
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+2 \\ 3 \\ 3
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+2 \\ 0 \\ 2
+\end{bmatrix}
+$
+\task
+$
+\begin{bmatrix}
+1 \\ 3 \\ 0
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+0 \\ 2 \\ 2
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+-1 \\ -1 \\ 2
+\end{bmatrix}
+$
+\task
+$
+\begin{bmatrix}
+1 \\ 3
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+0 \\ 2
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+-1 \\ -1
+\end{bmatrix}
+$
+\task
+$
+\begin{bmatrix}
+3 \\ 1 \\ 3
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+2 \\ 4 \\ -4
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+-5 \\ -5 \\ -2
+\end{bmatrix}
+$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Untuk matriks-matriks berikut, temukan suatu basis bagi kernel (ruang nol).
+\begin{tasks}(4)
+\task
+$\begin{bmatrix}
+1 & 1 & 1 \\
+1 & 1 & 5 \\
+1 & 1 & -4
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+2 & -1 & -3 \\
+4 & 0 & -4 \\
+-1 & 1 & 2
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+-4 & 4 & 4 \\
+-1 & 1 & 1 \\
+-5 & 5 & 5
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+-2 & 1 & 1 & 1 \\
+-4 & 2 & 2 & 2 \\
+1 & 0 & 4 & 3
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Misalkan suatu matriks $5 \times 5$ berupa $A$ mempunyai peringkat 3. Berapakah nulitasnya?
+\end{exercise}
+
+\begin{exercise}
+Misalkan $X$ adalah himpunan semua vektor dari ${\mathbb{R}}^3$ yang
+komponen ketiganya nol. Apakah $X$ suatu subruang? Jika ya, temukan suatu basis
+dan dimensinya.
+\end{exercise}
+
+\begin{exercise}
+Pertimbangkan suatu matriks persegi $A$, dan misalkan $\vec{x}$ suatu
+vektor taknol sedemikian sehingga $A \vec{x} = \vec{0}$. Apa yang dinyatakan alternatif Fredholm
+tentang keterinversan $A$?
+\end{exercise}
+
+\begin{exercise}
+Pertimbangkan
+\begin{equation*}
+M =
+\begin{bmatrix}
+1 & 2 & 3 \\
+2 & ? & ? \\
+-1 & ? & ?
+\end{bmatrix} .
+\end{equation*}
+Jika nulitas matriks ini adalah 2, isilah tanda tanya tersebut. Petunjuk: Berapakah
+peringkatnya?
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Untuk himpunan-himpunan vektor berikut, temukan suatu basis bagi subruang yang direntang oleh
+vektor-vektor tersebut, dan temukan dimensi subruangnya.
+\begin{tasks}(3)
+\task
+$
+\begin{bmatrix}
+1 \\ 2
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+1 \\ 1
+\end{bmatrix}
+$
+\task
+$
+\begin{bmatrix}
+1 \\ 1 \\ 1
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+2 \\ 2 \\ 2
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+1 \\ 1 \\ 2
+\end{bmatrix}
+$
+\task
+$
+\begin{bmatrix}
+5 \\ 3 \\ 1
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+5 \\ -1 \\ 5
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+-1 \\ 3 \\ -4
+\end{bmatrix}
+$
+\task
+$
+\begin{bmatrix}
+2 \\ 2 \\ 4
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+2 \\ 2 \\ 3
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+4 \\ 4 \\ -3
+\end{bmatrix}
+$
+\task
+$
+\begin{bmatrix}
+1 \\ 0
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+2 \\ 0
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+3 \\ 0
+\end{bmatrix}
+$
+\task
+$
+\begin{bmatrix}
+1 \\ 0 \\ 0
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+2 \\ 0 \\ 0
+\end{bmatrix}
+, \quad
+\begin{bmatrix}
+0 \\ 1 \\ 2
+\end{bmatrix}
+$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$\begin{bmatrix}
+1 \\ 2
+\end{bmatrix}
+,
+\begin{bmatrix}
+1 \\ 1
+\end{bmatrix}$ berdimensi 2,
+\quad
+b)~$
+\begin{bmatrix}
+1 \\ 1 \\ 1
+\end{bmatrix}
+,
+\begin{bmatrix}
+1 \\ 1 \\ 2
+\end{bmatrix}$ berdimensi 2,
+\quad
+c)~$
+\begin{bmatrix}
+5 \\ 3 \\ 1
+\end{bmatrix}
+,
+\begin{bmatrix}
+5 \\ -1 \\ 5
+\end{bmatrix}
+,
+\begin{bmatrix}
+-1 \\ 3 \\ -4
+\end{bmatrix}
+$ berdimensi 3,
+\quad
+d)~$
+\begin{bmatrix}
+2 \\ 2 \\ 4
+\end{bmatrix}
+,
+\begin{bmatrix}
+2 \\ 2 \\ 3
+\end{bmatrix}
+$ berdimensi 2,
+\quad
+e)~$\begin{bmatrix}
+1 \\ 0
+\end{bmatrix}$ berdimensi 1,
+\quad
+f)~$\begin{bmatrix}
+1 \\ 0 \\ 0
+\end{bmatrix}
+,
+\begin{bmatrix}
+0 \\ 1 \\ 2
+\end{bmatrix}
+$ berdimensi~2
+}
+
+\begin{exercise}
+Untuk matriks-matriks berikut, temukan suatu basis bagi kernel (ruang nol).
+\begin{tasks}(4)
+\task
+$\begin{bmatrix}
+2 & 6 & 1 & 9 \\
+1 & 3 & 2 & 9 \\
+3 & 9 & 0 & 9
+\end{bmatrix}$
+\task
+$
+\begin{bmatrix}
+2 & -2 & -5 \\
+-1 & 1 & 5 \\
+-5 & 5 & -3
+\end{bmatrix}$
+\task
+$
+\begin{bmatrix}
+1 & -5 & -4 \\
+2 & 3 & 5 \\
+-3 & 5 & 2
+\end{bmatrix}$
+\task
+$
+\begin{bmatrix}
+0 & 4 & 4 \\
+0 & 1 & 1 \\
+0 & 5 & 5
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$\begin{bmatrix} 3 \\ -1 \\ 0 \\ 0 \end{bmatrix}$, $\begin{bmatrix} 3 \\
+0 \\ 3 \\ -1 \end{bmatrix}$
+\quad
+b)~$\begin{bmatrix} -1 \\ -1 \\ 0 \end{bmatrix}$
+\quad
+c)~$\begin{bmatrix} 1 \\ 1 \\ -1 \end{bmatrix}$
+\quad
+d)~$\begin{bmatrix} -1 \\ 0 \\ 0 \end{bmatrix}$, $\begin{bmatrix} 0 \\ 1 \\ -1 \end{bmatrix}$
+}
+
+\begin{exercise}
+Misalkan ruang kolom dari suatu matriks $9 \times 5$ berupa $A$ berdimensi 3. Temukan
+\begin{tasks}(2)
+\task
+Peringkat $A$.
+\task
+Nulitas $A$.
+\task
+Dimensi ruang baris dari $A$.
+\task
+Dimensi ruang nol dari $A$.
+\task
+Ukuran subhimpunan maksimum dari
+baris-baris $A$ yang bebas linear.
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~3 \quad b)~2 \quad c)~3 \quad d)~2 \quad e)~3
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Hasil kali dalam dan proyeksi}
+\label{innerproduct:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1--2 kuliah}
+
+\subsection{Hasil kali dalam dan ortogonalitas}
+
+Untuk melakukan geometri dasar, kita memerlukan panjang dan sudut.
+Kita telah melihat panjang Euklides, jadi mari kita tentukan sudut.
+Sebagian besar, kita memperhatikan
+sudut siku-siku\footnote{Ketika Euklides mendefinisikan sudut dalam
+\emph{Elements}, satu-satunya sudut yang benar-benar ia definisikan adalah sudut siku-siku.}.
+
+Diberikan dua vektor (kolom) di ${\mathbb{R}}^n$,
+kita mendefinisikan
+\emph{\myindex{hasil kali dalam}} (baku)\index{hasil kali dalam baku} sebagai
+hasil kali titik:
+\begin{equation*}
+\langle \vec{x} , \vec{y} \rangle =
+\vec{x} \cdot \vec{y}
+=
+\vec{y}^T \vec{x}
+=
+x_1 y_1 + x_2 y_2 + \cdots + x_n y_n
+=
+\sum_{i=1}^n x_i y_i .
+\end{equation*}
+Mengapa tampaknya kita memberikan notasi baru untuk hasil kali titik
+($\langle \vec{x} , \vec{y} \rangle$ alih-alih hanya
+$\vec{x} \cdot \vec{y}$)?
+Karena terdapat hasil kali dalam lain yang mungkin, yang bukan hasil kali
+titik, meskipun kita tidak akan membahas hasil kali lain di sini.
+Hasil kali dalam bahkan dapat didefinisikan pada ruang fungsi,
+seperti yang kita lakukan dalam
+\chapterref{FS:chapter}:
+\begin{equation*}
+\langle f(t) , g(t) \rangle =
+\int_{a}^{b}
+f(t) g(t) \, dt .
+\end{equation*}
+Namun kita telah menyimpang dari pokok bahasan.
+
+Hasil kali dalam memenuhi aturan-aturan berikut:
+\begin{enumerate}[(i)]
+\item $\langle \vec{x} , \vec{x} \rangle \geq 0$, dan
+$\langle \vec{x} , \vec{x} \rangle = 0$ jika dan hanya jika $\vec{x} = 0$,
+\item $\langle \vec{x} , \vec{y} \rangle = \langle \vec{y} , \vec{x}
+\rangle$,
+\item $\langle a\vec{x} , \vec{y} \rangle =
+\langle \vec{x} , a\vec{y} \rangle =
+a \langle \vec{x} , \vec{y} \rangle$,
+\item $\langle \vec{x} +  \vec{y} , \vec{z} \rangle =
+\langle \vec{x} , \vec{z} \rangle +
+\langle \vec{y} , \vec{z} \rangle$ dan
+$\langle \vec{x}, \vec{y} + \vec{z} \rangle =
+\langle \vec{x} , \vec{y} \rangle +
+\langle \vec{x} , \vec{z} \rangle$.
+\end{enumerate}
+Apa pun yang memenuhi sifat-sifat di atas dapat disebut hasil kali
+dalam, meskipun dalam bagian ini kita memperhatikan
+hasil kali dalam baku di ${\mathbb{R}}^n$.
+
+\medskip
+
+Hasil kali dalam baku menghasilkan panjang Euklides:
+\begin{equation*}
+\lVert{\vec{x}}\rVert = \sqrt{\langle \vec{x}, \vec{x} \rangle}
+= \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2} .
+\end{equation*}
+Bagaimana hasil kali dalam menghasilkan sudut?
+Anda mungkin mengingat suatu rumus
+untuk hasil kali dalam baku (hasil kali titik)
+dari kalkulus multivariabel dalam
+dua atau tiga dimensi,
+dalam suku-suku
+sudut $\theta$ antara kedua vektor:
+\begin{equation*}
+\langle \vec{x}, \vec{y} \rangle
+=
+\lVert{\vec{x}}\rVert \lVert{\vec{y}}\rVert \cos \theta.
+\avoidbreak
+\end{equation*}
+Artinya, $\theta$ adalah sudut yang dibentuk oleh $\vec{x}$ dan $\vec{y}$
+ketika keduanya berpangkal pada titik yang sama.
+
+Di ${\mathbb{R}}^n$ (dimensi berapa pun), kita cukup mengatakan bahwa $\theta$
+dari rumus tersebut adalah sudutnya.
+Hal ini masuk akal karena dua vektor mana pun yang berpangkal di titik asal
+terletak dalam suatu bidang berdimensi 2 (subruang),
+dan rumus tersebut berlaku dalam 2 dimensi.
+Sebenarnya, dengan cara ini kita bahkan dapat membicarakan sudut antara fungsi, dan
+kita melakukannya dalam \chapterref{FS:chapter}, ketika membicarakan fungsi ortogonal
+(fungsi yang saling membentuk sudut siku-siku).
+
+Untuk menghitung sudut, kita selesaikan untuk $\cos \theta$:
+\begin{equation*}
+\cos \theta
+=
+\frac{\langle \vec{x}, \vec{y} \rangle}{\lVert{\vec{x}}\rVert
+\lVert{\vec{y}}\rVert} .
+\end{equation*}
+Sudut-sudut kita selalu dinyatakan dalam radian.
+Kita menghitung kosinus sudut tersebut,
+yang sebenarnya merupakan hasil terbaik
+yang dapat kita peroleh. Diberikan dua vektor dengan sudut $\theta$, kita dapat menyatakan sudutnya sebagai
+$-\theta$, $2\pi-\theta$, dan seterusnya.
+Lihat \figurevref{vec-angle:fig}.
+Untungnya,
+$\cos \theta = \cos (-\theta) = \cos(2\pi - \theta)$.
+Jika kita menentukan $\theta$ menggunakan kosinus invers $\cos^{-1}$,
+kita cukup menetapkan bahwa $0 \leq \theta \leq \pi$.
+
+\begin{myfig}
+\capstart
+\inputpdft{vec-angle}{%
+Diagram dengan dua vektor x dan y yang berawal dari titik yang sama,
+x mengarah ke atas dan ke kanan, sedangkan y mengarah ke bawah dan ke kanan.
+Sudut dari y ke x berlawanan arah jarum jam ditandai theta.
+Sudut dari x ke y searah jarum jam ditandai minus theta.
+Sudut dari x ke y berlawanan arah jarum jam ditandai 2 pi minus theta.}
+\caption{Sudut antara vektor-vektor.\label{vec-angle:fig}}
+\end{myfig}
+
+\begin{example}
+Mari kita hitung sudut antara vektor $(3,0)$ dan $(1,1)$ di
+bidang.
+Hitung
+\begin{equation*}
+\cos \theta =
+\frac{\bigl\langle (3,0) , (1,1) \bigr\rangle}{\lVert(3,0)\rVert \lVert(1,1)\rVert}
+=
+\frac{3 + 0}{3 \sqrt{2}} = \frac{1}{\sqrt{2}} .
+\end{equation*}
+Oleh karena itu, $\theta = \nicefrac{\pi}{4}$.
+\end{example}
+
+Seperti yang telah kita katakan, sudut paling penting adalah sudut siku-siku. Sudut siku-siku
+adalah $\nicefrac{\pi}{2}$ radian, dan $\cos (\nicefrac{\pi}{2}) = 0$, sehingga
+rumusnya sangat mudah dalam kasus ini.
+Kita mengatakan
+vektor-vektor $\vec{x}$ dan $\vec{y}$
+\emph{\myindex{ortogonal}} jika saling membentuk sudut siku-siku,
+yakni, jika
+\begin{equation*}
+\langle \vec{x} , \vec{y} \rangle
+=
+0 .
+\end{equation*}
+Vektor-vektor $(1,0,0,1)$ dan $(1,2,3,-1)$ ortogonal. Demikian pula
+$(1,1)$ dan $(1,-1)$. Namun, $(1,1)$ dan $(1,2)$ tidak ortogonal karena
+hasil kali dalamnya adalah $3$, bukan 0.
+
+\subsection{Proyeksi ortogonal}
+
+Penerapan khas aljabar linear ialah mengambil suatu persoalan sulit,
+menuliskan semuanya dalam basis yang tepat, dan dalam basis baru ini persoalan tersebut
+menjadi sederhana. Basis yang sangat berguna ialah basis ortogonal,
+yaitu basis yang semua vektor basisnya ortogonal. Ketika menggambar suatu
+sistem koordinat dalam dua atau tiga dimensi, kita hampir selalu menggambar sumbu-sumbunya
+saling ortogonal.
+
+Dengan memperumum konsep ini pada fungsi,
+dalam \chapterref{FS:chapter} sangat berguna untuk menyatakan suatu
+fungsi menggunakan basis ortogonal tertentu, yaitu deret Fourier.
+
+Untuk menyatakan satu vektor dalam suatu basis ortogonal, pertama-tama kita perlu
+\emph{memproyeksikan} satu vektor pada vektor lain.
+Diberikan suatu vektor taknol $\vec{v}$, kita mendefinisikan
+\emph{\myindex{proyeksi ortogonal}}\index{proyeksi!ortogonal}
+dari $\vec{w}$ pada $\vec{v}$ sebagai
+\begin{equation*}
+\operatorname{proj}_{\vec{v}}(\vec{w})
+=
+\left(
+\frac{\langle \vec{w} , \vec{v} \rangle}{ \langle \vec{v} , \vec{v} \rangle}
+\right)
+\vec{v} .
+\end{equation*}
+Untuk gagasan geometrisnya, lihat \figurevref{vec-orthoproj:fig}. Artinya, kita
+menemukan \myquote{bayangan $\vec{w}$} pada garis yang direntang oleh $\vec{v}$ jika
+arah sinar matahari
+tepat tegak lurus terhadap garis tersebut.
+Cara lain untuk memikirkannya ialah bahwa ujung anak panah dari
+$\operatorname{proj}_{\vec{v}}(\vec{w})$ merupakan titik pada garis
+yang direntang oleh $\vec{v}$ yang paling dekat dengan ujung anak panah $\vec{w}$.
+Dalam jarak Euklides,
+$\vec{u} = \operatorname{proj}_{\vec{v}}(\vec{w})$ meminimumkan
+jarak
+$\lVert \vec{w} - \vec{u} \rVert$ di antara semua vektor $\vec{u}$ yang merupakan
+kelipatan dari $\vec{v}$.
+Karena itu, proyeksi ini sering muncul dalam matematika
+terapan dalam berbagai konteks ketika kita tidak dapat menyelesaikan suatu persoalan
+secara eksak: Kita tidak selalu dapat menyelesaikan
+\myquote{Temukan $\vec{w}$ sebagai kelipatan dari
+$\vec{v}$,}
+tetapi $\operatorname{proj}_{\vec{v}}(\vec{w})$ merupakan \myquote{solusi} terbaik.
+
+\begin{myfig}
+\capstart
+\inputpdft{vec-orthoproj}{%
+Diagram yang menunjukkan vektor v berwarna abu-abu muda dan vektor w yang membentuk sudut
+theta dengan v serta berpangkal pada titik yang sama, ditandai dengan garis tebal gelap. Suatu
+segitiga siku-siku dengan sudut siku-siku pada garis yang diberikan oleh vektor v
+ditampilkan, dan vektor lebih kecil yang bersesuaian dalam arah v serta ditandai
+sebagai proj sub v dari w ditampilkan dengan garis tebal gelap.}
+\caption{Proyeksi ortogonal.\label{vec-orthoproj:fig}}
+\end{myfig}
+
+Rumus tersebut mengikuti dari trigonometri dasar. Jika $\theta$ lancip, panjang
+$\operatorname{proj}_{\vec{v}}(\vec{w})$ seharusnya
+sebesar $\cos \theta$ kali panjang $\vec{w}$, yakni $(\cos
+\theta)\lVert\vec{w}\rVert$.
+Kita mengambil vektor satuan dalam arah $\vec{v}$, yakni
+$\frac{\vec{v}}{\lVert \vec{v} \rVert}$, dan mengalikannya dengan panjang
+proyeksi. Dengan kata lain,
+\begin{equation*}
+\operatorname{proj}_{\vec{v}}(\vec{w})
+=
+(\cos \theta) \lVert \vec{w} \rVert
+\frac{\vec{v}}{\lVert \vec{v} \rVert}
+=
+\frac{(\cos \theta) \lVert \vec{w} \rVert \lVert \vec{v} \rVert}{
+{\lVert \vec{v} \rVert}^2
+}
+\vec{v}
+=
+\frac{\langle \vec{w}, \vec{v} \rangle}{
+\langle \vec{v}, \vec{v} \rangle
+}
+\vec{v} .
+\end{equation*}
+Perhitungan ini berlaku untuk $\theta$ tumpul ($\cos \theta < 0$)
+karena kita juga perlu membalik arah.
+
+\begin{example}
+Misalkan kita ingin memproyeksikan vektor $(3,2,1)$ pada vektor $(1,2,3)$.
+Hitung
+\begin{equation*}
+\begin{split}
+\operatorname{proj}_{(1,2,3)} \bigl( (3,2,1) \bigr)
+=
+\frac{\langle (3,2,1) , (1,2,3) \rangle}{\langle (1,2,3) , (1,2,3) \rangle}
+(1,2,3)
+& =
+\frac{3 \cdot 1 + 2 \cdot 2 + 1 \cdot 3}{ 1 \cdot 1 + 2 \cdot 2 + 3 \cdot 3}
+(1,2,3)
+\\
+& =
+\frac{10}{14}
+(1,2,3)
+=
+\left(\frac{5}{7},\frac{10}{7},\frac{15}{7}\right) .
+\end{split}
+\end{equation*}
+
+Kita periksa kembali bahwa proyeksinya ortogonal. Artinya,
+$\vec{w}-\operatorname{proj}_{\vec{v}}(\vec{w})$ seharusnya ortogonal terhadap
+$\vec{v}$.
+Lihat sudut siku-siku dalam \figurevref{vec-orthoproj:fig}. Dengan kata lain,
+\begin{equation*}
+(3,2,1) - \operatorname{proj}_{(1,2,3)} \bigl( (3,2,1) \bigr)
+=
+\left(3-\frac{5}{7},2-\frac{10}{7},1-\frac{15}{7}\right)
+=
+\left(\frac{16}{7},\frac{4}{7},\frac{-8}{7}\right)
+\end{equation*}
+seharusnya ortogonal terhadap $(1,2,3)$. Hasil kali dalamnya harus nol:
+\begin{equation*}
+\left\langle
+\left(\frac{16}{7},\frac{4}{7},\frac{-8}{7}\right)
+,
+(1,2,3)
+\right\rangle
+=
+\frac{16}{7} \cdot 1 + \frac{4}{7} \cdot 2 -\frac{8}{7} \cdot 3
+=
+0 .
+\end{equation*}
+\end{example}
+
+\subsection{Basis ortogonal}
+
+Seperti yang telah kita katakan, suatu basis $\vec{v}_1,\vec{v}_2,\ldots,\vec{v}_n$
+adalah \emph{\myindex{basis ortogonal}} jika semua vektor dalam
+basis tersebut saling ortogonal, yakni, jika
+\begin{equation*}
+\langle \vec{v}_j , \vec{v}_k \rangle = 0
+\end{equation*}
+untuk semua pilihan $j$ dan $k$ dengan $j \neq k$ (suatu vektor taknol tidak mungkin
+ortogonal terhadap dirinya sendiri).
+Suatu basis selanjutnya disebut \emph{\myindex{basis ortonormal}} jika semua
+vektor dalam basis tersebut juga merupakan vektor satuan, yakni, jika semua vektor
+bermagnitudo 1.
+Sebagai contoh, basis baku $\{ (1,0,0), (0,1,0), (0,0,1) \}$ merupakan
+basis ortonormal dari ${\mathbb{R}}^3$:
+Setiap pasangan ortogonal, dan setiap vektor bermagnitudo
+satu.
+
+Alasan kita tertarik pada basis ortogonal (atau ortonormal) ialah
+basis tersebut membuat representasi suatu vektor (atau suatu proyeksi pada
+subruang) dalam basis itu menjadi sangat sederhana. Rumus proyeksi ortogonal
+pada suatu vektor memberikan koefisiennya kepada kita. Dalam
+\chapterref{FS:chapter}, kita menggunakan gagasan yang sama dengan menemukan
+basis ortogonal yang tepat bagi himpunan solusi suatu persamaan diferensial.
+Kemudian kita dapat menemukan sebarang solusi khusus hanya dengan menerapkan
+rumus proyeksi ortogonal, yang hanya terdiri atas beberapa hasil kali dalam.
+
+Mari kita kembali ke aljabar linear. Pertimbangkan suatu subruang $S$
+dan suatu basis ortogonal
+$\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n$ bagi $S$.
+Kita ingin
+menyatakan suatu vektor $\vec{x}$ dalam basis ini.
+Jika $\vec{x}$ tidak berada dalam rentang
+basis tersebut (ketika $\vec{x}$ tidak berada dalam $S$),
+tentu saja hal itu tidak mungkin,
+tetapi rumus berikut
+setidaknya memberi kita proyeksi ortogonal pada subruang $S$,
+atau dengan kata lain, pendekatan terbaik
+bagi $\vec{x}$ dalam subruang tersebut---vektor dalam $S$ yang paling dekat dengan $\vec{x}$.
+
+Pertama misalkan $\vec{x}$ berada dalam rentang. Maka vektor itu merupakan jumlah dari
+proyeksi-proyeksi ortogonal:
+\begin{equation*}
+\vec{x} =
+\operatorname{proj}_{\vec{v}_1} ( \vec{x} )
++
+\operatorname{proj}_{\vec{v}_2} ( \vec{x} )
++
+\cdots
++
+\operatorname{proj}_{\vec{v}_n} ( \vec{x} )
+=
+\frac{\langle \vec{x}, \vec{v}_1 \rangle}{
+\langle \vec{v}_1, \vec{v}_1 \rangle
+}
+\vec{v}_1
++
+\frac{\langle \vec{x}, \vec{v}_2 \rangle}{
+\langle \vec{v}_2, \vec{v}_2 \rangle
+}
+\vec{v}_2
++
+\cdots
++
+\frac{\langle \vec{x}, \vec{v}_n \rangle}{
+\langle \vec{v}_n, \vec{v}_n \rangle
+}
+\vec{v}_n .
+\end{equation*}
+Dengan kata lain, jika kita ingin menulis
+$\vec{x} =
+a_1 \vec{v}_1 +
+a_2 \vec{v}_2 + \cdots +
+a_n \vec{v}_n$, maka
+\begin{equation*}
+a_1 =
+\frac{\langle \vec{x}, \vec{v}_1 \rangle}{
+\langle \vec{v}_1, \vec{v}_1 \rangle
+} , \quad
+a_2 =
+\frac{\langle \vec{x}, \vec{v}_2 \rangle}{
+\langle \vec{v}_2, \vec{v}_2 \rangle
+} , \quad \ldots , \quad
+a_n =
+\frac{\langle \vec{x}, \vec{v}_n \rangle}{
+\langle \vec{v}_n, \vec{v}_n \rangle
+} .
+\end{equation*}
+
+Cara lain untuk menurunkan rumus ini ialah bekerja secara terbalik. Misalkan
+$\vec{x} =
+a_1 \vec{v}_1 +
+a_2 \vec{v}_2 + \cdots +
+a_n \vec{v}_n$. Ambil hasil kali dalam dengan $\vec{v}_j$, dan
+gunakan sifat-sifat hasil kali dalam:
+\begin{equation*}
+\begin{split}
+\langle \vec{x} , \vec{v}_j \rangle
+& =
+\langle a_1 \vec{v}_1 +
+a_2 \vec{v}_2 + \cdots +
+a_n \vec{v}_n , \vec{v}_j \rangle
+\\
+& =
+a_1 \langle \vec{v}_1 , \vec{v}_j \rangle +
+a_2 \langle \vec{v}_2 , \vec{v}_j \rangle +
+\cdots +
+a_n \langle \vec{v}_n , \vec{v}_j \rangle .
+\end{split}
+\end{equation*}
+Karena basisnya ortogonal,
+$\langle \vec{v}_k , \vec{v}_j \rangle = 0$ kapan pun
+$k \neq j$. Artinya, hanya satu suku, yaitu suku ke-$j$,
+di ruas kanan yang taknol dan kita memperoleh
+\begin{equation*}
+\langle \vec{x} , \vec{v}_j \rangle
+=
+a_j \langle \vec{v}_j , \vec{v}_j \rangle .
+\end{equation*}
+Dengan menyelesaikan untuk $a_j$, kita memperoleh $a_j =
+\frac{\langle \vec{x}, \vec{v}_j \rangle}{
+\langle \vec{v}_j, \vec{v}_j \rangle
+}$ seperti sebelumnya.
+
+\begin{example}
+Vektor-vektor $(1,1)$ dan $(1,-1)$ membentuk suatu basis ortogonal dari ${\mathbb{R}}^2$.
+Misalkan kita ingin merepresentasikan $(3,4)$ dalam basis ini,
+yakni, kita ingin menemukan $a_1$ dan $a_2$ sedemikian sehingga
+\begin{equation*}
+(3,4) = a_1 (1,1) + a_2 (1,-1) .
+\end{equation*}
+Kita hitung:
+\begin{equation*}
+a_1 =
+\frac{\langle (3,4), (1,1) \rangle}{
+\langle (1,1), (1,1) \rangle
+}
+=
+\frac{7}{2}, \qquad
+a_2 =
+\frac{\langle (3,4), (1,-1) \rangle}{
+\langle (1,-1), (1,-1) \rangle
+}
+=
+\frac{-1}{2} .
+\end{equation*}
+Jadi
+\begin{equation*}
+(3,4) = \frac{7}{2} (1,1) + \frac{-1}{2} (1,-1) .
+\end{equation*}
+\end{example}
+
+Jika basisnya ortonormal alih-alih sekadar ortogonal,
+maka semua penyebutnya bernilai satu.
+Mudah untuk menjadikan suatu basis ortonormal---bagi semua vektor dengan ukurannya.
+Jika Anda ingin menguraikan banyak vektor,
+mungkin lebih baik menemukan suatu basis ortonormal.
+Dalam contoh di atas, basis ortonormal yang kita buat adalah
+\begin{equation*}
+\left( \frac{1}{\sqrt{2}} , \frac{1}{\sqrt{2}} \right) , \quad
+\left( \frac{1}{\sqrt{2}} , \frac{-1}{\sqrt{2}} \right) .
+\end{equation*}
+Maka perhitungannya akan menjadi
+\begin{equation*}
+\begin{split}
+(3,4)
+& =
+\left\langle
+(3,4)
+,
+\left( \frac{1}{\sqrt{2}} , \frac{1}{\sqrt{2}} \right)
+\right\rangle
+\left( \frac{1}{\sqrt{2}} , \frac{1}{\sqrt{2}} \right)
++
+\left\langle
+(3,4)
+,
+\left( \frac{1}{\sqrt{2}} , \frac{-1}{\sqrt{2}} \right)
+\right\rangle
+\left( \frac{1}{\sqrt{2}} , \frac{-1}{\sqrt{2}} \right)
+\\
+& =
+\frac{7}{\sqrt{2}}
+\left( \frac{1}{\sqrt{2}} , \frac{1}{\sqrt{2}} \right)
++
+\frac{-1}{\sqrt{2}}
+\left( \frac{1}{\sqrt{2}} , \frac{-1}{\sqrt{2}} \right) .
+\end{split}
+\end{equation*}
+
+Mungkin contoh ini tidak begitu mengagumkan, tetapi jika diberikan
+vektor-vektor di ${\mathbb{R}}^{20}$ alih-alih ${\mathbb{R}}^2$,
+tentu kita jauh lebih suka melakukan 20 hasil kali dalam
+(atau 40 jika kita tidak mempunyai basis ortonormal) daripada
+menyelesaikan suatu sistem berisi dua puluh persamaan dalam dua puluh peubah
+dengan menggunakan reduksi baris pada matriks $20 \times 21$.
+
+Seperti yang dikatakan di atas, rumus tersebut tetap berlaku meskipun $\vec{x}$ tidak berada dalam
+subruang, meskipun kemudian rumus itu tidak menghasilkan vektor $\vec{x}$
+melainkan proyeksinya. Lebih konkret, misalkan $S$ suatu subruang
+yang merupakan rentang dari $\vec{v}_1,\vec{v}_2,\ldots,\vec{v}_n$ dan $\vec{x}$
+sebarang vektor. Misalkan $\operatorname{proj}_{S}(\vec{x})$ adalah vektor dalam $S$
+yang paling dekat dengan $\vec{x}$. Maka
+\begin{equation*}
+\operatorname{proj}_{S}(\vec{x}) =
+\frac{\langle \vec{x}, \vec{v}_1 \rangle}{
+\langle \vec{v}_1, \vec{v}_1 \rangle
+}
+\vec{v}_1
++
+\frac{\langle \vec{x}, \vec{v}_2 \rangle}{
+\langle \vec{v}_2, \vec{v}_2 \rangle
+}
+\vec{v}_2
++
+\cdots
++
+\frac{\langle \vec{x}, \vec{v}_n \rangle}{
+\langle \vec{v}_n, \vec{v}_n \rangle
+}
+\vec{v}_n .
+\end{equation*}
+
+Tentu saja, jika $\vec{x}$ berada dalam $S$, maka $\operatorname{proj}_{S}(\vec{x}) =
+\vec{x}$, karena vektor dalam $S$ yang paling dekat dengan $\vec{x}$ adalah $\vec{x}$ itu sendiri.
+Namun kegunaan sebenarnya diperoleh ketika $\vec{x}$ tidak berada dalam $S$.
+Dalam banyak bidang matematika terapan, kita tidak dapat menemukan solusi eksak suatu persoalan,
+tetapi kita mencoba
+menemukan solusi terbaik dari suatu subhimpunan kecil (subruang). Jumlah parsial dari
+deret Fourier dalam \chapterref{FS:chapter} merupakan salah satu contoh. Contoh lainnya
+ialah pendekatan kuadrat terkecil untuk mencocokkan suatu kurva dengan data. Contoh lain lagi
+diberikan oleh
+metode numerik yang paling umum digunakan untuk menyelesaikan persamaan diferensial
+parsial, yaitu metode elemen hingga.
+
+\begin{example}
+Vektor-vektor $(1,2,3)$ dan $(3,0,-1)$ ortogonal, sehingga keduanya merupakan
+suatu basis ortogonal dari suatu subruang $S$:
+\begin{equation*}
+S =
+\operatorname{span} \bigl\{ (1,2,3), (3,0,-1) \bigr\} .
+\end{equation*}
+Mari kita temukan vektor dalam $S$ yang paling dekat dengan $(2,1,0)$. Artinya,
+mari kita temukan $\operatorname{proj}_{S}\bigl((2,1,0)\bigr)$.
+\begin{equation*}
+\begin{split}
+\operatorname{proj}_{S}\bigl((2,1,0)\bigr)
+& =
+\frac{\langle (2,1,0), (1,2,3) \rangle}{
+\langle (1,2,3), (1,2,3) \rangle
+}
+(1,2,3)
++
+\frac{\langle (2,1,0), (3,0,-1) \rangle}{
+\langle (3,0,-1), (3,0,-1) \rangle
+}
+(3,0,-1)
+\\
+& =
+\frac{2}{7}
+(1,2,3)
++
+\frac{3}{5}
+(3,0,-1)
+\\
+&=
+\left( \frac{73}{35} , \frac{4}{7} , \frac{9}{35} \right) .
+\end{split}
+\end{equation*}
+\end{example}
+
+\subsection{Proses Gram--Schmidt}
+
+Sebelum meninggalkan basis ortogonal, mari kita catat suatu prosedur untuk membuat
+basis ortogonal dari basis sebarang. Mungkin tidak sulit menemukan
+basis ortogonal bagi suatu subruang berdimensi 2, tetapi bagi subruang berdimensi 20,
+tugas itu tampak berat. Untungnya, proyeksi ortogonal dapat
+digunakan untuk \myquote{memproyeksikan keluar} bagian-bagian vektor yang membuatnya
+tidak ortogonal. Prosedur ini disebut \emph{\myindex{proses Gram--Schmidt}}.
+
+Kita mulai dengan suatu basis vektor $\vec{v}_1,\vec{v}_2, \ldots,
+\vec{v}_n$. Kita membangun suatu basis ortogonal $\vec{w}_1, \vec{w}_2,
+\ldots, \vec{w}_n$ sebagai berikut.
+\begin{align*}
+\vec{w}_1 & = \vec{v}_1 , \displaybreak[0]\\
+\vec{w}_2 & = \vec{v}_2
+- \operatorname{proj}_{\vec{w}_1}(\vec{v}_2) , \displaybreak[0]\\
+\vec{w}_3 & = \vec{v}_3
+- \operatorname{proj}_{\vec{w}_1}(\vec{v}_3)
+- \operatorname{proj}_{\vec{w}_2}(\vec{v}_3) , \displaybreak[0]\\
+\vec{w}_4 & = \vec{v}_4
+- \operatorname{proj}_{\vec{w}_1}(\vec{v}_4)
+- \operatorname{proj}_{\vec{w}_2}(\vec{v}_4)
+- \operatorname{proj}_{\vec{w}_3}(\vec{v}_4) , \\
+& \vdots \\
+\vec{w}_n & = \vec{v}_n
+- \operatorname{proj}_{\vec{w}_1}(\vec{v}_n)
+- \operatorname{proj}_{\vec{w}_2}(\vec{v}_n)
+- \cdots
+- \operatorname{proj}_{\vec{w}_{n-1}}(\vec{v}_n) .
+\end{align*}
+Yang kita lakukan pada langkah ke-$k$ ialah mengambil $\vec{v}_k$ dan
+mengurangi proyeksi $\vec{v}_k$ pada subruang yang direntang oleh
+$\vec{w}_1,\vec{w}_2,\ldots,\vec{w}_{k-1}$.
+
+\begin{example}
+Pertimbangkan vektor $(1,2,-1)$ dan $(0,5,-2)$, dan sebut $S$ sebagai rentang
+kedua vektor tersebut. Mari kita temukan suatu basis ortogonal dari $S$
+melalui proses Gram--Schmidt:
+\begin{align*}
+\vec{w}_1 & = (1,2,-1) , \\
+\vec{w}_2 & = (0,5,-2)
+- \operatorname{proj}_{(1,2,-1)}\bigl((0,5,-2)\bigr)
+\\
+& =
+(0,5,-2) -
+\frac{\langle (0,5,-2), (1,2,-1) \rangle}{
+\langle (1,2,-1), (1,2,-1) \rangle
+}
+(1,2,-1)
+=
+(0,5,-2) -
+2
+(1,2,-1)
+=
+(-2,1,0) .
+\end{align*}
+Jadi $(1,2,-1)$ dan $(-2,1,0)$ merentang $S$ dan ortogonal. Mari kita periksa:
+$\langle (1,2,-1) , (-2,1,0) \rangle = 0$.
+
+Misalkan kita ingin menemukan suatu basis ortonormal, bukan sekadar basis ortogonal.
+Kita cukup menjadikan
+vektor-vektor tersebut vektor satuan dengan membaginya dengan magnitudonya. Kedua vektor
+yang membentuk basis ortonormal dari $S$ adalah:
+\begin{equation*}
+\frac{1}{\sqrt{6}} (1,2,-1) = \left(
+\frac{1}{\sqrt{6}},
+\frac{2}{\sqrt{6}},
+\frac{-1}{\sqrt{6}}
+\right) ,
+\qquad
+\frac{1}{\sqrt{5}} (-2,1,0) = \left(
+\frac{-2}{\sqrt{5}},
+\frac{1}{\sqrt{5}},
+0
+\right) .
+\end{equation*}
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Temukan $s$ yang membuat vektor-vektor berikut ortogonal:
+$(1,2,3)$, $(1,1,s)$.
+\end{exercise}
+
+\begin{exercise}
+Temukan sudut $\theta$ antara
+$(1,3,1)$ dan $(2,1,-1)$.
+\end{exercise}
+
+\begin{exercise}
+Diberikan bahwa $\langle \vec{v} , \vec{w} \rangle = 3$ dan
+$\langle \vec{v} , \vec{u} \rangle = -1$, hitung
+\begin{tasks}(3)
+\task $\langle \vec{u} , 2 \vec{v} \rangle$
+\task $\langle \vec{v} , 2 \vec{w} + 3 \vec{u} \rangle$
+\task $\langle \vec{w} + 3 \vec{u}, \vec{v} \rangle$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $\vec{v} = (1,1,-1)$. Temukan
+\begin{tasks}(3)
+\task $\operatorname{proj}_{\vec{v}}\bigl( (1,0,0) \bigr)$
+\task $\operatorname{proj}_{\vec{v}}\bigl( (1,2,3) \bigr)$
+\task $\operatorname{proj}_{\vec{v}}\bigl( (1,-1,0) \bigr)$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Pertimbangkan vektor-vektor $(1,2,3)$, $(-3,0,1)$, $(1,-5,3)$.
+\begin{tasks}(2)
+\task Periksa bahwa vektor-vektor tersebut bebas linear dan karenanya membentuk suatu basis dari ${\mathbb{R}}^3$.
+\task Periksa bahwa vektor-vektor tersebut saling ortogonal, dan karenanya
+merupakan suatu basis ortogonal.
+\task Representasikan $(1,1,1)$ sebagai kombinasi linear dari basis ini.
+\task Jadikan basis tersebut ortonormal.
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $S$ subruang yang direntang oleh
+$(1,3,-1)$, $(1,1,1)$. Temukan suatu basis ortogonal dari $S$
+dengan proses Gram--Schmidt.
+\end{exercise}
+
+\begin{exercise}
+Dimulai dengan $(1,2,3)$, $(1,1,1)$, $(2,2,0)$, ikuti proses Gram--Schmidt
+untuk menemukan suatu basis ortogonal dari ${\mathbb{R}}^3$.
+\end{exercise}
+
+\begin{exercise}
+Temukan suatu basis ortogonal dari ${\mathbb{R}}^3$ sedemikian sehingga $(3,1,-2)$
+merupakan salah satu vektornya. Petunjuk: Pertama temukan dua vektor tambahan untuk membentuk suatu
+himpunan bebas linear.
+\end{exercise}
+
+\begin{exercise}
+Dengan menggunakan kosinus dan sinus dari $\theta$, temukan suatu vektor satuan $\vec{u}$
+di ${\mathbb{R}}^2$ yang
+membentuk sudut $\theta$ dengan $\vec{\imath} = (1,0)$. Berapakah
+$\langle \vec{\imath} , \vec{u} \rangle$?
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Temukan $s$ yang membuat vektor-vektor berikut ortogonal:
+$(1,1,1)$, $(1,s,1)$.
+\end{exercise}
+\exsol{%
+$s=-2$
+}
+
+\begin{exercise}
+Temukan sudut $\theta$ antara
+$(1,2,3)$ dan $(1,1,1)$.
+\end{exercise}
+\exsol{%
+$\theta \approx 0.3876$
+}
+
+\begin{exercise}
+Diberikan bahwa $\langle \vec{v} , \vec{w} \rangle = 1$,
+$\langle \vec{v} , \vec{u} \rangle = -1$, dan
+$\lVert \vec{v} \rVert = 3$, hitung
+\begin{tasks}(3)
+\task $\langle 3 \vec{u} , 5 \vec{v} \rangle$
+\task $\langle \vec{v} , 2 \vec{w} + 3 \vec{u} \rangle$
+\task $\langle \vec{w} + 3 \vec{v}, \vec{v} \rangle$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~-15 \quad
+b)~-1 \quad
+c)~28
+}
+
+\begin{exercise}
+Misalkan $\vec{v} = (1,0,-1)$. Temukan
+\begin{tasks}(3)
+\task $\operatorname{proj}_{\vec{v}}\bigl( (0,2,1) \bigr)$
+\task $\operatorname{proj}_{\vec{v}}\bigl( (1,0,1) \bigr)$
+\task $\operatorname{proj}_{\vec{v}}\bigl( (4,-1,0) \bigr)$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$(\nicefrac{-1}{2},0,\nicefrac{1}{2})$ \quad
+b)~$(0,0,0)$ \quad
+c)~$(2,0,-2)$
+}
+
+\begin{exercise}
+Vektor-vektor $(1,1,-1)$, $(2,-1,1)$, $(0,1,1)$ membentuk suatu basis ortogonal.
+Representasikan vektor-vektor berikut dalam basis ini:
+\begin{tasks}(3)
+\task $(-1,4,0)$
+\task $(4,-1,3)$
+\task $(-2,6,-2)$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$(1,1,-1)-(2,-1,1)+2(0,1,1)$ \quad
+b)~$2(2,-1,1)+(0,1,1)$ \quad
+c)~$2(1,1,-1)-2(2,-1,1)+2(0,1,1)$
+}
+
+\begin{exercise}
+Misalkan $S$ subruang yang direntang oleh
+$(2,-1,1)$, $(2,2,2)$. Temukan suatu basis ortogonal dari $S$
+dengan proses Gram--Schmidt.
+\end{exercise}
+\exsol{%
+$(2,-1,1)$, $(\nicefrac{2}{3},\nicefrac{8}{3},\nicefrac{4}{3})$
+}
+
+\begin{exercise}
+Dimulai dengan $(1,1,-1)$, $(2,3,-1)$, $(1,-1,1)$, ikuti proses Gram--Schmidt
+untuk menemukan suatu basis ortogonal dari ${\mathbb{R}}^3$.
+\end{exercise}
+\exsol{%
+$(1,1,-1)$, $(0,1,1)$, $(\nicefrac{4}{3},\nicefrac{-2}{3},\nicefrac{2}{3})$
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Determinan}
+\label{det:section}
+
+\sectionnotes{1 kuliah}
+
+Untuk matriks persegi kita mendefinisikan suatu besaran berguna yang disebut
+\emph{\myindex{determinan}}. Definisikan
+determinan suatu matriks $1 \times 1$ sebagai nilai satu-satunya entrinya,
+\begin{equation*}
+\det \left(
+\begin{bmatrix}
+a
+\end{bmatrix}
+\right)
+\overset{\text{def}}{=}
+a .
+\end{equation*}
+Untuk suatu matriks $2 \times 2$, definisikan
+\begin{equation*}
+\det \left(
+\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}
+\right)
+\overset{\text{def}}{=}
+ad-bc .
+\end{equation*}
+
+Sebelum mendefinisikan
+determinan untuk matriks yang lebih besar, kita catat
+makna determinan.
+Suatu matriks $n \times n$
+memberikan suatu pemetaan dari ruang Euklides berdimensi $n$, yaitu ${\mathbb{R}}^n$, ke
+dirinya sendiri.
+Jadi suatu matriks $2 \times 2$ berupa $A$ merupakan pemetaan dari
+bidang ke dirinya sendiri. Determinan
+$A$ adalah faktor perubahan luas objek.
+Jika kita mengambil persegi satuan (persegi dengan sisi 1) pada bidang, maka
+$A$ memetakan persegi itu ke suatu jajaran genjang seluas $\lvert\det(A)\rvert$. Tanda
+dari $\det(A)$ menunjukkan perubahan orientasi (negatif jika sumbu-sumbunya terbalik). Sebagai
+contoh, misalkan
+\begin{equation*}
+A =
+\begin{bmatrix}
+1 & 1 \\
+-1 & 1
+\end{bmatrix} .
+\end{equation*}
+Maka $\det(A) = 1+1 = 2$.
+Mari kita lihat ke mana $A$ memetakan persegi satuan---persegi dengan titik-titik sudut
+$(0,0)$, $(1,0)$, $(1,1)$, dan $(0,1)$.
+Titik $(0,0)$ dipetakan
+ke $(0,0)$.
+\begin{equation*}
+\begin{bmatrix}
+1 & 1 \\
+-1 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 \\ 0
+\end{bmatrix} =
+\begin{bmatrix}
+1 \\
+-1
+\end{bmatrix}
+,
+\qquad
+\begin{bmatrix}
+1 & 1 \\
+-1 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 \\ 1
+\end{bmatrix} =
+\begin{bmatrix}
+2 \\
+0
+\end{bmatrix}
+,
+\qquad
+\begin{bmatrix}
+1 & 1 \\
+-1 & 1
+\end{bmatrix}
+\begin{bmatrix}
+0 \\ 1
+\end{bmatrix} =
+\begin{bmatrix}
+1 \\
+1
+\end{bmatrix}
+.
+\end{equation*}
+Citra persegi tersebut adalah persegi lain dengan titik-titik sudut $(0,0)$, $(1,-1)$,
+$(2,0)$, dan $(1,1)$. Persegi
+citra itu mempunyai
+sisi sepanjang $\sqrt{2}$, sehingga luasnya 2. Lihat
+\figurevref{linalg-imagesquare:fig}.
+
+\begin{myfig}
+\capstart
+\inputpdft{linalg-imagesquare}{%
+Diberikan dua diagram bidang. Pada diagram kiri,
+terdapat persegi dengan titik-titik sudut (0,0), (1,0), (1,1), dan (0,1).
+Pada diagram kanan, terdapat persegi dengan titik-titik sudut yang bersesuaian
+(0,0), (1, minus 1), (2,0), dan (1,1), dengan kesesuaian tersebut ditunjukkan
+oleh anak panah.}
+\caption{Citra persegi satuan melalui pemetaan
+$A$.\label{linalg-imagesquare:fig}}
+\end{myfig}
+
+Secara umum, citra suatu persegi merupakan suatu \myindex{jajaran genjang}.
+Dalam geometri sekolah menengah, Anda mungkin telah melihat suatu rumus untuk
+menghitung luas suatu \myindex{jajaran genjang}
+dengan titik-titik sudut $(0,0)$, $(a,c)$, $(b,d)$,
+dan $(a+b,c+d)$. Luasnya adalah
+\begin{equation*}
+\left\lvert \, \det \left(
+\begin{bmatrix} a & b \\ c & d \end{bmatrix}
+\right) \, \right\rvert
+=
+\lvert
+a d - b c
+\rvert
+.
+\end{equation*}
+Garis-garis vertikal di atas berarti nilai mutlak.
+Matriks $\left[ \begin{smallmatrix} a & b \\ c & d \end{smallmatrix}
+\right]$
+memetakan persegi satuan ke jajaran genjang yang diberikan.
+
+\medskip
+
+Ada beberapa cara untuk mendefinisikan determinan suatu matriks $n \times n$.
+Mari kita gunakan sesuatu yang disebut \emph{\myindex{ekspansi kofaktor}}.
+Kita mendefinisikan $A_{ij}$ sebagai
+matriks $A$ dengan baris ke-$i$ dan kolom ke-$j$
+dihapus. Sebagai contoh,
+\begin{equation*}
+\text{jika} \qquad
+A =
+\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{bmatrix} ,
+\qquad
+\text{maka}
+\qquad
+A_{12} =
+\begin{bmatrix}
+4 & 6 \\
+7 & 9
+\end{bmatrix}
+\qquad
+\text{dan}
+\qquad
+A_{23} =
+\begin{bmatrix}
+1 & 2 \\
+7 & 8
+\end{bmatrix} .
+\end{equation*}
+Sekarang kita mendefinisikan determinan secara rekursif,
+\begin{equation*}
+\det (A)
+\overset{\text{def}}{=}
+\sum_{j=1}^n
+{(-1)}^{1+j}
+a_{1j} \det (A_{1j}) ,
+\end{equation*}
+atau dengan kata lain,
+\begin{equation*}
+\det (A) =
+a_{11} \det (A_{11}) -
+a_{12} \det (A_{12}) +
+a_{13} \det (A_{13}) -
+\cdots
+\begin{cases}
++ a_{1n} \det (A_{1n}) & \text{jika } n \text{ ganjil,} \\
+- a_{1n} \det (A_{1n}) & \text{jika } n \text{ genap.}
+\end{cases}
+\end{equation*}
+Untuk suatu matriks $3 \times 3$,
+kita memperoleh $\det (A) = a_{11} \det (A_{11}) -
+a_{12} \det (A_{12}) + a_{13} \det (A_{13})$. Sebagai contoh,
+\begin{equation*}
+\begin{split}
+\det \left(
+\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{bmatrix}
+\right)
+& =
+1 \cdot
+\det \left(
+\begin{bmatrix}
+5 & 6 \\
+8 & 9
+\end{bmatrix}
+\right)
+-
+2 \cdot
+\det \left(
+\begin{bmatrix}
+4 & 6 \\
+7 & 9
+\end{bmatrix}
+\right)
++
+3 \cdot
+\det \left(
+\begin{bmatrix}
+4 & 5 \\
+7 & 8
+\end{bmatrix}
+\right) \\
+& =
+1 (5 \cdot 9 - 6 \cdot 8)
+-
+2 (4 \cdot 9 - 6 \cdot 7)
++
+3 (4 \cdot 8 - 5 \cdot 7)
+= 0 .
+\end{split}
+\end{equation*}
+
+Ternyata kita tidak harus menggunakan baris pertama.
+Artinya, untuk setiap $i$,
+\begin{equation*}
+\det (A)
+=
+\sum_{j=1}^n
+{(-1)}^{i+j}
+a_{ij} \det (A_{ij}) .
+\end{equation*}
+Kadang-kadang berguna untuk menggunakan baris selain baris pertama. Dalam contoh berikut,
+lebih nyaman melakukan ekspansi sepanjang baris kedua. Perhatikan bahwa untuk
+baris kedua kita mulai dengan tanda negatif.
+\begin{equation*}
+\begin{split}
+\det \left(
+\begin{bmatrix}
+1 & 2 & 3 \\
+0 & 5 & 0 \\
+7 & 8 & 9
+\end{bmatrix}
+\right)
+& =
+- 0 \cdot
+\det \left(
+\begin{bmatrix}
+2 & 3 \\
+8 & 9
+\end{bmatrix}
+\right)
++
+5 \cdot
+\det \left(
+\begin{bmatrix}
+1 & 3 \\
+7 & 9
+\end{bmatrix}
+\right)
+-
+0 \cdot
+\det \left(
+\begin{bmatrix}
+1 & 2 \\
+7 & 8
+\end{bmatrix}
+\right) \\
+& =
+0
++
+5 (1 \cdot 9 - 3 \cdot 7)
++
+0
+= -60 .
+\end{split}
+\end{equation*}
+Mari kita periksa apakah hasilnya sungguh sama dengan ekspansi sepanjang baris pertama,
+\begin{equation*}
+\begin{split}
+\det \left(
+\begin{bmatrix}
+1 & 2 & 3 \\
+0 & 5 & 0 \\
+7 & 8 & 9
+\end{bmatrix}
+\right)
+& =
+1 \cdot
+\det \left(
+\begin{bmatrix}
+5 & 0 \\
+8 & 9
+\end{bmatrix}
+\right)
+-
+2 \cdot
+\det \left(
+\begin{bmatrix}
+0 & 0 \\
+7 & 9
+\end{bmatrix}
+\right)
++
+3 \cdot
+\det \left(
+\begin{bmatrix}
+0 & 5 \\
+7 & 8
+\end{bmatrix}
+\right) \\
+& =
+1 (5 \cdot 9 - 0 \cdot 8)
+-
+2 (0 \cdot 9 - 0 \cdot 7)
++
+3 (0 \cdot 8 - 5 \cdot 7)
+= -60 .
+\end{split}
+\end{equation*}
+
+
+
+Dalam menghitung determinan,
+kita secara bergantian menjumlahkan dan mengurangkan determinan submatriks
+$A_{ij}$ yang dikalikan dengan $a_{ij}$ untuk suatu $i$ tetap dan semua $j$.
+Bilangan ${(-1)}^{i+j}\det(A_{ij})$ disebut
+\emph{kofaktor\index{kofaktor}}
+dari matriks tersebut. Itulah sebabnya
+metode perhitungan determinan ini disebut
+\emph{ekspansi kofaktor}.
+
+Demikian pula, kita tidak perlu melakukan ekspansi sepanjang suatu baris; kita dapat melakukan ekspansi
+sepanjang suatu kolom. Untuk setiap $j$,
+\begin{equation*}
+\det (A)
+=
+\sum_{i=1}^n
+{(-1)}^{i+j}
+a_{ij} \det (A_{ij}) .
+\end{equation*}
+Fakta terkait ialah
+\begin{equation*}
+\det (A) = \det (A^T) .
+\end{equation*}
+
+\medskip
+
+Suatu matriks disebut \emph{\myindex{segitiga atas}} jika semua elemen di bawah
+diagonal utama bernilai 0. Sebagai contoh,
+\begin{equation*}
+\begin{bmatrix}
+1 & 2 & 3 \\
+0 & 5 & 6 \\
+0 & 0 & 9
+\end{bmatrix}
+\end{equation*}
+adalah segitiga atas. Demikian pula, suatu matriks \emph{\myindex{segitiga bawah}}
+adalah matriks yang semua elemen di atas diagonalnya bernilai nol. Sebagai contoh,
+\begin{equation*}
+\begin{bmatrix}
+1 & 0 & 0 \\
+4 & 5 & 0 \\
+7 & 8 & 9
+\end{bmatrix} .
+\end{equation*}
+
+Determinan matriks segitiga sangat mudah dihitung.
+Pertimbangkan matriks segitiga bawah. Jika kita melakukan ekspansi sepanjang
+baris pertama, kita menemukan bahwa determinannya adalah 1 kali determinan
+dari matriks segitiga bawah $\left[ \begin{smallmatrix} 5 & 0 \\ 8 & 9
+\end{smallmatrix} \right]$. Jadi determinannya hanyalah
+hasil kali entri-entri diagonal:
+\begin{equation*}
+\det \left(
+\begin{bmatrix}
+1 & 0 & 0 \\
+4 & 5 & 0 \\
+7 & 8 & 9
+\end{bmatrix}
+\right)
+=
+1 \cdot 5 \cdot 9 = 45 .
+\end{equation*}
+Demikian pula untuk matriks segitiga atas,
+\begin{equation*}
+\det \left(
+\begin{bmatrix}
+1 & 2 & 3 \\
+0 & 5 & 6 \\
+0 & 0 & 9
+\end{bmatrix}
+\right)
+=
+1 \cdot 5 \cdot 9 = 45 .
+\end{equation*}
+Secara umum, jika $A$ segitiga, maka
+\begin{equation*}
+\det (A) = a_{11} a_{22} \cdots a_{nn} .
+\end{equation*}
+
+Jika $A$ diagonal, maka $A$ juga segitiga (atas dan bawah), sehingga
+rumus yang sama berlaku. Sebagai contoh,
+\begin{equation*}
+\det \left(
+\begin{bmatrix}
+2 & 0 & 0 \\
+0 & 3 & 0 \\
+0 & 0 & 5
+\end{bmatrix}
+\right)
+=
+2 \cdot 3 \cdot 5 = 30 .
+\end{equation*}
+
+Secara khusus, matriks identitas $I$ bersifat diagonal, dan semua entri diagonalnya
+bernilai 1. Jadi,
+\begin{equation*}
+\det(I) = 1 .
+\end{equation*}
+
+\medskip
+
+Determinan memberi tahu Anda bagaimana objek geometris berskala.
+Jika $B$ menggandakan ukuran objek geometris dan $A$ melipatgandakannya tiga kali,
+maka $AB$ (yang menerapkan $B$ pada suatu objek lalu menerapkan $A$) seharusnya membuat ukurannya
+bertambah dengan faktor $6$. Hal ini berlaku secara umum:
+
+\begin{theorem}
+\begin{equation*}
+\det(AB) = \det(A)\det(B) .
+\end{equation*}
+\end{theorem}
+
+Sifat ini merupakan salah satu sifat paling berguna dan sering digunakan untuk
+sungguh-sungguh menghitung determinan. Salah satu akibat yang sangat menarik ialah
+apa artinya bagi keberadaan invers.
+Ambil $A$ dan $B$ sebagai invers, yakni, $AB=I$. Maka
+\begin{equation*}
+\det(A)\det(B) = \det(AB) = \det(I) = 1 .
+\end{equation*}
+Baik $\det(A)$ maupun $\det(B)$ tidak mungkin nol.
+Fakta ini merupakan sifat determinan yang sangat berguna, dan
+sering digunakan dalam buku ini:
+
+\begin{theorem}
+Suatu matriks $n \times n$ berupa $A$ dapat diinverskan jika dan hanya jika $\det (A) \neq 0$.
+\end{theorem}
+
+Sesungguhnya, $\det(A^{-1}) \det(A) = 1$ menyatakan bahwa
+\begin{equation*}
+\det(A^{-1}) =
+\frac{1}{\det(A)}.
+\end{equation*}
+Jadi kita mengetahui determinan dari $A^{-1}$
+tanpa menghitung $A^{-1}$.
+
+Mari kita kembali ke rumus invers suatu matriks $2 \times 2$:
+\begin{equation*}
+\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}^{-1}
+=
+\frac{1}{ad-bc}
+\begin{bmatrix}
+d & -b \\
+-c & a
+\end{bmatrix} .
+\end{equation*}
+Perhatikan determinan matriks
+$[\begin{smallmatrix}a&b\\c&d\end{smallmatrix}]$
+di penyebut pecahan tersebut.
+Rumus itu hanya berlaku jika determinannya taknol.
+Jika tidak, kita membagi dengan nol.
+
+\medskip
+
+Notasi umum bagi determinan ialah sepasang garis
+vertikal:
+\begin{equation*}
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix}
+=
+\det \left(
+\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}
+\right) .
+\end{equation*}
+Secara pribadi, saya menganggap notasi ini membingungkan karena garis vertikal biasanya
+menyatakan besaran positif, sedangkan determinan dapat bernilai negatif. Pikirkan pula
+bagaimana menuliskan nilai mutlak suatu determinan.
+Notasi ini tidak digunakan dalam buku ini.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Hitung determinan matriks-matriks berikut:
+\begin{tasks}(4)
+\task
+$\begin{bmatrix}
+3
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+1 & 3 \\
+2 & 1
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+2 & 1 \\
+4 & 2
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+1 & 2 & 3 \\
+0 & 4 & 5 \\
+0 & 0 & 6
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+2 & 1 & 0 \\
+-2 & 7 & -3 \\
+0 & 2 & 0
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+2 & 1 & 3 \\
+8 & 6 & 3 \\
+7 & 9 & 7
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+0 & 2 & 5 & 7 \\
+0 & 0 & 2 & -3 \\
+3 & 4 & 5 & 7 \\
+0 & 0 & 2 & 4
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+0 &  1 &  2 &  0 \\
+1 &  1 & -1 & 2 \\
+1 &  1 &  2 & 1 \\
+2 & -1 & -2 & 3
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Untuk nilai $x$ mana matriks-matriks berikut singular (tidak dapat diinverskan)?
+\begin{tasks}(4)
+\task
+$\begin{bmatrix}
+2 & 3 \\
+2 & x
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+2 & x \\
+1 & 2
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+x & 1 \\
+4 & x
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+x & 0 & 1 \\
+1 & 4 & 2 \\
+1 & 6 & 2
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Hitung
+\begin{equation*}
+\det \left( \begin{bmatrix}
+2 & 1 & 2 & 3 \\
+0 & 8 & 6 & 5 \\
+0 & 0 & 3 & 9 \\
+0 & 0 & 0 & 1
+\end{bmatrix}^{-1}
+\right)
+\end{equation*}
+tanpa menghitung inversnya.
+\end{exercise}
+
+\begin{exercise}
+Misalkan
+\begin{equation*}
+L = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+2 & 1 & 0 & 0 \\
+7 & \pi & 1 & 0 \\
+2^8 & 5 & -99 & 1
+\end{bmatrix}
+\qquad \text{dan} \qquad
+U = \begin{bmatrix}
+5 & 9 & 1 & -\sin(1) \\
+0 & 1 & 88 & -1 \\
+0 & 0 & 1 & 3 \\
+0 & 0 & 0 & 1
+\end{bmatrix} .
+\end{equation*}
+Misalkan $A = LU$. Hitung $\det(A)$ dengan cara sederhana, tanpa menghitung $A$.
+Petunjuk: Pertama, baca langsung $\det(L)$ dan $\det(U)$.
+\end{exercise}
+
+\begin{exercise}
+Pertimbangkan pemetaan linear dari ${\mathbb R}^2$ ke ${\mathbb R}^2$
+yang diberikan oleh matriks
+$A = \left[ \begin{smallmatrix}
+1 & x \\
+2 & 1
+\end{smallmatrix} \right]$
+untuk suatu bilangan $x$. Anda ingin membuat $A$ sedemikian sehingga menggandakan luas
+setiap bangun geometris. Apa saja kemungkinan nilai $x$ (terdapat dua
+jawaban)?
+\end{exercise}
+
+\begin{exercise}
+Misalkan $A$ dan $S$ merupakan matriks $n \times n$, dan $S$ dapat diinverskan.
+Misalkan $\det(A) = 3$. Hitung $\det(S^{-1}AS)$ dan
+$\det(SAS^{-1})$. Berikan alasan bagi jawaban Anda menggunakan teorema-teorema dalam bagian ini.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $A$ suatu matriks $n \times n$ sedemikian sehingga $\det(A)=1$.
+Hitung $\det(x A)$ dengan diberikan suatu bilangan $x$.\linebreak[2]
+Petunjuk: Pertama coba hitung
+$\det(xI)$, kemudian perhatikan bahwa $xA = (xI)A$.
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+\pagebreak[2]
+Hitung determinan matriks-matriks berikut:
+\begin{tasks}(4)
+\task
+$\begin{bmatrix}
+-2
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+2 & -2 \\
+1 & 3
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+2 & 2 \\
+2 & 2
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+2 & 9 & -11 \\
+0 & -1 & 5 \\
+0 & 0 & 3
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+2 & 1 & 0 \\
+-2 & 7 & 3 \\
+1 & 1 & 0
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+5 & 1 & 3 \\
+4 & 1 & 1 \\
+4 & 5 & 1
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+3 & 2 & 5 & 7 \\
+0 & 0 & 2 & 0 \\
+0 & 4 & 5 & 0 \\
+2 & 1 & 2 & 4
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+ 0 &  2 &  1 &  0 \\
+ 1 &  2 & -3 &  4 \\
+ 5 &  6 & -7 &  8 \\
+ 1 &  2 &  3 & -2
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$-2$
+\quad b)~$8$
+\quad c)~$0$
+\quad d)~$-6$
+\quad e)~$-3$
+\quad f)~$28$
+\quad g)~$16$
+\quad h)~$-24$
+}
+
+\begin{exercise}
+Untuk nilai $x$ mana matriks-matriks berikut singular (tidak dapat diinverskan)?
+\begin{tasks}(4)
+\task
+$\begin{bmatrix}
+1 & 3 \\
+1 & x
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+3 & x \\
+1 & 3
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+x & 3 \\
+3 & x
+\end{bmatrix}$
+\task
+$\begin{bmatrix}
+x & 1 & 0 \\
+1 & 4 & 0 \\
+1 & 6 & 2
+\end{bmatrix}$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~$3$
+\quad b)~$9$
+\quad c)~$\pm 3$
+\quad d)~$\nicefrac{1}{4}$
+}
+
+\begin{exercise}
+Hitung
+\begin{equation*}
+\det \left( \begin{bmatrix}
+3 & 4 & 7 & 12 \\
+0 & -1 & 9 & -8 \\
+0 & 0 & -2 & 4 \\
+0 & 0 & 0 & 2
+\end{bmatrix}^{-1}
+\right)
+\end{equation*}
+tanpa menghitung inversnya.
+\end{exercise}
+\exsol{%
+$\nicefrac{1}{12}$
+}
+
+\begin{exercise}[menantang]
+Temukan semua $x$ yang membuat invers matriks
+\begin{equation*}
+\begin{bmatrix}
+1 & 2 \\ 1 & x
+\end{bmatrix}^{-1}
+\end{equation*}
+hanya mempunyai entri bilangan bulat (tanpa pecahan).
+Perhatikan bahwa terdapat dua jawaban.
+\end{exercise}
+\exsol{%
+$1$ dan $3$
+}

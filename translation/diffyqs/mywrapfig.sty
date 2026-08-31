@@ -1,0 +1,609 @@
+%  W R A P F I G . S T Y    ver 3.6  (Jan 31, 2003)
+%
+% Dimodifikasi, hanya menggunakan panjang yang berbeda dari \intextsep,
+% yaitu \wrapintextsep yang secara bawaan kita tetapkan ke nol
+%
+% Salinan turunan lokal edisi Bahasa Indonesia, 31 Agustus 2026.
+% Komentar dan pesan diagnostik dilokalkan oleh OpenAI Codex
+% gpt-5.6-sol, Ultra; kode tetap berasal dari wrapfig 3.6 karya
+% Donald Arseneau dan tunduk pada LaTeX Project Public License.
+%
+%  Hak cipta (C) 1991-2003 oleh Donald Arseneau <asnd@triumf.ca>
+%  Perangkat lunak ini dirilis berdasarkan ketentuan lisensi publik
+%  LaTeX Project.
+%
+%  Lingkungan "wrapfigure" dan "wraptable" menempatkan gambar atau tabel
+%  di sisi halaman dan membungkus teks di sekelilingnya.
+%
+%  \begin{wrapfigure}[12]{r}[34pt]{5cm} <gambar> \end{wrapfigure}
+%                     --  -  ----  ---
+%  [jumlah baris sempit] {penempatan} [juluran] {lebar gambar}
+%
+%  Penempatan adalah salah satu dari r, l, i, o, R, L, I, O, untuk kanan,
+%  kiri, dalam, luar, (di sini / APUNG).
+%  Gambar menjulur ke margin sebesar "overhang", jika diberikan, atau sebesar
+%  panjang \wrapoverhang, yang biasanya nol.
+%  Jumlah baris teks yang dibungkus biasanya dihitung dari tinggi
+%  gambar, tetapi dapat ditentukan secara manual ("12" di atas).
+% 
+%  Lingkungan yang serupa dengan "wrapfigure" dan "wraptable" dapat ditambahkan
+%  dengan mudah, atau dipanggil melalui "\begin{wrapfloat}{nama_float}"
+%
+%  Petunjuk lebih terperinci diberikan di bawah, setelah definisi.
+%  Silakan kirim laporan masalah ke asnd@triumf.ca
+
+%%%%%  ----- Awal definisi ----- %%%%%
+
+\@ifundefined{c@WF@wrappedlines}{}{\endinput}
+
+\newlength{\wrapintextsep}
+\setlength{\wrapintextsep}{0pt}
+
+\newdimen\wrapoverhang \wrapoverhang\z@
+\newdimen\WF@size
+\newcount\c@WF@wrappedlines % digunakan secara global
+\newbox\WF@box
+\newtoks\WF@everypar
+\newif\ifWF@float
+\let\@@parshape\parshape
+\let\WF@@everypar\everypar
+
+\def\wrapfloat#1{\def\@captype{#1}\@ifnextchar[\WF@wr{\WF@wr[]}}
+
+\def\wrapfigure{\wrapfloat{figure}}
+\def\wraptable{\wrapfloat{table}}
+
+\def\WF@wr[#1]#2{% dua argumen pertama: #1=jumlah baris, #2=penempatan
+  \xdef\WF@wfname{wrap\@captype\space}%
+  \ifvoid\WF@box\else \WFclear \WF@collision \fi
+  \xdef\WF@place{\string`\@car#2r\@nil}%
+  \ifnum\lccode\WF@place=\WF@place \global\WF@floatfalse
+    \else \global\WF@floattrue \fi
+  \ifx\parshape\WF@fudgeparshape \ifWF@float\else\WF@collision\fi \else
+   \ifx\par\@@par \ifnum\@@parshape>\z@\WF@conflict\fi \else \WF@conflict\fi
+  \fi \gdef\WF@wli{#1}%
+  \@ifnextchar[\WF@rapt{\WF@rapt[\wrapoverhang]}}
+
+\def\WF@rapt[#1]#2{% dua argumen terakhir: #1 = juluran, #2 = lebar,
+  \gdef\WF@ovh{#1}% simpan juluran untuk nanti, ketika \width diketahui
+  \global\setbox\WF@box\vtop\bgroup \setlength\hsize{#2}%
+  \ifdim\hsize>\z@ \@parboxrestore \else 
+  \setbox\z@\hbox\bgroup \let\wf@@caption\caption \let\caption\wf@caption 
+  \ignorespaces \fi}
+
+\def\wf@caption{\relax
+  \ifdim\hsize>\z@ \let\caption\wf@@caption \else
+  \unskip \egroup \hsize\wd\z@ \@parboxrestore \box\z@ \fi \caption}
+
+\def\endwrapfloat{%
+  \ifdim\hsize>\z@ \par\hrule\@width\hsize\@height\z@ % paksa lebar
+  \else \unskip \egroup \box\z@ \fi % atau akhiri hbox
+  \egroup % akhiri \vtop; lebar sudah diketahui sehingga sekarang adalah "nanti"
+  \WF@floatstyhook % dukung float.sty
+  \def\width{\wd\WF@box}\setlength\wrapoverhang{\WF@ovh}%
+  \xdef\WF@ovh{\the\wrapoverhang}% simpan sampai pembungkusan
+  \ifdim\ht\WF@box>\topskip \ht\WF@box\z@ \fi % tinggi terlalu besar, tetapkan penanda.
+  \ifdim\ht\WF@box<.5\p@ % terlalu tinggi (dimulai dengan \vbox) atau terlalu pendek
+   \global\setbox\WF@box\vtop{\vskip-1.4ex\unvbox\WF@box}\fi
+  \global\WF@size\dp\WF@box % kotak dijamin memiliki tinggi kecil.
+  \global\advance\WF@size1.5\baselineskip \global\advance\WF@size\tw@\wrapintextsep
+  \aftergroup\WF@startfloating % bahkan ketika sebenarnya tidak mengambang!
+  \ifWF@float\else \ifhmode
+     {\unskip \parfillskip\z@skip \par \vskip-\parskip}\aftergroup\noindent
+  \fi\fi \global\@ignoretrue}
+
+\let\endwrapfigure\endwrapfloat
+\let\endwraptable\endwrapfloat
+
+% Alihkan \everypar untuk mengambangkan gambar dan membungkus teks. Juga untuk objek tak mengambang.
+\def\WF@startfloating{%
+ \WF@everypar\expandafter{\the\everypar}\let\everypar\WF@everypar
+ \WF@@everypar{\ifvoid\WF@box\else\WF@floathand\fi \the\everypar
+ \WF@wraphand
+}}
+
+\def\WF@floathand{%
+\ifx\parshape\WF@fudgeparshape \WF@fltmes\else
+  \ifx\par\@@par\ifnum\@@parshape=\z@\ifdim\hangindent=\z@
+    \setbox\z@\lastbox \begingroup
+    \@@par \WF@@everypar{}\WF@putfigmaybe
+    \endgroup % mulai membungkus
+    \ifvoid\z@\else\box\z@\fi % ganti indentasi
+  \else\WF@fltmes\fi\else\WF@fltmes\fi\else\WF@fltmes\fi\fi}
+
+% Letakkan gambar di sini jika muat atau jika tidak dapat mengambang
+\def\WF@putfigmaybe{%
+\ifinner
+  \vskip-\parskip \global\WF@floatfalse
+  \let\pagetotal\maxdimen % penanda siasat untuk "bukan bagian atas halaman"
+\else % halaman luar
+  \@tempdima\pagedepth % simpan kedalaman halaman
+   {\advance\parskip\@tempdima\vskip-\parskip}% mundur ke garis dasar
+   \penalty\interlinepenalty % perbarui parameter halaman
+   \@tempdimb\pagegoal \advance\@tempdimb-\pagetotal % ruang tersisa pada halaman
+   \ifdim\@tempdimb<\z@ % \WF@info{Halaman sudah terlalu penuh;}%
+      \global\WF@floatfalse
+      \ifdim-\@tempdimb>\pageshrink \else \pagebreak \fi
+   \else
+      \ifdim\WF@size>\@tempdimb
+%        \WF@info{Ukuran \the\WF@size\space tidak muat dalam \the\@tempdimb}%
+         \ifWF@float \dimen@.5\baselineskip \else \dimen@ 2\baselineskip\fi
+         \ifdim\pagestretch>\dimen@ \dimen@\pagestretch \fi
+         \ifdim\pagefilstretch>\z@ \dimen@\@tempdimb \fi
+         \ifdim\pagefillstretch>\z@ \dimen@\@tempdimb \fi
+         \advance\dimen@.5\baselineskip
+         \ifdim\dimen@>\@tempdimb % \WF@info{Halaman hampir penuh; dapat diregangkan}%
+            \global\WF@floatfalse \pagebreak
+         \fi
+      \else % \WF@info{Muat dalam \the\@tempdimb;}%
+         \global\WF@floatfalse
+   \fi\fi
+   \vskip\@tempdima\relax % (kembalikan kedalaman halaman yang dihapus)
+\fi
+\noindent
+\ifWF@float
+  \WF@fltmes
+\else % meletakkan di sini;
+  \WF@info{Letakkan \WF@wfname di sini:}%
+  {\ifodd\if@twoside\c@page\else\@ne\fi % tetapkan l/r ke penempatan i/o
+    \lccode`i`l\lccode`o`r\else \lccode`i`r\lccode`o`l\fi
+    \xdef\WF@place{\the\lccode\lccode\WF@place}}% dua kali untuk hanya memperoleh l atau r
+  \hbox to\z@{% llap atau rlap bergantung pada {l} atau {r}; hitung lebar efektif
+   \@tempdima\wd\WF@box \@tempdimb\WF@ovh
+   \advance\@tempdima-\@tempdimb \advance\@tempdima\columnsep
+   \@tempdimb\hsize \advance\@tempdimb-\@tempdima
+   \xdef\WF@adjlw{\the\@tempdima}%
+   \ifnum `l=\WF@place % gambar di kiri
+    \hss % gambar menindih ruang di sebelah kiri
+    \def\@tempa{\kern\columnsep}% posisikan di sebelah kiri celah
+   \else  %  gambar di kanan
+    \@tempdima\z@ % tanpa indentasi kiri
+    \kern\@tempdimb \kern\columnsep
+    \def\@tempa{\hss}% gambar menindih ruang di sebelah kanan
+   \fi
+   \ifdim\@tempdimb<\hsize
+    \xdef\WF@wrapil{\the\@tempdima \the\@tempdimb}% indentasi dan panjang
+    \xdef\WF@adjtlm{\the\@tempdima}%
+   \else
+    \xdef\WF@wrapil{\z@ \the\hsize}%
+    \xdef\WF@adjlw{\z@}\xdef\WF@adjtlm{\z@}%
+   \fi
+   \ifdim\pagetotal=\z@ % \WF@info{Letakkan \WF@wfname di bagian atas h.\thepage}%
+    \global\advance\WF@size-\wrapintextsep
+   \else % \WF@info{Meletakkan \WF@wfname di tengah halaman}%
+    \setbox\WF@box\hbox{\lower\wrapintextsep\box\WF@box}%
+   \fi \dp\WF@box\z@ \box\WF@box \@tempa
+  }% akhiri \hbox ke 0pt
+  \aftergroup\WF@startwrapping % setelah \endgroup yang langsung mengikutinya
+\fi}
+
+\def\WF@startwrapping{%
+ \ifx\WF@wli\@empty
+  {\advance\WF@size1.1\baselineskip
+  \divide\WF@size\baselineskip \global\c@WF@wrappedlines\WF@size}%
+ \else
+  \setcounter{WF@wrappedlines}{\WF@wli}\global\advance\c@WF@wrappedlines\@ne
+ \fi
+ \ifnum\c@WF@wrappedlines>\@ne
+  \let\parshape\WF@fudgeparshape \let\WF@pspars\@empty \let\WF@@par\par
+  \def\@setpar##1{\def\WF@@par{##1}}\def\par{\@par}\let\@par\WF@mypar
+  \xdef\WF@restoretol{\tolerance\the\tolerance}\tolerance9999
+  \advance\linewidth-\WF@adjlw \advance\@totalleftmargin\WF@adjtlm
+ \fi}
+
+\def\WF@wraphand{%
+\ifnum\c@WF@wrappedlines<\tw@ \WF@finale
+\else \begingroup % Buat perintah \parshape:
+ \@tempcnta\@ne \let\WF@wrapil\relax \gdef\WF@ps{}%
+ \@whilenum \@tempcnta<\c@WF@wrappedlines\do{% indentasi dan panjang berulang
+  \xdef\WF@ps{\WF@ps\WF@wrapil}\advance\@tempcnta\@ne
+ }\endgroup
+ \ifx\WF@pspars\@empty
+  \@@parshape\c@WF@wrappedlines \WF@ps \WF@noil
+ \else % gunakan nilai `parshape' eksternal untuk mengubah parshape saya
+  \WF@modps
+\fi\fi}
+
+\def\WF@mypar{\relax
+ \WF@@par % nilai \par yang diharapkan bagian LaTeX lainnya (biasanya \@@par)
+ \ifnum\@@parshape=\z@ \let\WF@pspars\@empty \fi % atur ulang `parshape'
+ \global\advance\c@WF@wrappedlines-\prevgraf \prevgraf\z@
+ \ifnum\c@WF@wrappedlines<\tw@ \WF@finale \fi}
+
+\def\WF@modps{\begingroup
+  \afterassignment\@tempdimb \@tempdima\WF@pspars % a=indentasi, b=lebar
+  \advance\@tempdima-\WF@adjtlm \advance\@tempdimb\WF@adjlw
+%  \afterassignment\dimen@\advance\@tempdima\WF@wrapil
+%  \advance\@tempdimb\dimen@ \advance\@tempdimb-\hsize
+  \let\WF@wrapil\WF@pspars%{\the\@tempdima \the\@tempdimb}%
+  \edef\@tempb{\@@parshape\c@WF@wrappedlines \WF@ps \the\@tempdima \the\@tempdimb}%
+  \expandafter\endgroup\@tempb}
+
+\let\@@setpar\@setpar
+\def\WF@noil{\z@ \hsize}
+\let\WF@pspars\@empty
+
+\def\WF@fudgeparshape{\relax \ifnum\c@WF@wrappedlines<\tw@ \WF@finale
+  \else \afterassignment\WF@fudgeparshapee \fam \fi}
+\def\WF@fudgeparshapee{\ifnum\fam=\@ne \expandafter \WF@parshapeee \else
+  \WF@conflict \@@parshape\fam \fi}
+\def\WF@parshapeee#1#2{\begingroup\delimitershortfall#1%
+   \nulldelimiterspace#2%\advance\nulldelimiterspace\WF@adjlw
+   \edef\@tempa{\def\noexpand\WF@pspars{%
+      \the\delimitershortfall \the\nulldelimiterspace}}%
+  \expandafter\endgroup\@tempa \WF@wraphand}
+
+\def\WF@finale{\ifx\parshape\WF@fudgeparshape
+ \WF@restoretol \let\@setpar\@@setpar \let\par\WF@@par
+ \advance\linewidth\WF@adjlw \advance\@totalleftmargin-\WF@adjtlm
+ \WF@info{Selesai membungkus teks}%
+ \ifx\par\@@par \def\@par{\let\par\@@par\par}\else \let\@par\WF@@par \fi
+ \let\parshape\@@parshape
+ \parshape\ifx\WF@pspars\@empty \z@ \else \@ne \WF@pspars\fi \fi
+ \ifvoid\WF@box \ifx\everypar\WF@everypar
+  \let\everypar\WF@@everypar \everypar\expandafter{\the\WF@everypar}%
+ \fi\fi}
+
+\newcommand{\WFclear}{\par 
+ \ifvoid\WF@box\else \vskip\bigskipamount \box\WF@box
+ \let\everypar\WF@@everypar \everypar\expandafter{\the\WF@everypar}%
+ \fi \global\c@WF@wrappedlines\z@ \WF@finale}
+
+\begingroup
+ \toks0={\let\everypar\WF@@everypar \everypar\expandafter{\the\WF@everypar}%
+   \let\parshape\@@parshape \let\@setpar\@@setpar }
+ \toks1=\expandafter{\@arrayparboxrestore}
+ \toks2=\expandafter{\clearpage}
+ \edef\@tempa{\def\noexpand\@arrayparboxrestore{\the\toks0 \the\toks1}%
+      \def\noexpand\clearpage{\noexpand\protect\noexpand\WFclear \the\toks2}}
+ \expandafter
+\endgroup\@tempa
+
+\@ifundefined{@capwidth}{\let\@capwidth\hsize}{}% Layani Kebodohan RevTeX
+
+\def\WF@conflict{\WF@warning
+ {\WF@wfname digunakan di dalam lingkungan yang berkonflik}}
+\def\WF@collision{\WF@warning{Tabrakan antara lingkungan pembungkus}}
+\def\WF@fltmes{\ifWF@float \WF@info{\WF@wfname mengambang}%
+ \else \WF@warning{\WF@wfname stasioner dipaksa mengambang}\fi}
+
+\let\WF@warning\@warning
+\let\WF@info\@gobble
+
+% Dukungan float.sty: gaya float dan \newfloat. Buat \newfloat{foo}
+% mendefinisikan lingkungan `wrapfoo'. Dukung \newfloat dari memoir.cls
+% dan \newfloatlist dari ccaption.sty.
+% 
+\let\WF@floatstyhook\relax
+
+\@ifundefined{newfloat}{}{% Terdapat perintah \newfloat
+%
+ \@ifundefined{restylefloat}{
+ % \newfloat berasal dari tempat selain float.sty 
+   \@ifclassloaded{memoir}{
+    \toks@=\expandafter\expandafter\expandafter
+     {\csname\string\newfloat\endcsname [{#1}]{#2}{#3}{#4}%
+     \newenvironment{wrap#2}{\wrapfloat{#2}}{\endwrapfloat}%
+    }
+    \edef\@tempa{\def\expandafter\noexpand\csname\string\newfloat\endcsname
+      [##1]##2##3##4{\the\toks@}}
+    \@tempa
+   }% akhir dukungan memoir
+   {}% Asal lain \newfloat di sini??
+ }{
+ %  Penangan float.sty. Aduh: dua versi untuk versi yang berbeda
+ %  Mengubah \float@restyle (atau \restylefloat) juga mengubah \newfloat.
+ \@ifundefined{float@restyle}{% float.sty lama
+  \toks@=\expandafter{\restylefloat{#1}% (lingkungan mungkin sudah atau belum didefinisikan)
+   \@namedef{wrap#1}{\def\@captype{#1}\@nameuse{fst@#1}%
+    \def\WF@floatstyhook{\let\@currbox\WF@box \columnwidth\wd\WF@box 
+       \global\setbox\WF@box\float@makebox}%
+    \@ifnextchar[\WF@wr{\WF@wr[]}}%
+   \expandafter\let\csname endwrap#1\endcsname \endwrapfigure
+  }\edef\@tempa{\def\noexpand\restylefloat##1{\the\toks@}}
+ }{% float.sty baru: gunakan \float@restyle, dan \float@makebox menerima argumen lebar
+  \toks@=\expandafter{\float@restyle{#1}% (lingkungan mungkin sudah atau belum didefinisikan)
+   \@namedef{wrap#1}{\def\@captype{#1}\@nameuse{fst@#1}%
+    \def\WF@floatstyhook{\let\@currbox\WF@box 
+       \global\setbox\WF@box\float@makebox{\wd\WF@box}}%
+    \@ifnextchar[\WF@wr{\WF@wr[]}}%
+   \expandafter\let\csname endwrap#1\endcsname \endwrapfigure
+  }\edef\@tempa{\def\noexpand\float@restyle##1{\the\toks@}}
+ }
+ \@tempa % lakukan definisi ulang
+ %
+ }% Akhir penangan float.sty
+}% Akhir definisi ulang \newfloat
+
+% Dukungan ccaption.sty 
+\@ifundefined{\string\newfloatlist}{}{
+ \toks@=\expandafter\expandafter\expandafter
+   {\csname\string\newfloatlist\endcsname [{#1}]{#2}{#3}{#4}{#5}%
+  \@namedef{wrap#2}{\wrapfloat{#2}}%
+  \expandafter\let\csname endwrap#2\endcsname \endwrapfloat
+ }
+ \edef\@tempa{\def\expandafter\noexpand\csname\string\newfloatlist\endcsname
+   [##1]##2##3##4##5{\the\toks@}}
+ \@tempa
+}
+
+% Proses opsi paket.
+
+\@ifundefined{DeclareOption}{\endinput}{}
+
+\def\WF@warning{\PackageWarning{mywrapfig}}
+\ProvidesPackage{mywrapfig}[2003/01/31 \space  v 3.6]
+\DeclareOption{verbose}{\def\WF@info{\PackageInfo{mywrapfig}}}
+\ProcessOptions
+\AtEndDocument{\WFclear}
+
+\endinput
+
+%%%%%  ----- Akhir definisi ----- %%%%%
+
+%%%%%  ----- Awal Petunjuk ----- %%%%%
+
+
+W R A P F I G . S T Y  \ \  ver 3.6 \ \ (Jan 31, 2003)
+
+Hak cipta (C) 1991-2003 oleh Donald Arseneau (asnd@triumf.ca)
+
+Wrapfig.sty menyediakan lingkungan "wrapfigure" dan "wraptable" untuk
+menata objek apung sempit di tepi teks dan membuat teks
+membungkus di sekelilingnya. Lingkungan "wrapfigure" dan "wraptable" berinteraksi
+dengan benar dengan perintah "\caption" untuk menghasilkan penomoran yang tepat, tetapi
+keduanya bukan objek apung biasa seperti "figure" dan "table", sehingga (hati-hati!)
+keduanya dapat dicetak tidak berurutan terhadap objek apung biasa. Terdapat empat
+parameter untuk "\begin{wrapfigure}", dua opsional dan dua wajib, ditambah
+teks gambar, mungkin dengan keterangan:
+
+   \begin{wrapfigure}[12]{r}[34pt]{5cm} <gambar> \end{wrapfigure}
+                      ==  =  ====  ===
+   [jumlah baris sempit] {penempatan} [juluran] {lebar}
+
+Beberapa keunikan:
+
+  - Anda tidak boleh menentukan wrapfigure di dalam lingkungan daftar jenis apa pun,
+    atau tepat sebelum maupun tepat sesudahnya. Wrapfigure boleh mengikuti
+    daftar jika terdapat baris kosong ("\par") di antaranya.
+
+  - Jika Anda menempatkan wrapfigure dalam parbox atau minipage, atau jenis
+    pengelompokan lain, pembungkusan teks harus berakhir sebelum kelompok tersebut berakhir.
+
+  - Ini berfungsi dalam format dua kolom, tetapi apakah gambar Anda sekecil itu?
+
+  - Urutannya mungkin tidak sama dengan objek apung biasa.
+
+  - hline yang mungkin dicetak di atas dan di bawah objek apung diabaikan;
+    Anda harus menyisipkannya secara manual jika diinginkan.
+
+  - "\linewidth" kini disesuaikan di dalam teks yang dibungkus, tetapi karena
+    hanya dapat ditetapkan untuk seluruh paragraf sekaligus, nilainya akan tetap
+    salah setelah pembungkusan hingga paragraf selesai.
+
+Lingkungan pembungkus baru dapat ditambahkan ketika jenis objek apung baru didefinisikan
+(menggunakan memoir.cls, float.sty, atau ccaption.sty). Lingkungan pembungkus apa pun,
+"wrapfigure", "wraptable", atau yang lain dapat dipanggil menggunakan
+lingkungan "wrapfloat", seperti dalam "\begin{wrapfloat}{figure}{O}{5cm}".
+
+Untuk menggunakan float.sty dengan benar, muat paket "float" sebelum "mywrapfig",
+dan deklarasikan setiap jenis objek apung baru setelah keduanya dimuat. Hal yang sama berlaku untuk
+ccaption.sty dan "\newfloatlist", serta memoir.cls dan "\newfloat" miliknya.
+
+\section{Penempatan dan Pengambangan}
+
+Parameter "#2" (wajib) adalah kode penempatan gambar, tetapi kode yang sah
+berbeda dari gambar biasa. Kode-kode itu berpasangan: versi
+huruf besar yang memungkinkan gambar mengambang, dan versi huruf kecil
+yang menempatkan gambar ``tepat di sini''.
+
+  r  R  -  sisi kanan teks
+  l  L  -  sisi kiri teks
+  i  I  -  tepi dalam--dekat penjilidan (jika dokumen "[twoside]")
+  o  O  -  tepi luar--jauh dari penjilidan
+
+Anda hanya boleh menentukan satu kode, bukan daftar. Gambar atau tabel harus
+berada di salah satu sisi; tidak dapat ditempatkan di tengah dengan teks pada
+kedua sisinya. Opsi "i" dan "o" merujuk pada bagian dalam dan luar
+seluruh halaman, bukan kolom individual.
+
+Kemampuan mengambang agak terbatas, dan Anda akan memperoleh hasil terbaik
+dengan memberikan penempatan manual yang tepat, tetapi pengambangan lebih nyaman ketika
+merevisi dokumen. Setiap perubahan pemformatan dapat merusak penempatan manual,
+jadi Anda sebaiknya menyesuaikan penempatan tepat sebelum mencetak
+salinan akhir. Berikut beberapa kiat untuk penempatan yang baik:
+
+  - Lingkungan harus ditempatkan agar tidak melintasi pemisah halaman.
+
+  - Lingkungan tidak boleh ditempatkan di lokasi khusus seperti daftar.
+
+  - Demi estetika, hanya teks biasa yang sebaiknya membungkus di sekitar gambar.
+    Judul bagian dan persamaan besar tampak buruk; daftar tampak buruk jika gambar
+    berada di kiri. (Semuanya berfungsi dengan benar, hanya tampilannya
+    kurang baik.) Persamaan kecil tampak baik.
+
+  - Memulai lingkungan di antara paragraf itu praktis, tetapi jika
+    Anda menginginkan penempatan di tengah paragraf, Anda harus meletakkan
+    lingkungan di antara dua kata pada tempat pemisah baris yang alami.
+
+Ketika mengambang, \LaTeX\ mencoba menerapkan aturan-aturan ini. Secara lebih khusus,
+lingkungan pembungkus mengambang hanya akan dimulai...
+
+  - pada awal paragraf,
+
+  - ketika tersedia cukup ruang pada halaman, atau dimungkinkan untuk berpindah ke
+    halaman berikutnya,
+
+  - jika `paragraf' tidak berada dalam judul bagian atau daftar,
+
+  - jika paragraf tidak sedang membungkus gambar lain,
+
+  - dalam teks utama (bukan dalam minipage dan sebagainya).
+
+Ada kemungkinan wrapfigure yang tidak mengambang dipaksa mengambang
+ketika wrapfigure sebelumnya masih diproses. Peringatan akan ditulis
+dalam kasus tersebut. Anda dapat memperoleh lebih banyak informasi tentang proses pengambangan
+yang ditulis ke berkas log dengan menentukan "\usepackage[verbose]{mywrapfig}".
+
+Jika suatu halaman sangat lentur, wrapfigure mengambang dapat
+ditempatkan dengan buruk; Anda harus beralih ke penempatan manual. Masalah yang jarang terjadi adalah
+objek apung dan catatan kaki yang ditentukan di dalam teks pembungkus juga dapat
+menyebabkan penempatan buruk dan pemformatan yang tidak baik.
+
+
+\section {Penentuan Ukuran dan Juluran Opsional}
+
+Parameter "#4" (parameter wajib kedua) adalah lebar gambar
+atau tabel. Mengingat cara \LaTeX\ menempatkan hampir semuanya ke dalam kotak
+dengan lebar baris saat ini, parameter lebar akan didahulukan daripada
+lebar alami gambar. Secara khusus, keterangan selalu
+ditata dengan lebar yang ditentukan. Jika gambar lebih lebar daripada ruang
+yang disediakan, Anda akan menerima peringatan ``kotak terlalu penuh''.
+
+Namun, jika Anda menentukan lebar *nol* ("0pt"), lebar sebenarnya
+dari gambar akan menentukan lebar pembungkusan. "\caption" yang mengikutinya
+seharusnya memiliki lebar yang sama dengan gambar, tetapi dapat gagal parah;
+lebih aman menentukan lebar ketika menggunakan keterangan.
+
+\LaTeX\ akan membungkus teks di sekeliling gambar, meninggalkan celah sebesar
+"\wrapintextsep" di atas dan bawah, serta "\columsep" di sisi, dengan
+menghasilkan serangkaian baris teks yang diperpendek di samping gambar.
+Indentasi (pemendekan) teks adalah lebar gambar ditambah "\columnsep"
+dikurangi juluran (jika ada; lihat di bawah).
+
+\LaTeX\ menghitung jumlah baris pendek yang diperlukan berdasarkan tinggi
+gambar dan panjang "\wrapintextsep". Anda dapat menimpa perkiraan ini
+dengan memberikan argumen opsional pertama (parameter "#1") yang menentukan
+jumlah baris yang diperpendek (setiap persamaan tampilan dihitung sebagai 3 baris).
+Hal ini sangat berguna ketika teks di sekelilingnya mengandung spasi
+vertikal tambahan yang tidak diperhitungkan secara otomatis.
+
+Parameter opsional kedua ("#3") menentukan seberapa jauh gambar harus
+menjulur ke margin. Juluran bawaan diberikan oleh panjang
+"\wrapoverhang", yang biasanya "0pt", tetapi dapat diubah dengan
+"\setlength". Sebagai contoh, agar semua wrapfigure menggunakan ruang
+yang disediakan untuk catatan margin,
+
+    \setlength{\wrapoverhang}{\marginparwidth}
+    \addtolength{\wrapoverhang}{\marginparsep}
+
+Ketika Anda menentukan juluran secara eksplisit untuk gambar tertentu, Anda
+dapat menggunakan satuan khusus bernama "\width" yang berarti lebar gambar.
+Sebagai contoh, "[0.5\width]" membuat pusat gambar berada di
+tepi teks, dan "[\width]" menempatkan gambar sepenuhnya di margin
+(dan teks di sebelahnya hanya diindentasi sebesar "\columnsep"). "\width"
+ini adalah lebar sebenarnya dari wrapfigure, yang mungkin lebih besar daripada
+lebar yang dideklarasikan.
+
+
+\section{Beberapa Catatan Implementasi Acak}
+
+Sayangnya, sistem \LaTeX\ untuk menetapkan "\everypar" dan "\par"
+tidak dapat hidup berdampingan secara damai dengan lingkungan pembungkus, sehingga saya
+terpaksa mengalihkan mekanisme "\@setpar" dan "\everypar". ("\everypar"
+sudah pernah dialihkan oleh NFSS.)
+
+Saat memeriksa ruang yang tersisa pada halaman, ingat bahwa jika ruang tersebut kurang
+daripada "\baselineskip", paragraf baru akan dimulai pada halaman berikutnya, bahkan
+jika halaman tidak dapat diregangkan. Jika tidak mengambang, saya memaksakan pemisah halaman
+yang buruk daripada membiarkan gambar menjulur ke margin bawah.
+
+Berikut catatan tentang berbagai variabel dan beberapa makro; informasi apa yang
+disimpan dan bagaimana penggunaannya.
+
+  \WF@wli - parameter jumlah-baris-terbungkus, disimpan untuk awal pembungkusan.
+     Ditetapkan secara global oleh "\WF@wr" (ditetapkan kosong jika tidak diberikan parameter opsional).
+     Mekanisme pengambangan mengabaikannya dan menggunakan ukuran sebenarnya.
+
+  \WF@ovh - juluran margin ditetapkan secara global oleh "\WF@rapt", disimpan sampai
+     gambar ditempatkan (tetapi tidak diatur ulang). Sebenarnya, pengaturannya sangat rumit agar
+     nilai yang diharapkan digunakan ketika gambar mengambang. Pertama, ekspresi
+     disimpan tanpa evaluasi oleh "\WF@rapt" ("\begin{wrapfigure}") karena
+     "\width" masih belum diketahui. Tidak lama kemudian, "\endwrapfigure" menjalankan
+     "\WF@ovh" untuk mengevaluasi juluran dan menyimpan hasilnya (agar perubahan
+     pada "\wrapoverhang" ketika gambar ini mengambang tidak memengaruhi
+     gambar tersebut). Akhirnya, nilai itu digunakan oleh "\WF@putfigmaybe" saat mencetak gambar.
+
+  \WF@place - makro yang digunakan sebagai bilangan dan memberikan kode penempatan.
+     Nilai awalnya mungkin "`I" lalu dikonversi menjadi "114" (r).
+
+  \WF@box - diuji apakah hampa pada "\begin{wrapfigure}" untuk menghindari tabrakan,
+     oleh "\everypar" untuk melakukan pengambangan, dan oleh "\WF@finale" sebelum mengatur ulang
+     "\everypar". Dikosongkan secara global ketika digunakan oleh "\WF@putfigmaybe" (atau oleh
+     "\WF@wr" jika gambar lama harus dikeluarkan sebelum waktunya).
+
+  \par - diuji apakah sama dengan "\@@par" oleh "\begin{wrapfigure}" dan "\WF@floathand"
+     untuk mengambang melewati lingkungan khusus. Nilainya ditetapkan ke "\@par" ("\WF@mypar")
+     oleh "\WF@startwrapping", dan dipulihkan oleh akhir-kelompok (buruk!) atau oleh
+     "\WF@finale" (baik). Nilainya dilindungi dari perubahan dengan mendefinisikan ulang
+     "\@setpar".
+
+  \parshape - disamakan dengan "\WF@fudgeparshape" oleh "\WF@startwrapping", sehingga daftar
+     akan terus dibungkus; "\@@parshape" mempertahankan perintah "\parshape"
+     yang sebenarnya, dan dipulihkan oleh "\WF@finale" atau "\@parboxrestore".
+     "\WF@floathand" dan "\WF@wr" menguji apakah pembungkusan lama masih berlangsung
+     dengan "\ifx\parshape\WF@fudgeparshape". Nilai "\@@parshape" juga
+     diuji untuk mengambang melewati daftar dan lingkungan pembungkus lain.
+
+  \hangindent - diuji untuk mengambang melewati judul bagian dan sebagainya.
+
+  \c@WF@wrappedlines - jumlah baris yang diperpendek + 1; ditetapkan secara global oleh
+     "\WF@startwrapping" dan dikurangi oleh "\par" ("\WF@mypar"). Nilainya > 1
+     hanya ketika pembungkusan belum selesai. "\WF@wraphand", "\WF@fudgeparshape",
+     dan "\WF@mypar" menguji bilangan tersebut untuk memanggil "\WF@finale". Nilainya dapat
+     tersangkut pada nilai tinggi jika "\par" dipulihkan oleh akhir-kelompok (dan
+     pembungkusan berakhir sebelum waktunya), sehingga tidak bijak menggunakan ini sebagai
+     uji bahwa pembungkusan selesai.
+
+  \pagetotal - salah satu dari banyak parameter yang digunakan untuk menghitung pengambangan. Ketika
+     menempatkan wrapfigure dalam parbox, saya menetapkan "\let\pagetotal\maxdimen"
+     (secara lokal!) untuk menandakan bukan-bagian-atas-halaman dan tanpa pengambangan.
+
+  \WF@pspars - parameter "\parshape" sebagaimana ditetapkan LaTeX untuk daftar
+     ("\WF@fudgeparshape"); saat membungkus, saya mengujinya dan menggunakannya untuk mengubah
+     parameter nyata saya sendiri untuk paragraf. Parameter ini juga digunakan ketika "\parshape"
+     dipulihkan setelah pembungkusan.
+
+  \WF@finale - dijalankan oleh "\par" ketika pembungkusan harus berakhir. Namun,
+     hal itu mungkin terjadi di dalam kelompok (terutama daftar), sehingga versi
+     "\par", "\parshape", dan sebagainya yang dialihkan akan dipasang kembali ketika kelompok
+     berakhir. Karena itu, semuanya harus menguji sendiri "\c@WF@wrappedlines" < 2 untuk melihat
+     kapan pembungkusan selesai, dan jika demikian, cukup menjalankan "\WF@finale" lagi.
+
+Berikut adalah pengujian untuk melihat apakah wrapfigure mengambang akan muat di suatu
+tempat. Pengujian ini dilakukan pada awal setiap paragraf setelah
+gambar, kecuali di dalam daftar dan sebagainya. ("\pagegoal" - "\pagetotal" adalah ruang
+yang tersisa pada halaman.)
+
+  >
+  room_left := \pagegoal - \pagetotal
+  if  room_left < 0  then page overfull already: put figure (on next page)
+  else
+     if  figure_size > room_left  then does not fit
+        if  max(min_stretch, \pagestretch) + extra > room_left
+           then page can stretch until full: put figure (at top of next page)
+        fi
+     else figure fits: put figure
+  fi fi
+  <
+
+Bahkan jika wrapfigure tidak mengambang, ia akan melewati logika yang sama
+untuk menghasilkan "\pagebreak", dan mungkin halaman underfull, ketika halaman saat ini
+dapat diregangkan hingga penuh. "min_stretch" bergantung pada apakah objek
+mengambang atau tidak: ".5\baselineskip" (mengambang), "2\baselineskip" (tidak). Nilai
+"extra" adalah ".5\baselineskip" dalam kedua kasus. Nilai-nilai ini dapat disesuaikan.
+
+Ada beberapa `bilangan ajaib' lain untuk pengambangan yang sebenarnya tidak terlalu
+istimewa, tetapi Anda harus mengubahnya bersama-sama jika mengubahnya sama sekali.
+Agar wrapfigure mengambang lebih jarang dan lebih sering muat pada halaman,
+tanpa mengubah jumlah baris yang dibungkus, kurangi "1.5" dalam
+"\global\advance\WF@size1.5\baselineskip" dan naikkan "1.1" dalam
+"\advance\WF@size1.1\baselineskip" sebesar jumlah yang sama (dan sebaliknya).
+Untuk membuat lebih banyak (atau lebih sedikit) baris yang dibungkus bagi gambar berukuran sama, tanpa
+mengubah pengambangan, ubah "1.1" dalam "\advance\WF@size1.1\baselineskip"
+secara sepihak.
+
+%%%%%  ----- Akhir Petunjuk ----- %%%%%
+
+Uji integritas berkas: ASCII 32-57, 58-126:  !"#$%&'()*+,-./0123456789
+:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~

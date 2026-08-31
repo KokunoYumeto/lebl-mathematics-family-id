@@ -1,0 +1,2685 @@
+\chapter{Transformasi Laplace} \label{LT:chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Transformasi Laplace}
+\label{laplace:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1.5--2 kuliah\EPref{, \S7.1 dalam \cite{EP}}\BDref{,
+\S6.1 dan bagian-bagian dari \S6.2 dalam \cite{BD}}}
+
+\subsection{Transformasi}
+
+Dalam bab ini, kita akan membahas transformasi Laplace%
+\footnote{Sama seperti persamaan Laplace dan operator Laplace, transformasi
+Laplace juga dinamai menurut 
+\href{https://en.wikipedia.org/wiki/Laplace}{Pierre-Simon, marquis de Laplace}
+(1749--1827).}.
+Transformasi Laplace
+adalah metode yang sangat efisien untuk menyelesaikan masalah ODE atau PDE tertentu.
+Transformasi tersebut mengubah persamaan diferensial menjadi
+persamaan aljabar.  Jika persamaan aljabar itu dapat diselesaikan, penerapan
+transformasi invers memberi kita solusi yang diinginkan.
+Transformasi Laplace juga memiliki penerapan dalam
+analisis 
+rangkaian listrik, spektroskopi NMR, pemrosesan sinyal, dan bidang lainnya.
+Terakhir,
+memahami transformasi
+Laplace juga akan membantu memahami transformasi Fourier yang berkaitan,
+yang, bagaimanapun, memerlukan pemahaman lebih mendalam
+tentang bilangan kompleks.  Kita tidak akan membahas transformasi Fourier.
+
+Transformasi Laplace juga memberikan banyak wawasan tentang sifat
+persamaan yang kita hadapi.  Transformasi ini dapat dipandang sebagai pengubahan antara ranah
+waktu dan ranah frekuensi.  Sebagai contoh, ambil persamaan standar
+\begin{equation*}
+m x''(t) + c x'(t) + k x(t) = f(t) .
+\end{equation*}
+Kita dapat memandang $t$ sebagai waktu dan $f(t)$ sebagai sinyal masuk.  Transformasi Laplace
+akan mengubah persamaan tersebut dari persamaan diferensial dalam waktu menjadi
+persamaan aljabar (tanpa turunan), dengan peubah bebas baru
+$s$ yang dipandang sebagai frekuensi.\footnote{Sesungguhnya, ini adalah \myquote{frekuensi} dalam konteks
+bilangan kompleks, tetapi kita menyimpang dari pokok bahasan.}
+
+Kita dapat memandang \emph{\myindex{transformasi Laplace}} sebagai kotak hitam.  Kotak ini
+menerima fungsi dan menghasilkan fungsi dalam peubah baru.  Kita menulis
+$\mathcal{L} \bigl\{ f(t) \bigr\} = F(s)$ untuk transformasi Laplace dari $f(t)$.
+Biasanya huruf kecil digunakan untuk
+fungsi dalam ranah waktu dan huruf besar untuk fungsi dalam
+ranah frekuensi.  Kita menggunakan huruf yang sama untuk menunjukkan bahwa satu fungsi
+merupakan transformasi Laplace dari fungsi lainnya.  Sebagai contoh, $F(s)$ adalah transformasi Laplace
+dari $f(t)$.  Mari kita definisikan transformasi tersebut.
+\begin{equation*}
+\mybxbg{~~
+\mathcal{L} \bigl\{ f(t) \bigr\} =
+F(s) \overset{\text{def}}{=} \int_0^\infty e^{-st} f(t) \, dt .
+~~}
+\end{equation*}
+Perhatikan bahwa kita hanya mempertimbangkan $t \geq 0$ dalam transformasi tersebut.  Tentu saja,
+jika kita memandang $t$ sebagai waktu, tidak ada masalah; pada umumnya kita tertarik untuk
+mengetahui apa yang akan terjadi pada masa depan
+(transformasi Laplace adalah salah satu tempat
+yang aman untuk mengabaikan masa lalu).
+Mari kita hitung beberapa
+transformasi sederhana.
+
+\begin{example}
+Andaikan $f(t) = 1$, maka
+\begin{equation*}
+\mathcal{L} \{1\} = \int_0^\infty e^{-st} \, dt
+=
+\left[ \frac{e^{-st}}{-s} \right]_{t=0}^\infty
+=
+\lim_{h\to\infty}
+\left[ \frac{e^{-st}}{-s} \right]_{t=0}^h
+=
+\lim_{h\to\infty}
+\left( \frac{e^{-sh}}{-s} - \frac{1}{-s} \right)
+= \frac{1}{s} .
+\end{equation*}
+Limit tersebut (integral takwajar) hanya ada jika $s > 0$.  Jadi, 
+$\mathcal{L} \{1\}$ hanya terdefinisi untuk $s > 0$.
+\end{example}
+
+\begin{example}
+Andaikan $f(t) = e^{-at}$, maka
+\begin{equation*}
+\mathcal{L} \bigl\{e^{-at}\bigr\}
+= \int_0^\infty e^{-st} e^{-at} \, dt
+= \int_0^\infty e^{-(s+a)t} \, dt
+=
+\left[ \frac{e^{-(s+a)t}}{-(s+a)} \right]_{t=0}^\infty
+= \frac{1}{s+a} .
+\end{equation*}
+Limit tersebut hanya ada jika $s+a > 0$.  Jadi, 
+$\mathcal{L} \bigl\{e^{-at}\bigr\}$ hanya terdefinisi untuk $s+a > 0$.
+\end{example}
+
+\begin{example}
+Andaikan $f(t) = t$, maka dengan menggunakan integrasi parsial
+\begin{equation*}
+\begin{split}
+\mathcal{L} \{t\}
+& = \int_0^\infty e^{-st} t \, dt \\
+& =
+\left[ \frac{-te^{-st}}{s} \right]_{t=0}^\infty
++
+\frac{1}{s}
+\int_0^\infty e^{-st} \,dt \\
+& =
+0
++
+\frac{1}{s}
+\left[ \frac{e^{-st}}{-s} \right]_{t=0}^\infty \\
+& =
+\frac{1}{s^2} .
+\end{split}
+\end{equation*}
+Sekali lagi, limit tersebut hanya ada jika $s > 0$.
+\end{example}
+
+\begin{example}
+Salah satu fungsi yang umum adalah \emph{\myindex{fungsi tangga satuan}}, yang
+kadang-kadang disebut \emph{\myindex{fungsi Heaviside}}%
+\footnote{Fungsi tersebut dinamai menurut matematikawan, insinyur, dan
+fisikawan Inggris
+\href{https://en.wikipedia.org/wiki/Heaviside}{Oliver Heaviside}
+(1850--1925).  Hanya
+secara kebetulan fungsi ini \myquote{berat} di \myquote{satu sisi}.}.
+Fungsi ini umumnya diberikan sebagai
+\begin{equation*}
+u(t) = 
+\begin{cases}
+0 & \text{jika } \; t < 0 , \\
+1 & \text{jika } \; t \geq 0 .
+\end{cases}
+\end{equation*}
+%Note that some authors prefer to define $u(0) = \frac{1}{2}$.
+Mari kita cari transformasi Laplace dari $u(t-a)$, dengan $a \geq 0$
+suatu konstanta.
+Artinya, ini adalah fungsi yang bernilai $0$ untuk $t < a$ dan $1$ untuk $t \geq a$.
+\begin{equation*}
+\mathcal{L} \bigl\{ u(t-a) \bigr\}
+=
+\int_0^{\infty} e^{-st} u(t-a) \, dt
+=
+\int_a^{\infty} e^{-st} \, dt
+=
+\left[ \frac{e^{-st}}{-s} \right]_{t=a}^\infty
+=
+\frac{e^{-as}}{s} ,
+\end{equation*}
+dengan, tentu saja, $s > 0$ (dan $a \geq 0$ seperti yang telah kita nyatakan).
+\end{example}
+
+Dengan menerapkan prosedur serupa, kita dapat menghitung transformasi dari banyak
+fungsi elementer.  Banyak transformasi dasar dicantumkan dalam
+\tablevref{lt:table} (lihat juga \appendixref{laplacelist:appendix}).
+
+\begin{table}[h!t]
+\mybeginframe
+\capstart
+\begin{center}
+\begin{tabular}{@{}lllll@{}}
+\toprule
+$f(t)$ & $\mathcal{L} \bigl\{ f(t) \bigr\}$ & $\qquad\quad$ &
+$f(t)$ & $\mathcal{L} \bigl\{ f(t) \bigr\}$ \\
+\midrule
+$C$ & $\frac{C}{s}$
+& &
+$\sin (\omega t)$ & $\frac{\omega}{s^2+\omega^2}$
+\\[4pt]
+$t$ & $\frac{1}{s^2}$
+& &
+$\cos (\omega t)$ & $\frac{s}{s^2+\omega^2}$
+\\[4pt]
+$t^2$ & $\frac{2}{s^3}$
+& &
+$\sinh (\omega t)$ & $\frac{\omega}{s^2-\omega^2}$
+\\[4pt]
+$t^3$ & $\frac{6}{s^4}$
+& &
+$\cosh (\omega t)$ & $\frac{s}{s^2-\omega^2}$
+\\[4pt]
+$t^n$ & $\frac{n!}{s^{n+1}}$
+& &
+$u(t-a) \quad (a \geq 0)$ & $\frac{e^{-as}}{s}$
+\\[4pt]
+$e^{-at}$ & $\frac{1}{s+a}$
+& & &
+\\[4pt]
+\bottomrule
+\end{tabular}
+\end{center}
+\caption{Beberapa transformasi Laplace ($C$, $\omega$, dan $a$ adalah
+konstanta).\label{lt:table}}
+\myendframe
+\end{table}
+
+\begin{exercise}
+Verifikasikan \tablevref{lt:table}.
+\end{exercise}
+
+Karena transformasi didefinisikan oleh integral, kita dapat menggunakan sifat
+linearitas integral.  Sebagai contoh, jika $C$ adalah konstanta, maka
+\begin{equation*}
+\mathcal{L} \bigl\{ C f(t) \bigr\} =
+\int_0^\infty e^{-st} C f(t) \,dt =
+C \int_0^\infty e^{-st} f(t) \,dt =
+C \mathcal{L} \bigl\{ f(t) \bigr\} .
+\end{equation*}
+Jadi, kita dapat \myquote{mengeluarkan} konstanta dari transformasi.
+Demikian pula untuk penjumlahan.
+Karena linearitas penting, kita menyatakannya sebagai teorema.
+
+\begin{theorem}[Linearitas transformasi Laplace]
+\index{linearitas transformasi Laplace}
+Jika $A$, $B$, dan $C$ adalah konstanta, maka
+\begin{equation*}
+\mybxbg{~~
+\mathcal{L} \bigl\{ A f(t) + B g(t) \bigr\} =
+A \mathcal{L} \bigl\{ f(t) \bigr\} +
+B \mathcal{L} \bigl\{ g(t) \bigr\} ,
+~~}
+\end{equation*}
+dan khususnya,
+\begin{equation*}
+\mathcal{L} \bigl\{ C f(t) \bigr\} =
+C \mathcal{L} \bigl\{ f(t) \bigr\} .
+\end{equation*}
+\end{theorem}
+
+\begin{exercise}
+Verifikasikan teorema tersebut.  Artinya, tunjukkan bahwa
+$\mathcal{L} \bigl\{ A f(t) + B g(t) \bigr\} =
+A \mathcal{L} \bigl\{ f(t) \bigr\} +
+B \mathcal{L} \bigl\{ g(t) \bigr\}$.
+\end{exercise}
+
+Aturan-aturan ini bersama dengan \tablevref{lt:table} sudah memudahkan kita mencari
+transformasi Laplace dari sangat banyak fungsi.
+Sebagai contoh:
+\begin{equation*}
+\mathcal{L}\bigl\{
+2 + 5t + 9e^{-2t}
+\bigr\}
+=
+\mathcal{L}\bigl\{
+2
+\bigr\}
++5
+\mathcal{L}\bigl\{
+t
+\bigr\}
++
+9
+\mathcal{L}\bigl\{
+e^{-2t}
+\bigr\}
+=
+\frac{2}{s} + \frac{5}{s^2} + \frac{9}{s+2} .
+\end{equation*}
+Berhati-hatilah!
+Transformasi Laplace dari suatu hasil kali
+\emph{bukan} hasil kali transformasi-transformasinya.  Secara umum, 
+\begin{equation*}
+\mathcal{L} \bigl\{ f(t) g(t) \bigr\} \neq
+\mathcal{L} \bigl\{ f(t) \bigr\}
+\mathcal{L} \bigl\{ g(t) \bigr\} .
+\end{equation*}
+Selain itu, tidak semua fungsi memiliki transformasi Laplace.  Sebagai
+contoh, fungsi $\frac{1}{t}$ tidak memiliki transformasi Laplace karena
+integralnya divergen untuk semua $s$.  Demikian pula,
+$\tan t$ atau $e^{t^2}$ tidak memiliki transformasi Laplace.
+
+\subsection{Eksistensi dan ketunggalan}
+
+Kapan transformasi Laplace ada?  Suatu fungsi $f(t)$ dikatakan ber-
+\emph{\myindex{orde eksponensial}} ketika $t$ menuju takhingga jika
+\begin{equation*}
+\lvert f(t) \rvert \leq M e^{ct} ,
+\end{equation*}
+untuk suatu konstanta $M$ dan $c$, untuk
+$t$ yang cukup besar (katakanlah untuk semua $t > t_0$ bagi suatu $t_0$).  Cara termudah
+untuk memeriksa syarat ini adalah mencoba menghitung
+\begin{equation*}
+\lim_{t\to \infty} \frac{f(t)}{e^{ct}} .
+\end{equation*}
+Jika limit tersebut ada dan berhingga (biasanya nol), maka $f(t)$ ber-
+orde eksponensial.
+
+\begin{exercise}
+Gunakan aturan L'Hopital dari kalkulus untuk menunjukkan bahwa suatu polinom ber-
+orde eksponensial.  Petunjuk: Perhatikan bahwa jumlah dua fungsi berorde eksponensial
+juga berorde eksponensial.  Kemudian tunjukkan bahwa $t^n$ berorde eksponensial
+untuk setiap $n$.
+\end{exercise}
+
+Untuk fungsi berorde eksponensial, kita memiliki eksistensi dan ketunggalan
+transformasi Laplace.
+
+\begin{theorem}[Eksistensi]
+Misalkan $f(t)$ kontinu pada interval $[0,\infty)$ dan berorde eksponensial untuk suatu
+konstanta $c$.  Maka $F(s) = \mathcal{L} \bigl\{ f(t) \bigr\}$ terdefinisi untuk
+semua $s > c$.
+\end{theorem}
+
+Eksistensinya tidak sulit dilihat.  Misalkan $f(t)$ berorde eksponensial,
+yakni, $\lvert f(t) \rvert \leq M e^{ct}$ untuk semua $t > 0$ (demi kesederhanaan $t_0 = 0$).
+Misalkan $s > c$, atau dengan kata lain $(s-c) > 0$.
+Berdasarkan teorema perbandingan dari kalkulus, integral takwajar yang mendefinisikan
+$\mathcal{L} \bigl\{ f(t) \bigr\}$ ada karena integral berikut ada:
+\begin{equation*}
+\int_0^\infty e^{-st} ( M e^{ct} ) \,dt
+=
+M \int_0^\infty e^{-(s-c)t} \,dt = M \left[ \frac{e^{-(s-c)t}}{-(s-c)}
+\right]_{t=0}^\infty = \frac{M}{s-c} .
+\end{equation*}
+
+Transformasi tersebut juga ada untuk beberapa fungsi lain
+yang tidak berorde
+eksponensial, tetapi hal itu tidak relevan bagi kita.
+Sebelum membahas ketunggalan,
+perhatikan bahwa untuk fungsi berorde eksponensial,
+transformasi Laplace-nya meluruh di takhingga:
+\begin{equation*}
+\lim_{s\to\infty} F(s) = 0 .
+\end{equation*}
+
+\begin{theorem}[Ketunggalan] \label{lt:uniqthm}
+Misalkan $f(t)$ dan $g(t)$ kontinu dan berorde eksponensial.
+Andaikan terdapat suatu konstanta $C$
+sedemikian sehingga $F(s) = G(s)$ untuk semua $s > C$.
+Maka $f(t) = g(t)$ untuk semua $t \geq 0$.
+\end{theorem}
+
+Kedua teorema tersebut juga berlaku untuk fungsi kontinu sepotong-sepotong.
+Ingat bahwa kontinu sepotong-sepotong berarti fungsi tersebut
+kontinu kecuali mungkin pada suatu himpunan titik diskret, tempat ia memiliki
+diskontinuitas loncatan seperti fungsi Heaviside.  Namun, transformasi Laplace tidak
+\myquote{melihat} nilai-nilai di titik diskontinuitas.  Jadi, kita hanya dapat menyimpulkan bahwa
+$f(t) = g(t)$ di luar titik-titik diskontinuitas.  Sebagai contoh, fungsi tangga
+satuan kadang-kadang didefinisikan menggunakan $u(0) = \nicefrac{1}{2}$.  Namun, fungsi
+tangga yang baru ini memiliki transformasi Laplace yang persis sama
+dengan fungsi yang kita definisikan sebelumnya, dengan $u(0) = 1$.
+
+\subsection{Transformasi invers}
+
+Seperti yang telah kita katakan, transformasi Laplace memungkinkan kita mengubah persamaan
+diferensial menjadi persamaan aljabar.  Setelah kita menyelesaikan
+persamaan aljabar dalam ranah frekuensi, kita ingin kembali ke
+ranah waktu karena itulah yang kita minati.
+Diberikan suatu fungsi
+$F(s)$, kita ingin mencari fungsi
+$f(t)$ sedemikian sehingga $\mathcal{L} \bigl\{ f(t) \bigr\} = F(s)$.
+\thmref{lt:uniqthm} menyatakan bahwa solusi $f(t)$ tunggal.
+Jadi, tanpa kekhawatiran kita dapat membuat definisi berikut.
+
+Andaikan $F(s) = \mathcal{L} \bigl\{ f(t) \bigr\}$ untuk suatu fungsi $f(t)$.
+Definisikan
+\emph{\myindex{transformasi Laplace invers}} sebagai
+\begin{equation*}
+{\mathcal{L}}^{-1} \bigl\{ F(s) \bigr\} \overset{\text{def}}{=} f(t) .
+\end{equation*}
+Terdapat rumus integral untuk invers tersebut, tetapi rumusnya tidak sesederhana
+transformasi itu sendiri---rumus tersebut memerlukan bilangan kompleks dan integral lintasan.
+Bagi kita, cukup
+menghitung invers
+menggunakan \tablevref{lt:table}.
+
+\begin{example}
+Ambil
+$F(s) = \frac{1}{s+1}$.  Carilah transformasi Laplace inversnya.
+
+Kita melihat tabel untuk memperoleh
+\begin{equation*}
+{\mathcal{L}}^{-1} \left\{ \frac{1}{s+1} \right\} = 
+e^{-t} .
+\end{equation*}
+\end{example}
+
+Karena transformasi Laplace linear, transformasi Laplace
+invers juga linear.  Artinya,
+\begin{equation*}
+{\mathcal{L}}^{-1} \bigl\{ A F(s) + B G(s) \bigr\} =
+A {\mathcal{L}}^{-1} \bigl\{ F(s) \bigr\} +
+B {\mathcal{L}}^{-1} \bigl\{ G(s) \bigr\} .
+\end{equation*}
+Tentu saja, kita juga memiliki
+${\mathcal{L}}^{-1} \bigl\{ A F(s) \bigr\} =
+A {\mathcal{L}}^{-1} \bigl\{ F(s) \bigr\}$.
+%Let us demonstrate how linearity can be used.
+
+\begin{example}
+Ambil
+$F(s) = \frac{s^2+s+1}{s^3+s}$.  Carilah transformasi Laplace inversnya.
+
+Pertama, kita menggunakan \emph{\myindex{metode pecahan parsial}} untuk menulis $F$ dalam bentuk yang
+memungkinkan kita menggunakan \tablevref{lt:table}.  Kita faktorkan penyebut sebagai
+$s(s^2+1)$ dan tulis
+\begin{equation*}
+\frac{s^2+s+1}{s^3+s}
+=
+\frac{A}{s} + 
+\frac{Bs+C}{s^2+1} .
+\end{equation*}
+Dengan menyamakan penyebut pada ruas kanan
+dan menyamakan pembilang, kita memperoleh
+$A(s^2+1) + s(Bs+C) = s^2+s+1$.  Dengan menguraikan dan menyamakan koefisien,
+kita memperoleh $A+B = 1$, $C=1$, $A=1$,
+dan dengan demikian $B=0$.  Dengan
+kata lain,
+\begin{equation*}
+F(s) =
+\frac{s^2+s+1}{s^3+s}
+=
+\frac{1}{s} +
+\frac{1}{s^2+1} .
+\end{equation*}
+Berdasarkan linearitas transformasi Laplace invers, kita memperoleh 
+\begin{equation*}
+{\mathcal{L}}^{-1} \left\{ 
+\frac{s^2+s+1}{s^3+s} \right\}
+=
+{\mathcal{L}}^{-1} \left\{ 
+\frac{1}{s} \right\} 
++
+{\mathcal{L}}^{-1} \left\{ 
+\frac{1}{s^2+1} \right\}
+=
+1 + 
+\sin t .
+\end{equation*}
+\end{example}
+
+Sifat berguna lainnya adalah apa yang disebut 
+\emph{\myindex{sifat pergeseran}} atau
+\emph{\myindex{sifat pergeseran pertama}}
+\begin{equation*}
+\mybxbg{~~
+\mathcal{L} \bigl\{ e^{-at} f(t) \bigr\} = F(s+a) ,
+~~}
+\end{equation*}
+dengan $F(s)$ transformasi Laplace dari $f(t)$.
+
+\begin{exercise}
+Turunkan sifat pergeseran pertama
+dari definisi transformasi Laplace.
+\end{exercise}
+
+Sifat pergeseran dapat digunakan, misalnya, ketika penyebutnya berupa
+bentuk kuadratik yang lebih rumit yang mungkin muncul dalam metode pecahan
+parsial.  Kita melengkapkan kuadrat dan menulis bentuk kuadratik tersebut sebagai ${(s+a)}^2+b$,
+lalu menggunakan sifat pergeseran.
+
+\begin{example}
+Carilah
+${\mathcal{L}}^{-1} \left\{ \frac{1}{s^2+4s+8} \right\}$.
+
+Pertama, kita melengkapkan kuadrat sehingga penyebut menjadi ${(s+2)}^2+4$.  
+Kita memperoleh
+\begin{equation*}
+{\mathcal{L}}^{-1} \left\{ \frac{1}{s^2+4} \right\}
+=
+\frac{1}{2}
+{\mathcal{L}}^{-1} \left\{ \frac{2}{s^2+2^2} \right\}
+=
+\frac{1}{2} \sin (2t) .
+\end{equation*}
+Terakhir, kita gabungkan semuanya dengan sifat pergeseran untuk memperoleh
+\begin{equation*}
+{\mathcal{L}}^{-1} \left\{ \frac{1}{s^2+4s+8} \right\} = 
+{\mathcal{L}}^{-1} \left\{ \frac{1}{{(s+2)}^2+4} \right\}
+=
+\frac{1}{2}\,e^{-2t} \sin (2t) .
+\end{equation*}
+\end{example}
+
+Kita sering ingin dapat menerapkan transformasi Laplace invers pada
+fungsi rasional, yakni, fungsi berbentuk
+\begin{equation*}
+\frac{F(s)}{G(s)}
+\end{equation*}
+dengan $F(s)$ dan $G(s)$ polinom.  Jika $\frac{F(s)}{G(s)}$ adalah
+transformasi Laplace dari fungsi berorde eksponensial,
+nilainya menuju nol ketika $s \to \infty$, sehingga derajat $F(s)$
+harus lebih kecil daripada derajat $G(s)$.  Fungsi rasional semacam itu
+disebut \emph{fungsi rasional sejati\index{fungsi rasional sejati}},
+dan kita selalu dapat menerapkan metode pecahan parsial tanpa pembagian
+polinom.
+Tentu saja, kita tetap perlu dapat memfaktorkan penyebut menjadi
+suku-suku linear dan kuadratik, yang melibatkan pencarian akar
+penyebut tersebut.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Carilah transformasi Laplace dari $3+t^5+\sin (\pi t)$.
+\end{exercise}
+
+\begin{exercise}
+Carilah transformasi Laplace dari $a+bt+ct^2$ untuk suatu konstanta $a$, $b$, dan
+$c$.
+\end{exercise}
+
+\begin{exercise}
+Carilah transformasi Laplace dari $A \cos (\omega t) + B \sin (\omega t)$.
+\end{exercise}
+
+\begin{exercise}
+Carilah transformasi Laplace dari $\cos^2 (\omega t)$.
+\end{exercise}
+
+\begin{exercise}
+Carilah transformasi Laplace invers dari $\frac{4}{s^2-9}$.
+\end{exercise}
+
+\begin{exercise}
+Carilah transformasi Laplace invers dari $\frac{2s}{s^2-1}$.
+\end{exercise}
+
+\begin{exercise}
+Carilah transformasi Laplace invers dari $\frac{1}{{(s-1)}^2(s+1)}$.
+\end{exercise}
+
+\begin{exercise}
+Carilah transformasi Laplace dari $f(t) =
+\begin{cases}
+t & \text{jika } \; t \geq 1, \\
+0 & \text{jika } \; t < 1.
+\end{cases}$
+\end{exercise}
+
+\begin{exercise}
+Carilah transformasi Laplace invers dari $\frac{s}{(s^2+s+2)(s+4)}$.
+\end{exercise}
+
+\begin{exercise}
+Carilah transformasi Laplace dari $\sin\bigl(\omega (t-a)\bigr)$.
+\end{exercise}
+
+\begin{exercise}
+Carilah transformasi Laplace dari $t\sin(\omega t)$.  Petunjuk: Lakukan integrasi
+parsial beberapa kali.
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Carilah transformasi Laplace dari $4{(t+1)}^2$.
+\end{exercise}
+\exsol{%
+$\frac{8}{s^3} + \frac{8}{s^2} + \frac{4}{s}$
+}
+
+\begin{exercise}
+Carilah transformasi Laplace invers dari $\frac{8}{s^3(s+2)}$.
+\end{exercise}
+\exsol{%
+$2t^2-2t+1-e^{-2t}$
+}
+
+\begin{exercise}
+Carilah transformasi Laplace dari $te^{-t}$.  Petunjuk: Sifat pergeseran.
+\end{exercise}
+\exsol{%
+$\frac{1}{{(s+1)}^2}$
+}
+
+\begin{exercise}
+Carilah transformasi Laplace dari $\sin(t)e^{-t}$.  Petunjuk: Integrasikan secara parsial.
+\end{exercise}
+\exsol{%
+$\frac{1}{s^2+2s+2}$
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Transformasi turunan dan ODE}
+\label{transformsofders:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{2 kuliah\EPref{, \S7.2--7.3 dalam \cite{EP}}\BDref{,
+\S6.2 dan \S6.3 dalam \cite{BD}}}
+
+\subsection{Transformasi turunan}
+
+Mari kita lihat bagaimana transformasi Laplace digunakan untuk persamaan diferensial.
+Pertama, kita cari transformasi Laplace dari turunan suatu fungsi.
+Andaikan $g(t)$ adalah fungsi terdiferensialkan
+berorde eksponensial, yakni, $\lvert g(t) \rvert \leq M e^{ct}$ untuk suatu
+$M$ dan $c$.  Jadi, $\mathcal{L} \bigl\{ g(t) \bigr\}$ ada, dan terlebih lagi,
+$\lim_{t\to\infty} e^{-st}g(t) = 0$ ketika $s > c$.  Maka
+\begin{equation*}
+\mathcal{L} \bigl\{ g'(t) \bigr\}
+=
+\int_0^\infty
+e^{-st}
+g'(t) \,dt
+=
+\Bigl[e^{-st} g(t) \Bigr]_{t=0}^\infty
+-
+\int_0^\infty
+(-s)\,
+e^{-st}
+g(t) \,dt
+=
+-g(0) + s \mathcal{L} \bigl\{ g(t) \bigr\} .
+\end{equation*}
+Kita mengulangi prosedur ini untuk turunan tingkat lebih tinggi.
+Hasilnya
+dicantumkan dalam \tablevref{ltd:table}.  Prosedur tersebut juga berlaku untuk fungsi kontinu mulus
+sepotong-sepotong, yakni, fungsi kontinu dengan turunan
+kontinu sepotong-sepotong.
+%The fact that the function is of
+%exponential order is used to show that the limits appearing above 
+%exist.  We will not worry much about this fact.
+
+\begin{table}[h!t]
+\mybeginframe
+\capstart
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+$f(t)$ & $\mathcal{L} \bigl\{ f(t) \bigr\} = F(s)$ \\
+\midrule
+$g'(t)$ & $sG(s)-g(0)$ \\[4pt]
+$g''(t)$ & $s^2G(s)-sg(0)-g'(0)$ \\[4pt]
+$g'''(t)$ & $s^3G(s)-s^2g(0)-sg'(0)-g''(0)$ \\[4pt]
+\bottomrule
+\end{tabular}
+\end{center}
+\caption{Transformasi Laplace dari turunan
+($G(s) = \mathcal{L} \bigl\{ g(t) \bigr\}$
+seperti biasa).\label{ltd:table}}
+\myendframe
+\end{table}
+
+\begin{exercise}
+Verifikasikan \tablevref{ltd:table}.
+\end{exercise}
+
+\subsection{Menyelesaikan ODE dengan transformasi Laplace}
+
+Perhatikan bahwa transformasi Laplace mengubah pendiferensialan menjadi
+perkalian dengan $s$.
+Sifat inilah yang menjadikan transformasi tersebut berguna untuk diterapkan 
+pada persamaan diferensial.
+
+\begin{example}
+Perhatikan masalah
+\begin{equation*}
+x''(t) + x(t) = \cos (2t), \quad x(0) = 0, \quad x'(0) = 1 .
+\end{equation*}
+Kita akan mengambil transformasi Laplace dari kedua ruas persamaan.
+Seperti biasa, dengan $X(s)$ kita menyatakan transformasi Laplace dari
+$x(t)$.
+\begin{align*}
+\mathcal{L} \bigl\{ x''(t) + x(t) \bigr\} & = \mathcal{L} \bigl\{ \cos (2t) \bigr\} , \\
+s^2 X(s) -sx(0)-x'(0) + X(s) & = \frac{s}{s^2 + 4} .
+\end{align*}
+Sekarang kita substitusikan syarat awal---sehingga perhitungan menjadi lebih
+ringkas---untuk memperoleh
+\begin{equation*}
+s^2 X(s) -1 + X(s) = \frac{s}{s^2 + 4} .
+\end{equation*}
+Kita selesaikan untuk $X(s)$,
+\begin{equation*}
+X(s) = \frac{s}{(s^2+1)(s^2 + 4)} + \frac{1}{s^2+1} .
+\end{equation*}
+Kita menggunakan pecahan parsial (latihan) untuk menulis
+\begin{equation*}
+X(s) =\frac{1}{3} \, \frac{s}{s^2+1} - 
+\frac{1}{3}\, \frac{s}{s^2+4} + \frac{1}{s^2+1} .
+\end{equation*}
+Sekarang ambil transformasi Laplace invers untuk memperoleh
+\begin{equation*}
+x(t) =\frac{1}{3}  \cos (t) -
+\frac{1}{3} \cos (2t) + \sin (t) .
+\end{equation*}
+\end{example}
+
+Prosedur untuk persamaan linear berkoefisien konstan adalah sebagai berikut:
+Ambil suatu persamaan diferensial biasa
+dalam peubah waktu $t$.  Terapkan transformasi Laplace
+untuk mengubah persamaan tersebut menjadi persamaan aljabar (bukan diferensial) dalam
+ranah frekuensi.  Semua $x(t)$, $x'(t)$, $x''(t)$, dan seterusnya akan
+diubah menjadi $X(s)$, $sX(s) - x(0)$, $s^2X(s) - sx(0) - x'(0)$,
+dan seterusnya.
+Selesaikan persamaan tersebut untuk $X(s)$.
+Kemudian, dengan mengambil transformasi invers, jika memungkinkan, carilah $x(t)$.
+
+Perlu diperhatikan bahwa karena tidak setiap fungsi memiliki transformasi Laplace,
+tidak setiap persamaan dapat diselesaikan dengan cara ini.  Selain itu, jika persamaan
+tersebut bukan ODE linear berkoefisien konstan\@,
+maka penerapan transformasi Laplace mungkin tidak
+menghasilkan persamaan aljabar.
+
+\subsection{Menggunakan fungsi Heaviside}
+
+Sebelum beralih ke persamaan yang lebih umum
+daripada yang dapat kita selesaikan sebelumnya,
+kita ingin membahas fungsi Heaviside.  Lihat \figurevref{lt:heavisidefig}
+untuk grafiknya.
+\begin{equation*}
+u(t) =
+\begin{cases}
+0 & \text{jika } \; t < 0 , \\ 
+1 & \text{jika } \; t \geq 0 .
+\end{cases}
+\end{equation*}
+
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{lt-heaviside}{%
+Grafik fungsi tangga satuan pada interval dari minus 1 hingga 1.
+Fungsi bernilai nol untuk t negatif dan 1 untuk t positif.}
+\caption{Grafik fungsi Heaviside (tangga satuan)
+$u(t)$.\label{lt:heavisidefig}}
+\end{myfig}
+
+Fungsi Heaviside berguna untuk
+menggabungkan fungsi lain atau memotong fungsi.  Biasanya kita menggunakan
+$u(t-a)$ untuk suatu konstanta $a$;  kita hanya menggeser grafik ke
+kanan sebesar $a$.  Artinya, $u(t-a) = 0$ ketika $t < a$ dan $u(t-a) = 1$
+ketika $t \geq a$.  Sebagai contoh, andaikan $f(t)$ adalah suatu \myquote{sinyal},
+dan kita mulai menerima $\sin t$ pada waktu $t=\pi$.
+Fungsi $f(t)$ kemudian didefinisikan sebagai
+\begin{equation*}
+f(t) =
+\begin{cases}
+0 & \text{jika } \; t < \pi , \\ 
+\sin t & \text{jika } \; t \geq \pi .
+\end{cases}
+\end{equation*}
+Dengan menggunakan fungsi Heaviside, $f(t)$ dapat
+ditulis sebagai
+\begin{equation*}
+f(t) = u(t - \pi) \, \sin t .
+\end{equation*}
+Demikian pula, fungsi tangga yang bernilai $1$ pada interval $[1,2)$ dan $0$
+di tempat lain ditulis sebagai
+\begin{equation*}
+u(t - 1) - u(t-2) .
+\end{equation*}
+Dengan fungsi Heaviside, kita dapat menyatakan fungsi yang didefinisikan sepotong-sepotong.
+Jika $f(t) = t$ ketika $t$ berada dalam $[0,1]$,
+$f(t) = -t+2$
+ketika $t$ berada dalam $[1,2]$, dan $f(t) = 0$ selain itu, maka kita menulis
+\begin{equation*}
+f(t) = t \, \bigl( u(t) - u(t-1) \bigr) + 
+(-t+2) \, \bigl( u(t - 1) - u(t-2) \bigr) .
+\end{equation*}
+
+Bagaimana fungsi Heaviside berinteraksi dengan transformasi
+Laplace?  Kita telah melihat bahwa (untuk $a \geq 0$)
+\begin{equation*}
+\mathcal{L} \bigl\{ u(t-a) \bigr\} = \frac{e^{-as}}{s} .
+\end{equation*}
+Perhitungan ini dapat digeneralisasi menjadi suatu \emph{\myindex{sifat pergeseran}}
+atau \emph{\myindex{sifat pergeseran kedua}}:
+\begin{equation} \label{ltd:sseq}
+\mybxbg{~~
+\mathcal{L} \bigl\{ f(t-a) \, u(t-a) \bigr\}
+= e^{-as} \mathcal{L} \bigl\{ f(t) \bigr\}
+\qquad (a \geq 0).
+~~}
+\end{equation}
+Sebagai contoh,
+\begin{equation*}
+\mathcal{L} \bigl\{ t \, u(t-1) \bigr\}
+=
+\mathcal{L} \bigl\{ \bigl( (t-1) + 1\bigr) \, u(t-1) \bigr\}
+= e^{-s} \mathcal{L} \bigl\{ t+1 \bigr\}
+= e^{-s} \left(\frac{1}{s^2} + \frac{1}{s} \right)
+.
+\end{equation*}
+
+\begin{example} \label{lt:rocketex}
+Perhatikan
+sistem massa-pegas
+\begin{equation*}
+x''(t) + x(t) = f(t) , \quad x(0) = 0, \quad x'(0) = 0,
+\end{equation*}
+dengan $f(t) = 1$ jika $1 \leq t < 5$ dan nol selain itu.
+Fungsi $f(t)$ tidak periodik dan didefinisikan sepotong-sepotong; hal itu tidak menjadi masalah bagi Laplace.
+Bayangkan sebuah
+roket yang dipasang pada massa dinyalakan selama 4 detik mulai dari
+$t=1$.  Atau, bayangkan suatu rangkaian RLC yang tegangannya dinaikkan
+dengan laju konstan selama 4 detik mulai dari $t=1$, lalu dipertahankan tetap 
+kembali
+mulai dari $t=5$ (ingat bahwa $f(t)$ merepresentasikan turunan
+tegangan dalam rangkaian RLC).
+
+\pagebreak[2]
+Kita menulis $f(t) = u(t-1) - u(t-5)$.  Kita mentransformasikan persamaan dan menyubstitusikan
+syarat awal seperti sebelumnya
+\begin{equation*}
+s^2 X(s) + X(s) = \frac{e^{-s}}{s} - \frac{e^{-5s}}{s} .
+\end{equation*}
+Kita selesaikan untuk $X(s)$,
+\begin{equation*}
+X(s) = \frac{e^{-s}}{s(s^2+1)} - \frac{e^{-5s}}{s(s^2+1)} .
+\end{equation*}
+Kita serahkan sebagai latihan kepada pembaca untuk menunjukkan bahwa
+\begin{equation*}
+{\mathcal{L}}^{-1} \left\{ \frac{1}{s(s^2+1)} \right\}
+= 1 - \cos t .
+\end{equation*}
+Dengan kata lain,
+$\mathcal{L} \{ 1 - \cos t  \} = 
+\frac{1}{s(s^2+1)}$.
+Dengan menggunakan sifat pergeseran kedua \eqref{ltd:sseq}, kita memperoleh
+\begin{equation*}
+{\mathcal{L}}^{-1} \left\{ \frac{e^{-s}}{s(s^2+1)} \right\}
+=
+{\mathcal{L}}^{-1} \bigl\{
+e^{-s}
+\mathcal{L} \{ 1 - \cos t \}
+\bigr\}
+=
+\bigl( 1 - \cos (t-1) \bigr) \, u(t-1) .
+\end{equation*}
+Demikian pula,
+\begin{equation*}
+{\mathcal{L}}^{-1} \left\{ \frac{e^{-5s}}{s(s^2+1)} \right\}
+=
+{\mathcal{L}}^{-1} \bigl\{
+e^{-5s}
+\mathcal{L} \{ 1 - \cos t \}
+\bigr\}
+=
+\bigl( 1 - \cos (t-5) \bigr) \, u(t-5) .
+\end{equation*}
+Jadi, solusinya adalah
+\begin{equation*}
+x(t) = 
+\bigl( 1 - \cos (t-1) \bigr) \, u(t-1) -
+\bigl( 1 - \cos (t-5) \bigr) \, u(t-5) .
+\end{equation*}
+Grafik solusi ini diberikan dalam \figurevref{lt:heavisideexfig}.
+
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{lt-heavisideex}{%
+Grafik suatu fungsi untuk t dari 0 hingga 20. Fungsi bermula pada nol
+dan tetap nol hingga t sama dengan 1, ketika grafik melengkung ke atas dan mengikuti kurva
+sinusoidal yang sedikit terdeformasi sebelum menetap menjadi kurva sinusoidal biasa
+setelah t sama dengan 5.}
+\caption{Grafik $x(t)$.\label{lt:heavisideexfig}}
+\end{myfig}
+\end{example}
+
+\subsection{Fungsi transfer}
+
+Transformasi Laplace menghasilkan konsep berikut yang berguna untuk mempelajari
+perilaku keadaan tunak suatu sistem linear.  Perhatikan persamaan
+berbentuk
+\begin{equation*}
+L x = f(t) ,
+\end{equation*}
+dengan $L$ operator diferensial linear berkoefisien konstan.
+Kemudian $f(t)$ biasanya dipandang sebagai masukan sistem dan $x(t)$
+dipandang sebagai keluaran sistem.  Sebagai contoh, untuk sistem massa-pegas,
+masukannya adalah fungsi pemaksa dan keluarannya adalah perilaku
+massa.  Kita ingin memiliki cara yang mudah untuk mempelajari perilaku
+sistem bagi berbagai masukan.
+
+Andaikan bahwa
+semua syarat awal bernilai nol.
+Kita mengambil transformasi Laplace dari persamaan untuk memperoleh, bagi suatu $A(s)$,
+\begin{equation*}
+A(s) X(s) = F(s) .
+\end{equation*}
+Dengan menyelesaikan rasio $\nicefrac{X(s)}{F(s)}$, diperoleh apa yang disebut
+\emph{\myindex{fungsi transfer}}
+$H(s) = \nicefrac{1}{A(s)}$,
+yakni,
+\begin{equation*}
+H(s) = \frac{X(s)}{F(s)} .
+\end{equation*}
+Dengan kata lain, $X(s) = H(s) F(s)$.  Kita memperoleh ketergantungan aljabar
+keluaran sistem pada masukannya.  Sekarang kita dapat dengan mudah mempelajari
+perilaku keadaan tunak sistem untuk berbagai masukan hanya dengan
+mengalikan dengan fungsi transfer.
+Selain itu, $H(s)$ dapat dihitung tanpa mengetahui secara tepat
+persamaannya, yaitu dengan mengamati keluaran $X(s)$ untuk masukan tertentu $F(s)$.
+Setelah $H(s)$ diketahui, Anda dapat mencari keluaran untuk sembarang masukan.
+
+\begin{example}
+Diberikan $x'' + \omega_0^2 x = f(t)$ (andaikan syarat awal bernilai nol),
+mari kita cari fungsi transfernya.
+
+Pertama, kita mengambil transformasi Laplace dari persamaan,
+\begin{equation*}
+s^2 X(s) + \omega_0^2 X(s) = F(s) .
+\end{equation*}
+Sekarang kita selesaikan fungsi transfer $\nicefrac{X(s)}{F(s)}$,
+\begin{equation*}
+H(s) = \frac{X(s)}{F(s)} = \frac{1}{s^2 + \omega_0^2} .
+\end{equation*}
+
+Mari kita lihat cara menggunakan fungsi transfer.  Andaikan kita memiliki masukan konstan
+$f(t) = 1$.  Maka $F(s) = \nicefrac{1}{s}$, dan
+\begin{equation*}
+X(s) = H(s) F(s) = \frac{1}{s^2+\omega_0^2} \, \frac{1}{s} .
+\end{equation*}
+Dengan mengambil transformasi Laplace invers dari $X(s)$, kita memperoleh
+\begin{equation*}
+x(t) = \frac{1-\cos(\omega_0 t)}{\omega_0^2} .
+\end{equation*}
+Demikian pula, untuk sembarang masukan lain $F(s)$, keluarannya adalah
+$X(s) = H(s) F(s) = \frac{1}{s^2+\omega_0^2} \, F(s)$.
+\end{example}
+
+\subsection{Transformasi integral}
+
+Salah satu keunggulan transformasi Laplace adalah kemampuannya menangani
+persamaan integral.  Ini adalah persamaan yang memuat integral, bukan
+turunan fungsi.  Sifat dasar, yang dapat dibuktikan
+dengan menerapkan definisi dan melakukan integrasi parsial, adalah 
+\begin{equation*}
+\mybxbg{~~
+\mathcal{L} \left\{
+\int_0^t f(\tau) \, d\tau
+\right\} = \frac{1}{s} \, F(s) .
+~~}
+\end{equation*}
+Kadang-kadang berguna (misalnya,\ untuk menghitung transformasi invers) menulis
+hubungan ini sebagai
+\begin{equation*}
+\int_0^t f(\tau) \, d\tau
+=
+{\mathcal{L}}^{-1} \left\{
+\frac{1}{s} \, F(s) \right\} .
+\end{equation*}
+
+\begin{example}
+Untuk menghitung ${\mathcal{L}}^{-1} \left\{\frac{1}{s(s^2+1)}\right\}$, kita dapat
+menerapkan aturan pengintegralan ini:
+\begin{equation*}
+{\mathcal{L}}^{-1} \left\{
+\frac{1}{s} \, \frac{1}{s^2+1} \right\} 
+=
+\int_0^t 
+{\mathcal{L}}^{-1} \left\{
+\frac{1}{s^2+1} \right\} \, d\tau
+=
+\int_0^t 
+\sin \tau \, d\tau
+=
+1 - \cos t .
+\end{equation*}
+\end{example}
+
+
+\begin{example}
+Persamaan yang memuat integral dari fungsi yang tidak diketahui
+disebut \emph{\myindex{persamaan integral}}.
+Perhatikan
+\begin{equation*}
+x(t) - t = \int_0^t x(\tau) \, d\tau ,
+\end{equation*}
+dengan kita ingin menyelesaikan untuk $x(t)$.
+Kita menerapkan transformasi Laplace untuk memperoleh
+\begin{equation*}
+X(s) - \frac{1}{s^2} = \frac{1}{s} X(s) ,
+\end{equation*}
+dengan $X(s) = \mathcal{L} \bigl\{ x(t) \bigr\}$.  Jadi,
+\begin{equation*}
+X(s) = \frac{1}{s(s-1)} = \frac{1}{s-1} - \frac{1}{s} .
+\end{equation*}
+Transformasi Laplace invers memberikan
+\begin{equation*}
+x(t) = e^t - 1 .
+\end{equation*}
+%More complicated integral
+%equations can also be solved using convolution, about which we will
+%learn in the next section.
+\end{example}
+
+\subsection{Fungsi periodik}
+
+Pembaca mungkin bertanya: Bagaimana dengan fungsi periodik sebagai masukan $f(t)$?
+Artinya, suatu fungsi $f(t)$ dengan $f(t) = f(t+P)$ untuk suatu konstanta $P$ (periodenya).
+Baiklah, mari kita hitung $F(s)$:
+\begin{equation*}
+\begin{split}
+F(s) & = \int_0^\infty e^{-st} f(t) \, dt
+%mbxlatex \\
+%mbxlatex &
+= \int_0^P e^{-st} f(t) \, dt
++ \int_P^\infty e^{-st} f(t) \, dt
+\\
+& = \int_0^P e^{-st} f(t) \, dt
++ \int_0^\infty e^{-s(t+P)} f(t+P) \, dt
+%mbxlatex \\
+%mbxlatex &
+= \int_0^P e^{-st} f(t) \, dt
++ e^{-Ps} \int_0^\infty e^{-st} f(t) \, dt
+\\
+& = \int_0^P e^{-st} f(t) \, dt
++ e^{-Ps} F(s) .
+\end{split}
+\end{equation*}
+Dengan menyelesaikan untuk $F(s)$, kita memperoleh
+\begin{equation*}
+F(s)
+=
+\frac{1}{1-e^{-Ps}}
+\int_0^P e^{-st} f(t) \, dt .
+\end{equation*}
+Seperti sebelumnya, menghitung inversnya akan lebih rumit dan mungkin
+melibatkan pencarian dalam tabel.  Kita tidak perlu membahas perhitungan invers
+di sini.
+
+\begin{example}
+Andaikan $f(t)$ adalah suatu versi \emph{\myindex{gelombang gigi gergaji}}, yakni,
+misalkan
+$f(t) = t$ untuk $0 \leq t < 1$
+dan gunakan $f(t)=f(t+1)$ untuk memperluasnya secara periodik.  Jadi,
+$f(t) = t-1$ untuk $1 \leq t < 2$, 
+$f(t) = t-2$ untuk $2 \leq t < 3$, dan seterusnya.  Kemudian $P=1$ dan
+perhitungan singkat dengan integrasi parsial memberikan
+\begin{equation*}
+F(s) =
+\frac{1}{1-e^{-s}}
+\int_0^1 e^{-st} t \, dt 
+=
+\frac{1}{1-e^{-s}}
+\left(
+\frac{-e^{-s}}{s}-\frac{e^{-s}}{s^2} + \frac{1}{s^2}
+\right)
+=
+\frac{-e^{-s}}{(1-e^{-s})s} + \frac{1}{s^2} .
+\end{equation*}
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Dengan menggunakan fungsi Heaviside, tuliskan fungsi sepotong-sepotong
+yang bernilai 0 untuk $t < 0$, $t^2$ untuk $t$ dalam $[0,1]$, dan $t$ untuk $t > 1$.
+\end{exercise}
+
+\begin{exercise}
+Dengan menggunakan transformasi Laplace, selesaikan
+\begin{equation*}
+m x'' + c x' + k x = 0 , \quad x(0) = a, \quad x'(0) = b ,
+\end{equation*}
+dengan $m > 0$, $c > 0$, $k > 0$, dan
+$c^2 - 4km > 0$ (sistem teredam berlebih).
+\end{exercise}
+
+\begin{exercise}
+Dengan menggunakan transformasi Laplace, selesaikan
+\begin{equation*}
+m x'' + c x' + k x = 0 , \quad x(0) = a, \quad x'(0) = b ,
+\end{equation*}
+dengan $m > 0$, $c > 0$, $k > 0$, dan
+$c^2 - 4km < 0$ (sistem teredam kurang).
+\end{exercise}
+
+\begin{exercise}
+Dengan menggunakan transformasi Laplace, selesaikan
+\begin{equation*}
+m x'' + c x' + k x = 0 , \quad x(0) = a, \quad x'(0) = b ,
+\end{equation*}
+dengan $m > 0$, $c > 0$, $k > 0$, dan
+$c^2 = 4km$ (sistem teredam kritis).
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $x'' + x = u(t-1)$ dengan syarat awal $x(0) = 0$ dan $x'(0) = 0$.
+\end{exercise}
+
+\begin{exercise}
+Tunjukkan sifat \myquote{pendiferensialan transformasi}.  Andaikan
+$\mathcal{L} \bigl\{ f(t) \bigr\} = F(s)$, lalu tunjukkan
+\begin{equation*}
+\mathcal{L} \bigl\{ -t f(t) \bigr\} = F'(s) .
+\end{equation*}
+Petunjuk: Diferensialkan di bawah tanda integral.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $x''' + x = t^3 u(t-1)$ dengan syarat awal $x(0) = 1$ dan $x'(0) =
+0$, $x''(0) = 0$.
+\end{exercise}
+
+\begin{exercise}
+Dengan menggunakan definisi transformasi Laplace,
+justifikasikan sifat pergeseran kedua: 
+$\mathcal{L} \bigl\{ f(t-a) \, u(t-a) \bigr\}
+= e^{-as} \mathcal{L} \bigl\{ f(t) \bigr\}$.
+\end{exercise}
+
+\begin{exercise}
+Perhatikan sistem massa-pegas dengan roket dari
+\exampleref{lt:rocketex}.  Kita melihat bahwa solusi terus berosilasi
+setelah roket berhenti menyala.  Amplitudo osilasi bergantung
+pada lamanya roket dinyalakan (selama 4 detik dalam contoh).
+\begin{tasks}
+\task
+Carilah rumus untuk amplitudo osilasi yang dihasilkan
+dalam hubungannya dengan lama waktu roket dinyalakan.
+\task
+ Apakah terdapat
+waktu taknol (jika ya, berapa?)
+ketika roket menyala dan osilasi yang dihasilkan
+memiliki amplitudo 0 (massa tidak bergerak)?
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Definisikan
+\begin{equation*}
+f(t) =
+\begin{cases}
+{(t-1)}^2 & \text{jika } \; 1 \leq t < 2, \\
+3-t & \text{jika } \; 2 \leq t < 3, \\
+0 & \text{selain itu} .
+\end{cases}
+\end{equation*}
+\begin{tasks}
+\task Buat sketsa grafik $f(t)$.
+\task Tuliskan $f(t)$ menggunakan fungsi Heaviside.
+\task Selesaikan $x''+x=f(t)$, $x(0)=0$, $x'(0) = 0$ menggunakan transformasi Laplace.
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Carilah fungsi transfer untuk 
+$m x'' + c x' + kx = f(t)$,
+$x(0)=0$, $x'(0)=0$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $Lx = f(t)$, $x(0)=0$, $x'(0)=0$
+untuk fungsi masukan $f(t) = t$ memberikan keluaran
+$x(t) = 2e^{-t} + te^{-t} + (t-2)$.
+\begin{tasks}
+\task Carilah $F(s)$, $X(s)$, dan fungsi transfer $H(s)$.
+\task Jika masukannya adalah $f(t) = \sin(t)$, carilah keluaran baru $x(t)$.
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f(t) = 1$ jika $0 \leq t < 1$ dan $f(t)=0$ jika $1 \leq t < 2$, lalu
+perluas secara periodik untuk semua $t \geq 0$ sehingga $f(t)=f(t+2)$.  Hitung
+transformasi Laplace $F(s)$.
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Dengan menggunakan fungsi Heaviside $u(t)$, tuliskan fungsi
+\begin{equation*}
+f(t) =
+\begin{cases}
+0 & \text{jika } \; \phantom{1 \leq {}} t < 1  , \\
+t-1 & \text{jika } \; 1 \leq t < 2 , \\
+1 & \text{jika } \; 2 \leq t .
+\end{cases}
+\end{equation*}
+\end{exercise}
+\exsol{%
+$f(t) =
+(t-1)\bigl(u(t-1) - u(t-2)\bigr) + 
+u(t-2)$
+}
+
+\begin{exercise}
+Selesaikan $x''-x = (t^2-1) u(t-1)$ dengan syarat awal $x(0)=1$, $x'(0) = 2$
+menggunakan transformasi Laplace.
+\end{exercise}
+\exsol{%
+$x(t) = (2e^{t-1}-t^2-1) u(t-1) -\frac{1}{2}e^{-t}+\frac{3}{2}e^t$
+}
+ 
+\begin{exercise}
+Carilah fungsi transfer untuk 
+$x' + x = f(t)$,
+$x(0)=0$.
+\end{exercise}
+\exsol{%
+$H(s) = \frac{1}{s+1}$
+}
+
+\begin{exercise}
+Andaikan $Lx = f(t)$, $x(0)=0$, $x'(0)=0$
+untuk fungsi masukan $f(t) = 4$ memberikan keluaran
+$x(t) = 1 - \cos(2 t)$.  Carilah $F(s)$, $X(s)$, dan fungsi transfer
+$H(s)$.
+\end{exercise}
+\exsol{%
+$F(s) = \frac{4}{s}$,
+$X(s) = \frac{1}{s} - \frac{s}{s^2+4}$,
+$H(s) = \frac{1}{s^2+4}$.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Konvolusi}
+\label{convolution:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1 atau 1.5 kuliah\EPref{, \S7.2 dalam \cite{EP}}\BDref{,
+\S6.6 dalam \cite{BD}}}
+
+\subsection{Konvolusi}
+
+Transformasi Laplace dari suatu hasil kali bukanlah hasil kali
+transformasi-transformasinya.  Namun, harapan belum hilang.  Kita hanya perlu menggunakan
+jenis \myquote{hasil kali} yang berbeda.
+Ambil
+dua fungsi $f(t)$ dan $g(t)$ yang didefinisikan untuk $t \geq 0$,
+dan definisikan \emph{\myindex{konvolusi}}%
+\footnote{%
+Bagi yang pernah melihat konvolusi sebelumnya, Anda mungkin pernah
+melihatnya didefinisikan sebagai
+$(f * g)(t) =
+\int_{-\infty}^\infty f(\tau) g(t-\tau) \, d\tau$.  Definisi ini
+bersepakat dengan \eqref{ltc:convdef} jika Anda mendefinisikan $f(t)$ dan $g(t)$
+bernilai nol untuk $t < 0$.
+Ketika membahas transformasi Laplace, definisi yang kita berikan sudah
+memadai.  Namun, konvolusi muncul dalam banyak penerapan lain,
+yang mungkin mengharuskan Anda menggunakan definisi lebih umum dengan batas takhingga.
+}
+dari $f(t)$ dan $g(t)$ sebagai
+\begin{equation} \label{ltc:convdef}
+\mybxbg{~~
+(f * g)(t) \overset{\text{def}}{=}
+\int_0^t f(\tau) g(t-\tau) \, d\tau .
+~~}
+\end{equation}
+Seperti yang dapat dilihat, konvolusi dua fungsi dari $t$ adalah fungsi lain dari $t$.
+
+
+\begin{example}
+Ambil $f(t) = e^t$ dan $g(t) = t$ untuk $t \geq 0$.  Maka 
+\begin{equation*}
+(f*g)(t)
+=
+\int_0^t e^\tau (t-\tau) \, d\tau
+=
+e^t - t - 1 .
+\end{equation*}
+Untuk menyelesaikan integral tersebut, kita
+melakukan satu kali integrasi parsial.
+\end{example}
+
+\begin{example} \label{ltc:convsincosex}
+Ambil $f(t) = \sin (\omega t)$ dan $g(t) = \cos (\omega t)$ untuk $t \geq 0$.
+Maka 
+\begin{equation*}
+(f*g)(t)
+=
+\int_0^t  \sin ( \omega \tau ) \,
+\cos \bigl( \omega (t-\tau) \bigr) \, d\tau .
+\end{equation*}
+Terapkan identitas
+\begin{equation*}
+\cos (\theta) \sin (\psi) =
+\frac{1}{2} \, \bigl( \sin (\theta + \psi) - \sin (\theta - \psi) \bigr) ,
+\end{equation*}
+untuk memperoleh
+\begin{equation*}
+\begin{split}
+(f*g)(t)
+& =
+\int_0^t
+\frac{1}{2} \, \bigl( \sin (\omega t) - \sin (\omega t - 2 \omega \tau
+) \bigr) \, d\tau
+\\
+& =
+\left[ \frac{1}{2} \, \tau  \sin (\omega t) - \frac{1}{4\omega} \, \cos
+(\omega t - 2 \omega \tau) \right]_{\tau=0}^t
+\\
+& = \frac{1}{2} \, t \sin (\omega t) .
+\end{split}
+\end{equation*}
+Rumus tersebut hanya berlaku untuk $t \geq 0$.  Fungsi $f$, $g$,
+dan $f*g$ tidak terdefinisi untuk $t < 0$.
+\end{example}
+
+Konvolusi memiliki banyak sifat yang membuatnya berperilaku seperti hasil kali.
+Misalkan $c$ adalah konstanta dan $f$, $g$, serta $h$ adalah fungsi.
+Memverifikasikan bahwa
+\begin{align*}
+& f * g = g * f , \\
+& (c f) * g = f * (c g) = c (f*g) , \\
+& (f+g) * h = f * h + g * h , \\
+& ( f * g ) * h = f * ( g * h ) .
+\end{align*}
+merupakan latihan kalkulus. Sifat pertama berarti bahwa $(f * g)(t) =
+\int_0^t f(\tau) g(t-\tau) \, d\tau = 
+\int_0^t f(t-\tau) g(\tau) \, d\tau$.
+Sifat yang paling menarik bagi kita adalah teorema berikut.
+
+\begin{theorem}
+Jika $f(t)$ dan $g(t)$ berorde eksponensial, maka
+$(f*g)(t)$ juga demikian dan
+\begin{equation*}
+\mybxbg{~~
+\mathcal{L} \bigl\{ (f*g)(t) \bigr\}
+=
+\mathcal{L} \left\{ \int_0^t f(\tau) g(t-\tau) \, d\tau \right\}
+=
+\mathcal{L} \bigl\{ f(t) \bigr\} \mathcal{L} \bigl\{ g(t) \bigr\} .
+~~}
+\end{equation*}
+\end{theorem}
+
+Dengan kata lain, transformasi Laplace dari suatu konvolusi adalah hasil kali
+transformasi-transformasi Laplace:
+${\mathcal{L}} \bigl\{ (f*g)(t) \bigr\} = F(s)G(s)$,
+atau sebaliknya,
+${\mathcal{L}}^{-1} \bigl\{ F(s) G(s) \bigr\} = (f*g)(t)$.
+
+\begin{example}
+Andaikan kita ingin mencari transformasi Laplace invers dari
+\begin{equation*}
+\frac{1}{s^2(s+1)} = 
+\frac{1}{s^2}
+\,
+\frac{1}{s+1}
+.
+\end{equation*}
+Kita mengenali dua entri dari \tableref{ltd:table}:
+\begin{equation*}
+\mathcal{L}^{-1} 
+\left\{
+\frac{1}{s^2} \right\} 
+= t
+\qquad \text{dan} \qquad
+\mathcal{L}^{-1} 
+\left\{
+\frac{1}{s+1} \right\}
+= e^{-t}
+.
+\end{equation*}
+Oleh karena itu, kita mengonvolusikan $t$ dan $e^{-t}$,
+\begin{equation*}
+\mathcal{L}^{-1}
+\left\{
+\frac{1}{s^2}
+\,
+\frac{1}{s+1}
+\right\}
+=
+\int_0^t
+\tau e^{-(t-\tau)} \,d\tau
+=
+e^{-t}+t-1 .
+\end{equation*}
+Perhitungan integral tersebut melibatkan integrasi parsial.
+\end{example}
+
+\subsection{Menyelesaikan ODE}
+
+Contoh berikut menunjukkan kekuatan penuh konvolusi dan
+transformasi Laplace.  Kita dapat memberikan solusi bagi
+masalah osilasi paksa untuk sembarang fungsi pemaksa sebagai integral
+tentu.
+
+\begin{example} \label{example:undampedforcedbylaplacearbitrhs}
+Carilah solusi bagi
+\begin{equation*}
+x'' + \omega_0^2 x = f(t) , \quad x(0) = 0, \quad x'(0) = 0 ,
+\avoidbreak
+\end{equation*}
+untuk sembarang fungsi $f(t)$.
+
+Pertama, kita menerapkan transformasi Laplace pada persamaan.  Nyatakan
+transformasi dari $x(t)$ dengan $X(s)$ dan transformasi dari $f(t)$ dengan
+$F(s)$ seperti biasa.  Kita memperoleh
+\begin{equation*}
+s^2 X(s) + \omega_0^2 X(s) = F(s) ,
+\end{equation*}
+atau dengan kata lain,
+\begin{equation*}
+X(s) = \frac{1}{s^2+ \omega_0^2} F(s).
+\end{equation*}
+Ingat bahwa $H(s) = \frac{1}{s^2+ \omega_0^2}$ adalah fungsi transfer.
+Kita mengetahui
+\begin{equation*}
+{\mathcal{L}}^{-1} \left\{
+\frac{1}{s^2+ \omega_0^2}
+\right\} = 
+\frac{\sin (\omega_0 t)}{\omega_0} .
+\end{equation*}
+Oleh karena itu,
+\begin{equation*}
+x(t) = 
+\int_0^t
+\frac{\sin (\omega_0 \tau)}{\omega_0}
+f(t-\tau) \, d\tau ,
+\end{equation*}
+atau, jika kita membalik urutannya,
+\begin{equation*}
+x(t) = 
+\int_0^t
+f(\tau) 
+\frac{\sin \bigl( \omega_0 (t-\tau) \bigr)}{\omega_0} \, d\tau .
+\end{equation*}
+\end{example}
+
+Perhatikan satu lagi ciri dari contoh di atas.
+Sekarang kita dapat melihat cara transformasi Laplace
+menangani \myindex{resonansi}.  Andaikan $f(t) =
+\cos (\omega_0 t)$.  Maka
+\begin{equation*}
+x(t) = 
+\int_0^t
+\frac{\sin (\omega_0 \tau)}{\omega_0} \,
+\cos \bigl( \omega_0 (t-\tau) \bigr) \, d\tau
+=
+\frac{1}{\omega_0}
+\int_0^t
+\sin ( \omega_0 \tau ) \,
+\cos \bigl(\omega_0 (t-\tau) \bigr) \, d\tau .
+\end{equation*}
+Kita telah menghitung konvolusi sinus dan kosinus dalam
+\exampleref{ltc:convsincosex}.  Jadi,
+\begin{equation*}
+x(t) =
+\left(
+\frac{1}{\omega_0}
+\right) \,
+\left(
+\frac{1}{2} \,
+t
+\sin ( \omega_0 t )
+\right)
+=
+\frac{1}{2 \omega_0} \,
+t
+\sin ( \omega_0 t ).
+\end{equation*}
+Perhatikan $t$ di depan sinus.  Karena itu, solusi bertumbuh tanpa
+batas ketika $t$ membesar, yang berarti terjadi resonansi.
+
+Gagasan umumnya di sini adalah bahwa jika $H(s)$ merupakan fungsi transfer, maka
+$X(s)=H(s)F(s)$.
+Jika kita mencari $h(t) = {\mathcal{L}}^{-1}\bigl\{ H(s) \bigr\}$, maka
+\begin{equation*}
+x(t)
+= {\mathcal{L}}^{-1}\bigl\{ X(s) \bigr\}
+= {\mathcal{L}}^{-1}\bigl\{ F(s)H(s) \bigr\}
+= (f * h)(t)
+= \int_0^t f(\tau) h(t-\tau) \, d\tau .
+\end{equation*}
+Jadi,
+kita dapat menyelesaikan setiap persamaan berkoefisien konstan dengan sembarang fungsi
+pemaksa $f(t)$ sebagai integral tentu menggunakan konvolusi.
+Integral tentu, alih-alih solusi berbentuk tertutup, biasanya sudah memadai
+untuk kebanyakan keperluan praktis.  Menghitung integral tentu secara numerik
+tidaklah sulit.
+
+\subsection{Persamaan integral Volterra}
+
+Suatu persamaan integral\index{persamaan integral}
+yang melibatkan konvolusi
+dan muncul, misalnya, ketika mempelajari sistem dengan efek ingatan
+adalah \emph{\myindex{persamaan integral Volterra}}%
+\footnote{Dinamai menurut matematikawan Italia
+\href{https://en.wikipedia.org/wiki/Vito_Volterra}{Vito Volterra}
+(1860--1940).}
+\begin{equation*}
+x(t) = f(t) + \int_0^t g(t-\tau) x(\tau) \, d\tau .
+\end{equation*}
+Di sini $f(t)$ dan $g(t)$ adalah fungsi yang diketahui dan $x(t)$ adalah fungsi takdiketahui yang
+ingin kita cari.
+Kita memiliki $x(t) = f(t) + (g * x)(t)$, jadi pertanyaannya adalah:
+Jika konvolusi
+menyerupai hasil kali, dapatkah kita juga \myquote{membagi} untuk menyelesaikan persamaan ini?
+Kita menerapkan transformasi Laplace pada persamaan untuk memperoleh 
+\begin{equation*}
+X(s) = F(s) + G(s) X(s) ,
+\end{equation*}
+dengan $X(s)$, $F(s)$, dan $G(s)$ masing-masing transformasi Laplace dari $x(t)$, $f(t)$, dan
+$g(t)$.  Kita memperoleh
+\begin{equation*}
+X(s) = \frac{F(s)}{1-G(s)} .
+\end{equation*}
+Untuk mencari $x(t)$, sekarang kita perlu mencari 
+transformasi Laplace invers dari $X(s)$.
+
+\begin{example}
+Selesaikan
+\begin{equation*}
+x(t) =  e^{-t} + \int_0^t \sinh(t-\tau) x(\tau) \, d\tau .
+\end{equation*}
+
+Kita menerapkan transformasi Laplace untuk memperoleh
+\begin{equation*}
+X(s) = \frac{1}{s+1} + \frac{1}{s^2-1} X(s) ,
+\end{equation*}
+atau
+\begin{equation*}
+X(s) = \frac{\frac{1}{s+1}}{1- \frac{1}{s^2-1}}
+=
+\frac{s-1}{s^2 - 2}
+=
+\frac{s}{s^2 - 2}
+-
+\frac{1}{s^2 - 2} .
+\end{equation*}
+Tidak sulit menerapkan \tablevref{lt:table} untuk memperoleh
+\begin{equation*}
+x(t) = \cosh \bigl( \sqrt{2} \, t \bigr) -
+\frac{1}{\sqrt{2}} \sinh \bigl( \sqrt{2}\, t \bigr).
+\end{equation*}
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Misalkan $f(t) = t^2$ untuk $t \geq 0$, dan $g(t) = u(t-1)$.  Hitung
+$f * g$.
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f(t) = t$ untuk $t \geq 0$, dan $g(t) = \sin t $ untuk $t \geq 0$.  Hitung
+$f * g$.
+\end{exercise}
+
+\begin{exercise}
+Carilah solusi bagi
+\begin{equation*}
+m x'' + c x' + k x = f(t) , \quad x(0) = 0, \quad x'(0) = 0 ,
+\end{equation*}
+untuk sembarang fungsi $f(t)$, dengan $m > 0$, $c > 0$, $k > 0$,
+dan $c^2 - 4km > 0$ (sistem teredam berlebih).
+Tuliskan solusi sebagai integral tentu.
+\end{exercise}
+
+\begin{exercise}
+Carilah solusi bagi
+\begin{equation*}
+m x'' + c x' + k x = f(t) , \quad x(0) = 0, \quad x'(0) = 0 ,
+\end{equation*}
+untuk sembarang fungsi $f(t)$, dengan $m > 0$, $c > 0$, $k > 0$,
+dan $c^2 - 4km < 0$ (sistem teredam kurang).
+Tuliskan solusi sebagai integral tentu.
+\end{exercise}
+
+\begin{exercise}
+Carilah solusi bagi
+\begin{equation*}
+m x'' + c x' + k x = f(t) , \quad x(0) = 0, \quad x'(0) = 0 ,
+\end{equation*}
+untuk sembarang fungsi $f(t)$, dengan $m > 0$, $c > 0$, $k > 0$,
+dan $c^2 = 4km$ (sistem teredam kritis).
+Tuliskan solusi sebagai integral tentu.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan
+\begin{equation*}
+x(t) =  e^{-t} + \int_0^t \cos(t-\tau) x(\tau) \, d\tau .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Selesaikan
+\begin{equation*}
+x(t) =  \cos t + \int_0^t \cos(t-\tau) x(\tau) \, d\tau .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Hitung ${\mathcal{L}}^{-1} \left\{ \frac{s}{{(s^2+4)}^2} \right\}$ menggunakan
+konvolusi.
+\end{exercise}
+
+\begin{exercise}
+Tuliskan solusi bagi
+$x''-2x=e^{-t^2}$, $x(0)=0$, $x'(0)=0$ sebagai
+integral tentu.  Petunjuk: Jangan mencoba menghitung
+transformasi Laplace dari $e^{-t^2}$.
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Misalkan $f(t) = \cos t$ untuk $t \geq 0$, dan $g(t) = e^{-t}$.  Hitung
+$f * g$.
+\end{exercise}
+\exsol{%
+$\frac{1}{2}(\cos t + \sin t - e^{-t})$
+}
+
+\begin{exercise}
+Hitung ${\mathcal{L}}^{-1} \left\{ \frac{5}{s^4+s^2} \right\}$ menggunakan
+konvolusi.
+\end{exercise}
+\exsol{%
+$5t-5\sin t$
+}
+
+\begin{exercise}
+Selesaikan $x''+x = \sin t$, $x(0) = 0$, $x'(0)=0$ menggunakan konvolusi.
+\end{exercise}
+\exsol{%
+$\frac{1}{2}(\sin t - t \cos t)$
+}
+
+\begin{exercise}
+Selesaikan $x'''+x' = f(t)$, $x(0) = 0$, $x'(0)=0$, $x''(0)=0$ menggunakan konvolusi.
+Tuliskan hasilnya sebagai integral tentu.
+\end{exercise}
+\exsol{%
+$\int_0^t f(\tau) \bigl( 1 - \cos (t-\tau)\bigr)\, d\tau$
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Delta Dirac dan respons impuls}
+\label{diracdelta:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1 atau 1.5 kuliah\EPref{, \S7.6 dalam \cite{EP}}\BDref{,
+\S6.5 dalam \cite{BD}}}
+
+\subsection{Pulsa persegi panjang}
+
+Sering kali kita mempelajari suatu sistem fisik dengan memberikan pulsa singkat 
+dan kemudian melihat apa yang dilakukan sistem tersebut.
+Perilaku yang dihasilkan
+sering disebut \emph{\myindex{respons impuls}},
+dan memahaminya memberi tahu kita cara sistem merespons sembarang masukan.
+Mari kita lihat apa yang dimaksud dengan pulsa.
+Jenis pulsa paling sederhana adalah
+\emph{\myindex{pulsa persegi panjang}}\index{pulsa}
+yang didefinisikan oleh
+\begin{equation*}
+\varphi(t) = 
+\begin{cases}
+0 & \text{jika } \; \phantom{a \leq {}} t < a , \\
+M & \text{jika } \; a \leq t < b , \\
+0 & \text{jika } \; b \leq t .
+\end{cases}
+\end{equation*}
+Lihat \figurevref{lt:sqpulse} untuk grafiknya.
+
+%14 is number of lines, must be adjusted
+\begin{mywrapfig}[14]{3.25in}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{lt-sqpulse}{%
+Grafik pulsa persegi panjang yang ditampilkan dari t sama dengan 0 hingga t sama dengan 3.
+Fungsi bernilai nol hingga t sama dengan 0.5, kemudian bernilai 2
+antara t sama dengan 0.5 dan t sama dengan 1.0, lalu kembali bernilai nol sejak
+t sama dengan 1.0 dan seterusnya.}
+\caption{Contoh pulsa persegi panjang dengan $a=0.5$, $b=1$, dan $M = 2$.\label{lt:sqpulse}}
+\end{mywrapfig}
+
+Perhatikan bahwa
+\begin{equation*}
+\varphi(t) = M \bigl( u(t-a) - u(t-b) \bigr) ,
+\end{equation*}
+dengan $u(t)$ fungsi tangga satuan.
+Transformasi Laplace dari pulsa persegi panjang adalah
+\begin{equation*}
+\begin{split}
+{\mathcal{L}} \bigl\{ \varphi(t) \bigr\}
+& =
+{\mathcal{L}} \bigl\{ M \bigl( u(t-a) - u(t-b) \bigr)  \bigr\}
+\\
+& =
+M
+\frac{e^{-as} - e^{-bs}}{s} .
+\end{split}
+\end{equation*}
+
+Demi kesederhanaan, tetapkan $a=0$.
+Kita juga
+menetapkan $M = \nicefrac{1}{b}$ sehingga
+\begin{equation*}
+\int_0^\infty \varphi(t) \,dt = 1 .
+\end{equation*}
+Artinya, kita memiliki pulsa dengan \myquote{massa satuan.}
+Dengan cara ini, untuk setiap $b$, pulsa tersebut memiliki \myquote{daya dorong} yang sama.
+Untuk pulsa semacam itu,
+\begin{equation*}
+{\mathcal{L}} \bigl\{ \varphi(t) \bigr\}
+=
+{\mathcal{L}} \left\{ \frac{u(t) - u(t-b)}{b}  \right\}
+=
+\frac{1 - e^{-bs}}{bs} .
+\end{equation*}
+Kita menginginkan $b$ sangat kecil; kita ingin agar
+pulsanya sangat singkat dan sangat tinggi.  Dengan membiarkan $b$ menuju nol, kita sampai
+pada konsep fungsi delta Dirac.  Limit
+dari $\frac{1-e^{-bs}}{bs}$
+ketika $b \to 0$ adalah $1$, jadi kita mencari suatu \myquote{fungsi} yang transformasi
+Laplace-nya adalah $1$.
+
+\subsection{Fungsi delta}
+
+\emph{\myindex{Fungsi delta Dirac}}\index{fungsi delta}%
+\footnote{Dinamai menurut fisikawan dan matematikawan Inggris
+\href{https://en.wikipedia.org/wiki/Paul_Dirac}{Paul Adrien Maurice Dirac}
+(1902--1984).}
+tidak persis berupa fungsi; objek ini kadang-kadang disebut
+\emph{\myindex{fungsi tergeneralisasi}}.  Kita
+menghindari perincian yang tidak perlu dan cukup mengatakan bahwa ini adalah suatu objek
+yang sebenarnya tidak bermakna kecuali jika kita mengintegralkannya.  Motivasinya adalah
+bahwa kita menginginkan suatu \myquote{fungsi} $\delta(t)$
+sedemikian sehingga 
+untuk setiap fungsi kontinu $f(t)$,
+\begin{equation*}
+\mybxbg{~~
+\int_{-\infty}^\infty \delta(t) f(t) \,dt = f(0) .
+~~}
+\end{equation*}
+Rumus tersebut seharusnya berlaku jika kita mengintegralkan pada sembarang interval yang memuat 0,
+bukan hanya $(-\infty,\infty)$.
+Jadi, $\delta(t)$ adalah suatu \myquote{fungsi} 
+dengan seluruh \myquote{massanya} berada di satu titik $t=0$.  Untuk sembarang
+interval\footnote{%
+Penting bahwa kita menganggap $c$ dan $d$ sebagai bagian dari
+interval.  Integral ini dapat ditulis sebagai $\int_{c-}^{d+}$.}
+$[c,d]$,
+\begin{equation*}
+\int_c^d \delta(t) \,dt = 
+\begin{cases}
+1 & \text{jika interval $[c,d]$ memuat 0, yakni\ } c \leq 0 \leq d, \\
+0 & \text{selain itu.}
+\end{cases}
+\end{equation*}
+Sayangnya, tidak ada fungsi semacam itu dalam arti klasik.  Secara
+informal, Anda dapat membayangkan bahwa $\delta(t)$ bernilai nol untuk $t \neq 0$ dan entah bagaimana
+takhingga di $t=0$.
+
+Cara yang baik untuk memandang $\delta(t)$ adalah sebagai limit pulsa
+dengan panjang yang semakin kecil,
+dan masing-masing memiliki integral $1$.  Sebagai contoh, 
+perhatikan pulsa persegi panjang
+$\varphi(t)$ seperti di atas dengan $a=0$ dan
+$M=\nicefrac{1}{b}$, yakni, $\varphi(t) = \frac{u(t) - u(t-b)}{b}$.
+Hitung
+\begin{equation*}
+\int_{-\infty}^\infty \varphi(t) f(t) \,dt =
+\int_{-\infty}^\infty \frac{u(t) - u(t-b)}{b} f(t) \,dt =
+\frac{1}{b} \int_{0}^b f(t) \,dt .
+\end{equation*}
+Jika $f(t)$ kontinu di $t=0$, maka
+untuk $b$ yang sangat kecil, fungsi $f(t)$ kira-kira sama dengan $f(0)$ pada
+interval $[0,b]$.  Kita aproksimasikan integral tersebut:
+\begin{equation*}
+\frac{1}{b} \int_{0}^b f(t) \,dt \approx
+\frac{1}{b} \int_{0}^b f(0) \,dt = f(0) .
+\end{equation*}
+Jadi,
+\begin{equation*}
+\lim_{b\to 0}
+\int_{-\infty}^\infty \varphi(t) f(t) \,dt =
+\lim_{b\to 0}
+\frac{1}{b} \int_{0}^b f(t) \,dt  = f(0) .
+\end{equation*}
+
+Karena itu, mari kita terima $\delta(t)$ sebagai objek yang dapat
+diintegralkan.  Kita sering ingin menggeser $\delta$ ke titik lain, misalnya
+$\delta(t-a)$.  Dalam hal ini,
+\begin{equation*}
+\int_{-\infty}^\infty \delta(t-a) f(t) \,dt = f(a) .
+\end{equation*}
+Perhatikan bahwa $\delta(a-t)$ adalah objek yang sama dengan $\delta(t-a)$.
+Dengan demikian, konvolusi $\delta(t)$ dengan $f(t)$ kembali berupa $f(t)$,
+\begin{equation*}
+(f * \delta) (t) = 
+\int_{0}^t f(\tau) \delta(t-\tau) \,d\tau
+= f(t) .
+\end{equation*}
+
+Karena kita dapat mengintegralkan $\delta(t)$, kita menghitung transformasi Laplace-nya:
+\begin{equation*}
+\mybxbg{~~
+{\mathcal{L}} \bigl\{ \delta(t-a) \bigr\}
+=
+\int_{0}^\infty e^{-st} \delta(t-a) \,dt = e^{-as} .
+~~}
+\end{equation*}
+Secara khusus,
+\begin{equation*}
+{\mathcal{L}} \bigl\{ \delta(t) \bigr\} = 1 .
+\end{equation*}
+
+\begin{remark} \label{remark:deltaderivofjump}
+Transformasi Laplace dari $\delta(t-a)$ seharusnya 
+merupakan transformasi Laplace dari turunan fungsi Heaviside
+$u(t-a)$, jika fungsi Heaviside memiliki turunan.
+Pertama,
+\begin{equation*}
+{\mathcal{L}} \bigl\{ u(t-a) \bigr\} = \frac{e^{-as}}{s}.
+\end{equation*}
+Untuk memperoleh bentuk transformasi Laplace dari turunannya,
+kita mengalikan dengan $s$ sehingga diperoleh $e^{-as}$, yang merupakan transformasi Laplace
+dari $\delta(t-a)$.
+Kita melihat hal yang sama dengan menggunakan pengintegralan,
+\begin{equation*}
+\int_0^t \delta(s-a)\,ds = u(t-a) .
+\end{equation*}
+Jadi, dalam arti tertentu,
+\begin{equation*}
+%mbxSTARTIGNORE
+\text{``}
+%mbxENDIGNORE
+%mbxlatex \text{"}
+\quad \frac{d}{dt} \Bigl[ u(t-a) \Bigr] = \delta(t-a) . \quad
+%mbxSTARTIGNORE
+\text{''}
+%mbxENDIGNORE
+%mbxlatex \text{"}
+\end{equation*}
+Alur penalaran ini memungkinkan kita membicarakan turunan fungsi dengan
+diskontinuitas loncatan.
+Kita dapat memandang
+turunan fungsi Heaviside $u(t-a)$ sebagai sesuatu yang takhingga
+di $a$, yang tepat sama dengan pemahaman intuitif kita tentang fungsi
+delta.
+\end{remark}
+
+\begin{example}
+Mari kita hitung ${\mathcal{L}}^{-1} \left\{ \frac{s+1}{s} \right\}$.
+Sejauh ini, kita hanya menghitung transformasi invers dari
+fungsi rasional sejati dalam peubah $s$.
+Artinya, derajat pembilang lebih rendah daripada derajat penyebut.
+Hal itu tidak berlaku bagi $\frac{s+1}{s}$.
+Kita dapat menggunakan fungsi delta untuk menghitung,
+\begin{equation*}
+{\mathcal{L}}^{-1} \left\{ \frac{s+1}{s} \right\}
+=
+{\mathcal{L}}^{-1} \left\{ 1 + \frac{1}{s} \right\}
+=
+{\mathcal{L}}^{-1} \{ 1 \}
++
+{\mathcal{L}}^{-1} \left\{ \frac{1}{s} \right\}
+=
+\delta(t) + 1 .
+\end{equation*}
+Objek yang dihasilkan adalah fungsi
+tergeneralisasi dan hanya bermakna jika diletakkan di bawah integral.
+\end{example}
+
+\subsection{Respons impuls}
+
+Seperti yang telah kita katakan, dalam persamaan diferensial
+$L x = f(t)$,
+kita memandang $f(t)$ sebagai masukan dan $x(t)$ sebagai keluaran.
+Kita memandang fungsi delta sebagai impuls, sehingga
+untuk mencari respons terhadap impuls, kita menggunakan
+fungsi delta sebagai pengganti $f(t)$.
+Solusi bagi
+\begin{equation*}
+L x = \delta(t)
+\end{equation*}
+disebut
+\emph{\myindex{respons impuls}}.
+
+\begin{example}
+Selesaikan (carilah respons impuls)
+\begin{equation} \label{eq:lteximpulseresp}
+x'' + \omega_0^2 x = \delta(t) , \quad x(0) = 0, \quad x'(0) = 0 .
+\end{equation}
+
+Terapkan transformasi Laplace pada persamaan, dan nyatakan
+transformasi $x(t)$ dengan $X(s)$:
+\begin{equation*}
+s^2 X(s) + \omega_0^2 X(s) = 1 ,
+\qquad \text{sehingga} \qquad
+X(s) = \frac{1}{s^2+ \omega_0^2} .
+\end{equation*}
+Transformasi Laplace invers menghasilkan (untuk $t > 0$)
+\begin{equation*}
+x(t) = 
+\frac{\sin (\omega_0 t)}{\omega_0} .
+\end{equation*}
+\end{example}
+
+\begin{remark}
+Pembaca yang cermat mungkin menyadari bahwa tampaknya bukan $x'(0)=0$.
+Namun, sebenarnya kita ingin memandang bahwa $x(t)=0$ untuk $t \leq 0$, sehingga $x(t)$
+memiliki \myquote{sudut} di $t=0$, yakni,
+$x'$ memiliki diskontinuitas loncatan di sana,
+dan hal itulah yang menghasilkan $\delta(t)$ ketika kita mengambil $x''$.
+Lihat \remarkref{remark:deltaderivofjump}.
+Syarat awalnya sesungguhnya adalah $x'(0-) = \lim_{t \uparrow 0} x'(0) = 0$.
+\end{remark}
+
+Mari kita perhatikan sesuatu tentang contoh di atas. 
+Dalam \exampleref{example:undampedforcedbylaplacearbitrhs},
+kita memperoleh bahwa
+ketika masukannya $f(t)$, solusi bagi $Lx = f(t)$
+diberikan oleh
+\begin{equation*}
+x(t) = 
+\int_0^t
+f(\tau) 
+\frac{\sin \bigl( \omega_0 (t-\tau) \bigr)}{\omega_0} \, d\tau .
+\end{equation*}
+Artinya, \emph{solusi untuk sembarang masukan diberikan sebagai
+konvolusi dengan respons impuls}.  Mari kita lihat alasannya.
+Untuk fungsi $f(t)$ dan $h(t)$ yang bernilai nol untuk $t$ negatif,
+\begin{equation*}
+(f * h)''(t) =
+\frac{d^2}{dt^2}\left[
+\int_0^t
+f(\tau) 
+h(t-\tau) \, d\tau \right]
+=
+\int_0^t
+f(\tau) 
+h''(t-\tau) \, d\tau
+= (f * h'')(t) .
+\end{equation*}
+Kita mendiferensialkan dua kali di bawah
+integral\footnote{%
+Anda mungkin khawatir karena $h$ kita
+sebenarnya tidak terdiferensialkan dua kali; bahkan, $h'(0)$
+tidak ada sebagai turunan biasa, dan $h''$ melibatkan
+fungsi $\delta$.
+Untuk perhitungan ini, Anda dapat berpura-pura bahwa $h$ terdiferensialkan dua kali
+dan menerapkan aturan Leibniz standar
+(fakta bahwa $h(t)=0$ untuk $t < 0$ penting), atau
+memperhatikan bahwa untuk fungsi semacam itu,
+integralnya sebenarnya diambil pada
+$(-\infty,\infty)$ alih-alih pada $[0,t]$.}.
+Andaikan $h(t)$ adalah respons impuls (solusi bagi $h''+\omega_0^2 h = \delta(t)$).
+Jika kita mengonvolusikan seluruh persamaan \eqref{eq:lteximpulseresp},
+ruas kirinya menjadi
+\begin{equation*}
+f * (h'' + \omega_0^2 h) =
+(f * h'') + \omega_0^2 (f * h) =
+(f * h)'' + \omega_0^2 (f * h) .
+\end{equation*}
+Ruas kanannya menjadi
+\begin{equation*}
+(f * \delta)(t) = f(t).
+\end{equation*}
+Oleh karena itu, jika $h$ adalah respons impuls,
+maka $x(t) = (f * h)(t)$ adalah solusi bagi
+\begin{equation*}
+x'' + \omega_0^2 x = f(t) .
+\end{equation*}
+
+Prosedur tersebut berlaku untuk setiap persamaan linear berkoefisien konstan
+$Lx = f(t)$.
+Jika Anda mencari respons impuls $h$
+(solusi bagi $Lh = \delta(t)$),
+Anda juga mengetahui cara memperoleh keluaran $x(t)$ untuk sembarang masukan $f(t)$.
+Kita cukup mengonvolusikan, $x(t) = (f * h)(t)$.
+Seperti yang mungkin telah Anda perhatikan dalam contoh,
+respons impuls sebenarnya hanyalah transformasi Laplace invers
+dari fungsi transfer, yakni,
+$h(t) = {\mathcal{L}}^{-1} \bigl\{ H(s) \bigr\}$.
+
+\subsection{Pembengkokan balok tiga titik}
+\index{pembengkokan balok tiga titik}
+
+Contoh penerapan yang sangat berbeda
+yang memuat fungsi delta adalah representasi
+beban titik pada balok baja.  Perhatikan suatu balok
+berpanjang $L$ yang bertumpu pada dua tumpuan sederhana di kedua ujungnya.  Misalkan $x$ menyatakan
+posisi pada balok, dan misalkan $y(x)$ menyatakan lendutan balok dalam
+arah vertikal.  Lendutan $y(x)$ memenuhi
+\emph{\myindex{persamaan Euler--Bernoulli}}%
+\footnote{Dinamai menurut para matematikawan Swiss
+\href{https://en.wikipedia.org/wiki/Jacob_Bernoulli}{Jacob Bernoulli}
+(1654--1705),
+\href{https://en.wikipedia.org/wiki/Daniel_Bernoulli}{Daniel Bernoulli}
+(1700--1782), keponakan Jacob,
+dan
+\href{https://en.wikipedia.org/wiki/Euler}{Leonhard Paul Euler}
+(1707--1783).},
+\begin{equation*}
+EI \frac{d^4 y}{dx^4} = F(x) ,
+\end{equation*}
+dengan $E$ dan $I$ adalah konstanta\footnote{$E$ adalah modulus elastisitas dan $I$
+adalah momen kedua luas.  Kita tidak perlu membahas perinciannya dan cukup
+memandang keduanya sebagai konstanta tertentu yang diberikan.}, dan
+$F(x)$ adalah gaya yang diterapkan per satuan panjang pada posisi $x$.  Situasi
+yang kita minati adalah ketika gaya diterapkan pada satu titik seperti dalam
+\figurevref{lt:beambendingfig}.
+
+\begin{myfig}
+\capstart
+\inputpdft{beam-bending}{%
+Diagram sebuah balok di sepanjang sumbu x yang ditahan pada titik-titik tetap di
+x sama dengan 0 dan di suatu x positif. Balok melendut ke bawah
+oleh beban yang diberi label F kali delta kali kuantitas x dikurangi a
+di salah satu titik tengah.}
+\caption{Pembengkokan tiga titik.\label{lt:beambendingfig}}
+\end{myfig}
+
+Persamaannya menjadi
+\begin{equation*}
+EI \frac{d^4 y}{dx^4} = -F \delta(x-a) ,
+\end{equation*}
+dengan $x=a$ titik tempat massa diterapkan.  Konstanta $F$ adalah gaya
+yang diterapkan dan tanda minus menunjukkan bahwa gaya mengarah ke bawah, yakni, dalam
+arah $y$ negatif.  Titik-titik ujung
+balok memenuhi syarat
+\begin{align*}
+& y(0) = 0, \qquad y''(0) = 0, \\
+& y(L) = 0, \qquad y''(L) = 0.
+\end{align*}
+Lihat \sectionref{sec:appeig} untuk informasi lebih lanjut tentang syarat
+titik ujung yang diterapkan pada balok.
+
+
+\begin{example} \label{lt:examplebeam}
+Andaikan panjang balok adalah 2, dan $EI=1$ demi
+kesederhanaan.  Andaikan pula bahwa gaya $F=1$ diterapkan di $x=1$.
+Artinya, kita memiliki persamaan
+\begin{equation*}
+\frac{d^4 y}{dx^4} = -\delta(x-1) ,
+\end{equation*}
+dan syarat titik ujungnya adalah
+\begin{equation*}
+y(0) = 0, \qquad y''(0) = 0, \qquad
+y(2) = 0, \qquad y''(2) = 0.
+\end{equation*}
+
+Kita dapat mengintegralkan, tetapi menggunakan transformasi Laplace
+bahkan lebih mudah.
+Kita menerapkan transformasi
+dalam peubah $x$, bukan peubah $t$.  Sekali lagi, kita nyatakan
+transformasi $y(x)$ dengan $Y(s)$.
+\begin{equation*}
+s^4Y(s)-s^3y(0)-s^2y'(0)-sy''(0)-y'''(0)
+= -e^{-s}.
+\end{equation*}
+Kita memperhatikan bahwa $y(0) = 0$ dan $y''(0) = 0$.  Misalkan
+$C_1 = y'(0)$ dan $C_2=y'''(0)$.
+Kita selesaikan untuk $Y(s)$,
+\begin{equation*}
+Y(s) = \frac{-e^{-s}}{s^4} + \frac{C_1}{s^2}+ \frac{C_2}{s^4} .
+\end{equation*}
+Kita mengambil transformasi Laplace invers dengan menggunakan 
+sifat pergeseran kedua \eqref{ltd:sseq} untuk suku
+pertama:
+\begin{equation*}
+y(x) = \frac{-{(x-1)}^3}{6} u(x-1) + C_1 x + \frac{C_2}{6} x^3 .
+\end{equation*}
+Kita masih perlu menerapkan dua syarat titik ujung.  Karena syarat tersebut
+berada di $x=2$, kita cukup mengganti $u(x-1) = 1$ ketika mengambil
+turunannya.  Oleh karena itu,
+\begin{equation*}
+0 = y(2) = \frac{-{(2-1)}^3}{6} + C_1 (2) + \frac{C_2}{6} 2^3 =
+\frac{-1}{6} + 2 C_1 + \frac{4}{3} C_2 ,
+\end{equation*}
+dan
+\begin{equation*}
+0 = y''(2) = \frac{-3\cdot 2 \cdot (2-1)}{6} + \frac{C_2}{6} 3\cdot 2 \cdot 2
+ = -1 + 2 C_2 .
+\end{equation*}
+Jadi, $C_2 = \frac{1}{2}$.
+Dengan menyelesaikan untuk $C_1$ menggunakan persamaan pertama, kita memperoleh
+$C_1 = \frac{-1}{4}$.  Solusi kita untuk lendutan balok adalah
+\begin{equation*}
+y(x) = \frac{-{(x-1)}^3}{6} u(x-1) - \frac{x}{4} + \frac{x^3}{12} .
+\end{equation*}
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Selesaikan (carilah respons impuls)
+$x'' + x' + x = \delta(t)$, $x(0) = 0$, $x'(0)=0$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan (carilah respons impuls)
+$x'' + 2 x' + x = \delta(t)$, $x(0) = 0$, $x'(0)=0$.
+\end{exercise}
+
+\begin{exercise}
+Suatu pulsa dapat datang kemudian dan dapat lebih besar.
+Selesaikan 
+$x'' + 4 x = 4\delta(t-1)$, $x(0) = 0$, $x'(0)=0$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f(t)$ dan $g(t)$ adalah fungsi terdiferensialkan
+(dan turunannya kontinu),
+serta andaikan $f(t) = g(t) = 0$ untuk semua $t \leq 0$.  Tunjukkan bahwa
+\begin{equation*}
+(f * g)'(t) = (f' * g)(t) = (f * g')(t) .
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Andaikan $L x = \delta(t)$, $x(0) = 0$, $x'(0) = 0$, memiliki solusi
+$x(t) = t e^{-t}$ untuk $t > 0$.  Carilah solusi bagi
+$Lx = t^2$, $x(0) = 0$, $x'(0) = 0$ untuk $t > 0$.
+\end{exercise}
+
+\begin{exercise}
+Hitung
+${\mathcal{L}}^{-1} \left\{ \frac{s^2+s+1}{s^2} \right\}$.
+\end{exercise}
+
+\begin{exercise}[menantang]
+Selesaikan \exampleref{lt:examplebeam} dengan mengintegralkan 4 kali dalam peubah $x$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan kita memiliki balok berpanjang $1$ yang ditumpu sederhana pada kedua ujungnya dan
+andaikan gaya $F=1$ diterapkan di $x=\nicefrac{3}{4}$ dalam arah
+ke bawah.  Andaikan $EI=1$ demi kesederhanaan.  Carilah lendutan balok
+$y(x)$.
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Selesaikan (carilah respons impuls)
+$x'' = \delta(t)$, $x(0) = 0$, $x'(0)=0$.
+\end{exercise}
+\exsol{%
+$x(t) = t$
+}
+
+\begin{exercise}
+Selesaikan (carilah respons impuls)
+$x' + a x = \delta(t)$, $x(0) = 0$.
+\end{exercise}
+\exsol{%
+$x(t) = e^{-at}$
+}
+%$sX+aX = 1$
+%$X = \frac{1}{s+a}$
+
+\begin{exercise}
+Andaikan $L x = \delta(t)$, $x(0) = 0$, $x'(0) = 0$, memiliki solusi
+$x(t) = e^t \sin(t)$ untuk $t > 0$.  Carilah (dalam bentuk tertutup) solusi bagi
+$Lx = e^t$, $x(0) = 0$, $x'(0) = 0$ untuk $t > 0$.
+\end{exercise}
+\exsol{%
+$x(t) = (e^t) * (e^t \sin(t) ) = e^t (1-\cos(t))$
+}
+
+\begin{exercise}
+Hitung
+${\mathcal{L}}^{-1} \left\{ \frac{s^2}{s^2+1} \right\}$.
+\end{exercise}
+\exsol{%
+$\delta(t) - \sin(t)$
+}
+%1 - 1/(s^2+1)
+
+\begin{exercise}
+Hitung
+${\mathcal{L}}^{-1} \left\{ \frac{3 s^2 e^{-s} + 2}{s^2} \right\}$.
+\end{exercise}
+\exsol{%
+$3 \delta(t-1) + 2 t$
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Menyelesaikan PDE dengan transformasi Laplace}
+\label{laplacepde:section}
+
+\sectionnotes{1--1.5 kuliah, dapat dilewati}
+
+Transformasi Laplace berasal dari keluarga transformasi yang sama dengan
+deret Fourier\footnote{Terdapat pula transformasi Fourier
+pada garis real yang agak menyerupai transformasi Laplace.},
+yang kita gunakan dalam \chapterref{FS:chapter} untuk menyelesaikan persamaan diferensial
+parsial (PDE).
+Oleh karena itu, tidak mengherankan bahwa kita juga dapat menyelesaikan PDE dengan transformasi
+Laplace.
+
+Diberikan suatu PDE dalam dua peubah bebas $x$ dan $t$, kita menggunakan
+transformasi Laplace pada salah satu peubah (mengambil transformasi
+dari segala sesuatu yang tampak), dan turunan terhadap peubah itu menjadi
+perkalian dengan peubah hasil transformasi $s$.
+PDE tersebut menjadi ODE\@, yang kemudian kita selesaikan.
+Setelah itu, kita menginverskan transformasi untuk mencari solusi bagi masalah
+semula.
+Prosedur ini paling baik dilihat melalui contoh.
+
+\begin{example}
+Perhatikan PDE orde pertama
+\begin{equation*}
+y_t = - \alpha y_x, \qquad \text{untuk } x > 0, \enspace t > 0,
+\end{equation*}
+dengan syarat sisi
+\begin{equation*}
+y(0,t) = C, \qquad y(x,0) = 0 .
+\end{equation*}
+Kita akan mengandaikan bahwa $\alpha > 0$ adalah suatu konstanta.
+Persamaan ini 
+disebut \emph{\myindex{persamaan konveksi}} atau kadang-kadang
+\emph{\myindex{persamaan transpor}}, dan persamaan ini sudah
+muncul dalam \sectionref{fopde:section}, dengan syarat yang berbeda.
+Lihat \figureref{lt:half-infinite-goo-river} untuk diagram susunannya.
+
+\begin{mywrapfig}{3.1in}
+\capstart
+\inputpdft{half-infinite-goo-river}{%
+Diagram bidang xt dengan kuadran pertama diarsir
+dan diberi label y sub t sama dengan minus alfa kali y sub x,
+sumbu x diberi label y sama dengan 0,
+dan sumbu t diberi label y sama dengan C.}
+\caption{Persamaan transpor pada setengah garis.\label{lt:half-infinite-goo-river}}
+\end{mywrapfig}
+
+Model fisik bagi persamaan ini adalah sungai berisi cairan kental,
+karena kita tidak ingin ada sesuatu yang berdifusi.  Fungsi
+$y$ adalah konsentrasi
+suatu zat beracun\footnote{Sungainya sudah berupa cairan kental.
+Kita tidak terlalu memperburuk lingkungan.}.
+Peubah $x$ menyatakan posisi, dengan $x=0$
+merupakan lokasi pabrik yang membuang zat beracun ke dalam
+sungai.  Zat beracun mengalir ke sungai sehingga di $x=0$
+konsentrasinya selalu $C$.  Kita ingin melihat apa yang terjadi setelah pabrik,
+yakni pada $x > 0$.  Misalkan $t$ adalah waktu, dan andaikan
+pabrik mulai beroperasi pada $t=0$, sehingga pada $t=0$ sungai hanya berisi
+cairan kental murni.
+
+Perhatikan fungsi dua peubah $y(x,t)$.
+Mari kita tetapkan $x$ dan mentransformasikan peubah $t$.
+Demi kemudahan, kita memperlakukan peubah hasil transformasi $s$
+sebagai parameter karena tidak ada turunan terhadap $s$.
+Artinya, kita menulis $Y(x)$ untuk fungsi hasil transformasi,
+dan memperlakukannya sebagai fungsi dari $x$, dengan $s$ tetap sebagai parameter.
+\begin{equation*}
+Y(x)
+= {\mathcal L} \bigl\{ y(x,t) \bigr\}
+= \int_0^\infty y(x,t) e^{-st} \,dt .
+\end{equation*}
+Transformasi turunan terhadap $x$ hanyalah turunan dari 
+fungsi hasil transformasi:
+\begin{equation*}
+{\mathcal L} \bigl\{ y_x(x,t) \bigr\} =
+\int_0^\infty y_x(x,t) e^{-st} \,dt
+=
+\frac{d}{dx} \left[\int_0^\infty y(x,t) e^{-st} \,dt \right]
+=
+Y'(x) .
+\end{equation*}
+Untuk mentransformasikan turunan terhadap $t$ (peubah yang ditransformasikan),
+kita menggunakan aturan dari \sectionref{transformsofders:section}:
+\begin{equation*}
+{\mathcal L} \bigl\{ y_t(x,t) \bigr\} 
+=
+sY(x) - y(x,0) .
+\end{equation*}
+
+Dalam kasus khusus kita,
+$y(x,0)=0$, sehingga
+${\mathcal L} \bigl\{ y_t(x,t) \bigr\} = sY(x)$.  Kita mentransformasikan persamaan
+untuk memperoleh
+\begin{equation*}
+sY(x) = -\alpha Y'(x) .
+\end{equation*}
+ODE ini memerlukan syarat awal.  Syarat awal tersebut adalah
+syarat sisi lain dari PDE\@, yaitu syarat yang bergantung pada $x$.  Semuanya
+ditransformasikan, jadi kita juga harus mentransformasikan syarat ini
+\begin{equation*}
+Y(0) = 
+{\mathcal L} \bigl\{ y(0,t) \bigr\} 
+=
+{\mathcal L} \bigl\{ C \bigr\} 
+=
+\frac{C}{s} .
+\end{equation*}
+
+Kita menyelesaikan masalah ODE $sY(x) = -\alpha Y'(x)$, $Y(0) = \frac{C}{s}$, untuk memperoleh
+\begin{equation*}
+Y(x) = \frac{C}{s} e^{-\frac{s}{\alpha} x} .
+\end{equation*}
+Kita belum selesai.
+Kita memiliki $Y(x)$, tetapi yang sebenarnya kita inginkan adalah $y(x,t)$.
+Kita mentransformasikan kembali peubah $s$ ke $t$.
+Misalkan 
+\begin{equation*}
+u(t) = \begin{cases} 0 & \text{jika $t < 0$}, \\ 1 & \text{selain itu}
+\end{cases}
+\end{equation*}
+adalah fungsi Heaviside.
+Karena
+\begin{equation*}
+{\mathcal L} \bigl\{ u(t-a) \bigr\} =
+\int_0^\infty u(t-a) \, e^{-st} \,dt
+=
+\int_a^\infty e^{-st} \,dt
+=
+\frac{e^{-as}}{s} ,
+\end{equation*}
+maka
+\begin{equation*}
+y(x,t) = {\mathcal L}^{-1} \left\{
+\frac{C}{s} e^{-\frac{s}{\alpha} x}
+\right\}
+=
+C u\bigl(t-\nicefrac{x}{\alpha}\bigr) .
+\end{equation*}
+Dengan kata lain,
+\begin{equation*}
+y(x,t) =
+\begin{cases}
+0 & \text{jika $t < \nicefrac{x}{\alpha}$}, \\
+C & \text{selain itu.}
+\end{cases}
+\end{equation*}
+Lihat \figurevref{lt:half-infinite-goo-river-wavefront} untuk diagram
+solusi ini.  Garis berkemiringan $\nicefrac{1}{\alpha}$ menunjukkan
+muka gelombang zat beracun dalam gambar saat zat tersebut meninggalkan
+pabrik.
+Persamaan tersebut berusaha memindahkan syarat awal ke kanan
+dengan kecepatan $\alpha$,
+sehingga persamaan itu juga memindahkan syarat batas (muka gelombang).
+
+\begin{myfig}
+\capstart
+\inputpdft{half-infinite-goo-river-wavefront}{%
+Diagram kuadran pertama bidang xt (x dan t positif).
+Sumbu x, yaitu sumbu horizontal, diberi label y sama dengan 0 dan sumbu t
+diberi label y sama dengan C. Sebuah garis lurus diagonal dari titik asal ke atas
+dan ke kanan diberi label `muka gelombang, kemiringan 1 per alfa'. Daerah
+di atas garis ini diarsir gelap dan diberi label y sama dengan C.
+Daerah di bawah garis diarsir terang dan diberi label y sama dengan 0.}
+\caption{Muka gelombang zat beracun adalah garis berkemiringan
+$\nicefrac{1}{\alpha}$.\label{lt:half-infinite-goo-river-wavefront}}
+\end{myfig}
+
+
+Ssst\ldots $y$ tidak terdiferensialkan.
+Bahkan, fungsi itu tidak kontinu
+(tampaknya tidak ada yang pernah menyadarinya).  Bagaimana kita dapat menyubstitusikan sesuatu yang tidak
+terdiferensialkan ke dalam persamaan?
+Nah, bayangkan saja suatu fungsi terdiferensialkan yang sangat, sangat dekat dengan $y$.
+Atau, jika Anda mengenali turunan fungsi Heaviside sebagai fungsi
+delta, semuanya juga baik-baik saja:
+\begin{equation*}
+y_t (x,t) = \frac{\partial}{\partial t} \left[
+C  u\bigl(t-\nicefrac{x}{\alpha}\bigr)
+\right]
+=
+C  u'\bigl(t-\nicefrac{x}{\alpha}\bigr)
+=
+C \delta\bigl(t-\nicefrac{x}{\alpha}\bigr)
+\end{equation*}
+dan
+\begin{equation*}
+y_x (x,t) = \frac{\partial}{\partial x} \left[
+C  u\bigl(t-\nicefrac{x}{\alpha}\bigr)
+\right]
+=
+- \frac{C}{\alpha}  u'\bigl(t-\nicefrac{x}{\alpha}\bigr)
+=
+- \frac{C}{\alpha} \delta\bigl(t-\nicefrac{x}{\alpha}\bigr) .
+\end{equation*}
+Jadi, $y_t = - \alpha y_x$.
+\end{example}
+
+Transformasi Laplace sangat baik untuk persamaan berkoefisien konstan.  Salah satu
+keunggulan Laplace adalah kemudahannya menangani
+syarat sisi takhomogen.
+Mari kita coba contoh yang lebih rumit.
+
+\begin{example}
+Perhatikan
+\begin{align*}
+& y_t + y_x + y = 0, \qquad \text{untuk } x > 0, \enspace t > 0,
+\\
+& y(0,t) = \sin(t), \qquad y(x,0) = 0 .
+\end{align*}
+
+Sekali lagi, kita mentransformasikan $t$, dan menulis $Y(x)$ untuk
+fungsi hasil transformasi.  Karena $y(x,0) = 0$, kita memperoleh
+\begin{equation*}
+sY(x) + Y'(x) + Y(x) = 0, \qquad 
+Y(0) = \frac{1}{s^2+1} .
+\end{equation*}
+Solusi persamaan hasil transformasi adalah
+\begin{equation*}
+Y(x) =
+\frac{1}{s^2+1} e^{-(s+1) x}
+=
+\frac{1}{s^2+1} e^{-xs}
+e^{-x}
+.
+\end{equation*}
+Dengan menggunakan sifat pergeseran kedua \eqref{ltd:sseq}
+dan linearitas transformasi,
+kita memperoleh solusi
+\begin{equation*}
+y(x,t) 
+=
+e^{-x}
+\sin(t-x)
+u(t-x) .
+\end{equation*}
+\end{example}
+
+Kita juga dapat mendeteksi ketika masalahnya
+\emph{\myindex{tak-terumuskan dengan baik}}
+dalam arti bahwa masalah tersebut tidak memiliki solusi.
+Mari kita ubah persamaannya menjadi
+\begin{align*}
+& -y_t + y_x = 0, \qquad \text{untuk } x > 0, \enspace t > 0,
+\\
+& y(0,t) = \sin(t), \qquad y(x,0) = 0 .
+\end{align*}
+Maka masalah tersebut
+tidak memiliki solusi.  Pertama, mari kita lihat hal ini dalam bahasa
+\sectionref{fopde:section}.
+Kurva karakteristiknya adalah $t=-x+C$.  Jika $\tau$ adalah
+koordinat karakteristik, maka kita memperoleh persamaan $y_\tau = 0$
+di sepanjang kurva,
+yang berarti suatu solusi konstan sepanjang kurva karakteristik.
+Namun, kurva-kurva ini memotong sumbu $x$ dan sumbu $t$.
+Sebagai contoh,
+kurva $t=-x+1$ memotong di $(1,0)$ dan $(0,1)$.  Solusi
+konstan sepanjang kurva, sehingga $y(1,0)$ seharusnya sama dengan $y(0,1)$.  Namun,
+$y(1,0) = 0$ dan $y(0,1) = \sin(1) \neq 0$.
+Lihat \figurevref{lt:half-infinite-ill-posed}.
+
+\begin{myfig}
+\capstart
+\inputpdft{half-infinite-ill-posed}{%
+Diagram bidang xt dengan kuadran pertama diarsir.
+Sumbu x horizontal diberi label y sama dengan 0 dan sumbu t vertikal
+diberi label y sama dengan sinus t. Titik (0,1) pada sumbu t diberi label
+y dari (0,1) sama dengan sinus 1 dan titik (1,0) pada sumbu x diberi label
+y dari (1,0) sama dengan 0. Kedua titik dihubungkan dengan garis berlabel
+t sama dengan minus x ditambah 1
+dan juga dengan `y konstan sepanjang kurva karakteristik ini'.}
+\caption{Masalah yang tak-terumuskan dengan baik.\label{lt:half-infinite-ill-posed}}
+\end{myfig}
+
+Sekarang perhatikan transformasinya.  Masalah hasil transformasi adalah
+\begin{equation*}
+-sY(x) + Y'(x) = 0, \enspace Y(0) = \frac{1}{s^2+1} ,
+\end{equation*}
+dan solusinya seharusnya
+\begin{equation*}
+Y(x) = \frac{1}{s^2+1} e^{sx} .
+\end{equation*}
+Yang penting, transformasi Laplace ini tidak meluruh menuju nol di takhingga!  Artinya,
+karena $x > 0$ di daerah yang diperhatikan,
+\begin{equation*}
+\lim_{s \to \infty}
+\frac{1}{s^2+1} e^{sx}
+= \infty \neq 0 .
+\end{equation*}
+Tampaknya kita hampir
+dapat menggunakan sifat pergeseran, tetapi perhatikan bahwa pergeserannya
+berada dalam arah yang salah.
+
+\medskip
+
+Tentu saja, kita tidak perlu membatasi diri pada persamaan orde pertama, meskipun
+perhitungannya menjadi lebih rumit untuk persamaan orde lebih tinggi.
+
+\begin{example}
+Mari kita gunakan Laplace untuk masalah berikut:
+\begin{align*}
+& y_t = y_{xx}, \qquad 0 < x < \infty, \enspace t > 0,\\
+& y_x(0,t) = f(t), \\
+& y(x,0) = 0 .
+\end{align*}
+Masalah ini berkaitan dengan batang terisolasi setengah takhingga dengan
+fluks panas tertentu di salah satu ujungnya.
+Susunan ini akan muncul dalam kehidupan nyata pada kasus
+batang yang cukup panjang, ketika kita tidak mempertimbangkan selang waktu yang cukup lama
+sehingga solusi menyadari bahwa batang kita bukan takhingga, melainkan hanya
+sangat panjang.
+Bagaimanapun, situasi kehidupan nyata memberlakukan syarat lain
+pada solusi kita $y$.
+Sebagai contoh, kita akan mengandaikan bahwa solusinya terbatas.
+Syarat keterbatasan ini akan menggantikan syarat batas di
+ujung takhingga.
+Keterbatasan
+juga cukup untuk menjamin keberadaan transformasi Laplace dalam peubah $t$.
+
+Transformasikan persamaan dalam peubah $t$ untuk memperoleh
+\begin{equation*}
+sY(x) = Y''(x) .
+\end{equation*}
+Solusi umum ODE ini adalah
+\begin{equation*}
+Y(x) = A e^{\sqrt{s}x} + B e^{-\sqrt{s} x} .
+\end{equation*}
+Perhatikan bahwa $A$ dan $B$ bergantung pada $s$.
+Karena $y$ terbatas, $Y(x)$ terbatas untuk setiap $s > 0$ yang tetap,
+sehingga agar $Y(x)$ tetap terbatas ketika $x \to \infty$, harus berlaku $A=0$.
+
+Sekarang perhatikan syarat batas di $x=0$.
+Transformasinya adalah $Y'(0) = F(s)$, sehingga $-\sqrt{s}B = F(s)$.
+Dengan kata lain,
+\begin{equation*}
+Y(x) = F(s) \frac{-1}{\sqrt{s}} e^{-\sqrt{s} x} .
+\end{equation*}
+Jika kita mencari transformasi inversnya dalam tabel seperti yang ada di
+\Appendixref{laplacelist:appendix} (atau menghabiskan sore hari
+mengerjakan kalkulus),
+kita memperoleh 
+%\begin{equation*}
+%{\mathcal L}^{-1}\left[e^{-\sqrt{s} x}\right] =
+%\frac{x}{\sqrt{4\pi t^3}} e^{\frac{-x^2}{4t}} ,
+%\end{equation*}
+%or
+\begin{equation*}
+{\mathcal L}^{-1}\left[\frac{1}{\sqrt{s}} e^{-\sqrt{s} x}\right] =
+\frac{1}{\sqrt{\pi t}} e^{\frac{-x^2}{4t}} .
+\end{equation*}
+Jadi,
+\begin{equation*}
+y(x,t) =
+{\mathcal L}^{-1} \left[
+F(s) \frac{-1}{\sqrt{s}} e^{-\sqrt{s} x}\right]
+=
+\int_0^t
+f(\tau) 
+\frac{-1}{\sqrt{\pi {(t-\tau)}}} e^{\frac{-x^2}{4(t-\tau)}} \, d\tau .
+\end{equation*}
+\end{example}
+
+Laplace dapat menyelesaikan masalah ketika pemisahan peubah gagal.
+Laplace tidak terganggu oleh ketakhomogenan, tetapi pada dasarnya hanya berguna untuk
+persamaan berkoefisien konstan.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Selesaikan
+\begin{align*}
+& y_t + y_x = 1, \qquad 0 < x < \infty, \enspace t > 0,
+\\
+& y(0,t) = 1, \quad y(x,0) = 0 .
+\end{align*}
+\end{exercise}
+
+\begin{exercise}
+Selesaikan
+\begin{align*}
+& y_t + \alpha y_x = 0, \qquad 0 < x < \infty, \enspace t > 0,
+\\
+& y(0,t) = t, \quad y(x,0) = 0 .
+\end{align*}
+\end{exercise}
+
+\begin{exercise}
+Selesaikan
+\begin{align*}
+& y_t + 2 y_x = x+t, \qquad 0 < x < \infty, \enspace t > 0,
+\\
+& y(0,t) = 0, \quad y(x,0) = 0 .
+\end{align*}
+\end{exercise}
+
+\begin{exercise}
+Untuk $\alpha > 0$, selesaikan
+\begin{align*}
+& y_t + \alpha y_x + y = 0, \qquad 0 < x < \infty, \enspace t > 0,
+\\
+& y(0,t) = \sin(t), \quad y(x,0) = 0 .
+\end{align*}
+\end{exercise}
+
+\begin{exercise}
+Carilah masalah ODE yang bersesuaian untuk $Y(x)$, setelah mentransformasikan peubah $t$
+tersebut
+\begin{align*}
+& y_{tt} + 3y_{xx} + y_{xt} + 3 y_x + y = \sin(x) + t, \qquad 0 < x < 1, \enspace t > 0,
+\\
+& y(0,t) = 1, \quad y(1,t) =  t, \quad y(x,0) = 1-x, \quad y_t(x,0) = 1 .
+\end{align*}
+Jangan selesaikan masalah tersebut.
+\end{exercise}
+
+\begin{exercise}
+Tuliskan solusi bagi
+\begin{align*}
+& y_t = y_{xx}, \qquad 0 < x < \infty, \enspace t > 0,\\
+& y_x(0,t) = e^{-t}, \quad y(x,0) = 0 ,
+\end{align*}
+sebagai integral tentu (konvolusi).  Andaikan $y$ terbatas.
+\end{exercise}
+
+\begin{exercise}
+Gunakan transformasi Laplace terhadap $t$ untuk menyelesaikan
+\begin{align*}
+& y_{tt} = y_{xx}, \qquad -\infty < x < \infty, \enspace t > 0,\\
+& y(x,0) = 0, \quad y_t(x,0) = \sin(x) .
+\end{align*}
+Andaikan $y$ terbatas.
+Petunjuk: Perhatikan bahwa untuk setiap $s > 0$ yang tetap,
+$e^{sx}$ membesar tanpa batas ketika $x \to +\infty$
+dan
+$e^{-sx}$ membesar tanpa batas ketika $x \to -\infty$.
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Selesaikan
+\begin{align*}
+& y_t + y_x = 1, \qquad 0 < x < \infty, \enspace t > 0,
+\\
+& y(0,t) = 0, \quad y(x,0) = 0 .
+\end{align*}
+\end{exercise}
+\exsol{%
+$y=(x-t)u(t-x)+t$
+}
+
+\begin{exercise}
+Untuk $c > 0$, selesaikan
+\begin{align*}
+& y_t + y_x + c y = 0, \qquad 0 < x < \infty, \enspace t > 0,
+\\
+& y(0,t) = \sin(t), \quad y(x,0) = 0 .
+\end{align*}
+\end{exercise}
+\exsol{%
+$y=e^{-cx}\sin(t-x)u(t-x)$
+}
+
+\begin{exercise}
+Carilah masalah ODE yang bersesuaian untuk $Y(x)$, setelah mentransformasikan peubah $t$
+tersebut
+\begin{align*}
+& y_{tt} + 3y_{xx} + y = x+t, \qquad -1 < x < 1, \enspace t > 0,
+\\
+& y(-1,t) = 0, \quad y(1,t) = 0, \quad y(x,0) = (1-x^2) , \quad y_t(x,0) = 0.
+\end{align*}
+Jangan selesaikan masalah tersebut.
+\end{exercise}
+\exsol{%
+$s^2Y(x) - s(1-x^2) + 3Y''(x) + Y(x) = \frac{x}{s} + \frac{1}{s^2}, \quad
+Y(-1) = 0, \quad Y(1)=0$.
+}
+
+\begin{exercise}
+Gunakan transformasi Laplace terhadap $t$ untuk menyelesaikan
+\begin{align*}
+& y_{tt} = y_{xx}, \qquad -\infty < x < \infty, \enspace t > 0,\\
+& y(x,0) = \sin(x), \quad  y_t(x,0) = 0 .
+\end{align*}
+Andaikan $y$ terbatas.
+Petunjuk: Perhatikan bahwa untuk setiap $s > 0$ yang tetap,
+$e^{sx}$ membesar tanpa batas ketika $x \to +\infty$
+dan
+$e^{-sx}$ membesar tanpa batas ketika $x \to -\infty$.
+\end{exercise}
+\exsol{%
+$y=\sin(x)\cos(t)$
+}
+
+\begin{exercise}
+Gunakan transformasi Laplace terhadap $t$ untuk menyelesaikan
+\begin{align*}
+& y_{t} = y_{xx}, \qquad 0 < x < \infty, \enspace t > 0,\\
+& y(0,t) = f(t), \quad  y(x,0) = 0 ,
+\end{align*}
+dengan $f(t)$ suatu fungsi.
+Andaikan $y$ terbatas.
+Berikan jawabannya sebagai konvolusi.
+\end{exercise}
+\exsol{%
+$
+y(x,t) =
+\int_0^t
+f(\tau) 
+\frac{x}{2 \sqrt{\pi {(t-\tau)^3}}} e^{\frac{-x^2}{4(t-\tau)}} \, d\tau
+$
+}

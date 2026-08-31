@@ -27,12 +27,23 @@ from referencing import Registry, Resource
 LANE = Path(__file__).resolve().parents[2]
 PRODUCTION = LANE / "backend" / "production"
 V03 = PRODUCTION / "v0.3"
-STAMP = "2026-08-24T00:00:00Z"
-WORKFLOW = "01a01f57-a34b-7740-9717-596b8116910c/backend-production-v0.4-live"
-OUT_DEFAULT = PRODUCTION / "v0.4-live-2026.08.24"
+STAMP = "2026-08-31T00:00:00Z"
+WORKFLOW = "01a01f57-a34b-7740-9717-596b8116910c/backend-production-v0.4-complete"
+OUT_DEFAULT = PRODUCTION / "v0.4-complete-2026.08.31"
 
 sys.path.insert(0, str(LANE / "backend" / "tools"))
 import backend_tool as bt  # noqa: E402
+from finalize_complete_manifest import (  # noqa: E402
+    COVERAGE_KIND,
+    DERIVATIVE_SUPPORT,
+    RESOURCE_METADATA,
+)
+
+# The manifest artifact's lossless ``record_json`` projection contains the
+# complete produced-from UUID closure.  A complete corpus legitimately exceeds
+# Python's conservative 128 KiB CSV-field default, so raise the parser limit
+# deterministically for projection/round-trip validation.
+csv.field_size_limit(64 * 1024 * 1024)
 
 NS = {"R006": "ra", "R007": "diffyqs", "R008": "ca"}
 SOURCE_KEYS = {
@@ -68,6 +79,124 @@ MANIFEST_RIGHTS_KEYS = {
     "R007": "rights.diffyqs.book.cc-by-sa-4.0",
     "R008": "rights.ca.book.cc-by-sa-4.0",
 }
+
+
+def validate_complete_manifest(rows: list[dict]) -> dict:
+    """Validate stable identities and the explicit canonical-TeX closure."""
+    required = {
+        "schema",
+        "unit_id",
+        "resource_id",
+        "edition_id",
+        "locale",
+        "title_source",
+        "title_target",
+        "state",
+        "rights_id",
+        "source_components",
+        "target_components",
+        "qa",
+        "translated_at",
+        "notes",
+    }
+    unit_ids: set[str] = set()
+    counts = {role: 0 for role in NS}
+    coverage_rows: list[dict] = []
+    for ordinal, row in enumerate(rows, 1):
+        missing = required - set(row)
+        if missing:
+            raise RuntimeError(f"manifest row {ordinal} missing fields: {sorted(missing)}")
+        role = row["resource_id"]
+        if role not in NS:
+            raise RuntimeError(f"manifest row {ordinal} has unknown resource: {role!r}")
+        if row["schema"] != "lebl-translation-unit-v1" or row["locale"] != "id-ID":
+            raise RuntimeError(f"manifest row {ordinal} has incompatible schema/locale")
+        if row["unit_id"] in unit_ids:
+            raise RuntimeError(f"duplicate live-manifest unit_id: {row['unit_id']}")
+        if row["rights_id"] != MANIFEST_RIGHTS_KEYS[role]:
+            raise RuntimeError(f"cross-resource manifest rights mismatch: {row['unit_id']}")
+        if not isinstance(row["source_components"], list) or not row["source_components"]:
+            raise RuntimeError(f"empty source components: {row['unit_id']}")
+        if not isinstance(row["target_components"], list) or not row["target_components"]:
+            raise RuntimeError(f"empty target components: {row['unit_id']}")
+        unit_ids.add(row["unit_id"])
+        counts[role] += 1
+        if row.get("coverage_kind") == COVERAGE_KIND:
+            coverage_rows.append(row)
+
+    expected_pairs: set[tuple[str, str, str]] = set()
+    for role, metadata in RESOURCE_METADATA.items():
+        for filename in metadata["files"]:
+            expected_pairs.add(
+                (
+                    role,
+                    f"{metadata['source_root']}/{filename}",
+                    f"{metadata['target_root']}/{filename}",
+                )
+            )
+    for support in DERIVATIVE_SUPPORT:
+        expected_pairs.add(
+            (support["resource_id"], support["source_path"], support["target_path"])
+        )
+    actual_pairs: set[tuple[str, str, str]] = set()
+    for row in coverage_rows:
+        if len(row["source_components"]) != 1 or len(row["target_components"]) != 1:
+            raise RuntimeError(f"canonical coverage unit is not one-to-one: {row['unit_id']}")
+        source = row["source_components"][0]
+        target = row["target_components"][0]
+        pair = (row["resource_id"], source["path"], target["path"])
+        if pair in actual_pairs:
+            raise RuntimeError(f"duplicate canonical coverage pair: {pair}")
+        actual_pairs.add(pair)
+        for component in (source, target):
+            path = lane_path(component["path"])
+            if not path.is_file():
+                raise RuntimeError(f"missing canonical coverage file: {component['path']}")
+            line_count = len(path.read_bytes().splitlines())
+            if selector_bounds(component["selector"]) != (1, line_count):
+                raise RuntimeError(
+                    f"canonical coverage selector is not the complete file: {row['unit_id']}"
+                )
+        metadata = RESOURCE_METADATA[row["resource_id"]]
+        if row["edition_id"] != metadata["edition_id"]:
+            raise RuntimeError(f"canonical coverage edition mismatch: {row['unit_id']}")
+    if actual_pairs != expected_pairs:
+        missing = sorted(expected_pairs - actual_pairs)
+        extra = sorted(actual_pairs - expected_pairs)
+        raise RuntimeError(
+            f"canonical TeX coverage mismatch; missing={missing[:10]} extra={extra[:10]}"
+        )
+    logical_rows = [row for row in rows if row.get("index_kind") == "logical_tex_unit"]
+    logical_ids = {row["unit_id"] for row in logical_rows}
+    if len(logical_ids) != len(logical_rows):
+        raise RuntimeError("duplicate logical-unit identity")
+    for row in logical_rows:
+        parent = row.get("parent_unit_id")
+        if parent is not None and parent not in logical_ids:
+            raise RuntimeError(f"unresolved logical-unit parent: {row['unit_id']} -> {parent}")
+    exercise_rows = sum(row.get("unit_kind") == "exercise" for row in logical_rows)
+    solution_rows = sum(row.get("unit_kind") == "solution" for row in logical_rows)
+    if exercise_rows != 2169 or solution_rows != 251:
+        raise RuntimeError(
+            f"logical exercise/solution closure mismatch: {exercise_rows} exercises, "
+            f"{solution_rows} solutions"
+        )
+    return {
+        "rows": len(coverage_rows),
+        "resource_manifest_rows": counts,
+        "resource_coverage_rows": {
+            role: sum(row["resource_id"] == role for row in coverage_rows) for role in NS
+        },
+        "target_files": len(actual_pairs),
+        "logical_rows": len(logical_rows),
+        "logical_rows_by_resource": {
+            role: sum(row["resource_id"] == role for row in logical_rows) for role in NS
+        },
+        "logical_unit_kinds": {
+            kind: sum(row.get("unit_kind") == kind for row in logical_rows)
+            for kind in sorted({row.get("unit_kind") for row in logical_rows})
+        },
+    }
 
 
 def sha(data: bytes) -> str:
@@ -131,8 +260,6 @@ def lane_path(relative_path: str) -> Path:
 def selected_bytes(relative_path: str, selector: str) -> bytes:
     path = lane_path(relative_path)
     data = path.read_bytes()
-    if b"\r" in data:
-        raise RuntimeError(f"non-LF source for raw-line binding: {path}")
     lines = data.splitlines(keepends=True)
     first, last = selector_bounds(selector)
     if last > len(lines):
@@ -148,7 +275,10 @@ def hint_selector(relative_path: str, exercise_selector: str, marker: str) -> st
     lines = path.read_text(encoding="utf-8").splitlines()
     first, last = selector_bounds(exercise_selector)
     selected = lines[first - 1 : last]
-    starts = [index for index, line in enumerate(selected) if line.lstrip().startswith(marker)]
+    # Some frozen exercises introduce the hint after the problem statement on
+    # the same physical line (for example, ``... on X.  Hint: Consider ...``).
+    # Bind that whole line instead of rejecting a valid inline hint.
+    starts = [index for index, line in enumerate(selected) if marker in line]
     if len(starts) != 1:
         raise RuntimeError(
             f"expected one {marker!r} in {relative_path}:{exercise_selector}, found {len(starts)}"
@@ -284,6 +414,8 @@ def validate_references(records: list[dict]) -> None:
 
 
 def unit_kind(row: dict) -> str:
+    if row.get("unit_kind"):
+        return row["unit_kind"]
     # Keep exercise blocks as subsections unless a future unit supplies the
     # richer exercise metadata required by the schema.
     return "subsection" if "/" in row["title_source"] or row["unit_id"].endswith("exercises") else "section"
@@ -316,10 +448,44 @@ def manifest_binding(row: dict) -> dict:
     }
 
 
-def build(out: Path = OUT_DEFAULT) -> dict:
+def build(
+    out: Path = OUT_DEFAULT,
+    manifest_path: Path = LANE / "translation" / "TRANSLATION_MANIFEST.jsonl",
+) -> dict:
     if out.exists():
         raise RuntimeError(f"refusing existing output path: {out}")
-    live_manifest, manifest_bytes = load_jsonl(LANE / "translation" / "TRANSLATION_MANIFEST.jsonl")
+    manifest_path = manifest_path.resolve()
+    try:
+        manifest_path.relative_to(LANE.resolve())
+    except ValueError as exc:
+        raise RuntimeError(f"manifest path escapes lane: {manifest_path}") from exc
+    live_manifest, manifest_bytes = load_jsonl(manifest_path)
+    complete_manifest = validate_complete_manifest(live_manifest)
+    manifest_component_checks = 0
+    unresolved_legacy_components = 0
+    stale_manifest_components: list[str] = []
+    for row in live_manifest:
+        for side in ("source_components", "target_components"):
+            for component in row[side]:
+                path = lane_path(component["path"])
+                if not path.is_file() or not re.search(r"\braw lines?\s+\d+", component["selector"]):
+                    # Early imported manifest rows retain source-relative paths
+                    # that require their edition root.  They remain represented,
+                    # but only directly resolvable live paths are byte-checked.
+                    unresolved_legacy_components += 1
+                    continue
+                actual = hashlib.sha256(selected_bytes(component["path"], component["selector"])).hexdigest()
+                manifest_component_checks += 1
+                if actual != component["sha256"]:
+                    stale_manifest_components.append(
+                        f"{row['unit_id']}:{side}:{component['path']}:{component['selector']} "
+                        f"expected {component['sha256']} actual {actual}"
+                    )
+    if stale_manifest_components:
+        raise RuntimeError(
+            "stale directly resolvable live-manifest components:\n"
+            + "\n".join(stale_manifest_components[:30])
+        )
     # Terminology is CSV, not JSONL; retain it byte-for-byte as an input witness.
     terminology_path = LANE / "00_control" / "TERMINOLOGY.csv"
     terminology_bytes = terminology_path.read_bytes()
@@ -367,6 +533,7 @@ def build(out: Path = OUT_DEFAULT) -> dict:
             "segment",
             "qa_event",
             "artifact",
+            "asset",
             "concept",
             "term",
             "correction",
@@ -385,9 +552,12 @@ def build(out: Path = OUT_DEFAULT) -> dict:
         role = row["resource_id"]
         if role not in NS:
             raise RuntimeError(f"unknown resource role in manifest: {role}")
-        # The retained v0.3 records already cover the first R006 boundary.
+        # Retained v0.3 units keep their stable identities and content, while
+        # their live-manifest witness metadata is refreshed deterministically.
         if row["unit_id"] in existing_units:
-            live_unit_ids[row["unit_id"]] = existing_units[row["unit_id"]]["id"]
+            retained_unit = existing_units[row["unit_id"]]
+            retained_unit["manifest_binding"] = manifest_binding(row)
+            live_unit_ids[row["unit_id"]] = retained_unit["id"]
             continue
         ns = NS[role]
         source = sources[role]
@@ -422,6 +592,17 @@ def build(out: Path = OUT_DEFAULT) -> dict:
                 ],
             }
         )
+        if unit["unit_kind"] == "exercise":
+            unit["exercise_metadata"] = copy.deepcopy(
+                row.get(
+                    "exercise_metadata",
+                    {
+                        "response_expected": True,
+                        "answer_format": "other",
+                        "solution_status": "unknown",
+                    },
+                )
+            )
         records.append(unit)
         by_key[unit_key] = unit
         live_unit_ids[row["unit_id"]] = unit["id"]
@@ -505,6 +686,28 @@ def build(out: Path = OUT_DEFAULT) -> dict:
         records.append(qa)
         by_key[qa_key] = qa
 
+    if len(live_unit_ids) != len(live_manifest):
+        raise RuntimeError("live manifest unit coverage is not count-complete")
+    unit_records_by_identity = {
+        record["id"]: record for record in records if record["record_type"] == "unit"
+    }
+    for row in live_manifest:
+        parent_unit_id = row.get("parent_unit_id")
+        if parent_unit_id is None:
+            continue
+        parent_id = live_unit_ids.get(parent_unit_id)
+        if parent_id is None:
+            raise RuntimeError(f"unresolved manifest parent unit: {row['unit_id']} -> {parent_unit_id}")
+        unit_records_by_identity[live_unit_ids[row["unit_id"]]]["parent_id"] = parent_id
+    unit_records_by_id = {
+        record["id"]: record for record in records if record["record_type"] == "unit"
+    }
+    for row in live_manifest:
+        unit = unit_records_by_id[live_unit_ids[row["unit_id"]]]
+        if unit.get("manifest_binding") != manifest_binding(row):
+            raise RuntimeError(f"stale live manifest binding: {row['unit_id']}")
+    manifest_binding_checks = len(live_manifest)
+
     # Preserve every retained v0.3 record, then add a count-complete live
     # terminology view.  Changed retained rows receive versioned superseding
     # term records; the historical records remain byte-identical.
@@ -544,6 +747,270 @@ def build(out: Path = OUT_DEFAULT) -> dict:
         records.append(record)
         by_key[record["semantic_key"]] = record
         by_id[record["id"]] = record
+
+    # Bind the complete direct dependency closure of the accepted R007
+    # nonlinear-systems chapter.  The former live backend represented all 20
+    # stable text units but omitted their 28 figure files, the one localized
+    # overlay, and the two cited bibliography spans.  Derive the bindings from
+    # the frozen source and live manifest so that future source drift fails
+    # closed instead of silently producing stale asset metadata.
+    r007_chapter_path = "source/diffyqs-v6.11/ch-nonlin-systems.tex"
+    r007_source_lines = lane_path(r007_chapter_path).read_text(encoding="utf-8").splitlines()
+    r007_rows = [
+        row
+        for row in live_manifest
+        if row["resource_id"] == "R007"
+        and row.get("coverage_kind") != COVERAGE_KIND
+        and row.get("index_kind") is None
+        and any(component["path"] == r007_chapter_path for component in row["source_components"])
+    ]
+    if len(r007_rows) != 20:
+        raise RuntimeError(f"expected 20 nonlinear-systems manifest units, found {len(r007_rows)}")
+
+    def r007_unit_at(line_number: int) -> str:
+        matches = []
+        for row in r007_rows:
+            for component in row["source_components"]:
+                if component["path"] != r007_chapter_path:
+                    continue
+                first, last = selector_bounds(component["selector"])
+                if first <= line_number <= last:
+                    matches.append(row["unit_id"])
+        matches = list(dict.fromkeys(matches))
+        if len(matches) != 1:
+            raise RuntimeError(f"R007 source line {line_number} maps to {len(matches)} units: {matches}")
+        return matches[0]
+
+    figure_patterns = (
+        ("inputpdft", re.compile(r"\\inputpdft\{([^{}]+)\}")),
+        (
+            "diffyincludegraphics",
+            re.compile(r"\\diffyincludegraphics\{[^{}]*\}\{[^{}]*\}\{([^{}]+)\}"),
+        ),
+    )
+    figure_occurrences: list[tuple[int, str, str, str]] = []
+    for line_number, line in enumerate(r007_source_lines, 1):
+        for command, pattern in figure_patterns:
+            for match in pattern.finditer(line):
+                figure_occurrences.append((line_number, command, match.group(1), r007_unit_at(line_number)))
+    figure_pairs = {(command, base) for _, command, base, _ in figure_occurrences}
+    if len(figure_occurrences) != 26 or len(figure_pairs) != 25:
+        raise RuntimeError(
+            "R007 nonlinear figure closure mismatch: "
+            f"{len(figure_occurrences)} occurrences / {len(figure_pairs)} command-base pairs"
+        )
+    if sum(command == "inputpdft" for command, _ in figure_pairs) != 3:
+        raise RuntimeError("R007 nonlinear inputpdft closure mismatch")
+    if sum(command == "diffyincludegraphics" for command, _ in figure_pairs) != 22:
+        raise RuntimeError("R007 nonlinear diffyincludegraphics closure mismatch")
+
+    pair_units: dict[tuple[str, str], set[str]] = {}
+    for _, command, base, unit_id in figure_occurrences:
+        pair_units.setdefault((command, base), set()).add(unit_id)
+
+    source_asset_specs: list[dict] = []
+    for command, base in sorted(figure_pairs):
+        extensions = (".pdf", ".pdf_t") if command == "inputpdft" else (".pdf",)
+        for extension in extensions:
+            relative_path = f"source/diffyqs-v6.11/figures/{base}{extension}"
+            if not lane_path(relative_path).is_file():
+                raise RuntimeError(f"missing R007 nonlinear figure dependency: {relative_path}")
+            source_asset_specs.append(
+                {
+                    "base": base,
+                    "extension": extension,
+                    "path": relative_path,
+                    "unit_ids": sorted(pair_units[(command, base)]),
+                }
+            )
+    if len(source_asset_specs) != 28 or len({spec["path"] for spec in source_asset_specs}) != 28:
+        raise RuntimeError("R007 nonlinear figure file closure is not exactly 28 unique files")
+
+    source_asset_ids = {
+        spec["path"]: bt.record_uuid(
+            "asset",
+            "lebl.diffyqs.asset.nonlinear-systems.figure."
+            + slug(spec["base"])
+            + (".pdf-t.en" if spec["extension"] == ".pdf_t" else ".pdf.en"),
+        )
+        for spec in source_asset_specs
+    }
+    added_r007_asset_rows = 0
+    added_r007_asset_relation_rows = 0
+    r007_relation_order = 0
+
+    def append_r007_relation(subject_id: str, predicate: str, object_id: str, suffix: str) -> None:
+        nonlocal added_r007_asset_relation_rows, r007_relation_order
+        r007_relation_order += 1
+        relation_key = f"lebl.diffyqs.relation.nonlinear-systems.asset.{slug(suffix)}"
+        relation = copy.deepcopy(templates["relation"])
+        relation.update(
+            {
+                "id": bt.record_uuid("relation", relation_key),
+                "semantic_key": relation_key,
+                "recorded_at": STAMP,
+                "workflow_id": WORKFLOW,
+                "subject_id": subject_id,
+                "predicate": predicate,
+                "object_id": object_id,
+                "order_key": f"0900.{r007_relation_order:04d}",
+                "rights_id": rights["R007"]["id"],
+            }
+        )
+        append_unique(relation)
+        added_r007_asset_relation_rows += 1
+
+    for spec in source_asset_specs:
+        data = lane_path(spec["path"]).read_bytes()
+        asset_key = (
+            "lebl.diffyqs.asset.nonlinear-systems.figure."
+            + slug(spec["base"])
+            + (".pdf-t.en" if spec["extension"] == ".pdf_t" else ".pdf.en")
+        )
+        dependencies = []
+        if spec["extension"] == ".pdf_t":
+            dependencies = [source_asset_ids[spec["path"].removesuffix("_t")]]
+        asset = copy.deepcopy(templates["asset"])
+        asset.update(
+            {
+                "id": source_asset_ids[spec["path"]],
+                "semantic_key": asset_key,
+                "recorded_at": STAMP,
+                "workflow_id": WORKFLOW,
+                "resource_id": resources["R007"]["id"],
+                "edition_id": sources["R007"]["id"],
+                "asset_kind": "figure",
+                "path": spec["path"],
+                "mime_type": (
+                    "application/x-fig-overlay" if spec["extension"] == ".pdf_t" else "application/pdf"
+                ),
+                "sha256": sha(data),
+                "source_binding": {
+                    "content_sha256": sha(data),
+                    "edition_id": sources["R007"]["id"],
+                    "locator": "entire file",
+                    "source_path": spec["path"],
+                },
+                "dependencies": dependencies,
+                "rights_id": rights["R007"]["id"],
+            }
+        )
+        append_unique(asset)
+        added_r007_asset_rows += 1
+        for unit_id in spec["unit_ids"]:
+            append_r007_relation(
+                live_unit_ids[unit_id],
+                "illustrates",
+                asset["id"],
+                f"{unit_id}-illustrates-{Path(spec['path']).name}-en",
+            )
+
+    source_pend_pdf_path = "source/diffyqs-v6.11/figures/nlin-pend.pdf"
+    source_pend_overlay_path = "source/diffyqs-v6.11/figures/nlin-pend.pdf_t"
+    target_pend_overlay_path = "translation/diffyqs/figures/nlin-pend.pdf_t"
+    source_pend_overlay = lane_path(source_pend_overlay_path).read_bytes()
+    target_pend_overlay = lane_path(target_pend_overlay_path).read_bytes()
+    if source_pend_overlay == target_pend_overlay:
+        raise RuntimeError("localized nlin-pend overlay unexpectedly equals its English source")
+    target_asset_key = "lebl.diffyqs.asset.nonlinear-systems.figure.nlin-pend.pdf-t.id-id"
+    target_asset = copy.deepcopy(templates["asset"])
+    target_asset.update(
+        {
+            "id": bt.record_uuid("asset", target_asset_key),
+            "semantic_key": target_asset_key,
+            "recorded_at": STAMP,
+            "workflow_id": WORKFLOW,
+            "resource_id": resources["R007"]["id"],
+            "edition_id": targets["R007"]["id"],
+            "asset_kind": "figure",
+            "path": target_pend_overlay_path,
+            "mime_type": "application/x-fig-overlay",
+            "sha256": sha(target_pend_overlay),
+            "source_binding": {
+                "content_sha256": sha(source_pend_overlay),
+                "edition_id": sources["R007"]["id"],
+                "locator": "entire source overlay; geometry and TeX commands preserved",
+                "source_path": source_pend_overlay_path,
+            },
+            "dependencies": [
+                source_asset_ids[source_pend_pdf_path],
+                source_asset_ids[source_pend_overlay_path],
+            ],
+            "rights_id": rights["R007"]["id"],
+        }
+    )
+    append_unique(target_asset)
+    added_r007_asset_rows += 1
+    pendulum_units = sorted(pair_units[("inputpdft", "nlin-pend")])
+    if pendulum_units != ["diffyqs.v6.11.nonlinear-systems.applications.pendulum"]:
+        raise RuntimeError(f"unexpected nlin-pend unit binding: {pendulum_units}")
+    append_r007_relation(
+        target_asset["id"],
+        "adapts",
+        source_asset_ids[source_pend_overlay_path],
+        "nlin-pend-pdf-t-id-id-adapts-en",
+    )
+    append_r007_relation(
+        live_unit_ids[pendulum_units[0]],
+        "illustrates",
+        target_asset["id"],
+        f"{pendulum_units[0]}-illustrates-nlin-pend-pdf-t-id-id",
+    )
+
+    bibliography_specs = {
+        "BD": ("raw lines 377-386", "Boyce-DiPrima-Meade"),
+        "EP": ("raw lines 387-394", "Edwards-Penney"),
+    }
+    bibliography_path = "source/diffyqs-v6.11/diffyqs.tex"
+    bibliography_assets: dict[str, dict] = {}
+    for key, (selector, label) in bibliography_specs.items():
+        data = selected_bytes(bibliography_path, selector)
+        asset_key = f"lebl.diffyqs.asset.bibliography.{slug(key)}.{slug(label)}.en"
+        asset = copy.deepcopy(templates["asset"])
+        asset.update(
+            {
+                "id": bt.record_uuid("asset", asset_key),
+                "semantic_key": asset_key,
+                "recorded_at": STAMP,
+                "workflow_id": WORKFLOW,
+                "resource_id": resources["R007"]["id"],
+                "edition_id": sources["R007"]["id"],
+                "asset_kind": "build_dependency",
+                "path": bibliography_path,
+                "mime_type": "application/x-tex",
+                "sha256": sha(data),
+                "source_binding": {
+                    "content_sha256": sha(data),
+                    "edition_id": sources["R007"]["id"],
+                    "locator": selector,
+                    "source_path": bibliography_path,
+                },
+                "dependencies": [],
+                "rights_id": rights["R007"]["id"],
+            }
+        )
+        append_unique(asset)
+        bibliography_assets[key] = asset
+        added_r007_asset_rows += 1
+
+    citation_occurrences: list[tuple[int, str, str]] = []
+    for line_number, line in enumerate(r007_source_lines, 1):
+        for match in re.finditer(r"\\cite\{([^{}]+)\}", line):
+            for key in (part.strip() for part in match.group(1).split(",")):
+                if key in bibliography_assets:
+                    citation_occurrences.append((line_number, key, r007_unit_at(line_number)))
+    if len(citation_occurrences) != 10:
+        raise RuntimeError(f"expected 10 R007 nonlinear bibliography citations, found {len(citation_occurrences)}")
+    for key in bibliography_assets:
+        if sum(citation_key == key for _, citation_key, _ in citation_occurrences) != 5:
+            raise RuntimeError(f"expected five R007 nonlinear citations for {key}")
+    for occurrence, (_, key, unit_id) in enumerate(citation_occurrences, 1):
+        append_r007_relation(
+            live_unit_ids[unit_id],
+            "depends-on",
+            bibliography_assets[key]["id"],
+            f"{unit_id}-depends-on-{key}-{occurrence:02d}",
+        )
 
     for row in terminology_rows:
         roles = terminology_roles(row["resource_scope"])
@@ -628,6 +1095,10 @@ def build(out: Path = OUT_DEFAULT) -> dict:
         matched: set[str] = set()
         for manifest_row in live_manifest:
             if manifest_row["resource_id"] != role:
+                continue
+            # Complete-file coverage units prove corpus closure but are not
+            # logical parents for range-scoped corrections or O001 exercises.
+            if manifest_row.get("coverage_kind") == COVERAGE_KIND or manifest_row.get("index_kind") is not None:
                 continue
             for component in manifest_row["source_components"]:
                 if normalized_manifest_path(component["path"]) != normalized_path:
@@ -1038,10 +1509,40 @@ def build(out: Path = OUT_DEFAULT) -> dict:
 
         if not gap["hint_present"]:
             continue
-        source_hint_selector = hint_selector(gap["source_path"], gap["source_selector"], "Hint:")
-        target_hint_selector = hint_selector(gap["target_path"], gap["target_selector"], "Petunjuk:")
+        declared_source_hint_selector = gap.get("source_hint_selector")
+        declared_target_hint_selector = gap.get("target_hint_selector")
+        if (declared_source_hint_selector is None) != (declared_target_hint_selector is None):
+            raise RuntimeError(
+                f"incomplete contextual hint selector pair: {gap.get('gap_id')}"
+            )
+        if declared_source_hint_selector is None:
+            source_hint_selector = hint_selector(
+                gap["source_path"], gap["source_selector"], "Hint:"
+            )
+            target_hint_selector = hint_selector(
+                gap["target_path"], gap["target_selector"], "Petunjuk:"
+            )
+        else:
+            if not all(
+                isinstance(value, str) and value
+                for value in (declared_source_hint_selector, declared_target_hint_selector)
+            ):
+                raise RuntimeError(
+                    f"invalid contextual hint selectors: {gap.get('gap_id')}"
+                )
+            source_hint_selector = declared_source_hint_selector
+            target_hint_selector = declared_target_hint_selector
         source_hint_content = selected_bytes(gap["source_path"], source_hint_selector)
         target_hint_content = selected_bytes(gap["target_path"], target_hint_selector)
+        for key, content in (
+            ("source_hint_sha256", source_hint_content),
+            ("target_hint_sha256", target_hint_content),
+        ):
+            declared_hash = gap.get(key)
+            if declared_hash is not None and declared_hash != hashlib.sha256(content).hexdigest():
+                raise RuntimeError(
+                    f"contextual hint hash mismatch for {gap.get('gap_id')}:{key}"
+                )
         hint_key = f"lebl.{NS[role]}.unit.o001.{slug(gap['exercise_id'])}.hint"
         hint = copy.deepcopy(templates["unit"])
         hint.pop("exercise_metadata", None)
@@ -1134,7 +1635,7 @@ def build(out: Path = OUT_DEFAULT) -> dict:
         if current_by_ledger_id[term_id]["ledger_binding"] != row:
             raise RuntimeError(f"stale current terminology row: {term_id}")
 
-    manifest_artifact_key = "lebl.shared.artifact.translation-manifest-live-2026-08-24"
+    manifest_artifact_key = "lebl.shared.artifact.translation-manifest-complete-2026-08-31"
     artifact = copy.deepcopy(templates["artifact"])
     artifact.update(
         {
@@ -1184,11 +1685,11 @@ def build(out: Path = OUT_DEFAULT) -> dict:
     projection_bytes = (json.dumps(projection, ensure_ascii=False, sort_keys=True, indent=2) + "\n").encode("utf-8")
     dataset.update(
         {
-            "dataset_id": bt.dataset_uuid("lebl.shared.dataset.production-v0.4-live-2026-08-24"),
-            "dataset_key": "lebl.shared.dataset.production-v0.4-live-2026-08-24",
+            "dataset_id": bt.dataset_uuid("lebl.shared.dataset.production-v0.4-complete-2026-08-31"),
+            "dataset_key": "lebl.shared.dataset.production-v0.4-complete-2026-08-31",
             "generated_at": STAMP,
             "workflow_id": WORKFLOW,
-            "notice": "Additive mixed-resource live checkpoint for the R006/R007/R008 Lebl family. Retained v0.3 bytes are preserved; newer manifest units are represented with locale-neutral unit, segment, and QA records. The exact runtime provenance is OpenAI Codex gpt-5.6-sol, Ultra.",
+            "notice": "Complete mixed-resource checkpoint for the R006/R007/R008 Lebl family. Retained v0.3 stable identities and fine-grained live-manifest units are preserved; explicit complete-file coverage records bind every canonical reader TeX file while keeping each book's resource, edition, and rights identities separate. The exact runtime provenance is OpenAI Codex gpt-5.6-sol, Ultra.",
             "projection_manifest": {"path": "projection_manifest.json", "sha256": sha(projection_bytes)},
             "record_streams": [{"path": "records.jsonl", "bytes": len(record_bytes), "record_count": len(records), "sha256": sha(record_bytes)}],
         }
@@ -1238,10 +1739,22 @@ def build(out: Path = OUT_DEFAULT) -> dict:
         roundtrip = bt.roundtrip_csvs(projection, records, stage / "csv")
         if roundtrip.get("roundtrip") != "pass" or roundtrip.get("recovered_records") != len(records):
             raise RuntimeError(f"CSV round-trip failed: {roundtrip}")
+        _validated_projection, _validated_records, full_validation = bt.validate_dataset(
+            stage, stage / "dataset.json"
+        )
+        if full_validation.get("record_count") != len(records):
+            raise RuntimeError("full backend validator record count mismatch")
         readme = (
-            "# Lebl modular backend v0.4 live checkpoint\n\n"
+            "# Lebl modular backend v0.4 complete checkpoint\n\n"
             f"Generated at {STAMP}. Scope: {len(live_manifest)} live translation units "
             f"(R006/R007/R008), with {added_units} units added beyond retained v0.3.\n\n"
+            f"Canonical TeX closure: {complete_manifest['rows']} complete-file units cover "
+            f"{complete_manifest['target_files']} canonical target files; per-resource coverage "
+            f"is {complete_manifest['resource_coverage_rows']}.\n\n"
+            f"Manifest byte checks: {manifest_component_checks} directly resolvable raw-line components pass; "
+            f"{unresolved_legacy_components} early source-relative components remain represented but require "
+            "their edition-root resolver. "
+            f"Live manifest bindings: {manifest_binding_checks} of {len(live_manifest)} exact.\n\n"
             "This is a locale-neutral machine projection; reader-facing TeX remains in the lane's `translation/` directory. "
             "Separate resource, edition, rights, source, target, and provenance identities are preserved.\n\n"
             f"Terminology: {len(term_records)} physical records preserve history; "
@@ -1255,6 +1768,10 @@ def build(out: Path = OUT_DEFAULT) -> dict:
             f"O001 solution-gap mapping: {len(o001_rows)} ledger rows, "
             f"{added_o001_exercises} exercise units, {added_o001_hints} hint units, and "
             f"{added_o001_relations} `hints` relations. No answer or solution is invented.\n\n"
+            f"R007 nonlinear-systems dependencies: {added_r007_asset_rows} asset records "
+            f"(28 frozen figure files, one localized overlay, and two cited bibliography spans) "
+            f"with {added_r007_asset_relation_rows} unit/dependency relations derived from "
+            f"{len(figure_occurrences)} figure calls and {len(citation_occurrences)} citations.\n\n"
             "Terminology QA evidence: `authority/terminology_evidence/2026-08-22-indonesian-field-usage-qa/TERMINOLOGY_QA_REPORT.md`.\n"
             "Translation/runtime provenance: `OpenAI Codex gpt-5.6-sol, Ultra`, acting on the user's request.\n"
         ).encode("utf-8")
@@ -1266,7 +1783,11 @@ def build(out: Path = OUT_DEFAULT) -> dict:
         validation = {
             "schema_validation": "pass",
             "referential_integrity": "pass",
+            "canonical_tex_coverage": complete_manifest,
             "live_manifest_rows": len(live_manifest),
+            "manifest_binding_checks": manifest_binding_checks,
+            "manifest_component_checks": manifest_component_checks,
+            "unresolved_legacy_manifest_components": unresolved_legacy_components,
             "added_unit_rows": added_units,
             "record_count": len(records),
             "added_concept_rows": added_concepts,
@@ -1289,6 +1810,16 @@ def build(out: Path = OUT_DEFAULT) -> dict:
             "added_o001_exercise_rows": added_o001_exercises,
             "added_o001_hint_rows": added_o001_hints,
             "added_o001_relation_rows": added_o001_relations,
+            "r007_nonlinear_dependencies": {
+                "figure_occurrences": len(figure_occurrences),
+                "figure_command_base_pairs": len(figure_pairs),
+                "source_figure_files": len(source_asset_specs),
+                "localized_overlay_files": 1,
+                "bibliography_spans": len(bibliography_assets),
+                "citation_occurrences": len(citation_occurrences),
+                "added_asset_rows": added_r007_asset_rows,
+                "added_relation_rows": added_r007_asset_relation_rows,
+            },
             "record_stream": {"bytes": len(record_bytes), "sha256": sha(record_bytes)},
             "manifest": {"bytes": len(manifest_bytes), "sha256": sha(manifest_bytes)},
             "csv_projection": {"receipts": receipts, "roundtrip": roundtrip},
@@ -1301,6 +1832,9 @@ def build(out: Path = OUT_DEFAULT) -> dict:
     return {
         "output": str(out),
         "live_manifest_rows": len(live_manifest),
+        "manifest_binding_checks": manifest_binding_checks,
+        "manifest_component_checks": manifest_component_checks,
+        "unresolved_legacy_manifest_components": unresolved_legacy_components,
         "added_units": added_units,
         "added_concepts": added_concepts,
         "added_terms": added_terms,
@@ -1317,8 +1851,11 @@ def build(out: Path = OUT_DEFAULT) -> dict:
         "added_o001_exercises": added_o001_exercises,
         "added_o001_hints": added_o001_hints,
         "added_o001_relations": added_o001_relations,
+        "added_r007_asset_rows": added_r007_asset_rows,
+        "added_r007_asset_relations": added_r007_asset_relation_rows,
         "record_count": len(records),
         "record_stream_sha256": sha(record_bytes),
+        "canonical_tex_coverage": complete_manifest,
     }
 
 
@@ -1327,5 +1864,9 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--out", default=str(OUT_DEFAULT))
+    parser.add_argument(
+        "--manifest",
+        default=str(LANE / "translation" / "TRANSLATION_MANIFEST.jsonl"),
+    )
     args = parser.parse_args()
-    print(bt.canonical_json(build(Path(args.out).resolve())))
+    print(bt.canonical_json(build(Path(args.out).resolve(), Path(args.manifest).resolve())))

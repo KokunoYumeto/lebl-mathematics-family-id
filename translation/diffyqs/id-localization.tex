@@ -64,13 +64,21 @@
 \renewcommand{\thmref}[1]{\myref{Teorema}{#1}}
 \renewcommand{\remarkref}[1]{\myref{Catatan}{#1}}
 
-% varioref page-position phrases used by \myvref.
-\renewcommand{\reftextfaceafter}{pada halaman seberang}
-\renewcommand{\reftextfacebefore}{pada halaman seberang}
-\renewcommand{\reftextafter}{pada halaman berikutnya}
-\renewcommand{\reftextbefore}{pada halaman sebelumnya}
-\renewcommand{\reftextcurrent}{pada halaman ini}
-\renewcommand{\reftextfaraway}[1]{pada halaman~\pageref{#1}}
+% varioref page-position phrases used by \myvref.  varioref reapplies its
+% American strings at \begin{document}, so apply the Indonesian overlay both
+% now and at the end of the begin-document hook.
+\newcommand{\diffyactivateidvarioref}{%
+  \renewcommand{\reftextfaceafter}{pada halaman seberang}%
+  \renewcommand{\reftextfacebefore}{pada halaman seberang}%
+  \renewcommand{\reftextafter}{pada halaman berikutnya}%
+  \renewcommand{\reftextbefore}{pada halaman sebelumnya}%
+  \renewcommand{\reftextcurrent}{pada halaman ini}%
+  \renewcommand{\reftextfaraway}[1]{pada halaman~\pageref{##1}}%
+  \renewcommand{\reftextpagerange}[2]{pada halaman~\pageref{##1}--\pageref{##2}}%
+  \renewcommand{\reftextlabelrange}[2]{\ref{##1} sampai~\ref{##2}}%
+}
+\diffyactivateidvarioref
+\AddToHook{begindocument/end}{\diffyactivateidvarioref}
 
 \renewcommand{\printanswers}{%
   \cleardoublepage

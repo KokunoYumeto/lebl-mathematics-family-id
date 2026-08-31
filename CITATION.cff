@@ -1,30 +1,24 @@
 cff-version: 1.2.0
-message: >-
-  Kutip versi Zenodo yang digunakan. Edisi ini diterjemahkan dan diintegrasikan
-  dengan backend modular oleh OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna.
-title: "Keluarga Matematika Lebl — Edisi Bahasa Indonesia"
+message: "Jika menggunakan edisi ini, kutip DOI versi di bawah."
+title: "Keluarga Matematika Lebl — Edisi Bahasa Indonesia Lengkap"
 type: book
 authors:
-  - family-names: Lebl
-    given-names: Jiří
-version: 6.3-id-wip.2026.08.25.u370
-date-released: 2026-08-25
-doi: 10.5281/zenodo.22088826
-repository-code: "https://github.com/KokunoYumeto/lebl-mathematics-family-id"
-url: "https://doi.org/10.5281/zenodo.22059779"
+  - family-names: "Lebl"
+    given-names: "Jiří"
+version: "lebl-family-id-complete.2026.08.30"
+date-released: 2026-08-30
+doi: "10.5281/zenodo.22182427"
 license: CC-BY-SA-4.0
+repository-code: "https://github.com/KokunoYumeto/lebl-mathematics-family-id"
+url: "https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id.2026.08.30.complete"
+abstract: "Edisi Bahasa Indonesia lengkap keluarga R006/R007/R008 karya Jiří Lebl, dengan empat PDF: Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf: 334 halaman, SHA-256 38743ea0e7ce52bdadf5233fc9d6e79e00717f9ba55a393f2bf46ea21c65ef56; Analisis_Dasar_II_Bahasa_Indonesia_v6.3.pdf: 241 halaman, SHA-256 e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3; Catatan_tentang_Diffy_Qs_Bahasa_Indonesia_v6.11.pdf: 502 halaman, SHA-256 1c18dfc1572d22ef7fc5d8ad25be18f3b91f1bffea5b9f9d521ff4e56ca969d4; Panduan_Mengolah_Analisis_Kompleks_Bahasa_Indonesia_v1.9.pdf: 338 halaman, SHA-256 87e4810abdedbdd8121995a8e53936891135037f03054dce76a06beebc3cfaae. Manifes memuat 5884 unit (R006 2625, R007 1732, R008 1527). Backend final backend/production/v0.4-complete-2026.08.31-a memuat 27 berkas, 122843339 byte, SHA-256 inventaris 4223a618b201cdc41db050c8bf929fd8b5b5628dc253fce2c5a8eef39ca18b9e. Paket sumber/backend SHA-256 baeea18043520f1b47825df0c9b1343f203bc1ec67119266953e19133381ab92. Sumber: Basic Analysis v6.3, Notes on Diffy Qs v6.11, dan Guide to Cultivating Complex Analysis v1.9; setiap adaptasi memilih CC BY-SA 4.0. Penerjemahan, penyuntingan, QA, penataan pembaca, dan integrasi backend dilakukan oleh OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna."
 keywords:
-  - Bahasa Indonesia
-  - analisis real
-  - persamaan diferensial
-  - analisis kompleks
-  - buku teks terbuka
-  - LaTeX
-  - backend terjemahan modular
-abstract: >-
-  Edisi Bahasa Indonesia independen untuk keluarga buku matematika Jiří Lebl.
-  Checkpoint parsial U370 memuat Analisis Dasar I lengkap; pembaca Analisis
-  Dasar II sampai akhir Bagian 11.6 beserta seluruh sebelas latihan; Notes on
-  Diffy Qs sampai rumus integral tentu untuk kondisi awal serta Bab 8 Sistem
-  nonlinear lengkap sebagai pembaca 40 halaman; dan Guide to Cultivating
-  Complex Analysis sampai akhir bagian bola Riemann.
+  - "Bahasa Indonesia"
+  - "analisis real"
+  - "persamaan diferensial"
+  - "analisis kompleks"
+  - "buku teks terbuka"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22059779"
+    description: "DOI konsep untuk seluruh garis keturunan versi"

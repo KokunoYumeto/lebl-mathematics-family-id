@@ -1,0 +1,1955 @@
+\chapter{Metode deret pangkat} \label{ps:chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Deret pangkat}
+\label{powerseries:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1,5 atau 2 kuliah\EPref{, \S8.1 dalam \cite{EP}}\BDref{,
+\S5.1 dalam \cite{BD}}}
+
+Banyak fungsi dapat dituliskan dalam bentuk deret pangkat
+\begin{equation*}
+\sum_{k=0}^\infty a_k {(x-x_0)}^k .
+\end{equation*}
+Dengan mengandaikan bahwa solusi suatu persamaan diferensial merupakan
+deret pangkat, kita mungkin dapat menggunakan metode yang mengingatkan pada koefisien
+tak tentu---kita mencoba menentukan bilangan-bilangan $a_k$.
+Sebelum menjalankan proses ini, kita meninjau beberapa hasil
+dan konsep tentang deret pangkat.
+
+\subsection{Definisi}
+
+Seperti telah kita katakan, suatu \emph{\myindex{deret pangkat}} adalah ekspresi seperti
+\begin{equation} \label{ps:sereq1}
+\sum_{k=0}^\infty a_k {(x-x_0)}^k =
+a_0 + 
+a_1 (x-x_0) +
+a_2 {(x-x_0)}^2 +
+a_3 {(x-x_0)}^3 + \cdots,
+\end{equation}
+di mana $a_0,a_1,a_2,\ldots,a_k,\ldots$ dan $x_0$ adalah konstanta. Misalkan
+\begin{equation*}
+%mbxlatex \begin{split}
+S_n(x)
+%mbxlatex &
+=
+\sum_{k=0}^n a_k {(x-x_0)}^k
+%mbxlatex \\
+%mbxlatex &
+=
+a_0 + a_1 (x-x_0) + a_2 {(x-x_0)}^2 + a_3 {(x-x_0)}^3 + \cdots + a_n {(x-x_0)}^n ,
+%mbxlatex \end{split}
+\end{equation*}
+menyatakan apa yang disebut \emph{\myindex{jumlah parsial}}. Jika untuk suatu $x$,
+limit
+\begin{equation*}
+\lim_{n\to \infty} S_n(x) = \lim_{n\to\infty} \sum_{k=0}^n a_k {(x-x_0)}^k
+\end{equation*}
+ada, kita mengatakan bahwa deret \eqref{ps:sereq1}
+\emph{konvergen}\index{konvergensi deret pangkat} di $x$.
+Di $x=x_0$, deret selalu konvergen ke $a_0$.
+Jika \eqref{ps:sereq1}
+konvergen di sembarang $x \neq x_0$ lainnya,
+kita mengatakan bahwa \eqref{ps:sereq1} adalah suatu
+\emph{\myindex{deret pangkat konvergen}}, dan kita menulis
+\begin{equation*}
+\sum_{k=0}^\infty a_k {(x-x_0)}^k = 
+\lim_{n\to\infty} \sum_{k=0}^n a_k {(x-x_0)}^k.
+\end{equation*}
+Jika deret tersebut tidak konvergen di titik mana pun $x \neq x_0$, kita mengatakan bahwa
+deret tersebut \emph{divergen}\index{deret pangkat divergen}.
+
+\begin{example} \label{ps:expex}
+Deret
+\begin{equation*}
+\sum_{k=0}^\infty \frac{1}{k!} x^k = 
+1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \cdots
+\end{equation*}
+konvergen untuk setiap $x$.
+Ingat bahwa $k! = 1\cdot 2\cdot 3 \cdots k$ adalah
+faktorial. Berdasarkan konvensi, kita mendefinisikan $0! = 1$.
+Anda mungkin ingat bahwa deret ini
+konvergen ke $e^x$.
+\end{example}
+
+Kita mengatakan bahwa \eqref{ps:sereq1}
+\emph{\myindex{konvergen mutlak}}\index{konvergensi mutlak}
+di $x$ apabila limit
+\begin{equation*}
+\lim_{n\to\infty} \sum_{k=0}^n
+\lvert a_k \rvert \, {\lvert x-x_0 \rvert}^k 
+\end{equation*}
+ada. Artinya, deret
+$\sum_{k=0}^\infty \lvert a_k \rvert \, {\lvert x-x_0 \rvert}^k$
+konvergen.
+Jika \eqref{ps:sereq1} konvergen mutlak di $x$, maka deret tersebut
+konvergen di $x$. Namun, implikasi sebaliknya tidak benar.
+
+\begin{example} \label{ps:1kex}
+Deret
+\begin{equation*}
+\sum_{k=1}^\infty \frac{1}{k} x^k
+\end{equation*}
+konvergen mutlak untuk semua $x$ dalam interval $(-1,1)$.
+Deret tersebut konvergen di $x=-1$,
+karena
+$\sum_{k=1}^\infty \frac{{(-1)}^k}{k}$ konvergen (secara bersyarat)
+berdasarkan uji deret
+berselang-seling.
+Deret pangkat tersebut tidak konvergen mutlak di $x=-1$, karena
+$\sum_{k=1}^\infty \frac{1}{k}$ tidak konvergen.
+Deret tersebut
+divergen di $x=1$.
+\end{example}
+
+\subsection{Jari-jari konvergensi}
+
+Jika suatu deret pangkat konvergen mutlak
+di suatu $x_1$, maka untuk semua $x$ sedemikian sehingga
+$\lvert x - x_0  \rvert \leq \lvert x_1 - x_0 \rvert$ (yaitu, $x$ tidak
+lebih jauh dari $x_0$ daripada $x_1$), kita mempunyai
+$\lvert a_k {(x-x_0)}^k \rvert \leq
+\lvert a_k {(x_1-x_0)}^k \rvert$
+untuk semua $k$.
+Karena bilangan-bilangan $\lvert a_k {(x_1-x_0)}^k \rvert$ berjumlah hingga suatu
+limit berhingga, penjumlahan bilangan-bilangan positif yang lebih kecil
+$\lvert a_k {(x-x_0)}^k \rvert$ juga harus mempunyai limit berhingga.
+Oleh karena itu, deret tersebut harus konvergen
+mutlak di $x$. %  Kita mempunyai hasil berikut.
+
+\begin{theorem}
+Untuk suatu deret pangkat \eqref{ps:sereq1}, terdapat bilangan
+$\rho$ (kita mengizinkan $\rho=\infty$)
+yang disebut \emph{\myindex{jari-jari konvergensi}} sedemikian sehingga
+deret tersebut konvergen mutlak pada interval
+$(x_0-\rho,x_0+\rho)$ dan divergen untuk $x < x_0-\rho$ dan $x > x_0+\rho$.
+Kita menulis $\rho=\infty$ jika
+deret tersebut konvergen untuk semua $x$.
+\end{theorem}
+
+\begin{myfig}
+\capstart
+\inputpdft{ps-conv}{%
+Diagram garis bilangan dengan titik-titik x sub 0 dikurangi rho,
+x sub 0, dan x sub 0 ditambah rho ditandai.
+Ruas antara x sub 0 dikurangi rho dan x sub 0 ditambah rho diarsir dan ditandai
+'konvergen mutlak'. Bagian garis di bawah x sub 0 dikurangi rho dan
+di atas x sub 0 ditambah rho diberi label 'divergen'.}
+\caption{Konvergensi suatu deret pangkat.\label{ps:convfig}}
+\end{myfig}
+
+Lihat \figurevref{ps:convfig}.
+Dalam \exampleref{ps:expex}, jari-jari konvergensinya adalah $\rho = \infty$
+karena deret tersebut konvergen di mana-mana.
+Dalam \exampleref{ps:1kex}, jari-jari konvergensinya adalah $\rho=1$.
+Kita mencatat bahwa $\rho = 0$ adalah cara lain untuk mengatakan bahwa deret tersebut
+divergen.
+
+Uji yang berguna untuk konvergensi suatu deret adalah
+\emph{uji rasio}\index{uji rasio untuk deret}. Andaikan bahwa
+\begin{equation*}
+\sum_{k=0}^\infty c_k
+\end{equation*}
+adalah suatu deret dan limit
+\begin{equation*}
+L = \lim_{k\to\infty} \left \lvert \frac{c_{k+1}}{c_k} \right \rvert
+\end{equation*}
+ada. Maka deret tersebut konvergen mutlak jika $L < 1$ dan divergen
+jika $L > 1$.
+
+Kita menerapkan uji ini pada deret pangkat \eqref{ps:sereq1}. 
+Tetapkan $c_k = a_k {(x - x_0)}^k$ dalam uji tersebut. Hitung
+\begin{equation*}
+L = \lim_{k\to\infty} \left \lvert \frac{c_{k+1}}{c_k} \right \rvert
+=
+\lim_{k\to\infty} \left \lvert
+\frac{a_{k+1} {(x - x_0)}^{k+1}}{a_k {(x - x_0)}^k}
+\right \rvert
+=
+\lim_{k\to\infty} \left \lvert
+\frac{a_{k+1}}{a_k}
+\right \rvert
+\lvert  x - x_0 \rvert .
+\end{equation*}
+Definisikan $A$ dengan
+\begin{equation*}
+A =
+\lim_{k\to\infty} \left \lvert
+\frac{a_{k+1}}{a_k}
+\right \rvert .
+\end{equation*}
+Maka deret \eqref{ps:sereq1}
+konvergen mutlak jika $1 > L = A \lvert x - x_0 \rvert$.
+Jika $A > 0$, maka
+deret tersebut konvergen mutlak
+jika $\lvert x - x_0 \rvert < \nicefrac{1}{A}$,
+dan divergen jika $\lvert x - x_0 \rvert > \nicefrac{1}{A}$. Artinya,
+jari-jari konvergensinya adalah $\nicefrac{1}{A}$.
+Jika $A = 0$, maka deret tersebut selalu konvergen.
+
+\emph{Uji akar} serupa\index{uji akar untuk deret}.
+Andaikan
+\begin{equation*}
+L = \lim_{k\to\infty} \sqrt[k]{\lvert c_k \rvert}
+\end{equation*}
+ada. Maka $\sum_{k=0}^\infty c_k$ konvergen mutlak jika $L < 1$
+dan divergen jika $L > 1$. Kita dapat menggunakan perhitungan yang sama seperti di atas
+untuk mencari $A$.
+Mari kita rangkum.
+
+\begin{theorem}[Uji rasio dan uji akar untuk deret pangkat]
+Tinjau suatu deret pangkat
+\begin{equation*}
+\sum_{k=0}^\infty a_k {(x-x_0)}^k
+\end{equation*}
+sedemikian sehingga
+\begin{equation*}
+A =
+\lim_{k\to\infty}
+\left \lvert
+\frac{a_{k+1}}{a_k}
+\right \rvert
+\qquad \text{atau} \qquad
+A =
+\lim_{k\to\infty} \sqrt[k]{\lvert a_k \rvert}
+\end{equation*}
+ada. Jika $A = 0$, maka jari-jari konvergensi deret tersebut
+adalah $\infty$. Jika tidak, jari-jari konvergensinya adalah $\nicefrac{1}{A}$.
+Selain itu, jika salah satu limit untuk 
+$A$ divergen ke $\infty$, maka deret tersebut divergen.
+\pagebreak[3]
+\end{theorem}
+
+\begin{example}
+Tinjau
+\begin{equation*}
+\sum_{k=0}^\infty 2^{-k} {(x-1)}^k .
+\end{equation*}
+Kita menghitung limit dalam uji rasio,
+\begin{equation*}
+A = \lim_{k\to\infty} 
+\left \lvert
+\frac{a_{k+1}}{a_k}
+\right \rvert
+=
+\lim_{k\to\infty} 
+\left \lvert
+\frac{2^{-k-1}}{2^{-k}}
+\right \rvert
+=
+\lim_{k\to\infty} 
+2^{-1} = \frac{1}{2}.
+\end{equation*}
+Oleh karena itu, jari-jari konvergensinya adalah $2$, dan deret tersebut
+konvergen mutlak pada interval $(-1,3)$.
+Kita juga dapat menggunakan uji akar:
+\begin{equation*}
+A = 
+\lim_{k\to\infty} 
+\sqrt[k]{\lvert
+a_k
+\rvert}
+=
+\lim_{k\to\infty} 
+\sqrt[k]{\lvert
+2^{-k}
+\rvert}
+=
+\lim_{k\to\infty} 
+2^{-1}
+=
+\frac{1}{2}.
+\end{equation*}
+\end{example}
+
+\begin{example}
+Tinjau
+\begin{equation*}
+\sum_{k=1}^\infty \frac{1}{k^k} {x}^k .
+\end{equation*}
+Hitung limit untuk uji akar (uji rasio juga dapat digunakan),
+\begin{equation*}
+A =
+\lim_{k\to\infty} 
+\sqrt[k]{\lvert a_k \rvert}
+=
+\lim_{k\to\infty} 
+\sqrt[k]{
+\left\lvert\frac{1}{k^k}\right\rvert}
+=
+\lim_{k\to\infty} 
+\sqrt[k]{
+{\left\lvert\frac{1}{k}\right\rvert}^{k}}
+=
+\lim_{k\to\infty} 
+\frac{1}{k}
+=
+0 .
+\end{equation*}
+Jadi jari-jari konvergensinya adalah $\infty$: Deret tersebut
+konvergen di mana-mana. %  Uji rasio juga dapat digunakan di sini.
+\end{example}
+
+Uji akar atau uji rasio sebagaimana diberikan tidak selalu dapat diterapkan. Artinya,
+limit dari
+$\bigl \lvert \frac{a_{k+1}}{a_k} \bigr \rvert$
+atau
+$\sqrt[k]{\lvert a_k \rvert}$
+mungkin tidak ada.
+Kadang-kadang uji tersebut harus diterapkan pada deret itu sendiri---untuk mencari
+$L$ alih-alih $A$. Sebagai contoh, untuk deret
+$\sum_{k=1}^\infty 2^k x^{2k}$, kita tidak dapat menerapkan uji akar dengan $A$; kita
+harus bekerja dengan limit $\sqrt[k]{\lvert 2^k x^{2k} \rvert}$,
+yang sama dengan $L = 2 {\lvert x \rvert}^2$. Nilai $L$ ini kurang dari $1$ ketika
+$\lvert x \rvert < \frac{1}{\sqrt{2}}$, sehingga $\frac{1}{\sqrt{2}}$
+adalah jari-jari konvergensinya.
+Terdapat cara lain untuk mencari jari-jari tersebut, tetapi uji rasio dan uji akar
+mencakup banyak deret yang muncul dalam praktik.
+%Terdapat cara-cara yang lebih canggih untuk mencari jari-jari konvergensi,
+%tetapi cara-cara tersebut akan berada di luar cakupan bab ini.
+%Kedua metode di atas
+%mencakup banyak deret yang muncul dalam praktik.
+%Sering kali kedua uji dapat diterapkan, meskipun limitnya mungkin
+%lebih mudah dihitung dengan salah satu uji daripada yang lain.
+
+Di titik-titik ujung,
+$x = x_0-\rho$ dan $x = x_0+\rho$,
+deret tersebut mungkin konvergen atau mungkin tidak, dan uji-uji di atas
+tidak menyatakan apa pun tentang konvergensi di sana.
+Kadang-kadang konvergensi di titik ujung penting, tetapi untuk
+keperluan kita, kita tidak akan terlalu mengkhawatirkannya.
+
+\subsection{Fungsi analitik}
+
+Fungsi-fungsi yang direpresentasikan oleh deret pangkat disebut
+\emph{\myindex{fungsi analitik}}. Tidak semua fungsi analitik,
+tetapi kemungkinan besar semua fungsi yang telah Anda lihat dalam kalkulus bersifat analitik.
+Suatu fungsi analitik $f(x)$ sama dengan \emph{\myindex{deret Taylor}}-nya%
+\footnote{Dinamai menurut matematikawan Inggris
+\href{http://en.wikipedia.org/wiki/Brook_Taylor}{Sir Brook Taylor}
+(1685--1731).} (suatu deret pangkat yang dihitung dari $f$)
+untuk $x$ di dekat suatu titik $x_0$ yang diberikan:
+\begin{equation} \label{ps:tayloreq}
+f(x) = \sum_{k=0}^\infty \frac{f^{(k)}(x_0)}{k!} {(x-x_0)}^k 
+=
+f(x_0)
++ f'(x_0) (x-x_0)
++ \frac{f''(x_0)}{2} (x-x_0)^2
++ \cdots
+,
+\avoidbreak
+\end{equation}
+di mana $f^{(k)}(x_0)$ menyatakan turunan berorde $k^{\text{th}}$ dari $f(x)$
+di titik $x_0$.
+
+Sebagai contoh, sinus adalah fungsi analitik dan deret Taylornya
+di sekitar $x_0 = 0$
+diberikan oleh
+\begin{equation*}
+\sin(x) = \sum_{n=0}^\infty \frac{{(-1)}^n}{(2n+1)!}
+ x^{2n+1} .
+\end{equation*}
+Dalam \figurevref{ps:sin}, kita menggambar $\sin(x)$ dan pemotongan
+deret hingga derajat 5 dan 9. Anda dapat melihat bahwa hampiran tersebut sangat
+baik untuk $x$ di dekat 0, tetapi memburuk untuk $x$ yang lebih jauh dari 0. Inilah 
+yang terjadi secara umum.
+Untuk memperoleh hampiran yang baik jauh dari $x_0$, Anda
+perlu mengambil semakin banyak suku dari deret Taylor.
+
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{ps-sin}{%
+Grafik fungsi sinus pada interval minus 10 hingga 10.
+Kemudian digambar dua hampiran yang keduanya muncul dari bagian bawah
+gambar dan mendekati grafik fungsi sinus; keduanya sangat dekat dengan grafik tersebut
+dalam suatu interval di sekitar titik asal, lalu setelah beberapa saat keduanya meninggalkan grafik melalui
+bagian atas gambar. Salah satu hampiran dekat dengan
+grafik sinus pada interval yang lebih panjang.}
+\caption{Fungsi sinus dan hampiran Taylornya
+di sekitar $x_0=0$
+berderajat $5^{\text{th}}$ dan $9^{\text{th}}$.\label{ps:sin}}
+\end{myfig}
+
+\subsection{Memanipulasi deret pangkat}
+
+Salah satu sifat utama deret pangkat yang akan kita gunakan adalah
+bahwa kita dapat mendiferensialkannya suku demi suku. Artinya,
+andaikan bahwa 
+$\sum a_k {(x-x_0)}^k$ adalah deret pangkat konvergen. Maka
+untuk $x$ di dalam jari-jari konvergensi, kita mempunyai
+\begin{equation*}
+\frac{d}{dx}
+\left[\sum_{k=0}^\infty a_k {(x-x_0)}^k\right]
+=
+\sum_{k=1}^\infty k a_k {(x-x_0)}^{k-1}
+=
+a_1
++ 2 a_2 (x-x_0)
++ 3 a_3 {(x-x_0)}^{2}
++ \cdots
+.
+\end{equation*}
+Perhatikan bahwa suku yang bersesuaian dengan $k=0$ lenyap karena
+suku tersebut konstan. Jari-jari konvergensi deret yang telah didiferensialkan
+sama dengan jari-jari deret asal.
+
+\begin{example}
+Mari kita tunjukkan bahwa fungsi eksponensial $y=e^x$ memenuhi $y'=y$. Andaikan
+kita belum mengetahui hal itu.
+Tuliskan
+\begin{equation*}
+y = e^x = \sum_{k=0}^\infty \frac{1}{k!} x^k .
+\end{equation*}
+Diferensialkan $y$,
+\begin{equation*}
+y' = \sum_{k=1}^\infty k \frac{1}{k!} x^{k-1} =
+\sum_{k=1}^\infty \frac{1}{(k-1)!} x^{k-1} .
+\end{equation*}
+Kita \emph{mengindeks ulang}\index{pengindeksan ulang deret}
+deret tersebut hanya dengan mengganti $k$ dengan $k+1$. Deret tersebut
+tidak berubah; yang berubah hanyalah cara kita menuliskannya. Setelah
+pengindeksan ulang, deret kembali dimulai
+pada $k=0$.
+\begin{equation*}
+\sum_{k=1}^\infty \frac{1}{(k-1)!} x^{k-1} =
+\sum_{k+1=1}^\infty \frac{1}{\bigl((k+1)-1\bigr)!} x^{(k+1)-1} =
+\sum_{k=0}^\infty \frac{1}{k!} x^k .
+\end{equation*}
+Itu tepat merupakan deret pangkat untuk $e^x$ yang kita gunakan di awal,
+sehingga kita telah menunjukkan bahwa $\frac{d}{dx} [ e^x ] = e^x$.
+\end{example}
+
+Deret pangkat konvergen dapat dijumlahkan dan dikalikan satu sama lain, serta dikalikan
+dengan konstanta menggunakan aturan-aturan berikut. Pertama, kita dapat menjumlahkan deret dengan
+menjumlahkan suku demi suku,
+\begin{equation*}
+\left(\sum_{k=0}^\infty a_k {(x-x_0)}^k\right)
++
+\left(\sum_{k=0}^\infty b_k {(x-x_0)}^k\right)
+=
+\sum_{k=0}^\infty (a_k+b_k) {(x-x_0)}^k .
+\end{equation*}
+Kita dapat mengalikan dengan konstanta,
+\begin{equation*}
+\alpha
+\left(\sum_{k=0}^\infty a_k {(x-x_0)}^k\right)
+=
+\sum_{k=0}^\infty \alpha a_k {(x-x_0)}^k .
+\end{equation*}
+Kita juga dapat mengalikan deret satu sama lain,
+\begin{equation*}
+\left(\sum_{k=0}^\infty a_k {(x-x_0)}^k\right)
+\,
+\left(\sum_{k=0}^\infty b_k {(x-x_0)}^k\right)
+=
+\sum_{k=0}^\infty c_k {(x-x_0)}^k ,
+\end{equation*}
+di mana
+$c_k = a_0b_k + a_1 b_{k-1} + \cdots + a_k b_0$.
+Jari-jari konvergensi jumlah atau hasil kali
+setidaknya sama dengan minimum dari jari-jari konvergensi
+kedua deret yang terlibat.
+
+\subsection{Deret pangkat untuk fungsi rasional}
+
+Polinomial hanyalah deret pangkat berhingga. Artinya, suatu polinomial
+adalah deret pangkat dengan
+$a_k$ bernilai nol untuk semua $k$ yang cukup besar. Kita selalu dapat mengembangkan
+suatu polinomial sebagai deret pangkat di sekitar sembarang titik $x_0$ dengan menuliskan
+polinomial tersebut sebagai polinomial dalam $(x-x_0)$. Sebagai contoh,
+mari kita tuliskan
+$2x^2-3x+4$ sebagai deret pangkat di sekitar $x_0 = 1$:
+\begin{equation*}
+2x^2-3x+4 = 3 + (x-1) + 2{(x-1)}^2 .
+\end{equation*}
+Dengan kata lain, $a_0 = 3$, $a_1 = 1$, $a_2 = 2$, dan semua
+$a_k = 0$ lainnya. Untuk melakukan ini, kita mengetahui bahwa $a_k = 0$ untuk semua $k \geq 3$ karena
+polinomial tersebut berderajat 2.
+Kita menulis $a_0 + a_1(x-1) + a_2{(x-1)}^2$, mengembangkannya, lalu menyelesaikan
+untuk $a_0$, $a_1$, dan $a_2$. Kita juga dapat mendiferensialkan di $x=1$
+dan menggunakan rumus deret Taylor \eqref{ps:tayloreq}.
+
+Mari kita tinjau fungsi rasional, yaitu hasil bagi polinomial.
+Suatu fakta penting adalah 
+bahwa suatu deret untuk fungsi hanya mendefinisikan fungsi tersebut
+pada suatu interval, meskipun fungsi itu didefinisikan di tempat lain. Sebagai contoh, untuk
+$-1 < x < 1$,
+\begin{equation*}
+\frac{1}{1-x} =
+\sum_{k=0}^\infty x^k =
+1 + x + x^2 + \cdots
+\end{equation*}
+Deret ini disebut \emph{\myindex{deret geometri}}. Uji rasio
+memberi tahu kita bahwa jari-jari konvergensinya adalah $1$. Deret tersebut
+divergen untuk $x \leq -1$ dan $x \geq 1$, meskipun
+$\frac{1}{1-x}$ didefinisikan untuk semua $x \neq 1$.
+
+Alih-alih menerapkan
+pengembangan deret Taylor \eqref{ps:tayloreq},
+deret geometri beserta aturan penjumlahan dan
+perkalian deret pangkat dapat digunakan untuk mengembangkan sembarang fungsi rasional di sekitar
+suatu titik $x_0$, selama penyebutnya tidak nol di $x_0$.
+
+\begin{example}
+Kembangkan $\frac{x}{1+2x+x^2}$ sebagai deret pangkat di sekitar titik asal ($x_0 = 0$) dan
+carilah jari-jari konvergensinya.
+
+Pertama, tuliskan $1+2x+x^2 = {(1+x)}^2 = {\bigl(1-(-x)\bigr)}^2$.
+Hitung
+\begin{equation*}
+\begin{split}
+\frac{x}{1+2x+x^2}
+&=
+x \,
+{\left(
+\frac{1}{1-(-x)}
+\right)}^2
+\\
+&=
+x \,
+{ \left( 
+\sum_{k=0}^\infty {(-1)}^k x^k 
+\right)}^2
+\\
+&=
+x \,
+\left(
+\sum_{k=0}^\infty c_k x^k 
+\right)
+\\
+&=
+\sum_{k=0}^\infty c_k x^{k+1} ,
+\end{split}
+\end{equation*}
+di mana untuk memperoleh $c_k$, kita menggunakan rumus hasil kali deret:
+$c_0 = 1$, $c_1 = -1 -1 = -2$, $c_2 = 1+1+1 = 3$, dan seterusnya.
+Oleh karena itu,
+\begin{equation*}
+\frac{x}{1+2x+x^2}
+=
+\sum_{k=1}^\infty {(-1)}^{k+1} k x^k
+= x-2x^2+3x^3-4x^4+\cdots
+\end{equation*}
+Jari-jari konvergensinya setidaknya 1. Kita menggunakan uji rasio
+\begin{equation*}
+\lim_{k\to\infty}
+\left\lvert \frac{a_{k+1}}{a_k} \right\rvert
+=
+\lim_{k\to\infty}
+\left\lvert \frac{{(-1)}^{k+2} (k+1)}{{(-1)}^{k+1}k} \right\rvert
+=
+\lim_{k\to\infty}
+\frac{k+1}{k}
+= 1 .
+\end{equation*}
+Jadi jari-jari konvergensinya benar-benar sama dengan 1.
+\end{example}
+
+Jika fungsi rasionalnya lebih rumit, kita juga dapat
+menggunakan metode pecahan parsial. Sebagai contoh,
+untuk mencari deret Taylor bagi $\frac{x^3+x}{x^2-1}$, kita menulis
+\begin{equation*}
+\frac{x^3+x}{x^2-1}
+=
+x + \frac{1}{1+x} - \frac{1}{1-x}
+=
+x + \sum_{k=0}^\infty {(-1)}^k x^k - \sum_{k=0}^\infty x^k
+=
+- x + \sum_{\substack{k=3 \\ k \text{ ganjil}}}^\infty (-2) x^k .
+\end{equation*}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Apakah $\displaystyle \sum_{k=0}^\infty e^k x^k$ merupakan deret pangkat konvergen?
+Jika ya, carilah jari-jari konvergensinya.
+\end{exercise}
+
+\begin{exercise}
+Apakah $\displaystyle \sum_{k=0}^\infty k x^k$ merupakan deret pangkat konvergen?
+Jika ya, carilah jari-jari konvergensinya.
+\end{exercise}
+
+\begin{exercise}
+Apakah $\displaystyle \sum_{k=0}^\infty k! x^k$ merupakan deret pangkat konvergen?
+Jika ya, carilah jari-jari konvergensinya.
+\end{exercise}
+
+\begin{exercise}
+Apakah $\displaystyle \sum_{k=0}^\infty \frac{1}{(2k)!} {(x-10)}^k$
+merupakan deret pangkat konvergen? Jika ya, carilah jari-jari konvergensinya.
+\end{exercise}
+
+\begin{exercise}
+Tentukan deret Taylor untuk $\sin x$ di sekitar titik $x_0 = \pi$.
+\end{exercise}
+
+\begin{exercise}
+Carilah deret Taylor untuk $\ln x$ di sekitar titik $x_0 = 1$,
+beserta jari-jari konvergensinya.
+\end{exercise}
+
+\begin{exercise}
+Tentukan deret Taylor
+beserta jari-jari konvergensinya untuk $\dfrac{1}{1+x}$
+di sekitar $x_0 = 0$.
+\end{exercise}
+
+\begin{exercise}
+Tentukan deret Taylor beserta jari-jari konvergensinya
+untuk
+$\dfrac{x}{4-x^2}$ di sekitar $x_0 = 0$. Petunjuk: Anda tidak akan dapat
+menggunakan uji rasio.
+\end{exercise}
+
+\begin{exercise}
+Kembangkan $x^5+5x+1$ sebagai deret pangkat di sekitar $x_0 = 5$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan bahwa uji rasio dapat diterapkan pada suatu deret
+$\displaystyle \sum_{k=0}^\infty a_k x^k$. Tunjukkan, dengan menggunakan uji
+rasio, bahwa jari-jari konvergensi deret yang didiferensialkan
+sama dengan jari-jari konvergensi deret asal.
+\end{exercise}
+
+\begin{exercise}
+Andaikan $f$ adalah fungsi analitik sedemikian sehingga
+$f^{(n)}(0) = n$. Carilah $f(1)$.
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Apakah
+$\displaystyle \sum_{n=1}^\infty {(0.1)}^n x^n$
+merupakan deret pangkat konvergen?
+Jika ya, carilah jari-jari konvergensinya.
+\end{exercise}
+\exsol{%
+Ya. Jari-jari konvergensinya adalah $10$.
+}
+
+\begin{exercise}[menantang]
+Apakah
+$\displaystyle \sum_{n=1}^\infty \frac{n!}{n^n} x^n$
+merupakan deret pangkat konvergen?
+Jika ya, carilah jari-jari konvergensinya.
+\end{exercise}
+\exsol{%
+Ya. Jari-jari konvergensinya adalah $e$.
+}
+
+\begin{exercise}
+Dengan menggunakan deret geometri, kembangkan $\frac{1}{1-x}$ di sekitar $x_0=2$.
+Untuk nilai $x$ apa deret tersebut konvergen?
+\end{exercise}
+\exsol{%
+$\frac{1}{1-x} = -\frac{1}{1-(2-x)}$, sehingga
+$\frac{1}{1-x} =
+\sum\limits_{n=0}^\infty {(-1)}^{n+1} {(x-2)}^n$,
+yang konvergen untuk $1 < x < 3$.
+}
+
+\begin{exercise}[menantang]
+Carilah deret Taylor untuk $x^7 e^x$ di sekitar $x_0 = 0$.
+\end{exercise}
+\exsol{%
+$\sum\limits_{n=7}^\infty
+\frac{1}{(n-7)!} x^n$
+}
+
+\begin{exercise}[menantang]
+Bayangkan $f$ dan $g$ adalah fungsi analitik sedemikian sehingga
+$f^{(k)}(0) = g^{(k)}(0)$ untuk semua $k$ yang cukup besar. Apa yang dapat Anda
+katakan tentang $f(x)-g(x)$?
+\end{exercise}
+\exsol{%
+$f(x)-g(x)$ adalah suatu polinomial. Petunjuk: Gunakan deret Taylor.
+}
+
+\begin{exercise}
+Indeks ulang deret-deret berikut agar pangkatnya berbentuk $x^k$.
+\begin{tasks}(3)
+\task $\displaystyle \sum_{k=3}^\infty k(k-1)x^{k+3}$
+\task $\displaystyle \sum_{k=1}^\infty (k+1)x^{k-1}$
+\task $\displaystyle \sum_{k=5}^\infty 2kx^{k-2}$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a) $\displaystyle \sum_{k=6}^\infty (k-3)(k-4)x^{k}$
+\quad
+b) $\displaystyle \sum_{k=0}^\infty (k+2)x^{k}$
+\quad
+c) $\displaystyle \sum_{k=3}^\infty 2(k+2)x^{k}$
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Solusi deret untuk PDB linear orde dua}
+\label{seriessols:section}
+
+\sectionnotes{1,5 atau 2 kuliah\EPref{, \S8.2 dalam \cite{EP}}\BDref{,
+\S5.2 dan \S5.3 dalam \cite{BD}}}
+
+Tinjau suatu PDB linear homogen orde dua berbentuk
+\begin{equation*}
+P(x) y'' + Q(x) y' + R(x) y = 0 .
+\end{equation*}
+Andaikan $P(x)$, $Q(x)$, dan $R(x)$ adalah polinomial. Kita akan 
+mencoba solusi berbentuk
+\begin{equation*}
+y = \sum_{k=0}^\infty a_k {(x-x_0)}^k ,
+\end{equation*}
+dan menyelesaikan untuk $a_k$ guna memperoleh solusi yang didefinisikan pada suatu
+interval di sekitar $x_0$.
+
+Titik $x_0$ disebut \emph{\myindex{titik biasa}}
+jika $P(x_0) \neq 0$. Artinya, fungsi-fungsi
+\begin{equation*}
+\frac{Q(x)}{P(x)} \qquad \text{dan} \qquad \frac{R(x)}{P(x)}
+\end{equation*}
+didefinisikan untuk $x$ di dekat $x_0$. Jika $P(x_0) = 0$, maka $x_0$
+adalah suatu \emph{\myindex{titik singular}}. Menangani titik singular
+lebih sulit daripada menangani titik biasa, sehingga sekarang kita hanya berfokus pada titik biasa.
+
+\begin{example}
+Kita mulai dengan contoh yang sangat sederhana
+\begin{equation*}
+y'' - y = 0 .
+\end{equation*}
+Mari kita coba solusi deret pangkat di dekat $x_0 = 0$,
+yang merupakan titik biasa. Bahkan, setiap titik adalah titik
+biasa karena persamaan tersebut berkoefisien konstan. Kita sudah tahu
+bahwa kita seharusnya memperoleh fungsi eksponensial atau sinus dan kosinus hiperbolik,
+tetapi mari kita berpura-pura belum mengetahui fakta ini.
+
+Kita coba
+\begin{equation*}
+y = \sum_{k=0}^\infty a_k x^k .
+\end{equation*}
+Jika kita mendiferensialkan, suku $k=0$ adalah konstanta sehingga lenyap.
+Kita memperoleh
+\begin{equation*}
+y' = \sum_{k=1}^\infty k a_k x^{k-1} .
+\end{equation*}
+Kita mendiferensialkan sekali lagi untuk memperoleh (sekarang suku $k=1$ lenyap)
+\begin{equation*}
+y'' = \sum_{k=2}^\infty k(k-1) a_k x^{k-2} .
+\end{equation*}
+Kita perlu mengurangkan $y$ dari $y''$, sehingga 
+kita mengindeks ulang deret untuk $y''$ (mengganti $k$ dengan $k+2$):
+\begin{equation*}
+y'' = \sum_{k=0}^\infty (k+2)\,(k+1) \, a_{k+2} x^k .
+\end{equation*}
+Sekarang kita substitusikan $y$ dan $y''$ ke dalam persamaan diferensial
+\begin{equation*}
+\begin{split}
+0 = y''-y & = 
+\Biggl( \sum_{k=0}^\infty (k+2)\,(k+1) \, a_{k+2} x^k  \Biggr)
+-
+\Biggl( \sum_{k=0}^\infty a_k x^k \Biggr)
+\\
+& =
+\sum_{k=0}^\infty \,\Bigl( (k+2)\,(k+1) \, a_{k+2} x^k 
+-
+a_k x^k \Bigr)
+\\
+& =
+\sum_{k=0}^\infty \,\bigl( (k+2)\,(k+1) \,a_{k+2} - a_k \bigr) \, x^k  .
+\end{split}
+\end{equation*}
+Karena $y'' - y$ seharusnya sama dengan 0, kita tahu bahwa
+koefisien-koefisien deret yang dihasilkan harus sama dengan 0. Oleh karena itu,
+untuk setiap $k=0,1,2,3,\ldots$, kita mempunyai
+\begin{equation*}
+(k+2)\,(k+1) \,a_{k+2} - a_k = 0 ,
+\qquad
+\text{atau}
+\qquad
+a_{k+2} = \frac{a_k}{(k+2)(k+1)} .
+\end{equation*}
+Persamaan di atas disebut \emph{\myindex{relasi rekurensi}}
+untuk koefisien-koefisien deret pangkat.
+Nilai $a_0$ atau $a_1$ tidak menjadi masalah. Keduanya dapat dipilih sembarang.
+Namun, setelah kita memilih $a_0$ dan $a_1$, semua koefisien lainnya
+ditentukan oleh relasi rekurensi.
+
+Mari kita lihat nilai yang harus dimiliki
+koefisien-koefisien tersebut. Pertama, $a_0$ dan $a_1$ sembarang. Kemudian,
+\begin{equation*}
+a_2 = \frac{a_0}{2}, \quad
+a_3 = \frac{a_1}{3 \cdot 2}, \quad
+a_4 = \frac{a_2}{4 \cdot 3} = \frac{a_0}{4 \cdot 3 \cdot 2}, \quad
+a_5 = \frac{a_3}{5 \cdot 4} = \frac{a_1}{5 \cdot 4 \cdot 3 \cdot 2}, \quad \ldots
+\end{equation*}
+Untuk $k$ genap, yaitu $k=2n$,
+kita mempunyai
+\begin{equation*}
+a_k = a_{2n} = \frac{a_0}{(2n)!} .
+\end{equation*}
+Untuk $k$ ganjil, yaitu $k=2n+1$, kita mempunyai
+\begin{equation*}
+a_k = a_{2n+1} = \frac{a_1}{(2n+1)!} .
+\end{equation*}
+Kita tuliskan deret untuk solusinya
+\begin{equation*}
+%mbxlatex \begin{split}
+y
+%mbxlatex &
+=
+\sum_{k=0}^\infty
+a_k x^k
+=
+\sum_{n=0}^\infty
+\left(
+\frac{a_0}{(2n)!} \,x^{2n}
++
+\frac{a_1}{(2n+1)!} \,x^{2n+1}
+\right)
+%mbxlatex \\
+%mbxlatex &
+=
+a_0
+\sum_{n=0}^\infty
+\frac{1}{(2n)!} \,x^{2n}
++
+a_1
+\sum_{n=0}^\infty
+\frac{1}{(2n+1)!} \,x^{2n+1} .
+%mbxlatex \end{split}
+\end{equation*}
+Kita mengenali kedua deret tersebut sebagai kosinus dan sinus hiperbolik.
+Oleh karena itu,
+\begin{equation*}
+y =
+a_0 \cosh x + a_1 \sinh x .
+\end{equation*}
+\end{example}
+
+Tentu saja, secara umum kita tidak akan dapat mengenali 
+deret yang muncul, karena biasanya tidak akan ada
+fungsi elementer yang cocok dengannya. Dalam hal itu, kita akan
+puas dengan bentuk deretnya.
+
+\begin{example}
+Mari kita kerjakan contoh yang lebih rumit. Tinjau
+\emph{\myindex{persamaan Airy}}%
+\footnote{Dinamai menurut matematikawan Inggris
+\href{http://en.wikipedia.org/wiki/George_Biddell_Airy}{Sir George Biddell Airy}
+(1801--1892).}:
+\begin{equation*}
+y'' - xy = 0 ,
+\end{equation*}
+di dekat titik $x_0 = 0$. Perhatikan bahwa $x_0 = 0$ adalah titik biasa.
+
+\pagebreak[2]
+Kita coba
+\begin{equation*}
+y = \sum_{k=0}^\infty a_k x^k .
+\end{equation*}
+Kita mendiferensialkan dua kali (seperti di atas) untuk memperoleh
+\begin{equation*}
+y'' = \sum_{k=2}^\infty k\,(k-1) \, a_k x^{k-2} .
+\end{equation*}
+Kita substitusikan $y$ ke dalam persamaan:
+\begin{equation*}
+\begin{split}
+0 = y''-xy &= 
+\Biggl( \sum_{k=2}^\infty k\,(k-1) \, a_k x^{k-2}  \Biggr)
+-
+x
+\Biggl( \sum_{k=0}^\infty a_k x^k \Biggr)
+\\
+&=
+\Biggl( \sum_{k=2}^\infty k\,(k-1) \, a_k x^{k-2}  \Biggr)
+-
+\Biggl( \sum_{k=0}^\infty a_k x^{k+1} \Biggr) .
+\end{split}
+\end{equation*}
+Kita mengindeks ulang dan menyelaraskan indeks awal agar deret-deret tersebut
+dapat dijumlahkan:
+\begin{equation*}
+\begin{split}
+0 = y''-xy
+&= 
+\Biggl( 2 a_2 + \sum_{k=1}^\infty (k+2)\,(k+1) \, a_{k+2} x^k  \Biggr)
+-
+\Biggl( \sum_{k=1}^\infty a_{k-1} x^k \Biggr)
+\\
+&= 
+2 a_2 + 
+\sum_{k=1}^\infty \Bigl( (k+2)\,(k+1) \, a_{k+2} - a_{k-1} \Bigr) \, x^k .
+\end{split}
+\end{equation*}
+Karena $y''-xy$ seharusnya bernilai $0$, kita mempunyai $a_2 = 0$, dan
+\begin{equation*}
+(k+2)\,(k+1) \,a_{k+2} - a_{k-1} = 0 ,
+\qquad
+\text{atau}
+\qquad
+a_{k+2} = \frac{a_{k-1}}{(k+2)(k+1)} .
+\end{equation*}
+Kita mempunyai konstanta sembarang $a_0$ dan $a_1$, serta $a_2 = 0$.
+Kita menghitung beberapa koefisien yang lebih tinggi:
+\begin{multline*}
+a_3 = \frac{a_0}{3 \cdot 2}, \quad
+a_4 = \frac{a_1}{4 \cdot 3}, \quad
+a_5 = \frac{a_2}{5 \cdot 4} = 0, \quad
+a_6 = \frac{a_3}{6 \cdot 5} = \frac{a_0}{6 \cdot 5 \cdot 3 \cdot 2},
+\\
+a_7 = \frac{a_4}{7 \cdot 6} = \frac{a_1}{7 \cdot 6 \cdot 4 \cdot 3}, \quad
+a_8 = \frac{a_5}{8 \cdot 7} = 0, \quad
+a_9 = \frac{a_6}{9 \cdot 8} = \frac{a_0}{9 \cdot 8 \cdot 6 \cdot 5 \cdot 3
+\cdot 2}, \quad
+\ldots
+\end{multline*}
+Kita melangkah dalam kelipatan tiga.
+Untuk $a_k$ dengan $k$ kelipatan $3$, yaitu $k=3n$, kita melihat
+bahwa
+\begin{equation*}
+a_{3n} = \frac{a_0}{2 \cdot 3 \cdot 5 \cdot 6 \cdots (3n-1) \cdot (3n)} .
+\end{equation*}
+Untuk $a_k$ dengan $k = 3n+1$, kita melihat
+\begin{equation*}
+a_{3n+1} = \frac{a_1}{3 \cdot 4 \cdot 6 \cdot 7 \cdots (3n) \cdot (3n+1)} .
+\end{equation*}
+Terakhir, karena $a_2 = 0$, kita mempunyai $a_5 = 0$, $a_8 = 0$, $a_{11}=0$, dan seterusnya.
+Secara umum, $a_{3n+2} = 0$.
+
+Dengan kata lain, jika kita menuliskan deret untuk $y$,
+deret tersebut mempunyai dua bagian
+\begin{equation*}
+\begin{split}
+y &=
+\left(
+a_0 + \frac{a_0}{6} x^3 + \frac{a_0}{180} x^6 + \cdots +
+\frac{a_0}{2 \cdot 3 \cdot 5 \cdot 6 \cdots (3n-1) \cdot (3n)} x^{3n} + \cdots
+\right)
+\\
+&\phantom{=}
++
+\left(
+a_1 x + \frac{a_1}{12} x^4 + \frac{a_1}{504} x^7 + \cdots +
+\frac{a_1}{3 \cdot 4 \cdot 6 \cdot 7 \cdots (3n) \cdot (3n+1)} x^{3n+1} + \cdots
+\right)
+\\
+& =
+a_0
+\left(
+1 + \frac{1}{6} x^3 + \frac{1}{180} x^6 + \cdots +
+\frac{1}{2 \cdot 3 \cdot 5 \cdot 6 \cdots (3n-1) \cdot (3n)} x^{3n} + \cdots
+\right)
+\\
+&\phantom{=}
++
+a_1
+\left(
+x + \frac{1}{12} x^4 + \frac{1}{504} x^7 + \cdots +
+\frac{1}{3 \cdot 4 \cdot 6 \cdot 7 \cdots (3n) \cdot (3n+1)} x^{3n+1} + \cdots
+\right) .
+\end{split}
+\end{equation*}
+Kita definisikan
+\begin{align*}
+y_1(x) &= 
+1 + \frac{1}{6} x^3 + \frac{1}{180} x^6 + \cdots +
+\frac{1}{2 \cdot 3 \cdot 5 \cdot 6 \cdots (3n-1) \cdot (3n)} x^{3n} + \cdots, \\
+y_2(x) &= 
+x + \frac{1}{12} x^4 + \frac{1}{504} x^7 + \cdots +
+\frac{1}{3 \cdot 4 \cdot 6 \cdot 7 \cdots (3n) \cdot (3n+1)} x^{3n+1} + \cdots ,
+\end{align*}
+dan tuliskan solusi umum persamaan tersebut sebagai
+$y(x)= a_0 y_1(x) + a_1 y_2(x)$. Jika kita mensubstitusikan $x=0$ ke dalam
+deret pangkat untuk $y_1$ dan $y_2$, kita memperoleh
+$y_1(0) = 1$ dan $y_2(0) = 0$. Demikian pula,
+$y_1'(0) = 0$ dan $y_2'(0) = 1$. Oleh karena itu, $y = a_0 y_1 + a_1 y_2$
+adalah suatu solusi
+yang memenuhi syarat awal $y(0) = a_0$ dan $y'(0) = a_1$.
+
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{ps-airy}{%
+Grafik dua fungsi; keduanya tampak berosilasi naik-turun
+untuk x kurang dari 0, dan keduanya tampak naik seperti fungsi eksponensial untuk
+x positif. Salah satunya melalui titik asal dengan kemiringan 1, sedangkan yang lain
+melalui titik (0,1) dengan kemiringan nol.}
+\caption{Dua solusi $y_1$ dan $y_2$ untuk persamaan Airy.\label{ps:airyfig}}
+\end{myfig}
+\end{example}
+Fungsi-fungsi $y_1$ dan $y_2$ tidak dapat dituliskan dalam bentuk fungsi
+elementer yang Anda ketahui. Lihat \figurevref{ps:airyfig} untuk grafik
+solusi $y_1$ dan $y_2$. Fungsi-fungsi ini mempunyai banyak sifat menarik.
+Sebagai contoh, keduanya berosilasi untuk $x$ negatif
+(seperti solusi $y''+y=0$) dan
+untuk $x$ positif keduanya tumbuh tanpa batas (seperti solusi $y''-y=0$).
+
+\medskip
+
+Kadang-kadang suatu solusi deret ternyata merupakan polinomial.
+Mari kita lihat suatu contoh.
+
+\begin{example}
+Mari kita cari solusi untuk apa yang disebut
+\emph{\myindex{persamaan Hermite berorde $n$}}%
+\footnote{Dinamai menurut matematikawan Prancis
+\href{http://en.wikipedia.org/wiki/Hermite}{Charles Hermite}
+(1822--1901).}:
+\begin{equation*}
+y'' -2xy' + 2n y = 0 .
+\end{equation*}
+
+Mari kita cari solusi di sekitar titik $x_0 = 0$.
+Kita coba
+\begin{equation*}
+y = \sum_{k=0}^\infty a_k x^k .
+\end{equation*}
+Kita mendiferensialkan (seperti di atas) untuk memperoleh
+\begin{equation*}
+y' = \sum_{k=1}^\infty k a_k x^{k-1} 
+\qquad \text{dan} \qquad
+y'' = \sum_{k=2}^\infty k\,(k-1) \, a_k x^{k-2} .
+\end{equation*}
+
+Sekarang kita substitusikan ke dalam persamaan
+\begin{equation*}
+\begin{split}
+0 &= y''-2xy'+2ny \\
+ &= 
+\Biggl( \sum_{k=2}^\infty k(k-1) a_k x^{k-2}  \Biggr)
+-
+2x
+\Biggl( \sum_{k=1}^\infty k a_k x^{k-1} \Biggr)
++
+2n
+\Biggl( \sum_{k=0}^\infty a_k x^k \Biggr)
+\\
+&=
+\Biggl( \sum_{k=2}^\infty k(k-1) a_k x^{k-2}  \Biggr)
+-
+\Biggl( \sum_{k=1}^\infty 2k a_k x^k \Biggr)
++
+\Biggl( \sum_{k=0}^\infty 2n a_k x^k \Biggr)
+\\
+&=
+\Biggl(2a_2+
+ \sum_{k=1}^\infty (k+2)(k+1) a_{k+2} x^k  \Biggr)
+-
+\Biggl( \sum_{k=1}^\infty 2k a_k x^k \Biggr)
++
+\Biggl(
+2na_0 + 
+\sum_{k=1}^\infty 2n a_k x^k \Biggr)
+\\
+&=
+2a_2+2na_0+
+\sum_{k=1}^\infty \bigl( (k+2)(k+1)  a_{k+2} - 2ka_k + 2n a_k \bigr) x^k .
+\end{split}
+\end{equation*}
+Karena $y''-2xy'+2ny = 0$, kita mempunyai
+\begin{equation*}
+(k+2)(k+1)  a_{k+2} + ( - 2k+ 2n) a_k = 0 ,
+\qquad
+\text{atau}
+\qquad
+a_{k+2} = \frac{(2k-2n)}{(k+2)(k+1)} a_k .
+\end{equation*}
+Relasi rekurensi ini sebenarnya juga mencakup
+$a_2 = -na_0$ (yang berasal dari suku konstan $2a_2+2na_0 = 0$).
+Sekali lagi, $a_0$ dan $a_1$ sembarang.
+\begin{align*}
+& a_2 = \frac{-2n}{2 \cdot 1}a_0,
+\displaybreak[0]\\
+& a_3 = \frac{2(1-n)}{3 \cdot 2} a_1,
+\displaybreak[0]\\
+& a_4 = \frac{2(2-n)}{4 \cdot 3} a_2
+=
+\frac{2^2(2-n)(-n)}{4 \cdot 3 \cdot 2 \cdot 1} a_0 ,
+\displaybreak[0]\\
+&
+a_5 = \frac{2(3-n)}{5 \cdot 4} a_3
+=
+\frac{2^2(3-n)(1-n)}{5 \cdot 4 \cdot 3 \cdot 2} a_1 ,
+\quad \ldots
+\end{align*}
+Kita pisahkan koefisien genap dan ganjil untuk memperoleh
+\begin{align*}
+a_{2m} &=\frac{2^m(-n)(2-n)\cdots(2m-2-n)}{(2m)!} a_0, \\
+a_{2m+1} &=\frac{2^m(1-n)(3-n)\cdots(2m-1-n)}{(2m+1)!} a_1 .
+\end{align*}
+Kita tuliskan kedua deret tersebut, satu dengan pangkat genap dan satu dengan pangkat
+ganjil:
+\begin{align*}
+y_1(x) & = 
+1+\frac{2(-n)}{2!} x^2 + \frac{2^2(-n)(2-n)}{4!} x^4 + 
+\frac{2^3(-n)(2-n)(4-n)}{6!} x^6 + \cdots ,
+\\
+y_2(x) & = 
+x+\frac{2(1-n)}{3!} x^3 + \frac{2^2(1-n)(3-n)}{5!} x^5 + 
+\frac{2^3(1-n)(3-n)(5-n)}{7!} x^7 + \cdots .
+\end{align*}
+Kemudian
+\begin{equation*}
+y(x) = a_0 y_1(x) + a_1 y_2(x) .
+\end{equation*}
+
+Kita mencatat bahwa jika $n$ adalah bilangan bulat positif genap, maka $y_1(x)$ adalah
+polinomial karena semua koefisien dalam deret setelah
+derajat $n$ bernilai nol. Jika $n$ adalah bilangan bulat positif ganjil, maka $y_2(x)$ adalah
+polinomial. Sebagai contoh, jika $n=4$, maka
+\begin{equation*}
+y_1(x) = 1 + \frac{2(-4)}{2!} x^2 + \frac{2^2(-4)(2-4)}{4!} x^4
+= 1 - 4x^2 + \frac{4}{3} x^4 .
+\end{equation*}
+\end{example}
+
+\subsection{Latihan}
+
+Dalam latihan-latihan berikut, ketika diminta menyelesaikan suatu persamaan menggunakan metode
+deret pangkat, Anda harus mencari beberapa suku pertama deret tersebut,
+dan jika mungkin mencari rumus umum untuk koefisien berindeks $k^{\text{th}}$.
+
+\begin{exercise}
+Gunakan metode deret pangkat untuk menyelesaikan $y''+y = 0$ di titik $x_0 = 1$.
+\end{exercise}
+
+\begin{exercise}
+Gunakan metode deret pangkat untuk menyelesaikan $y''+4xy = 0$ di titik $x_0 = 0$.
+\end{exercise}
+
+\begin{exercise}
+Gunakan metode deret pangkat untuk menyelesaikan $y''-xy = 0$ di titik $x_0 = 1$.
+\end{exercise}
+
+\begin{exercise}
+Gunakan metode deret pangkat untuk menyelesaikan $y''+x^2y = 0$ di titik $x_0 = 0$.
+\end{exercise}
+
+\begin{exercise}
+Metode-metode tersebut juga berlaku untuk orde selain orde dua. Cobalah metode
+dalam bagian ini untuk menyelesaikan persamaan orde pertama $y'-xy = 0$ di
+titik $x_0 = 0$.
+\end{exercise}
+
+\begin{exercise}[\myindex{persamaan Chebyshev berorde $p$}]
+\leavevmode
+\begin{tasks}
+\task Selesaikan $(1-x^2)y''-xy' + p^2y = 0$ menggunakan metode deret pangkat di $x_0=0$.
+\task Untuk nilai $p$ apa terdapat solusi polinomial?
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Carilah solusi polinomial untuk $(x^2+1) y''-2xy'+2y = 0$ dengan menggunakan
+metode deret pangkat.
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{tasks}
+\task Gunakan metode deret pangkat untuk menyelesaikan $(1-x)y''+y = 0$ di titik $x_0 = 0$.
+\task Gunakan solusi dari bagian a) untuk mencari solusi
+bagi $xy''+y=0$ di sekitar titik $x_0=1$.
+\end{tasks}
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Gunakan metode deret pangkat untuk menyelesaikan $y'' + 2 x^3 y = 0$ di titik $x_0 =
+0$.
+\end{exercise}
+\exsol{%
+%\begin{equation*}
+%\begin{split}
+%0 = y''+2 x^3 y &= 
+%\Biggl( \sum_{k=2}^\infty k\,(k-1) \, a_k x^{k-2}  \Biggr)
+%+
+%2 x^3
+%\Biggl( \sum_{k=0}^\infty a_k x^k \Biggr)
+%\\
+%&=
+%\Biggl( \sum_{k=2}^\infty k\,(k-1) \, a_k x^{k-2}  \Biggr)
+%+
+%\Biggl( \sum_{k=0}^\infty 2 a_k x^{k+3} \Biggr) .
+%\\
+%&=
+%\Biggl( \sum_{k=0}^\infty (k+2)\,(k+1) \, a_{k+2} x^k  \Biggr)
+%+
+%\Biggl( \sum_{k=3}^\infty 2 a_{k-3} x^k \Biggr) .
+%\\
+%&=
+%2 a_2 +
+%6 a_3 x +
+%12 a_4 x^2 +
+%\Biggl( \sum_{k=3}^\infty (k+2)\,(k+1) \, a_{k+2} x^k  \Biggr)
+%+
+%\Biggl( \sum_{k=3}^\infty 2 a_{k-3} x^k \Biggr) .
+%\end{split}
+%\end{equation*}
+$a_2 = 0$, $a_3 = 0$, $a_4 = 0$, relasi rekurensi (untuk $k \geq 5$): $a_k
+= \frac{- 2 a_{k-5}}{k(k-1)}$,
+sehingga:\\
+$y(x) = a_0 + a_1 x -\frac{a_0}{10} x^5 - \frac{a_1}{15} x^6
++ \frac{a_0}{450} x^{10} + \frac{a_1}{825} x^{11}
+- \frac{a_0}{47250} x^{15} - \frac{a_1}{99000} x^{16}
++
+\cdots$
+}
+
+\pagebreak[2]
+\begin{exercise}[menantang]
+Metode deret pangkat juga berlaku untuk persamaan tak homogen.
+\begin{tasks}
+\task Gunakan metode deret pangkat untuk menyelesaikan $y'' - x y = \frac{1}{1-x}$
+di titik $x_0 = 0$. Petunjuk: Ingat deret geometri.
+\task Sekarang selesaikan untuk syarat awal $y(0)=0$, $y'(0)=0$.
+\end{tasks}
+\end{exercise}
+\exsol{%
+%\begin{equation*}
+%\begin{split}
+%\frac{1}{1-x} =
+%\sum_{k=0}^\infty x^k
+%=
+%y''-x y &= 
+%\Biggl( \sum_{k=2}^\infty k\,(k-1) \, a_k x^{k-2}  \Biggr)
+%-
+%x
+%\Biggl( \sum_{k=0}^\infty a_k x^k \Biggr)
+%\\
+%&=
+%\Biggl( \sum_{k=2}^\infty k\,(k-1) \, a_k x^{k-2}  \Biggr)
+%-
+%\Biggl( \sum_{k=0}^\infty a_k x^{k+1} \Biggr) .
+%\\
+%&=
+%\Biggl( \sum_{k=0}^\infty (k+2)\,(k+1) \, a_{k+2} x^k  \Biggr)
+%-
+%\Biggl( \sum_{k=1}^\infty a_{k-1} x^k \Biggr) .
+%\\
+%&=
+%2 a_2 + 
+%\Biggl( \sum_{k=1}^\infty (k+2)\,(k+1) \, a_{k+2} x^k  \Biggr)
+%-
+%\Biggl( \sum_{k=1}^\infty a_{k-1} x^k \Biggr) .
+%\end{split}
+%\end{equation*}
+a) $a_2 = \frac{1}{2}$, dan untuk $k \geq 3$ kita mempunyai
+$a_k = \frac{a_{k-3} + 1}{k(k-1)}$, sehingga \\
+$y(x) = a_0 + a_1 x + \frac{1}{2} x^2
++ \frac{a_0 + 1}{6} x^3
++ \frac{a_1 + 1}{12} x^4
++ \frac{3}{40} x^5
++ \frac{a_0 + 7}{180} x^6
++ \frac{a_1 + 13}{504} x^7
++ \frac{43}{2240} x^8
++ \frac{a_0 + 187}{12960} x^9
++ \frac{a_1 + 517}{45360} x^{10} +
+\cdots$
+\\
+b)
+$y(x) = \frac{1}{2} x^2
++ \frac{1}{6} x^3
++ \frac{1}{12} x^4
++ \frac{3}{40} x^5
++ \frac{7}{180} x^6
++ \frac{13}{504} x^7
++ \frac{43}{2240} x^8
++ \frac{187}{12960} x^9
++ \frac{517}{45360} x^{10} +
+\cdots$
+}
+
+\begin{exercise}
+Cobalah menyelesaikan $x^2 y'' - y = 0$ di $x_0 = 0$ menggunakan metode deret pangkat
+dalam bagian ini ($x_0$ adalah titik singular).
+Dapatkah Anda menemukan setidaknya satu solusi? Dapatkah Anda menemukan lebih dari satu solusi?
+\end{exercise}
+\exsol{%
+%\begin{equation*}
+%\begin{split}
+%0 = x^2 y''-y &= 
+%x^2 \Biggl( \sum_{k=2}^\infty k\,(k-1) \, a_k x^{k-2}  \Biggr)
+%-
+%\Biggl( \sum_{k=0}^\infty a_k x^k \Biggr)
+%\\
+%&=
+%\Biggl( \sum_{k=2}^\infty k\,(k-1) \, a_k x^k  \Biggr)
+%-
+%a_0
+%-
+%a_1 x
+%-
+%\Biggl( \sum_{k=2}^\infty a_k x^k \Biggr) .
+%\end{split}
+%\end{equation*}
+%sehingga $a_0 = 0$, $a_1 = 0$, $k(k-1) a_k = a_k$
+Dengan menerapkan metode bagian ini secara langsung, kita memperoleh $a_k = 0$ untuk
+semua $k$, sehingga $y(x) = 0$ adalah satu-satunya solusi yang kita temukan.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Titik singular dan metode Frobenius}
+\label{frobenius:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1,5 atau 2 kuliah\EPref{, \S8.3 dan \S8.4 dalam \cite{EP}}\BDref{,
+\S5.4--\S5.7 dalam \cite{BD}}}
+
+Perilaku PDB di titik singular dapat rumit.
+Untuk titik singular tertentu,
+kita dapat mencari solusi setidaknya pada satu sisi titik singular
+dengan menggunakan modifikasi
+deret pangkat.
+Mari kita tinjau beberapa contoh sebelum memberikan metode umum.
+%Kita mungkin beruntung dan memperoleh solusi deret pangkat
+%menggunakan metode bagian sebelumnya, tetapi secara umum kita
+%harus mencoba hal-hal lain.
+
+\subsection{Contoh}
+
+\begin{example}
+Tinjau persamaan orde pertama sederhana 
+\begin{equation*}
+2 x y' - y = 0 .
+\end{equation*}
+Perhatikan bahwa $x=0$ adalah titik singular.
+Dengan menetapkan $x=0$ dalam persamaan, kita memperoleh
+bahwa setiap solusi yang didefinisikan di dekat nol memenuhi
+$y(0)=0$, tetapi keadaannya bahkan lebih buruk.
+Jika kita mencoba mensubstitusikan
+\begin{equation*}
+y = \sum_{k=0}^\infty a_k x^k ,
+\end{equation*}
+kita memperoleh
+\begin{equation*}
+\begin{split}
+0 = 2 xy'-y &= 
+2x \, \Biggl( \sum_{k=1}^\infty k a_k x^{k-1}  \Biggr)
+-
+\Biggl( \sum_{k=0}^\infty a_k x^k \Biggr)
+\\
+& =
+-a_0 + 
+\sum_{k=1}^\infty (2 k a_k - a_k) \, x^{k} .
+\end{split}
+\end{equation*}
+Pertama, $a_0 = 0$. Selanjutnya, satu-satunya cara menyelesaikan
+$0 = 2 k a_k - a_k = (2k-1) \, a_k$
+untuk $k = 1,2,3,\dots$ adalah dengan $a_k = 0$ untuk semua $k$.
+Oleh karena itu, dengan cara ini kita hanya memperoleh solusi trivial $y=0$. Kita memerlukan
+solusi tak nol untuk memperoleh solusi umum persamaan tersebut.
+
+Mari kita coba $y=x^r$
+untuk suatu bilangan real $r$. 
+Akibatnya, solusi kita---jika kita dapat
+menemukannya---mungkin hanya bermakna untuk $x$ positif.
+Kemudian $y' = r x^{r-1}$. Jadi
+\begin{equation*}
+0 = 2 x y' - y = 2 x r x^{r-1} - x^r = (2r-1) x^r .
+\end{equation*}
+Dengan demikian, $r= \nicefrac{1}{2}$ dan karena itu $y = x^{1/2}$.
+Karena persamaan tersebut linear,
+solusi umum untuk $x$ positif adalah
+\begin{equation*}
+y = C x^{1/2} .
+\end{equation*}
+Jika $C \neq 0$, maka
+turunan solusi \myquote{meledak} di $x=0$ (titik
+singular). Hanya ada satu solusi yang terdiferensialkan
+di $x=0$, yaitu solusi trivial $y=0$.
+\end{example}
+
+Tentu saja, tidak setiap masalah dengan titik singular mempunyai solusi berbentuk $y=x^r$.
+Namun, mungkin kita dapat menggabungkan kedua metode tersebut. Yang akan kita lakukan adalah
+mencoba solusi berbentuk
+\begin{equation*}
+y = x^r f(x)
+\avoidbreak
+\end{equation*}
+untuk $x$ positif,
+di mana $f(x)$ adalah fungsi analitik (deret pangkat).
+
+\begin{example}
+Tinjau persamaan
+\begin{equation*}
+4 x^2 y'' - 4 x^2 y' + (1-2x)y = 0,
+\end{equation*}
+dan perhatikan kembali bahwa $x=0$ adalah titik singular.
+
+Mari kita coba
+\begin{equation*}
+y = x^r \sum_{k=0}^\infty a_k x^k
+= \sum_{k=0}^\infty a_k x^{k+r} ,
+\end{equation*}
+di mana $r$ adalah bilangan real, tidak harus bilangan bulat.
+Sekali lagi, jika solusi semacam itu ada, solusi tersebut mungkin hanya ada untuk $x$ positif.
+Pertama-tama kita cari turunannya
+\begin{align*}
+y' & = \sum_{k=0}^\infty (k+r)\, a_k x^{k+r-1} , \\
+y'' & = \sum_{k=0}^\infty (k+r)\,(k+r-1)\, a_k x^{k+r-2} .
+\end{align*}
+Kita substitusikan semuanya ke dalam persamaan:
+\begin{equation*}
+\begin{split}
+0 & = 4x^2y''-4x^2y'+(1-2x)y
+\\
+&= 
+4x^2 \, \Biggl( \sum_{k=0}^\infty (k+r)\,(k+r-1) \, a_k x^{k+r-2}  \Biggr)
+%mbxlatex \\
+%mbxlatex & \phantom{mmm}
+-
+4x^2 \, \Biggl( \sum_{k=0}^\infty (k+r) \, a_k x^{k+r-1}  \Biggr)
++
+(1-2x)
+\Biggl( \sum_{k=0}^\infty a_k x^{k+r} \Biggr)
+\\
+&=
+\Biggl( \sum_{k=0}^\infty 4 (k+r)\,(k+r-1) \, a_k x^{k+r}  \Biggr)
+\\
+& \phantom{mmm}
+-
+\Biggl( \sum_{k=0}^\infty 4 (k+r) \, a_k x^{k+r+1}  \Biggr)
++
+\Biggl( \sum_{k=0}^\infty a_k x^{k+r} \Biggr)
+-
+\Biggl( \sum_{k=0}^\infty 2a_k x^{k+r+1} \Biggr)
+\\
+&=
+\Biggl( \sum_{k=0}^\infty 4 (k+r)\,(k+r-1) \, a_k x^{k+r}  \Biggr)
+\\
+& \phantom{mmm}
+-
+\Biggl( \sum_{k=1}^\infty 4 (k+r-1) \, a_{k-1} x^{k+r}  \Biggr)
++
+\Biggl( \sum_{k=0}^\infty a_k x^{k+r} \Biggr)
+-
+\Biggl( \sum_{k=1}^\infty 2a_{k-1} x^{k+r} \Biggr)
+\\
+&=
+4r(r-1) \, a_0 x^r  + a_0 x^r
+%mbxlatex \\
+%mbxlatex & \phantom{mmm}
++ 
+\sum_{k=1}^\infty
+\Bigl( 4 (k+r)\,(k+r-1) \, a_k
+-
+4 (k+r-1) \, a_{k-1}
++
+a_k
+-
+2a_{k-1} \Bigr) \, x^{k+r} 
+\\
+&=
+\bigl( 4r(r-1) + 1 \bigr) \, a_0 x^r
+%mbxlatex \\
+%mbxlatex & \phantom{mmm}
++ 
+\sum_{k=1}^\infty
+\Bigl( \bigl( 4 (k+r)\,(k+r-1) + 1 \bigr) \, a_k
+-
+\bigl( 4 (k+r-1) + 2 \bigr) \, a_{k-1} \Bigr) \, x^{k+r} .
+\end{split}
+\end{equation*}
+Pertama, agar terdapat solusi kita harus mempunyai
+$\bigl( 4r(r-1) + 1 \bigr) \, a_0 = 0$. Dengan mengandaikan $a_0 \neq 0$,
+\begin{equation*}
+4r(r-1) + 1 = 0 .
+\end{equation*}
+Persamaan ini disebut \emph{\myindex{persamaan indisial}}.
+Persamaan indisial khusus ini
+mempunyai akar ganda di $r = \nicefrac{1}{2}$.
+
+Baiklah, sekarang kita mengetahui nilai yang harus dimiliki $r$. Pengetahuan itu kita peroleh hanya dengan melihat
+koefisien $x^r$. Semua
+koefisien $x^{k+r}$ lainnya juga harus bernilai nol, sehingga
+\begin{equation*}
+\bigl( 4 (k+r)\,(k+r-1) + 1 \bigr) \, a_k
+-
+\bigl( 4 (k+r-1) + 2 \bigr) \, a_{k-1} = 0 .
+\end{equation*}
+Jika kita mensubstitusikan $r=\nicefrac{1}{2}$ dan menyelesaikan untuk $a_k$, kita memperoleh
+\begin{equation*}
+a_k
+=
+\frac{4 (k+\nicefrac{1}{2}-1) + 2}{4 (k+\nicefrac{1}{2})\,(k+\nicefrac{1}{2}-1) + 1} \, a_{k-1}
+=
+\frac{1}{k} \, a_{k-1} .
+\end{equation*}
+Mari kita tetapkan $a_0 = 1$. Maka
+\begin{equation*}
+a_1 = \frac{1}{1} a_0 = 1 ,
+\quad
+a_2 = \frac{1}{2} a_1 = \frac{1}{2} ,
+\quad
+a_3 = \frac{1}{3} a_2 = \frac{1}{3 \cdot 2} ,
+\quad
+a_4 = \frac{1}{4} a_3 = \frac{1}{4 \cdot 3 \cdot 2} ,
+\quad \cdots
+\end{equation*}
+Dengan mengekstrapolasi, kita melihat bahwa
+\begin{equation*}
+a_k = \frac{1}{k(k-1)(k-2) \cdots 3 \cdot 2} = \frac{1}{k!} .
+\end{equation*}
+Dengan kata lain,
+\begin{equation*}
+y = 
+\sum_{k=0}^\infty a_k x^{k+r}
+=
+\sum_{k=0}^\infty \frac{1}{k!} x^{k+1/2}
+=
+x^{1/2}
+\sum_{k=0}^\infty \frac{1}{k!} x^{k}
+=
+x^{1/2}
+e^x .
+\end{equation*}
+Kita beruntung! Secara umum, kita tidak akan dapat menuliskan deret tersebut dalam
+bentuk fungsi elementer.
+
+Kita mempunyai satu solusi; sebutlah $y_1 = x^{1/2} e^x$.
+Namun, bagaimana dengan solusi kedua? Jika
+kita menginginkan solusi umum, kita memerlukan dua solusi bebas linear.
+Memilih $a_0$ sebagai konstanta lain hanya menghasilkan kelipatan
+konstan dari $y_1$, dan tidak ada $r$ lain yang dapat kita coba; kita hanya
+mempunyai satu solusi untuk persamaan indisial. Nah, terdapat pangkat-pangkat $x$
+di sana-sini dan kita mengambil turunan, jadi mungkin logaritma (
+antiturunan dari $x^{-1}$) juga muncul. Ternyata kita perlu
+mencoba solusi lain berbentuk
+\begin{equation*}
+y_2 = \sum_{k=0}^\infty b_k x^{k+r} + (\ln x) y_1 ,
+\end{equation*}
+yang dalam kasus kita adalah
+\begin{equation*}
+y_2 = \sum_{k=0}^\infty b_k x^{k+1/2} + (\ln x) x^{1/2} e^x .
+\end{equation*}
+Sekarang kita mendiferensialkan persamaan ini, mensubstitusikannya ke dalam persamaan
+diferensial, lalu menyelesaikan untuk $b_k$. Perhitungan panjang pun menyusul dan kita
+memperoleh suatu relasi rekurensi untuk $b_k$. Pembaca
+dapat (dan sebaiknya) mencoba ini untuk memperoleh, misalnya, tiga suku pertama
+\begin{equation*}
+b_1 = b_0 -1 , \qquad b_2 = \frac{2b_1-1}{4} , \qquad b_3 =
+\frac{6b_2-1}{18} , \qquad \ldots
+\end{equation*}
+Kemudian kita menetapkan $b_0$ dan memperoleh solusi $y_2$. Selanjutnya
+kita menulis solusi umum sebagai $y = A y_1 + B y_2$.
+\end{example}
+
+\subsection{Metode Frobenius}
+
+Sebelum memberikan metode umum, mari kita perjelas kapan metode ini dapat diterapkan.
+Misalkan
+\begin{equation*}
+P(x) y'' + Q(x) y' + R(x) y = 0
+\end{equation*}
+adalah suatu PDB dengan polinomial
+$P(x)$, $Q(x)$, dan $R(x)$.
+Seperti sebelumnya, jika $P(x_0) = 0$, maka $x_0$ adalah suatu
+titik singular.
+Jika kita membagi dengan $P(x)$ untuk menempatkan persamaan dalam bentuk standar
+$y'' + \frac{Q(x)}{P(x)} y' + \frac{R(x)}{P(x)} y = 0$,
+mungkin singularitas yang muncul tidak terlalu buruk.
+Lebih tepatnya, jika kedua limit
+\begin{equation*}
+\lim_{x \to x_0} ~ (x-x_0) \frac{Q(x)}{P(x)}
+\qquad \text{dan} \qquad
+\lim_{x \to x_0} ~ (x-x_0)^2 \frac{R(x)}{P(x)}
+\end{equation*}
+ada dan berhingga,
+maka kita mengatakan bahwa $x_0$ adalah
+suatu \emph{\myindex{titik singular reguler}}.
+
+\begin{example}
+Sering kali, dan untuk sisa bagian ini, $x_0 = 0$. Tinjau
+\begin{equation*}
+x^2y'' + x(1+x)y' + (\pi+x^2)y = 0 .
+\end{equation*}
+Tuliskan
+\begin{align*}
+& \lim_{x \to 0} ~x \frac{Q(x)}{P(x)} = 
+\lim_{x \to 0} ~x \frac{x(1+x)}{x^2} = \lim_{x \to 0} ~(1+x) = 1 ,
+\\
+& \lim_{x \to 0} ~x^2 \frac{R(x)}{P(x)} = 
+\lim_{x \to 0} ~x^2 \frac{(\pi+x^2)}{x^2} = \lim_{x \to 0} ~(\pi+x^2) = \pi .
+\end{align*}
+Jadi $x = 0$ adalah titik singular reguler.
+
+Di sisi lain, jika kita membuat sedikit perubahan
+\begin{equation*}
+x^2y'' + (1+x)y' + (\pi+x^2)y = 0 ,
+\end{equation*}
+maka
+\begin{equation*}
+\lim_{x \to 0} ~x \frac{Q(x)}{P(x)} = 
+\lim_{x \to 0} ~x \frac{(1+x)}{x^2} = \lim_{x \to 0} ~\frac{1+x}{x} =
+\text{tidak ada}.
+\end{equation*}
+Dengan kata lain, limit tersebut tidak ada.
+Titik $0$ singular, tetapi bukan titik singular reguler.
+\end{example}
+
+Sekarang kita membahas \emph{\myindex{Metode Frobenius}} umum\index{metode Frobenius}%
+\footnote{Dinamai menurut matematikawan Jerman
+\href{http://en.wikipedia.org/wiki/Ferdinand_Georg_Frobenius}{Ferdinand
+Georg Frobenius} (1849--1917).}.
+Demi kesederhanaan, kita hanya membahas metode tersebut di titik $x=0$.
+Jika $x_0 \neq 0$, maka dalam solusi kita mengganti setiap $x$ dengan $(x-x_0)$.
+Gagasan
+utamanya adalah teorema berikut.
+
+\begin{theorem}[Metode Frobenius]
+Andaikan bahwa 
+\begin{equation} \label{eq:frobeniusmethod}
+P(x) y'' + Q(x) y' + R(x) y = 0
+\end{equation}
+mempunyai titik singular reguler di $x=0$, maka terdapat setidaknya
+satu solusi berbentuk
+\begin{equation*}
+y = x^r \sum_{k=0}^\infty a_k x^k .
+\end{equation*}
+Solusi berbentuk ini disebut
+\emph{\myindex{solusi tipe Frobenius}}.
+\end{theorem}
+
+\pagebreak[2]
+Metode tersebut biasanya dijabarkan sebagai berikut:
+
+\begin{enumerate}[(i)]
+\item
+Kita mencari solusi tipe Frobenius berbentuk
+\begin{equation*}
+y = \sum_{k=0}^\infty a_k x^{k+r} .
+\end{equation*}
+Kita substitusikan $y$ ini ke ruas kiri
+persamaan \eqref{eq:frobeniusmethod}, mengumpulkan
+suku-sukunya, lalu menuliskan semuanya sebagai satu deret.
+\item
+Deret yang diperoleh harus bernilai nol. Dengan menetapkan koefisien pertama
+(yang berpangkat paling kecil) dalam deret
+sama dengan nol, kita memperoleh
+\emph{persamaan indisial}, yang merupakan polinomial kuadrat dalam $r$.
+\item
+Jika persamaan indisial mempunyai dua akar real $r_1$ dan $r_2$
+sedemikian sehingga $r_1 - r_2$ bukan bilangan bulat, maka kita mempunyai dua solusi tipe
+Frobenius yang bebas linear. Dengan menggunakan akar pertama, kita substitusikan
+\begin{equation*}
+y_1 = x^{r_1} \sum_{k=0}^\infty a_k x^{k} ,
+\end{equation*}
+dan kita menyelesaikan untuk semua $a_k$ guna memperoleh solusi pertama. Kemudian,
+dengan menggunakan akar kedua,
+kita substitusikan
+\begin{equation*}
+y_2 = x^{r_2} \sum_{k=0}^\infty b_k x^{k} ,
+\end{equation*}
+dan menyelesaikan untuk semua $b_k$ guna memperoleh solusi kedua.
+\item
+Jika persamaan indisial mempunyai akar ganda $r$, maka kita menemukan 
+satu solusi
+\begin{equation*}
+y_1 = x^{r} \sum_{k=0}^\infty a_k x^{k} ,
+\end{equation*}
+kemudian kita memperoleh solusi baru dengan mensubstitusikan
+\begin{equation*}
+y_2 = x^{r} \sum_{k=0}^\infty b_k x^{k} + (\ln x) y_1 ,
+\end{equation*}
+ke dalam persamaan \eqref{eq:frobeniusmethod} dan menyelesaikan untuk konstanta-konstanta $b_k$.
+\item
+Jika persamaan indisial mempunyai dua akar real sedemikian sehingga $r_1-r_2$
+adalah bilangan bulat, maka, dengan mengandaikan $r_1$ adalah akar yang lebih besar, satu solusinya adalah
+\begin{equation*}
+y_1 = x^{r_1} \sum_{k=0}^\infty a_k x^{k} ,
+\end{equation*}
+dan solusi bebas linear kedua berbentuk
+\begin{equation*}
+y_2 = x^{r_2} \sum_{k=0}^\infty b_k x^{k} + C (\ln x) y_1 ,
+\end{equation*}
+di mana kita mensubstitusikan $y_2$ ke dalam \eqref{eq:frobeniusmethod} dan menyelesaikan untuk
+konstanta-konstanta $b_k$ dan $C$.
+\item
+Terakhir, jika persamaan indisial mempunyai akar kompleks, maka penyelesaian
+untuk $a_k$ dalam solusi
+\begin{equation*}
+y = x^{r_1} \sum_{k=0}^\infty a_k x^{k}
+\end{equation*}
+menghasilkan fungsi bernilai kompleks---$a_k$ adalah bilangan
+kompleks. Kita memperoleh dua solusi bebas
+linear kita%
+\footnote{Lihat 
+Joseph L.\ Neuringer,
+\emph{The Frobenius method for complex roots of the indicial equation},
+International Journal of Mathematical Education in Science and Technology,
+Volume 9, Issue 1, 1978, 71--77.}
+dengan mengambil bagian real dan imajiner dari $y$.
+\end{enumerate}
+
+Gagasan utamanya adalah mencari setidaknya satu solusi tipe Frobenius. Jika
+kita beruntung dan menemukan dua, pekerjaan selesai.
+Jika kita hanya memperoleh satu, kita menggunakan gagasan di atas atau bahkan metode lain
+seperti reduksi orde (lihat \sectionref{solinear:section}) untuk
+memperoleh solusi kedua.
+
+\subsection{Fungsi Bessel} \label{bessel:subsection}
+
+Suatu kelas fungsi penting yang umum muncul dalam fisika adalah
+\emph{fungsi Bessel}%
+\footnote{Dinamai menurut
+astronom dan matematikawan Jerman
+\href{http://en.wikipedia.org/wiki/Friedrich_Bessel}{Friedrich Wilhelm
+Bessel} (1784--1846).}.
+Sebagai contoh, fungsi-fungsi ini muncul ketika menyelesaikan
+persamaan gelombang dalam dua dan tiga dimensi. Pertama, tinjau
+\emph{\myindex{persamaan Bessel}} berorde $p$:
+\begin{equation*}
+x^2 y'' + xy' + \left(x^2 - p^2\right)y = 0 .
+\end{equation*}
+Kita mengizinkan $p$ sebagai sembarang bilangan, bukan hanya bilangan bulat, meskipun bilangan bulat
+dan kelipatan $\nicefrac{1}{2}$ paling penting dalam penerapan.
+
+Ketika kita mensubstitusikan
+\begin{equation*}
+y = \sum_{k=0}^\infty a_k x^{k+r}
+\end{equation*}
+ke dalam persamaan Bessel berorde $p$, kita memperoleh persamaan indisial
+\begin{equation*}
+r(r-1)+r-p^2 = (r-p)(r+p) = 0 .
+\end{equation*}
+Kecuali jika $p=0$, kita memperoleh dua akar, $r_1 = p$ dan $r_2 = -p$.
+Jika $p$ bukan bilangan bulat, maka dengan mengikuti metode Frobenius dan
+menetapkan $a_0 = 1$, kita memperoleh
+solusi-solusi bebas linear berbentuk
+\begin{align*}
+& y_1 = x^p \sum_{k=0}^\infty
+\frac{{(-1)}^k x^{2k}}{2^{2k} k! (k+p)(k-1+p)\cdots (2+p)(1+p)} ,
+\\
+& y_2 = x^{-p} \sum_{k=0}^\infty
+\frac{{(-1)}^k x^{2k}}{2^{2k} k! (k-p)(k-1-p)\cdots (2-p)(1-p)} .
+\end{align*}
+
+\begin{exercise}
+\leavevmode
+\begin{tasks}
+\task
+Verifikasi bahwa persamaan indisial dari persamaan Bessel berorde $p$ adalah
+$(r-p)(r+p)=0$.
+\task
+Andaikan $p$ bukan bilangan bulat. Lakukan perhitungannya
+untuk mencari solusi $y_1$ dan $y_2$ di atas.
+\end{tasks}
+\end{exercise}
+
+Fungsi Bessel adalah kelipatan konstan yang sesuai dari $y_1$ dan $y_2$.
+Pertama, kita mendefinisikan \emph{fungsi gamma}
+\begin{equation*}
+\Gamma(x) = \int_0^\infty t^{x-1} e^{-t} \, dt .
+\end{equation*}
+Perhatikan bahwa $\Gamma(1) = 1$.
+Fungsi gamma juga mempunyai sifat yang sangat baik
+\begin{equation*}
+\Gamma(x+1) = x \Gamma(x) .
+\end{equation*}
+Dari sifat ini, diperoleh bahwa $\Gamma(n) = (n-1)!$ ketika $n$ adalah
+bilangan bulat positif. Jadi fungsi gamma adalah versi kontinu dari faktorial. Kita
+menghitung:
+\begin{align*}
+& \Gamma(k+p+1)=(k+p)(k-1+p)\cdots (2+p)(1+p) \Gamma(1+p) ,
+\\
+& \Gamma(k-p+1)=(k-p)(k-1-p)\cdots (2-p)(1-p) \Gamma(1-p) .
+\end{align*}
+
+\begin{exercise}
+Verifikasi identitas-identitas di atas dengan menggunakan 
+$\Gamma(x+1) = x \Gamma(x)$.
+\end{exercise}
+
+Dengan menggunakan $\Gamma(x+1) = x \Gamma(x)$,
+kita mendefinisikan fungsi gamma untuk 
+semua $x$ kecuali bilangan bulat tak positif. 
+Kebalikan $\frac{1}{\Gamma(x)}$
+dapat didefinisikan untuk semua $x$ dengan menetapkan $\frac{1}{\Gamma(x)}$ bernilai nol
+untuk bilangan bulat $x \leq 0$.
+
+Kita mendefinisikan \emph{fungsi Bessel jenis pertama}%
+\index{fungsi Bessel jenis pertama} berorde
+$p$ dan $-p$ sebagai
+\begin{align*}
+& J_p(x) = \frac{1}{2^p\Gamma(1+p)} y_1
+=
+\sum_{k=0}^\infty
+\frac{{(-1)}^k}{k! \, \Gamma(k+p+1)}
+{\left(\frac{x}{2}\right)}^{2k+p} ,
+\\
+& J_{-p}(x) = \frac{1}{2^{-p}\Gamma(1-p)} y_2
+=
+\sum_{k=0}^\infty
+\frac{{(-1)}^k}{k! \,\Gamma(k-p+1)}
+{\left(\frac{x}{2}\right)}^{2k-p} .
+\end{align*}
+Karena fungsi-fungsi ini merupakan kelipatan konstan dari solusi yang kita temukan di atas, keduanya
+adalah solusi persamaan Bessel berorde $p$. Konstanta-konstanta tersebut dipilih
+demi kemudahan.
+Karena kebalikan dari $\Gamma$ didefinisikan untuk semua $x$, rumus-rumus
+di ruas kanan berlaku bahkan untuk $p$ bilangan bulat.
+Ketika $n$ adalah bilangan bulat tak negatif,
+\begin{equation*}
+J_n(x) =
+\sum_{k=0}^\infty
+\frac{{(-1)}^k}{k! \,(k+n)!}
+{\left(\frac{x}{2}\right)}^{2k+n} .
+\end{equation*}
+
+Ketika $p$ bukan bilangan bulat, $J_p$
+dan $J_{-p}$ bebas linear.
+Untuk orde bilangan bulat, dapat diperiksa bahwa
+\begin{equation*}
+J_n(x) = {(-1)}^nJ_{-n}(x) .
+\end{equation*}
+Jadi $J_{-n}$ bukan solusi bebas linear
+kedua. Solusi lainnya adalah apa yang disebut
+\emph{\myindex{fungsi Bessel jenis kedua}}. Fungsi-fungsi ini hanya
+bermakna untuk orde bilangan bulat $n$ dan
+didefinisikan sebagai limit kombinasi linear $J_p(x)$ dan $J_{-p}(x)$, ketika
+$p$ mendekati $n$ dengan
+cara berikut:
+\begin{equation*}
+Y_n(x) = \lim_{p\to n} \frac{\cos(p \pi) J_p(x) - J_{-p}(x)}{\sin(p \pi)} .
+\end{equation*}
+Setiap kombinasi linear $J_p(x)$ dan $J_{-p}(x)$ adalah solusi
+persamaan Bessel berorde $p$. Kemudian, ketika kita mengambil limit saat $p$
+menuju $n$, kita melihat bahwa $Y_n(x)$ adalah solusi persamaan Bessel
+berorde $n$. Ternyata $Y_n(x)$ dan $J_n(x)$ juga bebas
+linear. Oleh karena itu, ketika $n$ adalah bilangan bulat, kita mempunyai
+solusi umum persamaan Bessel berorde $n$:
+\begin{equation*}
+y = A J_n(x) + B Y_n(x) ,
+\end{equation*}
+untuk konstanta sembarang $A$ dan $B$. Perhatikan bahwa
+$Y_n(x)$ menuju negatif tak hingga di $x=0$. Banyak paket perangkat lunak
+matematika telah mendefinisikan
+fungsi-fungsi $J_n(x)$ dan $Y_n(x)$ ini, sehingga keduanya dapat digunakan
+seperti, misalnya, $\sin(x)$ dan $\cos(x)$. Bahkan, fungsi Bessel
+mempunyai beberapa sifat serupa. Sebagai contoh, $-J_1(x)$ adalah turunan
+dari $J_0(x)$, dan secara umum turunan $J_n(x)$ dapat dituliskan sebagai kombinasi
+linear dari $J_{n-1}(x)$ dan $J_{n+1}(x)$. Selain itu, fungsi-fungsi ini
+berosilasi, meskipun tidak periodik. Lihat
+\figurevref{bessel:graphsfig} untuk grafik fungsi Bessel.
+\begin{myfig}
+\capstart
+%berkas asli bessel-first bessel-second
+\diffyincludegraphics{width=6.24in}{width=9in}{bessel-first-second}{%
+Dua grafik ditampilkan. Pada grafik sebelah kiri, dua fungsi yang tampak
+berosilasi digambar untuk x dari 0 hingga 10; salah satunya bermula di
+0 dengan kemiringan positif,
+dan yang lain bermula di 1 dengan kemiringan nol. Amplitudonya
+tampak menurun ketika x semakin besar. Pada grafik sebelah kanan,
+ditampilkan dua grafik serupa, tetapi sekarang keduanya tampak bermula
+dari negatif tak hingga dan mula-mula naik sepanjang sumbu y.}
+\caption{Grafik $J_0(x)$ dan $J_1(x)$ pada grafik pertama
+serta $Y_0(x)$ dan $Y_1(x)$ pada grafik kedua.\label{bessel:graphsfig}}
+\end{myfig}
+
+\begin{example}
+Persamaan lain kadang-kadang dapat diselesaikan dalam bentuk fungsi Bessel.
+Sebagai contoh, diberikan konstanta positif $\lambda$,
+\begin{equation*}
+x y'' + y' + \lambda^2 x y = 0 ,
+\end{equation*}
+dapat diubah menjadi 
+$x^2 y'' + x y' + \lambda^2 x^2 y = 0$. Dengan mengganti variabel
+$t = \lambda x$, melalui aturan rantai kita memperoleh persamaan dalam $y$ dan $t$:
+\begin{equation*}
+t^2 y'' + t y' + t^2 y = 0 ,
+\end{equation*}
+yang kita kenali sebagai persamaan Bessel berorde $0$. Oleh karena itu,
+solusi umumnya adalah $y(t) = A J_0(t) + B Y_0(t)$, atau dalam $x$:
+\begin{equation*}
+y = A J_0(\lambda x) + B Y_0(\lambda x) .
+\end{equation*}
+Persamaan ini muncul, misalnya, ketika mencari modus dasar
+getaran suatu drum melingkar, tetapi kita telah menyimpang dari pembahasan.
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Carilah suatu solusi khusus (tipe Frobenius) dari $x^2 y'' + x y' + (1+x) y = 0$.
+\end{exercise}
+
+\begin{exercise}
+Carilah suatu solusi khusus (tipe Frobenius) dari $x y'' - y = 0$.
+\end{exercise}
+
+\begin{exercise}
+Carilah suatu solusi khusus (tipe Frobenius) dari $y'' +\frac{1}{x}y' - xy = 0$.
+\end{exercise}
+
+\begin{exercise}
+Carilah solusi umum dari $2 x y'' + y' - x^2 y = 0$.
+\end{exercise}
+
+\begin{exercise}
+Carilah solusi umum dari $x^2 y'' - x y' -y = 0$.
+\end{exercise}
+
+\begin{exercise}
+Dalam persamaan-persamaan berikut,
+klasifikasikan titik $x=0$ sebagai \emph{biasa}, \emph{singular reguler}, atau
+\emph{singular tetapi tidak singular reguler}.
+\begin{tasks}(2)
+\task $x^2(1+x^2)y''+xy=0$
+\task $x^2y''+y'+y=0$
+\task $xy''+x^3y'+y=0$
+\task $xy''+xy'-e^xy=0$
+\task $x^2y''+x^2y'+x^2y=0$
+\end{tasks}
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Dalam persamaan-persamaan berikut,
+klasifikasikan titik $x=0$ sebagai \emph{biasa}, \emph{singular reguler}, atau
+\emph{singular tetapi tidak singular reguler}.
+\begin{tasks}(2)
+\task $y''+y=0$
+\task $x^3y''+(1+x)y=0$
+\task $xy''+x^5y'+y=0$
+\task $\sin(x)y''-y=0$
+\task $\cos(x)y''-\sin(x)y=0$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a)~biasa, b)~singular tetapi tidak singular reguler, c)~singular reguler,
+d)~singular reguler, e)~biasa.
+}
+
+\begin{exercise}
+Carilah solusi umum dari $x^2 y'' -y = 0$.
+\end{exercise}
+\exsol{%
+$y = A x^{\frac{1+\sqrt{5}}{2}} + B x^{\frac{1-\sqrt{5}}{2}}$
+}
+
+\begin{exercise}
+Carilah suatu solusi khusus dari $x^2 y'' +(x-\nicefrac{3}{4})y = 0$.
+\end{exercise}
+\exsol{%
+$y = x^{3/2}
+\sum\limits_{k=0}^\infty
+\frac{{(-1)}^{k}}{k!\,(k+2)!} x^k$ (Perhatikan bahwa demi kemudahan,
+kita tidak memilih $a_0 = 1$.)}
+
+\begin{exercise}[rumit]
+Carilah solusi umum dari $x^2 y'' - x y' +y = 0$.
+\end{exercise}
+\exsol{%
+$y = Ax + B x \ln(x)$
+}

@@ -85,3 +85,4094 @@ Dengan teorema dasar kalkulus, kita memperoleh
 $y' = f(x)$, dan ternyata $y$ memang merupakan suatu
 solusi. Apakah solusi ini memenuhi kondisi awal? Ya,
 $y(x_0) = \int_{x_0}^{x_0} f(t)\,dt + y_0 = y_0$. Ternyata benar!
+
+Perhatikan bahwa integral tentu dan integral tak tentu
+(mencari antiturunan) merupakan dua hal yang sama sekali berbeda. Integral tentu
+selalu menghasilkan suatu bilangan. Oleh karena itu, \eqref{int:eqdef} adalah rumus yang dapat
+kita masukkan ke kalkulator atau komputer, dan alat itu akan dengan senang hati menghitung
+nilai-nilai tertentu untuk kita. Kita pun dapat dengan mudah menggambar grafik
+solusi dan mengolahnya sebagaimana fungsi lainnya.
+Tidak begitu penting untuk selalu menemukan
+\myindex{bentuk tertutup}\footnote{Yang dimaksud dengan bentuk tertutup ialah rumus yang dinyatakan dengan
+fungsi-fungsi yang dikenal, tanpa integral atau limit.}
+bagi antiturunannya.
+
+\begin{example}
+Selesaikan
+\begin{equation*}
+y' = e^{-x^2}, \qquad y(0) = 1 .
+\end{equation*}
+
+Berdasarkan pembahasan sebelumnya, solusinya haruslah
+\begin{equation*}
+y(x) = \int_0^x e^{-t^2} \,dt + 1 .
+\end{equation*}
+Berikut cara yang jitu untuk menjahili teman-teman Anda yang sedang mengikuti
+kalkulus semester kedua. Mintalah mereka
+mencari solusi dalam bentuk tertutup. Ha ha ha (lelucon matematika garing). Hal itu
+tidak mungkin dilakukan (dalam bentuk tertutup).
+Sama sekali tidak ada masalah jika solusinya dituliskan sebagai
+integral tentu.
+Integral yang satu ini
+sebenarnya sangat penting
+dalam statistika.
+\end{example}
+
+Dengan metode ini, kita juga dapat menyelesaikan persamaan berbentuk
+\begin{equation*}
+y' = f(y) .
+\end{equation*}
+Kita menuliskan persamaan tersebut menggunakan \myindex{notasi Leibniz}:
+\begin{equation*}
+\frac{dy}{dx} = f(y) .
+\end{equation*}
+Kita menggunakan teorema fungsi invers dari kalkulus
+untuk menukar peran $x$ dan $y$; dengan kata lain,
+kita memandang $x$ sebagai fungsi dari $y$ dan memperoleh
+\begin{equation*}
+\frac{dx}{dy} = \frac{1}{f(y)} .
+\end{equation*}
+Apa yang
+kita lakukan tampak seperti manipulasi aljabar terhadap $dx$ dan $dy$.
+Kita mungkin tergoda untuk begitu saja memperlakukan $dx$
+dan $dy$ secara aljabar seolah-olah keduanya bilangan. Dalam kasus ini, cara tersebut memang berhasil. Namun,
+berhati-hatilah,
+karena perhitungan informal semacam ini dapat menimbulkan masalah,
+terutama ketika
+terdapat lebih dari satu variabel independen.
+Pada tahap ini, kita mengintegralkan terhadap $y$,
+\begin{equation*}
+x(y) = \int \frac{1}{f(y)} \,dy + C .
+\end{equation*}
+Hasil tersebut belum berupa solusi dalam bentuk yang kita inginkan, sehingga
+selanjutnya kita mencoba menyelesaikan persamaan tersebut terhadap $y$.
+
+\begin{example}
+Sebelumnya, kita menduga bahwa $y' = ky$ (untuk suatu $k > 0$) memiliki solusi
+$y=Ce^{kx}$. Solusi tersebut sebenarnya dapat kita peroleh dengan mengintegralkan persamaannya.
+Pertama, kita perhatikan bahwa $y=0$ adalah suatu solusi.
+Selanjutnya, kita asumsikan $y \neq 0$. Kita tulis
+\begin{equation*}
+\frac{dx}{dy} = \frac{1}{ky} .
+\end{equation*}
+Kita integralkan terhadap $y$ untuk memperoleh
+\begin{equation*}
+x(y) = x = \frac{1}{k} \ln \, \lvert y \rvert + D,
+\end{equation*}
+dengan $D$ suatu konstanta sembarang.
+Sekarang kita nyatakan $y$ (sebenarnya $\lvert y \rvert$) secara eksplisit.
+\begin{equation*}
+\lvert y \rvert =
+e^{kx-kD} =
+e^{-kD} e^{k x} .
+\end{equation*}
+Jika $e^{-kD}$ kita ganti dengan suatu konstanta sembarang $C$, kita dapat
+menghilangkan tanda nilai mutlak (hal ini dapat kita lakukan karena $D$ sembarang). Dengan
+cara ini, kita
+juga mencakup solusi $y=0$. Kita memperoleh solusi umum yang sama dengan yang
+kita duga sebelumnya, yaitu $y = Ce^{kx}$.
+\end{example}
+
+\begin{example}
+Temukan solusi umum dari
+$y' = y^2$.
+
+Pertama, kita perhatikan bahwa $y=0$ adalah solusi.  Sekarang kita dapat mengasumsikan bahwa $y \neq 0$.
+Tulis
+\begin{equation*}
+\frac{dx}{dy} = \frac{1}{y^2} .
+\end{equation*}
+Kita integralkan untuk memperoleh
+\begin{equation*}
+x = \frac{-1}{y} + C .
+\end{equation*}
+Kita selesaikan untuk memperoleh $y = \frac{1}{C-x}$.
+Jadi solusi umumnya adalah
+\begin{equation*}
+y = \frac{1}{C-x} \qquad \text{bersama dengan} \qquad y = 0.
+\end{equation*}
+Perhatikan singularitas solusi tersebut.  Jika, misalnya, $C=1$, maka
+solusinya \myquote{menjadi tak terbatas} saat kita mendekati $x=1$.  Lihat
+\figurevref{1over1mx:fig}.  Secara umum,
+sulit untuk mengetahui
+hanya dengan melihat persamaannya bagaimana perilaku solusi.
+Persamaan $y' = y^2$ sangat baik dan terdefinisi di mana-mana, tetapi
+solusinya hanya terdefinisi pada interval $(-\infty, C)$ atau
+$(C, \infty)$.  Biasanya, ketika ini terjadi, kita hanya mempertimbangkan solusi
+pada salah satu interval tersebut, bukan keduanya.
+Sebagai contoh, jika kita menetapkan syarat awal $y(0) = 1$, maka
+solusinya adalah $y=\frac{1}{1-x}$, dan kita hanya mempertimbangkan solusi ini
+untuk $x$ pada interval $(-\infty,1)$, karena $x$ awal kita (yaitu,
+$0$) berada dalam interval ini.
+Pada gambar, ini adalah sisi kiri grafik.
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{1over1mx}{%
+Plot $y$ sama dengan 1 dibagi besaran 1 dikurangi $x$,
+yang merupakan garis yang bermula pada nilai positif di
+sebelah kiri, lalu naik menuju asimtot vertikal di $x$ sama dengan 1.  Kemudian dari
+bawah terdapat garis lain yang naik dari asimtot vertikal
+dan mendekati sumbu-$x$.}
+\caption{Plot $y=\frac{1}{1-x}$.\label{1over1mx:fig}}
+\end{myfig}
+
+Di sisi lain, jika kita menetapkan syarat awal $y(2)=-1$, kita kembali memperoleh
+solusi $y=\frac{1}{1-x}$.  Namun sekarang, yang diambil adalah sisi kanan
+grafik, yaitu, solusi terdefinisi pada interval $(1,\infty)$, karena
+itulah interval yang memuat $2$, nilai awal $x$.
+\end{example}
+
+Masalah klasik yang menghasilkan persamaan diferensial yang dapat diselesaikan dengan integrasi
+adalah masalah
+yang berkaitan dengan \myindex{kecepatan},
+\myindex{percepatan}, dan \myindex{jarak}.  Anda tentu pernah menjumpai
+masalah-masalah ini sebelumnya dalam kuliah kalkulus.
+
+\begin{example}
+Misalkan sebuah mobil melaju dengan kecepatan $e^{t/2}$ meter per detik,
+dengan $t$ menyatakan waktu dalam detik.
+Seberapa jauh mobil itu menempuh jarak dalam 2 detik (mulai dari $t=0$)?  Seberapa jauh dalam 10 detik?
+
+Misalkan $x$ menyatakan jarak yang ditempuh mobil.
+Persamaannya adalah
+\begin{equation*}
+x' = e^{t/2} .
+\end{equation*}
+Kita cukup mengintegralkan persamaan ini untuk memperoleh
+\begin{equation*}
+x(t) = 2 e^{t/2} + C .
+\end{equation*}
+Kita masih perlu menentukan $C$.  Kita tahu bahwa ketika $t=0$,
+$x=0$.  Artinya, $x(0) = 0$.  Jadi
+\begin{equation*}
+0 = x(0) = 2e^{0/2} + C = 2 + C .
+\end{equation*}
+Dengan demikian, $C = -2$ dan
+\begin{equation*}
+x(t) = 2 e^{t/2} - 2 .
+\end{equation*}
+Sekarang kita cukup menyubstitusikan untuk memperoleh posisi mobil pada 2 dan 10 detik.
+Kita peroleh
+\begin{equation*}
+x(2) = 2e^{2/2} - 2 \approx 3.44 \text{ meter} ,
+\qquad
+x(10) = 2e^{10/2} - 2 \approx 294 \text{ meter} .
+\end{equation*}
+\end{example}
+
+\begin{example}
+Misalkan mobil tersebut mengalami percepatan sebesar $\unitfrac[t^2]{m}{s^2}$.
+Pada waktu $t=0$, mobil berada pada penanda 1 meter dan bergerak dengan kecepatan
+\unitfrac[10]{m}{s}.  Di manakah mobil pada waktu $t=10$?
+
+Sebenarnya, ini adalah masalah orde kedua.  Jika $x$ adalah jarak
+yang ditempuh, maka $x'$ adalah kecepatan, dan $x''$ adalah percepatan.
+Persamaan beserta syarat awalnya adalah
+\begin{equation*}
+x'' = t^2 , \qquad x(0) = 1 , \qquad x'(0) = 10 .
+\end{equation*}
+Kita dapat menambahkan variabel terikat baru $v$ dan menetapkan bahwa $x' = v$.  Kemudian kita selesaikan
+\begin{equation*}
+v' = t^2, \qquad v(0) = 10 .
+\end{equation*}
+Setelah menemukan $v$, kita selesaikan $x' = v$, $x(0)=1$ untuk menemukan $x$.
+Integrasinya kita serahkan kepada pembaca.
+\end{example}
+
+\begin{exercise}
+Selesaikan untuk $v$, lalu selesaikan untuk $x$.  Temukan $x(10)$ untuk menjawab
+pertanyaan tersebut.
+\end{exercise}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Selesaikan $\frac{dy}{dx} = x^2+x$ untuk $y(1)=3$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $\frac{dy}{dx} = \sin (5x)$ untuk $y(0)=2$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $\frac{dy}{dx} = \frac{1}{x^2-1}$ untuk $y(0)=0$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $y' = y^3$ untuk $y(0)=1$.
+\end{exercise}
+
+\begin{exercise}[sedikit lebih sulit]
+Selesaikan $y' = (y-1)(y+1)$ untuk $y(0)=3$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $\frac{dy}{dx} = \frac{1}{y+1}$ untuk $y(0)=0$.
+\end{exercise}
+
+\begin{exercise}[lebih sulit]
+Selesaikan $y'' = \sin x$ untuk $y(0)=0$, $y'(0) = 2$.
+\end{exercise}
+
+\begin{exercise}
+Sebuah pesawat ruang angkasa bergerak dengan kecepatan \unitfrac[$2t^2+1$]{km}{s} ($t$ adalah
+waktu dalam detik).  Pesawat itu mengarah tepat menjauhi bumi dan pada waktu $t=0$
+berjarak 1000 kilometer dari bumi.  Seberapa jauh jaraknya dari bumi satu menit setelah
+waktu $t=0$?
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $\frac{dx}{dt} = \sin(t^2)+t$, $x(0)=20$.  Jawaban boleh dibiarkan
+dalam bentuk integral tentu.
+\end{exercise}
+
+\begin{exercise}
+Sebuah bola yang dijatuhkan mengalami percepatan ke bawah dengan laju konstan $9.8$ meter per detik
+kuadrat.  Susun persamaan diferensial untuk ketinggian $h$ di atas tanah dalam meter.
+Kemudian, dengan mengasumsikan $h(0) = 100$ meter, berapa lama waktu yang diperlukan bola untuk menyentuh
+tanah?
+\end{exercise}
+
+\begin{exercise}
+Temukan solusi umum dari
+$y' = e^x$, lalu $y' = e^y$.
+\end{exercise}
+
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Selesaikan $\frac{dy}{dx} = e^x + x$ dan $y(0) = 10$.
+\end{exercise}
+\exsol{%
+$y = e^x + \frac{x^2}{2} + 9$
+}
+
+\begin{exercise}
+Selesaikan $x' = \frac{1}{x^2}$, $x(1)=1$.
+\end{exercise}
+\exsol{%
+$x = {(3t-2)}^{1/3}$
+}
+
+\begin{exercise}
+Selesaikan $x' = \frac{1}{\cos(x)}$, $x(0)=\frac{\pi}{4}$.
+\end{exercise}
+\exsol{%
+$x = \sin^{-1} \bigl(t+\nicefrac{1}{\sqrt{2}}\bigr)$
+}
+
+\begin{exercise}
+Sid berada dalam mobil yang melaju dengan kecepatan $10t+70$ mil per jam menjauhi Las Vegas,
+dengan $t$ dalam jam.  Pada $t=0$, Sid berjarak 10 mil dari Vegas.  Seberapa
+jauh Sid dari Vegas 2 jam kemudian?
+\end{exercise}
+\exsol{%
+170
+}
+
+\begin{exercise}
+Selesaikan $y' = y^n$, $y(0) = 1$, dengan $n$ bilangan bulat positif.
+Petunjuk: Anda harus mempertimbangkan kasus-kasus yang berbeda.
+\end{exercise}
+\exsol{%
+Jika $n \neq 1$, maka
+$y={\bigl((1-n)x+1\bigr)}^{1/(1-n)}$.
+Jika $n=1$, maka $y = e^x$.
+}
+
+\begin{exercise}
+Laju perubahan volume sebuah bola salju yang mencair
+sebanding dengan luas permukaan bola salju tersebut.  Misalkan
+bola salju itu berbentuk bola sempurna.  Volume (dalam sentimeter kubik)
+bola berjari-jari $r$ sentimeter adalah
+$(\nicefrac{4}{3}) \pi r^3$.  Luas permukaannya adalah
+$4 \pi r^2$.  Susun persamaan diferensial yang menggambarkan perubahan jari-jari $r$.
+Kemudian, misalkan pada waktu $t=0$ menit, jari-jarinya 10 sentimeter.
+Setelah 5 menit, jari-jarinya 8 sentimeter.  Pada waktu $t$ berapakah
+bola salju akan mencair seluruhnya?
+\end{exercise}
+\exsol{%
+Persamaannya adalah $r' = -C$ untuk suatu konstanta $C$.
+Bola salju akan mencair seluruhnya dalam 25 menit sejak waktu $t=0$.
+}
+
+\begin{exercise}
+Temukan solusi umum dari $y''''= 0$.  Berapa banyak konstanta berbeda yang diperlukan?
+\end{exercise}
+\exsol{%
+$y = Ax^3 + Bx^2 + Cx + D$, jadi 4 konstanta.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Medan kemiringan}
+\label{slopefields:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1 kuliah\EPref{, \S1.3 dalam \cite{EP}}\BDref{,
+\S1.1 dalam \cite{BD}}}
+
+%Pada titik ini, mungkin sebaiknya terlebih dahulu mencoba
+%Lab I\index{perangkat lunak IODE!Lab I} dan/atau Project I\index{perangkat lunak IODE!Project I} dari
+%situs web IODE: \url{http://www.math.uiuc.edu/iode/}.
+%
+%\medskip
+
+Seperti yang telah kita katakan, persamaan umum orde pertama yang kita pelajari berbentuk
+\begin{equation*}
+y' = f(x,y).
+\end{equation*}
+Sering kali, kita tidak dapat begitu saja menyelesaikan persamaan semacam ini secara eksplisit.
+Akan baik jika setidaknya kita dapat mengetahui bentuk dan perilaku
+solusinya, atau menemukan solusi hampiran.
+
+\subsection{Medan kemiringan}
+
+%Seperti yang telah Anda lihat dalam IODE Lab I (jika Anda mengerjakannya),
+Persamaan $y' = f(x,y)$
+memberikan suatu kemiringan pada setiap titik
+di
+bidang-$(x,y)$.  Dan inilah kemiringan yang dimiliki solusi $y(x)$
+di $x$ jika nilainya adalah $y$.  Dengan kata lain, $f(x,y)$ adalah kemiringan
+solusi yang grafiknya melalui
+titik $(x,y)$.  Pada titik $(x,y)$, kita menggambar sebuah garis pendek
+dengan kemiringan $f(x,y)$.
+Sebagai contoh, jika $f(x,y) = xy$, maka di titik $(2,1.5)$ kita menggambar
+garis pendek dengan kemiringan $xy = 2 \times 1.5 = 3$.  Jika $y(x)$ adalah solusi
+dan $y(2) = 1.5$, maka persamaan mengharuskan $y'(2) = 3$.
+Lihat \figurevref{1.3:fig0}.
+
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{1-3-xysl-one}{%
+Bidang $xy$ dengan ruas garis pendek berkemiringan 3 di titik
+(2,1.5).}
+\caption{Kemiringan $y'=xy$ di $(2,1.5)$.\label{1.3:fig0}}
+\end{myfig}
+
+Untuk memperoleh gambaran tentang perilaku solusi, kita menggambar garis semacam itu di banyak
+titik pada bidang, bukan hanya di titik $(2,1.5)$.  Idealnya, kita
+ingin melihat kemiringan di setiap titik, tetapi hal itu
+tidak mungkin.  Biasanya kita memilih suatu
+kisi titik yang cukup rapat untuk memperlihatkan perilaku, tetapi tidak terlalu
+rapat agar kita masih dapat mengenali setiap garis.
+Gambar ini kita sebut \emph{\myindex{medan kemiringan}} persamaan tersebut.
+Lihat \figurevref{1.3:fig1} untuk medan kemiringan persamaan $y' = xy$.
+Dalam praktiknya, hal ini tidak dilakukan dengan tangan; komputer dapat
+menggambarnya.
+
+Misalkan kita diberi syarat awal tertentu $y(x_0) = y_0$.
+Suatu solusi, yaitu grafik solusi, akan berupa kurva
+yang mengikuti kemiringan-kemiringan yang kita gambar.
+Untuk beberapa contoh
+solusi, lihat \figurevref{1.3:fig2}.  Kita dapat dengan mudah membuat sketsa kasar
+(atau setidaknya membayangkan)
+solusi yang mungkin dalam medan kemiringan, hanya dengan melihat medan kemiringan
+itu sendiri.  Anda cukup membuat sketsa garis yang kira-kira mengikuti ruas-ruas garis kecil
+dan melalui syarat awal Anda.
+
+\begin{myfig}
+\parbox[t]{3.0in}{
+ \capstart
+ \diffyincludegraphics{width=3.0in}{width=4.5in}{1-3-xysl}{%
+Kisi ruas garis yang kemiringannya di setiap titik diberikan oleh $x$ dikali $y$.}
+ \caption{Medan kemiringan $y' = xy$.\label{1.3:fig1}}
+}
+\quad
+\parbox[t]{3.0in}{
+ \capstart
+ \diffyincludegraphics{width=3.0in}{width=4.5in}{1-3-xysl-sol}{%
+Kisi ruas garis yang kemiringannya di setiap titik diberikan oleh $x$ dikali $y$.
+Di atasnya ditumpangkan tiga garis merah yang melalui ruas-ruas garis ini;
+satu cekung ke atas di atas sumbu-$x$, satu merupakan sumbu-$x$ itu sendiri,
+dan satu cekung ke bawah di bawah sumbu-$x$.}
+ \caption{Medan kemiringan $y' = xy$ dengan grafik solusi yang memenuhi
+ $y(0) = 0.2$, $y(0) = 0$, dan $y(0) = -0.2$.\label{1.3:fig2}}
+}
+\end{myfig}
+
+Dengan melihat medan kemiringan, kita memperoleh banyak informasi
+tentang perilaku solusi tanpa harus menyelesaikan
+persamaannya.  Sebagai
+contoh, dalam \figurevref{1.3:fig2} kita melihat perilaku solusi ketika syarat awalnya
+adalah $y(0) > 0$, $y(0) = 0$, dan $y(0) < 0$.
+Perubahan kecil pada
+syarat awal menyebabkan perilaku yang sangat berbeda.
+Kita melihat perilaku ini hanya
+dari medan kemiringan dan dengan membayangkan apa yang seharusnya dilakukan solusi.
+
+Kita melihat perilaku berbeda untuk persamaan
+$y' = -y$.  Untuk medan kemiringan dan beberapa solusi,
+lihat \figurevref{1.3:fig3}.
+Jika kita membayangkan bergerak dari kiri ke kanan (mungkin $x$ adalah waktu
+dan waktu biasanya bertambah), maka
+kita melihat bahwa apa pun nilai $y(0)$, semua solusi menuju nol ketika $x$
+menuju tak hingga.
+Sekali lagi, perilaku tersebut jelas hanya dengan
+melihat medan kemiringannya.
+
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{1-3-mysl-sol}{%
+Kisi ruas garis dengan kemiringan yang diberikan oleh negatif $y$.  Di atasnya
+ditumpangkan tiga garis merah yang bermula di berbagai titik di sisi kiri dan
+semuanya mendekati sumbu-$x$ ketika kita bergerak ke kanan.}
+\caption{Medan kemiringan $y' = -y$ dengan grafik beberapa solusi.\label{1.3:fig3}}
+\end{myfig}
+
+\subsection{Eksistensi dan keunikan}
+
+Tampaknya, jika kita menginginkan solusi yang bermula di suatu titik,
+kita cukup mengikuti medan kemiringannya.
+Dengan pemikiran itu,
+kita ingin mengajukan dua pertanyaan mendasar tentang masalah
+\begin{equation*}
+y' = f(x,y), \qquad y(x_0) = y_0.
+\end{equation*}
+\begin{enumerate}[(i)]
+\item Apakah suatu solusi \emph{ada}?
+\item Apakah solusi tersebut \emph{unik} (jika ada)?
+\end{enumerate}
+
+Menurut Anda, apa jawabannya?
+Jawaban untuk kedua pertanyaan tampaknya ya, bukan?
+Memang, kebanyakan jawabannya benar-benar ya.  Akan tetapi, ada
+kasus ketika jawaban untuk salah satu pertanyaan dapat berupa tidak.
+
+Karena persamaan yang kita jumpai dalam penerapan
+berasal dari situasi kehidupan nyata, tampaknya
+masuk akal bahwa solusi selalu ada.
+Solusi juga harus unik jika kita meyakini bahwa
+alam semesta kita deterministik.  Jika solusi tidak ada, atau jika
+tidak unik, kita
+mungkin belum menyusun model yang tepat.  Karena itu, ada baiknya mengetahui
+kapan sesuatu bermasalah dan mengapa.
+
+\begin{example}
+Cobalah selesaikan:
+\begin{equation*}
+y' = \frac{1}{x}, \qquad y(0) = 0 .
+\end{equation*}
+
+Integralkan untuk menemukan solusi umum $y = \ln \, \lvert x \rvert + C$.  Solusi tersebut
+tidak ada di $x=0$.  Lihat \figurevref{1.3:xinvfig}.
+Anda mungkin mengatakan bahwa pembagian dengan nol sudah tampak sejak jauh, tetapi
+persamaan itu mungkin ditulis dalam bentuk $x y' = 1$ yang tampak tidak berbahaya.
+
+\begin{myfig}
+\parbox[t]{3in}{
+ \capstart
+ \diffyincludegraphics{width=3in}{width=4.5in}{1-3-xinv-sol}{%
+Kisi ruas garis dengan kemiringan yang diberikan oleh 1 dibagi $x$.  Di atasnya
+ditumpangkan garis-garis merah yang bermula di berbagai titik di sisi kiri
+dan sisi kanan, lalu keluar melalui bagian bawah gambar
+ketika mendekati sumbu-$y$.}
+ \caption{Medan kemiringan $y' = \nicefrac{1}{x}$.\label{1.3:xinvfig}}
+}
+\quad
+\parbox[t]{3in}{
+ \capstart
+ \diffyincludegraphics{width=3in}{width=4.5in}{1-3-sqrt-sol}{%
+Kisi ruas garis dengan kemiringan yang diberikan oleh 2 kali
+akar kuadrat nilai mutlak $y$.  Garis-garis ini umumnya
+mengarah ke atas, kecuali pada sumbu-$x$, tempat garis-garis itu mendatar.
+Ada dua garis yang memberikan solusi, satu garis mendatar,
+$y$ sama dengan 0, dan satu garis
+yang naik dari bagian bawah plot, mengenai titik asal, lalu
+terus naik.}
+ \caption{Medan kemiringan $y' = 2 \sqrt{\lvert y \rvert}$ dengan dua
+ solusi yang memenuhi $y(0) = 0$.\label{1.3:sqrtfig}}
+}
+\end{myfig}
+\end{example}
+
+\begin{example}
+Selesaikan:
+\begin{equation*}
+y' = 2 \sqrt{\lvert y \rvert}, \qquad y(0) = 0 .
+\end{equation*}
+
+Lihat \figurevref{1.3:sqrtfig}.
+Perhatikan bahwa $y=0$ adalah solusi.  Namun, solusi lain adalah fungsi
+\begin{equation*}
+y(x) =
+\begin{cases}
+x^2 & \text{jika } \; x \geq 0,\\
+-x^2 & \text{jika } \; x < 0.
+\end{cases}
+\end{equation*}
+\end{example}
+
+Sulit diketahui hanya dengan menatap medan kemiringan bahwa
+solusinya tidak
+unik.
+Adakah harapan?
+Tentu saja ada.  Kita memiliki teorema berikut,
+yang dikenal sebagai teorema Picard%
+\footnote{Dinamai menurut matematikawan Prancis
+\href{https://en.wikipedia.org/wiki/Charles_\%C3\%89mile_Picard}{Charles \'Emile Picard}
+(1856--1941).}.
+
+\begin{theorem}[Teorema Picard tentang eksistensi dan keunikan]%
+\label{slope:picardthm}%
+\index{eksistensi dan keunikan}\index{teorema Picard}
+Jika $f(x,y)$ kontinu (sebagai fungsi dua
+variabel) dan $\frac{\partial f}{\partial y}$ ada dan
+kontinu di dekat suatu $(x_0,y_0)$, maka solusi untuk
+\begin{equation*}
+y' = f(x,y), \qquad y(x_0) = y_0,
+\end{equation*}
+ada (setidaknya untuk $x$ dalam suatu interval kecil) dan unik.
+\end{theorem}
+
+Perhatikan bahwa masalah $y' = \nicefrac{1}{x}$, $y(0) = 0$ dan
+$y' = 2 \sqrt{\lvert y \rvert}$, $y(0) = 0$ tidak memenuhi hipotesis
+teorema.
+Bahkan jika kita dapat menggunakan teorema tersebut,
+kita harus berhati-hati mengenai persoalan eksistensi ini.  Sangat
+mungkin bahwa solusi hanya ada untuk waktu yang singkat.
+
+\begin{example}
+Untuk suatu konstanta $A$, selesaikan:
+\begin{equation*}
+y' = y^2, \qquad y(0) = A .
+\end{equation*}
+
+Kita tahu cara menyelesaikan persamaan ini.  Pertama, asumsikan bahwa $A \neq 0$,
+sehingga $y$ tidak sama dengan nol setidaknya untuk suatu $x$ di dekat 0.  Jadi
+$x' = \nicefrac{1}{y^2}$, sehingga
+$x = \nicefrac{-1}{y} + C$, sehingga $y = \frac{1}{C-x}$.  Jika $y(0) = A$, maka
+$C = \nicefrac{1}{A}$, sehingga
+\begin{equation*}
+y = \frac{1}{\nicefrac{1}{A} - x} .
+\end{equation*}
+Jika $A=0$, maka $y=0$ adalah solusi.
+
+Sebagai contoh, ketika $A=1$,
+solusi \myquote{menjadi tak terbatas} di $x=1$.  Karena itu, solusi tidak ada
+untuk semua $x$ meskipun persamaannya sendiri baik di mana-mana---solusi hanya ada
+dalam interval $(-\infty,1)$.  Persamaan
+$y' = y^2$ tentu saja
+tampak baik.
+\end{example}
+
+Untuk sebagian besar
+kuliah ini, kita akan tertarik pada persamaan yang memiliki eksistensi dan
+keunikan, dan bahkan memilikinya secara \myquote{global}, tidak seperti persamaan
+$y'=y^2$.
+%Namun, kita perlu memahami contoh-contoh ketika hal tersebut gagal karena alasan
+%yang telah disebutkan.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Buat sketsa medan kemiringan untuk $y'=e^{x-y}$.  Bagaimana perilaku solusi ketika $x$
+bertambah?  Dapatkah Anda menebak suatu solusi khusus dengan melihat medan
+kemiringan?
+\end{exercise}
+
+\begin{exercise}
+Buat sketsa medan kemiringan untuk $y'=x^2$.
+\end{exercise}
+
+\begin{exercise}
+Buat sketsa medan kemiringan untuk $y'=y^2$.
+\end{exercise}
+
+\begin{exercise}
+Apakah mungkin menyelesaikan persamaan $y' = \frac{xy}{\cos x}$ untuk $y(0) = 1$?
+Berikan alasan.
+\end{exercise}
+
+\begin{exercise}
+Apakah mungkin menyelesaikan persamaan $y' = y\sqrt{\lvert x\rvert}$ untuk
+$y(0) = 0$?  Apakah solusinya unik?
+Berikan alasan.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Pasangkan persamaan $y'=1-x$, $y'=x-2y$, $y' = x(1-y)$ dengan medan kemiringan.
+Berikan alasan.
+\begin{tasks}(3)
+\task
+\parbox[c]{1.75in}{\diffyincludegraphics{width=1.75in}{width=1.75in}{yprimex1minusyslope}{%
+Medan kemiringan dengan garis-garis berkemiringan 0 pada sumbu-$y$; garis-garis itu miring
+ke atas untuk $x$ negatif dan $y$ di atas suatu garis horizontal, serta untuk
+$x$ positif dan $y$ di bawah suatu garis horizontal; dalam keadaan
+lain, garis-garis itu miring ke bawah.}}
+\task
+\parbox[c]{1.75in}{\diffyincludegraphics{width=1.75in}{width=1.75in}{yprime1minusxslope}{%
+Medan kemiringan dengan garis-garis miring ke atas untuk $x$ yang kurang daripada suatu
+besaran positif dan miring ke bawah jika tidak.  Kemiringannya tampak tidak berubah
+terhadap $y$.}}
+\task
+\parbox[c]{1.75in}{\diffyincludegraphics{width=1.75in}{width=1.75in}{yprimexminus2yslope}{%
+Medan kemiringan dengan kemiringan negatif di atas suatu garis diagonal
+dari kiri bawah ke kanan atas, dan kemiringan positif di bawah garis tersebut.}}
+\end{tasks}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}[menantang]
+Ambil $y' = f(x,y)$, $y(0) = 0$, dengan $f(x,y) > 1$
+untuk semua $x$ dan $y$.  Jika
+solusi ada untuk semua $x$, dapatkah Anda mengatakan
+apa yang terjadi pada $y(x)$ ketika $x$ menuju tak hingga positif?  Jelaskan.
+\end{exercise}
+
+\begin{exercise}[menantang]
+Ambil $(y-x)y' = 0$, $y(0) = 0$.
+\begin{tasks}
+\task Temukan dua solusi berbeda.
+\task Jelaskan mengapa hal ini tidak bertentangan dengan teorema Picard.
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $y' = f(x,y)$.  Seperti apakah medan kemiringannya? Jelaskan dan
+buat sketsa contoh jika Anda mengetahui hal berikut tentang $f(x,y)$:
+\begin{tasks}(2)
+\task $f$
+tidak bergantung pada $y$.
+\task $f$ tidak bergantung pada $x$.
+\task $f(t,t) = 0$ untuk sebarang
+bilangan $t$.
+\task $f(x,0) = 0$ dan $f(x,1) = 1$ untuk semua $x$.
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Temukan solusi untuk $y' = \lvert y \rvert$, $y(0) = 0$.  Apakah teorema Picard berlaku?
+\end{exercise}
+
+\begin{exercise}
+Ambil suatu persamaan $y' = (y-2x) g(x,y) + 2$ untuk suatu fungsi $g(x,y)$.
+Dapatkah Anda menyelesaikan masalah untuk
+syarat awal $y(0) = 0$,
+dan jika dapat, apa solusinya?
+\end{exercise}
+
+\begin{exercise}[menantang]
+\pagebreak[2]
+Misalkan $y' = f(x,y)$ sedemikian sehingga $f(x,1) = 0$ untuk setiap $x$,
+$f$ kontinu dan $\frac{\partial f}{\partial y}$ ada dan
+kontinu untuk setiap $x$ dan $y$.
+\begin{tasks}
+\task
+Tebak suatu solusi dengan syarat awal
+$y(0) = 1$.
+\task
+Dapatkah grafik dua solusi persamaan untuk syarat awal yang berbeda
+berpotongan?
+\task
+Diberikan $y(0) = 0$, apa yang dapat Anda katakan tentang solusinya?  Secara khusus,
+dapatkah $y(x) > 1$ untuk suatu $x$?  Dapatkah $y(x) = 1$ untuk suatu $x$?  Mengapa atau mengapa tidak?
+\end{tasks}
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Buat sketsa medan kemiringan $y'=y^3$.  Dapatkah Anda menemukan secara visual solusi
+yang memenuhi $y(0)=0$?
+\end{exercise}
+\exsol{%
+%mbxSTARTIGNORE
+\vtop{\vskip-1ex \hbox{%
+%mbxENDIGNORE
+%mbxlatex \\
+\diffyincludegraphics{width=2in}{width=2in}{yprimey3slope}{Medan kemiringan
+dengan kemiringan positif di atas sumbu-$x$ dan negatif di bawahnya, yang menjadi
+semakin curam ketika jaraknya dari sumbu-$x$ semakin jauh.  Kemiringannya
+nol pada sumbu-$x$ dan tampak tidak bergantung pada $x$.}%
+%mbxlatex \\
+%mbxSTARTIGNORE
+}}
+%mbxENDIGNORE
+\quad
+$y=0$ adalah solusi sedemikian sehingga $y(0)=0$.
+}
+
+\begin{exercise}
+Apakah mungkin menyelesaikan $y' = xy$ untuk $y(0) = 0$?  Apakah solusinya unik?
+\end{exercise}
+\exsol{%
+Ya, solusi ada.  Persamaannya adalah $y' = f(x,y)$ dengan $f(x,y) = xy$.  Fungsi
+$f(x,y)$ kontinu dan
+$\frac{\partial f}{\partial y} = x$, yang juga kontinu di dekat $(0,0)$.
+Jadi solusi ada dan unik.  (Bahkan, $y=0$ adalah solusinya.)
+}
+
+\begin{exercise}
+Apakah mungkin menyelesaikan $y' = \frac{x}{x^2-1}$ untuk $y(1) = 0$?
+\end{exercise}
+\exsol{%
+Tidak, persamaan tersebut tidak terdefinisi di $(x,y) = (1,0)$.
+}
+
+\begin{samepage}
+\begin{exercise}
+Pasangkan persamaan $y'=\sin x$, $y'=\cos y$, $y' = y\cos(x)$ dengan medan kemiringan.
+Berikan alasan.
+\begin{tasks}(3)
+\task
+\parbox[c]{1.75in}{\diffyincludegraphics{width=1.75in}{width=1.75in}{yprimecosyslope}{%
+Medan kemiringan dengan kemiringan yang tampak tidak bergantung pada $x$.  Kemiringannya
+negatif di bagian atas gambar, positif di bagian tengah, dan
+kembali negatif di bagian bawah gambar.}}
+\task
+\parbox[c]{1.75in}{\diffyincludegraphics{width=1.75in}{width=1.75in}{yprimecosxyslope}{%
+Medan kemiringan dengan kemiringan nol pada sumbu-$x$.  Di atas sumbu-$x$,
+kemiringannya mula-mula negatif, lalu menjadi positif, kemudian menjadi negatif.  Di bawah
+sumbu-$x$, polanya sama, tetapi dimulai dengan positif, lalu negatif,
+kemudian kembali positif.}}
+\task
+\parbox[c]{1.75in}{\diffyincludegraphics{width=1.75in}{width=1.75in}{yprimesinxslope}{%
+Medan kemiringan yang bernilai nol pada sumbu-$y$.  Kemiringannya tampak tidak
+bergantung pada $y$, dan dari kiri ke kanan mula-mula positif, lalu negatif, kemudian
+positif, lalu kembali negatif.}}
+\end{tasks}
+\end{exercise}
+\end{samepage}
+\exsol{%
+a) $y'=\cos y$, \quad
+b) $y' = y\cos(x)$, \quad
+c) $y'=\sin x$. \quad
+Alasannya diserahkan kepada pembaca.
+}
+
+\begin{exercise}[rumit]
+Misalkan
+\begin{equation*}
+f(y) =
+\begin{cases}
+0 & \text{ jika $y > 0$}, \\
+1 & \text{ jika $y \leq 0$} .
+\end{cases}
+\end{equation*}
+Apakah $y' = f(y)$, $y(0) = 0$ memiliki solusi yang terdiferensialkan secara kontinu?  Apakah Picard berlaku?  Mengapa atau mengapa tidak?
+\end{exercise}
+\exsol{%
+Picard tidak berlaku karena $f$ tidak kontinu di $y=0$.
+Persamaan tersebut tidak memiliki solusi yang terdiferensialkan secara kontinu.
+Andaikan solusi semacam itu ada. Perhatikan bahwa
+$y'(0) = 1$.  Menurut uji turunan pertama, $y(x) > 0$ untuk $x$ positif yang kecil.
+Namun untuk $x$ semacam itu, kita memiliki $y'(x) = f\bigl(y(x)\bigr) = 0$.
+Tidak mungkin $y'$ kontinu, $y'(0)=1$, dan
+$y'(x) = 0$ untuk $x$ positif yang sekecil apa pun.
+}
+
+\begin{exercise}
+Perhatikan persamaan berbentuk $y' = f(x)$ untuk suatu fungsi kontinu
+$f$, dan syarat awal $y(x_0) = y_0$.  Apakah suatu
+solusi ada untuk semua $x$?  Mengapa atau mengapa tidak?
+\end{exercise}
+\exsol{%
+Solusinya adalah $y(x) = \int_{x_0}^x f(s) \,ds + y_0$, dan solusi ini memang
+ada untuk setiap $x$.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Persamaan terpisahkan}
+\label{separable:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1 kuliah\EPref{, \S1.4 dalam \cite{EP}}\BDref{,
+\S2.2 dalam \cite{BD}}}
+
+Ketika suatu persamaan diferensial berbentuk
+$y' = f(x)$,
+kita mengintegralkan:
+$y = \int f(x) \,dx + C$.
+Sayangnya, mengintegralkan begitu saja tidak lagi berhasil untuk
+bentuk umum persamaan
+$y' = f(x,y)$.
+Mengintegralkan kedua ruas menghasilkan ekspresi yang tidak terlalu membantu
+\begin{equation*}
+y = \int f(x,y) \,dx + C .
+\end{equation*}
+Perhatikan kebergantungan pada $y$ dalam integral.
+
+\subsection{Persamaan terpisahkan}
+
+Kita mengatakan bahwa suatu persamaan diferensial
+\emph{\myindex{terpisahkan}}
+jika dapat ditulis sebagai
+\begin{equation*}
+y' = f(x)g(y) ,
+\end{equation*}
+untuk suatu fungsi $f(x)$ dan $g(y)$.
+Dalam \myindex{notasi Leibniz}, persamaannya adalah
+\begin{equation*}
+\frac{dy}{dx} = f(x)g(y) ,
+\end{equation*}
+yang kita tulis ulang sebagai
+\begin{equation*}
+\frac{dy}{g(y)} = f(x) \,dx .
+\end{equation*}
+Sekarang kedua ruas tampak sebagai sesuatu yang dapat kita integralkan.  Kita peroleh
+\begin{equation*}
+\int \frac{dy}{g(y)} = \int f(x) \,dx + C .
+\end{equation*}
+Jika kita dapat menemukan ekspresi bentuk tertutup
+untuk kedua integral ini, mungkin kita dapat menyelesaikan untuk $y$.
+
+\begin{example} \label{example:yprimeisxy}
+Ambil persamaan
+\begin{equation*}
+y' = xy .
+\end{equation*}
+Perhatikan bahwa $y=0$ adalah solusi.  Kita akan mengingat fakta ini dan
+mulai sekarang mengasumsikan $y \neq 0$, agar kita dapat membagi dengan $y$.
+Tulis persamaan sebagai $\frac{dy}{dx} = xy$ atau
+$\frac{dy}{y} = x \, dx$.
+Kemudian
+\begin{equation*}
+\int \frac{dy}{y} = \int x\,dx + C .
+\end{equation*}
+Kita menghitung antiturunannya untuk memperoleh
+\begin{equation*}
+\ln \, \lvert y\rvert = \frac{x^2}{2} + C ,
+\end{equation*}
+atau
+\begin{equation*}
+\lvert y \rvert = e^{\frac{x^2}{2} + C} = e^{\frac{x^2}{2}} e^C = D e^{\frac{x^2}{2}} ,
+\end{equation*}
+dengan $D > 0$ suatu konstanta.  Karena $y=0$ juga merupakan solusi dan karena
+adanya nilai mutlak, kita dapat menulis:
+\begin{equation*}
+y = D e^{\frac{x^2}{2}} ,
+\end{equation*}
+untuk sebarang bilangan $D$ (termasuk nol atau negatif).
+
+Kita periksa:
+\begin{equation*}
+y' = D x e^{\frac{x^2}{2}} = x \left( D e^{\frac{x^2}{2}} \right) = xy .
+\end{equation*}
+Berhasil!
+\end{example}
+
+Anda mungkin khawatir bahwa kita
+mengintegralkan terhadap dua variabel yang berbeda.
+Tampaknya kita melakukan operasi yang berbeda pada setiap ruas.
+Mungkin kita harus sedikit lebih cermat
+dan membahas metode ini secara lebih ketat.
+Perhatikan
+\begin{equation*}
+\frac{dy}{dx} = f(x)g(y) .
+\end{equation*}
+Kita menulis ulang persamaan sebagai berikut.
+Perhatikan bahwa $y = y(x)$ merupakan fungsi dari $x$, demikian pula
+$\frac{dy}{dx}$!
+\begin{equation*}
+\frac{1}{g(y)}\,\frac{dy}{dx} = f(x) .
+\end{equation*}
+Kita mengintegralkan kedua ruas terhadap $x$:
+\begin{equation*}
+\int \frac{1}{g(y)}\,\frac{dy}{dx} \,dx = \int f(x) \,dx + C .
+\end{equation*}
+Kita menggunakan rumus perubahan variabel (substitusi) pada ruas kiri:
+\begin{equation*}
+\int \frac{1}{g(y)}\,dy = \int f(x) \,dx + C .
+\end{equation*}
+Dan kita selesai.
+
+\subsection{Solusi implisit}
+
+Kadang-kadang kita tetap menemui jalan buntu meskipun dapat melakukan
+integrasi.  Perhatikan persamaan terpisahkan
+\begin{equation*}
+y' = \frac{xy}{y^2+1} .
+\end{equation*}
+Kita pisahkan variabel,
+\begin{equation*}
+\frac{y^2+1}{y}\,dy = \left(y+\frac{1}{y}\right)\,dy = x\,dx .
+\end{equation*}
+Kita integralkan untuk memperoleh
+\begin{equation*}
+\frac{y^2}{2} + \ln \, \lvert y \rvert = \frac{x^2}{2} + C ,
+\end{equation*}
+atau mungkin ekspresi yang tidak terlalu menakutkan (dengan $D = 2C$)
+\begin{equation*}
+y^2 + 2 \ln \, \lvert y\rvert = x^2 + D .
+\end{equation*}
+Tidak mudah menemukan solusi secara eksplisit---sulit menyelesaikan
+untuk $y$.  Karena itu, kita membiarkan solusi dalam bentuk ini dan menyebutnya
+suatu
+\emph{\myindex{solusi implisit}}.
+Masih
+mudah memeriksa bahwa solusi implisit memenuhi persamaan
+diferensial.  Dalam kasus ini, kita menurunkan terhadap $x$, dan mengingat
+bahwa $y$ adalah fungsi dari $x$,
+untuk memperoleh
+\begin{equation*}
+2y y' + 2 \frac{1}{y} y'
+=
+y'\left(2y + \frac{2}{y}\right) = 2x .
+\end{equation*}
+Dalam kalkulus, hal itu biasanya disebut \myquote{diferensiasi implisit},
+tetapi sebenarnya hanya aturan rantai.
+Sekarang
+kalikan kedua ruas dengan $y$ dan bagi dengan $2(y^2+1)$, maka Anda akan
+memperoleh tepat persamaan diferensial tersebut.  Perhitungan ini kita serahkan kepada
+pembaca.
+
+Jika Anda memiliki solusi implisit, dan
+ingin menghitung nilai
+$y$, Anda mungkin harus menggunakan cara yang cerdik.  Anda mungkin memperoleh beberapa solusi $y$
+untuk setiap $x$, jadi Anda harus memilih salah satunya.  Kadang-kadang Anda dapat
+menggambar grafik $x$ sebagai fungsi dari $y$, lalu memutar kertas untuk
+melihat grafiknya.
+Kadang-kadang Anda perlu berbuat lebih banyak.
+
+Komputer juga mahir melakukan beberapa cara ini.
+Perangkat lunak matematika yang lebih canggih biasanya menyediakan suatu
+cara untuk memplot solusi persamaan implisit.
+Sebagai contoh, untuk $D=0$, jika Anda memplot semua titik $(x,y)$ yang
+merupakan solusi dari $y^2+2\ln \, \lvert y\rvert=x^2$,
+Anda menemukan dua kurva dalam \figurevref{implicitsols:fig}.  Ini tidak sepenuhnya
+merupakan grafik suatu fungsi. Untuk setiap $x$, terdapat dua pilihan $y$.
+Untuk memperoleh suatu fungsi, Anda harus memilih salah satu dari kedua kurva ini.
+Anda memilih kurva yang memenuhi syarat awal jika Anda memilikinya.
+Sebagai contoh, kurva atas memenuhi syarat $y(1)=1$.
+Jadi untuk setiap $D$, sebenarnya kita memperoleh dua solusi.
+Seperti yang dapat Anda lihat, menghitung nilai dari solusi implisit dapat cukup
+sulit.  Namun kadang-kadang, solusi implisit adalah hasil terbaik yang dapat kita peroleh.
+
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{implicitsols}{%
+Plot daerah bidang-$xy$ di dekat titik asal, dengan
+dua solusi yang diplot: satu cekung ke atas di atas
+sumbu-$x$ dan satu cekung ke bawah di bawah sumbu-$x$.}
+\caption{Solusi implisit $y^2+2\ln \, \lvert y\rvert = x^2$
+untuk $y'=\frac{xy}{y^2+1}$.\label{implicitsols:fig}}
+\end{myfig}
+
+Persamaan di atas juga memiliki solusi $y=0$.
+Jadi solusi umumnya adalah
+\begin{equation*}
+y^2 + 2 \ln \, \lvert y \rvert = x^2 + D \qquad \text{dan} \qquad y=0.
+\avoidbreak
+\end{equation*}
+Kadang-kadang solusi tambahan yang muncul
+akibat pembagian dengan nol, seperti
+$y=0$ di atas,
+disebut \emph{solusi singular\index{solusi singular}}.
+
+Kita tetap menentukan konstanta menggunakan syarat awal dalam solusi
+implisit seperti biasa.  Sebagai contoh, perhatikan syarat awal
+$y(0)=1$.  Kita dapat mengabaikan solusi $y=0$.  Dalam solusi implisit,
+mari substitusikan $x=0$ dan $y=1$ untuk memperoleh $1^2 + 2 \ln \, \lvert 1 \rvert = 0^2 +
+D$, dengan kata lain, $D=1$.  Jadi solusi untuk syarat awal ini
+adalah $y^2 + 2 \ln \, \lvert y \rvert = x^2 + 1$, tetapi hanya bagian
+positif dari solusi implisit ini karena itulah yang disyaratkan oleh syarat awal kita.
+
+\subsection{Contoh lain persamaan terpisahkan}
+
+\begin{example}
+Selesaikan $x^2y' = 1 - x^2+y^2 - x^2y^2$, $y(1) = 0$.
+
+Faktorkan ruas kanan
+\begin{equation*}
+x^2y' = (1 - x^2)(1+y^2) .
+\end{equation*}
+Pisahkan variabel, integralkan, dan selesaikan untuk $y$:
+\begin{align*}
+\frac{y'}{1+y^2} & = \frac{1 - x^2}{x^2} , \\
+\frac{y'}{1+y^2} & = \frac{1}{x^2} - 1 , \\
+\arctan (y) & = \frac{-1}{x} - x + C , \\
+y & = \tan \left(\frac{-1}{x} - x + C\right) .
+\end{align*}
+Terapkan syarat awal, $0 = \tan(-2+C)$, untuk memperoleh $C=2$ (atau $C = 2 +
+\pi$, atau $C = 2 + 2\pi$, dan seterusnya).  Jadi solusi khusus yang kita cari adalah
+\begin{equation*}
+y = \tan \left(\frac{-1}{x} - x + 2 \right) .
+\end{equation*}
+\end{example}
+
+\begin{example} \label{sep:coffeeexample}
+Bob membuat secangkir kopi, dan
+Bob suka meminum kopi hanya setelah suhunya mencapai 60 derajat Celsius agar tidak membuatnya terbakar.
+Pada awalnya, tepat setelah kopi dituangkan ke cangkir,
+Bob mengukur suhunya dan kopi tersebut bersuhu 89 derajat Celsius.
+Satu menit kemudian, Bob mengukur kopi itu lagi dan suhunya 85 derajat.
+Suhu ruangan (suhu lingkungan) adalah 22 derajat.
+Kapan Bob sebaiknya mulai minum?
+
+Misalkan $T$ suhu kopi dalam derajat Celsius, misalkan $A$
+suhu lingkungan (ruangan), juga dalam derajat Celsius,
+dan misalkan $t$ menyatakan waktu dalam menit, dengan $t=0$ menyatakan waktu
+ketika Bob membuat kopi.
+\myindex{Hukum pendinginan Newton} menyatakan bahwa laju perubahan
+suhu kopi
+sebanding dengan selisih antara
+suhu lingkungan dan suhu kopi.  Yaitu,
+\begin{equation*}
+\frac{dT}{dt} = k(A-T) ,
+\end{equation*}
+untuk suatu konstanta positif $k$.
+Dalam susunan kita, $A=22$, $T(0) = 89$, $T(1) = 85$.
+Misalkan $C$ dan $D$ menyatakan konstanta
+sebarang, dan perhatikan bahwa $T - A > 0$ karena kopi jelas lebih hangat
+daripada ruangan.
+Kita pisahkan variabel dan integralkan.
+\begin{align*}
+\frac{1}{T-A} \, \frac{dT}{dt} & = -k , \\
+\ln (T-A) &= -kt + C , \\ %, \qquad \text{(perhatikan bahwa } T-A > 0 \text{)} \\
+T-A &= D e^{-kt} ,  \\
+T &= A + D e^{-kt} .
+\end{align*}
+Yaitu,
+$T = 22 + D e^{-kt}$.  Kita substitusikan syarat pertama: $89 = T(0) = 22 +
+D$,
+sehingga $D = 67$.  Jadi
+$T = 22 + 67 e^{-kt}$.  Syarat kedua menyatakan $85 = T(1) =
+22 + 67 e^{-k}$.  Dengan menyelesaikan untuk $k$, kita peroleh
+$k = - \ln \frac{85-22}{67} \approx 0.0616$.  Kita selesaikan untuk waktu $t$
+yang menghasilkan suhu 60 derajat.  Artinya, kita selesaikan
+\begin{equation*}
+60 = 22 + 67 e^{-0.0616\,t}
+\end{equation*}
+untuk memperoleh
+$t = - \frac{\ln \frac{60-22}{67}}{0.0616} \approx 9.21$ menit.  Jadi Bob dapat
+mulai meminum kopi sedikit lebih dari 9 menit sejak Bob
+membuatnya.  Waktu tersebut mungkin kurang lebih sama dengan waktu yang kita perlukan untuk menghitung
+berapa lama proses itu berlangsung.  Lihat \figurevref{sintro:coffeefig}.
+\begin{myfig}
+\capstart
+%berkas asli coffeefig-1 coffeefig-2
+\diffyincludegraphics{width=6.24in}{width=9in}{coffeefig-1-2}{%
+Dua plot suhu kopi.  Di sebelah kiri, solusi yang menurun
+ditampilkan untuk waktu 0 sampai 12.5 ketika suhu turun
+dari 89 hingga di bawah 60.  Terdapat garis horizontal pada 89, 85,
+dan 60.  Garis vertikal pada $t$ sama dengan 1 memotong solusi
+pada suhu 85.  Garis vertikal pada $t$ sama dengan 9.21 memotong
+solusi pada suhu 60.  Plot sebelah kanan mencakup periode
+waktu yang lebih panjang hingga $t$ sama dengan 80.  Solusi meluruh secara eksponensial
+menuju garis horizontal pada suhu 22.}
+\caption{Grafik fungsi suhu kopi $T(t)$.
+Di sebelah kiri, garis-garis horizontal
+digambar pada suhu 60, 85, dan 89.  Garis-garis vertikal
+digambar pada $t=1$ dan $t=9.21$.  Perhatikan bahwa
+suhu kopi mencapai 85 pada $t=1$, dan 60 pada
+$t \approx 9.21$.  Di sebelah kanan, grafik mencakup periode waktu yang lebih panjang,
+dengan garis horizontal pada suhu lingkungan 22.\label{sintro:coffeefig}}
+\end{myfig}
+\end{example}
+
+\begin{example}
+Temukan solusi umum dari $y' = \frac{-xy^2}{3}$
+(termasuk setiap solusi singular).
+
+Pertama, perhatikan bahwa $y=0$ adalah solusi (solusi singular).
+Selanjutnya, asumsikan $y \neq 0$ dan pisahkan:
+\begin{align*}
+\frac{-3}{y^2} y' & = x , \displaybreak[0]\\
+\frac{3}{y} & = \frac{x^2}{2} + C , \displaybreak[0]\\
+y & = \frac{3}{\nicefrac{x^2}{2} + C}
+= \frac{6}{x^2 + 2C}.
+\end{align*}
+Solusi umumnya adalah
+\begin{equation*}
+y = \frac{6}{x^2 + 2C} \qquad \text{dan} \qquad y=0 .
+\end{equation*}
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Selesaikan $y' = \dfrac{x}{y}$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $y' = x^2y$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $\dfrac{dx}{dt} = (x^2-1)\,t$, untuk $x(0) = 0$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $\dfrac{dx}{dt} = x\,\sin(t)$, untuk $x(0) = 1$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $\dfrac{dy}{dx} = xy+x+y+1$. Petunjuk: Faktorkan ruas kanan.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $xy' = y + 2x^2 y$, dengan $y(1) = 1$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $\dfrac{dy}{dx} = \dfrac{y^2+1}{x^2+1}$, untuk $y(0) = 1$.
+\end{exercise}
+
+\begin{exercise}
+Carilah solusi implisit untuk
+$\dfrac{dy}{dx} = \dfrac{x^2+1}{y^2+1}$, dengan $y(0) = 1$.
+\end{exercise}
+
+\begin{exercise}
+Carilah solusi eksplisit untuk $y' = xe^{-y}$, $y(0)=1$.
+\end{exercise}
+
+\begin{exercise}
+Carilah solusi eksplisit untuk $xy' = e^{-y}$, dengan $y(1)=1$.
+\end{exercise}
+
+\begin{exercise}
+Carilah solusi eksplisit untuk $y' = ye^{-x^2}$, $y(0)=1$. Anda boleh
+menyisakan integral tentu dalam jawaban Anda.
+\end{exercise}
+
+\begin{exercise}
+Andaikan secangkir kopi bersuhu 100 derajat Celsius pada waktu $t=0$,
+bersuhu 70 derajat pada $t=10$ menit, dan bersuhu 50 derajat pada $t=20$
+menit. Hitung suhu lingkungannya.
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Selesaikan $y'=2xy$.
+\end{exercise}
+\exsol{%
+$y = Ce^{x^2}$
+}
+
+\begin{exercise}
+Selesaikan $x'=3xt^2-3t^2$, $x(0)=2$.
+\end{exercise}
+\exsol{%
+$x = e^{t^3}+1$
+}
+
+\begin{exercise}
+Carilah solusi implisit untuk
+$x'=\dfrac{1}{3x^2+1}$, $x(0)=1$.
+\end{exercise}
+\exsol{%
+$x^3+x=t+2$
+}
+
+\begin{exercise}
+Carilah solusi eksplisit untuk $x y' = y^2$, $y(1) = 1$.
+\end{exercise}
+\exsol{%
+$y = \frac{1}{1-\ln x}$
+}
+
+\begin{exercise}
+Carilah solusi implisit untuk $y' = \dfrac{\sin(x)}{\cos(y)}$.
+\end{exercise}
+\exsol{%
+$\sin(y) = -\cos(x) + C$
+}
+
+\begin{exercise}
+Ambil \exampleref{sep:coffeeexample} dengan bilangan-bilangan yang sama: 89 derajat pada
+$t=0$, 85 derajat pada $t=1$, dan suhu lingkungan
+22 derajat. Andaikan suhu-suhu ini diukur dengan ketelitian
+$\pm 0.5$ derajat. Karena ketidakpastian ini, waktu
+yang diperlukan kopi untuk mendingin hingga (tepat) 60 derajat juga hanya diketahui dalam
+suatu rentang tertentu. Carilah rentang ini. Petunjuk: Pikirkan jenis galat yang membuat
+waktu pendinginan lebih lama dan yang membuatnya lebih singkat.
+\end{exercise}
+\exsol{%
+Rentangnya kira-kira 7.45 hingga 12.15 menit.
+}
+
+\begin{exercise}
+Suatu populasi kelinci $x$ di sebuah pulau dimodelkan oleh
+$x' = x- \bigl(\nicefrac{1}{1000} \bigr) x^2$, dengan variabel bebas
+$t$ menyatakan waktu dalam bulan. Pada waktu $t=0$, terdapat 40 ekor kelinci
+di pulau tersebut.
+\begin{tasks}
+\task Carilah solusi persamaan dengan syarat
+awal tersebut.
+\task
+Berapa banyak kelinci yang berada di pulau itu setelah 1 bulan, 5 bulan,
+10 bulan, dan 15 bulan (bulatkan ke bilangan bulat terdekat)?
+\end{tasks}
+\end{exercise}
+\exsol{%
+a) $x = \frac{1000e^t}{e^t+24}$. \quad b) 102 ekor kelinci setelah satu bulan,
+861 setelah 5 bulan, 999 setelah 10 bulan, 1000 setelah 15 bulan.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Persamaan linear dan faktor pengintegrasi}
+\label{intfactor:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1 kuliah\EPref{, \S1.5 dalam \cite{EP}}\BDref{,
+\S2.1 dalam \cite{BD}}}
+
+\emph{Persamaan linear\index{persamaan linear}}
+merupakan salah satu jenis persamaan terpenting yang akan kita pelajari cara menyelesaikannya.
+Sesungguhnya, sebagian besar mata kuliah ini membahas persamaan
+linear. Dalam bagian ini, kita berfokus pada
+\emph{\myindex{persamaan linear orde pertama}}.
+Suatu persamaan orde pertama bersifat linear jika dapat kita tuliskan
+dalam bentuk:
+\begin{equation} \label{lineq:eq1}
+y' + p(x) y = f(x) .
+\end{equation}
+Kata
+\myquote{linear} berarti linear dalam $y$ dan $y'$:
+Tidak muncul pangkat yang lebih tinggi atau fungsi dari $y$ maupun $y'$.
+Ketergantungan pada $x$ dapat lebih
+rumit.
+
+Solusi persamaan linear memiliki sifat-sifat yang baik. Sebagai contoh,
+solusinya ada di setiap tempat $p(x)$ dan $f(x)$ kontinu,
+dan pada dasarnya memiliki
+keteraturan yang sama (baca: sama baiknya). Yang paling penting bagi kita saat ini,
+terdapat suatu metode untuk menyelesaikan persamaan linear orde pertama.
+
+Caranya adalah menulis ulang ruas kiri
+\eqref{lineq:eq1} sebagai turunan dari hasil kali $y$ dengan fungsi
+lain.
+Untuk tujuan ini,
+kita ingin mencari fungsi $r(x)$ sedemikian sehingga
+\begin{equation*}
+r(x) y' + r(x) p(x) y = \frac{d}{dx}\Bigl[ r(x) y \Bigr] .
+\end{equation*}
+Ini adalah ruas kiri
+\eqref{lineq:eq1} yang dikalikan dengan $r(x)$. Jika kita mengalikan \eqref{lineq:eq1} dengan
+$r(x)$, kita memperoleh
+\begin{equation*}
+\frac{d}{dx}\Bigl[ r(x) y \Bigr] = r(x)f(x) .
+\end{equation*}
+Sekarang kita dapat mengintegralkan kedua ruas; hal ini dapat dilakukan karena
+ruas kanan tidak bergantung pada $y$ dan ruas kiri
+ditulis sebagai turunan suatu fungsi. Setelah integrasi, kita menyelesaikan untuk $y$
+dengan membagi oleh $r(x)$.
+Fungsi $r(x)$ disebut \emph{\myindex{faktor pengintegrasi}} dan
+metodenya disebut \emph{\myindex{metode faktor pengintegrasi}}.
+
+Kita mencari fungsi $r(x)$ sedemikian sehingga ketika
+kita menurunkannya, kita memperoleh kembali fungsi yang sama dikalikan dengan $p(x)$.
+Tampaknya ini tugas yang cocok untuk fungsi eksponensial! Ambil
+\begin{equation*}
+r(x) = e^{\int p(x) \,dx} ,
+\end{equation*}
+dengan $\int p(x)\, dx$ sebarang antiturunan dari $p(x)$.
+Kita hitung:
+\begin{equation*}
+\begin{aligned}
+y' + p(x) y &= f(x) , \\
+e^{\int p(x) \,dx} y' + e^{\int p(x) \,dx} p(x) y & = e^{\int p(x) \,dx} f(x) , \\
+\frac{d}{dx}\left[ e^{\int p(x) \,dx} y \right] & = e^{\int p(x) \,dx} f(x) , \\
+e^{\int p(x) \,dx} y & = \int e^{\int p(x) \,dx} f(x) \,dx + C , \\
+y & = e^{-\int p(x) \,dx} \left( \int e^{\int p(x) \,dx} f(x) \,dx + C \right) .
+\end{aligned}
+\end{equation*}
+
+Tentu saja, untuk memperoleh rumus bentuk tertutup bagi $y$,
+kita harus dapat menemukan
+rumus bentuk tertutup untuk integral-integral yang muncul di atas.
+
+\begin{example}
+Selesaikan
+\begin{equation*}
+y' + 2xy = e^{x-x^2}, \qquad y(0) = -1 .
+\end{equation*}
+
+Pertama, perhatikan bahwa $p(x) = 2x$ dan $f(x) = e^{x-x^2}$.
+Faktor pengintegrasinya adalah $r(x) = e^{\int p(x)\, dx} = e^{x^2}$.
+Kita mengalikan kedua ruas persamaan dengan $r(x)$ untuk memperoleh
+\begin{equation*}
+\begin{aligned}
+e^{x^2} y' + 2xe^{x^2}y & = e^{x^2} e^{x-x^2} , \\
+\frac{d}{dx} \left[ e^{x^2} y \right] &= e^x .
+\end{aligned}
+\end{equation*}
+Kita integralkan
+\begin{equation*}
+\begin{aligned}
+e^{x^2} y &= e^x +C , \\
+y &= e^{x-x^2} + C e^{-x^2} .
+\end{aligned}
+\end{equation*}
+Selanjutnya, kita selesaikan syarat awal $-1 = y(0) = 1 + C$, sehingga $C=-2$.
+Solusinya adalah
+\begin{equation*}
+y = e^{x-x^2} - 2 e^{-x^2} .
+\end{equation*}
+\end{example}
+
+Perhatikan bahwa tidak menjadi soal antiturunan mana yang kita ambil ketika menghitung
+$e^{\int p(x) \, dx}$. Anda selalu dapat menambahkan suatu konstanta integrasi,
+tetapi konstanta-konstanta tersebut
+pada akhirnya tidak akan berpengaruh.
+
+\begin{exercise}
+Cobalah! Tambahkan suatu konstanta integrasi pada integral dalam
+faktor pengintegrasi dan tunjukkan bahwa solusi yang akhirnya Anda peroleh
+sama dengan yang kita peroleh di atas.
+\end{exercise}
+
+Saran: Jangan mencoba menghafal rumus untuk $y$ itu sendiri---hal itu terlalu
+sulit. Lebih mudah mengingat prosesnya dan mengulanginya.
+
+Karena kita tidak selalu dapat menghitung integral dalam bentuk tertutup, berguna untuk
+mengetahui cara menulis solusi dalam bentuk integral tentu. Integral tentu
+adalah sesuatu yang
+dapat Anda masukkan ke komputer atau kalkulator. Andaikan diberikan
+\begin{equation*}
+y' + p(x) y = f(x) , \qquad y(x_0) = y_0 .
+\end{equation*}
+Perhatikan solusinya dan tuliskan integral-integralnya
+sebagai integral tentu.
+\begin{equation} \label{lei:defsol}
+\mybxbg{
+~~
+y(x) = e^{-\int_{x_0}^x p(s)\, ds} \left( \int_{x_0}^x e^{\int_{x_0}^t p(s)\, ds}
+f(t) \,dt + y_0 \right).
+~~
+}
+\end{equation}
+Anda harus
+berhati-hati menggunakan variabel semu dengan benar di sini. Jika sekarang Anda memasukkan rumus
+seperti ini ke
+komputer atau kalkulator, alat tersebut akan dengan mudah memberikan jawaban numerik.
+
+\begin{exercise}
+Periksa bahwa $y(x_0) = y_0$ dalam rumus \eqref{lei:defsol}.
+\end{exercise}
+
+\begin{exercise}
+Tuliskan solusi masalah berikut
+sebagai integral tentu, tetapi cobalah menyederhanakannya sejauh mungkin. Anda tidak akan
+dapat menemukan solusinya dalam bentuk tertutup.
+\begin{equation*}
+y' + y = e^{x^2-x}, \qquad y(0) = 10 .
+\end{equation*}
+\end{exercise}
+
+\begin{remark}
+Sebelum melanjutkan, kita perlu mencatat beberapa sifat menarik dari persamaan
+linear. Pertama, untuk masalah nilai awal linear
+$y' + p(x) y = f(x)$, $y(x_0) = y_0$,
+terdapat rumus eksplisit \eqref{lei:defsol} bagi
+solusinya. Kedua, dari rumus \eqref{lei:defsol} diperoleh
+bahwa jika $p(x)$
+dan $f(x)$ kontinu pada suatu interval $(a,b)$, maka
+solusi $y(x)$ ada dan terdiferensialkan pada $(a,b)$. Bandingkan
+dengan contoh nonlinear sederhana yang telah kita lihat sebelumnya, $y'=y^2$,
+dan bandingkan dengan \thmref{slope:picardthm}.
+\end{remark}
+
+
+\begin{example}
+Kita sampai pada suatu penerapan sederhana
+yang umum dari persamaan linear.
+Penerapan nyata dari jenis masalah ini mencakup
+penghitungan konsentrasi
+bahan kimia dalam badan air (sungai dan danau).
+
+\begin{mywrapfigsimp}{1.60in}{1.65in}
+\noindent
+\inputpdft{lin-tank}{%
+Diagram sebuah tangki berisi cairan dengan pipa yang menunjukkan air
+mengalir masuk ke bagian atas tangki dan pipa yang menunjukkan air keluar
+dari bagian bawah. Masukan atas diberi label 5 liter per menit,
+0.1 kilogram per liter.
+Keluaran bawah diberi label 3 liter per menit.
+Bagian dalam cairan
+diberi label 60 liter dan 10 kilogram garam.}
+\end{mywrapfigsimp}
+Sebuah tangki berkapasitas 100 liter memuat 10 kilogram garam yang dilarutkan dalam 60 liter
+air. Larutan air dan garam (air garam) dengan konsentrasi 0.1
+kilogram per
+liter mengalir masuk dengan laju 5 liter per menit. Larutan
+dalam tangki diaduk merata dan mengalir keluar dengan laju 3 liter per menit.
+Berapa banyak garam yang berada dalam tangki ketika tangki penuh?
+
+Untuk menyelesaikan masalah ini, kita perlu menemukan persamaan diferensial
+untuk susunan ini.
+Misalkan $x$ menyatakan kilogram garam dalam tangki, dan
+misalkan $t$ menyatakan waktu dalam menit. Untuk perubahan kecil $\Delta t$ dalam
+waktu, perubahan $x$ (dinyatakan dengan $\Delta x$) kira-kira
+\begin{equation*}
+\Delta x \approx
+(\text{laju masuk} \times \text{konsentrasi masuk}) \Delta t -
+(\text{laju keluar} \times \text{konsentrasi keluar}) \Delta t .
+\end{equation*}
+Dengan membagi seluruhnya oleh $\Delta t$ dan
+mengambil limit $\Delta t \to 0$, kita melihat bahwa
+\begin{equation*}
+\frac{dx}{dt} =
+(\text{laju masuk} \times \text{konsentrasi masuk}) -
+(\text{laju keluar} \times \text{konsentrasi keluar}) .
+\end{equation*}
+Dalam contoh kita,
+\begin{equation*}
+\begin{aligned}
+\text{laju masuk} &= 5 , \\
+\text{konsentrasi masuk} &= 0.1 , \\
+\text{laju keluar} &= 3 , \\
+\text{volume} &= \text{volume awal} + (\text{laju masuk} - \text{laju keluar})t
+= 60+(5-3)t, \\
+\text{konsentrasi keluar} &= \frac{x}{\text{volume}} = \frac{x}{60+(5-3)t} .
+\end{aligned}
+\end{equation*}
+Persamaan diferensial kita adalah
+\begin{equation*}
+\frac{dx}{dt} =
+(5 \times 0.1) -
+\left(3 \frac{x}{60+2t}\right) .
+\end{equation*}
+Dalam bentuk \eqref{lineq:eq1}, persamaan tersebut adalah
+\begin{equation*}
+\frac{dx}{dt} +
+\frac{3}{60+2t} x
+=
+0.5 .
+\end{equation*}
+
+Mari kita selesaikan. Faktor pengintegrasinya adalah
+\begin{equation*}
+r(t) = \exp \left( \int \frac{3}{60+2t} dt  \right)
+=
+\exp \left( \frac{3}{2} \ln (60+2t) \right)
+=
+{(60+2t)}^{3/2} .
+\end{equation*}
+Kita mengalikan kedua ruas persamaan dengan $r(t)$ dan menyederhanakannya,
+\begin{align*}
+{(60+2t)}^{3/2} \frac{dx}{dt} +
+{(60+2t)}^{3/2} \frac{3}{60+2t} x
+& =
+0.5{(60+2t)}^{3/2} ,\\
+\frac{d}{dt}\left[
+{(60+2t)}^{3/2} x \right]
+& =
+0.5{(60+2t)}^{3/2} .\\
+\end{align*}
+Kita integralkan dan selesaikan,
+\begin{align*}
+{(60+2t)}^{3/2} x
+& =
+\int
+0.5{(60+2t)}^{3/2}
+dt
++C ,\\
+ x
+& =
+{(60+2t)}^{-3/2} \int
+\frac{
+{(60+2t)}^{3/2}
+}{2}
+dt
++C{(60+2t)}^{-3/2} ,\\
+ x
+& =
+{(60+2t)}^{-3/2}
+\frac{1}{10}{(60+2t)}^{5/2}
++C{(60+2t)}^{-3/2} ,\\
+ x
+& =
+\frac{60+2t}{10}
++C{(60+2t)}^{-3/2} .
+\end{align*}
+
+%mbxSTARTIGNORE
+%17 adalah jumlah baris, harus disesuaikan
+\begin{mywrapfig}[17]{3.25in}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{linear-salt-graph}{%
+Grafik suatu solusi dari t sama dengan 0 sampai t sama dengan 20
+yang bermula pada 10 lalu meningkat, mula-mula perlahan
+kemudian makin cepat dan berakhir kira-kira pada 11.86 di
+sisi kanan.}
+\caption{Grafik solusi $x$ kilogram garam dalam tangki pada waktu
+$t$.\label{linear-salt-graph:fig}}
+\end{mywrapfig}
+%mbxENDIGNORE
+%
+% Pastikan gambar di atas dan gambar mbx di bawah tetap selaras!
+%
+Untuk mencari $C$, perhatikan bahwa pada $t=0$, kita memiliki $x=10$. Artinya,
+\begin{equation*}
+10 = x(0)
+=
+\frac{60}{10}
++C{(60)}^{-3/2}
+=
+6
++C{(60)}^{-3/2} ,
+\end{equation*}
+atau
+\begin{equation*}
+C=4 ({60}^{3/2}) \approx 1859.03 .
+\end{equation*}
+
+Karena $5$ liter per menit mengalir masuk dan $3$ liter per menit mengalir keluar,
+volumenya bertambah $2$ liter per menit.
+Jadi tangki tersebut
+penuh ketika $60+2t = 100$, atau ketika $t=20$.
+Kita menginginkan nilai $x$ ketika tangki penuh,
+yaitu kita menghitung $x(20)$:
+\begin{equation*}
+\begin{split}
+x(20) & =
+\frac{60+40}{10}
++C{(60+40)}^{-3/2}
+\\
+& \approx
+10
++1859.03 {(100)}^{-3/2}
+\approx
+11.86 .
+\end{split}
+\end{equation*}
+Terdapat \unit[11.86]{kg} garam dalam tangki ketika tangki penuh.
+Lihat \figurevref{linear-salt-graph:fig} untuk grafik $x(t)$.
+Konsentrasi ketika tangki penuh kira-kira
+$\nicefrac{11.86}{100} = \unitfrac[0.1186]{kg}{liter}$, dan kita bermula
+dengan $\nicefrac{1}{6}$ atau kira-kira \unitfrac[0.1667]{kg}{liter}.
+%mbxlatex \begin{myfig}
+%mbxlatex \capstart
+%mbxlatex \diffyincludegraphics{width=3in}{width=4.5in}{linear-salt-graph}{%
+%mbxlatex Grafik suatu solusi dari t sama dengan 0 sampai t sama dengan 20
+%mbxlatex yang bermula pada 10 lalu meningkat, mula-mula perlahan
+%mbxlatex kemudian makin cepat dan berakhir kira-kira pada 11.86 di
+%mbxlatex sisi kanan.}
+%mbxlatex \caption{Grafik solusi $x$ kilogram garam dalam tangki pada waktu
+%mbxlatex $t$.\label{linear-salt-graph:fig}}
+%mbxlatex \end{myfig}
+\end{example}
+
+\subsection{Latihan}
+
+Dalam latihan-latihan, Anda boleh menyisakan jawaban sebagai integral tentu jika
+solusi bentuk tertutup tidak dapat ditemukan. Jika Anda dapat menemukan solusi bentuk
+tertutup, Anda harus memberikannya.
+
+\begin{exercise}
+Selesaikan $y' + xy = x$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $y' + 6y = e^x$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $y' + 3x^2y = \sin(x) \, e^{-x^3}$, dengan $y(0) = 1$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $y' + \cos (x) y = \cos(x)$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $\frac{1}{x^2+1} \, y' + x y = 3$, dengan $y(0) = 0$.
+\end{exercise}
+
+\begin{exercise}
+Andaikan terdapat dua danau yang terletak pada sebuah sungai. Air bersih
+mengalir ke danau pertama,
+kemudian air dari danau pertama mengalir ke danau kedua, lalu
+air dari danau kedua mengalir lebih jauh ke hilir.
+Aliran masuk dan keluar dari setiap danau adalah 500 liter per jam.
+Danau pertama berisi 100 ribu liter air dan
+danau kedua berisi 200 ribu liter air.
+Sebuah truk bermuatan \unit[500]{kg} zat beracun
+jatuh ke danau pertama. Andaikan air terus-menerus
+tercampur sempurna oleh aliran sungai.
+\begin{tasks}
+\task Carilah konsentrasi zat beracun
+sebagai fungsi waktu di kedua danau.
+\task Kapan
+konsentrasi di danau pertama turun di bawah \unit[0.001]{kg} per liter?
+\task Kapan
+konsentrasi di danau kedua mencapai maksimum?
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+\myindex{Hukum pendinginan Newton} menyatakan bahwa $\frac{dx}{dt} = -k(x-A)$, dengan
+$x$ suhu, $t$ waktu, $A$ suhu lingkungan,
+dan $k > 0$ suatu konstanta.
+Andaikan $A = A_0 \cos (\omega t)$ untuk suatu konstanta $A_0$ dan $\omega$.
+Artinya, suhu lingkungan berosilasi (misalnya suhu malam dan
+siang hari).
+\begin{tasks}
+\task Carilah solusi umum.
+\task Dalam jangka panjang, apakah
+syarat awal akan banyak berpengaruh? Mengapa atau mengapa tidak?
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Mula-mula 5 gram garam dilarutkan dalam 20 liter air. Larutan garam
+dengan konsentrasi garam 2 gram per liter ditambahkan dengan laju
+3 liter per menit. Tangki dicampur merata dan dikuras dengan laju 3 liter
+per menit. Berapa lama proses tersebut harus berlangsung hingga terdapat 20 gram
+garam dalam tangki?
+\end{exercise}
+
+\begin{exercise}
+Mula-mula sebuah tangki berisi 10 liter air murni.
+Larutan garam dengan konsentrasi garam yang tidak diketahui (tetapi konstan)
+mengalir masuk dengan laju 1 liter per menit.
+Air dicampur merata dan dikuras dengan laju 1 liter per menit.
+Setelah 20 menit terdapat 15 gram garam dalam tangki. Berapakah
+konsentrasi garam dalam larutan garam yang masuk?
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Selesaikan $y'+3 x^2 y = x^2$.
+\end{exercise}
+\exsol{%
+$y = C e^{-x^3} + \nicefrac{1}{3}$
+}
+
+\begin{exercise}
+Selesaikan $y'+ 2\sin(2x) y = 2\sin(2x)$, $y(\nicefrac{\pi}{2}) = 3$.
+\end{exercise}
+\exsol{%
+$y = 2 e^{\cos(2x)+1} + 1$
+}
+
+\begin{exercise}
+Andaikan air dari suatu tangki dipompa keluar dengan laju \unitfrac[3]{L}{min}. Tangki
+mula-mula berisi \unit[10]{L} air bersih.
+Air yang mengandung
+zat beracun mengalir ke dalam tangki dengan laju \unitfrac[2]{L}{min},
+dengan konsentrasi \unitfrac[$20t$]{g}{L} pada waktu $t$.
+Ketika tangki setengah kosong, berapa gram zat beracun yang berada dalam
+tangki (dengan mengandaikan pencampuran sempurna)?
+\end{exercise}
+\exsol{%
+$250$ gram
+}
+
+\begin{exercise}
+Terdapat bakteri pada sebuah cawan dan suatu zat beracun ditambahkan sehingga memperlambat
+laju pertumbuhan bakteri.
+Artinya,
+andaikan $\frac{dP}{dt} = (2-0.1\,t)P$. Jika $P(0) = 1000$, carilah
+populasi pada $t=5$.
+\end{exercise}
+\exsol{%
+$P(5) = 1000 e^{2 \times 5 - 0.05 \times {5}^2} = 1000 e^{8.75} \approx
+6.31 \times {10}^6$
+}
+
+\begin{exercise}
+Sebuah tangki air berbentuk silinder menerima aliran air masuk sebesar $I$ meter kubik
+per detik.
+Misalkan $A$ luas penampang tangki dalam meter persegi.
+Andaikan air
+mengalir keluar dari dasar tangki dengan laju yang sebanding dengan tinggi
+permukaan air. Susun persamaan diferensial untuk $h$, yaitu tinggi
+air, dengan memperkenalkan dan menamai
+konstanta-konstanta yang Anda perlukan. Anda juga harus memberikan satuan konstanta Anda.
+\end{exercise}
+\exsol{%
+$Ah' = I - kh$, dengan $k$ suatu konstanta bersatuan $\unitfrac{m^2}{s}$.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Substitusi}
+\label{substitution:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1 kuliah, dapat dilewati dengan aman\EPref{, \S1.6 dalam \cite{EP}}\BDref{, tidak ada dalam
+\cite{BD}}}
+
+Seperti ketika menyelesaikan integral, salah satu metode yang dapat dicoba adalah mengganti variabel agar
+kita memperoleh persamaan yang lebih sederhana untuk diselesaikan.
+
+\subsection{Substitusi}
+
+Persamaan
+\begin{equation*}
+y' = {(x-y+1)}^2
+\end{equation*}
+tidak dapat dipisahkan dan juga tidak linear. Apa yang dapat kita lakukan?
+Bagaimana jika kita mencoba mengganti variabel sehingga dalam variabel baru
+persamaannya lebih sederhana? Kita menggunakan variabel lain $v$, yang kita perlakukan sebagai
+fungsi dari $x$. Kita mencoba
+\begin{equation*}
+v = x-y+1 .
+\end{equation*}
+Kita perlu menentukan
+$y'$ dalam suku-suku $v'$, $v$, dan $x$. Kita menurunkan (terhadap $x$) untuk
+memperoleh $v' = 1 - y'$. Jadi $y' = 1-v'$. Kita substitusikan ini ke persamaan dan memperoleh
+\begin{equation*}
+1-v' = v^2 .
+\end{equation*}
+Dengan kata lain, $v' = 1-v^2$. Kita tahu cara menyelesaikan persamaan demikian dengan
+memisahkan variabel:
+\begin{equation*}
+\frac{1}{1-v^2} \,dv = dx .
+\end{equation*}
+Jadi
+\begin{equation*}
+\frac{1}{2} \ln \left\lvert  \frac{v+1}{v-1} \right\rvert = x + C ,
+\qquad \text{atau} \qquad
+\left\lvert \frac{v+1}{v-1} \right\rvert = e^{2x + 2C} ,
+\qquad \text{atau} \qquad
+\frac{v+1}{v-1} = D e^{2x} ,
+\end{equation*}
+untuk suatu konstanta $D$.
+Perhatikan bahwa $v=1$ dan $v=-1$ juga merupakan solusi.
+
+Sekarang kita perlu \myquote{membalik substitusi} untuk memperoleh
+\begin{equation*}
+\frac{x-y+2}{x-y} = D e^{2x} ,
+\end{equation*}
+dan juga kedua solusi $x-y+1=1$ atau $y=x$, serta $x-y+1=-1$ atau $y=x+2$.
+Kita selesaikan persamaan pertama untuk $y$:
+\begin{equation*}
+\begin{aligned}
+x-y+2 &= (x-y)D e^{2x} , \\
+x-y+2 &= Dx e^{2x}-yD e^{2x} , \\
+-y + yD e^{2x} &= Dx e^{2x} - x - 2 , \\
+y\,(-1+ D e^{2x}) &= Dx e^{2x} - x - 2 , \\
+y  &= \frac{Dx e^{2x} - x - 2}{D e^{2x}-1} .
+\end{aligned}
+\end{equation*}
+Perhatikan bahwa $D=0$ memberikan $y=x+2$, tetapi tidak ada nilai $D$ yang memberikan solusi $y=x$.
+
+\medskip
+
+Substitusi dalam persamaan diferensial diterapkan dengan cara yang hampir sama seperti
+penerapannya dalam kalkulus. Anda menebak. Beberapa substitusi berbeda mungkin
+berhasil. Ada beberapa pola umum yang perlu dicari. Kita merangkum beberapa
+di antaranya dalam sebuah tabel.
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Jika Anda melihat & Cobalah substitusi \\
+\midrule
+$yy'$ & $v=y^2$ \\
+$y^2y'$ & $v=y^3$ \\
+$(\cos y)y'$ & $v=\sin y$ \\
+$(\sin y)y'$ & $v=\cos y$ \\
+$e^y y'$ & $v=e^y$ \\ \bottomrule
+\end{tabular}
+\end{center}
+
+Biasanya, Anda mencoba melakukan substitusi pada bagian \myquote{paling rumit} dari
+persamaan, dengan harapan menyederhanakannya. Tabel di atas hanyalah pedoman
+praktis. Anda mungkin harus mengubah tebakan Anda. Jika suatu substitusi
+tidak berhasil (tidak membuat persamaan lebih sederhana), cobalah substitusi lain.
+
+\subsection{Persamaan Bernoulli}
+
+Terdapat beberapa bentuk persamaan yang memiliki
+aturan umum untuk substitusi yang selalu berhasil.
+Salah satu contohnya adalah apa yang disebut
+\emph{\myindex{persamaan Bernoulli}}%
+\footnote{Ada beberapa hal yang disebut persamaan Bernoulli; ini hanyalah salah
+satunya. Keluarga Bernoulli adalah keluarga matematikawan Swiss yang terkemuka. Persamaan
+khusus ini dinamai menurut
+\href{https://en.wikipedia.org/wiki/Jacob_Bernoulli}{Jacob Bernoulli} (1654--1705).}:
+\begin{equation*}
+y' + p(x)y = q(x)y^n .
+\end{equation*}
+Persamaan ini
+sangat menyerupai persamaan linear, kecuali adanya $y^n$. Jika $n=0$ atau
+$n=1$, maka persamaan tersebut linear dan dapat kita selesaikan. Jika tidak,
+substitusi $v=y^{1-n}$ mengubah
+persamaan Bernoulli menjadi persamaan linear. Perhatikan bahwa $n$
+tidak harus berupa bilangan bulat.
+
+\begin{example}
+Selesaikan
+\begin{equation*}
+xy'+ y(x+1)+xy^5 = 0, \qquad y(1)=1 .
+\end{equation*}
+Bagi persamaan dengan $x$ dan susun ulang untuk melihat bahwa ini
+merupakan persamaan Bernoulli,
+$y'+ \frac{x+1}{x} y = -y^5$, yaitu
+$p(x) = \frac{x+1}{x}$ dan $q(x) = -1$.
+Kita substitusikan
+\begin{equation*}
+v=y^{1-5} = y^{-4}, \qquad
+v' = -4 y^{-5} y' .
+\end{equation*}
+Dengan kata lain, $\left( \nicefrac{-1}{4} \right) y^5 v' = y'$. Jadi
+\begin{align*}
+xy'+ y(x+1)+xy^5 & = 0 , \\
+\frac{-xy^5}{4} v'+ y(x+1)+xy^5 & = 0 , \displaybreak[0]\\
+\frac{-x}{4} v'+ y^{-4}(x+1)+x & = 0 , \displaybreak[0]\\
+\frac{-x}{4} v'+ v(x+1)+x & = 0 ,
+\end{align*}
+dan akhirnya
+\begin{equation*}
+v'- \frac{4(x+1)}{x} v  = 4 .
+\end{equation*}
+Sekarang persamaannya linear.
+Kita dapat menggunakan metode faktor pengintegrasi. Secara khusus, kita
+menggunakan rumus \eqref{lei:defsol}. Kita mengandaikan bahwa $x > 0$
+sehingga $\lvert x \rvert = x$. Asumsi ini sah\@, karena syarat awal kita berada
+pada $x=1 > 0$. Mari kita hitung faktor pengintegrasinya. Di sini $p(s)$ dari rumus
+\eqref{lei:defsol} adalah $\frac{-4(s+1)}{s}$.
+\begin{align*}
+e^{\int_1^x p(s)\,ds} & = \exp \left( \int_1^x \frac{-4(s+1)}{s} \,ds \right) =
+e^{-4x-4\ln(x)+4} =
+e^{-4x+4} x^{-4}
+=
+\frac{e^{-4x+4}}{x^4} , \\
+e^{-\int_1^x p(s)\,ds} & =
+e^{4x+4\ln(x)-4} =
+e^{4x-4} x^4 .
+\end{align*}
+Sekarang kita substitusikan ke \eqref{lei:defsol}
+\begin{equation*}
+\begin{split}
+v(x) & =
+e^{-\int_{1}^x p(s)\, ds} \left( \int_{1}^x e^{\int_{1}^t p(s)\, ds} 4 \,dt
++ 1 \right) \\
+& =
+e^{4x-4} x^4
+\left( \int_{1}^x 4 \frac{e^{-4t+4}}{t^4} \,dt
++ 1 \right) .
+\end{split}
+\end{equation*}
+Integral dalam ekspresi ini tidak dapat ditemukan dalam bentuk
+tertutup. Seperti telah kita katakan, tidak ada masalah jika solusi kita memuat
+integral tentu. Sekarang \myquote{balikkan substitusi}
+\begin{align*}
+ y^{-4} &= e^{4x-4}x^4 \left( 4 \int_1^x \frac{e^{-4t+4}}{t^4} \,dt + 1\right) , \\
+ y &= \frac{e^{-x+1}}{x {\left( 4 \int_1^x \frac{e^{-4t+4}}{t^4} \,dt +
+1\right)}^{1/4}} .
+\end{align*}
+\end{example}
+
+\subsection{Persamaan homogen}
+
+Dengan menggunakan substitusi, kita juga dapat menyelesaikan apa yang disebut
+\emph{persamaan homogen\index{persamaan homogen}}.
+Andaikan kita dapat menuliskan persamaan diferensial sebagai
+\begin{equation*}
+y' = F\left(\frac{y}{x}\right) .
+\end{equation*}
+Di sini kita mencoba substitusi
+\begin{equation*}
+v = \frac{y}{x} \qquad \text{dan oleh karena itu} \qquad y' = v + x v' .
+\end{equation*}
+Kita perhatikan bahwa persamaan tersebut berubah menjadi
+\begin{equation*}
+v+ xv' = F(v) \qquad \text{atau} \qquad xv' = F(v)-v
+\qquad \text{atau} \qquad \frac{v'}{F(v)-v} = \frac{1}{x} .
+\end{equation*}
+Dengan demikian, suatu solusi implisit adalah
+\begin{equation*}
+\int \frac{1}{F(v)-v} \,dv = \ln \, \lvert x \rvert + C .
+\end{equation*}
+Jelas bahwa solusi ini tidak berlaku ketika $x = 0$ (bagaimanapun juga, kita akan
+membagi dengan nol dalam $\nicefrac{y}{x}$). Jadi kita akan mengandaikan $x > 0$
+atau $x < 0$, bergantung pada syarat awal.
+
+\begin{example}
+Selesaikan
+\begin{equation*}
+x^2y' = y^2+xy, \qquad y(1)=1.
+\end{equation*}
+
+Kita tuliskan persamaan dalam
+bentuk $y'= {\left(\nicefrac{y}{x}\right)}^2+\nicefrac{y}{x}$,
+yaitu $F(v) = v^2+v$.
+Karena syarat awal diberikan untuk nilai $x$ positif,
+kita akan mengandaikan $x > 0$.
+Kita substitusikan $v=\nicefrac{y}{x}$ untuk memperoleh
+persamaan yang dapat dipisahkan
+\begin{equation*}
+xv' = v^2+v-v = v^2 ,
+\end{equation*}
+yang memiliki solusi
+\begin{equation*}
+\begin{aligned}
+\int \frac{1}{v^2} \,dv &= \ln \, \lvert x \rvert + C , \\
+\frac{-1}{v} &= \ln x + C , \\
+v &= \frac{-1}{\ln x  + C} .
+\end{aligned}
+\end{equation*}
+Kita balikkan substitusinya
+\begin{equation*}
+\frac{y}{x} = \frac{-1}{\ln x  + C} ,
+\qquad
+\text{atau}
+\qquad
+y = \frac{-x}{\ln x  + C} .
+\end{equation*}
+Kita menginginkan $y(1)=1$, sehingga
+\begin{equation*}
+1 = y(1) = \frac{-1}{\ln 1 + C} = \frac{-1}{C} .
+\end{equation*}
+Dengan demikian, $C = -1$ dan
+solusi yang kita cari adalah
+\begin{equation*}
+y = \frac{-x}{\ln x -1} .
+\end{equation*}
+\end{example}
+
+\subsection{Latihan}
+
+Petunjuk: Jawaban tidak selalu harus berbentuk tertutup.
+
+\begin{exercise}
+Selesaikan
+$y'+ y(x^2-1)+xy^6 = 0$, dengan $y(1)=1$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $2yy' + 1 = y^2 + x$, dengan $y(0)=1$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $y' + xy = y^4$, dengan $y(0)=1$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $yy' + x = \sqrt{x^2 + y^2}$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $y' = {(x+y-1)}^2$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $y' = \frac{x^2-y^2}{x y}$, dengan $y(1) = 2$.
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Selesaikan $xy'+y+y^2 = 0$, $y(1)=2$.
+\end{exercise}
+\exsol{%
+$y = \frac{2}{3x-2}$
+}
+
+\begin{exercise}
+Selesaikan $xy'+y +x = 0$, $y(1)=1$.
+\end{exercise}
+\exsol{%
+$y = \frac{3-x^2}{2 x}$
+}
+
+\begin{exercise}
+Selesaikan $y^2y' = y^3-3x$, $y(0)=2$.
+\end{exercise}
+\exsol{%
+$y = {\bigl(7 e^{3x} + 3x + 1 \bigr)}^{1/3}$
+}
+
+\begin{exercise}
+Selesaikan $2yy' = e^{y^2-x^2} + 2x$.
+\end{exercise}
+\exsol{%
+$y = \pm\sqrt{x^2-\ln(C-x)}$
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Persamaan otonom}
+\label{auteq:section}
+
+\sectionnotes{1 kuliah\EPref{, \S2.2 dalam \cite{EP}}\BDref{,
+\S2.5 dalam \cite{BD}}}
+
+Tinjau
+masalah-masalah berbentuk
+\begin{equation*}
+\frac{dx}{dt} = f(x) ,
+\end{equation*}
+di mana turunan solusi hanya bergantung pada $x$ (variabel
+terikat). Persamaan demikian disebut \emph{persamaan
+otonom\index{persamaan otonom}}. Jika kita menganggap
+$t$ sebagai waktu, penamaan ini berasal dari fakta bahwa persamaan tersebut
+tidak bergantung pada waktu.
+
+Kita kembali ke masalah pendinginan kopi
+(\exampleref{sep:coffeeexample}).
+\myindex{Hukum pendinginan Newton}
+menyatakan
+\begin{equation*}
+\frac{dx}{dt} = k (A-x) ,
+\end{equation*}
+di mana $x$ adalah suhu, $t$ adalah waktu, $k$ suatu konstanta positif,
+dan $A$ adalah
+suhu lingkungan. Lihat \figurevref{2.2:coffeefig} untuk contoh
+dengan $k=0.3$ dan $A=5$.
+
+Perhatikan solusi $x=A$ (dalam gambar, $x=5$).
+Kita menyebut solusi-solusi konstan ini sebagai
+\emph{solusi kesetimbangan}\index{solusi kesetimbangan}.
+Titik-titik pada sumbu-$x$ tempat $f(x) = 0$ disebut
+\emph{titik kritis\index{titik kritis}} atau
+\emph{kesetimbangan}\index{kesetimbangan}.
+Titik $x=A$ adalah suatu titik kritis.
+Sesungguhnya, setiap
+titik kritis berpadanan dengan suatu solusi kesetimbangan.
+Dengan melihat grafik, perhatikan pula bahwa solusi $x=A$ bersifat
+\myquote{stabil}, dalam arti
+gangguan kecil pada $x$ tidak menghasilkan solusi yang sangat berbeda
+ketika $t$ membesar.
+Jika kita sedikit mengubah syarat awal, maka ketika
+$t \to \infty$, kita tetap memperoleh $x(t) \to A$.
+Kita menyebut titik kritis demikian
+\emph{stabil}\index{titik kritis stabil}.
+Dalam contoh sederhana ini, semua solusi bahkan menuju $A$
+ketika $t \to \infty$. Jika suatu titik kritis tidak stabil, kita menyebutnya
+\emph{tak stabil}\index{titik kritis tak stabil}.
+
+\begin{myfig}
+\parbox[t]{3.0in}{
+ \capstart
+ \diffyincludegraphics{width=2.93in}{width=4.5in}{2-2-coffee}{%
+Plot untuk t dari 0 sampai 20 dan x dari minus 10 sampai 10 dengan
+kisi garis-garis yang memiliki kemiringan 0.3 kali besaran 5 dikurangi x. Kemiringan-kemiringan ini
+naik di bawah garis x sama dengan 5 dan turun
+di atas garis x sama dengan 5. Kemiringannya semakin curam ketika kita semakin jauh
+dari garis x sama dengan 5. Ditampilkan beberapa solusi yang
+berupa garis-garis yang bermula dari berbagai titik di sebelah kiri lalu
+semuanya konvergen menuju garis x sama dengan 5 ketika t bertambah.}
+ \caption{Medan kemiringan dan beberapa solusi dari
+ $x' = 0.3\,(5-x)$.\label{2.2:coffeefig}}
+ %$dx/dt = -0.3*(x-5)$, $t: [0,20], x: [-10,10]$, plot solusi untuk
+ %$t=0$, $x=10$, $x=5$, $x=0$, $x=-5$, $x=-10$.
+}
+\quad
+\parbox[t]{3.0in}{
+ \capstart
+ \diffyincludegraphics{width=3in}{width=4.5in}{2-2-logistic}{%
+Plot untuk t dari 0 sampai 20 dan x dari minus 5 sampai 10 dengan
+kisi garis-garis yang memiliki kemiringan 0.1 kali x kali besaran 5 dikurangi x.
+Kemiringan-kemiringan ini turun di bawah garis x sama dengan 0
+dan di atas garis x sama dengan 5.
+Di antara x sama dengan 0 dan x sama dengan 5, kemiringan-kemiringannya naik.
+Ditampilkan beberapa solusi yang, ketika bermula di bawah x sama dengan 0, terus
+menurun dan meninggalkan plot. Ketika solusi berada di atas x sama dengan 0,
+solusi itu naik lalu mendekati garis x sama dengan 5. Ketika solusi
+bermula di atas x sama dengan 5, solusi itu turun menuju dan mendekati
+garis x sama dengan 5.
+Garis x sama dengan 0 dan x sama dengan 5 juga merupakan solusi.}
+ \caption{Medan kemiringan dan beberapa solusi dari
+ $x' = 0.1\,x\,(5-x)$.\label{2.2:logisticfig}}
+}
+\end{myfig}
+
+\medskip
+
+Sekarang tinjau \emph{\myindex{persamaan logistik}}
+\begin{equation*}
+\frac{dx}{dt} = kx(M-x) ,
+\end{equation*}
+untuk suatu $k$ dan $M$ positif. Persamaan ini lazim digunakan untuk memodelkan
+populasi jika kita mengetahui populasi pembatas $M$, yaitu populasi maksimum
+yang dapat dipertahankan. Persamaan logistik menghasilkan
+prediksi yang tidak terlalu katastropis
+mengenai populasi dunia dibandingkan $x'=kx$. Di dunia nyata, populasi negatif tidak
+ada, tetapi kita tetap akan meninjau $x$ negatif untuk
+keperluan matematika.
+
+Lihat \figurevref{2.2:logisticfig} untuk contoh, $x' = 0.1 x(5-x)$.
+Terdapat dua titik kritis, $x=0$ dan $x=5$. Titik kritis
+pada $x=5$ stabil, sedangkan titik kritis pada $x=0$
+tak stabil.
+Kita tidak perlu mencari solusi eksak untuk memahami
+perilaku jangka panjangnya, yakni perilaku ketika waktu menuju takhingga.
+Dari medan kemiringan di atas untuk
+$x' = 0.1 x(5-x)$, kita melihat bahwa
+\begin{equation*}
+\lim_{t\to \infty} x(t) =
+\begin{cases}
+5 & \text{jika } \; x(0) > 0 , \\
+0 & \text{jika } \; x(0) = 0 , \\
+\text{tidak ada atau } {-\infty} & \text{jika } \; x(0) < 0 . \\
+\end{cases}
+\end{equation*}
+Di sini, \myquote{tidak ada} berarti bahwa limit tersebut tidak ada.  Hanya dengan mengamati medan
+kemiringan, kita
+belum dapat memutuskan apa yang terjadi jika $x(0) < 0$.  Mungkin saja
+solusinya tidak ada untuk semua $t$ hingga $\infty$.
+Ingatlah persamaan $x' = x^2$.
+Kita telah melihat bahwa solusi-solusinya hanya ada selama suatu selang waktu berhingga.
+Hal yang sama dapat terjadi
+di sini.  Pada persamaan contoh di atas, ternyata
+solusinya tidak ada untuk sepanjang waktu, tetapi untuk melihatnya kita harus menyelesaikan
+persamaan tersebut.  Bagaimanapun, solusi memang menuju $-\infty$, tetapi mungkin mencapainya
+dengan cukup cepat.
+
+
+Jika kita hanya tertarik pada perilaku jangka panjang solusi,
+kita akan melakukan pekerjaan yang tidak perlu jika menyelesaikan
+persamaan tersebut secara eksak.
+Kita dapat menggambar medan kemiringannya, tetapi
+lebih mudah jika kita hanya melihat \emph{\myindex{diagram fase}} atau
+\emph{\myindex{potret fase}}, yang merupakan cara sederhana
+untuk memvisualisasikan perilaku
+persamaan otonom.  Dalam hal ini terdapat satu variabel dependen, yaitu $x$.
+Kita menggambar sumbu-$x$, menandai semua titik kritis,
+lalu menggambar panah-panah di
+antaranya.  Karena $x$ adalah variabel dependen, kita menggambar sumbu secara vertikal,
+seperti yang tampak pada diagram medan kemiringan di atas.
+Jika $f(x) > 0$, kita menggambar panah ke atas.  Jika $f(x) < 0$, kita menggambar
+panah ke bawah.
+Untuk menentukan tandanya, kita cukup memasukkan suatu nilai $x$ di antara titik-titik
+kritis karena $f(x)$ akan memiliki tanda yang sama untuk semua $x$ di antara dua titik kritis
+selama $f(x)$ kontinu.
+Sebagai contoh, $f(6) = -0.6 < 0$, sehingga $f(x) < 0$ untuk $x > 5$,
+dan panah di atas $x=5$ adalah panah
+ke bawah.  Selanjutnya, $f(1) = 0.4 > 0$, sehingga $f(x) > 0$ ketika $0 < x < 5$, dan
+panah menunjuk ke atas.  Terakhir, $f(-1) = -0.6 < 0$, sehingga $f(x) < 0$ ketika $x <
+0$, dan panah menunjuk ke bawah.
+
+\begin{center}
+\inputpdft{2-2-l-phasedia}{%
+Sebuah garis vertikal dengan dua titik yang ditandai oleh guratan horizontal,
+guratan bawah diberi label x sama dengan 0 dan guratan atas x sama dengan 5.
+Terdapat panah-panah segitiga pada garis tersebut.
+Di bawah x sama dengan 0, panah menunjuk ke bawah;
+di antara guratan x sama dengan 0 dan x sama dengan 5, panah menunjuk ke atas;
+dan di atas guratan x sama dengan 5,
+panah menunjuk ke bawah.}
+\end{center}
+
+\pagebreak[0]
+Dengan berbekal diagram fase,
+mudah untuk membuat sketsa hampiran solusi: ketika waktu $t$
+bergerak dari kiri ke kanan,
+grafik suatu solusi
+naik jika panah menunjuk ke atas dan turun jika panah menunjuk ke bawah.
+
+\begin{exercise}
+Cobalah membuat sketsa beberapa solusi hanya dengan melihat diagram fase.
+Bandingkan dengan grafik-grafik sebelumnya untuk memeriksa apakah
+Anda memperoleh jenis kurva yang sama.
+\end{exercise}
+
+\pagebreak[0]
+Setelah menggambar diagram fase, kita mengklasifikasikan titik-titik kritis
+sebagai stabil atau tak stabil\footnote{Titik tak stabil
+yang salah satu
+panahnya mengarah ke titik kritis kadang-kadang disebut
+\emph{semistabil}\index{titik kritis semistabil}.}:
+\begin{center}
+\inputpdft{2-2-ph-class}{%
+Di sebelah kiri terdapat tiga kemungkinan diagram fase dengan satu
+titik kritis yang ditandai sebagai guratan horizontal.
+Pada diagram pertama, panah di atas
+dan di bawah guratan menjauhi guratan.  Pada diagram kedua,
+kedua panah menunjuk ke atas, sedangkan pada diagram ketiga keduanya menunjuk ke bawah.
+Ketiga diagram ini diberi label 'tak stabil'.  Lalu terdapat satu
+diagram fase dengan satu titik kritis di sebelah kanan, tempat kedua
+panah mengarah ke titik kritis tersebut.
+Diagram ini diberi label 'stabil'.}
+\end{center}
+Karena setiap model matematika yang kita susun hanyalah suatu hampiran
+dunia nyata, titik tak stabil umumnya merupakan pertanda buruk.
+Perhatikan bahwa Anda dapat menentukan arah panah dengan menggambar grafik $y=f(x)$.
+Untuk grafik tersebut, perhatikan bahwa $x$ merupakan variabel independen dan akan
+berada pada sumbu horizontal.
+
+\medskip
+
+Mari kita tinjau persamaan logistik
+dengan pemanenan\index{persamaan logistik!dengan pemanenan}\index{pemanenan}.
+Misalkan suatu ras alien sangat gemar
+memakan manusia.  Mereka memelihara sebuah planet berisi manusia dan memanen
+manusia dengan laju $h$ juta manusia per
+tahun.  Misalkan $x$
+adalah jumlah manusia dalam jutaan di planet tersebut dan $t$ adalah waktu dalam tahun.
+Misalkan $M$ adalah populasi
+batas ketika tidak dilakukan pemanenan.  Bilangan $k > 0$ merupakan
+konstanta yang bergantung
+pada seberapa cepat manusia berkembang biak.  Persamaan kita menjadi
+\begin{equation*}
+\frac{dx}{dt} = kx(M-x) - h .
+\end{equation*}
+Kita mengembangkan ruas kanan dan menyamakannya dengan nol.
+\begin{equation*}
+kx(M-x) - h = -kx^2+kMx - h  = 0.
+\end{equation*}
+Dengan menyelesaikan persamaan untuk
+titik-titik kritis,
+yang kita sebut $A$ dan $B$, diperoleh
+\begin{equation*}
+A = \frac{kM + \sqrt{{(kM)}^2 - 4hk}}{2k}, \qquad
+B = \frac{kM - \sqrt{{(kM)}^2 - 4hk}}{2k} .
+\end{equation*}
+
+\begin{exercise}
+Buatlah sketsa diagram fase untuk berbagai kemungkinan.  Perhatikan
+bahwa kemungkinan-kemungkinannya adalah $A > B$, atau $A=B$, atau $A$ dan $B$ keduanya kompleks
+(yakni, tidak ada solusi real).  Petunjuk: Tetapkan suatu $k$ dan $M$ yang sederhana, lalu variasikan
+$h$.
+\end{exercise}
+
+Sebagai contoh, ambil $M=8$ dan $k=0.1$.
+Ketika $h=1$, $A$ dan $B$ berbeda dan positif.
+Lihat \figurevref{2.2:harv1} untuk medan kemiringannya.  Selama
+populasi bermula di atas $B$, yang kira-kira bernilai 1,55 juta,
+populasi tidak akan punah, melainkan akan menuju $A \approx
+6.45$ juta.  Jika suatu bencana terjadi dan
+populasi turun ke bawah $B$,
+manusia akan punah dan restoran makanan cepat saji yang menyajikan mereka akan
+gulung tikar.
+
+\begin{myfig}
+\parbox[t]{3.0in}{
+ \capstart
+ \diffyincludegraphics{width=3in}{width=4.5in}{2-2-logistic-h1}{%
+ Sebuah plot untuk t dari 0 hingga 20 dan x dari 0 hingga 10 dengan
+ kisi garis-garis yang memiliki kemiringan
+ 0,1 kali x kali kurung buka 8 dikurangi x kurung tutup dikurangi 1.
+ Kemiringan-kemiringan ini menurun di bawah sekitar x sama dengan 1,55 dan di atas sekitar
+ x sama dengan 6,45.  Di antara kedua garis ini, kemiringannya menanjak.
+ Ditampilkan beberapa solusi; solusi yang bermula di bawah x sama dengan 1,55 terus
+ menurun dan keluar dari plot.  Ketika solusi bermula di atas
+ x sama dengan 1,55, solusi tersebut naik lalu mendekati garis pada sekitar
+ x sama dengan 6,45.
+ Ketika solusi bermula di atas x sama dengan 6,45, solusi tersebut turun menuju dan
+ mendekati garis pada sekitar x sama dengan 6,45.  Kedua garis horizontal
+ juga merupakan solusi.}
+ \caption{Medan kemiringan dan beberapa solusi dari
+ $x' = 0.1\,x\,(8-x)-1$.\label{2.2:harv1}}
+}
+\quad
+\parbox[t]{3.0in}{
+ \capstart
+ \diffyincludegraphics{width=3in}{width=4.5in}{2-2-logistic-hc}{%
+ Sebuah plot untuk t dari 0 hingga 20 dan x dari 0 hingga 10 dengan
+ kisi garis-garis yang memiliki kemiringan
+ 0,1 kali x kali kurung buka 8 dikurangi x kurung tutup dikurangi 1,6.
+ Dalam
+ plot ini hanya terdapat satu garis horizontal pada x sama dengan 4.  Semua kemiringan
+ menurun di atas dan di bawah garis ini, dan makin curam ketika makin jauh
+ dari garis tersebut.  Digambar tiga solusi; salah satunya adalah
+ solusi kesetimbangan berupa garis horizontal x sama dengan 4. Solusi lain
+ turun dari atas dan mendekati x sama dengan 4, dan satu solusi
+ bermula sedikit di bawah garis x sama dengan 4 lalu menurun dan
+keluar dari gambar sebelum mencapai sisi kanan.}
+ \caption{Medan kemiringan dan beberapa solusi dari
+ $x' = 0.1\,x\,(8-x)-1.6$.\label{2.2:harvc}}
+}
+\end{myfig}
+
+Ketika $h = 1.6$, diperoleh $A=B=4$.  Hanya ada satu titik kritis dan titik itu
+tak stabil\footnote{Lebih tepatnya, titik tersebut semistabil.}.
+Ketika populasi bermula di atas 4 juta, populasinya akan menuju
+4 juta.  Namun, jika populasi turun ke bawah 4 juta, mungkin akibat musim badai yang lebih buruk daripada
+biasanya pada suatu tahun, manusia akan punah di
+planet tersebut.  Kita (sebagai pemilik restoran cepat saji manusia) tentu tidak
+menginginkan skenario ini.  Sedikit gangguan pada keadaan kesetimbangan, dan usaha kita
+tutup.  Tidak ada ruang untuk kesalahan.  Lihat \figurevref{2.2:harvc}.
+
+Terakhir, jika kita memanen 2 juta manusia per tahun, tidak terdapat
+titik kritis.
+Populasi
+akan selalu merosot menuju nol, tidak peduli seberapa banyak persediaan awal planet tersebut.
+Lihat \figurevref{2.2:harv2}.
+
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{2-2-logistic-h2}{%
+Sebuah plot untuk t dari 0 hingga 20 dan x dari 0 hingga 10 dengan
+kisi garis-garis yang memiliki kemiringan
+0,1 kali x kali kurung buka 8 dikurangi x kurung tutup dikurangi 2.
+Dalam plot ini tidak terdapat garis horizontal dan semua kemiringan menurun.
+Kemiringannya lebih curam di bagian atas gambar, sedikit
+melandai ketika mencapai bagian tengah gambar, lalu kembali lebih curam di
+bagian bawah.  Digambar tiga solusi yang semuanya menurun.
+Solusi-solusi bermula dengan penurunan curam di
+bagian atas gambar, kemudian turun sedikit lebih lambat di bagian tengah,
+lalu kembali curam di bagian bawah.}
+\caption{Medan kemiringan dan beberapa solusi dari
+$x' = 0.1\,x\,(8-x)-2$.\label{2.2:harv2}}
+\end{myfig}
+
+%$dx/dt = 0.1*x*(8-x)-1$, $t: [0,20], x: [-5,10]$,
+
+\subsection{Latihan}
+
+\begin{samepage}
+\begin{exercise}
+Tinjau $x' = x^2$.
+\begin{tasks}
+\task Gambarlah diagram fase,
+carilah titik-titik kritis, dan tandai sebagai stabil atau tak stabil.
+\task Buatlah sketsa solusi-solusi khas persamaan tersebut.
+\task Carilah $\displaystyle \lim_{t\to \infty} x(t)$ untuk solusi dengan syarat awal
+$x(0) = -1$.
+\end{tasks}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Tinjau $x' = \sin x$.
+\begin{tasks}
+\task Gambarlah diagram fase untuk $-4\pi \leq x \leq 4\pi$.  Pada selang ini,
+tandai titik-titik kritis sebagai stabil atau tak stabil.
+\task Buatlah sketsa solusi-solusi khas persamaan tersebut.
+\task Carilah $\displaystyle \lim_{t\to \infty} x(t)$ untuk solusi dengan syarat awal
+$x(0) = 1$.
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Misalkan $f(x)$ positif untuk $0 < x < 1$, bernilai nol ketika $x=0$ dan $x=1$,
+dan negatif untuk semua $x$ lainnya.
+\begin{tasks}
+\task Gambarlah diagram fase untuk $x' = f(x)$,
+carilah titik-titik kritis, dan tandai sebagai stabil atau tak stabil.
+\task Buatlah sketsa solusi-solusi khas persamaan tersebut.
+\task Carilah $\displaystyle \lim_{t\to \infty} x(t)$ untuk solusi dengan syarat awal
+$x(0) = 0.5$.
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Mulailah dengan persamaan logistik
+$\frac{dx}{dt} = kx(M-x)$.
+Misalkan kita mengubah cara pemanenan.  Kita hanya akan memanen
+sebanyak jumlah yang sebanding dengan populasi saat ini.  Dengan kata lain, kita memanen $hx$
+per satuan waktu
+untuk suatu $h > 0$ (serupa dengan contoh sebelumnya dengan $h$ diganti $hx$).
+\begin{tasks}
+\task Susunlah persamaan diferensialnya.
+\task Tunjukkan bahwa jika $kM > h$, maka
+persamaannya tetap merupakan persamaan logistik.
+\task Apa yang terjadi ketika $kM < h$?
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Suatu penyakit sedang menyebar di seluruh negeri.  Misalkan $x$ adalah jumlah orang yang
+terinfeksi.  Misalkan konstanta $S$ adalah jumlah orang yang rentan terhadap
+infeksi.  Laju infeksi $\frac{dx}{dt}$ sebanding dengan hasil kali
+jumlah orang yang telah terinfeksi, $x$, dan jumlah orang yang rentan tetapi
+belum terinfeksi, $S-x$.
+\begin{tasks}
+\task Tuliskan persamaan diferensialnya.
+\task Dengan menganggap $x(0) > 0$, yakni beberapa orang terinfeksi pada waktu $t=0$,
+berapakah
+$\displaystyle \lim_{t\to\infty} x(t)$.
+\task Apakah solusi pada bagian b) sesuai dengan intuisi Anda? Mengapa atau mengapa tidak?
+\end{tasks}
+\end{exercise}
+
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+\pagebreak[2]
+Misalkan $x'=(x-1)(x-2)x^2$.
+\begin{tasks}
+\task Buatlah sketsa diagram fase dan carilah titik-titik
+kritis.
+\task Klasifikasikan titik-titik kritis tersebut.
+\task Jika $x(0)=0.5$, carilah $\displaystyle \lim_{t\to\infty} x(t)$.
+\end{tasks}
+\end{exercise}
+\exsol{%
+a) 0, 1, 2 adalah titik-titik kritis.
+\quad
+b) $x=0$ tak stabil (semistabil), $x=1$ stabil, dan $x=2$ tak stabil.
+\quad
+c) 1
+}
+
+\begin{exercise}
+Misalkan $x'=e^{-x}$.
+\begin{tasks}(2)
+\task Carilah dan klasifikasikan semua titik kritis.
+\task Carilah $\displaystyle \lim_{t\to\infty} x(t)$ untuk sebarang
+syarat awal.
+\end{tasks}
+\end{exercise}
+\exsol{%
+a) Tidak terdapat titik kritis.
+\quad
+b) $\infty$
+}
+
+\begin{exercise}
+Anggap bahwa populasi ikan di suatu danau memenuhi
+$\frac{dx}{dt} = kx(M-x)$.  Sekarang, misalkan ikan terus-menerus ditambahkan
+sebanyak $A$ ekor per satuan waktu.
+\begin{tasks}(2)
+\task Carilah persamaan diferensial untuk $x$.
+\task Berapakah populasi batas yang baru?
+\end{tasks}
+\end{exercise}
+\exsol{%
+a) $\frac{dx}{dt} = kx(M-x)+A$
+\quad
+b) $\frac{kM + \sqrt{{(kM)}^2 + 4Ak}}{2k}$
+}
+
+\begin{exercise}
+Misalkan $\frac{dx}{dt} = (x-\alpha)(x-\beta)$ untuk dua bilangan $\alpha <
+\beta$.
+\begin{tasks}
+\task Carilah titik-titik kritis dan klasifikasikan.
+\end{tasks}
+Untuk b), c), d), carilah $\displaystyle \lim_{t\to\infty} x(t)$ berdasarkan
+diagram fase.
+\begin{tasks}[resume](3)
+\task $x(0) < \alpha$,
+\task $\alpha < x(0) < \beta$,
+\task $\beta < x(0)$.
+\end{tasks}
+\end{exercise}
+\exsol{%
+a) $\alpha$ adalah titik kritis stabil, sedangkan $\beta$ adalah titik kritis tak stabil.
+\quad
+b) $\alpha$, \quad c) $\alpha$, \quad d) $\infty$ atau tidak ada\@.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Metode numerik: metode Euler}
+\label{numer:section}
+
+\sectionnotes{1 kuliah, dapat dilewati tanpa masalah\EPref{, \S2.4 dalam \cite{EP}}\BDref{,
+\S8.1 dalam \cite{BD}}}
+
+%At this point it may be good to first try the
+%Lab II\index{IODE software!Lab II} and/or Project II\index{IODE software!Project II} from the
+%IODE website: \url{http://www.math.uiuc.edu/iode/}.
+%
+%\medskip
+
+%You worked with Euler's method in the IODE lab, let us now go over this method
+%to see what we've done.
+
+Kecuali jika $f(x,y)$ memiliki bentuk khusus,
+pada umumnya sangat sulit,
+bahkan mustahil, untuk memperoleh rumus yang baik bagi solusi masalah
+\begin{equation*}
+y' = f(x,y), \qquad y(x_0) = y_0 .
+\end{equation*}
+
+Jika persamaan dapat diselesaikan dalam bentuk tertutup, kita harus melakukannya.
+Namun, bagaimana jika kita memiliki persamaan yang tidak dapat diselesaikan dalam bentuk tertutup?
+Bagaimana jika kita ingin mencari nilai solusi pada suatu $x$ tertentu?
+Atau mungkin kita ingin membuat grafik solusi untuk mengamati
+perilakunya.  Dalam bagian ini, kita akan mempelajari dasar-dasar penghampiran
+numerik solusi.
+
+Metode paling sederhana untuk menghampiri suatu solusi adalah
+\emph{\myindex{metode Euler}%
+\footnote{Dinamai menurut matematikawan Swiss
+\href{https://en.wikipedia.org/wiki/Euler}{Leonhard Paul Euler}
+(1707--1783).  Pelafalan nama yang benar lebih terdengar
+seperti \myquote{oiler.}}}.  Metode ini bekerja sebagai berikut:
+Ambil $x_0$ dan $y_0$, lalu hitung kemiringan $k = f(x_0,y_0)$.  Kemiringan adalah
+perubahan $y$ per satuan perubahan $x$.  Ikuti garis tersebut sepanjang selang
+berukuran $h$ pada sumbu-$x$.
+Kita menyebut $h$ sebagai \emph{\myindex{ukuran langkah}}.
+Jadi, jika $y = y_0$ pada $x_0$, kita katakan bahwa
+$y_1$, yaitu nilai hampiran $y$ pada $x_1 = x_0 + h$, adalah
+$y_1 = y_0 + h k$.
+Ulangi prosesnya!  Misalkan $k = f(x_1,y_1)$, lalu hitung
+$x_2 = x_1 + h$ dan $y_2 = y_1 + h k$.
+Sekarang hitung $x_3$ dan $y_3$ menggunakan $x_2$ dan $y_2$, dan seterusnya.
+Tinjau persamaan $y' = \nicefrac{y^2}{3}$, $y(0)=1$, dan $h=1$.
+Maka $x_0=0$ dan $y_0 = 1$.  Kita hitung
+\begin{align*}
+& x_1 = x_0 + h = 0 + 1 = 1, & & y_1 = y_0 + h \, f(x_0,y_0) = 1 + 1 \cdot
+\nicefrac{1}{3} = \nicefrac{4}{3} \approx 1.333,\\
+& x_2 = x_1 + h = 1 + 1 = 2, & & y_2 = y_1 + h \, f(x_1,y_1) =
+\nicefrac{4}{3} + 1 \cdot \frac{{(\nicefrac{4}{3})}^2}{3} =
+\nicefrac{52}{27} \approx 1.926.
+\end{align*}
+Kita menggambar grafik hampiran solusi dengan
+menghubungkan titik-titik
+$(x_0,y_0)$,
+$(x_1,y_1)$,
+$(x_2,y_2)$,\dots.
+Lihat \figurevref{euler-step12:fig}
+untuk dua langkah pertama metode tersebut.
+
+\begin{myfig}
+\capstart
+%original files euler-step1 euler-step2
+\diffyincludegraphics{width=6.24in}{width=9in}{euler-steps-1-2}{%
+Dua plot pada bidang xy dari medan kemiringan dengan kemiringan y kuadrat per 3
+di wilayah tempat x berada di antara minus 1 dan 3 serta y berada di antara 0 dan 3.
+Semua kemiringan mengarah ke atas, dan yang lebih tinggi lebih curam.
+Pada plot kiri, langkah pertama metode Euler ditampilkan sebagai
+garis hijau yang bermula di (0,1) dengan kemiringan 1 per 3, yaitu kemiringan di
+(0,1), dan bergerak ke kanan hingga x sama dengan 1.  Pada plot kanan, sebuah garis
+kedua ditambahkan mulai dari ujung garis pertama dengan kemiringan yang sama
+dengan kemiringan medan kemiringan, lalu bergerak lebih jauh ke kanan hingga x sama dengan 2.}
+\caption{Dua langkah pertama metode Euler dengan $h=1$ untuk
+persamaan $y' = \frac{y^2}{3}$ dengan syarat awal $y(0)=1$.%
+\label{euler-step12:fig}}
+\end{myfig}
+
+Kita dapat melanjutkan: Untuk setiap $i=0,1,2,3,\ldots$, kita hitung
+\begin{equation*}
+x_{i+1} = x_i + h , \qquad y_{i+1}  = y_i + h\, f(x_i,y_i) .
+\end{equation*}
+Ruas-ruas garis yang diperoleh merupakan
+grafik hampiran solusi.
+Secara khusus, $y_i$ merupakan hampiran dari $y(x_i)$.
+Pada umumnya, nilai ini bukan solusi eksak.
+Lihat
+\figurevref{euler-step12-sol:fig} untuk plot solusi sebenarnya
+dan hampirannya.
+
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{euler-step12-sol}{%
+Sebuah plot pada bidang xy dari medan kemiringan dengan kemiringan y kuadrat per 3
+di wilayah tempat x berada di antara minus 1 dan 3 serta y berada di antara 0 dan 3.
+Dua langkah pertama ditampilkan sebagai dua ruas garis hijau seperti sebelumnya,
+tetapi solusi yang melalui (0,1) juga digambar dengan warna merah; kurva ini melengkung
+ke atas dan mengikuti medan kemiringan.  Terlihat bahwa kurva tersebut tetap berada di atas
+ruas-ruas garis hijau.}
+\caption{Dua langkah metode Euler (ukuran langkah 1) dan solusi eksak untuk
+persamaan $y' = \frac{y^2}{3}$ dengan syarat awal $y(0)=1$.
+%
+\label{euler-step12-sol:fig}}
+\end{myfig}
+
+Kita lanjutkan contoh $y' = \nicefrac{y^2}{3}$, $y(0)=1$.
+Kita telah menghampiri $y(2)$ dengan metode Euler menggunakan ukuran langkah 1.
+Kita menyimpulkan bahwa $y(2)$ kira-kira sama dengan $y_2$, yakni,
+$y(2) \approx 1.926$.
+Jawaban sebenarnya adalah 3.
+Hampiran kita meleset sekitar 1,074.
+Selisih antara solusi sebenarnya dan solusi hampiran
+disebut galat.  Biasanya kita membicarakan besar galat
+dan tidak terlalu memedulikan tandanya.
+\begin{equation*}
+\text{Galat} = \bigl\lvert \text{Nilai sebenarnya } y - \text{Nilai hampiran } y
+\bigr\rvert .
+\end{equation*}
+Biasanya kita tidak mengetahui galat secara eksak.
+Jika mengetahui galat secara eksak, kita akan mengetahui solusi sebenarnya \ldots
+jadi apa gunanya melakukan penghampiran?
+
+\begin{exercise}
+Selesaikan masalah
+$y' = \nicefrac{y^2}{3}$, $y(0)=1$
+secara eksak dan tunjukkan bahwa $y(2) = 3$.
+\end{exercise}
+
+Sekarang mari kita bagi dua ukuran langkah menjadi $h=0.5$ agar, mudah-mudahan, hampirannya membaik.
+%\begin{align*}
+%& x_1 = x_0 + h = 0 + \nicefrac{1}{2} = \nicefrac{1}{2},
+%  & & y_1 = y_0 + h \, f(x_0,y_0)
+%          = 1 + \nicefrac{1}{2} \cdot \nicefrac{1^2}{3} = \nicefrac{7}{6} \approx 1.167,\\
+%& x_2 = x_1 + h = \nicefrac{1}{2} + \nicefrac{1}{2} = 1,
+%  & & y_2 = y_1 + h \, f(x_1,y_1) =
+%  \nicefrac{7}{6} + \nicefrac{1}{2} \cdot \frac{{(\nicefrac{7}{6})}^2}{3} =
+%  FIXME
+%\end{align*}
+Dengan ukuran langkah setengahnya, kita melakukan langkah dua kali lebih banyak.
+Di sini, untuk mencari $y(2)$, kita melakukan 4 langkah dengan $h=0.5$ karena kemudian $2 = x_4$.
+Dengan menghitung $y_4$,
+kita memperoleh $y(2) \approx 2.209$.  Galatnya sekitar 0,791.
+\tablevref{euler-table:table} memberikan nilai-nilai yang dihitung
+untuk beberapa pembagian dua berikutnya.
+
+\begin{table}[h!t]
+\mybeginframe
+\capstart
+\begin{center}
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+$h$ & Hampiran $y(2)$ & Galat & $\frac{\text{Galat}}{\text{Galat
+sebelumnya}}$ & Langkah yang dilakukan \\
+\midrule
+1        & 1.92593 & 1.07407 &         & 2 \\
+0.5      & 2.20861 & 0.79139 & 0.73681 & 4 \\
+0.25     & 2.47250 & 0.52751 & 0.66656 & 8 \\
+0.125    & 2.68034 & 0.31966 & 0.60599 & 16 \\
+0.0625   & 2.82040 & 0.17960 & 0.56184 & 32 \\
+0.03125  & 2.90412 & 0.09588 & 0.53385 & 64 \\
+0.015625 & 2.95035 & 0.04965 & 0.51779 & 128 \\
+0.0078125& 2.97472 & 0.02528 & 0.50913 & 256 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\caption{Hampiran $y(2)$ dengan metode Euler untuk
+$y'=\nicefrac{y^2}{3}$, $y(0)=1$.\label{euler-table:table}}
+\myendframe
+\end{table}
+
+Perhatikan bahwa, kecuali pada beberapa kali pertama, setiap kali kita membagi dua
+$h$, galatnya kira-kira ikut terbagi dua.
+Pembagian dua galat merupakan ciri umum metode Euler karena metode ini merupakan
+\emph{\myindex{metode orde pertama}}.
+%  In the IODE Project II you are
+%asked to implement a \myindex{second-order method}.
+Perbaikan sederhana terhadap metode Euler (lihat latihan)
+menghasilkan \myindex{metode orde kedua}.
+Metode orde kedua
+mengurangi galat menjadi kira-kira
+seperempat setiap kali kita membagi dua ukuran langkah.  Sebutan orde
+\myquote{kedua} merujuk pada penguadratan dalam
+$\nicefrac{1}{4} = \nicefrac{1}{2} \times \nicefrac{1}{2}
+= {(\nicefrac{1}{2})}^2$.
+
+Untuk memperoleh galat kurang dari 0,1, kita melakukan
+64 langkah.  Untuk memperoleh galat di bawah 0,01, kita harus membagi dua lagi sebanyak tiga atau
+empat kali, sehingga melakukan 512 atau 1024 langkah.
+%That is quite a bit to do by hand.
+Metode Euler yang diperbaiki dari latihan
+%IODE  Project II
+seharusnya membagi galat menjadi seperempat
+setiap kali kita membagi dua ukuran langkah,
+sehingga kita perlu melakukan (kira-kira) separuh dari jumlah
+\myquote{pembagian dua} untuk memperoleh galat yang sama.  Pengurangan ini dapat sangat berarti.  Dengan 10
+pembagian dua (dimulai dari $h=1$), kita memiliki 1024 langkah, sedangkan dengan 5 pembagian dua
+kita hanya perlu melakukan 32 langkah, dengan asumsi galat awalnya
+sebanding.  Komputer mungkin tidak memedulikan
+perbedaan ini untuk masalah sesederhana ini, tetapi misalkan setiap langkah memerlukan
+satu detik untuk dihitung (fungsi tersebut mungkin jauh lebih sulit dihitung
+daripada $\nicefrac{y^2}{3}$).  Maka perbedaannya adalah 32 detik dibanding sekitar 17 menit.
+Perbandingan ini tidak sepenuhnya adil; metode orde kedua mungkin
+melipatgandakan waktu untuk setiap langkah.  Meskipun demikian, hasilnya 1 menit dibanding 17 menit.
+Selanjutnya, misalkan kita harus mengulangi perhitungan semacam itu untuk parameter yang berbeda
+sebanyak seribu kali.  Anda tentu memahami maksudnya.
+
+Dalam praktiknya, kita tidak mengetahui seberapa besar galatnya!
+Bagaimana kita mengetahui
+ukuran langkah yang tepat?  Salah satu kemungkinan adalah terus membagi dua ukuran langkah,
+dan jika
+beruntung, kita dapat menaksir galat dari beberapa perhitungan ini dan dari
+asumsi bahwa galat terbagi dua setiap kali
+(jika kita menggunakan metode Euler standar).
+
+\begin{exercise}
+Pada tabel di atas, misalkan Anda tidak mengetahui galatnya.  Ambil
+nilai hampiran fungsi pada dua baris terakhir,
+dan anggap bahwa galat terbagi dua.  Dapatkah Anda menaksir
+galat pada baris terakhir dari informasi ini? Apakah hasilnya (kira-kira) sesuai dengan
+tabel? Sekarang lakukan hal yang sama untuk dua baris pertama. Apakah hasilnya sesuai dengan tabel?
+Anda boleh menganggap bahwa nilai sebenarnya dari $y(2)$ lebih besar daripada semua
+nilai hampirannya, tetapi Anda tidak boleh mengetahui nilai sebenarnya tersebut.
+\end{exercise}
+
+Mari kita bahas sedikit lebih lanjut contoh
+$y' = \nicefrac{y^2}{3}$, $y(0) = 1$.
+Misalkan alih-alih $y(2)$, kita ingin mencari $y(3)$.
+\tablevref{euler-table2:table}
+mencantumkan hasil usaha ini
+untuk pembagian dua $h$ secara berturut-turut.  Apa yang
+terjadi di sini?  Selesaikanlah persamaan tersebut secara eksak dan Anda akan
+melihat bahwa solusinya tidak ada pada $x=3$.  Bahkan, solusi tersebut menuju
+takhingga ketika Anda mendekati $x=3$.
+
+\begin{table}[h!t]
+\mybeginframe
+\capstart
+\begin{center}
+\begin{tabular}{@{}rr@{}}
+\toprule
+$h$ & Hampiran $y(3)$ \\
+\midrule
+1        & 3.16232 \\
+0.5      & 4.54329 \\
+0.25     & 6.86079 \\
+0.125    & 10.80321 \\
+0.0625   & 17.59893 \\
+0.03125  & 29.46004 \\
+0.015625 & 50.40121 \\
+0.0078125& 87.75769 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\caption{Upaya menggunakan metode Euler untuk menghampiri $y(3)$ bagi
+$y'=\nicefrac{y^2}{3}$, $y(0)=1$.\label{euler-table2:table}}
+\myendframe
+\end{table}
+
+Kasus lain yang bermasalah terjadi jika solusi berosilasi dengan liar
+di dekat suatu titik.
+%Such an example is given in IODE Project II\@.
+Solusinya
+mungkin ada di semua titik, tetapi bahkan metode numerik yang jauh lebih baik daripada
+metode Euler akan memerlukan ukuran langkah yang luar biasa kecil untuk menghampiri solusi
+dengan ketelitian yang wajar.
+Komputer pun mungkin tidak dapat menangani ukuran langkah sekecil itu dengan mudah.
+
+\medskip
+
+Dalam penerapan nyata, kita tidak akan menggunakan metode sederhana seperti metode Euler.
+Metode paling sederhana yang mungkin digunakan dalam penerapan nyata adalah
+metode Runge--Kutta standar (lihat latihan).  Metode ini merupakan
+\myindex{metode orde keempat},
+yang berarti bahwa jika kita membagi dua ukuran langkah,
+galat dikalikan dengan $\nicefrac{1}{16}$
+(metode ini berorde keempat karena $\nicefrac{1}{16} =
+\nicefrac{1}{2} \times \nicefrac{1}{2}
+\times \nicefrac{1}{2} \times \nicefrac{1}{2}$).
+
+Memilih metode dan ukuran langkah yang tepat dapat sangat sulit.
+Terdapat beberapa faktor yang saling bersaing untuk dipertimbangkan.
+\begin{itemize}
+\item Waktu komputasi: Setiap langkah memerlukan waktu komputer.  Sekalipun
+fungsi $f$ mudah dihitung, kita menghitungnya berkali-kali.
+Ukuran langkah yang besar (lebih sedikit langkah) berarti komputasi lebih cepat, tetapi mungkin tidak
+memberikan ketelitian yang tepat.
+\item Galat pembulatan: Komputer hanya menghitung dengan sejumlah
+digit signifikan tertentu.  Galat yang timbul akibat pembulatan bilangan selama
+perhitungan menjadi nyata ketika ukuran langkah menjadi
+terlalu kecil dibandingkan dengan besaran yang sedang kita kerjakan.
+Jadi, memperkecil
+ukuran langkah secara berlebihan dapat memperburuk galat.
+Terdapat suatu ukuran langkah optimum
+yang membuat ketelitian meningkat ketika kita mendekatinya, tetapi kemudian mulai
+memburuk ketika ukuran langkah dibuat
+lebih kecil lagi.  Masalahnya, nilai optimum ini mungkin sulit ditemukan.
+\item Stabilitas: Persamaan tertentu mungkin tidak stabil secara numerik.  Yang mungkin
+terjadi adalah bilangan-bilangannya tidak pernah tampak stabil, berapa kali pun
+kita membagi dua ukuran langkah.  Kita mungkin memerlukan ukuran langkah yang sangat kecil,
+yang boleh jadi tidak praktis karena galat pembulatan atau pertimbangan
+waktu komputasi.  Masalah semacam itu kadang-kadang disebut
+\emph{kaku}\index{masalah kaku}.
+Dalam kasus terburuk, perhitungan numerik mungkin
+memberikan bilangan palsu yang tampak seperti jawaban benar.  Hanya karena
+bilangan-bilangannya tampak stabil setelah pembagian dua berturut-turut, tidak berarti kita pasti
+memperoleh jawaban yang benar.
+\end{itemize}
+
+Kita baru melihat awal dari tantangan-tantangan yang muncul dalam
+penerapan nyata.  Penghampiran numerik solusi persamaan
+diferensial merupakan bidang penelitian aktif bagi insinyur dan matematikawan.  Sebagai
+contoh, metode serbaguna yang digunakan oleh pemecah PDB dalam Matlab dan
+Octave (ketika teks ini ditulis) baru muncul dalam literatur
+pada dasawarsa 1980-an.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Tinjau $\dfrac{dx}{dt} = {(2t-x)}^2$, $x(0)=2$.  Gunakan metode Euler
+dengan ukuran langkah $h=0.5$ untuk menghampiri $x(1)$.
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Tinjau $\dfrac{dx}{dt} = t-x$, $x(0)=1$.
+\begin{tasks}
+\task Gunakan metode Euler
+dengan ukuran langkah $h = 1, \nicefrac{1}{2}, \nicefrac{1}{4}, \nicefrac{1}{8}$ untuk
+menghampiri
+$x(1)$.
+\task Selesaikan persamaan tersebut secara eksak.
+\task Uraikan apa yang terjadi pada
+galat untuk setiap $h$ yang Anda gunakan.  Artinya, carilah faktor perubahan galat
+setiap kali Anda membagi dua ukuran langkah.
+\end{tasks}
+\end{exercise}
+\end{samepage}
+
+\begin{exercise}
+Hampirilah nilai $e$ dengan meninjau masalah nilai awal
+$y'=y$ dengan $y(0)=1$ dan menghampiri $y(1)$ menggunakan metode Euler dengan
+ukuran langkah $0.2$.
+\end{exercise}
+
+\begin{exercise}
+Contoh ketidakstabilan numerik:
+Ambil $y' = -5y$, $y(0) = 1$.  Kita mengetahui bahwa
+solusinya seharusnya meluruh menuju nol ketika $x$ membesar.
+Dengan menggunakan metode Euler, mulailah dengan $h=1$ dan hitung
+$y_1, y_2, y_3, y_4$ untuk mencoba menghampiri $y(4)$.  Apa yang terjadi?
+Sekarang bagi dua ukuran langkah.  Teruslah membagi dua ukuran langkah dan menghampiri $y(4)$
+hingga bilangan-bilangan yang diperoleh
+mulai stabil (yakni hingga mulai menuju nol).
+Catatan: Anda mungkin perlu menggunakan kalkulator.
+\end{exercise}
+
+Metode paling sederhana yang digunakan dalam praktik adalah
+\emph{\myindex{metode Runge--Kutta}}.
+Tinjau $\frac{dy}{dx}=f(x,y)$, $y(x_0) = y_0$,
+dan ukuran langkah $h$.  Semuanya sama seperti pada metode Euler, kecuali
+perhitungan $y_{i+1}$ dan $x_{i+1}$.
+Artinya, pada setiap langkah kita menghitung kemiringan $k_1$, $k_2$, $k_3$, dan $k_4$,
+lalu menghitung $x_{i+1}$ dan $y_{i+1}$ berikutnya:
+\begin{align*}
+& k_1 = f(x_i,y_i) ,
+&
+& k_2 = f\bigl(x_i + \nicefrac{h}{2},y_i + k_1 (\nicefrac{h}{2})\bigr) ,
+\\
+& k_3 = f\bigl(x_i + \nicefrac{h}{2},y_i + k_2 (\nicefrac{h}{2})\bigr) ,
+&
+& k_4 = f(x_i + h,y_i + k_3 h) ,
+\\
+& x_{i+1} = x_i + h ,
+&
+& y_{i+1} = y_i + \frac{k_1 + 2k_2 + 2k_3 + k_4}{6}\,h .
+\end{align*}
+
+\begin{exercise}
+\pagebreak[2]
+Tinjau $\dfrac{dy}{dx} = yx^2$, $y(0)=1$.
+\begin{tasks}
+\task Hampirilah $y(1)$
+menggunakan Runge--Kutta (lihat di atas) dengan ukuran langkah $h=1$ dan
+$h=\nicefrac{1}{2}$.
+\task Hampirilah $y(1)$ menggunakan metode Euler dengan $h=1$ dan
+$h=\nicefrac{1}{2}$.
+\task Selesaikan secara eksak, carilah nilai eksak
+$y(1)$, dan bandingkan dengan hasil-hasil hampiran.
+\end{tasks}
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Misalkan $x' = \sin(xt)$ dan $x(0)=1$.
+Hampirilah $x(1)$ menggunakan metode Euler dengan ukuran langkah 1, 0.5, 0.25.
+Gunakan kalkulator dan hitung hingga 4 angka desimal.
+\end{exercise}
+\exsol{%
+Kira-kira: 1.0000, 1.2397, 1.3829
+}
+
+\begin{exercise}
+Misalkan $x' = 2t$ dan $x(0)=0$.
+\begin{tasks}
+\task Hampirilah $x(4)$ menggunakan metode Euler dengan ukuran langkah 4, 2, dan 1.
+\task Selesaikan secara eksak dan hitung galatnya.
+\task Hitung faktor perubahan galat.
+\end{tasks}
+\end{exercise}
+\exsol{%
+a) 0, 8, 12
+\quad
+b) $x(4) = 16$, sehingga galatnya adalah: 16, 8, 4.
+\quad
+c) Faktor-faktornya adalah 0.5 dan 0.5.
+}
+
+\begin{samepage}
+\begin{exercise}
+Misalkan $x' = x e^{xt+1}$ dan $x(0)=0$.
+\begin{tasks}
+\task Hampirilah $x(4)$ menggunakan metode Euler dengan ukuran langkah 4, 2, dan 1.
+\task Tebaklah solusi eksak berdasarkan bagian a) dan hitung galatnya.
+\end{tasks}
+\end{exercise}
+\end{samepage}
+\exsol{%
+a) 0, 0, 0
+\quad
+b) $x=0$ adalah solusi, sehingga galatnya: 0, 0, 0.
+}
+
+Terdapat cara sederhana untuk memperbaiki metode Euler agar menjadi
+metode orde kedua dengan melakukan hanya satu langkah tambahan.\index{metode Euler yang diperbaiki}
+Tinjau $\frac{dy}{dx}=f(x,y)$, $y(x_0) = y_0$,
+dan ukuran langkah $h$.
+Kita berpura-pura menghitung langkah berikutnya seperti dalam metode Euler,
+yakni kita mulai dengan $(x_i,y_i)$, menghitung
+kemiringan $k_1 = f(x_i,y_i)$, lalu melihat titik $(x_i+h,y_i + k_1h)$.
+Alih-alih menetapkan titik baru sebagai $(x_i+h,y_i + k_1h)$, kita menghitung
+kemiringan di titik tersebut, menyebutnya $k_2$, lalu mengambil rata-rata
+$k_1$ dan $k_2$, dengan harapan rata-rata tersebut lebih dekat dengan
+kemiringan sebenarnya pada selang dari $x_i$ hingga $x_i+h$.  Dan harapan kita benar:
+Jika kita membagi dua langkah, galat seharusnya dikalikan dengan
+${(\nicefrac{1}{2})}^2 = \nicefrac{1}{4}$.
+Singkatnya, penyiapannya
+sama seperti metode Euler biasa, kecuali
+perhitungan $y_{i+1}$ dan $x_{i+1}$.
+Pada setiap langkah, kita menghitung kemiringan baru $k_1$ dan $k_2$, lalu
+$y_{i+1}$ dan $x_{i+1}$ berikutnya:
+\begin{align*}
+& k_1 = f(x_i,y_i) ,
+&
+& k_2 = f(x_i + h,y_i + k_1h) ,
+\\
+& x_{i+1} = x_i + h ,
+&
+& y_{i+1} = y_i + \frac{k_1+k_2}{2}\,h .
+\end{align*}
+
+
+\begin{exercise}
+Tinjau $\dfrac{dy}{dx} = x+y$, $y(0)=1$.
+\begin{tasks}
+\task Hampirilah $y(1)$ menggunakan metode Euler yang diperbaiki (lihat di atas) dengan
+ukuran langkah $h=\nicefrac{1}{4}$ dan $h=\nicefrac{1}{8}$.
+\task Hampirilah $y(1)$ menggunakan metode Euler dengan
+$h=\nicefrac{1}{4}$ dan $h=\nicefrac{1}{8}$.
+\task Selesaikan secara eksak dan carilah nilai eksak
+$y(1)$.
+\task Hitung galat dan faktor perubahan galat.
+\end{tasks}
+\end{exercise}
+\exsol{%
+a) Euler yang diperbaiki: $y(1) \approx 3.3897$ untuk $h=\nicefrac{1}{4}$,
+$y(1) \approx 3.4237$ untuk $h=\nicefrac{1}{8}$,
+\quad
+b) Euler standar: $y(1) \approx 2.8828$ untuk $h=\nicefrac{1}{4}$,
+$y(1) \approx 3.1316$ untuk $h=\nicefrac{1}{8}$,
+\quad
+c) $y = 2e^x-x-1$, sehingga $y(1)$ kira-kira $3.4366$.
+\quad
+d) Galat hampiran untuk metode Euler yang diperbaiki:
+$0.046852$ untuk $h=\nicefrac{1}{4}$
+dan
+$0.012881$ untuk $h=\nicefrac{1}{8}$.
+\quad
+Untuk metode Euler standar:
+$0.55375$ untuk $h=\nicefrac{1}{4}$
+dan
+$0.30499$ untuk $h=\nicefrac{1}{8}$.
+\quad
+Faktornya kira-kira $0.27$ untuk metode Euler yang diperbaiki dan
+$0.55$ untuk metode Euler standar.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{Persamaan eksak}
+\label{exact:section}
+
+%mbxINTROSUBSECTION
+
+\sectionnotes{1--2 kuliah, dapat dilewati tanpa masalah\EPref{, \S1.6 dalam \cite{EP}}\BDref{, \S2.6 dalam \cite{BD}}}
+
+Jenis persamaan yang cukup sering muncul dalam fisika dan
+rekayasa adalah
+\emph{\myindex{persamaan eksak}}.
+Misalkan $F(x,y)$ adalah fungsi dua variabel, yang kita sebut
+\emph{\myindex{fungsi potensial}}.  Penamaan ini mengingatkan pada
+energi potensial atau potensial listrik.  Persamaan eksak dan fungsi
+potensial muncul ketika berlaku hukum kekekalan, seperti
+kekekalan energi.
+Mari kita buat sebuah contoh sederhana.  Tinjau
+\begin{equation*}
+F(x,y) = x^2+y^2 .
+\end{equation*}
+
+%16 is the number of lines, must be adjusted
+\begin{mywrapfig}[16]{3.25in}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{circlesfig}{%
+Sebuah plot pada bidang xy untuk x kira-kira antara minus 13 dan 13 serta y
+antara minus 10 dan 10.  Digambar beberapa lingkaran yang berpusat di titik asal, (0,0).}
+\caption{Solusi $F(x,y) = x^2+y^2 = C$ untuk berbagai
+nilai $C$.\label{exact:circlesfig}}
+\end{mywrapfig}
+Kita tertarik pada garis-garis berpotensial konstan\footnote{Karena itu,
+kurva-kurva ini kadang-kadang disebut \emph{\myindex{kurva ekuipotensial}}.}:
+kurva yang diberikan oleh $F(x,y) = C$,
+untuk suatu konstanta $C$.  Dalam
+contoh kita, kurva $x^2+y^2=C$ merupakan lingkaran.  Lihat
+\figurevref{exact:circlesfig}.
+
+Kita mengambil
+\emph{\myindex{turunan total}} dari
+$F$:
+\begin{equation*}
+dF = \frac{\partial F}{\partial x} dx + \frac{\partial F}{\partial y} dy .
+\end{equation*}
+Untuk memudahkan,
+kita akan menggunakan notasi
+$F_x = \frac{\partial F}{\partial x}$ dan
+$F_y = \frac{\partial F}{\partial y}$.
+Dalam contoh kita,
+\begin{equation*}
+dF = 2x \, dx + 2y \, dy .
+\end{equation*}
+Jika kita menerapkan turunan total pada persamaan $F(x,y) = C$, diperoleh
+persamaan diferensial $dF = 0$.  Persamaan diferensial ini
+berbentuk
+\begin{equation*}
+M \, dx + N \, dy = 0, \qquad
+\text{atau} \qquad
+M + N \, \frac{dy}{dx} = 0 .
+\end{equation*}
+Persamaan berbentuk demikian
+disebut \emph{eksak} jika diperoleh sebagai $dF = 0$ untuk suatu fungsi
+potensial $F$.
+Dalam contoh sederhana kita, diperoleh persamaan
+\begin{equation*}
+2x \, dx + 2y \, dy = 0, \qquad
+\text{atau} \qquad
+2x + 2y \, \frac{dy}{dx} = 0 .
+\end{equation*}
+Karena persamaan ini diperoleh dengan menurunkan $x^2+y^2=C$,
+persamaan tersebut eksak.
+Kita sering ingin menyelesaikan $y$ dalam $x$.  Dalam contoh kita,
+\begin{equation*}
+y = \pm \sqrt{C-x^2} .
+\end{equation*}
+
+Dalam kalkulus multivariabel, pada setiap titik $(x,y)$ di bidang,
+$\vec{v} = (M,N)$ merupakan
+vektor, yakni suatu arah dan besar.
+Karena $M$ dan $N$ merupakan fungsi dari $(x,y)$, kita memperoleh \emph{\myindex{medan vektor}}.
+Medan vektor $\vec{v}$ yang berasal dari persamaan eksak disebut
+\emph{\myindex{medan vektor konservatif}}, yakni medan vektor yang dilengkapi
+fungsi potensial $F(x,y)$ sedemikian sehingga
+\begin{equation*}
+\vec{v} = \left( \frac{\partial F}{\partial x} ,\frac{\partial F}{\partial
+y} \right) .
+\end{equation*}
+Misalkan
+$\gamma$ adalah lintasan di bidang yang bermula di $(x_1,y_1)$ dan berakhir di
+$(x_2,y_2)$.
+Jika kita memandang $\vec{v}$ sebagai gaya, usaha yang diperlukan untuk
+bergerak sepanjang $\gamma$ adalah integral lintasan
+\begin{equation*}
+\int_\gamma \vec{v}(\vec{r}) \cdot d\vec{r}
+=
+\int_\gamma M \, dx + N \, dy
+=
+F(x_2,y_2) - F(x_1,y_1) .
+\end{equation*}
+Dengan kata lain, usaha yang dilakukan hanya bergantung pada
+titik-titik ujung---tempat kita mulai dan berakhir.
+Sebagai contoh, misalkan $F$ adalah potensial gravitasi
+(fisikawan menggunakan konvensi bahwa $-F$ adalah potensial,
+tetapi gagasannya sama).
+Turunan $F$ yang diberikan oleh $\vec{v}$ adalah gaya gravitasi.
+Yang kita
+nyatakan adalah bahwa usaha yang diperlukan untuk memindahkan sebuah kotak berat dari lantai
+dasar ke atap hanya bergantung pada perubahan energi potensial.
+Usaha yang dilakukan sama,
+apa pun lintasan yang kita tempuh; baik melalui tangga maupun lift.
+Namun, jika kita menggunakan lift, liftlah yang melakukan usaha tersebut untuk kita.
+Pergerakan sepanjang kurva $F(x,y) = C$ tidak memerlukan usaha, seperti
+kotak berat yang meluncur tanpa mempercepat atau mengerem di atas atap yang benar-benar
+datar pada kereta beroda yang dilumasi dengan sangat baik.
+
+Persamaan eksak merupakan medan vektor konservatif, dan solusi implisit
+persamaan ini adalah fungsi potensial.
+
+\subsection{Menyelesaikan persamaan eksak}
+
+Sekarang Anda, pembaca, seharusnya bertanya: Di mana kita menyelesaikan persamaan diferensial?
+Dalam penerapan, pada umumnya kita mengetahui $M$ dan $N$, tetapi tidak
+mengetahui $F$.  Artinya, kita mungkin saja bermula dengan
+$2x + 2y \frac{dy}{dx} = 0$, atau bahkan
+\begin{equation*}
+x + y \frac{dy}{dx} = 0 .
+\end{equation*}
+Kitalah yang harus mencari suatu potensial $F$ yang sesuai.  Banyak pilihan $F$
+yang dapat digunakan; menambahkan konstanta pada $F$ tidak mengubah persamaan.
+Setelah memperoleh fungsi potensial $F$, persamaan
+$F\bigl(x,y(x)\bigr) = C$
+memberikan solusi implisit PDB\@.
+
+\begin{example}
+Mari kita cari solusi umum dari
+$2x + 2y \frac{dy}{dx} = 0$.  Lupakan bahwa kita mengetahui
+$F$.
+
+Jika kita mengetahui bahwa ini merupakan persamaan eksak, kita mulai mencari fungsi
+potensial $F$.
+Kita memiliki $M = 2x$ dan $N=2y$.
+Jika $F$ ada, fungsi tersebut harus memenuhi
+$F_x (x,y) = 2x$.
+Integralkan terhadap variabel $x$ untuk memperoleh
+\begin{equation} \label{eq:exact:fint}
+F(x,y) = x^2 + A(y) ,
+\end{equation}
+untuk suatu fungsi $A(y)$.  Fungsi $A$ adalah \myquote{konstanta
+integrasi}, meskipun fungsi tersebut hanya konstan sejauh menyangkut $x$, dan
+masih dapat bergantung pada $y$.  Sekarang turunkan \eqref{eq:exact:fint} terhadap $y$
+dan samakan hasilnya dengan $N$, sebagaimana semestinya nilai $F_y$:
+\begin{equation*}
+2y = F_y (x,y) = A'(y) .
+\end{equation*}
+Dengan mengintegralkan, kita memperoleh $A(y) = y^2$.  Kita dapat menambahkan suatu konstanta integrasi
+jika menginginkannya, tetapi hal itu tidak perlu.  Kita memperoleh $F(x,y) = x^2+y^2$.
+Selanjutnya, untuk suatu konstanta $C$, kita selesaikan
+\begin{equation*}
+F\bigl(x,y(x)\bigr) = C
+\end{equation*}
+untuk $y$ dalam $x$.  Dalam kasus ini, kita memperoleh $y = \pm \sqrt{C-x^2}$
+seperti sebelumnya.
+\end{example}
+
+\begin{exercise}
+Mengapa kita tidak perlu menambahkan konstanta integrasi ketika mengintegralkan $A'(y)
+= 2y$?  Tambahkan suatu konstanta integrasi, misalnya $3$, dan lihat $F$ apa yang Anda peroleh.
+Apakah perbedaannya dari yang kita peroleh di atas, dan mengapa hal itu tidak menjadi masalah?
+\end{exercise}
+
+
+
+Prosedurnya, setelah kita mengetahui bahwa persamaan tersebut eksak, adalah:
+\begin{enumerate}[(i)]
+\item Integralkan $F_x = M$ terhadap $x$, sehingga menghasilkan $F(x,y) = \text{sesuatu} + A(y)$.
+\item Turunkan $F$ ini terhadap $y$ dan samakan hasilnya dengan
+$N$.   Kemudian, carilah $A(y)$ melalui integrasi.
+\end{enumerate}
+Prosedur tersebut juga dapat dilakukan dengan terlebih dahulu mengintegralkan terhadap $y$, lalu
+menurunkannya terhadap $x$.
+Cukup mudah, bukan?  Mari kita coba sekali lagi.
+
+\begin{example} \label{exact:example:2xyandxy}
+Sekarang perhatikan $2x+y + xy \frac{dy}{dx} = 0$.
+
+Baiklah\@, $M = 2x+y$ dan $N=xy$.  Kita mencoba melanjutkan seperti sebelumnya.
+Misalkan
+$F$ ada.  Maka $F_x (x,y) = 2x+y$.
+Kita integralkan:
+\begin{equation*}
+F(x,y) = x^2 + xy + A(y)
+\end{equation*}
+untuk suatu fungsi $A(y)$.  Turunkan terhadap $y$ dan samakan hasilnya dengan $N$:
+\begin{equation*}
+N = xy = F_y (x,y) = x+A'(y) .
+\end{equation*}
+Akan tetapi, tidak ada cara untuk memenuhi persyaratan ini!  Fungsi $xy$ tidak dapat
+dituliskan sebagai $x$ ditambah suatu fungsi dari $y$.  Persamaan tersebut tidak
+eksak; tidak ada fungsi potensial $F$.
+\end{example}
+
+Adakah cara yang lebih mudah untuk memeriksa keeksakan selain gagal
+ketika mencoba mencari $F$?
+Ya, ada.  Misalkan
+$M = F_x$ dan
+$N = F_y$.
+Selama turunan keduanya kontinu,
+\begin{equation*}
+\frac{\partial M}{\partial y}
+=
+\frac{\partial^2 F}{\partial y \partial x}
+=
+\frac{\partial^2 F}{\partial x \partial y}
+=
+\frac{\partial N}{\partial x} .
+\end{equation*}
+Jika $M_y \neq N_x$, persamaan tersebut tidak eksak.
+Sebagai contoh,
+dalam \exampleref{exact:example:2xyandxy},
+dengan $M = 2x + y$ dan $N = xy$,
+persamaan tersebut tidak eksak.
+Memang,
+$M_y = 1$ dan $N_x = y$ tidak sama.
+
+Hal yang menarik adalah bahwa gagasan ini juga berlaku dalam arah sebaliknya.
+Jika $M_y=N_x$, maka suatu potensial ada, setidaknya di dekat titik awal.
+Hasil ini disebut Lema Poincar\'e\footnote{Dinamai menurut polimatikawan Prancis
+\href{https://en.wikipedia.org/wiki/Henri_Poincar\%C3\%A9}{Jules Henri
+Poincar\'e} (1854--1912).}.
+
+\begin{theorem}[Lema Poincar\'e]\index{Lema Poincar\'e}
+Jika $M$ dan $N$ merupakan fungsi-fungsi yang terdiferensialkan secara kontinu terhadap $(x,y)$, dan
+$\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}$,
+maka di dekat sebarang titik terdapat fungsi $F(x,y)$
+sedemikian sehingga
+$M = \frac{\partial F}{\partial x}$ dan
+$N = \frac{\partial F}{\partial y}$.
+\end{theorem}
+
+\begin{example} \label{exact:exactR2example}
+Selesaikan
+\begin{equation*}
+\frac{dy}{dx} = \frac{-2x-y}{x-1}, \qquad y(0) = 1.
+\end{equation*}
+Tuliskan persamaan tersebut sebagai
+\begin{equation*}
+(2x+y) + (x-1)\frac{dy}{dx} = 0 ,
+\end{equation*}
+sehingga $M = 2x+y$, $N = x-1$, dan
+\begin{equation*}
+M_y = 1 = N_x .
+\end{equation*}
+Lema Poincar\'e berlaku, jadi mari kita cari $F$.
+Dengan mengintegralkan $M$ terhadap $x$, kita memperoleh
+\begin{equation*}
+F(x,y) = x^2+xy + A(y) .
+\end{equation*}
+Dengan menurunkannya terhadap $y$ dan menyamakannya dengan $N$, kita memperoleh
+\begin{equation*}
+x-1 = x + A'(y) .
+\end{equation*}
+Jadi $A'(y) = -1$, dan $A(y) = -y$ akan memenuhi.  Kita memperoleh $F(x,y) = x^2+xy-y$, sehingga
+solusi implisitnya adalah $x^2+xy-y = C$.  Pertama, kita mencari $C$.  Karena $y(0)=1$, kita memiliki
+$F(0,1) = C$.  Oleh karena itu, $0^2+0\times 1 - 1 = C$, sehingga $C=-1$.  Sekarang kita selesaikan
+$x^2+xy-y = -1$ untuk $y$ dan memperoleh
+\begin{equation*}
+y = \frac{-x^2-1}{x-1} .
+\end{equation*}
+\end{example}
+
+\begin{example} \label{exact:examplevortex}
+Selesaikan
+\begin{equation*}
+\frac{-y}{x^2+y^2} dx + \frac{x}{x^2+y^2} dy = 0 , \qquad y(1) = 2.
+\end{equation*}
+Kita serahkan kepada pembaca untuk memeriksa bahwa
+$M_y = N_x$,
+sehingga Lema Poincar\'e berlaku.
+
+Medan vektor $(M,N)$ ini tidak konservatif (persamaannya tidak eksak)
+jika dipandang sebagai suatu medan vektor
+pada seluruh bidang kecuali titik asal.  Masalahnya adalah bahwa jika kurva $\gamma$
+merupakan suatu lingkaran mengelilingi titik asal, misalnya dimulai dari $(1,0)$ dan
+berakhir di $(1,0)$ dengan bergerak berlawanan arah jarum jam, maka jika $F$ ada, kita akan mengharapkan
+\begin{equation*}
+0 = F(1,0) - F(1,0) = \int_\gamma F_x \, dx + F_y \, dy = \int_\gamma \frac{-y}{x^2+y^2} \, dx +
+\frac{x}{x^2+y^2} \, dy = 2\pi .
+\end{equation*}
+Itu tidak masuk akal!
+Kita menyerahkan perhitungan integral lintasan tersebut kepada pembaca yang berminat, atau
+Anda dapat membaca buku teks kalkulus multivariabel Anda.  Jadi, tidak ada
+fungsi potensial $F$ yang didefinisikan di seluruh daerah di luar titik asal $(0,0)$.
+
+Lema Poincar\'e memang tidak menjamin adanya $F$ seperti itu.
+Lema tersebut hanya menjamin suatu fungsi potensial $F$ secara lokal---hanya dalam
+suatu daerah yang memuat titik awal.  Karena $y(1) = 2$,
+kita mulai dari titik $(1,2)$.  Dengan memperhatikan $x > 0$ dan
+mengintegralkan $M$ terhadap~$x$ atau $N$ terhadap~$y$, kita memperoleh
+\begin{equation*}
+F(x,y) = \arctan \bigl( \nicefrac{y}{x} \bigr) .
+\end{equation*}
+$F$ ini didefinisikan pada daerah $x > 0$, sehingga persamaan tersebut eksak pada
+daerah itu.
+Solusi implisitnya adalah
+$\arctan \bigl( \nicefrac{y}{x} \bigr) = C$.  Dengan menyelesaikannya,
+$y = \tan(C) x$.  Artinya, solusinya adalah suatu garis lurus.  Menyelesaikan $y(1) =
+2$ memberi kita $\tan(C) = 2$, sehingga $y= 2x$ adalah solusi yang diinginkan.
+Lihat \figurevref{exact:y2x}, dan perhatikan kembali bahwa solusi hanya ada untuk
+$x > 0$.
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=3in}{width=4.5in}{exact-y2x}{%
+Ditampilkan suatu grafik pada bidang $xy$ untuk $x$ antara minus 5 hingga 5 dan $y$ dari minus 10 hingga 10.
+Sebuah garis biru digambar mulai dari $(0,0)$ menuju sudut kanan atas
+di $(5,10)$, dengan titik merah menandai titik awal
+yang digambar di $(1,2)$.}
+\caption{Solusi dari
+$\frac{-y}{x^2+y^2} dx + \frac{x}{x^2+y^2} dy = 0$, $y(1) = 2$,
+dengan titik awal ditandai.\label{exact:y2x}}
+\end{myfig}
+\end{example}
+
+Jika daerah tempat $M$ dan $N$ didefinisikan serta tempat $M_y=N_x$
+\myquote{tidak memiliki lubang}, seperti, misalnya, seluruh bidang-$xy$,
+maka persamaan tersebut eksak dan suatu $F$ yang didefinisikan pada daerah itu dapat dicari.
+Sebagai contoh, dalam \exampleref{exact:exactR2example},
+$M=2x+y$ dan $N=x-1$ didefinisikan di seluruh bidang dan
+$M_y = 1 = N_x$, sehingga suatu $F$ global ada di sana.
+Demikian pula, dalam \exampleref{exact:examplevortex},
+setengah bidang tempat $x > 0$ juga \myquote{tidak memiliki lubang}
+dan suatu fungsi potensial ada pada daerah tersebut.
+Jadi dalam kasus seperti itu, memeriksa
+$M_y = N_x$ sudah cukup untuk memeriksa keeksakan.
+
+\begin{example} \label{exact:exampleabove}
+Selesaikan
+\begin{equation*}
+x^2+y^2 + 2y(x+1) \frac{dy}{dx} = 0 .
+\end{equation*}
+
+Pembaca hendaknya memeriksa bahwa persamaan ini eksak.
+Misalkan $M= x^2+y^2$ dan $N=2y(x+1)$.
+Kita mengikuti prosedur untuk persamaan eksak
+\begin{equation*}
+F(x,y) = \frac{1}{3}x^3 + xy^2 + A(y) ,
+\end{equation*}
+dan
+\begin{equation*}
+2y(x+1) = 2xy + A'(y) .
+\end{equation*}
+Oleh karena itu, $A'(y) = 2y$ atau $A(y) = y^2$, dan $F(x,y) = \frac{1}{3}x^3 + xy^2 +
+y^2$.
+Kita mencoba menyelesaikan $F(x,y) = C$.  Kita dapat dengan mudah menyelesaikannya untuk $y^2$, lalu cukup mengambil
+akar kuadratnya:
+\begin{equation*}
+y^2 = \frac{C-(\nicefrac{1}{3})x^3}{x+1},
+\qquad \text{sehingga} \qquad
+y = \pm \sqrt{\frac{C-(\nicefrac{1}{3})x^3}{x+1}} .
+\end{equation*}
+Ketika $x=-1$, suku di depan $\frac{dy}{dx}$ bernilai nol,
+dan solusi eksplisit kita tidak berlaku.
+Persamaan yang diberikan tidak memiliki solusi (untuk $y(x)$) di dekat $x=-1$, tetapi
+persamaan $(x^2+y^2) \, dx + 2y(x+1) \, dy = 0$ memang memiliki
+solusi $x=-1$.  Bahkan, kita dapat menyelesaikannya untuk $x$ dalam
+$y$ bagi sebarang syarat awal.  Solusinya rumit,
+sehingga kita membiarkannya sebagai $\frac{1}{3}x^3 + xy^2 + y^2 = C$.
+\end{example}
+
+\subsection{Faktor pengintegral}
+
+Kadang-kadang suatu persamaan $M\, dx + N \, dy = 0$ tidak eksak, tetapi dapat
+dibuat eksak dengan mengalikannya dengan suatu fungsi $u(x,y)$.  Artinya, mungkin
+untuk suatu fungsi taknol $u(x,y)$,
+\begin{equation*}
+u(x,y) M(x,y) \, dx + u(x,y) N(x,y) \, dy = 0
+\end{equation*}
+bersifat eksak.  Setiap solusi persamaan baru ini juga merupakan solusi dari
+$M\, dx + N \, dy = 0$.
+
+Sebenarnya, suatu persamaan linear
+\begin{equation*}
+\frac{dy}{dx} + p(x) y = f(x), \qquad
+\text{atau} \qquad
+\bigl( p(x) y - f(x) \bigr)\, dx + dy  = 0,
+\end{equation*}
+selalu merupakan persamaan seperti itu.  Misalkan $r(x) = e^{\int p(x)\,dx}$ adalah
+faktor pengintegral untuk persamaan linear tersebut.  Kalikan persamaan dengan $r(x)$
+dan tuliskan dalam bentuk $M + N \frac{dy}{dx} = 0$.
+\begin{equation*}
+r(x) p(x) y - r(x) f(x) + r(x) \frac{dy}{dx} = 0 .
+\end{equation*}
+Maka $M = r(x) p(x) y - r(x) f(x)$, sehingga
+$M_y = r(x) p(x)$, sedangkan $N = r(x)$, sehingga
+$N_x = r'(x) = r(x) p(x)$.  Dengan kata lain, kita memiliki persamaan eksak.
+Faktor pengintegral
+untuk fungsi linear hanyalah kasus khusus faktor pengintegral
+untuk persamaan eksak.
+
+Namun, bagaimana kita mencari faktor pengintegral $u$?  Agar
+$uM \, dx + uN \, dy = 0$ eksak,
+fungsi $u$ harus memenuhi
+\begin{equation*}
+\frac{\partial}{\partial y} \bigl[ u M \bigr] =
+u_y M + u M_y =
+\frac{\partial}{\partial x} \bigl[ u N \bigr] =
+u_x N + u N_x .
+\end{equation*}
+Oleh karena itu,
+\begin{equation*}
+(M_y-N_x)u = u_x N - u_y M .
+\end{equation*}
+Pada awalnya, mungkin tampak bahwa kita mengganti satu persamaan diferensial dengan persamaan lain.
+Lebih buruk lagi, persamaan baru tersebut adalah PDE\@.
+Benar, tetapi harapan belum hilang.
+
+Strategi yang sering berhasil adalah mencari $u$ yang hanya merupakan fungsi
+dari $x$, atau hanya fungsi dari $y$.
+Bagaimanapun juga, itulah yang berhasil untuk persamaan linear.
+Jika $u$ hanya merupakan fungsi dari $x$,
+yaitu $u(x)$, maka kita menuliskan $u'(x)$ sebagai ganti $u_x$, dan $u_y$ hanyalah
+nol.
+Maka
+\begin{equation*}
+\frac{M_y-N_x}{N}u = u' .
+\end{equation*}
+Secara khusus, $\frac{M_y-N_x}{N}$ harus merupakan fungsi dari $x$ saja (tidak
+bergantung pada $y$).  Jika demikian, kita memiliki persamaan linear
+\begin{equation*}
+u' - \frac{M_y-N_x}{N} u = 0 .
+\end{equation*}
+Dengan menetapkan $P(x) = \frac{M_y-N_x}{N}$,
+kita menyelesaikan persamaan linear tersebut
+untuk memperoleh $u(x) = C e^{\int P(x) \, dx}$.  Konstanta dalam
+solusi tidak relevan; kita memerlukan sebarang solusi taknol,
+sehingga kita mengambil $C=1$.
+Kemudian $u(x) = e^{\int P(x) \, dx}$ adalah faktor pengintegral
+yang membuat persamaan tersebut eksak.
+
+Demikian pula, kita dapat mencoba suatu fungsi berbentuk $u(y)$.
+Maka
+\begin{equation*}
+\frac{M_y-N_x}{M} u = - u' .
+\end{equation*}
+Secara khusus, $\frac{M_y-N_x}{M}$ harus merupakan fungsi dari $y$ saja.
+Jika demikian, kita memiliki persamaan linear
+\begin{equation*}
+u' + \frac{M_y-N_x}{M} u = 0 .
+\end{equation*}
+Dengan menetapkan $Q(y) = \frac{M_y-N_x}{M}$,
+kita memperoleh $u(y) = C e^{-\int Q(y) \, dy}$.  Kita
+mengambil $C=1$.  Jadi $u(y) = e^{-\int Q(y) \, dy}$ adalah faktor pengintegralnya.
+
+\begin{example}
+Selesaikan
+\begin{equation*}
+\frac{x^2+y^2}{x+1} + 2y \frac{dy}{dx} = 0 .
+\end{equation*}
+
+Misalkan $M= \frac{x^2+y^2}{x+1}$ dan $N=2y$.
+Hitung
+\begin{equation*}
+M_y-N_x = \frac{2y}{x+1} - 0 = \frac{2y}{x+1} .
+\end{equation*}
+Karena nilai ini tidak nol, persamaan tersebut tidak eksak.  Kita perhatikan
+\begin{equation*}
+P(x) = \frac{M_y-N_x}{N} = \frac{2y}{x+1} \, \frac{1}{2y} = \frac{1}{x+1}
+\end{equation*}
+merupakan fungsi dari $x$ saja.    Kita menghitung faktor pengintegral
+\begin{equation*}
+e^{\int  P(x) \, dx}
+=
+e^{\ln (x+1)} = x+1 .
+\end{equation*}
+Kita kalikan persamaan yang diberikan dengan $(x+1)$ untuk memperoleh
+\begin{equation*}
+x^2+y^2 + 2y(x+1) \frac{dy}{dx} = 0 ,
+\end{equation*}
+yang merupakan persamaan eksak yang telah kita selesaikan dalam
+\exampleref{exact:exampleabove}.  Solusinya adalah
+\begin{equation*}
+y = \pm \sqrt{\frac{C-(\nicefrac{1}{3})x^3}{x+1}} .
+\end{equation*}
+\end{example}
+
+\begin{example}
+Selesaikan
+\begin{equation*}
+y^2 + (xy+1) \frac{dy}{dx} = 0 .
+\end{equation*}
+
+Pertama, hitung
+\begin{equation*}
+M_y-N_x = 2y-y = y .
+\end{equation*}
+Karena nilai ini tidak nol, persamaan tersebut tidak eksak.  Kita amati
+\begin{equation*}
+Q(y) = \frac{M_y-N_x}{M} = \frac{y}{y^2} = \frac{1}{y}
+\end{equation*}
+merupakan fungsi dari $y$ saja.    Kita menghitung faktor pengintegral
+\begin{equation*}
+e^{-\int  Q(y) \, dy}
+=
+e^{-\ln y} = \frac{1}{y} .
+\end{equation*}
+Oleh karena itu, kita memperhatikan persamaan eksak
+\begin{equation*}
+y + \frac{xy+1}{y} \frac{dy}{dx} = 0 .
+\end{equation*}
+Pembaca hendaknya memeriksa kembali bahwa persamaan ini eksak.
+Kita mengikuti prosedur untuk persamaan eksak
+\begin{equation*}
+F(x,y) = xy + A(y) ,
+\end{equation*}
+dan
+\begin{equation*}
+\frac{xy+1}{y} = x+\frac{1}{y} = x+ A'(y) .
+\end{equation*}
+Akibatnya, $A'(y) = \nicefrac{1}{y}$ atau $A(y) = \ln \, \lvert y \rvert$.  Jadi $F(x,y)
+= xy + \ln \, \lvert y \rvert$.
+Tidak mungkin menyelesaikan $F(x,y)=C$ untuk $y$
+dalam fungsi-fungsi elementer, sehingga
+mari kita cukupkan diri dengan solusi implisit:
+\begin{equation*}
+xy + \ln \, \lvert y \rvert = C .
+\end{equation*}
+Kita mencari solusi umum, dan kita telah membagi dengan
+$y$ di atas.  Kita harus memeriksa apa yang terjadi ketika $y=0$, karena persamaan itu sendiri
+sepenuhnya bermakna dalam kasus tersebut.  Kita substitusikan $y=0$ dan memperoleh bahwa
+persamaannya terpenuhi.  Jadi $y=0$ juga merupakan solusi.
+\end{example}
+
+\subsection{Latihan}
+
+\begin{exercise}
+Selesaikan persamaan-persamaan eksak berikut; solusi umum implisit
+sudah memadai:
+\begin{tasks}(2)
+\task
+$(2 xy + x^2) \, dx + (x^2+y^2+1) \, dy = 0$
+\task
+$x^5 + y^5 \frac{dy}{dx} = 0$
+\task
+$e^x+y^3 + 3xy^2 \frac{dy}{dx} = 0$
+\task
+$(x+y)\cos(x)+\sin(x) + \sin(x)y' = 0$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Carilah faktor pengintegral untuk persamaan-persamaan berikut agar menjadi
+persamaan eksak:
+\begin{tasks}(2)
+\task
+$e^{xy} \, dx + \frac{y}{x} e^{xy} \, dy = 0$
+\task
+$\frac{e^x+y^3}{y^2} \, dx + 3x \, dy = 0$
+\task
+$4(y^2+x) \, dx + \frac{2x+2y^2}{y} \, dy = 0$
+\task
+$2\sin(y) \, dx + x\cos(y)\, dy = 0$
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+\pagebreak[2]
+Misalkan Anda memiliki suatu persamaan berbentuk:
+$f(x) + g(y) \frac{dy}{dx} = 0$.
+\begin{tasks}
+\task
+Tunjukkan bahwa persamaan tersebut eksak.
+\task
+Carilah bentuk fungsi potensial dalam $f$ dan $g$.
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Misalkan kita memiliki persamaan $f(x) \, dx - dy = 0$.
+\begin{tasks}
+\task
+Apakah persamaan ini eksak?
+\task
+Carilah solusi umum dengan menggunakan integral tentu.
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Carilah fungsi potensial $F(x,y)$ dari persamaan eksak $\frac{1+xy}{x}\, dx +
+\left(\frac{1}{y} + x \right) \, dy = 0$ dengan dua cara yang berbeda.
+\begin{tasks}
+\task
+Integralkan $M$ terhadap $x$, kemudian turunkan terhadap $y$ dan samakan hasilnya dengan
+$N$.
+\task
+Integralkan $N$ terhadap $y$, kemudian turunkan terhadap $x$ dan samakan hasilnya dengan
+$M$.
+\end{tasks}
+\end{exercise}
+
+\begin{samepage}
+\begin{exercise}
+Suatu fungsi $u(x,y)$ disebut \emph{\myindex{fungsi harmonik}} jika
+$u_{xx} + u_{yy} = 0$.
+\begin{tasks}
+\task
+Tunjukkan bahwa jika $u$ harmonik, $-u_y \, dx + u_x \, dy = 0$ merupakan suatu persamaan
+eksak.  Jadi terdapat (setidaknya secara lokal)
+apa yang disebut fungsi \emph{\myindex{konjugat harmonik}}
+$v(x,y)$ sedemikian sehingga $v_x = -u_y$ dan $v_y = u_x$.
+\end{tasks}
+Verifikasikan bahwa fungsi-fungsi $u$ berikut harmonik dan
+carilah konjugat harmonik $v$ yang bersesuaian:
+\begin{tasks}[resume](3)
+\task $u = 2xy$
+\task $u = e^x \cos y$
+\task $u = x^3-3xy^2$
+\end{tasks}
+\end{exercise}
+\end{samepage}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Selesaikan persamaan-persamaan eksak berikut; solusi umum implisit
+sudah memadai:
+\begin{tasks}(2)
+\task
+$\cos(x)+ye^{xy} + xe^{xy} y' = 0$
+\task
+$(2x+y)\, dx + (x-4y) \, dy = 0$
+\task
+$e^x + e^y \frac{dy}{dx} = 0$
+\task
+$(3x^2+3y)\,dx + (3y^2+3x)\, dy = 0$
+\end{tasks}
+\end{exercise}
+\exsol{%
+a) $e^{xy}+\sin(x)=C$ \quad
+b) $x^2+xy-2y^2=C$ \quad
+c) $e^x+e^y=C$ \quad
+d) $x^3 + 3xy+ y^3 = C$
+}
+
+\begin{samepage}
+\begin{exercise}
+Carilah faktor pengintegral untuk persamaan-persamaan berikut agar menjadi
+persamaan eksak:
+\begin{tasks}(2)
+\task
+$\frac{1}{y}\, dx + 3y \, dy = 0$
+\task
+$dx - e^{-x-y} \, dy = 0$
+\task
+$\left( \frac{\cos(x)}{y^2} + \frac{1}{y} \right) \, dx + \frac{x}{y^2} \, dy = 0$
+\task
+$\left( 2y + \frac{y^2}{x} \right) \, dx + ( 2y+x )\, dy = 0$
+\end{tasks}
+\end{exercise}
+\end{samepage}
+\exsol{%
+a) Faktor pengintegralnya adalah $y$, persamaan menjadi $dx + 3y^2\,dy = 0$.
+\quad
+b) Faktor pengintegralnya adalah $e^x$, persamaan menjadi $e^x \, dx - e^{-y}\,dy
+= 0$.
+\quad
+c) Faktor pengintegralnya adalah $y^2$, persamaan menjadi $(\cos(x)+y)\, dx +
+x\,dy = 0$.
+\quad
+d) Faktor pengintegralnya adalah $x$, persamaan menjadi $( 2xy+y^2 )\, dx +
+(x^2+2xy)\,dy = 0$.
+}
+
+\begin{exercise}
+\leavevmode
+\begin{tasks}
+\task
+Tunjukkan bahwa setiap
+persamaan terpisahkan $y' = f(x)g(y)$ dapat dituliskan sebagai persamaan eksak,
+dan verifikasikan bahwa persamaan tersebut memang eksak.
+\task Tuliskan ulang $y' = xy$ sebagai persamaan eksak, selesaikan, dan verifikasikan
+bahwa solusinya sama seperti dalam \exampleref{example:yprimeisxy}.
+\end{tasks}
+\end{exercise}
+\exsol{%
+a) Persamaannya adalah $ - f(x) \, dx + \frac{1}{g(y)} \, dy = 0$,
+dan persamaan ini eksak
+karena $M = -f(x)$, $N = \frac{1}{g(y)}$, sehingga $M_y = 0 = N_x$.
+\quad
+b) $-x \, dx + \frac{1}{y} \, dy = 0$, menghasilkan
+fungsi potensial $F(x,y) = -\frac{x^2}{2} + \ln \lvert y \rvert$; menyelesaikan
+$F(x,y) = C$ menghasilkan solusi yang sama seperti contoh tersebut.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\sectionnewpage
+\section{PDE linear orde satu}
+\label{fopde:section}
+
+\sectionnotes{1 kuliah, dapat dilewati dengan aman}
+
+Sejauh ini kita hanya membahas ODE, jadi mari kita selesaikan suatu PDE linear orde satu\@.
+Perhatikan
+\begin{equation*}
+a(x,t) \, u_x + b(x,t) \, u_t + c(x,t) \, u = g(x,t), \quad u(x,0) = f(x) , \quad -\infty < x < \infty,
+\quad t > 0 ,
+\end{equation*}
+dengan $u(x,t)$ merupakan fungsi dari $x$ dan $t$.
+Demi kemudahan, kita kembali menggunakan notasi $u_x = \frac{\partial u}{\partial x}$ dan
+$u_t = \frac{\partial u}{\partial t}$.
+\emph{Syarat awal}\index{syarat awal untuk suatu PDE}
+$u(x,0) = f(x)$ sekarang merupakan fungsi dari $x$, bukan sekadar suatu bilangan.
+Dalam masalah-masalah ini, berguna untuk memandang $x$ sebagai posisi dan $t$ sebagai waktu.
+Persamaan tersebut mendeskripsikan evolusi suatu fungsi dari $x$
+seiring berjalannya waktu.
+Di bawah ini, koefisien $a$, $b$, $c$, dan fungsi $g$
+sebagian besar akan bernilai konstan atau nol.
+Metode yang kita uraikan bekerja dengan koefisien takkonstan,
+meskipun perhitungannya dapat dengan cepat menjadi sulit.
+
+Kita akan menggunakan
+\emph{\myindex{metode karakteristik}}\index{karakteristik}.
+Gagasannya adalah mencari garis-garis yang sepanjang garis tersebut persamaannya menjadi
+suatu ODE yang kemudian kita selesaikan.
+Kita akan melihat teknik ini lagi untuk PDE orde dua
+ketika menjumpai persamaan gelombang dalam \sectionref{dalemb:section}.
+
+\begin{example}
+Perhatikan
+\begin{equation*}
+\alpha u_x + u_t = 0, \qquad u(x,0) = f(x) ,
+\end{equation*}
+dengan $\alpha$ suatu konstanta.
+Persamaan khusus ini, $\alpha u_x + u_t = 0$, disebut
+\emph{\myindex{persamaan transpor}}.
+
+Data akan merambat sepanjang kurva-kurva yang disebut karakteristik.  Gagasannya
+adalah mengubah ke apa yang disebut
+\emph{\myindex{koordinat karakteristik}}, yang akan kita sebut
+$(\xi,s)$.
+Jika kita mengubah ke koordinat ini, persamaannya menjadi lebih sederhana.  Perubahan variabel untuk
+persamaan ini adalah
+\begin{equation*}
+\xi = x - \alpha t ,  \qquad s = t .
+\end{equation*}
+Mari kita lihat persamaan tersebut berubah menjadi apa. Ingat aturan rantai untuk beberapa
+variabel.
+\begin{align*}
+& u_x = u_\xi \xi_x + u_s s_x = u_\xi , \\
+& u_t = u_\xi \xi_t + u_s s_t = - \alpha u_\xi + u_s .
+\end{align*}
+Persamaan dalam koordinat $\xi$ dan $s$ menjadi
+\begin{equation*}
+\alpha
+\underbrace{(u_\xi)}_{u_x}
++
+\underbrace{(- \alpha u_\xi + u_s)}_{u_t}
+= 0 ,
+\end{equation*}
+atau dengan kata lain,
+\begin{equation*}
+u_s = 0 .
+\end{equation*}
+Dengan memperlakukan $\xi$ sekadar sebagai parameter, kita telah
+memperoleh ODE $\frac{d u}{d s} = 0$.
+Persamaan tersebut mudah diselesaikan.
+
+Solusinya adalah suatu fungsi yang
+tidak bergantung pada $s$ (tetapi memang bergantung pada $\xi$).
+Artinya, terdapat suatu fungsi $A$ sedemikian sehingga
+\begin{equation*}
+u = A(\xi) = A(x - \alpha t) .
+\end{equation*}
+Syarat awal menyatakan bahwa
+\begin{equation*}
+f(x) = u(x,0) = A(x - \alpha 0) = A(x) ,
+\end{equation*}
+sehingga $A=f$.  Dengan kata lain,
+\begin{equation*}
+u(x,t) = f(x-\alpha t) .
+\end{equation*}
+Semuanya sekadar bergerak ke
+kanan\footnote{Dengan asumsi $\alpha > 0$.
+Jika $\alpha < 0$, maka kita bergerak ke kiri.}
+dengan kecepatan $\alpha$ ketika $t$ meningkat.
+Kurva-kurva yang diberikan oleh persamaan
+\begin{equation*}
+\xi = \text{konstan}
+\end{equation*}
+disebut \emph{kurva karakteristik}\index{kurva karakteristik}.
+Lihat \figurevref{fopde:charcurves}.
+Dalam kasus ini, solusi tidak berubah
+sepanjang karakteristik karena $\frac{du}{ds} = 0$.
+
+\begin{mywrapfig}{2.8in}
+\capstart
+\inputpdft{char-curves}{%
+Diagram bidang $xt$ dengan tiga garis yang digambar.  Ketiga
+garis bermula pada sumbu $x$ dan bergerak curam ke atas dan ke kanan.
+Garis yang bermula di titik asal ditandai sebagai xi sama dengan 0,
+garis di sebelah kanannya
+ditandai sebagai xi sama dengan 1,
+dan garis ketiga di sebelah kanan garis tersebut ditandai
+xi sama dengan 2.}
+\caption{Kurva-kurva karakteristik.\label{fopde:charcurves}}
+\end{mywrapfig}
+
+Dalam koordinat $(x,t)$, kurva-kurva karakteristik memenuhi
+$t = \frac{1}{\alpha} ( x- \xi)$, dan sebenarnya merupakan garis-garis.
+Kemiringan garis karakteristik adalah
+$\frac{1}{\alpha}$, dan untuk setiap $\xi$ yang berbeda, kita memperoleh garis
+karakteristik yang berbeda.
+
+Kita melihat mengapa $\alpha u_x + u_t = 0$ disebut
+persamaan transpor: Semuanya bergerak dengan suatu kecepatan konstan.
+Perilaku ini disebut \emph{\myindex{konveksi}}.
+Contoh penerapannya adalah bahan yang dipindahkan oleh sungai, dengan bahan tersebut
+tidak berdifusi dan sekadar terbawa aliran.  Dalam keadaan ini, $x$ adalah
+posisi sepanjang sungai, $t$ adalah waktu, dan $u(x,t)$ adalah
+konsentrasi
+bahan pada posisi $x$ dan waktu $t$.  Lihat
+\figurevref{fopde:transportfig} untuk suatu contoh.
+\begin{myfig}
+\capstart
+%original files fopde-transport-1 fopde-transport-2
+\diffyincludegraphics{width=6.24in}{width=9in}{fopde-transport-1-2}{%
+Dua grafik pada bidang untuk $x$ antara minus 3 hingga 3 dan sumbu variabel terikat
+antara sedikit di bawah 0,0 dan sedikit di atas 1,0.  Pada grafik sebelah kiri,
+terdapat grafik suatu fungsi yang sebagian besar horizontal pada tingkat 0,
+kecuali suatu puncak tajam hingga tingkat 1 ketika $x$ sama dengan 0.
+Pada grafik sebelah kanan, terdapat puncak yang tepat sama, tetapi sekarang berpusat
+di $x$ sama dengan 1.}
+\caption{Contoh \myquote{transpor}
+dalam $u_x+u_t = 0$ (yaitu, $\alpha = 1$), dengan
+syarat awal $f(x)$ berupa suatu puncak di titik asal.  Di sebelah kiri terdapat grafik
+syarat awal $u(x,0)$.  Di sebelah kanan terdapat grafik
+fungsi $u(x,1)$, yaitu pada waktu $t=1$.  Perhatikan bahwa grafik tersebut sama,
+tetapi digeser satu satuan ke
+kanan.\label{fopde:transportfig}}
+\end{myfig}
+\end{example}
+
+Kita menggunakan gagasan serupa dalam kasus yang lebih umum:
+\begin{equation*}
+a u_x + b u_t + c u = g, \qquad u(x,0) = f(x)  .
+\end{equation*}
+Kita mengubah koordinat ke
+koordinat karakteristik, yang kita sebut $(\xi,s)$.
+Ini adalah koordinat yang mengubah $a u_x + b u_t$ menjadi diferensiasi
+dalam variabel $s$.
+
+Sepanjang kurva karakteristik (tempat $\xi$ konstan), kita memperoleh suatu
+ODE baru dalam variabel $s$.  Dalam persamaan
+transpor, kita memperoleh persamaan sederhana $\frac{du}{ds} = 0$.  Secara umum,
+kita memperoleh persamaan linear
+\begin{equation} \label{eq:fopde:charode}
+\frac{du}{ds} + c u = g.
+\end{equation}
+Kita memandang semuanya sebagai fungsi dari $\xi$ dan $s$,
+meskipun
+kita memandang $\xi$ sebagai parameter, bukan variabel bebas.
+Jadi, persamaan tersebut merupakan ODE\@.  Persamaan itu adalah ODE
+linear yang dapat kita selesaikan dengan menggunakan faktor pengintegral.
+
+Untuk mencari karakteristik, bayangkan suatu kurva yang diberikan secara parametrik
+$\bigl(x(s),t(s)\bigr)$.  Kita mencoba membuat kurva tersebut memenuhi
+\begin{equation*}
+\frac{dx}{ds} = a, \qquad \frac{dt}{ds} = b .
+\end{equation*}
+Mengapa?
+Karena ketika kita memandang $x$ dan $t$ sebagai fungsi dari $s$, dengan menggunakan
+aturan rantai, kita memperoleh
+\begin{equation*}
+\frac{du}{ds} + c u =
+\underbrace{\left( u_x \frac{dx}{ds} + u_t
+\frac{dt}{ds}\right)}_{\frac{du}{ds}} + c u =
+a u_x + b u_t + c u = g .
+\end{equation*}
+Jadi kita memperoleh ODE \eqref{eq:fopde:charode}, yang
+kemudian mendeskripsikan nilai solusi $u$ dari
+PDE tersebut sepanjang
+kurva karakteristik ini.
+Sebaiknya kita memastikan bahwa $s=0$
+bersesuaian dengan $t=0$, yaitu $t(0) = 0$.  Akan baik pula jika
+$x(0) = \xi$.
+Lihat \figureref{fopde:charcurvecurvy}.
+
+\begin{myfig}
+\capstart
+\inputpdft{char-curve-curvy}{%
+Diagram bidang $xt$ dengan contoh kurva karakteristik
+yang digambar mulai dari sumbu $x$ dan bergerak ke atas.  Titik pada kurva yang
+terletak pada sumbu $x$ ditandai sebagai $x$ sama dengan xi dan juga $s$ sama dengan 0.
+Titik umum
+pada kurva ditandai sebagai $(x$ dari $s, t$ dari $s)$.
+Seluruh kurva ditandai sebagai
+xi sama dengan konstanta.}
+\caption{Kurva karakteristik umum.\label{fopde:charcurvecurvy}}
+\end{myfig}
+
+
+\begin{example}
+Perhatikan
+\begin{equation*}
+u_x + u_t + u = x, \qquad u(x,0) = e^{-x^2} .
+\end{equation*}
+Kita mencari karakteristik, yaitu kurva-kurva yang diberikan oleh
+\begin{equation*}
+\frac{dx}{ds} = 1, \qquad \frac{dt}{ds} = 1 .
+\end{equation*}
+Jadi
+\begin{equation*}
+x = s + c_1, \qquad t = s+ c_2 ,
+\end{equation*}
+untuk suatu $c_1$ dan $c_2$.
+Pada $s=0$, kita ingin $x=\xi$ dan $t=0$.  Jadi
+kita menetapkan $c_1 = \xi$ dan $c_2 = 0$:
+\begin{equation*}
+x = s + \xi, \qquad t = s .
+\end{equation*}
+
+ODE-nya adalah $\frac{du}{ds} + u = x$, dan $x = s+\xi$. Jadi, ODE
+yang harus diselesaikan sepanjang karakteristik adalah
+\begin{equation*}
+\frac{du}{ds} + u = s+ \xi .
+\end{equation*}
+Solusi umum persamaan ini, dengan memperlakukan $\xi$ sebagai parameter, adalah
+$u = C e^{-s}+s+\xi-1$, untuk suatu $C$ yang dapat bergantung pada $\xi$.
+Pada $s=0$, syarat awal kita adalah bahwa $u$ bernilai
+$e^{-\xi^2}$, karena pada $s=0$, kita memiliki $x=\xi$.
+Dengan syarat awal ini, kita memperoleh $C=e^{-\xi^2} - \xi +1$.  Jadi,
+\begin{equation*}
+\begin{split}
+u & =
+\bigl(e^{-\xi^2} - \xi +1\bigr) e^{-s}+s+\xi-1
+\\
+& =
+e^{-\xi^2-s} + (1 - \xi) e^{-s} +s+\xi-1 .
+\end{split}
+\end{equation*}
+Substitusikan $\xi = x-t$ dan $s=t$ untuk memperoleh $u$ dalam $x$ dan $t$:
+\begin{equation*}
+\begin{split}
+u
+& =
+e^{-\xi^2-s} + (1 - \xi) e^{-s} +s+\xi-1
+\\
+& =
+e^{-{(x-t)}^2-t} + (1 - x + t) e^{-t} +x-1 .
+\end{split}
+\end{equation*}
+Lihat \figureref{fopde:surfaceplot} untuk grafik $u(x,t)$ sebagai fungsi dari
+dua variabel.
+\begin{myfig}
+\capstart
+\diffyincludegraphics{width=5in}{width=7.5in}{sol-to-fo-pde}{%
+Grafik permukaan suatu fungsi $u$ dari $(x,t)$ untuk $x$ antara minus 3 dan 3 serta $t$
+antara 0 dan 3.  Ketika $t$ sama dengan 0, permukaan tersebut tampak seperti
+garis datar, lalu suatu puncak, kemudian turun kembali menuju garis datar.
+Ketika $t$ bertambah, permukaan tersebut menjadi, seiring bertambahnya $t$,
+semakin mendekati suatu permukaan datar
+menyamping yang naik ketika $x$ bertambah.
+Pada $t$ sama dengan 3, permukaan tersebut tampak hampir sepenuhnya
+lurus dari sedikit di bawah minus 3 pada $x$ sama dengan minus 3
+dan naik hingga sedikit di bawah 2.}
+\caption{Grafik solusi $u(x,t)$ dari
+$u_x + u_t + u = x$,  $u(x,0) = e^{-x^2}$.\label{fopde:surfaceplot}}
+\end{myfig}
+\end{example}
+
+Ketika koefisien-koefisiennya tidak konstan, kurva-kurva karakteristik
+tidak lagi berupa garis lurus.
+
+\begin{example}
+Perhatikan persamaan berkoefisien variabel berikut:
+\begin{equation*}
+x u_x + u_t + 2 u = 0, \qquad u(x,0) = \cos(x) . % , \qquad -\infty < x < \infty,
+%\quad t > 0 .
+\end{equation*}
+Kita mencari karakteristik, yaitu kurva-kurva yang diberikan oleh
+\begin{equation*}
+\frac{dx}{ds} = x, \qquad \frac{dt}{ds} = 1 .
+\end{equation*}
+Jadi
+\begin{equation*}
+x = c_1 e^{s} , \qquad t = s+ c_2 .
+\end{equation*}
+Pada $s=0$, kita ingin memperoleh $x=\xi$ dan $t=0$ seperti sebelumnya.  Jadi
+\begin{equation*}
+x = \xi e^s, \qquad t = s .
+\end{equation*}
+
+Baiklah\@, ODE yang perlu kita selesaikan adalah
+\begin{equation*}
+\frac{du}{ds} + 2 u = 0 .
+\end{equation*}
+Ini berlaku untuk $\xi$ yang tetap.  Kita memperoleh $u = C e^{-2s}$.
+Pada $s=0$, kita ingin $u$ bernilai
+$\cos(\xi)$, sehingga itulah syarat awal untuk ODE tersebut\@.
+Oleh karena itu, $C = \cos(\xi)$.
+Kita menyelesaikannya untuk $\xi$ dan $s$ dan memperoleh
+$\xi = xe^{-t}$ dan $s=t$.
+Akibatnya,
+\begin{equation*}
+u = e^{-2s} \cos(\xi)= e^{-2t} \cos(xe^{-t}) .
+\end{equation*}
+\end{example}
+
+
+Kita berikan beberapa catatan penutup.
+Satu hal yang perlu diingat adalah bahwa kita akan menghadapi masalah jika
+koefisien di depan $u_t$, yaitu $b$, pernah bernilai nol.
+Mari kita perhatikan suatu contoh singkat tentang apa yang dapat terjadi:
+\begin{equation*}
+u_x + u = 0, \qquad u(x,0) = \sin(x).
+\end{equation*}
+Masalah ini tidak memiliki solusi.  Jika kita memiliki suatu solusi, hal itu
+akan mengimplikasikan bahwa $u_x(x,0) = \cos(x)$,
+tetapi $u_x(x,0) + u(x,0) = \cos(x) + \sin(x) \neq 0$.
+Masalahnya adalah bahwa kurva karakteristik sekarang merupakan garis $t=0$,
+dan solusinya sudah diberikan pada garis tersebut!
+Karena $b$ seharusnya taknol,
+sebaiknya kita memastikan bahwa $b$ positif dengan mengalikan
+persamaan dengan $-1$
+jika perlu, sehingga $s$ positif berarti $t$ positif.
+
+Catatan lain adalah bahwa jika $a$ atau $b$ dalam persamaan tidak konstan,
+perhitungannya dapat
+dengan cepat menjadi tidak terkendali, karena ekspresi untuk koordinat
+karakteristik menjadi rumit dan kemudian menyelesaikan ODE-nya menjadi lebih rumit lagi.
+Dalam contoh-contoh di atas, $b$ selalu bernilai $1$, yang berarti kita memperoleh $s=t$ dalam
+koordinat karakteristik.  Jika $b$ tidak konstan, ekspresi Anda untuk $s$
+akan lebih rumit.
+
+Secara umum, mencari koordinat karakteristik sebenarnya
+merupakan suatu sistem ODE jika $a$ bergantung pada $t$ atau jika $b$ bergantung pada $x$.
+Dalam kasus itu, kita akan memerlukan teknik sistem ODE
+untuk menyelesaikannya; lihat \chapterref{sys:chapter} atau \chapterref{nlin:chapter}.  Secara
+umum, jika $a$ dan $b$ bukan fungsi linear atau konstanta, mencari
+ekspresi bentuk tertutup untuk koordinat karakteristik mungkin mustahil.
+
+Akhirnya, metode karakteristik juga berlaku untuk PDE
+nonlinear orde satu.
+Dalam kasus nonlinear, karakteristik tidak hanya bergantung
+pada persamaan diferensial, tetapi juga pada data awal.  Hal ini tidak hanya menyebabkan
+perhitungan yang lebih sulit, tetapi juga pembentukan
+singularitas tempat solusi rusak pada suatu saat tertentu.
+Contoh penerapan yang memunculkan PDE nonlinear orde satu
+adalah teori arus lalu lintas, dan Anda mungkin pernah mengalami
+pembentukan singularitas: kemacetan lalu lintas.  Namun, kita telah menyimpang dari pokok bahasan.
+
+\subsection{Latihan}
+
+\begin{exercise}
+Selesaikan
+\begin{tasks}(2)
+\task $9u_x + u_t = 0$, \enspace $u(x,0) = \sin(x)$,
+\task $-8u_x + u_t = 0$, \enspace $u(x,0) = \sin(x)$,
+\task $\pi u_x + u_t = 0$, \enspace $u(x,0) = \sin(x)$,
+\task $\pi u_x + u_t + u = 0$, \enspace $u(x,0) = \sin(x)$.
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $3u_x + u_t = 1$, $u(x,0) = x^2$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $3u_x + u_t = x$, $u(x,0) = e^x$.
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $u_x+u_t+xu = 0$, $u(x,0) = \cos(x)$.
+\end{exercise}
+
+\begin{exercise}
+\leavevmode
+\begin{tasks}
+\task Carilah koordinat karakteristik untuk
+persamaan-persamaan berikut:
+
+1)~~$u_x+u_t + u = 1$,~~$u(x,0) = \cos(x)$,
+\qquad
+2)~~$2u_x+2u_t +2u = 2$,~~$u(x,0) = \cos(x)$.
+\task Selesaikan kedua persamaan tersebut dengan menggunakan koordinat itu.
+\task Jelaskan mengapa
+Anda memperoleh solusi yang sama, meskipun koordinat karakteristik
+yang Anda temukan berbeda.
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}
+Selesaikan $x^2 u_x + (1+x^2) u_t + e^x u = 0$, $u(x,0) = 0$.
+Petunjuk: Berpikirlah sedikit di luar kebiasaan.
+\end{exercise}
+
+\setcounter{exercise}{100}
+
+\begin{exercise}
+Selesaikan
+\begin{tasks}(2)
+\task $-5u_x + u_t = 0$, \enspace $u(x,0) = \frac{1}{1+x^2}$,
+\task $2u_x + u_t = 0$, \enspace $u(x,0) = \cos(x)$.
+\end{tasks}
+\end{exercise}
+\exsol{%
+a) $u = \frac{1}{1+{(x+5t)}^2}$
+\quad
+b) $u = \cos(x-2t)$
+}
+
+\begin{exercise}
+Selesaikan $u_x+u_t+tu = 0$, $u(x,0) = \cos(x)$.
+\end{exercise}
+\exsol{%
+$u = \cos(x-t)e^{-t^2/2}$
+}
+
+\begin{exercise}
+Selesaikan $u_x+u_t = 5$, $u(x,0) = x$.
+\end{exercise}
+\exsol{%
+$u = x + 4t$
+}
