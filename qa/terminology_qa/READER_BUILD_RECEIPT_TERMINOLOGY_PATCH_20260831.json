@@ -1,0 +1,41 @@
+{
+  "schema": "lebl-terminology-patch-reader-build-v1",
+  "status": "pass",
+  "mutex": "Global\\InterlanguageTeXSlotV1",
+  "abandoned_mutex_recovered": false,
+  "source_date_epoch": 1788134400,
+  "engine": "MiKTeX pdfTeX-1.40.29",
+  "builds": [
+    {
+      "build": "r007-a",
+      "reader": "Catatan_tentang_Diffy_Qs_Bahasa_Indonesia_v6.11.pdf",
+      "bytes": 5135112,
+      "sha256": "5395c01c7e1b3d170dfc5d2ecb4e55fcc7cc08890ef8706a385d6ae292a72d62"
+    },
+    {
+      "build": "r007-b",
+      "reader": "Catatan_tentang_Diffy_Qs_Bahasa_Indonesia_v6.11.pdf",
+      "bytes": 5135112,
+      "sha256": "5395c01c7e1b3d170dfc5d2ecb4e55fcc7cc08890ef8706a385d6ae292a72d62"
+    },
+    {
+      "build": "r008-a",
+      "reader": "Panduan_Mengolah_Analisis_Kompleks_Bahasa_Indonesia_v1.9.pdf",
+      "bytes": 2822050,
+      "sha256": "efe8146e7a16fc4386b4e21cfb3454e5b1684ed6dd2f19c20a83f5b6023e6106"
+    },
+    {
+      "build": "r008-b",
+      "reader": "Panduan_Mengolah_Analisis_Kompleks_Bahasa_Indonesia_v1.9.pdf",
+      "bytes": 2822050,
+      "sha256": "efe8146e7a16fc4386b4e21cfb3454e5b1684ed6dd2f19c20a83f5b6023e6106"
+    }
+  ],
+  "checks": {
+    "r007_independent_builds_byte_identical_pass": true,
+    "r008_independent_builds_byte_identical_pass": true,
+    "canonical_driver_restored_before_retained_passes_pass": true,
+    "critical_final_log_scan_pass": true,
+    "pinned_dependency_hashes_pass": true
+  }
+}

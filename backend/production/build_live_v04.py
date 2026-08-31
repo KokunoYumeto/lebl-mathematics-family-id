@@ -1772,7 +1772,7 @@ def build(
             f"(28 frozen figure files, one localized overlay, and two cited bibliography spans) "
             f"with {added_r007_asset_relation_rows} unit/dependency relations derived from "
             f"{len(figure_occurrences)} figure calls and {len(citation_occurrences)} citations.\n\n"
-            "Terminology QA evidence: `authority/terminology_evidence/2026-08-22-indonesian-field-usage-qa/TERMINOLOGY_QA_REPORT.md`.\n"
+            "Terminology QA evidence: `authority/terminology_evidence/2026-08-22-indonesian-field-usage-qa/TERMINOLOGY_QA_REPORT.md` and `qa/terminology_qa/NATIVE_INDONESIAN_TERMINOLOGY_AUDIT_20260831.md`.\n"
             "Translation/runtime provenance: `OpenAI Codex gpt-5.6-sol, Ultra`, acting on the user's request.\n"
         ).encode("utf-8")
         (stage / "README.md").write_bytes(readme)

@@ -2,25 +2,26 @@
 
 ## Current complete checkpoint 2026-08-31
 
-`v0.4-complete-2026.08.31-a/` is the authoritative complete local checkpoint;
-`v0.4-complete-2026.08.31-b/` is its independent byte-identical replay. The
+`v0.4-complete-2026.08.31-tqa-release-a/` is the authoritative complete local
+checkpoint; `v0.4-complete-2026.08.31-tqa-release-b/` is its independent
+byte-identical replay. The
 5,884-row manifest contains 5,420 dense logical units plus 32 exact whole-file
 coverage records for every canonical R006/R007/R008 TeX reader/support file.
 It indexes all 2,169 exercises and the 251 structured R007 solution blocks
 while preserving separate resource, edition, and rights identities.
 
-- 20,396 canonical records and 15 deterministic CSV projections;
+- 20,401 canonical records and 15 deterministic CSV projections;
 - 11,282 directly verified source/target component hashes;
 - schema, referential-integrity, typed-parent, projection, and lossless
   round-trip validation pass;
-- 27 files / 122,843,339 bytes in each replay;
+- 27 files / 122,779,068 bytes in each replay;
 - `records.jsonl` SHA-256
-  `46678e2b6c7e1ed8c0ebdd391cffd5a8648e66a088404ef14b7c7920e78d4c68`;
+  `60ea5afad065a29d5d2ffca8bc0ac0fec3998bb1c0e9fff9ac6302769171e7b9`;
 - canonical inventory SHA-256
-  `e9c7901c216b854aac7a87e432461838fb59e36136b924c172b24db237e6f32e`.
+  `4005b1bf3ee6c7b4b4e70f658eea141d188479727c31617df7b8038cdc8dcabc`.
 
 The deterministic evidence is
-`qa/parallel_qa_20260830/BACKEND_COMPLETE_R006_R007_R008_20260831.md`.
+`qa/terminology_qa/BACKEND_TERMINOLOGY_PATCH_20260831.md`.
 Use `validate_complete_backend.py` for the complete lossless CSV replay; it
 raises only Python's CSV field-size ceiling and does not relax validation.
 

@@ -1,17 +1,17 @@
 cff-version: 1.2.0
 message: "Jika menggunakan edisi ini, kutip DOI versi di bawah."
-title: "Keluarga Matematika Lebl — Edisi Bahasa Indonesia Lengkap"
+title: "Keluarga Matematika Lebl — Penyempurnaan Terminologi Bahasa Indonesia"
 type: book
 authors:
   - family-names: "Lebl"
     given-names: "Jiří"
-version: "lebl-family-id-complete.2026.08.30"
-date-released: 2026-08-30
-doi: "10.5281/zenodo.22182427"
+version: "lebl-family-id-complete.2026.08.31.terminology"
+date-released: 2026-08-31
+doi: "10.5281/zenodo.22215300"
 license: CC-BY-SA-4.0
 repository-code: "https://github.com/KokunoYumeto/lebl-mathematics-family-id"
-url: "https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id.2026.08.30.complete"
-abstract: "Edisi Bahasa Indonesia lengkap keluarga R006/R007/R008 karya Jiří Lebl, dengan empat PDF: Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf: 334 halaman, SHA-256 38743ea0e7ce52bdadf5233fc9d6e79e00717f9ba55a393f2bf46ea21c65ef56; Analisis_Dasar_II_Bahasa_Indonesia_v6.3.pdf: 241 halaman, SHA-256 e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3; Catatan_tentang_Diffy_Qs_Bahasa_Indonesia_v6.11.pdf: 502 halaman, SHA-256 1c18dfc1572d22ef7fc5d8ad25be18f3b91f1bffea5b9f9d521ff4e56ca969d4; Panduan_Mengolah_Analisis_Kompleks_Bahasa_Indonesia_v1.9.pdf: 338 halaman, SHA-256 87e4810abdedbdd8121995a8e53936891135037f03054dce76a06beebc3cfaae. Manifes memuat 5884 unit (R006 2625, R007 1732, R008 1527). Backend final backend/production/v0.4-complete-2026.08.31-a memuat 27 berkas, 122843339 byte, SHA-256 inventaris 4223a618b201cdc41db050c8bf929fd8b5b5628dc253fce2c5a8eef39ca18b9e. Paket sumber/backend SHA-256 baeea18043520f1b47825df0c9b1343f203bc1ec67119266953e19133381ab92. Sumber: Basic Analysis v6.3, Notes on Diffy Qs v6.11, dan Guide to Cultivating Complex Analysis v1.9; setiap adaptasi memilih CC BY-SA 4.0. Penerjemahan, penyuntingan, QA, penataan pembaca, dan integrasi backend dilakukan oleh OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna."
+url: "https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/tag/lebl-family-id.2026.08.31.terminology"
+abstract: "Edisi Bahasa Indonesia lengkap keluarga R006/R007/R008 karya Jiří Lebl, dengan empat PDF: Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf: 334 halaman, SHA-256 38743ea0e7ce52bdadf5233fc9d6e79e00717f9ba55a393f2bf46ea21c65ef56; Analisis_Dasar_II_Bahasa_Indonesia_v6.3.pdf: 241 halaman, SHA-256 e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3; Catatan_tentang_Diffy_Qs_Bahasa_Indonesia_v6.11.pdf: 502 halaman, SHA-256 5395c01c7e1b3d170dfc5d2ecb4e55fcc7cc08890ef8706a385d6ae292a72d62; Panduan_Mengolah_Analisis_Kompleks_Bahasa_Indonesia_v1.9.pdf: 338 halaman, SHA-256 efe8146e7a16fc4386b4e21cfb3454e5b1684ed6dd2f19c20a83f5b6023e6106. Manifes memuat 5884 unit (R006 2625, R007 1732, R008 1527). Backend final backend/production/v0.4-complete-2026.08.31-tqa-release-a memuat 27 berkas, 122779068 byte, SHA-256 inventaris 4005b1bf3ee6c7b4b4e70f658eea141d188479727c31617df7b8038cdc8dcabc. Paket sumber/backend SHA-256 afbfc12d5bedf27dca3bd412a3183092ecbf64ba30976c15a0128820b883a51c. Sumber: Basic Analysis v6.3, Notes on Diffy Qs v6.11, dan Guide to Cultivating Complex Analysis v1.9; setiap adaptasi memilih CC BY-SA 4.0. Penerjemahan, penyuntingan, QA, penataan pembaca, dan integrasi backend dilakukan oleh OpenAI Codex gpt-5.6-sol, Ultra atas instruksi pengguna."
 keywords:
   - "Bahasa Indonesia"
   - "analisis real"

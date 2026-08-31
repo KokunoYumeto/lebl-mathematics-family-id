@@ -1,0 +1,56 @@
+{
+  "checks": {
+    "braces_balanced_and_count_preserved": true,
+    "corrected_occurrence_counts_exact": true,
+    "environment_label_reference_citation_asset_topology_identical": true,
+    "ordered_math_payloads_identical": true,
+    "ordered_tex_commands_identical": true,
+    "rejected_terminology_absent": true
+  },
+  "files": {
+    "R007": {
+      "assets": 5,
+      "braces": 2519,
+      "citations": 16,
+      "commands": 2650,
+      "environment_boundaries": 894,
+      "labels": 48,
+      "math_spans": 1442,
+      "new_bytes": 149064,
+      "new_path": "translation/diffyqs/ch-first-order-ode.tex",
+      "new_sha256": "0ebf02f1c94e0bfbe9736f1fd5dbcdd115a49981a9e61393d485422cf9b0aa22",
+      "old_bytes": 149111,
+      "old_path": "repository/translation/diffyqs/ch-first-order-ode.tex",
+      "old_sha256": "a5ca8df9afcae2390ce9e0ae70941b2c950c4b2e2a990bc9e53a06acb7a0b71a",
+      "references": 22,
+      "topology": "identical"
+    },
+    "R008": {
+      "assets": 23,
+      "braces": 15998,
+      "citations": 4,
+      "commands": 28633,
+      "environment_boundaries": 4942,
+      "labels": 383,
+      "math_spans": 11727,
+      "new_bytes": 887505,
+      "new_path": "translation/complex-analysis/ca.tex",
+      "new_sha256": "6a99f18c847dece4549795df25b667cf2fb0542e7481678052614a86868491d4",
+      "old_bytes": 887597,
+      "old_path": "repository/translation/complex-analysis/ca.tex",
+      "old_sha256": "99c46e59be5b319e72520290e8d3db9b6e260f8d147aa7b69adb06ac0779852e",
+      "references": 264,
+      "topology": "identical"
+    }
+  },
+  "glossary": {
+    "bytes": 131250,
+    "path": "00_control/TERMINOLOGY.csv",
+    "rows": 804,
+    "sha256": "52b8a627df7d5ef207276700aad07881119a99e9d25632c38c5cd7a4089c6a06",
+    "unique_ids": 804
+  },
+  "provenance": "OpenAI Codex gpt-5.6-sol, Ultra acting on the user's request",
+  "schema": "lebl-native-id-terminology-source-patch-qa-v1",
+  "status": "pass"
+}

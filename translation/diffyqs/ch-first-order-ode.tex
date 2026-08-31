@@ -879,7 +879,7 @@ ada untuk setiap $x$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \sectionnewpage
-\section{Persamaan terpisahkan}
+\section{Persamaan diferensial separabel}
 \label{separable:section}
 
 %mbxINTROSUBSECTION
@@ -900,10 +900,10 @@ y = \int f(x,y) \,dx + C .
 \end{equation*}
 Perhatikan kebergantungan pada $y$ dalam integral.
 
-\subsection{Persamaan terpisahkan}
+\subsection{Persamaan diferensial separabel}
 
 Kita mengatakan bahwa suatu persamaan diferensial
-\emph{\myindex{terpisahkan}}
+\emph{\myindex{separabel}}
 jika dapat ditulis sebagai
 \begin{equation*}
 y' = f(x)g(y) ,
@@ -987,7 +987,7 @@ Dan kita selesai.
 \subsection{Solusi implisit}
 
 Kadang-kadang kita tetap menemui jalan buntu meskipun dapat melakukan
-integrasi.  Perhatikan persamaan terpisahkan
+integrasi.  Perhatikan persamaan separabel
 \begin{equation*}
 y' = \frac{xy}{y^2+1} .
 \end{equation*}
@@ -1075,7 +1075,7 @@ D$, dengan kata lain, $D=1$.  Jadi solusi untuk syarat awal ini
 adalah $y^2 + 2 \ln \, \lvert y \rvert = x^2 + 1$, tetapi hanya bagian
 positif dari solusi implisit ini karena itulah yang disyaratkan oleh syarat awal kita.
 
-\subsection{Contoh lain persamaan terpisahkan}
+\subsection{Contoh lain persamaan separabel}
 
 \begin{example}
 Selesaikan $x^2y' = 1 - x^2+y^2 - x^2y^2$, $y(1) = 0$.
@@ -1312,7 +1312,7 @@ a) $x = \frac{1000e^t}{e^t+24}$. \quad b) 102 ekor kelinci setelah satu bulan,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \sectionnewpage
-\section{Persamaan linear dan faktor pengintegrasi}
+\section{Persamaan linear dan faktor integrasi}
 \label{intfactor:section}
 
 %mbxINTROSUBSECTION
@@ -1360,8 +1360,8 @@ Sekarang kita dapat mengintegralkan kedua ruas; hal ini dapat dilakukan karena
 ruas kanan tidak bergantung pada $y$ dan ruas kiri
 ditulis sebagai turunan suatu fungsi. Setelah integrasi, kita menyelesaikan untuk $y$
 dengan membagi oleh $r(x)$.
-Fungsi $r(x)$ disebut \emph{\myindex{faktor pengintegrasi}} dan
-metodenya disebut \emph{\myindex{metode faktor pengintegrasi}}.
+Fungsi $r(x)$ disebut \emph{\myindex{faktor integrasi}} dan
+metodenya disebut \emph{\myindex{metode faktor integrasi}}.
 
 Kita mencari fungsi $r(x)$ sedemikian sehingga ketika
 kita menurunkannya, kita memperoleh kembali fungsi yang sama dikalikan dengan $p(x)$.
@@ -1392,7 +1392,7 @@ y' + 2xy = e^{x-x^2}, \qquad y(0) = -1 .
 \end{equation*}
 
 Pertama, perhatikan bahwa $p(x) = 2x$ dan $f(x) = e^{x-x^2}$.
-Faktor pengintegrasinya adalah $r(x) = e^{\int p(x)\, dx} = e^{x^2}$.
+Faktor integrasinya adalah $r(x) = e^{\int p(x)\, dx} = e^{x^2}$.
 Kita mengalikan kedua ruas persamaan dengan $r(x)$ untuk memperoleh
 \begin{equation*}
 \begin{aligned}
@@ -1421,7 +1421,7 @@ pada akhirnya tidak akan berpengaruh.
 
 \begin{exercise}
 Cobalah! Tambahkan suatu konstanta integrasi pada integral dalam
-faktor pengintegrasi dan tunjukkan bahwa solusi yang akhirnya Anda peroleh
+faktor integrasi dan tunjukkan bahwa solusi yang akhirnya Anda peroleh
 sama dengan yang kita peroleh di atas.
 \end{exercise}
 
@@ -1544,7 +1544,7 @@ Dalam bentuk \eqref{lineq:eq1}, persamaan tersebut adalah
 0.5 .
 \end{equation*}
 
-Mari kita selesaikan. Faktor pengintegrasinya adalah
+Mari kita selesaikan. Faktor integrasinya adalah
 \begin{equation*}
 r(t) = \exp \left( \int \frac{3}{60+2t} dt  \right)
 =
@@ -1810,7 +1810,7 @@ Persamaan
 \begin{equation*}
 y' = {(x-y+1)}^2
 \end{equation*}
-tidak dapat dipisahkan dan juga tidak linear. Apa yang dapat kita lakukan?
+tidak separabel maupun linear. Apa yang dapat kita lakukan?
 Bagaimana jika kita mencoba mengganti variabel sehingga dalam variabel baru
 persamaannya lebih sederhana? Kita menggunakan variabel lain $v$, yang kita perlakukan sebagai
 fungsi dari $x$. Kita mencoba
@@ -1927,10 +1927,10 @@ dan akhirnya
 v'- \frac{4(x+1)}{x} v  = 4 .
 \end{equation*}
 Sekarang persamaannya linear.
-Kita dapat menggunakan metode faktor pengintegrasi. Secara khusus, kita
+Kita dapat menggunakan metode faktor integrasi. Secara khusus, kita
 menggunakan rumus \eqref{lei:defsol}. Kita mengandaikan bahwa $x > 0$
 sehingga $\lvert x \rvert = x$. Asumsi ini sah\@, karena syarat awal kita berada
-pada $x=1 > 0$. Mari kita hitung faktor pengintegrasinya. Di sini $p(s)$ dari rumus
+pada $x=1 > 0$. Mari kita hitung faktor integrasinya. Di sini $p(s)$ dari rumus
 \eqref{lei:defsol} adalah $\frac{-4(s+1)}{s}$.
 \begin{align*}
 e^{\int_1^x p(s)\,ds} & = \exp \left( \int_1^x \frac{-4(s+1)}{s} \,ds \right) =
@@ -2001,7 +2001,7 @@ yaitu $F(v) = v^2+v$.
 Karena syarat awal diberikan untuk nilai $x$ positif,
 kita akan mengandaikan $x > 0$.
 Kita substitusikan $v=\nicefrac{y}{x}$ untuk memperoleh
-persamaan yang dapat dipisahkan
+persamaan separabel
 \begin{equation*}
 xv' = v^2+v-v = v^2 ,
 \end{equation*}
@@ -3729,7 +3729,7 @@ d) Faktor pengintegralnya adalah $x$, persamaan menjadi $( 2xy+y^2 )\, dx +
 \begin{tasks}
 \task
 Tunjukkan bahwa setiap
-persamaan terpisahkan $y' = f(x)g(y)$ dapat dituliskan sebagai persamaan eksak,
+persamaan separabel $y' = f(x)g(y)$ dapat dituliskan sebagai persamaan eksak,
 dan verifikasikan bahwa persamaan tersebut memang eksak.
 \task Tuliskan ulang $y' = xy$ sebagai persamaan eksak, selesaikan, dan verifikasikan
 bahwa solusinya sama seperti dalam \exampleref{example:yprimeisxy}.

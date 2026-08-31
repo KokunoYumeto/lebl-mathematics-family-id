@@ -1,6 +1,6 @@
 # Lisensi edisi Bahasa Indonesia
 
-Empat edisi turunan Bahasa Indonesia, teks terjemahan, manifes terjemahan,
+Tiga edisi turunan Bahasa Indonesia dalam empat PDF, teks terjemahan, manifes terjemahan,
 backend modular yang dibuat untuk edisi ini, dan dokumentasi asli edisi ini
 dilisensikan berdasarkan **Creative Commons Attribution-ShareAlike 4.0
 International (CC BY-SA 4.0)**:
@@ -36,7 +36,7 @@ Secara khusus, paket R007 menyertakan turunan `mywrapfig.sty` dari wrapfig 3.6,
 hak cipta Donald Arseneau 1991–2003. Header sumber menyatakannya berada di bawah
 LaTeX Project Public License tanpa menyebut versi; karena itu ledger merekamnya
 sebagai `LicenseRef-LPPL-unspecified`, dan header serta penandaan perubahan lokal
-dipertahankan. Paket R008 menyertakan makro `vogtwidebar` dari jawaban Hendrik
+dipertahankan. Paket R006 dan R008 menyertakan makro `vogtwidebar` dari jawaban Hendrik
 Vogt di TeX Stack Exchange, 18 Juni 2012, di bawah **CC BY-SA 3.0**. Atribusi,
 tautan sumber, dan pemberitahuan lisensinya dipertahankan pada header berkas.
 

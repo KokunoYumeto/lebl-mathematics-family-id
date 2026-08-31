@@ -1,0 +1,136 @@
+{
+  "schema": "lebl-id-terminology-patch-reader-qa-v1",
+  "status": "pass",
+  "generated_at": "2026-08-31T00:00:00Z",
+  "scope": "Four complete Bahasa Indonesia Lebl-family readers after the bounded native-terminology patch",
+  "total_pages": 1415,
+  "baseline": {
+    "path": "qa/FINAL_PDF_READER_QA_R006_R007_R008_20260831.json",
+    "bytes": 5212,
+    "sha256": "61c8d535c34063b5316a02ceb98aed386d121e18cc7b815e992c1be134ba53c3",
+    "status": "pass"
+  },
+  "build_determinism": {
+    "receipt": "qa/terminology_qa/READER_BUILD_RECEIPT_TERMINOLOGY_PATCH_20260831.json",
+    "schema": "lebl-terminology-patch-reader-build-v1",
+    "status": "pass",
+    "mutex": "Global\\InterlanguageTeXSlotV1",
+    "source_date_epoch": 1788134400,
+    "pairs": [
+      {
+        "resource_id": "R007",
+        "a_bytes": 5135112,
+        "a_sha256": "5395c01c7e1b3d170dfc5d2ecb4e55fcc7cc08890ef8706a385d6ae292a72d62",
+        "b_bytes": 5135112,
+        "b_sha256": "5395c01c7e1b3d170dfc5d2ecb4e55fcc7cc08890ef8706a385d6ae292a72d62",
+        "identity_pass": true,
+        "status": "pass"
+      },
+      {
+        "resource_id": "R008",
+        "a_bytes": 2822050,
+        "a_sha256": "efe8146e7a16fc4386b4e21cfb3454e5b1684ed6dd2f19c20a83f5b6023e6106",
+        "b_bytes": 2822050,
+        "b_sha256": "efe8146e7a16fc4386b4e21cfb3454e5b1684ed6dd2f19c20a83f5b6023e6106",
+        "identity_pass": true,
+        "status": "pass"
+      }
+    ]
+  },
+  "readers": [
+    {
+      "resource_id": "R006-volume-1",
+      "filename": "Analisis_Dasar_I_Bahasa_Indonesia_v6.3.pdf",
+      "pages": 334,
+      "bytes": 2870909,
+      "sha256": "38743ea0e7ce52bdadf5233fc9d6e79e00717f9ba55a393f2bf46ea21c65ef56",
+      "status": "pass",
+      "openability": {"pages_opened": 334, "page_errors": [], "encrypted": false, "status": "pass"},
+      "fonts": {"font_resources": 142, "embedded": 142, "unembedded": [], "status": "pass"},
+      "text": {"byte_identical_to_reviewed_baseline": true, "status": "pass"},
+      "visual": {"coverage": "inherited exact-byte full-page review and 334-page edge scan", "defects": [], "status": "pass"}
+    },
+    {
+      "resource_id": "R006-volume-2",
+      "filename": "Analisis_Dasar_II_Bahasa_Indonesia_v6.3.pdf",
+      "pages": 241,
+      "bytes": 2427379,
+      "sha256": "e70c74bb7edc466a7cb6ff0eff0de33dfcc7b3bc63010d018aff758a14d2dea3",
+      "status": "pass",
+      "openability": {"pages_opened": 241, "page_errors": [], "encrypted": false, "status": "pass"},
+      "fonts": {"font_resources": 98, "embedded": 98, "unembedded": [], "status": "pass"},
+      "text": {"byte_identical_to_reviewed_baseline": true, "status": "pass"},
+      "visual": {"coverage": "inherited exact-byte full-page review and 241-page edge scan", "defects": [], "status": "pass"}
+    },
+    {
+      "resource_id": "R007",
+      "filename": "Catatan_tentang_Diffy_Qs_Bahasa_Indonesia_v6.11.pdf",
+      "pages": 502,
+      "bytes": 5135112,
+      "sha256": "5395c01c7e1b3d170dfc5d2ecb4e55fcc7cc08890ef8706a385d6ae292a72d62",
+      "status": "pass",
+      "openability": {"pages_opened": 502, "content_streams_decompressed": 502, "text_pages_extracted": 502, "page_errors": [], "encrypted": false, "status": "pass"},
+      "fonts": {"font_resources": 133, "embedded": 133, "subset": 133, "unembedded": [], "status": "pass"},
+      "text": {
+        "required_counts": {"persamaan diferensial separabel": 8, "persamaan separabel": 4, "faktor integrasi": 28},
+        "forbidden_counts": {"persamaan terpisahkan": 0, "faktor pengintegrasi": 0},
+        "standalone_english_and_outside_bibliographic_titles": 0,
+        "status": "pass"
+      },
+      "visual": {
+        "renderer": "Poppler pdftoppm 26.05.0",
+        "terminology_pages_inspected": [3,37,38,39,40,41,43,44,45,47,49,50,52,53,77,88,128,189,191,192,194,196,197,200,497,499,501],
+        "residue_delta_pages": [185,193,194,197,199],
+        "residue_raster_identical_pages": 497,
+        "edge_scan_pages": 502,
+        "hard_edge_flags": [],
+        "cleared_conservative_flags": [168,309],
+        "defects": [],
+        "status": "pass"
+      }
+    },
+    {
+      "resource_id": "R008",
+      "filename": "Panduan_Mengolah_Analisis_Kompleks_Bahasa_Indonesia_v1.9.pdf",
+      "pages": 338,
+      "bytes": 2822050,
+      "sha256": "efe8146e7a16fc4386b4e21cfb3454e5b1684ed6dd2f19c20a83f5b6023e6106",
+      "status": "pass",
+      "openability": {"pages_opened": 338, "content_streams_decompressed": 338, "text_pages_extracted": 338, "page_errors": [], "encrypted": false, "status": "pass"},
+      "fonts": {"font_resources": 57, "embedded": 57, "subset": 57, "unembedded": [], "status": "pass"},
+      "text": {
+        "required_counts": {"fungsi penuh": 38, "entire function defining occurrence": 1},
+        "forbidden_counts": {"fungsi entire": 0, "fungsi menyeluruh": 0, "fungsi holomorfik menyeluruh": 0, "fungsi holomorfik seluruh": 0, "fungsi seluruh": 0},
+        "status": "pass"
+      },
+      "visual": {
+        "renderer": "Poppler pdftoppm 26.05.0",
+        "baseline_pages_rendered": 338,
+        "new_pages_rendered": 338,
+        "raster_identical_pages": 308,
+        "raster_changed_pages": [85,86,87,88,89,90,91,92,93,94,95,105,106,137,140,141,159,160,161,162,176,206,221,222,223,224,227,247,255,330],
+        "changed_pages_inspected": [85,86,87,88,89,90,91,92,93,94,95,105,106,137,140,141,159,160,161,162,176,206,221,222,223,224,227,247,255,330],
+        "baseline_inventory_sha256": "693bea11d14909b410f19f8baa10a0f93fab5fab6138fcd84b611da3c8c56af5",
+        "new_inventory_sha256": "d1c17a59747c0680cb0d86898d5262845c0e71adf89948e4c16e179f5329652f",
+        "inspection_inventory_sha256": "6e254b680cb2e0eaf3a52684a9d6f62adfabf51a30d3a8137aa196e6fa8a53b2",
+        "edge_scan_pages": 338,
+        "hard_edge_flags": [],
+        "defects": [],
+        "status": "pass"
+      }
+    }
+  ],
+  "global_checks": {
+    "reader_identity_gate_pass": true,
+    "total_pages_1415_pass": true,
+    "all_pages_opened_pass": true,
+    "font_embedding_pass": true,
+    "terminology_patch_pass": true,
+    "deterministic_ab_identity_pass": true,
+    "visual_delta_coverage_pass": true,
+    "edge_margin_coverage_all_1415_pages_pass": true,
+    "metadata_and_provenance_pass": true,
+    "no_unresolved_defects_pass": true
+  },
+  "provenance": "OpenAI Codex gpt-5.6-sol, Ultra acting on the user's request; original authors, licenses, and human-contributor credits preserved."
+}

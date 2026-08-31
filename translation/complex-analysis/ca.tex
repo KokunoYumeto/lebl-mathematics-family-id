@@ -6359,7 +6359,7 @@ kita memiliki alat untuk membuat tiga hasil fundamental muncul begitu saja
 dengan sedikit usaha.  Pertidaksamaan segitiga pada
 rumus integral untuk koefisien deret pangkat menghasilkan suatu
 taksiran bagi besarnya.  Taksiran ini langsung memberikan
-teorema Liouville tentang fungsi holomorfik entire, yang seketika memberikan
+teorema Liouville tentang fungsi penuh, yang seketika memberikan
 teorema dasar aljabar.
 Beberapa analis suka mengolok-olok para aljabaris pada tahap ini dengan mengatakan bahwa
 bukti standar teorema fundamental mereka menggunakan analisis.
@@ -6470,13 +6470,12 @@ dua pertidaksamaan dalam bukti tersebut).
 
 \begin{defn}
 Suatu fungsi holomorfik $f \colon \C \to \C$ disebut
-\emph{\myindex{fungsi holomorfik entire}} atau, secara singkat,
-cukup \emph{entire}.
+\emph{\myindex{fungsi penuh}} (\emph{entire function}).
 \end{defn}
 
-Polinomial merupakan salah satu jenis fungsi entire, dan kita telah melihat bahwa 
+Polinomial merupakan salah satu jenis fungsi penuh, dan kita telah melihat bahwa 
 polinomial takkonstan bersifat takterbatas.  Meskipun secara umum perilaku
-fungsi entire seperti $\exp z$ ketika kita mendekati takhingga lebih liar daripada perilaku
+fungsi penuh seperti $\exp z$ ketika kita mendekati takhingga lebih liar daripada perilaku
 polinomial, fungsi-fungsi tersebut takterbatas.
 
 \begin{thm}[Liouville\footnote{%
@@ -6485,11 +6484,11 @@ dibuktikan oleh Cauchy (sungguh suka pamer).  Namun, menyebutnya teorema Cauchy 
 tidak membantu.}]
 \index{teorema Liouville!fungsi holomorfik}%
 \label{thm:Liouville}%
-Jika $f$ entire dan terbatas, maka $f$ konstan.
+Jika $f$ merupakan fungsi penuh dan terbatas, maka $f$ konstan.
 \end{thm}
 
 \begin{proof}
-Misalkan $f$ entire dan andaikan $\sabs{f(z)} \leq M$ untuk semua $z \in \C$.
+Misalkan $f$ merupakan fungsi penuh dan andaikan $\sabs{f(z)} \leq M$ untuk semua $z \in \C$.
 Uraikan $f$ di titik asal:
 \begin{equation*}
 f(z) = \sum_{n=0}^\infty c_n z^n ,
@@ -6508,18 +6507,18 @@ lain, $f(z) = c_0$ untuk semua $z$.
 
 \begin{exbox}
 \begin{exercise}
-Andaikan $f$ entire dan $\sabs{f(z)} \leq e^{\Re z}$ untuk semua $z \in
+Andaikan $f$ merupakan fungsi penuh dan $\sabs{f(z)} \leq e^{\Re z}$ untuk semua $z \in
 \C$.  Tunjukkan bahwa $f(z) = c e^z$ untuk suatu konstanta $c \in \C$.
 \end{exercise}
 
 \begin{exercise}
-Andaikan $f$ entire, $n \in \N$, $M > 0$, dan
+Andaikan $f$ merupakan fungsi penuh, $n \in \N$, $M > 0$, dan
 $\sabs{f(z)} \leq M {(1+\sabs{z})}^n$ untuk semua $z \in \C$.
 Tunjukkan bahwa $f$ adalah polinom berderajat paling tinggi $n$.
 \end{exercise}
 
 \begin{exercise}
-Andaikan $f$ entire dan $\Im f(z) > 0$ untuk semua $z \in \C$.
+Andaikan $f$ merupakan fungsi penuh dan $\Im f(z) > 0$ untuk semua $z \in \C$.
 Buktikan bahwa $f$ konstan.
 \end{exercise}
 
@@ -6544,7 +6543,7 @@ Jika $P(z)$ adalah polinom takkonstan, maka $P$ memiliki akar.
 
 \begin{proof}
 Jika $P(z)$ tidak memiliki akar, maka $R(z) = \frac{1}{P(z)}$ adalah
-fungsi holomorfik entire.
+fungsi penuh.
 Andaikan $P(z)$ takkonstan.
 Dalam \exerciseref{exercise:polygoesinf} Anda telah membuktikan bahwa
 $\lim_{z \to \infty} P(z) = \infty$, sehingga
@@ -6576,7 +6575,7 @@ surjektif.
 \end{exercise}
 
 \begin{exercise}
-Andaikan $f$ entire, takkonstan, dan tidak pernah nol.  Untuk $M > 0$, misalkan
+Andaikan $f$ merupakan fungsi penuh, takkonstan, dan tidak pernah nol.  Untuk $M > 0$, misalkan
 $X_M = \bigl\{ z \in \C : \sabs{f(z)} = M \bigr\}$ (perhatikan bahwa $X_M$
 tertutup).
 \begin{exparts}
@@ -7791,7 +7790,7 @@ d \zeta .
 Dalam buktinya\footnote{%
 Bukti elegan ini relatif baru, dari tahun 1971, berkat John Dixon.},
 dengan cara yang agak aneh, kita akan mengambil selisih kedua
-ruas persamaan tersebut dan memperluasnya menjadi fungsi entire
+ruas persamaan tersebut dan memperluasnya menjadi fungsi penuh
 (meskipun $U$ mungkin kecil).  Kemudian kita akan menggunakan
 teorema Liouville (\thmref{thm:Liouville}) untuk menunjukkan bahwa selisih ini
 nol.
@@ -7876,7 +7875,7 @@ $\Gamma$, dan misalkan $d(z,\Gamma)$ adalah jarak dari $z$ ke $\Gamma$.  Maka
 \frac{M \ell}{d(z,\Gamma)} .
 \end{equation*}
 Ketika $z \to \infty$, demikian pula $d(z,\Gamma) \to \infty$, sehingga $h(z) \to 0$.
-Secara khusus, $h$ adalah fungsi entire terbatas dan
+Secara khusus, $h$ adalah fungsi penuh yang terbatas dan
 teorema Liouville menyatakan bahwa $h$ konstan. Selain itu, konstanta tersebut harus nol.
 Jadi, andaikan $z \in U \setminus \Gamma$.  Maka
 \begin{equation*}
@@ -10140,14 +10139,14 @@ diperluas melintasi singularitas tersebut bahkan secara kontinu.
 \end{exercise}
 
 \begin{exercise}
-Misalkan $f$ adalah fungsi holomorfik menyeluruh sedemikian sehingga
+Misalkan $f$ adalah fungsi penuh sedemikian sehingga
 $\sabs{f(z)} \leq e^{\sabs{\Im z}}$ untuk setiap $z$ dan
 $f'(0) =1$ serta $f(n\pi) = 0$ untuk setiap bilangan bulat $n$.
 Buktikan bahwa $f(z) = \sin z$.
 \end{exercise}
 
 \begin{exercise}
-Misalkan $f$ dan $g$ adalah fungsi menyeluruh dan $\sabs{f} \leq \sabs{g}$
+Misalkan $f$ dan $g$ adalah fungsi penuh dan $\sabs{f} \leq \sabs{g}$
 di mana-mana. Tunjukkan bahwa $f = c g$ untuk suatu $c \in \C$.
 Petunjuk: Pastikan untuk menangani nol dari $f$ dan $g$.
 \end{exercise}
@@ -10354,7 +10353,7 @@ yang dapat dihapus, karena didefinisikan oleh suatu deret pangkat.
 
 \medskip
 
-Untuk fungsi menyeluruh, kita dapat membicarakan
+Untuk fungsi penuh, kita dapat membicarakan
 \myquote{singularitas di tak hingga.}
 Jika kita memandang $\C \subset \C_\infty$, maka frasa ini benar-benar masuk akal.
 Pemetaan $z \mapsto \nicefrac{1}{z}$ adalah pemetaan-diri bola Riemann
@@ -10398,7 +10397,7 @@ $p$. Petunjuk: Mula-mula kerjakan untuk kutub sederhana.
 \end{exercise}
 
 \begin{exercise}
-Tunjukkan bahwa fungsi holomorfik menyeluruh $f \colon \C \to \C$ memiliki kutub di tak hingga
+Tunjukkan bahwa fungsi penuh $f \colon \C \to \C$ memiliki kutub di tak hingga
 jika dan hanya jika fungsi tersebut merupakan polinomial tak konstan.
 Orde kutub tersebut adalah derajat polinomial.
 \end{exercise}
@@ -11825,7 +11824,7 @@ Buktikan bahwa $f(U) = \D$.
 \end{exercise}
 
 \begin{exercise}
-Misalkan $f \colon \C \to \C$ adalah fungsi holomorfik seluruh 
+Misalkan $f \colon \C \to \C$ adalah fungsi penuh 
 yang bernilai real pada lingkaran satuan $\partial \D$.  Tunjukkan bahwa $f$
 konstan.  Bagaimana jika $\partial \D$ diganti dengan garis real?
 \end{exercise}
@@ -12993,7 +12992,7 @@ karena setiap himpunan sempurna takkosong tidak terhitung
 
 \begin{exercise}
 Buktikan bahwa
-jika $f \colon \C \to \C$ holomorfik entire dan injektif, maka $f$
+jika $f \colon \C \to \C$ merupakan fungsi penuh dan injektif, maka $f$
 surjektif.
 \end{exercise}
 \end{exbox}
@@ -15257,7 +15256,7 @@ menurut sifat nilai rata-rata (\thmref{thm:meanprop}), $F$ harmonik di $U$.
 
 \begin{exbox}
 \begin{exercise}
-Misalkan $f \colon \C \to \C$ suatu fungsi holomorfik menyeluruh.
+Misalkan $f \colon \C \to \C$ suatu fungsi penuh.
 Misalkan $f(x)$ real untuk semua $x \in \R$. Buktikan:
 \begin{exparts}
 \item
@@ -15303,7 +15302,7 @@ Temukan contoh $f$ yang tidak dapat diperluas menjadi harmonik melewati titik as
 Misalkan $f \colon \overline{\bH} \to \R$ kontinu, harmonik pada $\bH$, nol pada $\R = \partial \bH$,
 dan positif pada $\bH$ (suatu fungsi Martin).
 Buktikan bahwa $f(z) = c \Im z$ untuk suatu $c > 0$.
-Petunjuk: Temukan fungsi menyeluruh yang bagian imajinernya adalah $f$ dan
+Petunjuk: Temukan fungsi penuh yang bagian imajinernya adalah $f$ dan
 tunjukkan bahwa fungsi itu memiliki kutub di tak hingga.
 \end{exercise}
 
@@ -15327,7 +15326,7 @@ Petunjuk: Bagian a) dan Cayley.
 \end{exercise}
 
 \begin{exercise}
-Misalkan $f$ fungsi holomorfik menyeluruh dan
+Misalkan $f$ merupakan fungsi penuh dan
 $\Re f(iy) = \Re f(1+iy) = 0$ untuk semua $y \in \R$.  Buktikan
 bahwa $f$ periodik-$2$: $f(z+2)=f(z)$ untuk semua $z \in \C$.
 \end{exercise}
@@ -16422,7 +16421,7 @@ untuk $f$ di $0$ taknegatif.  Menurut \lemmaref{lemma:maxprincpositive},
 \end{proof}
 
 Teorema hasil kali Weierstrass menyatakan bahwa
-kita dapat menentukan nol-nol suatu fungsi entire secara sebarang.
+kita dapat menentukan nol-nol suatu fungsi penuh secara sebarang.
 Satu-satunya syarat adalah syarat yang jelas dari teorema identitas:
 Nol-nol tersebut tidak memiliki titik limit di $\C$.
 Dalam pembahasan berikut, kita mengandaikan semua barisan tak hingga; namun,
@@ -16435,7 +16434,7 @@ dengan hasil kali berhingga.
 Andaikan $\{ c_k \}$ adalah barisan titik-titik berbeda di $\C$
 tanpa titik limit di $\C$ dan $\{ m_k \}$ adalah barisan
 bilangan asli.
-Maka terdapat fungsi entire holomorfik $f \colon \C \to \C$ yang
+Maka terdapat fungsi penuh $f \colon \C \to \C$ yang
 memiliki nol tepat di $c_k$, dengan orde yang diberikan oleh~$m_k$.
 
 Lebih tepatnya, andaikan $\{ a_n \}$ adalah barisan dari anggota-anggota taknol $\{ c_k \}$ dengan titik-titik
@@ -16499,16 +16498,16 @@ untuk setiap $r>0$ menjamin konvergensi hasil kali, tetapi kita boleh mencoba
 membuat pilihan $\{ \ell_n \}$ yang mudah digunakan, dan sering kali
 ada pilihan yang lebih mudah daripada $\ell_n=n-1$.
 
-Sekarang setelah kita dapat menentukan nol-nol suatu fungsi entire, kita
-menggunakannya untuk membagi habis semua nol dari sebarang fungsi entire lain, dan
+Sekarang setelah kita dapat menentukan nol-nol suatu fungsi penuh, kita
+menggunakannya untuk membagi habis semua nol dari sebarang fungsi penuh lain, dan
 memperoleh suatu faktorisasi.
 
 \begin{cor}[Teorema faktorisasi Weierstrass]\index{teorema faktorisasi Weierstrass}
-Misalkan $f$ adalah fungsi entire holomorfik, yang tidak identik nol,
+Misalkan $f$ adalah fungsi penuh yang tidak identik nol,
 dengan nol-nol (diulang sesuai dengan multiplisitas) di titik-titik dari
 barisan $\{ a_n \}$ kecuali nol di
 titik asal, yang ordonya adalah $m$ (mungkin $m=0$).  Maka terdapat suatu
-fungsi entire holomorfik $g$ dan suatu barisan $\{ \ell_n \}$ sedemikian sehingga
+fungsi penuh $g$ dan suatu barisan $\{ \ell_n \}$ sedemikian sehingga
 \begin{equation*}
 f(z) = z^m e^{g(z)} \prod_{n=1}^\infty E_{\ell_n}\left(\frac{z}{a_n}\right) ,
 \end{equation*}
@@ -16516,15 +16515,15 @@ konvergen mutlak secara seragam pada himpunan-himpunan bagian kompak.
 \end{cor}
 
 \begin{proof}
-Misalkan $h \colon \C \to \C$ adalah fungsi entire
+Misalkan $h \colon \C \to \C$ adalah fungsi penuh
 \begin{equation*}
 h(z) = \prod_{n=1}^\infty E_{\ell_n}\left(\frac{z}{a_n}\right) ,
 \end{equation*}
 di mana $\{ \ell_n \}$ berasal dari teorema hasil kali.  Fungsi
 $\varphi(z) = \frac{f(z)}{h(z)z^m}$
-hanya memiliki singularitas yang dapat dihapus, sehingga $\varphi$ dapat dijadikan entire.
+hanya memiliki singularitas yang dapat dihapus, sehingga $\varphi$ dapat diperluas menjadi fungsi penuh.
 Karena $\varphi$ tidak memiliki nol, $\varphi(z) =
-e^{g(z)}$ untuk suatu fungsi entire $g$ karena $\C$ terhubung sederhana.
+e^{g(z)}$ untuk suatu fungsi penuh $g$ karena $\C$ terhubung sederhana.
 \end{proof}
 
 \begin{exbox}
@@ -16539,7 +16538,7 @@ konvergen mutlak secara seragam pada himpunan-himpunan bagian kompak dari $\C$.
 \end{exercise}
 
 \begin{exercise}[Mudah]
-Temukan secara eksplisit suatu hasil kali tak hingga untuk suatu fungsi entire holomorfik
+Temukan secara eksplisit suatu hasil kali tak hingga untuk suatu fungsi penuh
 dengan nol-nol sederhana tepat di $\Z \times \Z$ (yaitu,
 semua $x + iy$ dengan $x,y \in \Z$).
 \end{exercise}
@@ -16564,7 +16563,7 @@ kutub-kutubnya tepat di $b_k$, dengan orde yang diberikan oleh $m_k$.
 \begin{exercise}
 Andaikan $\{ a_n \}$ adalah suatu barisan titik-titik berbeda di $\C$
 tanpa titik limit, dan $\{ c_n \}$ suatu barisan sebarang dari bilangan-bilangan
-kompleks.  Konstruksikan suatu fungsi entire $f$ sedemikian sehingga $f(a_n) = c_n$.
+kompleks.  Konstruksikan suatu fungsi penuh $f$ sedemikian sehingga $f(a_n) = c_n$.
 Petunjuk:  Untuk sebarang radius $r > 0$, suatu titik $p \in \C$, $\sabs{p} > r$, dan
 suatu $\epsilon > 0$, coba temukan suatu fungsi dengan beberapa nol yang ditentukan
 sedemikian sehingga $f(p) =1$ dan $\sabs{f(z)} < \epsilon$ untuk semua $z \in \Delta_r(0)$.
@@ -16625,7 +16624,7 @@ e^{g(z)}
 \prod_{n=1}^\infty 
 \left(1-\frac{z^2}{n^2}\right) ,
 \end{equation*}
-untuk suatu fungsi entire $g$.
+untuk suatu fungsi penuh $g$.
 Berdasarkan
 perhitungan turunan di atas,
 $e^{g(0)}=1$, sehingga kita dapat memilih $g$ sedemikian sehingga $g(0) = 0$.
@@ -16883,7 +16882,7 @@ Untuk $f_2$, perhatikan bahwa $\{a^2_n\}$ harus menuju tak hingga dan tidak memi
 berhingga.  Memang, jika $\sabs{a^2_n} \leq r$, maka $d(a^2_n,\C\setminus U)
 \geq \frac{1}{r+1}$, dan $\{ a^2_n \}$ tidak memiliki titik limit di
 $U$.
-Oleh karena itu, kita dapat mengonstruksi suatu fungsi entire dengan
+Oleh karena itu, kita dapat mengonstruksi suatu fungsi penuh dengan
 nol-nol ini.
 \end{proof}
 
@@ -18194,7 +18193,7 @@ Buktikan \corref{thm:schwarzreflectioncircleholo}.  Petunjuk: Cayley.
 Andaikan $U = \{ z \in \C : \Im z > 0 \text{ dan } \Re z > 0 \}$
 dan $f \colon \widebar{U} \to \C$ kontinu, holomorfik 
 pada $U$, bernilai real ketika $\Im z =0$, dan bernilai imajiner
-ketika $\Re z = 0$.  Buktikan bahwa $f$ meluas menjadi fungsi holomorfik seluruh.
+ketika $\Re z = 0$.  Buktikan bahwa $f$ meluas menjadi fungsi penuh.
 \end{exercise}
 
 \begin{exercise}
@@ -18714,7 +18713,7 @@ terhubung sederhana pada dasarnya hanyalah biholomorfisme.
 Menurut \hyperref[thm:RMT]{teorema pemetaan Riemann},
 setiap daerah memiliki penutup universal yang
 berupa $\C$ atau $\D$.  Bahkan, teorema kecil Picard, yang tidak kita
-buktikan, menyatakan bahwa setiap fungsi seluruh tak konstan tidak mencapai paling banyak satu nilai.  Jadi
+buktikan, menyatakan bahwa setiap fungsi penuh takkonstan tidak mencapai paling banyak satu nilai.  Jadi
 satu-satunya daerah dengan $\C$ sebagai penutup universal adalah $\C$ itu sendiri (identitas) dan
 $\C \setminus \{ p \}$ (fungsi eksponensial, $e^{z}+p$).
 Setiap daerah lain di $\C$ memiliki $\D$ sebagai penutup universal.

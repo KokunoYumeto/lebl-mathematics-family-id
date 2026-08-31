@@ -1,0 +1,53 @@
+{
+  "schema": "lebl-r007-language-residue-source-patch-qa-v1",
+  "status": "pass",
+  "files": {
+    "old": {
+      "path": "repository/translation/diffyqs/ch-systems.tex",
+      "bytes": 223415,
+      "sha256": "e760733fe9c82b38441f6bc60e71a42da9117ad0dd08fe0420f963ff85e3f749"
+    },
+    "new": {
+      "path": "translation/diffyqs/ch-systems.tex",
+      "bytes": 223409,
+      "sha256": "b9df3d61e9258c35c4280028fc39d3d7a56c5e25f614070ad68dfedb72a5f02a"
+    }
+  },
+  "semantic_patch": {
+    "from": "and",
+    "to": "dan",
+    "count": 6,
+    "old_word_count": 6,
+    "new_word_count": 0,
+    "line_numbers": [5442, 6347, 6611, 7051, 7217, 7221],
+    "normalized_text_exact_after_replacements": true,
+    "other_semantic_changes": 0,
+    "nonsemantic_line_endings": {
+      "old_crlf": 7482,
+      "new_crlf": 7476,
+      "old_lf": 7507,
+      "new_lf": 7507
+    }
+  },
+  "structure": {
+    "commands": 6187,
+    "environment_boundaries": 2192,
+    "labels": 46,
+    "references": 19,
+    "citations": 18,
+    "assets": 5,
+    "math_spans": 1681,
+    "braces": 5440
+  },
+  "checks": {
+    "only_six_and_to_dan_semantic_token_changes": true,
+    "ordered_tex_commands_identical": true,
+    "ordered_environments_identical": true,
+    "ordered_labels_identical": true,
+    "ordered_references_identical": true,
+    "ordered_citations_identical": true,
+    "ordered_assets_identical": true,
+    "ordered_math_spans_identical": true,
+    "braces_balanced_and_count_preserved": true
+  }
+}
