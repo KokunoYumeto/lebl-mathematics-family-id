@@ -1,0 +1,165 @@
+{
+  "$id": "urn:interlanguage:schema:lebl:dataset:0.3.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "fixture": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "authority_status": {
+            "const": "illustrative_only"
+          }
+        },
+        "required": [
+          "notice"
+        ]
+      }
+    }
+  ],
+  "properties": {
+    "authority_status": {
+      "enum": [
+        "authoritative",
+        "illustrative_only"
+      ]
+    },
+    "canonicalization": {
+      "additionalProperties": false,
+      "properties": {
+        "csv": {
+          "const": "ILCSV-0.1"
+        },
+        "json": {
+          "const": "ILJCS-0.1"
+        }
+      },
+      "required": [
+        "json",
+        "csv"
+      ],
+      "type": "object"
+    },
+    "dataset_id": {
+      "$ref": "urn:interlanguage:schema:lebl:record:0.3.0#/$defs/id"
+    },
+    "dataset_key": {
+      "pattern": "^lebl\\.(ra|diffyqs|ca|shared)\\.[a-z0-9][a-z0-9._-]*$",
+      "type": "string"
+    },
+    "edition_ids": {
+      "items": {
+        "$ref": "urn:interlanguage:schema:lebl:record:0.3.0#/$defs/id"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "fixture": {
+      "type": "boolean"
+    },
+    "generated_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "lane_id": {
+      "const": "R006+R007+R008"
+    },
+    "namespace_uuid": {
+      "const": "ccdf8f89-242c-5c81-863d-54d9fb08f872"
+    },
+    "notice": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "projection_manifest": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "sha256": {
+          "$ref": "urn:interlanguage:schema:lebl:record:0.3.0#/$defs/sha256"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "type": "object"
+    },
+    "record_streams": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "bytes": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "record_count": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "sha256": {
+            "$ref": "urn:interlanguage:schema:lebl:record:0.3.0#/$defs/sha256"
+          }
+        },
+        "required": [
+          "path",
+          "bytes",
+          "record_count",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "resource_ids": {
+      "items": {
+        "$ref": "urn:interlanguage:schema:lebl:record:0.3.0#/$defs/id"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_name": {
+      "const": "lebl.backend.dataset"
+    },
+    "schema_version": {
+      "const": "0.3.0"
+    },
+    "workflow_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_name",
+    "schema_version",
+    "dataset_id",
+    "dataset_key",
+    "lane_id",
+    "namespace_uuid",
+    "authority_status",
+    "fixture",
+    "generated_at",
+    "workflow_id",
+    "canonicalization",
+    "projection_manifest",
+    "record_streams",
+    "resource_ids",
+    "edition_ids"
+  ],
+  "title": "Lebl backend dataset manifest",
+  "type": "object"
+}
